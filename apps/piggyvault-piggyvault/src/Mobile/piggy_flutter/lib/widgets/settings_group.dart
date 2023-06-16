@@ -21,11 +21,7 @@ class SettingsGroupHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(
-        left: 15,
-        right: 15,
-        bottom: 6,
-      ),
+      padding: EdgeInsets.only(left: 15, right: 15, bottom: 6),
       child: Text(
         title.toUpperCase(),
         style: TextStyle(
@@ -46,11 +42,7 @@ class SettingsGroupFooter extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(
-        left: 15,
-        right: 15,
-        top: 7.5,
-      ),
+      padding: EdgeInsets.only(left: 15, right: 15, top: 7.5),
       child: Text(
         title,
         style: TextStyle(
@@ -68,8 +60,8 @@ class SettingsGroup extends StatelessWidget {
     @required this.items,
     this.header,
     this.footer,
-  })  : assert(items != null),
-        assert(items.isNotEmpty);
+  }) : assert(items != null),
+       assert(items.isNotEmpty);
 
   final List<SettingsItem> items;
   final Widget header;

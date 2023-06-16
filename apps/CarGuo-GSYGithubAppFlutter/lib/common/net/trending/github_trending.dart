@@ -12,10 +12,17 @@ import 'package:gsy_github_app_flutter/common/net/result_data.dart';
 class GitHubTrending {
   fetchTrending(url) async {
     var res = await httpManager.netFetch(
-        url, null, null, new Options(contentType: "text/plain; charset=utf-8"));
+      url,
+      null,
+      null,
+      new Options(contentType: "text/plain; charset=utf-8"),
+    );
     if (res != null && res.result && res.data != null) {
       return new ResultData(
-          TrendingUtil.htmlToRepo(res.data), true, Code.SUCCESS);
+        TrendingUtil.htmlToRepo(res.data),
+        true,
+        Code.SUCCESS,
+      );
     } else {
       return res;
     }
@@ -26,18 +33,18 @@ const TAGS = {
   "meta": {
     "start": '<span class="d-inline-block float-sm-right"',
     "flag": '/svg>',
-    "end": '</span>end'
+    "end": '</span>end',
   },
   "starCount": {
     "start": '<svg aria-label="star"',
     "flag": '/svg>',
-    "end": '</a>'
+    "end": '</a>',
   },
   "forkCount": {
     "start": '<svg aria-label="repo-forked"',
     "flag": '/svg>',
-    "end": '</a>'
-  }
+    "end": '</a>',
+  },
 };
 
 class TrendingUtil {
@@ -58,10 +65,16 @@ class TrendingUtil {
           parseContentWithNote(html, 'class="f6 text-gray mt-2">', '<\/div>') +
               "end";
       repo.meta = parseRepoLabelWithTag(repo, metaNoteContent, TAGS["meta"]);
-      repo.starCount =
-          parseRepoLabelWithTag(repo, metaNoteContent, TAGS["starCount"]);
-      repo.forkCount =
-          parseRepoLabelWithTag(repo, metaNoteContent, TAGS["forkCount"]);
+      repo.starCount = parseRepoLabelWithTag(
+        repo,
+        metaNoteContent,
+        TAGS["starCount"],
+      );
+      repo.forkCount = parseRepoLabelWithTag(
+        repo,
+        metaNoteContent,
+        TAGS["forkCount"],
+      );
 
       parseRepoLang(repo, metaNoteContent);
       parseRepoContributors(repo, metaNoteContent);
@@ -85,8 +98,10 @@ class TrendingUtil {
 
   static parseRepoBaseInfo(repo, htmlBaseInfo) {
     var urlIndex = htmlBaseInfo.indexOf('<a href="') + '<a href="'.length;
-    var url =
-        htmlBaseInfo.substring(urlIndex, htmlBaseInfo.indexOf('">', urlIndex));
+    var url = htmlBaseInfo.substring(
+      urlIndex,
+      htmlBaseInfo.indexOf('">', urlIndex),
+    );
     repo.url = url;
     repo.fullName = url.substring(1, url.length);
     if (repo.fullName != null && repo.fullName.indexOf('/') != -1) {
@@ -95,7 +110,10 @@ class TrendingUtil {
     }
 
     String? description = parseContentWithNote(
-        htmlBaseInfo, '<p class="col-9 text-gray my-1 pr-4">', '</p>');
+      htmlBaseInfo,
+      '<p class="col-9 text-gray my-1 pr-4">',
+      '</p>',
+    );
     if (description != null) {
       String reg = "<g-emoji.*?>.+?</g-emoji>";
       RegExp tag = new RegExp(reg);
@@ -123,7 +141,9 @@ class TrendingUtil {
         content.indexOf(tag["flag"]) != -1 &&
         (content.indexOf(tag["flag"]) + tag["flag"].length <= content.length)) {
       var metaContent = content.substring(
-          content.indexOf(tag["flag"]) + tag["flag"].length, content.length);
+        content.indexOf(tag["flag"]) + tag["flag"].length,
+        content.length,
+      );
       return trim(metaContent);
     } else {
       return trim(content);
@@ -132,13 +152,19 @@ class TrendingUtil {
 
   static parseRepoLang(repo, metaNoteContent) {
     var content = parseContentWithNote(
-        metaNoteContent, 'programmingLanguage">', '</span>');
+      metaNoteContent,
+      'programmingLanguage">',
+      '</span>',
+    );
     repo.language = trim(content);
   }
 
   static parseRepoContributors(repo, htmlContributors) {
-    htmlContributors =
-        parseContentWithNote(htmlContributors, 'Built by', '<\/a>');
+    htmlContributors = parseContentWithNote(
+      htmlContributors,
+      'Built by',
+      '<\/a>',
+    );
     var splitWitSemicolon = htmlContributors.split('\"');
     if (splitWitSemicolon.length > 1) {
       repo.contributorsUrl = splitWitSemicolon[1];

@@ -23,10 +23,12 @@ class TvshowDetails extends HiveObject {
     this.seasons = const [],
   });
 
-  factory TvshowDetails.fromRawJson(String str) =>
-      _$TvshowDetailsFromJson(json.decode(str));
-  factory TvshowDetails.fromJson(Map<String, dynamic> json) =>
-      _$TvshowDetailsFromJson(json);
+  factory TvshowDetails.fromRawJson(String str) => _$TvshowDetailsFromJson(
+    json.decode(str),
+  );
+  factory TvshowDetails.fromJson(
+    Map<String, dynamic> json,
+  ) => _$TvshowDetailsFromJson(json);
 
   @HiveField(0)
   int? rowId;

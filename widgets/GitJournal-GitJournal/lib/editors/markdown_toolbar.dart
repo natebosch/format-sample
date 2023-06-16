@@ -20,10 +20,8 @@ import 'package:gitjournal/forks/icon_button_more_gestures.dart' as fork;
 class MarkdownToolBar extends StatelessWidget {
   final TextEditingController textController;
 
-  const MarkdownToolBar({
-    Key? key,
-    required this.textController,
-  }) : super(key: key);
+  const MarkdownToolBar({Key? key, required this.textController})
+    : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -64,10 +62,7 @@ class MarkdownToolBar extends StatelessWidget {
             padding: const EdgeInsets.all(0.0),
             onPressed: () => _modifyCurrentLine('- [ ] '),
           ),
-          const SizedBox(
-            height: 20,
-            child: VerticalDivider(),
-          ),
+          const SizedBox(height: 20, child: VerticalDivider()),
           fork.IconButton(
             icon: const Icon(Icons.navigate_before),
             padding: const EdgeInsets.all(0.0),
@@ -85,14 +80,13 @@ class MarkdownToolBar extends StatelessWidget {
     );
 
     return LayoutBuilder(
-        builder: (BuildContext context, BoxConstraints viewportConstraints) {
-      return ConstrainedBox(
-        constraints: BoxConstraints(
-          minWidth: viewportConstraints.maxWidth,
-        ),
-        child: scroll,
-      );
-    });
+      builder: (BuildContext context, BoxConstraints viewportConstraints) {
+        return ConstrainedBox(
+          constraints: BoxConstraints(minWidth: viewportConstraints.maxWidth),
+          child: scroll,
+        );
+      },
+    );
   }
 
   void _modifyCurrentLine(String char) {
@@ -135,10 +129,7 @@ final _allowedBlockTags = [
   '* ',
 ];
 
-final _allowedBlockRegExps = [
-  RegExp('- [[xX ]] '),
-  RegExp('d+. '),
-];
+final _allowedBlockRegExps = [RegExp('- [[xX ]] '), RegExp('d+. ')];
 
 TextEditingValue modifyCurrentLine(
   TextEditingValue textEditingValue,
@@ -246,8 +237,10 @@ TextEditingValue modifyCurrentWord(
     }
     //print('CursorPos: $cursorPos');
 
-    wordStartPos =
-        text.lastIndexOf(RegExp('\\s'), cursorPos == 0 ? 0 : cursorPos - 1);
+    wordStartPos = text.lastIndexOf(
+      RegExp('\\s'),
+      cursorPos == 0 ? 0 : cursorPos - 1,
+    );
     if (wordStartPos == -1) {
       wordStartPos = 0;
     } else {

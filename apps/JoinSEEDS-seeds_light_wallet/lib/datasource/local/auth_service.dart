@@ -25,7 +25,7 @@ class AuthService {
     return EOSPrivateKey.fromSeed(words.join('-'));
   }
 
-    /// Creates 12 random words Mnemonic.
+  /// Creates 12 random words Mnemonic.
   List<String> _createRandom12Words() {
     final bytes = randomBytes(STRENGTH_FOR_TWELVE_WORDS);
     return entropyToMnemonic(HEX.encode(bytes)).split('-');

@@ -63,10 +63,10 @@ class IVector<T> extends IInspectable implements IIterable<T> {
     T Function(Pointer<COMObject>)? creator,
     T Function(int)? enumCreator,
     Type? intType,
-  })  : _iterableIid = iterableIid,
-        _creator = creator,
-        _enumCreator = enumCreator,
-        _intType = intType {
+  }) : _iterableIid = iterableIid,
+       _creator = creator,
+       _enumCreator = enumCreator,
+       _intType = intType {
     if (!isSameType<T, int>() &&
         !isSameType<T, String>() &&
         !isSameType<T, Uri>() &&
@@ -105,17 +105,15 @@ class IVector<T> extends IInspectable implements IIterable<T> {
   Pointer<COMObject> _getAt_COMObject(int index) {
     final retValuePtr = calloc<COMObject>();
 
-    final hr =
-        ptr.ref.vtable
-                .elementAt(6)
-                .cast<
-                    Pointer<
-                        NativeFunction<
-                            HRESULT Function(
-                                Pointer, Uint32, Pointer<COMObject>)>>>()
-                .value
-                .asFunction<int Function(Pointer, int, Pointer<COMObject>)>()(
-            ptr.ref.lpVtbl, index, retValuePtr);
+    final hr = ptr.ref.vtable.elementAt(6).cast<
+      Pointer<
+        NativeFunction<HRESULT Function(Pointer, Uint32, Pointer<COMObject>)>
+      >
+    >().value.asFunction<int Function(Pointer, int, Pointer<COMObject>)>()(
+      ptr.ref.lpVtbl,
+      index,
+      retValuePtr,
+    );
 
     if (FAILED(hr)) {
       free(retValuePtr);
@@ -148,15 +146,15 @@ class IVector<T> extends IInspectable implements IIterable<T> {
     final retValuePtr = calloc<Int16>();
 
     try {
-      final hr = ptr.ref.vtable
-              .elementAt(6)
-              .cast<
-                  Pointer<
-                      NativeFunction<
-                          HRESULT Function(Pointer, Uint32, Pointer<Int16>)>>>()
-              .value
-              .asFunction<int Function(Pointer, int, Pointer<Int16>)>()(
-          ptr.ref.lpVtbl, index, retValuePtr);
+      final hr = ptr.ref.vtable.elementAt(6).cast<
+        Pointer<
+          NativeFunction<HRESULT Function(Pointer, Uint32, Pointer<Int16>)>
+        >
+      >().value.asFunction<int Function(Pointer, int, Pointer<Int16>)>()(
+        ptr.ref.lpVtbl,
+        index,
+        retValuePtr,
+      );
 
       if (FAILED(hr)) throw WindowsException(hr);
 
@@ -170,15 +168,15 @@ class IVector<T> extends IInspectable implements IIterable<T> {
     final retValuePtr = calloc<Int32>();
 
     try {
-      final hr = ptr.ref.vtable
-              .elementAt(6)
-              .cast<
-                  Pointer<
-                      NativeFunction<
-                          HRESULT Function(Pointer, Uint32, Pointer<Int32>)>>>()
-              .value
-              .asFunction<int Function(Pointer, int, Pointer<Int32>)>()(
-          ptr.ref.lpVtbl, index, retValuePtr);
+      final hr = ptr.ref.vtable.elementAt(6).cast<
+        Pointer<
+          NativeFunction<HRESULT Function(Pointer, Uint32, Pointer<Int32>)>
+        >
+      >().value.asFunction<int Function(Pointer, int, Pointer<Int32>)>()(
+        ptr.ref.lpVtbl,
+        index,
+        retValuePtr,
+      );
 
       if (FAILED(hr)) throw WindowsException(hr);
 
@@ -192,15 +190,15 @@ class IVector<T> extends IInspectable implements IIterable<T> {
     final retValuePtr = calloc<Int64>();
 
     try {
-      final hr = ptr.ref.vtable
-              .elementAt(6)
-              .cast<
-                  Pointer<
-                      NativeFunction<
-                          HRESULT Function(Pointer, Uint32, Pointer<Int64>)>>>()
-              .value
-              .asFunction<int Function(Pointer, int, Pointer<Int64>)>()(
-          ptr.ref.lpVtbl, index, retValuePtr);
+      final hr = ptr.ref.vtable.elementAt(6).cast<
+        Pointer<
+          NativeFunction<HRESULT Function(Pointer, Uint32, Pointer<Int64>)>
+        >
+      >().value.asFunction<int Function(Pointer, int, Pointer<Int64>)>()(
+        ptr.ref.lpVtbl,
+        index,
+        retValuePtr,
+      );
 
       if (FAILED(hr)) throw WindowsException(hr);
 
@@ -214,15 +212,15 @@ class IVector<T> extends IInspectable implements IIterable<T> {
     final retValuePtr = calloc<Uint8>();
 
     try {
-      final hr = ptr.ref.vtable
-              .elementAt(6)
-              .cast<
-                  Pointer<
-                      NativeFunction<
-                          HRESULT Function(Pointer, Uint32, Pointer<Uint8>)>>>()
-              .value
-              .asFunction<int Function(Pointer, int, Pointer<Uint8>)>()(
-          ptr.ref.lpVtbl, index, retValuePtr);
+      final hr = ptr.ref.vtable.elementAt(6).cast<
+        Pointer<
+          NativeFunction<HRESULT Function(Pointer, Uint32, Pointer<Uint8>)>
+        >
+      >().value.asFunction<int Function(Pointer, int, Pointer<Uint8>)>()(
+        ptr.ref.lpVtbl,
+        index,
+        retValuePtr,
+      );
 
       if (FAILED(hr)) throw WindowsException(hr);
 
@@ -236,17 +234,15 @@ class IVector<T> extends IInspectable implements IIterable<T> {
     final retValuePtr = calloc<Uint16>();
 
     try {
-      final hr =
-          ptr.ref.vtable
-                  .elementAt(6)
-                  .cast<
-                      Pointer<
-                          NativeFunction<
-                              HRESULT Function(
-                                  Pointer, Uint32, Pointer<Uint16>)>>>()
-                  .value
-                  .asFunction<int Function(Pointer, int, Pointer<Uint16>)>()(
-              ptr.ref.lpVtbl, index, retValuePtr);
+      final hr = ptr.ref.vtable.elementAt(6).cast<
+        Pointer<
+          NativeFunction<HRESULT Function(Pointer, Uint32, Pointer<Uint16>)>
+        >
+      >().value.asFunction<int Function(Pointer, int, Pointer<Uint16>)>()(
+        ptr.ref.lpVtbl,
+        index,
+        retValuePtr,
+      );
 
       if (FAILED(hr)) throw WindowsException(hr);
 
@@ -260,17 +256,15 @@ class IVector<T> extends IInspectable implements IIterable<T> {
     final retValuePtr = calloc<Uint32>();
 
     try {
-      final hr =
-          ptr.ref.vtable
-                  .elementAt(6)
-                  .cast<
-                      Pointer<
-                          NativeFunction<
-                              HRESULT Function(
-                                  Pointer, Uint32, Pointer<Uint32>)>>>()
-                  .value
-                  .asFunction<int Function(Pointer, int, Pointer<Uint32>)>()(
-              ptr.ref.lpVtbl, index, retValuePtr);
+      final hr = ptr.ref.vtable.elementAt(6).cast<
+        Pointer<
+          NativeFunction<HRESULT Function(Pointer, Uint32, Pointer<Uint32>)>
+        >
+      >().value.asFunction<int Function(Pointer, int, Pointer<Uint32>)>()(
+        ptr.ref.lpVtbl,
+        index,
+        retValuePtr,
+      );
 
       if (FAILED(hr)) throw WindowsException(hr);
 
@@ -284,17 +278,15 @@ class IVector<T> extends IInspectable implements IIterable<T> {
     final retValuePtr = calloc<Uint64>();
 
     try {
-      final hr =
-          ptr.ref.vtable
-                  .elementAt(6)
-                  .cast<
-                      Pointer<
-                          NativeFunction<
-                              HRESULT Function(
-                                  Pointer, Uint32, Pointer<Uint64>)>>>()
-                  .value
-                  .asFunction<int Function(Pointer, int, Pointer<Uint64>)>()(
-              ptr.ref.lpVtbl, index, retValuePtr);
+      final hr = ptr.ref.vtable.elementAt(6).cast<
+        Pointer<
+          NativeFunction<HRESULT Function(Pointer, Uint32, Pointer<Uint64>)>
+        >
+      >().value.asFunction<int Function(Pointer, int, Pointer<Uint64>)>()(
+        ptr.ref.lpVtbl,
+        index,
+        retValuePtr,
+      );
 
       if (FAILED(hr)) throw WindowsException(hr);
 
@@ -308,17 +300,15 @@ class IVector<T> extends IInspectable implements IIterable<T> {
     final retValuePtr = calloc<HSTRING>();
 
     try {
-      final hr =
-          ptr.ref.vtable
-                  .elementAt(6)
-                  .cast<
-                      Pointer<
-                          NativeFunction<
-                              HRESULT Function(
-                                  Pointer, Uint32, Pointer<HSTRING>)>>>()
-                  .value
-                  .asFunction<int Function(Pointer, int, Pointer<HSTRING>)>()(
-              ptr.ref.lpVtbl, index, retValuePtr);
+      final hr = ptr.ref.vtable.elementAt(6).cast<
+        Pointer<
+          NativeFunction<HRESULT Function(Pointer, Uint32, Pointer<HSTRING>)>
+        >
+      >().value.asFunction<int Function(Pointer, int, Pointer<HSTRING>)>()(
+        ptr.ref.lpVtbl,
+        index,
+        retValuePtr,
+      );
 
       if (FAILED(hr)) throw WindowsException(hr);
 
@@ -333,17 +323,15 @@ class IVector<T> extends IInspectable implements IIterable<T> {
   Uri _getAt_Uri(int index) {
     final retValuePtr = calloc<COMObject>();
 
-    final hr =
-        ptr.ref.vtable
-                .elementAt(6)
-                .cast<
-                    Pointer<
-                        NativeFunction<
-                            HRESULT Function(
-                                Pointer, Uint32, Pointer<COMObject>)>>>()
-                .value
-                .asFunction<int Function(Pointer, int, Pointer<COMObject>)>()(
-            ptr.ref.lpVtbl, index, retValuePtr);
+    final hr = ptr.ref.vtable.elementAt(6).cast<
+      Pointer<
+        NativeFunction<HRESULT Function(Pointer, Uint32, Pointer<COMObject>)>
+      >
+    >().value.asFunction<int Function(Pointer, int, Pointer<COMObject>)>()(
+      ptr.ref.lpVtbl,
+      index,
+      retValuePtr,
+    );
 
     if (FAILED(hr)) throw WindowsException(hr);
 
@@ -359,15 +347,12 @@ class IVector<T> extends IInspectable implements IIterable<T> {
     final retValuePtr = calloc<Uint32>();
 
     try {
-      final hr = ptr.ref.vtable
-          .elementAt(7)
-          .cast<
-              Pointer<
-                  NativeFunction<HRESULT Function(Pointer, Pointer<Uint32>)>>>()
-          .value
-          .asFunction<
-              int Function(
-                  Pointer, Pointer<Uint32>)>()(ptr.ref.lpVtbl, retValuePtr);
+      final hr = ptr.ref.vtable.elementAt(7).cast<
+        Pointer<NativeFunction<HRESULT Function(Pointer, Pointer<Uint32>)>>
+      >().value.asFunction<int Function(Pointer, Pointer<Uint32>)>()(
+        ptr.ref.lpVtbl,
+        retValuePtr,
+      );
 
       if (FAILED(hr)) throw WindowsException(hr);
 
@@ -381,15 +366,12 @@ class IVector<T> extends IInspectable implements IIterable<T> {
   List<T> getView() {
     final retValuePtr = calloc<COMObject>();
 
-    final hr = ptr.ref.vtable
-            .elementAt(8)
-            .cast<
-                Pointer<
-                    NativeFunction<
-                        HRESULT Function(Pointer, Pointer<COMObject>)>>>()
-            .value
-            .asFunction<int Function(Pointer, Pointer<COMObject>)>()(
-        ptr.ref.lpVtbl, retValuePtr);
+    final hr = ptr.ref.vtable.elementAt(8).cast<
+      Pointer<NativeFunction<HRESULT Function(Pointer, Pointer<COMObject>)>>
+    >().value.asFunction<int Function(Pointer, Pointer<COMObject>)>()(
+      ptr.ref.lpVtbl,
+      retValuePtr,
+    );
 
     if (FAILED(hr)) {
       free(retValuePtr);
@@ -427,18 +409,15 @@ class IVector<T> extends IInspectable implements IIterable<T> {
     final retValuePtr = calloc<Bool>();
 
     try {
-      final hr = ptr.ref.vtable
-              .elementAt(9)
-              .cast<
-                  Pointer<
-                      NativeFunction<
-                          HRESULT Function(Pointer, COMObject, Pointer<Uint32>,
-                              Pointer<Bool>)>>>()
-              .value
-              .asFunction<
-                  int Function(
-                      Pointer, COMObject, Pointer<Uint32>, Pointer<Bool>)>()(
-          ptr.ref.lpVtbl, (value as IInspectable).ptr.ref, index, retValuePtr);
+      final hr = ptr.ref.vtable.elementAt(9).cast<
+        Pointer<
+          NativeFunction<
+            HRESULT Function(Pointer, COMObject, Pointer<Uint32>, Pointer<Bool>)
+          >
+        >
+      >().value.asFunction<
+        int Function(Pointer, COMObject, Pointer<Uint32>, Pointer<Bool>)
+      >()(ptr.ref.lpVtbl, (value as IInspectable).ptr.ref, index, retValuePtr);
 
       if (FAILED(hr)) throw WindowsException(hr);
 
@@ -480,17 +459,15 @@ class IVector<T> extends IInspectable implements IIterable<T> {
     final retValuePtr = calloc<Bool>();
 
     try {
-      final hr = ptr.ref.vtable
-          .elementAt(9)
-          .cast<
-              Pointer<
-                  NativeFunction<
-                      HRESULT Function(
-                          Pointer, Int16, Pointer<Uint32>, Pointer<Bool>)>>>()
-          .value
-          .asFunction<
-              int Function(Pointer, int, Pointer<Uint32>,
-                  Pointer<Bool>)>()(ptr.ref.lpVtbl, value, index, retValuePtr);
+      final hr = ptr.ref.vtable.elementAt(9).cast<
+        Pointer<
+          NativeFunction<
+            HRESULT Function(Pointer, Int16, Pointer<Uint32>, Pointer<Bool>)
+          >
+        >
+      >().value.asFunction<
+        int Function(Pointer, int, Pointer<Uint32>, Pointer<Bool>)
+      >()(ptr.ref.lpVtbl, value, index, retValuePtr);
 
       if (FAILED(hr)) throw WindowsException(hr);
 
@@ -504,17 +481,15 @@ class IVector<T> extends IInspectable implements IIterable<T> {
     final retValuePtr = calloc<Bool>();
 
     try {
-      final hr = ptr.ref.vtable
-          .elementAt(9)
-          .cast<
-              Pointer<
-                  NativeFunction<
-                      HRESULT Function(
-                          Pointer, Int32, Pointer<Uint32>, Pointer<Bool>)>>>()
-          .value
-          .asFunction<
-              int Function(Pointer, int, Pointer<Uint32>,
-                  Pointer<Bool>)>()(ptr.ref.lpVtbl, value, index, retValuePtr);
+      final hr = ptr.ref.vtable.elementAt(9).cast<
+        Pointer<
+          NativeFunction<
+            HRESULT Function(Pointer, Int32, Pointer<Uint32>, Pointer<Bool>)
+          >
+        >
+      >().value.asFunction<
+        int Function(Pointer, int, Pointer<Uint32>, Pointer<Bool>)
+      >()(ptr.ref.lpVtbl, value, index, retValuePtr);
 
       if (FAILED(hr)) throw WindowsException(hr);
 
@@ -528,17 +503,15 @@ class IVector<T> extends IInspectable implements IIterable<T> {
     final retValuePtr = calloc<Bool>();
 
     try {
-      final hr = ptr.ref.vtable
-          .elementAt(9)
-          .cast<
-              Pointer<
-                  NativeFunction<
-                      HRESULT Function(
-                          Pointer, Int64, Pointer<Uint32>, Pointer<Bool>)>>>()
-          .value
-          .asFunction<
-              int Function(Pointer, int, Pointer<Uint32>,
-                  Pointer<Bool>)>()(ptr.ref.lpVtbl, value, index, retValuePtr);
+      final hr = ptr.ref.vtable.elementAt(9).cast<
+        Pointer<
+          NativeFunction<
+            HRESULT Function(Pointer, Int64, Pointer<Uint32>, Pointer<Bool>)
+          >
+        >
+      >().value.asFunction<
+        int Function(Pointer, int, Pointer<Uint32>, Pointer<Bool>)
+      >()(ptr.ref.lpVtbl, value, index, retValuePtr);
 
       if (FAILED(hr)) throw WindowsException(hr);
 
@@ -552,17 +525,15 @@ class IVector<T> extends IInspectable implements IIterable<T> {
     final retValuePtr = calloc<Bool>();
 
     try {
-      final hr = ptr.ref.vtable
-          .elementAt(9)
-          .cast<
-              Pointer<
-                  NativeFunction<
-                      HRESULT Function(
-                          Pointer, Uint8, Pointer<Uint32>, Pointer<Bool>)>>>()
-          .value
-          .asFunction<
-              int Function(Pointer, int, Pointer<Uint32>,
-                  Pointer<Bool>)>()(ptr.ref.lpVtbl, value, index, retValuePtr);
+      final hr = ptr.ref.vtable.elementAt(9).cast<
+        Pointer<
+          NativeFunction<
+            HRESULT Function(Pointer, Uint8, Pointer<Uint32>, Pointer<Bool>)
+          >
+        >
+      >().value.asFunction<
+        int Function(Pointer, int, Pointer<Uint32>, Pointer<Bool>)
+      >()(ptr.ref.lpVtbl, value, index, retValuePtr);
 
       if (FAILED(hr)) throw WindowsException(hr);
 
@@ -576,17 +547,15 @@ class IVector<T> extends IInspectable implements IIterable<T> {
     final retValuePtr = calloc<Bool>();
 
     try {
-      final hr = ptr.ref.vtable
-          .elementAt(9)
-          .cast<
-              Pointer<
-                  NativeFunction<
-                      HRESULT Function(
-                          Pointer, Uint16, Pointer<Uint32>, Pointer<Bool>)>>>()
-          .value
-          .asFunction<
-              int Function(Pointer, int, Pointer<Uint32>,
-                  Pointer<Bool>)>()(ptr.ref.lpVtbl, value, index, retValuePtr);
+      final hr = ptr.ref.vtable.elementAt(9).cast<
+        Pointer<
+          NativeFunction<
+            HRESULT Function(Pointer, Uint16, Pointer<Uint32>, Pointer<Bool>)
+          >
+        >
+      >().value.asFunction<
+        int Function(Pointer, int, Pointer<Uint32>, Pointer<Bool>)
+      >()(ptr.ref.lpVtbl, value, index, retValuePtr);
 
       if (FAILED(hr)) throw WindowsException(hr);
 
@@ -600,17 +569,15 @@ class IVector<T> extends IInspectable implements IIterable<T> {
     final retValuePtr = calloc<Bool>();
 
     try {
-      final hr = ptr.ref.vtable
-          .elementAt(9)
-          .cast<
-              Pointer<
-                  NativeFunction<
-                      HRESULT Function(
-                          Pointer, Uint32, Pointer<Uint32>, Pointer<Bool>)>>>()
-          .value
-          .asFunction<
-              int Function(Pointer, int, Pointer<Uint32>,
-                  Pointer<Bool>)>()(ptr.ref.lpVtbl, value, index, retValuePtr);
+      final hr = ptr.ref.vtable.elementAt(9).cast<
+        Pointer<
+          NativeFunction<
+            HRESULT Function(Pointer, Uint32, Pointer<Uint32>, Pointer<Bool>)
+          >
+        >
+      >().value.asFunction<
+        int Function(Pointer, int, Pointer<Uint32>, Pointer<Bool>)
+      >()(ptr.ref.lpVtbl, value, index, retValuePtr);
 
       if (FAILED(hr)) throw WindowsException(hr);
 
@@ -624,17 +591,15 @@ class IVector<T> extends IInspectable implements IIterable<T> {
     final retValuePtr = calloc<Bool>();
 
     try {
-      final hr = ptr.ref.vtable
-          .elementAt(9)
-          .cast<
-              Pointer<
-                  NativeFunction<
-                      HRESULT Function(
-                          Pointer, Uint64, Pointer<Uint32>, Pointer<Bool>)>>>()
-          .value
-          .asFunction<
-              int Function(Pointer, int, Pointer<Uint32>,
-                  Pointer<Bool>)>()(ptr.ref.lpVtbl, value, index, retValuePtr);
+      final hr = ptr.ref.vtable.elementAt(9).cast<
+        Pointer<
+          NativeFunction<
+            HRESULT Function(Pointer, Uint64, Pointer<Uint32>, Pointer<Bool>)
+          >
+        >
+      >().value.asFunction<
+        int Function(Pointer, int, Pointer<Uint32>, Pointer<Bool>)
+      >()(ptr.ref.lpVtbl, value, index, retValuePtr);
 
       if (FAILED(hr)) throw WindowsException(hr);
 
@@ -649,17 +614,15 @@ class IVector<T> extends IInspectable implements IIterable<T> {
     final hValue = convertToHString(value);
 
     try {
-      final hr = ptr.ref.vtable
-          .elementAt(9)
-          .cast<
-              Pointer<
-                  NativeFunction<
-                      HRESULT Function(
-                          Pointer, HSTRING, Pointer<Uint32>, Pointer<Bool>)>>>()
-          .value
-          .asFunction<
-              int Function(Pointer, int, Pointer<Uint32>,
-                  Pointer<Bool>)>()(ptr.ref.lpVtbl, hValue, index, retValuePtr);
+      final hr = ptr.ref.vtable.elementAt(9).cast<
+        Pointer<
+          NativeFunction<
+            HRESULT Function(Pointer, HSTRING, Pointer<Uint32>, Pointer<Bool>)
+          >
+        >
+      >().value.asFunction<
+        int Function(Pointer, int, Pointer<Uint32>, Pointer<Bool>)
+      >()(ptr.ref.lpVtbl, hValue, index, retValuePtr);
 
       if (FAILED(hr)) throw WindowsException(hr);
 
@@ -675,18 +638,15 @@ class IVector<T> extends IInspectable implements IIterable<T> {
     final winrtUri = winrt_uri.Uri.createUri(value.toString());
 
     try {
-      final hr = ptr.ref.vtable
-              .elementAt(9)
-              .cast<
-                  Pointer<
-                      NativeFunction<
-                          HRESULT Function(Pointer, COMObject, Pointer<Uint32>,
-                              Pointer<Bool>)>>>()
-              .value
-              .asFunction<
-                  int Function(
-                      Pointer, COMObject, Pointer<Uint32>, Pointer<Bool>)>()(
-          ptr.ref.lpVtbl, winrtUri.ptr.ref, index, retValuePtr);
+      final hr = ptr.ref.vtable.elementAt(9).cast<
+        Pointer<
+          NativeFunction<
+            HRESULT Function(Pointer, COMObject, Pointer<Uint32>, Pointer<Bool>)
+          >
+        >
+      >().value.asFunction<
+        int Function(Pointer, COMObject, Pointer<Uint32>, Pointer<Bool>)
+      >()(ptr.ref.lpVtbl, winrtUri.ptr.ref, index, retValuePtr);
 
       if (FAILED(hr)) throw WindowsException(hr);
 
@@ -710,16 +670,13 @@ class IVector<T> extends IInspectable implements IIterable<T> {
   }
 
   void _setAt_COMObject(int index, T value) {
-    final hr =
-        ptr.ref.vtable
-                .elementAt(10)
-                .cast<
-                    Pointer<
-                        NativeFunction<
-                            HRESULT Function(Pointer, Uint32, COMObject)>>>()
-                .value
-                .asFunction<int Function(Pointer, int, COMObject)>()(
-            ptr.ref.lpVtbl, index, (value as IInspectable).ptr.ref);
+    final hr = ptr.ref.vtable.elementAt(10).cast<
+      Pointer<NativeFunction<HRESULT Function(Pointer, Uint32, COMObject)>>
+    >().value.asFunction<int Function(Pointer, int, COMObject)>()(
+      ptr.ref.lpVtbl,
+      index,
+      (value as IInspectable).ptr.ref,
+    );
 
     if (FAILED(hr)) throw WindowsException(hr);
   }
@@ -753,88 +710,85 @@ class IVector<T> extends IInspectable implements IIterable<T> {
   }
 
   void _setAt_Int16(int index, int value) {
-    final hr = ptr.ref.vtable
-        .elementAt(10)
-        .cast<
-            Pointer<NativeFunction<HRESULT Function(Pointer, Uint32, Int16)>>>()
-        .value
-        .asFunction<
-            int Function(Pointer, int, int)>()(ptr.ref.lpVtbl, index, value);
+    final hr = ptr.ref.vtable.elementAt(10).cast<
+      Pointer<NativeFunction<HRESULT Function(Pointer, Uint32, Int16)>>
+    >().value.asFunction<int Function(Pointer, int, int)>()(
+      ptr.ref.lpVtbl,
+      index,
+      value,
+    );
 
     if (FAILED(hr)) throw WindowsException(hr);
   }
 
   void _setAt_Int32(int index, int value) {
-    final hr = ptr.ref.vtable
-        .elementAt(10)
-        .cast<
-            Pointer<NativeFunction<HRESULT Function(Pointer, Uint32, Int32)>>>()
-        .value
-        .asFunction<
-            int Function(Pointer, int, int)>()(ptr.ref.lpVtbl, index, value);
+    final hr = ptr.ref.vtable.elementAt(10).cast<
+      Pointer<NativeFunction<HRESULT Function(Pointer, Uint32, Int32)>>
+    >().value.asFunction<int Function(Pointer, int, int)>()(
+      ptr.ref.lpVtbl,
+      index,
+      value,
+    );
 
     if (FAILED(hr)) throw WindowsException(hr);
   }
 
   void _setAt_Int64(int index, int value) {
-    final hr = ptr.ref.vtable
-        .elementAt(10)
-        .cast<
-            Pointer<NativeFunction<HRESULT Function(Pointer, Uint32, Int64)>>>()
-        .value
-        .asFunction<
-            int Function(Pointer, int, int)>()(ptr.ref.lpVtbl, index, value);
+    final hr = ptr.ref.vtable.elementAt(10).cast<
+      Pointer<NativeFunction<HRESULT Function(Pointer, Uint32, Int64)>>
+    >().value.asFunction<int Function(Pointer, int, int)>()(
+      ptr.ref.lpVtbl,
+      index,
+      value,
+    );
 
     if (FAILED(hr)) throw WindowsException(hr);
   }
 
   void _setAt_Uint8(int index, int value) {
-    final hr = ptr.ref.vtable
-        .elementAt(10)
-        .cast<
-            Pointer<NativeFunction<HRESULT Function(Pointer, Uint32, Uint8)>>>()
-        .value
-        .asFunction<
-            int Function(Pointer, int, int)>()(ptr.ref.lpVtbl, index, value);
+    final hr = ptr.ref.vtable.elementAt(10).cast<
+      Pointer<NativeFunction<HRESULT Function(Pointer, Uint32, Uint8)>>
+    >().value.asFunction<int Function(Pointer, int, int)>()(
+      ptr.ref.lpVtbl,
+      index,
+      value,
+    );
 
     if (FAILED(hr)) throw WindowsException(hr);
   }
 
   void _setAt_Uint16(int index, int value) {
-    final hr = ptr.ref.vtable
-        .elementAt(10)
-        .cast<
-            Pointer<
-                NativeFunction<HRESULT Function(Pointer, Uint32, Uint16)>>>()
-        .value
-        .asFunction<
-            int Function(Pointer, int, int)>()(ptr.ref.lpVtbl, index, value);
+    final hr = ptr.ref.vtable.elementAt(10).cast<
+      Pointer<NativeFunction<HRESULT Function(Pointer, Uint32, Uint16)>>
+    >().value.asFunction<int Function(Pointer, int, int)>()(
+      ptr.ref.lpVtbl,
+      index,
+      value,
+    );
 
     if (FAILED(hr)) throw WindowsException(hr);
   }
 
   void _setAt_Uint32(int index, int value) {
-    final hr = ptr.ref.vtable
-        .elementAt(10)
-        .cast<
-            Pointer<
-                NativeFunction<HRESULT Function(Pointer, Uint32, Uint32)>>>()
-        .value
-        .asFunction<
-            int Function(Pointer, int, int)>()(ptr.ref.lpVtbl, index, value);
+    final hr = ptr.ref.vtable.elementAt(10).cast<
+      Pointer<NativeFunction<HRESULT Function(Pointer, Uint32, Uint32)>>
+    >().value.asFunction<int Function(Pointer, int, int)>()(
+      ptr.ref.lpVtbl,
+      index,
+      value,
+    );
 
     if (FAILED(hr)) throw WindowsException(hr);
   }
 
   void _setAt_Uint64(int index, int value) {
-    final hr = ptr.ref.vtable
-        .elementAt(10)
-        .cast<
-            Pointer<
-                NativeFunction<HRESULT Function(Pointer, Uint32, Uint64)>>>()
-        .value
-        .asFunction<
-            int Function(Pointer, int, int)>()(ptr.ref.lpVtbl, index, value);
+    final hr = ptr.ref.vtable.elementAt(10).cast<
+      Pointer<NativeFunction<HRESULT Function(Pointer, Uint32, Uint64)>>
+    >().value.asFunction<int Function(Pointer, int, int)>()(
+      ptr.ref.lpVtbl,
+      index,
+      value,
+    );
 
     if (FAILED(hr)) throw WindowsException(hr);
   }
@@ -843,14 +797,13 @@ class IVector<T> extends IInspectable implements IIterable<T> {
     final hValue = convertToHString(value);
 
     try {
-      final hr = ptr.ref.vtable
-          .elementAt(10)
-          .cast<
-              Pointer<
-                  NativeFunction<HRESULT Function(Pointer, Uint32, HSTRING)>>>()
-          .value
-          .asFunction<
-              int Function(Pointer, int, int)>()(ptr.ref.lpVtbl, index, hValue);
+      final hr = ptr.ref.vtable.elementAt(10).cast<
+        Pointer<NativeFunction<HRESULT Function(Pointer, Uint32, HSTRING)>>
+      >().value.asFunction<int Function(Pointer, int, int)>()(
+        ptr.ref.lpVtbl,
+        index,
+        hValue,
+      );
 
       if (FAILED(hr)) throw WindowsException(hr);
     } finally {
@@ -862,15 +815,13 @@ class IVector<T> extends IInspectable implements IIterable<T> {
     final winrtUri = winrt_uri.Uri.createUri(value.toString());
 
     try {
-      final hr = ptr.ref.vtable
-              .elementAt(10)
-              .cast<
-                  Pointer<
-                      NativeFunction<
-                          HRESULT Function(Pointer, Uint32, COMObject)>>>()
-              .value
-              .asFunction<int Function(Pointer, int, COMObject)>()(
-          ptr.ref.lpVtbl, index, winrtUri.ptr.ref);
+      final hr = ptr.ref.vtable.elementAt(10).cast<
+        Pointer<NativeFunction<HRESULT Function(Pointer, Uint32, COMObject)>>
+      >().value.asFunction<int Function(Pointer, int, COMObject)>()(
+        ptr.ref.lpVtbl,
+        index,
+        winrtUri.ptr.ref,
+      );
 
       if (FAILED(hr)) throw WindowsException(hr);
     } finally {
@@ -898,16 +849,13 @@ class IVector<T> extends IInspectable implements IIterable<T> {
   }
 
   void _insertAt_COMObject(int index, T value) {
-    final hr =
-        ptr.ref.vtable
-                .elementAt(11)
-                .cast<
-                    Pointer<
-                        NativeFunction<
-                            HRESULT Function(Pointer, Uint32, COMObject)>>>()
-                .value
-                .asFunction<int Function(Pointer, int, COMObject)>()(
-            ptr.ref.lpVtbl, index, (value as IInspectable).ptr.ref);
+    final hr = ptr.ref.vtable.elementAt(11).cast<
+      Pointer<NativeFunction<HRESULT Function(Pointer, Uint32, COMObject)>>
+    >().value.asFunction<int Function(Pointer, int, COMObject)>()(
+      ptr.ref.lpVtbl,
+      index,
+      (value as IInspectable).ptr.ref,
+    );
 
     if (FAILED(hr)) throw WindowsException(hr);
   }
@@ -941,88 +889,85 @@ class IVector<T> extends IInspectable implements IIterable<T> {
   }
 
   void _insertAt_Int16(int index, int value) {
-    final hr = ptr.ref.vtable
-        .elementAt(11)
-        .cast<
-            Pointer<NativeFunction<HRESULT Function(Pointer, Uint32, Int16)>>>()
-        .value
-        .asFunction<
-            int Function(Pointer, int, int)>()(ptr.ref.lpVtbl, index, value);
+    final hr = ptr.ref.vtable.elementAt(11).cast<
+      Pointer<NativeFunction<HRESULT Function(Pointer, Uint32, Int16)>>
+    >().value.asFunction<int Function(Pointer, int, int)>()(
+      ptr.ref.lpVtbl,
+      index,
+      value,
+    );
 
     if (FAILED(hr)) throw WindowsException(hr);
   }
 
   void _insertAt_Int32(int index, int value) {
-    final hr = ptr.ref.vtable
-        .elementAt(11)
-        .cast<
-            Pointer<NativeFunction<HRESULT Function(Pointer, Uint32, Int32)>>>()
-        .value
-        .asFunction<
-            int Function(Pointer, int, int)>()(ptr.ref.lpVtbl, index, value);
+    final hr = ptr.ref.vtable.elementAt(11).cast<
+      Pointer<NativeFunction<HRESULT Function(Pointer, Uint32, Int32)>>
+    >().value.asFunction<int Function(Pointer, int, int)>()(
+      ptr.ref.lpVtbl,
+      index,
+      value,
+    );
 
     if (FAILED(hr)) throw WindowsException(hr);
   }
 
   void _insertAt_Int64(int index, int value) {
-    final hr = ptr.ref.vtable
-        .elementAt(11)
-        .cast<
-            Pointer<NativeFunction<HRESULT Function(Pointer, Uint32, Int64)>>>()
-        .value
-        .asFunction<
-            int Function(Pointer, int, int)>()(ptr.ref.lpVtbl, index, value);
+    final hr = ptr.ref.vtable.elementAt(11).cast<
+      Pointer<NativeFunction<HRESULT Function(Pointer, Uint32, Int64)>>
+    >().value.asFunction<int Function(Pointer, int, int)>()(
+      ptr.ref.lpVtbl,
+      index,
+      value,
+    );
 
     if (FAILED(hr)) throw WindowsException(hr);
   }
 
   void _insertAt_Uint8(int index, int value) {
-    final hr = ptr.ref.vtable
-        .elementAt(11)
-        .cast<
-            Pointer<NativeFunction<HRESULT Function(Pointer, Uint32, Uint8)>>>()
-        .value
-        .asFunction<
-            int Function(Pointer, int, int)>()(ptr.ref.lpVtbl, index, value);
+    final hr = ptr.ref.vtable.elementAt(11).cast<
+      Pointer<NativeFunction<HRESULT Function(Pointer, Uint32, Uint8)>>
+    >().value.asFunction<int Function(Pointer, int, int)>()(
+      ptr.ref.lpVtbl,
+      index,
+      value,
+    );
 
     if (FAILED(hr)) throw WindowsException(hr);
   }
 
   void _insertAt_Uint16(int index, int value) {
-    final hr = ptr.ref.vtable
-        .elementAt(11)
-        .cast<
-            Pointer<
-                NativeFunction<HRESULT Function(Pointer, Uint32, Uint16)>>>()
-        .value
-        .asFunction<
-            int Function(Pointer, int, int)>()(ptr.ref.lpVtbl, index, value);
+    final hr = ptr.ref.vtable.elementAt(11).cast<
+      Pointer<NativeFunction<HRESULT Function(Pointer, Uint32, Uint16)>>
+    >().value.asFunction<int Function(Pointer, int, int)>()(
+      ptr.ref.lpVtbl,
+      index,
+      value,
+    );
 
     if (FAILED(hr)) throw WindowsException(hr);
   }
 
   void _insertAt_Uint32(int index, int value) {
-    final hr = ptr.ref.vtable
-        .elementAt(11)
-        .cast<
-            Pointer<
-                NativeFunction<HRESULT Function(Pointer, Uint32, Uint32)>>>()
-        .value
-        .asFunction<
-            int Function(Pointer, int, int)>()(ptr.ref.lpVtbl, index, value);
+    final hr = ptr.ref.vtable.elementAt(11).cast<
+      Pointer<NativeFunction<HRESULT Function(Pointer, Uint32, Uint32)>>
+    >().value.asFunction<int Function(Pointer, int, int)>()(
+      ptr.ref.lpVtbl,
+      index,
+      value,
+    );
 
     if (FAILED(hr)) throw WindowsException(hr);
   }
 
   void _insertAt_Uint64(int index, int value) {
-    final hr = ptr.ref.vtable
-        .elementAt(11)
-        .cast<
-            Pointer<
-                NativeFunction<HRESULT Function(Pointer, Uint32, Uint64)>>>()
-        .value
-        .asFunction<
-            int Function(Pointer, int, int)>()(ptr.ref.lpVtbl, index, value);
+    final hr = ptr.ref.vtable.elementAt(11).cast<
+      Pointer<NativeFunction<HRESULT Function(Pointer, Uint32, Uint64)>>
+    >().value.asFunction<int Function(Pointer, int, int)>()(
+      ptr.ref.lpVtbl,
+      index,
+      value,
+    );
 
     if (FAILED(hr)) throw WindowsException(hr);
   }
@@ -1031,14 +976,13 @@ class IVector<T> extends IInspectable implements IIterable<T> {
     final hValue = convertToHString(value);
 
     try {
-      final hr = ptr.ref.vtable
-          .elementAt(11)
-          .cast<
-              Pointer<
-                  NativeFunction<HRESULT Function(Pointer, Uint32, HSTRING)>>>()
-          .value
-          .asFunction<
-              int Function(Pointer, int, int)>()(ptr.ref.lpVtbl, index, hValue);
+      final hr = ptr.ref.vtable.elementAt(11).cast<
+        Pointer<NativeFunction<HRESULT Function(Pointer, Uint32, HSTRING)>>
+      >().value.asFunction<int Function(Pointer, int, int)>()(
+        ptr.ref.lpVtbl,
+        index,
+        hValue,
+      );
 
       if (FAILED(hr)) throw WindowsException(hr);
     } finally {
@@ -1050,15 +994,13 @@ class IVector<T> extends IInspectable implements IIterable<T> {
     final winrtUri = winrt_uri.Uri.createUri(value.toString());
 
     try {
-      final hr = ptr.ref.vtable
-              .elementAt(11)
-              .cast<
-                  Pointer<
-                      NativeFunction<
-                          HRESULT Function(Pointer, Uint32, COMObject)>>>()
-              .value
-              .asFunction<int Function(Pointer, int, COMObject)>()(
-          ptr.ref.lpVtbl, index, winrtUri.ptr.ref);
+      final hr = ptr.ref.vtable.elementAt(11).cast<
+        Pointer<NativeFunction<HRESULT Function(Pointer, Uint32, COMObject)>>
+      >().value.asFunction<int Function(Pointer, int, COMObject)>()(
+        ptr.ref.lpVtbl,
+        index,
+        winrtUri.ptr.ref,
+      );
 
       if (FAILED(hr)) throw WindowsException(hr);
     } finally {
@@ -1091,9 +1033,10 @@ class IVector<T> extends IInspectable implements IIterable<T> {
         .elementAt(13)
         .cast<Pointer<NativeFunction<HRESULT Function(Pointer, COMObject)>>>()
         .value
-        .asFunction<
-            int Function(Pointer,
-                COMObject)>()(ptr.ref.lpVtbl, (value as IInspectable).ptr.ref);
+        .asFunction<int Function(Pointer, COMObject)>()(
+      ptr.ref.lpVtbl,
+      (value as IInspectable).ptr.ref,
+    );
 
     if (FAILED(hr)) throw WindowsException(hr);
   }
@@ -1220,9 +1163,10 @@ class IVector<T> extends IInspectable implements IIterable<T> {
           .elementAt(13)
           .cast<Pointer<NativeFunction<HRESULT Function(Pointer, COMObject)>>>()
           .value
-          .asFunction<
-              int Function(
-                  Pointer, COMObject)>()(ptr.ref.lpVtbl, winrtUri.ptr.ref);
+          .asFunction<int Function(Pointer, COMObject)>()(
+        ptr.ref.lpVtbl,
+        winrtUri.ptr.ref,
+      );
 
       if (FAILED(hr)) throw WindowsException(hr);
     } finally {
@@ -1266,22 +1210,28 @@ class IVector<T> extends IInspectable implements IIterable<T> {
   }
 
   int _getMany_COMObject(
-      int startIndex, int capacity, Pointer<COMObject> value) {
+    int startIndex,
+    int capacity,
+    Pointer<COMObject> value,
+  ) {
     final retValuePtr = calloc<Uint32>();
 
     try {
-      final hr = ptr.ref.vtable
-              .elementAt(16)
-              .cast<
-                  Pointer<
-                      NativeFunction<
-                          HRESULT Function(Pointer, Uint32, Uint32,
-                              Pointer<COMObject>, Pointer<Uint32>)>>>()
-              .value
-              .asFunction<
-                  int Function(Pointer, int, int, Pointer<COMObject>,
-                      Pointer<Uint32>)>()(
-          ptr.ref.lpVtbl, startIndex, capacity, value, retValuePtr);
+      final hr = ptr.ref.vtable.elementAt(16).cast<
+        Pointer<
+          NativeFunction<
+            HRESULT Function(
+              Pointer,
+              Uint32,
+              Uint32,
+              Pointer<COMObject>,
+              Pointer<Uint32>,
+            )
+          >
+        >
+      >().value.asFunction<
+        int Function(Pointer, int, int, Pointer<COMObject>, Pointer<Uint32>)
+      >()(ptr.ref.lpVtbl, startIndex, capacity, value, retValuePtr);
 
       if (FAILED(hr)) throw WindowsException(hr);
 
@@ -1314,19 +1264,21 @@ class IVector<T> extends IInspectable implements IIterable<T> {
     final retValuePtr = calloc<Uint32>();
 
     try {
-      final hr =
-          ptr.ref.lpVtbl.value
-                  .elementAt(16)
-                  .cast<
-                      Pointer<
-                          NativeFunction<
-                              HRESULT Function(Pointer, Uint32, Uint32,
-                                  Pointer<Int16>, Pointer<Uint32>)>>>()
-                  .value
-                  .asFunction<
-                      int Function(Pointer, int, int, Pointer<Int16>,
-                          Pointer<Uint32>)>()(
-              ptr.ref.lpVtbl, startIndex, capacity, value, retValuePtr);
+      final hr = ptr.ref.lpVtbl.value.elementAt(16).cast<
+        Pointer<
+          NativeFunction<
+            HRESULT Function(
+              Pointer,
+              Uint32,
+              Uint32,
+              Pointer<Int16>,
+              Pointer<Uint32>,
+            )
+          >
+        >
+      >().value.asFunction<
+        int Function(Pointer, int, int, Pointer<Int16>, Pointer<Uint32>)
+      >()(ptr.ref.lpVtbl, startIndex, capacity, value, retValuePtr);
 
       if (FAILED(hr)) throw WindowsException(hr);
 
@@ -1340,19 +1292,21 @@ class IVector<T> extends IInspectable implements IIterable<T> {
     final retValuePtr = calloc<Uint32>();
 
     try {
-      final hr =
-          ptr.ref.lpVtbl.value
-                  .elementAt(16)
-                  .cast<
-                      Pointer<
-                          NativeFunction<
-                              HRESULT Function(Pointer, Uint32, Uint32,
-                                  Pointer<Int32>, Pointer<Uint32>)>>>()
-                  .value
-                  .asFunction<
-                      int Function(Pointer, int, int, Pointer<Int32>,
-                          Pointer<Uint32>)>()(
-              ptr.ref.lpVtbl, startIndex, capacity, value, retValuePtr);
+      final hr = ptr.ref.lpVtbl.value.elementAt(16).cast<
+        Pointer<
+          NativeFunction<
+            HRESULT Function(
+              Pointer,
+              Uint32,
+              Uint32,
+              Pointer<Int32>,
+              Pointer<Uint32>,
+            )
+          >
+        >
+      >().value.asFunction<
+        int Function(Pointer, int, int, Pointer<Int32>, Pointer<Uint32>)
+      >()(ptr.ref.lpVtbl, startIndex, capacity, value, retValuePtr);
 
       if (FAILED(hr)) throw WindowsException(hr);
 
@@ -1366,19 +1320,21 @@ class IVector<T> extends IInspectable implements IIterable<T> {
     final retValuePtr = calloc<Uint32>();
 
     try {
-      final hr =
-          ptr.ref.lpVtbl.value
-                  .elementAt(16)
-                  .cast<
-                      Pointer<
-                          NativeFunction<
-                              HRESULT Function(Pointer, Uint32, Uint32,
-                                  Pointer<Int64>, Pointer<Uint32>)>>>()
-                  .value
-                  .asFunction<
-                      int Function(Pointer, int, int, Pointer<Int64>,
-                          Pointer<Uint32>)>()(
-              ptr.ref.lpVtbl, startIndex, capacity, value, retValuePtr);
+      final hr = ptr.ref.lpVtbl.value.elementAt(16).cast<
+        Pointer<
+          NativeFunction<
+            HRESULT Function(
+              Pointer,
+              Uint32,
+              Uint32,
+              Pointer<Int64>,
+              Pointer<Uint32>,
+            )
+          >
+        >
+      >().value.asFunction<
+        int Function(Pointer, int, int, Pointer<Int64>, Pointer<Uint32>)
+      >()(ptr.ref.lpVtbl, startIndex, capacity, value, retValuePtr);
 
       if (FAILED(hr)) throw WindowsException(hr);
 
@@ -1392,19 +1348,21 @@ class IVector<T> extends IInspectable implements IIterable<T> {
     final retValuePtr = calloc<Uint32>();
 
     try {
-      final hr =
-          ptr.ref.lpVtbl.value
-                  .elementAt(16)
-                  .cast<
-                      Pointer<
-                          NativeFunction<
-                              HRESULT Function(Pointer, Uint32, Uint32,
-                                  Pointer<Uint8>, Pointer<Uint32>)>>>()
-                  .value
-                  .asFunction<
-                      int Function(Pointer, int, int, Pointer<Uint8>,
-                          Pointer<Uint32>)>()(
-              ptr.ref.lpVtbl, startIndex, capacity, value, retValuePtr);
+      final hr = ptr.ref.lpVtbl.value.elementAt(16).cast<
+        Pointer<
+          NativeFunction<
+            HRESULT Function(
+              Pointer,
+              Uint32,
+              Uint32,
+              Pointer<Uint8>,
+              Pointer<Uint32>,
+            )
+          >
+        >
+      >().value.asFunction<
+        int Function(Pointer, int, int, Pointer<Uint8>, Pointer<Uint32>)
+      >()(ptr.ref.lpVtbl, startIndex, capacity, value, retValuePtr);
 
       if (FAILED(hr)) throw WindowsException(hr);
 
@@ -1418,19 +1376,21 @@ class IVector<T> extends IInspectable implements IIterable<T> {
     final retValuePtr = calloc<Uint32>();
 
     try {
-      final hr =
-          ptr.ref.lpVtbl.value
-                  .elementAt(16)
-                  .cast<
-                      Pointer<
-                          NativeFunction<
-                              HRESULT Function(Pointer, Uint32, Uint32,
-                                  Pointer<Uint16>, Pointer<Uint32>)>>>()
-                  .value
-                  .asFunction<
-                      int Function(Pointer, int, int, Pointer<Uint16>,
-                          Pointer<Uint32>)>()(
-              ptr.ref.lpVtbl, startIndex, capacity, value, retValuePtr);
+      final hr = ptr.ref.lpVtbl.value.elementAt(16).cast<
+        Pointer<
+          NativeFunction<
+            HRESULT Function(
+              Pointer,
+              Uint32,
+              Uint32,
+              Pointer<Uint16>,
+              Pointer<Uint32>,
+            )
+          >
+        >
+      >().value.asFunction<
+        int Function(Pointer, int, int, Pointer<Uint16>, Pointer<Uint32>)
+      >()(ptr.ref.lpVtbl, startIndex, capacity, value, retValuePtr);
 
       if (FAILED(hr)) throw WindowsException(hr);
 
@@ -1444,19 +1404,21 @@ class IVector<T> extends IInspectable implements IIterable<T> {
     final retValuePtr = calloc<Uint32>();
 
     try {
-      final hr =
-          ptr.ref.lpVtbl.value
-                  .elementAt(16)
-                  .cast<
-                      Pointer<
-                          NativeFunction<
-                              HRESULT Function(Pointer, Uint32, Uint32,
-                                  Pointer<Uint32>, Pointer<Uint32>)>>>()
-                  .value
-                  .asFunction<
-                      int Function(Pointer, int, int, Pointer<Uint32>,
-                          Pointer<Uint32>)>()(
-              ptr.ref.lpVtbl, startIndex, capacity, value, retValuePtr);
+      final hr = ptr.ref.lpVtbl.value.elementAt(16).cast<
+        Pointer<
+          NativeFunction<
+            HRESULT Function(
+              Pointer,
+              Uint32,
+              Uint32,
+              Pointer<Uint32>,
+              Pointer<Uint32>,
+            )
+          >
+        >
+      >().value.asFunction<
+        int Function(Pointer, int, int, Pointer<Uint32>, Pointer<Uint32>)
+      >()(ptr.ref.lpVtbl, startIndex, capacity, value, retValuePtr);
 
       if (FAILED(hr)) throw WindowsException(hr);
 
@@ -1470,19 +1432,21 @@ class IVector<T> extends IInspectable implements IIterable<T> {
     final retValuePtr = calloc<Uint32>();
 
     try {
-      final hr =
-          ptr.ref.lpVtbl.value
-                  .elementAt(16)
-                  .cast<
-                      Pointer<
-                          NativeFunction<
-                              HRESULT Function(Pointer, Uint32, Uint32,
-                                  Pointer<Uint64>, Pointer<Uint32>)>>>()
-                  .value
-                  .asFunction<
-                      int Function(Pointer, int, int, Pointer<Uint64>,
-                          Pointer<Uint32>)>()(
-              ptr.ref.lpVtbl, startIndex, capacity, value, retValuePtr);
+      final hr = ptr.ref.lpVtbl.value.elementAt(16).cast<
+        Pointer<
+          NativeFunction<
+            HRESULT Function(
+              Pointer,
+              Uint32,
+              Uint32,
+              Pointer<Uint64>,
+              Pointer<Uint32>,
+            )
+          >
+        >
+      >().value.asFunction<
+        int Function(Pointer, int, int, Pointer<Uint64>, Pointer<Uint32>)
+      >()(ptr.ref.lpVtbl, startIndex, capacity, value, retValuePtr);
 
       if (FAILED(hr)) throw WindowsException(hr);
 
@@ -1496,18 +1460,21 @@ class IVector<T> extends IInspectable implements IIterable<T> {
     final retValuePtr = calloc<Uint32>();
 
     try {
-      final hr = ptr.ref.vtable
-              .elementAt(16)
-              .cast<
-                  Pointer<
-                      NativeFunction<
-                          HRESULT Function(Pointer, Uint32, Uint32,
-                              Pointer<HSTRING>, Pointer<Uint32>)>>>()
-              .value
-              .asFunction<
-                  int Function(
-                      Pointer, int, int, Pointer<HSTRING>, Pointer<Uint32>)>()(
-          ptr.ref.lpVtbl, startIndex, capacity, value, retValuePtr);
+      final hr = ptr.ref.vtable.elementAt(16).cast<
+        Pointer<
+          NativeFunction<
+            HRESULT Function(
+              Pointer,
+              Uint32,
+              Uint32,
+              Pointer<HSTRING>,
+              Pointer<Uint32>,
+            )
+          >
+        >
+      >().value.asFunction<
+        int Function(Pointer, int, int, Pointer<HSTRING>, Pointer<Uint32>)
+      >()(ptr.ref.lpVtbl, startIndex, capacity, value, retValuePtr);
 
       if (FAILED(hr)) throw WindowsException(hr);
 
@@ -1543,17 +1510,15 @@ class IVector<T> extends IInspectable implements IIterable<T> {
     }
 
     try {
-      final hr =
-          ptr.ref.vtable
-                  .elementAt(17)
-                  .cast<
-                      Pointer<
-                          NativeFunction<
-                              HRESULT Function(
-                                  Pointer, Uint32, Pointer<COMObject>)>>>()
-                  .value
-                  .asFunction<int Function(Pointer, int, Pointer<COMObject>)>()(
-              ptr.ref.lpVtbl, value.length, pArray);
+      final hr = ptr.ref.vtable.elementAt(17).cast<
+        Pointer<
+          NativeFunction<HRESULT Function(Pointer, Uint32, Pointer<COMObject>)>
+        >
+      >().value.asFunction<int Function(Pointer, int, Pointer<COMObject>)>()(
+        ptr.ref.lpVtbl,
+        value.length,
+        pArray,
+      );
 
       if (FAILED(hr)) throw WindowsException(hr);
     } finally {
@@ -1596,15 +1561,15 @@ class IVector<T> extends IInspectable implements IIterable<T> {
     }
 
     try {
-      final hr = ptr.ref.vtable
-              .elementAt(17)
-              .cast<
-                  Pointer<
-                      NativeFunction<
-                          HRESULT Function(Pointer, Uint32, Pointer<Int16>)>>>()
-              .value
-              .asFunction<int Function(Pointer, int, Pointer<Int16>)>()(
-          ptr.ref.lpVtbl, value.length, pArray);
+      final hr = ptr.ref.vtable.elementAt(17).cast<
+        Pointer<
+          NativeFunction<HRESULT Function(Pointer, Uint32, Pointer<Int16>)>
+        >
+      >().value.asFunction<int Function(Pointer, int, Pointer<Int16>)>()(
+        ptr.ref.lpVtbl,
+        value.length,
+        pArray,
+      );
 
       if (FAILED(hr)) throw WindowsException(hr);
     } finally {
@@ -1619,15 +1584,15 @@ class IVector<T> extends IInspectable implements IIterable<T> {
     }
 
     try {
-      final hr = ptr.ref.vtable
-              .elementAt(17)
-              .cast<
-                  Pointer<
-                      NativeFunction<
-                          HRESULT Function(Pointer, Uint32, Pointer<Int32>)>>>()
-              .value
-              .asFunction<int Function(Pointer, int, Pointer<Int32>)>()(
-          ptr.ref.lpVtbl, value.length, pArray);
+      final hr = ptr.ref.vtable.elementAt(17).cast<
+        Pointer<
+          NativeFunction<HRESULT Function(Pointer, Uint32, Pointer<Int32>)>
+        >
+      >().value.asFunction<int Function(Pointer, int, Pointer<Int32>)>()(
+        ptr.ref.lpVtbl,
+        value.length,
+        pArray,
+      );
 
       if (FAILED(hr)) throw WindowsException(hr);
     } finally {
@@ -1642,15 +1607,15 @@ class IVector<T> extends IInspectable implements IIterable<T> {
     }
 
     try {
-      final hr = ptr.ref.vtable
-              .elementAt(17)
-              .cast<
-                  Pointer<
-                      NativeFunction<
-                          HRESULT Function(Pointer, Uint32, Pointer<Int64>)>>>()
-              .value
-              .asFunction<int Function(Pointer, int, Pointer<Int64>)>()(
-          ptr.ref.lpVtbl, value.length, pArray);
+      final hr = ptr.ref.vtable.elementAt(17).cast<
+        Pointer<
+          NativeFunction<HRESULT Function(Pointer, Uint32, Pointer<Int64>)>
+        >
+      >().value.asFunction<int Function(Pointer, int, Pointer<Int64>)>()(
+        ptr.ref.lpVtbl,
+        value.length,
+        pArray,
+      );
 
       if (FAILED(hr)) throw WindowsException(hr);
     } finally {
@@ -1665,15 +1630,15 @@ class IVector<T> extends IInspectable implements IIterable<T> {
     }
 
     try {
-      final hr = ptr.ref.vtable
-              .elementAt(17)
-              .cast<
-                  Pointer<
-                      NativeFunction<
-                          HRESULT Function(Pointer, Uint32, Pointer<Uint8>)>>>()
-              .value
-              .asFunction<int Function(Pointer, int, Pointer<Uint8>)>()(
-          ptr.ref.lpVtbl, value.length, pArray);
+      final hr = ptr.ref.vtable.elementAt(17).cast<
+        Pointer<
+          NativeFunction<HRESULT Function(Pointer, Uint32, Pointer<Uint8>)>
+        >
+      >().value.asFunction<int Function(Pointer, int, Pointer<Uint8>)>()(
+        ptr.ref.lpVtbl,
+        value.length,
+        pArray,
+      );
 
       if (FAILED(hr)) throw WindowsException(hr);
     } finally {
@@ -1688,17 +1653,15 @@ class IVector<T> extends IInspectable implements IIterable<T> {
     }
 
     try {
-      final hr =
-          ptr.ref.vtable
-                  .elementAt(17)
-                  .cast<
-                      Pointer<
-                          NativeFunction<
-                              HRESULT Function(
-                                  Pointer, Uint32, Pointer<Uint16>)>>>()
-                  .value
-                  .asFunction<int Function(Pointer, int, Pointer<Uint16>)>()(
-              ptr.ref.lpVtbl, value.length, pArray);
+      final hr = ptr.ref.vtable.elementAt(17).cast<
+        Pointer<
+          NativeFunction<HRESULT Function(Pointer, Uint32, Pointer<Uint16>)>
+        >
+      >().value.asFunction<int Function(Pointer, int, Pointer<Uint16>)>()(
+        ptr.ref.lpVtbl,
+        value.length,
+        pArray,
+      );
 
       if (FAILED(hr)) throw WindowsException(hr);
     } finally {
@@ -1713,17 +1676,15 @@ class IVector<T> extends IInspectable implements IIterable<T> {
     }
 
     try {
-      final hr =
-          ptr.ref.vtable
-                  .elementAt(17)
-                  .cast<
-                      Pointer<
-                          NativeFunction<
-                              HRESULT Function(
-                                  Pointer, Uint32, Pointer<Uint32>)>>>()
-                  .value
-                  .asFunction<int Function(Pointer, int, Pointer<Uint32>)>()(
-              ptr.ref.lpVtbl, value.length, pArray);
+      final hr = ptr.ref.vtable.elementAt(17).cast<
+        Pointer<
+          NativeFunction<HRESULT Function(Pointer, Uint32, Pointer<Uint32>)>
+        >
+      >().value.asFunction<int Function(Pointer, int, Pointer<Uint32>)>()(
+        ptr.ref.lpVtbl,
+        value.length,
+        pArray,
+      );
 
       if (FAILED(hr)) throw WindowsException(hr);
     } finally {
@@ -1738,17 +1699,15 @@ class IVector<T> extends IInspectable implements IIterable<T> {
     }
 
     try {
-      final hr =
-          ptr.ref.vtable
-                  .elementAt(17)
-                  .cast<
-                      Pointer<
-                          NativeFunction<
-                              HRESULT Function(
-                                  Pointer, Uint32, Pointer<Uint64>)>>>()
-                  .value
-                  .asFunction<int Function(Pointer, int, Pointer<Uint64>)>()(
-              ptr.ref.lpVtbl, value.length, pArray);
+      final hr = ptr.ref.vtable.elementAt(17).cast<
+        Pointer<
+          NativeFunction<HRESULT Function(Pointer, Uint32, Pointer<Uint64>)>
+        >
+      >().value.asFunction<int Function(Pointer, int, Pointer<Uint64>)>()(
+        ptr.ref.lpVtbl,
+        value.length,
+        pArray,
+      );
 
       if (FAILED(hr)) throw WindowsException(hr);
     } finally {
@@ -1765,17 +1724,15 @@ class IVector<T> extends IInspectable implements IIterable<T> {
     }
 
     try {
-      final hr =
-          ptr.ref.vtable
-                  .elementAt(17)
-                  .cast<
-                      Pointer<
-                          NativeFunction<
-                              HRESULT Function(
-                                  Pointer, Uint32, Pointer<HSTRING>)>>>()
-                  .value
-                  .asFunction<int Function(Pointer, int, Pointer<HSTRING>)>()(
-              ptr.ref.lpVtbl, value.length, pArray);
+      final hr = ptr.ref.vtable.elementAt(17).cast<
+        Pointer<
+          NativeFunction<HRESULT Function(Pointer, Uint32, Pointer<HSTRING>)>
+        >
+      >().value.asFunction<int Function(Pointer, int, Pointer<HSTRING>)>()(
+        ptr.ref.lpVtbl,
+        value.length,
+        pArray,
+      );
 
       if (FAILED(hr)) throw WindowsException(hr);
     } finally {
@@ -1794,17 +1751,15 @@ class IVector<T> extends IInspectable implements IIterable<T> {
     }
 
     try {
-      final hr =
-          ptr.ref.vtable
-                  .elementAt(17)
-                  .cast<
-                      Pointer<
-                          NativeFunction<
-                              HRESULT Function(
-                                  Pointer, Uint32, Pointer<COMObject>)>>>()
-                  .value
-                  .asFunction<int Function(Pointer, int, Pointer<COMObject>)>()(
-              ptr.ref.lpVtbl, value.length, pArray);
+      final hr = ptr.ref.vtable.elementAt(17).cast<
+        Pointer<
+          NativeFunction<HRESULT Function(Pointer, Uint32, Pointer<COMObject>)>
+        >
+      >().value.asFunction<int Function(Pointer, int, Pointer<COMObject>)>()(
+        ptr.ref.lpVtbl,
+        value.length,
+        pArray,
+      );
 
       if (FAILED(hr)) throw WindowsException(hr);
     } finally {
@@ -1818,13 +1773,8 @@ class IVector<T> extends IInspectable implements IIterable<T> {
   /// Creates an unmodifiable [List] from the current [IVector] instance.
   List<T> toList() {
     if (size == 0) return List.unmodifiable(<T>[]);
-    return VectorHelper(
-      _creator,
-      _enumCreator,
-      _intType,
-      getMany,
-      size,
-    ).toList();
+    return VectorHelper(_creator, _enumCreator, _intType, getMany, size)
+        .toList();
   }
 
   late final _iIterable = IIterable<T>.fromRawPointer(

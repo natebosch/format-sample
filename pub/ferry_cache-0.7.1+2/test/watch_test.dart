@@ -23,13 +23,9 @@ final review2 = GReviewsData_reviews(
     ..commentary = 'Okay',
 );
 
-final reviewsData = GReviewsData(
-  (b) => b..reviews.add(review),
-);
+final reviewsData = GReviewsData((b) => b..reviews.add(review));
 
-final reviewsData2 = GReviewsData(
-  (b) => b..reviews.addAll([review, review2]),
-);
+final reviewsData2 = GReviewsData((b) => b..reviews.addAll([review, review2]));
 
 void main() {
   group('Watch', () {
@@ -46,10 +42,7 @@ void main() {
 
       expect(
         cache.watchQuery(reviewsReq),
-        emitsInOrder([
-          reviewsData,
-          emitsDone,
-        ]),
+        emitsInOrder([reviewsData, emitsDone]),
       );
 
       cache.dispose();
@@ -59,16 +52,13 @@ void main() {
       final cache = Cache();
       cache.writeQuery(reviewsReq, reviewsData);
 
-      final nextData = reviewsData
-          .rebuild((b) => b.reviews.add(review.rebuild((b) => b..id = '456')));
+      final nextData = reviewsData.rebuild(
+        (b) => b.reviews.add(review.rebuild((b) => b..id = '456')),
+      );
 
       expect(
         cache.watchQuery(reviewsReq),
-        emitsInOrder([
-          reviewsData,
-          nextData,
-          emitsDone,
-        ]),
+        emitsInOrder([reviewsData, nextData, emitsDone]),
       );
       await Future.delayed(Duration.zero);
 
@@ -82,17 +72,13 @@ void main() {
     test('can receive updates to data when starting with empty data', () async {
       final cache = Cache();
 
-      final nextData = reviewsData
-          .rebuild((b) => b.reviews.add(review.rebuild((b) => b..id = '456')));
+      final nextData = reviewsData.rebuild(
+        (b) => b.reviews.add(review.rebuild((b) => b..id = '456')),
+      );
 
       expect(
         cache.watchQuery(reviewsReq),
-        emitsInOrder([
-          isNull,
-          reviewsData,
-          nextData,
-          emitsDone,
-        ]),
+        emitsInOrder([isNull, reviewsData, nextData, emitsDone]),
       );
 
       await Future.delayed(Duration.zero);
@@ -121,17 +107,19 @@ void main() {
       data!['stars'] = '100';
       cache.store.put(dataId, data);
 
-      final nextData = reviewsData
-          .rebuild((b) => b.reviews.add(review.rebuild((b) => b..id = '456')));
+      final nextData = reviewsData.rebuild(
+        (b) => b.reviews.add(review.rebuild((b) => b..id = '456')),
+      );
 
       expect(
-          cache.watchQuery(reviewsReq),
-          emitsInOrder([
-            emitsError(isA<Error>()),
-            reviewsData,
-            nextData,
-            emitsDone,
-          ]));
+        cache.watchQuery(reviewsReq),
+        emitsInOrder([
+          emitsError(isA<Error>()),
+          reviewsData,
+          nextData,
+          emitsDone,
+        ]),
+      );
 
       await Future.delayed(Duration.zero);
 
@@ -146,74 +134,77 @@ void main() {
       await cache.dispose();
     });
 
-    test('can receive updates when child objects are updated by other queries',
-        () async {
-      final cache = Cache();
-      cache.writeQuery(reviewsReq, reviewsData);
+    test(
+      'can receive updates when child objects are updated by other queries',
+      () async {
+        final cache = Cache();
+        cache.writeQuery(reviewsReq, reviewsData);
 
-      final updatedReview =
-          reviewsData2.reviews![1]!.rebuild((b) => b.commentary = 'first');
+        final updatedReview = reviewsData2.reviews![1]!.rebuild(
+          (b) => b.commentary = 'first',
+        );
 
-      expect(
+        expect(
           cache.watchQuery(reviewsReq),
           emitsInOrder([
             reviewsData,
             reviewsData2,
             reviewsData2.rebuild((b) => b..reviews[1] = updatedReview),
             emitsDone,
-          ]));
+          ]),
+        );
 
-      await Future.delayed(Duration.zero);
-      cache.writeQuery(reviewsReq, reviewsData2);
-      await Future.delayed(Duration.zero);
-      cache.writeQuery(
+        await Future.delayed(Duration.zero);
+        cache.writeQuery(reviewsReq, reviewsData2);
+        await Future.delayed(Duration.zero);
+        cache.writeQuery(
           GReviewsByIDReq((b) => b..vars.id = reviewsData2.reviews![1]!.id),
-          GReviewsByIDData((b) => b.review
-            ..id = updatedReview.id
-            ..stars = updatedReview.stars
-            ..createdAt = updatedReview.createdAt
-            ..seenOn = updatedReview.seenOn.toBuilder()
-            ..commentary = updatedReview.commentary));
+          GReviewsByIDData(
+            (b) => b.review
+              ..id = updatedReview.id
+              ..stars = updatedReview.stars
+              ..createdAt = updatedReview.createdAt
+              ..seenOn = updatedReview.seenOn.toBuilder()
+              ..commentary = updatedReview.commentary,
+          ),
+        );
 
-      await Future.delayed(Duration.zero);
+        await Future.delayed(Duration.zero);
 
-      await cache.dispose();
-    });
+        await cache.dispose();
+      },
+    );
 
-    test('mutating data of multiple data ids at once emits only one update',
-        () async {
-      final cache = Cache();
-      cache.writeQuery(reviewsReq, reviewsData2);
+    test(
+      'mutating data of multiple data ids at once emits only one update',
+      () async {
+        final cache = Cache();
+        cache.writeQuery(reviewsReq, reviewsData2);
 
-      expect(
-        cache.watchQuery(reviewsReq).toList(),
-        completion(hasLength(2)),
-      );
+        expect(cache.watchQuery(reviewsReq).toList(), completion(hasLength(2)));
 
-      await Future.delayed(Duration.zero);
-      cache.writeQuery(reviewsReq, reviewsData2);
-      await Future.delayed(Duration.zero);
-      cache.writeQuery(
-          reviewsReq,
-          GReviewsData((b) => b
+        await Future.delayed(Duration.zero);
+        cache.writeQuery(reviewsReq, reviewsData2);
+        await Future.delayed(Duration.zero);
+        cache.writeQuery(reviewsReq, GReviewsData(
+          (b) => b
             ..reviews.addAll([
               review.rebuild((p) => p.stars = 100),
-              review2.rebuild((p) => p.stars = 100)
-            ])));
+              review2.rebuild((p) => p.stars = 100),
+            ]),
+        ));
 
-      await Future.delayed(Duration.zero);
+        await Future.delayed(Duration.zero);
 
-      await cache.dispose();
-    });
+        await cache.dispose();
+      },
+    );
 
     test('clearing cache emits only one update', () async {
       final cache = Cache();
       cache.writeQuery(reviewsReq, reviewsData2);
 
-      expect(
-        cache.watchQuery(reviewsReq).toList(),
-        completion(hasLength(2)),
-      );
+      expect(cache.watchQuery(reviewsReq).toList(), completion(hasLength(2)));
 
       await Future.delayed(Duration.zero);
       cache.clear();

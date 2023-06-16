@@ -31,9 +31,10 @@ class AuthScreen extends StatelessWidget {
                 'InstaSmart',
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                    color: Theme.of(context).textSelectionColor,
-                    fontSize: 25.0,
-                    fontWeight: FontWeight.bold),
+                  color: Theme.of(context).textSelectionColor,
+                  fontSize: 25.0,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
             ),
             Padding(
@@ -42,9 +43,10 @@ class AuthScreen extends StatelessWidget {
                 'Beautify your Feed. Effortlessly.',
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                    color: Theme.of(context).primaryColor,
-                    fontSize: 20.0,
-                    fontWeight: FontWeight.bold),
+                  color: Theme.of(context).primaryColor,
+                  fontSize: 20.0,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
             ),
             Padding(
@@ -73,8 +75,9 @@ class AuthScreen extends StatelessWidget {
                   },
                   padding: EdgeInsets.only(top: 12, bottom: 12),
                   shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(25.0),
-                      side: BorderSide(color: Theme.of(context).primaryColor)),
+                    borderRadius: BorderRadius.circular(25.0),
+                    side: BorderSide(color: Theme.of(context).primaryColor),
+                  ),
                 ),
               ),
             ),
@@ -93,11 +96,12 @@ class AuthScreen extends StatelessWidget {
                   },
                   padding: EdgeInsets.only(top: 12, bottom: 12),
                   shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(25.0),
-                      side: BorderSide(color: Theme.of(context).focusColor)),
+                    borderRadius: BorderRadius.circular(25.0),
+                    side: BorderSide(color: Theme.of(context).focusColor),
+                  ),
                 ),
               ),
-            )
+            ),
           ],
         ),
       ),

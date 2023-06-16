@@ -15,8 +15,9 @@ class GoogleSignInIOS extends GoogleSignInPlatform {
   /// This is only exposed for test purposes. It shouldn't be used by clients of
   /// the plugin as it may break or change at any time.
   @visibleForTesting
-  MethodChannel channel =
-      const MethodChannel('plugins.flutter.io/google_sign_in_ios');
+  MethodChannel channel = const MethodChannel(
+    'plugins.flutter.io/google_sign_in_ios',
+  );
 
   /// Registers this class as the default instance of [GoogleSignInPlatform].
   static void registerWith() {
@@ -42,8 +43,9 @@ class GoogleSignInIOS extends GoogleSignInPlatform {
   Future<void> initWithParams(SignInInitParameters params) {
     if (params.signInOption == SignInOption.games) {
       throw PlatformException(
-          code: 'unsupported-options',
-          message: 'Games sign in is not supported on iOS');
+        code: 'unsupported-options',
+        message: 'Games sign in is not supported on iOS',
+      );
     }
     return channel.invokeMethod<void>('init', <String, dynamic>{
       'scopes': params.scopes,
@@ -55,26 +57,27 @@ class GoogleSignInIOS extends GoogleSignInPlatform {
 
   @override
   Future<GoogleSignInUserData?> signInSilently() {
-    return channel
-        .invokeMapMethod<String, dynamic>('signInSilently')
-        .then(getUserDataFromMap);
+    return channel.invokeMapMethod<String, dynamic>('signInSilently').then(
+      getUserDataFromMap,
+    );
   }
 
   @override
   Future<GoogleSignInUserData?> signIn() {
-    return channel
-        .invokeMapMethod<String, dynamic>('signIn')
-        .then(getUserDataFromMap);
+    return channel.invokeMapMethod<String, dynamic>('signIn').then(
+      getUserDataFromMap,
+    );
   }
 
   @override
-  Future<GoogleSignInTokenData> getTokens(
-      {required String email, bool? shouldRecoverAuth = true}) {
-    return channel
-        .invokeMapMethod<String, dynamic>('getTokens', <String, dynamic>{
-      'email': email,
-      'shouldRecoverAuth': shouldRecoverAuth,
-    }).then((Map<String, dynamic>? result) => getTokenDataFromMap(result!));
+  Future<GoogleSignInTokenData> getTokens({
+    required String email,
+    bool? shouldRecoverAuth = true,
+  }) {
+    return channel.invokeMapMethod<String, dynamic>(
+      'getTokens',
+      <String, dynamic>{'email': email, 'shouldRecoverAuth': shouldRecoverAuth},
+    ).then((Map<String, dynamic>? result) => getTokenDataFromMap(result!));
   }
 
   @override

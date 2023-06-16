@@ -44,9 +44,10 @@ class AnimatedRoutes {
       pageBuilder: (context, animation, secondaryAnimation) => page(),
       transitionsBuilder: (context, animation, secondaryAnimation, child) {
         return FadeThroughTransition(
-            animation: animation,
-            secondaryAnimation: secondaryAnimation,
-            child: child);
+          animation: animation,
+          secondaryAnimation: secondaryAnimation,
+          child: child,
+        );
       },
     );
   }
@@ -61,9 +62,11 @@ class AnimatedRoutes {
     );
   }
 
-  static Route<T> sharedAxis<T>(page,
-      [SharedAxisTransitionType type = SharedAxisTransitionType.scaled,
-      double duration = 1000]) {
+  static Route<T> sharedAxis<T>(
+    page, [
+    SharedAxisTransitionType type = SharedAxisTransitionType.scaled,
+    double duration = 1000,
+  ]) {
     return PageRouteBuilder<T>(
       transitionDuration: Duration(milliseconds: (duration * 1000).round()),
       pageBuilder: (context, animation, secondaryAnimation) => page(),

@@ -19,11 +19,7 @@ class CommandButton extends StatelessWidget {
   final VoidCallback onPressed;
 
   /// Returns a copy of this object with the given fields updated.
-  CommandButton copyWith({
-    Key? key,
-    Color? color,
-    VoidCallback? onPressed,
-  }) {
+  CommandButton copyWith({Key? key, Color? color, VoidCallback? onPressed}) {
     return CommandButton(
       key: key ?? this.key,
       color: color ?? this.color,
@@ -34,14 +30,9 @@ class CommandButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return IconButton(
-      icon: StreamSvgIcon.lightning(
-        color: color,
-      ),
+      icon: StreamSvgIcon.lightning(color: color),
       padding: EdgeInsets.zero,
-      constraints: const BoxConstraints.tightFor(
-        height: 24,
-        width: 24,
-      ),
+      constraints: const BoxConstraints.tightFor(height: 24, width: 24),
       splashRadius: 24,
       onPressed: onPressed,
     );

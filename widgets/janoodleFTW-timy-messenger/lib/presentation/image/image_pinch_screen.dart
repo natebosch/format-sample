@@ -3,7 +3,6 @@ import "package:pinch_zoom_image/pinch_zoom_image.dart";
 import "package:transparent_image/transparent_image.dart";
 
 class ImagePinchScreen extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
     final String url = ModalRoute.of(context).settings.arguments;

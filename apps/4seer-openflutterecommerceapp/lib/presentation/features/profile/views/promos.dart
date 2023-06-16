@@ -15,9 +15,9 @@ class _PromosViewState extends State<PromosView> {
   Widget build(BuildContext context) {
     return Container(
       child: OpenFlutterBlockHeader(
-        title: 'Payment Methods', 
+        title: 'Payment Methods',
         width: MediaQuery.of(context).size.width,
-      )
+      ),
     );
   }
 }

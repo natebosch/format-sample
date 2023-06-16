@@ -19,9 +19,7 @@ class MyApp extends StatelessWidget {
       title: _title,
       home: Scaffold(
         appBar: AppBar(title: const Text(_title)),
-        body: const Center(
-          child: MyStatefulWidget(),
-        ),
+        body: const Center(child: MyStatefulWidget()),
       ),
     );
   }
@@ -40,32 +38,35 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget>
 
   @override
   Widget build(BuildContext context) {
-    return CustomScrollView(slivers: <Widget>[
-      SliverAnimatedOpacity(
-        opacity: _visible ? 1.0 : 0.0,
-        duration: const Duration(milliseconds: 500),
-        sliver: SliverFixedExtentList(
-          itemExtent: 100.0,
-          delegate: SliverChildBuilderDelegate(
-            (BuildContext context, int index) {
-              return Container(
-                color: index.isEven ? Colors.indigo[200] : Colors.orange[200],
-              );
-            },
-            childCount: 5,
+    return CustomScrollView(
+      slivers: <Widget>[
+        SliverAnimatedOpacity(
+          opacity: _visible ? 1.0 : 0.0,
+          duration: const Duration(milliseconds: 500),
+          sliver: SliverFixedExtentList(
+            itemExtent: 100.0,
+            delegate: SliverChildBuilderDelegate(
+              (BuildContext context, int index) {
+                return Container(
+                  color: index.isEven ? Colors.indigo[200] : Colors.orange[200],
+                );
+              },
+              childCount: 5,
+            ),
           ),
         ),
-      ),
-      SliverToBoxAdapter(
+        SliverToBoxAdapter(
           child: FloatingActionButton(
-        onPressed: () {
-          setState(() {
-            _visible = !_visible;
-          });
-        },
-        tooltip: 'Toggle opacity',
-        child: const Icon(Icons.flip),
-      )),
-    ]);
+            onPressed: () {
+              setState(() {
+                _visible = !_visible;
+              });
+            },
+            tooltip: 'Toggle opacity',
+            child: const Icon(Icons.flip),
+          ),
+        ),
+      ],
+    );
   }
 }

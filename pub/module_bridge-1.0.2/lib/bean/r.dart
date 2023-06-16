@@ -28,15 +28,13 @@ class R<T> {
         data is Map) {
       return;
     }
-    throw Exception('Error: ${data.runtimeType} not supported! '
-        'only support [String,num,bool,Map].');
+    throw Exception(
+      'Error: ${data.runtimeType} not supported! '
+      'only support [String,num,bool,Map].',
+    );
   }
 
   Map<String, dynamic> toJson() {
-    return {
-      'code': code,
-      'msg': msg,
-      'data': data,
-    };
+    return {'code': code, 'msg': msg, 'data': data};
   }
 }

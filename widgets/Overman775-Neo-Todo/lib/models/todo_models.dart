@@ -26,20 +26,21 @@ class TodoCategory extends TodoModel {
 
   static const String table = 'Categories';
 
-  const TodoCategory(
-      {this.id,
-      this.title = '',
-      this.icon,
-      this.completed = 0,
-      this.totalItems = 0});
+  const TodoCategory({
+    this.id,
+    this.title = '',
+    this.icon,
+    this.completed = 0,
+    this.totalItems = 0,
+  });
 
   factory TodoCategory.fromMap(Map<String, dynamic> map) => TodoCategory(
-        id: map['id'] as int,
-        title: map['title'] as String,
-        icon: map['icon'].toString().getFontAwesomeIcon,
-        completed: map['completed'] as int,
-        totalItems: map['totalItems'] as int,
-      );
+    id: map['id'] as int,
+    title: map['title'] as String,
+    icon: map['icon'].toString().getFontAwesomeIcon,
+    completed: map['completed'] as int,
+    totalItems: map['totalItems'] as int,
+  );
 
   double get percent {
     if (totalItems == 0) {
@@ -119,12 +120,13 @@ class TodoItem extends TodoModel {
 
   static const String table = 'Items';
 
-  const TodoItem(
-      {this.id,
-      this.category,
-      this.title = '',
-      this.description = '',
-      this.completed = false});
+  const TodoItem({
+    this.id,
+    this.category,
+    this.title = '',
+    this.description = '',
+    this.completed = false,
+  });
 
   @override
   Map<String, dynamic> toMap() {
@@ -132,7 +134,7 @@ class TodoItem extends TodoModel {
       'category': category,
       'title': title,
       'description': description,
-      'completed': completed ? '1' : '0'
+      'completed': completed ? '1' : '0',
     };
 
     if (id != null) {
@@ -142,11 +144,12 @@ class TodoItem extends TodoModel {
   }
 
   factory TodoItem.fromMap(Map<String, dynamic> map) => TodoItem(
-      id: map['id'] as int,
-      category: map['category'] as int,
-      title: map['title'] as String,
-      description: map['description'] as String,
-      completed: map['completed'] == 1);
+    id: map['id'] as int,
+    category: map['category'] as int,
+    title: map['title'] as String,
+    description: map['description'] as String,
+    completed: map['completed'] == 1,
+  );
 
   @override
   String toString() {

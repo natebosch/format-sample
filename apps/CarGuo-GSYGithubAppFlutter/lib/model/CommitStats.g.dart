@@ -14,9 +14,10 @@ CommitStats _$CommitStatsFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$CommitStatsToJson(CommitStats instance) =>
-    <String, dynamic>{
-      'total': instance.total,
-      'additions': instance.additions,
-      'deletions': instance.deletions,
-    };
+Map<String, dynamic> _$CommitStatsToJson(
+  CommitStats instance,
+) => <String, dynamic>{
+  'total': instance.total,
+  'additions': instance.additions,
+  'deletions': instance.deletions,
+};

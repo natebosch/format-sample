@@ -23,12 +23,11 @@ class ThemeSeattle extends SharedTheme {
   Color get puzzleAccentColor => const Color(0xFF000579);
 
   @override
-  RoundedRectangleBorder puzzleBorder(bool small) =>
-      const RoundedRectangleBorder(
-        borderRadius: BorderRadius.all(
-          Radius.circular(1),
-        ),
-      );
+  RoundedRectangleBorder puzzleBorder(
+    bool small,
+  ) => const RoundedRectangleBorder(
+    borderRadius: BorderRadius.all(Radius.circular(1)),
+  );
 
   @override
   EdgeInsetsGeometry tilePadding(PuzzleProxy puzzle) =>
@@ -41,11 +40,12 @@ class ThemeSeattle extends SharedTheme {
     }
 
     final decorationImage = DecorationImagePlus(
-        puzzleWidth: puzzle.width,
-        puzzleHeight: puzzle.height,
-        pieceIndex: i,
-        fit: BoxFit.cover,
-        image: const AssetImage('asset/seattle.jpg'));
+      puzzleWidth: puzzle.width,
+      puzzleHeight: puzzle.height,
+      pieceIndex: i,
+      fit: BoxFit.cover,
+      image: const AssetImage('asset/seattle.jpg'),
+    );
 
     final correctPosition = puzzle.isCorrectPosition(i);
     final content = createInk(

@@ -28,20 +28,20 @@ class DBHelper {
   /// It further checks if the table is present or not, if not present,
   /// then the table will be created.
   void _onCreate(Database db, int version) async {
-    await db.execute("CREATE TABLE ARTICLES(" +
-        "id INTEGER PRIMARY KEY," +
-        "sourceId TEXT, sourceName TEXT," +
-        "author TEXT, title TEXT," +
-        "description TEXT, url TEXT," +
-        "urlToImage TEXT, publishedAt TEXT," +
-        "content TEXT, isBookmarked TEXT )");
+    await db.execute(
+      "CREATE TABLE ARTICLES(" +
+          "id INTEGER PRIMARY KEY," +
+          "sourceId TEXT, sourceName TEXT," +
+          "author TEXT, title TEXT," +
+          "description TEXT, url TEXT," +
+          "urlToImage TEXT, publishedAt TEXT," +
+          "content TEXT, isBookmarked TEXT )",
+    );
     print("Created ARTICLES table");
   }
 
   /// Save Single article to database
-  Future saveArticle(
-    Map<String, dynamic> articleMap,
-  ) async {
+  Future saveArticle(Map<String, dynamic> articleMap) async {
     try {
       var dbClient = await db;
       await dbClient.transaction((txn) async {
@@ -55,9 +55,7 @@ class DBHelper {
 
   /// Check if an article is already present in the database,
   /// by passing the url.
-  Future<bool> findMatchingArticle(
-    String url,
-  ) async {
+  Future<bool> findMatchingArticle(String url) async {
     var dbclient = await db;
 
     List<Map> list;
@@ -95,8 +93,9 @@ class DBHelper {
   /// Update bookmark state in db
   Future updateBookmarkState({bool toBookmark = true, String url}) async {
     var dbClient = await db;
-    await dbClient.update('ARTICLES', {'isBookmarked': toBookmark.toString()},
-        where: 'url=\'$url\'');
+    await dbClient.update('ARTICLES', {
+      'isBookmarked': toBookmark.toString(),
+    }, where: 'url=\'$url\'');
   }
 
   /// Get bookmarks from db

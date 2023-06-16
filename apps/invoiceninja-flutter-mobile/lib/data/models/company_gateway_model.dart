@@ -21,9 +21,9 @@ part 'company_gateway_model.g.dart';
 abstract class CompanyGatewayListResponse
     implements
         Built<CompanyGatewayListResponse, CompanyGatewayListResponseBuilder> {
-  factory CompanyGatewayListResponse(
-          [void updates(CompanyGatewayListResponseBuilder b)]) =
-      _$CompanyGatewayListResponse;
+  factory CompanyGatewayListResponse([
+    void updates(CompanyGatewayListResponseBuilder b),
+  ]) = _$CompanyGatewayListResponse;
 
   CompanyGatewayListResponse._();
 
@@ -40,9 +40,9 @@ abstract class CompanyGatewayListResponse
 abstract class CompanyGatewayItemResponse
     implements
         Built<CompanyGatewayItemResponse, CompanyGatewayItemResponseBuilder> {
-  factory CompanyGatewayItemResponse(
-          [void updates(CompanyGatewayItemResponseBuilder b)]) =
-      _$CompanyGatewayItemResponse;
+  factory CompanyGatewayItemResponse([
+    void updates(CompanyGatewayItemResponseBuilder b),
+  ]) = _$CompanyGatewayItemResponse;
 
   CompanyGatewayItemResponse._();
 
@@ -215,11 +215,13 @@ abstract class CompanyGatewayEntity extends Object
 
   bool supportsCard(int cardType) => acceptedCreditCards & cardType > 0;
 
-  CompanyGatewayEntity addCard(int cardType) =>
-      rebuild((b) => b..acceptedCreditCards = acceptedCreditCards | cardType);
+  CompanyGatewayEntity addCard(int cardType) => rebuild(
+    (b) => b..acceptedCreditCards = acceptedCreditCards | cardType,
+  );
 
-  CompanyGatewayEntity removeCard(int cardType) =>
-      rebuild((b) => b..acceptedCreditCards = acceptedCreditCards ^ cardType);
+  CompanyGatewayEntity removeCard(int cardType) => rebuild(
+    (b) => b..acceptedCreditCards = acceptedCreditCards ^ cardType,
+  );
 
   CompanyGatewayEntity updateConfig(String field, dynamic value) {
     final updatedConfig = parsedConfig;
@@ -232,9 +234,11 @@ abstract class CompanyGatewayEntity extends Object
     return rebuild((b) => b..config = jsonEncode(updatedConfig));
   }
 
-  int compareTo(CompanyGatewayEntity companyGateway, String sortField,
-          bool sortAscending) =>
-      0;
+  int compareTo(
+    CompanyGatewayEntity companyGateway,
+    String sortField,
+    bool sortAscending,
+  ) => 0;
 
   @override
   bool matchesFilter(String filter) {
@@ -253,23 +257,19 @@ abstract class CompanyGatewayEntity extends Object
   @override
   String matchesFilterValue(String filter) {
     return matchesStringsValue(
-      haystacks: [
-        customValue1,
-        customValue2,
-        customValue3,
-        customValue4,
-      ],
+      haystacks: [customValue1, customValue2, customValue3, customValue4],
       needle: filter,
     );
   }
 
   @override
-  List<EntityAction> getActions(
-      {UserCompanyEntity userCompany,
-      ClientEntity client,
-      bool includeEdit = false,
-      bool includePreview = false,
-      bool multiselect = false}) {
+  List<EntityAction> getActions({
+    UserCompanyEntity userCompany,
+    ClientEntity client,
+    bool includeEdit = false,
+    bool includePreview = false,
+    bool multiselect = false,
+  }) {
     final actions = <EntityAction>[];
 
     if (!isDeleted && !multiselect && userCompany.canEditEntity(this)) {

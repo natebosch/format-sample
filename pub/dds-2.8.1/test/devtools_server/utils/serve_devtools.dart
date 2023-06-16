@@ -9,11 +9,8 @@ import 'package:dds/devtools_server.dart';
 import '../../common/test_helper.dart';
 
 void main(List<String> args) async {
-  unawaited(
-    DevToolsServer().serveDevToolsWithArgs(
-      args,
-      customDevToolsPath:
-          devtoolsAppUri(prefix: '../../../../../').toFilePath(),
-    ),
-  );
+  unawaited(DevToolsServer().serveDevToolsWithArgs(
+    args,
+    customDevToolsPath: devtoolsAppUri(prefix: '../../../../../').toFilePath(),
+  ));
 }

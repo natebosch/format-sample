@@ -24,12 +24,7 @@ class _Key {
   static const String bgColor = 'backgroundColor';
 }
 
-enum NativeFontWeight {
-  normal,
-  bold,
-  italic,
-  boldItalic,
-}
+enum NativeFontWeight { normal, bold, italic, boldItalic }
 
 class NativeStyles {
   bool showMedia = true;
@@ -93,14 +88,7 @@ class NativeStyles {
     Color? color,
     Color? bgColor,
   }) {
-    _buildNativeStyle(
-      _title,
-      isVisible,
-      fontSize,
-      fontWeight,
-      color,
-      bgColor,
-    );
+    _buildNativeStyle(_title, isVisible, fontSize, fontWeight, color, bgColor);
   }
 
   void setSource({
@@ -110,14 +98,7 @@ class NativeStyles {
     Color? color,
     Color? bgColor,
   }) {
-    _buildNativeStyle(
-      _source,
-      isVisible,
-      fontSize,
-      fontWeight,
-      color,
-      bgColor,
-    );
+    _buildNativeStyle(_source, isVisible, fontSize, fontWeight, color, bgColor);
   }
 
   void setDescription({

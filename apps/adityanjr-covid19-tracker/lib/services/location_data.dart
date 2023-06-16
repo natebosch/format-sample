@@ -12,8 +12,9 @@ class MyLocationData {
   Future<void> getLocationData() async {
     try {
       if (Platform.isAndroid || Platform.isIOS) {
-        Position position = await Geolocator()
-            .getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
+        Position position = await Geolocator().getCurrentPosition(
+          desiredAccuracy: LocationAccuracy.high,
+        );
         latitude = position.latitude;
         longitude = position.longitude;
       } else if (kIsWeb) {
@@ -45,8 +46,10 @@ class MyLocationData {
       }
 
       List<Placemark> placemark = await Geolocator().placemarkFromCoordinates(
-          latitude, longitude,
-          localeIdentifier: 'en_US');
+        latitude,
+        longitude,
+        localeIdentifier: 'en_US',
+      );
       country = placemark[0].country;
 
       country == 'United States' ? country = 'USA' : country = country;

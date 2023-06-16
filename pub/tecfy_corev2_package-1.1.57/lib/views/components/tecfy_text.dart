@@ -94,21 +94,22 @@ class TecfyText extends StatefulWidget {
   /// {@macro flutter.painting.textPainter.textWidthBasis}
   final TextWidthBasis? textWidthBasis;
 
-  TecfyText(this.data,
-      {Key? key,
-      this.textSpan,
-      this.style,
-      this.strutStyle,
-      this.textAlign,
-      this.textDirection,
-      this.locale,
-      this.softWrap,
-      this.overflow,
-      this.textScaleFactor,
-      this.maxLines,
-      this.semanticsLabel,
-      this.textWidthBasis})
-      : super(key: key);
+  TecfyText(
+    this.data, {
+    Key? key,
+    this.textSpan,
+    this.style,
+    this.strutStyle,
+    this.textAlign,
+    this.textDirection,
+    this.locale,
+    this.softWrap,
+    this.overflow,
+    this.textScaleFactor,
+    this.maxLines,
+    this.semanticsLabel,
+    this.textWidthBasis,
+  }) : super(key: key);
 
   @override
   State<TecfyText> createState() => _TecfyTextState();
@@ -128,80 +129,80 @@ class _TecfyTextState extends State<TecfyText> {
   Widget build(BuildContext context) {
     if (isDevelopmentMode) {
       return GestureDetector(
-          onLongPress: () {
-            print('isNew = ${widget.data == AppLocale.translate(widget.data)}');
-            String? id;
-            InitService.transList.forEach((element) {
-              if (element['textValueTo'] == AppLocale.translate(widget.data)) {
-                id = element['_id'];
-              }
-            });
-            AppNavigator.showAppDialogEx(
-                context,
-                () => Scaffold(
-                      backgroundColor: Colors.white,
-                      body: Padding(
-                        padding: EdgeInsets.all(25),
-                        child: Column(
-                          children: [
-                            TextFormField(
-                              controller: textController,
-                              decoration: InputDecoration(
-                                labelText: 'الكلمة الحالية',
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      bottomNavigationBar: Padding(
-                        padding: EdgeInsets.only(bottom: 20),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            MaterialButton(
-                                onPressed: () async {
-                                  await EntityService.saveEntityEx(
-                                    'CompanyTranslation',
-                                    {
-                                      'Language':
-                                          '${LocalConfigService.languagePrefix}',
-                                      'TextValueFrom': widget.data,
-                                      'TextValueTo': textController.text,
-                                      if (id != null) '_id': id,
-                                    },
-                                    context,
-                                    widget.data ==
-                                            AppLocale.translate(widget.data)
-                                        ? true
-                                        : false,
-                                  ).then((value) {
-                                    if (value.success) {
-                                      setState(() {
-                                        widget.data = textController.text;
-                                        AppNavigator.pop(context);
-                                      });
-                                    }
-                                    print(value.data);
-                                  });
-                                },
-                                child: Text('Save'),
-                                color: Colors.orange),
-                            MaterialButton(
-                                onPressed: () {
-                                  AppNavigator.pop(context);
-                                },
-                                child: Text('Cancel'),
-                                color: Colors.red),
-                          ],
-                        ),
-                      ),
+        onLongPress: () {
+          print('isNew = ${widget.data == AppLocale.translate(widget.data)}');
+          String? id;
+          InitService.transList.forEach((element) {
+            if (element['textValueTo'] == AppLocale.translate(widget.data)) {
+              id = element['_id'];
+            }
+          });
+          AppNavigator.showAppDialogEx(
+            context,
+            () => Scaffold(
+              backgroundColor: Colors.white,
+              body: Padding(
+                padding: EdgeInsets.all(25),
+                child: Column(
+                  children: [
+                    TextFormField(
+                      controller: textController,
+                      decoration: InputDecoration(labelText: 'الكلمة الحالية'),
                     ),
-                barrierDismissible: true,
-                closeButton: true,
-                title: 'تغير كلمة  ${widget.data} ',
-                size: DialogBoxSizes.small);
-          },
-          child: Text(AppLocale.translate(widget.data)));
+                  ],
+                ),
+              ),
+              bottomNavigationBar: Padding(
+                padding: EdgeInsets.only(bottom: 20),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    MaterialButton(
+                      onPressed: () async {
+                        await EntityService.saveEntityEx(
+                          'CompanyTranslation',
+                          {
+                            'Language': '${LocalConfigService.languagePrefix}',
+                            'TextValueFrom': widget.data,
+                            'TextValueTo': textController.text,
+                            if (id != null) '_id': id,
+                          },
+                          context,
+                          widget.data == AppLocale.translate(widget.data)
+                              ? true
+                              : false,
+                        ).then((value) {
+                          if (value.success) {
+                            setState(() {
+                              widget.data = textController.text;
+                              AppNavigator.pop(context);
+                            });
+                          }
+                          print(value.data);
+                        });
+                      },
+                      child: Text('Save'),
+                      color: Colors.orange,
+                    ),
+                    MaterialButton(
+                      onPressed: () {
+                        AppNavigator.pop(context);
+                      },
+                      child: Text('Cancel'),
+                      color: Colors.red,
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            barrierDismissible: true,
+            closeButton: true,
+            title: 'تغير كلمة  ${widget.data} ',
+            size: DialogBoxSizes.small,
+          );
+        },
+        child: Text(AppLocale.translate(widget.data)),
+      );
     } else {
       return Text(
         AppLocale.translate(widget.data),

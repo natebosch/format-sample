@@ -18,19 +18,20 @@ abstract class BlacklistItem extends MapModel with _$BlacklistItem {
       fromJson: dateTimeFromPiholeInt,
       toJson: piholeIntFromDateTime,
     )
-        DateTime dateAdded,
+    DateTime dateAdded,
     @JsonKey(
       name: 'date_modified',
       fromJson: dateTimeFromPiholeInt,
       toJson: piholeIntFromDateTime,
     )
-        DateTime dateModified,
+    DateTime dateModified,
     String comment,
     List<int> groups,
   }) = _BlacklistItem;
 
-  factory BlacklistItem.fromJson(Map<String, dynamic> json) =>
-      _$BlacklistItemFromJson(json);
+  factory BlacklistItem.fromJson(
+    Map<String, dynamic> json,
+  ) => _$BlacklistItemFromJson(json);
 
   @late
   bool get isEnabled => enabled == 1;

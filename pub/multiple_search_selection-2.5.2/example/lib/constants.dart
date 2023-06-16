@@ -247,7 +247,7 @@ List<String> countryNames = [
   "Yugoslavia",
   "Zaire",
   "Zambia",
-  "Zimbabwe"
+  "Zimbabwe",
 ];
 
 List<Country> countries = List<Country>.generate(
@@ -262,8 +262,5 @@ class Country {
   final String name;
   final String iso;
 
-  const Country({
-    required this.name,
-    required this.iso,
-  });
+  const Country({required this.name, required this.iso});
 }

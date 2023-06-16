@@ -4,7 +4,6 @@ import 'package:cuacfm/domain/result/result.dart';
 import 'package:cuacfm/models/new.dart';
 import 'package:flutter/cupertino.dart';
 
-
 class GetNewsUseCase extends BaseUseCase<DataPolicy, List<New>> {
   CuacRepositoryContract radiocoRepository;
 

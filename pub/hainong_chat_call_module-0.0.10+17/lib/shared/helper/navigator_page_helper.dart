@@ -20,79 +20,100 @@ import '../../presentation/pages/profile/profile_page.dart';
 import '../theme/colors.dart';
 
 class NavigatorPage {
-  static void navigatorChatPage(BuildContext context,
-      {required StreamRequestModel request,
-      String status = "",
-      bool? isShowCommentRate,
-      bool? isExpert = false,
-      Function(String friendId, bool isLock)? callBackFriendLockAndUnLock,
-      Function(String friendId)? callBackFriendDelete,
-      Function()? refreshPage}) {
-    Navigator.push(context, MaterialPageRoute(builder: (context) {
-      return ChatPage(
-        callBackSignIn: () => appCoreBloc.add(CallBackLoginEvent()),
-        chatRequest: request,
-        callBackAudioCall: () {
-          if (request.userId.isNotEmpty == true) {
-            NavigatorPage.navigationCallPage(context,
+  static void navigatorChatPage(
+    BuildContext context, {
+    required StreamRequestModel request,
+    String status = "",
+    bool? isShowCommentRate,
+    bool? isExpert = false,
+    Function(String friendId, bool isLock)? callBackFriendLockAndUnLock,
+    Function(String friendId)? callBackFriendDelete,
+    Function()? refreshPage,
+  }) {
+    Navigator.push(context, MaterialPageRoute(
+      builder: (context) {
+        return ChatPage(
+          callBackSignIn: () => appCoreBloc.add(CallBackLoginEvent()),
+          chatRequest: request,
+          callBackAudioCall: () {
+            if (request.userId.isNotEmpty == true) {
+              NavigatorPage.navigationCallPage(
+                context,
                 isShowCommentRate: isShowCommentRate,
-                request: MappingModelHelper.mapAudioCall(request));
-          } else {
-            DialogHelper.customShowSnackbar(context,
-                title: "Thông báo",
-                message: StatusHelper.getMessageCallError(errorCode: 401));
-          }
-        },
-        callBackVideoCall: () {
-          if (request.userId.isNotEmpty == true) {
-            NavigatorPage.navigationCallPage(context,
-                isShowCommentRate: isShowCommentRate,
-                request: MappingModelHelper.mapVideoCall(request));
-          } else {
-            DialogHelper.customShowSnackbar(context,
-                message: StatusHelper.getMessageCallError(errorCode: 401));
-          }
-        },
-        callBackCall: (data) {
-          NavigatorPage.navigationCallPage(context,
-              isShowCommentRate: isShowCommentRate,
-              request: MappingModelHelper.mapVideoCall(request));
-        },
-        callBackProfile: () {
-          if (isExpert == true) {
-            Navigator.push(context, MaterialPageRoute(builder: (context) {
-              return ProfilePage(
-                data: request,
-                callBackAccountLockAndUnLock: callBackFriendLockAndUnLock,
-                callBackAccountDelete: callBackFriendDelete,
+                request: MappingModelHelper.mapAudioCall(request),
               );
-            }));
-          } else {
-            if (request.shopId?.isNotEmpty == true) {
-              appCoreBloc.add(CallBackProfileEvent(shopId: request.shopId!));
+            } else {
+              DialogHelper.customShowSnackbar(
+                context,
+                title: "Thông báo",
+                message: StatusHelper.getMessageCallError(errorCode: 401),
+              );
             }
-          }
-        },
-      );
-    })).then((value) {
+          },
+          callBackVideoCall: () {
+            if (request.userId.isNotEmpty == true) {
+              NavigatorPage.navigationCallPage(
+                context,
+                isShowCommentRate: isShowCommentRate,
+                request: MappingModelHelper.mapVideoCall(request),
+              );
+            } else {
+              DialogHelper.customShowSnackbar(
+                context,
+                message: StatusHelper.getMessageCallError(errorCode: 401),
+              );
+            }
+          },
+          callBackCall: (data) {
+            NavigatorPage.navigationCallPage(
+              context,
+              isShowCommentRate: isShowCommentRate,
+              request: MappingModelHelper.mapVideoCall(request),
+            );
+          },
+          callBackProfile: () {
+            if (isExpert == true) {
+              Navigator.push(context, MaterialPageRoute(
+                builder: (context) {
+                  return ProfilePage(
+                    data: request,
+                    callBackAccountLockAndUnLock: callBackFriendLockAndUnLock,
+                    callBackAccountDelete: callBackFriendDelete,
+                  );
+                },
+              ));
+            } else {
+              if (request.shopId?.isNotEmpty == true) {
+                appCoreBloc.add(CallBackProfileEvent(shopId: request.shopId!));
+              }
+            }
+          },
+        );
+      },
+    )).then((value) {
       if (refreshPage != null) {
         refreshPage();
       }
     });
   }
 
-  static void navigationCallSuggestPage(BuildContext context,
-      {required StreamResponseModel result,
-      required Function() callBackAccept,
-      Function()? callBackDecline}) {
+  static void navigationCallSuggestPage(
+    BuildContext context, {
+    required StreamResponseModel result,
+    required Function() callBackAccept,
+    Function()? callBackDecline,
+  }) {
     CallCore.setShowDialogIncommingCall(true);
     final request = MappingModelHelper.mapCallSuggest(result);
-    Navigator.push(context, MaterialPageRoute(builder: (context) {
-      return CallSuggestPage(
+    Navigator.push(context, MaterialPageRoute(
+      builder: (context) {
+        return CallSuggestPage(
           request: request,
           callBackCancel: () => Navigator.of(context).pop(false),
-          callBackAccept: () => Navigator.of(context).pop(true));
-    })).then((value) {
+          callBackAccept: () => Navigator.of(context).pop(true),
+        );
+      },
+    )).then((value) {
       if (callBackDecline != null) {
         callBackDecline();
       }
@@ -100,37 +121,48 @@ class NavigatorPage {
         callBackAccept();
       } else if (value == false) {
         sendCallCancel(
-            id: request.id,
-            callId: result.callId ?? "",
-            callType: result.callType ?? "video",
-            roomName: result.roomName!);
+          id: request.id,
+          callId: result.callId ?? "",
+          callType: result.callType ?? "video",
+          roomName: result.roomName!,
+        );
       } else {
         appCallBloc.add(ShowCallbarEvent(true));
       }
     });
   }
 
-  static void navigationCallPage(BuildContext context,
-      {required StreamRequestModel request,
-      Function()? callBack,
-      bool? isShowCommentRate = false}) {
-    Navigator.push(context, MaterialPageRoute(builder: (context) {
-      return CallPage(
+  static void navigationCallPage(
+    BuildContext context, {
+    required StreamRequestModel request,
+    Function()? callBack,
+    bool? isShowCommentRate = false,
+  }) {
+    Navigator.push(context, MaterialPageRoute(
+      builder: (context) {
+        return CallPage(
           request: request,
-          callBackSignIn: () => appCoreBloc.add(CallBackLoginEvent()));
-    })).then((result) {
+          callBackSignIn: () => appCoreBloc.add(CallBackLoginEvent()),
+        );
+      },
+    )).then((result) {
       try {
         final data = result as StreamDataModel?;
         appCallBloc.add(RefreshPageEvent());
         if (isShowCommentRate == true) {
-          DialogHelper.customShowSnackbar(context,
-              message: data?.message, status: data?.status, callBack: () {
-            final primaryColor = getIt<SharePrefSource>().getPrimaryColor();
-            DialogHelper.showBottomSheet(context,
+          DialogHelper.customShowSnackbar(
+            context,
+            message: data?.message,
+            status: data?.status,
+            callBack: () {
+              final primaryColor = getIt<SharePrefSource>().getPrimaryColor();
+              DialogHelper.showBottomSheet(
+                context,
                 id: request.receiverId.toString(),
-                colorPrimary:
-                    primaryColor ?? AppColors.primaryColor.toString());
-          });
+                colorPrimary: primaryColor ?? AppColors.primaryColor.toString(),
+              );
+            },
+          );
         }
       } catch (e) {
         log(e.toString());
@@ -139,34 +171,37 @@ class NavigatorPage {
     });
   }
 
-  static void navigatorCallPageTranfer(BuildContext context,
-      {required StreamResponseModel result,
-      String? privateColor,
-      bool? isShowCommentRate = true}) {
-    navigationCallPage(context,
-        request: MappingModelHelper.mapCall(result),
-        isShowCommentRate: isShowCommentRate);
+  static void navigatorCallPageTranfer(
+    BuildContext context, {
+    required StreamResponseModel result,
+    String? privateColor,
+    bool? isShowCommentRate = true,
+  }) {
+    navigationCallPage(
+      context,
+      request: MappingModelHelper.mapCall(result),
+      isShowCommentRate: isShowCommentRate,
+    );
   }
 
   static snackBar(BuildContext context, String? message) {
     return ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text(message!),
-        duration: const Duration(seconds: 4),
-      ),
+      SnackBar(content: Text(message!), duration: const Duration(seconds: 4)),
     );
   }
 
-  static void sendCallCancel(
-      {required String id,
-      required String callType,
-      required String callId,
-      required String roomName}) {
+  static void sendCallCancel({
+    required String id,
+    required String callType,
+    required String callId,
+    required String roomName,
+  }) {
     final status = "actionCallEnd"; //"actionCallDecline";
     appCallBloc.add(UpdateCallStatusEvent(
-        callType: callType,
-        id: callId,
-        status: status,
-        message: StatusHelper.getMessageCall(status: status)));
+      callType: callType,
+      id: callId,
+      status: status,
+      message: StatusHelper.getMessageCall(status: status),
+    ));
   }
 }

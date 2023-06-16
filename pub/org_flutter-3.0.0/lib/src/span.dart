@@ -41,18 +41,18 @@ class OrgSpanBuilder {
               ? element.content
               : '${element.leadingDecoration}${element.content}${element.trailingDecoration}',
         ),
-        style: OrgTheme.dataOf(context).fontStyleForOrgStyle(
-          style,
-          element.style,
-        ),
+        style:
+            OrgTheme.dataOf(context).fontStyleForOrgStyle(style, element.style),
       );
     } else if (element is OrgEntity) {
       var text = OrgController.of(context).prettifyEntity(element.name);
       text ??= '${element.leading}${element.name}${element.trailing}';
       return highlightedSpan(transformer(element, text), style: style);
     } else if (element is OrgMacroReference) {
-      return highlightedSpan(transformer(element, element.content),
-          style: style.copyWith(color: OrgTheme.dataOf(context).macroColor));
+      return highlightedSpan(
+        transformer(element, element.content),
+        style: style.copyWith(color: OrgTheme.dataOf(context).macroColor),
+      );
     } else if (element is OrgKeyword) {
       return highlightedSpan(
         transformer(element, element.content),
@@ -99,35 +99,36 @@ class OrgSpanBuilder {
       }
 
       // TODO(aaron): Make footnote references clickable
-      return TextSpan(children: [
-        highlight(element.leading),
-        if (element.name != null) highlight(element.name!),
-        if (element.definitionDelimiter != null)
-          highlight(element.definitionDelimiter!),
-        if (element.definition != null)
-          build(
-            element.definition!,
-            style: footnoteStyle,
-            transformer: transformer,
-          ),
-        highlight(element.trailing),
-      ]);
-    } else if (element is OrgFootnote) {
       return TextSpan(
         children: [
-          element.marker,
-          element.content,
-        ]
-            .map((child) => build(
-                  child,
-                  style: style,
-                  transformer: transformer == identityTransformer
-                      ? (elem, text) => reflowText(
-                            text,
-                            end: element.content.children.last == elem,
-                          )
-                      : transformer,
-                ))
+          highlight(element.leading),
+          if (element.name != null) highlight(element.name!),
+          if (element.definitionDelimiter != null)
+            highlight(element.definitionDelimiter!),
+          if (element.definition != null)
+            build(
+              element.definition!,
+              style: footnoteStyle,
+              transformer: transformer,
+            ),
+          highlight(element.trailing),
+        ],
+      );
+    } else if (element is OrgFootnote) {
+      return TextSpan(
+        children: [element.marker, element.content]
+            .map(
+              (child) => build(
+                child,
+                style: style,
+                transformer: transformer == identityTransformer
+                    ? (elem, text) => reflowText(
+                        text,
+                        end: element.content.children.last == elem,
+                      )
+                    : transformer,
+              ),
+            )
             .toList(growable: false),
       );
     } else if (element is OrgMeta) {
@@ -157,13 +158,12 @@ class OrgSpanBuilder {
       );
     } else if (element is OrgContent) {
       return TextSpan(
-          children: element.children
-              .map((child) => build(
-                    child,
-                    transformer: transformer,
-                    style: style,
-                  ))
-              .toList(growable: false));
+        children: element.children
+            .map(
+              (child) => build(child, transformer: transformer, style: style),
+            )
+            .toList(growable: false),
+      );
     } else {
       throw Exception('Unknown OrgNode type: $element');
     }
@@ -185,15 +185,11 @@ class OrgSpanBuilder {
       style ??= DefaultTextStyle.of(context).style;
       return TextSpan(
         style: style,
-        children: tokenizeTextSpan(
-          text,
-          highlight,
-          style.copyWith(
-            backgroundColor: OrgTheme.dataOf(context).highlightColor,
-          ),
-          charWrap ? characterWrappable : (x) => x,
-          recognizer,
-        ).toList(growable: false),
+        children: tokenizeTextSpan(text, highlight, style.copyWith(
+          backgroundColor: OrgTheme.dataOf(context).highlightColor,
+        ), charWrap ? characterWrappable : (x) => x, recognizer).toList(
+          growable: false,
+        ),
       );
     }
   }
@@ -283,14 +279,11 @@ class _FancySpanBuilderState extends State<FancySpanBuilder>
   @override
   Widget build(BuildContext context) {
     final controller = OrgController.of(context);
-    return widget.builder(
+    return widget.builder(context, OrgSpanBuilder(
       context,
-      OrgSpanBuilder(
-        context,
-        recognizerHandler: registerRecognizer,
-        highlight: controller.searchQuery,
-        hideMarkup: controller.hideMarkup,
-      ),
-    );
+      recognizerHandler: registerRecognizer,
+      highlight: controller.searchQuery,
+      hideMarkup: controller.hideMarkup,
+    ));
   }
 }

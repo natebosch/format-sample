@@ -8,22 +8,23 @@ import 'package:invoiceninja_flutter/data/models/models.dart';
 import 'package:invoiceninja_flutter/redux/app/app_state.dart';
 import 'package:invoiceninja_flutter/redux/ui/list_ui_state.dart';
 
-var memoizedFilteredRecurringInvoiceList = memo6((
-  SelectionState selectionState,
-  BuiltMap<String, InvoiceEntity> recurringInvoiceMap,
-  BuiltMap<String, ClientEntity> clientMap,
-  BuiltList<String> recurringInvoiceList,
-  ListUIState recurringInvoiceListState,
-  BuiltMap<String, UserEntity> userMap,
-) =>
-    filteredRecurringInvoicesSelector(
-      selectionState,
-      recurringInvoiceMap,
-      clientMap,
-      recurringInvoiceList,
-      recurringInvoiceListState,
-      userMap,
-    ));
+var memoizedFilteredRecurringInvoiceList = memo6(
+  (
+    SelectionState selectionState,
+    BuiltMap<String, InvoiceEntity> recurringInvoiceMap,
+    BuiltMap<String, ClientEntity> clientMap,
+    BuiltList<String> recurringInvoiceList,
+    ListUIState recurringInvoiceListState,
+    BuiltMap<String, UserEntity> userMap,
+  ) => filteredRecurringInvoicesSelector(
+    selectionState,
+    recurringInvoiceMap,
+    clientMap,
+    recurringInvoiceList,
+    recurringInvoiceListState,
+    userMap,
+  ),
+);
 
 List<String> filteredRecurringInvoicesSelector(
   SelectionState selectionState,
@@ -109,11 +110,16 @@ List<String> filteredRecurringInvoicesSelector(
 }
 
 var memoizedRecurringInvoiceStatsForClient = memo2(
-    (String clientId, BuiltMap<String, InvoiceEntity> invoiceMap) =>
-        recurringInvoiceStatsForClient(clientId, invoiceMap));
+  (
+    String clientId,
+    BuiltMap<String, InvoiceEntity> invoiceMap,
+  ) => recurringInvoiceStatsForClient(clientId, invoiceMap),
+);
 
 EntityStats recurringInvoiceStatsForClient(
-    String clientId, BuiltMap<String, InvoiceEntity> invoiceMap) {
+  String clientId,
+  BuiltMap<String, InvoiceEntity> invoiceMap,
+) {
   int countActive = 0;
   int countArchived = 0;
   invoiceMap.forEach((invoiceId, invoice) {
@@ -130,11 +136,16 @@ EntityStats recurringInvoiceStatsForClient(
 }
 
 var memoizedRecurringInvoiceStatsForUser = memo2(
-    (String userId, BuiltMap<String, InvoiceEntity> invoiceMap) =>
-        recurringInvoiceStatsForUser(userId, invoiceMap));
+  (
+    String userId,
+    BuiltMap<String, InvoiceEntity> invoiceMap,
+  ) => recurringInvoiceStatsForUser(userId, invoiceMap),
+);
 
 EntityStats recurringInvoiceStatsForUser(
-    String userId, BuiltMap<String, InvoiceEntity> invoiceMap) {
+  String userId,
+  BuiltMap<String, InvoiceEntity> invoiceMap,
+) {
   int countActive = 0;
   int countArchived = 0;
   invoiceMap.forEach((invoiceId, invoice) {
@@ -151,11 +162,16 @@ EntityStats recurringInvoiceStatsForUser(
 }
 
 var memoizedRecurringInvoiceStatsForInvoice = memo2(
-    (String invoiceId, BuiltMap<String, InvoiceEntity> invoiceMap) =>
-        recurringInvoiceStatsForInvoice(invoiceId, invoiceMap));
+  (
+    String invoiceId,
+    BuiltMap<String, InvoiceEntity> invoiceMap,
+  ) => recurringInvoiceStatsForInvoice(invoiceId, invoiceMap),
+);
 
 EntityStats recurringInvoiceStatsForInvoice(
-    String recurrinInvoiceId, BuiltMap<String, InvoiceEntity> invoiceMap) {
+  String recurrinInvoiceId,
+  BuiltMap<String, InvoiceEntity> invoiceMap,
+) {
   int countActive = 0;
   int countArchived = 0;
   invoiceMap.forEach((invoiceId, invoice) {
@@ -172,11 +188,16 @@ EntityStats recurringInvoiceStatsForInvoice(
 }
 
 var memoizedRecurringInvoiceStatsForDesign = memo2(
-    (String designId, BuiltMap<String, InvoiceEntity> recurringInvoiceMap) =>
-        recurringInvoiceStatsForDesign(designId, recurringInvoiceMap));
+  (
+    String designId,
+    BuiltMap<String, InvoiceEntity> recurringInvoiceMap,
+  ) => recurringInvoiceStatsForDesign(designId, recurringInvoiceMap),
+);
 
 EntityStats recurringInvoiceStatsForDesign(
-    String designId, BuiltMap<String, InvoiceEntity> recurringInvoiceMap) {
+  String designId,
+  BuiltMap<String, InvoiceEntity> recurringInvoiceMap,
+) {
   int countActive = 0;
   int countArchived = 0;
   recurringInvoiceMap.forEach((invoiceId, invoice) {
@@ -193,11 +214,16 @@ EntityStats recurringInvoiceStatsForDesign(
 }
 
 var memoizedRecurringInvoiceStatsForSubscription = memo2(
-    (String subscriptionId, BuiltMap<String, InvoiceEntity> invoiceMap) =>
-        recurringInvoiceStatsForSubscription(subscriptionId, invoiceMap));
+  (
+    String subscriptionId,
+    BuiltMap<String, InvoiceEntity> invoiceMap,
+  ) => recurringInvoiceStatsForSubscription(subscriptionId, invoiceMap),
+);
 
 EntityStats recurringInvoiceStatsForSubscription(
-    String subscriptionId, BuiltMap<String, InvoiceEntity> invoiceMap) {
+  String subscriptionId,
+  BuiltMap<String, InvoiceEntity> invoiceMap,
+) {
   int countActive = 0;
   int countArchived = 0;
   invoiceMap.forEach((invoiceId, invoice) {
@@ -213,8 +239,9 @@ EntityStats recurringInvoiceStatsForSubscription(
   return EntityStats(countActive: countActive, countArchived: countArchived);
 }
 
-bool hasRecurringInvoiceChanges(InvoiceEntity recurringInvoice,
-        BuiltMap<String, InvoiceEntity> recurringInvoiceMap) =>
-    recurringInvoice.isNew
-        ? recurringInvoice.isChanged
-        : recurringInvoice != recurringInvoiceMap[recurringInvoice.id];
+bool hasRecurringInvoiceChanges(
+  InvoiceEntity recurringInvoice,
+  BuiltMap<String, InvoiceEntity> recurringInvoiceMap,
+) => recurringInvoice.isNew
+    ? recurringInvoice.isChanged
+    : recurringInvoice != recurringInvoiceMap[recurringInvoice.id];

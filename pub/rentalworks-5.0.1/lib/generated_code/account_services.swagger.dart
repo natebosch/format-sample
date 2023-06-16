@@ -43,14 +43,16 @@ abstract class AccountServices extends ChopperService {
   ///
   ///@param applicationId
   Future<
-          chopper.Response<
-              WebApiModulesAccountServicesAccountAccountControllerGetSessionResponse>>
-      accountSessionGet({String? applicationId}) {
+    chopper.Response<
+      WebApiModulesAccountServicesAccountAccountControllerGetSessionResponse
+    >
+  > accountSessionGet({String? applicationId}) {
     generatedMapping.putIfAbsent(
-        WebApiModulesAccountServicesAccountAccountControllerGetSessionResponse,
-        () =>
-            WebApiModulesAccountServicesAccountAccountControllerGetSessionResponse
-                .fromJsonFactory);
+      WebApiModulesAccountServicesAccountAccountControllerGetSessionResponse,
+      () =>
+          WebApiModulesAccountServicesAccountAccountControllerGetSessionResponse
+              .fromJsonFactory,
+    );
 
     return _accountSessionGet(applicationId: applicationId);
   }
@@ -59,32 +61,36 @@ abstract class AccountServices extends ChopperService {
   ///@param applicationId
   @Get(path: '/account/session')
   Future<
-          chopper.Response<
-              WebApiModulesAccountServicesAccountAccountControllerGetSessionResponse>>
-      _accountSessionGet({@Query('applicationId') String? applicationId});
+    chopper.Response<
+      WebApiModulesAccountServicesAccountAccountControllerGetSessionResponse
+    >
+  > _accountSessionGet({@Query('applicationId') String? applicationId});
 
   ///
   ///@param locationid
   ///@param warehouseid
   ///@param departmentid
   Future<
-          chopper.Response<
-              WebApiModulesAccountServicesAccountAccountControllerGetOfficeLocationResponse>>
-      accountOfficelocationGet({
+    chopper.Response<
+      WebApiModulesAccountServicesAccountAccountControllerGetOfficeLocationResponse
+    >
+  > accountOfficelocationGet({
     String? locationid,
     String? warehouseid,
     String? departmentid,
   }) {
     generatedMapping.putIfAbsent(
-        WebApiModulesAccountServicesAccountAccountControllerGetOfficeLocationResponse,
-        () =>
-            WebApiModulesAccountServicesAccountAccountControllerGetOfficeLocationResponse
-                .fromJsonFactory);
+      WebApiModulesAccountServicesAccountAccountControllerGetOfficeLocationResponse,
+      () =>
+          WebApiModulesAccountServicesAccountAccountControllerGetOfficeLocationResponse
+              .fromJsonFactory,
+    );
 
     return _accountOfficelocationGet(
-        locationid: locationid,
-        warehouseid: warehouseid,
-        departmentid: departmentid);
+      locationid: locationid,
+      warehouseid: warehouseid,
+      departmentid: departmentid,
+    );
   }
 
   ///
@@ -93,9 +99,10 @@ abstract class AccountServices extends ChopperService {
   ///@param departmentid
   @Get(path: '/account/officelocation')
   Future<
-          chopper.Response<
-              WebApiModulesAccountServicesAccountAccountControllerGetOfficeLocationResponse>>
-      _accountOfficelocationGet({
+    chopper.Response<
+      WebApiModulesAccountServicesAccountAccountControllerGetOfficeLocationResponse
+    >
+  > _accountOfficelocationGet({
     @Query('locationid') String? locationid,
     @Query('warehouseid') String? warehouseid,
     @Query('departmentid') String? departmentid,
@@ -103,138 +110,125 @@ abstract class AccountServices extends ChopperService {
 
   ///
   Future<
-          chopper.Response<
-              WebApiModulesAccountServicesAccountResetPasswordResponse>>
-      accountResetpasswordPost(
-          {required WebApiModulesAccountServicesAccountResetPasswordRequest?
-              body}) {
+    chopper.Response<WebApiModulesAccountServicesAccountResetPasswordResponse>
+  > accountResetpasswordPost({
+    required WebApiModulesAccountServicesAccountResetPasswordRequest? body,
+  }) {
     generatedMapping.putIfAbsent(
-        WebApiModulesAccountServicesAccountResetPasswordResponse,
-        () => WebApiModulesAccountServicesAccountResetPasswordResponse
-            .fromJsonFactory);
+      WebApiModulesAccountServicesAccountResetPasswordResponse,
+      () => WebApiModulesAccountServicesAccountResetPasswordResponse
+          .fromJsonFactory,
+    );
 
     return _accountResetpasswordPost(body: body);
   }
 
   ///
-  @Post(
-    path: '/account/resetpassword',
-    optionalBody: true,
-  )
+  @Post(path: '/account/resetpassword', optionalBody: true)
   Future<
-          chopper.Response<
-              WebApiModulesAccountServicesAccountResetPasswordResponse>>
-      _accountResetpasswordPost(
-          {@Body()
-              required WebApiModulesAccountServicesAccountResetPasswordRequest?
-                  body});
+    chopper.Response<WebApiModulesAccountServicesAccountResetPasswordResponse>
+  > _accountResetpasswordPost({
+    @Body()
+    required WebApiModulesAccountServicesAccountResetPasswordRequest? body,
+  });
 
   ///
   Future<chopper.Response<WebApiLogicAppFuncGetSettingsResponse>>
-      accountGetsettingsPost(
-          {required WebApiModulesAccountServicesAccountGetSettingsRequest?
-              body}) {
-    generatedMapping.putIfAbsent(WebApiLogicAppFuncGetSettingsResponse,
-        () => WebApiLogicAppFuncGetSettingsResponse.fromJsonFactory);
+  accountGetsettingsPost({
+    required WebApiModulesAccountServicesAccountGetSettingsRequest? body,
+  }) {
+    generatedMapping.putIfAbsent(
+      WebApiLogicAppFuncGetSettingsResponse,
+      () => WebApiLogicAppFuncGetSettingsResponse.fromJsonFactory,
+    );
 
     return _accountGetsettingsPost(body: body);
   }
 
   ///
-  @Post(
-    path: '/account/getsettings',
-    optionalBody: true,
-  )
+  @Post(path: '/account/getsettings', optionalBody: true)
   Future<chopper.Response<WebApiLogicAppFuncGetSettingsResponse>>
-      _accountGetsettingsPost(
-          {@Body()
-              required WebApiModulesAccountServicesAccountGetSettingsRequest?
-                  body});
+  _accountGetsettingsPost({
+    @Body()
+    required WebApiModulesAccountServicesAccountGetSettingsRequest? body,
+  });
 
   ///
   Future<chopper.Response<FwCoreControllersFwJwtControllerJwtResponseModel>>
-      jwtPost({required FwStandardModelsFwApplicationUser? body}) {
+  jwtPost({required FwStandardModelsFwApplicationUser? body}) {
     generatedMapping.putIfAbsent(
-        FwCoreControllersFwJwtControllerJwtResponseModel,
-        () => FwCoreControllersFwJwtControllerJwtResponseModel.fromJsonFactory);
+      FwCoreControllersFwJwtControllerJwtResponseModel,
+      () => FwCoreControllersFwJwtControllerJwtResponseModel.fromJsonFactory,
+    );
 
     return _jwtPost(body: body);
   }
 
   ///
-  @Post(
-    path: '/jwt',
-    optionalBody: true,
-  )
+  @Post(path: '/jwt', optionalBody: true)
   Future<chopper.Response<FwCoreControllersFwJwtControllerJwtResponseModel>>
-      _jwtPost({@Body() required FwStandardModelsFwApplicationUser? body});
+  _jwtPost({@Body() required FwStandardModelsFwApplicationUser? body});
 
   ///
   Future<chopper.Response<FwCoreControllersFwJwtControllerJwtResponseModel>>
-      jwtOktaPost({required WebApiModulesAccountServicesJwtOktaRequest? body}) {
+  jwtOktaPost({required WebApiModulesAccountServicesJwtOktaRequest? body}) {
     generatedMapping.putIfAbsent(
-        FwCoreControllersFwJwtControllerJwtResponseModel,
-        () => FwCoreControllersFwJwtControllerJwtResponseModel.fromJsonFactory);
+      FwCoreControllersFwJwtControllerJwtResponseModel,
+      () => FwCoreControllersFwJwtControllerJwtResponseModel.fromJsonFactory,
+    );
 
     return _jwtOktaPost(body: body);
   }
 
   ///
-  @Post(
-    path: '/jwt/okta',
-    optionalBody: true,
-  )
+  @Post(path: '/jwt/okta', optionalBody: true)
   Future<chopper.Response<FwCoreControllersFwJwtControllerJwtResponseModel>>
-      _jwtOktaPost(
-          {@Body() required WebApiModulesAccountServicesJwtOktaRequest? body});
+  _jwtOktaPost({
+    @Body() required WebApiModulesAccountServicesJwtOktaRequest? body,
+  });
 
   ///
   Future<
-          chopper.Response<
-              WebApiModulesAccountServicesJwtOktaSessionResponseModel>>
-      jwtOktaverifyPost(
-          {required WebApiModulesAccountServicesJwtOktaSessionRequest? body}) {
+    chopper.Response<WebApiModulesAccountServicesJwtOktaSessionResponseModel>
+  > jwtOktaverifyPost({
+    required WebApiModulesAccountServicesJwtOktaSessionRequest? body,
+  }) {
     generatedMapping.putIfAbsent(
-        WebApiModulesAccountServicesJwtOktaSessionResponseModel,
-        () => WebApiModulesAccountServicesJwtOktaSessionResponseModel
-            .fromJsonFactory);
+      WebApiModulesAccountServicesJwtOktaSessionResponseModel,
+      () => WebApiModulesAccountServicesJwtOktaSessionResponseModel
+          .fromJsonFactory,
+    );
 
     return _jwtOktaverifyPost(body: body);
   }
 
   ///
-  @Post(
-    path: '/jwt/oktaverify',
-    optionalBody: true,
-  )
+  @Post(path: '/jwt/oktaverify', optionalBody: true)
   Future<
-          chopper.Response<
-              WebApiModulesAccountServicesJwtOktaSessionResponseModel>>
-      _jwtOktaverifyPost(
-          {@Body()
-              required WebApiModulesAccountServicesJwtOktaSessionRequest?
-                  body});
+    chopper.Response<WebApiModulesAccountServicesJwtOktaSessionResponseModel>
+  > _jwtOktaverifyPost({
+    @Body() required WebApiModulesAccountServicesJwtOktaSessionRequest? body,
+  });
 
   ///
   Future<chopper.Response<FwCoreControllersFwJwtControllerJwtResponseModel>>
-      jwtAzureadPost(
-          {required WebApiModulesAccountServicesJwtAzureADRequest? body}) {
+  jwtAzureadPost({
+    required WebApiModulesAccountServicesJwtAzureADRequest? body,
+  }) {
     generatedMapping.putIfAbsent(
-        FwCoreControllersFwJwtControllerJwtResponseModel,
-        () => FwCoreControllersFwJwtControllerJwtResponseModel.fromJsonFactory);
+      FwCoreControllersFwJwtControllerJwtResponseModel,
+      () => FwCoreControllersFwJwtControllerJwtResponseModel.fromJsonFactory,
+    );
 
     return _jwtAzureadPost(body: body);
   }
 
   ///
-  @Post(
-    path: '/jwt/azuread',
-    optionalBody: true,
-  )
+  @Post(path: '/jwt/azuread', optionalBody: true)
   Future<chopper.Response<FwCoreControllersFwJwtControllerJwtResponseModel>>
-      _jwtAzureadPost(
-          {@Body()
-              required WebApiModulesAccountServicesJwtAzureADRequest? body});
+  _jwtAzureadPost({
+    @Body() required WebApiModulesAccountServicesJwtAzureADRequest? body,
+  });
 }
 
 @JsonSerializable(explicitToJson: true)
@@ -242,12 +236,12 @@ class FwCoreApiSwashbuckleBadRequestResponse {
   FwCoreApiSwashbuckleBadRequestResponse();
 
   factory FwCoreApiSwashbuckleBadRequestResponse.fromJson(
-          Map<String, dynamic> json) =>
-      _$FwCoreApiSwashbuckleBadRequestResponseFromJson(json);
+    Map<String, dynamic> json,
+  ) => _$FwCoreApiSwashbuckleBadRequestResponseFromJson(json);
 
   static const toJsonFactory = _$FwCoreApiSwashbuckleBadRequestResponseToJson;
-  Map<String, dynamic> toJson() =>
-      _$FwCoreApiSwashbuckleBadRequestResponseToJson(this);
+  Map<String, dynamic>
+  toJson() => _$FwCoreApiSwashbuckleBadRequestResponseToJson(this);
 
   static const fromJsonFactory =
       _$FwCoreApiSwashbuckleBadRequestResponseFromJson;
@@ -270,13 +264,13 @@ class FwCoreControllersFwJwtControllerJwtResponseModel {
   });
 
   factory FwCoreControllersFwJwtControllerJwtResponseModel.fromJson(
-          Map<String, dynamic> json) =>
-      _$FwCoreControllersFwJwtControllerJwtResponseModelFromJson(json);
+    Map<String, dynamic> json,
+  ) => _$FwCoreControllersFwJwtControllerJwtResponseModelFromJson(json);
 
   static const toJsonFactory =
       _$FwCoreControllersFwJwtControllerJwtResponseModelToJson;
-  Map<String, dynamic> toJson() =>
-      _$FwCoreControllersFwJwtControllerJwtResponseModelToJson(this);
+  Map<String, dynamic>
+  toJson() => _$FwCoreControllersFwJwtControllerJwtResponseModelToJson(this);
 
   @JsonKey(name: 'statuscode', includeIfNull: false)
   final int? statuscode;
@@ -296,20 +290,30 @@ class FwCoreControllersFwJwtControllerJwtResponseModel {
     return identical(this, other) ||
         (other is FwCoreControllersFwJwtControllerJwtResponseModel &&
             (identical(other.statuscode, statuscode) ||
-                const DeepCollectionEquality()
-                    .equals(other.statuscode, statuscode)) &&
+                const DeepCollectionEquality().equals(
+                  other.statuscode,
+                  statuscode,
+                )) &&
             (identical(other.statusmessage, statusmessage) ||
-                const DeepCollectionEquality()
-                    .equals(other.statusmessage, statusmessage)) &&
+                const DeepCollectionEquality().equals(
+                  other.statusmessage,
+                  statusmessage,
+                )) &&
             (identical(other.accessToken, accessToken) ||
-                const DeepCollectionEquality()
-                    .equals(other.accessToken, accessToken)) &&
+                const DeepCollectionEquality().equals(
+                  other.accessToken,
+                  accessToken,
+                )) &&
             (identical(other.expiresIn, expiresIn) ||
-                const DeepCollectionEquality()
-                    .equals(other.expiresIn, expiresIn)) &&
+                const DeepCollectionEquality().equals(
+                  other.expiresIn,
+                  expiresIn,
+                )) &&
             (identical(other.resetpassword, resetpassword) ||
-                const DeepCollectionEquality()
-                    .equals(other.resetpassword, resetpassword)));
+                const DeepCollectionEquality().equals(
+                  other.resetpassword,
+                  resetpassword,
+                )));
   }
 
   @override
@@ -327,35 +331,40 @@ class FwCoreControllersFwJwtControllerJwtResponseModel {
 
 extension $FwCoreControllersFwJwtControllerJwtResponseModelExtension
     on FwCoreControllersFwJwtControllerJwtResponseModel {
-  FwCoreControllersFwJwtControllerJwtResponseModel copyWith(
-      {int? statuscode,
-      String? statusmessage,
-      String? accessToken,
-      int? expiresIn,
-      bool? resetpassword}) {
+  FwCoreControllersFwJwtControllerJwtResponseModel copyWith({
+    int? statuscode,
+    String? statusmessage,
+    String? accessToken,
+    int? expiresIn,
+    bool? resetpassword,
+  }) {
     return FwCoreControllersFwJwtControllerJwtResponseModel(
-        statuscode: statuscode ?? this.statuscode,
-        statusmessage: statusmessage ?? this.statusmessage,
-        accessToken: accessToken ?? this.accessToken,
-        expiresIn: expiresIn ?? this.expiresIn,
-        resetpassword: resetpassword ?? this.resetpassword);
+      statuscode: statuscode ?? this.statuscode,
+      statusmessage: statusmessage ?? this.statusmessage,
+      accessToken: accessToken ?? this.accessToken,
+      expiresIn: expiresIn ?? this.expiresIn,
+      resetpassword: resetpassword ?? this.resetpassword,
+    );
   }
 
-  FwCoreControllersFwJwtControllerJwtResponseModel copyWithWrapped(
-      {Wrapped<int?>? statuscode,
-      Wrapped<String?>? statusmessage,
-      Wrapped<String?>? accessToken,
-      Wrapped<int?>? expiresIn,
-      Wrapped<bool?>? resetpassword}) {
+  FwCoreControllersFwJwtControllerJwtResponseModel copyWithWrapped({
+    Wrapped<int?>? statuscode,
+    Wrapped<String?>? statusmessage,
+    Wrapped<String?>? accessToken,
+    Wrapped<int?>? expiresIn,
+    Wrapped<bool?>? resetpassword,
+  }) {
     return FwCoreControllersFwJwtControllerJwtResponseModel(
-        statuscode: (statuscode != null ? statuscode.value : this.statuscode),
-        statusmessage:
-            (statusmessage != null ? statusmessage.value : this.statusmessage),
-        accessToken:
-            (accessToken != null ? accessToken.value : this.accessToken),
-        expiresIn: (expiresIn != null ? expiresIn.value : this.expiresIn),
-        resetpassword:
-            (resetpassword != null ? resetpassword.value : this.resetpassword));
+      statuscode: (statuscode != null ? statuscode.value : this.statuscode),
+      statusmessage: (statusmessage != null
+          ? statusmessage.value
+          : this.statusmessage),
+      accessToken: (accessToken != null ? accessToken.value : this.accessToken),
+      expiresIn: (expiresIn != null ? expiresIn.value : this.expiresIn),
+      resetpassword: (resetpassword != null
+          ? resetpassword.value
+          : this.resetpassword),
+    );
   }
 }
 
@@ -370,12 +379,12 @@ class FwStandardAppManagerFwAmSecurityTreeNode {
   });
 
   factory FwStandardAppManagerFwAmSecurityTreeNode.fromJson(
-          Map<String, dynamic> json) =>
-      _$FwStandardAppManagerFwAmSecurityTreeNodeFromJson(json);
+    Map<String, dynamic> json,
+  ) => _$FwStandardAppManagerFwAmSecurityTreeNodeFromJson(json);
 
   static const toJsonFactory = _$FwStandardAppManagerFwAmSecurityTreeNodeToJson;
-  Map<String, dynamic> toJson() =>
-      _$FwStandardAppManagerFwAmSecurityTreeNodeToJson(this);
+  Map<String, dynamic>
+  toJson() => _$FwStandardAppManagerFwAmSecurityTreeNodeToJson(this);
 
   @JsonKey(name: 'id', includeIfNull: false)
   final String? id;
@@ -386,9 +395,10 @@ class FwStandardAppManagerFwAmSecurityTreeNode {
   @JsonKey(name: 'properties', includeIfNull: false)
   final Map<String, dynamic>? properties;
   @JsonKey(
-      name: 'children',
-      includeIfNull: false,
-      defaultValue: <FwStandardAppManagerFwAmSecurityTreeNode>[])
+    name: 'children',
+    includeIfNull: false,
+    defaultValue: <FwStandardAppManagerFwAmSecurityTreeNode>[],
+  )
   final List<FwStandardAppManagerFwAmSecurityTreeNode>? children;
   static const fromJsonFactory =
       _$FwStandardAppManagerFwAmSecurityTreeNodeFromJson;
@@ -400,17 +410,25 @@ class FwStandardAppManagerFwAmSecurityTreeNode {
             (identical(other.id, id) ||
                 const DeepCollectionEquality().equals(other.id, id)) &&
             (identical(other.caption, caption) ||
-                const DeepCollectionEquality()
-                    .equals(other.caption, caption)) &&
+                const DeepCollectionEquality().equals(
+                  other.caption,
+                  caption,
+                )) &&
             (identical(other.nodetype, nodetype) ||
-                const DeepCollectionEquality()
-                    .equals(other.nodetype, nodetype)) &&
+                const DeepCollectionEquality().equals(
+                  other.nodetype,
+                  nodetype,
+                )) &&
             (identical(other.properties, properties) ||
-                const DeepCollectionEquality()
-                    .equals(other.properties, properties)) &&
+                const DeepCollectionEquality().equals(
+                  other.properties,
+                  properties,
+                )) &&
             (identical(other.children, children) ||
-                const DeepCollectionEquality()
-                    .equals(other.children, children)));
+                const DeepCollectionEquality().equals(
+                  other.children,
+                  children,
+                )));
   }
 
   @override
@@ -428,32 +446,36 @@ class FwStandardAppManagerFwAmSecurityTreeNode {
 
 extension $FwStandardAppManagerFwAmSecurityTreeNodeExtension
     on FwStandardAppManagerFwAmSecurityTreeNode {
-  FwStandardAppManagerFwAmSecurityTreeNode copyWith(
-      {String? id,
-      String? caption,
-      String? nodetype,
-      Map<String, dynamic>? properties,
-      List<FwStandardAppManagerFwAmSecurityTreeNode>? children}) {
+  FwStandardAppManagerFwAmSecurityTreeNode copyWith({
+    String? id,
+    String? caption,
+    String? nodetype,
+    Map<String, dynamic>? properties,
+    List<FwStandardAppManagerFwAmSecurityTreeNode>? children,
+  }) {
     return FwStandardAppManagerFwAmSecurityTreeNode(
-        id: id ?? this.id,
-        caption: caption ?? this.caption,
-        nodetype: nodetype ?? this.nodetype,
-        properties: properties ?? this.properties,
-        children: children ?? this.children);
+      id: id ?? this.id,
+      caption: caption ?? this.caption,
+      nodetype: nodetype ?? this.nodetype,
+      properties: properties ?? this.properties,
+      children: children ?? this.children,
+    );
   }
 
-  FwStandardAppManagerFwAmSecurityTreeNode copyWithWrapped(
-      {Wrapped<String?>? id,
-      Wrapped<String?>? caption,
-      Wrapped<String?>? nodetype,
-      Wrapped<Map<String, dynamic>?>? properties,
-      Wrapped<List<FwStandardAppManagerFwAmSecurityTreeNode>?>? children}) {
+  FwStandardAppManagerFwAmSecurityTreeNode copyWithWrapped({
+    Wrapped<String?>? id,
+    Wrapped<String?>? caption,
+    Wrapped<String?>? nodetype,
+    Wrapped<Map<String, dynamic>?>? properties,
+    Wrapped<List<FwStandardAppManagerFwAmSecurityTreeNode>?>? children,
+  }) {
     return FwStandardAppManagerFwAmSecurityTreeNode(
-        id: (id != null ? id.value : this.id),
-        caption: (caption != null ? caption.value : this.caption),
-        nodetype: (nodetype != null ? nodetype.value : this.nodetype),
-        properties: (properties != null ? properties.value : this.properties),
-        children: (children != null ? children.value : this.children));
+      id: (id != null ? id.value : this.id),
+      caption: (caption != null ? caption.value : this.caption),
+      nodetype: (nodetype != null ? nodetype.value : this.nodetype),
+      properties: (properties != null ? properties.value : this.properties),
+      children: (children != null ? children.value : this.children),
+    );
   }
 }
 
@@ -467,12 +489,14 @@ class FwStandardDataFwTranslatedValue {
     this.userIsTranslating,
   });
 
-  factory FwStandardDataFwTranslatedValue.fromJson(Map<String, dynamic> json) =>
-      _$FwStandardDataFwTranslatedValueFromJson(json);
+  factory FwStandardDataFwTranslatedValue.fromJson(
+    Map<String, dynamic> json,
+  ) => _$FwStandardDataFwTranslatedValueFromJson(json);
 
   static const toJsonFactory = _$FwStandardDataFwTranslatedValueToJson;
-  Map<String, dynamic> toJson() =>
-      _$FwStandardDataFwTranslatedValueToJson(this);
+  Map<String, dynamic> toJson() => _$FwStandardDataFwTranslatedValueToJson(
+    this,
+  );
 
   @JsonKey(name: 'FieldName', includeIfNull: false)
   final String? fieldName;
@@ -491,20 +515,30 @@ class FwStandardDataFwTranslatedValue {
     return identical(this, other) ||
         (other is FwStandardDataFwTranslatedValue &&
             (identical(other.fieldName, fieldName) ||
-                const DeepCollectionEquality()
-                    .equals(other.fieldName, fieldName)) &&
+                const DeepCollectionEquality().equals(
+                  other.fieldName,
+                  fieldName,
+                )) &&
             (identical(other.translatedValue, translatedValue) ||
-                const DeepCollectionEquality()
-                    .equals(other.translatedValue, translatedValue)) &&
+                const DeepCollectionEquality().equals(
+                  other.translatedValue,
+                  translatedValue,
+                )) &&
             (identical(other.untranslatedValue, untranslatedValue) ||
-                const DeepCollectionEquality()
-                    .equals(other.untranslatedValue, untranslatedValue)) &&
+                const DeepCollectionEquality().equals(
+                  other.untranslatedValue,
+                  untranslatedValue,
+                )) &&
             (identical(other.isTranslated, isTranslated) ||
-                const DeepCollectionEquality()
-                    .equals(other.isTranslated, isTranslated)) &&
+                const DeepCollectionEquality().equals(
+                  other.isTranslated,
+                  isTranslated,
+                )) &&
             (identical(other.userIsTranslating, userIsTranslating) ||
-                const DeepCollectionEquality()
-                    .equals(other.userIsTranslating, userIsTranslating)));
+                const DeepCollectionEquality().equals(
+                  other.userIsTranslating,
+                  userIsTranslating,
+                )));
   }
 
   @override
@@ -522,39 +556,44 @@ class FwStandardDataFwTranslatedValue {
 
 extension $FwStandardDataFwTranslatedValueExtension
     on FwStandardDataFwTranslatedValue {
-  FwStandardDataFwTranslatedValue copyWith(
-      {String? fieldName,
-      String? translatedValue,
-      String? untranslatedValue,
-      bool? isTranslated,
-      bool? userIsTranslating}) {
+  FwStandardDataFwTranslatedValue copyWith({
+    String? fieldName,
+    String? translatedValue,
+    String? untranslatedValue,
+    bool? isTranslated,
+    bool? userIsTranslating,
+  }) {
     return FwStandardDataFwTranslatedValue(
-        fieldName: fieldName ?? this.fieldName,
-        translatedValue: translatedValue ?? this.translatedValue,
-        untranslatedValue: untranslatedValue ?? this.untranslatedValue,
-        isTranslated: isTranslated ?? this.isTranslated,
-        userIsTranslating: userIsTranslating ?? this.userIsTranslating);
+      fieldName: fieldName ?? this.fieldName,
+      translatedValue: translatedValue ?? this.translatedValue,
+      untranslatedValue: untranslatedValue ?? this.untranslatedValue,
+      isTranslated: isTranslated ?? this.isTranslated,
+      userIsTranslating: userIsTranslating ?? this.userIsTranslating,
+    );
   }
 
-  FwStandardDataFwTranslatedValue copyWithWrapped(
-      {Wrapped<String?>? fieldName,
-      Wrapped<String?>? translatedValue,
-      Wrapped<String?>? untranslatedValue,
-      Wrapped<bool?>? isTranslated,
-      Wrapped<bool?>? userIsTranslating}) {
+  FwStandardDataFwTranslatedValue copyWithWrapped({
+    Wrapped<String?>? fieldName,
+    Wrapped<String?>? translatedValue,
+    Wrapped<String?>? untranslatedValue,
+    Wrapped<bool?>? isTranslated,
+    Wrapped<bool?>? userIsTranslating,
+  }) {
     return FwStandardDataFwTranslatedValue(
-        fieldName: (fieldName != null ? fieldName.value : this.fieldName),
-        translatedValue: (translatedValue != null
-            ? translatedValue.value
-            : this.translatedValue),
-        untranslatedValue: (untranslatedValue != null
-            ? untranslatedValue.value
-            : this.untranslatedValue),
-        isTranslated:
-            (isTranslated != null ? isTranslated.value : this.isTranslated),
-        userIsTranslating: (userIsTranslating != null
-            ? userIsTranslating.value
-            : this.userIsTranslating));
+      fieldName: (fieldName != null ? fieldName.value : this.fieldName),
+      translatedValue: (translatedValue != null
+          ? translatedValue.value
+          : this.translatedValue),
+      untranslatedValue: (untranslatedValue != null
+          ? untranslatedValue.value
+          : this.untranslatedValue),
+      isTranslated: (isTranslated != null
+          ? isTranslated.value
+          : this.isTranslated),
+      userIsTranslating: (userIsTranslating != null
+          ? userIsTranslating.value
+          : this.userIsTranslating),
+    );
   }
 }
 
@@ -566,8 +605,9 @@ class FwStandardModelsFwApiException {
     this.stackTrace,
   });
 
-  factory FwStandardModelsFwApiException.fromJson(Map<String, dynamic> json) =>
-      _$FwStandardModelsFwApiExceptionFromJson(json);
+  factory FwStandardModelsFwApiException.fromJson(
+    Map<String, dynamic> json,
+  ) => _$FwStandardModelsFwApiExceptionFromJson(json);
 
   static const toJsonFactory = _$FwStandardModelsFwApiExceptionToJson;
   Map<String, dynamic> toJson() => _$FwStandardModelsFwApiExceptionToJson(this);
@@ -585,14 +625,20 @@ class FwStandardModelsFwApiException {
     return identical(this, other) ||
         (other is FwStandardModelsFwApiException &&
             (identical(other.statusCode, statusCode) ||
-                const DeepCollectionEquality()
-                    .equals(other.statusCode, statusCode)) &&
+                const DeepCollectionEquality().equals(
+                  other.statusCode,
+                  statusCode,
+                )) &&
             (identical(other.message, message) ||
-                const DeepCollectionEquality()
-                    .equals(other.message, message)) &&
+                const DeepCollectionEquality().equals(
+                  other.message,
+                  message,
+                )) &&
             (identical(other.stackTrace, stackTrace) ||
-                const DeepCollectionEquality()
-                    .equals(other.stackTrace, stackTrace)));
+                const DeepCollectionEquality().equals(
+                  other.stackTrace,
+                  stackTrace,
+                )));
   }
 
   @override
@@ -608,22 +654,28 @@ class FwStandardModelsFwApiException {
 
 extension $FwStandardModelsFwApiExceptionExtension
     on FwStandardModelsFwApiException {
-  FwStandardModelsFwApiException copyWith(
-      {int? statusCode, String? message, String? stackTrace}) {
+  FwStandardModelsFwApiException copyWith({
+    int? statusCode,
+    String? message,
+    String? stackTrace,
+  }) {
     return FwStandardModelsFwApiException(
-        statusCode: statusCode ?? this.statusCode,
-        message: message ?? this.message,
-        stackTrace: stackTrace ?? this.stackTrace);
+      statusCode: statusCode ?? this.statusCode,
+      message: message ?? this.message,
+      stackTrace: stackTrace ?? this.stackTrace,
+    );
   }
 
-  FwStandardModelsFwApiException copyWithWrapped(
-      {Wrapped<int?>? statusCode,
-      Wrapped<String?>? message,
-      Wrapped<String?>? stackTrace}) {
+  FwStandardModelsFwApiException copyWithWrapped({
+    Wrapped<int?>? statusCode,
+    Wrapped<String?>? message,
+    Wrapped<String?>? stackTrace,
+  }) {
     return FwStandardModelsFwApiException(
-        statusCode: (statusCode != null ? statusCode.value : this.statusCode),
-        message: (message != null ? message.value : this.message),
-        stackTrace: (stackTrace != null ? stackTrace.value : this.stackTrace));
+      statusCode: (statusCode != null ? statusCode.value : this.statusCode),
+      message: (message != null ? message.value : this.message),
+      stackTrace: (stackTrace != null ? stackTrace.value : this.stackTrace),
+    );
   }
 }
 
@@ -641,12 +693,13 @@ class FwStandardModelsFwApplicationUser {
   });
 
   factory FwStandardModelsFwApplicationUser.fromJson(
-          Map<String, dynamic> json) =>
-      _$FwStandardModelsFwApplicationUserFromJson(json);
+    Map<String, dynamic> json,
+  ) => _$FwStandardModelsFwApplicationUserFromJson(json);
 
   static const toJsonFactory = _$FwStandardModelsFwApplicationUserToJson;
-  Map<String, dynamic> toJson() =>
-      _$FwStandardModelsFwApplicationUserToJson(this);
+  Map<String, dynamic> toJson() => _$FwStandardModelsFwApplicationUserToJson(
+    this,
+  );
 
   @JsonKey(name: 'UserName', includeIfNull: false)
   final String userName;
@@ -671,28 +724,42 @@ class FwStandardModelsFwApplicationUser {
     return identical(this, other) ||
         (other is FwStandardModelsFwApplicationUser &&
             (identical(other.userName, userName) ||
-                const DeepCollectionEquality()
-                    .equals(other.userName, userName)) &&
+                const DeepCollectionEquality().equals(
+                  other.userName,
+                  userName,
+                )) &&
             (identical(other.password, password) ||
-                const DeepCollectionEquality()
-                    .equals(other.password, password)) &&
+                const DeepCollectionEquality().equals(
+                  other.password,
+                  password,
+                )) &&
             (identical(other.webApp, webApp) ||
                 const DeepCollectionEquality().equals(other.webApp, webApp)) &&
             (identical(other.browserApp, browserApp) ||
-                const DeepCollectionEquality()
-                    .equals(other.browserApp, browserApp)) &&
+                const DeepCollectionEquality().equals(
+                  other.browserApp,
+                  browserApp,
+                )) &&
             (identical(other.browserAppVersion, browserAppVersion) ||
-                const DeepCollectionEquality()
-                    .equals(other.browserAppVersion, browserAppVersion)) &&
+                const DeepCollectionEquality().equals(
+                  other.browserAppVersion,
+                  browserAppVersion,
+                )) &&
             (identical(other.browserDeviceId, browserDeviceId) ||
-                const DeepCollectionEquality()
-                    .equals(other.browserDeviceId, browserDeviceId)) &&
+                const DeepCollectionEquality().equals(
+                  other.browserDeviceId,
+                  browserDeviceId,
+                )) &&
             (identical(other.browserUserAgent, browserUserAgent) ||
-                const DeepCollectionEquality()
-                    .equals(other.browserUserAgent, browserUserAgent)) &&
+                const DeepCollectionEquality().equals(
+                  other.browserUserAgent,
+                  browserUserAgent,
+                )) &&
             (identical(other.browserUrl, browserUrl) ||
-                const DeepCollectionEquality()
-                    .equals(other.browserUrl, browserUrl)));
+                const DeepCollectionEquality().equals(
+                  other.browserUrl,
+                  browserUrl,
+                )));
   }
 
   @override
@@ -713,50 +780,54 @@ class FwStandardModelsFwApplicationUser {
 
 extension $FwStandardModelsFwApplicationUserExtension
     on FwStandardModelsFwApplicationUser {
-  FwStandardModelsFwApplicationUser copyWith(
-      {String? userName,
-      String? password,
-      String? webApp,
-      String? browserApp,
-      String? browserAppVersion,
-      String? browserDeviceId,
-      String? browserUserAgent,
-      String? browserUrl}) {
+  FwStandardModelsFwApplicationUser copyWith({
+    String? userName,
+    String? password,
+    String? webApp,
+    String? browserApp,
+    String? browserAppVersion,
+    String? browserDeviceId,
+    String? browserUserAgent,
+    String? browserUrl,
+  }) {
     return FwStandardModelsFwApplicationUser(
-        userName: userName ?? this.userName,
-        password: password ?? this.password,
-        webApp: webApp ?? this.webApp,
-        browserApp: browserApp ?? this.browserApp,
-        browserAppVersion: browserAppVersion ?? this.browserAppVersion,
-        browserDeviceId: browserDeviceId ?? this.browserDeviceId,
-        browserUserAgent: browserUserAgent ?? this.browserUserAgent,
-        browserUrl: browserUrl ?? this.browserUrl);
+      userName: userName ?? this.userName,
+      password: password ?? this.password,
+      webApp: webApp ?? this.webApp,
+      browserApp: browserApp ?? this.browserApp,
+      browserAppVersion: browserAppVersion ?? this.browserAppVersion,
+      browserDeviceId: browserDeviceId ?? this.browserDeviceId,
+      browserUserAgent: browserUserAgent ?? this.browserUserAgent,
+      browserUrl: browserUrl ?? this.browserUrl,
+    );
   }
 
-  FwStandardModelsFwApplicationUser copyWithWrapped(
-      {Wrapped<String>? userName,
-      Wrapped<String>? password,
-      Wrapped<String?>? webApp,
-      Wrapped<String?>? browserApp,
-      Wrapped<String?>? browserAppVersion,
-      Wrapped<String?>? browserDeviceId,
-      Wrapped<String?>? browserUserAgent,
-      Wrapped<String?>? browserUrl}) {
+  FwStandardModelsFwApplicationUser copyWithWrapped({
+    Wrapped<String>? userName,
+    Wrapped<String>? password,
+    Wrapped<String?>? webApp,
+    Wrapped<String?>? browserApp,
+    Wrapped<String?>? browserAppVersion,
+    Wrapped<String?>? browserDeviceId,
+    Wrapped<String?>? browserUserAgent,
+    Wrapped<String?>? browserUrl,
+  }) {
     return FwStandardModelsFwApplicationUser(
-        userName: (userName != null ? userName.value : this.userName),
-        password: (password != null ? password.value : this.password),
-        webApp: (webApp != null ? webApp.value : this.webApp),
-        browserApp: (browserApp != null ? browserApp.value : this.browserApp),
-        browserAppVersion: (browserAppVersion != null
-            ? browserAppVersion.value
-            : this.browserAppVersion),
-        browserDeviceId: (browserDeviceId != null
-            ? browserDeviceId.value
-            : this.browserDeviceId),
-        browserUserAgent: (browserUserAgent != null
-            ? browserUserAgent.value
-            : this.browserUserAgent),
-        browserUrl: (browserUrl != null ? browserUrl.value : this.browserUrl));
+      userName: (userName != null ? userName.value : this.userName),
+      password: (password != null ? password.value : this.password),
+      webApp: (webApp != null ? webApp.value : this.webApp),
+      browserApp: (browserApp != null ? browserApp.value : this.browserApp),
+      browserAppVersion: (browserAppVersion != null
+          ? browserAppVersion.value
+          : this.browserAppVersion),
+      browserDeviceId: (browserDeviceId != null
+          ? browserDeviceId.value
+          : this.browserDeviceId),
+      browserUserAgent: (browserUserAgent != null
+          ? browserUserAgent.value
+          : this.browserUserAgent),
+      browserUrl: (browserUrl != null ? browserUrl.value : this.browserUrl),
+    );
   }
 }
 
@@ -777,21 +848,23 @@ class FwStandardSqlServerFwJsonDataTable {
   });
 
   factory FwStandardSqlServerFwJsonDataTable.fromJson(
-          Map<String, dynamic> json) =>
-      _$FwStandardSqlServerFwJsonDataTableFromJson(json);
+    Map<String, dynamic> json,
+  ) => _$FwStandardSqlServerFwJsonDataTableFromJson(json);
 
   static const toJsonFactory = _$FwStandardSqlServerFwJsonDataTableToJson;
-  Map<String, dynamic> toJson() =>
-      _$FwStandardSqlServerFwJsonDataTableToJson(this);
+  Map<String, dynamic> toJson() => _$FwStandardSqlServerFwJsonDataTableToJson(
+    this,
+  );
 
   @JsonKey(name: 'ColumnIndex', includeIfNull: false)
   final Map<String, dynamic>? columnIndex;
   @JsonKey(name: 'Totals', includeIfNull: false)
   final Map<String, dynamic>? totals;
   @JsonKey(
-      name: 'Columns',
-      includeIfNull: false,
-      defaultValue: <FwStandardSqlServerFwJsonDataTableColumn>[])
+    name: 'Columns',
+    includeIfNull: false,
+    defaultValue: <FwStandardSqlServerFwJsonDataTableColumn>[],
+  )
   final List<FwStandardSqlServerFwJsonDataTableColumn>? columns;
   @JsonKey(name: 'Rows', includeIfNull: false, defaultValue: <List<Object?>>[])
   final List<List<Object?>>? rows;
@@ -808,9 +881,10 @@ class FwStandardSqlServerFwJsonDataTable {
   @JsonKey(name: 'ColumnNameByIndex', includeIfNull: false)
   final Map<String, dynamic>? columnNameByIndex;
   @JsonKey(
-      name: '_Translation',
-      includeIfNull: false,
-      defaultValue: <FwStandardDataFwTranslatedValue>[])
+    name: '_Translation',
+    includeIfNull: false,
+    defaultValue: <FwStandardDataFwTranslatedValue>[],
+  )
   final List<FwStandardDataFwTranslatedValue>? translation;
   static const fromJsonFactory = _$FwStandardSqlServerFwJsonDataTableFromJson;
 
@@ -819,35 +893,51 @@ class FwStandardSqlServerFwJsonDataTable {
     return identical(this, other) ||
         (other is FwStandardSqlServerFwJsonDataTable &&
             (identical(other.columnIndex, columnIndex) ||
-                const DeepCollectionEquality()
-                    .equals(other.columnIndex, columnIndex)) &&
+                const DeepCollectionEquality().equals(
+                  other.columnIndex,
+                  columnIndex,
+                )) &&
             (identical(other.totals, totals) ||
                 const DeepCollectionEquality().equals(other.totals, totals)) &&
             (identical(other.columns, columns) ||
-                const DeepCollectionEquality()
-                    .equals(other.columns, columns)) &&
+                const DeepCollectionEquality().equals(
+                  other.columns,
+                  columns,
+                )) &&
             (identical(other.rows, rows) ||
                 const DeepCollectionEquality().equals(other.rows, rows)) &&
             (identical(other.pageNo, pageNo) ||
                 const DeepCollectionEquality().equals(other.pageNo, pageNo)) &&
             (identical(other.pageSize, pageSize) ||
-                const DeepCollectionEquality()
-                    .equals(other.pageSize, pageSize)) &&
+                const DeepCollectionEquality().equals(
+                  other.pageSize,
+                  pageSize,
+                )) &&
             (identical(other.totalPages, totalPages) ||
-                const DeepCollectionEquality()
-                    .equals(other.totalPages, totalPages)) &&
+                const DeepCollectionEquality().equals(
+                  other.totalPages,
+                  totalPages,
+                )) &&
             (identical(other.totalRows, totalRows) ||
-                const DeepCollectionEquality()
-                    .equals(other.totalRows, totalRows)) &&
+                const DeepCollectionEquality().equals(
+                  other.totalRows,
+                  totalRows,
+                )) &&
             (identical(other.dateFields, dateFields) ||
-                const DeepCollectionEquality()
-                    .equals(other.dateFields, dateFields)) &&
+                const DeepCollectionEquality().equals(
+                  other.dateFields,
+                  dateFields,
+                )) &&
             (identical(other.columnNameByIndex, columnNameByIndex) ||
-                const DeepCollectionEquality()
-                    .equals(other.columnNameByIndex, columnNameByIndex)) &&
+                const DeepCollectionEquality().equals(
+                  other.columnNameByIndex,
+                  columnNameByIndex,
+                )) &&
             (identical(other.translation, translation) ||
-                const DeepCollectionEquality()
-                    .equals(other.translation, translation)));
+                const DeepCollectionEquality().equals(
+                  other.translation,
+                  translation,
+                )));
   }
 
   @override
@@ -871,60 +961,62 @@ class FwStandardSqlServerFwJsonDataTable {
 
 extension $FwStandardSqlServerFwJsonDataTableExtension
     on FwStandardSqlServerFwJsonDataTable {
-  FwStandardSqlServerFwJsonDataTable copyWith(
-      {Map<String, dynamic>? columnIndex,
-      Map<String, dynamic>? totals,
-      List<FwStandardSqlServerFwJsonDataTableColumn>? columns,
-      List<List<Object?>>? rows,
-      int? pageNo,
-      int? pageSize,
-      int? totalPages,
-      int? totalRows,
-      List<String>? dateFields,
-      Map<String, dynamic>? columnNameByIndex,
-      List<FwStandardDataFwTranslatedValue>? translation}) {
+  FwStandardSqlServerFwJsonDataTable copyWith({
+    Map<String, dynamic>? columnIndex,
+    Map<String, dynamic>? totals,
+    List<FwStandardSqlServerFwJsonDataTableColumn>? columns,
+    List<List<Object?>>? rows,
+    int? pageNo,
+    int? pageSize,
+    int? totalPages,
+    int? totalRows,
+    List<String>? dateFields,
+    Map<String, dynamic>? columnNameByIndex,
+    List<FwStandardDataFwTranslatedValue>? translation,
+  }) {
     return FwStandardSqlServerFwJsonDataTable(
-        columnIndex: columnIndex ?? this.columnIndex,
-        totals: totals ?? this.totals,
-        columns: columns ?? this.columns,
-        rows: rows ?? this.rows,
-        pageNo: pageNo ?? this.pageNo,
-        pageSize: pageSize ?? this.pageSize,
-        totalPages: totalPages ?? this.totalPages,
-        totalRows: totalRows ?? this.totalRows,
-        dateFields: dateFields ?? this.dateFields,
-        columnNameByIndex: columnNameByIndex ?? this.columnNameByIndex,
-        translation: translation ?? this.translation);
+      columnIndex: columnIndex ?? this.columnIndex,
+      totals: totals ?? this.totals,
+      columns: columns ?? this.columns,
+      rows: rows ?? this.rows,
+      pageNo: pageNo ?? this.pageNo,
+      pageSize: pageSize ?? this.pageSize,
+      totalPages: totalPages ?? this.totalPages,
+      totalRows: totalRows ?? this.totalRows,
+      dateFields: dateFields ?? this.dateFields,
+      columnNameByIndex: columnNameByIndex ?? this.columnNameByIndex,
+      translation: translation ?? this.translation,
+    );
   }
 
-  FwStandardSqlServerFwJsonDataTable copyWithWrapped(
-      {Wrapped<Map<String, dynamic>?>? columnIndex,
-      Wrapped<Map<String, dynamic>?>? totals,
-      Wrapped<List<FwStandardSqlServerFwJsonDataTableColumn>?>? columns,
-      Wrapped<List<List<Object?>>?>? rows,
-      Wrapped<int?>? pageNo,
-      Wrapped<int?>? pageSize,
-      Wrapped<int?>? totalPages,
-      Wrapped<int?>? totalRows,
-      Wrapped<List<String>?>? dateFields,
-      Wrapped<Map<String, dynamic>?>? columnNameByIndex,
-      Wrapped<List<FwStandardDataFwTranslatedValue>?>? translation}) {
+  FwStandardSqlServerFwJsonDataTable copyWithWrapped({
+    Wrapped<Map<String, dynamic>?>? columnIndex,
+    Wrapped<Map<String, dynamic>?>? totals,
+    Wrapped<List<FwStandardSqlServerFwJsonDataTableColumn>?>? columns,
+    Wrapped<List<List<Object?>>?>? rows,
+    Wrapped<int?>? pageNo,
+    Wrapped<int?>? pageSize,
+    Wrapped<int?>? totalPages,
+    Wrapped<int?>? totalRows,
+    Wrapped<List<String>?>? dateFields,
+    Wrapped<Map<String, dynamic>?>? columnNameByIndex,
+    Wrapped<List<FwStandardDataFwTranslatedValue>?>? translation,
+  }) {
     return FwStandardSqlServerFwJsonDataTable(
-        columnIndex:
-            (columnIndex != null ? columnIndex.value : this.columnIndex),
-        totals: (totals != null ? totals.value : this.totals),
-        columns: (columns != null ? columns.value : this.columns),
-        rows: (rows != null ? rows.value : this.rows),
-        pageNo: (pageNo != null ? pageNo.value : this.pageNo),
-        pageSize: (pageSize != null ? pageSize.value : this.pageSize),
-        totalPages: (totalPages != null ? totalPages.value : this.totalPages),
-        totalRows: (totalRows != null ? totalRows.value : this.totalRows),
-        dateFields: (dateFields != null ? dateFields.value : this.dateFields),
-        columnNameByIndex: (columnNameByIndex != null
-            ? columnNameByIndex.value
-            : this.columnNameByIndex),
-        translation:
-            (translation != null ? translation.value : this.translation));
+      columnIndex: (columnIndex != null ? columnIndex.value : this.columnIndex),
+      totals: (totals != null ? totals.value : this.totals),
+      columns: (columns != null ? columns.value : this.columns),
+      rows: (rows != null ? rows.value : this.rows),
+      pageNo: (pageNo != null ? pageNo.value : this.pageNo),
+      pageSize: (pageSize != null ? pageSize.value : this.pageSize),
+      totalPages: (totalPages != null ? totalPages.value : this.totalPages),
+      totalRows: (totalRows != null ? totalRows.value : this.totalRows),
+      dateFields: (dateFields != null ? dateFields.value : this.dateFields),
+      columnNameByIndex: (columnNameByIndex != null
+          ? columnNameByIndex.value
+          : this.columnNameByIndex),
+      translation: (translation != null ? translation.value : this.translation),
+    );
   }
 }
 
@@ -939,12 +1031,12 @@ class FwStandardSqlServerFwJsonDataTableColumn {
   });
 
   factory FwStandardSqlServerFwJsonDataTableColumn.fromJson(
-          Map<String, dynamic> json) =>
-      _$FwStandardSqlServerFwJsonDataTableColumnFromJson(json);
+    Map<String, dynamic> json,
+  ) => _$FwStandardSqlServerFwJsonDataTableColumnFromJson(json);
 
   static const toJsonFactory = _$FwStandardSqlServerFwJsonDataTableColumnToJson;
-  Map<String, dynamic> toJson() =>
-      _$FwStandardSqlServerFwJsonDataTableColumnToJson(this);
+  Map<String, dynamic>
+  toJson() => _$FwStandardSqlServerFwJsonDataTableColumnToJson(this);
 
   @JsonKey(name: 'Name', includeIfNull: false)
   final String? name;
@@ -971,17 +1063,25 @@ class FwStandardSqlServerFwJsonDataTableColumn {
             (identical(other.name, name) ||
                 const DeepCollectionEquality().equals(other.name, name)) &&
             (identical(other.dataField, dataField) ||
-                const DeepCollectionEquality()
-                    .equals(other.dataField, dataField)) &&
+                const DeepCollectionEquality().equals(
+                  other.dataField,
+                  dataField,
+                )) &&
             (identical(other.dataType, dataType) ||
-                const DeepCollectionEquality()
-                    .equals(other.dataType, dataType)) &&
+                const DeepCollectionEquality().equals(
+                  other.dataType,
+                  dataType,
+                )) &&
             (identical(other.isUniqueId, isUniqueId) ||
-                const DeepCollectionEquality()
-                    .equals(other.isUniqueId, isUniqueId)) &&
+                const DeepCollectionEquality().equals(
+                  other.isUniqueId,
+                  isUniqueId,
+                )) &&
             (identical(other.isVisible, isVisible) ||
-                const DeepCollectionEquality()
-                    .equals(other.isVisible, isVisible)));
+                const DeepCollectionEquality().equals(
+                  other.isVisible,
+                  isVisible,
+                )));
   }
 
   @override
@@ -999,32 +1099,36 @@ class FwStandardSqlServerFwJsonDataTableColumn {
 
 extension $FwStandardSqlServerFwJsonDataTableColumnExtension
     on FwStandardSqlServerFwJsonDataTableColumn {
-  FwStandardSqlServerFwJsonDataTableColumn copyWith(
-      {String? name,
-      String? dataField,
-      enums.FwStandardSqlServerFwDataTypes? dataType,
-      bool? isUniqueId,
-      bool? isVisible}) {
+  FwStandardSqlServerFwJsonDataTableColumn copyWith({
+    String? name,
+    String? dataField,
+    enums.FwStandardSqlServerFwDataTypes? dataType,
+    bool? isUniqueId,
+    bool? isVisible,
+  }) {
     return FwStandardSqlServerFwJsonDataTableColumn(
-        name: name ?? this.name,
-        dataField: dataField ?? this.dataField,
-        dataType: dataType ?? this.dataType,
-        isUniqueId: isUniqueId ?? this.isUniqueId,
-        isVisible: isVisible ?? this.isVisible);
+      name: name ?? this.name,
+      dataField: dataField ?? this.dataField,
+      dataType: dataType ?? this.dataType,
+      isUniqueId: isUniqueId ?? this.isUniqueId,
+      isVisible: isVisible ?? this.isVisible,
+    );
   }
 
-  FwStandardSqlServerFwJsonDataTableColumn copyWithWrapped(
-      {Wrapped<String?>? name,
-      Wrapped<String?>? dataField,
-      Wrapped<enums.FwStandardSqlServerFwDataTypes?>? dataType,
-      Wrapped<bool?>? isUniqueId,
-      Wrapped<bool?>? isVisible}) {
+  FwStandardSqlServerFwJsonDataTableColumn copyWithWrapped({
+    Wrapped<String?>? name,
+    Wrapped<String?>? dataField,
+    Wrapped<enums.FwStandardSqlServerFwDataTypes?>? dataType,
+    Wrapped<bool?>? isUniqueId,
+    Wrapped<bool?>? isVisible,
+  }) {
     return FwStandardSqlServerFwJsonDataTableColumn(
-        name: (name != null ? name.value : this.name),
-        dataField: (dataField != null ? dataField.value : this.dataField),
-        dataType: (dataType != null ? dataType.value : this.dataType),
-        isUniqueId: (isUniqueId != null ? isUniqueId.value : this.isUniqueId),
-        isVisible: (isVisible != null ? isVisible.value : this.isVisible));
+      name: (name != null ? name.value : this.name),
+      dataField: (dataField != null ? dataField.value : this.dataField),
+      dataType: (dataType != null ? dataType.value : this.dataType),
+      isUniqueId: (isUniqueId != null ? isUniqueId.value : this.isUniqueId),
+      isVisible: (isVisible != null ? isVisible.value : this.isVisible),
+    );
   }
 }
 
@@ -1039,13 +1143,13 @@ class WebApiLogicAppFuncConsignmentSettingsResponse {
   });
 
   factory WebApiLogicAppFuncConsignmentSettingsResponse.fromJson(
-          Map<String, dynamic> json) =>
-      _$WebApiLogicAppFuncConsignmentSettingsResponseFromJson(json);
+    Map<String, dynamic> json,
+  ) => _$WebApiLogicAppFuncConsignmentSettingsResponseFromJson(json);
 
   static const toJsonFactory =
       _$WebApiLogicAppFuncConsignmentSettingsResponseToJson;
-  Map<String, dynamic> toJson() =>
-      _$WebApiLogicAppFuncConsignmentSettingsResponseToJson(this);
+  Map<String, dynamic>
+  toJson() => _$WebApiLogicAppFuncConsignmentSettingsResponseToJson(this);
 
   @JsonKey(name: 'EnableConsignment', includeIfNull: false)
   final bool? enableConsignment;
@@ -1065,25 +1169,39 @@ class WebApiLogicAppFuncConsignmentSettingsResponse {
     return identical(this, other) ||
         (other is WebApiLogicAppFuncConsignmentSettingsResponse &&
             (identical(other.enableConsignment, enableConsignment) ||
-                const DeepCollectionEquality()
-                    .equals(other.enableConsignment, enableConsignment)) &&
-            (identical(other.defaultConsignorFeeBasedOn,
-                    defaultConsignorFeeBasedOn) ||
                 const DeepCollectionEquality().equals(
-                    other.defaultConsignorFeeBasedOn,
-                    defaultConsignorFeeBasedOn)) &&
+                  other.enableConsignment,
+                  enableConsignment,
+                )) &&
             (identical(
-                    other.defaultConsignorPercent, defaultConsignorPercent) ||
+                  other.defaultConsignorFeeBasedOn,
+                  defaultConsignorFeeBasedOn,
+                ) ||
                 const DeepCollectionEquality().equals(
-                    other.defaultConsignorPercent, defaultConsignorPercent)) &&
+                  other.defaultConsignorFeeBasedOn,
+                  defaultConsignorFeeBasedOn,
+                )) &&
+            (identical(
+                  other.defaultConsignorPercent,
+                  defaultConsignorPercent,
+                ) ||
+                const DeepCollectionEquality().equals(
+                  other.defaultConsignorPercent,
+                  defaultConsignorPercent,
+                )) &&
             (identical(other.defaultHousePercent, defaultHousePercent) ||
-                const DeepCollectionEquality()
-                    .equals(other.defaultHousePercent, defaultHousePercent)) &&
-            (identical(other.defaultTreatConsignedQtyAsOwned,
-                    defaultTreatConsignedQtyAsOwned) ||
                 const DeepCollectionEquality().equals(
-                    other.defaultTreatConsignedQtyAsOwned,
-                    defaultTreatConsignedQtyAsOwned)));
+                  other.defaultHousePercent,
+                  defaultHousePercent,
+                )) &&
+            (identical(
+                  other.defaultTreatConsignedQtyAsOwned,
+                  defaultTreatConsignedQtyAsOwned,
+                ) ||
+                const DeepCollectionEquality().equals(
+                  other.defaultTreatConsignedQtyAsOwned,
+                  defaultTreatConsignedQtyAsOwned,
+                )));
   }
 
   @override
@@ -1101,62 +1219,63 @@ class WebApiLogicAppFuncConsignmentSettingsResponse {
 
 extension $WebApiLogicAppFuncConsignmentSettingsResponseExtension
     on WebApiLogicAppFuncConsignmentSettingsResponse {
-  WebApiLogicAppFuncConsignmentSettingsResponse copyWith(
-      {bool? enableConsignment,
-      String? defaultConsignorFeeBasedOn,
-      int? defaultConsignorPercent,
-      int? defaultHousePercent,
-      bool? defaultTreatConsignedQtyAsOwned}) {
+  WebApiLogicAppFuncConsignmentSettingsResponse copyWith({
+    bool? enableConsignment,
+    String? defaultConsignorFeeBasedOn,
+    int? defaultConsignorPercent,
+    int? defaultHousePercent,
+    bool? defaultTreatConsignedQtyAsOwned,
+  }) {
     return WebApiLogicAppFuncConsignmentSettingsResponse(
-        enableConsignment: enableConsignment ?? this.enableConsignment,
-        defaultConsignorFeeBasedOn:
-            defaultConsignorFeeBasedOn ?? this.defaultConsignorFeeBasedOn,
-        defaultConsignorPercent:
-            defaultConsignorPercent ?? this.defaultConsignorPercent,
-        defaultHousePercent: defaultHousePercent ?? this.defaultHousePercent,
-        defaultTreatConsignedQtyAsOwned: defaultTreatConsignedQtyAsOwned ??
-            this.defaultTreatConsignedQtyAsOwned);
+      enableConsignment: enableConsignment ?? this.enableConsignment,
+      defaultConsignorFeeBasedOn:
+          defaultConsignorFeeBasedOn ?? this.defaultConsignorFeeBasedOn,
+      defaultConsignorPercent:
+          defaultConsignorPercent ?? this.defaultConsignorPercent,
+      defaultHousePercent: defaultHousePercent ?? this.defaultHousePercent,
+      defaultTreatConsignedQtyAsOwned: defaultTreatConsignedQtyAsOwned ??
+          this.defaultTreatConsignedQtyAsOwned,
+    );
   }
 
-  WebApiLogicAppFuncConsignmentSettingsResponse copyWithWrapped(
-      {Wrapped<bool?>? enableConsignment,
-      Wrapped<String?>? defaultConsignorFeeBasedOn,
-      Wrapped<int?>? defaultConsignorPercent,
-      Wrapped<int?>? defaultHousePercent,
-      Wrapped<bool?>? defaultTreatConsignedQtyAsOwned}) {
+  WebApiLogicAppFuncConsignmentSettingsResponse copyWithWrapped({
+    Wrapped<bool?>? enableConsignment,
+    Wrapped<String?>? defaultConsignorFeeBasedOn,
+    Wrapped<int?>? defaultConsignorPercent,
+    Wrapped<int?>? defaultHousePercent,
+    Wrapped<bool?>? defaultTreatConsignedQtyAsOwned,
+  }) {
     return WebApiLogicAppFuncConsignmentSettingsResponse(
-        enableConsignment: (enableConsignment != null
-            ? enableConsignment.value
-            : this.enableConsignment),
-        defaultConsignorFeeBasedOn: (defaultConsignorFeeBasedOn != null
-            ? defaultConsignorFeeBasedOn.value
-            : this.defaultConsignorFeeBasedOn),
-        defaultConsignorPercent: (defaultConsignorPercent != null
-            ? defaultConsignorPercent.value
-            : this.defaultConsignorPercent),
-        defaultHousePercent: (defaultHousePercent != null
-            ? defaultHousePercent.value
-            : this.defaultHousePercent),
-        defaultTreatConsignedQtyAsOwned:
-            (defaultTreatConsignedQtyAsOwned != null
-                ? defaultTreatConsignedQtyAsOwned.value
-                : this.defaultTreatConsignedQtyAsOwned));
+      enableConsignment: (enableConsignment != null
+          ? enableConsignment.value
+          : this.enableConsignment),
+      defaultConsignorFeeBasedOn: (defaultConsignorFeeBasedOn != null
+          ? defaultConsignorFeeBasedOn.value
+          : this.defaultConsignorFeeBasedOn),
+      defaultConsignorPercent: (defaultConsignorPercent != null
+          ? defaultConsignorPercent.value
+          : this.defaultConsignorPercent),
+      defaultHousePercent: (defaultHousePercent != null
+          ? defaultHousePercent.value
+          : this.defaultHousePercent),
+      defaultTreatConsignedQtyAsOwned: (defaultTreatConsignedQtyAsOwned != null
+          ? defaultTreatConsignedQtyAsOwned.value
+          : this.defaultTreatConsignedQtyAsOwned),
+    );
   }
 }
 
 @JsonSerializable(explicitToJson: true)
 class WebApiLogicAppFuncCustomFieldsResponse {
-  WebApiLogicAppFuncCustomFieldsResponse({
-    this.moduleNames,
-  });
+  WebApiLogicAppFuncCustomFieldsResponse({this.moduleNames});
 
   factory WebApiLogicAppFuncCustomFieldsResponse.fromJson(
-          Map<String, dynamic> json) =>
-      _$WebApiLogicAppFuncCustomFieldsResponseFromJson(json);
+    Map<String, dynamic> json,
+  ) => _$WebApiLogicAppFuncCustomFieldsResponseFromJson(json);
 
   static const toJsonFactory = _$WebApiLogicAppFuncCustomFieldsResponseToJson;
-  Map<String, dynamic> toJson() =>
-      _$WebApiLogicAppFuncCustomFieldsResponseToJson(this);
+  Map<String, dynamic>
+  toJson() => _$WebApiLogicAppFuncCustomFieldsResponseToJson(this);
 
   @JsonKey(name: 'ModuleNames', includeIfNull: false, defaultValue: <String>[])
   final List<String>? moduleNames;
@@ -1168,8 +1287,10 @@ class WebApiLogicAppFuncCustomFieldsResponse {
     return identical(this, other) ||
         (other is WebApiLogicAppFuncCustomFieldsResponse &&
             (identical(other.moduleNames, moduleNames) ||
-                const DeepCollectionEquality()
-                    .equals(other.moduleNames, moduleNames)));
+                const DeepCollectionEquality().equals(
+                  other.moduleNames,
+                  moduleNames,
+                )));
   }
 
   @override
@@ -1184,14 +1305,16 @@ extension $WebApiLogicAppFuncCustomFieldsResponseExtension
     on WebApiLogicAppFuncCustomFieldsResponse {
   WebApiLogicAppFuncCustomFieldsResponse copyWith({List<String>? moduleNames}) {
     return WebApiLogicAppFuncCustomFieldsResponse(
-        moduleNames: moduleNames ?? this.moduleNames);
+      moduleNames: moduleNames ?? this.moduleNames,
+    );
   }
 
-  WebApiLogicAppFuncCustomFieldsResponse copyWithWrapped(
-      {Wrapped<List<String>?>? moduleNames}) {
+  WebApiLogicAppFuncCustomFieldsResponse copyWithWrapped({
+    Wrapped<List<String>?>? moduleNames,
+  }) {
     return WebApiLogicAppFuncCustomFieldsResponse(
-        moduleNames:
-            (moduleNames != null ? moduleNames.value : this.moduleNames));
+      moduleNames: (moduleNames != null ? moduleNames.value : this.moduleNames),
+    );
   }
 }
 
@@ -1207,12 +1330,13 @@ class WebApiLogicAppFuncCustomFormModel {
   });
 
   factory WebApiLogicAppFuncCustomFormModel.fromJson(
-          Map<String, dynamic> json) =>
-      _$WebApiLogicAppFuncCustomFormModelFromJson(json);
+    Map<String, dynamic> json,
+  ) => _$WebApiLogicAppFuncCustomFormModelFromJson(json);
 
   static const toJsonFactory = _$WebApiLogicAppFuncCustomFormModelToJson;
-  Map<String, dynamic> toJson() =>
-      _$WebApiLogicAppFuncCustomFormModelToJson(this);
+  Map<String, dynamic> toJson() => _$WebApiLogicAppFuncCustomFormModelToJson(
+    this,
+  );
 
   @JsonKey(name: 'BaseForm', includeIfNull: false)
   final String? baseForm;
@@ -1233,22 +1357,32 @@ class WebApiLogicAppFuncCustomFormModel {
     return identical(this, other) ||
         (other is WebApiLogicAppFuncCustomFormModel &&
             (identical(other.baseForm, baseForm) ||
-                const DeepCollectionEquality()
-                    .equals(other.baseForm, baseForm)) &&
+                const DeepCollectionEquality().equals(
+                  other.baseForm,
+                  baseForm,
+                )) &&
             (identical(other.customFormId, customFormId) ||
-                const DeepCollectionEquality()
-                    .equals(other.customFormId, customFormId)) &&
+                const DeepCollectionEquality().equals(
+                  other.customFormId,
+                  customFormId,
+                )) &&
             (identical(other.description, description) ||
-                const DeepCollectionEquality()
-                    .equals(other.description, description)) &&
+                const DeepCollectionEquality().equals(
+                  other.description,
+                  description,
+                )) &&
             (identical(other.thisUserOnly, thisUserOnly) ||
-                const DeepCollectionEquality()
-                    .equals(other.thisUserOnly, thisUserOnly)) &&
+                const DeepCollectionEquality().equals(
+                  other.thisUserOnly,
+                  thisUserOnly,
+                )) &&
             (identical(other.html, html) ||
                 const DeepCollectionEquality().equals(other.html, html)) &&
             (identical(other.assignTo, assignTo) ||
-                const DeepCollectionEquality()
-                    .equals(other.assignTo, assignTo)));
+                const DeepCollectionEquality().equals(
+                  other.assignTo,
+                  assignTo,
+                )));
   }
 
   @override
@@ -1267,60 +1401,64 @@ class WebApiLogicAppFuncCustomFormModel {
 
 extension $WebApiLogicAppFuncCustomFormModelExtension
     on WebApiLogicAppFuncCustomFormModel {
-  WebApiLogicAppFuncCustomFormModel copyWith(
-      {String? baseForm,
-      String? customFormId,
-      String? description,
-      bool? thisUserOnly,
-      String? html,
-      String? assignTo}) {
+  WebApiLogicAppFuncCustomFormModel copyWith({
+    String? baseForm,
+    String? customFormId,
+    String? description,
+    bool? thisUserOnly,
+    String? html,
+    String? assignTo,
+  }) {
     return WebApiLogicAppFuncCustomFormModel(
-        baseForm: baseForm ?? this.baseForm,
-        customFormId: customFormId ?? this.customFormId,
-        description: description ?? this.description,
-        thisUserOnly: thisUserOnly ?? this.thisUserOnly,
-        html: html ?? this.html,
-        assignTo: assignTo ?? this.assignTo);
+      baseForm: baseForm ?? this.baseForm,
+      customFormId: customFormId ?? this.customFormId,
+      description: description ?? this.description,
+      thisUserOnly: thisUserOnly ?? this.thisUserOnly,
+      html: html ?? this.html,
+      assignTo: assignTo ?? this.assignTo,
+    );
   }
 
-  WebApiLogicAppFuncCustomFormModel copyWithWrapped(
-      {Wrapped<String?>? baseForm,
-      Wrapped<String?>? customFormId,
-      Wrapped<String?>? description,
-      Wrapped<bool?>? thisUserOnly,
-      Wrapped<String?>? html,
-      Wrapped<String?>? assignTo}) {
+  WebApiLogicAppFuncCustomFormModel copyWithWrapped({
+    Wrapped<String?>? baseForm,
+    Wrapped<String?>? customFormId,
+    Wrapped<String?>? description,
+    Wrapped<bool?>? thisUserOnly,
+    Wrapped<String?>? html,
+    Wrapped<String?>? assignTo,
+  }) {
     return WebApiLogicAppFuncCustomFormModel(
-        baseForm: (baseForm != null ? baseForm.value : this.baseForm),
-        customFormId:
-            (customFormId != null ? customFormId.value : this.customFormId),
-        description:
-            (description != null ? description.value : this.description),
-        thisUserOnly:
-            (thisUserOnly != null ? thisUserOnly.value : this.thisUserOnly),
-        html: (html != null ? html.value : this.html),
-        assignTo: (assignTo != null ? assignTo.value : this.assignTo));
+      baseForm: (baseForm != null ? baseForm.value : this.baseForm),
+      customFormId: (customFormId != null
+          ? customFormId.value
+          : this.customFormId),
+      description: (description != null ? description.value : this.description),
+      thisUserOnly: (thisUserOnly != null
+          ? thisUserOnly.value
+          : this.thisUserOnly),
+      html: (html != null ? html.value : this.html),
+      assignTo: (assignTo != null ? assignTo.value : this.assignTo),
+    );
   }
 }
 
 @JsonSerializable(explicitToJson: true)
 class WebApiLogicAppFuncCustomFormsResponse {
-  WebApiLogicAppFuncCustomFormsResponse({
-    this.customForms,
-  });
+  WebApiLogicAppFuncCustomFormsResponse({this.customForms});
 
   factory WebApiLogicAppFuncCustomFormsResponse.fromJson(
-          Map<String, dynamic> json) =>
-      _$WebApiLogicAppFuncCustomFormsResponseFromJson(json);
+    Map<String, dynamic> json,
+  ) => _$WebApiLogicAppFuncCustomFormsResponseFromJson(json);
 
   static const toJsonFactory = _$WebApiLogicAppFuncCustomFormsResponseToJson;
-  Map<String, dynamic> toJson() =>
-      _$WebApiLogicAppFuncCustomFormsResponseToJson(this);
+  Map<String, dynamic>
+  toJson() => _$WebApiLogicAppFuncCustomFormsResponseToJson(this);
 
   @JsonKey(
-      name: 'customForms',
-      includeIfNull: false,
-      defaultValue: <WebApiLogicAppFuncCustomFormModel>[])
+    name: 'customForms',
+    includeIfNull: false,
+    defaultValue: <WebApiLogicAppFuncCustomFormModel>[],
+  )
   final List<WebApiLogicAppFuncCustomFormModel>? customForms;
   static const fromJsonFactory =
       _$WebApiLogicAppFuncCustomFormsResponseFromJson;
@@ -1330,8 +1468,10 @@ class WebApiLogicAppFuncCustomFormsResponse {
     return identical(this, other) ||
         (other is WebApiLogicAppFuncCustomFormsResponse &&
             (identical(other.customForms, customForms) ||
-                const DeepCollectionEquality()
-                    .equals(other.customForms, customForms)));
+                const DeepCollectionEquality().equals(
+                  other.customForms,
+                  customForms,
+                )));
   }
 
   @override
@@ -1344,17 +1484,20 @@ class WebApiLogicAppFuncCustomFormsResponse {
 
 extension $WebApiLogicAppFuncCustomFormsResponseExtension
     on WebApiLogicAppFuncCustomFormsResponse {
-  WebApiLogicAppFuncCustomFormsResponse copyWith(
-      {List<WebApiLogicAppFuncCustomFormModel>? customForms}) {
+  WebApiLogicAppFuncCustomFormsResponse copyWith({
+    List<WebApiLogicAppFuncCustomFormModel>? customForms,
+  }) {
     return WebApiLogicAppFuncCustomFormsResponse(
-        customForms: customForms ?? this.customForms);
+      customForms: customForms ?? this.customForms,
+    );
   }
 
-  WebApiLogicAppFuncCustomFormsResponse copyWithWrapped(
-      {Wrapped<List<WebApiLogicAppFuncCustomFormModel>?>? customForms}) {
+  WebApiLogicAppFuncCustomFormsResponse copyWithWrapped({
+    Wrapped<List<WebApiLogicAppFuncCustomFormModel>?>? customForms,
+  }) {
     return WebApiLogicAppFuncCustomFormsResponse(
-        customForms:
-            (customForms != null ? customForms.value : this.customForms));
+      customForms: (customForms != null ? customForms.value : this.customForms),
+    );
   }
 }
 
@@ -1385,13 +1528,13 @@ class WebApiLogicAppFuncDefaultSettingsResponse {
   });
 
   factory WebApiLogicAppFuncDefaultSettingsResponse.fromJson(
-          Map<String, dynamic> json) =>
-      _$WebApiLogicAppFuncDefaultSettingsResponseFromJson(json);
+    Map<String, dynamic> json,
+  ) => _$WebApiLogicAppFuncDefaultSettingsResponseFromJson(json);
 
   static const toJsonFactory =
       _$WebApiLogicAppFuncDefaultSettingsResponseToJson;
-  Map<String, dynamic> toJson() =>
-      _$WebApiLogicAppFuncDefaultSettingsResponseToJson(this);
+  Map<String, dynamic>
+  toJson() => _$WebApiLogicAppFuncDefaultSettingsResponseToJson(this);
 
   @JsonKey(name: 'DefaultUnitId', includeIfNull: false)
   final String? defaultUnitId;
@@ -1406,7 +1549,9 @@ class WebApiLogicAppFuncDefaultSettingsResponse {
   @JsonKey(name: 'DefaultDealPoType', includeIfNull: false)
   final String? defaultDealPoType;
   @JsonKey(
-      name: 'DefaultDealStagingExcludeOrderAfterWrap', includeIfNull: false)
+    name: 'DefaultDealStagingExcludeOrderAfterWrap',
+    includeIfNull: false,
+  )
   final bool? defaultDealStagingExcludeOrderAfterWrap;
   @JsonKey(name: 'DefaultCustomerStatusId', includeIfNull: false)
   final String? defaultCustomerStatusId;
@@ -1444,50 +1589,85 @@ class WebApiLogicAppFuncDefaultSettingsResponse {
     return identical(this, other) ||
         (other is WebApiLogicAppFuncDefaultSettingsResponse &&
             (identical(other.defaultUnitId, defaultUnitId) ||
-                const DeepCollectionEquality()
-                    .equals(other.defaultUnitId, defaultUnitId)) &&
+                const DeepCollectionEquality().equals(
+                  other.defaultUnitId,
+                  defaultUnitId,
+                )) &&
             (identical(other.defaultUnit, defaultUnit) ||
-                const DeepCollectionEquality()
-                    .equals(other.defaultUnit, defaultUnit)) &&
+                const DeepCollectionEquality().equals(
+                  other.defaultUnit,
+                  defaultUnit,
+                )) &&
             (identical(other.defaultDealStatusId, defaultDealStatusId) ||
-                const DeepCollectionEquality()
-                    .equals(other.defaultDealStatusId, defaultDealStatusId)) &&
+                const DeepCollectionEquality().equals(
+                  other.defaultDealStatusId,
+                  defaultDealStatusId,
+                )) &&
             (identical(other.defaultDealStatus, defaultDealStatus) ||
-                const DeepCollectionEquality()
-                    .equals(other.defaultDealStatus, defaultDealStatus)) &&
+                const DeepCollectionEquality().equals(
+                  other.defaultDealStatus,
+                  defaultDealStatus,
+                )) &&
             (identical(other.defaultDealPoRequired, defaultDealPoRequired) ||
                 const DeepCollectionEquality().equals(
-                    other.defaultDealPoRequired, defaultDealPoRequired)) &&
+                  other.defaultDealPoRequired,
+                  defaultDealPoRequired,
+                )) &&
             (identical(other.defaultDealPoType, defaultDealPoType) ||
-                const DeepCollectionEquality()
-                    .equals(other.defaultDealPoType, defaultDealPoType)) &&
+                const DeepCollectionEquality().equals(
+                  other.defaultDealPoType,
+                  defaultDealPoType,
+                )) &&
             (identical(other.defaultDealStagingExcludeOrderAfterWrap, defaultDealStagingExcludeOrderAfterWrap) ||
                 const DeepCollectionEquality().equals(
-                    other.defaultDealStagingExcludeOrderAfterWrap,
-                    defaultDealStagingExcludeOrderAfterWrap)) &&
+                  other.defaultDealStagingExcludeOrderAfterWrap,
+                  defaultDealStagingExcludeOrderAfterWrap,
+                )) &&
             (identical(other.defaultCustomerStatusId, defaultCustomerStatusId) ||
                 const DeepCollectionEquality().equals(
-                    other.defaultCustomerStatusId, defaultCustomerStatusId)) &&
+                  other.defaultCustomerStatusId,
+                  defaultCustomerStatusId,
+                )) &&
             (identical(other.defaultCustomerStatus, defaultCustomerStatus) ||
                 const DeepCollectionEquality().equals(
-                    other.defaultCustomerStatus, defaultCustomerStatus)) &&
+                  other.defaultCustomerStatus,
+                  defaultCustomerStatus,
+                )) &&
             (identical(other.defaultDealBillingCycleId, defaultDealBillingCycleId) ||
                 const DeepCollectionEquality().equals(
-                    other.defaultDealBillingCycleId,
-                    defaultDealBillingCycleId)) &&
+                  other.defaultDealBillingCycleId,
+                  defaultDealBillingCycleId,
+                )) &&
             (identical(other.defaultDealBillingCycle, defaultDealBillingCycle) ||
                 const DeepCollectionEquality().equals(
-                    other.defaultDealBillingCycle, defaultDealBillingCycle)) &&
+                  other.defaultDealBillingCycle,
+                  defaultDealBillingCycle,
+                )) &&
             (identical(other.defaultNonRecurringBillingCycleId, defaultNonRecurringBillingCycleId) ||
                 const DeepCollectionEquality().equals(
-                    other.defaultNonRecurringBillingCycleId,
-                    defaultNonRecurringBillingCycleId)) &&
+                  other.defaultNonRecurringBillingCycleId,
+                  defaultNonRecurringBillingCycleId,
+                )) &&
             (identical(other.defaultNonRecurringBillingCycle, defaultNonRecurringBillingCycle) ||
                 const DeepCollectionEquality().equals(
-                    other.defaultNonRecurringBillingCycle, defaultNonRecurringBillingCycle)) &&
-            (identical(other.defaultVendorBillingCycleId, defaultVendorBillingCycleId) || const DeepCollectionEquality().equals(other.defaultVendorBillingCycleId, defaultVendorBillingCycleId)) &&
-            (identical(other.defaultVendorBillingCycle, defaultVendorBillingCycle) || const DeepCollectionEquality().equals(other.defaultVendorBillingCycle, defaultVendorBillingCycle)) &&
-            (identical(other.defaultCustomerPaymentTermsId, defaultCustomerPaymentTermsId) || const DeepCollectionEquality().equals(other.defaultCustomerPaymentTermsId, defaultCustomerPaymentTermsId)) &&
+                  other.defaultNonRecurringBillingCycle,
+                  defaultNonRecurringBillingCycle,
+                )) &&
+            (identical(other.defaultVendorBillingCycleId, defaultVendorBillingCycleId) ||
+                const DeepCollectionEquality().equals(
+                  other.defaultVendorBillingCycleId,
+                  defaultVendorBillingCycleId,
+                )) &&
+            (identical(other.defaultVendorBillingCycle, defaultVendorBillingCycle) ||
+                const DeepCollectionEquality().equals(
+                  other.defaultVendorBillingCycle,
+                  defaultVendorBillingCycle,
+                )) &&
+            (identical(other.defaultCustomerPaymentTermsId, defaultCustomerPaymentTermsId) ||
+                const DeepCollectionEquality().equals(
+                  other.defaultCustomerPaymentTermsId,
+                  defaultCustomerPaymentTermsId,
+                )) &&
             (identical(other.defaultCustomerPaymentTerms, defaultCustomerPaymentTerms) || const DeepCollectionEquality().equals(other.defaultCustomerPaymentTerms, defaultCustomerPaymentTerms)) &&
             (identical(other.defaultRank, defaultRank) || const DeepCollectionEquality().equals(other.defaultRank, defaultRank)) &&
             (identical(other.defaultCreditStatusId, defaultCreditStatusId) || const DeepCollectionEquality().equals(other.defaultCreditStatusId, defaultCreditStatusId)) &&
@@ -1506,8 +1686,9 @@ class WebApiLogicAppFuncDefaultSettingsResponse {
       const DeepCollectionEquality().hash(defaultDealStatus) ^
       const DeepCollectionEquality().hash(defaultDealPoRequired) ^
       const DeepCollectionEquality().hash(defaultDealPoType) ^
-      const DeepCollectionEquality()
-          .hash(defaultDealStagingExcludeOrderAfterWrap) ^
+      const DeepCollectionEquality().hash(
+        defaultDealStagingExcludeOrderAfterWrap,
+      ) ^
       const DeepCollectionEquality().hash(defaultCustomerStatusId) ^
       const DeepCollectionEquality().hash(defaultCustomerStatus) ^
       const DeepCollectionEquality().hash(defaultDealBillingCycleId) ^
@@ -1527,152 +1708,154 @@ class WebApiLogicAppFuncDefaultSettingsResponse {
 
 extension $WebApiLogicAppFuncDefaultSettingsResponseExtension
     on WebApiLogicAppFuncDefaultSettingsResponse {
-  WebApiLogicAppFuncDefaultSettingsResponse copyWith(
-      {String? defaultUnitId,
-      String? defaultUnit,
-      String? defaultDealStatusId,
-      String? defaultDealStatus,
-      bool? defaultDealPoRequired,
-      String? defaultDealPoType,
-      bool? defaultDealStagingExcludeOrderAfterWrap,
-      String? defaultCustomerStatusId,
-      String? defaultCustomerStatus,
-      String? defaultDealBillingCycleId,
-      String? defaultDealBillingCycle,
-      String? defaultNonRecurringBillingCycleId,
-      String? defaultNonRecurringBillingCycle,
-      String? defaultVendorBillingCycleId,
-      String? defaultVendorBillingCycle,
-      String? defaultCustomerPaymentTermsId,
-      String? defaultCustomerPaymentTerms,
-      String? defaultRank,
-      String? defaultCreditStatusId,
-      String? defaultCreditStatus,
-      bool? contactShowAllDeals}) {
+  WebApiLogicAppFuncDefaultSettingsResponse copyWith({
+    String? defaultUnitId,
+    String? defaultUnit,
+    String? defaultDealStatusId,
+    String? defaultDealStatus,
+    bool? defaultDealPoRequired,
+    String? defaultDealPoType,
+    bool? defaultDealStagingExcludeOrderAfterWrap,
+    String? defaultCustomerStatusId,
+    String? defaultCustomerStatus,
+    String? defaultDealBillingCycleId,
+    String? defaultDealBillingCycle,
+    String? defaultNonRecurringBillingCycleId,
+    String? defaultNonRecurringBillingCycle,
+    String? defaultVendorBillingCycleId,
+    String? defaultVendorBillingCycle,
+    String? defaultCustomerPaymentTermsId,
+    String? defaultCustomerPaymentTerms,
+    String? defaultRank,
+    String? defaultCreditStatusId,
+    String? defaultCreditStatus,
+    bool? contactShowAllDeals,
+  }) {
     return WebApiLogicAppFuncDefaultSettingsResponse(
-        defaultUnitId: defaultUnitId ?? this.defaultUnitId,
-        defaultUnit: defaultUnit ?? this.defaultUnit,
-        defaultDealStatusId: defaultDealStatusId ?? this.defaultDealStatusId,
-        defaultDealStatus: defaultDealStatus ?? this.defaultDealStatus,
-        defaultDealPoRequired:
-            defaultDealPoRequired ?? this.defaultDealPoRequired,
-        defaultDealPoType: defaultDealPoType ?? this.defaultDealPoType,
-        defaultDealStagingExcludeOrderAfterWrap:
-            defaultDealStagingExcludeOrderAfterWrap ??
-                this.defaultDealStagingExcludeOrderAfterWrap,
-        defaultCustomerStatusId:
-            defaultCustomerStatusId ?? this.defaultCustomerStatusId,
-        defaultCustomerStatus:
-            defaultCustomerStatus ?? this.defaultCustomerStatus,
-        defaultDealBillingCycleId:
-            defaultDealBillingCycleId ?? this.defaultDealBillingCycleId,
-        defaultDealBillingCycle:
-            defaultDealBillingCycle ?? this.defaultDealBillingCycle,
-        defaultNonRecurringBillingCycleId: defaultNonRecurringBillingCycleId ??
-            this.defaultNonRecurringBillingCycleId,
-        defaultNonRecurringBillingCycle: defaultNonRecurringBillingCycle ??
-            this.defaultNonRecurringBillingCycle,
-        defaultVendorBillingCycleId:
-            defaultVendorBillingCycleId ?? this.defaultVendorBillingCycleId,
-        defaultVendorBillingCycle:
-            defaultVendorBillingCycle ?? this.defaultVendorBillingCycle,
-        defaultCustomerPaymentTermsId:
-            defaultCustomerPaymentTermsId ?? this.defaultCustomerPaymentTermsId,
-        defaultCustomerPaymentTerms:
-            defaultCustomerPaymentTerms ?? this.defaultCustomerPaymentTerms,
-        defaultRank: defaultRank ?? this.defaultRank,
-        defaultCreditStatusId:
-            defaultCreditStatusId ?? this.defaultCreditStatusId,
-        defaultCreditStatus: defaultCreditStatus ?? this.defaultCreditStatus,
-        contactShowAllDeals: contactShowAllDeals ?? this.contactShowAllDeals);
+      defaultUnitId: defaultUnitId ?? this.defaultUnitId,
+      defaultUnit: defaultUnit ?? this.defaultUnit,
+      defaultDealStatusId: defaultDealStatusId ?? this.defaultDealStatusId,
+      defaultDealStatus: defaultDealStatus ?? this.defaultDealStatus,
+      defaultDealPoRequired:
+          defaultDealPoRequired ?? this.defaultDealPoRequired,
+      defaultDealPoType: defaultDealPoType ?? this.defaultDealPoType,
+      defaultDealStagingExcludeOrderAfterWrap:
+          defaultDealStagingExcludeOrderAfterWrap ??
+              this.defaultDealStagingExcludeOrderAfterWrap,
+      defaultCustomerStatusId:
+          defaultCustomerStatusId ?? this.defaultCustomerStatusId,
+      defaultCustomerStatus:
+          defaultCustomerStatus ?? this.defaultCustomerStatus,
+      defaultDealBillingCycleId:
+          defaultDealBillingCycleId ?? this.defaultDealBillingCycleId,
+      defaultDealBillingCycle:
+          defaultDealBillingCycle ?? this.defaultDealBillingCycle,
+      defaultNonRecurringBillingCycleId: defaultNonRecurringBillingCycleId ??
+          this.defaultNonRecurringBillingCycleId,
+      defaultNonRecurringBillingCycle: defaultNonRecurringBillingCycle ??
+          this.defaultNonRecurringBillingCycle,
+      defaultVendorBillingCycleId:
+          defaultVendorBillingCycleId ?? this.defaultVendorBillingCycleId,
+      defaultVendorBillingCycle:
+          defaultVendorBillingCycle ?? this.defaultVendorBillingCycle,
+      defaultCustomerPaymentTermsId:
+          defaultCustomerPaymentTermsId ?? this.defaultCustomerPaymentTermsId,
+      defaultCustomerPaymentTerms:
+          defaultCustomerPaymentTerms ?? this.defaultCustomerPaymentTerms,
+      defaultRank: defaultRank ?? this.defaultRank,
+      defaultCreditStatusId:
+          defaultCreditStatusId ?? this.defaultCreditStatusId,
+      defaultCreditStatus: defaultCreditStatus ?? this.defaultCreditStatus,
+      contactShowAllDeals: contactShowAllDeals ?? this.contactShowAllDeals,
+    );
   }
 
-  WebApiLogicAppFuncDefaultSettingsResponse copyWithWrapped(
-      {Wrapped<String?>? defaultUnitId,
-      Wrapped<String?>? defaultUnit,
-      Wrapped<String?>? defaultDealStatusId,
-      Wrapped<String?>? defaultDealStatus,
-      Wrapped<bool?>? defaultDealPoRequired,
-      Wrapped<String?>? defaultDealPoType,
-      Wrapped<bool?>? defaultDealStagingExcludeOrderAfterWrap,
-      Wrapped<String?>? defaultCustomerStatusId,
-      Wrapped<String?>? defaultCustomerStatus,
-      Wrapped<String?>? defaultDealBillingCycleId,
-      Wrapped<String?>? defaultDealBillingCycle,
-      Wrapped<String?>? defaultNonRecurringBillingCycleId,
-      Wrapped<String?>? defaultNonRecurringBillingCycle,
-      Wrapped<String?>? defaultVendorBillingCycleId,
-      Wrapped<String?>? defaultVendorBillingCycle,
-      Wrapped<String?>? defaultCustomerPaymentTermsId,
-      Wrapped<String?>? defaultCustomerPaymentTerms,
-      Wrapped<String?>? defaultRank,
-      Wrapped<String?>? defaultCreditStatusId,
-      Wrapped<String?>? defaultCreditStatus,
-      Wrapped<bool?>? contactShowAllDeals}) {
+  WebApiLogicAppFuncDefaultSettingsResponse copyWithWrapped({
+    Wrapped<String?>? defaultUnitId,
+    Wrapped<String?>? defaultUnit,
+    Wrapped<String?>? defaultDealStatusId,
+    Wrapped<String?>? defaultDealStatus,
+    Wrapped<bool?>? defaultDealPoRequired,
+    Wrapped<String?>? defaultDealPoType,
+    Wrapped<bool?>? defaultDealStagingExcludeOrderAfterWrap,
+    Wrapped<String?>? defaultCustomerStatusId,
+    Wrapped<String?>? defaultCustomerStatus,
+    Wrapped<String?>? defaultDealBillingCycleId,
+    Wrapped<String?>? defaultDealBillingCycle,
+    Wrapped<String?>? defaultNonRecurringBillingCycleId,
+    Wrapped<String?>? defaultNonRecurringBillingCycle,
+    Wrapped<String?>? defaultVendorBillingCycleId,
+    Wrapped<String?>? defaultVendorBillingCycle,
+    Wrapped<String?>? defaultCustomerPaymentTermsId,
+    Wrapped<String?>? defaultCustomerPaymentTerms,
+    Wrapped<String?>? defaultRank,
+    Wrapped<String?>? defaultCreditStatusId,
+    Wrapped<String?>? defaultCreditStatus,
+    Wrapped<bool?>? contactShowAllDeals,
+  }) {
     return WebApiLogicAppFuncDefaultSettingsResponse(
-        defaultUnitId:
-            (defaultUnitId != null ? defaultUnitId.value : this.defaultUnitId),
-        defaultUnit:
-            (defaultUnit != null ? defaultUnit.value : this.defaultUnit),
-        defaultDealStatusId: (defaultDealStatusId != null
-            ? defaultDealStatusId.value
-            : this.defaultDealStatusId),
-        defaultDealStatus: (defaultDealStatus != null
-            ? defaultDealStatus.value
-            : this.defaultDealStatus),
-        defaultDealPoRequired: (defaultDealPoRequired != null
-            ? defaultDealPoRequired.value
-            : this.defaultDealPoRequired),
-        defaultDealPoType: (defaultDealPoType != null
-            ? defaultDealPoType.value
-            : this.defaultDealPoType),
-        defaultDealStagingExcludeOrderAfterWrap:
-            (defaultDealStagingExcludeOrderAfterWrap != null
-                ? defaultDealStagingExcludeOrderAfterWrap.value
-                : this.defaultDealStagingExcludeOrderAfterWrap),
-        defaultCustomerStatusId: (defaultCustomerStatusId != null
-            ? defaultCustomerStatusId.value
-            : this.defaultCustomerStatusId),
-        defaultCustomerStatus: (defaultCustomerStatus != null
-            ? defaultCustomerStatus.value
-            : this.defaultCustomerStatus),
-        defaultDealBillingCycleId: (defaultDealBillingCycleId != null
-            ? defaultDealBillingCycleId.value
-            : this.defaultDealBillingCycleId),
-        defaultDealBillingCycle: (defaultDealBillingCycle != null
-            ? defaultDealBillingCycle.value
-            : this.defaultDealBillingCycle),
-        defaultNonRecurringBillingCycleId:
-            (defaultNonRecurringBillingCycleId != null
-                ? defaultNonRecurringBillingCycleId.value
-                : this.defaultNonRecurringBillingCycleId),
-        defaultNonRecurringBillingCycle:
-            (defaultNonRecurringBillingCycle != null
-                ? defaultNonRecurringBillingCycle.value
-                : this.defaultNonRecurringBillingCycle),
-        defaultVendorBillingCycleId: (defaultVendorBillingCycleId != null
-            ? defaultVendorBillingCycleId.value
-            : this.defaultVendorBillingCycleId),
-        defaultVendorBillingCycle: (defaultVendorBillingCycle != null
-            ? defaultVendorBillingCycle.value
-            : this.defaultVendorBillingCycle),
-        defaultCustomerPaymentTermsId: (defaultCustomerPaymentTermsId != null
-            ? defaultCustomerPaymentTermsId.value
-            : this.defaultCustomerPaymentTermsId),
-        defaultCustomerPaymentTerms: (defaultCustomerPaymentTerms != null
-            ? defaultCustomerPaymentTerms.value
-            : this.defaultCustomerPaymentTerms),
-        defaultRank:
-            (defaultRank != null ? defaultRank.value : this.defaultRank),
-        defaultCreditStatusId: (defaultCreditStatusId != null
-            ? defaultCreditStatusId.value
-            : this.defaultCreditStatusId),
-        defaultCreditStatus: (defaultCreditStatus != null
-            ? defaultCreditStatus.value
-            : this.defaultCreditStatus),
-        contactShowAllDeals: (contactShowAllDeals != null
-            ? contactShowAllDeals.value
-            : this.contactShowAllDeals));
+      defaultUnitId: (defaultUnitId != null
+          ? defaultUnitId.value
+          : this.defaultUnitId),
+      defaultUnit: (defaultUnit != null ? defaultUnit.value : this.defaultUnit),
+      defaultDealStatusId: (defaultDealStatusId != null
+          ? defaultDealStatusId.value
+          : this.defaultDealStatusId),
+      defaultDealStatus: (defaultDealStatus != null
+          ? defaultDealStatus.value
+          : this.defaultDealStatus),
+      defaultDealPoRequired: (defaultDealPoRequired != null
+          ? defaultDealPoRequired.value
+          : this.defaultDealPoRequired),
+      defaultDealPoType: (defaultDealPoType != null
+          ? defaultDealPoType.value
+          : this.defaultDealPoType),
+      defaultDealStagingExcludeOrderAfterWrap:
+          (defaultDealStagingExcludeOrderAfterWrap != null
+              ? defaultDealStagingExcludeOrderAfterWrap.value
+              : this.defaultDealStagingExcludeOrderAfterWrap),
+      defaultCustomerStatusId: (defaultCustomerStatusId != null
+          ? defaultCustomerStatusId.value
+          : this.defaultCustomerStatusId),
+      defaultCustomerStatus: (defaultCustomerStatus != null
+          ? defaultCustomerStatus.value
+          : this.defaultCustomerStatus),
+      defaultDealBillingCycleId: (defaultDealBillingCycleId != null
+          ? defaultDealBillingCycleId.value
+          : this.defaultDealBillingCycleId),
+      defaultDealBillingCycle: (defaultDealBillingCycle != null
+          ? defaultDealBillingCycle.value
+          : this.defaultDealBillingCycle),
+      defaultNonRecurringBillingCycleId:
+          (defaultNonRecurringBillingCycleId != null
+              ? defaultNonRecurringBillingCycleId.value
+              : this.defaultNonRecurringBillingCycleId),
+      defaultNonRecurringBillingCycle: (defaultNonRecurringBillingCycle != null
+          ? defaultNonRecurringBillingCycle.value
+          : this.defaultNonRecurringBillingCycle),
+      defaultVendorBillingCycleId: (defaultVendorBillingCycleId != null
+          ? defaultVendorBillingCycleId.value
+          : this.defaultVendorBillingCycleId),
+      defaultVendorBillingCycle: (defaultVendorBillingCycle != null
+          ? defaultVendorBillingCycle.value
+          : this.defaultVendorBillingCycle),
+      defaultCustomerPaymentTermsId: (defaultCustomerPaymentTermsId != null
+          ? defaultCustomerPaymentTermsId.value
+          : this.defaultCustomerPaymentTermsId),
+      defaultCustomerPaymentTerms: (defaultCustomerPaymentTerms != null
+          ? defaultCustomerPaymentTerms.value
+          : this.defaultCustomerPaymentTerms),
+      defaultRank: (defaultRank != null ? defaultRank.value : this.defaultRank),
+      defaultCreditStatusId: (defaultCreditStatusId != null
+          ? defaultCreditStatusId.value
+          : this.defaultCreditStatusId),
+      defaultCreditStatus: (defaultCreditStatus != null
+          ? defaultCreditStatus.value
+          : this.defaultCreditStatus),
+      contactShowAllDeals: (contactShowAllDeals != null
+          ? contactShowAllDeals.value
+          : this.contactShowAllDeals),
+    );
   }
 }
 
@@ -1689,13 +1872,13 @@ class WebApiLogicAppFuncDepartmentDefaultActivities {
   });
 
   factory WebApiLogicAppFuncDepartmentDefaultActivities.fromJson(
-          Map<String, dynamic> json) =>
-      _$WebApiLogicAppFuncDepartmentDefaultActivitiesFromJson(json);
+    Map<String, dynamic> json,
+  ) => _$WebApiLogicAppFuncDepartmentDefaultActivitiesFromJson(json);
 
   static const toJsonFactory =
       _$WebApiLogicAppFuncDepartmentDefaultActivitiesToJson;
-  Map<String, dynamic> toJson() =>
-      _$WebApiLogicAppFuncDepartmentDefaultActivitiesToJson(this);
+  Map<String, dynamic>
+  toJson() => _$WebApiLogicAppFuncDepartmentDefaultActivitiesToJson(this);
 
   @JsonKey(name: 'Facilities', includeIfNull: false)
   final bool? facilities;
@@ -1719,23 +1902,31 @@ class WebApiLogicAppFuncDepartmentDefaultActivities {
     return identical(this, other) ||
         (other is WebApiLogicAppFuncDepartmentDefaultActivities &&
             (identical(other.facilities, facilities) ||
-                const DeepCollectionEquality()
-                    .equals(other.facilities, facilities)) &&
+                const DeepCollectionEquality().equals(
+                  other.facilities,
+                  facilities,
+                )) &&
             (identical(other.labor, labor) ||
                 const DeepCollectionEquality().equals(other.labor, labor)) &&
             (identical(other.miscellaneous, miscellaneous) ||
-                const DeepCollectionEquality()
-                    .equals(other.miscellaneous, miscellaneous)) &&
+                const DeepCollectionEquality().equals(
+                  other.miscellaneous,
+                  miscellaneous,
+                )) &&
             (identical(other.rental, rental) ||
                 const DeepCollectionEquality().equals(other.rental, rental)) &&
             (identical(other.sales, sales) ||
                 const DeepCollectionEquality().equals(other.sales, sales)) &&
             (identical(other.transportation, transportation) ||
-                const DeepCollectionEquality()
-                    .equals(other.transportation, transportation)) &&
+                const DeepCollectionEquality().equals(
+                  other.transportation,
+                  transportation,
+                )) &&
             (identical(other.rentalSale, rentalSale) ||
-                const DeepCollectionEquality()
-                    .equals(other.rentalSale, rentalSale)));
+                const DeepCollectionEquality().equals(
+                  other.rentalSale,
+                  rentalSale,
+                )));
   }
 
   @override
@@ -1755,43 +1946,48 @@ class WebApiLogicAppFuncDepartmentDefaultActivities {
 
 extension $WebApiLogicAppFuncDepartmentDefaultActivitiesExtension
     on WebApiLogicAppFuncDepartmentDefaultActivities {
-  WebApiLogicAppFuncDepartmentDefaultActivities copyWith(
-      {bool? facilities,
-      bool? labor,
-      bool? miscellaneous,
-      bool? rental,
-      bool? sales,
-      bool? transportation,
-      bool? rentalSale}) {
+  WebApiLogicAppFuncDepartmentDefaultActivities copyWith({
+    bool? facilities,
+    bool? labor,
+    bool? miscellaneous,
+    bool? rental,
+    bool? sales,
+    bool? transportation,
+    bool? rentalSale,
+  }) {
     return WebApiLogicAppFuncDepartmentDefaultActivities(
-        facilities: facilities ?? this.facilities,
-        labor: labor ?? this.labor,
-        miscellaneous: miscellaneous ?? this.miscellaneous,
-        rental: rental ?? this.rental,
-        sales: sales ?? this.sales,
-        transportation: transportation ?? this.transportation,
-        rentalSale: rentalSale ?? this.rentalSale);
+      facilities: facilities ?? this.facilities,
+      labor: labor ?? this.labor,
+      miscellaneous: miscellaneous ?? this.miscellaneous,
+      rental: rental ?? this.rental,
+      sales: sales ?? this.sales,
+      transportation: transportation ?? this.transportation,
+      rentalSale: rentalSale ?? this.rentalSale,
+    );
   }
 
-  WebApiLogicAppFuncDepartmentDefaultActivities copyWithWrapped(
-      {Wrapped<bool?>? facilities,
-      Wrapped<bool?>? labor,
-      Wrapped<bool?>? miscellaneous,
-      Wrapped<bool?>? rental,
-      Wrapped<bool?>? sales,
-      Wrapped<bool?>? transportation,
-      Wrapped<bool?>? rentalSale}) {
+  WebApiLogicAppFuncDepartmentDefaultActivities copyWithWrapped({
+    Wrapped<bool?>? facilities,
+    Wrapped<bool?>? labor,
+    Wrapped<bool?>? miscellaneous,
+    Wrapped<bool?>? rental,
+    Wrapped<bool?>? sales,
+    Wrapped<bool?>? transportation,
+    Wrapped<bool?>? rentalSale,
+  }) {
     return WebApiLogicAppFuncDepartmentDefaultActivities(
-        facilities: (facilities != null ? facilities.value : this.facilities),
-        labor: (labor != null ? labor.value : this.labor),
-        miscellaneous:
-            (miscellaneous != null ? miscellaneous.value : this.miscellaneous),
-        rental: (rental != null ? rental.value : this.rental),
-        sales: (sales != null ? sales.value : this.sales),
-        transportation: (transportation != null
-            ? transportation.value
-            : this.transportation),
-        rentalSale: (rentalSale != null ? rentalSale.value : this.rentalSale));
+      facilities: (facilities != null ? facilities.value : this.facilities),
+      labor: (labor != null ? labor.value : this.labor),
+      miscellaneous: (miscellaneous != null
+          ? miscellaneous.value
+          : this.miscellaneous),
+      rental: (rental != null ? rental.value : this.rental),
+      sales: (sales != null ? sales.value : this.sales),
+      transportation: (transportation != null
+          ? transportation.value
+          : this.transportation),
+      rentalSale: (rentalSale != null ? rentalSale.value : this.rentalSale),
+    );
   }
 }
 
@@ -1803,13 +1999,13 @@ class WebApiLogicAppFuncDepartmentSettingsResponse {
   });
 
   factory WebApiLogicAppFuncDepartmentSettingsResponse.fromJson(
-          Map<String, dynamic> json) =>
-      _$WebApiLogicAppFuncDepartmentSettingsResponseFromJson(json);
+    Map<String, dynamic> json,
+  ) => _$WebApiLogicAppFuncDepartmentSettingsResponseFromJson(json);
 
   static const toJsonFactory =
       _$WebApiLogicAppFuncDepartmentSettingsResponseToJson;
-  Map<String, dynamic> toJson() =>
-      _$WebApiLogicAppFuncDepartmentSettingsResponseToJson(this);
+  Map<String, dynamic>
+  toJson() => _$WebApiLogicAppFuncDepartmentSettingsResponseToJson(this);
 
   @JsonKey(name: 'RequireContactConfirmation', includeIfNull: false)
   final bool? requireContactConfirmation;
@@ -1822,14 +2018,19 @@ class WebApiLogicAppFuncDepartmentSettingsResponse {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is WebApiLogicAppFuncDepartmentSettingsResponse &&
-            (identical(other.requireContactConfirmation,
-                    requireContactConfirmation) ||
+            (identical(
+                  other.requireContactConfirmation,
+                  requireContactConfirmation,
+                ) ||
                 const DeepCollectionEquality().equals(
-                    other.requireContactConfirmation,
-                    requireContactConfirmation)) &&
+                  other.requireContactConfirmation,
+                  requireContactConfirmation,
+                )) &&
             (identical(other.defaultActivities, defaultActivities) ||
-                const DeepCollectionEquality()
-                    .equals(other.defaultActivities, defaultActivities)));
+                const DeepCollectionEquality().equals(
+                  other.defaultActivities,
+                  defaultActivities,
+                )));
   }
 
   @override
@@ -1844,26 +2045,29 @@ class WebApiLogicAppFuncDepartmentSettingsResponse {
 
 extension $WebApiLogicAppFuncDepartmentSettingsResponseExtension
     on WebApiLogicAppFuncDepartmentSettingsResponse {
-  WebApiLogicAppFuncDepartmentSettingsResponse copyWith(
-      {bool? requireContactConfirmation,
-      WebApiLogicAppFuncDepartmentDefaultActivities? defaultActivities}) {
+  WebApiLogicAppFuncDepartmentSettingsResponse copyWith({
+    bool? requireContactConfirmation,
+    WebApiLogicAppFuncDepartmentDefaultActivities? defaultActivities,
+  }) {
     return WebApiLogicAppFuncDepartmentSettingsResponse(
-        requireContactConfirmation:
-            requireContactConfirmation ?? this.requireContactConfirmation,
-        defaultActivities: defaultActivities ?? this.defaultActivities);
+      requireContactConfirmation:
+          requireContactConfirmation ?? this.requireContactConfirmation,
+      defaultActivities: defaultActivities ?? this.defaultActivities,
+    );
   }
 
-  WebApiLogicAppFuncDepartmentSettingsResponse copyWithWrapped(
-      {Wrapped<bool?>? requireContactConfirmation,
-      Wrapped<WebApiLogicAppFuncDepartmentDefaultActivities?>?
-          defaultActivities}) {
+  WebApiLogicAppFuncDepartmentSettingsResponse copyWithWrapped({
+    Wrapped<bool?>? requireContactConfirmation,
+    Wrapped<WebApiLogicAppFuncDepartmentDefaultActivities?>? defaultActivities,
+  }) {
     return WebApiLogicAppFuncDepartmentSettingsResponse(
-        requireContactConfirmation: (requireContactConfirmation != null
-            ? requireContactConfirmation.value
-            : this.requireContactConfirmation),
-        defaultActivities: (defaultActivities != null
-            ? defaultActivities.value
-            : this.defaultActivities));
+      requireContactConfirmation: (requireContactConfirmation != null
+          ? requireContactConfirmation.value
+          : this.requireContactConfirmation),
+      defaultActivities: (defaultActivities != null
+          ? defaultActivities.value
+          : this.defaultActivities),
+    );
   }
 }
 
@@ -1874,13 +2078,13 @@ class WebApiLogicAppFuncDocumentBarcodeSettingsResponse {
   });
 
   factory WebApiLogicAppFuncDocumentBarcodeSettingsResponse.fromJson(
-          Map<String, dynamic> json) =>
-      _$WebApiLogicAppFuncDocumentBarcodeSettingsResponseFromJson(json);
+    Map<String, dynamic> json,
+  ) => _$WebApiLogicAppFuncDocumentBarcodeSettingsResponseFromJson(json);
 
   static const toJsonFactory =
       _$WebApiLogicAppFuncDocumentBarcodeSettingsResponseToJson;
-  Map<String, dynamic> toJson() =>
-      _$WebApiLogicAppFuncDocumentBarcodeSettingsResponseToJson(this);
+  Map<String, dynamic>
+  toJson() => _$WebApiLogicAppFuncDocumentBarcodeSettingsResponseToJson(this);
 
   @JsonKey(name: 'DocumentBarCodeStyle', includeIfNull: false)
   final String? documentBarCodeStyle;
@@ -1892,8 +2096,10 @@ class WebApiLogicAppFuncDocumentBarcodeSettingsResponse {
     return identical(this, other) ||
         (other is WebApiLogicAppFuncDocumentBarcodeSettingsResponse &&
             (identical(other.documentBarCodeStyle, documentBarCodeStyle) ||
-                const DeepCollectionEquality()
-                    .equals(other.documentBarCodeStyle, documentBarCodeStyle)));
+                const DeepCollectionEquality().equals(
+                  other.documentBarCodeStyle,
+                  documentBarCodeStyle,
+                )));
   }
 
   @override
@@ -1907,19 +2113,22 @@ class WebApiLogicAppFuncDocumentBarcodeSettingsResponse {
 
 extension $WebApiLogicAppFuncDocumentBarcodeSettingsResponseExtension
     on WebApiLogicAppFuncDocumentBarcodeSettingsResponse {
-  WebApiLogicAppFuncDocumentBarcodeSettingsResponse copyWith(
-      {String? documentBarCodeStyle}) {
+  WebApiLogicAppFuncDocumentBarcodeSettingsResponse copyWith({
+    String? documentBarCodeStyle,
+  }) {
     return WebApiLogicAppFuncDocumentBarcodeSettingsResponse(
-        documentBarCodeStyle:
-            documentBarCodeStyle ?? this.documentBarCodeStyle);
+      documentBarCodeStyle: documentBarCodeStyle ?? this.documentBarCodeStyle,
+    );
   }
 
-  WebApiLogicAppFuncDocumentBarcodeSettingsResponse copyWithWrapped(
-      {Wrapped<String?>? documentBarCodeStyle}) {
+  WebApiLogicAppFuncDocumentBarcodeSettingsResponse copyWithWrapped({
+    Wrapped<String?>? documentBarCodeStyle,
+  }) {
     return WebApiLogicAppFuncDocumentBarcodeSettingsResponse(
-        documentBarCodeStyle: (documentBarCodeStyle != null
-            ? documentBarCodeStyle.value
-            : this.documentBarCodeStyle));
+      documentBarCodeStyle: (documentBarCodeStyle != null
+          ? documentBarCodeStyle.value
+          : this.documentBarCodeStyle),
+    );
   }
 }
 
@@ -1943,12 +2152,12 @@ class WebApiLogicAppFuncGetSettingsResponse {
   });
 
   factory WebApiLogicAppFuncGetSettingsResponse.fromJson(
-          Map<String, dynamic> json) =>
-      _$WebApiLogicAppFuncGetSettingsResponseFromJson(json);
+    Map<String, dynamic> json,
+  ) => _$WebApiLogicAppFuncGetSettingsResponseFromJson(json);
 
   static const toJsonFactory = _$WebApiLogicAppFuncGetSettingsResponseToJson;
-  Map<String, dynamic> toJson() =>
-      _$WebApiLogicAppFuncGetSettingsResponseToJson(this);
+  Map<String, dynamic>
+  toJson() => _$WebApiLogicAppFuncGetSettingsResponseToJson(this);
 
   @JsonKey(name: 'userSettings', includeIfNull: false)
   final WebApiLogicAppFuncUserSettingsResponse? userSettings;
@@ -1968,7 +2177,7 @@ class WebApiLogicAppFuncGetSettingsResponse {
   final WebApiLogicAppFuncDepartmentSettingsResponse? department;
   @JsonKey(name: 'documentBarcodeSettings', includeIfNull: false)
   final WebApiLogicAppFuncDocumentBarcodeSettingsResponse?
-      documentBarcodeSettings;
+  documentBarcodeSettings;
   @JsonKey(name: 'systemNumbers', includeIfNull: false)
   final WebApiLogicAppFuncSystemNumbersResponse? systemNumbers;
   @JsonKey(name: 'warehouses', includeIfNull: false)
@@ -1987,47 +2196,75 @@ class WebApiLogicAppFuncGetSettingsResponse {
     return identical(this, other) ||
         (other is WebApiLogicAppFuncGetSettingsResponse &&
             (identical(other.userSettings, userSettings) ||
-                const DeepCollectionEquality()
-                    .equals(other.userSettings, userSettings)) &&
-            (identical(other.customFields, customFields) ||
-                const DeepCollectionEquality()
-                    .equals(other.customFields, customFields)) &&
-            (identical(other.customForms, customForms) ||
-                const DeepCollectionEquality()
-                    .equals(other.customForms, customForms)) &&
-            (identical(other.defaultSettings, defaultSettings) ||
-                const DeepCollectionEquality()
-                    .equals(other.defaultSettings, defaultSettings)) &&
-            (identical(other.inventorySettings, inventorySettings) ||
-                const DeepCollectionEquality()
-                    .equals(other.inventorySettings, inventorySettings)) &&
-            (identical(other.consignmentSettings, consignmentSettings) ||
-                const DeepCollectionEquality()
-                    .equals(other.consignmentSettings, consignmentSettings)) &&
-            (identical(other.systemSettings, systemSettings) ||
-                const DeepCollectionEquality()
-                    .equals(other.systemSettings, systemSettings)) &&
-            (identical(other.department, department) ||
-                const DeepCollectionEquality()
-                    .equals(other.department, department)) &&
-            (identical(
-                    other.documentBarcodeSettings, documentBarcodeSettings) ||
                 const DeepCollectionEquality().equals(
-                    other.documentBarcodeSettings, documentBarcodeSettings)) &&
+                  other.userSettings,
+                  userSettings,
+                )) &&
+            (identical(other.customFields, customFields) ||
+                const DeepCollectionEquality().equals(
+                  other.customFields,
+                  customFields,
+                )) &&
+            (identical(other.customForms, customForms) ||
+                const DeepCollectionEquality().equals(
+                  other.customForms,
+                  customForms,
+                )) &&
+            (identical(other.defaultSettings, defaultSettings) ||
+                const DeepCollectionEquality().equals(
+                  other.defaultSettings,
+                  defaultSettings,
+                )) &&
+            (identical(other.inventorySettings, inventorySettings) ||
+                const DeepCollectionEquality().equals(
+                  other.inventorySettings,
+                  inventorySettings,
+                )) &&
+            (identical(other.consignmentSettings, consignmentSettings) ||
+                const DeepCollectionEquality().equals(
+                  other.consignmentSettings,
+                  consignmentSettings,
+                )) &&
+            (identical(other.systemSettings, systemSettings) ||
+                const DeepCollectionEquality().equals(
+                  other.systemSettings,
+                  systemSettings,
+                )) &&
+            (identical(other.department, department) ||
+                const DeepCollectionEquality().equals(
+                  other.department,
+                  department,
+                )) &&
+            (identical(
+                  other.documentBarcodeSettings,
+                  documentBarcodeSettings,
+                ) ||
+                const DeepCollectionEquality().equals(
+                  other.documentBarcodeSettings,
+                  documentBarcodeSettings,
+                )) &&
             (identical(other.systemNumbers, systemNumbers) ||
-                const DeepCollectionEquality()
-                    .equals(other.systemNumbers, systemNumbers)) &&
+                const DeepCollectionEquality().equals(
+                  other.systemNumbers,
+                  systemNumbers,
+                )) &&
             (identical(other.warehouses, warehouses) ||
-                const DeepCollectionEquality()
-                    .equals(other.warehouses, warehouses)) &&
+                const DeepCollectionEquality().equals(
+                  other.warehouses,
+                  warehouses,
+                )) &&
             (identical(other.isTraining, isTraining) ||
-                const DeepCollectionEquality()
-                    .equals(other.isTraining, isTraining)) &&
+                const DeepCollectionEquality().equals(
+                  other.isTraining,
+                  isTraining,
+                )) &&
             (identical(other.isQA, isQA) ||
                 const DeepCollectionEquality().equals(other.isQA, isQA)) &&
             (identical(other.hasDataWarehouse, hasDataWarehouse) ||
-                const DeepCollectionEquality()
-                    .equals(other.hasDataWarehouse, hasDataWarehouse)));
+                const DeepCollectionEquality().equals(
+                  other.hasDataWarehouse,
+                  hasDataWarehouse,
+                )));
   }
 
   @override
@@ -2054,88 +2291,93 @@ class WebApiLogicAppFuncGetSettingsResponse {
 
 extension $WebApiLogicAppFuncGetSettingsResponseExtension
     on WebApiLogicAppFuncGetSettingsResponse {
-  WebApiLogicAppFuncGetSettingsResponse copyWith(
-      {WebApiLogicAppFuncUserSettingsResponse? userSettings,
-      WebApiLogicAppFuncCustomFieldsResponse? customFields,
-      WebApiLogicAppFuncCustomFormsResponse? customForms,
-      WebApiLogicAppFuncDefaultSettingsResponse? defaultSettings,
-      WebApiLogicAppFuncInventorySettingsResponse? inventorySettings,
-      WebApiLogicAppFuncConsignmentSettingsResponse? consignmentSettings,
-      WebApiLogicAppFuncSystemSettingsResponse? systemSettings,
-      WebApiLogicAppFuncDepartmentSettingsResponse? department,
-      WebApiLogicAppFuncDocumentBarcodeSettingsResponse?
-          documentBarcodeSettings,
-      WebApiLogicAppFuncSystemNumbersResponse? systemNumbers,
-      WebApiLogicAppFuncWarehouseResponse? warehouses,
-      bool? isTraining,
-      bool? isQA,
-      bool? hasDataWarehouse}) {
+  WebApiLogicAppFuncGetSettingsResponse copyWith({
+    WebApiLogicAppFuncUserSettingsResponse? userSettings,
+    WebApiLogicAppFuncCustomFieldsResponse? customFields,
+    WebApiLogicAppFuncCustomFormsResponse? customForms,
+    WebApiLogicAppFuncDefaultSettingsResponse? defaultSettings,
+    WebApiLogicAppFuncInventorySettingsResponse? inventorySettings,
+    WebApiLogicAppFuncConsignmentSettingsResponse? consignmentSettings,
+    WebApiLogicAppFuncSystemSettingsResponse? systemSettings,
+    WebApiLogicAppFuncDepartmentSettingsResponse? department,
+    WebApiLogicAppFuncDocumentBarcodeSettingsResponse? documentBarcodeSettings,
+    WebApiLogicAppFuncSystemNumbersResponse? systemNumbers,
+    WebApiLogicAppFuncWarehouseResponse? warehouses,
+    bool? isTraining,
+    bool? isQA,
+    bool? hasDataWarehouse,
+  }) {
     return WebApiLogicAppFuncGetSettingsResponse(
-        userSettings: userSettings ?? this.userSettings,
-        customFields: customFields ?? this.customFields,
-        customForms: customForms ?? this.customForms,
-        defaultSettings: defaultSettings ?? this.defaultSettings,
-        inventorySettings: inventorySettings ?? this.inventorySettings,
-        consignmentSettings: consignmentSettings ?? this.consignmentSettings,
-        systemSettings: systemSettings ?? this.systemSettings,
-        department: department ?? this.department,
-        documentBarcodeSettings:
-            documentBarcodeSettings ?? this.documentBarcodeSettings,
-        systemNumbers: systemNumbers ?? this.systemNumbers,
-        warehouses: warehouses ?? this.warehouses,
-        isTraining: isTraining ?? this.isTraining,
-        isQA: isQA ?? this.isQA,
-        hasDataWarehouse: hasDataWarehouse ?? this.hasDataWarehouse);
+      userSettings: userSettings ?? this.userSettings,
+      customFields: customFields ?? this.customFields,
+      customForms: customForms ?? this.customForms,
+      defaultSettings: defaultSettings ?? this.defaultSettings,
+      inventorySettings: inventorySettings ?? this.inventorySettings,
+      consignmentSettings: consignmentSettings ?? this.consignmentSettings,
+      systemSettings: systemSettings ?? this.systemSettings,
+      department: department ?? this.department,
+      documentBarcodeSettings:
+          documentBarcodeSettings ?? this.documentBarcodeSettings,
+      systemNumbers: systemNumbers ?? this.systemNumbers,
+      warehouses: warehouses ?? this.warehouses,
+      isTraining: isTraining ?? this.isTraining,
+      isQA: isQA ?? this.isQA,
+      hasDataWarehouse: hasDataWarehouse ?? this.hasDataWarehouse,
+    );
   }
 
-  WebApiLogicAppFuncGetSettingsResponse copyWithWrapped(
-      {Wrapped<WebApiLogicAppFuncUserSettingsResponse?>? userSettings,
-      Wrapped<WebApiLogicAppFuncCustomFieldsResponse?>? customFields,
-      Wrapped<WebApiLogicAppFuncCustomFormsResponse?>? customForms,
-      Wrapped<WebApiLogicAppFuncDefaultSettingsResponse?>? defaultSettings,
-      Wrapped<WebApiLogicAppFuncInventorySettingsResponse?>? inventorySettings,
-      Wrapped<WebApiLogicAppFuncConsignmentSettingsResponse?>?
-          consignmentSettings,
-      Wrapped<WebApiLogicAppFuncSystemSettingsResponse?>? systemSettings,
-      Wrapped<WebApiLogicAppFuncDepartmentSettingsResponse?>? department,
-      Wrapped<WebApiLogicAppFuncDocumentBarcodeSettingsResponse?>?
-          documentBarcodeSettings,
-      Wrapped<WebApiLogicAppFuncSystemNumbersResponse?>? systemNumbers,
-      Wrapped<WebApiLogicAppFuncWarehouseResponse?>? warehouses,
-      Wrapped<bool?>? isTraining,
-      Wrapped<bool?>? isQA,
-      Wrapped<bool?>? hasDataWarehouse}) {
+  WebApiLogicAppFuncGetSettingsResponse copyWithWrapped({
+    Wrapped<WebApiLogicAppFuncUserSettingsResponse?>? userSettings,
+    Wrapped<WebApiLogicAppFuncCustomFieldsResponse?>? customFields,
+    Wrapped<WebApiLogicAppFuncCustomFormsResponse?>? customForms,
+    Wrapped<WebApiLogicAppFuncDefaultSettingsResponse?>? defaultSettings,
+    Wrapped<WebApiLogicAppFuncInventorySettingsResponse?>? inventorySettings,
+    Wrapped<WebApiLogicAppFuncConsignmentSettingsResponse?>?
+    consignmentSettings,
+    Wrapped<WebApiLogicAppFuncSystemSettingsResponse?>? systemSettings,
+    Wrapped<WebApiLogicAppFuncDepartmentSettingsResponse?>? department,
+    Wrapped<WebApiLogicAppFuncDocumentBarcodeSettingsResponse?>?
+    documentBarcodeSettings,
+    Wrapped<WebApiLogicAppFuncSystemNumbersResponse?>? systemNumbers,
+    Wrapped<WebApiLogicAppFuncWarehouseResponse?>? warehouses,
+    Wrapped<bool?>? isTraining,
+    Wrapped<bool?>? isQA,
+    Wrapped<bool?>? hasDataWarehouse,
+  }) {
     return WebApiLogicAppFuncGetSettingsResponse(
-        userSettings:
-            (userSettings != null ? userSettings.value : this.userSettings),
-        customFields:
-            (customFields != null ? customFields.value : this.customFields),
-        customForms:
-            (customForms != null ? customForms.value : this.customForms),
-        defaultSettings: (defaultSettings != null
-            ? defaultSettings.value
-            : this.defaultSettings),
-        inventorySettings: (inventorySettings != null
-            ? inventorySettings.value
-            : this.inventorySettings),
-        consignmentSettings: (consignmentSettings != null
-            ? consignmentSettings.value
-            : this.consignmentSettings),
-        systemSettings: (systemSettings != null
-            ? systemSettings.value
-            : this.systemSettings),
-        department: (department != null ? department.value : this.department),
-        documentBarcodeSettings: (documentBarcodeSettings != null
-            ? documentBarcodeSettings.value
-            : this.documentBarcodeSettings),
-        systemNumbers:
-            (systemNumbers != null ? systemNumbers.value : this.systemNumbers),
-        warehouses: (warehouses != null ? warehouses.value : this.warehouses),
-        isTraining: (isTraining != null ? isTraining.value : this.isTraining),
-        isQA: (isQA != null ? isQA.value : this.isQA),
-        hasDataWarehouse: (hasDataWarehouse != null
-            ? hasDataWarehouse.value
-            : this.hasDataWarehouse));
+      userSettings: (userSettings != null
+          ? userSettings.value
+          : this.userSettings),
+      customFields: (customFields != null
+          ? customFields.value
+          : this.customFields),
+      customForms: (customForms != null ? customForms.value : this.customForms),
+      defaultSettings: (defaultSettings != null
+          ? defaultSettings.value
+          : this.defaultSettings),
+      inventorySettings: (inventorySettings != null
+          ? inventorySettings.value
+          : this.inventorySettings),
+      consignmentSettings: (consignmentSettings != null
+          ? consignmentSettings.value
+          : this.consignmentSettings),
+      systemSettings: (systemSettings != null
+          ? systemSettings.value
+          : this.systemSettings),
+      department: (department != null ? department.value : this.department),
+      documentBarcodeSettings: (documentBarcodeSettings != null
+          ? documentBarcodeSettings.value
+          : this.documentBarcodeSettings),
+      systemNumbers: (systemNumbers != null
+          ? systemNumbers.value
+          : this.systemNumbers),
+      warehouses: (warehouses != null ? warehouses.value : this.warehouses),
+      isTraining: (isTraining != null ? isTraining.value : this.isTraining),
+      isQA: (isQA != null ? isQA.value : this.isQA),
+      hasDataWarehouse: (hasDataWarehouse != null
+          ? hasDataWarehouse.value
+          : this.hasDataWarehouse),
+    );
   }
 }
 
@@ -2161,13 +2403,13 @@ class WebApiLogicAppFuncInventorySettingsResponse {
   });
 
   factory WebApiLogicAppFuncInventorySettingsResponse.fromJson(
-          Map<String, dynamic> json) =>
-      _$WebApiLogicAppFuncInventorySettingsResponseFromJson(json);
+    Map<String, dynamic> json,
+  ) => _$WebApiLogicAppFuncInventorySettingsResponseFromJson(json);
 
   static const toJsonFactory =
       _$WebApiLogicAppFuncInventorySettingsResponseToJson;
-  Map<String, dynamic> toJson() =>
-      _$WebApiLogicAppFuncInventorySettingsResponseToJson(this);
+  Map<String, dynamic>
+  toJson() => _$WebApiLogicAppFuncInventorySettingsResponseToJson(this);
 
   @JsonKey(name: 'ICodeMask', includeIfNull: false)
   final String? iCodeMask;
@@ -2176,7 +2418,9 @@ class WebApiLogicAppFuncInventorySettingsResponse {
   @JsonKey(name: 'Enable3WeekPricing', includeIfNull: false)
   final bool? enable3WeekPricing;
   @JsonKey(
-      name: 'AutoUpdateInventoryMetricImperialDimensions', includeIfNull: false)
+    name: 'AutoUpdateInventoryMetricImperialDimensions',
+    includeIfNull: false,
+  )
   final bool? autoUpdateInventoryMetricImperialDimensions;
   @JsonKey(name: 'AutoSortInventoryByICode', includeIfNull: false)
   final bool? autoSortInventoryByICode;
@@ -2193,16 +2437,19 @@ class WebApiLogicAppFuncInventorySettingsResponse {
   @JsonKey(name: 'DefaultLossAndDamageRetiredReason', includeIfNull: false)
   final String? defaultLossAndDamageRetiredReason;
   @JsonKey(
-      name: 'DefaultRentalQuantityInventoryCostCalculation',
-      includeIfNull: false)
+    name: 'DefaultRentalQuantityInventoryCostCalculation',
+    includeIfNull: false,
+  )
   final String? defaultRentalQuantityInventoryCostCalculation;
   @JsonKey(
-      name: 'DefaultSalesQuantityInventoryCostCalculation',
-      includeIfNull: false)
+    name: 'DefaultSalesQuantityInventoryCostCalculation',
+    includeIfNull: false,
+  )
   final String? defaultSalesQuantityInventoryCostCalculation;
   @JsonKey(
-      name: 'DefaultPartsQuantityInventoryCostCalculation',
-      includeIfNull: false)
+    name: 'DefaultPartsQuantityInventoryCostCalculation',
+    includeIfNull: false,
+  )
   final String? defaultPartsQuantityInventoryCostCalculation;
   @JsonKey(name: 'FixedAssetTransferOwnership', includeIfNull: false)
   final bool? fixedAssetTransferOwnership;
@@ -2216,46 +2463,75 @@ class WebApiLogicAppFuncInventorySettingsResponse {
     return identical(this, other) ||
         (other is WebApiLogicAppFuncInventorySettingsResponse &&
             (identical(other.iCodeMask, iCodeMask) ||
-                const DeepCollectionEquality()
-                    .equals(other.iCodeMask, iCodeMask)) &&
+                const DeepCollectionEquality().equals(
+                  other.iCodeMask,
+                  iCodeMask,
+                )) &&
             (identical(other.userAssignedICodes, userAssignedICodes) ||
-                const DeepCollectionEquality()
-                    .equals(other.userAssignedICodes, userAssignedICodes)) &&
+                const DeepCollectionEquality().equals(
+                  other.userAssignedICodes,
+                  userAssignedICodes,
+                )) &&
             (identical(other.enable3WeekPricing, enable3WeekPricing) ||
-                const DeepCollectionEquality()
-                    .equals(other.enable3WeekPricing, enable3WeekPricing)) &&
+                const DeepCollectionEquality().equals(
+                  other.enable3WeekPricing,
+                  enable3WeekPricing,
+                )) &&
             (identical(other.autoUpdateInventoryMetricImperialDimensions, autoUpdateInventoryMetricImperialDimensions) ||
                 const DeepCollectionEquality().equals(
-                    other.autoUpdateInventoryMetricImperialDimensions,
-                    autoUpdateInventoryMetricImperialDimensions)) &&
+                  other.autoUpdateInventoryMetricImperialDimensions,
+                  autoUpdateInventoryMetricImperialDimensions,
+                )) &&
             (identical(other.autoSortInventoryByICode, autoSortInventoryByICode) ||
                 const DeepCollectionEquality().equals(
-                    other.autoSortInventoryByICode,
-                    autoSortInventoryByICode)) &&
+                  other.autoSortInventoryByICode,
+                  autoSortInventoryByICode,
+                )) &&
             (identical(other.enableConsignment, enableConsignment) ||
-                const DeepCollectionEquality()
-                    .equals(other.enableConsignment, enableConsignment)) &&
+                const DeepCollectionEquality().equals(
+                  other.enableConsignment,
+                  enableConsignment,
+                )) &&
             (identical(other.enableLease, enableLease) ||
-                const DeepCollectionEquality()
-                    .equals(other.enableLease, enableLease)) &&
+                const DeepCollectionEquality().equals(
+                  other.enableLease,
+                  enableLease,
+                )) &&
             (identical(other.defaultRentalSaleRetiredReasonId, defaultRentalSaleRetiredReasonId) ||
                 const DeepCollectionEquality().equals(
-                    other.defaultRentalSaleRetiredReasonId,
-                    defaultRentalSaleRetiredReasonId)) &&
+                  other.defaultRentalSaleRetiredReasonId,
+                  defaultRentalSaleRetiredReasonId,
+                )) &&
             (identical(other.defaultRentalSaleRetiredReason, defaultRentalSaleRetiredReason) ||
                 const DeepCollectionEquality().equals(
-                    other.defaultRentalSaleRetiredReason,
-                    defaultRentalSaleRetiredReason)) &&
+                  other.defaultRentalSaleRetiredReason,
+                  defaultRentalSaleRetiredReason,
+                )) &&
             (identical(other.defaultLossAndDamageRetiredReasonId, defaultLossAndDamageRetiredReasonId) ||
                 const DeepCollectionEquality().equals(
-                    other.defaultLossAndDamageRetiredReasonId,
-                    defaultLossAndDamageRetiredReasonId)) &&
+                  other.defaultLossAndDamageRetiredReasonId,
+                  defaultLossAndDamageRetiredReasonId,
+                )) &&
             (identical(other.defaultLossAndDamageRetiredReason, defaultLossAndDamageRetiredReason) ||
-                const DeepCollectionEquality()
-                    .equals(other.defaultLossAndDamageRetiredReason, defaultLossAndDamageRetiredReason)) &&
-            (identical(other.defaultRentalQuantityInventoryCostCalculation, defaultRentalQuantityInventoryCostCalculation) || const DeepCollectionEquality().equals(other.defaultRentalQuantityInventoryCostCalculation, defaultRentalQuantityInventoryCostCalculation)) &&
-            (identical(other.defaultSalesQuantityInventoryCostCalculation, defaultSalesQuantityInventoryCostCalculation) || const DeepCollectionEquality().equals(other.defaultSalesQuantityInventoryCostCalculation, defaultSalesQuantityInventoryCostCalculation)) &&
-            (identical(other.defaultPartsQuantityInventoryCostCalculation, defaultPartsQuantityInventoryCostCalculation) || const DeepCollectionEquality().equals(other.defaultPartsQuantityInventoryCostCalculation, defaultPartsQuantityInventoryCostCalculation)) &&
+                const DeepCollectionEquality().equals(
+                  other.defaultLossAndDamageRetiredReason,
+                  defaultLossAndDamageRetiredReason,
+                )) &&
+            (identical(other.defaultRentalQuantityInventoryCostCalculation, defaultRentalQuantityInventoryCostCalculation) ||
+                const DeepCollectionEquality().equals(
+                  other.defaultRentalQuantityInventoryCostCalculation,
+                  defaultRentalQuantityInventoryCostCalculation,
+                )) &&
+            (identical(other.defaultSalesQuantityInventoryCostCalculation, defaultSalesQuantityInventoryCostCalculation) ||
+                const DeepCollectionEquality().equals(
+                  other.defaultSalesQuantityInventoryCostCalculation,
+                  defaultSalesQuantityInventoryCostCalculation,
+                )) &&
+            (identical(other.defaultPartsQuantityInventoryCostCalculation, defaultPartsQuantityInventoryCostCalculation) ||
+                const DeepCollectionEquality().equals(
+                  other.defaultPartsQuantityInventoryCostCalculation,
+                  defaultPartsQuantityInventoryCostCalculation,
+                )) &&
             (identical(other.fixedAssetTransferOwnership, fixedAssetTransferOwnership) || const DeepCollectionEquality().equals(other.fixedAssetTransferOwnership, fixedAssetTransferOwnership)) &&
             (identical(other.enableInventoryCertification, enableInventoryCertification) || const DeepCollectionEquality().equals(other.enableInventoryCertification, enableInventoryCertification)));
   }
@@ -2268,8 +2544,9 @@ class WebApiLogicAppFuncInventorySettingsResponse {
       const DeepCollectionEquality().hash(iCodeMask) ^
       const DeepCollectionEquality().hash(userAssignedICodes) ^
       const DeepCollectionEquality().hash(enable3WeekPricing) ^
-      const DeepCollectionEquality()
-          .hash(autoUpdateInventoryMetricImperialDimensions) ^
+      const DeepCollectionEquality().hash(
+        autoUpdateInventoryMetricImperialDimensions,
+      ) ^
       const DeepCollectionEquality().hash(autoSortInventoryByICode) ^
       const DeepCollectionEquality().hash(enableConsignment) ^
       const DeepCollectionEquality().hash(enableLease) ^
@@ -2277,12 +2554,15 @@ class WebApiLogicAppFuncInventorySettingsResponse {
       const DeepCollectionEquality().hash(defaultRentalSaleRetiredReason) ^
       const DeepCollectionEquality().hash(defaultLossAndDamageRetiredReasonId) ^
       const DeepCollectionEquality().hash(defaultLossAndDamageRetiredReason) ^
-      const DeepCollectionEquality()
-          .hash(defaultRentalQuantityInventoryCostCalculation) ^
-      const DeepCollectionEquality()
-          .hash(defaultSalesQuantityInventoryCostCalculation) ^
-      const DeepCollectionEquality()
-          .hash(defaultPartsQuantityInventoryCostCalculation) ^
+      const DeepCollectionEquality().hash(
+        defaultRentalQuantityInventoryCostCalculation,
+      ) ^
+      const DeepCollectionEquality().hash(
+        defaultSalesQuantityInventoryCostCalculation,
+      ) ^
+      const DeepCollectionEquality().hash(
+        defaultPartsQuantityInventoryCostCalculation,
+      ) ^
       const DeepCollectionEquality().hash(fixedAssetTransferOwnership) ^
       const DeepCollectionEquality().hash(enableInventoryCertification) ^
       runtimeType.hashCode;
@@ -2290,135 +2570,141 @@ class WebApiLogicAppFuncInventorySettingsResponse {
 
 extension $WebApiLogicAppFuncInventorySettingsResponseExtension
     on WebApiLogicAppFuncInventorySettingsResponse {
-  WebApiLogicAppFuncInventorySettingsResponse copyWith(
-      {String? iCodeMask,
-      bool? userAssignedICodes,
-      bool? enable3WeekPricing,
-      bool? autoUpdateInventoryMetricImperialDimensions,
-      bool? autoSortInventoryByICode,
-      bool? enableConsignment,
-      bool? enableLease,
-      String? defaultRentalSaleRetiredReasonId,
-      String? defaultRentalSaleRetiredReason,
-      String? defaultLossAndDamageRetiredReasonId,
-      String? defaultLossAndDamageRetiredReason,
-      String? defaultRentalQuantityInventoryCostCalculation,
-      String? defaultSalesQuantityInventoryCostCalculation,
-      String? defaultPartsQuantityInventoryCostCalculation,
-      bool? fixedAssetTransferOwnership,
-      bool? enableInventoryCertification}) {
+  WebApiLogicAppFuncInventorySettingsResponse copyWith({
+    String? iCodeMask,
+    bool? userAssignedICodes,
+    bool? enable3WeekPricing,
+    bool? autoUpdateInventoryMetricImperialDimensions,
+    bool? autoSortInventoryByICode,
+    bool? enableConsignment,
+    bool? enableLease,
+    String? defaultRentalSaleRetiredReasonId,
+    String? defaultRentalSaleRetiredReason,
+    String? defaultLossAndDamageRetiredReasonId,
+    String? defaultLossAndDamageRetiredReason,
+    String? defaultRentalQuantityInventoryCostCalculation,
+    String? defaultSalesQuantityInventoryCostCalculation,
+    String? defaultPartsQuantityInventoryCostCalculation,
+    bool? fixedAssetTransferOwnership,
+    bool? enableInventoryCertification,
+  }) {
     return WebApiLogicAppFuncInventorySettingsResponse(
-        iCodeMask: iCodeMask ?? this.iCodeMask,
-        userAssignedICodes: userAssignedICodes ?? this.userAssignedICodes,
-        enable3WeekPricing: enable3WeekPricing ?? this.enable3WeekPricing,
-        autoUpdateInventoryMetricImperialDimensions:
-            autoUpdateInventoryMetricImperialDimensions ??
-                this.autoUpdateInventoryMetricImperialDimensions,
-        autoSortInventoryByICode:
-            autoSortInventoryByICode ?? this.autoSortInventoryByICode,
-        enableConsignment: enableConsignment ?? this.enableConsignment,
-        enableLease: enableLease ?? this.enableLease,
-        defaultRentalSaleRetiredReasonId: defaultRentalSaleRetiredReasonId ??
-            this.defaultRentalSaleRetiredReasonId,
-        defaultRentalSaleRetiredReason: defaultRentalSaleRetiredReason ??
-            this.defaultRentalSaleRetiredReason,
-        defaultLossAndDamageRetiredReasonId:
-            defaultLossAndDamageRetiredReasonId ??
-                this.defaultLossAndDamageRetiredReasonId,
-        defaultLossAndDamageRetiredReason: defaultLossAndDamageRetiredReason ??
-            this.defaultLossAndDamageRetiredReason,
-        defaultRentalQuantityInventoryCostCalculation:
-            defaultRentalQuantityInventoryCostCalculation ??
-                this.defaultRentalQuantityInventoryCostCalculation,
-        defaultSalesQuantityInventoryCostCalculation:
-            defaultSalesQuantityInventoryCostCalculation ??
-                this.defaultSalesQuantityInventoryCostCalculation,
-        defaultPartsQuantityInventoryCostCalculation:
-            defaultPartsQuantityInventoryCostCalculation ??
-                this.defaultPartsQuantityInventoryCostCalculation,
-        fixedAssetTransferOwnership:
-            fixedAssetTransferOwnership ?? this.fixedAssetTransferOwnership,
-        enableInventoryCertification:
-            enableInventoryCertification ?? this.enableInventoryCertification);
+      iCodeMask: iCodeMask ?? this.iCodeMask,
+      userAssignedICodes: userAssignedICodes ?? this.userAssignedICodes,
+      enable3WeekPricing: enable3WeekPricing ?? this.enable3WeekPricing,
+      autoUpdateInventoryMetricImperialDimensions:
+          autoUpdateInventoryMetricImperialDimensions ??
+              this.autoUpdateInventoryMetricImperialDimensions,
+      autoSortInventoryByICode:
+          autoSortInventoryByICode ?? this.autoSortInventoryByICode,
+      enableConsignment: enableConsignment ?? this.enableConsignment,
+      enableLease: enableLease ?? this.enableLease,
+      defaultRentalSaleRetiredReasonId: defaultRentalSaleRetiredReasonId ??
+          this.defaultRentalSaleRetiredReasonId,
+      defaultRentalSaleRetiredReason:
+          defaultRentalSaleRetiredReason ?? this.defaultRentalSaleRetiredReason,
+      defaultLossAndDamageRetiredReasonId:
+          defaultLossAndDamageRetiredReasonId ??
+              this.defaultLossAndDamageRetiredReasonId,
+      defaultLossAndDamageRetiredReason: defaultLossAndDamageRetiredReason ??
+          this.defaultLossAndDamageRetiredReason,
+      defaultRentalQuantityInventoryCostCalculation:
+          defaultRentalQuantityInventoryCostCalculation ??
+              this.defaultRentalQuantityInventoryCostCalculation,
+      defaultSalesQuantityInventoryCostCalculation:
+          defaultSalesQuantityInventoryCostCalculation ??
+              this.defaultSalesQuantityInventoryCostCalculation,
+      defaultPartsQuantityInventoryCostCalculation:
+          defaultPartsQuantityInventoryCostCalculation ??
+              this.defaultPartsQuantityInventoryCostCalculation,
+      fixedAssetTransferOwnership:
+          fixedAssetTransferOwnership ?? this.fixedAssetTransferOwnership,
+      enableInventoryCertification:
+          enableInventoryCertification ?? this.enableInventoryCertification,
+    );
   }
 
-  WebApiLogicAppFuncInventorySettingsResponse copyWithWrapped(
-      {Wrapped<String?>? iCodeMask,
-      Wrapped<bool?>? userAssignedICodes,
-      Wrapped<bool?>? enable3WeekPricing,
-      Wrapped<bool?>? autoUpdateInventoryMetricImperialDimensions,
-      Wrapped<bool?>? autoSortInventoryByICode,
-      Wrapped<bool?>? enableConsignment,
-      Wrapped<bool?>? enableLease,
-      Wrapped<String?>? defaultRentalSaleRetiredReasonId,
-      Wrapped<String?>? defaultRentalSaleRetiredReason,
-      Wrapped<String?>? defaultLossAndDamageRetiredReasonId,
-      Wrapped<String?>? defaultLossAndDamageRetiredReason,
-      Wrapped<String?>? defaultRentalQuantityInventoryCostCalculation,
-      Wrapped<String?>? defaultSalesQuantityInventoryCostCalculation,
-      Wrapped<String?>? defaultPartsQuantityInventoryCostCalculation,
-      Wrapped<bool?>? fixedAssetTransferOwnership,
-      Wrapped<bool?>? enableInventoryCertification}) {
+  WebApiLogicAppFuncInventorySettingsResponse copyWithWrapped({
+    Wrapped<String?>? iCodeMask,
+    Wrapped<bool?>? userAssignedICodes,
+    Wrapped<bool?>? enable3WeekPricing,
+    Wrapped<bool?>? autoUpdateInventoryMetricImperialDimensions,
+    Wrapped<bool?>? autoSortInventoryByICode,
+    Wrapped<bool?>? enableConsignment,
+    Wrapped<bool?>? enableLease,
+    Wrapped<String?>? defaultRentalSaleRetiredReasonId,
+    Wrapped<String?>? defaultRentalSaleRetiredReason,
+    Wrapped<String?>? defaultLossAndDamageRetiredReasonId,
+    Wrapped<String?>? defaultLossAndDamageRetiredReason,
+    Wrapped<String?>? defaultRentalQuantityInventoryCostCalculation,
+    Wrapped<String?>? defaultSalesQuantityInventoryCostCalculation,
+    Wrapped<String?>? defaultPartsQuantityInventoryCostCalculation,
+    Wrapped<bool?>? fixedAssetTransferOwnership,
+    Wrapped<bool?>? enableInventoryCertification,
+  }) {
     return WebApiLogicAppFuncInventorySettingsResponse(
-        iCodeMask: (iCodeMask != null ? iCodeMask.value : this.iCodeMask),
-        userAssignedICodes: (userAssignedICodes != null
-            ? userAssignedICodes.value
-            : this.userAssignedICodes),
-        enable3WeekPricing: (enable3WeekPricing != null
-            ? enable3WeekPricing.value
-            : this.enable3WeekPricing),
-        autoUpdateInventoryMetricImperialDimensions: (autoUpdateInventoryMetricImperialDimensions != null
-            ? autoUpdateInventoryMetricImperialDimensions.value
-            : this.autoUpdateInventoryMetricImperialDimensions),
-        autoSortInventoryByICode: (autoSortInventoryByICode != null
-            ? autoSortInventoryByICode.value
-            : this.autoSortInventoryByICode),
-        enableConsignment: (enableConsignment != null
-            ? enableConsignment.value
-            : this.enableConsignment),
-        enableLease:
-            (enableLease != null ? enableLease.value : this.enableLease),
-        defaultRentalSaleRetiredReasonId: (defaultRentalSaleRetiredReasonId != null
-            ? defaultRentalSaleRetiredReasonId.value
-            : this.defaultRentalSaleRetiredReasonId),
-        defaultRentalSaleRetiredReason: (defaultRentalSaleRetiredReason != null
-            ? defaultRentalSaleRetiredReason.value
-            : this.defaultRentalSaleRetiredReason),
-        defaultLossAndDamageRetiredReasonId: (defaultLossAndDamageRetiredReasonId != null
-            ? defaultLossAndDamageRetiredReasonId.value
-            : this.defaultLossAndDamageRetiredReasonId),
-        defaultLossAndDamageRetiredReason: (defaultLossAndDamageRetiredReason != null
-            ? defaultLossAndDamageRetiredReason.value
-            : this.defaultLossAndDamageRetiredReason),
-        defaultRentalQuantityInventoryCostCalculation:
-            (defaultRentalQuantityInventoryCostCalculation != null
-                ? defaultRentalQuantityInventoryCostCalculation.value
-                : this.defaultRentalQuantityInventoryCostCalculation),
-        defaultSalesQuantityInventoryCostCalculation: (defaultSalesQuantityInventoryCostCalculation != null
-            ? defaultSalesQuantityInventoryCostCalculation.value
-            : this.defaultSalesQuantityInventoryCostCalculation),
-        defaultPartsQuantityInventoryCostCalculation:
-            (defaultPartsQuantityInventoryCostCalculation != null
-                ? defaultPartsQuantityInventoryCostCalculation.value
-                : this.defaultPartsQuantityInventoryCostCalculation),
-        fixedAssetTransferOwnership: (fixedAssetTransferOwnership != null
-            ? fixedAssetTransferOwnership.value
-            : this.fixedAssetTransferOwnership),
-        enableInventoryCertification: (enableInventoryCertification != null
-            ? enableInventoryCertification.value
-            : this.enableInventoryCertification));
+      iCodeMask: (iCodeMask != null ? iCodeMask.value : this.iCodeMask),
+      userAssignedICodes: (userAssignedICodes != null
+          ? userAssignedICodes.value
+          : this.userAssignedICodes),
+      enable3WeekPricing: (enable3WeekPricing != null
+          ? enable3WeekPricing.value
+          : this.enable3WeekPricing),
+      autoUpdateInventoryMetricImperialDimensions:
+          (autoUpdateInventoryMetricImperialDimensions != null
+              ? autoUpdateInventoryMetricImperialDimensions.value
+              : this.autoUpdateInventoryMetricImperialDimensions),
+      autoSortInventoryByICode: (autoSortInventoryByICode != null
+          ? autoSortInventoryByICode.value
+          : this.autoSortInventoryByICode),
+      enableConsignment: (enableConsignment != null
+          ? enableConsignment.value
+          : this.enableConsignment),
+      enableLease: (enableLease != null ? enableLease.value : this.enableLease),
+      defaultRentalSaleRetiredReasonId:
+          (defaultRentalSaleRetiredReasonId != null
+              ? defaultRentalSaleRetiredReasonId.value
+              : this.defaultRentalSaleRetiredReasonId),
+      defaultRentalSaleRetiredReason: (defaultRentalSaleRetiredReason != null
+          ? defaultRentalSaleRetiredReason.value
+          : this.defaultRentalSaleRetiredReason),
+      defaultLossAndDamageRetiredReasonId:
+          (defaultLossAndDamageRetiredReasonId != null
+              ? defaultLossAndDamageRetiredReasonId.value
+              : this.defaultLossAndDamageRetiredReasonId),
+      defaultLossAndDamageRetiredReason:
+          (defaultLossAndDamageRetiredReason != null
+              ? defaultLossAndDamageRetiredReason.value
+              : this.defaultLossAndDamageRetiredReason),
+      defaultRentalQuantityInventoryCostCalculation:
+          (defaultRentalQuantityInventoryCostCalculation != null
+              ? defaultRentalQuantityInventoryCostCalculation.value
+              : this.defaultRentalQuantityInventoryCostCalculation),
+      defaultSalesQuantityInventoryCostCalculation:
+          (defaultSalesQuantityInventoryCostCalculation != null
+              ? defaultSalesQuantityInventoryCostCalculation.value
+              : this.defaultSalesQuantityInventoryCostCalculation),
+      defaultPartsQuantityInventoryCostCalculation:
+          (defaultPartsQuantityInventoryCostCalculation != null
+              ? defaultPartsQuantityInventoryCostCalculation.value
+              : this.defaultPartsQuantityInventoryCostCalculation),
+      fixedAssetTransferOwnership: (fixedAssetTransferOwnership != null
+          ? fixedAssetTransferOwnership.value
+          : this.fixedAssetTransferOwnership),
+      enableInventoryCertification: (enableInventoryCertification != null
+          ? enableInventoryCertification.value
+          : this.enableInventoryCertification),
+    );
   }
 }
 
 @JsonSerializable(explicitToJson: true)
 class WebApiLogicAppFuncSessionDeal {
-  WebApiLogicAppFuncSessionDeal({
-    this.dealid,
-    this.deal,
-  });
+  WebApiLogicAppFuncSessionDeal({this.dealid, this.deal});
 
-  factory WebApiLogicAppFuncSessionDeal.fromJson(Map<String, dynamic> json) =>
-      _$WebApiLogicAppFuncSessionDealFromJson(json);
+  factory WebApiLogicAppFuncSessionDeal.fromJson(
+    Map<String, dynamic> json,
+  ) => _$WebApiLogicAppFuncSessionDealFromJson(json);
 
   static const toJsonFactory = _$WebApiLogicAppFuncSessionDealToJson;
   Map<String, dynamic> toJson() => _$WebApiLogicAppFuncSessionDealToJson(this);
@@ -2453,31 +2739,34 @@ extension $WebApiLogicAppFuncSessionDealExtension
     on WebApiLogicAppFuncSessionDeal {
   WebApiLogicAppFuncSessionDeal copyWith({String? dealid, String? deal}) {
     return WebApiLogicAppFuncSessionDeal(
-        dealid: dealid ?? this.dealid, deal: deal ?? this.deal);
+      dealid: dealid ?? this.dealid,
+      deal: deal ?? this.deal,
+    );
   }
 
-  WebApiLogicAppFuncSessionDeal copyWithWrapped(
-      {Wrapped<String?>? dealid, Wrapped<String?>? deal}) {
+  WebApiLogicAppFuncSessionDeal copyWithWrapped({
+    Wrapped<String?>? dealid,
+    Wrapped<String?>? deal,
+  }) {
     return WebApiLogicAppFuncSessionDeal(
-        dealid: (dealid != null ? dealid.value : this.dealid),
-        deal: (deal != null ? deal.value : this.deal));
+      dealid: (dealid != null ? dealid.value : this.dealid),
+      deal: (deal != null ? deal.value : this.deal),
+    );
   }
 }
 
 @JsonSerializable(explicitToJson: true)
 class WebApiLogicAppFuncSessionDepartment {
-  WebApiLogicAppFuncSessionDepartment({
-    this.departmentid,
-    this.department,
-  });
+  WebApiLogicAppFuncSessionDepartment({this.departmentid, this.department});
 
   factory WebApiLogicAppFuncSessionDepartment.fromJson(
-          Map<String, dynamic> json) =>
-      _$WebApiLogicAppFuncSessionDepartmentFromJson(json);
+    Map<String, dynamic> json,
+  ) => _$WebApiLogicAppFuncSessionDepartmentFromJson(json);
 
   static const toJsonFactory = _$WebApiLogicAppFuncSessionDepartmentToJson;
-  Map<String, dynamic> toJson() =>
-      _$WebApiLogicAppFuncSessionDepartmentToJson(this);
+  Map<String, dynamic> toJson() => _$WebApiLogicAppFuncSessionDepartmentToJson(
+    this,
+  );
 
   @JsonKey(name: 'departmentid', includeIfNull: false)
   final String? departmentid;
@@ -2490,11 +2779,15 @@ class WebApiLogicAppFuncSessionDepartment {
     return identical(this, other) ||
         (other is WebApiLogicAppFuncSessionDepartment &&
             (identical(other.departmentid, departmentid) ||
-                const DeepCollectionEquality()
-                    .equals(other.departmentid, departmentid)) &&
+                const DeepCollectionEquality().equals(
+                  other.departmentid,
+                  departmentid,
+                )) &&
             (identical(other.department, department) ||
-                const DeepCollectionEquality()
-                    .equals(other.department, department)));
+                const DeepCollectionEquality().equals(
+                  other.department,
+                  department,
+                )));
   }
 
   @override
@@ -2509,19 +2802,26 @@ class WebApiLogicAppFuncSessionDepartment {
 
 extension $WebApiLogicAppFuncSessionDepartmentExtension
     on WebApiLogicAppFuncSessionDepartment {
-  WebApiLogicAppFuncSessionDepartment copyWith(
-      {String? departmentid, String? department}) {
+  WebApiLogicAppFuncSessionDepartment copyWith({
+    String? departmentid,
+    String? department,
+  }) {
     return WebApiLogicAppFuncSessionDepartment(
-        departmentid: departmentid ?? this.departmentid,
-        department: department ?? this.department);
+      departmentid: departmentid ?? this.departmentid,
+      department: department ?? this.department,
+    );
   }
 
-  WebApiLogicAppFuncSessionDepartment copyWithWrapped(
-      {Wrapped<String?>? departmentid, Wrapped<String?>? department}) {
+  WebApiLogicAppFuncSessionDepartment copyWithWrapped({
+    Wrapped<String?>? departmentid,
+    Wrapped<String?>? department,
+  }) {
     return WebApiLogicAppFuncSessionDepartment(
-        departmentid:
-            (departmentid != null ? departmentid.value : this.departmentid),
-        department: (department != null ? department.value : this.department));
+      departmentid: (departmentid != null
+          ? departmentid.value
+          : this.departmentid),
+      department: (department != null ? department.value : this.department),
+    );
   }
 }
 
@@ -2566,12 +2866,13 @@ class WebApiLogicAppFuncSessionLocation {
   });
 
   factory WebApiLogicAppFuncSessionLocation.fromJson(
-          Map<String, dynamic> json) =>
-      _$WebApiLogicAppFuncSessionLocationFromJson(json);
+    Map<String, dynamic> json,
+  ) => _$WebApiLogicAppFuncSessionLocationFromJson(json);
 
   static const toJsonFactory = _$WebApiLogicAppFuncSessionLocationToJson;
-  Map<String, dynamic> toJson() =>
-      _$WebApiLogicAppFuncSessionLocationToJson(this);
+  Map<String, dynamic> toJson() => _$WebApiLogicAppFuncSessionLocationToJson(
+    this,
+  );
 
   @JsonKey(name: 'locationid', includeIfNull: false)
   final String? locationid;
@@ -2650,77 +2951,149 @@ class WebApiLogicAppFuncSessionLocation {
     return identical(this, other) ||
         (other is WebApiLogicAppFuncSessionLocation &&
             (identical(other.locationid, locationid) ||
-                const DeepCollectionEquality()
-                    .equals(other.locationid, locationid)) &&
+                const DeepCollectionEquality().equals(
+                  other.locationid,
+                  locationid,
+                )) &&
             (identical(other.location, location) ||
-                const DeepCollectionEquality()
-                    .equals(other.location, location)) &&
+                const DeepCollectionEquality().equals(
+                  other.location,
+                  location,
+                )) &&
             (identical(other.locationcode, locationcode) ||
-                const DeepCollectionEquality()
-                    .equals(other.locationcode, locationcode)) &&
+                const DeepCollectionEquality().equals(
+                  other.locationcode,
+                  locationcode,
+                )) &&
             (identical(other.companyname, companyname) ||
-                const DeepCollectionEquality()
-                    .equals(other.companyname, companyname)) &&
+                const DeepCollectionEquality().equals(
+                  other.companyname,
+                  companyname,
+                )) &&
             (identical(other.locationcolor, locationcolor) ||
-                const DeepCollectionEquality()
-                    .equals(other.locationcolor, locationcolor)) &&
+                const DeepCollectionEquality().equals(
+                  other.locationcolor,
+                  locationcolor,
+                )) &&
             (identical(other.ratetype, ratetype) ||
-                const DeepCollectionEquality()
-                    .equals(other.ratetype, ratetype)) &&
+                const DeepCollectionEquality().equals(
+                  other.ratetype,
+                  ratetype,
+                )) &&
             (identical(other.ratetypedisplay, ratetypedisplay) ||
-                const DeepCollectionEquality()
-                    .equals(other.ratetypedisplay, ratetypedisplay)) &&
+                const DeepCollectionEquality().equals(
+                  other.ratetypedisplay,
+                  ratetypedisplay,
+                )) &&
             (identical(other.defaultcurrency, defaultcurrency) ||
-                const DeepCollectionEquality()
-                    .equals(other.defaultcurrency, defaultcurrency)) &&
+                const DeepCollectionEquality().equals(
+                  other.defaultcurrency,
+                  defaultcurrency,
+                )) &&
             (identical(other.defaultcurrencyid, defaultcurrencyid) ||
-                const DeepCollectionEquality()
-                    .equals(other.defaultcurrencyid, defaultcurrencyid)) &&
+                const DeepCollectionEquality().equals(
+                  other.defaultcurrencyid,
+                  defaultcurrencyid,
+                )) &&
             (identical(other.defaultcurrencycode, defaultcurrencycode) ||
-                const DeepCollectionEquality()
-                    .equals(other.defaultcurrencycode, defaultcurrencycode)) &&
+                const DeepCollectionEquality().equals(
+                  other.defaultcurrencycode,
+                  defaultcurrencycode,
+                )) &&
             (identical(other.defaultcurrencysymbol, defaultcurrencysymbol) ||
                 const DeepCollectionEquality().equals(
-                    other.defaultcurrencysymbol, defaultcurrencysymbol)) &&
+                  other.defaultcurrencysymbol,
+                  defaultcurrencysymbol,
+                )) &&
             (identical(other.defaultpaymentby, defaultpaymentby) ||
-                const DeepCollectionEquality()
-                    .equals(other.defaultpaymentby, defaultpaymentby)) &&
+                const DeepCollectionEquality().equals(
+                  other.defaultpaymentby,
+                  defaultpaymentby,
+                )) &&
             (identical(other.defaulttaxoptionid, defaulttaxoptionid) ||
-                const DeepCollectionEquality()
-                    .equals(other.defaulttaxoptionid, defaulttaxoptionid)) &&
+                const DeepCollectionEquality().equals(
+                  other.defaulttaxoptionid,
+                  defaulttaxoptionid,
+                )) &&
             (identical(other.defaulttaxoption, defaulttaxoption) ||
-                const DeepCollectionEquality()
-                    .equals(other.defaulttaxoption, defaulttaxoption)) &&
+                const DeepCollectionEquality().equals(
+                  other.defaulttaxoption,
+                  defaulttaxoption,
+                )) &&
             (identical(other.countryid, countryid) ||
-                const DeepCollectionEquality()
-                    .equals(other.countryid, countryid)) &&
+                const DeepCollectionEquality().equals(
+                  other.countryid,
+                  countryid,
+                )) &&
             (identical(other.country, country) ||
-                const DeepCollectionEquality()
-                    .equals(other.country, country)) &&
+                const DeepCollectionEquality().equals(
+                  other.country,
+                  country,
+                )) &&
             (identical(other.countrycodeisoalpha2, countrycodeisoalpha2) ||
                 const DeepCollectionEquality().equals(
-                    other.countrycodeisoalpha2, countrycodeisoalpha2)) &&
+                  other.countrycodeisoalpha2,
+                  countrycodeisoalpha2,
+                )) &&
             (identical(other.phone, phone) ||
                 const DeepCollectionEquality().equals(other.phone, phone)) &&
             (identical(other.useorderlocationbydefault, useorderlocationbydefault) ||
                 const DeepCollectionEquality().equals(
-                    other.useorderlocationbydefault,
-                    useorderlocationbydefault)) &&
+                  other.useorderlocationbydefault,
+                  useorderlocationbydefault,
+                )) &&
             (identical(other.defaultrepairpotypeid, defaultrepairpotypeid) ||
                 const DeepCollectionEquality().equals(
-                    other.defaultrepairpotypeid, defaultrepairpotypeid)) &&
+                  other.defaultrepairpotypeid,
+                  defaultrepairpotypeid,
+                )) &&
             (identical(other.defaultrepairpotype, defaultrepairpotype) ||
-                const DeepCollectionEquality()
-                    .equals(other.defaultrepairpotype, defaultrepairpotype)) &&
-            (identical(other.emailinvoicetoorderedby, emailinvoicetoorderedby) || const DeepCollectionEquality().equals(other.emailinvoicetoorderedby, emailinvoicetoorderedby)) &&
-            (identical(other.emailinvoicetoaccountspayable, emailinvoicetoaccountspayable) || const DeepCollectionEquality().equals(other.emailinvoicetoaccountspayable, emailinvoicetoaccountspayable)) &&
-            (identical(other.defaultpurchasepotypeid, defaultpurchasepotypeid) || const DeepCollectionEquality().equals(other.defaultpurchasepotypeid, defaultpurchasepotypeid)) &&
-            (identical(other.defaultpurchasepotype, defaultpurchasepotype) || const DeepCollectionEquality().equals(other.defaultpurchasepotype, defaultpurchasepotype)) &&
-            (identical(other.defaultsubrentalpoordertypeid, defaultsubrentalpoordertypeid) || const DeepCollectionEquality().equals(other.defaultsubrentalpoordertypeid, defaultsubrentalpoordertypeid)) &&
-            (identical(other.defaultsubrentalpoordertype, defaultsubrentalpoordertype) || const DeepCollectionEquality().equals(other.defaultsubrentalpoordertype, defaultsubrentalpoordertype)) &&
-            (identical(other.defaultsubsalespoordertypeid, defaultsubsalespoordertypeid) || const DeepCollectionEquality().equals(other.defaultsubsalespoordertypeid, defaultsubsalespoordertypeid)) &&
-            (identical(other.defaultsubsalespoordertype, defaultsubsalespoordertype) || const DeepCollectionEquality().equals(other.defaultsubsalespoordertype, defaultsubsalespoordertype)) &&
-            (identical(other.defaultsubmiscpoordertypeid, defaultsubmiscpoordertypeid) || const DeepCollectionEquality().equals(other.defaultsubmiscpoordertypeid, defaultsubmiscpoordertypeid)) &&
+                const DeepCollectionEquality().equals(
+                  other.defaultrepairpotype,
+                  defaultrepairpotype,
+                )) &&
+            (identical(other.emailinvoicetoorderedby, emailinvoicetoorderedby) ||
+                const DeepCollectionEquality().equals(
+                  other.emailinvoicetoorderedby,
+                  emailinvoicetoorderedby,
+                )) &&
+            (identical(other.emailinvoicetoaccountspayable, emailinvoicetoaccountspayable) ||
+                const DeepCollectionEquality().equals(
+                  other.emailinvoicetoaccountspayable,
+                  emailinvoicetoaccountspayable,
+                )) &&
+            (identical(other.defaultpurchasepotypeid, defaultpurchasepotypeid) ||
+                const DeepCollectionEquality().equals(
+                  other.defaultpurchasepotypeid,
+                  defaultpurchasepotypeid,
+                )) &&
+            (identical(other.defaultpurchasepotype, defaultpurchasepotype) ||
+                const DeepCollectionEquality().equals(
+                  other.defaultpurchasepotype,
+                  defaultpurchasepotype,
+                )) &&
+            (identical(other.defaultsubrentalpoordertypeid, defaultsubrentalpoordertypeid) ||
+                const DeepCollectionEquality().equals(
+                  other.defaultsubrentalpoordertypeid,
+                  defaultsubrentalpoordertypeid,
+                )) &&
+            (identical(other.defaultsubrentalpoordertype, defaultsubrentalpoordertype) ||
+                const DeepCollectionEquality().equals(
+                  other.defaultsubrentalpoordertype,
+                  defaultsubrentalpoordertype,
+                )) &&
+            (identical(other.defaultsubsalespoordertypeid, defaultsubsalespoordertypeid) ||
+                const DeepCollectionEquality().equals(
+                  other.defaultsubsalespoordertypeid,
+                  defaultsubsalespoordertypeid,
+                )) &&
+            (identical(other.defaultsubsalespoordertype, defaultsubsalespoordertype) ||
+                const DeepCollectionEquality().equals(
+                  other.defaultsubsalespoordertype,
+                  defaultsubsalespoordertype,
+                )) &&
+            (identical(other.defaultsubmiscpoordertypeid, defaultsubmiscpoordertypeid) ||
+                const DeepCollectionEquality().equals(other.defaultsubmiscpoordertypeid, defaultsubmiscpoordertypeid)) &&
             (identical(other.defaultsubmiscpoordertype, defaultsubmiscpoordertype) || const DeepCollectionEquality().equals(other.defaultsubmiscpoordertype, defaultsubmiscpoordertype)) &&
             (identical(other.defaultsublaborpoordertypeid, defaultsublaborpoordertypeid) || const DeepCollectionEquality().equals(other.defaultsublaborpoordertypeid, defaultsublaborpoordertypeid)) &&
             (identical(other.defaultsublaborpoordertype, defaultsublaborpoordertype) || const DeepCollectionEquality().equals(other.defaultsublaborpoordertype, defaultsublaborpoordertype)) &&
@@ -2773,224 +3146,229 @@ class WebApiLogicAppFuncSessionLocation {
 
 extension $WebApiLogicAppFuncSessionLocationExtension
     on WebApiLogicAppFuncSessionLocation {
-  WebApiLogicAppFuncSessionLocation copyWith(
-      {String? locationid,
-      String? location,
-      String? locationcode,
-      String? companyname,
-      String? locationcolor,
-      String? ratetype,
-      String? ratetypedisplay,
-      String? defaultcurrency,
-      String? defaultcurrencyid,
-      String? defaultcurrencycode,
-      String? defaultcurrencysymbol,
-      String? defaultpaymentby,
-      String? defaulttaxoptionid,
-      String? defaulttaxoption,
-      String? countryid,
-      String? country,
-      String? countrycodeisoalpha2,
-      String? phone,
-      bool? useorderlocationbydefault,
-      String? defaultrepairpotypeid,
-      String? defaultrepairpotype,
-      bool? emailinvoicetoorderedby,
-      bool? emailinvoicetoaccountspayable,
-      String? defaultpurchasepotypeid,
-      String? defaultpurchasepotype,
-      String? defaultsubrentalpoordertypeid,
-      String? defaultsubrentalpoordertype,
-      String? defaultsubsalespoordertypeid,
-      String? defaultsubsalespoordertype,
-      String? defaultsubmiscpoordertypeid,
-      String? defaultsubmiscpoordertype,
-      String? defaultsublaborpoordertypeid,
-      String? defaultsublaborpoordertype,
-      String? defaultcombinedpoordertypeid,
-      String? defaultcombinedpoordertype}) {
+  WebApiLogicAppFuncSessionLocation copyWith({
+    String? locationid,
+    String? location,
+    String? locationcode,
+    String? companyname,
+    String? locationcolor,
+    String? ratetype,
+    String? ratetypedisplay,
+    String? defaultcurrency,
+    String? defaultcurrencyid,
+    String? defaultcurrencycode,
+    String? defaultcurrencysymbol,
+    String? defaultpaymentby,
+    String? defaulttaxoptionid,
+    String? defaulttaxoption,
+    String? countryid,
+    String? country,
+    String? countrycodeisoalpha2,
+    String? phone,
+    bool? useorderlocationbydefault,
+    String? defaultrepairpotypeid,
+    String? defaultrepairpotype,
+    bool? emailinvoicetoorderedby,
+    bool? emailinvoicetoaccountspayable,
+    String? defaultpurchasepotypeid,
+    String? defaultpurchasepotype,
+    String? defaultsubrentalpoordertypeid,
+    String? defaultsubrentalpoordertype,
+    String? defaultsubsalespoordertypeid,
+    String? defaultsubsalespoordertype,
+    String? defaultsubmiscpoordertypeid,
+    String? defaultsubmiscpoordertype,
+    String? defaultsublaborpoordertypeid,
+    String? defaultsublaborpoordertype,
+    String? defaultcombinedpoordertypeid,
+    String? defaultcombinedpoordertype,
+  }) {
     return WebApiLogicAppFuncSessionLocation(
-        locationid: locationid ?? this.locationid,
-        location: location ?? this.location,
-        locationcode: locationcode ?? this.locationcode,
-        companyname: companyname ?? this.companyname,
-        locationcolor: locationcolor ?? this.locationcolor,
-        ratetype: ratetype ?? this.ratetype,
-        ratetypedisplay: ratetypedisplay ?? this.ratetypedisplay,
-        defaultcurrency: defaultcurrency ?? this.defaultcurrency,
-        defaultcurrencyid: defaultcurrencyid ?? this.defaultcurrencyid,
-        defaultcurrencycode: defaultcurrencycode ?? this.defaultcurrencycode,
-        defaultcurrencysymbol:
-            defaultcurrencysymbol ?? this.defaultcurrencysymbol,
-        defaultpaymentby: defaultpaymentby ?? this.defaultpaymentby,
-        defaulttaxoptionid: defaulttaxoptionid ?? this.defaulttaxoptionid,
-        defaulttaxoption: defaulttaxoption ?? this.defaulttaxoption,
-        countryid: countryid ?? this.countryid,
-        country: country ?? this.country,
-        countrycodeisoalpha2: countrycodeisoalpha2 ?? this.countrycodeisoalpha2,
-        phone: phone ?? this.phone,
-        useorderlocationbydefault:
-            useorderlocationbydefault ?? this.useorderlocationbydefault,
-        defaultrepairpotypeid:
-            defaultrepairpotypeid ?? this.defaultrepairpotypeid,
-        defaultrepairpotype: defaultrepairpotype ?? this.defaultrepairpotype,
-        emailinvoicetoorderedby:
-            emailinvoicetoorderedby ?? this.emailinvoicetoorderedby,
-        emailinvoicetoaccountspayable:
-            emailinvoicetoaccountspayable ?? this.emailinvoicetoaccountspayable,
-        defaultpurchasepotypeid:
-            defaultpurchasepotypeid ?? this.defaultpurchasepotypeid,
-        defaultpurchasepotype:
-            defaultpurchasepotype ?? this.defaultpurchasepotype,
-        defaultsubrentalpoordertypeid:
-            defaultsubrentalpoordertypeid ?? this.defaultsubrentalpoordertypeid,
-        defaultsubrentalpoordertype:
-            defaultsubrentalpoordertype ?? this.defaultsubrentalpoordertype,
-        defaultsubsalespoordertypeid:
-            defaultsubsalespoordertypeid ?? this.defaultsubsalespoordertypeid,
-        defaultsubsalespoordertype:
-            defaultsubsalespoordertype ?? this.defaultsubsalespoordertype,
-        defaultsubmiscpoordertypeid:
-            defaultsubmiscpoordertypeid ?? this.defaultsubmiscpoordertypeid,
-        defaultsubmiscpoordertype:
-            defaultsubmiscpoordertype ?? this.defaultsubmiscpoordertype,
-        defaultsublaborpoordertypeid:
-            defaultsublaborpoordertypeid ?? this.defaultsublaborpoordertypeid,
-        defaultsublaborpoordertype:
-            defaultsublaborpoordertype ?? this.defaultsublaborpoordertype,
-        defaultcombinedpoordertypeid:
-            defaultcombinedpoordertypeid ?? this.defaultcombinedpoordertypeid,
-        defaultcombinedpoordertype:
-            defaultcombinedpoordertype ?? this.defaultcombinedpoordertype);
+      locationid: locationid ?? this.locationid,
+      location: location ?? this.location,
+      locationcode: locationcode ?? this.locationcode,
+      companyname: companyname ?? this.companyname,
+      locationcolor: locationcolor ?? this.locationcolor,
+      ratetype: ratetype ?? this.ratetype,
+      ratetypedisplay: ratetypedisplay ?? this.ratetypedisplay,
+      defaultcurrency: defaultcurrency ?? this.defaultcurrency,
+      defaultcurrencyid: defaultcurrencyid ?? this.defaultcurrencyid,
+      defaultcurrencycode: defaultcurrencycode ?? this.defaultcurrencycode,
+      defaultcurrencysymbol:
+          defaultcurrencysymbol ?? this.defaultcurrencysymbol,
+      defaultpaymentby: defaultpaymentby ?? this.defaultpaymentby,
+      defaulttaxoptionid: defaulttaxoptionid ?? this.defaulttaxoptionid,
+      defaulttaxoption: defaulttaxoption ?? this.defaulttaxoption,
+      countryid: countryid ?? this.countryid,
+      country: country ?? this.country,
+      countrycodeisoalpha2: countrycodeisoalpha2 ?? this.countrycodeisoalpha2,
+      phone: phone ?? this.phone,
+      useorderlocationbydefault:
+          useorderlocationbydefault ?? this.useorderlocationbydefault,
+      defaultrepairpotypeid:
+          defaultrepairpotypeid ?? this.defaultrepairpotypeid,
+      defaultrepairpotype: defaultrepairpotype ?? this.defaultrepairpotype,
+      emailinvoicetoorderedby:
+          emailinvoicetoorderedby ?? this.emailinvoicetoorderedby,
+      emailinvoicetoaccountspayable:
+          emailinvoicetoaccountspayable ?? this.emailinvoicetoaccountspayable,
+      defaultpurchasepotypeid:
+          defaultpurchasepotypeid ?? this.defaultpurchasepotypeid,
+      defaultpurchasepotype:
+          defaultpurchasepotype ?? this.defaultpurchasepotype,
+      defaultsubrentalpoordertypeid:
+          defaultsubrentalpoordertypeid ?? this.defaultsubrentalpoordertypeid,
+      defaultsubrentalpoordertype:
+          defaultsubrentalpoordertype ?? this.defaultsubrentalpoordertype,
+      defaultsubsalespoordertypeid:
+          defaultsubsalespoordertypeid ?? this.defaultsubsalespoordertypeid,
+      defaultsubsalespoordertype:
+          defaultsubsalespoordertype ?? this.defaultsubsalespoordertype,
+      defaultsubmiscpoordertypeid:
+          defaultsubmiscpoordertypeid ?? this.defaultsubmiscpoordertypeid,
+      defaultsubmiscpoordertype:
+          defaultsubmiscpoordertype ?? this.defaultsubmiscpoordertype,
+      defaultsublaborpoordertypeid:
+          defaultsublaborpoordertypeid ?? this.defaultsublaborpoordertypeid,
+      defaultsublaborpoordertype:
+          defaultsublaborpoordertype ?? this.defaultsublaborpoordertype,
+      defaultcombinedpoordertypeid:
+          defaultcombinedpoordertypeid ?? this.defaultcombinedpoordertypeid,
+      defaultcombinedpoordertype:
+          defaultcombinedpoordertype ?? this.defaultcombinedpoordertype,
+    );
   }
 
-  WebApiLogicAppFuncSessionLocation copyWithWrapped(
-      {Wrapped<String?>? locationid,
-      Wrapped<String?>? location,
-      Wrapped<String?>? locationcode,
-      Wrapped<String?>? companyname,
-      Wrapped<String?>? locationcolor,
-      Wrapped<String?>? ratetype,
-      Wrapped<String?>? ratetypedisplay,
-      Wrapped<String?>? defaultcurrency,
-      Wrapped<String?>? defaultcurrencyid,
-      Wrapped<String?>? defaultcurrencycode,
-      Wrapped<String?>? defaultcurrencysymbol,
-      Wrapped<String?>? defaultpaymentby,
-      Wrapped<String?>? defaulttaxoptionid,
-      Wrapped<String?>? defaulttaxoption,
-      Wrapped<String?>? countryid,
-      Wrapped<String?>? country,
-      Wrapped<String?>? countrycodeisoalpha2,
-      Wrapped<String?>? phone,
-      Wrapped<bool?>? useorderlocationbydefault,
-      Wrapped<String?>? defaultrepairpotypeid,
-      Wrapped<String?>? defaultrepairpotype,
-      Wrapped<bool?>? emailinvoicetoorderedby,
-      Wrapped<bool?>? emailinvoicetoaccountspayable,
-      Wrapped<String?>? defaultpurchasepotypeid,
-      Wrapped<String?>? defaultpurchasepotype,
-      Wrapped<String?>? defaultsubrentalpoordertypeid,
-      Wrapped<String?>? defaultsubrentalpoordertype,
-      Wrapped<String?>? defaultsubsalespoordertypeid,
-      Wrapped<String?>? defaultsubsalespoordertype,
-      Wrapped<String?>? defaultsubmiscpoordertypeid,
-      Wrapped<String?>? defaultsubmiscpoordertype,
-      Wrapped<String?>? defaultsublaborpoordertypeid,
-      Wrapped<String?>? defaultsublaborpoordertype,
-      Wrapped<String?>? defaultcombinedpoordertypeid,
-      Wrapped<String?>? defaultcombinedpoordertype}) {
+  WebApiLogicAppFuncSessionLocation copyWithWrapped({
+    Wrapped<String?>? locationid,
+    Wrapped<String?>? location,
+    Wrapped<String?>? locationcode,
+    Wrapped<String?>? companyname,
+    Wrapped<String?>? locationcolor,
+    Wrapped<String?>? ratetype,
+    Wrapped<String?>? ratetypedisplay,
+    Wrapped<String?>? defaultcurrency,
+    Wrapped<String?>? defaultcurrencyid,
+    Wrapped<String?>? defaultcurrencycode,
+    Wrapped<String?>? defaultcurrencysymbol,
+    Wrapped<String?>? defaultpaymentby,
+    Wrapped<String?>? defaulttaxoptionid,
+    Wrapped<String?>? defaulttaxoption,
+    Wrapped<String?>? countryid,
+    Wrapped<String?>? country,
+    Wrapped<String?>? countrycodeisoalpha2,
+    Wrapped<String?>? phone,
+    Wrapped<bool?>? useorderlocationbydefault,
+    Wrapped<String?>? defaultrepairpotypeid,
+    Wrapped<String?>? defaultrepairpotype,
+    Wrapped<bool?>? emailinvoicetoorderedby,
+    Wrapped<bool?>? emailinvoicetoaccountspayable,
+    Wrapped<String?>? defaultpurchasepotypeid,
+    Wrapped<String?>? defaultpurchasepotype,
+    Wrapped<String?>? defaultsubrentalpoordertypeid,
+    Wrapped<String?>? defaultsubrentalpoordertype,
+    Wrapped<String?>? defaultsubsalespoordertypeid,
+    Wrapped<String?>? defaultsubsalespoordertype,
+    Wrapped<String?>? defaultsubmiscpoordertypeid,
+    Wrapped<String?>? defaultsubmiscpoordertype,
+    Wrapped<String?>? defaultsublaborpoordertypeid,
+    Wrapped<String?>? defaultsublaborpoordertype,
+    Wrapped<String?>? defaultcombinedpoordertypeid,
+    Wrapped<String?>? defaultcombinedpoordertype,
+  }) {
     return WebApiLogicAppFuncSessionLocation(
-        locationid: (locationid != null ? locationid.value : this.locationid),
-        location: (location != null ? location.value : this.location),
-        locationcode:
-            (locationcode != null ? locationcode.value : this.locationcode),
-        companyname:
-            (companyname != null ? companyname.value : this.companyname),
-        locationcolor:
-            (locationcolor != null ? locationcolor.value : this.locationcolor),
-        ratetype: (ratetype != null ? ratetype.value : this.ratetype),
-        ratetypedisplay: (ratetypedisplay != null
-            ? ratetypedisplay.value
-            : this.ratetypedisplay),
-        defaultcurrency: (defaultcurrency != null
-            ? defaultcurrency.value
-            : this.defaultcurrency),
-        defaultcurrencyid: (defaultcurrencyid != null
-            ? defaultcurrencyid.value
-            : this.defaultcurrencyid),
-        defaultcurrencycode: (defaultcurrencycode != null
-            ? defaultcurrencycode.value
-            : this.defaultcurrencycode),
-        defaultcurrencysymbol: (defaultcurrencysymbol != null
-            ? defaultcurrencysymbol.value
-            : this.defaultcurrencysymbol),
-        defaultpaymentby: (defaultpaymentby != null
-            ? defaultpaymentby.value
-            : this.defaultpaymentby),
-        defaulttaxoptionid: (defaulttaxoptionid != null
-            ? defaulttaxoptionid.value
-            : this.defaulttaxoptionid),
-        defaulttaxoption: (defaulttaxoption != null
-            ? defaulttaxoption.value
-            : this.defaulttaxoption),
-        countryid: (countryid != null ? countryid.value : this.countryid),
-        country: (country != null ? country.value : this.country),
-        countrycodeisoalpha2: (countrycodeisoalpha2 != null
-            ? countrycodeisoalpha2.value
-            : this.countrycodeisoalpha2),
-        phone: (phone != null ? phone.value : this.phone),
-        useorderlocationbydefault: (useorderlocationbydefault != null
-            ? useorderlocationbydefault.value
-            : this.useorderlocationbydefault),
-        defaultrepairpotypeid: (defaultrepairpotypeid != null
-            ? defaultrepairpotypeid.value
-            : this.defaultrepairpotypeid),
-        defaultrepairpotype: (defaultrepairpotype != null
-            ? defaultrepairpotype.value
-            : this.defaultrepairpotype),
-        emailinvoicetoorderedby: (emailinvoicetoorderedby != null
-            ? emailinvoicetoorderedby.value
-            : this.emailinvoicetoorderedby),
-        emailinvoicetoaccountspayable: (emailinvoicetoaccountspayable != null
-            ? emailinvoicetoaccountspayable.value
-            : this.emailinvoicetoaccountspayable),
-        defaultpurchasepotypeid: (defaultpurchasepotypeid != null
-            ? defaultpurchasepotypeid.value
-            : this.defaultpurchasepotypeid),
-        defaultpurchasepotype: (defaultpurchasepotype != null
-            ? defaultpurchasepotype.value
-            : this.defaultpurchasepotype),
-        defaultsubrentalpoordertypeid: (defaultsubrentalpoordertypeid != null
-            ? defaultsubrentalpoordertypeid.value
-            : this.defaultsubrentalpoordertypeid),
-        defaultsubrentalpoordertype: (defaultsubrentalpoordertype != null
-            ? defaultsubrentalpoordertype.value
-            : this.defaultsubrentalpoordertype),
-        defaultsubsalespoordertypeid: (defaultsubsalespoordertypeid != null
-            ? defaultsubsalespoordertypeid.value
-            : this.defaultsubsalespoordertypeid),
-        defaultsubsalespoordertype: (defaultsubsalespoordertype != null
-            ? defaultsubsalespoordertype.value
-            : this.defaultsubsalespoordertype),
-        defaultsubmiscpoordertypeid: (defaultsubmiscpoordertypeid != null
-            ? defaultsubmiscpoordertypeid.value
-            : this.defaultsubmiscpoordertypeid),
-        defaultsubmiscpoordertype: (defaultsubmiscpoordertype != null
-            ? defaultsubmiscpoordertype.value
-            : this.defaultsubmiscpoordertype),
-        defaultsublaborpoordertypeid: (defaultsublaborpoordertypeid != null
-            ? defaultsublaborpoordertypeid.value
-            : this.defaultsublaborpoordertypeid),
-        defaultsublaborpoordertype: (defaultsublaborpoordertype != null
-            ? defaultsublaborpoordertype.value
-            : this.defaultsublaborpoordertype),
-        defaultcombinedpoordertypeid: (defaultcombinedpoordertypeid != null
-            ? defaultcombinedpoordertypeid.value
-            : this.defaultcombinedpoordertypeid),
-        defaultcombinedpoordertype: (defaultcombinedpoordertype != null
-            ? defaultcombinedpoordertype.value
-            : this.defaultcombinedpoordertype));
+      locationid: (locationid != null ? locationid.value : this.locationid),
+      location: (location != null ? location.value : this.location),
+      locationcode: (locationcode != null
+          ? locationcode.value
+          : this.locationcode),
+      companyname: (companyname != null ? companyname.value : this.companyname),
+      locationcolor: (locationcolor != null
+          ? locationcolor.value
+          : this.locationcolor),
+      ratetype: (ratetype != null ? ratetype.value : this.ratetype),
+      ratetypedisplay: (ratetypedisplay != null
+          ? ratetypedisplay.value
+          : this.ratetypedisplay),
+      defaultcurrency: (defaultcurrency != null
+          ? defaultcurrency.value
+          : this.defaultcurrency),
+      defaultcurrencyid: (defaultcurrencyid != null
+          ? defaultcurrencyid.value
+          : this.defaultcurrencyid),
+      defaultcurrencycode: (defaultcurrencycode != null
+          ? defaultcurrencycode.value
+          : this.defaultcurrencycode),
+      defaultcurrencysymbol: (defaultcurrencysymbol != null
+          ? defaultcurrencysymbol.value
+          : this.defaultcurrencysymbol),
+      defaultpaymentby: (defaultpaymentby != null
+          ? defaultpaymentby.value
+          : this.defaultpaymentby),
+      defaulttaxoptionid: (defaulttaxoptionid != null
+          ? defaulttaxoptionid.value
+          : this.defaulttaxoptionid),
+      defaulttaxoption: (defaulttaxoption != null
+          ? defaulttaxoption.value
+          : this.defaulttaxoption),
+      countryid: (countryid != null ? countryid.value : this.countryid),
+      country: (country != null ? country.value : this.country),
+      countrycodeisoalpha2: (countrycodeisoalpha2 != null
+          ? countrycodeisoalpha2.value
+          : this.countrycodeisoalpha2),
+      phone: (phone != null ? phone.value : this.phone),
+      useorderlocationbydefault: (useorderlocationbydefault != null
+          ? useorderlocationbydefault.value
+          : this.useorderlocationbydefault),
+      defaultrepairpotypeid: (defaultrepairpotypeid != null
+          ? defaultrepairpotypeid.value
+          : this.defaultrepairpotypeid),
+      defaultrepairpotype: (defaultrepairpotype != null
+          ? defaultrepairpotype.value
+          : this.defaultrepairpotype),
+      emailinvoicetoorderedby: (emailinvoicetoorderedby != null
+          ? emailinvoicetoorderedby.value
+          : this.emailinvoicetoorderedby),
+      emailinvoicetoaccountspayable: (emailinvoicetoaccountspayable != null
+          ? emailinvoicetoaccountspayable.value
+          : this.emailinvoicetoaccountspayable),
+      defaultpurchasepotypeid: (defaultpurchasepotypeid != null
+          ? defaultpurchasepotypeid.value
+          : this.defaultpurchasepotypeid),
+      defaultpurchasepotype: (defaultpurchasepotype != null
+          ? defaultpurchasepotype.value
+          : this.defaultpurchasepotype),
+      defaultsubrentalpoordertypeid: (defaultsubrentalpoordertypeid != null
+          ? defaultsubrentalpoordertypeid.value
+          : this.defaultsubrentalpoordertypeid),
+      defaultsubrentalpoordertype: (defaultsubrentalpoordertype != null
+          ? defaultsubrentalpoordertype.value
+          : this.defaultsubrentalpoordertype),
+      defaultsubsalespoordertypeid: (defaultsubsalespoordertypeid != null
+          ? defaultsubsalespoordertypeid.value
+          : this.defaultsubsalespoordertypeid),
+      defaultsubsalespoordertype: (defaultsubsalespoordertype != null
+          ? defaultsubsalespoordertype.value
+          : this.defaultsubsalespoordertype),
+      defaultsubmiscpoordertypeid: (defaultsubmiscpoordertypeid != null
+          ? defaultsubmiscpoordertypeid.value
+          : this.defaultsubmiscpoordertypeid),
+      defaultsubmiscpoordertype: (defaultsubmiscpoordertype != null
+          ? defaultsubmiscpoordertype.value
+          : this.defaultsubmiscpoordertype),
+      defaultsublaborpoordertypeid: (defaultsublaborpoordertypeid != null
+          ? defaultsublaborpoordertypeid.value
+          : this.defaultsublaborpoordertypeid),
+      defaultsublaborpoordertype: (defaultsublaborpoordertype != null
+          ? defaultsublaborpoordertype.value
+          : this.defaultsublaborpoordertype),
+      defaultcombinedpoordertypeid: (defaultcombinedpoordertypeid != null
+          ? defaultcombinedpoordertypeid.value
+          : this.defaultcombinedpoordertypeid),
+      defaultcombinedpoordertype: (defaultcombinedpoordertype != null
+          ? defaultcombinedpoordertype.value
+          : this.defaultcombinedpoordertype),
+    );
   }
 }
 
@@ -3043,8 +3421,9 @@ class WebApiLogicAppFuncSessionUser {
     this.creditCardPinPad,
   });
 
-  factory WebApiLogicAppFuncSessionUser.fromJson(Map<String, dynamic> json) =>
-      _$WebApiLogicAppFuncSessionUserFromJson(json);
+  factory WebApiLogicAppFuncSessionUser.fromJson(
+    Map<String, dynamic> json,
+  ) => _$WebApiLogicAppFuncSessionUserFromJson(json);
 
   static const toJsonFactory = _$WebApiLogicAppFuncSessionUserToJson;
   Map<String, dynamic> toJson() => _$WebApiLogicAppFuncSessionUserToJson(this);
@@ -3144,80 +3523,156 @@ class WebApiLogicAppFuncSessionUser {
     return identical(this, other) ||
         (other is WebApiLogicAppFuncSessionUser &&
             (identical(other.webusersid, webusersid) ||
-                const DeepCollectionEquality()
-                    .equals(other.webusersid, webusersid)) &&
+                const DeepCollectionEquality().equals(
+                  other.webusersid,
+                  webusersid,
+                )) &&
             (identical(other.usersid, usersid) ||
-                const DeepCollectionEquality()
-                    .equals(other.usersid, usersid)) &&
+                const DeepCollectionEquality().equals(
+                  other.usersid,
+                  usersid,
+                )) &&
             (identical(other.contactid, contactid) ||
-                const DeepCollectionEquality()
-                    .equals(other.contactid, contactid)) &&
+                const DeepCollectionEquality().equals(
+                  other.contactid,
+                  contactid,
+                )) &&
             (identical(other.usertype, usertype) ||
-                const DeepCollectionEquality()
-                    .equals(other.usertype, usertype)) &&
+                const DeepCollectionEquality().equals(
+                  other.usertype,
+                  usertype,
+                )) &&
             (identical(other.email, email) ||
                 const DeepCollectionEquality().equals(other.email, email)) &&
             (identical(other.emailapp, emailapp) ||
-                const DeepCollectionEquality()
-                    .equals(other.emailapp, emailapp)) &&
+                const DeepCollectionEquality().equals(
+                  other.emailapp,
+                  emailapp,
+                )) &&
             (identical(other.addsignaturetodraft, addsignaturetodraft) ||
-                const DeepCollectionEquality()
-                    .equals(other.addsignaturetodraft, addsignaturetodraft)) &&
+                const DeepCollectionEquality().equals(
+                  other.addsignaturetodraft,
+                  addsignaturetodraft,
+                )) &&
             (identical(other.fullname, fullname) ||
-                const DeepCollectionEquality()
-                    .equals(other.fullname, fullname)) &&
+                const DeepCollectionEquality().equals(
+                  other.fullname,
+                  fullname,
+                )) &&
             (identical(other.name, name) ||
                 const DeepCollectionEquality().equals(other.name, name)) &&
             (identical(other.browsedefaultrows, browsedefaultrows) ||
-                const DeepCollectionEquality()
-                    .equals(other.browsedefaultrows, browsedefaultrows)) &&
+                const DeepCollectionEquality().equals(
+                  other.browsedefaultrows,
+                  browsedefaultrows,
+                )) &&
             (identical(other.griddefaultrows, griddefaultrows) ||
-                const DeepCollectionEquality()
-                    .equals(other.griddefaultrows, griddefaultrows)) &&
+                const DeepCollectionEquality().equals(
+                  other.griddefaultrows,
+                  griddefaultrows,
+                )) &&
             (identical(other.applicationtheme, applicationtheme) ||
-                const DeepCollectionEquality()
-                    .equals(other.applicationtheme, applicationtheme)) &&
+                const DeepCollectionEquality().equals(
+                  other.applicationtheme,
+                  applicationtheme,
+                )) &&
             (identical(other.locale, locale) ||
                 const DeepCollectionEquality().equals(other.locale, locale)) &&
             (identical(other.locationid, locationid) ||
-                const DeepCollectionEquality()
-                    .equals(other.locationid, locationid)) &&
+                const DeepCollectionEquality().equals(
+                  other.locationid,
+                  locationid,
+                )) &&
             (identical(other.location, location) ||
-                const DeepCollectionEquality()
-                    .equals(other.location, location)) &&
+                const DeepCollectionEquality().equals(
+                  other.location,
+                  location,
+                )) &&
             (identical(other.languageid, languageid) ||
-                const DeepCollectionEquality()
-                    .equals(other.languageid, languageid)) &&
+                const DeepCollectionEquality().equals(
+                  other.languageid,
+                  languageid,
+                )) &&
             (identical(other.language, language) ||
-                const DeepCollectionEquality()
-                    .equals(other.language, language)) &&
+                const DeepCollectionEquality().equals(
+                  other.language,
+                  language,
+                )) &&
             (identical(other.warehouseid, warehouseid) ||
-                const DeepCollectionEquality()
-                    .equals(other.warehouseid, warehouseid)) &&
+                const DeepCollectionEquality().equals(
+                  other.warehouseid,
+                  warehouseid,
+                )) &&
             (identical(other.warehouse, warehouse) ||
-                const DeepCollectionEquality()
-                    .equals(other.warehouse, warehouse)) &&
+                const DeepCollectionEquality().equals(
+                  other.warehouse,
+                  warehouse,
+                )) &&
             (identical(other.departmentid, departmentid) ||
-                const DeepCollectionEquality()
-                    .equals(other.departmentid, departmentid)) &&
+                const DeepCollectionEquality().equals(
+                  other.departmentid,
+                  departmentid,
+                )) &&
             (identical(other.department, department) ||
-                const DeepCollectionEquality()
-                    .equals(other.department, department)) &&
+                const DeepCollectionEquality().equals(
+                  other.department,
+                  department,
+                )) &&
             (identical(other.webadministrator, webadministrator) ||
-                const DeepCollectionEquality()
-                    .equals(other.webadministrator, webadministrator)) &&
+                const DeepCollectionEquality().equals(
+                  other.webadministrator,
+                  webadministrator,
+                )) &&
             (identical(other.firstdayofweek, firstdayofweek) ||
-                const DeepCollectionEquality()
-                    .equals(other.firstdayofweek, firstdayofweek)) &&
-            (identical(other.rentalinventorydepartmentid, rentalinventorydepartmentid) || const DeepCollectionEquality().equals(other.rentalinventorydepartmentid, rentalinventorydepartmentid)) &&
-            (identical(other.rentalinventorydepartment, rentalinventorydepartment) || const DeepCollectionEquality().equals(other.rentalinventorydepartment, rentalinventorydepartment)) &&
-            (identical(other.salesinventorydepartmentid, salesinventorydepartmentid) || const DeepCollectionEquality().equals(other.salesinventorydepartmentid, salesinventorydepartmentid)) &&
-            (identical(other.salesinventorydepartment, salesinventorydepartment) || const DeepCollectionEquality().equals(other.salesinventorydepartment, salesinventorydepartment)) &&
-            (identical(other.partsinventorydepartmentid, partsinventorydepartmentid) || const DeepCollectionEquality().equals(other.partsinventorydepartmentid, partsinventorydepartmentid)) &&
-            (identical(other.partsinventorydepartment, partsinventorydepartment) || const DeepCollectionEquality().equals(other.partsinventorydepartment, partsinventorydepartment)) &&
-            (identical(other.transportationinvdepartmentid, transportationinvdepartmentid) || const DeepCollectionEquality().equals(other.transportationinvdepartmentid, transportationinvdepartmentid)) &&
-            (identical(other.transportationinvdepartment, transportationinvdepartment) || const DeepCollectionEquality().equals(other.transportationinvdepartment, transportationinvdepartment)) &&
-            (identical(other.laborinventorydepartmentid, laborinventorydepartmentid) || const DeepCollectionEquality().equals(other.laborinventorydepartmentid, laborinventorydepartmentid)) &&
+                const DeepCollectionEquality().equals(
+                  other.firstdayofweek,
+                  firstdayofweek,
+                )) &&
+            (identical(other.rentalinventorydepartmentid, rentalinventorydepartmentid) ||
+                const DeepCollectionEquality().equals(
+                  other.rentalinventorydepartmentid,
+                  rentalinventorydepartmentid,
+                )) &&
+            (identical(other.rentalinventorydepartment, rentalinventorydepartment) ||
+                const DeepCollectionEquality().equals(
+                  other.rentalinventorydepartment,
+                  rentalinventorydepartment,
+                )) &&
+            (identical(other.salesinventorydepartmentid, salesinventorydepartmentid) ||
+                const DeepCollectionEquality().equals(
+                  other.salesinventorydepartmentid,
+                  salesinventorydepartmentid,
+                )) &&
+            (identical(other.salesinventorydepartment, salesinventorydepartment) ||
+                const DeepCollectionEquality().equals(
+                  other.salesinventorydepartment,
+                  salesinventorydepartment,
+                )) &&
+            (identical(other.partsinventorydepartmentid, partsinventorydepartmentid) ||
+                const DeepCollectionEquality().equals(
+                  other.partsinventorydepartmentid,
+                  partsinventorydepartmentid,
+                )) &&
+            (identical(other.partsinventorydepartment, partsinventorydepartment) ||
+                const DeepCollectionEquality().equals(
+                  other.partsinventorydepartment,
+                  partsinventorydepartment,
+                )) &&
+            (identical(other.transportationinvdepartmentid, transportationinvdepartmentid) ||
+                const DeepCollectionEquality().equals(
+                  other.transportationinvdepartmentid,
+                  transportationinvdepartmentid,
+                )) &&
+            (identical(other.transportationinvdepartment, transportationinvdepartment) ||
+                const DeepCollectionEquality().equals(
+                  other.transportationinvdepartment,
+                  transportationinvdepartment,
+                )) &&
+            (identical(other.laborinventorydepartmentid, laborinventorydepartmentid) ||
+                const DeepCollectionEquality().equals(
+                  other.laborinventorydepartmentid,
+                  laborinventorydepartmentid,
+                )) &&
             (identical(other.laborinventorydepartment, laborinventorydepartment) || const DeepCollectionEquality().equals(other.laborinventorydepartment, laborinventorydepartment)) &&
             (identical(other.miscinventorydepartmentid, miscinventorydepartmentid) || const DeepCollectionEquality().equals(other.miscinventorydepartmentid, miscinventorydepartmentid)) &&
             (identical(other.miscinventorydepartment, miscinventorydepartment) || const DeepCollectionEquality().equals(other.miscinventorydepartment, miscinventorydepartment)) &&
@@ -3286,259 +3741,263 @@ class WebApiLogicAppFuncSessionUser {
 
 extension $WebApiLogicAppFuncSessionUserExtension
     on WebApiLogicAppFuncSessionUser {
-  WebApiLogicAppFuncSessionUser copyWith(
-      {String? webusersid,
-      String? usersid,
-      String? contactid,
-      String? usertype,
-      String? email,
-      String? emailapp,
-      bool? addsignaturetodraft,
-      String? fullname,
-      String? name,
-      int? browsedefaultrows,
-      int? griddefaultrows,
-      String? applicationtheme,
-      String? locale,
-      String? locationid,
-      String? location,
-      String? languageid,
-      String? language,
-      String? warehouseid,
-      String? warehouse,
-      String? departmentid,
-      String? department,
-      bool? webadministrator,
-      int? firstdayofweek,
-      String? rentalinventorydepartmentid,
-      String? rentalinventorydepartment,
-      String? salesinventorydepartmentid,
-      String? salesinventorydepartment,
-      String? partsinventorydepartmentid,
-      String? partsinventorydepartment,
-      String? transportationinvdepartmentid,
-      String? transportationinvdepartment,
-      String? laborinventorydepartmentid,
-      String? laborinventorydepartment,
-      String? miscinventorydepartmentid,
-      String? miscinventorydepartment,
-      String? spaceinventorydepartmentid,
-      String? spaceinventorydepartment,
-      bool? iscrew,
-      bool? enablecreatecontract,
-      bool? qsallowapplyallqtyitems,
-      bool? allowcontractwithexceptions,
-      bool? canInsertIntoActiveOrder,
-      int? creditCardPinPadId,
-      String? creditCardPinPad}) {
+  WebApiLogicAppFuncSessionUser copyWith({
+    String? webusersid,
+    String? usersid,
+    String? contactid,
+    String? usertype,
+    String? email,
+    String? emailapp,
+    bool? addsignaturetodraft,
+    String? fullname,
+    String? name,
+    int? browsedefaultrows,
+    int? griddefaultrows,
+    String? applicationtheme,
+    String? locale,
+    String? locationid,
+    String? location,
+    String? languageid,
+    String? language,
+    String? warehouseid,
+    String? warehouse,
+    String? departmentid,
+    String? department,
+    bool? webadministrator,
+    int? firstdayofweek,
+    String? rentalinventorydepartmentid,
+    String? rentalinventorydepartment,
+    String? salesinventorydepartmentid,
+    String? salesinventorydepartment,
+    String? partsinventorydepartmentid,
+    String? partsinventorydepartment,
+    String? transportationinvdepartmentid,
+    String? transportationinvdepartment,
+    String? laborinventorydepartmentid,
+    String? laborinventorydepartment,
+    String? miscinventorydepartmentid,
+    String? miscinventorydepartment,
+    String? spaceinventorydepartmentid,
+    String? spaceinventorydepartment,
+    bool? iscrew,
+    bool? enablecreatecontract,
+    bool? qsallowapplyallqtyitems,
+    bool? allowcontractwithexceptions,
+    bool? canInsertIntoActiveOrder,
+    int? creditCardPinPadId,
+    String? creditCardPinPad,
+  }) {
     return WebApiLogicAppFuncSessionUser(
-        webusersid: webusersid ?? this.webusersid,
-        usersid: usersid ?? this.usersid,
-        contactid: contactid ?? this.contactid,
-        usertype: usertype ?? this.usertype,
-        email: email ?? this.email,
-        emailapp: emailapp ?? this.emailapp,
-        addsignaturetodraft: addsignaturetodraft ?? this.addsignaturetodraft,
-        fullname: fullname ?? this.fullname,
-        name: name ?? this.name,
-        browsedefaultrows: browsedefaultrows ?? this.browsedefaultrows,
-        griddefaultrows: griddefaultrows ?? this.griddefaultrows,
-        applicationtheme: applicationtheme ?? this.applicationtheme,
-        locale: locale ?? this.locale,
-        locationid: locationid ?? this.locationid,
-        location: location ?? this.location,
-        languageid: languageid ?? this.languageid,
-        language: language ?? this.language,
-        warehouseid: warehouseid ?? this.warehouseid,
-        warehouse: warehouse ?? this.warehouse,
-        departmentid: departmentid ?? this.departmentid,
-        department: department ?? this.department,
-        webadministrator: webadministrator ?? this.webadministrator,
-        firstdayofweek: firstdayofweek ?? this.firstdayofweek,
-        rentalinventorydepartmentid:
-            rentalinventorydepartmentid ?? this.rentalinventorydepartmentid,
-        rentalinventorydepartment:
-            rentalinventorydepartment ?? this.rentalinventorydepartment,
-        salesinventorydepartmentid:
-            salesinventorydepartmentid ?? this.salesinventorydepartmentid,
-        salesinventorydepartment:
-            salesinventorydepartment ?? this.salesinventorydepartment,
-        partsinventorydepartmentid:
-            partsinventorydepartmentid ?? this.partsinventorydepartmentid,
-        partsinventorydepartment:
-            partsinventorydepartment ?? this.partsinventorydepartment,
-        transportationinvdepartmentid:
-            transportationinvdepartmentid ?? this.transportationinvdepartmentid,
-        transportationinvdepartment:
-            transportationinvdepartment ?? this.transportationinvdepartment,
-        laborinventorydepartmentid:
-            laborinventorydepartmentid ?? this.laborinventorydepartmentid,
-        laborinventorydepartment:
-            laborinventorydepartment ?? this.laborinventorydepartment,
-        miscinventorydepartmentid:
-            miscinventorydepartmentid ?? this.miscinventorydepartmentid,
-        miscinventorydepartment:
-            miscinventorydepartment ?? this.miscinventorydepartment,
-        spaceinventorydepartmentid:
-            spaceinventorydepartmentid ?? this.spaceinventorydepartmentid,
-        spaceinventorydepartment:
-            spaceinventorydepartment ?? this.spaceinventorydepartment,
-        iscrew: iscrew ?? this.iscrew,
-        enablecreatecontract: enablecreatecontract ?? this.enablecreatecontract,
-        qsallowapplyallqtyitems:
-            qsallowapplyallqtyitems ?? this.qsallowapplyallqtyitems,
-        allowcontractwithexceptions:
-            allowcontractwithexceptions ?? this.allowcontractwithexceptions,
-        canInsertIntoActiveOrder:
-            canInsertIntoActiveOrder ?? this.canInsertIntoActiveOrder,
-        creditCardPinPadId: creditCardPinPadId ?? this.creditCardPinPadId,
-        creditCardPinPad: creditCardPinPad ?? this.creditCardPinPad);
+      webusersid: webusersid ?? this.webusersid,
+      usersid: usersid ?? this.usersid,
+      contactid: contactid ?? this.contactid,
+      usertype: usertype ?? this.usertype,
+      email: email ?? this.email,
+      emailapp: emailapp ?? this.emailapp,
+      addsignaturetodraft: addsignaturetodraft ?? this.addsignaturetodraft,
+      fullname: fullname ?? this.fullname,
+      name: name ?? this.name,
+      browsedefaultrows: browsedefaultrows ?? this.browsedefaultrows,
+      griddefaultrows: griddefaultrows ?? this.griddefaultrows,
+      applicationtheme: applicationtheme ?? this.applicationtheme,
+      locale: locale ?? this.locale,
+      locationid: locationid ?? this.locationid,
+      location: location ?? this.location,
+      languageid: languageid ?? this.languageid,
+      language: language ?? this.language,
+      warehouseid: warehouseid ?? this.warehouseid,
+      warehouse: warehouse ?? this.warehouse,
+      departmentid: departmentid ?? this.departmentid,
+      department: department ?? this.department,
+      webadministrator: webadministrator ?? this.webadministrator,
+      firstdayofweek: firstdayofweek ?? this.firstdayofweek,
+      rentalinventorydepartmentid:
+          rentalinventorydepartmentid ?? this.rentalinventorydepartmentid,
+      rentalinventorydepartment:
+          rentalinventorydepartment ?? this.rentalinventorydepartment,
+      salesinventorydepartmentid:
+          salesinventorydepartmentid ?? this.salesinventorydepartmentid,
+      salesinventorydepartment:
+          salesinventorydepartment ?? this.salesinventorydepartment,
+      partsinventorydepartmentid:
+          partsinventorydepartmentid ?? this.partsinventorydepartmentid,
+      partsinventorydepartment:
+          partsinventorydepartment ?? this.partsinventorydepartment,
+      transportationinvdepartmentid:
+          transportationinvdepartmentid ?? this.transportationinvdepartmentid,
+      transportationinvdepartment:
+          transportationinvdepartment ?? this.transportationinvdepartment,
+      laborinventorydepartmentid:
+          laborinventorydepartmentid ?? this.laborinventorydepartmentid,
+      laborinventorydepartment:
+          laborinventorydepartment ?? this.laborinventorydepartment,
+      miscinventorydepartmentid:
+          miscinventorydepartmentid ?? this.miscinventorydepartmentid,
+      miscinventorydepartment:
+          miscinventorydepartment ?? this.miscinventorydepartment,
+      spaceinventorydepartmentid:
+          spaceinventorydepartmentid ?? this.spaceinventorydepartmentid,
+      spaceinventorydepartment:
+          spaceinventorydepartment ?? this.spaceinventorydepartment,
+      iscrew: iscrew ?? this.iscrew,
+      enablecreatecontract: enablecreatecontract ?? this.enablecreatecontract,
+      qsallowapplyallqtyitems:
+          qsallowapplyallqtyitems ?? this.qsallowapplyallqtyitems,
+      allowcontractwithexceptions:
+          allowcontractwithexceptions ?? this.allowcontractwithexceptions,
+      canInsertIntoActiveOrder:
+          canInsertIntoActiveOrder ?? this.canInsertIntoActiveOrder,
+      creditCardPinPadId: creditCardPinPadId ?? this.creditCardPinPadId,
+      creditCardPinPad: creditCardPinPad ?? this.creditCardPinPad,
+    );
   }
 
-  WebApiLogicAppFuncSessionUser copyWithWrapped(
-      {Wrapped<String?>? webusersid,
-      Wrapped<String?>? usersid,
-      Wrapped<String?>? contactid,
-      Wrapped<String?>? usertype,
-      Wrapped<String?>? email,
-      Wrapped<String?>? emailapp,
-      Wrapped<bool?>? addsignaturetodraft,
-      Wrapped<String?>? fullname,
-      Wrapped<String?>? name,
-      Wrapped<int?>? browsedefaultrows,
-      Wrapped<int?>? griddefaultrows,
-      Wrapped<String?>? applicationtheme,
-      Wrapped<String?>? locale,
-      Wrapped<String?>? locationid,
-      Wrapped<String?>? location,
-      Wrapped<String?>? languageid,
-      Wrapped<String?>? language,
-      Wrapped<String?>? warehouseid,
-      Wrapped<String?>? warehouse,
-      Wrapped<String?>? departmentid,
-      Wrapped<String?>? department,
-      Wrapped<bool?>? webadministrator,
-      Wrapped<int?>? firstdayofweek,
-      Wrapped<String?>? rentalinventorydepartmentid,
-      Wrapped<String?>? rentalinventorydepartment,
-      Wrapped<String?>? salesinventorydepartmentid,
-      Wrapped<String?>? salesinventorydepartment,
-      Wrapped<String?>? partsinventorydepartmentid,
-      Wrapped<String?>? partsinventorydepartment,
-      Wrapped<String?>? transportationinvdepartmentid,
-      Wrapped<String?>? transportationinvdepartment,
-      Wrapped<String?>? laborinventorydepartmentid,
-      Wrapped<String?>? laborinventorydepartment,
-      Wrapped<String?>? miscinventorydepartmentid,
-      Wrapped<String?>? miscinventorydepartment,
-      Wrapped<String?>? spaceinventorydepartmentid,
-      Wrapped<String?>? spaceinventorydepartment,
-      Wrapped<bool?>? iscrew,
-      Wrapped<bool?>? enablecreatecontract,
-      Wrapped<bool?>? qsallowapplyallqtyitems,
-      Wrapped<bool?>? allowcontractwithexceptions,
-      Wrapped<bool?>? canInsertIntoActiveOrder,
-      Wrapped<int?>? creditCardPinPadId,
-      Wrapped<String?>? creditCardPinPad}) {
+  WebApiLogicAppFuncSessionUser copyWithWrapped({
+    Wrapped<String?>? webusersid,
+    Wrapped<String?>? usersid,
+    Wrapped<String?>? contactid,
+    Wrapped<String?>? usertype,
+    Wrapped<String?>? email,
+    Wrapped<String?>? emailapp,
+    Wrapped<bool?>? addsignaturetodraft,
+    Wrapped<String?>? fullname,
+    Wrapped<String?>? name,
+    Wrapped<int?>? browsedefaultrows,
+    Wrapped<int?>? griddefaultrows,
+    Wrapped<String?>? applicationtheme,
+    Wrapped<String?>? locale,
+    Wrapped<String?>? locationid,
+    Wrapped<String?>? location,
+    Wrapped<String?>? languageid,
+    Wrapped<String?>? language,
+    Wrapped<String?>? warehouseid,
+    Wrapped<String?>? warehouse,
+    Wrapped<String?>? departmentid,
+    Wrapped<String?>? department,
+    Wrapped<bool?>? webadministrator,
+    Wrapped<int?>? firstdayofweek,
+    Wrapped<String?>? rentalinventorydepartmentid,
+    Wrapped<String?>? rentalinventorydepartment,
+    Wrapped<String?>? salesinventorydepartmentid,
+    Wrapped<String?>? salesinventorydepartment,
+    Wrapped<String?>? partsinventorydepartmentid,
+    Wrapped<String?>? partsinventorydepartment,
+    Wrapped<String?>? transportationinvdepartmentid,
+    Wrapped<String?>? transportationinvdepartment,
+    Wrapped<String?>? laborinventorydepartmentid,
+    Wrapped<String?>? laborinventorydepartment,
+    Wrapped<String?>? miscinventorydepartmentid,
+    Wrapped<String?>? miscinventorydepartment,
+    Wrapped<String?>? spaceinventorydepartmentid,
+    Wrapped<String?>? spaceinventorydepartment,
+    Wrapped<bool?>? iscrew,
+    Wrapped<bool?>? enablecreatecontract,
+    Wrapped<bool?>? qsallowapplyallqtyitems,
+    Wrapped<bool?>? allowcontractwithexceptions,
+    Wrapped<bool?>? canInsertIntoActiveOrder,
+    Wrapped<int?>? creditCardPinPadId,
+    Wrapped<String?>? creditCardPinPad,
+  }) {
     return WebApiLogicAppFuncSessionUser(
-        webusersid: (webusersid != null ? webusersid.value : this.webusersid),
-        usersid: (usersid != null ? usersid.value : this.usersid),
-        contactid: (contactid != null ? contactid.value : this.contactid),
-        usertype: (usertype != null ? usertype.value : this.usertype),
-        email: (email != null ? email.value : this.email),
-        emailapp: (emailapp != null ? emailapp.value : this.emailapp),
-        addsignaturetodraft: (addsignaturetodraft != null
-            ? addsignaturetodraft.value
-            : this.addsignaturetodraft),
-        fullname: (fullname != null ? fullname.value : this.fullname),
-        name: (name != null ? name.value : this.name),
-        browsedefaultrows: (browsedefaultrows != null
-            ? browsedefaultrows.value
-            : this.browsedefaultrows),
-        griddefaultrows: (griddefaultrows != null
-            ? griddefaultrows.value
-            : this.griddefaultrows),
-        applicationtheme: (applicationtheme != null
-            ? applicationtheme.value
-            : this.applicationtheme),
-        locale: (locale != null ? locale.value : this.locale),
-        locationid: (locationid != null ? locationid.value : this.locationid),
-        location: (location != null ? location.value : this.location),
-        languageid: (languageid != null ? languageid.value : this.languageid),
-        language: (language != null ? language.value : this.language),
-        warehouseid:
-            (warehouseid != null ? warehouseid.value : this.warehouseid),
-        warehouse: (warehouse != null ? warehouse.value : this.warehouse),
-        departmentid:
-            (departmentid != null ? departmentid.value : this.departmentid),
-        department: (department != null ? department.value : this.department),
-        webadministrator: (webadministrator != null
-            ? webadministrator.value
-            : this.webadministrator),
-        firstdayofweek: (firstdayofweek != null
-            ? firstdayofweek.value
-            : this.firstdayofweek),
-        rentalinventorydepartmentid: (rentalinventorydepartmentid != null
-            ? rentalinventorydepartmentid.value
-            : this.rentalinventorydepartmentid),
-        rentalinventorydepartment: (rentalinventorydepartment != null
-            ? rentalinventorydepartment.value
-            : this.rentalinventorydepartment),
-        salesinventorydepartmentid: (salesinventorydepartmentid != null
-            ? salesinventorydepartmentid.value
-            : this.salesinventorydepartmentid),
-        salesinventorydepartment: (salesinventorydepartment != null
-            ? salesinventorydepartment.value
-            : this.salesinventorydepartment),
-        partsinventorydepartmentid: (partsinventorydepartmentid != null
-            ? partsinventorydepartmentid.value
-            : this.partsinventorydepartmentid),
-        partsinventorydepartment: (partsinventorydepartment != null
-            ? partsinventorydepartment.value
-            : this.partsinventorydepartment),
-        transportationinvdepartmentid: (transportationinvdepartmentid != null
-            ? transportationinvdepartmentid.value
-            : this.transportationinvdepartmentid),
-        transportationinvdepartment: (transportationinvdepartment != null
-            ? transportationinvdepartment.value
-            : this.transportationinvdepartment),
-        laborinventorydepartmentid: (laborinventorydepartmentid != null
-            ? laborinventorydepartmentid.value
-            : this.laborinventorydepartmentid),
-        laborinventorydepartment: (laborinventorydepartment != null
-            ? laborinventorydepartment.value
-            : this.laborinventorydepartment),
-        miscinventorydepartmentid: (miscinventorydepartmentid != null
-            ? miscinventorydepartmentid.value
-            : this.miscinventorydepartmentid),
-        miscinventorydepartment: (miscinventorydepartment != null
-            ? miscinventorydepartment.value
-            : this.miscinventorydepartment),
-        spaceinventorydepartmentid: (spaceinventorydepartmentid != null
-            ? spaceinventorydepartmentid.value
-            : this.spaceinventorydepartmentid),
-        spaceinventorydepartment: (spaceinventorydepartment != null
-            ? spaceinventorydepartment.value
-            : this.spaceinventorydepartment),
-        iscrew: (iscrew != null ? iscrew.value : this.iscrew),
-        enablecreatecontract: (enablecreatecontract != null
-            ? enablecreatecontract.value
-            : this.enablecreatecontract),
-        qsallowapplyallqtyitems: (qsallowapplyallqtyitems != null
-            ? qsallowapplyallqtyitems.value
-            : this.qsallowapplyallqtyitems),
-        allowcontractwithexceptions: (allowcontractwithexceptions != null
-            ? allowcontractwithexceptions.value
-            : this.allowcontractwithexceptions),
-        canInsertIntoActiveOrder: (canInsertIntoActiveOrder != null
-            ? canInsertIntoActiveOrder.value
-            : this.canInsertIntoActiveOrder),
-        creditCardPinPadId: (creditCardPinPadId != null
-            ? creditCardPinPadId.value
-            : this.creditCardPinPadId),
-        creditCardPinPad: (creditCardPinPad != null
-            ? creditCardPinPad.value
-            : this.creditCardPinPad));
+      webusersid: (webusersid != null ? webusersid.value : this.webusersid),
+      usersid: (usersid != null ? usersid.value : this.usersid),
+      contactid: (contactid != null ? contactid.value : this.contactid),
+      usertype: (usertype != null ? usertype.value : this.usertype),
+      email: (email != null ? email.value : this.email),
+      emailapp: (emailapp != null ? emailapp.value : this.emailapp),
+      addsignaturetodraft: (addsignaturetodraft != null
+          ? addsignaturetodraft.value
+          : this.addsignaturetodraft),
+      fullname: (fullname != null ? fullname.value : this.fullname),
+      name: (name != null ? name.value : this.name),
+      browsedefaultrows: (browsedefaultrows != null
+          ? browsedefaultrows.value
+          : this.browsedefaultrows),
+      griddefaultrows: (griddefaultrows != null
+          ? griddefaultrows.value
+          : this.griddefaultrows),
+      applicationtheme: (applicationtheme != null
+          ? applicationtheme.value
+          : this.applicationtheme),
+      locale: (locale != null ? locale.value : this.locale),
+      locationid: (locationid != null ? locationid.value : this.locationid),
+      location: (location != null ? location.value : this.location),
+      languageid: (languageid != null ? languageid.value : this.languageid),
+      language: (language != null ? language.value : this.language),
+      warehouseid: (warehouseid != null ? warehouseid.value : this.warehouseid),
+      warehouse: (warehouse != null ? warehouse.value : this.warehouse),
+      departmentid: (departmentid != null
+          ? departmentid.value
+          : this.departmentid),
+      department: (department != null ? department.value : this.department),
+      webadministrator: (webadministrator != null
+          ? webadministrator.value
+          : this.webadministrator),
+      firstdayofweek: (firstdayofweek != null
+          ? firstdayofweek.value
+          : this.firstdayofweek),
+      rentalinventorydepartmentid: (rentalinventorydepartmentid != null
+          ? rentalinventorydepartmentid.value
+          : this.rentalinventorydepartmentid),
+      rentalinventorydepartment: (rentalinventorydepartment != null
+          ? rentalinventorydepartment.value
+          : this.rentalinventorydepartment),
+      salesinventorydepartmentid: (salesinventorydepartmentid != null
+          ? salesinventorydepartmentid.value
+          : this.salesinventorydepartmentid),
+      salesinventorydepartment: (salesinventorydepartment != null
+          ? salesinventorydepartment.value
+          : this.salesinventorydepartment),
+      partsinventorydepartmentid: (partsinventorydepartmentid != null
+          ? partsinventorydepartmentid.value
+          : this.partsinventorydepartmentid),
+      partsinventorydepartment: (partsinventorydepartment != null
+          ? partsinventorydepartment.value
+          : this.partsinventorydepartment),
+      transportationinvdepartmentid: (transportationinvdepartmentid != null
+          ? transportationinvdepartmentid.value
+          : this.transportationinvdepartmentid),
+      transportationinvdepartment: (transportationinvdepartment != null
+          ? transportationinvdepartment.value
+          : this.transportationinvdepartment),
+      laborinventorydepartmentid: (laborinventorydepartmentid != null
+          ? laborinventorydepartmentid.value
+          : this.laborinventorydepartmentid),
+      laborinventorydepartment: (laborinventorydepartment != null
+          ? laborinventorydepartment.value
+          : this.laborinventorydepartment),
+      miscinventorydepartmentid: (miscinventorydepartmentid != null
+          ? miscinventorydepartmentid.value
+          : this.miscinventorydepartmentid),
+      miscinventorydepartment: (miscinventorydepartment != null
+          ? miscinventorydepartment.value
+          : this.miscinventorydepartment),
+      spaceinventorydepartmentid: (spaceinventorydepartmentid != null
+          ? spaceinventorydepartmentid.value
+          : this.spaceinventorydepartmentid),
+      spaceinventorydepartment: (spaceinventorydepartment != null
+          ? spaceinventorydepartment.value
+          : this.spaceinventorydepartment),
+      iscrew: (iscrew != null ? iscrew.value : this.iscrew),
+      enablecreatecontract: (enablecreatecontract != null
+          ? enablecreatecontract.value
+          : this.enablecreatecontract),
+      qsallowapplyallqtyitems: (qsallowapplyallqtyitems != null
+          ? qsallowapplyallqtyitems.value
+          : this.qsallowapplyallqtyitems),
+      allowcontractwithexceptions: (allowcontractwithexceptions != null
+          ? allowcontractwithexceptions.value
+          : this.allowcontractwithexceptions),
+      canInsertIntoActiveOrder: (canInsertIntoActiveOrder != null
+          ? canInsertIntoActiveOrder.value
+          : this.canInsertIntoActiveOrder),
+      creditCardPinPadId: (creditCardPinPadId != null
+          ? creditCardPinPadId.value
+          : this.creditCardPinPadId),
+      creditCardPinPad: (creditCardPinPad != null
+          ? creditCardPinPad.value
+          : this.creditCardPinPad),
+    );
   }
 }
 
@@ -3562,12 +4021,13 @@ class WebApiLogicAppFuncSessionWarehouse {
   });
 
   factory WebApiLogicAppFuncSessionWarehouse.fromJson(
-          Map<String, dynamic> json) =>
-      _$WebApiLogicAppFuncSessionWarehouseFromJson(json);
+    Map<String, dynamic> json,
+  ) => _$WebApiLogicAppFuncSessionWarehouseFromJson(json);
 
   static const toJsonFactory = _$WebApiLogicAppFuncSessionWarehouseToJson;
-  Map<String, dynamic> toJson() =>
-      _$WebApiLogicAppFuncSessionWarehouseToJson(this);
+  Map<String, dynamic> toJson() => _$WebApiLogicAppFuncSessionWarehouseToJson(
+    this,
+  );
 
   @JsonKey(name: 'warehouseid', includeIfNull: false)
   final String? warehouseid;
@@ -3604,45 +4064,72 @@ class WebApiLogicAppFuncSessionWarehouse {
     return identical(this, other) ||
         (other is WebApiLogicAppFuncSessionWarehouse &&
             (identical(other.warehouseid, warehouseid) ||
-                const DeepCollectionEquality()
-                    .equals(other.warehouseid, warehouseid)) &&
+                const DeepCollectionEquality().equals(
+                  other.warehouseid,
+                  warehouseid,
+                )) &&
             (identical(other.warehouse, warehouse) ||
-                const DeepCollectionEquality()
-                    .equals(other.warehouse, warehouse)) &&
+                const DeepCollectionEquality().equals(
+                  other.warehouse,
+                  warehouse,
+                )) &&
             (identical(other.warehousecode, warehousecode) ||
-                const DeepCollectionEquality()
-                    .equals(other.warehousecode, warehousecode)) &&
+                const DeepCollectionEquality().equals(
+                  other.warehousecode,
+                  warehousecode,
+                )) &&
             (identical(other.promptforcheckoutexceptions, promptforcheckoutexceptions) ||
                 const DeepCollectionEquality().equals(
-                    other.promptforcheckoutexceptions,
-                    promptforcheckoutexceptions)) &&
+                  other.promptforcheckoutexceptions,
+                  promptforcheckoutexceptions,
+                )) &&
             (identical(other.promptforcheckinexceptions, promptforcheckinexceptions) ||
                 const DeepCollectionEquality().equals(
-                    other.promptforcheckinexceptions,
-                    promptforcheckinexceptions)) &&
+                  other.promptforcheckinexceptions,
+                  promptforcheckinexceptions,
+                )) &&
             (identical(other.storagecontainerstagingenable, storagecontainerstagingenable) ||
                 const DeepCollectionEquality().equals(
-                    other.storagecontainerstagingenable,
-                    storagecontainerstagingenable)) &&
+                  other.storagecontainerstagingenable,
+                  storagecontainerstagingenable,
+                )) &&
             (identical(other.storagecontainerrescanrequired, storagecontainerrescanrequired) ||
                 const DeepCollectionEquality().equals(
-                    other.storagecontainerrescanrequired,
-                    storagecontainerrescanrequired)) &&
+                  other.storagecontainerrescanrequired,
+                  storagecontainerrescanrequired,
+                )) &&
             (identical(other.quikreceiptenable, quikreceiptenable) ||
-                const DeepCollectionEquality()
-                    .equals(other.quikreceiptenable, quikreceiptenable)) &&
+                const DeepCollectionEquality().equals(
+                  other.quikreceiptenable,
+                  quikreceiptenable,
+                )) &&
             (identical(other.transferavailabilitydays, transferavailabilitydays) ||
                 const DeepCollectionEquality().equals(
-                    other.transferavailabilitydays,
-                    transferavailabilitydays)) &&
+                  other.transferavailabilitydays,
+                  transferavailabilitydays,
+                )) &&
             (identical(other.regionid, regionid) ||
-                const DeepCollectionEquality()
-                    .equals(other.regionid, regionid)) &&
+                const DeepCollectionEquality().equals(
+                  other.regionid,
+                  regionid,
+                )) &&
             (identical(other.region, region) ||
                 const DeepCollectionEquality().equals(other.region, region)) &&
-            (identical(other.regionwarehouseids, regionwarehouseids) || const DeepCollectionEquality().equals(other.regionwarehouseids, regionwarehouseids)) &&
-            (identical(other.regionwarehouses, regionwarehouses) || const DeepCollectionEquality().equals(other.regionwarehouses, regionwarehouses)) &&
-            (identical(other.internalorderdealid, internalorderdealid) || const DeepCollectionEquality().equals(other.internalorderdealid, internalorderdealid)));
+            (identical(other.regionwarehouseids, regionwarehouseids) ||
+                const DeepCollectionEquality().equals(
+                  other.regionwarehouseids,
+                  regionwarehouseids,
+                )) &&
+            (identical(other.regionwarehouses, regionwarehouses) ||
+                const DeepCollectionEquality().equals(
+                  other.regionwarehouses,
+                  regionwarehouses,
+                )) &&
+            (identical(other.internalorderdealid, internalorderdealid) ||
+                const DeepCollectionEquality().equals(
+                  other.internalorderdealid,
+                  internalorderdealid,
+                )));
   }
 
   @override
@@ -3669,110 +4156,112 @@ class WebApiLogicAppFuncSessionWarehouse {
 
 extension $WebApiLogicAppFuncSessionWarehouseExtension
     on WebApiLogicAppFuncSessionWarehouse {
-  WebApiLogicAppFuncSessionWarehouse copyWith(
-      {String? warehouseid,
-      String? warehouse,
-      String? warehousecode,
-      bool? promptforcheckoutexceptions,
-      bool? promptforcheckinexceptions,
-      bool? storagecontainerstagingenable,
-      bool? storagecontainerrescanrequired,
-      bool? quikreceiptenable,
-      int? transferavailabilitydays,
-      String? regionid,
-      String? region,
-      String? regionwarehouseids,
-      String? regionwarehouses,
-      String? internalorderdealid}) {
+  WebApiLogicAppFuncSessionWarehouse copyWith({
+    String? warehouseid,
+    String? warehouse,
+    String? warehousecode,
+    bool? promptforcheckoutexceptions,
+    bool? promptforcheckinexceptions,
+    bool? storagecontainerstagingenable,
+    bool? storagecontainerrescanrequired,
+    bool? quikreceiptenable,
+    int? transferavailabilitydays,
+    String? regionid,
+    String? region,
+    String? regionwarehouseids,
+    String? regionwarehouses,
+    String? internalorderdealid,
+  }) {
     return WebApiLogicAppFuncSessionWarehouse(
-        warehouseid: warehouseid ?? this.warehouseid,
-        warehouse: warehouse ?? this.warehouse,
-        warehousecode: warehousecode ?? this.warehousecode,
-        promptforcheckoutexceptions:
-            promptforcheckoutexceptions ?? this.promptforcheckoutexceptions,
-        promptforcheckinexceptions:
-            promptforcheckinexceptions ?? this.promptforcheckinexceptions,
-        storagecontainerstagingenable:
-            storagecontainerstagingenable ?? this.storagecontainerstagingenable,
-        storagecontainerrescanrequired: storagecontainerrescanrequired ??
-            this.storagecontainerrescanrequired,
-        quikreceiptenable: quikreceiptenable ?? this.quikreceiptenable,
-        transferavailabilitydays:
-            transferavailabilitydays ?? this.transferavailabilitydays,
-        regionid: regionid ?? this.regionid,
-        region: region ?? this.region,
-        regionwarehouseids: regionwarehouseids ?? this.regionwarehouseids,
-        regionwarehouses: regionwarehouses ?? this.regionwarehouses,
-        internalorderdealid: internalorderdealid ?? this.internalorderdealid);
+      warehouseid: warehouseid ?? this.warehouseid,
+      warehouse: warehouse ?? this.warehouse,
+      warehousecode: warehousecode ?? this.warehousecode,
+      promptforcheckoutexceptions:
+          promptforcheckoutexceptions ?? this.promptforcheckoutexceptions,
+      promptforcheckinexceptions:
+          promptforcheckinexceptions ?? this.promptforcheckinexceptions,
+      storagecontainerstagingenable:
+          storagecontainerstagingenable ?? this.storagecontainerstagingenable,
+      storagecontainerrescanrequired:
+          storagecontainerrescanrequired ?? this.storagecontainerrescanrequired,
+      quikreceiptenable: quikreceiptenable ?? this.quikreceiptenable,
+      transferavailabilitydays:
+          transferavailabilitydays ?? this.transferavailabilitydays,
+      regionid: regionid ?? this.regionid,
+      region: region ?? this.region,
+      regionwarehouseids: regionwarehouseids ?? this.regionwarehouseids,
+      regionwarehouses: regionwarehouses ?? this.regionwarehouses,
+      internalorderdealid: internalorderdealid ?? this.internalorderdealid,
+    );
   }
 
-  WebApiLogicAppFuncSessionWarehouse copyWithWrapped(
-      {Wrapped<String?>? warehouseid,
-      Wrapped<String?>? warehouse,
-      Wrapped<String?>? warehousecode,
-      Wrapped<bool?>? promptforcheckoutexceptions,
-      Wrapped<bool?>? promptforcheckinexceptions,
-      Wrapped<bool?>? storagecontainerstagingenable,
-      Wrapped<bool?>? storagecontainerrescanrequired,
-      Wrapped<bool?>? quikreceiptenable,
-      Wrapped<int?>? transferavailabilitydays,
-      Wrapped<String?>? regionid,
-      Wrapped<String?>? region,
-      Wrapped<String?>? regionwarehouseids,
-      Wrapped<String?>? regionwarehouses,
-      Wrapped<String?>? internalorderdealid}) {
+  WebApiLogicAppFuncSessionWarehouse copyWithWrapped({
+    Wrapped<String?>? warehouseid,
+    Wrapped<String?>? warehouse,
+    Wrapped<String?>? warehousecode,
+    Wrapped<bool?>? promptforcheckoutexceptions,
+    Wrapped<bool?>? promptforcheckinexceptions,
+    Wrapped<bool?>? storagecontainerstagingenable,
+    Wrapped<bool?>? storagecontainerrescanrequired,
+    Wrapped<bool?>? quikreceiptenable,
+    Wrapped<int?>? transferavailabilitydays,
+    Wrapped<String?>? regionid,
+    Wrapped<String?>? region,
+    Wrapped<String?>? regionwarehouseids,
+    Wrapped<String?>? regionwarehouses,
+    Wrapped<String?>? internalorderdealid,
+  }) {
     return WebApiLogicAppFuncSessionWarehouse(
-        warehouseid:
-            (warehouseid != null ? warehouseid.value : this.warehouseid),
-        warehouse: (warehouse != null ? warehouse.value : this.warehouse),
-        warehousecode:
-            (warehousecode != null ? warehousecode.value : this.warehousecode),
-        promptforcheckoutexceptions: (promptforcheckoutexceptions != null
-            ? promptforcheckoutexceptions.value
-            : this.promptforcheckoutexceptions),
-        promptforcheckinexceptions: (promptforcheckinexceptions != null
-            ? promptforcheckinexceptions.value
-            : this.promptforcheckinexceptions),
-        storagecontainerstagingenable: (storagecontainerstagingenable != null
-            ? storagecontainerstagingenable.value
-            : this.storagecontainerstagingenable),
-        storagecontainerrescanrequired: (storagecontainerrescanrequired != null
-            ? storagecontainerrescanrequired.value
-            : this.storagecontainerrescanrequired),
-        quikreceiptenable: (quikreceiptenable != null
-            ? quikreceiptenable.value
-            : this.quikreceiptenable),
-        transferavailabilitydays: (transferavailabilitydays != null
-            ? transferavailabilitydays.value
-            : this.transferavailabilitydays),
-        regionid: (regionid != null ? regionid.value : this.regionid),
-        region: (region != null ? region.value : this.region),
-        regionwarehouseids: (regionwarehouseids != null
-            ? regionwarehouseids.value
-            : this.regionwarehouseids),
-        regionwarehouses: (regionwarehouses != null
-            ? regionwarehouses.value
-            : this.regionwarehouses),
-        internalorderdealid: (internalorderdealid != null
-            ? internalorderdealid.value
-            : this.internalorderdealid));
+      warehouseid: (warehouseid != null ? warehouseid.value : this.warehouseid),
+      warehouse: (warehouse != null ? warehouse.value : this.warehouse),
+      warehousecode: (warehousecode != null
+          ? warehousecode.value
+          : this.warehousecode),
+      promptforcheckoutexceptions: (promptforcheckoutexceptions != null
+          ? promptforcheckoutexceptions.value
+          : this.promptforcheckoutexceptions),
+      promptforcheckinexceptions: (promptforcheckinexceptions != null
+          ? promptforcheckinexceptions.value
+          : this.promptforcheckinexceptions),
+      storagecontainerstagingenable: (storagecontainerstagingenable != null
+          ? storagecontainerstagingenable.value
+          : this.storagecontainerstagingenable),
+      storagecontainerrescanrequired: (storagecontainerrescanrequired != null
+          ? storagecontainerrescanrequired.value
+          : this.storagecontainerrescanrequired),
+      quikreceiptenable: (quikreceiptenable != null
+          ? quikreceiptenable.value
+          : this.quikreceiptenable),
+      transferavailabilitydays: (transferavailabilitydays != null
+          ? transferavailabilitydays.value
+          : this.transferavailabilitydays),
+      regionid: (regionid != null ? regionid.value : this.regionid),
+      region: (region != null ? region.value : this.region),
+      regionwarehouseids: (regionwarehouseids != null
+          ? regionwarehouseids.value
+          : this.regionwarehouseids),
+      regionwarehouses: (regionwarehouses != null
+          ? regionwarehouses.value
+          : this.regionwarehouses),
+      internalorderdealid: (internalorderdealid != null
+          ? internalorderdealid.value
+          : this.internalorderdealid),
+    );
   }
 }
 
 @JsonSerializable(explicitToJson: true)
 class WebApiLogicAppFuncSystemNumbersModel {
-  WebApiLogicAppFuncSystemNumbersModel({
-    this.module,
-    this.isAssignedByUser,
-  });
+  WebApiLogicAppFuncSystemNumbersModel({this.module, this.isAssignedByUser});
 
   factory WebApiLogicAppFuncSystemNumbersModel.fromJson(
-          Map<String, dynamic> json) =>
-      _$WebApiLogicAppFuncSystemNumbersModelFromJson(json);
+    Map<String, dynamic> json,
+  ) => _$WebApiLogicAppFuncSystemNumbersModelFromJson(json);
 
   static const toJsonFactory = _$WebApiLogicAppFuncSystemNumbersModelToJson;
-  Map<String, dynamic> toJson() =>
-      _$WebApiLogicAppFuncSystemNumbersModelToJson(this);
+  Map<String, dynamic> toJson() => _$WebApiLogicAppFuncSystemNumbersModelToJson(
+    this,
+  );
 
   @JsonKey(name: 'Module', includeIfNull: false)
   final String? module;
@@ -3787,8 +4276,10 @@ class WebApiLogicAppFuncSystemNumbersModel {
             (identical(other.module, module) ||
                 const DeepCollectionEquality().equals(other.module, module)) &&
             (identical(other.isAssignedByUser, isAssignedByUser) ||
-                const DeepCollectionEquality()
-                    .equals(other.isAssignedByUser, isAssignedByUser)));
+                const DeepCollectionEquality().equals(
+                  other.isAssignedByUser,
+                  isAssignedByUser,
+                )));
   }
 
   @override
@@ -3803,41 +4294,46 @@ class WebApiLogicAppFuncSystemNumbersModel {
 
 extension $WebApiLogicAppFuncSystemNumbersModelExtension
     on WebApiLogicAppFuncSystemNumbersModel {
-  WebApiLogicAppFuncSystemNumbersModel copyWith(
-      {String? module, bool? isAssignedByUser}) {
+  WebApiLogicAppFuncSystemNumbersModel copyWith({
+    String? module,
+    bool? isAssignedByUser,
+  }) {
     return WebApiLogicAppFuncSystemNumbersModel(
-        module: module ?? this.module,
-        isAssignedByUser: isAssignedByUser ?? this.isAssignedByUser);
+      module: module ?? this.module,
+      isAssignedByUser: isAssignedByUser ?? this.isAssignedByUser,
+    );
   }
 
-  WebApiLogicAppFuncSystemNumbersModel copyWithWrapped(
-      {Wrapped<String?>? module, Wrapped<bool?>? isAssignedByUser}) {
+  WebApiLogicAppFuncSystemNumbersModel copyWithWrapped({
+    Wrapped<String?>? module,
+    Wrapped<bool?>? isAssignedByUser,
+  }) {
     return WebApiLogicAppFuncSystemNumbersModel(
-        module: (module != null ? module.value : this.module),
-        isAssignedByUser: (isAssignedByUser != null
-            ? isAssignedByUser.value
-            : this.isAssignedByUser));
+      module: (module != null ? module.value : this.module),
+      isAssignedByUser: (isAssignedByUser != null
+          ? isAssignedByUser.value
+          : this.isAssignedByUser),
+    );
   }
 }
 
 @JsonSerializable(explicitToJson: true)
 class WebApiLogicAppFuncSystemNumbersResponse {
-  WebApiLogicAppFuncSystemNumbersResponse({
-    this.systemNumbers,
-  });
+  WebApiLogicAppFuncSystemNumbersResponse({this.systemNumbers});
 
   factory WebApiLogicAppFuncSystemNumbersResponse.fromJson(
-          Map<String, dynamic> json) =>
-      _$WebApiLogicAppFuncSystemNumbersResponseFromJson(json);
+    Map<String, dynamic> json,
+  ) => _$WebApiLogicAppFuncSystemNumbersResponseFromJson(json);
 
   static const toJsonFactory = _$WebApiLogicAppFuncSystemNumbersResponseToJson;
-  Map<String, dynamic> toJson() =>
-      _$WebApiLogicAppFuncSystemNumbersResponseToJson(this);
+  Map<String, dynamic>
+  toJson() => _$WebApiLogicAppFuncSystemNumbersResponseToJson(this);
 
   @JsonKey(
-      name: 'SystemNumbers',
-      includeIfNull: false,
-      defaultValue: <WebApiLogicAppFuncSystemNumbersModel>[])
+    name: 'SystemNumbers',
+    includeIfNull: false,
+    defaultValue: <WebApiLogicAppFuncSystemNumbersModel>[],
+  )
   final List<WebApiLogicAppFuncSystemNumbersModel>? systemNumbers;
   static const fromJsonFactory =
       _$WebApiLogicAppFuncSystemNumbersResponseFromJson;
@@ -3847,8 +4343,10 @@ class WebApiLogicAppFuncSystemNumbersResponse {
     return identical(this, other) ||
         (other is WebApiLogicAppFuncSystemNumbersResponse &&
             (identical(other.systemNumbers, systemNumbers) ||
-                const DeepCollectionEquality()
-                    .equals(other.systemNumbers, systemNumbers)));
+                const DeepCollectionEquality().equals(
+                  other.systemNumbers,
+                  systemNumbers,
+                )));
   }
 
   @override
@@ -3861,17 +4359,22 @@ class WebApiLogicAppFuncSystemNumbersResponse {
 
 extension $WebApiLogicAppFuncSystemNumbersResponseExtension
     on WebApiLogicAppFuncSystemNumbersResponse {
-  WebApiLogicAppFuncSystemNumbersResponse copyWith(
-      {List<WebApiLogicAppFuncSystemNumbersModel>? systemNumbers}) {
+  WebApiLogicAppFuncSystemNumbersResponse copyWith({
+    List<WebApiLogicAppFuncSystemNumbersModel>? systemNumbers,
+  }) {
     return WebApiLogicAppFuncSystemNumbersResponse(
-        systemNumbers: systemNumbers ?? this.systemNumbers);
+      systemNumbers: systemNumbers ?? this.systemNumbers,
+    );
   }
 
-  WebApiLogicAppFuncSystemNumbersResponse copyWithWrapped(
-      {Wrapped<List<WebApiLogicAppFuncSystemNumbersModel>?>? systemNumbers}) {
+  WebApiLogicAppFuncSystemNumbersResponse copyWithWrapped({
+    Wrapped<List<WebApiLogicAppFuncSystemNumbersModel>?>? systemNumbers,
+  }) {
     return WebApiLogicAppFuncSystemNumbersResponse(
-        systemNumbers:
-            (systemNumbers != null ? systemNumbers.value : this.systemNumbers));
+      systemNumbers: (systemNumbers != null
+          ? systemNumbers.value
+          : this.systemNumbers),
+    );
   }
 }
 
@@ -3901,12 +4404,12 @@ class WebApiLogicAppFuncSystemSettingsResponse {
   });
 
   factory WebApiLogicAppFuncSystemSettingsResponse.fromJson(
-          Map<String, dynamic> json) =>
-      _$WebApiLogicAppFuncSystemSettingsResponseFromJson(json);
+    Map<String, dynamic> json,
+  ) => _$WebApiLogicAppFuncSystemSettingsResponseFromJson(json);
 
   static const toJsonFactory = _$WebApiLogicAppFuncSystemSettingsResponseToJson;
-  Map<String, dynamic> toJson() =>
-      _$WebApiLogicAppFuncSystemSettingsResponseToJson(this);
+  Map<String, dynamic>
+  toJson() => _$WebApiLogicAppFuncSystemSettingsResponseToJson(this);
 
   @JsonKey(name: 'AllowDeleteInvoices', includeIfNull: false)
   final bool? allowDeleteInvoices;
@@ -3927,7 +4430,9 @@ class WebApiLogicAppFuncSystemSettingsResponse {
   @JsonKey(name: 'ShareDealsAcrossOfficeLocations', includeIfNull: false)
   final bool? shareDealsAcrossOfficeLocations;
   @JsonKey(
-      name: 'SynchronizeCustomerStatusAndCreditStatus', includeIfNull: false)
+    name: 'SynchronizeCustomerStatusAndCreditStatus',
+    includeIfNull: false,
+  )
   final bool? synchronizeCustomerStatusAndCreditStatus;
   @JsonKey(name: 'SynchronizeDealStatusAndCreditStatus', includeIfNull: false)
   final bool? synchronizeDealStatusAndCreditStatus;
@@ -3957,57 +4462,98 @@ class WebApiLogicAppFuncSystemSettingsResponse {
     return identical(this, other) ||
         (other is WebApiLogicAppFuncSystemSettingsResponse &&
             (identical(other.allowDeleteInvoices, allowDeleteInvoices) ||
-                const DeepCollectionEquality()
-                    .equals(other.allowDeleteInvoices, allowDeleteInvoices)) &&
+                const DeepCollectionEquality().equals(
+                  other.allowDeleteInvoices,
+                  allowDeleteInvoices,
+                )) &&
             (identical(other.allowInvoiceDateChange, allowInvoiceDateChange) ||
                 const DeepCollectionEquality().equals(
-                    other.allowInvoiceDateChange, allowInvoiceDateChange)) &&
+                  other.allowInvoiceDateChange,
+                  allowInvoiceDateChange,
+                )) &&
             (identical(other.enableReceipts, enableReceipts) ||
-                const DeepCollectionEquality()
-                    .equals(other.enableReceipts, enableReceipts)) &&
+                const DeepCollectionEquality().equals(
+                  other.enableReceipts,
+                  enableReceipts,
+                )) &&
             (identical(other.enableOriginalShow, enableOriginalShow) ||
-                const DeepCollectionEquality()
-                    .equals(other.enableOriginalShow, enableOriginalShow)) &&
+                const DeepCollectionEquality().equals(
+                  other.enableOriginalShow,
+                  enableOriginalShow,
+                )) &&
             (identical(other.enablePayments, enablePayments) ||
-                const DeepCollectionEquality()
-                    .equals(other.enablePayments, enablePayments)) &&
+                const DeepCollectionEquality().equals(
+                  other.enablePayments,
+                  enablePayments,
+                )) &&
             (identical(other.enableVendorInvoice, enableVendorInvoice) ||
-                const DeepCollectionEquality()
-                    .equals(other.enableVendorInvoice, enableVendorInvoice)) &&
+                const DeepCollectionEquality().equals(
+                  other.enableVendorInvoice,
+                  enableVendorInvoice,
+                )) &&
             (identical(other.enablePropsWardrobe, enablePropsWardrobe) ||
-                const DeepCollectionEquality()
-                    .equals(other.enablePropsWardrobe, enablePropsWardrobe)) &&
+                const DeepCollectionEquality().equals(
+                  other.enablePropsWardrobe,
+                  enablePropsWardrobe,
+                )) &&
             (identical(other.enableSetsWalls, enableSetsWalls) ||
-                const DeepCollectionEquality()
-                    .equals(other.enableSetsWalls, enableSetsWalls)) &&
+                const DeepCollectionEquality().equals(
+                  other.enableSetsWalls,
+                  enableSetsWalls,
+                )) &&
             (identical(other.shareDealsAcrossOfficeLocations, shareDealsAcrossOfficeLocations) ||
                 const DeepCollectionEquality().equals(
-                    other.shareDealsAcrossOfficeLocations,
-                    shareDealsAcrossOfficeLocations)) &&
-            (identical(other.synchronizeCustomerStatusAndCreditStatus, synchronizeCustomerStatusAndCreditStatus) ||
+                  other.shareDealsAcrossOfficeLocations,
+                  shareDealsAcrossOfficeLocations,
+                )) &&
+            (identical(
+                  other.synchronizeCustomerStatusAndCreditStatus,
+                  synchronizeCustomerStatusAndCreditStatus,
+                ) ||
                 const DeepCollectionEquality().equals(
-                    other.synchronizeCustomerStatusAndCreditStatus,
-                    synchronizeCustomerStatusAndCreditStatus)) &&
-            (identical(other.synchronizeDealStatusAndCreditStatus, synchronizeDealStatusAndCreditStatus) ||
+                  other.synchronizeCustomerStatusAndCreditStatus,
+                  synchronizeCustomerStatusAndCreditStatus,
+                )) &&
+            (identical(
+                  other.synchronizeDealStatusAndCreditStatus,
+                  synchronizeDealStatusAndCreditStatus,
+                ) ||
                 const DeepCollectionEquality().equals(
-                    other.synchronizeDealStatusAndCreditStatus,
-                    synchronizeDealStatusAndCreditStatus)) &&
+                  other.synchronizeDealStatusAndCreditStatus,
+                  synchronizeDealStatusAndCreditStatus,
+                )) &&
             (identical(other.systemName, systemName) ||
-                const DeepCollectionEquality()
-                    .equals(other.systemName, systemName)) &&
+                const DeepCollectionEquality().equals(
+                  other.systemName,
+                  systemName,
+                )) &&
             (identical(other.companyName, companyName) ||
-                const DeepCollectionEquality()
-                    .equals(other.companyName, companyName)) &&
+                const DeepCollectionEquality().equals(
+                  other.companyName,
+                  companyName,
+                )) &&
             (identical(other.isVendorNumberAssignedByUser, isVendorNumberAssignedByUser) ||
                 const DeepCollectionEquality().equals(
-                    other.isVendorNumberAssignedByUser,
-                    isVendorNumberAssignedByUser)) &&
+                  other.isVendorNumberAssignedByUser,
+                  isVendorNumberAssignedByUser,
+                )) &&
             (identical(other.quoteOrderMessageFormat, quoteOrderMessageFormat) ||
-                const DeepCollectionEquality()
-                    .equals(other.quoteOrderMessageFormat, quoteOrderMessageFormat)) &&
-            (identical(other.dataLanguageId, dataLanguageId) || const DeepCollectionEquality().equals(other.dataLanguageId, dataLanguageId)) &&
-            (identical(other.dataLanguage, dataLanguage) || const DeepCollectionEquality().equals(other.dataLanguage, dataLanguage)) &&
-            (identical(other.allCaps, allCaps) || const DeepCollectionEquality().equals(other.allCaps, allCaps)) &&
+                const DeepCollectionEquality().equals(
+                  other.quoteOrderMessageFormat,
+                  quoteOrderMessageFormat,
+                )) &&
+            (identical(other.dataLanguageId, dataLanguageId) ||
+                const DeepCollectionEquality().equals(
+                  other.dataLanguageId,
+                  dataLanguageId,
+                )) &&
+            (identical(other.dataLanguage, dataLanguage) ||
+                const DeepCollectionEquality().equals(
+                  other.dataLanguage,
+                  dataLanguage,
+                )) &&
+            (identical(other.allCaps, allCaps) ||
+                const DeepCollectionEquality().equals(other.allCaps, allCaps)) &&
             (identical(other.enableQuikLocate, enableQuikLocate) || const DeepCollectionEquality().equals(other.enableQuikLocate, enableQuikLocate)) &&
             (identical(other.departmentFilter, departmentFilter) || const DeepCollectionEquality().equals(other.departmentFilter, departmentFilter)));
   }
@@ -4026,10 +4572,12 @@ class WebApiLogicAppFuncSystemSettingsResponse {
       const DeepCollectionEquality().hash(enablePropsWardrobe) ^
       const DeepCollectionEquality().hash(enableSetsWalls) ^
       const DeepCollectionEquality().hash(shareDealsAcrossOfficeLocations) ^
-      const DeepCollectionEquality()
-          .hash(synchronizeCustomerStatusAndCreditStatus) ^
-      const DeepCollectionEquality()
-          .hash(synchronizeDealStatusAndCreditStatus) ^
+      const DeepCollectionEquality().hash(
+        synchronizeCustomerStatusAndCreditStatus,
+      ) ^
+      const DeepCollectionEquality().hash(
+        synchronizeDealStatusAndCreditStatus,
+      ) ^
       const DeepCollectionEquality().hash(systemName) ^
       const DeepCollectionEquality().hash(companyName) ^
       const DeepCollectionEquality().hash(isVendorNumberAssignedByUser) ^
@@ -4044,137 +4592,140 @@ class WebApiLogicAppFuncSystemSettingsResponse {
 
 extension $WebApiLogicAppFuncSystemSettingsResponseExtension
     on WebApiLogicAppFuncSystemSettingsResponse {
-  WebApiLogicAppFuncSystemSettingsResponse copyWith(
-      {bool? allowDeleteInvoices,
-      bool? allowInvoiceDateChange,
-      bool? enableReceipts,
-      bool? enableOriginalShow,
-      bool? enablePayments,
-      bool? enableVendorInvoice,
-      bool? enablePropsWardrobe,
-      bool? enableSetsWalls,
-      bool? shareDealsAcrossOfficeLocations,
-      bool? synchronizeCustomerStatusAndCreditStatus,
-      bool? synchronizeDealStatusAndCreditStatus,
-      String? systemName,
-      String? companyName,
-      bool? isVendorNumberAssignedByUser,
-      String? quoteOrderMessageFormat,
-      String? dataLanguageId,
-      String? dataLanguage,
-      bool? allCaps,
-      bool? enableQuikLocate,
-      bool? departmentFilter}) {
+  WebApiLogicAppFuncSystemSettingsResponse copyWith({
+    bool? allowDeleteInvoices,
+    bool? allowInvoiceDateChange,
+    bool? enableReceipts,
+    bool? enableOriginalShow,
+    bool? enablePayments,
+    bool? enableVendorInvoice,
+    bool? enablePropsWardrobe,
+    bool? enableSetsWalls,
+    bool? shareDealsAcrossOfficeLocations,
+    bool? synchronizeCustomerStatusAndCreditStatus,
+    bool? synchronizeDealStatusAndCreditStatus,
+    String? systemName,
+    String? companyName,
+    bool? isVendorNumberAssignedByUser,
+    String? quoteOrderMessageFormat,
+    String? dataLanguageId,
+    String? dataLanguage,
+    bool? allCaps,
+    bool? enableQuikLocate,
+    bool? departmentFilter,
+  }) {
     return WebApiLogicAppFuncSystemSettingsResponse(
-        allowDeleteInvoices: allowDeleteInvoices ?? this.allowDeleteInvoices,
-        allowInvoiceDateChange:
-            allowInvoiceDateChange ?? this.allowInvoiceDateChange,
-        enableReceipts: enableReceipts ?? this.enableReceipts,
-        enableOriginalShow: enableOriginalShow ?? this.enableOriginalShow,
-        enablePayments: enablePayments ?? this.enablePayments,
-        enableVendorInvoice: enableVendorInvoice ?? this.enableVendorInvoice,
-        enablePropsWardrobe: enablePropsWardrobe ?? this.enablePropsWardrobe,
-        enableSetsWalls: enableSetsWalls ?? this.enableSetsWalls,
-        shareDealsAcrossOfficeLocations: shareDealsAcrossOfficeLocations ??
-            this.shareDealsAcrossOfficeLocations,
-        synchronizeCustomerStatusAndCreditStatus:
-            synchronizeCustomerStatusAndCreditStatus ??
-                this.synchronizeCustomerStatusAndCreditStatus,
-        synchronizeDealStatusAndCreditStatus:
-            synchronizeDealStatusAndCreditStatus ??
-                this.synchronizeDealStatusAndCreditStatus,
-        systemName: systemName ?? this.systemName,
-        companyName: companyName ?? this.companyName,
-        isVendorNumberAssignedByUser:
-            isVendorNumberAssignedByUser ?? this.isVendorNumberAssignedByUser,
-        quoteOrderMessageFormat:
-            quoteOrderMessageFormat ?? this.quoteOrderMessageFormat,
-        dataLanguageId: dataLanguageId ?? this.dataLanguageId,
-        dataLanguage: dataLanguage ?? this.dataLanguage,
-        allCaps: allCaps ?? this.allCaps,
-        enableQuikLocate: enableQuikLocate ?? this.enableQuikLocate,
-        departmentFilter: departmentFilter ?? this.departmentFilter);
+      allowDeleteInvoices: allowDeleteInvoices ?? this.allowDeleteInvoices,
+      allowInvoiceDateChange:
+          allowInvoiceDateChange ?? this.allowInvoiceDateChange,
+      enableReceipts: enableReceipts ?? this.enableReceipts,
+      enableOriginalShow: enableOriginalShow ?? this.enableOriginalShow,
+      enablePayments: enablePayments ?? this.enablePayments,
+      enableVendorInvoice: enableVendorInvoice ?? this.enableVendorInvoice,
+      enablePropsWardrobe: enablePropsWardrobe ?? this.enablePropsWardrobe,
+      enableSetsWalls: enableSetsWalls ?? this.enableSetsWalls,
+      shareDealsAcrossOfficeLocations: shareDealsAcrossOfficeLocations ??
+          this.shareDealsAcrossOfficeLocations,
+      synchronizeCustomerStatusAndCreditStatus:
+          synchronizeCustomerStatusAndCreditStatus ??
+              this.synchronizeCustomerStatusAndCreditStatus,
+      synchronizeDealStatusAndCreditStatus:
+          synchronizeDealStatusAndCreditStatus ??
+              this.synchronizeDealStatusAndCreditStatus,
+      systemName: systemName ?? this.systemName,
+      companyName: companyName ?? this.companyName,
+      isVendorNumberAssignedByUser:
+          isVendorNumberAssignedByUser ?? this.isVendorNumberAssignedByUser,
+      quoteOrderMessageFormat:
+          quoteOrderMessageFormat ?? this.quoteOrderMessageFormat,
+      dataLanguageId: dataLanguageId ?? this.dataLanguageId,
+      dataLanguage: dataLanguage ?? this.dataLanguage,
+      allCaps: allCaps ?? this.allCaps,
+      enableQuikLocate: enableQuikLocate ?? this.enableQuikLocate,
+      departmentFilter: departmentFilter ?? this.departmentFilter,
+    );
   }
 
-  WebApiLogicAppFuncSystemSettingsResponse copyWithWrapped(
-      {Wrapped<bool?>? allowDeleteInvoices,
-      Wrapped<bool?>? allowInvoiceDateChange,
-      Wrapped<bool?>? enableReceipts,
-      Wrapped<bool?>? enableOriginalShow,
-      Wrapped<bool?>? enablePayments,
-      Wrapped<bool?>? enableVendorInvoice,
-      Wrapped<bool?>? enablePropsWardrobe,
-      Wrapped<bool?>? enableSetsWalls,
-      Wrapped<bool?>? shareDealsAcrossOfficeLocations,
-      Wrapped<bool?>? synchronizeCustomerStatusAndCreditStatus,
-      Wrapped<bool?>? synchronizeDealStatusAndCreditStatus,
-      Wrapped<String?>? systemName,
-      Wrapped<String?>? companyName,
-      Wrapped<bool?>? isVendorNumberAssignedByUser,
-      Wrapped<String?>? quoteOrderMessageFormat,
-      Wrapped<String?>? dataLanguageId,
-      Wrapped<String?>? dataLanguage,
-      Wrapped<bool?>? allCaps,
-      Wrapped<bool?>? enableQuikLocate,
-      Wrapped<bool?>? departmentFilter}) {
+  WebApiLogicAppFuncSystemSettingsResponse copyWithWrapped({
+    Wrapped<bool?>? allowDeleteInvoices,
+    Wrapped<bool?>? allowInvoiceDateChange,
+    Wrapped<bool?>? enableReceipts,
+    Wrapped<bool?>? enableOriginalShow,
+    Wrapped<bool?>? enablePayments,
+    Wrapped<bool?>? enableVendorInvoice,
+    Wrapped<bool?>? enablePropsWardrobe,
+    Wrapped<bool?>? enableSetsWalls,
+    Wrapped<bool?>? shareDealsAcrossOfficeLocations,
+    Wrapped<bool?>? synchronizeCustomerStatusAndCreditStatus,
+    Wrapped<bool?>? synchronizeDealStatusAndCreditStatus,
+    Wrapped<String?>? systemName,
+    Wrapped<String?>? companyName,
+    Wrapped<bool?>? isVendorNumberAssignedByUser,
+    Wrapped<String?>? quoteOrderMessageFormat,
+    Wrapped<String?>? dataLanguageId,
+    Wrapped<String?>? dataLanguage,
+    Wrapped<bool?>? allCaps,
+    Wrapped<bool?>? enableQuikLocate,
+    Wrapped<bool?>? departmentFilter,
+  }) {
     return WebApiLogicAppFuncSystemSettingsResponse(
-        allowDeleteInvoices: (allowDeleteInvoices != null
-            ? allowDeleteInvoices.value
-            : this.allowDeleteInvoices),
-        allowInvoiceDateChange: (allowInvoiceDateChange != null
-            ? allowInvoiceDateChange.value
-            : this.allowInvoiceDateChange),
-        enableReceipts: (enableReceipts != null
-            ? enableReceipts.value
-            : this.enableReceipts),
-        enableOriginalShow: (enableOriginalShow != null
-            ? enableOriginalShow.value
-            : this.enableOriginalShow),
-        enablePayments: (enablePayments != null
-            ? enablePayments.value
-            : this.enablePayments),
-        enableVendorInvoice: (enableVendorInvoice != null
-            ? enableVendorInvoice.value
-            : this.enableVendorInvoice),
-        enablePropsWardrobe: (enablePropsWardrobe != null
-            ? enablePropsWardrobe.value
-            : this.enablePropsWardrobe),
-        enableSetsWalls: (enableSetsWalls != null
-            ? enableSetsWalls.value
-            : this.enableSetsWalls),
-        shareDealsAcrossOfficeLocations:
-            (shareDealsAcrossOfficeLocations != null
-                ? shareDealsAcrossOfficeLocations.value
-                : this.shareDealsAcrossOfficeLocations),
-        synchronizeCustomerStatusAndCreditStatus:
-            (synchronizeCustomerStatusAndCreditStatus != null
-                ? synchronizeCustomerStatusAndCreditStatus.value
-                : this.synchronizeCustomerStatusAndCreditStatus),
-        synchronizeDealStatusAndCreditStatus:
-            (synchronizeDealStatusAndCreditStatus != null
-                ? synchronizeDealStatusAndCreditStatus.value
-                : this.synchronizeDealStatusAndCreditStatus),
-        systemName: (systemName != null ? systemName.value : this.systemName),
-        companyName:
-            (companyName != null ? companyName.value : this.companyName),
-        isVendorNumberAssignedByUser: (isVendorNumberAssignedByUser != null
-            ? isVendorNumberAssignedByUser.value
-            : this.isVendorNumberAssignedByUser),
-        quoteOrderMessageFormat: (quoteOrderMessageFormat != null
-            ? quoteOrderMessageFormat.value
-            : this.quoteOrderMessageFormat),
-        dataLanguageId: (dataLanguageId != null
-            ? dataLanguageId.value
-            : this.dataLanguageId),
-        dataLanguage:
-            (dataLanguage != null ? dataLanguage.value : this.dataLanguage),
-        allCaps: (allCaps != null ? allCaps.value : this.allCaps),
-        enableQuikLocate: (enableQuikLocate != null
-            ? enableQuikLocate.value
-            : this.enableQuikLocate),
-        departmentFilter: (departmentFilter != null
-            ? departmentFilter.value
-            : this.departmentFilter));
+      allowDeleteInvoices: (allowDeleteInvoices != null
+          ? allowDeleteInvoices.value
+          : this.allowDeleteInvoices),
+      allowInvoiceDateChange: (allowInvoiceDateChange != null
+          ? allowInvoiceDateChange.value
+          : this.allowInvoiceDateChange),
+      enableReceipts: (enableReceipts != null
+          ? enableReceipts.value
+          : this.enableReceipts),
+      enableOriginalShow: (enableOriginalShow != null
+          ? enableOriginalShow.value
+          : this.enableOriginalShow),
+      enablePayments: (enablePayments != null
+          ? enablePayments.value
+          : this.enablePayments),
+      enableVendorInvoice: (enableVendorInvoice != null
+          ? enableVendorInvoice.value
+          : this.enableVendorInvoice),
+      enablePropsWardrobe: (enablePropsWardrobe != null
+          ? enablePropsWardrobe.value
+          : this.enablePropsWardrobe),
+      enableSetsWalls: (enableSetsWalls != null
+          ? enableSetsWalls.value
+          : this.enableSetsWalls),
+      shareDealsAcrossOfficeLocations: (shareDealsAcrossOfficeLocations != null
+          ? shareDealsAcrossOfficeLocations.value
+          : this.shareDealsAcrossOfficeLocations),
+      synchronizeCustomerStatusAndCreditStatus:
+          (synchronizeCustomerStatusAndCreditStatus != null
+              ? synchronizeCustomerStatusAndCreditStatus.value
+              : this.synchronizeCustomerStatusAndCreditStatus),
+      synchronizeDealStatusAndCreditStatus:
+          (synchronizeDealStatusAndCreditStatus != null
+              ? synchronizeDealStatusAndCreditStatus.value
+              : this.synchronizeDealStatusAndCreditStatus),
+      systemName: (systemName != null ? systemName.value : this.systemName),
+      companyName: (companyName != null ? companyName.value : this.companyName),
+      isVendorNumberAssignedByUser: (isVendorNumberAssignedByUser != null
+          ? isVendorNumberAssignedByUser.value
+          : this.isVendorNumberAssignedByUser),
+      quoteOrderMessageFormat: (quoteOrderMessageFormat != null
+          ? quoteOrderMessageFormat.value
+          : this.quoteOrderMessageFormat),
+      dataLanguageId: (dataLanguageId != null
+          ? dataLanguageId.value
+          : this.dataLanguageId),
+      dataLanguage: (dataLanguage != null
+          ? dataLanguage.value
+          : this.dataLanguage),
+      allCaps: (allCaps != null ? allCaps.value : this.allCaps),
+      enableQuikLocate: (enableQuikLocate != null
+          ? enableQuikLocate.value
+          : this.enableQuikLocate),
+      departmentFilter: (departmentFilter != null
+          ? departmentFilter.value
+          : this.departmentFilter),
+    );
   }
 }
 
@@ -4198,12 +4749,12 @@ class WebApiLogicAppFuncUserSettingsResponse {
   });
 
   factory WebApiLogicAppFuncUserSettingsResponse.fromJson(
-          Map<String, dynamic> json) =>
-      _$WebApiLogicAppFuncUserSettingsResponseFromJson(json);
+    Map<String, dynamic> json,
+  ) => _$WebApiLogicAppFuncUserSettingsResponseFromJson(json);
 
   static const toJsonFactory = _$WebApiLogicAppFuncUserSettingsResponseToJson;
-  Map<String, dynamic> toJson() =>
-      _$WebApiLogicAppFuncUserSettingsResponseToJson(this);
+  Map<String, dynamic>
+  toJson() => _$WebApiLogicAppFuncUserSettingsResponseToJson(this);
 
   @JsonKey(name: 'SuccessBase64Sound', includeIfNull: false)
   final String? successBase64Sound;
@@ -4241,47 +4792,87 @@ class WebApiLogicAppFuncUserSettingsResponse {
     return identical(this, other) ||
         (other is WebApiLogicAppFuncUserSettingsResponse &&
             (identical(other.successBase64Sound, successBase64Sound) ||
-                const DeepCollectionEquality()
-                    .equals(other.successBase64Sound, successBase64Sound)) &&
+                const DeepCollectionEquality().equals(
+                  other.successBase64Sound,
+                  successBase64Sound,
+                )) &&
             (identical(other.errorBase64Sound, errorBase64Sound) ||
-                const DeepCollectionEquality()
-                    .equals(other.errorBase64Sound, errorBase64Sound)) &&
-            (identical(other.notificationBase64Sound, notificationBase64Sound) ||
                 const DeepCollectionEquality().equals(
-                    other.notificationBase64Sound, notificationBase64Sound)) &&
+                  other.errorBase64Sound,
+                  errorBase64Sound,
+                )) &&
+            (identical(
+                  other.notificationBase64Sound,
+                  notificationBase64Sound,
+                ) ||
+                const DeepCollectionEquality().equals(
+                  other.notificationBase64Sound,
+                  notificationBase64Sound,
+                )) &&
             (identical(other.webAdministrator, webAdministrator) ||
-                const DeepCollectionEquality()
-                    .equals(other.webAdministrator, webAdministrator)) &&
+                const DeepCollectionEquality().equals(
+                  other.webAdministrator,
+                  webAdministrator,
+                )) &&
             (identical(other.homeMenuGuid, homeMenuGuid) ||
-                const DeepCollectionEquality()
-                    .equals(other.homeMenuGuid, homeMenuGuid)) &&
+                const DeepCollectionEquality().equals(
+                  other.homeMenuGuid,
+                  homeMenuGuid,
+                )) &&
             (identical(other.homeMenuPath, homeMenuPath) ||
-                const DeepCollectionEquality()
-                    .equals(other.homeMenuPath, homeMenuPath)) &&
-            (identical(other.reportsNavigationMenuVisible, reportsNavigationMenuVisible) ||
                 const DeepCollectionEquality().equals(
-                    other.reportsNavigationMenuVisible,
-                    reportsNavigationMenuVisible)) &&
-            (identical(other.settingsNavigationMenuVisible, settingsNavigationMenuVisible) ||
+                  other.homeMenuPath,
+                  homeMenuPath,
+                )) &&
+            (identical(
+                  other.reportsNavigationMenuVisible,
+                  reportsNavigationMenuVisible,
+                ) ||
                 const DeepCollectionEquality().equals(
-                    other.settingsNavigationMenuVisible,
-                    settingsNavigationMenuVisible)) &&
+                  other.reportsNavigationMenuVisible,
+                  reportsNavigationMenuVisible,
+                )) &&
+            (identical(
+                  other.settingsNavigationMenuVisible,
+                  settingsNavigationMenuVisible,
+                ) ||
+                const DeepCollectionEquality().equals(
+                  other.settingsNavigationMenuVisible,
+                  settingsNavigationMenuVisible,
+                )) &&
             (identical(other.mainMenuPinned, mainMenuPinned) ||
-                const DeepCollectionEquality()
-                    .equals(other.mainMenuPinned, mainMenuPinned)) &&
+                const DeepCollectionEquality().equals(
+                  other.mainMenuPinned,
+                  mainMenuPinned,
+                )) &&
             (identical(other.quikActivitySetting, quikActivitySetting) ||
-                const DeepCollectionEquality()
-                    .equals(other.quikActivitySetting, quikActivitySetting)) &&
+                const DeepCollectionEquality().equals(
+                  other.quikActivitySetting,
+                  quikActivitySetting,
+                )) &&
             (identical(other.favoritesJson, favoritesJson) ||
-                const DeepCollectionEquality()
-                    .equals(other.favoritesJson, favoritesJson)) &&
+                const DeepCollectionEquality().equals(
+                  other.favoritesJson,
+                  favoritesJson,
+                )) &&
             (identical(other.emailSignature, emailSignature) ||
-                const DeepCollectionEquality()
-                    .equals(other.emailSignature, emailSignature)) &&
+                const DeepCollectionEquality().equals(
+                  other.emailSignature,
+                  emailSignature,
+                )) &&
             (identical(other.availabilityPreference, availabilityPreference) ||
-                const DeepCollectionEquality()
-                    .equals(other.availabilityPreference, availabilityPreference)) &&
-            (identical(other.availabilityAllWarehouses, availabilityAllWarehouses) || const DeepCollectionEquality().equals(other.availabilityAllWarehouses, availabilityAllWarehouses)));
+                const DeepCollectionEquality().equals(
+                  other.availabilityPreference,
+                  availabilityPreference,
+                )) &&
+            (identical(
+                  other.availabilityAllWarehouses,
+                  availabilityAllWarehouses,
+                ) ||
+                const DeepCollectionEquality().equals(
+                  other.availabilityAllWarehouses,
+                  availabilityAllWarehouses,
+                )));
   }
 
   @override
@@ -4308,114 +4899,120 @@ class WebApiLogicAppFuncUserSettingsResponse {
 
 extension $WebApiLogicAppFuncUserSettingsResponseExtension
     on WebApiLogicAppFuncUserSettingsResponse {
-  WebApiLogicAppFuncUserSettingsResponse copyWith(
-      {String? successBase64Sound,
-      String? errorBase64Sound,
-      String? notificationBase64Sound,
-      bool? webAdministrator,
-      String? homeMenuGuid,
-      String? homeMenuPath,
-      bool? reportsNavigationMenuVisible,
-      bool? settingsNavigationMenuVisible,
-      bool? mainMenuPinned,
-      String? quikActivitySetting,
-      String? favoritesJson,
-      String? emailSignature,
-      String? availabilityPreference,
-      bool? availabilityAllWarehouses}) {
+  WebApiLogicAppFuncUserSettingsResponse copyWith({
+    String? successBase64Sound,
+    String? errorBase64Sound,
+    String? notificationBase64Sound,
+    bool? webAdministrator,
+    String? homeMenuGuid,
+    String? homeMenuPath,
+    bool? reportsNavigationMenuVisible,
+    bool? settingsNavigationMenuVisible,
+    bool? mainMenuPinned,
+    String? quikActivitySetting,
+    String? favoritesJson,
+    String? emailSignature,
+    String? availabilityPreference,
+    bool? availabilityAllWarehouses,
+  }) {
     return WebApiLogicAppFuncUserSettingsResponse(
-        successBase64Sound: successBase64Sound ?? this.successBase64Sound,
-        errorBase64Sound: errorBase64Sound ?? this.errorBase64Sound,
-        notificationBase64Sound:
-            notificationBase64Sound ?? this.notificationBase64Sound,
-        webAdministrator: webAdministrator ?? this.webAdministrator,
-        homeMenuGuid: homeMenuGuid ?? this.homeMenuGuid,
-        homeMenuPath: homeMenuPath ?? this.homeMenuPath,
-        reportsNavigationMenuVisible:
-            reportsNavigationMenuVisible ?? this.reportsNavigationMenuVisible,
-        settingsNavigationMenuVisible:
-            settingsNavigationMenuVisible ?? this.settingsNavigationMenuVisible,
-        mainMenuPinned: mainMenuPinned ?? this.mainMenuPinned,
-        quikActivitySetting: quikActivitySetting ?? this.quikActivitySetting,
-        favoritesJson: favoritesJson ?? this.favoritesJson,
-        emailSignature: emailSignature ?? this.emailSignature,
-        availabilityPreference:
-            availabilityPreference ?? this.availabilityPreference,
-        availabilityAllWarehouses:
-            availabilityAllWarehouses ?? this.availabilityAllWarehouses);
+      successBase64Sound: successBase64Sound ?? this.successBase64Sound,
+      errorBase64Sound: errorBase64Sound ?? this.errorBase64Sound,
+      notificationBase64Sound:
+          notificationBase64Sound ?? this.notificationBase64Sound,
+      webAdministrator: webAdministrator ?? this.webAdministrator,
+      homeMenuGuid: homeMenuGuid ?? this.homeMenuGuid,
+      homeMenuPath: homeMenuPath ?? this.homeMenuPath,
+      reportsNavigationMenuVisible:
+          reportsNavigationMenuVisible ?? this.reportsNavigationMenuVisible,
+      settingsNavigationMenuVisible:
+          settingsNavigationMenuVisible ?? this.settingsNavigationMenuVisible,
+      mainMenuPinned: mainMenuPinned ?? this.mainMenuPinned,
+      quikActivitySetting: quikActivitySetting ?? this.quikActivitySetting,
+      favoritesJson: favoritesJson ?? this.favoritesJson,
+      emailSignature: emailSignature ?? this.emailSignature,
+      availabilityPreference:
+          availabilityPreference ?? this.availabilityPreference,
+      availabilityAllWarehouses:
+          availabilityAllWarehouses ?? this.availabilityAllWarehouses,
+    );
   }
 
-  WebApiLogicAppFuncUserSettingsResponse copyWithWrapped(
-      {Wrapped<String?>? successBase64Sound,
-      Wrapped<String?>? errorBase64Sound,
-      Wrapped<String?>? notificationBase64Sound,
-      Wrapped<bool?>? webAdministrator,
-      Wrapped<String?>? homeMenuGuid,
-      Wrapped<String?>? homeMenuPath,
-      Wrapped<bool?>? reportsNavigationMenuVisible,
-      Wrapped<bool?>? settingsNavigationMenuVisible,
-      Wrapped<bool?>? mainMenuPinned,
-      Wrapped<String?>? quikActivitySetting,
-      Wrapped<String?>? favoritesJson,
-      Wrapped<String?>? emailSignature,
-      Wrapped<String?>? availabilityPreference,
-      Wrapped<bool?>? availabilityAllWarehouses}) {
+  WebApiLogicAppFuncUserSettingsResponse copyWithWrapped({
+    Wrapped<String?>? successBase64Sound,
+    Wrapped<String?>? errorBase64Sound,
+    Wrapped<String?>? notificationBase64Sound,
+    Wrapped<bool?>? webAdministrator,
+    Wrapped<String?>? homeMenuGuid,
+    Wrapped<String?>? homeMenuPath,
+    Wrapped<bool?>? reportsNavigationMenuVisible,
+    Wrapped<bool?>? settingsNavigationMenuVisible,
+    Wrapped<bool?>? mainMenuPinned,
+    Wrapped<String?>? quikActivitySetting,
+    Wrapped<String?>? favoritesJson,
+    Wrapped<String?>? emailSignature,
+    Wrapped<String?>? availabilityPreference,
+    Wrapped<bool?>? availabilityAllWarehouses,
+  }) {
     return WebApiLogicAppFuncUserSettingsResponse(
-        successBase64Sound: (successBase64Sound != null
-            ? successBase64Sound.value
-            : this.successBase64Sound),
-        errorBase64Sound: (errorBase64Sound != null
-            ? errorBase64Sound.value
-            : this.errorBase64Sound),
-        notificationBase64Sound: (notificationBase64Sound != null
-            ? notificationBase64Sound.value
-            : this.notificationBase64Sound),
-        webAdministrator: (webAdministrator != null
-            ? webAdministrator.value
-            : this.webAdministrator),
-        homeMenuGuid:
-            (homeMenuGuid != null ? homeMenuGuid.value : this.homeMenuGuid),
-        homeMenuPath:
-            (homeMenuPath != null ? homeMenuPath.value : this.homeMenuPath),
-        reportsNavigationMenuVisible: (reportsNavigationMenuVisible != null
-            ? reportsNavigationMenuVisible.value
-            : this.reportsNavigationMenuVisible),
-        settingsNavigationMenuVisible: (settingsNavigationMenuVisible != null
-            ? settingsNavigationMenuVisible.value
-            : this.settingsNavigationMenuVisible),
-        mainMenuPinned: (mainMenuPinned != null
-            ? mainMenuPinned.value
-            : this.mainMenuPinned),
-        quikActivitySetting: (quikActivitySetting != null
-            ? quikActivitySetting.value
-            : this.quikActivitySetting),
-        favoritesJson:
-            (favoritesJson != null ? favoritesJson.value : this.favoritesJson),
-        emailSignature: (emailSignature != null
-            ? emailSignature.value
-            : this.emailSignature),
-        availabilityPreference: (availabilityPreference != null
-            ? availabilityPreference.value
-            : this.availabilityPreference),
-        availabilityAllWarehouses: (availabilityAllWarehouses != null
-            ? availabilityAllWarehouses.value
-            : this.availabilityAllWarehouses));
+      successBase64Sound: (successBase64Sound != null
+          ? successBase64Sound.value
+          : this.successBase64Sound),
+      errorBase64Sound: (errorBase64Sound != null
+          ? errorBase64Sound.value
+          : this.errorBase64Sound),
+      notificationBase64Sound: (notificationBase64Sound != null
+          ? notificationBase64Sound.value
+          : this.notificationBase64Sound),
+      webAdministrator: (webAdministrator != null
+          ? webAdministrator.value
+          : this.webAdministrator),
+      homeMenuGuid: (homeMenuGuid != null
+          ? homeMenuGuid.value
+          : this.homeMenuGuid),
+      homeMenuPath: (homeMenuPath != null
+          ? homeMenuPath.value
+          : this.homeMenuPath),
+      reportsNavigationMenuVisible: (reportsNavigationMenuVisible != null
+          ? reportsNavigationMenuVisible.value
+          : this.reportsNavigationMenuVisible),
+      settingsNavigationMenuVisible: (settingsNavigationMenuVisible != null
+          ? settingsNavigationMenuVisible.value
+          : this.settingsNavigationMenuVisible),
+      mainMenuPinned: (mainMenuPinned != null
+          ? mainMenuPinned.value
+          : this.mainMenuPinned),
+      quikActivitySetting: (quikActivitySetting != null
+          ? quikActivitySetting.value
+          : this.quikActivitySetting),
+      favoritesJson: (favoritesJson != null
+          ? favoritesJson.value
+          : this.favoritesJson),
+      emailSignature: (emailSignature != null
+          ? emailSignature.value
+          : this.emailSignature),
+      availabilityPreference: (availabilityPreference != null
+          ? availabilityPreference.value
+          : this.availabilityPreference),
+      availabilityAllWarehouses: (availabilityAllWarehouses != null
+          ? availabilityAllWarehouses.value
+          : this.availabilityAllWarehouses),
+    );
   }
 }
 
 @JsonSerializable(explicitToJson: true)
 class WebApiLogicAppFuncWarehouseResponse {
-  WebApiLogicAppFuncWarehouseResponse({
-    this.multiWarehouse,
-  });
+  WebApiLogicAppFuncWarehouseResponse({this.multiWarehouse});
 
   factory WebApiLogicAppFuncWarehouseResponse.fromJson(
-          Map<String, dynamic> json) =>
-      _$WebApiLogicAppFuncWarehouseResponseFromJson(json);
+    Map<String, dynamic> json,
+  ) => _$WebApiLogicAppFuncWarehouseResponseFromJson(json);
 
   static const toJsonFactory = _$WebApiLogicAppFuncWarehouseResponseToJson;
-  Map<String, dynamic> toJson() =>
-      _$WebApiLogicAppFuncWarehouseResponseToJson(this);
+  Map<String, dynamic> toJson() => _$WebApiLogicAppFuncWarehouseResponseToJson(
+    this,
+  );
 
   @JsonKey(name: 'MultiWarehouse', includeIfNull: false)
   final bool? multiWarehouse;
@@ -4426,8 +5023,10 @@ class WebApiLogicAppFuncWarehouseResponse {
     return identical(this, other) ||
         (other is WebApiLogicAppFuncWarehouseResponse &&
             (identical(other.multiWarehouse, multiWarehouse) ||
-                const DeepCollectionEquality()
-                    .equals(other.multiWarehouse, multiWarehouse)));
+                const DeepCollectionEquality().equals(
+                  other.multiWarehouse,
+                  multiWarehouse,
+                )));
   }
 
   @override
@@ -4443,15 +5042,18 @@ extension $WebApiLogicAppFuncWarehouseResponseExtension
     on WebApiLogicAppFuncWarehouseResponse {
   WebApiLogicAppFuncWarehouseResponse copyWith({bool? multiWarehouse}) {
     return WebApiLogicAppFuncWarehouseResponse(
-        multiWarehouse: multiWarehouse ?? this.multiWarehouse);
+      multiWarehouse: multiWarehouse ?? this.multiWarehouse,
+    );
   }
 
-  WebApiLogicAppFuncWarehouseResponse copyWithWrapped(
-      {Wrapped<bool?>? multiWarehouse}) {
+  WebApiLogicAppFuncWarehouseResponse copyWithWrapped({
+    Wrapped<bool?>? multiWarehouse,
+  }) {
     return WebApiLogicAppFuncWarehouseResponse(
-        multiWarehouse: (multiWarehouse != null
-            ? multiWarehouse.value
-            : this.multiWarehouse));
+      multiWarehouse: (multiWarehouse != null
+          ? multiWarehouse.value
+          : this.multiWarehouse),
+    );
   }
 }
 
@@ -4464,15 +5066,17 @@ class WebApiModulesAccountServicesAccountAccountControllerGetOfficeLocationRespo
   });
 
   factory WebApiModulesAccountServicesAccountAccountControllerGetOfficeLocationResponse.fromJson(
-          Map<String, dynamic> json) =>
-      _$WebApiModulesAccountServicesAccountAccountControllerGetOfficeLocationResponseFromJson(
-          json);
+    Map<String, dynamic> json,
+  ) => _$WebApiModulesAccountServicesAccountAccountControllerGetOfficeLocationResponseFromJson(
+    json,
+  );
 
   static const toJsonFactory =
       _$WebApiModulesAccountServicesAccountAccountControllerGetOfficeLocationResponseToJson;
-  Map<String, dynamic> toJson() =>
-      _$WebApiModulesAccountServicesAccountAccountControllerGetOfficeLocationResponseToJson(
-          this);
+  Map<String, dynamic>
+  toJson() => _$WebApiModulesAccountServicesAccountAccountControllerGetOfficeLocationResponseToJson(
+    this,
+  );
 
   @JsonKey(name: 'location', includeIfNull: false)
   final WebApiLogicAppFuncSessionLocation? location;
@@ -4488,14 +5092,20 @@ class WebApiModulesAccountServicesAccountAccountControllerGetOfficeLocationRespo
     return identical(this, other) ||
         (other is WebApiModulesAccountServicesAccountAccountControllerGetOfficeLocationResponse &&
             (identical(other.location, location) ||
-                const DeepCollectionEquality()
-                    .equals(other.location, location)) &&
+                const DeepCollectionEquality().equals(
+                  other.location,
+                  location,
+                )) &&
             (identical(other.warehouse, warehouse) ||
-                const DeepCollectionEquality()
-                    .equals(other.warehouse, warehouse)) &&
+                const DeepCollectionEquality().equals(
+                  other.warehouse,
+                  warehouse,
+                )) &&
             (identical(other.department, department) ||
-                const DeepCollectionEquality()
-                    .equals(other.department, department)));
+                const DeepCollectionEquality().equals(
+                  other.department,
+                  department,
+                )));
   }
 
   @override
@@ -4512,25 +5122,29 @@ class WebApiModulesAccountServicesAccountAccountControllerGetOfficeLocationRespo
 extension $WebApiModulesAccountServicesAccountAccountControllerGetOfficeLocationResponseExtension
     on WebApiModulesAccountServicesAccountAccountControllerGetOfficeLocationResponse {
   WebApiModulesAccountServicesAccountAccountControllerGetOfficeLocationResponse
-      copyWith(
-          {WebApiLogicAppFuncSessionLocation? location,
-          WebApiLogicAppFuncSessionWarehouse? warehouse,
-          WebApiLogicAppFuncSessionDepartment? department}) {
+  copyWith({
+    WebApiLogicAppFuncSessionLocation? location,
+    WebApiLogicAppFuncSessionWarehouse? warehouse,
+    WebApiLogicAppFuncSessionDepartment? department,
+  }) {
     return WebApiModulesAccountServicesAccountAccountControllerGetOfficeLocationResponse(
-        location: location ?? this.location,
-        warehouse: warehouse ?? this.warehouse,
-        department: department ?? this.department);
+      location: location ?? this.location,
+      warehouse: warehouse ?? this.warehouse,
+      department: department ?? this.department,
+    );
   }
 
   WebApiModulesAccountServicesAccountAccountControllerGetOfficeLocationResponse
-      copyWithWrapped(
-          {Wrapped<WebApiLogicAppFuncSessionLocation?>? location,
-          Wrapped<WebApiLogicAppFuncSessionWarehouse?>? warehouse,
-          Wrapped<WebApiLogicAppFuncSessionDepartment?>? department}) {
+  copyWithWrapped({
+    Wrapped<WebApiLogicAppFuncSessionLocation?>? location,
+    Wrapped<WebApiLogicAppFuncSessionWarehouse?>? warehouse,
+    Wrapped<WebApiLogicAppFuncSessionDepartment?>? department,
+  }) {
     return WebApiModulesAccountServicesAccountAccountControllerGetOfficeLocationResponse(
-        location: (location != null ? location.value : this.location),
-        warehouse: (warehouse != null ? warehouse.value : this.warehouse),
-        department: (department != null ? department.value : this.department));
+      location: (location != null ? location.value : this.location),
+      warehouse: (warehouse != null ? warehouse.value : this.warehouse),
+      department: (department != null ? department.value : this.department),
+    );
   }
 }
 
@@ -4551,15 +5165,17 @@ class WebApiModulesAccountServicesAccountAccountControllerGetSessionResponse {
   });
 
   factory WebApiModulesAccountServicesAccountAccountControllerGetSessionResponse.fromJson(
-          Map<String, dynamic> json) =>
-      _$WebApiModulesAccountServicesAccountAccountControllerGetSessionResponseFromJson(
-          json);
+    Map<String, dynamic> json,
+  ) => _$WebApiModulesAccountServicesAccountAccountControllerGetSessionResponseFromJson(
+    json,
+  );
 
   static const toJsonFactory =
       _$WebApiModulesAccountServicesAccountAccountControllerGetSessionResponseToJson;
-  Map<String, dynamic> toJson() =>
-      _$WebApiModulesAccountServicesAccountAccountControllerGetSessionResponseToJson(
-          this);
+  Map<String, dynamic>
+  toJson() => _$WebApiModulesAccountServicesAccountAccountControllerGetSessionResponseToJson(
+    this,
+  );
 
   @JsonKey(name: 'location', includeIfNull: false)
   final WebApiLogicAppFuncSessionLocation? location;
@@ -4581,7 +5197,7 @@ class WebApiModulesAccountServicesAccountAccountControllerGetSessionResponse {
   final String? serverVersion;
   @JsonKey(name: 'systemSettings', includeIfNull: false)
   final WebApiModulesAccountServicesAccountSystemSettingsResponse?
-      systemSettings;
+  systemSettings;
   @JsonKey(name: 'plugins', includeIfNull: false)
   final dynamic plugins;
   static const fromJsonFactory =
@@ -4592,34 +5208,52 @@ class WebApiModulesAccountServicesAccountAccountControllerGetSessionResponse {
     return identical(this, other) ||
         (other is WebApiModulesAccountServicesAccountAccountControllerGetSessionResponse &&
             (identical(other.location, location) ||
-                const DeepCollectionEquality()
-                    .equals(other.location, location)) &&
+                const DeepCollectionEquality().equals(
+                  other.location,
+                  location,
+                )) &&
             (identical(other.warehouse, warehouse) ||
-                const DeepCollectionEquality()
-                    .equals(other.warehouse, warehouse)) &&
+                const DeepCollectionEquality().equals(
+                  other.warehouse,
+                  warehouse,
+                )) &&
             (identical(other.department, department) ||
-                const DeepCollectionEquality()
-                    .equals(other.department, department)) &&
+                const DeepCollectionEquality().equals(
+                  other.department,
+                  department,
+                )) &&
             (identical(other.webUser, webUser) ||
-                const DeepCollectionEquality()
-                    .equals(other.webUser, webUser)) &&
+                const DeepCollectionEquality().equals(
+                  other.webUser,
+                  webUser,
+                )) &&
             (identical(other.deal, deal) ||
                 const DeepCollectionEquality().equals(other.deal, deal)) &&
             (identical(other.applicationtree, applicationtree) ||
-                const DeepCollectionEquality()
-                    .equals(other.applicationtree, applicationtree)) &&
+                const DeepCollectionEquality().equals(
+                  other.applicationtree,
+                  applicationtree,
+                )) &&
             (identical(other.applicationOptions, applicationOptions) ||
-                const DeepCollectionEquality()
-                    .equals(other.applicationOptions, applicationOptions)) &&
+                const DeepCollectionEquality().equals(
+                  other.applicationOptions,
+                  applicationOptions,
+                )) &&
             (identical(other.clientcode, clientcode) ||
-                const DeepCollectionEquality()
-                    .equals(other.clientcode, clientcode)) &&
+                const DeepCollectionEquality().equals(
+                  other.clientcode,
+                  clientcode,
+                )) &&
             (identical(other.serverVersion, serverVersion) ||
-                const DeepCollectionEquality()
-                    .equals(other.serverVersion, serverVersion)) &&
+                const DeepCollectionEquality().equals(
+                  other.serverVersion,
+                  serverVersion,
+                )) &&
             (identical(other.systemSettings, systemSettings) ||
-                const DeepCollectionEquality()
-                    .equals(other.systemSettings, systemSettings)) &&
+                const DeepCollectionEquality().equals(
+                  other.systemSettings,
+                  systemSettings,
+                )) &&
             (identical(other.plugins, plugins) ||
                 const DeepCollectionEquality().equals(other.plugins, plugins)));
   }
@@ -4646,66 +5280,70 @@ class WebApiModulesAccountServicesAccountAccountControllerGetSessionResponse {
 extension $WebApiModulesAccountServicesAccountAccountControllerGetSessionResponseExtension
     on WebApiModulesAccountServicesAccountAccountControllerGetSessionResponse {
   WebApiModulesAccountServicesAccountAccountControllerGetSessionResponse
-      copyWith(
-          {WebApiLogicAppFuncSessionLocation? location,
-          WebApiLogicAppFuncSessionWarehouse? warehouse,
-          WebApiLogicAppFuncSessionDepartment? department,
-          WebApiLogicAppFuncSessionUser? webUser,
-          WebApiLogicAppFuncSessionDeal? deal,
-          FwStandardAppManagerFwAmSecurityTreeNode? applicationtree,
-          dynamic applicationOptions,
-          String? clientcode,
-          String? serverVersion,
-          WebApiModulesAccountServicesAccountSystemSettingsResponse?
-              systemSettings,
-          dynamic plugins}) {
+  copyWith({
+    WebApiLogicAppFuncSessionLocation? location,
+    WebApiLogicAppFuncSessionWarehouse? warehouse,
+    WebApiLogicAppFuncSessionDepartment? department,
+    WebApiLogicAppFuncSessionUser? webUser,
+    WebApiLogicAppFuncSessionDeal? deal,
+    FwStandardAppManagerFwAmSecurityTreeNode? applicationtree,
+    dynamic applicationOptions,
+    String? clientcode,
+    String? serverVersion,
+    WebApiModulesAccountServicesAccountSystemSettingsResponse? systemSettings,
+    dynamic plugins,
+  }) {
     return WebApiModulesAccountServicesAccountAccountControllerGetSessionResponse(
-        location: location ?? this.location,
-        warehouse: warehouse ?? this.warehouse,
-        department: department ?? this.department,
-        webUser: webUser ?? this.webUser,
-        deal: deal ?? this.deal,
-        applicationtree: applicationtree ?? this.applicationtree,
-        applicationOptions: applicationOptions ?? this.applicationOptions,
-        clientcode: clientcode ?? this.clientcode,
-        serverVersion: serverVersion ?? this.serverVersion,
-        systemSettings: systemSettings ?? this.systemSettings,
-        plugins: plugins ?? this.plugins);
+      location: location ?? this.location,
+      warehouse: warehouse ?? this.warehouse,
+      department: department ?? this.department,
+      webUser: webUser ?? this.webUser,
+      deal: deal ?? this.deal,
+      applicationtree: applicationtree ?? this.applicationtree,
+      applicationOptions: applicationOptions ?? this.applicationOptions,
+      clientcode: clientcode ?? this.clientcode,
+      serverVersion: serverVersion ?? this.serverVersion,
+      systemSettings: systemSettings ?? this.systemSettings,
+      plugins: plugins ?? this.plugins,
+    );
   }
 
   WebApiModulesAccountServicesAccountAccountControllerGetSessionResponse
-      copyWithWrapped(
-          {Wrapped<WebApiLogicAppFuncSessionLocation?>? location,
-          Wrapped<WebApiLogicAppFuncSessionWarehouse?>? warehouse,
-          Wrapped<WebApiLogicAppFuncSessionDepartment?>? department,
-          Wrapped<WebApiLogicAppFuncSessionUser?>? webUser,
-          Wrapped<WebApiLogicAppFuncSessionDeal?>? deal,
-          Wrapped<FwStandardAppManagerFwAmSecurityTreeNode?>? applicationtree,
-          Wrapped<dynamic>? applicationOptions,
-          Wrapped<String?>? clientcode,
-          Wrapped<String?>? serverVersion,
-          Wrapped<WebApiModulesAccountServicesAccountSystemSettingsResponse?>?
-              systemSettings,
-          Wrapped<dynamic>? plugins}) {
+  copyWithWrapped({
+    Wrapped<WebApiLogicAppFuncSessionLocation?>? location,
+    Wrapped<WebApiLogicAppFuncSessionWarehouse?>? warehouse,
+    Wrapped<WebApiLogicAppFuncSessionDepartment?>? department,
+    Wrapped<WebApiLogicAppFuncSessionUser?>? webUser,
+    Wrapped<WebApiLogicAppFuncSessionDeal?>? deal,
+    Wrapped<FwStandardAppManagerFwAmSecurityTreeNode?>? applicationtree,
+    Wrapped<dynamic>? applicationOptions,
+    Wrapped<String?>? clientcode,
+    Wrapped<String?>? serverVersion,
+    Wrapped<WebApiModulesAccountServicesAccountSystemSettingsResponse?>?
+    systemSettings,
+    Wrapped<dynamic>? plugins,
+  }) {
     return WebApiModulesAccountServicesAccountAccountControllerGetSessionResponse(
-        location: (location != null ? location.value : this.location),
-        warehouse: (warehouse != null ? warehouse.value : this.warehouse),
-        department: (department != null ? department.value : this.department),
-        webUser: (webUser != null ? webUser.value : this.webUser),
-        deal: (deal != null ? deal.value : this.deal),
-        applicationtree: (applicationtree != null
-            ? applicationtree.value
-            : this.applicationtree),
-        applicationOptions: (applicationOptions != null
-            ? applicationOptions.value
-            : this.applicationOptions),
-        clientcode: (clientcode != null ? clientcode.value : this.clientcode),
-        serverVersion:
-            (serverVersion != null ? serverVersion.value : this.serverVersion),
-        systemSettings: (systemSettings != null
-            ? systemSettings.value
-            : this.systemSettings),
-        plugins: (plugins != null ? plugins.value : this.plugins));
+      location: (location != null ? location.value : this.location),
+      warehouse: (warehouse != null ? warehouse.value : this.warehouse),
+      department: (department != null ? department.value : this.department),
+      webUser: (webUser != null ? webUser.value : this.webUser),
+      deal: (deal != null ? deal.value : this.deal),
+      applicationtree: (applicationtree != null
+          ? applicationtree.value
+          : this.applicationtree),
+      applicationOptions: (applicationOptions != null
+          ? applicationOptions.value
+          : this.applicationOptions),
+      clientcode: (clientcode != null ? clientcode.value : this.clientcode),
+      serverVersion: (serverVersion != null
+          ? serverVersion.value
+          : this.serverVersion),
+      systemSettings: (systemSettings != null
+          ? systemSettings.value
+          : this.systemSettings),
+      plugins: (plugins != null ? plugins.value : this.plugins),
+    );
   }
 }
 
@@ -4718,13 +5356,15 @@ class WebApiModulesAccountServicesAccountGetSettingsRequest {
   });
 
   factory WebApiModulesAccountServicesAccountGetSettingsRequest.fromJson(
-          Map<String, dynamic> json) =>
-      _$WebApiModulesAccountServicesAccountGetSettingsRequestFromJson(json);
+    Map<String, dynamic> json,
+  ) => _$WebApiModulesAccountServicesAccountGetSettingsRequestFromJson(json);
 
   static const toJsonFactory =
       _$WebApiModulesAccountServicesAccountGetSettingsRequestToJson;
-  Map<String, dynamic> toJson() =>
-      _$WebApiModulesAccountServicesAccountGetSettingsRequestToJson(this);
+  Map<String, dynamic>
+  toJson() => _$WebApiModulesAccountServicesAccountGetSettingsRequestToJson(
+    this,
+  );
 
   @JsonKey(name: 'WebUsersId', includeIfNull: false)
   final String? webUsersId;
@@ -4740,14 +5380,20 @@ class WebApiModulesAccountServicesAccountGetSettingsRequest {
     return identical(this, other) ||
         (other is WebApiModulesAccountServicesAccountGetSettingsRequest &&
             (identical(other.webUsersId, webUsersId) ||
-                const DeepCollectionEquality()
-                    .equals(other.webUsersId, webUsersId)) &&
+                const DeepCollectionEquality().equals(
+                  other.webUsersId,
+                  webUsersId,
+                )) &&
             (identical(other.departmentId, departmentId) ||
-                const DeepCollectionEquality()
-                    .equals(other.departmentId, departmentId)) &&
+                const DeepCollectionEquality().equals(
+                  other.departmentId,
+                  departmentId,
+                )) &&
             (identical(other.locationId, locationId) ||
-                const DeepCollectionEquality()
-                    .equals(other.locationId, locationId)));
+                const DeepCollectionEquality().equals(
+                  other.locationId,
+                  locationId,
+                )));
   }
 
   @override
@@ -4763,23 +5409,30 @@ class WebApiModulesAccountServicesAccountGetSettingsRequest {
 
 extension $WebApiModulesAccountServicesAccountGetSettingsRequestExtension
     on WebApiModulesAccountServicesAccountGetSettingsRequest {
-  WebApiModulesAccountServicesAccountGetSettingsRequest copyWith(
-      {String? webUsersId, String? departmentId, String? locationId}) {
+  WebApiModulesAccountServicesAccountGetSettingsRequest copyWith({
+    String? webUsersId,
+    String? departmentId,
+    String? locationId,
+  }) {
     return WebApiModulesAccountServicesAccountGetSettingsRequest(
-        webUsersId: webUsersId ?? this.webUsersId,
-        departmentId: departmentId ?? this.departmentId,
-        locationId: locationId ?? this.locationId);
+      webUsersId: webUsersId ?? this.webUsersId,
+      departmentId: departmentId ?? this.departmentId,
+      locationId: locationId ?? this.locationId,
+    );
   }
 
-  WebApiModulesAccountServicesAccountGetSettingsRequest copyWithWrapped(
-      {Wrapped<String?>? webUsersId,
-      Wrapped<String?>? departmentId,
-      Wrapped<String?>? locationId}) {
+  WebApiModulesAccountServicesAccountGetSettingsRequest copyWithWrapped({
+    Wrapped<String?>? webUsersId,
+    Wrapped<String?>? departmentId,
+    Wrapped<String?>? locationId,
+  }) {
     return WebApiModulesAccountServicesAccountGetSettingsRequest(
-        webUsersId: (webUsersId != null ? webUsersId.value : this.webUsersId),
-        departmentId:
-            (departmentId != null ? departmentId.value : this.departmentId),
-        locationId: (locationId != null ? locationId.value : this.locationId));
+      webUsersId: (webUsersId != null ? webUsersId.value : this.webUsersId),
+      departmentId: (departmentId != null
+          ? departmentId.value
+          : this.departmentId),
+      locationId: (locationId != null ? locationId.value : this.locationId),
+    );
   }
 }
 
@@ -4790,13 +5443,15 @@ class WebApiModulesAccountServicesAccountResetPasswordRequest {
   });
 
   factory WebApiModulesAccountServicesAccountResetPasswordRequest.fromJson(
-          Map<String, dynamic> json) =>
-      _$WebApiModulesAccountServicesAccountResetPasswordRequestFromJson(json);
+    Map<String, dynamic> json,
+  ) => _$WebApiModulesAccountServicesAccountResetPasswordRequestFromJson(json);
 
   static const toJsonFactory =
       _$WebApiModulesAccountServicesAccountResetPasswordRequestToJson;
-  Map<String, dynamic> toJson() =>
-      _$WebApiModulesAccountServicesAccountResetPasswordRequestToJson(this);
+  Map<String, dynamic>
+  toJson() => _$WebApiModulesAccountServicesAccountResetPasswordRequestToJson(
+    this,
+  );
 
   @JsonKey(name: 'Password', includeIfNull: false)
   final String password;
@@ -4808,8 +5463,10 @@ class WebApiModulesAccountServicesAccountResetPasswordRequest {
     return identical(this, other) ||
         (other is WebApiModulesAccountServicesAccountResetPasswordRequest &&
             (identical(other.password, password) ||
-                const DeepCollectionEquality()
-                    .equals(other.password, password)));
+                const DeepCollectionEquality().equals(
+                  other.password,
+                  password,
+                )));
   }
 
   @override
@@ -4822,16 +5479,20 @@ class WebApiModulesAccountServicesAccountResetPasswordRequest {
 
 extension $WebApiModulesAccountServicesAccountResetPasswordRequestExtension
     on WebApiModulesAccountServicesAccountResetPasswordRequest {
-  WebApiModulesAccountServicesAccountResetPasswordRequest copyWith(
-      {String? password}) {
+  WebApiModulesAccountServicesAccountResetPasswordRequest copyWith({
+    String? password,
+  }) {
     return WebApiModulesAccountServicesAccountResetPasswordRequest(
-        password: password ?? this.password);
+      password: password ?? this.password,
+    );
   }
 
-  WebApiModulesAccountServicesAccountResetPasswordRequest copyWithWrapped(
-      {Wrapped<String>? password}) {
+  WebApiModulesAccountServicesAccountResetPasswordRequest copyWithWrapped({
+    Wrapped<String>? password,
+  }) {
     return WebApiModulesAccountServicesAccountResetPasswordRequest(
-        password: (password != null ? password.value : this.password));
+      password: (password != null ? password.value : this.password),
+    );
   }
 }
 
@@ -4843,13 +5504,15 @@ class WebApiModulesAccountServicesAccountResetPasswordResponse {
   });
 
   factory WebApiModulesAccountServicesAccountResetPasswordResponse.fromJson(
-          Map<String, dynamic> json) =>
-      _$WebApiModulesAccountServicesAccountResetPasswordResponseFromJson(json);
+    Map<String, dynamic> json,
+  ) => _$WebApiModulesAccountServicesAccountResetPasswordResponseFromJson(json);
 
   static const toJsonFactory =
       _$WebApiModulesAccountServicesAccountResetPasswordResponseToJson;
-  Map<String, dynamic> toJson() =>
-      _$WebApiModulesAccountServicesAccountResetPasswordResponseToJson(this);
+  Map<String, dynamic>
+  toJson() => _$WebApiModulesAccountServicesAccountResetPasswordResponseToJson(
+    this,
+  );
 
   @JsonKey(name: 'Status', includeIfNull: false)
   final int? status;
@@ -4880,17 +5543,24 @@ class WebApiModulesAccountServicesAccountResetPasswordResponse {
 
 extension $WebApiModulesAccountServicesAccountResetPasswordResponseExtension
     on WebApiModulesAccountServicesAccountResetPasswordResponse {
-  WebApiModulesAccountServicesAccountResetPasswordResponse copyWith(
-      {int? status, String? message}) {
+  WebApiModulesAccountServicesAccountResetPasswordResponse copyWith({
+    int? status,
+    String? message,
+  }) {
     return WebApiModulesAccountServicesAccountResetPasswordResponse(
-        status: status ?? this.status, message: message ?? this.message);
+      status: status ?? this.status,
+      message: message ?? this.message,
+    );
   }
 
-  WebApiModulesAccountServicesAccountResetPasswordResponse copyWithWrapped(
-      {Wrapped<int?>? status, Wrapped<String?>? message}) {
+  WebApiModulesAccountServicesAccountResetPasswordResponse copyWithWrapped({
+    Wrapped<int?>? status,
+    Wrapped<String?>? message,
+  }) {
     return WebApiModulesAccountServicesAccountResetPasswordResponse(
-        status: (status != null ? status.value : this.status),
-        message: (message != null ? message.value : this.message));
+      status: (status != null ? status.value : this.status),
+      message: (message != null ? message.value : this.message),
+    );
   }
 }
 
@@ -4908,13 +5578,17 @@ class WebApiModulesAccountServicesAccountSystemSettingsResponse {
   });
 
   factory WebApiModulesAccountServicesAccountSystemSettingsResponse.fromJson(
-          Map<String, dynamic> json) =>
-      _$WebApiModulesAccountServicesAccountSystemSettingsResponseFromJson(json);
+    Map<String, dynamic> json,
+  ) => _$WebApiModulesAccountServicesAccountSystemSettingsResponseFromJson(
+    json,
+  );
 
   static const toJsonFactory =
       _$WebApiModulesAccountServicesAccountSystemSettingsResponseToJson;
-  Map<String, dynamic> toJson() =>
-      _$WebApiModulesAccountServicesAccountSystemSettingsResponseToJson(this);
+  Map<String, dynamic>
+  toJson() => _$WebApiModulesAccountServicesAccountSystemSettingsResponseToJson(
+    this,
+  );
 
   @JsonKey(name: 'DefaultUnitId', includeIfNull: false)
   final String? defaultUnitId;
@@ -4940,29 +5614,45 @@ class WebApiModulesAccountServicesAccountSystemSettingsResponse {
     return identical(this, other) ||
         (other is WebApiModulesAccountServicesAccountSystemSettingsResponse &&
             (identical(other.defaultUnitId, defaultUnitId) ||
-                const DeepCollectionEquality()
-                    .equals(other.defaultUnitId, defaultUnitId)) &&
+                const DeepCollectionEquality().equals(
+                  other.defaultUnitId,
+                  defaultUnitId,
+                )) &&
             (identical(other.defaultRank, defaultRank) ||
-                const DeepCollectionEquality()
-                    .equals(other.defaultRank, defaultRank)) &&
+                const DeepCollectionEquality().equals(
+                  other.defaultRank,
+                  defaultRank,
+                )) &&
             (identical(other.userAssignedICodes, userAssignedICodes) ||
-                const DeepCollectionEquality()
-                    .equals(other.userAssignedICodes, userAssignedICodes)) &&
+                const DeepCollectionEquality().equals(
+                  other.userAssignedICodes,
+                  userAssignedICodes,
+                )) &&
             (identical(other.quikScanStageBySession, quikScanStageBySession) ||
                 const DeepCollectionEquality().equals(
-                    other.quikScanStageBySession, quikScanStageBySession)) &&
+                  other.quikScanStageBySession,
+                  quikScanStageBySession,
+                )) &&
             (identical(other.barcodeSkipPrefixes, barcodeSkipPrefixes) ||
-                const DeepCollectionEquality()
-                    .equals(other.barcodeSkipPrefixes, barcodeSkipPrefixes)) &&
+                const DeepCollectionEquality().equals(
+                  other.barcodeSkipPrefixes,
+                  barcodeSkipPrefixes,
+                )) &&
             (identical(other.enableOriginalShow, enableOriginalShow) ||
-                const DeepCollectionEquality()
-                    .equals(other.enableOriginalShow, enableOriginalShow)) &&
+                const DeepCollectionEquality().equals(
+                  other.enableOriginalShow,
+                  enableOriginalShow,
+                )) &&
             (identical(other.enablePropsWardrobe, enablePropsWardrobe) ||
-                const DeepCollectionEquality()
-                    .equals(other.enablePropsWardrobe, enablePropsWardrobe)) &&
+                const DeepCollectionEquality().equals(
+                  other.enablePropsWardrobe,
+                  enablePropsWardrobe,
+                )) &&
             (identical(other.enableSetsWalls, enableSetsWalls) ||
-                const DeepCollectionEquality()
-                    .equals(other.enableSetsWalls, enableSetsWalls)));
+                const DeepCollectionEquality().equals(
+                  other.enableSetsWalls,
+                  enableSetsWalls,
+                )));
   }
 
   @override
@@ -4983,59 +5673,63 @@ class WebApiModulesAccountServicesAccountSystemSettingsResponse {
 
 extension $WebApiModulesAccountServicesAccountSystemSettingsResponseExtension
     on WebApiModulesAccountServicesAccountSystemSettingsResponse {
-  WebApiModulesAccountServicesAccountSystemSettingsResponse copyWith(
-      {String? defaultUnitId,
-      String? defaultRank,
-      bool? userAssignedICodes,
-      bool? quikScanStageBySession,
-      FwStandardSqlServerFwJsonDataTable? barcodeSkipPrefixes,
-      bool? enableOriginalShow,
-      bool? enablePropsWardrobe,
-      bool? enableSetsWalls}) {
+  WebApiModulesAccountServicesAccountSystemSettingsResponse copyWith({
+    String? defaultUnitId,
+    String? defaultRank,
+    bool? userAssignedICodes,
+    bool? quikScanStageBySession,
+    FwStandardSqlServerFwJsonDataTable? barcodeSkipPrefixes,
+    bool? enableOriginalShow,
+    bool? enablePropsWardrobe,
+    bool? enableSetsWalls,
+  }) {
     return WebApiModulesAccountServicesAccountSystemSettingsResponse(
-        defaultUnitId: defaultUnitId ?? this.defaultUnitId,
-        defaultRank: defaultRank ?? this.defaultRank,
-        userAssignedICodes: userAssignedICodes ?? this.userAssignedICodes,
-        quikScanStageBySession:
-            quikScanStageBySession ?? this.quikScanStageBySession,
-        barcodeSkipPrefixes: barcodeSkipPrefixes ?? this.barcodeSkipPrefixes,
-        enableOriginalShow: enableOriginalShow ?? this.enableOriginalShow,
-        enablePropsWardrobe: enablePropsWardrobe ?? this.enablePropsWardrobe,
-        enableSetsWalls: enableSetsWalls ?? this.enableSetsWalls);
+      defaultUnitId: defaultUnitId ?? this.defaultUnitId,
+      defaultRank: defaultRank ?? this.defaultRank,
+      userAssignedICodes: userAssignedICodes ?? this.userAssignedICodes,
+      quikScanStageBySession:
+          quikScanStageBySession ?? this.quikScanStageBySession,
+      barcodeSkipPrefixes: barcodeSkipPrefixes ?? this.barcodeSkipPrefixes,
+      enableOriginalShow: enableOriginalShow ?? this.enableOriginalShow,
+      enablePropsWardrobe: enablePropsWardrobe ?? this.enablePropsWardrobe,
+      enableSetsWalls: enableSetsWalls ?? this.enableSetsWalls,
+    );
   }
 
-  WebApiModulesAccountServicesAccountSystemSettingsResponse copyWithWrapped(
-      {Wrapped<String?>? defaultUnitId,
-      Wrapped<String?>? defaultRank,
-      Wrapped<bool?>? userAssignedICodes,
-      Wrapped<bool?>? quikScanStageBySession,
-      Wrapped<FwStandardSqlServerFwJsonDataTable?>? barcodeSkipPrefixes,
-      Wrapped<bool?>? enableOriginalShow,
-      Wrapped<bool?>? enablePropsWardrobe,
-      Wrapped<bool?>? enableSetsWalls}) {
+  WebApiModulesAccountServicesAccountSystemSettingsResponse copyWithWrapped({
+    Wrapped<String?>? defaultUnitId,
+    Wrapped<String?>? defaultRank,
+    Wrapped<bool?>? userAssignedICodes,
+    Wrapped<bool?>? quikScanStageBySession,
+    Wrapped<FwStandardSqlServerFwJsonDataTable?>? barcodeSkipPrefixes,
+    Wrapped<bool?>? enableOriginalShow,
+    Wrapped<bool?>? enablePropsWardrobe,
+    Wrapped<bool?>? enableSetsWalls,
+  }) {
     return WebApiModulesAccountServicesAccountSystemSettingsResponse(
-        defaultUnitId:
-            (defaultUnitId != null ? defaultUnitId.value : this.defaultUnitId),
-        defaultRank:
-            (defaultRank != null ? defaultRank.value : this.defaultRank),
-        userAssignedICodes: (userAssignedICodes != null
-            ? userAssignedICodes.value
-            : this.userAssignedICodes),
-        quikScanStageBySession: (quikScanStageBySession != null
-            ? quikScanStageBySession.value
-            : this.quikScanStageBySession),
-        barcodeSkipPrefixes: (barcodeSkipPrefixes != null
-            ? barcodeSkipPrefixes.value
-            : this.barcodeSkipPrefixes),
-        enableOriginalShow: (enableOriginalShow != null
-            ? enableOriginalShow.value
-            : this.enableOriginalShow),
-        enablePropsWardrobe: (enablePropsWardrobe != null
-            ? enablePropsWardrobe.value
-            : this.enablePropsWardrobe),
-        enableSetsWalls: (enableSetsWalls != null
-            ? enableSetsWalls.value
-            : this.enableSetsWalls));
+      defaultUnitId: (defaultUnitId != null
+          ? defaultUnitId.value
+          : this.defaultUnitId),
+      defaultRank: (defaultRank != null ? defaultRank.value : this.defaultRank),
+      userAssignedICodes: (userAssignedICodes != null
+          ? userAssignedICodes.value
+          : this.userAssignedICodes),
+      quikScanStageBySession: (quikScanStageBySession != null
+          ? quikScanStageBySession.value
+          : this.quikScanStageBySession),
+      barcodeSkipPrefixes: (barcodeSkipPrefixes != null
+          ? barcodeSkipPrefixes.value
+          : this.barcodeSkipPrefixes),
+      enableOriginalShow: (enableOriginalShow != null
+          ? enableOriginalShow.value
+          : this.enableOriginalShow),
+      enablePropsWardrobe: (enablePropsWardrobe != null
+          ? enablePropsWardrobe.value
+          : this.enablePropsWardrobe),
+      enableSetsWalls: (enableSetsWalls != null
+          ? enableSetsWalls.value
+          : this.enableSetsWalls),
+    );
   }
 }
 
@@ -5050,13 +5744,13 @@ class WebApiModulesAccountServicesJwtAzureADRequest {
   });
 
   factory WebApiModulesAccountServicesJwtAzureADRequest.fromJson(
-          Map<String, dynamic> json) =>
-      _$WebApiModulesAccountServicesJwtAzureADRequestFromJson(json);
+    Map<String, dynamic> json,
+  ) => _$WebApiModulesAccountServicesJwtAzureADRequestFromJson(json);
 
   static const toJsonFactory =
       _$WebApiModulesAccountServicesJwtAzureADRequestToJson;
-  Map<String, dynamic> toJson() =>
-      _$WebApiModulesAccountServicesJwtAzureADRequestToJson(this);
+  Map<String, dynamic>
+  toJson() => _$WebApiModulesAccountServicesJwtAzureADRequestToJson(this);
 
   @JsonKey(name: 'Email', includeIfNull: false)
   final String? email;
@@ -5082,8 +5776,10 @@ class WebApiModulesAccountServicesJwtAzureADRequest {
             (identical(other.tenant, tenant) ||
                 const DeepCollectionEquality().equals(other.tenant, tenant)) &&
             (identical(other.audience, audience) ||
-                const DeepCollectionEquality()
-                    .equals(other.audience, audience)) &&
+                const DeepCollectionEquality().equals(
+                  other.audience,
+                  audience,
+                )) &&
             (identical(other.issuer, issuer) ||
                 const DeepCollectionEquality().equals(other.issuer, issuer)));
   }
@@ -5103,50 +5799,51 @@ class WebApiModulesAccountServicesJwtAzureADRequest {
 
 extension $WebApiModulesAccountServicesJwtAzureADRequestExtension
     on WebApiModulesAccountServicesJwtAzureADRequest {
-  WebApiModulesAccountServicesJwtAzureADRequest copyWith(
-      {String? email,
-      String? token,
-      String? tenant,
-      String? audience,
-      String? issuer}) {
+  WebApiModulesAccountServicesJwtAzureADRequest copyWith({
+    String? email,
+    String? token,
+    String? tenant,
+    String? audience,
+    String? issuer,
+  }) {
     return WebApiModulesAccountServicesJwtAzureADRequest(
-        email: email ?? this.email,
-        token: token ?? this.token,
-        tenant: tenant ?? this.tenant,
-        audience: audience ?? this.audience,
-        issuer: issuer ?? this.issuer);
+      email: email ?? this.email,
+      token: token ?? this.token,
+      tenant: tenant ?? this.tenant,
+      audience: audience ?? this.audience,
+      issuer: issuer ?? this.issuer,
+    );
   }
 
-  WebApiModulesAccountServicesJwtAzureADRequest copyWithWrapped(
-      {Wrapped<String?>? email,
-      Wrapped<String?>? token,
-      Wrapped<String?>? tenant,
-      Wrapped<String?>? audience,
-      Wrapped<String?>? issuer}) {
+  WebApiModulesAccountServicesJwtAzureADRequest copyWithWrapped({
+    Wrapped<String?>? email,
+    Wrapped<String?>? token,
+    Wrapped<String?>? tenant,
+    Wrapped<String?>? audience,
+    Wrapped<String?>? issuer,
+  }) {
     return WebApiModulesAccountServicesJwtAzureADRequest(
-        email: (email != null ? email.value : this.email),
-        token: (token != null ? token.value : this.token),
-        tenant: (tenant != null ? tenant.value : this.tenant),
-        audience: (audience != null ? audience.value : this.audience),
-        issuer: (issuer != null ? issuer.value : this.issuer));
+      email: (email != null ? email.value : this.email),
+      token: (token != null ? token.value : this.token),
+      tenant: (tenant != null ? tenant.value : this.tenant),
+      audience: (audience != null ? audience.value : this.audience),
+      issuer: (issuer != null ? issuer.value : this.issuer),
+    );
   }
 }
 
 @JsonSerializable(explicitToJson: true)
 class WebApiModulesAccountServicesJwtOktaRequest {
-  WebApiModulesAccountServicesJwtOktaRequest({
-    this.email,
-    this.token,
-  });
+  WebApiModulesAccountServicesJwtOktaRequest({this.email, this.token});
 
   factory WebApiModulesAccountServicesJwtOktaRequest.fromJson(
-          Map<String, dynamic> json) =>
-      _$WebApiModulesAccountServicesJwtOktaRequestFromJson(json);
+    Map<String, dynamic> json,
+  ) => _$WebApiModulesAccountServicesJwtOktaRequestFromJson(json);
 
   static const toJsonFactory =
       _$WebApiModulesAccountServicesJwtOktaRequestToJson;
-  Map<String, dynamic> toJson() =>
-      _$WebApiModulesAccountServicesJwtOktaRequestToJson(this);
+  Map<String, dynamic>
+  toJson() => _$WebApiModulesAccountServicesJwtOktaRequestToJson(this);
 
   @JsonKey(name: 'Email', includeIfNull: false)
   final String? email;
@@ -5177,35 +5874,39 @@ class WebApiModulesAccountServicesJwtOktaRequest {
 
 extension $WebApiModulesAccountServicesJwtOktaRequestExtension
     on WebApiModulesAccountServicesJwtOktaRequest {
-  WebApiModulesAccountServicesJwtOktaRequest copyWith(
-      {String? email, String? token}) {
+  WebApiModulesAccountServicesJwtOktaRequest copyWith({
+    String? email,
+    String? token,
+  }) {
     return WebApiModulesAccountServicesJwtOktaRequest(
-        email: email ?? this.email, token: token ?? this.token);
+      email: email ?? this.email,
+      token: token ?? this.token,
+    );
   }
 
-  WebApiModulesAccountServicesJwtOktaRequest copyWithWrapped(
-      {Wrapped<String?>? email, Wrapped<String?>? token}) {
+  WebApiModulesAccountServicesJwtOktaRequest copyWithWrapped({
+    Wrapped<String?>? email,
+    Wrapped<String?>? token,
+  }) {
     return WebApiModulesAccountServicesJwtOktaRequest(
-        email: (email != null ? email.value : this.email),
-        token: (token != null ? token.value : this.token));
+      email: (email != null ? email.value : this.email),
+      token: (token != null ? token.value : this.token),
+    );
   }
 }
 
 @JsonSerializable(explicitToJson: true)
 class WebApiModulesAccountServicesJwtOktaSessionRequest {
-  WebApiModulesAccountServicesJwtOktaSessionRequest({
-    this.token,
-    this.apiurl,
-  });
+  WebApiModulesAccountServicesJwtOktaSessionRequest({this.token, this.apiurl});
 
   factory WebApiModulesAccountServicesJwtOktaSessionRequest.fromJson(
-          Map<String, dynamic> json) =>
-      _$WebApiModulesAccountServicesJwtOktaSessionRequestFromJson(json);
+    Map<String, dynamic> json,
+  ) => _$WebApiModulesAccountServicesJwtOktaSessionRequestFromJson(json);
 
   static const toJsonFactory =
       _$WebApiModulesAccountServicesJwtOktaSessionRequestToJson;
-  Map<String, dynamic> toJson() =>
-      _$WebApiModulesAccountServicesJwtOktaSessionRequestToJson(this);
+  Map<String, dynamic>
+  toJson() => _$WebApiModulesAccountServicesJwtOktaSessionRequestToJson(this);
 
   @JsonKey(name: 'Token', includeIfNull: false)
   final String? token;
@@ -5236,34 +5937,41 @@ class WebApiModulesAccountServicesJwtOktaSessionRequest {
 
 extension $WebApiModulesAccountServicesJwtOktaSessionRequestExtension
     on WebApiModulesAccountServicesJwtOktaSessionRequest {
-  WebApiModulesAccountServicesJwtOktaSessionRequest copyWith(
-      {String? token, String? apiurl}) {
+  WebApiModulesAccountServicesJwtOktaSessionRequest copyWith({
+    String? token,
+    String? apiurl,
+  }) {
     return WebApiModulesAccountServicesJwtOktaSessionRequest(
-        token: token ?? this.token, apiurl: apiurl ?? this.apiurl);
+      token: token ?? this.token,
+      apiurl: apiurl ?? this.apiurl,
+    );
   }
 
-  WebApiModulesAccountServicesJwtOktaSessionRequest copyWithWrapped(
-      {Wrapped<String?>? token, Wrapped<String?>? apiurl}) {
+  WebApiModulesAccountServicesJwtOktaSessionRequest copyWithWrapped({
+    Wrapped<String?>? token,
+    Wrapped<String?>? apiurl,
+  }) {
     return WebApiModulesAccountServicesJwtOktaSessionRequest(
-        token: (token != null ? token.value : this.token),
-        apiurl: (apiurl != null ? apiurl.value : this.apiurl));
+      token: (token != null ? token.value : this.token),
+      apiurl: (apiurl != null ? apiurl.value : this.apiurl),
+    );
   }
 }
 
 @JsonSerializable(explicitToJson: true)
 class WebApiModulesAccountServicesJwtOktaSessionResponseModel {
-  WebApiModulesAccountServicesJwtOktaSessionResponseModel({
-    this.status,
-  });
+  WebApiModulesAccountServicesJwtOktaSessionResponseModel({this.status});
 
   factory WebApiModulesAccountServicesJwtOktaSessionResponseModel.fromJson(
-          Map<String, dynamic> json) =>
-      _$WebApiModulesAccountServicesJwtOktaSessionResponseModelFromJson(json);
+    Map<String, dynamic> json,
+  ) => _$WebApiModulesAccountServicesJwtOktaSessionResponseModelFromJson(json);
 
   static const toJsonFactory =
       _$WebApiModulesAccountServicesJwtOktaSessionResponseModelToJson;
-  Map<String, dynamic> toJson() =>
-      _$WebApiModulesAccountServicesJwtOktaSessionResponseModelToJson(this);
+  Map<String, dynamic>
+  toJson() => _$WebApiModulesAccountServicesJwtOktaSessionResponseModelToJson(
+    this,
+  );
 
   @JsonKey(name: 'Status', includeIfNull: false)
   final String? status;
@@ -5288,21 +5996,26 @@ class WebApiModulesAccountServicesJwtOktaSessionResponseModel {
 
 extension $WebApiModulesAccountServicesJwtOktaSessionResponseModelExtension
     on WebApiModulesAccountServicesJwtOktaSessionResponseModel {
-  WebApiModulesAccountServicesJwtOktaSessionResponseModel copyWith(
-      {String? status}) {
+  WebApiModulesAccountServicesJwtOktaSessionResponseModel copyWith({
+    String? status,
+  }) {
     return WebApiModulesAccountServicesJwtOktaSessionResponseModel(
-        status: status ?? this.status);
+      status: status ?? this.status,
+    );
   }
 
-  WebApiModulesAccountServicesJwtOktaSessionResponseModel copyWithWrapped(
-      {Wrapped<String?>? status}) {
+  WebApiModulesAccountServicesJwtOktaSessionResponseModel copyWithWrapped({
+    Wrapped<String?>? status,
+  }) {
     return WebApiModulesAccountServicesJwtOktaSessionResponseModel(
-        status: (status != null ? status.value : this.status));
+      status: (status != null ? status.value : this.status),
+    );
   }
 }
 
 String? fwStandardSqlServerFwDataTypesToJson(
-    enums.FwStandardSqlServerFwDataTypes? fwStandardSqlServerFwDataTypes) {
+  enums.FwStandardSqlServerFwDataTypes? fwStandardSqlServerFwDataTypes,
+) {
   return fwStandardSqlServerFwDataTypes?.value;
 }
 
@@ -5310,15 +6023,16 @@ enums.FwStandardSqlServerFwDataTypes fwStandardSqlServerFwDataTypesFromJson(
   Object? fwStandardSqlServerFwDataTypes, [
   enums.FwStandardSqlServerFwDataTypes? defaultValue,
 ]) {
-  return enums.FwStandardSqlServerFwDataTypes.values
-          .firstWhereOrNull((e) => e.value == fwStandardSqlServerFwDataTypes) ??
+  return enums.FwStandardSqlServerFwDataTypes.values.firstWhereOrNull(
+        (e) => e.value == fwStandardSqlServerFwDataTypes,
+      ) ??
       defaultValue ??
       enums.FwStandardSqlServerFwDataTypes.swaggerGeneratedUnknown;
 }
 
 List<String> fwStandardSqlServerFwDataTypesListToJson(
-    List<enums.FwStandardSqlServerFwDataTypes>?
-        fwStandardSqlServerFwDataTypes) {
+  List<enums.FwStandardSqlServerFwDataTypes>? fwStandardSqlServerFwDataTypes,
+) {
   if (fwStandardSqlServerFwDataTypes == null) {
     return [];
   }
@@ -5327,7 +6041,7 @@ List<String> fwStandardSqlServerFwDataTypesListToJson(
 }
 
 List<enums.FwStandardSqlServerFwDataTypes>
-    fwStandardSqlServerFwDataTypesListFromJson(
+fwStandardSqlServerFwDataTypesListFromJson(
   List? fwStandardSqlServerFwDataTypes, [
   List<enums.FwStandardSqlServerFwDataTypes>? defaultValue,
 ]) {
@@ -5335,13 +6049,13 @@ List<enums.FwStandardSqlServerFwDataTypes>
     return defaultValue ?? [];
   }
 
-  return fwStandardSqlServerFwDataTypes
-      .map((e) => fwStandardSqlServerFwDataTypesFromJson(e.toString()))
-      .toList();
+  return fwStandardSqlServerFwDataTypes.map(
+    (e) => fwStandardSqlServerFwDataTypesFromJson(e.toString()),
+  ).toList();
 }
 
 List<enums.FwStandardSqlServerFwDataTypes>?
-    fwStandardSqlServerFwDataTypesNullableListFromJson(
+fwStandardSqlServerFwDataTypesNullableListFromJson(
   List? fwStandardSqlServerFwDataTypes, [
   List<enums.FwStandardSqlServerFwDataTypes>? defaultValue,
 ]) {
@@ -5349,9 +6063,9 @@ List<enums.FwStandardSqlServerFwDataTypes>?
     return defaultValue;
   }
 
-  return fwStandardSqlServerFwDataTypes
-      .map((e) => fwStandardSqlServerFwDataTypesFromJson(e.toString()))
-      .toList();
+  return fwStandardSqlServerFwDataTypes.map(
+    (e) => fwStandardSqlServerFwDataTypesFromJson(e.toString()),
+  ).toList();
 }
 
 typedef $JsonFactory<T> = T Function(Map<String, dynamic> json);
@@ -5401,7 +6115,8 @@ class $CustomJsonDecoder {
 class $JsonSerializableConverter extends chopper.JsonConverter {
   @override
   FutureOr<chopper.Response<ResultType>> convertResponse<ResultType, Item>(
-      chopper.Response response) async {
+    chopper.Response response,
+  ) async {
     if (response.bodyString.isEmpty) {
       // In rare cases, when let's say 204 (no content) is returned -
       // we cannot decode the missing json with the result type specified
@@ -5410,7 +6125,8 @@ class $JsonSerializableConverter extends chopper.JsonConverter {
 
     final jsonRes = await super.convertResponse(response);
     return jsonRes.copyWith<ResultType>(
-        body: $jsonDecoder.decode<Item>(jsonRes.body) as ResultType);
+      body: $jsonDecoder.decode<Item>(jsonRes.body) as ResultType,
+    );
   }
 }
 

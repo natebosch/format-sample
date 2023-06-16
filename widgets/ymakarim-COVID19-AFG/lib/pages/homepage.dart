@@ -17,8 +17,9 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage>
     with AutomaticKeepAliveClientMixin<HomePage> {
-  RefreshController _refreshController =
-  RefreshController(initialRefresh: false);
+  RefreshController _refreshController = RefreshController(
+    initialRefresh: false,
+  );
 
   List<User> listData = [];
   List<User> listData1 = [];
@@ -43,19 +44,19 @@ class _HomePageState extends State<HomePage>
         listData.addAll(sqliteData);
       });
     var sqliteData1 =
-    await dbProvider.getUsers(type: 'category', value: 7, limit: 1);
+        await dbProvider.getUsers(type: 'category', value: 7, limit: 1);
     if (mounted)
       setState(() {
         listData1.addAll(sqliteData1);
       });
     var sqliteData2 =
-    await dbProvider.getUsers(type: 'category', value: 8, limit: 6);
+        await dbProvider.getUsers(type: 'category', value: 8, limit: 6);
     if (mounted)
       setState(() {
         listData2.addAll(sqliteData2);
       });
     var sqliteData3 =
-    await dbProvider.getUsers(type: 'category', value: 9, limit: 6);
+        await dbProvider.getUsers(type: 'category', value: 9, limit: 6);
     if (mounted)
       setState(() {
         listData3.addAll(sqliteData3);
@@ -96,7 +97,6 @@ class _HomePageState extends State<HomePage>
         listData4.clear();
         listData4.addAll(data4);
       });
-
   }
 
   void _onRefresh() async {
@@ -107,77 +107,95 @@ class _HomePageState extends State<HomePage>
   @override
   Widget build(BuildContext context) {
     return SmartRefresher(
-        enablePullDown: true,
-        enablePullUp: false,
-        header: MaterialClassicHeader(color: Colors.redAccent),
-        footer: CustomFooter(
-          builder: (BuildContext context, LoadStatus mode) {
-            Widget body;
-            if (mode == LoadStatus.idle) {
-              body = Text("بالا بکشید");
-            } else if (mode == LoadStatus.loading) {
-              body = CupertinoActivityIndicator();
-            } else if (mode == LoadStatus.failed) {
-              body = Text("خطا! لطفا دوباره امتحان کنید!");
-            } else if (mode == LoadStatus.canLoading) {
-              body = Text("لطفا رها کنید");
-            } else {
-              body = Text("دیتای بیشتر موجود نیست!");
-            }
-            return Container(
-              height: 0,
-              child: Center(child: body),
+      enablePullDown: true,
+      enablePullUp: false,
+      header: MaterialClassicHeader(color: Colors.redAccent),
+      footer: CustomFooter(
+        builder: (BuildContext context, LoadStatus mode) {
+          Widget body;
+          if (mode == LoadStatus.idle) {
+            body = Text("بالا بکشید");
+          } else if (mode == LoadStatus.loading) {
+            body = CupertinoActivityIndicator();
+          } else if (mode == LoadStatus.failed) {
+            body = Text("خطا! لطفا دوباره امتحان کنید!");
+          } else if (mode == LoadStatus.canLoading) {
+            body = Text("لطفا رها کنید");
+          } else {
+            body = Text("دیتای بیشتر موجود نیست!");
+          }
+          return Container(height: 0, child: Center(child: body));
+        },
+      ),
+      controller: _refreshController,
+      onRefresh: _onRefresh,
+      child: ListView.builder(
+        itemCount: 6,
+        itemBuilder: (context, index) {
+          if (index == 0) {
+            return SizedBox(
+              height: 550,
+              child: bigPost(
+                listData: listData1,
+                title: "آمار",
+                mycontext: context,
+              ),
             );
-          },
-        ),
-        controller: _refreshController,
-        onRefresh: _onRefresh,
-        child: ListView.builder(
-          itemCount: 6,
-          itemBuilder: (context, index) {
-            if (index == 0) {
-              return SizedBox(
-                height: 550,
-                child: bigPost(
-                    listData: listData1, title: "آمار", mycontext: context),
-              );
-            }else if (index == 1) {
-              return SizedBox(
-                height: 355,
+          } else if (index == 1) {
+            return SizedBox(
+              height: 355,
 //              ===================================================
 //              I manually changed the cid to 6 for corona news
 //              ===================================================
-                child: horizontalList3(
-                    listData: listData, title: "کرونا نیوز", myContext: context, catId: 6),
-              );
-            }else if (index == 2) {
-              return SizedBox(
-                height: 400,
-                child: ads(
-                    listData: listData4, title: "تبلیغات", myContext: context),
-              );
-            }else if (index == 3) {
-              return SizedBox(
-                height: 470,
-                child: horizontalList(
-                    listData: listData3, title: "یادداشت شما", myContext: context),
-              );
-            }else if (index == 4) {
-              return SizedBox(
-                height: 355,
-                child: horizontalList3(
-                    listData: listData2, title: "پیشگیری", myContext: context, catId: 8),
-              );
-            }else if (index == 5) {
-              return SizedBox(
-                height: 400,
-                child: ads(
-                    listData: listData4, title: "تبلیغات", myContext: context),
-              );
-            }
-            return null;
-          },
-        ));
+              child: horizontalList3(
+                listData: listData,
+                title: "کرونا نیوز",
+                myContext: context,
+                catId: 6,
+              ),
+            );
+          } else if (index == 2) {
+            return SizedBox(
+              height: 400,
+              child: ads(
+                listData: listData4,
+                title: "تبلیغات",
+                myContext: context,
+              ),
+            );
+          } else if (index == 3) {
+            return SizedBox(
+              height: 470,
+              child: horizontalList(
+                listData: listData3,
+                title: "یادداشت شما",
+                myContext: context,
+              ),
+            );
+          } else if (index == 4) {
+            return SizedBox(
+              height: 355,
+              child: horizontalList3(
+                listData: listData2,
+                title: "پیشگیری",
+                myContext: context,
+                catId: 8,
+              ),
+            );
+          } else if (index == 5) {
+            return SizedBox(
+              height: 400,
+              child: ads(
+                listData: listData4,
+                title: "تبلیغات",
+                myContext: context,
+              ),
+            );
+          }
+          return null;
+        },
+      ),
+    );
   }
 
   @override

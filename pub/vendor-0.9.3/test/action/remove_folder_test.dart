@@ -23,9 +23,8 @@ void main() {
       d.file('README.md', 'hello world'),
     ]).create();
 
-    await Action.removeFolder(
-      Uri.directory(d.path('lib/src/vendor/pkg1')),
-    ).apply(ctx.context);
+    await Action.removeFolder(Uri.directory(d.path('lib/src/vendor/pkg1')))
+        .apply(ctx.context);
 
     await d.file('pubspec.yaml', 'name: mypkg').validate();
     await d.dir('lib/src/vendor', []).validate();

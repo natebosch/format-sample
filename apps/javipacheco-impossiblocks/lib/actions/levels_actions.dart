@@ -2,10 +2,9 @@ import 'package:impossiblocks/models/models.dart';
 import 'package:impossiblocks/ui/game/assistance_bar.dart';
 
 class LoadWorldsAction {
-
   final WorldListEntity worlds;
 
-  LoadWorldsAction({ this.worlds });
+  LoadWorldsAction({this.worlds});
 
   @override
   String toString() {
@@ -14,10 +13,9 @@ class LoadWorldsAction {
 }
 
 class FillCompletedWorldsAction {
-
   final List<WorldsCompletedState> completed;
 
-  FillCompletedWorldsAction({ this.completed });
+  FillCompletedWorldsAction({this.completed});
 
   @override
   String toString() {
@@ -26,10 +24,9 @@ class FillCompletedWorldsAction {
 }
 
 class CurrentWorldsAction {
-
   final int world;
 
-  CurrentWorldsAction({ this.world });
+  CurrentWorldsAction({this.world});
 
   @override
   String toString() {
@@ -38,10 +35,9 @@ class CurrentWorldsAction {
 }
 
 class LoadLevelsAction {
-
   final List<LevelState> levels;
 
-  LoadLevelsAction({ this.levels });
+  LoadLevelsAction({this.levels});
 
   @override
   String toString() {

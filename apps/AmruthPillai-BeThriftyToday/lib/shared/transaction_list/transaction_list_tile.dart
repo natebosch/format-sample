@@ -31,18 +31,15 @@ class TransactionListTile extends StatelessWidget {
             showModalBottomSheet(
               context: context,
               isScrollControlled: true,
-              builder: (context) => TransactionBottomSheet(
-                transaction: transaction,
-              ),
+              builder:
+                  (context) => TransactionBottomSheet(transaction: transaction),
             );
           },
           child: Container(
             padding: const EdgeInsets.symmetric(vertical: 14),
             decoration: BoxDecoration(
               border: Border(
-                bottom: BorderSide(
-                  color: Colors.grey.withOpacity(0.15),
-                ),
+                bottom: BorderSide(color: Colors.grey.withOpacity(0.15)),
               ),
             ),
             child: Container(
@@ -61,9 +58,7 @@ class TransactionListTile extends StatelessWidget {
       );
     }
 
-    return Center(
-      child: CircularProgressIndicator(),
-    );
+    return Center(child: CircularProgressIndicator());
   }
 
   Container buildRightSwipeBackground() {
@@ -73,10 +68,7 @@ class TransactionListTile extends StatelessWidget {
         alignment: Alignment.centerRight,
         child: Padding(
           padding: const EdgeInsets.only(right: 20),
-          child: Icon(
-            Icons.delete,
-            color: Colors.white,
-          ),
+          child: Icon(Icons.delete, color: Colors.white),
         ),
       ),
     );
@@ -86,10 +78,7 @@ class TransactionListTile extends StatelessWidget {
     return Container(
       width: 24,
       height: 24,
-      margin: const EdgeInsets.symmetric(
-        horizontal: 10,
-        vertical: 6,
-      ),
+      margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
       child: Image.asset('assets/categories/${transaction.category.icon}'),
     );
   }
@@ -99,12 +88,9 @@ class TransactionListTile extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        Text(
-          S
-              .of(context)
-              .categoryName(transformCategoryToKey(transaction.category)),
-          style: transactionTitleStyle,
-        ),
+        Text(S.of(context).categoryName(
+          transformCategoryToKey(transaction.category),
+        ), style: transactionTitleStyle),
         SizedBox(height: 2),
         Row(
           children: <Widget>[

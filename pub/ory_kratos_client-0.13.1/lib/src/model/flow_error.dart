@@ -13,7 +13,7 @@ part 'flow_error.g.dart';
 ///
 /// Properties:
 /// * [createdAt] - CreatedAt is a helper struct field for gobuffalo.pop.
-/// * [error] 
+/// * [error]
 /// * [id] - ID of the error container.
 /// * [updatedAt] - UpdatedAt is a helper struct field for gobuffalo.pop.
 @BuiltValue()
@@ -90,7 +90,11 @@ class _$FlowErrorSerializer implements PrimitiveSerializer<FlowError> {
     FlowError object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(
+      serializers,
+      object,
+      specifiedType: specifiedType,
+    ).toList();
   }
 
   void _deserializeProperties(
@@ -161,4 +165,3 @@ class _$FlowErrorSerializer implements PrimitiveSerializer<FlowError> {
     return result.build();
   }
 }
-

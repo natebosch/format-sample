@@ -12,7 +12,7 @@ const appCapabilities = {
     'globalMediaControl',
     'graphicsCapture',
     'graphicsCaptureWithoutBorder',
-    'graphicsCaptureProgrammatic'
+    'graphicsCaptureProgrammatic',
   ],
   'generalUseCapabilitiesUap': [
     'musicLibrary',
@@ -26,7 +26,7 @@ const appCapabilities = {
     'voipCall',
     'objects3D',
     'chat',
-    'blockedChatMessages'
+    'blockedChatMessages',
   ],
   'generalUseCapabilitiesIot': ['lowLevelDevices', 'systemManagement'],
   'generalUseCapabilitiesMobile': ['recordedCallsFolder'],
@@ -50,7 +50,7 @@ const appCapabilities = {
   'restrictedCapabilitiesUap': [
     'enterpriseAuthentication',
     'sharedUserCertificates',
-    'documentsLibrary'
+    'documentsLibrary',
   ],
   'restrictedCapabilitiesRescap': [
     'enterpriseDataPolicy',
@@ -149,6 +149,6 @@ const appCapabilities = {
     'customInstallActions',
     'packagedServices',
     'localSystemServices',
-    'backgroundSpatialPerception'
-  ]
+    'backgroundSpatialPerception',
+  ],
 };

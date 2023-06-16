@@ -11,8 +11,9 @@ class ProfileView extends StatelessWidget {
       converter: (store) {
         return new _ViewModel(
           user: store.state.firebaseState.firebaseUser,
-          login: () => store
-              .dispatch(LoginWithGoogle(cachedEntries: store.state.entries)),
+          login: () => store.dispatch(
+            LoginWithGoogle(cachedEntries: store.state.entries),
+          ),
           logout: () => store.dispatch(LogoutAction()),
         );
       },
@@ -36,14 +37,11 @@ class ProfileView extends StatelessWidget {
             width: 120.0,
             child: RaisedButton(
               color: Colors.green,
-              child: Text(
-                "Logout",
-                style: TextStyle(color: Colors.white),
-              ),
+              child: Text("Logout", style: TextStyle(color: Colors.white)),
               onPressed: vm.logout,
             ),
           ),
-        )
+        ),
       ],
     );
   }
@@ -76,10 +74,7 @@ class ProfileView extends StatelessWidget {
   Padding _drawLabel(BuildContext context, String label) {
     return Padding(
       padding: const EdgeInsets.all(16.0),
-      child: Text(
-        label,
-        style: Theme.of(context).textTheme.display1,
-      ),
+      child: Text(label, style: Theme.of(context).textTheme.display1),
     );
   }
 
@@ -113,11 +108,12 @@ class OAuthLoginButton extends StatelessWidget {
   final String assetName;
   final Color backgroundColor;
 
-  OAuthLoginButton(
-      {@required this.onPressed,
-      @required this.text,
-      @required this.assetName,
-      @required this.backgroundColor});
+  OAuthLoginButton({
+    @required this.onPressed,
+    @required this.text,
+    @required this.assetName,
+    @required this.backgroundColor,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -131,19 +127,15 @@ class OAuthLoginButton extends StatelessWidget {
           children: <Widget>[
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: new Image.asset(
-                assetName,
-                height: 30.0,
-              ),
+              child: new Image.asset(assetName, height: 30.0),
             ),
             new Expanded(
-                child: new Padding(
-              padding: const EdgeInsets.only(left: 8.0),
-              child: new Text(
-                text,
-                style: Theme.of(context).textTheme.button,
+              child: new Padding(
+                padding: const EdgeInsets.only(left: 8.0),
+                child:
+                    new Text(text, style: Theme.of(context).textTheme.button),
               ),
-            )),
+            ),
           ],
         ),
       ),

@@ -208,10 +208,18 @@ class ValueBar {
   /// Painter Method to Draw [ValueBar]
   ///
 
-  void drawValueBar(Canvas canvas, double start, double end, double totalWidth,
-      int index, RenderLinearGauge linearGauge) {
-    assert(value >= linearGauge.getStart && value <= linearGauge.getEnd,
-        'Value should be between start and end values');
+  void drawValueBar(
+    Canvas canvas,
+    double start,
+    double end,
+    double totalWidth,
+    int index,
+    RenderLinearGauge linearGauge,
+  ) {
+    assert(
+      value >= linearGauge.getStart && value <= linearGauge.getEnd,
+      'Value should be between start and end values',
+    );
 
     // Start and End values of the Linear Gauge
     double endValue = linearGauge.getEnd;
@@ -238,7 +246,11 @@ class ValueBar {
     double linearGaugeThickness = linearGauge.getThickness;
 
     double totalValOffset = _getOffsetHeight(
-        valueBarPosition, linearGaugeThickness, offset, linearGauge);
+      valueBarPosition,
+      linearGaugeThickness,
+      offset,
+      linearGauge,
+    );
     bool getInversedRulers = linearGauge.getInversedRulers;
     // Drawing Value Bar
     final Rect gaugeContainer;
@@ -325,8 +337,12 @@ class ValueBar {
   }
 
   // Calculating Offset Height for Value Bar
-  double _getOffsetHeight(ValueBarPosition position, double height,
-      double valueBarOffset, RenderLinearGauge linearGauge) {
+  double _getOffsetHeight(
+    ValueBarPosition position,
+    double height,
+    double valueBarOffset,
+    RenderLinearGauge linearGauge,
+  ) {
     switch (position) {
       case ValueBarPosition.center:
         return 0.0;
@@ -358,22 +374,22 @@ class ValueBar {
                 gaugeContainer,
                 topLeft: Radius.circular(borderRadius!),
                 bottomLeft: (linearGauge.getGaugeOrientation ==
-                        GaugeOrientation.horizontal)
+                          GaugeOrientation.horizontal)
                     ? Radius.circular(borderRadius!)
                     : Radius.zero,
                 topRight: (linearGauge.getGaugeOrientation ==
-                        GaugeOrientation.horizontal)
+                          GaugeOrientation.horizontal)
                     ? Radius.zero
                     : Radius.circular(borderRadius!),
               )
             : rectangularBox = RRect.fromRectAndCorners(
                 gaugeContainer,
                 topRight: (linearGauge.getGaugeOrientation ==
-                        GaugeOrientation.horizontal)
+                          GaugeOrientation.horizontal)
                     ? Radius.circular(borderRadius!)
                     : Radius.zero,
                 bottomLeft: (linearGauge.getGaugeOrientation ==
-                        GaugeOrientation.horizontal)
+                          GaugeOrientation.horizontal)
                     ? Radius.zero
                     : Radius.circular(borderRadius!),
                 bottomRight: Radius.circular(borderRadius!),
@@ -384,11 +400,11 @@ class ValueBar {
             ? rectangularBox = RRect.fromRectAndCorners(
                 gaugeContainer,
                 topRight: (linearGauge.getGaugeOrientation ==
-                        GaugeOrientation.horizontal)
+                          GaugeOrientation.horizontal)
                     ? Radius.circular(borderRadius!)
                     : Radius.zero,
                 bottomLeft: (linearGauge.getGaugeOrientation ==
-                        GaugeOrientation.horizontal)
+                          GaugeOrientation.horizontal)
                     ? Radius.zero
                     : Radius.circular(borderRadius!),
                 bottomRight: Radius.circular(borderRadius!),
@@ -397,11 +413,11 @@ class ValueBar {
                 gaugeContainer,
                 topLeft: Radius.circular(borderRadius!),
                 bottomLeft: (linearGauge.getGaugeOrientation ==
-                        GaugeOrientation.horizontal)
+                          GaugeOrientation.horizontal)
                     ? Radius.circular(borderRadius!)
                     : Radius.zero,
                 topRight: (linearGauge.getGaugeOrientation ==
-                        GaugeOrientation.horizontal)
+                          GaugeOrientation.horizontal)
                     ? Radius.zero
                     : Radius.circular(borderRadius!),
               );

@@ -31,10 +31,7 @@ import 'package:invoiceninja_flutter/utils/platforms.dart';
 import 'package:invoiceninja_flutter/utils/strings.dart';
 
 class DeviceSettings extends StatefulWidget {
-  const DeviceSettings({
-    Key key,
-    @required this.viewModel,
-  }) : super(key: key);
+  const DeviceSettings({Key key, @required this.viewModel}) : super(key: key);
 
   final DeviceSettingsVM viewModel;
 
@@ -44,8 +41,9 @@ class DeviceSettings extends StatefulWidget {
 
 class _DeviceSettingsState extends State<DeviceSettings>
     with SingleTickerProviderStateMixin {
-  final GlobalKey<FormState> _formKey =
-      GlobalKey<FormState>(debugLabel: '_deviceSettings');
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>(
+    debugLabel: '_deviceSettings',
+  );
 
   TabController _controller;
   FocusScopeNode _focusNode;
@@ -56,7 +54,10 @@ class _DeviceSettingsState extends State<DeviceSettings>
     final settingsUIState = widget.viewModel.state.settingsUIState;
     _focusNode = FocusScopeNode();
     _controller = TabController(
-        vsync: this, length: 2, initialIndex: settingsUIState.tabIndex);
+      vsync: this,
+      length: 2,
+      initialIndex: settingsUIState.tabIndex,
+    );
     _controller.addListener(_onTabChanged);
   }
 
@@ -115,8 +116,10 @@ class _DeviceSettingsState extends State<DeviceSettings>
                     label: localization.layout,
                     value: prefState.appLayout == AppLayout.mobile,
                     onChanged: (value) {
-                      viewModel.onLayoutChanged(context,
-                          value ? AppLayout.mobile : AppLayout.desktop);
+                      viewModel.onLayoutChanged(
+                        context,
+                        value ? AppLayout.mobile : AppLayout.desktop,
+                      );
                     },
                     enabledLabel: localization.mobile,
                     disabledLabel: localization.desktop,
@@ -166,7 +169,9 @@ class _DeviceSettingsState extends State<DeviceSettings>
                       value: !prefState.longPressSelectionIsDefault,
                       onChanged: (value) {
                         viewModel.onLongPressSelectionIsDefault(
-                            context, !value);
+                          context,
+                          !value,
+                        );
                       },
                       enabledLabel: localization.showActions,
                       disabledLabel: localization.startMultiselect,
@@ -178,26 +183,27 @@ class _DeviceSettingsState extends State<DeviceSettings>
                   Padding(
                     padding: const EdgeInsets.only(bottom: 10),
                     child: AppDropdownButton<double>(
-                        labelText: localization.fontSize,
-                        value: prefState.textScaleFactor,
-                        onChanged: (dynamic value) {
-                          viewModel.onTextScaleFactorChanged(context, value);
-                          AppBuilder.of(context).rebuild();
-                        },
-                        items: [
-                          DropdownMenuItem(
-                            child: Text(localization.normal),
-                            value: PrefState.TEXT_SCALING_NORMAL,
-                          ),
-                          DropdownMenuItem(
-                            child: Text(localization.large),
-                            value: PrefState.TEXT_SCALING_LARGE,
-                          ),
-                          DropdownMenuItem(
-                            child: Text(localization.extraLarge),
-                            value: PrefState.TEXT_SCALING_EXTRA_LARGE,
-                          ),
-                        ]),
+                      labelText: localization.fontSize,
+                      value: prefState.textScaleFactor,
+                      onChanged: (dynamic value) {
+                        viewModel.onTextScaleFactorChanged(context, value);
+                        AppBuilder.of(context).rebuild();
+                      },
+                      items: [
+                        DropdownMenuItem(
+                          child: Text(localization.normal),
+                          value: PrefState.TEXT_SCALING_NORMAL,
+                        ),
+                        DropdownMenuItem(
+                          child: Text(localization.large),
+                          value: PrefState.TEXT_SCALING_LARGE,
+                        ),
+                        DropdownMenuItem(
+                          child: Text(localization.extraLarge),
+                          value: PrefState.TEXT_SCALING_EXTRA_LARGE,
+                        ),
+                      ],
+                    ),
                   ),
                   FutureBuilder(
                     future: viewModel.authenticationSupported,
@@ -208,9 +214,11 @@ class _DeviceSettingsState extends State<DeviceSettings>
                           value: prefState.requireAuthentication,
                           onChanged: (value) => viewModel
                               .onRequireAuthenticationChanged(context, value),
-                          secondary: Icon(prefState.requireAuthentication
-                              ? MdiIcons.lock
-                              : MdiIcons.lockOpen),
+                          secondary: Icon(
+                            prefState.requireAuthentication
+                                ? MdiIcons.lock
+                                : MdiIcons.lockOpen,
+                          ),
                           activeColor: Theme.of(context).colorScheme.secondary,
                         );
                       } else {
@@ -223,8 +231,8 @@ class _DeviceSettingsState extends State<DeviceSettings>
                       title: Text(localization.showPdfPreview),
                       subtitle: Text(localization.showPdfPreviewHelp),
                       value: prefState.showPdfPreview,
-                      onChanged: (value) =>
-                          viewModel.onShowPdfChanged(context, value),
+                      onChanged:
+                          (value) => viewModel.onShowPdfChanged(context, value),
                       activeColor: Theme.of(context).colorScheme.secondary,
                       secondary: Icon(MdiIcons.filePdfBox),
                     ),
@@ -232,8 +240,8 @@ class _DeviceSettingsState extends State<DeviceSettings>
                     title: Text(localization.persistUi),
                     subtitle: Text(localization.persistUiHelp),
                     value: prefState.persistUI,
-                    onChanged: (value) =>
-                        viewModel.onPersistUiChanged(context, value),
+                    onChanged:
+                        (value) => viewModel.onPersistUiChanged(context, value),
                     activeColor: Theme.of(context).colorScheme.secondary,
                     secondary: Icon(Icons.save_alt),
                   ),
@@ -241,8 +249,10 @@ class _DeviceSettingsState extends State<DeviceSettings>
                     title: Text(localization.persistData),
                     subtitle: Text(localization.persistDataHelp),
                     value: prefState.persistData,
-                    onChanged: (value) =>
-                        viewModel.onPersistDataChanged(context, value),
+                    onChanged: (value) => viewModel.onPersistDataChanged(
+                      context,
+                      value,
+                    ),
                     activeColor: Theme.of(context).colorScheme.secondary,
                     secondary: Icon(Icons.save_alt),
                   ),
@@ -251,22 +261,25 @@ class _DeviceSettingsState extends State<DeviceSettings>
               FormCard(
                 isLast: true,
                 children: <Widget>[
-                  Builder(builder: (BuildContext context) {
-                    return ListTile(
-                      leading: Icon(Icons.refresh),
-                      title: Text(localization.refreshData),
-                      subtitle: LiveText(() {
-                        return localization.lastUpdated +
-                            ': ' +
-                            timeago.format(convertTimestampToDate(
+                  Builder(
+                    builder: (BuildContext context) {
+                      return ListTile(
+                        leading: Icon(Icons.refresh),
+                        title: Text(localization.refreshData),
+                        subtitle: LiveText(() {
+                          return localization.lastUpdated +
+                              ': ' +
+                              timeago.format(convertTimestampToDate(
                                 (state.userCompanyState.lastUpdated / 1000)
-                                    .round()));
-                      }),
-                      onTap: () {
-                        viewModel.onRefreshTap(context);
-                      },
-                    );
-                  }),
+                                    .round(),
+                              ));
+                        }),
+                        onTap: () {
+                          viewModel.onRefreshTap(context);
+                        },
+                      );
+                    },
+                  ),
                   ListTile(
                     leading: Icon(Icons.logout),
                     title: Text(localization.endAllSessions),
@@ -278,159 +291,162 @@ class _DeviceSettingsState extends State<DeviceSettings>
                             */
                     onTap: () {
                       confirmCallback(
-                          context: context,
-                          callback: (_) {
-                            viewModel.onLogoutTap(context);
-                          });
+                        context: context,
+                        callback: (_) {
+                          viewModel.onLogoutTap(context);
+                        },
+                      );
                     },
                   ),
                 ],
-              )
+              ),
             ],
           ),
           ScrollableListView(
             children: [
-              FormCard(children: [
-                SwitchListTile(
-                  title: Text(localization.darkMode),
-                  value: prefState.enableDarkMode,
-                  onChanged: (value) =>
-                      viewModel.onDarkModeChanged(context, value),
-                  secondary: Icon(kIsWeb
-                      ? Icons.lightbulb_outline
-                      : MdiIcons.themeLightDark),
-                  activeColor: Theme.of(context).colorScheme.secondary,
-                ),
-                SizedBox(height: 16),
-                AppDropdownButton<String>(
-                  labelText: localization.statusColorTheme,
-                  value: state.prefState.colorTheme,
-                  items: [
-                    ...colorThemesMap.keys
-                        .map((key) => DropdownMenuItem(
-                              child: Row(
-                                children: [
-                                  SizedBox(
-                                    child: Text(toTitleCase(key)),
-                                    width: 120,
-                                  ),
-                                  Expanded(
-                                    child: Container(
-                                      color: colorThemesMap[key].colorInfo,
-                                      height: 50,
-                                    ),
-                                  ),
-                                  Expanded(
-                                    child: Container(
-                                      color: colorThemesMap[key].colorPrimary,
-                                      height: 50,
-                                    ),
-                                  ),
-                                  Expanded(
-                                    child: Container(
-                                      color: colorThemesMap[key].colorSuccess,
-                                      height: 50,
-                                    ),
-                                  ),
-                                  Expanded(
-                                    child: Container(
-                                      color: colorThemesMap[key].colorWarning,
-                                      height: 50,
-                                    ),
-                                  ),
-                                  Expanded(
-                                    child: Container(
-                                      color: colorThemesMap[key].colorDanger,
-                                      height: 50,
-                                    ),
-                                  ),
-                                ],
+              FormCard(
+                children: [
+                  SwitchListTile(
+                    title: Text(localization.darkMode),
+                    value: prefState.enableDarkMode,
+                    onChanged:
+                        (value) => viewModel.onDarkModeChanged(context, value),
+                    secondary: Icon(
+                      kIsWeb
+                          ? Icons.lightbulb_outline
+                          : MdiIcons.themeLightDark,
+                    ),
+                    activeColor: Theme.of(context).colorScheme.secondary,
+                  ),
+                  SizedBox(height: 16),
+                  AppDropdownButton<String>(
+                    labelText: localization.statusColorTheme,
+                    value: state.prefState.colorTheme,
+                    items: [
+                      ...colorThemesMap.keys.map(
+                        (key) => DropdownMenuItem(
+                          child: Row(
+                            children: [
+                              SizedBox(
+                                child: Text(toTitleCase(key)),
+                                width: 120,
                               ),
-                              value: key,
-                            ))
-                        .toList()
-                  ],
-                  onChanged: (dynamic value) =>
-                      viewModel.onColorThemeChanged(context, value),
-                ),
-              ]),
+                              Expanded(
+                                child: Container(
+                                  color: colorThemesMap[key].colorInfo,
+                                  height: 50,
+                                ),
+                              ),
+                              Expanded(
+                                child: Container(
+                                  color: colorThemesMap[key].colorPrimary,
+                                  height: 50,
+                                ),
+                              ),
+                              Expanded(
+                                child: Container(
+                                  color: colorThemesMap[key].colorSuccess,
+                                  height: 50,
+                                ),
+                              ),
+                              Expanded(
+                                child: Container(
+                                  color: colorThemesMap[key].colorWarning,
+                                  height: 50,
+                                ),
+                              ),
+                              Expanded(
+                                child: Container(
+                                  color: colorThemesMap[key].colorDanger,
+                                  height: 50,
+                                ),
+                              ),
+                            ],
+                          ),
+                          value: key,
+                        ),
+                      ).toList(),
+                    ],
+                    onChanged: (dynamic value) => viewModel.onColorThemeChanged(
+                      context,
+                      value,
+                    ),
+                  ),
+                ],
+              ),
               FormCard(
                 isLast: true,
                 children: [
                   AppDropdownButton<String>(
-                      labelText: localization.loadColorTheme,
-                      value: '',
-                      onChanged: (dynamic value) {
-                        if (value == 'clear_all') {
-                          viewModel.onCustomColorsChanged(
-                              context,
-                              prefState.customColors
-                                  .rebuild((b) => b..clear()));
-                        } else if (value == 'contrast') {
-                          final enableDarkMode = state.prefState.enableDarkMode;
-                          viewModel.onCustomColorsChanged(
-                            context,
-                            prefState.customColors.rebuild(
-                              (b) => b.addAll(
-                                <String, String>{
-                                  PrefState
-                                          .THEME_SIDEBAR_ACTIVE_BACKGROUND_COLOR:
-                                      '#444444',
-                                  PrefState.THEME_SIDEBAR_ACTIVE_FONT_COLOR:
-                                      '#FFFFFF',
-                                  PrefState
-                                          .THEME_SIDEBAR_INACTIVE_BACKGROUND_COLOR:
-                                      '#2F2F2F',
-                                  PrefState.THEME_SIDEBAR_INACTIVE_FONT_COLOR:
-                                      '#FFFFFF',
-                                  PrefState
-                                          .THEME_INVOICE_HEADER_BACKGROUND_COLOR:
-                                      '#777777',
-                                  PrefState.THEME_INVOICE_HEADER_FONT_COLOR:
-                                      '#FFFFFF',
-                                  PrefState
-                                          .THEME_TABLE_ALTERNATE_ROW_BACKGROUND_COLOR:
-                                      enableDarkMode ? '#090909' : '#F9F9F9',
-                                },
-                              ),
-                            ),
-                          );
-                        }
+                    labelText: localization.loadColorTheme,
+                    value: '',
+                    onChanged: (dynamic value) {
+                      if (value == 'clear_all') {
+                        viewModel.onCustomColorsChanged(
+                          context,
+                          prefState.customColors.rebuild((b) => b..clear()),
+                        );
+                      } else if (value == 'contrast') {
+                        final enableDarkMode = state.prefState.enableDarkMode;
+                        viewModel.onCustomColorsChanged(
+                          context,
+                          prefState.customColors.rebuild(
+                            (b) => b.addAll(<String, String>{
+                              PrefState.THEME_SIDEBAR_ACTIVE_BACKGROUND_COLOR:
+                                  '#444444',
+                              PrefState.THEME_SIDEBAR_ACTIVE_FONT_COLOR:
+                                  '#FFFFFF',
+                              PrefState.THEME_SIDEBAR_INACTIVE_BACKGROUND_COLOR:
+                                  '#2F2F2F',
+                              PrefState.THEME_SIDEBAR_INACTIVE_FONT_COLOR:
+                                  '#FFFFFF',
+                              PrefState.THEME_INVOICE_HEADER_BACKGROUND_COLOR:
+                                  '#777777',
+                              PrefState.THEME_INVOICE_HEADER_FONT_COLOR:
+                                  '#FFFFFF',
+                              PrefState
+                                      .THEME_TABLE_ALTERNATE_ROW_BACKGROUND_COLOR:
+                                  enableDarkMode ? '#090909' : '#F9F9F9',
+                            }),
+                          ),
+                        );
+                      }
+                    },
+                    items: [
+                      DropdownMenuItem(
+                        child: Text(localization.clearAll),
+                        value: 'clear_all',
+                      ),
+                      DropdownMenuItem(
+                        child: Text(localization.contrast),
+                        value: 'contrast',
+                      ),
+                    ],
+                  ),
+                  ...PrefState.THEME_COLORS.map(
+                    (selector) => FormColorPicker(
+                      labelText: localization.lookup(selector),
+                      initialValue: prefState.customColors[selector],
+                      onSelected: (value) {
+                        viewModel.onCustomColorsChanged(context, prefState
+                            .customColors
+                            .rebuild((b) => b[selector] = value ?? ''));
                       },
-                      items: [
-                        DropdownMenuItem(
-                            child: Text(localization.clearAll),
-                            value: 'clear_all'),
-                        DropdownMenuItem(
-                            child: Text(localization.contrast),
-                            value: 'contrast'),
-                      ]),
-                  ...PrefState.THEME_COLORS
-                      .map(
-                        (selector) => FormColorPicker(
-                          labelText: localization.lookup(selector),
-                          initialValue: prefState.customColors[selector],
-                          onSelected: (value) {
-                            viewModel.onCustomColorsChanged(
-                                context,
-                                prefState.customColors
-                                    .rebuild((b) => b[selector] = value ?? ''));
-                          },
-                        ),
-                      )
-                      .toList(),
+                    ),
+                  ).toList(),
                   SizedBox(height: 20),
                   Row(
                     children: [
                       Expanded(
                         child: OutlinedButton(
                           onPressed: () {
-                            final colors = PrefState.THEME_COLORS
-                                .map((selector) =>
-                                    prefState.customColors[selector] ?? '')
-                                .toList();
+                            final colors = PrefState.THEME_COLORS.map(
+                              (selector) =>
+                                  prefState.customColors[selector] ?? '',
+                            ).toList();
                             Clipboard.setData(
-                                ClipboardData(text: colors.join(',')));
+                              ClipboardData(text: colors.join(',')),
+                            );
                             showToast(localization.copiedToClipboard
                                 .replaceFirst(':value', colors.join(',')));
                           },
@@ -448,11 +464,15 @@ class _DeviceSettingsState extends State<DeviceSettings>
                                 final colors = value.split(',');
                                 var customColors = prefState.customColors;
                                 for (var i = 0; i < colors.length; i++) {
-                                  customColors = customColors.rebuild((b) =>
-                                      b[PrefState.THEME_COLORS[i]] = colors[i]);
+                                  customColors = customColors.rebuild(
+                                    (b) => b[PrefState.THEME_COLORS[i]] =
+                                        colors[i],
+                                  );
                                 }
                                 viewModel.onCustomColorsChanged(
-                                    context, customColors);
+                                  context,
+                                  customColors,
+                                );
                               },
                               title: localization.importColors,
                             );
@@ -461,11 +481,11 @@ class _DeviceSettingsState extends State<DeviceSettings>
                         ),
                       ),
                     ],
-                  )
+                  ),
                 ],
-              )
+              ),
             ],
-          )
+          ),
         ],
       ),
     );

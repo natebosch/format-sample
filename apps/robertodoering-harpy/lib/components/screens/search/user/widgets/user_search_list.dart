@@ -23,15 +23,15 @@ class UserSearchList extends StatelessWidget {
                 loading: (_) => [const UserListLoadingSliver()],
                 loadingMore: (_) => [const LoadMoreIndicator()],
                 noData: (_) => const [
-                  SliverFillInfoMessage(
-                    primaryMessage: Text('no users found'),
-                  ),
-                ],
+                      SliverFillInfoMessage(
+                        primaryMessage: Text('no users found'),
+                      ),
+                    ],
                 error: (_) => const [
-                  SliverFillLoadingError(
-                    message: Text('error searching users'),
-                  ),
-                ],
+                      SliverFillLoadingError(
+                        message: Text('error searching users'),
+                      ),
+                    ],
               ),
               const SliverBottomPadding(),
             ],

@@ -46,25 +46,17 @@ class ParseResult with _$ParseResult {
 class ParseError with _$ParseError {
   const factory ParseError.format(String message) = ParseErrorFormat;
 
-  const factory ParseError.serviceTemporary({
-    String? code,
-    String? message,
-  }) = ParseErrorServiceTemporary;
+  const factory ParseError.serviceTemporary({String? code, String? message}) =
+      ParseErrorServiceTemporary;
 
-  const factory ParseError.serviceHard({
-    String? code,
-    String? message,
-  }) = ParseErrorServiceHard;
+  const factory ParseError.serviceHard({String? code, String? message}) =
+      ParseErrorServiceHard;
 
-  const factory ParseError.auth({
-    String? code,
-    String? message,
-  }) = ParseErrorAuth;
+  const factory ParseError.auth({String? code, String? message}) =
+      ParseErrorAuth;
 
-  const factory ParseError.badRequest({
-    String? code,
-    String? message,
-  }) = ParseErrorBadRequest;
+  const factory ParseError.badRequest({String? code, String? message}) =
+      ParseErrorBadRequest;
 
   const factory ParseError.invalidTrackNumber() = ParseErrorInvalidTrackNumber;
 }

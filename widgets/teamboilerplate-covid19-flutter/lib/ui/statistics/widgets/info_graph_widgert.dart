@@ -55,9 +55,7 @@ class _InfoGraphWidgetState extends State<InfoGraphWidget> {
           dailyChangeSelected = false;
           pageController.animateToPage(
             0,
-            duration: const Duration(
-              milliseconds: 250,
-            ),
+            duration: const Duration(milliseconds: 250),
             curve: Curves.bounceOut,
           );
         }
@@ -69,9 +67,7 @@ class _InfoGraphWidgetState extends State<InfoGraphWidget> {
           dailyChangeSelected = false;
           pageController.animateToPage(
             1,
-            duration: const Duration(
-              milliseconds: 250,
-            ),
+            duration: const Duration(milliseconds: 250),
             curve: Curves.bounceOut,
           );
         }
@@ -83,9 +79,7 @@ class _InfoGraphWidgetState extends State<InfoGraphWidget> {
           dailyChangeSelected = true;
           pageController.animateToPage(
             2,
-            duration: const Duration(
-              milliseconds: 250,
-            ),
+            duration: const Duration(milliseconds: 250),
             curve: Curves.bounceOut,
           );
         }
@@ -114,22 +108,19 @@ class _InfoGraphWidgetState extends State<InfoGraphWidget> {
                   Dimens.horizontalPadding,
                   Dimens.verticalPadding / 50,
                 ),
-                child: BarChart(
-                  dailyBarChartData(
-                    countryStatisticsConfirmedList:
-                        widget.countryStatisticsConfirmedList.sublist(
-                      (widget.countryStatisticsConfirmedList.length) - 7,
-                      (widget.countryStatisticsConfirmedList.length) - 0,
-                    ),
-                    screenWidth: screenWidth,
-                    screenHeight: screenHeight,
-                  ),
-                ),
+                child: BarChart(dailyBarChartData(
+                  countryStatisticsConfirmedList:
+                      widget.countryStatisticsConfirmedList.sublist(
+                        (widget.countryStatisticsConfirmedList.length) - 7,
+                        (widget.countryStatisticsConfirmedList.length) - 0,
+                      ),
+                  screenWidth: screenWidth,
+                  screenHeight: screenHeight,
+                )),
               )
             : Padding(
-                padding: const EdgeInsets.only(
-                  top: Dimens.verticalPadding / 0.75,
-                ),
+                padding:
+                    const EdgeInsets.only(top: Dimens.verticalPadding / 0.75),
                 child: Text(
                   Strings.emptyData,
                   style: TextStyles.errorHeadingTextStlye.copyWith(
@@ -153,18 +144,17 @@ class _InfoGraphWidgetState extends State<InfoGraphWidget> {
                   weeklyAreaGraphData(
                     countryStatisticsConfirmedList:
                         widget.countryStatisticsConfirmedList.sublist(
-                      (widget.countryStatisticsConfirmedList.length) - 15,
-                      (widget.countryStatisticsConfirmedList.length) - 0,
-                    ),
+                          (widget.countryStatisticsConfirmedList.length) - 15,
+                          (widget.countryStatisticsConfirmedList.length) - 0,
+                        ),
                     screenWidth: screenWidth,
                     screenHeight: screenHeight,
                   ),
                 ),
               )
             : Padding(
-                padding: const EdgeInsets.only(
-                  top: Dimens.verticalPadding / 0.75,
-                ),
+                padding:
+                    const EdgeInsets.only(top: Dimens.verticalPadding / 0.75),
                 child: Text(
                   Strings.emptyData,
                   style: TextStyles.errorHeadingTextStlye.copyWith(
@@ -184,27 +174,24 @@ class _InfoGraphWidgetState extends State<InfoGraphWidget> {
                   Dimens.horizontalPadding,
                   Dimens.verticalPadding / 50,
                 ),
-                child: BarChart(
-                  dailyChangeBarChartData(
-                    countryStatisticsConfirmedList:
-                        widget.countryStatisticsConfirmedList.sublist(
-                      (widget.countryStatisticsConfirmedList.length) - 8,
-                      (widget.countryStatisticsConfirmedList.length) - 0,
-                    ),
-                    countryStatisticsRecoveredList:
-                        widget.countryStatisticsRecoveredList.sublist(
-                      (widget.countryStatisticsRecoveredList.length) - 8,
-                      (widget.countryStatisticsRecoveredList.length) - 0,
-                    ),
-                    screenWidth: screenWidth,
-                    screenHeight: screenHeight,
-                  ),
-                ),
+                child: BarChart(dailyChangeBarChartData(
+                  countryStatisticsConfirmedList:
+                      widget.countryStatisticsConfirmedList.sublist(
+                        (widget.countryStatisticsConfirmedList.length) - 8,
+                        (widget.countryStatisticsConfirmedList.length) - 0,
+                      ),
+                  countryStatisticsRecoveredList:
+                      widget.countryStatisticsRecoveredList.sublist(
+                        (widget.countryStatisticsRecoveredList.length) - 8,
+                        (widget.countryStatisticsRecoveredList.length) - 0,
+                      ),
+                  screenWidth: screenWidth,
+                  screenHeight: screenHeight,
+                )),
               )
             : Padding(
-                padding: const EdgeInsets.only(
-                  top: Dimens.verticalPadding / 0.75,
-                ),
+                padding:
+                    const EdgeInsets.only(top: Dimens.verticalPadding / 0.75),
                 child: Text(
                   Strings.emptyData,
                   style: TextStyles.errorHeadingTextStlye.copyWith(
@@ -220,9 +207,7 @@ class _InfoGraphWidgetState extends State<InfoGraphWidget> {
       children: <Widget>[
         // Container is used for the grey underline under the tabs
         Container(
-          margin: const EdgeInsets.only(
-            right: Dimens.horizontalPadding,
-          ),
+          margin: const EdgeInsets.only(right: Dimens.horizontalPadding),
           decoration: BoxDecoration(
             border: Border(
               bottom: BorderSide(
@@ -240,11 +225,9 @@ class _InfoGraphWidgetState extends State<InfoGraphWidget> {
               // Gesture Detector used to avoid the Ripple Effect caused in InkWell
               GestureDetector(
                 onTap: () {
-                  setState(
-                    () {
-                      toggleSelection(0);
-                    },
-                  );
+                  setState(() {
+                    toggleSelection(0);
+                  });
                 },
                 child: AnimatedContainer(
                   duration: const Duration(milliseconds: 250),
@@ -279,11 +262,9 @@ class _InfoGraphWidgetState extends State<InfoGraphWidget> {
               // Gesture Detector used to avoid the Ripple Effect caused in InkWell
               GestureDetector(
                 onTap: () {
-                  setState(
-                    () {
-                      toggleSelection(1);
-                    },
-                  );
+                  setState(() {
+                    toggleSelection(1);
+                  });
                 },
                 child: AnimatedContainer(
                   duration: const Duration(milliseconds: 250),
@@ -318,11 +299,9 @@ class _InfoGraphWidgetState extends State<InfoGraphWidget> {
               // Gesture Detector used to avoid the Ripple Effect caused in InkWell
               GestureDetector(
                 onTap: () {
-                  setState(
-                    () {
-                      toggleSelection(2);
-                    },
-                  );
+                  setState(() {
+                    toggleSelection(2);
+                  });
                 },
                 child: AnimatedContainer(
                   duration: const Duration(milliseconds: 250),
@@ -357,9 +336,7 @@ class _InfoGraphWidgetState extends State<InfoGraphWidget> {
         Container(
           width: screenWidth,
           height: screenHeight / 3.5,
-          padding: const EdgeInsets.only(
-            right: Dimens.horizontalPadding,
-          ),
+          padding: const EdgeInsets.only(right: Dimens.horizontalPadding),
           child: PageView.builder(
             physics: const NeverScrollableScrollPhysics(),
             controller: pageController,
@@ -368,7 +345,7 @@ class _InfoGraphWidgetState extends State<InfoGraphWidget> {
               return _pages[index % _pages.length];
             },
           ),
-        )
+        ),
       ],
     );
   }
@@ -402,7 +379,8 @@ BarChartData dailyBarChartData({
   // Creating a buffer value to display the the top-most title on the left side bar
   // for the [BarChartData]
   final leftTitleTopBuffer = countryStatisticsConfirmedList[
-              countryStatisticsConfirmedListLength - 1]
+            countryStatisticsConfirmedListLength - 1
+          ]
           .cases
           .toDouble() +
       countryStatisticsConfirmedList[countryStatisticsConfirmedListLength - 2]
@@ -411,35 +389,31 @@ BarChartData dailyBarChartData({
 
   // Looping through the list to add each individual item with the normalized values
   // to the [BarChartGroupData] which is used to plot the points on the graph
-  countryStatisticsConfirmedList.asMap().forEach(
-    (index, item) {
-      barChartData.add(
-        BarChartGroupData(
-          x: index,
-          barRods: [
-            BarChartRodData(
-              y: normalizedValue(
-                oldValue: item.cases,
-                oldMin: dailyStatisticsMin,
-                oldMax: dailyStatisticsMax,
-                newMin: 4,
-              ),
-              color: AppColors.confirmedColor,
-              width: screenWidth / 20,
-              backDrawRodData: BackgroundBarChartRodData(
-                show: true,
-                // Setting the max value of the Bar Chart (Y Axis) with a buffer
-                // so that the graph is not painted outside the container
-                y: 11,
-                // Background colour of the Bar Chart - Lighter Version than the filled lines
-                color: AppColors.confirmedColor.withOpacity(0.3),
-              ),
-            ),
-          ],
+  countryStatisticsConfirmedList.asMap().forEach((index, item) {
+    barChartData.add(BarChartGroupData(
+      x: index,
+      barRods: [
+        BarChartRodData(
+          y: normalizedValue(
+            oldValue: item.cases,
+            oldMin: dailyStatisticsMin,
+            oldMax: dailyStatisticsMax,
+            newMin: 4,
+          ),
+          color: AppColors.confirmedColor,
+          width: screenWidth / 20,
+          backDrawRodData: BackgroundBarChartRodData(
+            show: true,
+            // Setting the max value of the Bar Chart (Y Axis) with a buffer
+            // so that the graph is not painted outside the container
+            y: 11,
+            // Background colour of the Bar Chart - Lighter Version than the filled lines
+            color: AppColors.confirmedColor.withOpacity(0.3),
+          ),
         ),
-      );
-    },
-  );
+      ],
+    ));
+  });
 
   return BarChartData(
     groupsSpace: screenWidth / 14,
@@ -462,49 +436,56 @@ BarChartData dailyBarChartData({
             case 0:
               weekDay = dailyWeekDay(
                 date: countryStatisticsConfirmedList[
-                        countryStatisticsConfirmedListLength - 7]
+                      countryStatisticsConfirmedListLength - 7
+                    ]
                     .date,
               );
               break;
             case 1:
               weekDay = dailyWeekDay(
                 date: countryStatisticsConfirmedList[
-                        countryStatisticsConfirmedListLength - 6]
+                      countryStatisticsConfirmedListLength - 6
+                    ]
                     .date,
               );
               break;
             case 2:
               weekDay = dailyWeekDay(
                 date: countryStatisticsConfirmedList[
-                        countryStatisticsConfirmedListLength - 5]
+                      countryStatisticsConfirmedListLength - 5
+                    ]
                     .date,
               );
               break;
             case 3:
               weekDay = dailyWeekDay(
                 date: countryStatisticsConfirmedList[
-                        countryStatisticsConfirmedListLength - 4]
+                      countryStatisticsConfirmedListLength - 4
+                    ]
                     .date,
               );
               break;
             case 4:
               weekDay = dailyWeekDay(
                 date: countryStatisticsConfirmedList[
-                        countryStatisticsConfirmedListLength - 3]
+                      countryStatisticsConfirmedListLength - 3
+                    ]
                     .date,
               );
               break;
             case 5:
               weekDay = dailyWeekDay(
                 date: countryStatisticsConfirmedList[
-                        countryStatisticsConfirmedListLength - 2]
+                      countryStatisticsConfirmedListLength - 2
+                    ]
                     .date,
               );
               break;
             case 6:
               weekDay = dailyWeekDay(
                 date: countryStatisticsConfirmedList[
-                        countryStatisticsConfirmedListLength - 1]
+                      countryStatisticsConfirmedListLength - 1
+                    ]
                     .date,
               );
               break;
@@ -532,9 +513,13 @@ BarChartData dailyBarChartData({
         reservedSize: screenWidth / 15,
         getTitles: (value) {
           if (value == 3) {
-            return '${getUnitValue(countryStatisticsConfirmedList[0].cases.toDouble())}';
+            return '${getUnitValue(
+              countryStatisticsConfirmedList[0].cases.toDouble(),
+            )}';
           } else if (value == 7) {
-            return '${getUnitValue(countryStatisticsConfirmedList[3].cases.toDouble())}';
+            return '${getUnitValue(
+              countryStatisticsConfirmedList[3].cases.toDouble(),
+            )}';
           } else if (value == 10) {
             return '${getUnitValue(leftTitleTopBuffer)}';
           } else {
@@ -558,43 +543,50 @@ BarChartData dailyBarChartData({
             case 0:
               return dailyMonthData(
                 date: countryStatisticsConfirmedList[
-                        countryStatisticsConfirmedListLength - 7]
+                      countryStatisticsConfirmedListLength - 7
+                    ]
                     .date,
               );
             case 1:
               return dailyMonthData(
                 date: countryStatisticsConfirmedList[
-                        countryStatisticsConfirmedListLength - 6]
+                      countryStatisticsConfirmedListLength - 6
+                    ]
                     .date,
               );
             case 2:
               return dailyMonthData(
                 date: countryStatisticsConfirmedList[
-                        countryStatisticsConfirmedListLength - 5]
+                      countryStatisticsConfirmedListLength - 5
+                    ]
                     .date,
               );
             case 3:
               return dailyMonthData(
                 date: countryStatisticsConfirmedList[
-                        countryStatisticsConfirmedListLength - 4]
+                      countryStatisticsConfirmedListLength - 4
+                    ]
                     .date,
               );
             case 4:
               return dailyMonthData(
                 date: countryStatisticsConfirmedList[
-                        countryStatisticsConfirmedListLength - 3]
+                      countryStatisticsConfirmedListLength - 3
+                    ]
                     .date,
               );
             case 5:
               return dailyMonthData(
                 date: countryStatisticsConfirmedList[
-                        countryStatisticsConfirmedListLength - 2]
+                      countryStatisticsConfirmedListLength - 2
+                    ]
                     .date,
               );
             case 6:
               return dailyMonthData(
                 date: countryStatisticsConfirmedList[
-                        countryStatisticsConfirmedListLength - 1]
+                      countryStatisticsConfirmedListLength - 1
+                    ]
                     .date,
               );
             default:
@@ -605,9 +597,7 @@ BarChartData dailyBarChartData({
     ),
 
     // Hiding the Box plotted around the Bar Chart
-    borderData: FlBorderData(
-      show: false,
-    ),
+    borderData: FlBorderData(show: false),
     barGroups: barChartData,
   );
 }
@@ -644,7 +634,8 @@ LineChartData weeklyAreaGraphData({
   // Creating a buffer value to display the the top-most title on the left side bar
   // for the [LineChartData]
   final leftTitleTopBuffer = countryStatisticsConfirmedList[
-              countryStatisticsConfirmedListLength - 1]
+            countryStatisticsConfirmedListLength - 1
+          ]
           .cases
           .toDouble() +
       countryStatisticsConfirmedList[countryStatisticsConfirmedListLength - 2]
@@ -653,26 +644,17 @@ LineChartData weeklyAreaGraphData({
 
   // Looping through the list to add each individual item with the normalized values
   // to [flSpotData] which is used to plot the points on the graph
-  countryStatisticsConfirmedList.asMap().forEach(
-    (index, item) {
-      // Adding the indexes and the value to [flSpotData]
-      flSpotData.add(
-        FlSpot(
-          index.toDouble(),
-          normalizedValue(
-            oldValue: item.cases,
-            oldMin: weeklyStatisticsMin,
-            oldMax: weeklyStatisticsMax,
-            newMin: 0,
-          ),
-        ),
-      );
-    },
-  );
+  countryStatisticsConfirmedList.asMap().forEach((index, item) {
+    // Adding the indexes and the value to [flSpotData]
+    flSpotData.add(FlSpot(index.toDouble(), normalizedValue(
+      oldValue: item.cases,
+      oldMin: weeklyStatisticsMin,
+      oldMax: weeklyStatisticsMax,
+      newMin: 0,
+    )));
+  });
   return LineChartData(
-    gridData: const FlGridData(
-      show: false,
-    ),
+    gridData: const FlGridData(show: false),
     titlesData: FlTitlesData(
       // Side Titles
       leftTitles: SideTitles(
@@ -687,10 +669,14 @@ LineChartData weeklyAreaGraphData({
         getTitles: (value) {
           switch (value.toInt()) {
             case 1:
-              return '${getUnitValue(countryStatisticsConfirmedList[1].cases.toDouble())}';
+              return '${getUnitValue(
+                countryStatisticsConfirmedList[1].cases.toDouble(),
+              )}';
               break;
             case 7:
-              return '${getUnitValue(countryStatisticsConfirmedList[9].cases.toDouble())}';
+              return '${getUnitValue(
+                countryStatisticsConfirmedList[9].cases.toDouble(),
+              )}';
               break;
             case 13:
               return '${getUnitValue(leftTitleTopBuffer)}';
@@ -713,19 +699,23 @@ LineChartData weeklyAreaGraphData({
         getTitles: (value) {
           switch (value.toInt()) {
             case 2:
-              return '${dailyMonthData(date: countryStatisticsConfirmedList[2].date)}';
+              return '${dailyMonthData(
+                date: countryStatisticsConfirmedList[2].date,
+              )}';
             case 7:
-              return '${dailyMonthData(date: countryStatisticsConfirmedList[7].date)}';
+              return '${dailyMonthData(
+                date: countryStatisticsConfirmedList[7].date,
+              )}';
             case 12:
-              return '${dailyMonthData(date: countryStatisticsConfirmedList[12].date)}';
+              return '${dailyMonthData(
+                date: countryStatisticsConfirmedList[12].date,
+              )}';
           }
           return '';
         },
       ),
     ),
-    borderData: FlBorderData(
-      show: false,
-    ),
+    borderData: FlBorderData(show: false),
 
     // Setting the range of values on x-axis between 0 and 14 to accompany the 15 days
     minX: 0,
@@ -741,20 +731,16 @@ LineChartData weeklyAreaGraphData({
     lineTouchData: LineTouchData(
       getTouchedSpotIndicator:
           (LineChartBarData barData, List<int> spotIndexes) {
-        return spotIndexes.map(
-          (spotIndex) {
-            // Adding the dot and the line (on click of the dot) with relevant styling
-            return TouchedSpotIndicatorData(
-              FlLine(
-                color: AppColors.confirmedColor.withOpacity(0.5),
-              ),
-              FlDotData(
-                dotSize: screenWidth / 50,
-                dotColor: AppColors.confirmedColor,
-              ),
-            );
-          },
-        ).toList();
+        return spotIndexes.map((spotIndex) {
+          // Adding the dot and the line (on click of the dot) with relevant styling
+          return TouchedSpotIndicatorData(
+            FlLine(color: AppColors.confirmedColor.withOpacity(0.5)),
+            FlDotData(
+              dotSize: screenWidth / 50,
+              dotColor: AppColors.confirmedColor,
+            ),
+          );
+        }).toList();
       },
 
       // Defining the properties of the ToolTip which occurs when touched/hovered over a plotted item
@@ -771,7 +757,11 @@ LineChartData weeklyAreaGraphData({
           return touchedBarSpots.map((barSpot) {
             final flSpot = barSpot;
             return LineTooltipItem(
-              '${dailyMonthData(date: countryStatisticsConfirmedList[flSpot.x.toInt()].date)}\n${countryStatisticsConfirmedList[flSpot.x.toInt()].cases}\nConfirmed',
+              '${dailyMonthData(
+                date: countryStatisticsConfirmedList[flSpot.x.toInt()].date,
+              )}\n${countryStatisticsConfirmedList[
+                flSpot.x.toInt()
+              ].cases}\nConfirmed',
               TextStyles.statisticsToopTipTextStyle.copyWith(
                 fontSize: screenHeight / 65,
               ),
@@ -799,11 +789,8 @@ LineChartData weeklyAreaGraphData({
         ),
         belowBarData: BarAreaData(
           show: true,
-          colors: gradientColors
-              .map(
-                (color) => color.withOpacity(0.1),
-              )
-              .toList(),
+          colors:
+              gradientColors.map((color) => color.withOpacity(0.1)).toList(),
           gradientFrom: const Offset(1, 0),
           gradientTo: const Offset(1, 1),
           gradientColorStops: [0.25, 1],
@@ -823,25 +810,13 @@ BarChartData dailyChangeBarChartData({
   final double width = screenWidth / 65;
 
   /// Method to group the 2 [BarChartRodData] with the given values
-  BarChartGroupData makeGroupData({
-    int x,
-    double y1,
-    double y2,
-  }) {
+  BarChartGroupData makeGroupData({int x, double y1, double y2}) {
     return BarChartGroupData(
       barsSpace: screenWidth / 45,
       x: x,
       barRods: [
-        BarChartRodData(
-          y: y1,
-          color: AppColors.confirmedColor,
-          width: width,
-        ),
-        BarChartRodData(
-          y: y2,
-          color: AppColors.recoveredColor,
-          width: width,
-        ),
+        BarChartRodData(y: y1, color: AppColors.confirmedColor, width: width),
+        BarChartRodData(y: y2, color: AppColors.recoveredColor, width: width),
       ],
     );
   }
@@ -856,25 +831,33 @@ BarChartData dailyChangeBarChartData({
 
   // Calcuating the daily change in confirmed cases
   for (int index = 0; index < countryStatisticsListLength - 1; index++) {
-    confirmedList.add(countryStatisticsConfirmedList[index + 1].cases -
-        countryStatisticsConfirmedList[index].cases);
+    confirmedList.add(
+      countryStatisticsConfirmedList[index + 1].cases -
+          countryStatisticsConfirmedList[index].cases,
+    );
   }
 
   // Calcuating the daily change in recovered cases
   for (int index = 0; index < countryStatisticsListLength - 1; index++) {
-    recoveredList.add(countryStatisticsRecoveredList[index + 1].cases -
-        countryStatisticsRecoveredList[index].cases);
+    recoveredList.add(
+      countryStatisticsRecoveredList[index + 1].cases -
+          countryStatisticsRecoveredList[index].cases,
+    );
   }
 
   // Calculating the max value (Between the [confirmedList] and [recoveredList]) in the array to be passed onto the normalization function
   // [normalizedValue]
-  final dailyChangeMax =
-      math.max(confirmedList.reduce(math.max), recoveredList.reduce(math.max));
+  final dailyChangeMax = math.max(
+    confirmedList.reduce(math.max),
+    recoveredList.reduce(math.max),
+  );
 
   // Calculating the min value (Between the [confirmedList] and [recoveredList]) in the array to be passed onto the normalization function
   // [normalizedValue]
-  final dailyChangeMin =
-      math.min(confirmedList.reduce(math.min), recoveredList.reduce(math.min));
+  final dailyChangeMin = math.min(
+    confirmedList.reduce(math.min),
+    recoveredList.reduce(math.min),
+  );
 
   // Creating a buffer value to display the the top-most title on the left side bar
   // for the [BarChartData]
@@ -883,25 +866,23 @@ BarChartData dailyChangeBarChartData({
   // Looping through the list to add each individual item with the normalized values
   // to the [BarChartGroupData] which is used to plot the points on the graph
   for (int index = 0; index < countryStatisticsListLength - 1; index++) {
-    barChartData.add(
-      makeGroupData(
-        x: index,
-        y1: normalizedValue(
-          oldValue: confirmedList[index],
-          oldMax: dailyChangeMax.toDouble(),
-          oldMin: dailyChangeMin.toDouble(),
-          newMin: 2,
-          newMax: 9,
-        ),
-        y2: normalizedValue(
-          oldValue: recoveredList[index],
-          oldMax: dailyChangeMax.toDouble(),
-          oldMin: dailyChangeMin.toDouble(),
-          newMin: 2,
-          newMax: 9,
-        ),
+    barChartData.add(makeGroupData(
+      x: index,
+      y1: normalizedValue(
+        oldValue: confirmedList[index],
+        oldMax: dailyChangeMax.toDouble(),
+        oldMin: dailyChangeMin.toDouble(),
+        newMin: 2,
+        newMax: 9,
       ),
-    );
+      y2: normalizedValue(
+        oldValue: recoveredList[index],
+        oldMax: dailyChangeMax.toDouble(),
+        oldMin: dailyChangeMin.toDouble(),
+        newMin: 2,
+        newMax: 9,
+      ),
+    ));
   }
 
   return BarChartData(
@@ -928,49 +909,56 @@ BarChartData dailyChangeBarChartData({
             case 0:
               weekDay = dailyWeekDay(
                 date: countryStatisticsConfirmedList[
-                        countryStatisticsListLength - 7]
+                      countryStatisticsListLength - 7
+                    ]
                     .date,
               );
               break;
             case 1:
               weekDay = dailyWeekDay(
                 date: countryStatisticsConfirmedList[
-                        countryStatisticsListLength - 6]
+                      countryStatisticsListLength - 6
+                    ]
                     .date,
               );
               break;
             case 2:
               weekDay = dailyWeekDay(
                 date: countryStatisticsConfirmedList[
-                        countryStatisticsListLength - 5]
+                      countryStatisticsListLength - 5
+                    ]
                     .date,
               );
               break;
             case 3:
               weekDay = dailyWeekDay(
                 date: countryStatisticsConfirmedList[
-                        countryStatisticsListLength - 4]
+                      countryStatisticsListLength - 4
+                    ]
                     .date,
               );
               break;
             case 4:
               weekDay = dailyWeekDay(
                 date: countryStatisticsConfirmedList[
-                        countryStatisticsListLength - 3]
+                      countryStatisticsListLength - 3
+                    ]
                     .date,
               );
               break;
             case 5:
               weekDay = dailyWeekDay(
                 date: countryStatisticsConfirmedList[
-                        countryStatisticsListLength - 2]
+                      countryStatisticsListLength - 2
+                    ]
                     .date,
               );
               break;
             case 6:
               weekDay = dailyWeekDay(
                 date: countryStatisticsConfirmedList[
-                        countryStatisticsListLength - 1]
+                      countryStatisticsListLength - 1
+                    ]
                     .date,
               );
               break;
@@ -1011,7 +999,10 @@ BarChartData dailyChangeBarChartData({
         reservedSize: screenWidth / 15,
         getTitles: (value) {
           if (value == 2) {
-            return '${getUnitValue(math.min(confirmedList[0].toDouble(), recoveredList[0].toDouble()))}';
+            return '${getUnitValue(math.min(
+              confirmedList[0].toDouble(),
+              recoveredList[0].toDouble(),
+            ))}';
           } else if (value == 11) {
             return '${getUnitValue(leftTitleTopBuffer)}';
           } else {
@@ -1035,43 +1026,50 @@ BarChartData dailyChangeBarChartData({
             case 0:
               return dailyMonthData(
                 date: countryStatisticsConfirmedList[
-                        countryStatisticsListLength - 7]
+                      countryStatisticsListLength - 7
+                    ]
                     .date,
               );
             case 1:
               return dailyMonthData(
                 date: countryStatisticsConfirmedList[
-                        countryStatisticsListLength - 6]
+                      countryStatisticsListLength - 6
+                    ]
                     .date,
               );
             case 2:
               return dailyMonthData(
                 date: countryStatisticsConfirmedList[
-                        countryStatisticsListLength - 5]
+                      countryStatisticsListLength - 5
+                    ]
                     .date,
               );
             case 3:
               return dailyMonthData(
                 date: countryStatisticsConfirmedList[
-                        countryStatisticsListLength - 4]
+                      countryStatisticsListLength - 4
+                    ]
                     .date,
               );
             case 4:
               return dailyMonthData(
                 date: countryStatisticsConfirmedList[
-                        countryStatisticsListLength - 3]
+                      countryStatisticsListLength - 3
+                    ]
                     .date,
               );
             case 5:
               return dailyMonthData(
                 date: countryStatisticsConfirmedList[
-                        countryStatisticsListLength - 2]
+                      countryStatisticsListLength - 2
+                    ]
                     .date,
               );
             case 6:
               return dailyMonthData(
                 date: countryStatisticsConfirmedList[
-                        countryStatisticsListLength - 1]
+                      countryStatisticsListLength - 1
+                    ]
                     .date,
               );
             default:
@@ -1082,9 +1080,7 @@ BarChartData dailyChangeBarChartData({
     ),
 
     // Hiding the Box plotted around the Bar Chart
-    borderData: FlBorderData(
-      show: false,
-    ),
+    borderData: FlBorderData(show: false),
     barGroups: barChartData,
   );
 }
@@ -1096,7 +1092,9 @@ String dailyMonthData({String date}) {
 
   final parsedDateTime = DateTime.parse(date);
 
-  return '${parsedDateTime.toLocal().day.toString()} ${jsonDecode(monthData)['${parsedDateTime.toLocal().month}']}';
+  return '${parsedDateTime.toLocal().day.toString()} ${jsonDecode(
+    monthData,
+  )['${parsedDateTime.toLocal().month}']}';
 }
 
 /// Method to return the Weekday from a given String of date of the `Zulu time` (UTC) format

@@ -20,8 +20,11 @@ class XXH64 {
 
   static BigInt defaultSeed = BigInt.from(0x1234567890);
 
-  static BigInt digest(
-      {required List<int> data, BigInt? seed, Endian? endian}) {
+  static BigInt digest({
+    required List<int> data,
+    BigInt? seed,
+    Endian? endian,
+  }) {
     endian ??= XXH64.endian;
 
     seed ??= defaultSeed;
@@ -42,23 +45,27 @@ class XXH64 {
 
       while (index <= limit) {
         v1 = round(
-            acc: v1,
-            input: convertIntArrayToBigInt(array: array, index: index));
+          acc: v1,
+          input: convertIntArrayToBigInt(array: array, index: index),
+        );
         index += 8;
 
         v2 = round(
-            acc: v2,
-            input: convertIntArrayToBigInt(array: array, index: index));
+          acc: v2,
+          input: convertIntArrayToBigInt(array: array, index: index),
+        );
         index += 8;
 
         v3 = round(
-            acc: v3,
-            input: convertIntArrayToBigInt(array: array, index: index));
+          acc: v3,
+          input: convertIntArrayToBigInt(array: array, index: index),
+        );
         index += 8;
 
         v4 = round(
-            acc: v4,
-            input: convertIntArrayToBigInt(array: array, index: index));
+          acc: v4,
+          input: convertIntArrayToBigInt(array: array, index: index),
+        );
         index += 8;
       }
       h = rotl(x: v1, r: 1) +
@@ -183,26 +190,33 @@ class XXH64 {
     }
 
     void process4() {
-      h2 ^=
-          ((convertIntArrayToBigInt(array: array!, index: index, endian: endian)
-                          .toUnsigned(32))
-                      .toUnsigned(64) *
-                  prime1)
-              .toUnsigned(64);
-      index += 4;
-      h2 = ((rotl(x: h2, r: 23) * prime2).toUnsigned(64) + prime3)
+      h2 ^= ((convertIntArrayToBigInt(
+                array: array!,
+                index: index,
+                endian: endian,
+              ).toUnsigned(32)).toUnsigned(64) *
+              prime1)
           .toUnsigned(64);
+      index += 4;
+      h2 = ((rotl(x: h2, r: 23) * prime2).toUnsigned(64) + prime3).toUnsigned(
+        64,
+      );
     }
 
     void process8() {
       final k1 = round(
-          acc: BigInt.zero,
-          input: convertIntArrayToBigInt(
-              array: array!, index: index, endian: endian));
+        acc: BigInt.zero,
+        input: convertIntArrayToBigInt(
+          array: array!,
+          index: index,
+          endian: endian,
+        ),
+      );
       index += 8;
       h2 ^= k1;
-      h2 = ((rotl(x: h2, r: 27) * prime1).toUnsigned(64) + prime4)
-          .toUnsigned(64);
+      h2 = ((rotl(x: h2, r: 27) * prime1).toUnsigned(64) + prime4).toUnsigned(
+        64,
+      );
     }
 
     switch (len & 31) {

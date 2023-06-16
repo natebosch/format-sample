@@ -5,12 +5,12 @@ class CustomFormFieldValidator extends StatefulWidget {
   final String validationMessage;
   final Widget body;
 
-  const CustomFormFieldValidator(
-      {required this.validationField,
-      required this.body,
-      required this.validationMessage,
-      Key? key})
-      : super(key: key);
+  const CustomFormFieldValidator({
+    required this.validationField,
+    required this.body,
+    required this.validationMessage,
+    Key? key,
+  }) : super(key: key);
 
   @override
   State<CustomFormFieldValidator> createState() =>
@@ -43,7 +43,7 @@ class _CustomFormFieldValidatorState extends State<CustomFormFieldValidator> {
                         ),
                       ),
                     ),
-                  )
+                  ),
           ],
         );
       },

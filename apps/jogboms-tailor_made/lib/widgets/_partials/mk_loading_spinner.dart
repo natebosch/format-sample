@@ -2,11 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 class MkLoadingSpinner extends StatelessWidget {
-  const MkLoadingSpinner({
-    Key key,
-    this.color,
-    this.size,
-  }) : super(key: key);
+  const MkLoadingSpinner({Key key, this.color, this.size}) : super(key: key);
 
   final Color color;
   final double size;
@@ -28,8 +24,6 @@ class MkLoadingSpinner extends StatelessWidget {
   }
 
   Widget _box(Color color) {
-    return DecoratedBox(
-      decoration: BoxDecoration(color: color),
-    );
+    return DecoratedBox(decoration: BoxDecoration(color: color));
   }
 }

@@ -7,7 +7,4 @@
 
 part 'private/adapty_ios_products_fetch_policy_json_builder.dart';
 
-enum AdaptyIOSProductsFetchPolicy {
-  defaultPolicy,
-  waitForReceiptValidation,
-}
+enum AdaptyIOSProductsFetchPolicy { defaultPolicy, waitForReceiptValidation }

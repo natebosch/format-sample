@@ -36,9 +36,7 @@ import '../widgets/customWidgets.dart';
 
 class Routes {
   static dynamic route() {
-    return {
-      'SplashPage': (BuildContext context) => SplashPage(),
-    };
+    return {'SplashPage': (BuildContext context) => SplashPage()};
   }
 
   static void sendNavigationEventToFirebase(String path) {
@@ -63,54 +61,60 @@ class Routes {
           isTweet = true;
         }
         return CustomRoute<bool>(
-            builder: (BuildContext context) =>
-                ChangeNotifierProvider<ComposeTweetState>(
-                  create: (_) => ComposeTweetState(),
-                  child:
-                      ComposeTweetPage(isRetweet: isRetweet, isTweet: isTweet),
-                ));
+          builder: (
+            BuildContext context,
+          ) => ChangeNotifierProvider<ComposeTweetState>(
+                create: (_) => ComposeTweetState(),
+                child: ComposeTweetPage(isRetweet: isRetweet, isTweet: isTweet),
+              ),
+        );
       case "FeedPostDetail":
         var postId = pathElements[2];
         return SlideLeftRoute<bool>(
-            builder: (BuildContext context) => FeedPostDetail(
-                  postId: postId,
-                ),
-            settings: RouteSettings(name: 'FeedPostDetail'));
+          builder: (BuildContext context) => FeedPostDetail(postId: postId),
+          settings: RouteSettings(name: 'FeedPostDetail'),
+        );
       case "ProfilePage":
         String profileId;
         if (pathElements.length > 2) {
           profileId = pathElements[2];
         }
         return CustomRoute<bool>(
-            builder: (BuildContext context) => ProfilePage(
-                  profileId: profileId,
-                ));
+          builder: (BuildContext context) => ProfilePage(profileId: profileId),
+        );
       case "CreateFeedPage":
         return CustomRoute<bool>(
-            builder: (BuildContext context) =>
-                ChangeNotifierProvider<ComposeTweetState>(
-                  create: (_) => ComposeTweetState(),
-                  child: ComposeTweetPage(isRetweet: false, isTweet: true),
-                ));
+          builder: (
+            BuildContext context,
+          ) => ChangeNotifierProvider<ComposeTweetState>(
+                create: (_) => ComposeTweetState(),
+                child: ComposeTweetPage(isRetweet: false, isTweet: true),
+              ),
+        );
       case "WelcomePage":
         return CustomRoute<bool>(
-            builder: (BuildContext context) => WelcomePage());
+          builder: (BuildContext context) => WelcomePage(),
+        );
       case "SignIn":
         return CustomRoute<bool>(builder: (BuildContext context) => SignIn());
       case "SignUp":
         return CustomRoute<bool>(builder: (BuildContext context) => Signup());
       case "ForgetPasswordPage":
         return CustomRoute<bool>(
-            builder: (BuildContext context) => ForgetPasswordPage());
+          builder: (BuildContext context) => ForgetPasswordPage(),
+        );
       case "SearchPage":
         return CustomRoute<bool>(
-            builder: (BuildContext context) => SearchPage());
+          builder: (BuildContext context) => SearchPage(),
+        );
       case "ImageViewPge":
         return CustomRoute<bool>(
-            builder: (BuildContext context) => ImageViewPge());
+          builder: (BuildContext context) => ImageViewPge(),
+        );
       case "ChatScreenPage":
         return CustomRoute<bool>(
-            builder: (BuildContext context) => ChatScreenPage());
+          builder: (BuildContext context) => ChatScreenPage(),
+        );
       case "NewMessagePage":
         return CustomRoute<bool>(
           builder: (BuildContext context) => NewMessagePage(),
@@ -191,14 +195,14 @@ class Routes {
   static Route onUnknownRoute(RouteSettings settings) {
     return MaterialPageRoute(
       builder: (_) => Scaffold(
-        appBar: AppBar(
-          title: customTitleText(settings.name.split('/')[1]),
-          centerTitle: true,
-        ),
-        body: Center(
-          child: Text('${settings.name.split('/')[1]} Comming soon..'),
-        ),
-      ),
+            appBar: AppBar(
+              title: customTitleText(settings.name.split('/')[1]),
+              centerTitle: true,
+            ),
+            body: Center(
+              child: Text('${settings.name.split('/')[1]} Comming soon..'),
+            ),
+          ),
     );
   }
 }

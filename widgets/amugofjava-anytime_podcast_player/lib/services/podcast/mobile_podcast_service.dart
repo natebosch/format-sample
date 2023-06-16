@@ -23,7 +23,9 @@ import 'package:path/path.dart';
 import 'package:podcast_search/podcast_search.dart' as psearch;
 
 class MobilePodcastService extends PodcastService {
-  final descriptionRegExp1 = RegExp(r'(<\/p><br>|<\/p><\/br>|<p><br><\/p>|<p><\/br><\/p>)');
+  final descriptionRegExp1 = RegExp(
+    r'(<\/p><br>|<\/p><\/br>|<p><br><\/p>|<p><\/br><\/p>)',
+  );
   final descriptionRegExp2 = RegExp(r'(<p><br><\/p>|<p><\/br><\/p>)');
   final log = Logger('MobilePodcastService');
   final _cache = _PodcastCache(maxItems: 10, expiration: Duration(minutes: 30));
@@ -32,7 +34,11 @@ class MobilePodcastService extends PodcastService {
     @required PodcastApi api,
     @required Repository repository,
     @required SettingsService settingsService,
-  }) : super(api: api, repository: repository, settingsService: settingsService);
+  }) : super(
+         api: api,
+         repository: repository,
+         settingsService: settingsService,
+       );
 
   @override
   Future<psearch.SearchResult> search({
@@ -56,9 +62,7 @@ class MobilePodcastService extends PodcastService {
   }
 
   @override
-  Future<psearch.SearchResult> charts({
-    int size,
-  }) {
+  Future<psearch.SearchResult> charts({int size}) {
     return api.charts(size);
   }
 
@@ -96,7 +100,8 @@ class MobilePodcastService extends PodcastService {
       final description = _format(loadedPodcast.description);
       final copyright = _format(loadedPodcast.copyright);
       final funding = <Funding>[];
-      final existingEpisodes = await repository.findEpisodesByPodcastGuid(loadedPodcast.url);
+      final existingEpisodes =
+          await repository.findEpisodesByPodcastGuid(loadedPodcast.url);
 
       // If imageUrl is null we have not loaded the podcast as a result of a search.
       if (imageUrl == null || imageUrl.isEmpty || refresh) {
@@ -138,21 +143,34 @@ class MobilePodcastService extends PodcastService {
         // first two episodes to see what order they are in.
         if (loadedPodcast.episodes.length > 1) {
           if (loadedPodcast.episodes[0].publicationDate.millisecondsSinceEpoch <
-              loadedPodcast.episodes[1].publicationDate.millisecondsSinceEpoch) {
-            loadedPodcast.episodes.sort((e1, e2) => e2.publicationDate.compareTo(e1.publicationDate));
+              loadedPodcast
+                  .episodes[1]
+                  .publicationDate
+                  .millisecondsSinceEpoch) {
+            loadedPodcast.episodes.sort(
+              (e1, e2) => e2.publicationDate.compareTo(e1.publicationDate),
+            );
           }
         }
 
         // Loop through all episodes in the feed and check to see if we already have that episode
         // stored. If we don't, it's a new episode so add it; if we do update our copy in case it's changed.
         for (final episode in loadedPodcast.episodes) {
-          final existingEpisode = existingEpisodes.firstWhere((ep) => ep.guid == episode.guid, orElse: () => null);
+          final existingEpisode = existingEpisodes.firstWhere(
+            (ep) => ep.guid == episode.guid,
+            orElse: () => null,
+          );
           final author = episode.author?.replaceAll('\n', '')?.trim() ?? '';
           final title = _format(episode.title);
           final description = _format(episode.description);
-          final episodeImage = episode.imageUrl == null || episode.imageUrl.isEmpty ? pc.imageUrl : episode.imageUrl;
+          final episodeImage =
+              episode.imageUrl == null || episode.imageUrl.isEmpty
+                  ? pc.imageUrl
+                  : episode.imageUrl;
           final episodeThumbImage =
-              episode.imageUrl == null || episode.imageUrl.isEmpty ? pc.thumbImageUrl : episode.imageUrl;
+              episode.imageUrl == null || episode.imageUrl.isEmpty
+                  ? pc.thumbImageUrl
+                  : episode.imageUrl;
 
           if (existingEpisode == null) {
             pc.newEpisodes = pc.id != null;
@@ -203,7 +221,10 @@ class MobilePodcastService extends PodcastService {
       var expired = <Episode>[];
 
       for (final episode in existingEpisodes) {
-        var feedEpisode = loadedPodcast.episodes.firstWhere((ep) => ep.guid == episode.guid, orElse: () => null);
+        var feedEpisode = loadedPodcast.episodes.firstWhere(
+          (ep) => ep.guid == episode.guid,
+          orElse: () => null,
+        );
 
         if (feedEpisode == null && episode.downloaded) {
           pc.episodes.add(episode);
@@ -304,7 +325,10 @@ class MobilePodcastService extends PodcastService {
   @override
   Future<void> unsubscribe(Podcast podcast) async {
     if (await hasStoragePermission()) {
-      final filename = join(await getStorageDirectory(), safeFile(podcast.title));
+      final filename = join(
+        await getStorageDirectory(),
+        safeFile(podcast.title),
+      );
 
       final d = Directory.fromUri(Uri.file(filename));
 
@@ -320,10 +344,14 @@ class MobilePodcastService extends PodcastService {
   Future<Podcast> subscribe(Podcast podcast) async {
     // We may already have episodes download for this podcast before the user
     // hit subscribe.
-    var savedEpisodes = await repository.findEpisodesByPodcastGuid(podcast.guid);
+    var savedEpisodes =
+        await repository.findEpisodesByPodcastGuid(podcast.guid);
 
     for (var episode in podcast.episodes) {
-      episode = savedEpisodes?.firstWhere((ep) => ep.guid == episode.guid, orElse: () => episode);
+      episode = savedEpisodes?.firstWhere(
+        (ep) => ep.guid == episode.guid,
+        orElse: () => episode,
+      );
 
       episode.pguid = podcast.guid;
     }
@@ -346,14 +374,20 @@ class MobilePodcastService extends PodcastService {
   String _format(String input) {
     input = input.replaceAll('\n', '').trim() ?? '';
 
-    return input.replaceAll(descriptionRegExp2, '')..replaceAll(descriptionRegExp1, '</p>');
+    return input.replaceAll(descriptionRegExp2, '')
+      ..replaceAll(descriptionRegExp1, '</p>');
   }
 
   Future<psearch.Chapters> _loadChaptersByUrl(String url) {
-    return compute<_FeedComputer, psearch.Chapters>(_loadChaptersByUrlCompute, _FeedComputer(api: api, url: url));
+    return compute<_FeedComputer, psearch.Chapters>(
+      _loadChaptersByUrlCompute,
+      _FeedComputer(api: api, url: url),
+    );
   }
 
-  static Future<psearch.Chapters> _loadChaptersByUrlCompute(_FeedComputer c) async {
+  static Future<psearch.Chapters> _loadChaptersByUrlCompute(
+    _FeedComputer c,
+  ) async {
     psearch.Chapters result;
 
     try {
@@ -373,7 +407,10 @@ class MobilePodcastService extends PodcastService {
   /// separate isolate so that the UI can continue to present a loading
   /// indicator whilst the data is fetched without locking the UI.
   Future<psearch.Podcast> _loadPodcastFeed({@required String url}) {
-    return compute<_FeedComputer, psearch.Podcast>(_loadPodcastFeedCompute, _FeedComputer(api: api, url: url));
+    return compute<_FeedComputer, psearch.Podcast>(
+      _loadPodcastFeedCompute,
+      _FeedComputer(api: api, url: url),
+    );
   }
 
   /// We have to separate the process of calling compute as you cannot use
@@ -401,10 +438,14 @@ class _PodcastCache {
   final Duration expiration;
   final Queue<_CacheItem> _queue;
 
-  _PodcastCache({@required this.maxItems, @required this.expiration}) : _queue = Queue<_CacheItem>();
+  _PodcastCache({@required this.maxItems, @required this.expiration})
+    : _queue = Queue<_CacheItem>();
 
   psearch.Podcast item(String key) {
-    var hit = _queue.firstWhere((_CacheItem i) => i.podcast.url == key, orElse: () => null);
+    var hit = _queue.firstWhere(
+      (_CacheItem i) => i.podcast.url == key,
+      orElse: () => null,
+    );
     psearch.Podcast p;
 
     if (hit != null) {

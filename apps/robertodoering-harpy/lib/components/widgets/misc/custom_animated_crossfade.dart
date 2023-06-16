@@ -114,10 +114,12 @@ class _CustomAnimatedCrossFadeState extends State<CustomAnimatedCrossFade>
 
   @override
   Widget build(BuildContext context) {
-    const Key kFirstChildKey =
-        ValueKey<CrossFadeState>(CrossFadeState.showFirst);
-    const Key kSecondChildKey =
-        ValueKey<CrossFadeState>(CrossFadeState.showSecond);
+    const Key kFirstChildKey = ValueKey<CrossFadeState>(
+      CrossFadeState.showFirst,
+    );
+    const Key kSecondChildKey = ValueKey<CrossFadeState>(
+      CrossFadeState.showSecond,
+    );
     final transitioningForwards =
         _controller.status == AnimationStatus.completed ||
             _controller.status == AnimationStatus.forward;
@@ -148,10 +150,7 @@ class _CustomAnimatedCrossFadeState extends State<CustomAnimatedCrossFade>
       enabled: _isTransitioning,
       child: ExcludeSemantics(
         // Always exclude the semantics of the widget that's fading out.
-        child: FadeTransition(
-          opacity: bottomAnimation!,
-          child: bottomChild,
-        ),
+        child: FadeTransition(opacity: bottomAnimation!, child: bottomChild),
       ),
     );
     topChild = TickerMode(
@@ -160,10 +159,7 @@ class _CustomAnimatedCrossFadeState extends State<CustomAnimatedCrossFade>
       child: ExcludeSemantics(
         // Always publish semantics for the widget that's fading in.
         excluding: false,
-        child: FadeTransition(
-          opacity: topAnimation!,
-          child: topChild,
-        ),
+        child: FadeTransition(opacity: topAnimation!, child: topChild),
       ),
     );
     return AnimatedSize(

@@ -66,23 +66,21 @@ class _StateNowPlaying extends State<NowPlaying>
   }
 
   initAnim() {
-    _animationController =
-        AnimationController(vsync: this, duration: Duration(milliseconds: 500))
-          ..addListener(() {
-            setState(() {});
-          });
-    _animateIcon =
-        Tween<double>(begin: 0.0, end: 1.0).animate(_animationController);
+    _animationController = AnimationController(
+      vsync: this,
+      duration: Duration(milliseconds: 500),
+    )..addListener(() {
+      setState(() {});
+    });
+    _animateIcon = Tween<double>(begin: 0.0, end: 1.0).animate(
+      _animationController,
+    );
     _animateColor = ColorTween(
       begin: Colors.blueGrey[400].withOpacity(0.7),
       end: Colors.blueGrey[400].withOpacity(0.9),
     ).animate(CurvedAnimation(
       parent: _animationController,
-      curve: Interval(
-        0.00,
-        1.00,
-        curve: Curves.linear,
-      ),
+      curve: Interval(0.00, 1.00, curve: Curves.linear),
     ));
   }
 
@@ -109,12 +107,16 @@ class _StateNowPlaying extends State<NowPlaying>
       updatePage(widget.index);
       isPlaying = true;
     });
-    player.setDurationHandler((d) => setState(() {
-          duration = d;
-        }));
-    player.setPositionHandler((p) => setState(() {
-          position = p;
-        }));
+    player.setDurationHandler(
+      (d) => setState(() {
+        duration = d;
+      }),
+    );
+    player.setPositionHandler(
+      (p) => setState(() {
+        position = p;
+      }),
+    );
     player.setCompletionHandler(() {
       onComplete();
       setState(() {
@@ -214,34 +216,36 @@ class _StateNowPlaying extends State<NowPlaying>
       key: scaffoldState,
       body: song != null
           ? portrait()
-          : Center(
-              child: CircularProgressIndicator(),
-            ),
+          : Center(child: CircularProgressIndicator()),
       backgroundColor: Colors.transparent,
     );
   }
 
   void _showBottomSheet() {
     showModalBottomSheet(
-        context: context,
-        builder: (builder) {
-          return new Container(
-              decoration: ShapeDecoration(
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(6.0),
-                          topRight: Radius.circular(6.0))),
-                  color: Color(0xFFFAFAFA)),
-              height: MediaQuery.of(context).size.height * 0.7,
-              child: Scrollbar(
-                child: new ListView.builder(
-                  physics: ClampingScrollPhysics(),
-                  itemCount: widget.songs.length,
-                  padding: EdgeInsets.only(
-                      left: MediaQuery.of(context).size.width * 0.06,
-                      right: MediaQuery.of(context).size.width * 0.06,
-                      top: 10.0),
-                  itemBuilder: (context, i) => new Column(
+      context: context,
+      builder: (builder) {
+        return new Container(
+          decoration: ShapeDecoration(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(6.0),
+                topRight: Radius.circular(6.0),
+              ),
+            ),
+            color: Color(0xFFFAFAFA),
+          ),
+          height: MediaQuery.of(context).size.height * 0.7,
+          child: Scrollbar(
+            child: new ListView.builder(
+              physics: ClampingScrollPhysics(),
+              itemCount: widget.songs.length,
+              padding: EdgeInsets.only(
+                left: MediaQuery.of(context).size.width * 0.06,
+                right: MediaQuery.of(context).size.width * 0.06,
+                top: 10.0,
+              ),
+              itemBuilder: (context, i) => new Column(
                     children: <Widget>[
                       new ListTile(
                         leading: new CircleAvatar(
@@ -252,37 +256,45 @@ class _StateNowPlaying extends State<NowPlaying>
                                   fit: BoxFit.cover,
                                 )
                               : new Text(
-                                  widget.songs[i].title[0].toUpperCase()),
+                                  widget.songs[i].title[0].toUpperCase(),
+                                ),
                         ),
-                        title: new Text(widget.songs[i].title,
-                            maxLines: 1, style: new TextStyle(fontSize: 16.0)),
+                        title: new Text(
+                          widget.songs[i].title,
+                          maxLines: 1,
+                          style: new TextStyle(fontSize: 16.0),
+                        ),
                         subtitle: Row(
                           children: <Widget>[
                             new Text(
                               widget.songs[i].artist,
                               maxLines: 1,
                               style: new TextStyle(
-                                  fontSize: 12.0, color: Colors.black54),
+                                fontSize: 12.0,
+                                color: Colors.black54,
+                              ),
                             ),
                             Padding(
                               padding: EdgeInsets.only(left: 5.0, right: 5.0),
                               child: Text("-"),
                             ),
                             Text(
-                                new Duration(
-                                        milliseconds: widget.songs[i].duration)
-                                    .toString()
-                                    .split('.')
-                                    .first
-                                    .substring(3, 7),
-                                style: new TextStyle(
-                                    fontSize: 11.0, color: Colors.black54))
+                              new Duration(
+                                milliseconds: widget.songs[i].duration,
+                              ).toString().split('.').first.substring(3, 7),
+                              style: new TextStyle(
+                                fontSize: 11.0,
+                                color: Colors.black54,
+                              ),
+                            ),
                           ],
                         ),
                         trailing: widget.songs[i].id ==
                                 MyQueue.songs[MyQueue.index].id
-                            ? new Icon(Icons.play_circle_filled,
-                                color: Colors.blueGrey[700])
+                            ? new Icon(
+                                Icons.play_circle_filled,
+                                color: Colors.blueGrey[700],
+                              )
                             : null,
                         onTap: () {
                           setState(() {
@@ -295,30 +307,33 @@ class _StateNowPlaying extends State<NowPlaying>
                       ),
                     ],
                   ),
-                ),
-              ));
-        });
+            ),
+          ),
+        );
+      },
+    );
   }
 
   void _showArtistDetail() {
     showModalBottomSheet(
-        context: context,
-        builder: (builder) {
-          return Container(
-            decoration: ShapeDecoration(
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(6.0),
-                        topRight: Radius.circular(6.0))),
-                color: Color(0xFFFAFAFA)),
-            height: MediaQuery.of(context).size.height * 0.7,
-            child: GetArtistDetail(
-              artist: song.artist,
-              artistSong: song,
-              mode: 2,
+      context: context,
+      builder: (builder) {
+        return Container(
+          decoration: ShapeDecoration(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(6.0),
+                topRight: Radius.circular(6.0),
+              ),
             ),
-          );
-        });
+            color: Color(0xFFFAFAFA),
+          ),
+          height: MediaQuery.of(context).size.height * 0.7,
+          child:
+              GetArtistDetail(artist: song.artist, artistSong: song, mode: 2),
+        );
+      },
+    );
   }
 
   Widget portrait() {
@@ -330,18 +345,16 @@ class _StateNowPlaying extends State<NowPlaying>
     return Stack(
       children: <Widget>[
         Container(
-            height: MediaQuery.of(context).size.width,
-            color: Colors.white,
-            child: getImage(song) != null
-                ? Image.file(
-                    getImage(song),
-                    fit: BoxFit.fitHeight,
-                  )
-                : Image.asset(
-                    "images/music.jpg",
-                    fit: BoxFit.fitWidth,
-                    width: MediaQuery.of(context).size.width,
-                  )),
+          height: MediaQuery.of(context).size.width,
+          color: Colors.white,
+          child: getImage(song) != null
+              ? Image.file(getImage(song), fit: BoxFit.fitHeight)
+              : Image.asset(
+                  "images/music.jpg",
+                  fit: BoxFit.fitWidth,
+                  width: MediaQuery.of(context).size.width,
+                ),
+        ),
         Positioned(
           top: width,
           child: Container(
@@ -385,12 +398,13 @@ class _StateNowPlaying extends State<NowPlaying>
 //                              onLongPress: _showArtistDetail,
                             child: Container(
                               decoration: BoxDecoration(
-                                  color: Colors.transparent,
-                                  borderRadius:
-                                      BorderRadius.circular(cutRadius),
-                                  image: DecorationImage(
-                                      image: FileImage(getImage(song)),
-                                      fit: BoxFit.cover)),
+                                color: Colors.transparent,
+                                borderRadius: BorderRadius.circular(cutRadius),
+                                image: DecorationImage(
+                                  image: FileImage(getImage(song)),
+                                  fit: BoxFit.cover,
+                                ),
+                              ),
                               child: Stack(
                                 children: <Widget>[
                                   _showArtistImage
@@ -408,11 +422,14 @@ class _StateNowPlaying extends State<NowPlaying>
                                     right: -width * 0.15,
                                     child: Container(
                                       decoration: ShapeDecoration(
-                                          color: Colors.white,
-                                          shape: BeveledRectangleBorder(
-                                              borderRadius: BorderRadius.only(
-                                                  topLeft: Radius.circular(
-                                                      width * 0.15)))),
+                                        color: Colors.white,
+                                        shape: BeveledRectangleBorder(
+                                          borderRadius: BorderRadius.only(
+                                            topLeft:
+                                                Radius.circular(width * 0.15),
+                                          ),
+                                        ),
+                                      ),
                                       height: width * 0.15 * 2,
                                       width: width * 0.15 * 2,
                                     ),
@@ -422,7 +439,9 @@ class _StateNowPlaying extends State<NowPlaying>
                                     right: 0.0,
                                     child: Padding(
                                       padding: EdgeInsets.only(
-                                          right: 4.0, bottom: 6.0),
+                                        right: 4.0,
+                                        bottom: 6.0,
+                                      ),
                                       child: Text(
                                         durationText,
                                         style: TextStyle(
@@ -440,25 +459,25 @@ class _StateNowPlaying extends State<NowPlaying>
                         )
                       : Material(
                           shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(cutRadius)),
+                            borderRadius: BorderRadius.circular(cutRadius),
+                          ),
                           clipBehavior: Clip.antiAlias,
                           child: Stack(
                             fit: StackFit.expand,
                             children: <Widget>[
-                              Image.asset(
-                                "images/back.jpg",
-                                fit: BoxFit.cover,
-                              ),
+                              Image.asset("images/back.jpg", fit: BoxFit.cover),
                               Positioned(
                                 bottom: -width * 0.15,
                                 right: -width * 0.15,
                                 child: Container(
                                   decoration: ShapeDecoration(
-                                      color: Colors.white,
-                                      shape: BeveledRectangleBorder(
-                                          borderRadius: BorderRadius.only(
-                                              topLeft: Radius.circular(
-                                                  width * 0.15)))),
+                                    color: Colors.white,
+                                    shape: BeveledRectangleBorder(
+                                      borderRadius: BorderRadius.only(
+                                        topLeft: Radius.circular(width * 0.15),
+                                      ),
+                                    ),
+                                  ),
                                   height: width * 0.15 * 2,
                                   width: width * 0.15 * 2,
                                 ),
@@ -503,16 +522,15 @@ class _StateNowPlaying extends State<NowPlaying>
                       Text(
                         positionText,
                         style: TextStyle(
-                            fontSize: 13.0,
-                            color: Color(0xaa373737),
-                            fontWeight: FontWeight.w600,
-                            letterSpacing: 1.0),
+                          fontSize: 13.0,
+                          color: Color(0xaa373737),
+                          fontWeight: FontWeight.w600,
+                          letterSpacing: 1.0,
+                        ),
                       ),
                       Container(
                         width: width * 0.85,
-                        padding: EdgeInsets.only(
-                          left: statusBarHeight * 0.5,
-                        ),
+                        padding: EdgeInsets.only(left: statusBarHeight * 0.5),
                         child: Slider(
                           min: 0.0,
                           activeColor:
@@ -520,8 +538,9 @@ class _StateNowPlaying extends State<NowPlaying>
                           inactiveColor:
                               Colors.blueGrey.shade300.withOpacity(0.3),
                           value: position?.inMilliseconds?.toDouble() ?? 0.0,
-                          onChanged: (double value) =>
-                              player.seek((value / 1000).roundToDouble()),
+                          onChanged: (double value) => player.seek(
+                            (value / 1000).roundToDouble(),
+                          ),
                           max: song.duration.toDouble() + 1000,
                         ),
                       ),
@@ -534,15 +553,19 @@ class _StateNowPlaying extends State<NowPlaying>
                           children: <Widget>[
                             Padding(
                               padding: const EdgeInsets.only(
-                                  left: 10.0, right: 10.0, top: 5),
+                                left: 10.0,
+                                right: 10.0,
+                                top: 5,
+                              ),
                               child: new Text(
                                 '${song.title}\n',
                                 style: new TextStyle(
-                                    color: Colors.black.withOpacity(0.85),
-                                    fontSize: 19,
-                                    letterSpacing: 1.5,
-                                    fontWeight: FontWeight.w500,
-                                    height: 1.5),
+                                  color: Colors.black.withOpacity(0.85),
+                                  fontSize: 19,
+                                  letterSpacing: 1.5,
+                                  fontWeight: FontWeight.w500,
+                                  height: 1.5,
+                                ),
                                 maxLines: 1,
                                 overflow: TextOverflow.ellipsis,
                                 textAlign: TextAlign.center,
@@ -551,17 +574,21 @@ class _StateNowPlaying extends State<NowPlaying>
                             GestureDetector(
                               onTap: () {
                                 Navigator.of(context).push(
-                                    new MaterialPageRoute(builder: (context) {
-                                  return new ArtistCard(widget.db, song);
-                                }));
+                                  new MaterialPageRoute(
+                                    builder: (context) {
+                                      return new ArtistCard(widget.db, song);
+                                    },
+                                  ),
+                                );
                               },
                               child: new Text(
                                 "${song.artist}\n",
                                 style: new TextStyle(
-                                    color: Colors.black.withOpacity(0.7),
-                                    fontSize: 14.0,
-                                    letterSpacing: 1.8,
-                                    height: 1.5),
+                                  color: Colors.black.withOpacity(0.7),
+                                  fontSize: 14.0,
+                                  letterSpacing: 1.8,
+                                  height: 1.5,
+                                ),
                                 maxLines: 1,
                                 overflow: TextOverflow.ellipsis,
                                 textAlign: TextAlign.center,
@@ -581,23 +608,24 @@ class _StateNowPlaying extends State<NowPlaying>
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
                             new IconButton(
-                                icon: isFav == 0
-                                    ? new Icon(
-                                        Icons.favorite_border,
-                                        color: Colors.blueGrey,
-                                        size: 15.0,
-                                      )
-                                    : new Icon(
-                                        Icons.favorite,
-                                        color: Colors.blueGrey,
-                                        size: 15.0,
-                                      ),
-                                onPressed: () {
-                                  setFav(song);
-                                }),
+                              icon: isFav == 0
+                                  ? new Icon(
+                                      Icons.favorite_border,
+                                      color: Colors.blueGrey,
+                                      size: 15.0,
+                                    )
+                                  : new Icon(
+                                      Icons.favorite,
+                                      color: Colors.blueGrey,
+                                      size: 15.0,
+                                    ),
+                              onPressed: () {
+                                setFav(song);
+                              },
+                            ),
                             Padding(
-                                padding:
-                                    EdgeInsets.symmetric(horizontal: 15.0)),
+                              padding: EdgeInsets.symmetric(horizontal: 15.0),
+                            ),
                             new IconButton(
                               splashColor: Colors.blueGrey[200],
                               highlightColor: Colors.transparent,
@@ -613,8 +641,9 @@ class _StateNowPlaying extends State<NowPlaying>
                               child: FloatingActionButton(
                                 backgroundColor: _animateColor.value,
                                 child: new AnimatedIcon(
-                                    icon: AnimatedIcons.pause_play,
-                                    progress: _animateIcon),
+                                  icon: AnimatedIcons.pause_play,
+                                  progress: _animateIcon,
+                                ),
                                 onPressed: playPause,
                               ),
                             ),
@@ -630,23 +659,24 @@ class _StateNowPlaying extends State<NowPlaying>
                               onPressed: next,
                             ),
                             Padding(
-                                padding:
-                                    EdgeInsets.symmetric(horizontal: 15.0)),
+                              padding: EdgeInsets.symmetric(horizontal: 15.0),
+                            ),
                             new IconButton(
-                                icon: (repeatOn == 1)
-                                    ? Icon(
-                                        Icons.repeat,
-                                        color: Colors.blueGrey,
-                                        size: 15.0,
-                                      )
-                                    : Icon(
-                                        Icons.repeat,
-                                        color: Colors.blueGrey.withOpacity(0.5),
-                                        size: 15.0,
-                                      ),
-                                onPressed: () {
-                                  repeat1();
-                                }),
+                              icon: (repeatOn == 1)
+                                  ? Icon(
+                                      Icons.repeat,
+                                      color: Colors.blueGrey,
+                                      size: 15.0,
+                                    )
+                                  : Icon(
+                                      Icons.repeat,
+                                      color: Colors.blueGrey.withOpacity(0.5),
+                                      size: 15.0,
+                                    ),
+                              onPressed: () {
+                                repeat1();
+                              },
+                            ),
                           ],
                         ),
                       ),
@@ -661,18 +691,19 @@ class _StateNowPlaying extends State<NowPlaying>
                       child: Text(
                         "UP NEXT",
                         style: TextStyle(
-                            color: Colors.black.withOpacity(0.8),
-                            letterSpacing: 2.0,
-                            fontWeight: FontWeight.bold),
+                          color: Colors.black.withOpacity(0.8),
+                          letterSpacing: 2.0,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                       splashColor: Colors.blueGrey[200].withOpacity(0.1),
                     ),
-                  )
+                  ),
                 ],
               ),
             ),
           ),
-        )
+        ),
       ],
     );
   }
@@ -690,12 +721,13 @@ class _StateNowPlaying extends State<NowPlaying>
             top: 0.0,
             left: 0.0,
             child: Container(
-                height: MediaQuery.of(context).size.height,
-                width: height - height * 0.12,
-                color: Colors.white,
-                child: getImage(song) != null
-                    ? Image.file(getImage(song), fit: BoxFit.cover)
-                    : Image.asset("images/music.jpg")),
+              height: MediaQuery.of(context).size.height,
+              width: height - height * 0.12,
+              color: Colors.white,
+              child: getImage(song) != null
+                  ? Image.file(getImage(song), fit: BoxFit.cover)
+                  : Image.asset("images/music.jpg"),
+            ),
           ),
           BackdropFilter(
             filter: ui.ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),
@@ -710,8 +742,9 @@ class _StateNowPlaying extends State<NowPlaying>
             alignment: Alignment.topLeft,
             child: Padding(
               padding: EdgeInsets.only(
-                  left: MediaQuery.of(context).padding.top,
-                  top: MediaQuery.of(context).padding.top),
+                left: MediaQuery.of(context).padding.top,
+                top: MediaQuery.of(context).padding.top,
+              ),
               child: Container(
                 width: height - 2 * MediaQuery.of(context).padding.top,
                 height: height - 2 * MediaQuery.of(context).padding.top,
@@ -725,11 +758,13 @@ class _StateNowPlaying extends State<NowPlaying>
                             elevation: 22.0,
                             child: Container(
                               decoration: BoxDecoration(
-                                  color: Colors.transparent,
-                                  borderRadius: BorderRadius.circular(6.0),
-                                  image: DecorationImage(
-                                      image: FileImage(getImage(song)),
-                                      fit: BoxFit.cover)),
+                                color: Colors.transparent,
+                                borderRadius: BorderRadius.circular(6.0),
+                                image: DecorationImage(
+                                  image: FileImage(getImage(song)),
+                                  fit: BoxFit.cover,
+                                ),
+                              ),
                               child: Stack(
                                 children: <Widget>[
                                   Positioned(
@@ -737,11 +772,14 @@ class _StateNowPlaying extends State<NowPlaying>
                                     right: -width * 0.15,
                                     child: Container(
                                       decoration: ShapeDecoration(
-                                          color: Colors.white,
-                                          shape: BeveledRectangleBorder(
-                                              borderRadius: BorderRadius.only(
-                                                  topLeft: Radius.circular(
-                                                      width * 0.15)))),
+                                        color: Colors.white,
+                                        shape: BeveledRectangleBorder(
+                                          borderRadius: BorderRadius.only(
+                                            topLeft:
+                                                Radius.circular(width * 0.15),
+                                          ),
+                                        ),
+                                      ),
                                       height: width * 0.15 * 2,
                                       width: width * 0.15 * 2,
                                     ),
@@ -751,13 +789,16 @@ class _StateNowPlaying extends State<NowPlaying>
                                     right: 0.0,
                                     child: Padding(
                                       padding: EdgeInsets.only(
-                                          right: 4.0, bottom: 6.0),
+                                        right: 4.0,
+                                        bottom: 6.0,
+                                      ),
                                       child: Text(
                                         durationText,
                                         style: TextStyle(
-                                            color: Colors.black,
-                                            fontWeight: FontWeight.w600,
-                                            fontSize: 18.0),
+                                          color: Colors.black,
+                                          fontWeight: FontWeight.w600,
+                                          fontSize: 18.0,
+                                        ),
                                       ),
                                     ),
                                   ),
@@ -773,7 +814,7 @@ class _StateNowPlaying extends State<NowPlaying>
                 ),
               ),
             ),
-          )
+          ),
         ],
       ),
     );

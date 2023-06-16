@@ -7,9 +7,10 @@ import 'package:amiidex/models/region.dart';
 import 'package:amiidex/models/serie.dart';
 
 class ConfigModel {
-  ConfigModel.fromJson(Map<String, dynamic> json)
-      : assert(json['regions'] != null),
-        assert(json['lineup'] != null) {
+  ConfigModel.fromJson(
+    Map<String, dynamic> json,
+  ) : assert(json['regions'] != null),
+      assert(json['lineup'] != null) {
     json['regions'].forEach((dynamic region) {
       final RegionModel r = RegionModel.fromJson(region);
       assert(_regions.containsKey(r.lKey) == false);
@@ -35,8 +36,8 @@ class ConfigModel {
   final Map<String, RegionModel> _regions = <String, RegionModel>{};
   final Map<String, CountryModel> _countries = <String, CountryModel>{};
 
-  UnmodifiableMapView<String, RegionModel> get regions =>
-      UnmodifiableMapView<String, RegionModel>(_regions);
+  UnmodifiableMapView<String, RegionModel>
+  get regions => UnmodifiableMapView<String, RegionModel>(_regions);
 
   RegionModel region(String regionID) {
     assert(_regions.containsKey(regionID));
@@ -45,8 +46,8 @@ class ConfigModel {
 
   RegionModel get defaultRegion => _regions.values.first;
 
-  UnmodifiableMapView<String, CountryModel> get countries =>
-      UnmodifiableMapView<String, CountryModel>(_countries);
+  UnmodifiableMapView<String, CountryModel>
+  get countries => UnmodifiableMapView<String, CountryModel>(_countries);
 
   CountryModel country(String countryID) {
     assert(_countries.containsKey(countryID));
@@ -79,11 +80,12 @@ class ConfigModel {
   final Map<String, SerieModel> _series = <String, SerieModel>{};
   final Map<String, AmiiboModel> _amiibo = <String, AmiiboModel>{};
 
-  List<SerieModel> get serieList =>
-      List<SerieModel>.from(_series.values.toList());
+  List<SerieModel> get serieList => List<SerieModel>.from(
+    _series.values.toList(),
+  );
 
-  UnmodifiableMapView<String, SerieModel> get seriesMap =>
-      UnmodifiableMapView<String, SerieModel>(_series);
+  UnmodifiableMapView<String, SerieModel>
+  get seriesMap => UnmodifiableMapView<String, SerieModel>(_series);
 
   SerieModel serie(String serieID) {
     assert(isValidSerieID(serieID));
@@ -94,11 +96,12 @@ class ConfigModel {
     return _series.containsKey(serieID);
   }
 
-  List<AmiiboModel> get amiiboList =>
-      List<AmiiboModel>.from(_amiibo.values.toList());
+  List<AmiiboModel> get amiiboList => List<AmiiboModel>.from(
+    _amiibo.values.toList(),
+  );
 
-  UnmodifiableMapView<String, AmiiboModel> get amiibos =>
-      UnmodifiableMapView<String, AmiiboModel>(_amiibo);
+  UnmodifiableMapView<String, AmiiboModel>
+  get amiibos => UnmodifiableMapView<String, AmiiboModel>(_amiibo);
 
   AmiiboModel amiibo(String amiiboID) {
     assert(_amiibo.containsKey(amiiboID));

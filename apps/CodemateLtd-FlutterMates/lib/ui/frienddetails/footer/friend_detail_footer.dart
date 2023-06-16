@@ -32,10 +32,7 @@ class _FriendShowcaseState extends State<FriendShowcase>
       new SkillsShowcase(),
       new ArticlesShowcase(),
     ];
-    _controller = new TabController(
-      length: _tabs.length,
-      vsync: this,
-    );
+    _controller = new TabController(length: _tabs.length, vsync: this);
   }
 
   @override
@@ -51,10 +48,7 @@ class _FriendShowcaseState extends State<FriendShowcase>
           ),
           new SizedBox.fromSize(
             size: const Size.fromHeight(300.0),
-            child: new TabBarView(
-              controller: _controller,
-              children: _pages,
-            ),
+            child: new TabBarView(controller: _controller, children: _pages),
           ),
         ],
       ),

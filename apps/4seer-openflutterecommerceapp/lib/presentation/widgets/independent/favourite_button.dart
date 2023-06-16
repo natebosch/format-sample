@@ -7,13 +7,13 @@ class OpenFlutterFavouriteButton extends StatelessWidget {
   final double size;
   final double iconSize;
 
-  OpenFlutterFavouriteButton(
-      {Key key,
-      this.size,
-      this.iconSize,
-      @required this.favourite,
-      @required this.setFavourite})
-      : super(key: key);
+  OpenFlutterFavouriteButton({
+    Key key,
+    this.size,
+    this.iconSize,
+    @required this.favourite,
+    @required this.setFavourite,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -31,10 +31,16 @@ class OpenFlutterFavouriteButton extends StatelessWidget {
         height: size ?? 50,
         width: size ?? 50,
         child: favourite
-            ? Icon(Icons.favorite,
-                size: iconSize ?? 20, color: _theme.accentColor)
-            : Icon(Icons.favorite_border,
-                size: iconSize ?? 20, color: _theme.primaryColorLight),
+            ? Icon(
+                Icons.favorite,
+                size: iconSize ?? 20,
+                color: _theme.accentColor,
+              )
+            : Icon(
+                Icons.favorite_border,
+                size: iconSize ?? 20,
+                color: _theme.primaryColorLight,
+              ),
       ),
     );
   }

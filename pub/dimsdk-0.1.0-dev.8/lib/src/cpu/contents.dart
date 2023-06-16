@@ -33,12 +33,14 @@ import 'package:dimp/dimp.dart';
 import '../messenger.dart';
 import 'content.dart';
 
-
 class ForwardContentProcessor extends BaseContentProcessor {
   ForwardContentProcessor(super.facebook, super.messenger);
 
   @override
-  Future<List<Content>> processContent(Content content, ReliableMessage rMsg) async {
+  Future<List<Content>> processContent(
+    Content content,
+    ReliableMessage rMsg,
+  ) async {
     assert(content is ForwardContent, 'forward command error: $content');
     List<ReliableMessage> secrets = (content as ForwardContent).secrets;
     // call messenger to process it
@@ -50,7 +52,8 @@ class ForwardContentProcessor extends BaseContentProcessor {
       results = await transceiver.processReliableMessage(item);
       /*if (results.isEmpty) {
         res = ForwardContent.create(secrets: []);
-      } else */if (results.length == 1) {
+      } else */
+      if (results.length == 1) {
         res = ForwardContent.create(forward: results[0]);
       } else {
         res = ForwardContent.create(secrets: results);
@@ -59,15 +62,16 @@ class ForwardContentProcessor extends BaseContentProcessor {
     }
     return responses;
   }
-
 }
-
 
 class ArrayContentProcessor extends BaseContentProcessor {
   ArrayContentProcessor(super.facebook, super.messenger);
 
   @override
-  Future<List<Content>> processContent(Content content, ReliableMessage rMsg) async {
+  Future<List<Content>> processContent(
+    Content content,
+    ReliableMessage rMsg,
+  ) async {
     assert(content is ArrayContent, 'array command error: $content');
     List<Content> array = (content as ArrayContent).contents;
     // call messenger to process it
@@ -79,7 +83,8 @@ class ArrayContentProcessor extends BaseContentProcessor {
       results = await transceiver.processContent(item, rMsg);
       /*if (results.isEmpty) {
         res = ArrayContent.create([]);
-      } else */if (results.length == 1) {
+      } else */
+      if (results.length == 1) {
         res = results[0];
       } else {
         res = ArrayContent.create(results);
@@ -88,5 +93,4 @@ class ArrayContentProcessor extends BaseContentProcessor {
     }
     return responses;
   }
-
 }

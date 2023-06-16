@@ -13,16 +13,10 @@ class DescriptionText extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          'Summary',
-          style: textTheme.display1.apply(fontSizeDelta: 2),
-        ),
+        Text('Summary', style: textTheme.display1.apply(fontSizeDelta: 2)),
         Padding(
           padding: const EdgeInsets.only(top: 8),
-          child: Text(
-            text,
-            style: textTheme.body1,
-          ),
+          child: Text(text, style: textTheme.body1),
         ),
         // No expand-collapse in this tutorial, we just slap the "more"
         // button below the text like in the mockup.
@@ -34,11 +28,7 @@ class DescriptionText extends StatelessWidget {
               'more',
               style: textTheme.display2.copyWith(color: theme.accentColor),
             ),
-            Icon(
-              Icons.keyboard_arrow_down,
-              size: 18,
-              color: theme.accentColor,
-            ),
+            Icon(Icons.keyboard_arrow_down, size: 18, color: theme.accentColor),
           ],
         ),
       ],

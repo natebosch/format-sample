@@ -1,20 +1,17 @@
 import 'package:flutter/material.dart';
 
 class BookmarkedMarker extends StatelessWidget {
-  const BookmarkedMarker({
-    Key? key,
-    required this.size,
-    required this.color,
-  }) : super(key: key);
+  const BookmarkedMarker({Key? key, required this.size, required this.color})
+    : super(key: key);
 
   final Size size;
   final Color color;
 
   @override
   Widget build(BuildContext context) => CustomPaint(
-        size: size,
-        painter: BookmarkedMarkerPainter(color: color),
-      );
+    size: size,
+    painter: BookmarkedMarkerPainter(color: color),
+  );
 }
 
 class BookmarkedMarkerPainter extends CustomPainter {

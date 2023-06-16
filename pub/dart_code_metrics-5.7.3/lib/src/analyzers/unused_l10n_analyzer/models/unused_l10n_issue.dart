@@ -12,8 +12,5 @@ class UnusedL10nIssue {
   ///
   /// The issue is associated with the given [location]. Used for
   /// creating an unused localization report.
-  const UnusedL10nIssue({
-    required this.memberName,
-    required this.location,
-  });
+  const UnusedL10nIssue({required this.memberName, required this.location});
 }

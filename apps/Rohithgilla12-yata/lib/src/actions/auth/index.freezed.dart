@@ -14,11 +14,12 @@ class _$LoginTearOff {
   const _$LoginTearOff();
 
 // ignore: unused_element
-  Login$ start(
-      {@required String email,
-      @required String password,
-      @required void Function(AppAction) result,
-      String pendingId = _kLoginPendingId}) {
+  Login$ start({
+    @required String email,
+    @required String password,
+    @required void Function(AppAction) result,
+    String pendingId = _kLoginPendingId,
+  }) {
     return Login$(
       email: email,
       password: password,
@@ -28,20 +29,16 @@ class _$LoginTearOff {
   }
 
 // ignore: unused_element
-  LoginSuccessful successful(AppUser user,
-      [String pendingId = _kLoginPendingId]) {
-    return LoginSuccessful(
-      user,
-      pendingId,
-    );
+  LoginSuccessful successful(
+    AppUser user, [
+    String pendingId = _kLoginPendingId,
+  ]) {
+    return LoginSuccessful(user, pendingId);
   }
 
 // ignore: unused_element
   LoginError error(Object error, [String pendingId = _kLoginPendingId]) {
-    return LoginError(
-      error,
-      pendingId,
-    );
+    return LoginError(error, pendingId);
   }
 }
 
@@ -56,15 +53,23 @@ mixin _$Login {
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required
-        Result start(String email, String password,
-            void Function(AppAction) result, String pendingId),
+    Result start(
+      String email,
+      String password,
+      void Function(AppAction) result,
+      String pendingId,
+    ),
     @required Result successful(AppUser user, String pendingId),
     @required Result error(Object error, String pendingId),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result start(String email, String password, void Function(AppAction) result,
-        String pendingId),
+    Result start(
+      String email,
+      String password,
+      void Function(AppAction) result,
+      String pendingId,
+    ),
     Result successful(AppUser user, String pendingId),
     Result error(Object error, String pendingId),
     @required Result orElse(),
@@ -102,9 +107,7 @@ class _$LoginCopyWithImpl<$Res> implements $LoginCopyWith<$Res> {
   final $Res Function(Login) _then;
 
   @override
-  $Res call({
-    Object pendingId = freezed,
-  }) {
+  $Res call({Object pendingId = freezed}) {
     return _then(_value.copyWith(
       pendingId: pendingId == freezed ? _value.pendingId : pendingId as String,
     ));
@@ -116,18 +119,19 @@ abstract class $Login$CopyWith<$Res> implements $LoginCopyWith<$Res> {
   factory $Login$CopyWith(Login$ value, $Res Function(Login$) then) =
       _$Login$CopyWithImpl<$Res>;
   @override
-  $Res call(
-      {String email,
-      String password,
-      void Function(AppAction) result,
-      String pendingId});
+  $Res call({
+    String email,
+    String password,
+    void Function(AppAction) result,
+    String pendingId,
+  });
 }
 
 /// @nodoc
 class _$Login$CopyWithImpl<$Res> extends _$LoginCopyWithImpl<$Res>
     implements $Login$CopyWith<$Res> {
   _$Login$CopyWithImpl(Login$ _value, $Res Function(Login$) _then)
-      : super(_value, (v) => _then(v as Login$));
+    : super(_value, (v) => _then(v as Login$));
 
   @override
   Login$ get _value => super._value as Login$;
@@ -154,15 +158,15 @@ class _$Login$CopyWithImpl<$Res> extends _$LoginCopyWithImpl<$Res>
 
 /// @nodoc
 class _$Login$ implements Login$ {
-  const _$Login$(
-      {@required this.email,
-      @required this.password,
-      @required this.result,
-      this.pendingId = _kLoginPendingId})
-      : assert(email != null),
-        assert(password != null),
-        assert(result != null),
-        assert(pendingId != null);
+  const _$Login$({
+    @required this.email,
+    @required this.password,
+    @required this.result,
+    this.pendingId = _kLoginPendingId,
+  }) : assert(email != null),
+       assert(password != null),
+       assert(result != null),
+       assert(pendingId != null);
 
   @override
   final String email;
@@ -186,13 +190,17 @@ class _$Login$ implements Login$ {
             (identical(other.email, email) ||
                 const DeepCollectionEquality().equals(other.email, email)) &&
             (identical(other.password, password) ||
-                const DeepCollectionEquality()
-                    .equals(other.password, password)) &&
+                const DeepCollectionEquality().equals(
+                  other.password,
+                  password,
+                )) &&
             (identical(other.result, result) ||
                 const DeepCollectionEquality().equals(other.result, result)) &&
             (identical(other.pendingId, pendingId) ||
-                const DeepCollectionEquality()
-                    .equals(other.pendingId, pendingId)));
+                const DeepCollectionEquality().equals(
+                  other.pendingId,
+                  pendingId,
+                )));
   }
 
   @override
@@ -204,15 +212,21 @@ class _$Login$ implements Login$ {
       const DeepCollectionEquality().hash(pendingId);
 
   @override
-  $Login$CopyWith<Login$> get copyWith =>
-      _$Login$CopyWithImpl<Login$>(this, _$identity);
+  $Login$CopyWith<Login$> get copyWith => _$Login$CopyWithImpl<Login$>(
+    this,
+    _$identity,
+  );
 
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required
-        Result start(String email, String password,
-            void Function(AppAction) result, String pendingId),
+    Result start(
+      String email,
+      String password,
+      void Function(AppAction) result,
+      String pendingId,
+    ),
     @required Result successful(AppUser user, String pendingId),
     @required Result error(Object error, String pendingId),
   }) {
@@ -225,8 +239,12 @@ class _$Login$ implements Login$ {
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result start(String email, String password, void Function(AppAction) result,
-        String pendingId),
+    Result start(
+      String email,
+      String password,
+      void Function(AppAction) result,
+      String pendingId,
+    ),
     Result successful(AppUser user, String pendingId),
     Result error(Object error, String pendingId),
     @required Result orElse(),
@@ -268,11 +286,12 @@ class _$Login$ implements Login$ {
 }
 
 abstract class Login$ implements Login, ActionStart {
-  const factory Login$(
-      {@required String email,
-      @required String password,
-      @required void Function(AppAction) result,
-      String pendingId}) = _$Login$;
+  const factory Login$({
+    @required String email,
+    @required String password,
+    @required void Function(AppAction) result,
+    String pendingId,
+  }) = _$Login$;
 
   String get email;
   String get password;
@@ -286,8 +305,9 @@ abstract class Login$ implements Login, ActionStart {
 /// @nodoc
 abstract class $LoginSuccessfulCopyWith<$Res> implements $LoginCopyWith<$Res> {
   factory $LoginSuccessfulCopyWith(
-          LoginSuccessful value, $Res Function(LoginSuccessful) then) =
-      _$LoginSuccessfulCopyWithImpl<$Res>;
+    LoginSuccessful value,
+    $Res Function(LoginSuccessful) then,
+  ) = _$LoginSuccessfulCopyWithImpl<$Res>;
   @override
   $Res call({AppUser user, String pendingId});
 }
@@ -296,17 +316,15 @@ abstract class $LoginSuccessfulCopyWith<$Res> implements $LoginCopyWith<$Res> {
 class _$LoginSuccessfulCopyWithImpl<$Res> extends _$LoginCopyWithImpl<$Res>
     implements $LoginSuccessfulCopyWith<$Res> {
   _$LoginSuccessfulCopyWithImpl(
-      LoginSuccessful _value, $Res Function(LoginSuccessful) _then)
-      : super(_value, (v) => _then(v as LoginSuccessful));
+    LoginSuccessful _value,
+    $Res Function(LoginSuccessful) _then,
+  ) : super(_value, (v) => _then(v as LoginSuccessful));
 
   @override
   LoginSuccessful get _value => super._value as LoginSuccessful;
 
   @override
-  $Res call({
-    Object user = freezed,
-    Object pendingId = freezed,
-  }) {
+  $Res call({Object user = freezed, Object pendingId = freezed}) {
     return _then(LoginSuccessful(
       user == freezed ? _value.user : user as AppUser,
       pendingId == freezed ? _value.pendingId : pendingId as String,
@@ -318,9 +336,11 @@ class _$LoginSuccessfulCopyWithImpl<$Res> extends _$LoginCopyWithImpl<$Res>
 
 /// @nodoc
 class _$LoginSuccessful implements LoginSuccessful {
-  const _$LoginSuccessful(this.user, [this.pendingId = _kLoginPendingId])
-      : assert(user != null),
-        assert(pendingId != null);
+  const _$LoginSuccessful(
+    this.user, [
+    this.pendingId = _kLoginPendingId,
+  ]) : assert(user != null),
+       assert(pendingId != null);
 
   @override
   final AppUser user;
@@ -340,8 +360,10 @@ class _$LoginSuccessful implements LoginSuccessful {
             (identical(other.user, user) ||
                 const DeepCollectionEquality().equals(other.user, user)) &&
             (identical(other.pendingId, pendingId) ||
-                const DeepCollectionEquality()
-                    .equals(other.pendingId, pendingId)));
+                const DeepCollectionEquality().equals(
+                  other.pendingId,
+                  pendingId,
+                )));
   }
 
   @override
@@ -351,15 +373,22 @@ class _$LoginSuccessful implements LoginSuccessful {
       const DeepCollectionEquality().hash(pendingId);
 
   @override
-  $LoginSuccessfulCopyWith<LoginSuccessful> get copyWith =>
-      _$LoginSuccessfulCopyWithImpl<LoginSuccessful>(this, _$identity);
+  $LoginSuccessfulCopyWith<LoginSuccessful>
+  get copyWith => _$LoginSuccessfulCopyWithImpl<LoginSuccessful>(
+    this,
+    _$identity,
+  );
 
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required
-        Result start(String email, String password,
-            void Function(AppAction) result, String pendingId),
+    Result start(
+      String email,
+      String password,
+      void Function(AppAction) result,
+      String pendingId,
+    ),
     @required Result successful(AppUser user, String pendingId),
     @required Result error(Object error, String pendingId),
   }) {
@@ -372,8 +401,12 @@ class _$LoginSuccessful implements LoginSuccessful {
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result start(String email, String password, void Function(AppAction) result,
-        String pendingId),
+    Result start(
+      String email,
+      String password,
+      void Function(AppAction) result,
+      String pendingId,
+    ),
     Result successful(AppUser user, String pendingId),
     Result error(Object error, String pendingId),
     @required Result orElse(),
@@ -428,8 +461,9 @@ abstract class LoginSuccessful implements Login, ActionDone {
 /// @nodoc
 abstract class $LoginErrorCopyWith<$Res> implements $LoginCopyWith<$Res> {
   factory $LoginErrorCopyWith(
-          LoginError value, $Res Function(LoginError) then) =
-      _$LoginErrorCopyWithImpl<$Res>;
+    LoginError value,
+    $Res Function(LoginError) then,
+  ) = _$LoginErrorCopyWithImpl<$Res>;
   @override
   $Res call({Object error, String pendingId});
 }
@@ -438,16 +472,13 @@ abstract class $LoginErrorCopyWith<$Res> implements $LoginCopyWith<$Res> {
 class _$LoginErrorCopyWithImpl<$Res> extends _$LoginCopyWithImpl<$Res>
     implements $LoginErrorCopyWith<$Res> {
   _$LoginErrorCopyWithImpl(LoginError _value, $Res Function(LoginError) _then)
-      : super(_value, (v) => _then(v as LoginError));
+    : super(_value, (v) => _then(v as LoginError));
 
   @override
   LoginError get _value => super._value as LoginError;
 
   @override
-  $Res call({
-    Object error = freezed,
-    Object pendingId = freezed,
-  }) {
+  $Res call({Object error = freezed, Object pendingId = freezed}) {
     return _then(LoginError(
       error == freezed ? _value.error : error,
       pendingId == freezed ? _value.pendingId : pendingId as String,
@@ -460,9 +491,11 @@ class _$LoginErrorCopyWithImpl<$Res> extends _$LoginCopyWithImpl<$Res>
 
 /// @nodoc
 class _$LoginError implements LoginError {
-  const _$LoginError(this.error, [this.pendingId = _kLoginPendingId])
-      : assert(error != null),
-        assert(pendingId != null);
+  const _$LoginError(
+    this.error, [
+    this.pendingId = _kLoginPendingId,
+  ]) : assert(error != null),
+       assert(pendingId != null);
 
   @override
   final Object error;
@@ -482,8 +515,10 @@ class _$LoginError implements LoginError {
             (identical(other.error, error) ||
                 const DeepCollectionEquality().equals(other.error, error)) &&
             (identical(other.pendingId, pendingId) ||
-                const DeepCollectionEquality()
-                    .equals(other.pendingId, pendingId)));
+                const DeepCollectionEquality().equals(
+                  other.pendingId,
+                  pendingId,
+                )));
   }
 
   @override
@@ -493,15 +528,19 @@ class _$LoginError implements LoginError {
       const DeepCollectionEquality().hash(pendingId);
 
   @override
-  $LoginErrorCopyWith<LoginError> get copyWith =>
-      _$LoginErrorCopyWithImpl<LoginError>(this, _$identity);
+  $LoginErrorCopyWith<LoginError>
+  get copyWith => _$LoginErrorCopyWithImpl<LoginError>(this, _$identity);
 
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required
-        Result start(String email, String password,
-            void Function(AppAction) result, String pendingId),
+    Result start(
+      String email,
+      String password,
+      void Function(AppAction) result,
+      String pendingId,
+    ),
     @required Result successful(AppUser user, String pendingId),
     @required Result error(Object error, String pendingId),
   }) {
@@ -514,8 +553,12 @@ class _$LoginError implements LoginError {
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result start(String email, String password, void Function(AppAction) result,
-        String pendingId),
+    Result start(
+      String email,
+      String password,
+      void Function(AppAction) result,
+      String pendingId,
+    ),
     Result successful(AppUser user, String pendingId),
     Result error(Object error, String pendingId),
     @required Result orElse(),
@@ -582,9 +625,7 @@ class _$LogoutTearOff {
 
 // ignore: unused_element
   LogoutError error(Object error) {
-    return LogoutError(
-      error,
-    );
+    return LogoutError(error);
   }
 }
 
@@ -647,7 +688,7 @@ abstract class $Logout$CopyWith<$Res> {
 class _$Logout$CopyWithImpl<$Res> extends _$LogoutCopyWithImpl<$Res>
     implements $Logout$CopyWith<$Res> {
   _$Logout$CopyWithImpl(Logout$ _value, $Res Function(Logout$) _then)
-      : super(_value, (v) => _then(v as Logout$));
+    : super(_value, (v) => _then(v as Logout$));
 
   @override
   Logout$ get _value => super._value as Logout$;
@@ -734,16 +775,18 @@ abstract class Logout$ implements Logout {
 /// @nodoc
 abstract class $LogoutSuccessfulCopyWith<$Res> {
   factory $LogoutSuccessfulCopyWith(
-          LogoutSuccessful value, $Res Function(LogoutSuccessful) then) =
-      _$LogoutSuccessfulCopyWithImpl<$Res>;
+    LogoutSuccessful value,
+    $Res Function(LogoutSuccessful) then,
+  ) = _$LogoutSuccessfulCopyWithImpl<$Res>;
 }
 
 /// @nodoc
 class _$LogoutSuccessfulCopyWithImpl<$Res> extends _$LogoutCopyWithImpl<$Res>
     implements $LogoutSuccessfulCopyWith<$Res> {
   _$LogoutSuccessfulCopyWithImpl(
-      LogoutSuccessful _value, $Res Function(LogoutSuccessful) _then)
-      : super(_value, (v) => _then(v as LogoutSuccessful));
+    LogoutSuccessful _value,
+    $Res Function(LogoutSuccessful) _then,
+  ) : super(_value, (v) => _then(v as LogoutSuccessful));
 
   @override
   LogoutSuccessful get _value => super._value as LogoutSuccessful;
@@ -830,8 +873,9 @@ abstract class LogoutSuccessful implements Logout {
 /// @nodoc
 abstract class $LogoutErrorCopyWith<$Res> {
   factory $LogoutErrorCopyWith(
-          LogoutError value, $Res Function(LogoutError) then) =
-      _$LogoutErrorCopyWithImpl<$Res>;
+    LogoutError value,
+    $Res Function(LogoutError) then,
+  ) = _$LogoutErrorCopyWithImpl<$Res>;
   $Res call({Object error});
 }
 
@@ -839,19 +883,16 @@ abstract class $LogoutErrorCopyWith<$Res> {
 class _$LogoutErrorCopyWithImpl<$Res> extends _$LogoutCopyWithImpl<$Res>
     implements $LogoutErrorCopyWith<$Res> {
   _$LogoutErrorCopyWithImpl(
-      LogoutError _value, $Res Function(LogoutError) _then)
-      : super(_value, (v) => _then(v as LogoutError));
+    LogoutError _value,
+    $Res Function(LogoutError) _then,
+  ) : super(_value, (v) => _then(v as LogoutError));
 
   @override
   LogoutError get _value => super._value as LogoutError;
 
   @override
-  $Res call({
-    Object error = freezed,
-  }) {
-    return _then(LogoutError(
-      error == freezed ? _value.error : error,
-    ));
+  $Res call({Object error = freezed}) {
+    return _then(LogoutError(error == freezed ? _value.error : error));
   }
 }
 
@@ -859,7 +900,9 @@ class _$LogoutErrorCopyWithImpl<$Res> extends _$LogoutCopyWithImpl<$Res>
 
 /// @nodoc
 class _$LogoutError implements LogoutError {
-  const _$LogoutError(this.error) : assert(error != null);
+  const _$LogoutError(
+    this.error,
+  ) : assert(error != null);
 
   @override
   final Object error;
@@ -882,8 +925,8 @@ class _$LogoutError implements LogoutError {
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(error);
 
   @override
-  $LogoutErrorCopyWith<LogoutError> get copyWith =>
-      _$LogoutErrorCopyWithImpl<LogoutError>(this, _$identity);
+  $LogoutErrorCopyWith<LogoutError>
+  get copyWith => _$LogoutErrorCopyWithImpl<LogoutError>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -954,13 +997,14 @@ class _$SignUpTearOff {
   const _$SignUpTearOff();
 
 // ignore: unused_element
-  SignUp$ start(
-      {@required String email,
-      @required String password,
-      @required String firstName,
-      @required String lastName,
-      @required void Function(AppAction) result,
-      String pendingId = _kSignUpPendingId}) {
+  SignUp$ start({
+    @required String email,
+    @required String password,
+    @required String firstName,
+    @required String lastName,
+    @required void Function(AppAction) result,
+    String pendingId = _kSignUpPendingId,
+  }) {
     return SignUp$(
       email: email,
       password: password,
@@ -972,20 +1016,16 @@ class _$SignUpTearOff {
   }
 
 // ignore: unused_element
-  SignUpSuccessful successful(AppUser user,
-      [String pendingId = _kSignUpPendingId]) {
-    return SignUpSuccessful(
-      user,
-      pendingId,
-    );
+  SignUpSuccessful successful(
+    AppUser user, [
+    String pendingId = _kSignUpPendingId,
+  ]) {
+    return SignUpSuccessful(user, pendingId);
   }
 
 // ignore: unused_element
   SignUpError error(Object error, [String pendingId = _kSignUpPendingId]) {
-    return SignUpError(
-      error,
-      pendingId,
-    );
+    return SignUpError(error, pendingId);
   }
 }
 
@@ -1000,15 +1040,27 @@ mixin _$SignUp {
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required
-        Result start(String email, String password, String firstName,
-            String lastName, void Function(AppAction) result, String pendingId),
+    Result start(
+      String email,
+      String password,
+      String firstName,
+      String lastName,
+      void Function(AppAction) result,
+      String pendingId,
+    ),
     @required Result successful(AppUser user, String pendingId),
     @required Result error(Object error, String pendingId),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result start(String email, String password, String firstName,
-        String lastName, void Function(AppAction) result, String pendingId),
+    Result start(
+      String email,
+      String password,
+      String firstName,
+      String lastName,
+      void Function(AppAction) result,
+      String pendingId,
+    ),
     Result successful(AppUser user, String pendingId),
     Result error(Object error, String pendingId),
     @required Result orElse(),
@@ -1046,9 +1098,7 @@ class _$SignUpCopyWithImpl<$Res> implements $SignUpCopyWith<$Res> {
   final $Res Function(SignUp) _then;
 
   @override
-  $Res call({
-    Object pendingId = freezed,
-  }) {
+  $Res call({Object pendingId = freezed}) {
     return _then(_value.copyWith(
       pendingId: pendingId == freezed ? _value.pendingId : pendingId as String,
     ));
@@ -1060,20 +1110,21 @@ abstract class $SignUp$CopyWith<$Res> implements $SignUpCopyWith<$Res> {
   factory $SignUp$CopyWith(SignUp$ value, $Res Function(SignUp$) then) =
       _$SignUp$CopyWithImpl<$Res>;
   @override
-  $Res call(
-      {String email,
-      String password,
-      String firstName,
-      String lastName,
-      void Function(AppAction) result,
-      String pendingId});
+  $Res call({
+    String email,
+    String password,
+    String firstName,
+    String lastName,
+    void Function(AppAction) result,
+    String pendingId,
+  });
 }
 
 /// @nodoc
 class _$SignUp$CopyWithImpl<$Res> extends _$SignUpCopyWithImpl<$Res>
     implements $SignUp$CopyWith<$Res> {
   _$SignUp$CopyWithImpl(SignUp$ _value, $Res Function(SignUp$) _then)
-      : super(_value, (v) => _then(v as SignUp$));
+    : super(_value, (v) => _then(v as SignUp$));
 
   @override
   SignUp$ get _value => super._value as SignUp$;
@@ -1104,19 +1155,19 @@ class _$SignUp$CopyWithImpl<$Res> extends _$SignUpCopyWithImpl<$Res>
 
 /// @nodoc
 class _$SignUp$ implements SignUp$ {
-  const _$SignUp$(
-      {@required this.email,
-      @required this.password,
-      @required this.firstName,
-      @required this.lastName,
-      @required this.result,
-      this.pendingId = _kSignUpPendingId})
-      : assert(email != null),
-        assert(password != null),
-        assert(firstName != null),
-        assert(lastName != null),
-        assert(result != null),
-        assert(pendingId != null);
+  const _$SignUp$({
+    @required this.email,
+    @required this.password,
+    @required this.firstName,
+    @required this.lastName,
+    @required this.result,
+    this.pendingId = _kSignUpPendingId,
+  }) : assert(email != null),
+       assert(password != null),
+       assert(firstName != null),
+       assert(lastName != null),
+       assert(result != null),
+       assert(pendingId != null);
 
   @override
   final String email;
@@ -1144,19 +1195,27 @@ class _$SignUp$ implements SignUp$ {
             (identical(other.email, email) ||
                 const DeepCollectionEquality().equals(other.email, email)) &&
             (identical(other.password, password) ||
-                const DeepCollectionEquality()
-                    .equals(other.password, password)) &&
+                const DeepCollectionEquality().equals(
+                  other.password,
+                  password,
+                )) &&
             (identical(other.firstName, firstName) ||
-                const DeepCollectionEquality()
-                    .equals(other.firstName, firstName)) &&
+                const DeepCollectionEquality().equals(
+                  other.firstName,
+                  firstName,
+                )) &&
             (identical(other.lastName, lastName) ||
-                const DeepCollectionEquality()
-                    .equals(other.lastName, lastName)) &&
+                const DeepCollectionEquality().equals(
+                  other.lastName,
+                  lastName,
+                )) &&
             (identical(other.result, result) ||
                 const DeepCollectionEquality().equals(other.result, result)) &&
             (identical(other.pendingId, pendingId) ||
-                const DeepCollectionEquality()
-                    .equals(other.pendingId, pendingId)));
+                const DeepCollectionEquality().equals(
+                  other.pendingId,
+                  pendingId,
+                )));
   }
 
   @override
@@ -1170,15 +1229,23 @@ class _$SignUp$ implements SignUp$ {
       const DeepCollectionEquality().hash(pendingId);
 
   @override
-  $SignUp$CopyWith<SignUp$> get copyWith =>
-      _$SignUp$CopyWithImpl<SignUp$>(this, _$identity);
+  $SignUp$CopyWith<SignUp$> get copyWith => _$SignUp$CopyWithImpl<SignUp$>(
+    this,
+    _$identity,
+  );
 
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required
-        Result start(String email, String password, String firstName,
-            String lastName, void Function(AppAction) result, String pendingId),
+    Result start(
+      String email,
+      String password,
+      String firstName,
+      String lastName,
+      void Function(AppAction) result,
+      String pendingId,
+    ),
     @required Result successful(AppUser user, String pendingId),
     @required Result error(Object error, String pendingId),
   }) {
@@ -1191,8 +1258,14 @@ class _$SignUp$ implements SignUp$ {
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result start(String email, String password, String firstName,
-        String lastName, void Function(AppAction) result, String pendingId),
+    Result start(
+      String email,
+      String password,
+      String firstName,
+      String lastName,
+      void Function(AppAction) result,
+      String pendingId,
+    ),
     Result successful(AppUser user, String pendingId),
     Result error(Object error, String pendingId),
     @required Result orElse(),
@@ -1234,13 +1307,14 @@ class _$SignUp$ implements SignUp$ {
 }
 
 abstract class SignUp$ implements SignUp, ActionStart {
-  const factory SignUp$(
-      {@required String email,
-      @required String password,
-      @required String firstName,
-      @required String lastName,
-      @required void Function(AppAction) result,
-      String pendingId}) = _$SignUp$;
+  const factory SignUp$({
+    @required String email,
+    @required String password,
+    @required String firstName,
+    @required String lastName,
+    @required void Function(AppAction) result,
+    String pendingId,
+  }) = _$SignUp$;
 
   String get email;
   String get password;
@@ -1257,8 +1331,9 @@ abstract class SignUp$ implements SignUp, ActionStart {
 abstract class $SignUpSuccessfulCopyWith<$Res>
     implements $SignUpCopyWith<$Res> {
   factory $SignUpSuccessfulCopyWith(
-          SignUpSuccessful value, $Res Function(SignUpSuccessful) then) =
-      _$SignUpSuccessfulCopyWithImpl<$Res>;
+    SignUpSuccessful value,
+    $Res Function(SignUpSuccessful) then,
+  ) = _$SignUpSuccessfulCopyWithImpl<$Res>;
   @override
   $Res call({AppUser user, String pendingId});
 }
@@ -1267,17 +1342,15 @@ abstract class $SignUpSuccessfulCopyWith<$Res>
 class _$SignUpSuccessfulCopyWithImpl<$Res> extends _$SignUpCopyWithImpl<$Res>
     implements $SignUpSuccessfulCopyWith<$Res> {
   _$SignUpSuccessfulCopyWithImpl(
-      SignUpSuccessful _value, $Res Function(SignUpSuccessful) _then)
-      : super(_value, (v) => _then(v as SignUpSuccessful));
+    SignUpSuccessful _value,
+    $Res Function(SignUpSuccessful) _then,
+  ) : super(_value, (v) => _then(v as SignUpSuccessful));
 
   @override
   SignUpSuccessful get _value => super._value as SignUpSuccessful;
 
   @override
-  $Res call({
-    Object user = freezed,
-    Object pendingId = freezed,
-  }) {
+  $Res call({Object user = freezed, Object pendingId = freezed}) {
     return _then(SignUpSuccessful(
       user == freezed ? _value.user : user as AppUser,
       pendingId == freezed ? _value.pendingId : pendingId as String,
@@ -1289,9 +1362,11 @@ class _$SignUpSuccessfulCopyWithImpl<$Res> extends _$SignUpCopyWithImpl<$Res>
 
 /// @nodoc
 class _$SignUpSuccessful implements SignUpSuccessful {
-  const _$SignUpSuccessful(this.user, [this.pendingId = _kSignUpPendingId])
-      : assert(user != null),
-        assert(pendingId != null);
+  const _$SignUpSuccessful(
+    this.user, [
+    this.pendingId = _kSignUpPendingId,
+  ]) : assert(user != null),
+       assert(pendingId != null);
 
   @override
   final AppUser user;
@@ -1311,8 +1386,10 @@ class _$SignUpSuccessful implements SignUpSuccessful {
             (identical(other.user, user) ||
                 const DeepCollectionEquality().equals(other.user, user)) &&
             (identical(other.pendingId, pendingId) ||
-                const DeepCollectionEquality()
-                    .equals(other.pendingId, pendingId)));
+                const DeepCollectionEquality().equals(
+                  other.pendingId,
+                  pendingId,
+                )));
   }
 
   @override
@@ -1322,15 +1399,24 @@ class _$SignUpSuccessful implements SignUpSuccessful {
       const DeepCollectionEquality().hash(pendingId);
 
   @override
-  $SignUpSuccessfulCopyWith<SignUpSuccessful> get copyWith =>
-      _$SignUpSuccessfulCopyWithImpl<SignUpSuccessful>(this, _$identity);
+  $SignUpSuccessfulCopyWith<SignUpSuccessful>
+  get copyWith => _$SignUpSuccessfulCopyWithImpl<SignUpSuccessful>(
+    this,
+    _$identity,
+  );
 
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required
-        Result start(String email, String password, String firstName,
-            String lastName, void Function(AppAction) result, String pendingId),
+    Result start(
+      String email,
+      String password,
+      String firstName,
+      String lastName,
+      void Function(AppAction) result,
+      String pendingId,
+    ),
     @required Result successful(AppUser user, String pendingId),
     @required Result error(Object error, String pendingId),
   }) {
@@ -1343,8 +1429,14 @@ class _$SignUpSuccessful implements SignUpSuccessful {
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result start(String email, String password, String firstName,
-        String lastName, void Function(AppAction) result, String pendingId),
+    Result start(
+      String email,
+      String password,
+      String firstName,
+      String lastName,
+      void Function(AppAction) result,
+      String pendingId,
+    ),
     Result successful(AppUser user, String pendingId),
     Result error(Object error, String pendingId),
     @required Result orElse(),
@@ -1399,8 +1491,9 @@ abstract class SignUpSuccessful implements SignUp, ActionDone {
 /// @nodoc
 abstract class $SignUpErrorCopyWith<$Res> implements $SignUpCopyWith<$Res> {
   factory $SignUpErrorCopyWith(
-          SignUpError value, $Res Function(SignUpError) then) =
-      _$SignUpErrorCopyWithImpl<$Res>;
+    SignUpError value,
+    $Res Function(SignUpError) then,
+  ) = _$SignUpErrorCopyWithImpl<$Res>;
   @override
   $Res call({Object error, String pendingId});
 }
@@ -1409,17 +1502,15 @@ abstract class $SignUpErrorCopyWith<$Res> implements $SignUpCopyWith<$Res> {
 class _$SignUpErrorCopyWithImpl<$Res> extends _$SignUpCopyWithImpl<$Res>
     implements $SignUpErrorCopyWith<$Res> {
   _$SignUpErrorCopyWithImpl(
-      SignUpError _value, $Res Function(SignUpError) _then)
-      : super(_value, (v) => _then(v as SignUpError));
+    SignUpError _value,
+    $Res Function(SignUpError) _then,
+  ) : super(_value, (v) => _then(v as SignUpError));
 
   @override
   SignUpError get _value => super._value as SignUpError;
 
   @override
-  $Res call({
-    Object error = freezed,
-    Object pendingId = freezed,
-  }) {
+  $Res call({Object error = freezed, Object pendingId = freezed}) {
     return _then(SignUpError(
       error == freezed ? _value.error : error,
       pendingId == freezed ? _value.pendingId : pendingId as String,
@@ -1432,9 +1523,11 @@ class _$SignUpErrorCopyWithImpl<$Res> extends _$SignUpCopyWithImpl<$Res>
 
 /// @nodoc
 class _$SignUpError implements SignUpError {
-  const _$SignUpError(this.error, [this.pendingId = _kSignUpPendingId])
-      : assert(error != null),
-        assert(pendingId != null);
+  const _$SignUpError(
+    this.error, [
+    this.pendingId = _kSignUpPendingId,
+  ]) : assert(error != null),
+       assert(pendingId != null);
 
   @override
   final Object error;
@@ -1454,8 +1547,10 @@ class _$SignUpError implements SignUpError {
             (identical(other.error, error) ||
                 const DeepCollectionEquality().equals(other.error, error)) &&
             (identical(other.pendingId, pendingId) ||
-                const DeepCollectionEquality()
-                    .equals(other.pendingId, pendingId)));
+                const DeepCollectionEquality().equals(
+                  other.pendingId,
+                  pendingId,
+                )));
   }
 
   @override
@@ -1465,15 +1560,21 @@ class _$SignUpError implements SignUpError {
       const DeepCollectionEquality().hash(pendingId);
 
   @override
-  $SignUpErrorCopyWith<SignUpError> get copyWith =>
-      _$SignUpErrorCopyWithImpl<SignUpError>(this, _$identity);
+  $SignUpErrorCopyWith<SignUpError>
+  get copyWith => _$SignUpErrorCopyWithImpl<SignUpError>(this, _$identity);
 
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required
-        Result start(String email, String password, String firstName,
-            String lastName, void Function(AppAction) result, String pendingId),
+    Result start(
+      String email,
+      String password,
+      String firstName,
+      String lastName,
+      void Function(AppAction) result,
+      String pendingId,
+    ),
     @required Result successful(AppUser user, String pendingId),
     @required Result error(Object error, String pendingId),
   }) {
@@ -1486,8 +1587,14 @@ class _$SignUpError implements SignUpError {
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result start(String email, String password, String firstName,
-        String lastName, void Function(AppAction) result, String pendingId),
+    Result start(
+      String email,
+      String password,
+      String firstName,
+      String lastName,
+      void Function(AppAction) result,
+      String pendingId,
+    ),
     Result successful(AppUser user, String pendingId),
     Result error(Object error, String pendingId),
     @required Result orElse(),
@@ -1544,9 +1651,7 @@ class _$UpdateUserDetailsTearOff {
 
 // ignore: unused_element
   UpdateUserDetails$ call(AppUser user) {
-    return UpdateUserDetails$(
-      user,
-    );
+    return UpdateUserDetails$(user);
   }
 
 // ignore: unused_element
@@ -1556,9 +1661,7 @@ class _$UpdateUserDetailsTearOff {
 
 // ignore: unused_element
   UpdateUserDetailsError error(Object error) {
-    return UpdateUserDetailsError(
-      error,
-    );
+    return UpdateUserDetailsError(error);
   }
 }
 
@@ -1599,8 +1702,9 @@ mixin _$UpdateUserDetails {
 /// @nodoc
 abstract class $UpdateUserDetailsCopyWith<$Res> {
   factory $UpdateUserDetailsCopyWith(
-          UpdateUserDetails value, $Res Function(UpdateUserDetails) then) =
-      _$UpdateUserDetailsCopyWithImpl<$Res>;
+    UpdateUserDetails value,
+    $Res Function(UpdateUserDetails) then,
+  ) = _$UpdateUserDetailsCopyWithImpl<$Res>;
 }
 
 /// @nodoc
@@ -1616,8 +1720,9 @@ class _$UpdateUserDetailsCopyWithImpl<$Res>
 /// @nodoc
 abstract class $UpdateUserDetails$CopyWith<$Res> {
   factory $UpdateUserDetails$CopyWith(
-          UpdateUserDetails$ value, $Res Function(UpdateUserDetails$) then) =
-      _$UpdateUserDetails$CopyWithImpl<$Res>;
+    UpdateUserDetails$ value,
+    $Res Function(UpdateUserDetails$) then,
+  ) = _$UpdateUserDetails$CopyWithImpl<$Res>;
   $Res call({AppUser user});
 }
 
@@ -1626,25 +1731,26 @@ class _$UpdateUserDetails$CopyWithImpl<$Res>
     extends _$UpdateUserDetailsCopyWithImpl<$Res>
     implements $UpdateUserDetails$CopyWith<$Res> {
   _$UpdateUserDetails$CopyWithImpl(
-      UpdateUserDetails$ _value, $Res Function(UpdateUserDetails$) _then)
-      : super(_value, (v) => _then(v as UpdateUserDetails$));
+    UpdateUserDetails$ _value,
+    $Res Function(UpdateUserDetails$) _then,
+  ) : super(_value, (v) => _then(v as UpdateUserDetails$));
 
   @override
   UpdateUserDetails$ get _value => super._value as UpdateUserDetails$;
 
   @override
-  $Res call({
-    Object user = freezed,
-  }) {
-    return _then(UpdateUserDetails$(
-      user == freezed ? _value.user : user as AppUser,
-    ));
+  $Res call({Object user = freezed}) {
+    return _then(
+      UpdateUserDetails$(user == freezed ? _value.user : user as AppUser),
+    );
   }
 }
 
 /// @nodoc
 class _$UpdateUserDetails$ implements UpdateUserDetails$ {
-  const _$UpdateUserDetails$(this.user) : assert(user != null);
+  const _$UpdateUserDetails$(
+    this.user,
+  ) : assert(user != null);
 
   @override
   final AppUser user;
@@ -1667,8 +1773,11 @@ class _$UpdateUserDetails$ implements UpdateUserDetails$ {
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(user);
 
   @override
-  $UpdateUserDetails$CopyWith<UpdateUserDetails$> get copyWith =>
-      _$UpdateUserDetails$CopyWithImpl<UpdateUserDetails$>(this, _$identity);
+  $UpdateUserDetails$CopyWith<UpdateUserDetails$>
+  get copyWith => _$UpdateUserDetails$CopyWithImpl<UpdateUserDetails$>(
+    this,
+    _$identity,
+  );
 
   @override
   @optionalTypeArgs
@@ -1737,18 +1846,19 @@ abstract class UpdateUserDetails$ implements UpdateUserDetails {
 /// @nodoc
 abstract class $UpdateUserDetailsSuccessfulCopyWith<$Res> {
   factory $UpdateUserDetailsSuccessfulCopyWith(
-          UpdateUserDetailsSuccessful value,
-          $Res Function(UpdateUserDetailsSuccessful) then) =
-      _$UpdateUserDetailsSuccessfulCopyWithImpl<$Res>;
+    UpdateUserDetailsSuccessful value,
+    $Res Function(UpdateUserDetailsSuccessful) then,
+  ) = _$UpdateUserDetailsSuccessfulCopyWithImpl<$Res>;
 }
 
 /// @nodoc
 class _$UpdateUserDetailsSuccessfulCopyWithImpl<$Res>
     extends _$UpdateUserDetailsCopyWithImpl<$Res>
     implements $UpdateUserDetailsSuccessfulCopyWith<$Res> {
-  _$UpdateUserDetailsSuccessfulCopyWithImpl(UpdateUserDetailsSuccessful _value,
-      $Res Function(UpdateUserDetailsSuccessful) _then)
-      : super(_value, (v) => _then(v as UpdateUserDetailsSuccessful));
+  _$UpdateUserDetailsSuccessfulCopyWithImpl(
+    UpdateUserDetailsSuccessful _value,
+    $Res Function(UpdateUserDetailsSuccessful) _then,
+  ) : super(_value, (v) => _then(v as UpdateUserDetailsSuccessful));
 
   @override
   UpdateUserDetailsSuccessful get _value =>
@@ -1835,9 +1945,10 @@ abstract class UpdateUserDetailsSuccessful implements UpdateUserDetails {
 
 /// @nodoc
 abstract class $UpdateUserDetailsErrorCopyWith<$Res> {
-  factory $UpdateUserDetailsErrorCopyWith(UpdateUserDetailsError value,
-          $Res Function(UpdateUserDetailsError) then) =
-      _$UpdateUserDetailsErrorCopyWithImpl<$Res>;
+  factory $UpdateUserDetailsErrorCopyWith(
+    UpdateUserDetailsError value,
+    $Res Function(UpdateUserDetailsError) then,
+  ) = _$UpdateUserDetailsErrorCopyWithImpl<$Res>;
   $Res call({Object error});
 }
 
@@ -1845,20 +1956,19 @@ abstract class $UpdateUserDetailsErrorCopyWith<$Res> {
 class _$UpdateUserDetailsErrorCopyWithImpl<$Res>
     extends _$UpdateUserDetailsCopyWithImpl<$Res>
     implements $UpdateUserDetailsErrorCopyWith<$Res> {
-  _$UpdateUserDetailsErrorCopyWithImpl(UpdateUserDetailsError _value,
-      $Res Function(UpdateUserDetailsError) _then)
-      : super(_value, (v) => _then(v as UpdateUserDetailsError));
+  _$UpdateUserDetailsErrorCopyWithImpl(
+    UpdateUserDetailsError _value,
+    $Res Function(UpdateUserDetailsError) _then,
+  ) : super(_value, (v) => _then(v as UpdateUserDetailsError));
 
   @override
   UpdateUserDetailsError get _value => super._value as UpdateUserDetailsError;
 
   @override
-  $Res call({
-    Object error = freezed,
-  }) {
-    return _then(UpdateUserDetailsError(
-      error == freezed ? _value.error : error,
-    ));
+  $Res call({Object error = freezed}) {
+    return _then(
+      UpdateUserDetailsError(error == freezed ? _value.error : error),
+    );
   }
 }
 
@@ -1866,7 +1976,9 @@ class _$UpdateUserDetailsErrorCopyWithImpl<$Res>
 
 /// @nodoc
 class _$UpdateUserDetailsError implements UpdateUserDetailsError {
-  const _$UpdateUserDetailsError(this.error) : assert(error != null);
+  const _$UpdateUserDetailsError(
+    this.error,
+  ) : assert(error != null);
 
   @override
   final Object error;
@@ -1889,9 +2001,11 @@ class _$UpdateUserDetailsError implements UpdateUserDetailsError {
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(error);
 
   @override
-  $UpdateUserDetailsErrorCopyWith<UpdateUserDetailsError> get copyWith =>
-      _$UpdateUserDetailsErrorCopyWithImpl<UpdateUserDetailsError>(
-          this, _$identity);
+  $UpdateUserDetailsErrorCopyWith<UpdateUserDetailsError>
+  get copyWith => _$UpdateUserDetailsErrorCopyWithImpl<UpdateUserDetailsError>(
+    this,
+    _$identity,
+  );
 
   @override
   @optionalTypeArgs

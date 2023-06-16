@@ -166,10 +166,7 @@ class MapEventMove extends MapEventWithMove {
     required super.source,
     required super.center,
     required super.zoom,
-  }) : super(
-          targetCenter: targetCenter,
-          targetZoom: targetZoom,
-        );
+  }) : super(targetCenter: targetCenter, targetZoom: targetZoom);
 }
 
 /// Event which is fired when dragging is started
@@ -198,10 +195,7 @@ class MapEventFlingAnimation extends MapEventWithMove {
     required super.source,
     required super.center,
     required super.zoom,
-  }) : super(
-          targetCenter: targetCenter,
-          targetZoom: targetZoom,
-        );
+  }) : super(targetCenter: targetCenter, targetZoom: targetZoom);
 }
 
 /// Emits when InteractiveFlags contains fling and there wasn't enough velocity
@@ -240,10 +234,7 @@ class MapEventDoubleTapZoom extends MapEventWithMove {
     required super.source,
     required super.center,
     required super.zoom,
-  }) : super(
-          targetCenter: targetCenter,
-          targetZoom: targetZoom,
-        );
+  }) : super(targetCenter: targetCenter, targetZoom: targetZoom);
 }
 
 /// Event which is fired when scroll wheel is used to zoom
@@ -254,10 +245,7 @@ class MapEventScrollWheelZoom extends MapEventWithMove {
     required super.source,
     required super.center,
     required super.zoom,
-  }) : super(
-          targetCenter: targetCenter,
-          targetZoom: targetZoom,
-        );
+  }) : super(targetCenter: targetCenter, targetZoom: targetZoom);
 }
 
 /// Event which is fired when animation for double tap gesture is started

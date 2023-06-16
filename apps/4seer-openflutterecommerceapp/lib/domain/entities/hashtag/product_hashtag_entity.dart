@@ -8,11 +8,7 @@ class ProductHashTagEntity extends Entity<int> {
 
   @override
   Map<String, dynamic> toMap() {
-    return {
-      'id': id,
-      'hashTagId': hashTagId,
-      'productId': productId,
-    };
+    return {'id': id, 'hashTagId': hashTagId, 'productId': productId};
   }
 
   @override

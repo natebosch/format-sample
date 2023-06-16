@@ -31,15 +31,16 @@ class Stats {
   String date;
   String migration;
 
-  Stats(
-      {this.activeIndia,
-      this.cured,
-      this.death,
-      this.links,
-      this.news,
-      this.screend,
-      this.date,
-      this.migration});
+  Stats({
+    this.activeIndia,
+    this.cured,
+    this.death,
+    this.links,
+    this.news,
+    this.screend,
+    this.date,
+    this.migration,
+  });
 
   Stats.fromJson(Map<String, dynamic> json) {
     activeIndia = json['ActiveIndia'];

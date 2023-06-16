@@ -11,13 +11,17 @@ class RemoteCategoryRepository extends CategoryRepository {
   RemoteCategoryRepository({@required this.woocommerce});
 
   @override
-  Future<List<ProductCategory>> getCategories({int parentCategoryId = 0}) async {
+  Future<List<ProductCategory>> getCategories({
+    int parentCategoryId = 0,
+  }) async {
     try {
-      List<dynamic> categoriesData = await woocommerce.getCategoryList(parentId: parentCategoryId);
+      List<dynamic> categoriesData =
+          await woocommerce.getCategoryList(parentId: parentCategoryId);
       List<ProductCategory> categories = [];
       for (int i = 0; i < categoriesData.length; i++) {
         categories.add(ProductCategory.fromEntity(
-            ProductCategoryModel.fromJson(categoriesData[i])));
+          ProductCategoryModel.fromJson(categoriesData[i]),
+        ));
       }
       return categories;
     } on HttpRequestException {

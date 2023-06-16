@@ -31,10 +31,8 @@ class SlideAnimationState extends State<SlideAnimation>
   void initState() {
     _controller = AnimationController(vsync: this, duration: widget.duration);
 
-    _animation = Tween<Offset>(
-      begin: Offset.zero,
-      end: widget.endPosition,
-    ).animate(CurveTween(curve: Curves.easeInCubic).animate(_controller));
+    _animation = Tween<Offset>(begin: Offset.zero, end: widget.endPosition)
+        .animate(CurveTween(curve: Curves.easeInCubic).animate(_controller));
 
     super.initState();
   }
@@ -55,9 +53,9 @@ class SlideAnimationState extends State<SlideAnimation>
     return AnimatedBuilder(
       animation: _controller,
       builder: (_, child) => Transform.translate(
-        offset: _animation.value,
-        child: child,
-      ),
+            offset: _animation.value,
+            child: child,
+          ),
       child: widget.child,
     );
   }

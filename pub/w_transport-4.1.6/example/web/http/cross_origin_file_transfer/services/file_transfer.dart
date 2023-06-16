@@ -37,10 +37,10 @@ class FileTransfer {
   bool _canceled;
 
   FileTransfer(this.name)
-      : id = 'fileTransfer${_transferNum++}',
-        _canceled = false,
-        _doneCompleter = Completer<Null>(),
-        _percentComplete = 0.0;
+    : id = 'fileTransfer${_transferNum++}',
+      _canceled = false,
+      _doneCompleter = Completer<Null>(),
+      _percentComplete = 0.0;
 
   /// Unique file transfer identifier.
   final String id;
@@ -88,10 +88,9 @@ class Upload extends FileTransfer {
     _progressStream.listen(_progressListener);
 
     // Send the request.
-    _request
-        .post()
-        .then((_) => _doneCompleter.complete())
-        .catchError((error, sT) => _doneCompleter.completeError(error, sT));
+    _request.post().then((_) => _doneCompleter.complete()).catchError(
+      (error, sT) => _doneCompleter.completeError(error, sT),
+    );
   }
 
   /// Start a new file upload. This will begin the upload to the server immediately.
@@ -126,7 +125,8 @@ class Download extends FileTransfer {
         // we can run out of memory. Cancel requests after a certain threshold.
         if (_concurrentFileTransferSize > _concurrentFileTransferSizeLimit) {
           cancel(
-              'Maximum concurrent file transfer size exceeded. Large files cannot be loaded into memory.');
+            'Maximum concurrent file transfer size exceeded. Large files cannot be loaded into memory.',
+          );
         }
 
         _bytesLoaded = progress.loaded;
@@ -134,17 +134,23 @@ class Download extends FileTransfer {
     });
 
     // Send the request.
-    _request.get().then((Response response) {
-      _doneCompleter.complete();
-    }, onError: (error) {
-      _doneCompleter.completeError(error);
-    });
+    _request.get().then(
+      (Response response) {
+        _doneCompleter.complete();
+      },
+      onError: (error) {
+        _doneCompleter.completeError(error);
+      },
+    );
 
-    done.then((_) {
-      _concurrentFileTransferSize -= _bytesLoaded;
-    }, onError: (_) {
-      _concurrentFileTransferSize -= _bytesLoaded;
-    });
+    done.then(
+      (_) {
+        _concurrentFileTransferSize -= _bytesLoaded;
+      },
+      onError: (_) {
+        _concurrentFileTransferSize -= _bytesLoaded;
+      },
+    );
   }
 
   /// File being downloaded.

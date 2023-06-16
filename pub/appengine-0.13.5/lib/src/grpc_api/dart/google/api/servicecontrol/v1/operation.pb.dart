@@ -19,41 +19,93 @@ import 'operation.pbenum.dart';
 export 'operation.pbenum.dart';
 
 class Operation extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Operation',
-      package: const $pb.PackageName($core.bool.fromEnvironment('protobuf.omit_message_names')
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+    const $core.bool.fromEnvironment('protobuf.omit_message_names')
+        ? ''
+        : 'Operation',
+    package: const $pb.PackageName(
+      $core.bool.fromEnvironment('protobuf.omit_message_names')
           ? ''
-          : 'google.api.servicecontrol.v1'),
-      createEmptyInstance: create)
+          : 'google.api.servicecontrol.v1',
+    ),
+    createEmptyInstance: create,
+  )
     ..aOS(
-        1,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'operationId')
+      1,
+      const $core.bool.fromEnvironment('protobuf.omit_field_names')
+          ? ''
+          : 'operationId',
+    )
     ..aOS(
-        2,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'operationName')
+      2,
+      const $core.bool.fromEnvironment('protobuf.omit_field_names')
+          ? ''
+          : 'operationName',
+    )
     ..aOS(
-        3,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'consumerId')
-    ..aOM<$0.Timestamp>(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'startTime',
-        subBuilder: $0.Timestamp.create)
+      3,
+      const $core.bool.fromEnvironment('protobuf.omit_field_names')
+          ? ''
+          : 'consumerId',
+    )
     ..aOM<$0.Timestamp>(
-        5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'endTime',
-        subBuilder: $0.Timestamp.create)
+      4,
+      const $core.bool.fromEnvironment('protobuf.omit_field_names')
+          ? ''
+          : 'startTime',
+      subBuilder: $0.Timestamp.create,
+    )
+    ..aOM<$0.Timestamp>(
+      5,
+      const $core.bool.fromEnvironment('protobuf.omit_field_names')
+          ? ''
+          : 'endTime',
+      subBuilder: $0.Timestamp.create,
+    )
     ..m<$core.String, $core.String>(
-        6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'labels',
-        entryClassName: 'Operation.LabelsEntry',
-        keyFieldType: $pb.PbFieldType.OS,
-        valueFieldType: $pb.PbFieldType.OS,
-        packageName: const $pb.PackageName('google.api.servicecontrol.v1'))
-    ..pc<$1.MetricValueSet>(7, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'metricValueSets', $pb.PbFieldType.PM, subBuilder: $1.MetricValueSet.create)
-    ..pc<$2.LogEntry>(8, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'logEntries', $pb.PbFieldType.PM, subBuilder: $2.LogEntry.create)
-    ..e<Operation_Importance>(11, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'importance', $pb.PbFieldType.OE, defaultOrMaker: Operation_Importance.LOW, valueOf: Operation_Importance.valueOf, enumValues: Operation_Importance.values)
-    ..pc<$3.Any>(16, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'extensions', $pb.PbFieldType.PM, subBuilder: $3.Any.create)
+      6,
+      const $core.bool.fromEnvironment('protobuf.omit_field_names')
+          ? ''
+          : 'labels',
+      entryClassName: 'Operation.LabelsEntry',
+      keyFieldType: $pb.PbFieldType.OS,
+      valueFieldType: $pb.PbFieldType.OS,
+      packageName: const $pb.PackageName('google.api.servicecontrol.v1'),
+    )
+    ..pc<$1.MetricValueSet>(
+      7,
+      const $core.bool.fromEnvironment('protobuf.omit_field_names')
+          ? ''
+          : 'metricValueSets',
+      $pb.PbFieldType.PM,
+      subBuilder: $1.MetricValueSet.create,
+    )
+    ..pc<$2.LogEntry>(
+      8,
+      const $core.bool.fromEnvironment('protobuf.omit_field_names')
+          ? ''
+          : 'logEntries',
+      $pb.PbFieldType.PM,
+      subBuilder: $2.LogEntry.create,
+    )
+    ..e<Operation_Importance>(
+      11,
+      const $core.bool.fromEnvironment('protobuf.omit_field_names')
+          ? ''
+          : 'importance',
+      $pb.PbFieldType.OE,
+      defaultOrMaker: Operation_Importance.LOW,
+      valueOf: Operation_Importance.valueOf,
+      enumValues: Operation_Importance.values,
+    )
+    ..pc<$3.Any>(
+      16,
+      const $core.bool.fromEnvironment('protobuf.omit_field_names')
+          ? ''
+          : 'extensions',
+      $pb.PbFieldType.PM,
+      subBuilder: $3.Any.create,
+    )
     ..hasRequiredFields = false;
 
   Operation._() : super();
@@ -102,19 +154,25 @@ class Operation extends $pb.GeneratedMessage {
     }
     return _result;
   }
-  factory Operation.fromBuffer($core.List<$core.int> i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
-      create()..mergeFromBuffer(i, r);
-  factory Operation.fromJson($core.String i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
-      create()..mergeFromJson(i, r);
-  @$core.Deprecated('Using this can add significant overhead to your binary. '
-      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-      'Will be removed in next major version')
+  factory Operation.fromBuffer(
+    $core.List<$core.int> i, [
+    $pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY,
+  ]) => create()..mergeFromBuffer(i, r);
+  factory Operation.fromJson(
+    $core.String i, [
+    $pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY,
+  ]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+    'Using this can add significant overhead to your binary. '
+    'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+    'Will be removed in next major version',
+  )
   Operation clone() => Operation()..mergeFromMessage(this);
-  @$core.Deprecated('Using this can add significant overhead to your binary. '
-      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-      'Will be removed in next major version')
+  @$core.Deprecated(
+    'Using this can add significant overhead to your binary. '
+    'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+    'Will be removed in next major version',
+  )
   Operation copyWith(void Function(Operation) updates) =>
       super.copyWith((message) => updates(message as Operation))
           as Operation; // ignore: deprecated_member_use

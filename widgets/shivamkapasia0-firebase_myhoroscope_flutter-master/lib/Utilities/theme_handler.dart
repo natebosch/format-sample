@@ -5,11 +5,8 @@ import 'my_theme_keys.dart';
 class _CustomTheme extends InheritedWidget {
   final CustomThemeState data;
 
-  _CustomTheme({
-    this.data,
-    Key key,
-    @required Widget child,
-  }) : super(key: key, child: child);
+  _CustomTheme({this.data, Key key, @required Widget child})
+    : super(key: key, child: child);
 
   @override
   bool updateShouldNotify(_CustomTheme oldWidget) {
@@ -21,11 +18,8 @@ class CustomTheme extends StatefulWidget {
   final Widget child;
   final MyThemeKeys initialThemeKey;
 
-  const CustomTheme({
-    Key key,
-    this.initialThemeKey,
-    @required this.child,
-  }) : super(key: key);
+  const CustomTheme({Key key, this.initialThemeKey, @required this.child})
+    : super(key: key);
 
   @override
   CustomThemeState createState() => new CustomThemeState();
@@ -54,8 +48,6 @@ class CustomThemeState extends State<CustomTheme> {
     super.initState();
   }
 
-  
-
   void changeTheme(MyThemeKeys themeKey) {
     setState(() {
       _theme = MyThemes.getThemeFromKey(themeKey);
@@ -64,9 +56,6 @@ class CustomThemeState extends State<CustomTheme> {
 
   @override
   Widget build(BuildContext context) {
-    return new _CustomTheme(
-      data: this,
-      child: widget.child,
-    );
+    return new _CustomTheme(data: this, child: widget.child);
   }
 }

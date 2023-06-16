@@ -20,19 +20,17 @@ class S {
     s._lang = getLang(s._locale);
     return s;
   }
-
 }
 
 class en extends S {
   en(Locale locale) : super(locale);
 }
+
 class GeneratedLocalizationsDelegate extends LocalizationsDelegate<S> {
   const GeneratedLocalizationsDelegate();
 
   List<Locale> get supportedLocales {
-    return [
-      new Locale("en", ""),
-    ];
+    return [new Locale("en", "")];
   }
 
   LocaleResolutionCallback resolution({Locale fallback}) {

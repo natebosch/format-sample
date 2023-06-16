@@ -18,8 +18,9 @@ class BookAuthor extends DataModel<BookAuthor> with _$BookAuthor {
     String? name,
     required HasMany<Book> books,
   }) = _BookAuthor;
-  factory BookAuthor.fromJson(Map<String, dynamic> json) =>
-      _$BookAuthorFromJson(json);
+  factory BookAuthor.fromJson(
+    Map<String, dynamic> json,
+  ) => _$BookAuthorFromJson(json);
 }
 
 @freezed

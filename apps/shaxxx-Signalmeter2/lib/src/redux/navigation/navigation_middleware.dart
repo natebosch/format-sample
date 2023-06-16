@@ -12,15 +12,11 @@ class NavigationMiddleware extends MiddlewareClass<AppState> {
   void call(Store<AppState> store, action, NextDispatcher next) async {
     if (action is ConnectionStatusChangedEvent) {
       if (action.status == ConnectionStatusEnum.connected) {
-        store.dispatch(
-          NavigateToAction.push(AppRoutes.mainTabView),
-        );
+        store.dispatch(NavigateToAction.push(AppRoutes.mainTabView));
       } else if (action.status == ConnectionStatusEnum.disconnected) {
-        store.dispatch(
-          NavigateToAction.popUntil(
-            predicate: ModalRoute.withName(AppRoutes.home),
-          ),
-        );
+        store.dispatch(NavigateToAction.popUntil(
+          predicate: ModalRoute.withName(AppRoutes.home),
+        ));
       }
     }
 

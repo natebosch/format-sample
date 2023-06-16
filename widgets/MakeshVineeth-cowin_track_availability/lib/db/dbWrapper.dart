@@ -12,8 +12,10 @@ class DataBaseWrapper extends StatefulWidget {
   final Widget child;
   final AdaptiveThemeMode initialTheme;
 
-  const DataBaseWrapper(
-      {@required this.child, this.initialTheme = AdaptiveThemeMode.system});
+  const DataBaseWrapper({
+    @required this.child,
+    this.initialTheme = AdaptiveThemeMode.system,
+  });
 
   @override
   _DataBaseWrapperState createState() => _DataBaseWrapperState();
@@ -46,9 +48,11 @@ class _DataBaseWrapperState extends State<DataBaseWrapper> {
           return MultiProvider(
             providers: [
               ChangeNotifierProvider<SelectedOptionProvider>(
-                  create: (_) => SelectedOptionProvider()),
+                create: (_) => SelectedOptionProvider(),
+              ),
               ChangeNotifierProvider<DatabaseProvider>(
-                  create: (_) => _databaseProvider),
+                create: (_) => _databaseProvider,
+              ),
             ],
             builder: (context, child) => widget.child,
           );
@@ -59,12 +63,12 @@ class _DataBaseWrapperState extends State<DataBaseWrapper> {
             light: CommonData.getTheme(context, Brightness.light),
             dark: CommonData.getTheme(context, Brightness.dark),
             builder: (theme, darkTheme) => MaterialApp(
-              theme: theme,
-              darkTheme: darkTheme,
-              title: CommonData.appTitle,
-              debugShowCheckedModeBanner: false,
-              home: PlaceHolderScaffold(),
-            ),
+                  theme: theme,
+                  darkTheme: darkTheme,
+                  title: CommonData.appTitle,
+                  debugShowCheckedModeBanner: false,
+                  home: PlaceHolderScaffold(),
+                ),
           );
       },
     );

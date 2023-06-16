@@ -99,8 +99,10 @@ void assertParentInvariants(XmlNode xml) {
       expect(node.parent, isNull);
       expect(node.hasParent, isFalse);
       expect(() => node.remove(), throwsA(isXmlParentException(node: node)));
-      expect(() => node.replace(XmlDocument()),
-          throwsA(isXmlParentException(node: node)));
+      expect(
+        () => node.replace(XmlDocument()),
+        throwsA(isXmlParentException(node: node)),
+      );
       expect(() => node.attachParent(XmlDocument()), throwsUnsupportedError);
       expect(() => node.detachParent(XmlDocument()), throwsUnsupportedError);
     } else {
@@ -122,14 +124,17 @@ void assertSiblingInvariants(XmlNode xml) {
   for (final node in [xml, ...xml.descendants]) {
     final parent = node.parent;
     if (parent != null) {
-      final siblings =
-          node is XmlAttribute ? parent.attributes : parent.children;
+      final siblings = node is XmlAttribute
+          ? parent.attributes
+          : parent.children;
       expect(node.siblings, same(siblings));
       expect(node.siblingElements, siblings.whereType<XmlElement>());
     } else {
       expect(() => node.siblings, throwsA(isXmlParentException(node: node)));
-      expect(() => node.siblingElements,
-          throwsA(isXmlParentException(node: node)));
+      expect(
+        () => node.siblingElements,
+        throwsA(isXmlParentException(node: node)),
+      );
     }
   }
 }
@@ -175,9 +180,9 @@ void assertBackwardInvariants(XmlNode xml) {
 }
 
 void assertNameInvariants(XmlNode xml) {
-  [xml, ...xml.descendants]
-      .whereType<XmlHasName>()
-      .forEach(assertNamedInvariant);
+  [xml, ...xml.descendants].whereType<XmlHasName>().forEach(
+    assertNamedInvariant,
+  );
 }
 
 void assertNamedInvariant(XmlHasName named) {
@@ -200,9 +205,13 @@ void assertAttributeInvariants(XmlNode xml) {
     if (node is XmlElement) {
       for (final attribute in node.attributes) {
         expect(
-            attribute, same(node.getAttributeNode(attribute.name.qualified)));
+          attribute,
+          same(node.getAttributeNode(attribute.name.qualified)),
+        );
         expect(
-            attribute.value, same(node.getAttribute(attribute.name.qualified)));
+          attribute.value,
+          same(node.getAttribute(attribute.name.qualified)),
+        );
       }
       if (node.attributes.isEmpty) {
         expect(node.getAttribute('foo'), isNull);
@@ -231,8 +240,9 @@ void assertChildrenInvariants(XmlNode xml) {
         expect(node.firstElementChild, elements.first);
         expect(node.lastElementChild, elements.last);
         final seenNames = <String>{};
-        for (final element in elements
-            .where((element) => seenNames.add(element.name.qualified))) {
+        for (final element in elements.where(
+          (element) => seenNames.add(element.name.qualified),
+        )) {
           expect(node.getElement(element.name.qualified), same(element));
         }
       }
@@ -243,8 +253,11 @@ void assertChildrenInvariants(XmlNode xml) {
 void assertTextInvariants(XmlNode xml) {
   for (final node in [xml, ...xml.descendants]) {
     // ignore: deprecated_member_use_from_same_package
-    expect(node.text, isA<String>(),
-        reason: 'All nodes are supposed to return text strings.');
+    expect(
+      node.text,
+      isA<String>(),
+      reason: 'All nodes are supposed to return text strings.',
+    );
     if (node is XmlAttribute ||
         node is XmlCDATA ||
         node is XmlComment ||
@@ -259,9 +272,10 @@ void assertTextInvariants(XmlNode xml) {
     final nodeTypes = node.children.map((node) => node.nodeType);
     for (final currentType in nodeTypes) {
       expect(
-          previousType == XmlNodeType.TEXT && currentType == XmlNodeType.TEXT,
-          isFalse,
-          reason: 'Consecutive text nodes detected: $nodeTypes');
+        previousType == XmlNodeType.TEXT && currentType == XmlNodeType.TEXT,
+        isFalse,
+        reason: 'Consecutive text nodes detected: $nodeTypes',
+      );
       previousType = currentType;
     }
   }
@@ -277,9 +291,12 @@ void assertIteratorInvariants(XmlNode xml) {
       ...node.following,
     ];
     final allRoot = [node.root, ...node.root.descendants];
-    expect(allAxis, allRoot,
-        reason: 'All preceding nodes, the node, all descendant nodes, and all '
-            'following nodes should be equal to all nodes in the tree.');
+    expect(
+      allAxis,
+      allRoot,
+      reason: 'All preceding nodes, the node, all descendant nodes, and all '
+          'following nodes should be equal to all nodes in the tree.',
+    );
     expect(node.ancestors, ancestors.reversed);
     ancestors.add(node);
     node.attributes.forEach(check);
@@ -310,37 +327,61 @@ void assertVisitorInvariants(XmlNode xml) {
 }
 
 void assertCompareInvariants(XmlNode original, XmlNode copy) {
-  expect(original, isNot(copy),
-      reason: 'The copied node should not be equal using ==.');
-  expect(original, isNot(same(copy)),
-      reason: 'The copied node should not be identical.');
-  expect(original.nodeType, copy.nodeType,
-      reason: 'The copied node type should be the same.');
+  expect(
+    original,
+    isNot(copy),
+    reason: 'The copied node should not be equal using ==.',
+  );
+  expect(
+    original,
+    isNot(same(copy)),
+    reason: 'The copied node should not be identical.',
+  );
+  expect(
+    original.nodeType,
+    copy.nodeType,
+    reason: 'The copied node type should be the same.',
+  );
   if (original is XmlHasName && copy is XmlHasName) {
     final originalNamed = original as XmlHasName; // ignore: avoid_as
     final copyNamed = copy as XmlHasName; // ignore: avoid_as
-    expect(originalNamed.name, isNot(copyNamed.name),
-        reason: 'The copied node should not be equal using ==.');
-    expect(originalNamed.name, isNot(same(copyNamed.name)),
-        reason: 'The copied name should not be identical.');
+    expect(
+      originalNamed.name,
+      isNot(copyNamed.name),
+      reason: 'The copied node should not be equal using ==.',
+    );
+    expect(
+      originalNamed.name,
+      isNot(same(copyNamed.name)),
+      reason: 'The copied name should not be identical.',
+    );
     expect(originalNamed.qualifiedName, copyNamed.qualifiedName);
     expect(originalNamed.localName, copyNamed.localName);
     expect(originalNamed.namespacePrefix, copyNamed.namespacePrefix);
     expect(originalNamed.namespaceUri, copyNamed.namespaceUri);
   }
-  expect(original.attributes.length, copy.attributes.length,
-      reason: 'The amount of copied attributes should be the same.');
+  expect(
+    original.attributes.length,
+    copy.attributes.length,
+    reason: 'The amount of copied attributes should be the same.',
+  );
   for (var i = 0; i < original.attributes.length; i++) {
     assertCompareInvariants(original.attributes[i], copy.attributes[i]);
   }
-  expect(original.children.length, copy.children.length,
-      reason: 'The amount of copied children should be the same.');
+  expect(
+    original.children.length,
+    copy.children.length,
+    reason: 'The amount of copied children should be the same.',
+  );
   for (var i = 0; i < original.children.length; i++) {
     assertCompareInvariants(original.children[i], copy.children[i]);
   }
   if (original is XmlElement && copy is XmlElement) {
-    expect(original.isSelfClosing, copy.isSelfClosing,
-        reason: 'The copied self-closing attribute should be equal.');
+    expect(
+      original.isSelfClosing,
+      copy.isSelfClosing,
+      reason: 'The copied self-closing attribute should be equal.',
+    );
   }
 }
 
@@ -356,16 +397,12 @@ void compareNode(XmlNode first, XmlNode second) {
   for (var i = 0; i < firstChildren.length; i++) {
     compareNode(firstChildren[i], secondChildren[i]);
   }
-  final firstText = first.children
-      .whereType<XmlText>()
-      .map((node) =>
-          node.value.trim().replaceAll(_whitespaceOrLineTerminators, ' '))
-      .join();
-  final secondText = second.children
-      .whereType<XmlText>()
-      .map((node) =>
-          node.value.trim().replaceAll(_whitespaceOrLineTerminators, ' '))
-      .join();
+  final firstText = first.children.whereType<XmlText>().map(
+    (node) => node.value.trim().replaceAll(_whitespaceOrLineTerminators, ' '),
+  ).join();
+  final secondText = second.children.whereType<XmlText>().map(
+    (node) => node.value.trim().replaceAll(_whitespaceOrLineTerminators, ' '),
+  ).join();
   expect(firstText, secondText);
   expect(first.attributes.length, second.attributes.length);
   for (var i = 0; i < first.attributes.length; i++) {
@@ -420,8 +457,10 @@ void assertIteratorEventInvariants(String input, XmlNode node) {
         expect(currentAttr.value, expectedAttr.value);
         expect(currentAttr.attributeType, expectedAttr.attributeType);
       }
-      expect(event.isSelfClosing,
-          expected.children.isEmpty && expected.isSelfClosing);
+      expect(
+        event.isSelfClosing,
+        expected.children.isEmpty && expected.isSelfClosing,
+      );
       if (!event.isSelfClosing) {
         stack.add(event);
       }
@@ -520,8 +559,10 @@ void assertStreamEventInvariants(String input, XmlNode node) {
         expect(currentAttr.value, expectedAttr.value);
         expect(currentAttr.attributeType, expectedAttr.attributeType);
       }
-      expect(event.isSelfClosing,
-          expected.children.isEmpty && expected.isSelfClosing);
+      expect(
+        event.isSelfClosing,
+        expected.children.isEmpty && expected.isSelfClosing,
+      );
       if (!event.isSelfClosing) {
         stack.add(event);
       }

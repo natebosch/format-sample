@@ -26,8 +26,9 @@ class QuickCalculationView extends StatelessWidget {
               child: Column(
                 children: <Widget>[
                   Container(
-                      height: (SizeConfig.safeBlockVertical * 0.08),
-                      child: Timer(GameCategoryType.QUICK_CALCULATION)),
+                    height: (SizeConfig.safeBlockVertical * 0.08),
+                    child: Timer(GameCategoryType.QUICK_CALCULATION),
+                  ),
                   Container(
                     height: (SizeConfig.safeBlockVertical * 0.38),
                     child: Consumer<QuickCalculationProvider>(
@@ -53,20 +54,24 @@ class QuickCalculationView extends StatelessWidget {
                                   return Row(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: <Widget>[
-                                      Text(data.question,
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .headline),
-                                      Text(" = ",
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .headline),
+                                      Text(
+                                        data.question,
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .headline,
+                                      ),
+                                      Text(
+                                        " = ",
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .headline,
+                                      ),
                                       Text(
                                         data.userAnswer,
                                         style: Theme.of(context)
                                             .textTheme
                                             .headline,
-                                      )
+                                      ),
                                     ],
                                   );
                                 }).toList(),
@@ -98,15 +103,21 @@ class QuickCalculationView extends StatelessWidget {
                                 child: Row(
                                   children: <Widget>[
                                     QuickCalculationButton(
-                                        "7",
-                                        BorderRadius.only(
-                                            topLeft: Radius.circular(40))),
+                                      "7",
+                                      BorderRadius.only(
+                                        topLeft: Radius.circular(40),
+                                      ),
+                                    ),
                                     QuickCalculationButton(
-                                        "8", BorderRadius.all(Radius.zero)),
+                                      "8",
+                                      BorderRadius.all(Radius.zero),
+                                    ),
                                     QuickCalculationButton(
-                                        "9",
-                                        BorderRadius.only(
-                                            topRight: Radius.circular(40)))
+                                      "9",
+                                      BorderRadius.only(
+                                        topRight: Radius.circular(40),
+                                      ),
+                                    ),
                                   ],
                                 ),
                               ),
@@ -114,11 +125,17 @@ class QuickCalculationView extends StatelessWidget {
                                 child: Row(
                                   children: <Widget>[
                                     QuickCalculationButton(
-                                        "4", BorderRadius.all(Radius.zero)),
+                                      "4",
+                                      BorderRadius.all(Radius.zero),
+                                    ),
                                     QuickCalculationButton(
-                                        "5", BorderRadius.all(Radius.zero)),
+                                      "5",
+                                      BorderRadius.all(Radius.zero),
+                                    ),
                                     QuickCalculationButton(
-                                        "6", BorderRadius.all(Radius.zero))
+                                      "6",
+                                      BorderRadius.all(Radius.zero),
+                                    ),
                                   ],
                                 ),
                               ),
@@ -126,11 +143,17 @@ class QuickCalculationView extends StatelessWidget {
                                 child: Row(
                                   children: <Widget>[
                                     QuickCalculationButton(
-                                        "1", BorderRadius.all(Radius.zero)),
+                                      "1",
+                                      BorderRadius.all(Radius.zero),
+                                    ),
                                     QuickCalculationButton(
-                                        "2", BorderRadius.all(Radius.zero)),
+                                      "2",
+                                      BorderRadius.all(Radius.zero),
+                                    ),
                                     QuickCalculationButton(
-                                        "3", BorderRadius.all(Radius.zero))
+                                      "3",
+                                      BorderRadius.all(Radius.zero),
+                                    ),
                                   ],
                                 ),
                               ),
@@ -138,13 +161,17 @@ class QuickCalculationView extends StatelessWidget {
                                 child: Row(
                                   children: <Widget>[
                                     QuickCalculationButton(
-                                        "0",
-                                        BorderRadius.only(
-                                            bottomLeft: Radius.circular(40))),
+                                      "0",
+                                      BorderRadius.only(
+                                        bottomLeft: Radius.circular(40),
+                                      ),
+                                    ),
                                     QuickCalculationButton(
-                                        "CLEAR",
-                                        BorderRadius.only(
-                                            bottomRight: Radius.circular(40)))
+                                      "CLEAR",
+                                      BorderRadius.only(
+                                        bottomRight: Radius.circular(40),
+                                      ),
+                                    ),
                                   ],
                                 ),
                               ),
@@ -161,27 +188,29 @@ class QuickCalculationView extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: <Widget>[
                         Consumer<QuickCalculationProvider>(
-                            builder: (context, provider, child) {
-                          return IconButton(
-                            icon: provider.pause
-                                ? Icon(Icons.play_arrow)
-                                : Icon(Icons.pause),
-                            iconSize: 40,
-                            onPressed: () {
-                              provider.pauseTimer();
-                            },
-                          );
-                        }),
+                          builder: (context, provider, child) {
+                            return IconButton(
+                              icon: provider.pause
+                                  ? Icon(Icons.play_arrow)
+                                  : Icon(Icons.pause),
+                              iconSize: 40,
+                              onPressed: () {
+                                provider.pauseTimer();
+                              },
+                            );
+                          },
+                        ),
                         Consumer<QuickCalculationProvider>(
-                            builder: (context, provider, child) {
-                          return IconButton(
-                            icon: Icon(Icons.info_outline),
-                            iconSize: 40,
-                            onPressed: () {
-                              provider.showInfoDialog();
-                            },
-                          );
-                        })
+                          builder: (context, provider, child) {
+                            return IconButton(
+                              icon: Icon(Icons.info_outline),
+                              iconSize: 40,
+                              onPressed: () {
+                                provider.showInfoDialog();
+                              },
+                            );
+                          },
+                        ),
                       ],
                     ),
                   ),

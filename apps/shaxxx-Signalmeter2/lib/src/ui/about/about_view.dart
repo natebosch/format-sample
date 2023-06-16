@@ -53,8 +53,9 @@ class _AboutViewState extends State<AboutView> {
 
   Widget _krkadoniUrlText(BuildContext context) {
     var locale = Localizations.localeOf(context);
-    var languageCode =
-        SignalMeterLocalizationsDelegate.getWebLanguageCode(locale);
+    var languageCode = SignalMeterLocalizationsDelegate.getWebLanguageCode(
+      locale,
+    );
     if (languageCode.isNotEmpty) {
       languageCode += '/';
     }
@@ -83,10 +84,7 @@ class _AboutViewState extends State<AboutView> {
               padding: EdgeInsets.only(bottom: 20),
               child: Text(
                 MessageProvider.of(context).appName,
-                style: TextStyle(
-                  fontSize: 30,
-                  fontWeight: FontWeight.bold,
-                ),
+                style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
               ),
             ),
             _getVersion(context),
@@ -100,9 +98,7 @@ class _AboutViewState extends State<AboutView> {
               padding: EdgeInsets.only(top: 18, bottom: 5),
               child: Text(
                 MessageProvider.of(context).specialThanksGoesTo,
-                style: TextStyle(
-                  fontSize: 15,
-                ),
+                style: TextStyle(fontSize: 15),
               ),
             ),
             Text(

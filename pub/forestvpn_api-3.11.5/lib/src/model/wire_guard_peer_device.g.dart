@@ -12,16 +12,16 @@ class _$WireGuardPeerDevice extends WireGuardPeerDevice {
   @override
   final String? name;
 
-  factory _$WireGuardPeerDevice(
-          [void Function(WireGuardPeerDeviceBuilder)? updates]) =>
-      (new WireGuardPeerDeviceBuilder()..update(updates))._build();
+  factory _$WireGuardPeerDevice([
+    void Function(WireGuardPeerDeviceBuilder)? updates,
+  ]) => (new WireGuardPeerDeviceBuilder()..update(updates))._build();
 
   _$WireGuardPeerDevice._({this.id, this.name}) : super._();
 
   @override
   WireGuardPeerDevice rebuild(
-          void Function(WireGuardPeerDeviceBuilder) updates) =>
-      (toBuilder()..update(updates)).build();
+    void Function(WireGuardPeerDeviceBuilder) updates,
+  ) => (toBuilder()..update(updates)).build();
 
   @override
   WireGuardPeerDeviceBuilder toBuilder() =>

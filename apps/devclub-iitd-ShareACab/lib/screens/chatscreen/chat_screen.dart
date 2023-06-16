@@ -29,16 +29,20 @@ class _ChatScreenState extends State<ChatScreen> {
   void initState() {
     final fbm = FirebaseMessaging();
     fbm.requestNotificationPermissions();
-    fbm.configure(onMessage: (msg) {
-      print(msg);
-      return;
-    }, onLaunch: (msg) {
-      print(msg);
-      return;
-    }, onResume: (msg) {
-      print(msg);
-      return;
-    });
+    fbm.configure(
+      onMessage: (msg) {
+        print(msg);
+        return;
+      },
+      onLaunch: (msg) {
+        print(msg);
+        return;
+      },
+      onResume: (msg) {
+        print(msg);
+        return;
+      },
+    );
     _getToken();
     super.initState();
   }
@@ -46,15 +50,11 @@ class _ChatScreenState extends State<ChatScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Chat'),
-      ),
+      appBar: AppBar(title: Text('Chat')),
       body: Container(
         child: Column(
           children: <Widget>[
-            Expanded(
-              child: MessageScreen(widget.docId),
-            ),
+            Expanded(child: MessageScreen(widget.docId)),
             NewMessage(widget.docId),
           ],
         ),

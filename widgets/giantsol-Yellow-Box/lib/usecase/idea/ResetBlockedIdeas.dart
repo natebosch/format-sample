@@ -1,4 +1,3 @@
-
 import 'package:yellow_box/ui/App.dart';
 
 class ResetBlockedIdeas {

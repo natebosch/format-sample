@@ -10,7 +10,7 @@ List<Color> colors = [
   Color(0xFFE6C9A9),
   Color(0xFFE8EAEE),
   Color(0xFFA7FEEA),
-  Color(0xFFCAF0F8)
+  Color(0xFFCAF0F8),
 ];
 
 class PriorityPicker extends StatefulWidget {
@@ -51,21 +51,25 @@ class _PriorityPickerState extends State<PriorityPicker> {
               height: 70,
               child: Container(
                 child: Center(
-                  child: Text(priorityText[index],
-                      style: TextStyle(
-                          color: selectedIndex == index
-                              ? Colors.white
-                              : Colors.black,
-                          fontWeight: FontWeight.bold)),
+                  child: Text(
+                    priorityText[index],
+                    style: TextStyle(
+                      color: selectedIndex == index
+                          ? Colors.white
+                          : Colors.black,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
                 ),
                 decoration: BoxDecoration(
-                    color: selectedIndex == index
-                        ? priorityColor[index]
-                        : Colors.transparent,
-                    borderRadius: BorderRadius.circular(8.0),
-                    border: selectedIndex == index
-                        ? Border.all(width: 2, color: Colors.black)
-                        : Border.all(width: 0,color: Colors.transparent)),
+                  color: selectedIndex == index
+                      ? priorityColor[index]
+                      : Colors.transparent,
+                  borderRadius: BorderRadius.circular(8.0),
+                  border: selectedIndex == index
+                      ? Border.all(width: 2, color: Colors.black)
+                      : Border.all(width: 0, color: Colors.transparent),
+                ),
               ),
             ),
           );
@@ -112,13 +116,15 @@ class _ColorPickerState extends State<ColorPicker> {
               height: 50,
               child: Container(
                 child: Center(
-                    child: selectedIndex == index
-                        ? Icon(Icons.done)
-                        : Container()),
+                  child: selectedIndex == index
+                      ? Icon(Icons.done)
+                      : Container(),
+                ),
                 decoration: BoxDecoration(
-                    color: colors[index],
-                    shape: BoxShape.circle,
-                    border: Border.all(width: 2, color: Colors.black)),
+                  color: colors[index],
+                  shape: BoxShape.circle,
+                  border: Border.all(width: 2, color: Colors.black),
+                ),
               ),
             ),
           );

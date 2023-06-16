@@ -12,8 +12,9 @@ class SearchPodcast<P> {
   final int total;
   final int count;
   SearchPodcast({this.results, this.nextOffset, this.total, this.count});
-  factory SearchPodcast.fromJson(Map<String, dynamic> json) =>
-      _$SearchPodcastFromJson<P>(json);
+  factory SearchPodcast.fromJson(
+    Map<String, dynamic> json,
+  ) => _$SearchPodcastFromJson<P>(json);
   Map<String, dynamic> toJson() => _$SearchPodcastToJson(this);
 }
 
@@ -47,18 +48,20 @@ class OnlinePodcast {
   @JsonKey(name: 'publisher_original')
   final String publisher;
   final String id;
-  OnlinePodcast(
-      {this.earliestPubDate,
-      this.title,
-      this.count,
-      this.description,
-      this.image,
-      this.latestPubDate,
-      this.rss,
-      this.publisher,
-      this.id});
-  factory OnlinePodcast.fromJson(Map<String, dynamic> json) =>
-      _$OnlinePodcastFromJson(json);
+  OnlinePodcast({
+    this.earliestPubDate,
+    this.title,
+    this.count,
+    this.description,
+    this.image,
+    this.latestPubDate,
+    this.rss,
+    this.publisher,
+    this.id,
+  });
+  factory OnlinePodcast.fromJson(
+    Map<String, dynamic> json,
+  ) => _$OnlinePodcastFromJson(json);
   Map<String, dynamic> toJson() => _$OnlinePodcastToJson(this);
 
   @override

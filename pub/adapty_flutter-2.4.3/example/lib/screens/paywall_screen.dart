@@ -57,7 +57,9 @@ class _PaywallScreenState extends State<PaywallScreen> {
   Future<void> _fetchProducts({bool ensureEligibility = false}) async {
     final products = await PurchasesObserver().callGetPaywallProducts(
       widget.paywall,
-      ensureEligibility ? AdaptyIOSProductsFetchPolicy.waitForReceiptValidation : AdaptyIOSProductsFetchPolicy.defaultPolicy,
+      ensureEligibility
+          ? AdaptyIOSProductsFetchPolicy.waitForReceiptValidation
+          : AdaptyIOSProductsFetchPolicy.defaultPolicy,
     );
 
     setState(() {
@@ -69,7 +71,10 @@ class _PaywallScreenState extends State<PaywallScreen> {
     var shouldReloadProducts = false;
 
     try {
-      final result = products.firstWhere((element) => element.introductoryOfferEligibility == AdaptyEligibility.unknown);
+      final result = products.firstWhere(
+        (element) =>
+            element.introductoryOfferEligibility == AdaptyEligibility.unknown,
+      );
       shouldReloadProducts = true;
     } catch (e) {}
 
@@ -95,30 +100,31 @@ class _PaywallScreenState extends State<PaywallScreen> {
   }
 
   Widget _verticalPurchaseButton(AdaptyPaywallProduct product) {
-    final discount = product.introductoryDiscount; //.discounts.length > 0 ? product.discounts.first : null;
+    final discount = product
+        .introductoryDiscount; //.discounts.length > 0 ? product.discounts.first : null;
 
     return CupertinoButton(
       padding: const EdgeInsets.all(4.0),
       color: widget.paywall.remoteAccentColor(),
       child: Column(
         children: [
-          Text(
-            '${product.vendorProductId}',
-            style: TextStyle(fontSize: 14),
-          ),
-          Text(
-            '${product.localizedPrice}',
-            style: TextStyle(fontSize: 14),
-          ),
+          Text('${product.vendorProductId}', style: TextStyle(fontSize: 14)),
+          Text('${product.localizedPrice}', style: TextStyle(fontSize: 14)),
           if (discount != null)
             Text(
               '${discount.paymentMode.toReadableString()}  ${discount.localizedPrice}',
               style: TextStyle(fontSize: 14),
             ),
-          if (discount == null) Text('Discount Not Found', style: TextStyle(fontSize: 14)),
-          if (product.introductoryOfferEligibility == AdaptyEligibility.eligible) Text('eligible'),
-          if (product.introductoryOfferEligibility == AdaptyEligibility.ineligible) Text('ineligible'),
-          if (product.introductoryOfferEligibility == AdaptyEligibility.unknown) Text('unknown'),
+          if (discount == null)
+            Text('Discount Not Found', style: TextStyle(fontSize: 14)),
+          if (product.introductoryOfferEligibility ==
+              AdaptyEligibility.eligible)
+            Text('eligible'),
+          if (product.introductoryOfferEligibility ==
+              AdaptyEligibility.ineligible)
+            Text('ineligible'),
+          if (product.introductoryOfferEligibility == AdaptyEligibility.unknown)
+            Text('unknown'),
         ],
       ),
       onPressed: () => _purchaseProduct(product),
@@ -126,7 +132,9 @@ class _PaywallScreenState extends State<PaywallScreen> {
   }
 
   Widget _horizontalPurchaseButton(AdaptyPaywallProduct product) {
-    final discount = product.discounts.length > 0 ? product.discounts.first : null;
+    final discount = product.discounts.length > 0
+        ? product.discounts.first
+        : null;
 
     return CupertinoButton.filled(
       child: Column(
@@ -140,24 +148,28 @@ class _PaywallScreenState extends State<PaywallScreen> {
               '${discount.paymentMode.toReadableString()} ${discount.localizedPrice}',
               style: TextStyle(fontSize: 14),
             ),
-          if (discount == null) Text('Discount Not Found', style: TextStyle(fontSize: 14)),
+          if (discount == null)
+            Text('Discount Not Found', style: TextStyle(fontSize: 14)),
         ],
       ),
       onPressed: () => _purchaseProduct(product),
     );
   }
 
-  Widget _purchaseButtonsBlock(AdaptyPaywall paywall, List<AdaptyPaywallProduct> products) {
+  Widget _purchaseButtonsBlock(
+    AdaptyPaywall paywall,
+    List<AdaptyPaywallProduct> products,
+  ) {
     if (paywall.isHorizontal()) {
       return Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: products
-            .map((e) => Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: _horizontalPurchaseButton(e),
-                ))
-            .toList(),
+        children: products.map(
+          (e) => Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: _horizontalPurchaseButton(e),
+          ),
+        ).toList(),
       );
     } else {
       return Row(
@@ -169,7 +181,10 @@ class _PaywallScreenState extends State<PaywallScreen> {
   }
 
   Widget _restoreButton() {
-    return CupertinoButton(child: Text('Restore Purchases'), onPressed: _restorePurchases);
+    return CupertinoButton(
+      child: Text('Restore Purchases'),
+      onPressed: _restorePurchases,
+    );
   }
 
   @override
@@ -185,8 +200,10 @@ class _PaywallScreenState extends State<PaywallScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final backgroundColor = widget.paywall.remoteBackgroundColor() ?? CupertinoColors.white;
-    final accentColor = widget.paywall.remoteAccentColor() ?? CupertinoColors.black;
+    final backgroundColor =
+        widget.paywall.remoteBackgroundColor() ?? CupertinoColors.white;
+    final accentColor =
+        widget.paywall.remoteAccentColor() ?? CupertinoColors.black;
 
     return CupertinoPageScaffold(
       navigationBar: CupertinoNavigationBar(
@@ -219,9 +236,11 @@ class _PaywallScreenState extends State<PaywallScreen> {
               ),
             ),
             SizedBox(height: 64),
-            if (this.products != null) _purchaseButtonsBlock(widget.paywall, this.products!),
-            if (this.products == null) Center(child: Text('Loading Products...')),
-            _restoreButton()
+            if (this.products != null)
+              _purchaseButtonsBlock(widget.paywall, this.products!),
+            if (this.products == null)
+              Center(child: Text('Loading Products...')),
+            _restoreButton(),
           ],
         ),
       ),

@@ -7,10 +7,7 @@ import '../models/markdown_tree_element.dart';
 import 'builder.dart';
 
 class ImageBuilder extends MarkdownElementBuilder {
-  ImageBuilder({
-    this.imageBuilder,
-    this.enableImageSize = false,
-  });
+  ImageBuilder({this.imageBuilder, this.enableImageSize = false});
 
   final MarkdownImageBuilder? imageBuilder;
   final bool enableImageSize;
@@ -46,15 +43,12 @@ class ImageBuilder extends MarkdownElementBuilder {
 
     Widget? child;
     if (imageBuilder != null) {
-      child = imageBuilder!(
-        uri,
-        _MarkdownImageInfo(
-          title: title,
-          description: description,
-          width: width,
-          height: height,
-        ),
-      );
+      child = imageBuilder!(uri, _MarkdownImageInfo(
+        title: title,
+        description: description,
+        width: width,
+        height: height,
+      ));
     } else {
       child = _buildImage(uri, width, height);
     }
@@ -84,11 +78,7 @@ class ImageBuilder extends MarkdownElementBuilder {
       }
     }
 
-    return _ParseDestination(
-      path: path,
-      width: width,
-      height: height,
-    );
+    return _ParseDestination(path: path, width: width, height: height);
   }
 
   Widget? _buildImage(Uri uri, double? width, double? height) {
@@ -129,8 +119,9 @@ class _MarkdownImageInfo extends MarkdownImageInfo {
     double? width,
     double? height,
   }) : super(
-            title: title,
-            description: description,
-            width: width,
-            height: height);
+         title: title,
+         description: description,
+         width: width,
+         height: height,
+       );
 }

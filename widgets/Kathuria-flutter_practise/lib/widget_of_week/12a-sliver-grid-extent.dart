@@ -8,9 +8,7 @@ class Widget12a extends StatelessWidget {
   Widget build(BuildContext context) {
     const _expandedImage = FlutterLogo();
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('#Widget 12a : Sliver Grid - Extent'),
-      ),
+      appBar: AppBar(title: const Text('#Widget 12a : Sliver Grid - Extent')),
       body: CustomScrollView(
         slivers: [
           SliverGrid.extent(
@@ -29,7 +27,7 @@ class Widget12a extends StatelessWidget {
               Container(color: Colors.green, height: 150),
               Container(color: Colors.yellow, height: 150),
             ],
-          )
+          ),
         ],
       ),
     );

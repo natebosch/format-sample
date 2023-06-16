@@ -19,10 +19,10 @@ class ButtonProgress {
   final TextStyle? prefixStyle;
   final String? suffix; //进度后缀
   final TextStyle? suffixStyle;
-  final double size;//进度条宽度
-  final double? dimension;//圆形进度条半径或线性进度条宽度
-  final double padding;//文字与进度条右边间距
-  final BorderSide? borderSide;//边框
+  final double size; //进度条宽度
+  final double? dimension; //圆形进度条半径或线性进度条宽度
+  final double padding; //文字与进度条右边间距
+  final BorderSide? borderSide; //边框
 
   const ButtonProgress({
     this.progress = 0,
@@ -32,33 +32,33 @@ class ButtonProgress {
     this.isTextInner = true,
     this.isTextFollowed = true,
     this.textStyle = const TextStyle(fontSize: 12, color: Colors.white),
-    this.size=5,
+    this.size = 5,
     this.dimension,
     this.prefix,
     this.prefixStyle,
     this.suffix,
     this.suffixStyle,
-    this.padding=5,
-    this.borderSide
+    this.padding = 5,
+    this.borderSide,
   });
 
-  ButtonProgress copyWith(
-      { int? progress,
-        AnimatedButtonProgressType? progressType,
-        Color? foreground,
-        Color? background,
-        bool? isTextInner,
-        bool? isTextFollowed,
-        TextStyle? textStyle,
-        String? prefix,
-        TextStyle? prefixStyle,
-        String? suffix,
-        TextStyle? suffixStyle,
-        double? size,
-        double? dimension,
-        double? padding,
-        BorderSide? borderSide
-        }) {
+  ButtonProgress copyWith({
+    int? progress,
+    AnimatedButtonProgressType? progressType,
+    Color? foreground,
+    Color? background,
+    bool? isTextInner,
+    bool? isTextFollowed,
+    TextStyle? textStyle,
+    String? prefix,
+    TextStyle? prefixStyle,
+    String? suffix,
+    TextStyle? suffixStyle,
+    double? size,
+    double? dimension,
+    double? padding,
+    BorderSide? borderSide,
+  }) {
     return ButtonProgress(
       progress: progress ?? this.progress,
       progressType: progressType ?? this.progressType,
@@ -79,19 +79,19 @@ class ButtonProgress {
   }
 
   ///是否是圆形进度条
-  bool get isProgressCircular => progressType ==
-      AnimatedButtonProgressType.circularIndeterminate ||
-      progressType ==
-          AnimatedButtonProgressType.circularDeterminate;
+  bool get isProgressCircular =>
+      progressType == AnimatedButtonProgressType.circularIndeterminate ||
+      progressType == AnimatedButtonProgressType.circularDeterminate;
 
   ///是否是无进度类型
-  bool get isIndeterminate => progressType ==
-      AnimatedButtonProgressType.circularIndeterminate ||
-      progressType ==
-          AnimatedButtonProgressType.linearIndeterminate;
+  bool get isIndeterminate =>
+      progressType == AnimatedButtonProgressType.circularIndeterminate ||
+      progressType == AnimatedButtonProgressType.linearIndeterminate;
 
   ///是否需要改变动画参数
-  bool needChangeAnimation(ButtonProgress newProgress){
-    return progressType!=newProgress.progressType||dimension!=newProgress.dimension||size!=newProgress.size;
+  bool needChangeAnimation(ButtonProgress newProgress) {
+    return progressType != newProgress.progressType ||
+        dimension != newProgress.dimension ||
+        size != newProgress.size;
   }
 }

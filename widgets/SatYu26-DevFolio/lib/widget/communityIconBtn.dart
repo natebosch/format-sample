@@ -12,10 +12,7 @@ class CommunityIconBtn extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 12.0),
       child: InkWell(
-        child: Image.asset(
-          icon,
-          height: height,
-        ),
+        child: Image.asset(icon, height: height),
         onTap: () => launchURL(link),
       ),
     );

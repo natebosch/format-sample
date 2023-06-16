@@ -9,7 +9,6 @@ class MoviesDetailBloc extends BlocBase {
   final _repository = Repository();
   final _movieDetailFetcher = PublishSubject<MovieItemModel>();
 
-
   Stream<MovieItemModel> get getMovieExt => _movieDetailFetcher.stream;
 
   fetchMovie(int id) async {

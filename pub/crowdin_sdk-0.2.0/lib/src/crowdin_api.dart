@@ -11,8 +11,9 @@ class CrowdinApi {
       var response = await http.get(
         Uri.parse('https://distributions.crowdin.net/$distributionHash$path'),
       );
-      Map<String, dynamic> responseDecoded =
-          jsonDecode(utf8.decode(response.bodyBytes));
+      Map<String, dynamic> responseDecoded = jsonDecode(
+        utf8.decode(response.bodyBytes),
+      );
       return responseDecoded;
     } catch (_) {
       return null;
@@ -23,12 +24,12 @@ class CrowdinApi {
     required String distributionHash,
   }) async {
     try {
-      var response = await http.get(
-        Uri.parse(
-            'https://distributions.crowdin.net/$distributionHash/manifest.json'),
+      var response = await http.get(Uri.parse(
+        'https://distributions.crowdin.net/$distributionHash/manifest.json',
+      ));
+      Map<String, dynamic> responseDecoded = jsonDecode(
+        utf8.decode(response.bodyBytes),
       );
-      Map<String, dynamic> responseDecoded =
-          jsonDecode(utf8.decode(response.bodyBytes));
       return responseDecoded;
     } catch (_) {
       return null;

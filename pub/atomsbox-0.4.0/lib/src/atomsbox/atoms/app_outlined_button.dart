@@ -40,9 +40,7 @@ class AppOutlinedButton extends StatelessWidget {
   }) {
     builder = (context) {
       return OutlinedButton(
-        style: OutlinedButton.styleFrom(
-          minimumSize: minimumSize,
-        ),
+        style: OutlinedButton.styleFrom(minimumSize: minimumSize),
         onPressed: onPressed,
         child: child,
       );
@@ -107,7 +105,7 @@ class AppOutlinedButton extends StatelessWidget {
       return AppGradientBackground(
         colors: [
           Theme.of(context).colorScheme.primaryContainer,
-          Theme.of(context).colorScheme.secondaryContainer
+          Theme.of(context).colorScheme.secondaryContainer,
         ],
         child: OutlinedButton(
           style: OutlinedButton.styleFrom(minimumSize: minimumSize),

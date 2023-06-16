@@ -6,9 +6,7 @@ part of keyclic_sdk_api;
 
 class OccupantLinksPlaceIriTemplate {
   /// Returns a new [OccupantLinksPlaceIriTemplate] instance.
-  OccupantLinksPlaceIriTemplate({
-    this.mapping,
-  });
+  OccupantLinksPlaceIriTemplate({this.mapping});
 
   /// Returns a new [OccupantLinksPlaceIriTemplate] instance and imports its values from
   /// [json] if it's non-null, null if [json] is null.
@@ -42,46 +40,54 @@ class OccupantLinksPlaceIriTemplate {
       return <OccupantLinksPlaceIriTemplate>[];
     }
 
-    return json.fold(<OccupantLinksPlaceIriTemplate>[],
-        (List<OccupantLinksPlaceIriTemplate> previousValue, element) {
-      final OccupantLinksPlaceIriTemplate? object =
-          OccupantLinksPlaceIriTemplate.fromJson(element);
-      if (object is OccupantLinksPlaceIriTemplate) {
-        previousValue.add(object);
-      }
+    return json.fold(
+      <OccupantLinksPlaceIriTemplate>[],
+      (List<OccupantLinksPlaceIriTemplate> previousValue, element) {
+        final OccupantLinksPlaceIriTemplate? object =
+            OccupantLinksPlaceIriTemplate.fromJson(element);
+        if (object is OccupantLinksPlaceIriTemplate) {
+          previousValue.add(object);
+        }
 
-      return previousValue;
-    });
+        return previousValue;
+      },
+    );
   }
 
   static Map<String, OccupantLinksPlaceIriTemplate> mapFromJson(
-      Map<String, dynamic>? json) {
+    Map<String, dynamic>? json,
+  ) {
     if (json == null) {
       return <String, OccupantLinksPlaceIriTemplate>{};
     }
 
-    return json.entries.fold(<String, OccupantLinksPlaceIriTemplate>{},
-        (Map<String, OccupantLinksPlaceIriTemplate> previousValue, element) {
-      final OccupantLinksPlaceIriTemplate? object =
-          OccupantLinksPlaceIriTemplate.fromJson(element.value);
-      if (object is OccupantLinksPlaceIriTemplate) {
-        previousValue[element.key] = object;
-      }
+    return json.entries.fold(
+      <String, OccupantLinksPlaceIriTemplate>{},
+      (Map<String, OccupantLinksPlaceIriTemplate> previousValue, element) {
+        final OccupantLinksPlaceIriTemplate? object =
+            OccupantLinksPlaceIriTemplate.fromJson(element.value);
+        if (object is OccupantLinksPlaceIriTemplate) {
+          previousValue[element.key] = object;
+        }
 
-      return previousValue;
-    });
+        return previousValue;
+      },
+    );
   }
 
   // maps a json object with a list of OccupantLinksPlaceIriTemplate-objects as value to a dart map
   static Map<String, List<OccupantLinksPlaceIriTemplate>> mapListFromJson(
-      Map<String, dynamic>? json) {
+    Map<String, dynamic>? json,
+  ) {
     if (json == null) {
       return <String, List<OccupantLinksPlaceIriTemplate>>{};
     }
 
     return json.map((key, value) {
       return MapEntry<String, List<OccupantLinksPlaceIriTemplate>>(
-          key, OccupantLinksPlaceIriTemplate.listFromJson(value));
+        key,
+        OccupantLinksPlaceIriTemplate.listFromJson(value),
+      );
     });
   }
 
@@ -89,8 +95,6 @@ class OccupantLinksPlaceIriTemplate {
   String toString() => 'OccupantLinksPlaceIriTemplate[mapping=$mapping]';
 
   Map<String, dynamic> toJson() {
-    return <String, dynamic>{
-      if (mapping != null) r'mapping': mapping,
-    };
+    return <String, dynamic>{if (mapping != null) r'mapping': mapping};
   }
 }

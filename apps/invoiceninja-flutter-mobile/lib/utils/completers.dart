@@ -34,10 +34,11 @@ Completer<T> snackBarCompleter<T>(
       navigator.pop();
     }
     showDialog<ErrorDialog>(
-        context: navigatorKey.currentContext,
-        builder: (BuildContext context) {
-          return ErrorDialog(error);
-        });
+      context: navigatorKey.currentContext,
+      builder: (BuildContext context) {
+        return ErrorDialog(error);
+      },
+    );
   });
 
   return completer;
@@ -50,10 +51,11 @@ Completer<Null> popCompleter(BuildContext context, dynamic result) {
     Navigator.of(context).pop<dynamic>(result);
   }).catchError((Object error) {
     showDialog<ErrorDialog>(
-        context: navigatorKey.currentContext,
-        builder: (BuildContext context) {
-          return ErrorDialog(error);
-        });
+      context: navigatorKey.currentContext,
+      builder: (BuildContext context) {
+        return ErrorDialog(error);
+      },
+    );
   });
 
   return completer;
@@ -64,10 +66,11 @@ Completer<Null> errorCompleter(BuildContext context) {
 
   completer.future.catchError((Object error) {
     showDialog<ErrorDialog>(
-        context: navigatorKey.currentContext,
-        builder: (BuildContext context) {
-          return ErrorDialog(error);
-        });
+      context: navigatorKey.currentContext,
+      builder: (BuildContext context) {
+        return ErrorDialog(error);
+      },
+    );
   });
 
   return completer;

@@ -18,20 +18,24 @@ class _$TaxRateListResponseSerializer
   @override
   final Iterable<Type> types = const [
     TaxRateListResponse,
-    _$TaxRateListResponse
+    _$TaxRateListResponse,
   ];
   @override
   final String wireName = 'TaxRateListResponse';
 
   @override
   Iterable<Object> serialize(
-      Serializers serializers, TaxRateListResponse object,
-      {FullType specifiedType = FullType.unspecified}) {
+    Serializers serializers,
+    TaxRateListResponse object, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
     final result = <Object>[
       'data',
-      serializers.serialize(object.data,
-          specifiedType:
-              const FullType(BuiltList, const [const FullType(TaxRateEntity)])),
+      serializers.serialize(
+        object.data,
+        specifiedType:
+            const FullType(BuiltList, const [const FullType(TaxRateEntity)]),
+      ),
     ];
 
     return result;
@@ -39,8 +43,10 @@ class _$TaxRateListResponseSerializer
 
   @override
   TaxRateListResponse deserialize(
-      Serializers serializers, Iterable<Object> serialized,
-      {FullType specifiedType = FullType.unspecified}) {
+    Serializers serializers,
+    Iterable<Object> serialized, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
     final result = new TaxRateListResponseBuilder();
 
     final iterator = serialized.iterator;
@@ -50,10 +56,14 @@ class _$TaxRateListResponseSerializer
       final Object value = iterator.current;
       switch (key) {
         case 'data':
-          result.data.replace(serializers.deserialize(value,
-                  specifiedType: const FullType(
-                      BuiltList, const [const FullType(TaxRateEntity)]))
-              as BuiltList<Object>);
+          result.data.replace(
+            serializers.deserialize(
+              value,
+              specifiedType: const FullType(BuiltList, const [
+                const FullType(TaxRateEntity),
+              ]),
+            ) as BuiltList<Object>,
+          );
           break;
       }
     }
@@ -67,19 +77,23 @@ class _$TaxRateItemResponseSerializer
   @override
   final Iterable<Type> types = const [
     TaxRateItemResponse,
-    _$TaxRateItemResponse
+    _$TaxRateItemResponse,
   ];
   @override
   final String wireName = 'TaxRateItemResponse';
 
   @override
   Iterable<Object> serialize(
-      Serializers serializers, TaxRateItemResponse object,
-      {FullType specifiedType = FullType.unspecified}) {
+    Serializers serializers,
+    TaxRateItemResponse object, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
     final result = <Object>[
       'data',
-      serializers.serialize(object.data,
-          specifiedType: const FullType(TaxRateEntity)),
+      serializers.serialize(
+        object.data,
+        specifiedType: const FullType(TaxRateEntity),
+      ),
     ];
 
     return result;
@@ -87,8 +101,10 @@ class _$TaxRateItemResponseSerializer
 
   @override
   TaxRateItemResponse deserialize(
-      Serializers serializers, Iterable<Object> serialized,
-      {FullType specifiedType = FullType.unspecified}) {
+    Serializers serializers,
+    Iterable<Object> serialized, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
     final result = new TaxRateItemResponseBuilder();
 
     final iterator = serialized.iterator;
@@ -98,8 +114,12 @@ class _$TaxRateItemResponseSerializer
       final Object value = iterator.current;
       switch (key) {
         case 'data':
-          result.data.replace(serializers.deserialize(value,
-              specifiedType: const FullType(TaxRateEntity)) as TaxRateEntity);
+          result.data.replace(
+            serializers.deserialize(
+              value,
+              specifiedType: const FullType(TaxRateEntity),
+            ) as TaxRateEntity,
+          );
           break;
       }
     }
@@ -115,22 +135,31 @@ class _$TaxRateEntitySerializer implements StructuredSerializer<TaxRateEntity> {
   final String wireName = 'TaxRateEntity';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, TaxRateEntity object,
-      {FullType specifiedType = FullType.unspecified}) {
+  Iterable<Object> serialize(
+    Serializers serializers,
+    TaxRateEntity object, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
     final result = <Object>[
       'name',
       serializers.serialize(object.name, specifiedType: const FullType(String)),
       'rate',
       serializers.serialize(object.rate, specifiedType: const FullType(double)),
       'created_at',
-      serializers.serialize(object.createdAt,
-          specifiedType: const FullType(int)),
+      serializers.serialize(
+        object.createdAt,
+        specifiedType: const FullType(int),
+      ),
       'updated_at',
-      serializers.serialize(object.updatedAt,
-          specifiedType: const FullType(int)),
+      serializers.serialize(
+        object.updatedAt,
+        specifiedType: const FullType(int),
+      ),
       'archived_at',
-      serializers.serialize(object.archivedAt,
-          specifiedType: const FullType(int)),
+      serializers.serialize(
+        object.archivedAt,
+        specifiedType: const FullType(int),
+      ),
       'id',
       serializers.serialize(object.id, specifiedType: const FullType(String)),
     ];
@@ -140,36 +169,42 @@ class _$TaxRateEntitySerializer implements StructuredSerializer<TaxRateEntity> {
       result
         ..add('isChanged')
         ..add(
-            serializers.serialize(value, specifiedType: const FullType(bool)));
+          serializers.serialize(value, specifiedType: const FullType(bool)),
+        );
     }
     value = object.isDeleted;
     if (value != null) {
       result
         ..add('is_deleted')
         ..add(
-            serializers.serialize(value, specifiedType: const FullType(bool)));
+          serializers.serialize(value, specifiedType: const FullType(bool)),
+        );
     }
     value = object.createdUserId;
     if (value != null) {
       result
         ..add('user_id')
-        ..add(serializers.serialize(value,
-            specifiedType: const FullType(String)));
+        ..add(
+          serializers.serialize(value, specifiedType: const FullType(String)),
+        );
     }
     value = object.assignedUserId;
     if (value != null) {
       result
         ..add('assigned_user_id')
-        ..add(serializers.serialize(value,
-            specifiedType: const FullType(String)));
+        ..add(
+          serializers.serialize(value, specifiedType: const FullType(String)),
+        );
     }
     return result;
   }
 
   @override
   TaxRateEntity deserialize(
-      Serializers serializers, Iterable<Object> serialized,
-      {FullType specifiedType = FullType.unspecified}) {
+    Serializers serializers,
+    Iterable<Object> serialized, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
     final result = new TaxRateEntityBuilder();
 
     final iterator = serialized.iterator;
@@ -179,44 +214,64 @@ class _$TaxRateEntitySerializer implements StructuredSerializer<TaxRateEntity> {
       final Object value = iterator.current;
       switch (key) {
         case 'name':
-          result.name = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+          result.name = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
           break;
         case 'rate':
-          result.rate = serializers.deserialize(value,
-              specifiedType: const FullType(double)) as double;
+          result.rate = serializers.deserialize(
+            value,
+            specifiedType: const FullType(double),
+          ) as double;
           break;
         case 'isChanged':
-          result.isChanged = serializers.deserialize(value,
-              specifiedType: const FullType(bool)) as bool;
+          result.isChanged = serializers.deserialize(
+            value,
+            specifiedType: const FullType(bool),
+          ) as bool;
           break;
         case 'created_at':
-          result.createdAt = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+          result.createdAt = serializers.deserialize(
+            value,
+            specifiedType: const FullType(int),
+          ) as int;
           break;
         case 'updated_at':
-          result.updatedAt = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+          result.updatedAt = serializers.deserialize(
+            value,
+            specifiedType: const FullType(int),
+          ) as int;
           break;
         case 'archived_at':
-          result.archivedAt = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+          result.archivedAt = serializers.deserialize(
+            value,
+            specifiedType: const FullType(int),
+          ) as int;
           break;
         case 'is_deleted':
-          result.isDeleted = serializers.deserialize(value,
-              specifiedType: const FullType(bool)) as bool;
+          result.isDeleted = serializers.deserialize(
+            value,
+            specifiedType: const FullType(bool),
+          ) as bool;
           break;
         case 'user_id':
-          result.createdUserId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+          result.createdUserId = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
           break;
         case 'assigned_user_id':
-          result.assignedUserId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+          result.assignedUserId = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
           break;
         case 'id':
-          result.id = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+          result.id = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
           break;
       }
     }
@@ -229,9 +284,9 @@ class _$TaxRateListResponse extends TaxRateListResponse {
   @override
   final BuiltList<TaxRateEntity> data;
 
-  factory _$TaxRateListResponse(
-          [void Function(TaxRateListResponseBuilder) updates]) =>
-      (new TaxRateListResponseBuilder()..update(updates)).build();
+  factory _$TaxRateListResponse([
+    void Function(TaxRateListResponseBuilder) updates,
+  ]) => (new TaxRateListResponseBuilder()..update(updates)).build();
 
   _$TaxRateListResponse._({this.data}) : super._() {
     BuiltValueNullFieldError.checkNotNull(data, 'TaxRateListResponse', 'data');
@@ -239,8 +294,8 @@ class _$TaxRateListResponse extends TaxRateListResponse {
 
   @override
   TaxRateListResponse rebuild(
-          void Function(TaxRateListResponseBuilder) updates) =>
-      (toBuilder()..update(updates)).build();
+    void Function(TaxRateListResponseBuilder) updates,
+  ) => (toBuilder()..update(updates)).build();
 
   @override
   TaxRateListResponseBuilder toBuilder() =>
@@ -309,7 +364,10 @@ class TaxRateListResponseBuilder
         data.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
-            'TaxRateListResponse', _$failedField, e.toString());
+          'TaxRateListResponse',
+          _$failedField,
+          e.toString(),
+        );
       }
       rethrow;
     }
@@ -322,9 +380,9 @@ class _$TaxRateItemResponse extends TaxRateItemResponse {
   @override
   final TaxRateEntity data;
 
-  factory _$TaxRateItemResponse(
-          [void Function(TaxRateItemResponseBuilder) updates]) =>
-      (new TaxRateItemResponseBuilder()..update(updates)).build();
+  factory _$TaxRateItemResponse([
+    void Function(TaxRateItemResponseBuilder) updates,
+  ]) => (new TaxRateItemResponseBuilder()..update(updates)).build();
 
   _$TaxRateItemResponse._({this.data}) : super._() {
     BuiltValueNullFieldError.checkNotNull(data, 'TaxRateItemResponse', 'data');
@@ -332,8 +390,8 @@ class _$TaxRateItemResponse extends TaxRateItemResponse {
 
   @override
   TaxRateItemResponse rebuild(
-          void Function(TaxRateItemResponseBuilder) updates) =>
-      (toBuilder()..update(updates)).build();
+    void Function(TaxRateItemResponseBuilder) updates,
+  ) => (toBuilder()..update(updates)).build();
 
   @override
   TaxRateItemResponseBuilder toBuilder() =>
@@ -401,7 +459,10 @@ class TaxRateItemResponseBuilder
         data.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
-            'TaxRateItemResponse', _$failedField, e.toString());
+          'TaxRateItemResponse',
+          _$failedField,
+          e.toString(),
+        );
       }
       rethrow;
     }
@@ -435,26 +496,35 @@ class _$TaxRateEntity extends TaxRateEntity {
   factory _$TaxRateEntity([void Function(TaxRateEntityBuilder) updates]) =>
       (new TaxRateEntityBuilder()..update(updates)).build();
 
-  _$TaxRateEntity._(
-      {this.name,
-      this.rate,
-      this.isChanged,
-      this.createdAt,
-      this.updatedAt,
-      this.archivedAt,
-      this.isDeleted,
-      this.createdUserId,
-      this.assignedUserId,
-      this.id})
-      : super._() {
+  _$TaxRateEntity._({
+    this.name,
+    this.rate,
+    this.isChanged,
+    this.createdAt,
+    this.updatedAt,
+    this.archivedAt,
+    this.isDeleted,
+    this.createdUserId,
+    this.assignedUserId,
+    this.id,
+  }) : super._() {
     BuiltValueNullFieldError.checkNotNull(name, 'TaxRateEntity', 'name');
     BuiltValueNullFieldError.checkNotNull(rate, 'TaxRateEntity', 'rate');
     BuiltValueNullFieldError.checkNotNull(
-        createdAt, 'TaxRateEntity', 'createdAt');
+      createdAt,
+      'TaxRateEntity',
+      'createdAt',
+    );
     BuiltValueNullFieldError.checkNotNull(
-        updatedAt, 'TaxRateEntity', 'updatedAt');
+      updatedAt,
+      'TaxRateEntity',
+      'updatedAt',
+    );
     BuiltValueNullFieldError.checkNotNull(
-        archivedAt, 'TaxRateEntity', 'archivedAt');
+      archivedAt,
+      'TaxRateEntity',
+      'archivedAt',
+    );
     BuiltValueNullFieldError.checkNotNull(id, 'TaxRateEntity', 'id');
   }
 
@@ -484,22 +554,13 @@ class _$TaxRateEntity extends TaxRateEntity {
   int __hashCode;
   @override
   int get hashCode {
-    return __hashCode ??= $jf($jc(
-        $jc(
-            $jc(
-                $jc(
-                    $jc(
-                        $jc(
-                            $jc(
-                                $jc($jc($jc(0, name.hashCode), rate.hashCode),
-                                    isChanged.hashCode),
-                                createdAt.hashCode),
-                            updatedAt.hashCode),
-                        archivedAt.hashCode),
-                    isDeleted.hashCode),
-                createdUserId.hashCode),
-            assignedUserId.hashCode),
-        id.hashCode));
+    return __hashCode ??= $jf($jc($jc($jc($jc(
+      $jc(
+        $jc($jc($jc($jc($jc(0, name.hashCode), rate.hashCode), isChanged.hashCode), createdAt.hashCode), updatedAt.hashCode),
+        archivedAt.hashCode,
+      ),
+      isDeleted.hashCode,
+    ), createdUserId.hashCode), assignedUserId.hashCode), id.hashCode));
   }
 
   @override
@@ -600,22 +661,37 @@ class TaxRateEntityBuilder
   _$TaxRateEntity build() {
     final _$result = _$v ??
         new _$TaxRateEntity._(
-            name: BuiltValueNullFieldError.checkNotNull(
-                name, 'TaxRateEntity', 'name'),
-            rate: BuiltValueNullFieldError.checkNotNull(
-                rate, 'TaxRateEntity', 'rate'),
-            isChanged: isChanged,
-            createdAt: BuiltValueNullFieldError.checkNotNull(
-                createdAt, 'TaxRateEntity', 'createdAt'),
-            updatedAt: BuiltValueNullFieldError.checkNotNull(
-                updatedAt, 'TaxRateEntity', 'updatedAt'),
-            archivedAt: BuiltValueNullFieldError.checkNotNull(
-                archivedAt, 'TaxRateEntity', 'archivedAt'),
-            isDeleted: isDeleted,
-            createdUserId: createdUserId,
-            assignedUserId: assignedUserId,
-            id: BuiltValueNullFieldError.checkNotNull(
-                id, 'TaxRateEntity', 'id'));
+          name: BuiltValueNullFieldError.checkNotNull(
+            name,
+            'TaxRateEntity',
+            'name',
+          ),
+          rate: BuiltValueNullFieldError.checkNotNull(
+            rate,
+            'TaxRateEntity',
+            'rate',
+          ),
+          isChanged: isChanged,
+          createdAt: BuiltValueNullFieldError.checkNotNull(
+            createdAt,
+            'TaxRateEntity',
+            'createdAt',
+          ),
+          updatedAt: BuiltValueNullFieldError.checkNotNull(
+            updatedAt,
+            'TaxRateEntity',
+            'updatedAt',
+          ),
+          archivedAt: BuiltValueNullFieldError.checkNotNull(
+            archivedAt,
+            'TaxRateEntity',
+            'archivedAt',
+          ),
+          isDeleted: isDeleted,
+          createdUserId: createdUserId,
+          assignedUserId: assignedUserId,
+          id: BuiltValueNullFieldError.checkNotNull(id, 'TaxRateEntity', 'id'),
+        );
     replace(_$result);
     return _$result;
   }

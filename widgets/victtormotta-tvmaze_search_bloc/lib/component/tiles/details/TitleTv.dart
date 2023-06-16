@@ -15,9 +15,7 @@ class TitleTv extends StatelessWidget {
       width: size.width - 30,
       child: Column(
         children: <Widget>[
-          Container(
-            height: 10,
-          ),
+          Container(height: 10),
           // show's name
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -28,12 +26,13 @@ class TitleTv extends StatelessWidget {
                     name,
                     textAlign: TextAlign.left,
                     style: TextStyle(
-                        fontWeight: FontWeight.w600,
-                        color: Colors.teal[300],
-                        fontSize: 25),
+                      fontWeight: FontWeight.w600,
+                      color: Colors.teal[300],
+                      fontSize: 25,
+                    ),
                   ),
                 ),
-              )
+              ),
             ],
           ),
           // show's year
@@ -45,9 +44,10 @@ class TitleTv extends StatelessWidget {
                   premiered,
                   textAlign: TextAlign.left,
                   style: TextStyle(
-                      fontWeight: FontWeight.w200,
-                      color: Colors.grey[200],
-                      fontSize: 15),
+                    fontWeight: FontWeight.w200,
+                    color: Colors.grey[200],
+                    fontSize: 15,
+                  ),
                 ),
               ),
             ],
@@ -61,9 +61,10 @@ class TitleTv extends StatelessWidget {
                   platform,
                   textAlign: TextAlign.left,
                   style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      color: Colors.grey[200],
-                      fontSize: 15),
+                    fontWeight: FontWeight.bold,
+                    color: Colors.grey[200],
+                    fontSize: 15,
+                  ),
                 ),
               ),
             ],

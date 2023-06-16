@@ -117,7 +117,8 @@ class _StorageManagerState extends State<StorageManager> {
               return Container();
             }
 
-            List<Cookie> cookies = (snapshot.data as List<Cookie>?) ?? <Cookie>[];
+            List<Cookie> cookies =
+                (snapshot.data as List<Cookie>?) ?? <Cookie>[];
 
             var rows = <DataRow>[];
             if (cookieValueTrackingEdit.length != cookies.length) {
@@ -125,43 +126,60 @@ class _StorageManagerState extends State<StorageManager> {
               cookieValueTrackingEdit = List.filled(cookies.length, false);
             }
 
-            rows.addAll(cookies.map((cookie) {
-              var index = cookies.indexOf(cookie);
-              return DataRow(cells: <DataCell>[
-                _buildDataCellEditable(
-                    width: constraints.maxWidth / 3,
-                    onFieldSubmitted: (newValue) async {
-                      var updateCookie = await _cookieManager.getCookie(
-                          url: url, name: cookie.name);
-                      await _cookieManager.deleteCookie(
-                          url: url, name: cookie.name);
-                      await _cookieManager.setCookie(
+            rows.addAll(
+              cookies.map((cookie) {
+                var index = cookies.indexOf(cookie);
+                return DataRow(
+                  cells: <DataCell>[
+                    _buildDataCellEditable(
+                      width: constraints.maxWidth / 3,
+                      onFieldSubmitted: (newValue) async {
+                        var updateCookie = await _cookieManager.getCookie(
                           url: url,
                           name: cookie.name,
-                          value: updateCookie?.value ?? "");
-                    },
-                    initialValue: cookie.name,
-                    index: index,
-                    trackingEditStatus: cookieNameTrackingEdit),
-                _buildDataCellEditable(
-                    width: constraints.maxWidth / 3,
-                    onFieldSubmitted: (newValue) async {
-                      await _cookieManager.setCookie(
-                          url: url, name: cookie.name, value: newValue);
-                    },
-                    initialValue: cookie.value,
-                    index: index,
-                    trackingEditStatus: cookieValueTrackingEdit),
-                DataCell(IconButton(
-                  icon: Icon(Icons.cancel),
-                  onPressed: () {
-                    setState(() {
-                      _cookieManager.deleteCookie(url: url, name: cookie.name);
-                    });
-                  },
-                ))
-              ]);
-            }).toList());
+                        );
+                        await _cookieManager.deleteCookie(
+                          url: url,
+                          name: cookie.name,
+                        );
+                        await _cookieManager.setCookie(
+                          url: url,
+                          name: cookie.name,
+                          value: updateCookie?.value ?? "",
+                        );
+                      },
+                      initialValue: cookie.name,
+                      index: index,
+                      trackingEditStatus: cookieNameTrackingEdit,
+                    ),
+                    _buildDataCellEditable(
+                      width: constraints.maxWidth / 3,
+                      onFieldSubmitted: (newValue) async {
+                        await _cookieManager.setCookie(
+                          url: url,
+                          name: cookie.name,
+                          value: newValue,
+                        );
+                      },
+                      initialValue: cookie.value,
+                      index: index,
+                      trackingEditStatus: cookieValueTrackingEdit,
+                    ),
+                    DataCell(IconButton(
+                      icon: Icon(Icons.cancel),
+                      onPressed: () {
+                        setState(() {
+                          _cookieManager.deleteCookie(
+                            url: url,
+                            name: cookie.name,
+                          );
+                        });
+                      },
+                    )),
+                  ],
+                );
+              }).toList(),
+            );
 
             return ExpansionTile(
               onExpansionChanged: (value) {
@@ -181,21 +199,27 @@ class _StorageManagerState extends State<StorageManager> {
                         label: const Text(
                           "Name",
                           style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 16.0),
+                            fontWeight: FontWeight.bold,
+                            fontSize: 16.0,
+                          ),
                         ),
                       ),
                       DataColumn(
                         label: const Text(
                           "Value",
                           style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 16.0),
+                            fontWeight: FontWeight.bold,
+                            fontSize: 16.0,
+                          ),
                         ),
                       ),
                       DataColumn(
                         label: const Text(
                           "Delete",
                           style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 16.0),
+                            fontWeight: FontWeight.bold,
+                            fontSize: 16.0,
+                          ),
                         ),
                       ),
                     ],
@@ -231,7 +255,8 @@ class _StorageManagerState extends State<StorageManager> {
                                 child: TextFormField(
                                   controller: _newCookieValueController,
                                   decoration: InputDecoration(
-                                      labelText: "Cookie Value"),
+                                    labelText: "Cookie Value",
+                                  ),
                                   validator: (value) {
                                     if (value == null || value.isEmpty) {
                                       return 'Please enter some text';
@@ -251,7 +276,8 @@ class _StorageManagerState extends State<StorageManager> {
                                 child: TextFormField(
                                   controller: _newCookieDomainController,
                                   decoration: InputDecoration(
-                                      labelText: "Cookie Domain"),
+                                    labelText: "Cookie Domain",
+                                  ),
                                 ),
                               ),
                             ),
@@ -282,24 +308,26 @@ class _StorageManagerState extends State<StorageManager> {
                                       child: ListTile(
                                         title: Text("Expires in:"),
                                         subtitle: Text(
-                                            _newCookieExpiresDate != null
-                                                ? _newCookieExpiresDate!
+                                          _newCookieExpiresDate != null
+                                              ? _newCookieExpiresDate!
                                                     .toIso8601String()
-                                                : "Select a date ..."),
+                                              : "Select a date ...",
+                                        ),
                                         onTap: () async {
                                           FocusScope.of(context).unfocus();
-                                          DatePicker.showDateTimePicker(context,
-                                              showTitleActions: true,
-                                              minTime: DateTime.now(),
-                                              maxTime: DateTime(9999),
-                                              onConfirm: (expiresDate) {
-                                            setState(() {
-                                              _newCookieExpiresDate =
-                                                  expiresDate;
-                                            });
-                                          },
-                                              currentTime:
-                                                  _newCookieExpiresDate);
+                                          DatePicker.showDateTimePicker(
+                                            context,
+                                            showTitleActions: true,
+                                            minTime: DateTime.now(),
+                                            maxTime: DateTime(9999),
+                                            onConfirm: (expiresDate) {
+                                              setState(() {
+                                                _newCookieExpiresDate =
+                                                    expiresDate;
+                                              });
+                                            },
+                                            currentTime: _newCookieExpiresDate,
+                                          );
                                         },
                                       ),
                                     ),
@@ -318,48 +346,52 @@ class _StorageManagerState extends State<StorageManager> {
                               ),
                             ),
                             Expanded(
-                                child: CheckboxListTile(
-                              title: Text("Is Secure?"),
-                              value: _newCookieIsSecure,
-                              onChanged: (newValue) {
-                                setState(() {
-                                  _newCookieIsSecure = newValue!;
-                                });
-                              }, //  <-- leading Checkbox
-                            )),
+                              child: CheckboxListTile(
+                                title: Text("Is Secure?"),
+                                value: _newCookieIsSecure,
+                                onChanged: (newValue) {
+                                  setState(() {
+                                    _newCookieIsSecure = newValue!;
+                                  });
+                                }, //  <-- leading Checkbox
+                              ),
+                            ),
                           ],
                         ),
                         Container(
-                            width: MediaQuery.of(context).size.width,
-                            child: FlatButton(
-                              padding: EdgeInsets.all(15.0),
-                              child: Text("Add Cookie"),
-                              onPressed: () async {
-                                if (_newCookieFormKey.currentState != null && _newCookieFormKey.currentState!.validate()) {
-                                  final expiresDate =
-                                      _newCookieExpiresDate != null
-                                          ? _newCookieExpiresDate!
+                          width: MediaQuery.of(context).size.width,
+                          child: FlatButton(
+                            padding: EdgeInsets.all(15.0),
+                            child: Text("Add Cookie"),
+                            onPressed: () async {
+                              if (_newCookieFormKey.currentState != null &&
+                                  _newCookieFormKey.currentState!.validate()) {
+                                final expiresDate =
+                                    _newCookieExpiresDate != null
+                                        ? _newCookieExpiresDate!
                                               .millisecondsSinceEpoch
-                                          : null;
+                                        : null;
 
-                                  await _cookieManager.setCookie(
-                                      url: url,
-                                      name: _newCookieNameController.text,
-                                      value: _newCookieValueController.text,
-                                      domain: _newCookieDomainController
-                                              .text.isEmpty
+                                await _cookieManager.setCookie(
+                                  url: url,
+                                  name: _newCookieNameController.text,
+                                  value: _newCookieValueController.text,
+                                  domain:
+                                      _newCookieDomainController.text.isEmpty
                                           ? null
                                           : _newCookieDomainController.text,
-                                      isSecure: _newCookieIsSecure,
-                                      path: _newCookiePathController.text,
-                                      expiresDate: expiresDate);
+                                  isSecure: _newCookieIsSecure,
+                                  path: _newCookiePathController.text,
+                                  expiresDate: expiresDate,
+                                );
 
-                                  setState(() {
-                                    _newCookieFormKey.currentState!.reset();
-                                  });
-                                }
-                              },
-                            ))
+                                setState(() {
+                                  _newCookieFormKey.currentState!.reset();
+                                });
+                              }
+                            },
+                          ),
+                        ),
                       ],
                     ),
                   ),
@@ -385,9 +417,9 @@ class _StorageManagerState extends State<StorageManager> {
                           setState(() {});
                         },
                       ),
-                    )
+                    ),
                   ],
-                )
+                ),
               ],
             );
           },
@@ -408,51 +440,65 @@ class _StorageManagerState extends State<StorageManager> {
               return Container();
             }
 
-            List<WebStorageItem> webStorageItems = (snapshot.data as List<WebStorageItem>?) ?? <WebStorageItem>[];
+            List<WebStorageItem> webStorageItems =
+                (snapshot.data as List<WebStorageItem>?) ?? <WebStorageItem>[];
 
             var rows = <DataRow>[];
             if (localStorageValueTrackingEdit.length !=
                 webStorageItems.length) {
-              localStorageKeyTrackingEdit =
-                  List.filled(webStorageItems.length, false);
-              localStorageValueTrackingEdit =
-                  List.filled(webStorageItems.length, false);
+              localStorageKeyTrackingEdit = List.filled(
+                webStorageItems.length,
+                false,
+              );
+              localStorageValueTrackingEdit = List.filled(
+                webStorageItems.length,
+                false,
+              );
             }
 
-            rows.addAll(webStorageItems.map((webStorageItem) {
-              var index = webStorageItems.indexOf(webStorageItem);
-              return DataRow(cells: <DataCell>[
-                _buildDataCellEditable(
-                    width: constraints.maxWidth / 3,
-                    onFieldSubmitted: (newValue) async {
-                      var updateItemValue = await _webViewController?.webStorage.localStorage.getItem(key: webStorageItem.key!);
-                      await _webViewController?.webStorage.localStorage
-                          .removeItem(key: webStorageItem.key!);
-                      await _webViewController?.webStorage.localStorage
-                          .setItem(key: newValue, value: updateItemValue);
-                    },
-                    initialValue: webStorageItem.key!,
-                    index: index,
-                    trackingEditStatus: localStorageKeyTrackingEdit),
-                _buildDataCellEditable(
-                    width: constraints.maxWidth / 3,
-                    onFieldSubmitted: (newValue) async {
-                      await _webViewController?.webStorage.localStorage
-                          .setItem(key: webStorageItem.key!, value: newValue);
-                    },
-                    initialValue: webStorageItem.value,
-                    index: index,
-                    trackingEditStatus: localStorageValueTrackingEdit),
-                DataCell(IconButton(
-                  icon: Icon(Icons.cancel),
-                  onPressed: () async {
-                    await _webViewController?.webStorage.localStorage
-                        .removeItem(key: webStorageItem.key!);
-                    setState(() {});
-                  },
-                ))
-              ]);
-            }).toList());
+            rows.addAll(
+              webStorageItems.map((webStorageItem) {
+                var index = webStorageItems.indexOf(webStorageItem);
+                return DataRow(
+                  cells: <DataCell>[
+                    _buildDataCellEditable(
+                      width: constraints.maxWidth / 3,
+                      onFieldSubmitted: (newValue) async {
+                        var updateItemValue = await _webViewController
+                            ?.webStorage
+                            .localStorage
+                            .getItem(key: webStorageItem.key!);
+                        await _webViewController?.webStorage.localStorage
+                            .removeItem(key: webStorageItem.key!);
+                        await _webViewController?.webStorage.localStorage
+                            .setItem(key: newValue, value: updateItemValue);
+                      },
+                      initialValue: webStorageItem.key!,
+                      index: index,
+                      trackingEditStatus: localStorageKeyTrackingEdit,
+                    ),
+                    _buildDataCellEditable(
+                      width: constraints.maxWidth / 3,
+                      onFieldSubmitted: (newValue) async {
+                        await _webViewController?.webStorage.localStorage
+                            .setItem(key: webStorageItem.key!, value: newValue);
+                      },
+                      initialValue: webStorageItem.value,
+                      index: index,
+                      trackingEditStatus: localStorageValueTrackingEdit,
+                    ),
+                    DataCell(IconButton(
+                      icon: Icon(Icons.cancel),
+                      onPressed: () async {
+                        await _webViewController?.webStorage.localStorage
+                            .removeItem(key: webStorageItem.key!);
+                        setState(() {});
+                      },
+                    )),
+                  ],
+                );
+              }).toList(),
+            );
 
             return ExpansionTile(
               onExpansionChanged: (value) {
@@ -472,21 +518,27 @@ class _StorageManagerState extends State<StorageManager> {
                         label: const Text(
                           "Key",
                           style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 16.0),
+                            fontWeight: FontWeight.bold,
+                            fontSize: 16.0,
+                          ),
                         ),
                       ),
                       DataColumn(
                         label: const Text(
                           "Value",
                           style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 16.0),
+                            fontWeight: FontWeight.bold,
+                            fontSize: 16.0,
+                          ),
                         ),
                       ),
                       DataColumn(
                         label: const Text(
                           "Delete",
                           style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 16.0),
+                            fontWeight: FontWeight.bold,
+                            fontSize: 16.0,
+                          ),
                         ),
                       ),
                     ],
@@ -500,8 +552,10 @@ class _StorageManagerState extends State<StorageManager> {
                   labelName: "Local Item Key",
                   labelValue: "Local Item Value",
                   onAdded: (name, value) {
-                    _webViewController?.webStorage.localStorage
-                        .setItem(key: name, value: value);
+                    _webViewController?.webStorage.localStorage.setItem(
+                      key: name,
+                      value: value,
+                    );
                   },
                 ),
                 Container(
@@ -535,53 +589,67 @@ class _StorageManagerState extends State<StorageManager> {
               return Container();
             }
 
-            List<WebStorageItem> webStorageItems = (snapshot.data as List<WebStorageItem>?) ?? <WebStorageItem>[];
+            List<WebStorageItem> webStorageItems =
+                (snapshot.data as List<WebStorageItem>?) ?? <WebStorageItem>[];
 
             var rows = <DataRow>[];
 
             if (sessionStorageValueTrackingEdit.length !=
                 webStorageItems.length) {
-              sessionStorageKeyTrackingEdit =
-                  List.filled(webStorageItems.length, false);
-              sessionStorageValueTrackingEdit =
-                  List.filled(webStorageItems.length, false);
+              sessionStorageKeyTrackingEdit = List.filled(
+                webStorageItems.length,
+                false,
+              );
+              sessionStorageValueTrackingEdit = List.filled(
+                webStorageItems.length,
+                false,
+              );
             }
 
-            rows.addAll(webStorageItems.map((webStorageItem) {
-              var index = webStorageItems.indexOf(webStorageItem);
+            rows.addAll(
+              webStorageItems.map((webStorageItem) {
+                var index = webStorageItems.indexOf(webStorageItem);
 
-              return DataRow(cells: <DataCell>[
-                _buildDataCellEditable(
-                    width: constraints.maxWidth / 3,
-                    onFieldSubmitted: (newValue) async {
-                      var updateItemValue = await _webViewController?.webStorage.sessionStorage.getItem(key: webStorageItem.key!);
-                      await _webViewController?.webStorage.sessionStorage
-                          .removeItem(key: webStorageItem.key!);
-                      await _webViewController?.webStorage.sessionStorage
-                          .setItem(key: newValue, value: updateItemValue);
-                    },
-                    initialValue: webStorageItem.key!,
-                    index: index,
-                    trackingEditStatus: sessionStorageKeyTrackingEdit),
-                _buildDataCellEditable(
-                    width: constraints.maxWidth / 3,
-                    onFieldSubmitted: (newValue) async {
-                      await _webViewController?.webStorage.sessionStorage
-                          .setItem(key: webStorageItem.key!, value: newValue);
-                    },
-                    initialValue: webStorageItem.value,
-                    index: index,
-                    trackingEditStatus: sessionStorageValueTrackingEdit),
-                DataCell(IconButton(
-                  icon: Icon(Icons.cancel),
-                  onPressed: () async {
-                    await _webViewController?.webStorage.sessionStorage
-                        .removeItem(key: webStorageItem.key!);
-                    setState(() {});
-                  },
-                ))
-              ]);
-            }).toList());
+                return DataRow(
+                  cells: <DataCell>[
+                    _buildDataCellEditable(
+                      width: constraints.maxWidth / 3,
+                      onFieldSubmitted: (newValue) async {
+                        var updateItemValue = await _webViewController
+                            ?.webStorage
+                            .sessionStorage
+                            .getItem(key: webStorageItem.key!);
+                        await _webViewController?.webStorage.sessionStorage
+                            .removeItem(key: webStorageItem.key!);
+                        await _webViewController?.webStorage.sessionStorage
+                            .setItem(key: newValue, value: updateItemValue);
+                      },
+                      initialValue: webStorageItem.key!,
+                      index: index,
+                      trackingEditStatus: sessionStorageKeyTrackingEdit,
+                    ),
+                    _buildDataCellEditable(
+                      width: constraints.maxWidth / 3,
+                      onFieldSubmitted: (newValue) async {
+                        await _webViewController?.webStorage.sessionStorage
+                            .setItem(key: webStorageItem.key!, value: newValue);
+                      },
+                      initialValue: webStorageItem.value,
+                      index: index,
+                      trackingEditStatus: sessionStorageValueTrackingEdit,
+                    ),
+                    DataCell(IconButton(
+                      icon: Icon(Icons.cancel),
+                      onPressed: () async {
+                        await _webViewController?.webStorage.sessionStorage
+                            .removeItem(key: webStorageItem.key!);
+                        setState(() {});
+                      },
+                    )),
+                  ],
+                );
+              }).toList(),
+            );
 
             return ExpansionTile(
               onExpansionChanged: (value) {
@@ -601,21 +669,27 @@ class _StorageManagerState extends State<StorageManager> {
                         label: const Text(
                           "Key",
                           style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 16.0),
+                            fontWeight: FontWeight.bold,
+                            fontSize: 16.0,
+                          ),
                         ),
                       ),
                       DataColumn(
                         label: const Text(
                           "Value",
                           style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 16.0),
+                            fontWeight: FontWeight.bold,
+                            fontSize: 16.0,
+                          ),
                         ),
                       ),
                       DataColumn(
                         label: const Text(
                           "Delete",
                           style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 16.0),
+                            fontWeight: FontWeight.bold,
+                            fontSize: 16.0,
+                          ),
                         ),
                       ),
                     ],
@@ -629,8 +703,10 @@ class _StorageManagerState extends State<StorageManager> {
                   labelName: "Session Item Key",
                   labelValue: "Session Item Value",
                   onAdded: (name, value) async {
-                    await _webViewController?.webStorage.sessionStorage
-                        .setItem(key: name, value: value);
+                    await _webViewController?.webStorage.sessionStorage.setItem(
+                      key: name,
+                      value: value,
+                    );
                     setState(() {});
                   },
                 ),
@@ -662,8 +738,9 @@ class _StorageManagerState extends State<StorageManager> {
           selector: (context, webViewModel) => webViewModel.url!,
           builder: (context, url, child) {
             return FutureBuilder(
-              future: _webStorageManager.android
-                  .getQuotaForOrigin(origin: url.origin),
+              future: _webStorageManager.android.getQuotaForOrigin(
+                origin: url.origin,
+              ),
               builder: (context, snapshot) {
                 return Text(snapshot.hasData ? snapshot.data.toString() : "");
               },
@@ -672,27 +749,30 @@ class _StorageManagerState extends State<StorageManager> {
         ),
       ),
       Selector<WebViewModel, Uri>(
-          selector: (context, webViewModel) => webViewModel.url!,
-          builder: (context, url, child) {
-            return ListTile(
-              title: const Text("Usage"),
-              subtitle: FutureBuilder(
-                future: _webStorageManager.android
-                    .getUsageForOrigin(origin: url.origin),
-                builder: (context, snapshot) {
-                  return Text(snapshot.hasData ? snapshot.data.toString() : "");
-                },
+        selector: (context, webViewModel) => webViewModel.url!,
+        builder: (context, url, child) {
+          return ListTile(
+            title: const Text("Usage"),
+            subtitle: FutureBuilder(
+              future: _webStorageManager.android.getUsageForOrigin(
+                origin: url.origin,
               ),
-              trailing: IconButton(
-                icon: Icon(Icons.clear),
-                onPressed: () async {
-                  await _webStorageManager.android
-                      .deleteOrigin(origin: url.origin);
-                  setState(() {});
-                },
-              ),
-            );
-          }),
+              builder: (context, snapshot) {
+                return Text(snapshot.hasData ? snapshot.data.toString() : "");
+              },
+            ),
+            trailing: IconButton(
+              icon: Icon(Icons.clear),
+              onPressed: () async {
+                await _webStorageManager.android.deleteOrigin(
+                  origin: url.origin,
+                );
+                setState(() {});
+              },
+            ),
+          );
+        },
+      ),
     ];
 
     return ExpansionTile(
@@ -709,61 +789,79 @@ class _StorageManagerState extends State<StorageManager> {
 
   Widget _buildIOSWebStorageExpansionTile(BoxConstraints constraints) {
     return FutureBuilder(
-      future: _webStorageManager.ios
-          .fetchDataRecords(dataTypes: IOSWKWebsiteDataType.ALL),
+      future: _webStorageManager.ios.fetchDataRecords(
+        dataTypes: IOSWKWebsiteDataType.ALL,
+      ),
       builder: (context, snapshot) {
-        List<IOSWKWebsiteDataRecord> dataRecords =
-            snapshot.hasData ? (snapshot.data as List<IOSWKWebsiteDataRecord>) : <IOSWKWebsiteDataRecord>[];
+        List<IOSWKWebsiteDataRecord> dataRecords = snapshot.hasData
+            ? (snapshot.data as List<IOSWKWebsiteDataRecord>)
+            : <IOSWKWebsiteDataRecord>[];
 
         var rows = <DataRow>[];
 
-        rows.addAll(dataRecords.map((dataRecord) {
-          var textStyle = TextStyle(fontSize: 12.0);
+        rows.addAll(
+          dataRecords.map((dataRecord) {
+            var textStyle = TextStyle(fontSize: 12.0);
 
-          return DataRow(cells: <DataCell>[
-            DataCell(
-              Container(
-                width: constraints.maxWidth / 3,
-                child: Text(dataRecord.displayName ?? "",
-                    style: textStyle, softWrap: true),
-              ),
-              onTap: () {
-                Clipboard.setData(ClipboardData(text: dataRecord.displayName));
-              },
-            ),
-            DataCell(
-              Container(
-                width: constraints.maxWidth / 3,
-                child: Text(dataRecord.dataTypes?.join(", ") ?? "",
-                    style: textStyle, softWrap: true),
-              ),
-              onTap: () {
-                showDialog(
-                  context: context,
-                  builder: (context) {
-                    return AlertDialog(
-                      content: Container(
-                        child: Text(dataRecord.dataTypes?.join(",\n") ?? "",
-                            style: textStyle, softWrap: true),
-                      ),
+            return DataRow(
+              cells: <DataCell>[
+                DataCell(
+                  Container(
+                    width: constraints.maxWidth / 3,
+                    child: Text(
+                      dataRecord.displayName ?? "",
+                      style: textStyle,
+                      softWrap: true,
+                    ),
+                  ),
+                  onTap: () {
+                    Clipboard.setData(
+                      ClipboardData(text: dataRecord.displayName),
                     );
                   },
-                );
-              },
-            ),
-            DataCell(IconButton(
-              icon: Icon(Icons.cancel),
-              onPressed: () async {
-                if (dataRecord.dataTypes != null) {
-                  await _webStorageManager.ios.removeDataFor(
-                      dataTypes: dataRecord.dataTypes!,
-                      dataRecords: [dataRecord]);
-                }
-                setState(() {});
-              },
-            ))
-          ]);
-        }).toList());
+                ),
+                DataCell(
+                  Container(
+                    width: constraints.maxWidth / 3,
+                    child: Text(
+                      dataRecord.dataTypes?.join(", ") ?? "",
+                      style: textStyle,
+                      softWrap: true,
+                    ),
+                  ),
+                  onTap: () {
+                    showDialog(
+                      context: context,
+                      builder: (context) {
+                        return AlertDialog(
+                          content: Container(
+                            child: Text(
+                              dataRecord.dataTypes?.join(",\n") ?? "",
+                              style: textStyle,
+                              softWrap: true,
+                            ),
+                          ),
+                        );
+                      },
+                    );
+                  },
+                ),
+                DataCell(IconButton(
+                  icon: Icon(Icons.cancel),
+                  onPressed: () async {
+                    if (dataRecord.dataTypes != null) {
+                      await _webStorageManager.ios.removeDataFor(
+                        dataTypes: dataRecord.dataTypes!,
+                        dataRecords: [dataRecord],
+                      );
+                    }
+                    setState(() {});
+                  },
+                )),
+              ],
+            );
+          }).toList(),
+        );
 
         return ExpansionTile(
           onExpansionChanged: (value) {
@@ -783,21 +881,27 @@ class _StorageManagerState extends State<StorageManager> {
                     label: const Text(
                       "Display Name",
                       style: TextStyle(
-                          fontWeight: FontWeight.bold, fontSize: 16.0),
+                        fontWeight: FontWeight.bold,
+                        fontSize: 16.0,
+                      ),
                     ),
                   ),
                   DataColumn(
                     label: const Text(
                       "Data Types",
                       style: TextStyle(
-                          fontWeight: FontWeight.bold, fontSize: 16.0),
+                        fontWeight: FontWeight.bold,
+                        fontSize: 16.0,
+                      ),
                     ),
                   ),
                   DataColumn(
                     label: const Text(
                       "Delete",
                       style: TextStyle(
-                          fontWeight: FontWeight.bold, fontSize: 16.0),
+                        fontWeight: FontWeight.bold,
+                        fontSize: 16.0,
+                      ),
                     ),
                   ),
                 ],
@@ -805,17 +909,19 @@ class _StorageManagerState extends State<StorageManager> {
               ),
             ),
             Container(
-                width: MediaQuery.of(context).size.width,
-                child: FlatButton(
-                  padding: EdgeInsets.all(15.0),
-                  child: Text("Clear all"),
-                  onPressed: () async {
-                    await _webStorageManager.ios.removeDataModifiedSince(
-                        dataTypes: IOSWKWebsiteDataType.ALL,
-                        date: DateTime.fromMillisecondsSinceEpoch(0));
-                    setState(() {});
-                  },
-                ))
+              width: MediaQuery.of(context).size.width,
+              child: FlatButton(
+                padding: EdgeInsets.all(15.0),
+                child: Text("Clear all"),
+                onPressed: () async {
+                  await _webStorageManager.ios.removeDataModifiedSince(
+                    dataTypes: IOSWKWebsiteDataType.ALL,
+                    date: DateTime.fromMillisecondsSinceEpoch(0),
+                  );
+                  setState(() {});
+                },
+              ),
+            ),
           ],
         );
       },
@@ -823,7 +929,8 @@ class _StorageManagerState extends State<StorageManager> {
   }
 
   Widget _buildHttpAuthCredentialDatabaseExpansionTile(
-      BoxConstraints constraints) {
+    BoxConstraints constraints,
+  ) {
     return FutureBuilder(
       future: _httpAuthCredentialDatabase.getAllAuthCredentials(),
       builder: (context, snapshot) {
@@ -832,69 +939,89 @@ class _StorageManagerState extends State<StorageManager> {
         }
 
         List<URLProtectionSpaceHttpAuthCredentials>
-            protectionSpaceHttpAuthCredentials = (snapshot.data as List<URLProtectionSpaceHttpAuthCredentials>?) ?? <URLProtectionSpaceHttpAuthCredentials>[];
+        protectionSpaceHttpAuthCredentials =
+            (snapshot.data as List<URLProtectionSpaceHttpAuthCredentials>?) ??
+                <URLProtectionSpaceHttpAuthCredentials>[];
 
         var textStyle = TextStyle(fontSize: 16.0);
 
         var dataTables = <Widget>[];
 
-        protectionSpaceHttpAuthCredentials
-            .forEach((protectionSpaceHttpAuthCredential) {
-          var protectionSpace =
-              protectionSpaceHttpAuthCredential.protectionSpace;
-          var rows = <DataRow>[];
+        protectionSpaceHttpAuthCredentials.forEach(
+          (protectionSpaceHttpAuthCredential) {
+            var protectionSpace =
+                protectionSpaceHttpAuthCredential.protectionSpace;
+            var rows = <DataRow>[];
 
-          if (protectionSpaceHttpAuthCredential.credentials != null) {
-            rows.addAll(protectionSpaceHttpAuthCredential.credentials!
-                .map((httpAuthCredential) {
-              return DataRow(cells: <DataCell>[
-                DataCell(
-                  Container(
-                    width: constraints.maxWidth / 3,
-                    child: Text(httpAuthCredential.username ?? "",
-                        style: textStyle, softWrap: true),
-                  ),
-                  onTap: () {
-                    Clipboard.setData(
-                        ClipboardData(text: httpAuthCredential.username));
+            if (protectionSpaceHttpAuthCredential.credentials != null) {
+              rows.addAll(
+                protectionSpaceHttpAuthCredential.credentials!.map(
+                  (httpAuthCredential) {
+                    return DataRow(
+                      cells: <DataCell>[
+                        DataCell(
+                          Container(
+                            width: constraints.maxWidth / 3,
+                            child: Text(
+                              httpAuthCredential.username ?? "",
+                              style: textStyle,
+                              softWrap: true,
+                            ),
+                          ),
+                          onTap: () {
+                            Clipboard.setData(
+                              ClipboardData(text: httpAuthCredential.username),
+                            );
+                          },
+                        ),
+                        DataCell(
+                          Container(
+                            width: constraints.maxWidth / 3,
+                            child: Text(
+                              httpAuthCredential.password ?? "",
+                              style: textStyle,
+                              softWrap: true,
+                            ),
+                          ),
+                          onTap: () {
+                            Clipboard.setData(
+                              ClipboardData(text: httpAuthCredential.password),
+                            );
+                          },
+                        ),
+                        DataCell(IconButton(
+                          icon: Icon(Icons.cancel),
+                          onPressed: () async {
+                            if (protectionSpace != null) {
+                              await _httpAuthCredentialDatabase
+                                  .removeHttpAuthCredential(
+                                    protectionSpace: protectionSpace,
+                                    credential: httpAuthCredential,
+                                  );
+                            }
+                            setState(() {});
+                          },
+                        )),
+                      ],
+                    );
                   },
-                ),
-                DataCell(
-                  Container(
-                    width: constraints.maxWidth / 3,
-                    child: Text(httpAuthCredential.password ?? "",
-                        style: textStyle, softWrap: true),
-                  ),
-                  onTap: () {
-                    Clipboard.setData(
-                        ClipboardData(text: httpAuthCredential.password));
-                  },
-                ),
-                DataCell(IconButton(
-                  icon: Icon(Icons.cancel),
-                  onPressed: () async {
-                    if (protectionSpace != null) {
-                      await _httpAuthCredentialDatabase
-                          .removeHttpAuthCredential(
-                          protectionSpace: protectionSpace,
-                          credential: httpAuthCredential);
-                    }
-                    setState(() {});
-                  },
-                ))
-              ]);
-            }).toList());
-          }
+                ).toList(),
+              );
+            }
 
-          dataTables.add(Column(
-            children: <Widget>[
-              Text("Protection Space", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0),),
-              SizedBox(height: 10.0,),
-              Text(
+            dataTables.add(Column(
+              children: <Widget>[
+                Text(
+                  "Protection Space",
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0),
+                ),
+                SizedBox(height: 10.0),
+                Text(
                   "Protocol: ${protectionSpace?.protocol ?? ""}, Host: ${protectionSpace?.host ?? ""}, " +
-                  "Port: ${protectionSpace?.port != null && protectionSpace!.port! > 0 ? protectionSpace.port.toString() : ""}, " +
-                  "Realm: ${protectionSpace?.realm ?? ""}"),
-              Container(
+                      "Port: ${protectionSpace?.port != null && protectionSpace!.port! > 0 ? protectionSpace.port.toString() : ""}, " +
+                      "Realm: ${protectionSpace?.realm ?? ""}",
+                ),
+                Container(
                   width: constraints.minWidth,
                   child: DataTable(
                     columnSpacing: 0.0,
@@ -903,41 +1030,49 @@ class _StorageManagerState extends State<StorageManager> {
                         label: const Text(
                           "Username",
                           style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 16.0),
+                            fontWeight: FontWeight.bold,
+                            fontSize: 16.0,
+                          ),
                         ),
                       ),
                       DataColumn(
                         label: const Text(
                           "Password",
                           style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 16.0),
+                            fontWeight: FontWeight.bold,
+                            fontSize: 16.0,
+                          ),
                         ),
                       ),
                       DataColumn(
                         label: const Text(
                           "Delete",
                           style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 16.0),
+                            fontWeight: FontWeight.bold,
+                            fontSize: 16.0,
+                          ),
                         ),
                       ),
                     ],
                     rows: rows,
-                  ))
-            ],
-          ));
-        });
+                  ),
+                ),
+              ],
+            ));
+          },
+        );
 
         var children = <Widget>[];
         children.addAll(dataTables);
         children.addAll(<Widget>[
           FlatButton(
-              padding: EdgeInsets.all(15.0),
-              child: Text("Clear all"),
-              onPressed: () async {
-                await _httpAuthCredentialDatabase.clearAllAuthCredentials();
-                setState(() {});
-              },
-            ),
+            padding: EdgeInsets.all(15.0),
+            child: Text("Clear all"),
+            onPressed: () async {
+              await _httpAuthCredentialDatabase.clearAllAuthCredentials();
+              setState(() {});
+            },
+          ),
         ]);
 
         return ExpansionTile(
@@ -954,39 +1089,42 @@ class _StorageManagerState extends State<StorageManager> {
     );
   }
 
-  DataCell _buildDataCellEditable(
-      {required double width,
-        required int index,
-        required List<bool> trackingEditStatus,
-        String? initialValue,
-        Future<void> Function(String newValue)? onFieldSubmitted}) {
+  DataCell _buildDataCellEditable({
+    required double width,
+    required int index,
+    required List<bool> trackingEditStatus,
+    String? initialValue,
+    Future<void> Function(String newValue)? onFieldSubmitted,
+  }) {
     return DataCell(
       Container(
-          width: width,
-          child: Builder(
-            builder: (context) {
-              return !trackingEditStatus[index]
-                  ? Text(
-                      initialValue ?? "",
-                      style: TextStyle(fontSize: 16.0),
-                      softWrap: true,
-                      overflow: TextOverflow.ellipsis,
-                      maxLines: 3,
-                    )
-                  : TextFormField(
-                      initialValue: initialValue,
-                      autofocus: false,
-                      onFieldSubmitted: (newValue) async {
-                        if (newValue != initialValue && onFieldSubmitted != null) {
-                          await onFieldSubmitted(newValue);
-                        }
-                        setState(() {
-                          trackingEditStatus[index] = false;
-                        });
-                      },
-                    );
-            },
-          )),
+        width: width,
+        child: Builder(
+          builder: (context) {
+            return !trackingEditStatus[index]
+                ? Text(
+                    initialValue ?? "",
+                    style: TextStyle(fontSize: 16.0),
+                    softWrap: true,
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 3,
+                  )
+                : TextFormField(
+                    initialValue: initialValue,
+                    autofocus: false,
+                    onFieldSubmitted: (newValue) async {
+                      if (newValue != initialValue &&
+                          onFieldSubmitted != null) {
+                        await onFieldSubmitted(newValue);
+                      }
+                      setState(() {
+                        trackingEditStatus[index] = false;
+                      });
+                    },
+                  );
+          },
+        ),
+      ),
       onTap: () {
         setState(() {
           trackingEditStatus[index] = !trackingEditStatus[index];
@@ -995,13 +1133,14 @@ class _StorageManagerState extends State<StorageManager> {
     );
   }
 
-  Widget _buildAddNewWebStorageItem(
-      {required GlobalKey<FormState> formKey,
-      required TextEditingController nameController,
-      required TextEditingController valueController,
-      required String labelName,
-      required String labelValue,
-      Function(String name, String value)? onAdded}) {
+  Widget _buildAddNewWebStorageItem({
+    required GlobalKey<FormState> formKey,
+    required TextEditingController nameController,
+    required TextEditingController valueController,
+    required String labelName,
+    required String labelValue,
+    Function(String name, String value)? onAdded,
+  }) {
     return Form(
       key: formKey,
       child: Row(
@@ -1037,20 +1176,21 @@ class _StorageManagerState extends State<StorageManager> {
             ),
           ),
           Container(
-              child: FlatButton(
-            padding: EdgeInsets.all(15.0),
-            child: Text("Add Item"),
-            onPressed: () {
-              if (formKey.currentState!.validate()) {
-                setState(() {
-                  if (onAdded != null) {
-                    onAdded(nameController.text, valueController.text);
-                    formKey.currentState!.reset();
-                  }
-                });
-              }
-            },
-          )),
+            child: FlatButton(
+              padding: EdgeInsets.all(15.0),
+              child: Text("Add Item"),
+              onPressed: () {
+                if (formKey.currentState!.validate()) {
+                  setState(() {
+                    if (onAdded != null) {
+                      onAdded(nameController.text, valueController.text);
+                      formKey.currentState!.reset();
+                    }
+                  });
+                }
+              },
+            ),
+          ),
         ],
       ),
     );

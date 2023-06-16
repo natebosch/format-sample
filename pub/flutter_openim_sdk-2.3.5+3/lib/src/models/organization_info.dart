@@ -35,19 +35,20 @@ class DeptInfo {
 
   String? relatedGroupID;
 
-  DeptInfo(
-      {this.departmentID,
-      this.faceURL,
-      this.name,
-      this.parentID,
-      this.order,
-      this.departmentType,
-      this.createTime,
-      this.subDepartmentNum,
-      this.memberNum,
-      this.ex,
-      this.attachedInfo,
-      this.relatedGroupID});
+  DeptInfo({
+    this.departmentID,
+    this.faceURL,
+    this.name,
+    this.parentID,
+    this.order,
+    this.departmentType,
+    this.createTime,
+    this.subDepartmentNum,
+    this.memberNum,
+    this.ex,
+    this.attachedInfo,
+    this.relatedGroupID,
+  });
 
   DeptInfo.fromJson(Map<String, dynamic> json) {
     departmentID = json['departmentID'];
@@ -266,8 +267,9 @@ class UserInDept {
     department = json['department'] != null
         ? DeptInfo.fromJson(json['department'])
         : null;
-    member =
-        json['member'] != null ? DeptMemberInfo.fromJson(json['member']) : null;
+    member = json['member'] != null
+        ? DeptMemberInfo.fromJson(json['member'])
+        : null;
   }
 
   Map<String, dynamic> toJson() {
@@ -346,10 +348,7 @@ class OrganizationSearchResult {
   /// 部门成员列表
   List<DeptMemberInfo>? departmentMemberList;
 
-  OrganizationSearchResult({
-    this.departmentList,
-    this.departmentMemberList,
-  });
+  OrganizationSearchResult({this.departmentList, this.departmentMemberList});
 
   OrganizationSearchResult.fromJson(Map<String, dynamic> json) {
     if (json['departmentList'] != null) {

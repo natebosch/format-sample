@@ -10,7 +10,7 @@ var monthsNames = [
   "Sept",
   "Oct",
   "Nov",
-  "Dec"
+  "Dec",
 ];
 
 String getFormattedDate(int dueDate) {

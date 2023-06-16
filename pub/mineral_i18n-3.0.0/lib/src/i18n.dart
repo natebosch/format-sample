@@ -13,7 +13,8 @@ class I18n extends MineralPackageContract implements I18nContract {
   final List<String> _languages;
   final String folder;
 
-  I18n(this._languages, { this.folder = 'lang' }): super('I18n', 'Official package');
+  I18n(this._languages, {this.folder = 'lang'})
+    : super('I18n', 'Official package');
 
   /// ## Languages allowed
   /// ```dart
@@ -21,7 +22,6 @@ class I18n extends MineralPackageContract implements I18nContract {
   /// ```
   @override
   List<String> get languages => _languages;
-
 
   /// ## Languages root directory
   /// ```dart
@@ -31,12 +31,10 @@ class I18n extends MineralPackageContract implements I18nContract {
   Directory get langPath => Directory(join(root.path, folder));
 
   @override
-  List<CliCommandContract> injectCommands () => [
-    SetupCommand(console),
-  ];
+  List<CliCommandContract> injectCommands() => [SetupCommand(console)];
 
   @override
-  Future<void> init () async {
+  Future<void> init() async {
     if (!await langPath.exists()) {
       throw Exception('Missing $folder folder');
     }
@@ -53,7 +51,7 @@ class I18n extends MineralPackageContract implements I18nContract {
   }
 
   /// Recursively browses folders to extract translations
-  _walk (Directory directory) {
+  _walk(Directory directory) {
     final location = directory.path.split(separator).last;
     List<FileSystemEntity> items = directory.listSync();
 
@@ -71,7 +69,10 @@ class I18n extends MineralPackageContract implements I18nContract {
           if (item.parent.path == langPath.path) {
             translationManager.cache[location] = content;
           } else {
-            translationManager.cache[filename].putIfAbsent(location, () => content);
+            translationManager.cache[filename].putIfAbsent(
+              location,
+              () => content,
+            );
           }
         }
       }

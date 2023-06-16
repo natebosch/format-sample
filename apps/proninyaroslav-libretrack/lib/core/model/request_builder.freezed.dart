@@ -11,18 +11,20 @@ part of 'request_builder.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods',
+);
 
 /// @nodoc
 class _$ServiceRequestTearOff {
   const _$ServiceRequestTearOff();
 
-  _ServiceRequest call(
-      {required TransactionId transactionId,
-      required Uri url,
-      required RequestMethod method,
-      String? body,
-      Map<String, String> headers = const {}}) {
+  _ServiceRequest call({
+    required TransactionId transactionId,
+    required Uri url,
+    required RequestMethod method,
+    String? body,
+    Map<String, String> headers = const {},
+  }) {
     return _ServiceRequest(
       transactionId: transactionId,
       url: url,
@@ -52,14 +54,16 @@ mixin _$ServiceRequest {
 /// @nodoc
 abstract class $ServiceRequestCopyWith<$Res> {
   factory $ServiceRequestCopyWith(
-          ServiceRequest value, $Res Function(ServiceRequest) then) =
-      _$ServiceRequestCopyWithImpl<$Res>;
-  $Res call(
-      {TransactionId transactionId,
-      Uri url,
-      RequestMethod method,
-      String? body,
-      Map<String, String> headers});
+    ServiceRequest value,
+    $Res Function(ServiceRequest) then,
+  ) = _$ServiceRequestCopyWithImpl<$Res>;
+  $Res call({
+    TransactionId transactionId,
+    Uri url,
+    RequestMethod method,
+    String? body,
+    Map<String, String> headers,
+  });
 }
 
 /// @nodoc
@@ -83,23 +87,23 @@ class _$ServiceRequestCopyWithImpl<$Res>
       transactionId: transactionId == freezed
           ? _value.transactionId
           : transactionId // ignore: cast_nullable_to_non_nullable
-              as TransactionId,
+                as TransactionId,
       url: url == freezed
           ? _value.url
           : url // ignore: cast_nullable_to_non_nullable
-              as Uri,
+                as Uri,
       method: method == freezed
           ? _value.method
           : method // ignore: cast_nullable_to_non_nullable
-              as RequestMethod,
+                as RequestMethod,
       body: body == freezed
           ? _value.body
           : body // ignore: cast_nullable_to_non_nullable
-              as String?,
+                as String?,
       headers: headers == freezed
           ? _value.headers
           : headers // ignore: cast_nullable_to_non_nullable
-              as Map<String, String>,
+                as Map<String, String>,
     ));
   }
 }
@@ -108,15 +112,17 @@ class _$ServiceRequestCopyWithImpl<$Res>
 abstract class _$ServiceRequestCopyWith<$Res>
     implements $ServiceRequestCopyWith<$Res> {
   factory _$ServiceRequestCopyWith(
-          _ServiceRequest value, $Res Function(_ServiceRequest) then) =
-      __$ServiceRequestCopyWithImpl<$Res>;
+    _ServiceRequest value,
+    $Res Function(_ServiceRequest) then,
+  ) = __$ServiceRequestCopyWithImpl<$Res>;
   @override
-  $Res call(
-      {TransactionId transactionId,
-      Uri url,
-      RequestMethod method,
-      String? body,
-      Map<String, String> headers});
+  $Res call({
+    TransactionId transactionId,
+    Uri url,
+    RequestMethod method,
+    String? body,
+    Map<String, String> headers,
+  });
 }
 
 /// @nodoc
@@ -124,8 +130,9 @@ class __$ServiceRequestCopyWithImpl<$Res>
     extends _$ServiceRequestCopyWithImpl<$Res>
     implements _$ServiceRequestCopyWith<$Res> {
   __$ServiceRequestCopyWithImpl(
-      _ServiceRequest _value, $Res Function(_ServiceRequest) _then)
-      : super(_value, (v) => _then(v as _ServiceRequest));
+    _ServiceRequest _value,
+    $Res Function(_ServiceRequest) _then,
+  ) : super(_value, (v) => _then(v as _ServiceRequest));
 
   @override
   _ServiceRequest get _value => super._value as _ServiceRequest;
@@ -142,23 +149,23 @@ class __$ServiceRequestCopyWithImpl<$Res>
       transactionId: transactionId == freezed
           ? _value.transactionId
           : transactionId // ignore: cast_nullable_to_non_nullable
-              as TransactionId,
+                as TransactionId,
       url: url == freezed
           ? _value.url
           : url // ignore: cast_nullable_to_non_nullable
-              as Uri,
+                as Uri,
       method: method == freezed
           ? _value.method
           : method // ignore: cast_nullable_to_non_nullable
-              as RequestMethod,
+                as RequestMethod,
       body: body == freezed
           ? _value.body
           : body // ignore: cast_nullable_to_non_nullable
-              as String?,
+                as String?,
       headers: headers == freezed
           ? _value.headers
           : headers // ignore: cast_nullable_to_non_nullable
-              as Map<String, String>,
+                as Map<String, String>,
     ));
   }
 }
@@ -168,12 +175,13 @@ class __$ServiceRequestCopyWithImpl<$Res>
 class _$_ServiceRequest
     with DiagnosticableTreeMixin
     implements _ServiceRequest {
-  const _$_ServiceRequest(
-      {required this.transactionId,
-      required this.url,
-      required this.method,
-      this.body,
-      this.headers = const {}});
+  const _$_ServiceRequest({
+    required this.transactionId,
+    required this.url,
+    required this.method,
+    this.body,
+    this.headers = const {},
+  });
 
   @override
   final TransactionId transactionId;
@@ -209,8 +217,10 @@ class _$_ServiceRequest
     return identical(this, other) ||
         (other is _ServiceRequest &&
             (identical(other.transactionId, transactionId) ||
-                const DeepCollectionEquality()
-                    .equals(other.transactionId, transactionId)) &&
+                const DeepCollectionEquality().equals(
+                  other.transactionId,
+                  transactionId,
+                )) &&
             (identical(other.url, url) ||
                 const DeepCollectionEquality().equals(other.url, url)) &&
             (identical(other.method, method) ||
@@ -232,17 +242,21 @@ class _$_ServiceRequest
 
   @JsonKey(ignore: true)
   @override
-  _$ServiceRequestCopyWith<_ServiceRequest> get copyWith =>
-      __$ServiceRequestCopyWithImpl<_ServiceRequest>(this, _$identity);
+  _$ServiceRequestCopyWith<_ServiceRequest>
+  get copyWith => __$ServiceRequestCopyWithImpl<_ServiceRequest>(
+    this,
+    _$identity,
+  );
 }
 
 abstract class _ServiceRequest implements ServiceRequest {
-  const factory _ServiceRequest(
-      {required TransactionId transactionId,
-      required Uri url,
-      required RequestMethod method,
-      String? body,
-      Map<String, String> headers}) = _$_ServiceRequest;
+  const factory _ServiceRequest({
+    required TransactionId transactionId,
+    required Uri url,
+    required RequestMethod method,
+    String? body,
+    Map<String, String> headers,
+  }) = _$_ServiceRequest;
 
   @override
   TransactionId get transactionId => throw _privateConstructorUsedError;

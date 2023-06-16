@@ -70,9 +70,9 @@ class MentalArithmeticProvider with ChangeNotifier {
       if (_result != "-" && int.parse(_result) == _currentState.answer) {
         await Future.delayed(Duration(milliseconds: 300));
         if (_list.length - 1 == _index) {
-          _list.addAll(
-              MentalArithmeticRepository.getMentalArithmeticDataList(
-                  _index ~/ 5 + 1));
+          _list.addAll(MentalArithmeticRepository.getMentalArithmeticDataList(
+            _index ~/ 5 + 1,
+          ));
         }
         _index = _index + 1;
         currentScore = currentScore + ScoreUtil.mentalArithmeticScore;
@@ -102,27 +102,33 @@ class MentalArithmeticProvider with ChangeNotifier {
     _result = "";
     localTimerSubscription = Stream.periodic(Duration(seconds: 1), (x) => x)
         .take(TimeUtil.mentalArithmeticLocalTimeOut)
-        .listen((time) {
-      _currentState.currentQuestion = _currentState.questionList[time];
-      notifyListeners();
-    }, onDone: () {
-      this._localTimeOut = true;
-      notifyListeners();
-    });
+        .listen(
+          (time) {
+            _currentState.currentQuestion = _currentState.questionList[time];
+            notifyListeners();
+          },
+          onDone: () {
+            this._localTimeOut = true;
+            notifyListeners();
+          },
+        );
   }
 
   void startTimer() {
-    timerSubscription = Stream.periodic(Duration(seconds: 1),
-            (x) => TimeUtil.mentalArithmeticTimeOut - x - 1)
-        .take(TimeUtil.mentalArithmeticTimeOut)
-        .listen((time) {
-      _time = time;
-      notifyListeners();
-    }, onDone: () {
-      this._timeOut = true;
-      showDialog();
-      notifyListeners();
-    });
+    timerSubscription = Stream.periodic(
+      Duration(seconds: 1),
+      (x) => TimeUtil.mentalArithmeticTimeOut - x - 1,
+    ).take(TimeUtil.mentalArithmeticTimeOut).listen(
+      (time) {
+        _time = time;
+        notifyListeners();
+      },
+      onDone: () {
+        this._timeOut = true;
+        showDialog();
+        notifyListeners();
+      },
+    );
   }
 
   void restartLocalTimer() {
@@ -141,19 +147,26 @@ class MentalArithmeticProvider with ChangeNotifier {
   Future showDialog() async {
     notifyListeners();
     var dialogResult = await _dialogService.showDialog(
-        type: KeyUtil.GameOverDialog,
-        gameCategoryType: GameCategoryType.MENTAL_ARITHMETIC,
-        score: currentScore,
-        coin: _index * CoinUtil.mentalArithmeticCoin,
-        isPause: _pause);
+      type: KeyUtil.GameOverDialog,
+      gameCategoryType: GameCategoryType.MENTAL_ARITHMETIC,
+      score: currentScore,
+      coin: _index * CoinUtil.mentalArithmeticCoin,
+      isPause: _pause,
+    );
 
     if (dialogResult.exit) {
-      homeViewModel.updateScoreboard(GameCategoryType.MENTAL_ARITHMETIC,
-          currentScore, _index * CoinUtil.mentalArithmeticCoin);
+      homeViewModel.updateScoreboard(
+        GameCategoryType.MENTAL_ARITHMETIC,
+        currentScore,
+        _index * CoinUtil.mentalArithmeticCoin,
+      );
       GetIt.I<NavigationService>().goBack();
     } else if (dialogResult.restart) {
-      homeViewModel.updateScoreboard(GameCategoryType.MENTAL_ARITHMETIC,
-          currentScore, _index * CoinUtil.mentalArithmeticCoin);
+      homeViewModel.updateScoreboard(
+        GameCategoryType.MENTAL_ARITHMETIC,
+        currentScore,
+        _index * CoinUtil.mentalArithmeticCoin,
+      );
       timerSubscription.cancel();
       localTimerSubscription.cancel();
       startGame();
@@ -177,11 +190,12 @@ class MentalArithmeticProvider with ChangeNotifier {
     localTimerSubscription.pause();
     notifyListeners();
     var dialogResult = await _dialogService.showDialog(
-        type: KeyUtil.InfoDialog,
-        gameCategoryType: GameCategoryType.MENTAL_ARITHMETIC,
-        score: 0,
-        coin: 0,
-        isPause: false);
+      type: KeyUtil.InfoDialog,
+      gameCategoryType: GameCategoryType.MENTAL_ARITHMETIC,
+      score: 0,
+      coin: 0,
+      isPause: false,
+    );
 
     if (dialogResult.exit) {
       homeViewModel.setFirstTime(GameCategoryType.MENTAL_ARITHMETIC);

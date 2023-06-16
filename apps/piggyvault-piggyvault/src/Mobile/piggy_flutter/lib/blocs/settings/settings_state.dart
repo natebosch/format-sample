@@ -13,7 +13,9 @@ class SettingsLoading extends SettingsState {}
 class SettingsLoaded extends SettingsState {
   final UserSettings settings;
 
-  SettingsLoaded({@required this.settings}) : assert(settings != null);
+  SettingsLoaded({
+    @required this.settings,
+  }) : assert(settings != null);
 
   @override
   List<Object> get props => [settings];

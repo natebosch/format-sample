@@ -18,6 +18,7 @@ class MiraiOutlinedButton with _$MiraiOutlinedButton {
     required Map<String, dynamic> child,
   }) = _MiraiOutlinedButton;
 
-  factory MiraiOutlinedButton.fromJson(Map<String, dynamic> json) =>
-      _$MiraiOutlinedButtonFromJson(json);
+  factory MiraiOutlinedButton.fromJson(
+    Map<String, dynamic> json,
+  ) => _$MiraiOutlinedButtonFromJson(json);
 }

@@ -6,9 +6,11 @@ import 'package:re_jek_ft/screens/PreloginScreen.dart';
 class SplashScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-
     Future.delayed(Duration(seconds: 5), () {
-        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => PreloginScreen()));
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => PreloginScreen()),
+      );
     });
 
     return Scaffold(
@@ -16,9 +18,10 @@ class SplashScreen extends StatelessWidget {
         child: Text(
           "reJEK¡",
           style: TextStyle(
-              color: Colors.green,
-              fontSize: 50,
-              fontWeight: FontWeight.bold),
+            color: Colors.green,
+            fontSize: 50,
+            fontWeight: FontWeight.bold,
+          ),
         ),
       ),
     );

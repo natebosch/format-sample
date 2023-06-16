@@ -6,11 +6,19 @@ import 'package:over_react_analyzer_plugin/src/util/react_types.dart';
 const missingBuilderMessageSuffix = ' Are you missing the builder invocation?';
 const missingBuilderFixMessage = 'Add builder invocation';
 
-const addBuilderInvocationFix = FixKind('over_react_add_builder_invocation', 200, missingBuilderFixMessage);
+const addBuilderInvocationFix = FixKind(
+  'over_react_add_builder_invocation',
+  200,
+  missingBuilderFixMessage,
+);
 
-bool couldBeMissingBuilderInvocation(Expression expression) => expression.staticType?.isPropsClass ?? false;
+bool couldBeMissingBuilderInvocation(Expression expression) =>
+    expression.staticType?.isPropsClass ?? false;
 
-void buildMissingInvocationEdits(Expression expression, DartFileEditBuilder builder) {
+void buildMissingInvocationEdits(
+  Expression expression,
+  DartFileEditBuilder builder,
+) {
   if (expression.unParenthesized != expression) {
     // Expression is already parenthesized
     builder.addSimpleInsertion(expression.end, '()');

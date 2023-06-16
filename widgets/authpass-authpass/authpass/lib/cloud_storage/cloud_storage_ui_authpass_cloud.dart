@@ -38,15 +38,11 @@ class ShareFileScreen extends StatefulWidget {
   static Route<void> route({
     required AuthPassCloudProvider provider,
     required CloudStorageEntity entity,
-  }) =>
-      MaterialPageRoute(
-        settings: const RouteSettings(name: 'shareFile'),
-        builder: (context) => ShareFileScreen(
-          provider: provider,
-          entity: entity,
-        ),
-        fullscreenDialog: true,
-      );
+  }) => MaterialPageRoute(
+    settings: const RouteSettings(name: 'shareFile'),
+    builder: (context) => ShareFileScreen(provider: provider, entity: entity),
+    fullscreenDialog: true,
+  );
 
   final AuthPassCloudProvider provider;
   final CloudStorageEntity entity;
@@ -64,34 +60,39 @@ class _ShareFileScreenState extends State<ShareFileScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text(loc.shareDialogTitle(
-            widget.entity.name ?? loc.unnamedFilePlaceholder)),
+          widget.entity.name ?? loc.unnamedFilePlaceholder,
+        )),
         actions: [
           IconButton(
-              onPressed: () async {
-                _retryBuilder.currentState?.reload();
-              },
-              icon: const Icon(Icons.refresh)),
+            onPressed: () async {
+              _retryBuilder.currentState?.reload();
+            },
+            icon: const Icon(Icons.refresh),
+          ),
         ],
       ),
       floatingActionButton: FloatingActionButton.extended(
-          onPressed: () async {
-            await showDialog<void>(
-                context: context,
-                builder: (context) => ShareCreateDialog(
-                      provider: widget.provider,
-                      entity: widget.entity,
-                    ));
-            _retryBuilder.currentState?.reload();
-          },
-          label: Text(loc.shareFileActionLabel),
-          icon: const Icon(Icons.share)),
+        onPressed: () async {
+          await showDialog<void>(
+            context: context,
+            builder: (context) => ShareCreateDialog(
+                  provider: widget.provider,
+                  entity: widget.entity,
+                ),
+          );
+          _retryBuilder.currentState?.reload();
+        },
+        label: Text(loc.shareFileActionLabel),
+        icon: const Icon(Icons.share),
+      ),
       body: RetryFutureBuilder<List<FileTokenInfo>>(
         key: _retryBuilder,
-        produceFuture: (context) =>
-            widget.provider.listShareTokens(widget.entity),
+        produceFuture:
+            (context) => widget.provider.listShareTokens(widget.entity),
         builder: (context, data) {
-          final sorted =
-              data.sorted((a, b) => a.createdAt.compareTo(b.createdAt));
+          final sorted = data.sorted(
+            (a, b) => a.createdAt.compareTo(b.createdAt),
+          );
           return ShareFileBody(tokens: sorted);
         },
       ),
@@ -100,10 +101,7 @@ class _ShareFileScreenState extends State<ShareFileScreen> {
 }
 
 class ShareFileBody extends StatelessWidget {
-  const ShareFileBody({
-    Key? key,
-    required this.tokens,
-  }) : super(key: key);
+  const ShareFileBody({Key? key, required this.tokens}) : super(key: key);
 
   final List<FileTokenInfo> tokens;
 
@@ -120,16 +118,16 @@ class ShareFileBody extends StatelessWidget {
         final token = tokens[index];
         return ListTile(
           leading: const Icon(Icons.group),
-          title: Text(
-            token.label.takeUnlessBlank() ?? loc.shareTokenNoLabel,
-          ),
+          title: Text(token.label.takeUnlessBlank() ?? loc.shareTokenNoLabel),
           subtitle: Text([
             token.readOnly ? loc.shareTokenReadOnly : loc.shareTokenReadWrite,
-            formatUtils.formatDateFull(token.createdAt)
+            formatUtils.formatDateFull(token.createdAt),
           ].join(nonNls(' — '))),
           onTap: () async {
-            await ShareTokenPresent.show(context,
-                token: ShareTokenPresentArgs(token: token.fileToken));
+            await ShareTokenPresent.show(
+              context,
+              token: ShareTokenPresentArgs(token: token.fileToken),
+            );
           },
         );
       },
@@ -183,7 +181,7 @@ class _ShareCreateDialogState extends State<ShareCreateDialog>
               title: Text(loc.shareCreateTokenReadOnly),
               subtitle: Text(loc.shareCreateTokenReadOnlyHelpText),
               onChanged: (value) => setState(() => readOnly = value),
-            )
+            ),
           ],
         ),
       ),
@@ -225,22 +223,18 @@ class ShareTokenPresentArgs {
 }
 
 class ShareTokenPresent extends StatelessWidget {
-  ShareTokenPresent({
-    Key? key,
-    required this.tokenInfo,
-  }) : super(key: key);
+  ShareTokenPresent({Key? key, required this.tokenInfo}) : super(key: key);
 
   final ShareTokenPresentArgs tokenInfo;
 
-  late final tokenUrl = AppConstants.authPassWebAppUri
-      .replace(
-        fragment: Uri(
-            path: AppConstants.routeOpenFile,
-            queryParameters: <String, String>{
-              AppConstants.routeOpenFileParamToken: tokenInfo.token
-            }).toString(),
-      )
-      .toString();
+  late final tokenUrl = AppConstants.authPassWebAppUri.replace(
+    fragment: Uri(
+      path: AppConstants.routeOpenFile,
+      queryParameters: <String, String>{
+        AppConstants.routeOpenFileParamToken: tokenInfo.token,
+      },
+    ).toString(),
+  ).toString();
 
   @override
   Widget build(BuildContext context) {
@@ -253,10 +247,7 @@ class ShareTokenPresent extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Text(
-              loc.sharePresentDialogHelp,
-              maxLines: null,
-            ),
+            Text(loc.sharePresentDialogHelp, maxLines: null),
             const SizedBox(height: 32),
             Row(
               mainAxisSize: MainAxisSize.max,
@@ -271,8 +262,10 @@ class ShareTokenPresent extends StatelessWidget {
                       color: Colors.white,
                       child: InkWell(
                         onTap: () {
-                          FullScreenHud.show(context,
-                              (context) => FullScreenHud(value: tokenUrl));
+                          FullScreenHud.show(
+                            context,
+                            (context) => FullScreenHud(value: tokenUrl),
+                          );
                         },
                         child: QrImage(
                           data: tokenUrl,
@@ -340,8 +333,10 @@ class ShareTokenPresent extends StatelessWidget {
     context.showSnackBar(loc.sharePresentCopied);
   }
 
-  static Future<void> show(BuildContext context,
-      {required ShareTokenPresentArgs token}) async {
+  static Future<void> show(
+    BuildContext context, {
+    required ShareTokenPresentArgs token,
+  }) async {
     await showDialog<void>(
       context: context,
       builder: (context) => ShareTokenPresent(tokenInfo: token),
@@ -351,10 +346,8 @@ class ShareTokenPresent extends StatelessWidget {
 }
 
 class ShareCodeInputDialog extends StatefulWidget {
-  const ShareCodeInputDialog({
-    Key? key,
-    required this.provider,
-  }) : super(key: key);
+  const ShareCodeInputDialog({Key? key, required this.provider})
+    : super(key: key);
 
   final AuthPassCloudProvider provider;
 
@@ -364,9 +357,7 @@ class ShareCodeInputDialog extends StatefulWidget {
   }) async {
     await showDialog<void>(
       context: context,
-      builder: (context) => ShareCodeInputDialog(
-        provider: provider,
-      ),
+      builder: (context) => ShareCodeInputDialog(provider: provider),
       routeSettings: const RouteSettings(name: 'shareCodeInput'),
     );
   }
@@ -393,8 +384,10 @@ class _ShareCodeInputDialogState extends State<ShareCodeInputDialog>
             TextButton.icon(
               onPressed: () async {
                 final result = await barcode.BarcodeScanner.scan(
-                    options: const barcode.ScanOptions(
-                        restrictFormat: [barcode.BarcodeFormat.qr]));
+                  options: const barcode.ScanOptions(
+                    restrictFormat: [barcode.BarcodeFormat.qr],
+                  ),
+                );
                 if (result.type == barcode.ResultType.Barcode) {
                   _controller.text = result.rawContent;
                   await _load();
@@ -459,8 +452,9 @@ class _ShareCodeInputDialogState extends State<ShareCodeInputDialog>
       final token = _tokenFromString(_controller.text);
       final loadedToken =
           await widget.provider.loadFromShareToken(token: token);
-      await Navigator.of(context)
-          .pushReplacement(CredentialsScreen.route(loadedToken.fileSource));
+      await Navigator.of(context).pushReplacement(
+        CredentialsScreen.route(loadedToken.fileSource),
+      );
     });
   }
 
@@ -481,19 +475,20 @@ class _ShareCodeInputDialogState extends State<ShareCodeInputDialog>
 
 /// Launch screen when deep linking to token.
 class AuthPassCloudLoadFileLaunch extends StatefulWidget {
-  const AuthPassCloudLoadFileLaunch({
-    Key? key,
-    required this.token,
-  }) : super(key: key);
+  const AuthPassCloudLoadFileLaunch({Key? key, required this.token})
+    : super(key: key);
 
   static Route<void> route({required String token}) => MaterialPageRoute(
-        builder: (context) => AuthPassCloudLoadFileLaunch(token: token),
-        settings: RouteSettings(
-            name:
-                Uri(path: '/openFile/token', queryParameters: <String, String>{
+    builder: (context) => AuthPassCloudLoadFileLaunch(token: token),
+    settings: RouteSettings(
+      name: Uri(
+        path: '/openFile/token',
+        queryParameters: <String, String>{
           AppConstants.routeOpenFileParamToken: token,
-        }).toString()),
-      );
+        },
+      ).toString(),
+    ),
+  );
 
   final String token;
 
@@ -553,33 +548,40 @@ class _AuthPassCloudLoadFileLaunchState
                 ),
               ],
             ] else ...[
-              Icon(AuthPassIcons.AuthPassLogo,
-                  color: Theme.of(context).primaryColor, size: 64),
+              Icon(
+                AuthPassIcons.AuthPassLogo,
+                color: Theme.of(context).primaryColor,
+                size: 64,
+              ),
               const SizedBox(height: 16),
               Text(loadedToken.fileInfo.name),
               const SizedBox(height: 16),
               ElevatedButton(
                 onPressed: () {
-                  Navigator.of(context)
-                      .push(CredentialsScreen.route(loadedToken.fileSource));
+                  Navigator.of(context).push(
+                    CredentialsScreen.route(loadedToken.fileSource),
+                  );
                 },
                 child: Text(loc.shareCodeOpenFileButtonLabel),
               ),
               const SizedBox(height: 32),
-              Text(AuthPassPlatform.isWeb
-                  ? loc.shareCodeOpenInstallAppCaption
-                  : loc.shareCodeOpenAnotherAppCaption),
+              Text(
+                AuthPassPlatform.isWeb
+                    ? loc.shareCodeOpenInstallAppCaption
+                    : loc.shareCodeOpenAnotherAppCaption,
+              ),
               Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   Link(
-                    uri: AppConstants.authPassInstall
-                        .utmCampaign('shareCodeLaunch'),
+                    uri: AppConstants.authPassInstall.utmCampaign(
+                      'shareCodeLaunch',
+                    ),
                     target: LinkTarget.blank,
                     builder: (context, followLink) => TextButton(
-                      onPressed: followLink,
-                      child: Text(loc.shareCodeOpenInstallAppButtonLabel),
-                    ),
+                          onPressed: followLink,
+                          child: Text(loc.shareCodeOpenInstallAppButtonLabel),
+                        ),
                   ),
                   const SizedBox(width: 16),
                   TextButton(
@@ -587,7 +589,8 @@ class _AuthPassCloudLoadFileLaunchState
                       await ShareTokenPresent.show(
                         context,
                         token: ShareTokenPresentArgs(
-                            token: loadedToken.fileInfo.fileToken),
+                          token: loadedToken.fileInfo.fileToken,
+                        ),
                       );
                     },
                     child: Text(loc.shareCodeOpenShowCodeButtonLabel),

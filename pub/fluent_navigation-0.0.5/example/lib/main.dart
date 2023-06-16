@@ -3,10 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:fluent_navigation/fluent_navigation.dart';
 
 void main() async {
-  await Fluent.build([
-    NavigationModule(),
-    ExampleModule(),
-  ]);
+  await Fluent.build([NavigationModule(), ExampleModule()]);
 
   runApp(const MainApp());
 }

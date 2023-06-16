@@ -11,11 +11,7 @@ class Layout extends StatefulWidget {
   final Widget child;
   final Drawer drawer;
 
-  Layout({
-    this.bottomNavigationBar,
-    this.drawer,
-    this.child,
-  });
+  Layout({this.bottomNavigationBar, this.drawer, this.child});
 
   @override
   _LayoutState createState() => _LayoutState();

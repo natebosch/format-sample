@@ -22,17 +22,17 @@ class _GcmPageState extends State<GcmPage> {
       context: context,
       barrierDismissible: false,
       builder: (_) => AlertDialog(
-        title: Text(title),
-        content: Text(content),
-        actions: <Widget>[
-          TextButton(
-            child: Text("OK"),
-            onPressed: () {
-              Navigator.of(context).pop();
-            },
-          )
-        ],
-      ),
+            title: Text(title),
+            content: Text(content),
+            actions: <Widget>[
+              TextButton(
+                child: Text("OK"),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+              ),
+            ],
+          ),
     );
   }
 
@@ -58,7 +58,8 @@ class _GcmPageState extends State<GcmPage> {
               TextField(
                 controller: serialisedDerivationArtefactsEditingController,
                 decoration: InputDecoration(
-                    labelText: 'Serialised Derivation Artefacts'),
+                  labelText: 'Serialised Derivation Artefacts',
+                ),
               ),
               ElevatedButton(
                 child: Text('Generate Random Artifacts'),
@@ -84,11 +85,13 @@ class _GcmPageState extends State<GcmPage> {
                   }
                   try {
                     final derivedKey = await deriveKeyWithSerializedOptions(
-                        passphraseEditingController.text,
-                        serialisedDerivationArtefactsEditingController.text);
+                      passphraseEditingController.text,
+                      serialisedDerivationArtefactsEditingController.text,
+                    );
                     setState(() {
-                      derivedKeyEditingController.text =
-                          hex.encode(derivedKey.key.bytes);
+                      derivedKeyEditingController.text = hex.encode(
+                        derivedKey.key.bytes,
+                      );
                     });
                   } catch (e) {
                     _showDialog('Error', e.toString());
@@ -97,9 +100,7 @@ class _GcmPageState extends State<GcmPage> {
               ),
               TextField(
                 controller: derivedKeyEditingController,
-                decoration: InputDecoration(
-                  labelText: 'Derived Key (hex)',
-                ),
+                decoration: InputDecoration(labelText: 'Derived Key (hex)'),
               ),
             ],
           ),
@@ -122,7 +123,8 @@ class _GcmPageState extends State<GcmPage> {
               TextField(
                 controller: serialisedDerivationArtefactsEditingController,
                 decoration: InputDecoration(
-                    labelText: 'Serialised Derivation Artefacts'),
+                  labelText: 'Serialised Derivation Artefacts',
+                ),
               ),
               TextField(
                 controller: plainTextEditingController,
@@ -133,15 +135,17 @@ class _GcmPageState extends State<GcmPage> {
                 onPressed: () async {
                   try {
                     final derivedKey = await deriveKeyWithSerializedOptions(
-                        passphraseEditingController.text,
-                        serialisedDerivationArtefactsEditingController.text);
+                      passphraseEditingController.text,
+                      serialisedDerivationArtefactsEditingController.text,
+                    );
 
                     final plainText = plainTextEditingController.text;
 
                     final encrypted = await encryptWithKey(
-                        data: utf8.encode(plainText),
-                        encryptionStrategy: EncryptionStrategy.aes256Gcm,
-                        key: derivedKey.key);
+                      data: utf8.encode(plainText),
+                      encryptionStrategy: EncryptionStrategy.aes256Gcm,
+                      key: derivedKey.key,
+                    );
                     setState(() {
                       serialisedEncryptedDataEditingController.text =
                           encrypted.serialize();
@@ -177,7 +181,8 @@ class _GcmPageState extends State<GcmPage> {
               TextField(
                 controller: serialisedDerivationArtefactsEditingController,
                 decoration: InputDecoration(
-                    labelText: 'Serialised Derivation Artefacts'),
+                  labelText: 'Serialised Derivation Artefacts',
+                ),
               ),
               TextField(
                 controller: serialisedEncryptedDataEditingController,
@@ -189,8 +194,9 @@ class _GcmPageState extends State<GcmPage> {
                 onPressed: () async {
                   try {
                     final derivedKey = await deriveKeyWithSerializedOptions(
-                        passphraseEditingController.text,
-                        serialisedDerivationArtefactsEditingController.text);
+                      passphraseEditingController.text,
+                      serialisedDerivationArtefactsEditingController.text,
+                    );
                     final decrypted = await decryptWithKey(
                       key: derivedKey.key,
                       encrypted: serialisedEncryptedDataEditingController.text,
@@ -205,9 +211,7 @@ class _GcmPageState extends State<GcmPage> {
               ),
               TextField(
                 controller: plainTextEditingController,
-                decoration: InputDecoration(
-                  labelText: 'Decrypted Text',
-                ),
+                decoration: InputDecoration(labelText: 'Decrypted Text'),
               ),
             ],
           ),

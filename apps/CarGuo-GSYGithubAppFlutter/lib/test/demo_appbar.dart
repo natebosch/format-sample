@@ -12,16 +12,17 @@ class ImageAppbar extends StatelessWidget implements PreferredSizeWidget {
   final Color textColor;
   final Widget? title;
 
-  ImageAppbar(
-      {this.leading,
-      this.actions,
-      this.needLeading = true,
-      this.title,
-      this.backBtnIconData = Icons.arrow_back_ios,
-      this.backPress,
-      this.leadingWidth = 56.0,
-      this.iconColor = Colors.white,
-      this.textColor = Colors.white});
+  ImageAppbar({
+    this.leading,
+    this.actions,
+    this.needLeading = true,
+    this.title,
+    this.backBtnIconData = Icons.arrow_back_ios,
+    this.backPress,
+    this.leadingWidth = 56.0,
+    this.iconColor = Colors.white,
+    this.textColor = Colors.white,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -31,10 +32,7 @@ class ImageAppbar extends StatelessWidget implements PreferredSizeWidget {
       leading ??= needLeading
           ? IconButton(
               highlightColor: Colors.transparent,
-              icon: Icon(
-                backBtnIconData,
-                color: iconColor,
-              ),
+              icon: Icon(backBtnIconData, color: iconColor),
               color: iconColor,
               onPressed: () {
                 if (backPress != null) {
@@ -71,25 +69,22 @@ class ImageAppbar extends StatelessWidget implements PreferredSizeWidget {
         Container(
           decoration: BoxDecoration(
             image: DecorationImage(
-                image: AssetImage("static/images/logo.png"), fit: BoxFit.cover),
+              image: AssetImage("static/images/logo.png"),
+              fit: BoxFit.cover,
+            ),
           ),
         ),
         SafeArea(
-          child: Container(
-            alignment: Alignment.centerLeft,
-            child: leading,
-          ),
+          child: Container(alignment: Alignment.centerLeft, child: leading),
         ),
         SafeArea(
           child: Container(
             child: new Row(
               children: <Widget>[
                 new Expanded(
-                    child: Container(
-                  child: Center(
-                    child: title ?? new Container(),
-                  ),
-                )),
+                  child:
+                      Container(child: Center(child: title ?? new Container())),
+                ),
               ],
             ),
           ),
@@ -99,13 +94,11 @@ class ImageAppbar extends StatelessWidget implements PreferredSizeWidget {
             child: new Row(
               children: <Widget>[
                 new Expanded(child: Container()),
-                new Row(
-                  children: actions ?? [],
-                )
+                new Row(children: actions ?? []),
               ],
             ),
           ),
-        )
+        ),
       ],
     );
     return AnnotatedRegion<SystemUiOverlayStyle>(

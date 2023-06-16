@@ -17,19 +17,19 @@ class ScreenController extends StatefulWidget {
   final String? streamUrl;
   final HMSRole? role;
   final HMSConfig? config;
-  const ScreenController(
-      {Key? key,
-      required this.meetingLink,
-      required this.user,
-      required this.localPeerNetworkQuality,
-      this.isStreamingLink = false,
-      this.isRoomMute = false,
-      this.showStats = false,
-      this.mirrorCamera = true,
-      this.streamUrl,
-      this.role,
-      this.config})
-      : super(key: key);
+  const ScreenController({
+    Key? key,
+    required this.meetingLink,
+    required this.user,
+    required this.localPeerNetworkQuality,
+    this.isStreamingLink = false,
+    this.isRoomMute = false,
+    this.showStats = false,
+    this.mirrorCamera = true,
+    this.streamUrl,
+    this.role,
+    this.config,
+  }) : super(key: key);
 
   @override
   State<ScreenController> createState() => _ScreenControllerState();
@@ -44,18 +44,21 @@ class _ScreenControllerState extends State<ScreenController> {
   }
 
   void initMeeting() async {
-    HMSException? ans = await context
-        .read<MeetingStore>()
-        .join(widget.user, widget.meetingLink, roomConfig: widget.config);
+    HMSException? ans = await context.read<MeetingStore>().join(
+      widget.user,
+      widget.meetingLink,
+      roomConfig: widget.config,
+    );
     if (ans != null) {
       UtilityComponents.showErrorDialog(
-          context: context,
-          errorMessage: "ACTION: ${ans.action} DESCRIPTION: ${ans.description}",
-          errorTitle: ans.message ?? "Join Error",
-          actionMessage: "OK",
-          action: () {
-            Navigator.of(context).popUntil((route) => route.isFirst);
-          });
+        context: context,
+        errorMessage: "ACTION: ${ans.action} DESCRIPTION: ${ans.description}",
+        errorTitle: ans.message ?? "Join Error",
+        actionMessage: "OK",
+        action: () {
+          Navigator.of(context).popUntil((route) => route.isFirst);
+        },
+      );
     }
   }
 
@@ -66,16 +69,12 @@ class _ScreenControllerState extends State<ScreenController> {
   @override
   Widget build(BuildContext context) {
     if ((Provider.of<MeetingStore>(context).localPeer != null &&
-            Provider.of<MeetingStore>(context)
-                .localPeer!
-                .role
-                .name
-                .contains("hls-")) ||
+            Provider.of<MeetingStore>(context).localPeer!.role.name.contains(
+              "hls-",
+            )) ||
         ((widget.role?.name.contains("hls-") ?? false) &&
             widget.streamUrl != null)) {
-      return HLSViewerPage(
-        streamUrl: widget.streamUrl,
-      );
+      return HLSViewerPage(streamUrl: widget.streamUrl);
     } else {
       return MeetingPage(
         isStreamingLink: widget.isStreamingLink,

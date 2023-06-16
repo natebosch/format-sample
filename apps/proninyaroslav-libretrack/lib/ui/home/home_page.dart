@@ -32,11 +32,8 @@ class HomePage extends StatefulWidget {
   final ValueChanged<AppRoutePath>? onLoadRoute;
   final HomeRoutePath initRoute;
 
-  const HomePage({
-    Key? key,
-    this.onLoadRoute,
-    required this.initRoute,
-  }) : super(key: key);
+  const HomePage({Key? key, this.onLoadRoute, required this.initRoute})
+    : super(key: key);
 
   @override
   _HomePageState createState() => _HomePageState();
@@ -110,9 +107,7 @@ class _HomePageState extends State<HomePage> {
             },
             actions: [
               IconButton(
-                icon: const Icon(
-                  Icons.refresh,
-                ),
+                icon: const Icon(Icons.refresh),
                 tooltip: S.of(context).refreshAll,
                 onPressed: () =>
                     context.read<ParcelsActionsCubit>().refreshAll(),

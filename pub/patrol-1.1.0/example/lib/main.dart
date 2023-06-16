@@ -30,14 +30,10 @@ class ExampleApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      darkTheme: ThemeData(
-        primarySwatch: Colors.blue,
-        brightness: Brightness.dark,
-      ),
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        brightness: Brightness.light,
-      ),
+      darkTheme:
+          ThemeData(primarySwatch: Colors.blue, brightness: Brightness.dark),
+      theme:
+          ThemeData(primarySwatch: Colors.blue, brightness: Brightness.light),
       home: const ExampleHomePage(title: 'Flutter Demo Home Page'),
     );
   }
@@ -73,15 +69,11 @@ class _ExampleHomePageState extends State<ExampleHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: const Key('scaffold'),
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
+      appBar: AppBar(title: Text(widget.title)),
       body: ListView(
         key: const Key('listViewKey'),
         children: [
-          const Text(
-            'You have pushed the button this many times:',
-          ),
+          const Text('You have pushed the button this many times:'),
           Text(
             '$_counter',
             key: const Key('counterText'),
@@ -148,17 +140,13 @@ class _ExampleHomePageState extends State<ExampleHomePage> {
           ),
           TextButton(
             onPressed: () async => Navigator.of(context).push(
-              MaterialPageRoute<void>(
-                builder: (_) => const LoadingScreen(),
-              ),
+              MaterialPageRoute<void>(builder: (_) => const LoadingScreen()),
             ),
             child: const Text('Open loading screen'),
           ),
           TextButton(
             onPressed: () async => Navigator.of(context).push(
-              MaterialPageRoute<void>(
-                builder: (_) => const LocationScreen(),
-              ),
+              MaterialPageRoute<void>(builder: (_) => const LocationScreen()),
             ),
             child: const Text('Open location screen'),
           ),
@@ -172,17 +160,13 @@ class _ExampleHomePageState extends State<ExampleHomePage> {
           ),
           TextButton(
             onPressed: () async => Navigator.of(context).push(
-              MaterialPageRoute<void>(
-                builder: (_) => const OverlayScreen(),
-              ),
+              MaterialPageRoute<void>(builder: (_) => const OverlayScreen()),
             ),
             child: const Text('Open overlay screen'),
           ),
           TextButton(
             onPressed: () async => Navigator.of(context).push(
-              MaterialPageRoute<void>(
-                builder: (_) => const ScrollingScreen(),
-              ),
+              MaterialPageRoute<void>(builder: (_) => const ScrollingScreen()),
             ),
             child: const Text('Open scrolling screen'),
           ),
@@ -190,9 +174,9 @@ class _ExampleHomePageState extends State<ExampleHomePage> {
             onPressed: () async => Navigator.of(context).push(
               MaterialPageRoute<void>(
                 builder: (_) => const WebViewScreen(
-                  title: 'WebView (LeanCode)',
-                  url: 'https://leancode.co',
-                ),
+                      title: 'WebView (LeanCode)',
+                      url: 'https://leancode.co',
+                    ),
               ),
             ),
             child: const Text('Open webview (LeanCode)'),
@@ -201,9 +185,9 @@ class _ExampleHomePageState extends State<ExampleHomePage> {
             onPressed: () async => Navigator.of(context).push(
               MaterialPageRoute<void>(
                 builder: (_) => const WebViewScreen(
-                  title: 'WebView (Hacker News)',
-                  url: 'https://news.ycombinator.com',
-                ),
+                      title: 'WebView (Hacker News)',
+                      url: 'https://news.ycombinator.com',
+                    ),
               ),
             ),
             child: const Text('Open webview (Hacker News)'),
@@ -212,9 +196,9 @@ class _ExampleHomePageState extends State<ExampleHomePage> {
             onPressed: () async => Navigator.of(context).push(
               MaterialPageRoute<void>(
                 builder: (_) => const WebViewScreen(
-                  title: 'WebView (StackOverflow)',
-                  url: 'https://stackoverflow.com',
-                ),
+                      title: 'WebView (StackOverflow)',
+                      url: 'https://stackoverflow.com',
+                    ),
               ),
             ),
             child: const Text('Open webview (StackOverflow)'),
@@ -223,10 +207,10 @@ class _ExampleHomePageState extends State<ExampleHomePage> {
             onPressed: () async => Navigator.of(context).push(
               MaterialPageRoute<void>(
                 builder: (_) => const WebViewScreen(
-                  title: 'WebView (login form)',
-                  url:
-                      'https://joyful-noise-staging.joyful-noise.link/users/sign_in',
-                ),
+                      title: 'WebView (login form)',
+                      url:
+                          'https://joyful-noise-staging.joyful-noise.link/users/sign_in',
+                    ),
               ),
             ),
             child: const Text('Open webview (login form)'),

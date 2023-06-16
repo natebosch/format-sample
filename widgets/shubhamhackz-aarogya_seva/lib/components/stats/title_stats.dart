@@ -35,10 +35,7 @@ class TitleStats extends StatelessWidget {
           ),
           Text(
             '$updateTime IST',
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 14,
-            ),
+            style: TextStyle(color: Colors.white, fontSize: 14),
           ),
           Text(
             numberFormat.format(int.parse(totalCount)),
@@ -62,31 +59,21 @@ class TitleStats extends StatelessWidget {
           ShimmerContainer(
             height: height * 0.034,
             width: width * 0.4,
-            firstColor: const Color(
-              0x55FFFFFF,
-            ),
+            firstColor: const Color(0x55FFFFFF),
             secondColor: const Color(0x88FFFFFF),
           ),
-          SizedBox(
-            height: height * 0.008,
-          ),
+          SizedBox(height: height * 0.008),
           ShimmerContainer(
             height: height * 0.01,
             width: width * 0.4,
-            firstColor: const Color(
-              0x55FFFFFF,
-            ),
+            firstColor: const Color(0x55FFFFFF),
             secondColor: const Color(0x88FFFFFF),
           ),
-          SizedBox(
-            height: height * 0.008,
-          ),
+          SizedBox(height: height * 0.008),
           ShimmerContainer(
             height: height * 0.04,
             width: width * 0.5,
-            firstColor: const Color(
-              0x55FFFFFF,
-            ),
+            firstColor: const Color(0x55FFFFFF),
             secondColor: const Color(0x88FFFFFF),
           ),
         ],

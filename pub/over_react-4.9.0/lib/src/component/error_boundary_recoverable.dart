@@ -28,37 +28,41 @@ part 'error_boundary_recoverable.over_react.g.dart';
 /// __NOTE:__
 ///   1. This component is not / should never be publicly exported.
 ///   2. This component should never be used, except as a child of the outer (public) `ErrorBoundary` component.
-UiFactory<RecoverableErrorBoundaryProps> RecoverableErrorBoundary = castUiFactory(_$RecoverableErrorBoundary);
+UiFactory<RecoverableErrorBoundaryProps> RecoverableErrorBoundary =
+    castUiFactory(_$RecoverableErrorBoundary);
 
 class RecoverableErrorBoundaryProps = UiProps with v2.ErrorBoundaryProps;
 
 class RecoverableErrorBoundaryState = UiState with v2.ErrorBoundaryState;
 
 @Component2(isWrapper: true, isErrorBoundary: true)
-class RecoverableErrorBoundaryComponent<T extends RecoverableErrorBoundaryProps, S extends RecoverableErrorBoundaryState>
-    extends UiStatefulComponent2<T, S> with ErrorBoundaryApi<T, S> {
+class RecoverableErrorBoundaryComponent<
+  T extends RecoverableErrorBoundaryProps,
+  S extends RecoverableErrorBoundaryState
+> extends UiStatefulComponent2<T, S> with ErrorBoundaryApi<T, S> {
   @override
   Map get defaultProps => (newProps()
     ..identicalErrorFrequencyTolerance = Duration(seconds: 5)
     ..loggerName = defaultErrorBoundaryLoggerName
-    ..shouldLogErrors = true
-  );
+    ..shouldLogErrors = true);
 
   @override
   Map get initialState => (newState()
     ..hasError = false
-    ..showFallbackUIOnError = props.fallbackUIRenderer != null
-  );
+    ..showFallbackUIOnError = props.fallbackUIRenderer != null);
 
   @mustCallSuper
   @override
-  Map getDerivedStateFromError(/*Error||Exception*/dynamic error) {
+  Map getDerivedStateFromError(/*Error||Exception*/ dynamic error) {
     return newState()..hasError = true;
   }
 
   @mustCallSuper
   @override
-  void componentDidCatch(/*Error||Exception*/dynamic error, ReactErrorInfo info) {
+  void componentDidCatch(
+    /*Error||Exception*/ dynamic error,
+    ReactErrorInfo info,
+  ) {
     if (props.onComponentDidCatch != null) {
       props.onComponentDidCatch(error, info);
     }
@@ -82,9 +86,10 @@ class RecoverableErrorBoundaryComponent<T extends RecoverableErrorBoundaryProps,
   @override
   render() {
     if (state.hasError && state.showFallbackUIOnError) {
-      return (props.fallbackUIRenderer ?? _renderStringDomAfterUnrecoverableErrors)(
-          _errorLog.isNotEmpty ? _errorLog.last : null,
-          _callStackLog.isNotEmpty ? _callStackLog.last : null,
+      return (props.fallbackUIRenderer ??
+          _renderStringDomAfterUnrecoverableErrors)(
+        _errorLog.isNotEmpty ? _errorLog.last : null,
+        _callStackLog.isNotEmpty ? _callStackLog.last : null,
       );
     }
 
@@ -101,9 +106,10 @@ class RecoverableErrorBoundaryComponent<T extends RecoverableErrorBoundaryProps,
   void reset() {
     _resetInternalErrorTracking();
 
-    setState(newState()
-      ..hasError = false
-      ..showFallbackUIOnError = props.fallbackUIRenderer != null
+    setState(
+      newState()
+        ..hasError = false
+        ..showFallbackUIOnError = props.fallbackUIRenderer != null,
     );
   }
 
@@ -146,7 +152,10 @@ class RecoverableErrorBoundaryComponent<T extends RecoverableErrorBoundaryProps,
   Timer _identicalErrorTimer;
 
   /// Called by [componentDidCatch].
-  void _handleErrorInComponentTree(/*Error||Exception*/dynamic error, ReactErrorInfo info) {
+  void _handleErrorInComponentTree(
+    /*Error||Exception*/ dynamic error,
+    ReactErrorInfo info,
+  ) {
     // ----- [1] ----- //
     if (props.fallbackUIRenderer != null) {
       _errorLog.add(error.toString());
@@ -160,31 +169,41 @@ class RecoverableErrorBoundaryComponent<T extends RecoverableErrorBoundaryProps,
       final errorString = error.toString();
 
       for (var i = 0; i < _errorLog.length; i++) {
-        if (_errorLog[i] == errorString && _callStackLog[i].componentStack == info.componentStack) {
+        if (_errorLog[i] == errorString &&
+            _callStackLog[i].componentStack == info.componentStack) {
           sameErrorWasThrownTwiceConsecutively = true;
           break;
         }
       }
 
-      if (sameErrorWasThrownTwiceConsecutively) { // [2.1]
-        try { // [2.2.2]
+      if (sameErrorWasThrownTwiceConsecutively) {
+        // [2.1]
+        try {
+          // [2.2.2]
           _domAtTimeOfError = findDomNode(this)?.innerHtml; // [2.2]
         } catch (_) {}
 
-        if (props.onComponentIsUnrecoverable != null) { // [2.2.1]
+        if (props.onComponentIsUnrecoverable != null) {
+          // [2.2.1]
           props.onComponentIsUnrecoverable(error, info);
         }
 
-        _logErrorCaughtByErrorBoundary(error, info, isRecoverable: false); // [3]
+        _logErrorCaughtByErrorBoundary(
+          error,
+          info,
+          isRecoverable: false,
+        ); // [3]
       } else {
         _errorLog.add(error.toString());
         _callStackLog.add(info);
         _logErrorCaughtByErrorBoundary(error, info); // [3]
       }
 
-      setState(newState()
-        ..hasError = true
-        ..showFallbackUIOnError = sameErrorWasThrownTwiceConsecutively // [2.2]
+      setState(
+        newState()
+          ..hasError = true
+          ..showFallbackUIOnError =
+              sameErrorWasThrownTwiceConsecutively, // [2.2]
       );
 
       _startIdenticalErrorTimer();
@@ -196,8 +215,7 @@ class RecoverableErrorBoundaryComponent<T extends RecoverableErrorBoundaryProps,
     return (Dom.div()
       ..key = 'ohnoes'
       ..addTestId('ErrorBoundary.unrecoverableErrorInnerHtmlContainerNode')
-      ..['dangerouslySetInnerHTML'] = {'__html': _domAtTimeOfError ?? ''}
-    )();
+      ..['dangerouslySetInnerHTML'] = {'__html': _domAtTimeOfError ?? ''})();
   }
 
   /// Called via [componentDidCatch] to start a `Timer` that will nullify the [_domAtTimeOfError]
@@ -214,7 +232,10 @@ class RecoverableErrorBoundaryComponent<T extends RecoverableErrorBoundaryProps,
   void _startIdenticalErrorTimer() {
     if (_identicalErrorTimer != null) return;
 
-    _identicalErrorTimer = getManagedTimer(props.identicalErrorFrequencyTolerance, _resetInternalErrorTracking);
+    _identicalErrorTimer = getManagedTimer(
+      props.identicalErrorFrequencyTolerance,
+      _resetInternalErrorTracking,
+    );
   }
 
   /// Resets all the internal fields used by [_handleErrorInComponentTree], and cancels
@@ -246,6 +267,10 @@ class RecoverableErrorBoundaryComponent<T extends RecoverableErrorBoundaryProps,
         ? 'An error was caught by an ErrorBoundary: \nInfo: ${info.componentStack}'
         : 'An unrecoverable error was caught by an ErrorBoundary (attempting to remount it was unsuccessful): \nInfo: ${info.componentStack}';
 
-    (props.logger ?? Logger(_loggerName)).severe(message, error, info.dartStackTrace);
+    (props.logger ?? Logger(_loggerName)).severe(
+      message,
+      error,
+      info.dartStackTrace,
+    );
   }
 }

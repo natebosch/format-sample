@@ -35,7 +35,10 @@ class SignupBloc extends Bloc<SignupEvent, SignupState> {
   }
 
   // if it has a invite deep link
-  Future<void> _onInviteCodeFromDeepLink(OnInviteCodeFromDeepLink event, Emitter<SignupState> emit) async {
+  Future<void> _onInviteCodeFromDeepLink(
+    OnInviteCodeFromDeepLink event,
+    Emitter<SignupState> emit,
+  ) async {
     if (event.inviteCode != null) {
       emit(state.copyWith(
         inviteMnemonic: event.inviteCode,
@@ -44,7 +47,8 @@ class SignupBloc extends Bloc<SignupEvent, SignupState> {
         fromDeepLink: true,
       ));
       await Future.delayed(const Duration(seconds: 1));
-      final Result result = await ClaimInviteUseCase().validateInviteCode(event.inviteCode!);
+      final Result result =
+          await ClaimInviteUseCase().validateInviteCode(event.inviteCode!);
       emit(ClaimInviteMapper().mapValidateInviteCodeToState(state, result));
       // if success shows successs screen for 1 second then move to add name
       if (state.claimInviteView == ClaimInviteView.success) {
@@ -57,19 +61,31 @@ class SignupBloc extends Bloc<SignupEvent, SignupState> {
       }
     } else {
       // No link set the scanner view and start it
-      emit(state.copyWith(claimInviteView: ClaimInviteView.scanner, pageCommand: StartScan()));
+      emit(state.copyWith(
+        claimInviteView: ClaimInviteView.scanner,
+        pageCommand: StartScan(),
+      ));
     }
   }
 
-  Future<void> _onQRScanned(OnQRScanned event, Emitter<SignupState> emit) async {
-    emit(state.copyWith(claimInviteView: ClaimInviteView.processing, pageCommand: StopScan(), fromDeepLink: false));
-    final Result result = await ClaimInviteUseCase().unpackLink(event.scannedLink);
+  Future<void> _onQRScanned(
+    OnQRScanned event,
+    Emitter<SignupState> emit,
+  ) async {
+    emit(state.copyWith(
+      claimInviteView: ClaimInviteView.processing,
+      pageCommand: StopScan(),
+      fromDeepLink: false,
+    ));
+    final Result result =
+        await ClaimInviteUseCase().unpackLink(event.scannedLink);
     await Future.delayed(const Duration(seconds: 1));
     emit(ClaimInviteMapper().mapInviteMnemonicToState(state, result));
 
     if (state.inviteMnemonic != null) {
       emit(state.copyWith(pageCommand: StopScan()));
-      final Result result = await ClaimInviteUseCase().validateInviteCode(state.inviteMnemonic!);
+      final Result result =
+          await ClaimInviteUseCase().validateInviteCode(state.inviteMnemonic!);
       emit(ClaimInviteMapper().mapValidateInviteCodeToState(state, result));
     }
 
@@ -84,30 +100,62 @@ class SignupBloc extends Bloc<SignupEvent, SignupState> {
     }
   }
 
-  void _onInvalidInviteDialogClosed(OnInvalidInviteDialogClosed event, Emitter<SignupState> emit) {
-    emit(state.copyWith(claimInviteView: ClaimInviteView.scanner, pageCommand: StartScan()));
+  void _onInvalidInviteDialogClosed(
+    OnInvalidInviteDialogClosed event,
+    Emitter<SignupState> emit,
+  ) {
+    emit(state.copyWith(
+      claimInviteView: ClaimInviteView.scanner,
+      pageCommand: StartScan(),
+    ));
   }
 
-  void _displayNameOnNextTapped(DisplayNameOnNextTapped event, Emitter<SignupState> emit) {
-    emit(state.copyWith(signupScreens: SignupScreens.accountName, displayName: event.displayName));
+  void _displayNameOnNextTapped(
+    DisplayNameOnNextTapped event,
+    Emitter<SignupState> emit,
+  ) {
+    emit(state.copyWith(
+      signupScreens: SignupScreens.accountName,
+      displayName: event.displayName,
+    ));
   }
 
-  void _onGenerateNewUsername(OnGenerateNewUsername event, Emitter<SignupState> emit) {
-    emit(state.copyWith(pageCommand: OnAccountNameGenerated(), accountName: _generateUseName(event.fullname)));
+  void _onGenerateNewUsername(
+    OnGenerateNewUsername event,
+    Emitter<SignupState> emit,
+  ) {
+    emit(state.copyWith(
+      pageCommand: OnAccountNameGenerated(),
+      accountName: _generateUseName(event.fullname),
+    ));
   }
 
-  Future<void> _onAccountNameChanged(OnAccountNameChanged event, Emitter<SignupState> emit) async {
+  Future<void> _onAccountNameChanged(
+    OnAccountNameChanged event,
+    Emitter<SignupState> emit,
+  ) async {
     final validationError = _validateUsername(event.accountName);
     if (validationError == null) {
       emit(state.copyWith(pageState: PageState.loading));
-      final Result result = await CheckAccountNameAvailabilityUseCase().run(event.accountName);
-      emit(SetAccountNameStateMapper().mapResultToState(state, event.accountName, result));
+      final Result result =
+          await CheckAccountNameAvailabilityUseCase().run(event.accountName);
+      emit(SetAccountNameStateMapper().mapResultToState(
+        state,
+        event.accountName,
+        result,
+      ));
     } else {
-      emit(state.copyWith(pageState: PageState.failure, errorMessage: validationError));
+      emit(state.copyWith(
+        pageState: PageState.failure,
+        errorMessage: validationError,
+      ));
     }
   }
 
-  Future<void> _onCreateAccountTapped(OnCreateAccountTapped event, Emitter<SignupState> emit) async {
+  Future<void> _onCreateAccountTapped(
+    OnCreateAccountTapped event,
+    Emitter<SignupState> emit,
+  ) async {
     emit(state.copyWith(pageState: PageState.loading));
     final String inviteSecret = secretFromMnemonic(state.inviteMnemonic!);
     final AuthDataModel authData = GenerateRandomKeyAndWordsUseCase().run();
@@ -161,12 +209,14 @@ String? _validateUsername(String? username) {
 }
 
 String _generateUseName(String fullname) {
-  String suggestedUsername = fullname.toLowerCase().trim().split('').map((character) {
-    // ignore: unnecessary_raw_strings
-    final legalChar = RegExp(r'[a-z]|1|2|3|4|5').allMatches(character).isNotEmpty;
+  String suggestedUsername =
+      fullname.toLowerCase().trim().split('').map((character) {
+        // ignore: unnecessary_raw_strings
+        final legalChar =
+            RegExp(r'[a-z]|1|2|3|4|5').allMatches(character).isNotEmpty;
 
-    return legalChar ? character : '';
-  }).join();
+        return legalChar ? character : '';
+      }).join();
 
   suggestedUsername = suggestedUsername.padRight(12, '1');
 

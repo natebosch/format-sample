@@ -11,7 +11,8 @@ import 'package:seeds/screens/app/interactor/viewmodels/app_bloc.dart';
 class GuardianApproveOrDenyScreen extends StatelessWidget {
   final GuardianRecoveryRequestData data;
 
-  const GuardianApproveOrDenyScreen({Key? key, required this.data}) : super(key: key);
+  const GuardianApproveOrDenyScreen({Key? key, required this.data})
+    : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -21,10 +22,14 @@ class GuardianApproveOrDenyScreen extends StatelessWidget {
           leftButtonTitle: 'Dismiss'.i18n,
           rightButtonTitle: 'Accept Request'.i18n,
           onLeftButtonPressed: () {
-            BlocProvider.of<AppBloc>(context).add(OnDismissGuardianRecoveryTapped());
+            BlocProvider.of<AppBloc>(context).add(
+              OnDismissGuardianRecoveryTapped(),
+            );
           },
           onRightButtonPressed: () {
-            BlocProvider.of<AppBloc>(context).add(OnApproveGuardianRecoveryTapped(data));
+            BlocProvider.of<AppBloc>(context).add(
+              OnApproveGuardianRecoveryTapped(data),
+            );
           },
           children: [
             Container(
@@ -32,9 +37,13 @@ class GuardianApproveOrDenyScreen extends StatelessWidget {
               width: 250,
               decoration: const BoxDecoration(
                 color: AppColors.white,
-                borderRadius: BorderRadius.all(Radius.circular(defaultCardBorderRadius)),
+                borderRadius:
+                    BorderRadius.all(Radius.circular(defaultCardBorderRadius)),
                 image: DecorationImage(
-                    image: AssetImage('assets/images/guardians/guardian_shield.png'), fit: BoxFit.fitWidth),
+                  image:
+                      AssetImage('assets/images/guardians/guardian_shield.png'),
+                  fit: BoxFit.fitWidth,
+                ),
               ),
             ),
             const SizedBox(height: 20),

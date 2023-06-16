@@ -15,13 +15,14 @@ SearchPodcast<P> _$SearchPodcastFromJson<P>(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$SearchPodcastToJson<P>(SearchPodcast<P> instance) =>
-    <String, dynamic>{
-      'results': instance.results?.map(_ConvertP<P>().toJson)?.toList(),
-      'next_offset': instance.nextOffset,
-      'total': instance.total,
-      'count': instance.count,
-    };
+Map<String, dynamic> _$SearchPodcastToJson<P>(
+  SearchPodcast<P> instance,
+) => <String, dynamic>{
+  'results': instance.results?.map(_ConvertP<P>().toJson)?.toList(),
+  'next_offset': instance.nextOffset,
+  'total': instance.total,
+  'count': instance.count,
+};
 
 OnlinePodcast _$OnlinePodcastFromJson(Map<String, dynamic> json) {
   return OnlinePodcast(
@@ -37,15 +38,16 @@ OnlinePodcast _$OnlinePodcastFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$OnlinePodcastToJson(OnlinePodcast instance) =>
-    <String, dynamic>{
-      'earliest_pub_date_ms': instance.earliestPubDate,
-      'title_original': instance.title,
-      'rss': instance.rss,
-      'latest_pub_date_ms': instance.latestPubDate,
-      'description_original': instance.description,
-      'total_episodes': instance.count,
-      'image': instance.image,
-      'publisher_original': instance.publisher,
-      'id': instance.id,
-    };
+Map<String, dynamic> _$OnlinePodcastToJson(
+  OnlinePodcast instance,
+) => <String, dynamic>{
+  'earliest_pub_date_ms': instance.earliestPubDate,
+  'title_original': instance.title,
+  'rss': instance.rss,
+  'latest_pub_date_ms': instance.latestPubDate,
+  'description_original': instance.description,
+  'total_episodes': instance.count,
+  'image': instance.image,
+  'publisher_original': instance.publisher,
+  'id': instance.id,
+};

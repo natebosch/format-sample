@@ -7,10 +7,4 @@
 
 part 'private/adapty_period_unit_json_builder.dart';
 
-enum AdaptyPeriodUnit {
-  day,
-  week,
-  month,
-  year,
-  unknown,
-}
+enum AdaptyPeriodUnit { day, week, month, year, unknown }

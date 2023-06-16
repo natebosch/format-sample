@@ -9,13 +9,15 @@ import 'package:shared_preferences/shared_preferences.dart';
 class UserRepository {
   final PiggyApiClient piggyApiClient;
 
-  UserRepository({@required this.piggyApiClient})
-      : assert(piggyApiClient != null);
+  UserRepository({
+    @required this.piggyApiClient,
+  }) : assert(piggyApiClient != null);
 
-  Future<String> authenticate(
-      {@required String tenancyName,
-      @required String usernameOrEmailAddress,
-      @required String password}) async {
+  Future<String> authenticate({
+    @required String tenancyName,
+    @required String usernameOrEmailAddress,
+    @required String password,
+  }) async {
     final isTenantAvailableResult =
         await piggyApiClient.isTenantAvailable(tenancyName);
 
@@ -24,7 +26,9 @@ class UserRepository {
       await prefs.setInt(UIData.tenantId, isTenantAvailableResult.tenantId);
 
       final authenticateResult = await piggyApiClient.authenticate(
-          usernameOrEmailAddress: usernameOrEmailAddress, password: password);
+        usernameOrEmailAddress: usernameOrEmailAddress,
+        password: password,
+      );
 
       return authenticateResult.accessToken;
     }

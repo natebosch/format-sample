@@ -7,15 +7,17 @@ class Avatar extends StatelessWidget {
 
   final int avatar;
 
-  const Avatar({Key key, @required this.color, @required this.avatar,}) : super(key: key);
+  const Avatar({Key key, @required this.color, @required this.avatar})
+    : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-          shape: BoxShape.rectangle,
-          color: ResColors.getAvatarColor(color ?? 0),
-          borderRadius: BorderRadius.circular(6.0)),
+        shape: BoxShape.rectangle,
+        color: ResColors.getAvatarColor(color ?? 0),
+        borderRadius: BorderRadius.circular(6.0),
+      ),
       child: Padding(
         padding: const EdgeInsets.all(6.0),
         child: IconAvatar(avatar: avatar),

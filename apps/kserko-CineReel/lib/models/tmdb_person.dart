@@ -8,7 +8,8 @@ class TMDBPerson {
   String birthday;
   @JsonKey(name: "known_for_department")
   String knownForDepartment;
-  @JsonKey(name: "deathday")  String deathDay;
+  @JsonKey(name: "deathday")
+  String deathDay;
   int id;
   String name;
   @JsonKey(name: "also_known_as")
@@ -27,24 +28,27 @@ class TMDBPerson {
   @JsonKey(name: "movie_credits")
   TMDBMovieCredits movieCredits;
 
-  TMDBPerson(
-      {this.birthday,
-      this.knownForDepartment,
-      this.deathDay,
-      this.id,
-      this.name,
-      this.alsoKnownAs,
-      this.gender,
-      this.biography,
-      this.popularity,
-      this.placeOfBirth,
-      this.profilePath,
-      this.adult,
-      this.imdbId,
-      this.homepage,
-      this.movieCredits});
+  TMDBPerson({
+    this.birthday,
+    this.knownForDepartment,
+    this.deathDay,
+    this.id,
+    this.name,
+    this.alsoKnownAs,
+    this.gender,
+    this.biography,
+    this.popularity,
+    this.placeOfBirth,
+    this.profilePath,
+    this.adult,
+    this.imdbId,
+    this.homepage,
+    this.movieCredits,
+  });
 
-  factory TMDBPerson.fromJson(Map<String, dynamic> json) => _$TMDBPersonFromJson(json);
+  factory TMDBPerson.fromJson(
+    Map<String, dynamic> json,
+  ) => _$TMDBPersonFromJson(json);
 
   Map<String, dynamic> toJson() => _$TMDBPersonToJson(this);
 

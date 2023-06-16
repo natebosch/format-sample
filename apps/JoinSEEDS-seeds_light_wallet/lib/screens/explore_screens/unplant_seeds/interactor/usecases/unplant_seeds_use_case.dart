@@ -6,6 +6,9 @@ class UnplantSeedsUseCase {
   final ProfileRepository _profileRepository = ProfileRepository();
 
   Future<Result> run({required double amount}) {
-    return _profileRepository.unplantSeeds(amount: amount, accountName: settingsStorage.accountName);
+    return _profileRepository.unplantSeeds(
+      amount: amount,
+      accountName: settingsStorage.accountName,
+    );
   }
 }

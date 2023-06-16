@@ -89,10 +89,7 @@ class TimelineFilterDrawer extends StatelessWidget {
         onClear();
       },
       onSearch: onFilter,
-      filterGroups: [
-        _buildIncludesGroup(model),
-        _buildExcludesGroup(model),
-      ],
+      filterGroups: [_buildIncludesGroup(model), _buildExcludesGroup(model)],
     );
   }
 }

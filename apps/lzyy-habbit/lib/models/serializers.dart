@@ -9,10 +9,7 @@ import '../models/habit.dart';
 part 'serializers.g.dart';
 
 /// Collection of generated serializers for the built_value chat example.
-@SerializersFor(const [
-  DailyTask,
-  Habit,
-])
+@SerializersFor(const [DailyTask, Habit])
 final Serializers flatSerializers = _$flatSerializers;
 
 final builtListHabitType = FullType(BuiltList, [FullType(Habit)]);

@@ -5,8 +5,7 @@ import 'package:sonarr_api/src/internal/mixins/serializable.dart';
 enum SonarrCommandPriority with EnumSerializableMixin {
   high('high'),
   low('low'),
-  normal('normal'),
-  ;
+  normal('normal');
 
   @override
   final String name;

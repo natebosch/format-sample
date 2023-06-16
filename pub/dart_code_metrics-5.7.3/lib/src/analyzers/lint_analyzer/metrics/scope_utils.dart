@@ -6,7 +6,6 @@ import '../models/scoped_function_declaration.dart';
 Iterable<ScopedFunctionDeclaration> classMethods(
   AstNode classNode,
   Iterable<ScopedFunctionDeclaration> functionDeclarations,
-) =>
-    functionDeclarations
-        .where((func) => func.enclosingDeclaration?.declaration == classNode)
-        .toList(growable: false);
+) => functionDeclarations
+    .where((func) => func.enclosingDeclaration?.declaration == classNode)
+    .toList(growable: false);

@@ -34,61 +34,53 @@ class DisplayAndSoundPage extends StatelessWidget {
   }
 
   void openDarkModeSettings(BuildContext context) {
-    openBottomSheet(
-      context,
-      250,
-      Column(
-        children: <Widget>[
-          SizedBox(height: 5),
-          Container(
-            width: 40,
-            height: 5,
-            decoration: BoxDecoration(
-              color: TwitterColor.paleSky50,
-              borderRadius: BorderRadius.circular(10),
-            ),
+    openBottomSheet(context, 250, Column(
+      children: <Widget>[
+        SizedBox(height: 5),
+        Container(
+          width: 40,
+          height: 5,
+          decoration: BoxDecoration(
+            color: TwitterColor.paleSky50,
+            borderRadius: BorderRadius.circular(10),
           ),
-          Padding(
-            padding: EdgeInsets.symmetric(vertical: 10),
-            child: TitleText('Dark Mode'),
-          ),
-          Divider(height: 0),
-          _row("On"),
-          Divider(height: 0),
-          _row("Off"),
-          Divider(height: 0),
-          _row("Automatic at sunset"),
-        ],
-      ),
-    );
+        ),
+        Padding(
+          padding: EdgeInsets.symmetric(vertical: 10),
+          child: TitleText('Dark Mode'),
+        ),
+        Divider(height: 0),
+        _row("On"),
+        Divider(height: 0),
+        _row("Off"),
+        Divider(height: 0),
+        _row("Automatic at sunset"),
+      ],
+    ));
   }
 
   void openDarkModeAppearanceSettings(BuildContext context) {
-    openBottomSheet(
-      context,
-      190,
-      Column(
-        children: <Widget>[
-          SizedBox(height: 5),
-          Container(
-            width: 40,
-            height: 5,
-            decoration: BoxDecoration(
-              color: TwitterColor.paleSky50,
-              borderRadius: BorderRadius.circular(10),
-            ),
+    openBottomSheet(context, 190, Column(
+      children: <Widget>[
+        SizedBox(height: 5),
+        Container(
+          width: 40,
+          height: 5,
+          decoration: BoxDecoration(
+            color: TwitterColor.paleSky50,
+            borderRadius: BorderRadius.circular(10),
           ),
-          Padding(
-            padding: EdgeInsets.symmetric(vertical: 10),
-            child: TitleText('Dark mode appearance'),
-          ),
-          Divider(height: 0),
-          _row("Dim"),
-          Divider(height: 0),
-          _row("Light out"),
-        ],
-      ),
-    );
+        ),
+        Padding(
+          padding: EdgeInsets.symmetric(vertical: 10),
+          child: TitleText('Dark mode appearance'),
+        ),
+        Divider(height: 0),
+        _row("Dim"),
+        Divider(height: 0),
+        _row("Light out"),
+      ],
+    ));
   }
 
   Widget _row(String text) {
@@ -110,18 +102,13 @@ class DisplayAndSoundPage extends StatelessWidget {
       backgroundColor: TwitterColor.white,
       appBar: CustomAppBar(
         isBackButton: true,
-        title: customTitleText(
-          'Display and Sound',
-        ),
+        title: customTitleText('Display and Sound'),
       ),
       body: ListView(
         physics: BouncingScrollPhysics(),
         children: <Widget>[
           HeaderWidget('Media'),
-          SettingRowWidget(
-            "Media Previews",
-            showCheckBox: false,
-          ),
+          SettingRowWidget("Media Previews", showCheckBox: false),
           Divider(height: 0),
           HeaderWidget('Display'),
           SettingRowWidget(
@@ -147,19 +134,13 @@ class DisplayAndSoundPage extends StatelessWidget {
             showDivider: false,
             showCheckBox: false,
           ),
-          HeaderWidget(
-            'Sound',
-            secondHeader: true,
-          ),
+          HeaderWidget('Sound', secondHeader: true),
           SettingRowWidget(
             "Sound effects",
             // vPadding: 15,
             showCheckBox: false,
           ),
-          HeaderWidget(
-            'Web browser',
-            secondHeader: false,
-          ),
+          HeaderWidget('Web browser', secondHeader: false),
           SettingRowWidget(
             "Use in-app browser",
             subtitle: 'Open external links with Fwitter browser',

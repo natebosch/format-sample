@@ -95,8 +95,16 @@ class CursorStyle {
   }
 
   @override
-  int get hashCode => hashValues(color, backgroundColor, width, height, radius,
-      offset, opacityAnimates, paintAboveText);
+  int get hashCode => hashValues(
+    color,
+    backgroundColor,
+    width,
+    height,
+    radius,
+    offset,
+    opacityAnimates,
+    paintAboveText,
+  );
 }
 
 /// Controls cursor of an editable widget.
@@ -108,11 +116,13 @@ class CursorController extends ChangeNotifier {
     required this.showCursor,
     required CursorStyle style,
     required TickerProvider tickerProvider,
-  })  : _style = style,
-        _cursorBlink = ValueNotifier(false),
-        _cursorColor = ValueNotifier(style.color) {
-    _cursorBlinkOpacityController =
-        AnimationController(vsync: tickerProvider, duration: _fadeDuration);
+  }) : _style = style,
+       _cursorBlink = ValueNotifier(false),
+       _cursorColor = ValueNotifier(style.color) {
+    _cursorBlinkOpacityController = AnimationController(
+      vsync: tickerProvider,
+      duration: _fadeDuration,
+    );
     _cursorBlinkOpacityController.addListener(_onCursorColorTick);
   }
 
@@ -172,8 +182,10 @@ class CursorController extends ChangeNotifier {
       //
       // These values and curves have been obtained through eyeballing, so are
       // likely not exactly the same as the values for native iOS.
-      _cursorBlinkOpacityController.animateTo(targetOpacity,
-          curve: Curves.easeOut);
+      _cursorBlinkOpacityController.animateTo(
+        targetOpacity,
+        curve: Curves.easeOut,
+      );
     } else {
       _cursorBlinkOpacityController.value = targetOpacity;
     }
@@ -190,8 +202,10 @@ class CursorController extends ChangeNotifier {
     _cursorBlinkOpacityController.value = 1.0;
 
     if (style.opacityAnimates) {
-      _cursorTimer =
-          Timer.periodic(_kCursorBlinkWaitForStart, _cursorWaitForStart);
+      _cursorTimer = Timer.periodic(
+        _kCursorBlinkWaitForStart,
+        _cursorWaitForStart,
+      );
     } else {
       _cursorTimer = Timer.periodic(_kCursorBlinkHalfPeriod, _cursorTick);
     }
@@ -221,8 +235,9 @@ class CursorController extends ChangeNotifier {
   }
 
   void _onCursorColorTick() {
-    _cursorColor.value =
-        _style.color.withOpacity(_cursorBlinkOpacityController.value);
+    _cursorColor.value = _style.color.withOpacity(
+      _cursorBlinkOpacityController.value,
+    );
     cursorBlink.value =
         showCursor.value && _cursorBlinkOpacityController.value > 0;
   }

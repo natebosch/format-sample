@@ -14,10 +14,7 @@ import 'package:invoiceninja_flutter/ui/settings/settings_list_vm.dart';
 import 'package:invoiceninja_flutter/ui/settings/settings_screen_vm.dart';
 
 class SettingsScreen extends StatelessWidget {
-  const SettingsScreen({
-    Key key,
-    @required this.viewModel,
-  }) : super(key: key);
+  const SettingsScreen({Key key, @required this.viewModel}) : super(key: key);
 
   static const String route = '/settings';
 

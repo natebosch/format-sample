@@ -15,10 +15,7 @@ class NotificationPage extends StatelessWidget {
     var user = Provider.of<AuthState>(context).userModel ?? UserModel();
     return Scaffold(
       backgroundColor: TwitterColor.white,
-      appBar: SettingsAppBar(
-        title: 'Notifications',
-        subtitle: user.userName,
-      ),
+      appBar: SettingsAppBar(title: 'Notifications', subtitle: user.userName),
       body: ListView(
         children: <Widget>[
           HeaderWidget('Filters'),
@@ -32,10 +29,7 @@ class NotificationPage extends StatelessWidget {
           Divider(height: 0),
           SettingRowWidget("Advanced filter"),
           SettingRowWidget("Muted word"),
-          HeaderWidget(
-            'Preferences',
-            secondHeader: true,
-          ),
+          HeaderWidget('Preferences', secondHeader: true),
           SettingRowWidget(
             "Unread notification count badge",
             showCheckBox: false,

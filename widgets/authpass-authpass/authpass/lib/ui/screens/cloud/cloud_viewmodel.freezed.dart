@@ -11,17 +11,19 @@ part of 'cloud_viewmodel.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods',
+);
 
 /// @nodoc
 class _$EmailViewModelTearOff {
   const _$EmailViewModelTearOff();
 
-  _EmailViewModel call(
-      {required EmailMessage emailMessage,
-      MimeMessage? mimeMessage,
-      Mailbox? mailbox,
-      KdbxEntry? kdbxEntry}) {
+  _EmailViewModel call({
+    required EmailMessage emailMessage,
+    MimeMessage? mimeMessage,
+    Mailbox? mailbox,
+    KdbxEntry? kdbxEntry,
+  }) {
     return _EmailViewModel(
       emailMessage: emailMessage,
       mimeMessage: mimeMessage,
@@ -49,13 +51,15 @@ mixin _$EmailViewModel {
 /// @nodoc
 abstract class $EmailViewModelCopyWith<$Res> {
   factory $EmailViewModelCopyWith(
-          EmailViewModel value, $Res Function(EmailViewModel) then) =
-      _$EmailViewModelCopyWithImpl<$Res>;
-  $Res call(
-      {EmailMessage emailMessage,
-      MimeMessage? mimeMessage,
-      Mailbox? mailbox,
-      KdbxEntry? kdbxEntry});
+    EmailViewModel value,
+    $Res Function(EmailViewModel) then,
+  ) = _$EmailViewModelCopyWithImpl<$Res>;
+  $Res call({
+    EmailMessage emailMessage,
+    MimeMessage? mimeMessage,
+    Mailbox? mailbox,
+    KdbxEntry? kdbxEntry,
+  });
 }
 
 /// @nodoc
@@ -78,19 +82,19 @@ class _$EmailViewModelCopyWithImpl<$Res>
       emailMessage: emailMessage == freezed
           ? _value.emailMessage
           : emailMessage // ignore: cast_nullable_to_non_nullable
-              as EmailMessage,
+                as EmailMessage,
       mimeMessage: mimeMessage == freezed
           ? _value.mimeMessage
           : mimeMessage // ignore: cast_nullable_to_non_nullable
-              as MimeMessage?,
+                as MimeMessage?,
       mailbox: mailbox == freezed
           ? _value.mailbox
           : mailbox // ignore: cast_nullable_to_non_nullable
-              as Mailbox?,
+                as Mailbox?,
       kdbxEntry: kdbxEntry == freezed
           ? _value.kdbxEntry
           : kdbxEntry // ignore: cast_nullable_to_non_nullable
-              as KdbxEntry?,
+                as KdbxEntry?,
     ));
   }
 }
@@ -99,14 +103,16 @@ class _$EmailViewModelCopyWithImpl<$Res>
 abstract class _$EmailViewModelCopyWith<$Res>
     implements $EmailViewModelCopyWith<$Res> {
   factory _$EmailViewModelCopyWith(
-          _EmailViewModel value, $Res Function(_EmailViewModel) then) =
-      __$EmailViewModelCopyWithImpl<$Res>;
+    _EmailViewModel value,
+    $Res Function(_EmailViewModel) then,
+  ) = __$EmailViewModelCopyWithImpl<$Res>;
   @override
-  $Res call(
-      {EmailMessage emailMessage,
-      MimeMessage? mimeMessage,
-      Mailbox? mailbox,
-      KdbxEntry? kdbxEntry});
+  $Res call({
+    EmailMessage emailMessage,
+    MimeMessage? mimeMessage,
+    Mailbox? mailbox,
+    KdbxEntry? kdbxEntry,
+  });
 }
 
 /// @nodoc
@@ -114,8 +120,9 @@ class __$EmailViewModelCopyWithImpl<$Res>
     extends _$EmailViewModelCopyWithImpl<$Res>
     implements _$EmailViewModelCopyWith<$Res> {
   __$EmailViewModelCopyWithImpl(
-      _EmailViewModel _value, $Res Function(_EmailViewModel) _then)
-      : super(_value, (v) => _then(v as _EmailViewModel));
+    _EmailViewModel _value,
+    $Res Function(_EmailViewModel) _then,
+  ) : super(_value, (v) => _then(v as _EmailViewModel));
 
   @override
   _EmailViewModel get _value => super._value as _EmailViewModel;
@@ -131,19 +138,19 @@ class __$EmailViewModelCopyWithImpl<$Res>
       emailMessage: emailMessage == freezed
           ? _value.emailMessage
           : emailMessage // ignore: cast_nullable_to_non_nullable
-              as EmailMessage,
+                as EmailMessage,
       mimeMessage: mimeMessage == freezed
           ? _value.mimeMessage
           : mimeMessage // ignore: cast_nullable_to_non_nullable
-              as MimeMessage?,
+                as MimeMessage?,
       mailbox: mailbox == freezed
           ? _value.mailbox
           : mailbox // ignore: cast_nullable_to_non_nullable
-              as Mailbox?,
+                as Mailbox?,
       kdbxEntry: kdbxEntry == freezed
           ? _value.kdbxEntry
           : kdbxEntry // ignore: cast_nullable_to_non_nullable
-              as KdbxEntry?,
+                as KdbxEntry?,
     ));
   }
 }
@@ -151,11 +158,12 @@ class __$EmailViewModelCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_EmailViewModel implements _EmailViewModel {
-  const _$_EmailViewModel(
-      {required this.emailMessage,
-      this.mimeMessage,
-      this.mailbox,
-      this.kdbxEntry});
+  const _$_EmailViewModel({
+    required this.emailMessage,
+    this.mimeMessage,
+    this.mailbox,
+    this.kdbxEntry,
+  });
 
   @override
   final EmailMessage emailMessage;
@@ -176,17 +184,25 @@ class _$_EmailViewModel implements _EmailViewModel {
     return identical(this, other) ||
         (other is _EmailViewModel &&
             (identical(other.emailMessage, emailMessage) ||
-                const DeepCollectionEquality()
-                    .equals(other.emailMessage, emailMessage)) &&
+                const DeepCollectionEquality().equals(
+                  other.emailMessage,
+                  emailMessage,
+                )) &&
             (identical(other.mimeMessage, mimeMessage) ||
-                const DeepCollectionEquality()
-                    .equals(other.mimeMessage, mimeMessage)) &&
+                const DeepCollectionEquality().equals(
+                  other.mimeMessage,
+                  mimeMessage,
+                )) &&
             (identical(other.mailbox, mailbox) ||
-                const DeepCollectionEquality()
-                    .equals(other.mailbox, mailbox)) &&
+                const DeepCollectionEquality().equals(
+                  other.mailbox,
+                  mailbox,
+                )) &&
             (identical(other.kdbxEntry, kdbxEntry) ||
-                const DeepCollectionEquality()
-                    .equals(other.kdbxEntry, kdbxEntry)));
+                const DeepCollectionEquality().equals(
+                  other.kdbxEntry,
+                  kdbxEntry,
+                )));
   }
 
   @override
@@ -199,16 +215,20 @@ class _$_EmailViewModel implements _EmailViewModel {
 
   @JsonKey(ignore: true)
   @override
-  _$EmailViewModelCopyWith<_EmailViewModel> get copyWith =>
-      __$EmailViewModelCopyWithImpl<_EmailViewModel>(this, _$identity);
+  _$EmailViewModelCopyWith<_EmailViewModel>
+  get copyWith => __$EmailViewModelCopyWithImpl<_EmailViewModel>(
+    this,
+    _$identity,
+  );
 }
 
 abstract class _EmailViewModel implements EmailViewModel {
-  const factory _EmailViewModel(
-      {required EmailMessage emailMessage,
-      MimeMessage? mimeMessage,
-      Mailbox? mailbox,
-      KdbxEntry? kdbxEntry}) = _$_EmailViewModel;
+  const factory _EmailViewModel({
+    required EmailMessage emailMessage,
+    MimeMessage? mimeMessage,
+    Mailbox? mailbox,
+    KdbxEntry? kdbxEntry,
+  }) = _$_EmailViewModel;
 
   @override
   EmailMessage get emailMessage => throw _privateConstructorUsedError;

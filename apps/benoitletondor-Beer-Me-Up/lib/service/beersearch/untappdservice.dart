@@ -30,31 +30,38 @@ class UntappdService implements BeerSearchService {
     Map<String, String> queryParameters,
   }) {
     final Map<String, String> queryParams = queryParameters ?? Map();
-    final Tuple2<String, String> keys = getProviderKeys(retryCount >= _MAX_TRY_BEFORE_FAIL);
+    final Tuple2<String, String> keys = getProviderKeys(
+      retryCount >= _MAX_TRY_BEFORE_FAIL,
+    );
 
     queryParams.addAll({"client_secret": keys.item2, "client_id": keys.item1});
 
-    return Tuple2(Uri.https(_UNTAPPD_DB_API_ENDPOINT, "/v4/$path", queryParams), keys.item1);
+    return Tuple2(
+      Uri.https(_UNTAPPD_DB_API_ENDPOINT, "/v4/$path", queryParams),
+      keys.item1,
+    );
   }
 
   Tuple2<String, String> getProviderKeys(bool defaultOnly) {
-    if( Platform.isIOS && !_keysExcludedIds.contains(UNTAPPD_CLIENT_ID_IOS) ) {
+    if (Platform.isIOS && !_keysExcludedIds.contains(UNTAPPD_CLIENT_ID_IOS)) {
       return Tuple2(UNTAPPD_CLIENT_ID_IOS, UNTAPPD_CLIENT_SECRET_IOS);
-    } else if( !_keysExcludedIds.contains(UNTAPPD_CLIENT_ID_ANDROID) ){
+    } else if (!_keysExcludedIds.contains(UNTAPPD_CLIENT_ID_ANDROID)) {
       return Tuple2(UNTAPPD_CLIENT_ID_ANDROID, UNTAPPD_CLIENT_SECRET_ANDROID);
     }
 
     try {
-      if( !defaultOnly ) {
+      if (!defaultOnly) {
         final String configKeys = _config.getBeerProviderKeys();
-        if( configKeys != null && configKeys.isNotEmpty ) {
+        if (configKeys != null && configKeys.isNotEmpty) {
           List<dynamic> data = json.decode(configKeys);
           List<Map<String, dynamic>> typedData = data.map((dynamic entry) {
             return entry as Map<String, dynamic>;
           }).toList(growable: true);
-          typedData.removeWhere((Map<String, dynamic> key) =>  _keysExcludedIds.contains(key["i"]));
+          typedData.removeWhere(
+            (Map<String, dynamic> key) => _keysExcludedIds.contains(key["i"]),
+          );
 
-          if( typedData.isNotEmpty ) {
+          if (typedData.isNotEmpty) {
             final index = _random.nextInt(typedData.length);
             return Tuple2(typedData[index]["i"], typedData[index]["s"]);
           }
@@ -64,7 +71,7 @@ class UntappdService implements BeerSearchService {
       printException(e, stackTrace, "Error getting provider keys");
     }
 
-    if( Platform.isIOS ) {
+    if (Platform.isIOS) {
       return Tuple2(UNTAPPD_CLIENT_ID_IOS, UNTAPPD_CLIENT_SECRET_IOS);
     } else {
       return Tuple2(UNTAPPD_CLIENT_ID_ANDROID, UNTAPPD_CLIENT_SECRET_ANDROID);
@@ -72,39 +79,50 @@ class UntappdService implements BeerSearchService {
   }
 
   @override
-  Future<List<Beer>> findBeersMatching(HttpClient httpClient, String pattern) async {
+  Future<List<Beer>> findBeersMatching(
+    HttpClient httpClient,
+    String pattern,
+  ) async {
     return _callApi(httpClient, pattern, 1);
   }
 
-  Future<List<Beer>> _callApi(HttpClient httpClient, String pattern, int retryCount) async {
-    if( pattern == null || pattern.trim().isEmpty ) {
+  Future<List<Beer>> _callApi(
+    HttpClient httpClient,
+    String pattern,
+    int retryCount,
+  ) async {
+    if (pattern == null || pattern.trim().isEmpty) {
       return List(0);
     }
 
     final serviceUri = _buildUntappdServiceURI(
       path: "search/beer",
       queryParameters: {'q': pattern, 'limit': '50'},
-      retryCount: retryCount
+      retryCount: retryCount,
     );
 
     HttpClientRequest request = await httpClient.getUrl(serviceUri.item1);
     HttpClientResponse response = await request.close();
-    if( response.statusCode <200 || response.statusCode>299 ) {
-      if( retryCount < _MAX_TRY_BEFORE_FAIL ) {
-        BeerMeUpApp.sentry.capture(event: Event(message: "Invalid provider id: ${serviceUri.item2}"));
+    if (response.statusCode < 200 || response.statusCode > 299) {
+      if (retryCount < _MAX_TRY_BEFORE_FAIL) {
+        BeerMeUpApp.sentry.capture(
+          event: Event(message: "Invalid provider id: ${serviceUri.item2}"),
+        );
         _keysExcludedIds.add(serviceUri.item2);
 
         return _callApi(httpClient, pattern, retryCount + 1);
       }
 
-      throw Exception("Bad response: ${response.statusCode} (${response.reasonPhrase})");
+      throw Exception(
+        "Bad response: ${response.statusCode} (${response.reasonPhrase})",
+      );
     }
 
     String responseBody = await response.transform(utf8.decoder).join();
     Map data = json.decode(responseBody);
     final Map<String, dynamic> responseJson = data["response"];
     int totalResults = responseJson["found"] ?? 0;
-    if( totalResults == 0 ) {
+    if (totalResults == 0) {
       return List(0);
     }
 
@@ -113,27 +131,22 @@ class UntappdService implements BeerSearchService {
       BeerStyle style;
 
       final String styleName = beerJson["beer_style"];
-      if( styleName != null ) {
-        style = BeerStyle(
-          id: styleName,
-          name: styleName,
-        );
+      if (styleName != null) {
+        style = BeerStyle(id: styleName, name: styleName);
       }
 
       double abv;
-      if( beerJson["beer_abv"] != null ) {
-        if( beerJson["beer_abv"] is double ) {
+      if (beerJson["beer_abv"] != null) {
+        if (beerJson["beer_abv"] is double) {
           abv = beerJson["beer_abv"];
-        } else if( beerJson["beer_abv"] is int ) {
+        } else if (beerJson["beer_abv"] is int) {
           abv = (beerJson["beer_abv"] as int).toDouble();
         }
       }
 
       BeerLabel label;
-      if( beerJson["beer_label"] != null ) {
-        label = BeerLabel(
-          iconUrl: beerJson["beer_label"],
-        );
+      if (beerJson["beer_label"] != null) {
+        label = BeerLabel(iconUrl: beerJson["beer_label"]);
       }
 
       return Beer(

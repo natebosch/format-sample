@@ -26,8 +26,14 @@ class MeasureListItem extends StatelessWidget {
                 Text(item.name, style: theme.body3),
                 const SizedBox(height: 4.0),
                 Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 1.0),
-                  child: Text(item.group.toLowerCase(), style: theme.xsmall.copyWith(color: Colors.white)),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 8.0,
+                    vertical: 1.0,
+                  ),
+                  child: Text(
+                    item.group.toLowerCase(),
+                    style: theme.xsmall.copyWith(color: Colors.white),
+                  ),
                   decoration: BoxDecoration(
                     color: kAccentColor,
                     borderRadius: BorderRadius.circular(10.0),
@@ -37,12 +43,21 @@ class MeasureListItem extends StatelessWidget {
             ),
           ),
           if (item.value != null && item.value > 0) ...[
-            Text("${item.value} ", style: theme.subhead3.copyWith(color: kAccentColor)),
+            Text(
+              "${item.value} ",
+              style: theme.subhead3.copyWith(color: kAccentColor),
+            ),
             const SizedBox(width: 2.0),
-            Text(item.unit, style: theme.small.copyWith(color: kTitleBaseColor)),
+            Text(
+              item.unit,
+              style: theme.small.copyWith(color: kTitleBaseColor),
+            ),
           ],
           if (item.value == null || item.value == 0)
-            Text("N/A", style: theme.smallLight.copyWith(color: kTitleBaseColor)),
+            Text(
+              "N/A",
+              style: theme.smallLight.copyWith(color: kTitleBaseColor),
+            ),
         ],
       ),
     );

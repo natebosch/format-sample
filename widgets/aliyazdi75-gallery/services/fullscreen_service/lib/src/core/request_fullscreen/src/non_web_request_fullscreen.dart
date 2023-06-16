@@ -33,5 +33,7 @@ class NonWebRequestFullscreen implements RequestFullscreen {
   }
 }
 
-RequestFullscreen getRequestFullscreen({Function? onEnter, Function? onExit}) =>
-    NonWebRequestFullscreen(onEnter: onEnter, onExit: onExit);
+RequestFullscreen getRequestFullscreen({
+  Function? onEnter,
+  Function? onExit,
+}) => NonWebRequestFullscreen(onEnter: onEnter, onExit: onExit);

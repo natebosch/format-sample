@@ -22,14 +22,17 @@ void main() {
     // TestArrange.registerFallbackValue(const Tournament());
 
     randomQuestionsLoaderMock = MockRandomQuestionsLoader();
-    TestArrange.when(() => randomQuestionsLoaderMock.get())
-        .thenAnswer((_) => Future.value(<Question>[]));
+    TestArrange.when(() => randomQuestionsLoaderMock.get()).thenAnswer(
+      (_) => Future.value(<Question>[]),
+    );
 
     crashWrapperMock = MockCrashWrapper();
     TestArrange.when(
-            () => crashWrapperMock.executeAndReport<List<Question>>(any()))
-        .thenAnswer((invocation) => (invocation.positionalArguments[0]
-            as Future<List<Question>> Function())());
+      () => crashWrapperMock.executeAndReport<List<Question>>(any()),
+    ).thenAnswer(
+      (invocation) => (invocation.positionalArguments[0]
+          as Future<List<Question>> Function())(),
+    );
   });
 
   group('$RandomQuestionsProvider:: work with loader', () {
@@ -37,8 +40,9 @@ void main() {
       // arrange
       final expectedQuestions = expectedRandomQuestions1;
 
-      TestArrange.when(() => randomQuestionsLoaderMock.get())
-          .thenAnswer((_) => Future.value(expectedQuestions));
+      TestArrange.when(() => randomQuestionsLoaderMock.get()).thenAnswer(
+        (_) => Future.value(expectedQuestions),
+      );
 
       final provider = createProvider();
 

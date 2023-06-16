@@ -12,7 +12,8 @@ part of 'status.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods',
+);
 
 SonarrSystemStatus _$SonarrSystemStatusFromJson(Map<String, dynamic> json) {
   return _SonarrSystemStatus.fromJson(json);
@@ -63,40 +64,42 @@ mixin _$SonarrSystemStatus {
 /// @nodoc
 abstract class $SonarrSystemStatusCopyWith<$Res> {
   factory $SonarrSystemStatusCopyWith(
-          SonarrSystemStatus value, $Res Function(SonarrSystemStatus) then) =
-      _$SonarrSystemStatusCopyWithImpl<$Res, SonarrSystemStatus>;
+    SonarrSystemStatus value,
+    $Res Function(SonarrSystemStatus) then,
+  ) = _$SonarrSystemStatusCopyWithImpl<$Res, SonarrSystemStatus>;
   @useResult
-  $Res call(
-      {String? appName,
-      String? instanceName,
-      String? version,
-      DateTime buildTime,
-      bool isDebug,
-      bool isProduction,
-      bool isAdmin,
-      bool isUserInteractive,
-      String? startupPath,
-      String? appData,
-      String? osName,
-      String? osVersion,
-      bool isNetCore,
-      bool isLinux,
-      bool isOsx,
-      bool isWindows,
-      bool isDocker,
-      SonarrRuntimeMode mode,
-      String? branch,
-      SonarrAuthenticationType authentication,
-      String sqliteVersion,
-      int migrationVersion,
-      String? urlBase,
-      String runtimeVersion,
-      String? runtimeName,
-      DateTime startTime,
-      String? packageVersion,
-      String? packageAuthor,
-      SonarrUpdateMechanism packageUpdateMechanism,
-      String? packageUpdateMechanismMessage});
+  $Res call({
+    String? appName,
+    String? instanceName,
+    String? version,
+    DateTime buildTime,
+    bool isDebug,
+    bool isProduction,
+    bool isAdmin,
+    bool isUserInteractive,
+    String? startupPath,
+    String? appData,
+    String? osName,
+    String? osVersion,
+    bool isNetCore,
+    bool isLinux,
+    bool isOsx,
+    bool isWindows,
+    bool isDocker,
+    SonarrRuntimeMode mode,
+    String? branch,
+    SonarrAuthenticationType authentication,
+    String sqliteVersion,
+    int migrationVersion,
+    String? urlBase,
+    String runtimeVersion,
+    String? runtimeName,
+    DateTime startTime,
+    String? packageVersion,
+    String? packageAuthor,
+    SonarrUpdateMechanism packageUpdateMechanism,
+    String? packageUpdateMechanismMessage,
+  });
 }
 
 /// @nodoc
@@ -143,170 +146,174 @@ class _$SonarrSystemStatusCopyWithImpl<$Res, $Val extends SonarrSystemStatus>
     Object? packageUpdateMechanism = null,
     Object? packageUpdateMechanismMessage = freezed,
   }) {
-    return _then(_value.copyWith(
-      appName: freezed == appName
-          ? _value.appName
-          : appName // ignore: cast_nullable_to_non_nullable
-              as String?,
-      instanceName: freezed == instanceName
-          ? _value.instanceName
-          : instanceName // ignore: cast_nullable_to_non_nullable
-              as String?,
-      version: freezed == version
-          ? _value.version
-          : version // ignore: cast_nullable_to_non_nullable
-              as String?,
-      buildTime: null == buildTime
-          ? _value.buildTime
-          : buildTime // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      isDebug: null == isDebug
-          ? _value.isDebug
-          : isDebug // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isProduction: null == isProduction
-          ? _value.isProduction
-          : isProduction // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isAdmin: null == isAdmin
-          ? _value.isAdmin
-          : isAdmin // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isUserInteractive: null == isUserInteractive
-          ? _value.isUserInteractive
-          : isUserInteractive // ignore: cast_nullable_to_non_nullable
-              as bool,
-      startupPath: freezed == startupPath
-          ? _value.startupPath
-          : startupPath // ignore: cast_nullable_to_non_nullable
-              as String?,
-      appData: freezed == appData
-          ? _value.appData
-          : appData // ignore: cast_nullable_to_non_nullable
-              as String?,
-      osName: freezed == osName
-          ? _value.osName
-          : osName // ignore: cast_nullable_to_non_nullable
-              as String?,
-      osVersion: freezed == osVersion
-          ? _value.osVersion
-          : osVersion // ignore: cast_nullable_to_non_nullable
-              as String?,
-      isNetCore: null == isNetCore
-          ? _value.isNetCore
-          : isNetCore // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isLinux: null == isLinux
-          ? _value.isLinux
-          : isLinux // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isOsx: null == isOsx
-          ? _value.isOsx
-          : isOsx // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isWindows: null == isWindows
-          ? _value.isWindows
-          : isWindows // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isDocker: null == isDocker
-          ? _value.isDocker
-          : isDocker // ignore: cast_nullable_to_non_nullable
-              as bool,
-      mode: null == mode
-          ? _value.mode
-          : mode // ignore: cast_nullable_to_non_nullable
-              as SonarrRuntimeMode,
-      branch: freezed == branch
-          ? _value.branch
-          : branch // ignore: cast_nullable_to_non_nullable
-              as String?,
-      authentication: null == authentication
-          ? _value.authentication
-          : authentication // ignore: cast_nullable_to_non_nullable
-              as SonarrAuthenticationType,
-      sqliteVersion: null == sqliteVersion
-          ? _value.sqliteVersion
-          : sqliteVersion // ignore: cast_nullable_to_non_nullable
-              as String,
-      migrationVersion: null == migrationVersion
-          ? _value.migrationVersion
-          : migrationVersion // ignore: cast_nullable_to_non_nullable
-              as int,
-      urlBase: freezed == urlBase
-          ? _value.urlBase
-          : urlBase // ignore: cast_nullable_to_non_nullable
-              as String?,
-      runtimeVersion: null == runtimeVersion
-          ? _value.runtimeVersion
-          : runtimeVersion // ignore: cast_nullable_to_non_nullable
-              as String,
-      runtimeName: freezed == runtimeName
-          ? _value.runtimeName
-          : runtimeName // ignore: cast_nullable_to_non_nullable
-              as String?,
-      startTime: null == startTime
-          ? _value.startTime
-          : startTime // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      packageVersion: freezed == packageVersion
-          ? _value.packageVersion
-          : packageVersion // ignore: cast_nullable_to_non_nullable
-              as String?,
-      packageAuthor: freezed == packageAuthor
-          ? _value.packageAuthor
-          : packageAuthor // ignore: cast_nullable_to_non_nullable
-              as String?,
-      packageUpdateMechanism: null == packageUpdateMechanism
-          ? _value.packageUpdateMechanism
-          : packageUpdateMechanism // ignore: cast_nullable_to_non_nullable
-              as SonarrUpdateMechanism,
-      packageUpdateMechanismMessage: freezed == packageUpdateMechanismMessage
-          ? _value.packageUpdateMechanismMessage
-          : packageUpdateMechanismMessage // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+        appName: freezed == appName
+            ? _value.appName
+            : appName // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        instanceName: freezed == instanceName
+            ? _value.instanceName
+            : instanceName // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        version: freezed == version
+            ? _value.version
+            : version // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        buildTime: null == buildTime
+            ? _value.buildTime
+            : buildTime // ignore: cast_nullable_to_non_nullable
+                  as DateTime,
+        isDebug: null == isDebug
+            ? _value.isDebug
+            : isDebug // ignore: cast_nullable_to_non_nullable
+                  as bool,
+        isProduction: null == isProduction
+            ? _value.isProduction
+            : isProduction // ignore: cast_nullable_to_non_nullable
+                  as bool,
+        isAdmin: null == isAdmin
+            ? _value.isAdmin
+            : isAdmin // ignore: cast_nullable_to_non_nullable
+                  as bool,
+        isUserInteractive: null == isUserInteractive
+            ? _value.isUserInteractive
+            : isUserInteractive // ignore: cast_nullable_to_non_nullable
+                  as bool,
+        startupPath: freezed == startupPath
+            ? _value.startupPath
+            : startupPath // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        appData: freezed == appData
+            ? _value.appData
+            : appData // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        osName: freezed == osName
+            ? _value.osName
+            : osName // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        osVersion: freezed == osVersion
+            ? _value.osVersion
+            : osVersion // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        isNetCore: null == isNetCore
+            ? _value.isNetCore
+            : isNetCore // ignore: cast_nullable_to_non_nullable
+                  as bool,
+        isLinux: null == isLinux
+            ? _value.isLinux
+            : isLinux // ignore: cast_nullable_to_non_nullable
+                  as bool,
+        isOsx: null == isOsx
+            ? _value.isOsx
+            : isOsx // ignore: cast_nullable_to_non_nullable
+                  as bool,
+        isWindows: null == isWindows
+            ? _value.isWindows
+            : isWindows // ignore: cast_nullable_to_non_nullable
+                  as bool,
+        isDocker: null == isDocker
+            ? _value.isDocker
+            : isDocker // ignore: cast_nullable_to_non_nullable
+                  as bool,
+        mode: null == mode
+            ? _value.mode
+            : mode // ignore: cast_nullable_to_non_nullable
+                  as SonarrRuntimeMode,
+        branch: freezed == branch
+            ? _value.branch
+            : branch // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        authentication: null == authentication
+            ? _value.authentication
+            : authentication // ignore: cast_nullable_to_non_nullable
+                  as SonarrAuthenticationType,
+        sqliteVersion: null == sqliteVersion
+            ? _value.sqliteVersion
+            : sqliteVersion // ignore: cast_nullable_to_non_nullable
+                  as String,
+        migrationVersion: null == migrationVersion
+            ? _value.migrationVersion
+            : migrationVersion // ignore: cast_nullable_to_non_nullable
+                  as int,
+        urlBase: freezed == urlBase
+            ? _value.urlBase
+            : urlBase // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        runtimeVersion: null == runtimeVersion
+            ? _value.runtimeVersion
+            : runtimeVersion // ignore: cast_nullable_to_non_nullable
+                  as String,
+        runtimeName: freezed == runtimeName
+            ? _value.runtimeName
+            : runtimeName // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        startTime: null == startTime
+            ? _value.startTime
+            : startTime // ignore: cast_nullable_to_non_nullable
+                  as DateTime,
+        packageVersion: freezed == packageVersion
+            ? _value.packageVersion
+            : packageVersion // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        packageAuthor: freezed == packageAuthor
+            ? _value.packageAuthor
+            : packageAuthor // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        packageUpdateMechanism: null == packageUpdateMechanism
+            ? _value.packageUpdateMechanism
+            : packageUpdateMechanism // ignore: cast_nullable_to_non_nullable
+                  as SonarrUpdateMechanism,
+        packageUpdateMechanismMessage: freezed == packageUpdateMechanismMessage
+            ? _value.packageUpdateMechanismMessage
+            : packageUpdateMechanismMessage // ignore: cast_nullable_to_non_nullable
+                  as String?,
+      ) as $Val,
+    );
   }
 }
 
 /// @nodoc
 abstract class _$$_SonarrSystemStatusCopyWith<$Res>
     implements $SonarrSystemStatusCopyWith<$Res> {
-  factory _$$_SonarrSystemStatusCopyWith(_$_SonarrSystemStatus value,
-          $Res Function(_$_SonarrSystemStatus) then) =
-      __$$_SonarrSystemStatusCopyWithImpl<$Res>;
+  factory _$$_SonarrSystemStatusCopyWith(
+    _$_SonarrSystemStatus value,
+    $Res Function(_$_SonarrSystemStatus) then,
+  ) = __$$_SonarrSystemStatusCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String? appName,
-      String? instanceName,
-      String? version,
-      DateTime buildTime,
-      bool isDebug,
-      bool isProduction,
-      bool isAdmin,
-      bool isUserInteractive,
-      String? startupPath,
-      String? appData,
-      String? osName,
-      String? osVersion,
-      bool isNetCore,
-      bool isLinux,
-      bool isOsx,
-      bool isWindows,
-      bool isDocker,
-      SonarrRuntimeMode mode,
-      String? branch,
-      SonarrAuthenticationType authentication,
-      String sqliteVersion,
-      int migrationVersion,
-      String? urlBase,
-      String runtimeVersion,
-      String? runtimeName,
-      DateTime startTime,
-      String? packageVersion,
-      String? packageAuthor,
-      SonarrUpdateMechanism packageUpdateMechanism,
-      String? packageUpdateMechanismMessage});
+  $Res call({
+    String? appName,
+    String? instanceName,
+    String? version,
+    DateTime buildTime,
+    bool isDebug,
+    bool isProduction,
+    bool isAdmin,
+    bool isUserInteractive,
+    String? startupPath,
+    String? appData,
+    String? osName,
+    String? osVersion,
+    bool isNetCore,
+    bool isLinux,
+    bool isOsx,
+    bool isWindows,
+    bool isDocker,
+    SonarrRuntimeMode mode,
+    String? branch,
+    SonarrAuthenticationType authentication,
+    String sqliteVersion,
+    int migrationVersion,
+    String? urlBase,
+    String runtimeVersion,
+    String? runtimeName,
+    DateTime startTime,
+    String? packageVersion,
+    String? packageAuthor,
+    SonarrUpdateMechanism packageUpdateMechanism,
+    String? packageUpdateMechanismMessage,
+  });
 }
 
 /// @nodoc
@@ -314,8 +321,9 @@ class __$$_SonarrSystemStatusCopyWithImpl<$Res>
     extends _$SonarrSystemStatusCopyWithImpl<$Res, _$_SonarrSystemStatus>
     implements _$$_SonarrSystemStatusCopyWith<$Res> {
   __$$_SonarrSystemStatusCopyWithImpl(
-      _$_SonarrSystemStatus _value, $Res Function(_$_SonarrSystemStatus) _then)
-      : super(_value, _then);
+    _$_SonarrSystemStatus _value,
+    $Res Function(_$_SonarrSystemStatus) _then,
+  ) : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -355,123 +363,123 @@ class __$$_SonarrSystemStatusCopyWithImpl<$Res>
       appName: freezed == appName
           ? _value.appName
           : appName // ignore: cast_nullable_to_non_nullable
-              as String?,
+                as String?,
       instanceName: freezed == instanceName
           ? _value.instanceName
           : instanceName // ignore: cast_nullable_to_non_nullable
-              as String?,
+                as String?,
       version: freezed == version
           ? _value.version
           : version // ignore: cast_nullable_to_non_nullable
-              as String?,
+                as String?,
       buildTime: null == buildTime
           ? _value.buildTime
           : buildTime // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+                as DateTime,
       isDebug: null == isDebug
           ? _value.isDebug
           : isDebug // ignore: cast_nullable_to_non_nullable
-              as bool,
+                as bool,
       isProduction: null == isProduction
           ? _value.isProduction
           : isProduction // ignore: cast_nullable_to_non_nullable
-              as bool,
+                as bool,
       isAdmin: null == isAdmin
           ? _value.isAdmin
           : isAdmin // ignore: cast_nullable_to_non_nullable
-              as bool,
+                as bool,
       isUserInteractive: null == isUserInteractive
           ? _value.isUserInteractive
           : isUserInteractive // ignore: cast_nullable_to_non_nullable
-              as bool,
+                as bool,
       startupPath: freezed == startupPath
           ? _value.startupPath
           : startupPath // ignore: cast_nullable_to_non_nullable
-              as String?,
+                as String?,
       appData: freezed == appData
           ? _value.appData
           : appData // ignore: cast_nullable_to_non_nullable
-              as String?,
+                as String?,
       osName: freezed == osName
           ? _value.osName
           : osName // ignore: cast_nullable_to_non_nullable
-              as String?,
+                as String?,
       osVersion: freezed == osVersion
           ? _value.osVersion
           : osVersion // ignore: cast_nullable_to_non_nullable
-              as String?,
+                as String?,
       isNetCore: null == isNetCore
           ? _value.isNetCore
           : isNetCore // ignore: cast_nullable_to_non_nullable
-              as bool,
+                as bool,
       isLinux: null == isLinux
           ? _value.isLinux
           : isLinux // ignore: cast_nullable_to_non_nullable
-              as bool,
+                as bool,
       isOsx: null == isOsx
           ? _value.isOsx
           : isOsx // ignore: cast_nullable_to_non_nullable
-              as bool,
+                as bool,
       isWindows: null == isWindows
           ? _value.isWindows
           : isWindows // ignore: cast_nullable_to_non_nullable
-              as bool,
+                as bool,
       isDocker: null == isDocker
           ? _value.isDocker
           : isDocker // ignore: cast_nullable_to_non_nullable
-              as bool,
+                as bool,
       mode: null == mode
           ? _value.mode
           : mode // ignore: cast_nullable_to_non_nullable
-              as SonarrRuntimeMode,
+                as SonarrRuntimeMode,
       branch: freezed == branch
           ? _value.branch
           : branch // ignore: cast_nullable_to_non_nullable
-              as String?,
+                as String?,
       authentication: null == authentication
           ? _value.authentication
           : authentication // ignore: cast_nullable_to_non_nullable
-              as SonarrAuthenticationType,
+                as SonarrAuthenticationType,
       sqliteVersion: null == sqliteVersion
           ? _value.sqliteVersion
           : sqliteVersion // ignore: cast_nullable_to_non_nullable
-              as String,
+                as String,
       migrationVersion: null == migrationVersion
           ? _value.migrationVersion
           : migrationVersion // ignore: cast_nullable_to_non_nullable
-              as int,
+                as int,
       urlBase: freezed == urlBase
           ? _value.urlBase
           : urlBase // ignore: cast_nullable_to_non_nullable
-              as String?,
+                as String?,
       runtimeVersion: null == runtimeVersion
           ? _value.runtimeVersion
           : runtimeVersion // ignore: cast_nullable_to_non_nullable
-              as String,
+                as String,
       runtimeName: freezed == runtimeName
           ? _value.runtimeName
           : runtimeName // ignore: cast_nullable_to_non_nullable
-              as String?,
+                as String?,
       startTime: null == startTime
           ? _value.startTime
           : startTime // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+                as DateTime,
       packageVersion: freezed == packageVersion
           ? _value.packageVersion
           : packageVersion // ignore: cast_nullable_to_non_nullable
-              as String?,
+                as String?,
       packageAuthor: freezed == packageAuthor
           ? _value.packageAuthor
           : packageAuthor // ignore: cast_nullable_to_non_nullable
-              as String?,
+                as String?,
       packageUpdateMechanism: null == packageUpdateMechanism
           ? _value.packageUpdateMechanism
           : packageUpdateMechanism // ignore: cast_nullable_to_non_nullable
-              as SonarrUpdateMechanism,
+                as SonarrUpdateMechanism,
       packageUpdateMechanismMessage: freezed == packageUpdateMechanismMessage
           ? _value.packageUpdateMechanismMessage
           : packageUpdateMechanismMessage // ignore: cast_nullable_to_non_nullable
-              as String?,
+                as String?,
     ));
   }
 }
@@ -479,40 +487,42 @@ class __$$_SonarrSystemStatusCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_SonarrSystemStatus implements _SonarrSystemStatus {
-  const _$_SonarrSystemStatus(
-      {this.appName,
-      this.instanceName,
-      this.version,
-      required this.buildTime,
-      required this.isDebug,
-      required this.isProduction,
-      required this.isAdmin,
-      required this.isUserInteractive,
-      this.startupPath,
-      this.appData,
-      this.osName,
-      this.osVersion,
-      required this.isNetCore,
-      required this.isLinux,
-      required this.isOsx,
-      required this.isWindows,
-      required this.isDocker,
-      required this.mode,
-      this.branch,
-      required this.authentication,
-      required this.sqliteVersion,
-      required this.migrationVersion,
-      this.urlBase,
-      required this.runtimeVersion,
-      this.runtimeName,
-      required this.startTime,
-      this.packageVersion,
-      this.packageAuthor,
-      required this.packageUpdateMechanism,
-      this.packageUpdateMechanismMessage});
+  const _$_SonarrSystemStatus({
+    this.appName,
+    this.instanceName,
+    this.version,
+    required this.buildTime,
+    required this.isDebug,
+    required this.isProduction,
+    required this.isAdmin,
+    required this.isUserInteractive,
+    this.startupPath,
+    this.appData,
+    this.osName,
+    this.osVersion,
+    required this.isNetCore,
+    required this.isLinux,
+    required this.isOsx,
+    required this.isWindows,
+    required this.isDocker,
+    required this.mode,
+    this.branch,
+    required this.authentication,
+    required this.sqliteVersion,
+    required this.migrationVersion,
+    this.urlBase,
+    required this.runtimeVersion,
+    this.runtimeName,
+    required this.startTime,
+    this.packageVersion,
+    this.packageAuthor,
+    required this.packageUpdateMechanism,
+    this.packageUpdateMechanismMessage,
+  });
 
-  factory _$_SonarrSystemStatus.fromJson(Map<String, dynamic> json) =>
-      _$$_SonarrSystemStatusFromJson(json);
+  factory _$_SonarrSystemStatus.fromJson(
+    Map<String, dynamic> json,
+  ) => _$$_SonarrSystemStatusFromJson(json);
 
   @override
   final String? appName;
@@ -632,8 +642,10 @@ class _$_SonarrSystemStatus implements _SonarrSystemStatus {
                 other.packageAuthor == packageAuthor) &&
             (identical(other.packageUpdateMechanism, packageUpdateMechanism) ||
                 other.packageUpdateMechanism == packageUpdateMechanism) &&
-            (identical(other.packageUpdateMechanismMessage,
-                    packageUpdateMechanismMessage) ||
+            (identical(
+                  other.packageUpdateMechanismMessage,
+                  packageUpdateMechanismMessage,
+                ) ||
                 other.packageUpdateMechanismMessage ==
                     packageUpdateMechanismMessage));
   }
@@ -641,86 +653,87 @@ class _$_SonarrSystemStatus implements _SonarrSystemStatus {
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hashAll([
-        runtimeType,
-        appName,
-        instanceName,
-        version,
-        buildTime,
-        isDebug,
-        isProduction,
-        isAdmin,
-        isUserInteractive,
-        startupPath,
-        appData,
-        osName,
-        osVersion,
-        isNetCore,
-        isLinux,
-        isOsx,
-        isWindows,
-        isDocker,
-        mode,
-        branch,
-        authentication,
-        sqliteVersion,
-        migrationVersion,
-        urlBase,
-        runtimeVersion,
-        runtimeName,
-        startTime,
-        packageVersion,
-        packageAuthor,
-        packageUpdateMechanism,
-        packageUpdateMechanismMessage
-      ]);
+    runtimeType,
+    appName,
+    instanceName,
+    version,
+    buildTime,
+    isDebug,
+    isProduction,
+    isAdmin,
+    isUserInteractive,
+    startupPath,
+    appData,
+    osName,
+    osVersion,
+    isNetCore,
+    isLinux,
+    isOsx,
+    isWindows,
+    isDocker,
+    mode,
+    branch,
+    authentication,
+    sqliteVersion,
+    migrationVersion,
+    urlBase,
+    runtimeVersion,
+    runtimeName,
+    startTime,
+    packageVersion,
+    packageAuthor,
+    packageUpdateMechanism,
+    packageUpdateMechanismMessage,
+  ]);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_SonarrSystemStatusCopyWith<_$_SonarrSystemStatus> get copyWith =>
-      __$$_SonarrSystemStatusCopyWithImpl<_$_SonarrSystemStatus>(
-          this, _$identity);
+  _$$_SonarrSystemStatusCopyWith<_$_SonarrSystemStatus>
+  get copyWith => __$$_SonarrSystemStatusCopyWithImpl<_$_SonarrSystemStatus>(
+    this,
+    _$identity,
+  );
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_SonarrSystemStatusToJson(
-      this,
-    );
+    return _$$_SonarrSystemStatusToJson(this);
   }
 }
 
 abstract class _SonarrSystemStatus implements SonarrSystemStatus {
-  const factory _SonarrSystemStatus(
-      {final String? appName,
-      final String? instanceName,
-      final String? version,
-      required final DateTime buildTime,
-      required final bool isDebug,
-      required final bool isProduction,
-      required final bool isAdmin,
-      required final bool isUserInteractive,
-      final String? startupPath,
-      final String? appData,
-      final String? osName,
-      final String? osVersion,
-      required final bool isNetCore,
-      required final bool isLinux,
-      required final bool isOsx,
-      required final bool isWindows,
-      required final bool isDocker,
-      required final SonarrRuntimeMode mode,
-      final String? branch,
-      required final SonarrAuthenticationType authentication,
-      required final String sqliteVersion,
-      required final int migrationVersion,
-      final String? urlBase,
-      required final String runtimeVersion,
-      final String? runtimeName,
-      required final DateTime startTime,
-      final String? packageVersion,
-      final String? packageAuthor,
-      required final SonarrUpdateMechanism packageUpdateMechanism,
-      final String? packageUpdateMechanismMessage}) = _$_SonarrSystemStatus;
+  const factory _SonarrSystemStatus({
+    final String? appName,
+    final String? instanceName,
+    final String? version,
+    required final DateTime buildTime,
+    required final bool isDebug,
+    required final bool isProduction,
+    required final bool isAdmin,
+    required final bool isUserInteractive,
+    final String? startupPath,
+    final String? appData,
+    final String? osName,
+    final String? osVersion,
+    required final bool isNetCore,
+    required final bool isLinux,
+    required final bool isOsx,
+    required final bool isWindows,
+    required final bool isDocker,
+    required final SonarrRuntimeMode mode,
+    final String? branch,
+    required final SonarrAuthenticationType authentication,
+    required final String sqliteVersion,
+    required final int migrationVersion,
+    final String? urlBase,
+    required final String runtimeVersion,
+    final String? runtimeName,
+    required final DateTime startTime,
+    final String? packageVersion,
+    final String? packageAuthor,
+    required final SonarrUpdateMechanism packageUpdateMechanism,
+    final String? packageUpdateMechanismMessage,
+  }) = _$_SonarrSystemStatus;
 
   factory _SonarrSystemStatus.fromJson(Map<String, dynamic> json) =
       _$_SonarrSystemStatus.fromJson;

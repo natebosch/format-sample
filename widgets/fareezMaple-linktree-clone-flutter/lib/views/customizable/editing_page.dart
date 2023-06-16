@@ -28,7 +28,9 @@ import 'add_edit_card.dart';
 import 'share_profile.dart';
 
 const _bottomSheetStyle = RoundedRectangleBorder(
-    borderRadius: BorderRadius.vertical(top: Radius.circular(12.0)));
+  borderRadius: BorderRadius.vertical(top: Radius.circular(12.0)),
+);
+
 enum Mode { edit, preview }
 
 class EditPage extends StatefulWidget {
@@ -112,8 +114,9 @@ class _EditPageState extends State<EditPage> {
   Future updateProfilePicture() async {
     String url;
     setState(() => _isdpLoading = true);
-    Reference reference =
-        _storageInstance.ref('userdps').child(_authInstance.currentUser.uid);
+    Reference reference = _storageInstance.ref('userdps').child(
+      _authInstance.currentUser.uid,
+    );
 
     try {
       // if already exist, it will be overwritten
@@ -137,8 +140,10 @@ class _EditPageState extends State<EditPage> {
       CustomSnack.showErrorSnack(context, message: 'Error: ${e.message}');
       setState(() => _isdpLoading = false);
     } catch (e) {
-      CustomSnack.showErrorSnack(context,
-          message: 'Unexpected error. Please try again.');
+      CustomSnack.showErrorSnack(
+        context,
+        message: 'Unexpected error. Please try again.',
+      );
       setState(() => _isdpLoading = false);
       rethrow;
     }
@@ -149,10 +154,11 @@ class _EditPageState extends State<EditPage> {
 
     try {
       pickedFile = await ImagePicker().pickImage(
-          source: option == 0 ? ImageSource.camera : ImageSource.gallery,
-          imageQuality: 70,
-          maxWidth: 300,
-          maxHeight: 200);
+        source: option == 0 ? ImageSource.camera : ImageSource.gallery,
+        imageQuality: 70,
+        maxWidth: 300,
+        maxHeight: 200,
+      );
     } on PlatformException catch (e) {
       //catch error when no camera available for example hahha
       // i think this is most useless catching error bcs
@@ -202,19 +208,15 @@ class _EditPageState extends State<EditPage> {
               /// Check whether the getstorage was not true or the user hasn't
               /// agree with the consent yet
               if (GetStorage().read(kHasAgreeConsent) ||
-                  await Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const ConsentScreen()))) {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => LiveGuide(
-                      userCode: _userCode,
-                      docs: _documentSnapshotData,
-                    ),
-                  ),
-                );
+                  await Navigator.push(context, MaterialPageRoute(
+                    builder: (context) => const ConsentScreen(),
+                  ))) {
+                Navigator.push(context, MaterialPageRoute(
+                  builder: (context) => LiveGuide(
+                        userCode: _userCode,
+                        docs: _documentSnapshotData,
+                      ),
+                ));
               } else {}
             },
             label: const Text('Share profile'),
@@ -227,9 +229,9 @@ class _EditPageState extends State<EditPage> {
                   await FirebaseAuth.instance.signOut();
                   await GoogleSignIn().signOut();
                   Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const AuthHome()));
+                    context,
+                    MaterialPageRoute(builder: (context) => const AuthHome()),
+                  );
                   break;
                 case 'dwApp':
                   launchURL(context, kPlayStoreUrl);
@@ -244,23 +246,25 @@ class _EditPageState extends State<EditPage> {
                           return AlertDialog(
                             title: const Text('Reset all data in this account'),
                             content: const Text(
-                                'You\'ll be signed out automatically'),
+                              'You\'ll be signed out automatically',
+                            ),
                             actions: [
                               isLoading
                                   ? const LoadingIndicator()
                                   : const SizedBox.shrink(),
                               TextButton(
-                                  onPressed: () {
-                                    Navigator.pop(context);
-                                  },
-                                  child: const Text('Cancel')),
+                                onPressed: () {
+                                  Navigator.pop(context);
+                                },
+                                child: const Text('Cancel'),
+                              ),
                               TextButton(
                                 onPressed: () async {
                                   setDialogState(() => isLoading = true);
                                   try {
-                                    _storageInstance
-                                        .refFromURL(_userImageUrl)
-                                        .delete();
+                                    _storageInstance.refFromURL(
+                                      _userImageUrl,
+                                    ).delete();
                                   } catch (e) {
                                     print('Unable to delete image: $e');
                                   }
@@ -268,17 +272,22 @@ class _EditPageState extends State<EditPage> {
                                     await _userDocument.delete();
                                     Navigator.pop(context); //pop the dialog
                                     Navigator.pushReplacement(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) =>
-                                                const AuthHome()));
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => const AuthHome(),
+                                      ),
+                                    );
                                   } on FirebaseException catch (e) {
-                                    CustomSnack.showErrorSnack(context,
-                                        message: 'Error: ${e.message}');
+                                    CustomSnack.showErrorSnack(
+                                      context,
+                                      message: 'Error: ${e.message}',
+                                    );
                                     setDialogState(() => isLoading = false);
                                   } catch (e) {
-                                    CustomSnack.showErrorSnack(context,
-                                        message: 'Error. Please try again');
+                                    CustomSnack.showErrorSnack(
+                                      context,
+                                      message: 'Error. Please try again',
+                                    );
                                     setDialogState(() => isLoading = false);
                                     rethrow;
                                   }
@@ -287,7 +296,7 @@ class _EditPageState extends State<EditPage> {
                                   'Confirm',
                                   style: TextStyle(color: Colors.red),
                                 ),
-                              )
+                              ),
                             ],
                           );
                         },
@@ -296,8 +305,9 @@ class _EditPageState extends State<EditPage> {
                   );
                   break;
                 case 'Donate':
-                  Navigator.of(context)
-                      .push(MaterialPageRoute(builder: (builder) => Donate()));
+                  Navigator.of(context).push(
+                    MaterialPageRoute(builder: (builder) => Donate()),
+                  );
               }
             },
             icon: const FaIcon(
@@ -308,10 +318,7 @@ class _EditPageState extends State<EditPage> {
             tooltip: 'Your account',
             itemBuilder: (BuildContext context) {
               return [
-                const PopupMenuItem(
-                  child: Text('Log out'),
-                  value: 'Logout',
-                ),
+                const PopupMenuItem(child: Text('Log out'), value: 'Logout'),
                 kIsWeb
                     ? const PopupMenuItem(
                         value: 'dwApp',
@@ -320,9 +327,7 @@ class _EditPageState extends State<EditPage> {
                     : null,
                 const PopupMenuItem(
                   value: 'Donate',
-                  child: Text(
-                    'Support Flutree...',
-                  ),
+                  child: Text('Support Flutree...'),
                 ),
                 const PopupMenuItem(
                   value: 'DeleteAcc',
@@ -340,8 +345,10 @@ class _EditPageState extends State<EditPage> {
         // Main content
         child: StreamBuilder(
           stream: _userDocument.snapshots(),
-          builder: (context,
-              AsyncSnapshot<DocumentSnapshot<Map<String, dynamic>>> snapshot) {
+          builder: (
+            context,
+            AsyncSnapshot<DocumentSnapshot<Map<String, dynamic>>> snapshot,
+          ) {
             if (snapshot.hasData && snapshot.data.exists) {
               _documentSnapshotData = snapshot.data;
 
@@ -355,13 +362,11 @@ class _EditPageState extends State<EditPage> {
                   _documentSnapshotData.data()['socials'];
               List<LinkcardModel> datas = [];
               for (var item in socialsList ?? []) {
-                datas.add(
-                  LinkcardModel(
-                    exactName: item['exactName'],
-                    displayName: item['displayName'],
-                    link: item['link'],
-                  ),
-                );
+                datas.add(LinkcardModel(
+                  exactName: item['exactName'],
+                  displayName: item['displayName'],
+                  link: item['link'],
+                ));
               }
               return SingleChildScrollView(
                 child: Padding(
@@ -373,15 +378,18 @@ class _EditPageState extends State<EditPage> {
                       const SizedBox(height: 15.0),
                       GestureDetector(
                         onTap: kIsWeb
-                            ? () => CustomSnack.showSnack(context,
+                            ? () => CustomSnack.showSnack(
+                                context,
                                 message:
                                     'Change image only available in Android App',
                                 barAction: SnackBarAction(
-                                    textColor: Colors.blueGrey.shade200,
-                                    label: 'Get the app',
-                                    onPressed: () {
-                                      launchURL(context, kPlayStoreUrl);
-                                    }))
+                                  textColor: Colors.blueGrey.shade200,
+                                  label: 'Get the app',
+                                  onPressed: () {
+                                    launchURL(context, kPlayStoreUrl);
+                                  },
+                                ),
+                              )
                             : mode == Mode.edit
                                 ? () async {
                                     int response = await showDialog(
@@ -453,14 +461,17 @@ class _EditPageState extends State<EditPage> {
                                               onPressed: () async {
                                                 // ignore if nickname empty
                                                 if (_nameController
-                                                    .text.isEmpty) return;
+                                                    .text
+                                                    .isEmpty) return;
 
-                                                setDialogState(() =>
-                                                    _isNicknameLoading = true);
+                                                setDialogState(
+                                                  () =>
+                                                      _isNicknameLoading = true,
+                                                );
                                                 await _userDocument.update({
                                                   'nickname': _nameController
                                                       .text
-                                                      .trim()
+                                                      .trim(),
                                                 });
 
                                                 setState(() {
@@ -485,7 +496,8 @@ class _EditPageState extends State<EditPage> {
                               : const TextStyle(
                                   fontSize: 22,
                                   decoration: TextDecoration.underline,
-                                  decorationStyle: TextDecorationStyle.dotted),
+                                  decorationStyle: TextDecorationStyle.dotted,
+                                ),
                         ),
                       ), //just a plain text
                       const SizedBox(height: 5),
@@ -493,10 +505,12 @@ class _EditPageState extends State<EditPage> {
                         visible: (mode == Mode.edit) || _isShowSubtitle,
                         child: GestureDetector(
                           child: _isShowSubtitle
-                              ? Text(_subtitleText,
+                              ? Text(
+                                  _subtitleText,
                                   style: mode == Mode.edit
                                       ? dottedUnderlinedStyle()
-                                      : null)
+                                      : null,
+                                )
                               : Text('Add bio', style: dottedUnderlinedStyle()),
                           onTap: mode == Mode.edit
                               ? () async {
@@ -505,45 +519,52 @@ class _EditPageState extends State<EditPage> {
                                     builder: (context) {
                                       bool _isSubtitleLoading = false;
                                       return StatefulBuilder(
-                                          builder: (context, setWidgetState) {
-                                        return AlertDialog(
-                                          title: const Text('Bio'),
-                                          contentPadding:
-                                              const EdgeInsets.all(8.0),
-                                          content: SubtitleTextField(
-                                            subsController: _subtitleController,
-                                          ),
-                                          actions: [
-                                            _isSubtitleLoading
-                                                ? const LoadingIndicator()
-                                                : const SizedBox.shrink(),
-                                            TextButton(
+                                        builder: (context, setWidgetState) {
+                                          return AlertDialog(
+                                            title: const Text('Bio'),
+                                            contentPadding:
+                                                const EdgeInsets.all(8.0),
+                                            content: SubtitleTextField(
+                                              subsController:
+                                                  _subtitleController,
+                                            ),
+                                            actions: [
+                                              _isSubtitleLoading
+                                                  ? const LoadingIndicator()
+                                                  : const SizedBox.shrink(),
+                                              TextButton(
                                                 onPressed: () {
                                                   Navigator.pop(context);
                                                 },
-                                                child: const Text('Cancel')),
-                                            TextButton(
+                                                child: const Text('Cancel'),
+                                              ),
+                                              TextButton(
                                                 onPressed: () async {
                                                   setWidgetState(() {
                                                     _isSubtitleLoading = true;
                                                   });
                                                   await _userDocument.update({
                                                     'subtitle':
-                                                        _subtitleController.text
+                                                        _subtitleController
+                                                            .text,
                                                   });
                                                   setWidgetState(() {
                                                     _isSubtitleLoading = true;
                                                   });
 
                                                   Navigator.pop(
-                                                      context,
-                                                      _subtitleController
-                                                          .text.isNotEmpty);
+                                                    context,
+                                                    _subtitleController
+                                                        .text
+                                                        .isNotEmpty,
+                                                  );
                                                 },
-                                                child: const Text('Save')),
-                                          ],
-                                        );
-                                      });
+                                                child: const Text('Save'),
+                                              ),
+                                            ],
+                                          );
+                                        },
+                                      );
                                     },
                                   );
                                   // Avoid rebuild when no change
@@ -561,18 +582,22 @@ class _EditPageState extends State<EditPage> {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 TextButton.icon(
-                                    onPressed: () {
-                                      showDialog(
-                                          context: context,
-                                          builder: (builder) {
-                                            return HelpDialogs
-                                                .editModehelpDialog(context);
-                                          });
-                                    },
-                                    icon: const FaIcon(
-                                        FontAwesomeIcons.questionCircle,
-                                        size: 16),
-                                    label: const Text('Help')),
+                                  onPressed: () {
+                                    showDialog(
+                                      context: context,
+                                      builder: (builder) {
+                                        return HelpDialogs.editModehelpDialog(
+                                          context,
+                                        );
+                                      },
+                                    );
+                                  },
+                                  icon: const FaIcon(
+                                    FontAwesomeIcons.questionCircle,
+                                    size: 16,
+                                  ),
+                                  label: const Text('Help'),
+                                ),
                                 Tooltip(
                                   message:
                                       'Toggle whether the cards should be\nreordarable or locked in place.',
@@ -597,18 +622,22 @@ class _EditPageState extends State<EditPage> {
                             return Align(
                               alignment: Alignment.centerLeft,
                               child: TextButton.icon(
-                                  onPressed: () {
-                                    showDialog(
-                                        context: context,
-                                        builder: (builder) {
-                                          return HelpDialogs
-                                              .previewModeHelpDialog(context);
-                                        });
-                                  },
-                                  icon: const FaIcon(
-                                      FontAwesomeIcons.questionCircle,
-                                      size: 16),
-                                  label: const Text('Help')),
+                                onPressed: () {
+                                  showDialog(
+                                    context: context,
+                                    builder: (builder) {
+                                      return HelpDialogs.previewModeHelpDialog(
+                                        context,
+                                      );
+                                    },
+                                  );
+                                },
+                                icon: const FaIcon(
+                                  FontAwesomeIcons.questionCircle,
+                                  size: 16,
+                                ),
+                                label: const Text('Help'),
+                              ),
                             );
                           }
                         },
@@ -617,106 +646,116 @@ class _EditPageState extends State<EditPage> {
                         builder: (context) {
                           if (mode == Mode.edit) {
                             return ReorderableListView.builder(
-                                buildDefaultDragHandles: _isReorderable,
-                                itemCount: datas.length,
-                                onReorder: (oldIndex, newIndex) {
-                                  if (oldIndex < newIndex) {
-                                    newIndex -= 1;
-                                  }
-                                  final LinkcardModel item =
-                                      datas.removeAt(oldIndex);
-                                  datas.insert(newIndex, item);
-                                  List<Map<String, String>> tempData = [];
-                                  for (var item in datas) {
-                                    tempData.add(item.toMap());
-                                  }
-                                  _userDocument.update({'socials': tempData});
-                                },
-                                shrinkWrap: true,
-                                physics: const NeverScrollableScrollPhysics(),
-                                itemBuilder: (context, index) {
-                                  return Dismissible(
-                                    onDismissed: (direction) {
-                                      _userDocument.update({
-                                        'socials': FieldValue.arrayRemove(
-                                            [datas[index].toMap()])
-                                      });
-                                    },
-                                    direction: DismissDirection.startToEnd,
-                                    confirmDismiss: (direction) async {
-                                      return await showModalBottomSheet(
+                              buildDefaultDragHandles: _isReorderable,
+                              itemCount: datas.length,
+                              onReorder: (oldIndex, newIndex) {
+                                if (oldIndex < newIndex) {
+                                  newIndex -= 1;
+                                }
+                                final LinkcardModel item = datas.removeAt(
+                                  oldIndex,
+                                );
+                                datas.insert(newIndex, item);
+                                List<Map<String, String>> tempData = [];
+                                for (var item in datas) {
+                                  tempData.add(item.toMap());
+                                }
+                                _userDocument.update({'socials': tempData});
+                              },
+                              shrinkWrap: true,
+                              physics: const NeverScrollableScrollPhysics(),
+                              itemBuilder: (context, index) {
+                                return Dismissible(
+                                  onDismissed: (direction) {
+                                    _userDocument.update({
+                                      'socials': FieldValue.arrayRemove([
+                                        datas[index].toMap(),
+                                      ]),
+                                    });
+                                  },
+                                  direction: DismissDirection.startToEnd,
+                                  confirmDismiss: (direction) async {
+                                    return await showModalBottomSheet(
+                                      shape: _bottomSheetStyle,
+                                      context: context,
+                                      builder: (context) {
+                                        return DeleteCardWidget(datas[index]);
+                                      },
+                                    );
+                                  },
+                                  background: Container(
+                                    alignment: Alignment.centerLeft,
+                                    child: Row(
+                                      children: const <Widget>[
+                                        SizedBox(width: 8),
+                                        FaIcon(
+                                          FontAwesomeIcons.trashAlt,
+                                          size: 20,
+                                          color: Colors.redAccent,
+                                        ),
+                                        SizedBox(width: 10),
+                                        Text(
+                                          'Swipe to delete >>>',
+                                          style: TextStyle(
+                                            color: Colors.redAccent,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  key: Key(datas[index].hashCode.toString()),
+                                  child: GestureDetector(
+                                    onLongPress: mode == Mode.preview
+                                        ? () {}
+                                        : null, // disable reorderable when in preview mode
+                                    onTap: () async {
+                                      LinkcardModel temp = datas[index];
+
+                                      dynamic result =
+                                          await showModalBottomSheet(
+                                        isScrollControlled: true,
                                         shape: _bottomSheetStyle,
                                         context: context,
                                         builder: (context) {
-                                          return DeleteCardWidget(datas[index]);
+                                          return Padding(
+                                            padding: EdgeInsets.only(
+                                              bottom: MediaQuery.of(context)
+                                                  .viewInsets
+                                                  .bottom,
+                                            ),
+                                            child: AddCard(linkcardModel: temp),
+                                          );
                                         },
                                       );
+                                      if (result != null) {
+                                        await _userDocument.update({
+                                          'socials': FieldValue.arrayRemove([
+                                            datas[index].toMap(),
+                                          ]),
+                                        });
+                                        _userDocument.update({
+                                          'socials': FieldValue.arrayUnion([
+                                            result.toMap(),
+                                          ]),
+                                        }).then((value) {
+                                          setState(() {});
+                                        }).catchError((Object error) {
+                                          print(error);
+                                          CustomSnack.showErrorSnack(
+                                            context,
+                                            message: 'Unable to sync',
+                                          );
+                                        });
+                                      }
                                     },
-                                    background: Container(
-                                      alignment: Alignment.centerLeft,
-                                      child: Row(
-                                        children: const <Widget>[
-                                          SizedBox(width: 8),
-                                          FaIcon(FontAwesomeIcons.trashAlt,
-                                              size: 20,
-                                              color: Colors.redAccent),
-                                          SizedBox(width: 10),
-                                          Text(
-                                            'Swipe to delete >>>',
-                                            style: TextStyle(
-                                                color: Colors.redAccent),
-                                          )
-                                        ],
-                                      ),
+                                    child: LinkCard(
+                                      linkcardModel: datas[index],
+                                      isEditing: mode == Mode.edit,
                                     ),
-                                    key: Key(datas[index].hashCode.toString()),
-                                    child: GestureDetector(
-                                      onLongPress: mode == Mode.preview
-                                          ? () {}
-                                          : null, // disable reorderable when in preview mode
-                                      onTap: () async {
-                                        LinkcardModel temp = datas[index];
-
-                                        dynamic result =
-                                            await showModalBottomSheet(
-                                          isScrollControlled: true,
-                                          shape: _bottomSheetStyle,
-                                          context: context,
-                                          builder: (context) {
-                                            return Padding(
-                                              padding: EdgeInsets.only(
-                                                  bottom: MediaQuery.of(context)
-                                                      .viewInsets
-                                                      .bottom),
-                                              child:
-                                                  AddCard(linkcardModel: temp),
-                                            );
-                                          },
-                                        );
-                                        if (result != null) {
-                                          await _userDocument.update({
-                                            'socials': FieldValue.arrayRemove(
-                                                [datas[index].toMap()])
-                                          });
-                                          _userDocument.update({
-                                            'socials': FieldValue.arrayUnion(
-                                                [result.toMap()])
-                                          }).then((value) {
-                                            setState(() {});
-                                          }).catchError((Object error) {
-                                            print(error);
-                                            CustomSnack.showErrorSnack(context,
-                                                message: 'Unable to sync');
-                                          });
-                                        }
-                                      },
-                                      child: LinkCard(
-                                        linkcardModel: datas[index],
-                                        isEditing: mode == Mode.edit,
-                                      ),
-                                    ),
-                                  );
-                                });
+                                  ),
+                                );
+                              },
+                            );
                           } else {
                             return ListView.builder(
                               itemCount: datas.length,
@@ -724,9 +763,7 @@ class _EditPageState extends State<EditPage> {
                               physics: const NeverScrollableScrollPhysics(),
                               itemBuilder: (context, index) {
                                 return PressableDough(
-                                  child: LinkCard(
-                                    linkcardModel: datas[index],
-                                  ),
+                                  child: LinkCard(linkcardModel: datas[index]),
                                 );
                               },
                             );
@@ -754,9 +791,10 @@ class _EditPageState extends State<EditPage> {
                                     builder: (context) {
                                       return Padding(
                                         padding: EdgeInsets.only(
-                                            bottom: MediaQuery.of(context)
-                                                .viewInsets
-                                                .bottom),
+                                          bottom: MediaQuery.of(context)
+                                              .viewInsets
+                                              .bottom,
+                                        ),
                                         child: const AddCard(),
                                       );
                                     },
@@ -765,14 +803,17 @@ class _EditPageState extends State<EditPage> {
                                   if (result != null) {
                                     print('Adding ${result.toMap()}');
                                     _userDocument.update({
-                                      'socials': FieldValue.arrayUnion(
-                                          [result.toMap()])
+                                      'socials': FieldValue.arrayUnion([
+                                        result.toMap(),
+                                      ]),
                                     }).then((value) {
                                       setState(() {});
                                     }).catchError((Object error) {
                                       print(error);
-                                      CustomSnack.showErrorSnack(context,
-                                          message: 'Unable to sync');
+                                      CustomSnack.showErrorSnack(
+                                        context,
+                                        message: 'Unable to sync',
+                                      );
                                     });
                                   }
                                 },
@@ -803,32 +844,32 @@ class _EditPageState extends State<EditPage> {
             if (snapshot.connectionState == ConnectionState.waiting) {
               return Center(
                 child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: const [
-                      CircularProgressIndicator(),
-                      SizedBox(height: 10),
-                      Text('Loading')
-                    ]),
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: const [
+                    CircularProgressIndicator(),
+                    SizedBox(height: 10),
+                    Text('Loading'),
+                  ],
+                ),
               );
             }
             if (snapshot.hasError) {
               return Center(
                 child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: const [
-                      CircularProgressIndicator(),
-                      SizedBox(height: 10),
-                      Text(
-                        'We have trouble connecting....\nIf the problem still persists, try log out and log in again',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(color: Colors.red),
-                      )
-                    ]),
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: const [
+                    CircularProgressIndicator(),
+                    SizedBox(height: 10),
+                    Text(
+                      'We have trouble connecting....\nIf the problem still persists, try log out and log in again',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(color: Colors.red),
+                    ),
+                  ],
+                ),
               );
             } else {
-              return const Center(
-                child: CircularProgressIndicator(),
-              );
+              return const Center(child: CircularProgressIndicator());
             }
           },
         ),
@@ -855,10 +896,7 @@ class _EditPageState extends State<EditPage> {
 }
 
 class DeleteCardWidget extends StatelessWidget {
-  const DeleteCardWidget(
-    this.linkcard, {
-    Key key,
-  }) : super(key: key);
+  const DeleteCardWidget(this.linkcard, {Key key}) : super(key: key);
 
   final LinkcardModel linkcard;
 
@@ -880,27 +918,30 @@ class DeleteCardWidget extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: OutlinedButton.icon(
-                    icon: const FaIcon(FontAwesomeIcons.times, size: 14),
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
-                    label: const Text('Cancel')),
+                  icon: const FaIcon(FontAwesomeIcons.times, size: 14),
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  label: const Text('Cancel'),
+                ),
               ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: OutlinedButton.icon(
-                    icon: const FaIcon(FontAwesomeIcons.trashAlt, size: 14),
-                    style: OutlinedButton.styleFrom(
-                        primary: Colors.white,
-                        backgroundColor: Colors.redAccent),
-                    onPressed: () {
-                      Navigator.of(context).pop(true);
-                    },
-                    label: const Text('Delete')),
+                  icon: const FaIcon(FontAwesomeIcons.trashAlt, size: 14),
+                  style: OutlinedButton.styleFrom(
+                    primary: Colors.white,
+                    backgroundColor: Colors.redAccent,
+                  ),
+                  onPressed: () {
+                    Navigator.of(context).pop(true);
+                  },
+                  label: const Text('Delete'),
+                ),
               ),
             ],
           ),
-          const SizedBox(height: 5)
+          const SizedBox(height: 5),
         ],
       ),
     );
@@ -908,9 +949,7 @@ class DeleteCardWidget extends StatelessWidget {
 }
 
 class ChooseImageDialog extends StatelessWidget {
-  const ChooseImageDialog({
-    Key key,
-  }) : super(key: key);
+  const ChooseImageDialog({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -927,9 +966,7 @@ class ChooseImageDialog extends StatelessWidget {
             ),
           ),
           ListTile(
-            title: const Text(
-              'Camera',
-            ),
+            title: const Text('Camera'),
             trailing: const FaIcon(FontAwesomeIcons.camera),
             onTap: () => Navigator.of(context).pop(0),
           ),

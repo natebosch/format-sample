@@ -57,10 +57,11 @@ class TimerViewModelImpl extends TimerViewModel {
     }
 
     controller = StreamController<int>(
-        onListen: startTimer,
-        onPause: stopTimer,
-        onResume: startTimer,
-        onCancel: stopTimer);
+      onListen: startTimer,
+      onPause: stopTimer,
+      onResume: startTimer,
+      onCancel: stopTimer,
+    );
 
     return controller.stream;
   }

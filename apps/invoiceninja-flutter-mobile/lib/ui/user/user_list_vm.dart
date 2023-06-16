@@ -34,28 +34,27 @@ class UserListBuilder extends StatelessWidget {
       converter: UserListVM.fromStore,
       builder: (context, viewModel) {
         return EntityList(
-            onClearMultiselect: viewModel.onClearMultielsect,
-            //presenter: ClientPresenter(),
-            entityType: EntityType.user,
-            state: viewModel.state,
-            entityList: viewModel.userList,
-            //tableColumns: viewModel.tableColumns,
-            onRefreshed: viewModel.onRefreshed,
-            onSortColumn: viewModel.onSortColumn,
-            itemBuilder: (BuildContext context, index) {
-              final userId = viewModel.userList[index];
-              final user = viewModel.userMap[userId];
+          onClearMultiselect: viewModel.onClearMultielsect,
+          //presenter: ClientPresenter(),
+          entityType: EntityType.user,
+          state: viewModel.state,
+          entityList: viewModel.userList,
+          //tableColumns: viewModel.tableColumns,
+          onRefreshed: viewModel.onRefreshed,
+          onSortColumn: viewModel.onSortColumn,
+          itemBuilder: (BuildContext context, index) {
+            final userId = viewModel.userList[index];
+            final user = viewModel.userMap[userId];
 
-              void showDialog() => showEntityActionsDialog(
-                    entities: [user],
-                  );
+            void showDialog() => showEntityActionsDialog(entities: [user]);
 
-              return UserListItem(
-                user: user,
-                filter: viewModel.filter,
-                onLongPress: () => showDialog(),
-              );
-            });
+            return UserListItem(
+              user: user,
+              filter: viewModel.filter,
+              onLongPress: () => showDialog(),
+            );
+          },
+        );
       },
     );
   }
@@ -81,7 +80,9 @@ class UserListVM {
         return Future<Null>(null);
       }
       final completer = snackBarCompleter<Null>(
-          context, AppLocalization.of(context).refreshComplete);
+        context,
+        AppLocalization.of(context).refreshComplete,
+      );
       store.dispatch(RefreshData(completer: completer));
       return completer.future;
     }
@@ -93,11 +94,12 @@ class UserListVM {
       userCompany: state.userCompany,
       listState: state.userListState,
       userList: memoizedFilteredUserList(
-          state.getUISelection(EntityType.user),
-          state.userState.map,
-          state.userState.list,
-          state.userListState,
-          state.user.id),
+        state.getUISelection(EntityType.user),
+        state.userState.map,
+        state.userState.list,
+        state.userListState,
+        state.user.id,
+      ),
       userMap: state.userState.map,
       isLoading: state.isLoading,
       filter: state.userUIState.listUIState.filter,

@@ -29,18 +29,23 @@ class LevelListContainerViewModel extends Equatable {
   static build(Store<AppState> store, UserModule userModule) {
     void fillWorldsCompleted(List<LevelRepository> levelsRepository) {
       store.dispatch(FillCompletedWorldsAction(
-          completed: GameUtils.getWorldsCompleted(
-              levelsRepository, store.state.levels.worlds)));
+        completed: GameUtils.getWorldsCompleted(
+          levelsRepository,
+          store.state.levels.worlds,
+        ),
+      ));
     }
 
     void loadLevels(List<LevelRepository> levelsRepository) {
       store.dispatch(LoadLevelsAction(
-          levels: GameUtils.getLevels(
-              levelsRepository, store.state.levels.worlds)));
+        levels:
+            GameUtils.getLevels(levelsRepository, store.state.levels.worlds),
+      ));
     }
 
     DebugUtils.debugPrint(
-        "LevelListContainerViewModel => build: ${DateTime.now()}");
+      "LevelListContainerViewModel => build: ${DateTime.now()}",
+    );
     return LevelListContainerViewModel(
       levels: store.state.levels,
       sizeScreen: store.state.preferences.sizeScreen,
@@ -60,22 +65,28 @@ class LevelListContainerViewModel extends Equatable {
 
         store.dispatch(ChangeStatusGameAction(status: GameStatus.PLAYING));
 
-        userModule.entityService
-            .loadLevel(level.world, level.number)
-            .then((level) {
-
-          TypeTile typeTile = level.randomBoard != null
-              ? GameUtils.getTypeTile(level.randomBoard.typeTile)
-              : TypeTile.NORMAL;
-          int difficulty =
-              level.randomBoard != null ? level.randomBoard.difficulty : 1;
-          store.dispatch(LoadLevelInBoardAction(playersGame: PlayersGame.ONE,
-              level: level, typeTile: typeTile, difficulty: difficulty));
-          if (level.counters != null && level.counters.length == 2)
-            store.dispatch(UpdateScoreColorLevelAction(
-                color1: level.counters[0], color2: level.counters[1]));
-          Navigator.pushNamed(context, ImpossiblocksRoutes.levelsGame);
-        });
+        userModule.entityService.loadLevel(level.world, level.number).then(
+          (level) {
+            TypeTile typeTile = level.randomBoard != null
+                ? GameUtils.getTypeTile(level.randomBoard.typeTile)
+                : TypeTile.NORMAL;
+            int difficulty = level.randomBoard != null
+                ? level.randomBoard.difficulty
+                : 1;
+            store.dispatch(LoadLevelInBoardAction(
+              playersGame: PlayersGame.ONE,
+              level: level,
+              typeTile: typeTile,
+              difficulty: difficulty,
+            ));
+            if (level.counters != null && level.counters.length == 2)
+              store.dispatch(UpdateScoreColorLevelAction(
+                color1: level.counters[0],
+                color2: level.counters[1],
+              ));
+            Navigator.pushNamed(context, ImpossiblocksRoutes.levelsGame);
+          },
+        );
       },
     );
   }

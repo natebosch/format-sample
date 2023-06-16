@@ -11,9 +11,11 @@ const double kSectionIndicatorWidth = 32.0;
 
 // The card for a single section. Displays the section's gradient and background image.
 class SectionCard extends StatelessWidget {
-  const SectionCard({Key key, @required this.section})
-      : assert(section != null),
-        super(key: key);
+  const SectionCard({
+    Key key,
+    @required this.section,
+  }) : assert(section != null),
+       super(key: key);
 
   final Section section;
 
@@ -27,10 +29,7 @@ class SectionCard extends StatelessWidget {
           gradient: new LinearGradient(
             begin: Alignment.centerLeft,
             end: Alignment.centerRight,
-            colors: <Color>[
-              section.leftColor,
-              section.rightColor,
-            ],
+            colors: <Color>[section.leftColor, section.rightColor],
           ),
         ),
         child: new Image.asset(
@@ -65,10 +64,10 @@ class SectionTitle extends StatelessWidget {
     @required this.section,
     @required this.scale,
     @required this.opacity,
-  })  : assert(section != null),
-        assert(scale != null),
-        assert(opacity != null && opacity >= 0.0 && opacity <= 1.0),
-        super(key: key);
+  }) : assert(section != null),
+       assert(scale != null),
+       assert(opacity != null && opacity >= 0.0 && opacity <= 1.0),
+       super(key: key);
 
   final Section section;
   final double scale;
@@ -117,10 +116,12 @@ class SectionIndicator extends StatelessWidget {
 
 // Display a single SectionDetail.
 class SectionDetailView extends StatelessWidget {
-  SectionDetailView({Key key, @required this.detail})
-      : assert(detail != null && detail.imageAsset != null),
-        assert((detail.imageAsset ?? detail.title) != null),
-        super(key: key);
+  SectionDetailView({
+    Key key,
+    @required this.detail,
+  }) : assert(detail != null && detail.imageAsset != null),
+       assert((detail.imageAsset ?? detail.title) != null),
+       super(key: key);
 
   final SectionDetail detail;
 
@@ -130,9 +131,7 @@ class SectionDetailView extends StatelessWidget {
       decoration: new BoxDecoration(
         borderRadius: new BorderRadius.circular(6.0),
         image: new DecorationImage(
-          image: new AssetImage(
-            detail.imageAsset,
-          ),
+          image: new AssetImage(detail.imageAsset),
           fit: BoxFit.cover,
           alignment: Alignment.center,
         ),
@@ -144,11 +143,7 @@ class SectionDetailView extends StatelessWidget {
       item = new Container(
         height: 240.0,
         padding: const EdgeInsets.all(16.0),
-        child: new SafeArea(
-          top: false,
-          bottom: false,
-          child: image,
-        ),
+        child: new SafeArea(top: false, bottom: false, child: image),
       );
     } else {
       var imageType;
@@ -156,31 +151,48 @@ class SectionDetailView extends StatelessWidget {
       item = new ListTile(
         onTap: () {
           if (imageType == 'assets/image/google.jpg') {
-            Navigator.of(context).push(new PageRouteBuilder(
+            Navigator.of(context).push(
+              new PageRouteBuilder(
                 pageBuilder: (_, __, ___) => new Detail(
                       imagetype: "google",
                       url: detail.url,
-                    )));
+                    ),
+              ),
+            );
           } else if (imageType == 'assets/image/facebook.png') {
-            Navigator.of(context).push(new PageRouteBuilder(
+            Navigator.of(context).push(
+              new PageRouteBuilder(
                 pageBuilder: (_, __, ___) => new Detail(
                       imagetype: "fb",
                       url: detail.url,
-                    )));
+                    ),
+              ),
+            );
           } else if (imageType == 'assets/image/instagram.jpeg') {
-            Navigator.of(context).push(new PageRouteBuilder(
+            Navigator.of(context).push(
+              new PageRouteBuilder(
                 pageBuilder: (_, __, ___) => new Detail(
                       imagetype: "insta",
                       url: detail.url,
-                    )));
+                    ),
+              ),
+            );
           } else if (imageType == 'assets/image/twitter.jpg') {
-            Navigator.of(context).push(new PageRouteBuilder(
-                pageBuilder: (_, __, ___) =>
-                    new Detail(imagetype: "twitter", url: detail.url)));
+            Navigator.of(context).push(
+              new PageRouteBuilder(
+                pageBuilder: (_, __, ___) => new Detail(
+                      imagetype: "twitter",
+                      url: detail.url,
+                    ),
+              ),
+            );
           }
         },
-        title: new Text(detail.title,style: TextStyle(fontSize: 18.0),),
-        subtitle: new Text(detail.subtitle,style: TextStyle(color: Colors.purple,fontSize: 15.0),),
+        title: new Text(detail.title, style: TextStyle(fontSize: 18.0)),
+        subtitle: new Text(
+          detail.subtitle,
+          style: TextStyle(color: Colors.purple, fontSize: 15.0),
+        ),
         leading: new SizedBox(width: 40.0, height: 40.0, child: image),
       );
     }

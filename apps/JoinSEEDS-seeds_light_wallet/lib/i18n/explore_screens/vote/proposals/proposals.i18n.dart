@@ -43,7 +43,7 @@ extension Localization on String {
           'Campaign': 'Campanha',
           'passed': 'aprovada',
           'rejected': 'rejeitada',
-        }
+        },
       };
 
   String get i18n => localize(this, _t);

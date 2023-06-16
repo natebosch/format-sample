@@ -60,8 +60,10 @@ void main() {
 
           await Future.wait([
             hive.openLazyBox('TESTBOX'),
-            expectLater(hive.openBox('testbox'),
-                throwsHiveError('is already open and of type LazyBox<dynamic>'))
+            expectLater(
+              hive.openBox('testbox'),
+              throwsHiveError('is already open and of type LazyBox<dynamic>'),
+            ),
           ]);
         });
 
@@ -72,7 +74,7 @@ void main() {
           Box? box2;
           await Future.wait([
             hive.openBox('TESTBOX').then((value) => box1 = value),
-            hive.openBox('testbox').then((value) => box2 = value)
+            hive.openBox('testbox').then((value) => box2 = value),
           ]);
 
           expect(box1 == box2, true);
@@ -99,7 +101,7 @@ void main() {
           var hive = await initHive();
           await Future.wait([
             hive.openLazyBox('LAZYBOX').then((value) => box1 = value),
-            hive.openLazyBox('lazyBox').then((value) => box2 = value)
+            hive.openLazyBox('lazyBox').then((value) => box2 = value),
           ]);
 
           expect(box1 == box2, true);
@@ -122,8 +124,10 @@ void main() {
 
           await Future.wait([
             hive.openBox('LAZYBOX'),
-            expectLater(hive.openLazyBox('lazyBox'),
-                throwsHiveError('is already open and of type Box<dynamic>'))
+            expectLater(
+              hive.openLazyBox('lazyBox'),
+              throwsHiveError('is already open and of type Box<dynamic>'),
+            ),
           ]);
         });
       });

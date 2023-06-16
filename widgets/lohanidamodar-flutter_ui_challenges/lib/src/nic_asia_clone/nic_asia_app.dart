@@ -2,7 +2,6 @@
  * Author: Mausam Rayamajhi
  * profile: https://github.com/mausamRayamajhi
   */
-  
 
 import 'package:flutter/material.dart';
 import 'pages/dashboard.dart';
@@ -16,26 +15,16 @@ class NicAsiaApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'NIC ASIA',
-      theme: ThemeData(
-        primaryColor: primaryColor,
-        accentColor: primaryColorLight,
-      ),
+      theme:
+          ThemeData(primaryColor: primaryColor, accentColor: primaryColorLight),
       initialRoute: '/',
       routes: <String, WidgetBuilder>{
-        '/': (BuildContext context) => SafeArea(
-              top: true,
-              child: Login(),
-            ),
-        '/dashboard': (context) => SafeArea(
-              top: true,
-              child: Dashboard(),
-            ),
+        '/': (BuildContext context) => SafeArea(top: true, child: Login()),
+        '/dashboard': (context) => SafeArea(top: true, child: Dashboard()),
       },
       onUnknownRoute: (RouteSettings settings) {
         print('INSIDE Unknown routes');
-        return MaterialPageRoute(
-          builder: (BuildContext context) => Login(),
-        );
+        return MaterialPageRoute(builder: (BuildContext context) => Login());
       },
     );
   }

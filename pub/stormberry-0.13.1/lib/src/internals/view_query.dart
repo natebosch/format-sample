@@ -45,8 +45,12 @@ class ViewQuery<Result> implements Query<List<Result>, QueryParams> {
       ${params.offset != null ? "OFFSET ${params.offset}" : ""}
     """, params.values);
 
-    var results = res.map((row) => queryable.decode(TypedMap(row.toColumnMap()))).toList();
-    print('Queried ${results.length} rows in ${DateTime.now().difference(time)}');
+    var results = res.map(
+      (row) => queryable.decode(TypedMap(row.toColumnMap())),
+    ).toList();
+    print(
+      'Queried ${results.length} rows in ${DateTime.now().difference(time)}',
+    );
     return results;
   }
 }

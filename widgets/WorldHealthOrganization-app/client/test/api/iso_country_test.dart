@@ -5,11 +5,17 @@ void main() {
   group('iso_country', () {
     test('emoji', () {
       expect(
-          IsoCountry(alpha2Code: 'US', name: 'does not matter').emoji, '🇺🇸');
+        IsoCountry(alpha2Code: 'US', name: 'does not matter').emoji,
+        '🇺🇸',
+      );
       expect(
-          IsoCountry(alpha2Code: 'NG', name: 'does not matter').emoji, '🇳🇬');
+        IsoCountry(alpha2Code: 'NG', name: 'does not matter').emoji,
+        '🇳🇬',
+      );
       expect(
-          IsoCountry(alpha2Code: 'CH', name: 'does not matter').emoji, '🇨🇭');
+        IsoCountry(alpha2Code: 'CH', name: 'does not matter').emoji,
+        '🇨🇭',
+      );
     });
   });
 }

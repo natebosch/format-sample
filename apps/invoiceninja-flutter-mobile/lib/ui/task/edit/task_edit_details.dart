@@ -21,10 +21,7 @@ import 'package:invoiceninja_flutter/utils/formatting.dart';
 import 'package:invoiceninja_flutter/utils/localization.dart';
 
 class TaskEditDetails extends StatefulWidget {
-  const TaskEditDetails({
-    Key key,
-    @required this.viewModel,
-  }) : super(key: key);
+  const TaskEditDetails({Key key, @required this.viewModel}) : super(key: key);
 
   final TaskEditDetailsVM viewModel;
 
@@ -60,8 +57,11 @@ class _TaskEditDetailsState extends State<TaskEditDetails> {
 
     final task = widget.viewModel.task;
     _numberController.text = task.number;
-    _rateController.text = formatNumber(task.rate, context,
-        formatNumberType: FormatNumberType.inputMoney);
+    _rateController.text = formatNumber(
+      task.rate,
+      context,
+      formatNumberType: FormatNumberType.inputMoney,
+    );
     _descriptionController.text = task.description;
     _custom1Controller.text = task.customValue1;
     _custom2Controller.text = task.customValue2;
@@ -84,14 +84,16 @@ class _TaskEditDetailsState extends State<TaskEditDetails> {
   }
 
   void _onChanged() {
-    final task = widget.viewModel.task.rebuild((b) => b
-      ..number = _numberController.text.trim()
-      ..rate = parseDouble(_rateController.text.trim())
-      ..description = _descriptionController.text.trim()
-      ..customValue1 = _custom1Controller.text.trim()
-      ..customValue2 = _custom2Controller.text.trim()
-      ..customValue3 = _custom3Controller.text.trim()
-      ..customValue4 = _custom4Controller.text.trim());
+    final task = widget.viewModel.task.rebuild(
+      (b) => b
+        ..number = _numberController.text.trim()
+        ..rate = parseDouble(_rateController.text.trim())
+        ..description = _descriptionController.text.trim()
+        ..customValue1 = _custom1Controller.text.trim()
+        ..customValue2 = _custom2Controller.text.trim()
+        ..customValue3 = _custom3Controller.text.trim()
+        ..customValue4 = _custom4Controller.text.trim(),
+    );
     if (task != widget.viewModel.task) {
       _debouncer.run(() {
         widget.viewModel.onChanged(task);
@@ -111,17 +113,18 @@ class _TaskEditDetailsState extends State<TaskEditDetails> {
     final rateLabel = localization.rate +
         ' • ' +
         formatNumber(
-            taskRateSelector(
-              company: company,
-              task: TaskEntity(),
-              client: client,
-              group: state.groupState.get(client.groupId),
-              project: state.projectState.get(task.projectId),
-            ),
-            context,
-            currencyId: (client.currencyId ?? '').isNotEmpty
-                ? client.currencyId
-                : company.currencyId);
+          taskRateSelector(
+            company: company,
+            task: TaskEntity(),
+            client: client,
+            group: state.groupState.get(client.groupId),
+            project: state.projectState.get(task.projectId),
+          ),
+          context,
+          currencyId: (client.currencyId ?? '').isNotEmpty
+              ? client.currencyId
+              : company.currencyId,
+        );
 
     return ScrollableListView(
       children: <Widget>[
@@ -134,14 +137,17 @@ class _TaskEditDetailsState extends State<TaskEditDetails> {
                 labelText: localization.client,
                 entityId: task.clientId,
                 entityList: memoizedDropdownClientList(
-                    state.clientState.map,
-                    state.clientState.list,
-                    state.userState.map,
-                    state.staticState),
+                  state.clientState.map,
+                  state.clientState.list,
+                  state.userState.map,
+                  state.staticState,
+                ),
                 onSelected: (client) {
-                  viewModel.onChanged(task.rebuild((b) => b
-                    ..clientId = client?.id ?? ''
-                    ..projectId = ''));
+                  viewModel.onChanged(task.rebuild(
+                    (b) => b
+                      ..clientId = client?.id ?? ''
+                      ..projectId = '',
+                  ));
                 },
                 onAddPressed: (completer) {
                   viewModel.onAddClientPressed(context, completer);
@@ -153,11 +159,13 @@ class _TaskEditDetailsState extends State<TaskEditDetails> {
                 clientId: task.clientId,
                 onChanged: (selectedId) {
                   final project = state.projectState.get(selectedId);
-                  viewModel.onChanged(task.rebuild((b) => b
-                    ..projectId = project?.id
-                    ..clientId = (project?.clientId ?? '').isNotEmpty
-                        ? project.clientId
-                        : task.clientId));
+                  viewModel.onChanged(task.rebuild(
+                    (b) => b
+                      ..projectId = project?.id
+                      ..clientId = (project?.clientId ?? '').isNotEmpty
+                          ? project.clientId
+                          : task.clientId,
+                  ));
                 },
                 onAddPressed: (completer) {
                   viewModel.onAddProjectPressed(context, completer);
@@ -166,8 +174,9 @@ class _TaskEditDetailsState extends State<TaskEditDetails> {
             ],
             UserPicker(
               userId: task.assignedUserId,
-              onChanged: (userId) => viewModel
-                  .onChanged(task.rebuild((b) => b..assignedUserId = userId)),
+              onChanged: (userId) => viewModel.onChanged(
+                task.rebuild((b) => b..assignedUserId = userId),
+              ),
             ),
             DecoratedFormField(
               controller: _numberController,
@@ -190,15 +199,18 @@ class _TaskEditDetailsState extends State<TaskEditDetails> {
               labelText: localization.status,
               entityId: task.statusId,
               entityIds: memoizedDropdownTaskStatusList(
-                  state.taskStatusState.map,
-                  state.taskStatusState.list,
-                  state.staticState,
-                  state.userState.map),
+                state.taskStatusState.map,
+                state.taskStatusState.list,
+                state.staticState,
+                state.userState.map,
+              ),
               onChanged: (selectedId) {
                 final taskStatus = state.taskStatusState.map[selectedId];
-                viewModel.onChanged(task.rebuild((b) => b
-                  ..statusId = taskStatus?.id
-                  ..statusOrder = null));
+                viewModel.onChanged(task.rebuild(
+                  (b) => b
+                    ..statusId = taskStatus?.id
+                    ..statusOrder = null,
+                ));
               },
             ),
             CustomField(

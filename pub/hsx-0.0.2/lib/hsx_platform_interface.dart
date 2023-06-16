@@ -28,9 +28,7 @@ abstract class HsxPlatform extends PlatformInterface {
     throw UnimplementedError('platformVersion() has not been implemented.');
   }
 
-  Future<String?> getShare({
-    Rect? sharePositionOrigin,
-  }) {
+  Future<String?> getShare({Rect? sharePositionOrigin}) {
     throw UnimplementedError('getShare() has not been implemented.');
   }
 }

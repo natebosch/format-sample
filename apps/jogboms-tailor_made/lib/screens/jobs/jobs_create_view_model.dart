@@ -11,7 +11,8 @@ import 'package:tailor_made/repository/models.dart';
 import 'package:tailor_made/screens/jobs/jobs_create.dart';
 import 'package:tailor_made/utils/ui/mk_image_choice_dialog.dart';
 
-abstract class JobsCreateViewModel extends State<JobsCreatePage> with SnackBarProviderMixin {
+abstract class JobsCreateViewModel extends State<JobsCreatePage>
+    with SnackBarProviderMixin {
   List<_FireImage> fireImages = [];
   JobModelBuilder job;
   ContactModel contact;
@@ -68,13 +69,17 @@ abstract class JobsCreateViewModel extends State<JobsCreatePage> with SnackBarPr
   }
 
   void onSelectContact() async {
-    final selectedContact = await Dependencies.di().contactsCoordinator.toContactsList(widget.contacts);
+    final selectedContact = await Dependencies.di()
+        .contactsCoordinator
+        .toContactsList(widget.contacts);
     if (selectedContact != null) {
       setState(() {
         contact = selectedContact;
         job
           ..contactID = contact?.id
-          ..measurements = (contact?.measurements ?? BuiltMap.from(<String, double>{})).toBuilder();
+          ..measurements =
+              (contact?.measurements ?? BuiltMap.from(<String, double>{}))
+                  .toBuilder();
       });
     }
   }
@@ -95,17 +100,19 @@ abstract class JobsCreateViewModel extends State<JobsCreatePage> with SnackBarPr
 
       job
         ..pendingPayment = job.price
-        ..images =
-            BuiltList<ImageModel>(fireImages.where((img) => img.image != null).map<ImageModel>((img) => img.image))
-                .toBuilder()
+        ..images = BuiltList<ImageModel>(fireImages
+            .where((img) => img.image != null)
+            .map<ImageModel>((img) => img.image)).toBuilder()
         ..contactID = contact.id;
 
       try {
         // TODO: move this out of here
-        Dependencies.di().jobs.update(job.build(), widget.userId).listen((snap) {
-          closeLoadingSnackBar();
-          Dependencies.di().jobsCoordinator.toJob(snap);
-        });
+        Dependencies.di().jobs.update(job.build(), widget.userId).listen(
+          (snap) {
+            closeLoadingSnackBar();
+            Dependencies.di().jobsCoordinator.toJob(snap);
+          },
+        );
       } catch (e) {
         closeLoadingSnackBar();
         showInSnackBar(e.toString());

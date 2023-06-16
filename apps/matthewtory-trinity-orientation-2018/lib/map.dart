@@ -10,17 +10,25 @@ import 'event_page.dart';
 import 'buildings.dart';
 
 class MarkerSelectionController {
-  Sink<GeoPoint> get markerSelectionInputSink => _markerSelectionInputController.sink;
-  StreamController<GeoPoint> _markerSelectionInputController = new StreamController<GeoPoint>();
+  Sink<GeoPoint> get markerSelectionInputSink =>
+      _markerSelectionInputController.sink;
+  StreamController<GeoPoint> _markerSelectionInputController =
+      new StreamController<GeoPoint>();
 
-  Stream<GeoPoint> get markerSelectionOutputStream => _markerSelectionOutputController.stream;
-  StreamController<GeoPoint> _markerSelectionOutputController = BehaviorSubject<GeoPoint>();
+  Stream<GeoPoint> get markerSelectionOutputStream =>
+      _markerSelectionOutputController.stream;
+  StreamController<GeoPoint> _markerSelectionOutputController =
+      BehaviorSubject<GeoPoint>();
 
-  Sink<String> get eventSelectionInputSink => _eventSelectionInputController.sink;
-  StreamController<String> _eventSelectionInputController = new StreamController<String>();
+  Sink<String> get eventSelectionInputSink =>
+      _eventSelectionInputController.sink;
+  StreamController<String> _eventSelectionInputController =
+      new StreamController<String>();
 
-  Stream<String> get eventSelectionOutputStream => _eventSelectionOutputController.stream;
-  StreamController<String> _eventSelectionOutputController = BehaviorSubject<String>();
+  Stream<String> get eventSelectionOutputStream =>
+      _eventSelectionOutputController.stream;
+  StreamController<String> _eventSelectionOutputController =
+      BehaviorSubject<String>();
 
   MarkerSelectionController() {
     _eventSelectionInputController.stream.listen((title) {
@@ -34,11 +42,15 @@ class MarkerSelectionController {
 }
 
 class MapTab {
-  MapTab({
-    this.body,
-    TickerProvider vsync,
-  }) : this.controller = new AnimationController(vsync: vsync, duration: Duration(milliseconds: 300)) {
-    _animation = new CurvedAnimation(parent: controller, curve: Curves.fastOutSlowIn);
+  MapTab({this.body, TickerProvider vsync})
+    : this.controller = new AnimationController(
+        vsync: vsync,
+        duration: Duration(milliseconds: 300),
+      ) {
+    _animation = new CurvedAnimation(
+      parent: controller,
+      curve: Curves.fastOutSlowIn,
+    );
   }
 
   final AnimationController controller;
@@ -62,7 +74,8 @@ class BuildingsMap extends StatefulWidget {
   _BuildingsMapState createState() => _BuildingsMapState();
 }
 
-class _BuildingsMapState extends State<BuildingsMap> with TickerProviderStateMixin {
+class _BuildingsMapState extends State<BuildingsMap>
+    with TickerProviderStateMixin {
   static final LatLng _kTrinityLatLng = new LatLng(43.6652, -79.3956);
 
   MarkerSelectionController markerSelectionController;
@@ -79,7 +92,9 @@ class _BuildingsMapState extends State<BuildingsMap> with TickerProviderStateMix
     mapController = MapController();
     mapController.onReady.then((_) {
       if (widget.topRight != null && widget.botLeft != null) {
-        mapController.fitBounds(new LatLngBounds(widget.topRight, widget.botLeft));
+        mapController.fitBounds(
+          new LatLngBounds(widget.topRight, widget.botLeft),
+        );
       } else {
         mapController.move(_kTrinityLatLng, 16.5);
       }
@@ -122,9 +137,7 @@ class _BuildingsMapState extends State<BuildingsMap> with TickerProviderStateMix
           options: new MapOptions(
             zoom: 13.0,
             center: _kTrinityLatLng,
-            plugins: [
-              new CustomMapMarkersPlugin(),
-            ],
+            plugins: [new CustomMapMarkersPlugin()],
           ),
           mapController: mapController,
           layers: [
@@ -143,36 +156,40 @@ class _BuildingsMapState extends State<BuildingsMap> with TickerProviderStateMix
           ],
         ),
         new Positioned(
-            bottom: 16.0,
-            right: 16.0,
-            child: new FloatingActionButton(
-              onPressed: () async {
-                final DocumentSnapshot selected = await showSearch<DocumentSnapshot>(
-                  context: context,
-                  delegate: new BuildingSearchDelegate(buildings: widget.documents),
-                );
+          bottom: 16.0,
+          right: 16.0,
+          child: new FloatingActionButton(
+            onPressed: () async {
+              final DocumentSnapshot selected =
+                  await showSearch<DocumentSnapshot>(
+                context: context,
+                delegate:
+                    new BuildingSearchDelegate(buildings: widget.documents),
+              );
 
-                if (selected != null) {
-                  GeoPoint location = selected['location'];
-                  mapController.move(new LatLng(location.latitude, location.longitude), 17.75);
-                  setState(() {
-                    selectedBuilding = selected;
-                  });
-                }
-              },
-              child: new Icon(Icons.search),
-              backgroundColor: Colors.white,
-              foregroundColor: Colors.pink,
-            )),
+              if (selected != null) {
+                GeoPoint location = selected['location'];
+                mapController.move(
+                  new LatLng(location.latitude, location.longitude),
+                  17.75,
+                );
+                setState(() {
+                  selectedBuilding = selected;
+                });
+              }
+            },
+            child: new Icon(Icons.search),
+            backgroundColor: Colors.white,
+            foregroundColor: Colors.pink,
+          ),
+        ),
       ],
     );
   }
 }
 
 class EventsMap extends StatefulWidget {
-  EventsMap({this.documents})
-      : eventsOnDay = [],
-        eventsAtLocations = {} {
+  EventsMap({this.documents}) : eventsOnDay = [], eventsAtLocations = {} {
     for (DocumentSnapshot event in documents) {
       eventsOnDay.add(event);
       GeoPoint thisLocation = event['location'];
@@ -186,19 +203,31 @@ class EventsMap extends StatefulWidget {
 
     for (GeoPoint location in eventsAtLocations.keys) {
       if (topRight == null || location.latitude < topRight.latitude) {
-        topRight = new LatLng(location.latitude, topRight != null ? topRight.longitude : location.longitude);
+        topRight = new LatLng(
+          location.latitude,
+          topRight != null ? topRight.longitude : location.longitude,
+        );
       }
 
       if (topRight == null || location.longitude > topRight.longitude) {
-        topRight = new LatLng(topRight != null ? topRight.latitude : location.latitude, location.longitude);
+        topRight = new LatLng(
+          topRight != null ? topRight.latitude : location.latitude,
+          location.longitude,
+        );
       }
 
       if (botLeft == null || location.latitude > botLeft.latitude) {
-        botLeft = new LatLng(location.latitude, botLeft != null ? botLeft.longitude : location.longitude);
+        botLeft = new LatLng(
+          location.latitude,
+          botLeft != null ? botLeft.longitude : location.longitude,
+        );
       }
 
       if (botLeft == null || location.longitude < botLeft.longitude) {
-        botLeft = new LatLng(botLeft != null ? botLeft.latitude : location.latitude, location.longitude);
+        botLeft = new LatLng(
+          botLeft != null ? botLeft.latitude : location.latitude,
+          location.longitude,
+        );
       }
     }
   }
@@ -227,7 +256,9 @@ class _EventsMapState extends State<EventsMap> {
     mapController = MapController();
     mapController.onReady.then((_) {
       if (widget.topRight != null && widget.botLeft != null) {
-        mapController.fitBounds(new LatLngBounds(widget.topRight, widget.botLeft));
+        mapController.fitBounds(
+          new LatLngBounds(widget.topRight, widget.botLeft),
+        );
       } else {
         mapController.move(_kTrinityLatLng, 8.0);
       }
@@ -237,39 +268,47 @@ class _EventsMapState extends State<EventsMap> {
 
   @override
   Widget build(BuildContext context) {
-    List<CustomMarker> multipleLocationMarkers = widget.eventsAtLocations.keys.map((geoPoint) {
-      List<DocumentSnapshot> eventsAtLocation = widget.eventsAtLocations[geoPoint];
+    List<CustomMarker> multipleLocationMarkers =
+        widget.eventsAtLocations.keys.map((geoPoint) {
+          List<DocumentSnapshot> eventsAtLocation =
+              widget.eventsAtLocations[geoPoint];
 
-      LatLng position = new LatLng(geoPoint.latitude, geoPoint.longitude);
+          LatLng position = new LatLng(geoPoint.latitude, geoPoint.longitude);
 
-      if (eventsAtLocation.length > 1) {
-        return new CustomMarker(
-            width: 500.0,
-            height: 55.0,
-            anchor: AnchorPos.top,
-            point: position,
-            builder: (context) {
-              return AnimatedMarkerMultipleEvents(eventsAtLocation, markerSelectionController);
-            });
-      } else {
-        return new CustomMarker(
-            width: 500.0,
-            height: 60.0,
-            anchor: AnchorPos.top,
-            point: position,
-            builder: (context) {
-              return AnimatedMarker(eventsAtLocation.first, markerSelectionController);
-            });
-      }
-    }).toList();
+          if (eventsAtLocation.length > 1) {
+            return new CustomMarker(
+              width: 500.0,
+              height: 55.0,
+              anchor: AnchorPos.top,
+              point: position,
+              builder: (context) {
+                return AnimatedMarkerMultipleEvents(
+                  eventsAtLocation,
+                  markerSelectionController,
+                );
+              },
+            );
+          } else {
+            return new CustomMarker(
+              width: 500.0,
+              height: 60.0,
+              anchor: AnchorPos.top,
+              point: position,
+              builder: (context) {
+                return AnimatedMarker(
+                  eventsAtLocation.first,
+                  markerSelectionController,
+                );
+              },
+            );
+          }
+        }).toList();
 
     return new FlutterMap(
       options: new MapOptions(
         zoom: 13.0,
         center: _kTrinityLatLng,
-        plugins: [
-          new CustomMapMarkersPlugin(),
-        ],
+        plugins: [new CustomMapMarkersPlugin()],
       ),
       mapController: mapController,
       layers: [
@@ -296,13 +335,22 @@ class MapTabEvents extends StatelessWidget {
     DateTime now = DateTime.now();
 
     DateTime todayStart = new DateTime(now.year, now.month, now.day);
-    DateTime todayEnd = new DateTime(now.year, now.month, now.day, 23, 59, 59, 59);
+    DateTime todayEnd = new DateTime(
+      now.year,
+      now.month,
+      now.day,
+      23,
+      59,
+      59,
+      59,
+    );
 
     return StreamBuilder(
-      stream: Firestore.instance
-          .collection('events')
-          .where('date_start', isGreaterThanOrEqualTo: todayStart, isLessThanOrEqualTo: todayEnd)
-          .snapshots(),
+      stream: Firestore.instance.collection('events').where(
+        'date_start',
+        isGreaterThanOrEqualTo: todayStart,
+        isLessThanOrEqualTo: todayEnd,
+      ).snapshots(),
       builder: (context, snapshot) {
         if (snapshot.hasData) {
           if (snapshot.data.documents.length > 0) {
@@ -319,12 +367,19 @@ class MapTabEvents extends StatelessWidget {
               alignment: Alignment.center,
               child: Text(
                 'No Events Today',
-                style: TextStyle(color: Colors.white, fontWeight: FontWeight.w400, fontSize: 20.0),
+                style: TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.w400,
+                  fontSize: 20.0,
+                ),
               ),
             );
           }
         } else {
-          return new Container(alignment: FractionalOffset.center, child: new CircularProgressIndicator());
+          return new Container(
+            alignment: FractionalOffset.center,
+            child: new CircularProgressIndicator(),
+          );
         }
       },
     );
@@ -361,14 +416,8 @@ class _MapPageState extends State<MapPage> with TickerProviderStateMixin {
     super.initState();
 
     _items = [
-      new MapTab(
-        body: new MapTabEvents(),
-        vsync: this,
-      ),
-      new MapTab(
-        body: MapTabBuildings(),
-        vsync: this,
-      )
+      new MapTab(body: new MapTabEvents(), vsync: this),
+      new MapTab(body: MapTabBuildings(), vsync: this),
     ];
 
     for (MapTab view in _items) view.controller.addListener(_rebuild);
@@ -392,7 +441,10 @@ class _MapPageState extends State<MapPage> with TickerProviderStateMixin {
     final List<Widget> transitions = <Widget>[];
 
     for (int i = 0; i < _items.length; i++)
-      transitions.add(IgnorePointer(ignoring: _currentIndex != i, child: _items[i].buildTransition(context)));
+      transitions.add(IgnorePointer(
+        ignoring: _currentIndex != i,
+        child: _items[i].buildTransition(context),
+      ));
 
     return new Stack(children: transitions);
   }
@@ -415,13 +467,11 @@ class _MapPageState extends State<MapPage> with TickerProviderStateMixin {
                 items: ['Today', 'Buildings'],
                 currentIndex: _currentIndex,
                 onTap: (int) {
-                  setState(
-                    () {
-                      _items[_currentIndex].controller.reverse();
-                      _currentIndex = int;
-                      _items[_currentIndex].controller.forward();
-                    },
-                  );
+                  setState(() {
+                    _items[_currentIndex].controller.reverse();
+                    _currentIndex = int;
+                    _items[_currentIndex].controller.forward();
+                  });
                 },
               ),
             ),
@@ -440,7 +490,9 @@ class BuildingSearchDelegate extends SearchDelegate<DocumentSnapshot> {
   @override
   Widget buildSuggestions(BuildContext context) {
     List<DocumentSnapshot> items = buildings.where((snapshot) {
-      return (snapshot['name'] as String).toUpperCase().contains(query.toUpperCase()) ||
+      return (snapshot['name'] as String).toUpperCase().contains(
+            query.toUpperCase(),
+          ) ||
           snapshot['code'].contains(query.toUpperCase());
     }).toList()
       ..sort((a, b) {
@@ -476,7 +528,7 @@ class BuildingSearchDelegate extends SearchDelegate<DocumentSnapshot> {
                 query = '';
                 showSuggestions(context);
               },
-            )
+            ),
     ];
   }
 
@@ -501,7 +553,11 @@ class BuildingSearchDelegate extends SearchDelegate<DocumentSnapshot> {
 }
 
 class MapTypeSelector extends StatefulWidget {
-  MapTypeSelector({@required this.items, @required this.currentIndex, @required this.onTap});
+  MapTypeSelector({
+    @required this.items,
+    @required this.currentIndex,
+    @required this.onTap,
+  });
 
   final List<String> items;
 
@@ -513,7 +569,8 @@ class MapTypeSelector extends StatefulWidget {
   _MapTypeSelectorState createState() => _MapTypeSelectorState();
 }
 
-class _MapTypeSelectorState extends State<MapTypeSelector> with SingleTickerProviderStateMixin {
+class _MapTypeSelectorState extends State<MapTypeSelector>
+    with SingleTickerProviderStateMixin {
   AnimationController _controller;
   final double _kIndicatorWidth = 90.0;
   final double _kIndicatorHeight = 40.0;
@@ -526,7 +583,10 @@ class _MapTypeSelectorState extends State<MapTypeSelector> with SingleTickerProv
   void initState() {
     super.initState();
 
-    _controller = new AnimationController(vsync: this, duration: Duration(milliseconds: 300));
+    _controller = new AnimationController(
+      vsync: this,
+      duration: Duration(milliseconds: 300),
+    );
     oldIndex = widget.currentIndex;
   }
 
@@ -550,11 +610,34 @@ class _MapTypeSelectorState extends State<MapTypeSelector> with SingleTickerProv
     double indicatorWidth = _indicatorWidth;
 
     return new RelativeRectTween(
-      begin: new RelativeRect.fromRect(Rect.fromLTWH(oldIndex * indicatorWidth, 0.0, indicatorWidth, _kIndicatorHeight),
-          Rect.fromLTRB(0.0, 0.0, indicatorWidth * widget.items.length, _kIndicatorHeight)),
+      begin: new RelativeRect.fromRect(
+        Rect.fromLTWH(
+          oldIndex * indicatorWidth,
+          0.0,
+          indicatorWidth,
+          _kIndicatorHeight,
+        ),
+        Rect.fromLTRB(
+          0.0,
+          0.0,
+          indicatorWidth * widget.items.length,
+          _kIndicatorHeight,
+        ),
+      ),
       end: new RelativeRect.fromRect(
-          Rect.fromLTWH(widget.currentIndex * indicatorWidth, 0.0, indicatorWidth, _kIndicatorHeight),
-          Rect.fromLTRB(0.0, 0.0, indicatorWidth * widget.items.length, _kIndicatorHeight)),
+        Rect.fromLTWH(
+          widget.currentIndex * indicatorWidth,
+          0.0,
+          indicatorWidth,
+          _kIndicatorHeight,
+        ),
+        Rect.fromLTRB(
+          0.0,
+          0.0,
+          indicatorWidth * widget.items.length,
+          _kIndicatorHeight,
+        ),
+      ),
     ).animate(new CurvedAnimation(parent: _controller, curve: Curves.ease));
   }
 
@@ -573,7 +656,9 @@ class _MapTypeSelectorState extends State<MapTypeSelector> with SingleTickerProv
   @override
   Widget build(BuildContext context) {
     return new Card(
-      shape: new RoundedRectangleBorder(borderRadius: BorderRadius.circular(_kIndicatorHeight / 2.0)),
+      shape: new RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(_kIndicatorHeight / 2.0),
+      ),
       child: Padding(
         padding: const EdgeInsets.all(0.0),
         child: Stack(
@@ -593,8 +678,13 @@ class _MapTypeSelectorState extends State<MapTypeSelector> with SingleTickerProv
                     alignment: Alignment.center,
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: new Text(string,
-                          style: new TextStyle(color: Colors.black.withOpacity(0.25)), textAlign: TextAlign.center),
+                      child: new Text(
+                        string,
+                        style: new TextStyle(
+                          color: Colors.black.withOpacity(0.25),
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
                     ),
                   ),
                 );
@@ -604,7 +694,9 @@ class _MapTypeSelectorState extends State<MapTypeSelector> with SingleTickerProv
               rect: _slideAnimation,
               child: new Card(
                 color: Colors.pink,
-                shape: new RoundedRectangleBorder(borderRadius: BorderRadius.circular(_kIndicatorHeight / 2.0)),
+                shape: new RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(_kIndicatorHeight / 2.0),
+                ),
                 child: Padding(
                   padding: const EdgeInsets.symmetric(vertical: 4.0),
                   child: Container(
@@ -612,11 +704,17 @@ class _MapTypeSelectorState extends State<MapTypeSelector> with SingleTickerProv
                       progress: _controller,
                       child1: new Text(
                         widget.items[oldIndex],
-                        style: new TextStyle(color: Colors.white, fontWeight: FontWeight.w400),
+                        style: new TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.w400,
+                        ),
                       ),
                       child0: new Text(
                         widget.items[widget.currentIndex],
-                        style: new TextStyle(color: Colors.white, fontWeight: FontWeight.w400),
+                        style: new TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.w400,
+                        ),
                       ),
                     ),
                     alignment: Alignment.center,
@@ -625,7 +723,7 @@ class _MapTypeSelectorState extends State<MapTypeSelector> with SingleTickerProv
                   ),
                 ),
               ),
-            )
+            ),
           ],
         ),
       ),
@@ -693,10 +791,12 @@ class AnimatedMarkerMultipleEvents extends StatefulWidget {
   final MarkerSelectionController selectionController;
 
   @override
-  _AnimatedMarkerMultipleEventsState createState() => _AnimatedMarkerMultipleEventsState();
+  _AnimatedMarkerMultipleEventsState createState() =>
+      _AnimatedMarkerMultipleEventsState();
 }
 
-class _AnimatedMarkerMultipleEventsState extends State<AnimatedMarkerMultipleEvents>
+class _AnimatedMarkerMultipleEventsState
+    extends State<AnimatedMarkerMultipleEvents>
     with SingleTickerProviderStateMixin {
   AnimationController _controller;
   List<Animation<RelativeRect>> buttonAnimations;
@@ -707,30 +807,42 @@ class _AnimatedMarkerMultipleEventsState extends State<AnimatedMarkerMultipleEve
   void initState() {
     super.initState();
 
-    _controller = new AnimationController(duration: Duration(milliseconds: 300), vsync: this);
+    _controller = new AnimationController(
+      duration: Duration(milliseconds: 300),
+      vsync: this,
+    );
 
     buttonAnimations = [];
 
-    CurvedAnimation expandCurve = new CurvedAnimation(parent: _controller, curve: Curves.ease);
+    CurvedAnimation expandCurve = new CurvedAnimation(
+      parent: _controller,
+      curve: Curves.ease,
+    );
 
     for (int i = 0; i < widget.events.length; i++) {
-      double fromLeftAtEnd = MarkerIndicatorCircle.kMarkerIndicatorSizeWithPadding * i;
-      double fromRightAtEnd = MarkerIndicatorCircle.kMarkerIndicatorSizeWithPadding * (widget.events.length - i - 1);
+      double fromLeftAtEnd =
+          MarkerIndicatorCircle.kMarkerIndicatorSizeWithPadding * i;
+      double fromRightAtEnd =
+          MarkerIndicatorCircle.kMarkerIndicatorSizeWithPadding *
+              (widget.events.length - i - 1);
       double fromTopAtStart =
-          MarkerIndicatorCircle.kMarkerIndicatorSizeWithPadding * 0.1 * (widget.events.length - i - 1);
+          MarkerIndicatorCircle.kMarkerIndicatorSizeWithPadding *
+              0.1 *
+              (widget.events.length - i - 1);
       buttonAnimations.add(new RelativeRectTween(
-              begin: new RelativeRect.fromLTRB(0.0, -(fromTopAtStart), 0.0, 0.0),
-              end: new RelativeRect.fromLTRB(fromLeftAtEnd, 0.0, fromRightAtEnd, 0.0))
-          .animate(expandCurve));
+        begin: new RelativeRect.fromLTRB(0.0, -(fromTopAtStart), 0.0, 0.0),
+        end: new RelativeRect.fromLTRB(fromLeftAtEnd, 0.0, fromRightAtEnd, 0.0),
+      ).animate(expandCurve));
     }
 
-    selectionSub = widget.selectionController.markerSelectionOutputStream.listen((geoPoint) {
-      if (geoPoint == widget.events.first['location']) {
-        _controller.forward();
-      } else {
-        _controller.reverse();
-      }
-    });
+    selectionSub = widget.selectionController.markerSelectionOutputStream
+        .listen((geoPoint) {
+          if (geoPoint == widget.events.first['location']) {
+            _controller.forward();
+          } else {
+            _controller.reverse();
+          }
+        });
   }
 
   @override
@@ -738,13 +850,14 @@ class _AnimatedMarkerMultipleEventsState extends State<AnimatedMarkerMultipleEve
     super.didUpdateWidget(oldWidget);
 
     selectionSub.cancel();
-    selectionSub = widget.selectionController.markerSelectionOutputStream.listen((geoPoint) {
-      if (geoPoint == widget.events.first['location']) {
-        _controller.forward();
-      } else {
-        _controller.reverse();
-      }
-    });
+    selectionSub = widget.selectionController.markerSelectionOutputStream
+        .listen((geoPoint) {
+          if (geoPoint == widget.events.first['location']) {
+            _controller.forward();
+          } else {
+            _controller.reverse();
+          }
+        });
   }
 
   @override
@@ -759,16 +872,14 @@ class _AnimatedMarkerMultipleEventsState extends State<AnimatedMarkerMultipleEve
     List<Widget> children = [];
 
     for (int i = 0; i < widget.events.length; i++) {
-      children.add(
-        PositionedTransition(
-          rect: buttonAnimations[i],
-          child: new AnimatedMarker(
-            widget.events[i],
-            widget.selectionController,
-            showDot: false,
-          ),
+      children.add(PositionedTransition(
+        rect: buttonAnimations[i],
+        child: new AnimatedMarker(
+          widget.events[i],
+          widget.selectionController,
+          showDot: false,
         ),
-      );
+      ));
     }
 
     EventType firstType = EventType.fromTitle(widget.events.first['type']);
@@ -792,7 +903,8 @@ class _AnimatedMarkerMultipleEventsState extends State<AnimatedMarkerMultipleEve
             width: 5.0,
             height: 5.0,
             decoration: new BoxDecoration(
-              gradient: new LinearGradient(colors: [firstType.color, lastType.color]),
+              gradient:
+                  new LinearGradient(colors: [firstType.color, lastType.color]),
               shape: BoxShape.circle,
             ),
           ),
@@ -803,7 +915,12 @@ class _AnimatedMarkerMultipleEventsState extends State<AnimatedMarkerMultipleEve
 }
 
 class AnimatedMarker extends StatefulWidget {
-  AnimatedMarker(this.event, this.selectionController, {this.tapDelegate, this.showDot = true});
+  AnimatedMarker(
+    this.event,
+    this.selectionController, {
+    this.tapDelegate,
+    this.showDot = true,
+  });
 
   final DocumentSnapshot event;
   final MarkerSelectionController selectionController;
@@ -814,7 +931,8 @@ class AnimatedMarker extends StatefulWidget {
   _AnimatedMarkerState createState() => _AnimatedMarkerState();
 }
 
-class _AnimatedMarkerState extends State<AnimatedMarker> with SingleTickerProviderStateMixin {
+class _AnimatedMarkerState extends State<AnimatedMarker>
+    with SingleTickerProviderStateMixin {
   AnimationController _controller;
   Animation<Color> animation;
 
@@ -825,25 +943,34 @@ class _AnimatedMarkerState extends State<AnimatedMarker> with SingleTickerProvid
   void initState() {
     super.initState();
 
-    _controller = new AnimationController(duration: const Duration(milliseconds: 300), vsync: this);
-    animation = new ColorTween(begin: Colors.red, end: Colors.blue).animate(_controller);
+    _controller = new AnimationController(
+      duration: const Duration(milliseconds: 300),
+      vsync: this,
+    );
+    animation = new ColorTween(begin: Colors.red, end: Colors.blue).animate(
+      _controller,
+    );
 
     if (widget.selectionController != null) {
-      markerSelectionSub = widget.selectionController.markerSelectionOutputStream.listen((geoPoint) {
-        if (geoPoint == widget.event['location']) {
-          _controller.forward();
-        } else {
-          _controller.reverse();
-        }
-      });
+      markerSelectionSub = widget
+          .selectionController
+          .markerSelectionOutputStream
+          .listen((geoPoint) {
+            if (geoPoint == widget.event['location']) {
+              _controller.forward();
+            } else {
+              _controller.reverse();
+            }
+          });
 
-      eventSelectionSub = widget.selectionController.eventSelectionOutputStream.listen((title) {
-        if (title == widget.event['title']) {
-          _controller.forward();
-        } else {
-          _controller.reverse();
-        }
-      });
+      eventSelectionSub = widget.selectionController.eventSelectionOutputStream
+          .listen((title) {
+            if (title == widget.event['title']) {
+              _controller.forward();
+            } else {
+              _controller.reverse();
+            }
+          });
     }
   }
 
@@ -873,14 +1000,27 @@ class _AnimatedMarkerState extends State<AnimatedMarker> with SingleTickerProvid
 }
 
 class GrowTransition extends AnimatedWidget {
-  GrowTransition(this.showDot, {this.child, this.animation, @required this.event, @required this.selectionController})
-      : scaleAnimation =
-            new Tween(begin: 1.0, end: 1.5).animate(new CurvedAnimation(parent: animation, curve: Curves.ease)),
-        opacityAnimation = new Tween(begin: 0.0, end: 1.0)
-            .animate(new CurvedAnimation(parent: animation, curve: new Interval(0.75, 1.0, curve: Curves.easeInOut))),
-        type = EventType.fromTitle(event['type']),
-        slideAnimation = new Tween<Offset>(begin: new Offset(0.0, 0.0), end: new Offset(0.0, -0.7)).animate(animation),
-        super(listenable: animation);
+  GrowTransition(
+    this.showDot, {
+    this.child,
+    this.animation,
+    @required this.event,
+    @required this.selectionController,
+  }) : scaleAnimation = new Tween(begin: 1.0, end: 1.5).animate(
+         new CurvedAnimation(parent: animation, curve: Curves.ease),
+       ),
+       opacityAnimation = new Tween(begin: 0.0, end: 1.0).animate(
+         new CurvedAnimation(
+           parent: animation,
+           curve: new Interval(0.75, 1.0, curve: Curves.easeInOut),
+         ),
+       ),
+       type = EventType.fromTitle(event['type']),
+       slideAnimation = new Tween<Offset>(
+         begin: new Offset(0.0, 0.0),
+         end: new Offset(0.0, -0.7),
+       ).animate(animation),
+       super(listenable: animation);
 
   final Widget child;
   final Animation<double> animation;
@@ -894,23 +1034,23 @@ class GrowTransition extends AnimatedWidget {
 
   Widget build(BuildContext context) {
     List<Widget> children = [
-      Transform.scale(scale: scaleAnimation.value, alignment: Alignment.bottomCenter, child: child),
+      Transform.scale(
+        scale: scaleAnimation.value,
+        alignment: Alignment.bottomCenter,
+        child: child,
+      ),
     ];
 
     if (showDot) {
-      children.add(
-        Padding(
-          padding: new EdgeInsets.only(top: scaleAnimation.value * 2.0),
-          child: Container(
-            width: 5.0,
-            height: 5.0,
-            decoration: new BoxDecoration(
-              color: type.color,
-              shape: BoxShape.circle,
-            ),
-          ),
+      children.add(Padding(
+        padding: new EdgeInsets.only(top: scaleAnimation.value * 2.0),
+        child: Container(
+          width: 5.0,
+          height: 5.0,
+          decoration:
+              new BoxDecoration(color: type.color, shape: BoxShape.circle),
         ),
-      );
+      ));
     }
 
     return Stack(
@@ -935,9 +1075,7 @@ class GrowTransition extends AnimatedWidget {
                     padding: const EdgeInsets.all(3.0),
                     child: new Row(
                       mainAxisSize: MainAxisSize.min,
-                      children: <Widget>[
-                        new Text(event['title']),
-                      ],
+                      children: <Widget>[new Text(event['title'])],
                     ),
                   ),
                 ),
@@ -945,15 +1083,14 @@ class GrowTransition extends AnimatedWidget {
             ),
           ),
         ),
-        Column(
-          mainAxisSize: MainAxisSize.min,
-          children: children,
-        ),
+        Column(mainAxisSize: MainAxisSize.min, children: children),
         GestureDetector(
           behavior: HitTestBehavior.opaque,
           onTap: () {
             if (animation.status == AnimationStatus.dismissed) {
-              selectionController?.markerSelectionInputSink?.add(event['location']);
+              selectionController?.markerSelectionInputSink?.add(
+                event['location'],
+              );
               selectionController?.eventSelectionInputSink?.add(event['title']);
             } else {
               Navigator.push(
@@ -972,7 +1109,7 @@ class GrowTransition extends AnimatedWidget {
             height: 200.0,
             constraints: const BoxConstraints(minWidth: 50.0, minHeight: 200.0),
           ),
-        )
+        ),
       ],
     );
   }
@@ -982,7 +1119,11 @@ class MarkerIndicatorCircle extends StatelessWidget {
   static final double kMarkerIndicatorSize = 36.0;
   static final double kMarkerIndicatorSizeWithPadding = 50.0;
 
-  MarkerIndicatorCircle({Key key, @required this.event, @required this.listenable}) : super(key: key);
+  MarkerIndicatorCircle({
+    Key key,
+    @required this.event,
+    @required this.listenable,
+  }) : super(key: key);
 
   final EventType event;
   final Animation<double> listenable;
@@ -994,19 +1135,15 @@ class MarkerIndicatorCircle extends StatelessWidget {
       child: new RawMaterialButton(
         fillColor: event.color,
         shape: const CircleBorder(),
-        constraints: new BoxConstraints(minHeight: kMarkerIndicatorSize, minWidth: kMarkerIndicatorSize),
+        constraints: new BoxConstraints(
+          minHeight: kMarkerIndicatorSize,
+          minWidth: kMarkerIndicatorSize,
+        ),
         child: _CrossFadeTransition(
           progress: listenable,
-          child1: new Icon(
-            event.icon,
-            color: Colors.white,
-            size: 18.0,
-          ),
-          child0: new Icon(
-            Icons.arrow_forward,
-            color: Colors.white,
-            size: 18.0,
-          ),
+          child1: new Icon(event.icon, color: Colors.white, size: 18.0),
+          child0:
+              new Icon(Icons.arrow_forward, color: Colors.white, size: 18.0),
         ),
         onPressed: () {},
       ),
@@ -1039,8 +1176,8 @@ class CustomAnchor {
   CustomAnchor(this.left, this.top);
 
   CustomAnchor._(double width, double height, AnchorPos anchor)
-      : left = _leftOffset(width, anchor),
-        top = _topOffset(width, anchor);
+    : left = _leftOffset(width, anchor),
+      top = _topOffset(width, anchor);
 
   static double _leftOffset(double width, AnchorPos anchor) {
     switch (anchor) {
@@ -1085,7 +1222,8 @@ class CustomMarker {
     this.height = 30.0,
     AnchorPos anchor,
     CustomAnchor anchorOverride,
-  }) : this._anchor = anchorOverride ?? new CustomAnchor._(width, height, anchor);
+  }) : this._anchor =
+           anchorOverride ?? new CustomAnchor._(width, height, anchor);
 }
 
 class CustomMapMarkerLayer extends StatelessWidget {
@@ -1101,11 +1239,17 @@ class CustomMapMarkerLayer extends StatelessWidget {
     for (CustomMarker markerOpt in this.markerOpts.markers) {
       var pos = map.project(markerOpt.point);
       var bounds = map.getPixelBounds(map.zoom);
-      var latlngBounds = new LatLngBounds(map.unproject(bounds.bottomLeft), map.unproject(bounds.topRight));
-      pos = pos.multiplyBy(map.getZoomScale(map.zoom, map.zoom)) - map.getPixelOrigin();
+      var latlngBounds = new LatLngBounds(
+        map.unproject(bounds.bottomLeft),
+        map.unproject(bounds.topRight),
+      );
+      pos = pos.multiplyBy(map.getZoomScale(map.zoom, map.zoom)) -
+          map.getPixelOrigin();
 
-      var pixelPosX = (pos.x - (markerOpt.width - markerOpt._anchor.left)).toDouble();
-      var pixelPosY = (pos.y - (markerOpt.height - markerOpt._anchor.top)).toDouble();
+      var pixelPosX =
+          (pos.x - (markerOpt.width - markerOpt._anchor.left)).toDouble();
+      var pixelPosY =
+          (pos.y - (markerOpt.height - markerOpt._anchor.top)).toDouble();
 
       markers.add(
         new Positioned(
@@ -1119,10 +1263,6 @@ class CustomMapMarkerLayer extends StatelessWidget {
       );
     }
 
-    return new Container(
-      child: new Stack(
-        children: markers,
-      ),
-    );
+    return new Container(child: new Stack(children: markers));
   }
 }

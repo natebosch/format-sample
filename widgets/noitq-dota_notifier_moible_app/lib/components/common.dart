@@ -9,28 +9,23 @@ class CInputField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.fromLTRB(30,10,30,5),
+      margin: EdgeInsets.fromLTRB(30, 10, 30, 5),
       padding: EdgeInsets.only(bottom: 10),
       decoration: BoxDecoration(
-        border: Border(bottom: BorderSide(width: 1,color: Color(0xffeef0f3)))
+        border: Border(bottom: BorderSide(width: 1, color: Color(0xffeef0f3))),
       ),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
-          Container(
-            child: Icon(icon, color: Color(0xff008ff4),size: 21,)
-          ),
+          Container(child: Icon(icon, color: Color(0xff008ff4), size: 21)),
           SizedBox(width: 10),
-          Expanded(
-            child: centerWidget
-          ),
-          switchButton ?? Text('')
+          Expanded(child: centerWidget),
+          switchButton ?? Text(''),
         ],
       ),
     );
   }
 }
-
 
 class MButton extends StatelessWidget {
   final String text;
@@ -45,12 +40,14 @@ class MButton extends StatelessWidget {
       child: RaisedButton(
         elevation: 0.0,
         padding: EdgeInsets.symmetric(vertical: 17),
-        child: Text(this.text ,style: TextStyle(fontSize: 16,color:  Colors.white),),
+        child: Text(
+          this.text,
+          style: TextStyle(fontSize: 16, color: Colors.white),
+        ),
         color: Color(0xff008ff4),
         onPressed: callback,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30),),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
       ),
     );
   }
 }
-

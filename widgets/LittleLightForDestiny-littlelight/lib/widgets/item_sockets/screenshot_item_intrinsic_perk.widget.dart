@@ -20,11 +20,12 @@ class ScreenShotItemIntrinsicPerkWidget extends BaseItemSocketsWidget {
     ItemSocketController controller,
     this.pixelSize = 1,
   }) : super(
-            key: key,
-            item: item,
-            definition: definition,
-            category: category,
-            controller: controller);
+         key: key,
+         item: item,
+         definition: definition,
+         category: category,
+         controller: controller,
+       );
 
   @override
   State<StatefulWidget> createState() {
@@ -35,8 +36,8 @@ class ScreenShotItemIntrinsicPerkWidget extends BaseItemSocketsWidget {
 const _sectionId = "screenshot_intrinsic_perks";
 
 class ScreenShotItemIntrinsicPerkWidgetState<
-        T extends ScreenShotItemIntrinsicPerkWidget>
-    extends BaseItemSocketsWidgetState<T> {
+  T extends ScreenShotItemIntrinsicPerkWidget
+> extends BaseItemSocketsWidgetState<T> {
   @override
   String get sectionId => _sectionId;
 
@@ -53,10 +54,7 @@ class ScreenShotItemIntrinsicPerkWidgetState<
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        buildHeader(context),
-        buildSockets(context),
-      ],
+      children: <Widget>[buildHeader(context), buildSockets(context)],
     );
   }
 
@@ -73,10 +71,13 @@ class ScreenShotItemIntrinsicPerkWidgetState<
           ),
         ),
         Container(
-            margin: EdgeInsets.only(
-                top: 2 * widget.pixelSize, bottom: 16 * widget.pixelSize),
-            color: Colors.white.withOpacity(.7),
-            height: 3 * widget.pixelSize)
+          margin: EdgeInsets.only(
+            top: 2 * widget.pixelSize,
+            bottom: 16 * widget.pixelSize,
+          ),
+          color: Colors.white.withOpacity(.7),
+          height: 3 * widget.pixelSize,
+        ),
       ],
     );
   }
@@ -87,9 +88,10 @@ class ScreenShotItemIntrinsicPerkWidgetState<
         .map((socketIndex) => buildSocketPlugs(context, socketIndex))
         .where((w) => w != null);
     return Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: children.toList());
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: children.toList(),
+    );
   }
 
   @override
@@ -97,32 +99,41 @@ class ScreenShotItemIntrinsicPerkWidgetState<
     var plugs = socketPlugHashes(socketIndex);
     var plugHash = socketSelectedPlugHash(socketIndex);
     if ((plugs?.length ?? 0) == 0) return null;
-    return Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
-      Container(
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Container(
           width: 80 * widget.pixelSize,
-          child: buildPlug(context, socketIndex, plugHash)),
-      Container(width: 20 * widget.pixelSize),
-      Expanded(
+          child: buildPlug(context, socketIndex, plugHash),
+        ),
+        Container(width: 20 * widget.pixelSize),
+        Expanded(
           child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          ManifestText<DestinyInventoryItemDefinition>(
-            plugHash,
-            uppercase: true,
-            style: TextStyle(
-                fontSize: 22 * widget.pixelSize, fontWeight: FontWeight.bold),
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              ManifestText<DestinyInventoryItemDefinition>(
+                plugHash,
+                uppercase: true,
+                style: TextStyle(
+                  fontSize: 22 * widget.pixelSize,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              Container(height: 10 * widget.pixelSize),
+              ManifestText<DestinyInventoryItemDefinition>(
+                plugHash,
+                textExtractor: (def) => def.displayProperties.description,
+                softWrap: true,
+                style: TextStyle(
+                  fontSize: 22 * widget.pixelSize,
+                  fontWeight: FontWeight.w300,
+                ),
+              ),
+            ],
           ),
-          Container(height: 10 * widget.pixelSize),
-          ManifestText<DestinyInventoryItemDefinition>(
-            plugHash,
-            textExtractor: (def) => def.displayProperties.description,
-            softWrap: true,
-            style: TextStyle(
-                fontSize: 22 * widget.pixelSize, fontWeight: FontWeight.w300),
-          ),
-        ],
-      ))
-    ]);
+        ),
+      ],
+    );
   }
 
   @override
@@ -150,28 +161,33 @@ class ScreenShotItemIntrinsicPerkWidgetState<
       borderColor = Colors.transparent;
     }
 
-    BorderSide borderSide =
-        BorderSide(color: borderColor, width: 2 * widget.pixelSize);
+    BorderSide borderSide = BorderSide(
+      color: borderColor,
+      width: 2 * widget.pixelSize,
+    );
 
     return Container(
-        key: Key("plug_${socketIndex}_$plugItemHash"),
-        padding: EdgeInsets.all(0),
-        margin: EdgeInsets.only(bottom: 16 * widget.pixelSize),
-        child: AspectRatio(
-            aspectRatio: 1,
-            child: MaterialButton(
-              shape: intrinsic && !isExotic
-                  ? RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(4 * widget.pixelSize),
-                      side: borderSide)
-                  : CircleBorder(side: borderSide),
-              padding: EdgeInsets.all(intrinsic ? 0 : 8 * widget.pixelSize),
-              color: bgColor,
-              child: ManifestImageWidget<DestinyInventoryItemDefinition>(
-                  plugItemHash),
-              onPressed: () {
-                controller.selectSocket(socketIndex, plugItemHash);
-              },
-            )));
+      key: Key("plug_${socketIndex}_$plugItemHash"),
+      padding: EdgeInsets.all(0),
+      margin: EdgeInsets.only(bottom: 16 * widget.pixelSize),
+      child: AspectRatio(
+        aspectRatio: 1,
+        child: MaterialButton(
+          shape: intrinsic && !isExotic
+              ? RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(4 * widget.pixelSize),
+                  side: borderSide,
+                )
+              : CircleBorder(side: borderSide),
+          padding: EdgeInsets.all(intrinsic ? 0 : 8 * widget.pixelSize),
+          color: bgColor,
+          child:
+              ManifestImageWidget<DestinyInventoryItemDefinition>(plugItemHash),
+          onPressed: () {
+            controller.selectSocket(socketIndex, plugItemHash);
+          },
+        ),
+      ),
+    );
   }
 }

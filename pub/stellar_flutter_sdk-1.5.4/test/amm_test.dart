@@ -12,10 +12,14 @@ void main() {
   String seed = testAccountKeyPair.secretSeed;
   KeyPair assetAIssueAccountKeyPair = KeyPair.random();
   KeyPair assetBIssueAccountKeyPair = KeyPair.random();
-  Asset assetA =
-      AssetTypeCreditAlphaNum4("SDK", assetAIssueAccountKeyPair.accountId);
-  Asset assetB =
-      AssetTypeCreditAlphaNum12("FLUTTER", assetBIssueAccountKeyPair.accountId);
+  Asset assetA = AssetTypeCreditAlphaNum4(
+    "SDK",
+    assetAIssueAccountKeyPair.accountId,
+  );
+  Asset assetB = AssetTypeCreditAlphaNum12(
+    "FLUTTER",
+    assetBIssueAccountKeyPair.accountId,
+  );
   Asset assetNative = AssetTypeNative();
   String nonNativeLiquidityPoolId = "";
   String nativeLiquidityPoolId = "";
@@ -27,10 +31,14 @@ void main() {
 
     String sourceAccountId = testAccountKeyPair.accountId;
     AccountResponse sourceAccount = await sdk.accounts.account(sourceAccountId);
-    ChangeTrustOperationBuilder ctOpB1 =
-        ChangeTrustOperationBuilder(assetA, "98398398293");
-    ChangeTrustOperationBuilder ctOpB2 =
-        ChangeTrustOperationBuilder(assetB, "98398398293");
+    ChangeTrustOperationBuilder ctOpB1 = ChangeTrustOperationBuilder(
+      assetA,
+      "98398398293",
+    );
+    ChangeTrustOperationBuilder ctOpB2 = ChangeTrustOperationBuilder(
+      assetB,
+      "98398398293",
+    );
     Transaction transaction = TransactionBuilder(sourceAccount)
         .addOperation(ctOpB1.build())
         .addOperation(ctOpB2.build())
@@ -40,11 +48,17 @@ void main() {
         await sdk.submitTransaction(transaction);
     assert(response.success);
 
-    PaymentOperationBuilder pop1 =
-        PaymentOperationBuilder(sourceAccountId, assetA, "19999191");
+    PaymentOperationBuilder pop1 = PaymentOperationBuilder(
+      sourceAccountId,
+      assetA,
+      "19999191",
+    );
     pop1.setSourceAccount(assetAIssueAccountKeyPair.accountId);
-    PaymentOperationBuilder pop2 =
-        PaymentOperationBuilder(sourceAccountId, assetB, "19999191");
+    PaymentOperationBuilder pop2 = PaymentOperationBuilder(
+      sourceAccountId,
+      assetB,
+      "19999191",
+    );
     pop2.setSourceAccount(assetBIssueAccountKeyPair.accountId);
 
     sourceAccount =
@@ -66,10 +80,14 @@ void main() {
       AccountResponse sourceAccount =
           await sdk.accounts.account(sourceAccountId);
 
-      AssetTypePoolShare poolShareAsset =
-          AssetTypePoolShare(assetA: assetA, assetB: assetB);
-      ChangeTrustOperationBuilder chOp =
-          ChangeTrustOperationBuilder(poolShareAsset, "98398398293");
+      AssetTypePoolShare poolShareAsset = AssetTypePoolShare(
+        assetA: assetA,
+        assetB: assetB,
+      );
+      ChangeTrustOperationBuilder chOp = ChangeTrustOperationBuilder(
+        poolShareAsset,
+        "98398398293",
+      );
       Transaction transaction =
           TransactionBuilder(sourceAccount).addOperation(chOp.build()).build();
 
@@ -100,10 +118,14 @@ void main() {
       KeyPair sourceAccountKeyPair = KeyPair.fromSecretSeed(seed);
       String sourceAccountId = sourceAccountKeyPair.accountId;
 
-      AssetTypePoolShare poolShareAsset =
-          AssetTypePoolShare(assetA: assetNative, assetB: assetB);
-      ChangeTrustOperationBuilder chOp =
-          ChangeTrustOperationBuilder(poolShareAsset, "98398398293");
+      AssetTypePoolShare poolShareAsset = AssetTypePoolShare(
+        assetA: assetNative,
+        assetB: assetB,
+      );
+      ChangeTrustOperationBuilder chOp = ChangeTrustOperationBuilder(
+        poolShareAsset,
+        "98398398293",
+      );
 
       AccountResponse sourceAccount =
           await sdk.accounts.account(sourceAccountId);
@@ -140,11 +162,12 @@ void main() {
 
       LiquidityPoolDepositOperationBuilder op =
           LiquidityPoolDepositOperationBuilder(
-              liquidityPoolId: nonNativeLiquidityPoolId,
-              maxAmountA: "250.0",
-              maxAmountB: "250.0",
-              minPrice: "1.0",
-              maxPrice: "2.0");
+        liquidityPoolId: nonNativeLiquidityPoolId,
+        maxAmountA: "250.0",
+        maxAmountB: "250.0",
+        minPrice: "1.0",
+        maxPrice: "2.0",
+      );
 
       AccountResponse sourceAccount =
           await sdk.accounts.account(sourceAccountId);
@@ -170,11 +193,12 @@ void main() {
 
       LiquidityPoolDepositOperationBuilder op =
           LiquidityPoolDepositOperationBuilder(
-              liquidityPoolId: nativeLiquidityPoolId,
-              maxAmountA: "250.0",
-              maxAmountB: "250.0",
-              minPrice: "1.0",
-              maxPrice: "2.0");
+        liquidityPoolId: nativeLiquidityPoolId,
+        maxAmountA: "250.0",
+        maxAmountB: "250.0",
+        minPrice: "1.0",
+        maxPrice: "2.0",
+      );
 
       AccountResponse sourceAccount =
           await sdk.accounts.account(sourceAccountId);
@@ -201,10 +225,11 @@ void main() {
 
       LiquidityPoolWithdrawOperationBuilder op =
           LiquidityPoolWithdrawOperationBuilder(
-              liquidityPoolId: nonNativeLiquidityPoolId,
-              amount: "100",
-              minAmountA: "100",
-              minAmountB: "100");
+        liquidityPoolId: nonNativeLiquidityPoolId,
+        amount: "100",
+        minAmountA: "100",
+        minAmountB: "100",
+      );
 
       AccountResponse sourceAccount =
           await sdk.accounts.account(sourceAccountId);
@@ -231,10 +256,11 @@ void main() {
 
       LiquidityPoolWithdrawOperationBuilder op =
           LiquidityPoolWithdrawOperationBuilder(
-              liquidityPoolId: nativeLiquidityPoolId,
-              amount: "1",
-              minAmountA: "1",
-              minAmountB: "1");
+        liquidityPoolId: nativeLiquidityPoolId,
+        amount: "1",
+        minAmountA: "1",
+        minAmountB: "1",
+      );
 
       AccountResponse sourceAccount =
           await sdk.accounts.account(sourceAccountId);
@@ -323,11 +349,15 @@ void main() {
       await FriendBot.fundTestAccount(accYId);
 
       AccountResponse accX = await sdk.accounts.account(accXId);
-      ChangeTrustOperationBuilder ctOpB1 =
-          ChangeTrustOperationBuilder(assetA, "98398398293");
+      ChangeTrustOperationBuilder ctOpB1 = ChangeTrustOperationBuilder(
+        assetA,
+        "98398398293",
+      );
       ctOpB1.setSourceAccount(accXId);
-      ChangeTrustOperationBuilder ctOpB2 =
-          ChangeTrustOperationBuilder(assetB, "98398398293");
+      ChangeTrustOperationBuilder ctOpB2 = ChangeTrustOperationBuilder(
+        assetB,
+        "98398398293",
+      );
       ctOpB2.setSourceAccount(accYId);
       Transaction tx = TransactionBuilder(accX)
           .addOperation(ctOpB1.build())
@@ -339,8 +369,11 @@ void main() {
       assert(response.success);
       TestUtils.resultDeAndEncodingTest(tx, response);
 
-      PaymentOperationBuilder pop1 =
-          PaymentOperationBuilder(accXId, assetA, "19999191");
+      PaymentOperationBuilder pop1 = PaymentOperationBuilder(
+        accXId,
+        assetA,
+        "19999191",
+      );
       pop1.setSourceAccount(assetAIssueAccountKeyPair.accountId);
 
       AccountResponse sc =
@@ -353,7 +386,12 @@ void main() {
 
       PathPaymentStrictSendOperationBuilder opb =
           PathPaymentStrictSendOperationBuilder(
-              assetA, "10", accYId, assetB, "1");
+        assetA,
+        "10",
+        accYId,
+        assetB,
+        "1",
+      );
       accX = await sdk.accounts.account(accXId);
       tx = TransactionBuilder(accX).addOperation(opb.build()).build();
       tx.sign(accXKp, network);
@@ -378,11 +416,20 @@ void main() {
       assert(trades2.first.baseLiquidityPoolId == nonNativeLiquidityPoolId);
     });
 
-    test("parse liquidity pool resultXdr", (){
-      final input = XdrDataInputStream(base64Decode("AAAAAAAAAGT/////AAAAAQAAAAAAAAAW/////AAAAAA="));
+    test("parse liquidity pool resultXdr", () {
+      final input = XdrDataInputStream(
+        base64Decode("AAAAAAAAAGT/////AAAAAQAAAAAAAAAW/////AAAAAA="),
+      );
       final result = XdrTransactionResult.decode(input);
-      final operationResult = (result.result.results.first as XdrOperationResult).tr!.liquidityPoolDepositResult;
-      assert(operationResult!.discriminant == XdrLiquidityPoolDepositResultCode.LIQUIDITY_POOL_DEPOSIT_UNDERFUNDED);
+      final operationResult =
+          (result.result.results.first as XdrOperationResult)
+              .tr!
+              .liquidityPoolDepositResult;
+      assert(
+        operationResult!.discriminant ==
+            XdrLiquidityPoolDepositResultCode
+                .LIQUIDITY_POOL_DEPOSIT_UNDERFUNDED,
+      );
     });
   });
 }

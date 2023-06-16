@@ -42,40 +42,44 @@ class TestFutureReactiveViewModel extends FutureViewModel<int> {
 void main() {
   group('ReactiveViewModel Tests -', () {
     test(
-        'Given a reactive service should notifyListeners when an RX value in it changes',
-        () async {
-      var viewModel = TestReactiveViewModel();
-      var called = false;
-      viewModel.addListener(() {
-        called = true;
-      });
-      viewModel.updateCounter();
-      await Future.delayed(const Duration(milliseconds: 5));
-      expect(called, true);
-    });
+      'Given a reactive service should notifyListeners when an RX value in it changes',
+      () async {
+        var viewModel = TestReactiveViewModel();
+        var called = false;
+        viewModel.addListener(() {
+          called = true;
+        });
+        viewModel.updateCounter();
+        await Future.delayed(const Duration(milliseconds: 5));
+        expect(called, true);
+      },
+    );
     test(
-        'Given a reactive service on FutureViewmodel should notifyListeners when an RX value in it changes',
-        () async {
-      var viewModel = TestFutureReactiveViewModel();
-      var called = false;
-      viewModel.addListener(() {
-        called = true;
-      });
-      viewModel.updateCounter();
-      await Future.delayed(const Duration(milliseconds: 5));
-      expect(called, true);
-    });
-    test('Given a reactive service should not notifyListeners after disposed',
-        () async {
-      var viewModel = TestReactiveViewModel();
-      var called = false;
-      viewModel.addListener(() {
-        called = true;
-      });
-      viewModel.dispose();
-      viewModel.updateCounter();
-      await Future.delayed(const Duration(milliseconds: 5));
-      expect(called, false);
-    });
+      'Given a reactive service on FutureViewmodel should notifyListeners when an RX value in it changes',
+      () async {
+        var viewModel = TestFutureReactiveViewModel();
+        var called = false;
+        viewModel.addListener(() {
+          called = true;
+        });
+        viewModel.updateCounter();
+        await Future.delayed(const Duration(milliseconds: 5));
+        expect(called, true);
+      },
+    );
+    test(
+      'Given a reactive service should not notifyListeners after disposed',
+      () async {
+        var viewModel = TestReactiveViewModel();
+        var called = false;
+        viewModel.addListener(() {
+          called = true;
+        });
+        viewModel.dispose();
+        viewModel.updateCounter();
+        await Future.delayed(const Duration(milliseconds: 5));
+        expect(called, false);
+      },
+    );
   });
 }

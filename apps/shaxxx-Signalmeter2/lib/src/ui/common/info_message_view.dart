@@ -17,11 +17,11 @@ class ErrorView extends InfoMessageView {
     String description,
     @required VoidCallback onRetry,
   }) : super(
-          actionButtonKey: tryAgainButtonKey,
-          title: title,
-          description: description,
-          onActionButtonTapped: onRetry,
-        );
+         actionButtonKey: tryAgainButtonKey,
+         title: title,
+         description: description,
+         onActionButtonTapped: onRetry,
+       );
 }
 
 class InfoMessageView extends StatelessWidget {
@@ -39,27 +39,23 @@ class InfoMessageView extends StatelessWidget {
   final VoidCallback onActionButtonTapped;
 
   List<Widget> _buildContent(Messages messages) => [
-        const CircleAvatar(
-          child: Icon(
-            Icons.info_outline,
-            color: Colors.white70,
-            size: 52.0,
-          ),
-          backgroundColor: Colors.white12,
-          radius: 42.0,
-        ),
-        const SizedBox(height: 16.0),
-        Text(
-          title ?? messages.oops,
-          style: const TextStyle(fontSize: 24.0, color: Colors.white),
-        ),
-        const SizedBox(height: 8.0),
-        Text(
-          description,
-          textAlign: TextAlign.center,
-          style: const TextStyle(color: Colors.white70),
-        ),
-      ];
+    const CircleAvatar(
+      child: Icon(Icons.info_outline, color: Colors.white70, size: 52.0),
+      backgroundColor: Colors.white12,
+      radius: 42.0,
+    ),
+    const SizedBox(height: 16.0),
+    Text(
+      title ?? messages.oops,
+      style: const TextStyle(fontSize: 24.0, color: Colors.white),
+    ),
+    const SizedBox(height: 8.0),
+    Text(
+      description,
+      textAlign: TextAlign.center,
+      style: const TextStyle(color: Colors.white70),
+    ),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -67,10 +63,7 @@ class InfoMessageView extends StatelessWidget {
     final content = _buildContent(messages);
 
     if (onActionButtonTapped != null) {
-      content.add(_ActionButton(
-        actionButtonKey,
-        onActionButtonTapped,
-      ));
+      content.add(_ActionButton(actionButtonKey, onActionButtonTapped));
     }
 
     return SingleChildScrollView(

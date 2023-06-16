@@ -69,8 +69,8 @@ class SmilePainter extends CustomPainter {
         radius = halfWidth - 16.0;
       }
       eyeRadius = radius / 6.5;
-      eyeRadiusbythree = eyeRadius/3;
-      eyeRadiusbytwo = eyeRadius/2;
+      eyeRadiusbythree = eyeRadius / 3;
+      eyeRadiusbytwo = eyeRadius / 2;
 
       diameter = radius * 2;
       //left top corner
@@ -87,62 +87,78 @@ class SmilePainter extends CustomPainter {
       final leftSmileX = startingX + (radius / 2);
 
       badReview = ReviewState(
-          Offset(leftSmileX, endingY - (oneThirdOfDiaByTwo * 1.5)),
-          Offset(startingX + oneThirdOfDia,
-              startingY + radius + (oneThirdOfDiaByTwo)),
-          Offset(endingX - radius, startingY + radius + (oneThirdOfDiaByTwo)),
-          Offset(endingX - oneThirdOfDia,
-              startingY + radius + (oneThirdOfDiaByTwo)),
-          Offset(endingX - (radius / 2), endingY - (oneThirdOfDiaByTwo * 1.5)),
-          Color(0xFFfe0944),
-          Color(0xFFfeae96),
-          Color(0xFFfe5c6e),
-          'BAD');
+        Offset(leftSmileX, endingY - (oneThirdOfDiaByTwo * 1.5)),
+        Offset(
+          startingX + oneThirdOfDia,
+          startingY + radius + (oneThirdOfDiaByTwo),
+        ),
+        Offset(endingX - radius, startingY + radius + (oneThirdOfDiaByTwo)),
+        Offset(
+          endingX - oneThirdOfDia,
+          startingY + radius + (oneThirdOfDiaByTwo),
+        ),
+        Offset(endingX - (radius / 2), endingY - (oneThirdOfDiaByTwo * 1.5)),
+        Color(0xFFfe0944),
+        Color(0xFFfeae96),
+        Color(0xFFfe5c6e),
+        'BAD',
+      );
 
       ughReview = ReviewState(
-          Offset(leftSmileX, endingY - (radius / 2)),
-          Offset(diameter, endingY - oneThirdOfDia),
-          Offset(endingX - radius, endingY - oneThirdOfDia),
-          Offset(endingX - (radius / 2), endingY - oneThirdOfDia),
-          Offset(endingX - (radius / 2), endingY - oneThirdOfDia),
-          Color(0xFFF9D976),
-          Color(0xfff39f86),
-          Color(0xFFf6bc7e),
-          'UGH');
+        Offset(leftSmileX, endingY - (radius / 2)),
+        Offset(diameter, endingY - oneThirdOfDia),
+        Offset(endingX - radius, endingY - oneThirdOfDia),
+        Offset(endingX - (radius / 2), endingY - oneThirdOfDia),
+        Offset(endingX - (radius / 2), endingY - oneThirdOfDia),
+        Color(0xFFF9D976),
+        Color(0xfff39f86),
+        Color(0xFFf6bc7e),
+        'UGH',
+      );
 
       okReview = ReviewState(
-          Offset(leftSmileX, endingY - (oneThirdOfDiaByTwo * 1.5)),
-          Offset(diameter, endingY - (oneThirdOfDiaByTwo * 1.5)),
-          Offset(endingX - radius, endingY - (oneThirdOfDiaByTwo * 1.5)),
-          Offset(startingX + radius, endingY - (oneThirdOfDiaByTwo * 1.5)),
-          Offset(endingX - (radius / 2), endingY - (oneThirdOfDiaByTwo * 1.5)),
-          Color(0xFF21e1fa),
-          Color(0xff3bb8fd),
-          Color(0xFF28cdfc),
-          'OK');
+        Offset(leftSmileX, endingY - (oneThirdOfDiaByTwo * 1.5)),
+        Offset(diameter, endingY - (oneThirdOfDiaByTwo * 1.5)),
+        Offset(endingX - radius, endingY - (oneThirdOfDiaByTwo * 1.5)),
+        Offset(startingX + radius, endingY - (oneThirdOfDiaByTwo * 1.5)),
+        Offset(endingX - (radius / 2), endingY - (oneThirdOfDiaByTwo * 1.5)),
+        Color(0xFF21e1fa),
+        Color(0xff3bb8fd),
+        Color(0xFF28cdfc),
+        'OK',
+      );
 
       goodReview = ReviewState(
-          Offset(startingX + (radius / 2), endingY - (oneThirdOfDiaByTwo * 2)),
-          Offset(startingX + oneThirdOfDia,
-              startingY + (diameter - oneThirdOfDiaByTwo)),
-          Offset(endingX - radius, startingY + (diameter - oneThirdOfDiaByTwo)),
-          Offset(endingX - oneThirdOfDia,
-              startingY + (diameter - oneThirdOfDiaByTwo)),
-          Offset(endingX - (radius / 2), endingY - (oneThirdOfDiaByTwo * 2)),
-          Color(0xFF3ee98a),
-          Color(0xFF41f7c7),
-          Color(0xFF41f7c6),
-          'GOOD');
+        Offset(startingX + (radius / 2), endingY - (oneThirdOfDiaByTwo * 2)),
+        Offset(
+          startingX + oneThirdOfDia,
+          startingY + (diameter - oneThirdOfDiaByTwo),
+        ),
+        Offset(endingX - radius, startingY + (diameter - oneThirdOfDiaByTwo)),
+        Offset(
+          endingX - oneThirdOfDia,
+          startingY + (diameter - oneThirdOfDiaByTwo),
+        ),
+        Offset(endingX - (radius / 2), endingY - (oneThirdOfDiaByTwo * 2)),
+        Color(0xFF3ee98a),
+        Color(0xFF41f7c7),
+        Color(0xFF41f7c6),
+        'GOOD',
+      );
 
       //get max width of text, that is width of GOOD text
       TextSpan spanGood = new TextSpan(
-          style: new TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: 52.0,
-              color: okReview.titleColor),
-          text: "GOOD");
-      TextPainter tpGood =
-          new TextPainter(text: spanGood, textDirection: TextDirection.ltr);
+        style: new TextStyle(
+          fontWeight: FontWeight.bold,
+          fontSize: 52.0,
+          color: okReview.titleColor,
+        ),
+        text: "GOOD",
+      );
+      TextPainter tpGood = new TextPainter(
+        text: spanGood,
+        textDirection: TextDirection.ltr,
+      );
       tpGood.layout();
       double goodWidth = tpGood.width;
       double halfGoodWidth = goodWidth / 2;
@@ -167,10 +183,7 @@ class SmilePainter extends CustomPainter {
 
     final centerPoint = Offset(halfWidth, halfHeight);
     final circlePaint = genGradientPaint(
-      new Rect.fromCircle(
-        center: centerPoint,
-        radius: radius,
-      ),
+      new Rect.fromCircle(center: centerPoint, radius: radius),
       currentState.startColor,
       currentState.endColor,
       PaintingStyle.stroke,
@@ -212,23 +225,29 @@ class SmilePainter extends CustomPainter {
 
     //draw the edges of BAD Review
     if (slideValue <= 100 || slideValue > 300) {
-
       double diff = -1.0;
       double tween = -1.0;
 
       if (slideValue <= 100) {
         diff = slideValue / 100;
-        tween = lerpDouble(eyeY-(eyeRadiusbythree*0.6), eyeY-eyeRadius, diff);
+        tween = lerpDouble(
+          eyeY - (eyeRadiusbythree * 0.6),
+          eyeY - eyeRadius,
+          diff,
+        );
       } else if (slideValue > 300) {
         diff = (slideValue - 300) / 100;
-        tween = lerpDouble(eyeY-eyeRadius, eyeY-(eyeRadiusbythree*0.6), diff);
-
+        tween = lerpDouble(
+          eyeY - eyeRadius,
+          eyeY - (eyeRadiusbythree * 0.6),
+          diff,
+        );
       }
 
       List<Offset> polygonPath = List<Offset>();
-      polygonPath.add(Offset(leftEyeX-eyeRadiusbytwo, eyeY-eyeRadius));
-      polygonPath.add(Offset(leftEyeX+eyeRadius, tween));
-      polygonPath.add(Offset(leftEyeX+eyeRadius, eyeY-eyeRadius));
+      polygonPath.add(Offset(leftEyeX - eyeRadiusbytwo, eyeY - eyeRadius));
+      polygonPath.add(Offset(leftEyeX + eyeRadius, tween));
+      polygonPath.add(Offset(leftEyeX + eyeRadius, eyeY - eyeRadius));
 
       Path clipPath = new Path();
       clipPath.addPolygon(polygonPath, true);
@@ -236,9 +255,9 @@ class SmilePainter extends CustomPainter {
       canvas.drawPath(clipPath, whitePaint);
 
       List<Offset> polygonPath2 = List<Offset>();
-      polygonPath2.add(Offset(rightEyeX+eyeRadiusbytwo, eyeY-eyeRadius));
-      polygonPath2.add(Offset(rightEyeX-eyeRadius, tween));
-      polygonPath2.add(Offset(rightEyeX-eyeRadius, eyeY-eyeRadius));
+      polygonPath2.add(Offset(rightEyeX + eyeRadiusbytwo, eyeY - eyeRadius));
+      polygonPath2.add(Offset(rightEyeX - eyeRadius, tween));
+      polygonPath2.add(Offset(rightEyeX - eyeRadius, eyeY - eyeRadius));
 
       Path clipPath2 = new Path();
       clipPath2.addPolygon(polygonPath2, true);
@@ -248,7 +267,6 @@ class SmilePainter extends CustomPainter {
 
     //draw the balls of UGH Review
     if (slideValue > 0 && slideValue < 200) {
-
       double diff = -1.0;
       double leftTweenX = -1.0;
       double leftTweenY = -1.0;
@@ -259,30 +277,44 @@ class SmilePainter extends CustomPainter {
       if (slideValue <= 100) {
 //      bad to ugh
         diff = slideValue / 100;
-        leftTweenX = lerpDouble(leftEyeX-eyeRadius, leftEyeX, diff);
-        leftTweenY = lerpDouble(eyeY-eyeRadius, eyeY, diff);
+        leftTweenX = lerpDouble(leftEyeX - eyeRadius, leftEyeX, diff);
+        leftTweenY = lerpDouble(eyeY - eyeRadius, eyeY, diff);
 
-        rightTweenX = lerpDouble(rightEyeX+eyeRadius, rightEyeX, diff);
-        rightTweenY = lerpDouble(eyeY, eyeY-(eyeRadius+eyeRadiusbythree), diff);
-
+        rightTweenX = lerpDouble(rightEyeX + eyeRadius, rightEyeX, diff);
+        rightTweenY = lerpDouble(
+          eyeY,
+          eyeY - (eyeRadius + eyeRadiusbythree),
+          diff,
+        );
       } else {
 //      ugh to ok
         diff = (slideValue - 100) / 100;
 
-        leftTweenX = lerpDouble(leftEyeX, leftEyeX-eyeRadius, diff);
-        leftTweenY = lerpDouble(eyeY, eyeY-eyeRadius, diff);
+        leftTweenX = lerpDouble(leftEyeX, leftEyeX - eyeRadius, diff);
+        leftTweenY = lerpDouble(eyeY, eyeY - eyeRadius, diff);
 
-        rightTweenX = lerpDouble(rightEyeX, rightEyeX+eyeRadius, diff);
-        rightTweenY = lerpDouble(eyeY-(eyeRadius+eyeRadiusbythree), eyeY, diff);
-
-
+        rightTweenX = lerpDouble(rightEyeX, rightEyeX + eyeRadius, diff);
+        rightTweenY = lerpDouble(
+          eyeY - (eyeRadius + eyeRadiusbythree),
+          eyeY,
+          diff,
+        );
       }
 
-      canvas.drawOval(Rect.fromLTRB(leftEyeX-(eyeRadius+eyeRadiusbythree), eyeY-(eyeRadius+eyeRadiusbythree), leftTweenX, leftTweenY), whitePaint);
+      canvas.drawOval(Rect.fromLTRB(
+        leftEyeX - (eyeRadius + eyeRadiusbythree),
+        eyeY - (eyeRadius + eyeRadiusbythree),
+        leftTweenX,
+        leftTweenY,
+      ), whitePaint);
 
-      canvas.drawOval(Rect.fromLTRB(rightTweenX, eyeY, rightEyeX+(eyeRadius+eyeRadiusbythree), eyeY-(eyeRadius+eyeRadiusbythree)), whitePaint);
+      canvas.drawOval(Rect.fromLTRB(
+        rightTweenX,
+        eyeY,
+        rightEyeX + (eyeRadius + eyeRadiusbythree),
+        eyeY - (eyeRadius + eyeRadiusbythree),
+      ), whitePaint);
     }
-
 
     //---------------------------------------------------------------
 
@@ -320,44 +352,62 @@ class SmilePainter extends CustomPainter {
 //    canvas.drawLine(Offset(endingX - oneThirdOfDiaByTwo, startingY),
 //        Offset(endingX - oneThirdOfDiaByTwo, endingY), debugPaint);
     //--------------------------------------------------------------
-
   }
 
-  dynamic tweenText(ReviewState centerReview, ReviewState rightReview, double diff,
-      Canvas canvas) {
+  dynamic tweenText(
+    ReviewState centerReview,
+    ReviewState rightReview,
+    double diff,
+    Canvas canvas,
+  ) {
     currentState = ReviewState.lerp(centerReview, rightReview, diff);
 
     TextSpan spanCenter = new TextSpan(
-        style: new TextStyle(
-            fontWeight: FontWeight.bold,
-            fontSize: 52.0,
-            color:
-                centerReview.titleColor.withAlpha(255 - (255 * diff).round())),
-        text: centerReview.title);
-    TextPainter tpCenter =
-        new TextPainter(text: spanCenter, textDirection: TextDirection.ltr);
+      style: new TextStyle(
+        fontWeight: FontWeight.bold,
+        fontSize: 52.0,
+        color: centerReview.titleColor.withAlpha(255 - (255 * diff).round()),
+      ),
+      text: centerReview.title,
+    );
+    TextPainter tpCenter = new TextPainter(
+      text: spanCenter,
+      textDirection: TextDirection.ltr,
+    );
 
     TextSpan spanRight = new TextSpan(
-        style: new TextStyle(
-            fontWeight: FontWeight.bold,
-            fontSize: 52.0,
-            color: rightReview.titleColor.withAlpha((255 * diff).round())),
-        text: rightReview.title);
-    TextPainter tpRight =
-        new TextPainter(text: spanRight, textDirection: TextDirection.ltr);
+      style: new TextStyle(
+        fontWeight: FontWeight.bold,
+        fontSize: 52.0,
+        color: rightReview.titleColor.withAlpha((255 * diff).round()),
+      ),
+      text: rightReview.title,
+    );
+    TextPainter tpRight = new TextPainter(
+      text: spanRight,
+      textDirection: TextDirection.ltr,
+    );
 
     tpCenter.layout();
     tpRight.layout();
 
-    Offset centerOffset =
-        new Offset(centerCenter - (tpCenter.width / 2), smileHeight);
-    Offset centerToLeftOffset =
-        new Offset(leftCenter - (tpCenter.width / 2), smileHeight);
+    Offset centerOffset = new Offset(
+      centerCenter - (tpCenter.width / 2),
+      smileHeight,
+    );
+    Offset centerToLeftOffset = new Offset(
+      leftCenter - (tpCenter.width / 2),
+      smileHeight,
+    );
 
-    Offset rightOffset =
-        new Offset(rightCenter - (tpRight.width / 2), smileHeight);
-    Offset rightToCenterOffset =
-        new Offset(centerCenter - (tpRight.width / 2), smileHeight);
+    Offset rightOffset = new Offset(
+      rightCenter - (tpRight.width / 2),
+      smileHeight,
+    );
+    Offset rightToCenterOffset = new Offset(
+      centerCenter - (tpRight.width / 2),
+      smileHeight,
+    );
 
     tpCenter.paint(canvas, Offset.lerp(centerOffset, centerToLeftOffset, diff));
     tpRight.paint(canvas, Offset.lerp(rightOffset, rightToCenterOffset, diff));
@@ -366,20 +416,29 @@ class SmilePainter extends CustomPainter {
   Path getSmilePath(ReviewState state) {
     var smilePath = Path();
     smilePath.moveTo(state.leftOffset.dx, state.leftOffset.dy);
-    smilePath.quadraticBezierTo(state.leftHandle.dx, state.leftHandle.dy,
-        state.centerOffset.dx, state.centerOffset.dy);
-    smilePath.quadraticBezierTo(state.rightHandle.dx, state.rightHandle.dy,
-        state.rightOffset.dx, state.rightOffset.dy);
+    smilePath.quadraticBezierTo(
+      state.leftHandle.dx,
+      state.leftHandle.dy,
+      state.centerOffset.dx,
+      state.centerOffset.dy,
+    );
+    smilePath.quadraticBezierTo(
+      state.rightHandle.dx,
+      state.rightHandle.dy,
+      state.rightOffset.dx,
+      state.rightOffset.dy,
+    );
     return smilePath;
   }
 
   Paint genGradientPaint(
-      Rect rect, Color startColor, Color endColor, PaintingStyle style) {
+    Rect rect,
+    Color startColor,
+    Color endColor,
+    PaintingStyle style,
+  ) {
     final Gradient gradient = new LinearGradient(
-      colors: <Color>[
-        startColor,
-        endColor,
-      ],
+      colors: <Color>[startColor, endColor],
     );
 
     return new Paint()
@@ -410,15 +469,16 @@ class ReviewState {
   Color endColor;
 
   ReviewState(
-      this.leftOffset,
-      this.leftHandle,
-      this.centerOffset,
-      this.rightHandle,
-      this.rightOffset,
-      this.startColor,
-      this.endColor,
-      this.titleColor,
-      this.title);
+    this.leftOffset,
+    this.leftHandle,
+    this.centerOffset,
+    this.rightHandle,
+    this.rightOffset,
+    this.startColor,
+    this.endColor,
+    this.titleColor,
+    this.title,
+  );
 
   //create new state between given two states.
   static ReviewState lerp(ReviewState start, ReviewState end, double ratio) {
@@ -426,14 +486,15 @@ class ReviewState {
     var endColor = Color.lerp(start.endColor, end.endColor, ratio);
 
     return ReviewState(
-        Offset.lerp(start.leftOffset,end.leftOffset, ratio),
-        Offset.lerp(start.leftHandle, end.leftHandle, ratio),
-        Offset.lerp(start.centerOffset, end.centerOffset, ratio),
-        Offset.lerp(start.rightHandle, end.rightHandle, ratio),
-        Offset.lerp(start.rightOffset, end.rightOffset, ratio),
-        startColor,
-        endColor,
-        start.titleColor,
-        start.title);
+      Offset.lerp(start.leftOffset, end.leftOffset, ratio),
+      Offset.lerp(start.leftHandle, end.leftHandle, ratio),
+      Offset.lerp(start.centerOffset, end.centerOffset, ratio),
+      Offset.lerp(start.rightHandle, end.rightHandle, ratio),
+      Offset.lerp(start.rightOffset, end.rightOffset, ratio),
+      startColor,
+      endColor,
+      start.titleColor,
+      start.title,
+    );
   }
 }

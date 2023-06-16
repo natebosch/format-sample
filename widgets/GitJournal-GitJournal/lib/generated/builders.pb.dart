@@ -16,38 +16,43 @@ import 'package:protobuf/protobuf.dart' as $pb;
 
 class BlobCTimeBuilderData extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+    const $core.bool.fromEnvironment('protobuf.omit_message_names')
+        ? ''
+        : 'BlobCTimeBuilderData',
+    package: const $pb.PackageName(
       const $core.bool.fromEnvironment('protobuf.omit_message_names')
           ? ''
-          : 'BlobCTimeBuilderData',
-      package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
-              ? ''
-              : 'gitjournal'),
-      createEmptyInstance: create)
+          : 'gitjournal',
+    ),
+    createEmptyInstance: create,
+  )
     ..p<$core.List<$core.int>>(
-        1,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'commitHashes',
-        $pb.PbFieldType.PY,
-        protoName: 'commitHashes')
+      1,
+      const $core.bool.fromEnvironment('protobuf.omit_field_names')
+          ? ''
+          : 'commitHashes',
+      $pb.PbFieldType.PY,
+      protoName: 'commitHashes',
+    )
     ..p<$core.List<$core.int>>(
-        2,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'treeHashes',
-        $pb.PbFieldType.PY,
-        protoName: 'treeHashes')
+      2,
+      const $core.bool.fromEnvironment('protobuf.omit_field_names')
+          ? ''
+          : 'treeHashes',
+      $pb.PbFieldType.PY,
+      protoName: 'treeHashes',
+    )
     ..m<$core.String, TzDateTime>(
-        3,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'map',
-        entryClassName: 'BlobCTimeBuilderData.MapEntry',
-        keyFieldType: $pb.PbFieldType.OS,
-        valueFieldType: $pb.PbFieldType.OM,
-        valueCreator: TzDateTime.create,
-        packageName: const $pb.PackageName('gitjournal'))
+      3,
+      const $core.bool.fromEnvironment('protobuf.omit_field_names')
+          ? ''
+          : 'map',
+      entryClassName: 'BlobCTimeBuilderData.MapEntry',
+      keyFieldType: $pb.PbFieldType.OS,
+      valueFieldType: $pb.PbFieldType.OM,
+      valueCreator: TzDateTime.create,
+      packageName: const $pb.PackageName('gitjournal'),
+    )
     ..hasRequiredFields = false;
 
   BlobCTimeBuilderData._() : super();
@@ -68,20 +73,26 @@ class BlobCTimeBuilderData extends $pb.GeneratedMessage {
     }
     return _result;
   }
-  factory BlobCTimeBuilderData.fromBuffer($core.List<$core.int> i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
-      create()..mergeFromBuffer(i, r);
-  factory BlobCTimeBuilderData.fromJson($core.String i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
-      create()..mergeFromJson(i, r);
-  @$core.Deprecated('Using this can add significant overhead to your binary. '
-      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-      'Will be removed in next major version')
+  factory BlobCTimeBuilderData.fromBuffer(
+    $core.List<$core.int> i, [
+    $pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY,
+  ]) => create()..mergeFromBuffer(i, r);
+  factory BlobCTimeBuilderData.fromJson(
+    $core.String i, [
+    $pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY,
+  ]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+    'Using this can add significant overhead to your binary. '
+    'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+    'Will be removed in next major version',
+  )
   BlobCTimeBuilderData clone() =>
       BlobCTimeBuilderData()..mergeFromMessage(this);
-  @$core.Deprecated('Using this can add significant overhead to your binary. '
-      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-      'Will be removed in next major version')
+  @$core.Deprecated(
+    'Using this can add significant overhead to your binary. '
+    'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+    'Will be removed in next major version',
+  )
   BlobCTimeBuilderData copyWith(void Function(BlobCTimeBuilderData) updates) =>
       super.copyWith((message) => updates(message as BlobCTimeBuilderData))
           as BlobCTimeBuilderData; // ignore: deprecated_member_use
@@ -108,38 +119,43 @@ class BlobCTimeBuilderData extends $pb.GeneratedMessage {
 
 class FileMTimeBuilderData extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+    const $core.bool.fromEnvironment('protobuf.omit_message_names')
+        ? ''
+        : 'FileMTimeBuilderData',
+    package: const $pb.PackageName(
       const $core.bool.fromEnvironment('protobuf.omit_message_names')
           ? ''
-          : 'FileMTimeBuilderData',
-      package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
-              ? ''
-              : 'gitjournal'),
-      createEmptyInstance: create)
+          : 'gitjournal',
+    ),
+    createEmptyInstance: create,
+  )
     ..p<$core.List<$core.int>>(
-        1,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'commitHashes',
-        $pb.PbFieldType.PY,
-        protoName: 'commitHashes')
+      1,
+      const $core.bool.fromEnvironment('protobuf.omit_field_names')
+          ? ''
+          : 'commitHashes',
+      $pb.PbFieldType.PY,
+      protoName: 'commitHashes',
+    )
     ..p<$core.List<$core.int>>(
-        2,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'treeHashes',
-        $pb.PbFieldType.PY,
-        protoName: 'treeHashes')
+      2,
+      const $core.bool.fromEnvironment('protobuf.omit_field_names')
+          ? ''
+          : 'treeHashes',
+      $pb.PbFieldType.PY,
+      protoName: 'treeHashes',
+    )
     ..m<$core.String, FileMTimeInfo>(
-        3,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'map',
-        entryClassName: 'FileMTimeBuilderData.MapEntry',
-        keyFieldType: $pb.PbFieldType.OS,
-        valueFieldType: $pb.PbFieldType.OM,
-        valueCreator: FileMTimeInfo.create,
-        packageName: const $pb.PackageName('gitjournal'))
+      3,
+      const $core.bool.fromEnvironment('protobuf.omit_field_names')
+          ? ''
+          : 'map',
+      entryClassName: 'FileMTimeBuilderData.MapEntry',
+      keyFieldType: $pb.PbFieldType.OS,
+      valueFieldType: $pb.PbFieldType.OM,
+      valueCreator: FileMTimeInfo.create,
+      packageName: const $pb.PackageName('gitjournal'),
+    )
     ..hasRequiredFields = false;
 
   FileMTimeBuilderData._() : super();
@@ -160,20 +176,26 @@ class FileMTimeBuilderData extends $pb.GeneratedMessage {
     }
     return _result;
   }
-  factory FileMTimeBuilderData.fromBuffer($core.List<$core.int> i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
-      create()..mergeFromBuffer(i, r);
-  factory FileMTimeBuilderData.fromJson($core.String i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
-      create()..mergeFromJson(i, r);
-  @$core.Deprecated('Using this can add significant overhead to your binary. '
-      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-      'Will be removed in next major version')
+  factory FileMTimeBuilderData.fromBuffer(
+    $core.List<$core.int> i, [
+    $pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY,
+  ]) => create()..mergeFromBuffer(i, r);
+  factory FileMTimeBuilderData.fromJson(
+    $core.String i, [
+    $pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY,
+  ]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+    'Using this can add significant overhead to your binary. '
+    'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+    'Will be removed in next major version',
+  )
   FileMTimeBuilderData clone() =>
       FileMTimeBuilderData()..mergeFromMessage(this);
-  @$core.Deprecated('Using this can add significant overhead to your binary. '
-      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-      'Will be removed in next major version')
+  @$core.Deprecated(
+    'Using this can add significant overhead to your binary. '
+    'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+    'Will be removed in next major version',
+  )
   FileMTimeBuilderData copyWith(void Function(FileMTimeBuilderData) updates) =>
       super.copyWith((message) => updates(message as FileMTimeBuilderData))
           as FileMTimeBuilderData; // ignore: deprecated_member_use
@@ -200,34 +222,35 @@ class FileMTimeBuilderData extends $pb.GeneratedMessage {
 
 class TzDateTime extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+    const $core.bool.fromEnvironment('protobuf.omit_message_names')
+        ? ''
+        : 'TzDateTime',
+    package: const $pb.PackageName(
       const $core.bool.fromEnvironment('protobuf.omit_message_names')
           ? ''
-          : 'TzDateTime',
-      package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
-              ? ''
-              : 'gitjournal'),
-      createEmptyInstance: create)
+          : 'gitjournal',
+    ),
+    createEmptyInstance: create,
+  )
     ..a<$fixnum.Int64>(
-        1,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'timestamp',
-        $pb.PbFieldType.OU6,
-        defaultOrMaker: $fixnum.Int64.ZERO)
+      1,
+      const $core.bool.fromEnvironment('protobuf.omit_field_names')
+          ? ''
+          : 'timestamp',
+      $pb.PbFieldType.OU6,
+      defaultOrMaker: $fixnum.Int64.ZERO,
+    )
     ..a<$core.int>(
-        2,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'offset',
-        $pb.PbFieldType.O3)
+      2,
+      const $core.bool.fromEnvironment('protobuf.omit_field_names')
+          ? ''
+          : 'offset',
+      $pb.PbFieldType.O3,
+    )
     ..hasRequiredFields = false;
 
   TzDateTime._() : super();
-  factory TzDateTime({
-    $fixnum.Int64? timestamp,
-    $core.int? offset,
-  }) {
+  factory TzDateTime({$fixnum.Int64? timestamp, $core.int? offset}) {
     final _result = create();
     if (timestamp != null) {
       _result.timestamp = timestamp;
@@ -237,19 +260,25 @@ class TzDateTime extends $pb.GeneratedMessage {
     }
     return _result;
   }
-  factory TzDateTime.fromBuffer($core.List<$core.int> i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
-      create()..mergeFromBuffer(i, r);
-  factory TzDateTime.fromJson($core.String i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
-      create()..mergeFromJson(i, r);
-  @$core.Deprecated('Using this can add significant overhead to your binary. '
-      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-      'Will be removed in next major version')
+  factory TzDateTime.fromBuffer(
+    $core.List<$core.int> i, [
+    $pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY,
+  ]) => create()..mergeFromBuffer(i, r);
+  factory TzDateTime.fromJson(
+    $core.String i, [
+    $pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY,
+  ]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+    'Using this can add significant overhead to your binary. '
+    'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+    'Will be removed in next major version',
+  )
   TzDateTime clone() => TzDateTime()..mergeFromMessage(this);
-  @$core.Deprecated('Using this can add significant overhead to your binary. '
-      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-      'Will be removed in next major version')
+  @$core.Deprecated(
+    'Using this can add significant overhead to your binary. '
+    'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+    'Will be removed in next major version',
+  )
   TzDateTime copyWith(void Function(TzDateTime) updates) =>
       super.copyWith((message) => updates(message as TzDateTime))
           as TzDateTime; // ignore: deprecated_member_use
@@ -290,32 +319,35 @@ class TzDateTime extends $pb.GeneratedMessage {
 
 class FileMTimeInfo extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+    const $core.bool.fromEnvironment('protobuf.omit_message_names')
+        ? ''
+        : 'FileMTimeInfo',
+    package: const $pb.PackageName(
       const $core.bool.fromEnvironment('protobuf.omit_message_names')
           ? ''
-          : 'FileMTimeInfo',
-      package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
-              ? ''
-              : 'gitjournal'),
-      createEmptyInstance: create)
+          : 'gitjournal',
+    ),
+    createEmptyInstance: create,
+  )
     ..aOS(
-        1,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'filePath',
-        protoName: 'filePath')
+      1,
+      const $core.bool.fromEnvironment('protobuf.omit_field_names')
+          ? ''
+          : 'filePath',
+      protoName: 'filePath',
+    )
     ..a<$core.List<$core.int>>(
-        2,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'hash',
-        $pb.PbFieldType.OY)
+      2,
+      const $core.bool.fromEnvironment('protobuf.omit_field_names')
+          ? ''
+          : 'hash',
+      $pb.PbFieldType.OY,
+    )
     ..aOM<TzDateTime>(
-        3,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'dt',
-        subBuilder: TzDateTime.create)
+      3,
+      const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'dt',
+      subBuilder: TzDateTime.create,
+    )
     ..hasRequiredFields = false;
 
   FileMTimeInfo._() : super();
@@ -336,19 +368,25 @@ class FileMTimeInfo extends $pb.GeneratedMessage {
     }
     return _result;
   }
-  factory FileMTimeInfo.fromBuffer($core.List<$core.int> i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
-      create()..mergeFromBuffer(i, r);
-  factory FileMTimeInfo.fromJson($core.String i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
-      create()..mergeFromJson(i, r);
-  @$core.Deprecated('Using this can add significant overhead to your binary. '
-      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-      'Will be removed in next major version')
+  factory FileMTimeInfo.fromBuffer(
+    $core.List<$core.int> i, [
+    $pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY,
+  ]) => create()..mergeFromBuffer(i, r);
+  factory FileMTimeInfo.fromJson(
+    $core.String i, [
+    $pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY,
+  ]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+    'Using this can add significant overhead to your binary. '
+    'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+    'Will be removed in next major version',
+  )
   FileMTimeInfo clone() => FileMTimeInfo()..mergeFromMessage(this);
-  @$core.Deprecated('Using this can add significant overhead to your binary. '
-      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-      'Will be removed in next major version')
+  @$core.Deprecated(
+    'Using this can add significant overhead to your binary. '
+    'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+    'Will be removed in next major version',
+  )
   FileMTimeInfo copyWith(void Function(FileMTimeInfo) updates) =>
       super.copyWith((message) => updates(message as FileMTimeInfo))
           as FileMTimeInfo; // ignore: deprecated_member_use

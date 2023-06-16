@@ -7,10 +7,10 @@ part 'type.g.dart';
 
 @Freezed()
 class SonarrFileSystemType with _$SonarrFileSystemType, JsonSerializableMixin {
-  const factory SonarrFileSystemType({
-    required SonarrFileSystemEntity type,
-  }) = _SonarrFileSystemType;
+  const factory SonarrFileSystemType({required SonarrFileSystemEntity type}) =
+      _SonarrFileSystemType;
 
-  factory SonarrFileSystemType.fromJson(Map<String, Object?> json) =>
-      _$SonarrFileSystemTypeFromJson(json);
+  factory SonarrFileSystemType.fromJson(
+    Map<String, Object?> json,
+  ) => _$SonarrFileSystemTypeFromJson(json);
 }

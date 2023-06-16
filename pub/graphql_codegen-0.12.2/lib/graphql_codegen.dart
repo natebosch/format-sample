@@ -16,11 +16,7 @@ Library _generateDocument<TKey extends Object>(
   TKey key,
   GraphQLCodegenConfig config,
 ) {
-  final context = ContextRoot<TKey>(
-    schema: schema,
-    key: key,
-    config: config,
-  );
+  final context = ContextRoot<TKey>(schema: schema, key: key, config: config);
   entry.accept(ContextVisitor(context: context));
   return printRootContext(PrintContext(context));
 }
@@ -34,10 +30,7 @@ class SchemaConfig<TKey> {
   final String Function(TKey) lookupPath;
 
   /// Self explainatory
-  SchemaConfig({
-    required this.entries,
-    required this.lookupPath,
-  });
+  SchemaConfig({required this.entries, required this.lookupPath});
 }
 
 /// This is where the magic happens! It generates
@@ -51,14 +44,6 @@ Library generate<TKey extends Object>(
   /// Configrations containing e.g. clients and scalars.
   GraphQLCodegenConfig config,
 ) {
-  final schema = Schema(
-    schemaConfig.entries,
-    schemaConfig.lookupPath,
-  );
-  return _generateDocument<TKey>(
-    schema,
-    schema.entries[key]!,
-    key,
-    config,
-  );
+  final schema = Schema(schemaConfig.entries, schemaConfig.lookupPath);
+  return _generateDocument<TKey>(schema, schema.entries[key]!, key, config);
 }

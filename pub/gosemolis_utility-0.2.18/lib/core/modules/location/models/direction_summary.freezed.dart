@@ -12,7 +12,8 @@ part of 'direction_summary.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods',
+);
 
 DirectionsSummary _$DirectionsSummaryFromJson(Map<String, dynamic> json) {
   return _DirectionsSummary.fromJson(json);
@@ -32,8 +33,9 @@ mixin _$DirectionsSummary {
 /// @nodoc
 abstract class $DirectionsSummaryCopyWith<$Res> {
   factory $DirectionsSummaryCopyWith(
-          DirectionsSummary value, $Res Function(DirectionsSummary) then) =
-      _$DirectionsSummaryCopyWithImpl<$Res, DirectionsSummary>;
+    DirectionsSummary value,
+    $Res Function(DirectionsSummary) then,
+  ) = _$DirectionsSummaryCopyWithImpl<$Res, DirectionsSummary>;
   @useResult
   $Res call({String? text, double? value});
 }
@@ -50,29 +52,29 @@ class _$DirectionsSummaryCopyWithImpl<$Res, $Val extends DirectionsSummary>
 
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? text = freezed,
-    Object? value = freezed,
-  }) {
-    return _then(_value.copyWith(
-      text: freezed == text
-          ? _value.text
-          : text // ignore: cast_nullable_to_non_nullable
-              as String?,
-      value: freezed == value
-          ? _value.value
-          : value // ignore: cast_nullable_to_non_nullable
-              as double?,
-    ) as $Val);
+  $Res call({Object? text = freezed, Object? value = freezed}) {
+    return _then(
+      _value.copyWith(
+        text: freezed == text
+            ? _value.text
+            : text // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        value: freezed == value
+            ? _value.value
+            : value // ignore: cast_nullable_to_non_nullable
+                  as double?,
+      ) as $Val,
+    );
   }
 }
 
 /// @nodoc
 abstract class _$$_DirectionsSummaryCopyWith<$Res>
     implements $DirectionsSummaryCopyWith<$Res> {
-  factory _$$_DirectionsSummaryCopyWith(_$_DirectionsSummary value,
-          $Res Function(_$_DirectionsSummary) then) =
-      __$$_DirectionsSummaryCopyWithImpl<$Res>;
+  factory _$$_DirectionsSummaryCopyWith(
+    _$_DirectionsSummary value,
+    $Res Function(_$_DirectionsSummary) then,
+  ) = __$$_DirectionsSummaryCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String? text, double? value});
@@ -83,24 +85,22 @@ class __$$_DirectionsSummaryCopyWithImpl<$Res>
     extends _$DirectionsSummaryCopyWithImpl<$Res, _$_DirectionsSummary>
     implements _$$_DirectionsSummaryCopyWith<$Res> {
   __$$_DirectionsSummaryCopyWithImpl(
-      _$_DirectionsSummary _value, $Res Function(_$_DirectionsSummary) _then)
-      : super(_value, _then);
+    _$_DirectionsSummary _value,
+    $Res Function(_$_DirectionsSummary) _then,
+  ) : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? text = freezed,
-    Object? value = freezed,
-  }) {
+  $Res call({Object? text = freezed, Object? value = freezed}) {
     return _then(_$_DirectionsSummary(
       text: freezed == text
           ? _value.text
           : text // ignore: cast_nullable_to_non_nullable
-              as String?,
+                as String?,
       value: freezed == value
           ? _value.value
           : value // ignore: cast_nullable_to_non_nullable
-              as double?,
+                as double?,
     ));
   }
 }
@@ -110,8 +110,9 @@ class __$$_DirectionsSummaryCopyWithImpl<$Res>
 class _$_DirectionsSummary implements _DirectionsSummary {
   const _$_DirectionsSummary({required this.text, required this.value});
 
-  factory _$_DirectionsSummary.fromJson(Map<String, dynamic> json) =>
-      _$$_DirectionsSummaryFromJson(json);
+  factory _$_DirectionsSummary.fromJson(
+    Map<String, dynamic> json,
+  ) => _$$_DirectionsSummaryFromJson(json);
 
   @override
   final String? text;
@@ -139,22 +140,23 @@ class _$_DirectionsSummary implements _DirectionsSummary {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_DirectionsSummaryCopyWith<_$_DirectionsSummary> get copyWith =>
-      __$$_DirectionsSummaryCopyWithImpl<_$_DirectionsSummary>(
-          this, _$identity);
+  _$$_DirectionsSummaryCopyWith<_$_DirectionsSummary>
+  get copyWith => __$$_DirectionsSummaryCopyWithImpl<_$_DirectionsSummary>(
+    this,
+    _$identity,
+  );
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_DirectionsSummaryToJson(
-      this,
-    );
+    return _$$_DirectionsSummaryToJson(this);
   }
 }
 
 abstract class _DirectionsSummary implements DirectionsSummary {
-  const factory _DirectionsSummary(
-      {required final String? text,
-      required final double? value}) = _$_DirectionsSummary;
+  const factory _DirectionsSummary({
+    required final String? text,
+    required final double? value,
+  }) = _$_DirectionsSummary;
 
   factory _DirectionsSummary.fromJson(Map<String, dynamic> json) =
       _$_DirectionsSummary.fromJson;

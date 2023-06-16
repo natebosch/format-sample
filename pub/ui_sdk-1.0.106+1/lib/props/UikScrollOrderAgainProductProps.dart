@@ -16,8 +16,9 @@ class UikScrollOrderAgainProductProps extends WidgetProps {
 
   UikScrollOrderAgainProductProps();
 
-  factory UikScrollOrderAgainProductProps.fromJson(Map<String, dynamic> json) =>
-      $UikScrollOrderAgainProductPropsFromJson(json);
+  factory UikScrollOrderAgainProductProps.fromJson(
+    Map<String, dynamic> json,
+  ) => $UikScrollOrderAgainProductPropsFromJson(json);
 
   @override
   String toString() {

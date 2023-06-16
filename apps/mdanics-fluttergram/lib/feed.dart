@@ -21,13 +21,12 @@ class _Feed extends State<Feed> with AutomaticKeepAliveClientMixin<Feed> {
 
   buildFeed() {
     if (feedData != null) {
-      return ListView(
-        children: feedData,
-      );
+      return ListView(children: feedData);
     } else {
       return Container(
-          alignment: FractionalOffset.center,
-          child: CircularProgressIndicator());
+        alignment: FractionalOffset.center,
+        child: CircularProgressIndicator(),
+      );
     }
   }
 
@@ -37,16 +36,18 @@ class _Feed extends State<Feed> with AutomaticKeepAliveClientMixin<Feed> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Fluttergram',
-            style: const TextStyle(
-                fontFamily: "Billabong", color: Colors.black, fontSize: 35.0)),
+        title: const Text(
+          'Fluttergram',
+          style: const TextStyle(
+            fontFamily: "Billabong",
+            color: Colors.black,
+            fontSize: 35.0,
+          ),
+        ),
         centerTitle: true,
         backgroundColor: Colors.white,
       ),
-      body: RefreshIndicator(
-        onRefresh: _refresh,
-        child: buildFeed(),
-      ),
+      body: RefreshIndicator(onRefresh: _refresh, child: buildFeed()),
     );
   }
 

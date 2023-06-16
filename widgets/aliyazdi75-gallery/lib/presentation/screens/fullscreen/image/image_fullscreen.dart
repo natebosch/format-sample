@@ -16,9 +16,7 @@ class ImageFullscreen extends StatelessWidget {
         heroTag: albumPath,
         onPressed: () => Navigator.of(context).pop(),
         icon: const BackButtonIcon(),
-        label: Text(
-          MaterialLocalizations.of(context).backButtonTooltip,
-        ),
+        label: Text(MaterialLocalizations.of(context).backButtonTooltip),
       ),
       body: PhotoView(
         imageProvider: NetworkImage(media.thumbnail),

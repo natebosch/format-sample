@@ -10,33 +10,31 @@ class ProductInfo extends StatelessWidget {
   Widget build(BuildContext context) {
     final ProductStore productStore = Provider.of(context);
     return Observer(
-        name: "Product Screen Observer",
-        builder: (_) {
-          productStore.startAnimation();
-          return AnimatedOpacity(
-            duration: Duration(milliseconds: 400),
+      name: "Product Screen Observer",
+      builder: (_) {
+        productStore.startAnimation();
+        return AnimatedOpacity(
+          duration: Duration(milliseconds: 400),
+          curve: Curves.decelerate,
+          opacity: productStore.infoCardOpacity,
+          child: AnimatedContainer(
             curve: Curves.decelerate,
-            opacity: productStore.infoCardOpacity,
-            child: AnimatedContainer(
-              curve: Curves.decelerate,
-              duration: Duration(milliseconds: 200),
-              transform: Matrix4.translationValues(
-                  0, productStore.infoCardVerticalPosition, 0),
-              height: 400,
-              child: Stack(
-                children: <Widget>[
-                  Align(
-                    alignment: Alignment.bottomCenter,
-                    child: InfoCard(),
-                  ),
-                  Align(
-                    alignment: Alignment(0.7, -1),
-                    child: FavouriteButton(),
-                  ),
-                ],
-              ),
+            duration: Duration(milliseconds: 200),
+            transform: Matrix4.translationValues(
+              0,
+              productStore.infoCardVerticalPosition,
+              0,
             ),
-          );
-        });
+            height: 400,
+            child: Stack(
+              children: <Widget>[
+                Align(alignment: Alignment.bottomCenter, child: InfoCard()),
+                Align(alignment: Alignment(0.7, -1), child: FavouriteButton()),
+              ],
+            ),
+          ),
+        );
+      },
+    );
   }
 }

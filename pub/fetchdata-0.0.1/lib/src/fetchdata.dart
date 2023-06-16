@@ -44,16 +44,16 @@ class _FetchdataState extends State<Fetchdata> {
         height: widget.height,
         decoration: BoxDecoration(
           borderRadius: const BorderRadius.all(Radius.circular(20.0)),
-          gradient: LinearGradient(colors: [
-            widget.color1 ?? const Color(0xFFCB1841),
-            widget.color2 ?? const Color(0xFF2604DE)
-          ], begin: Alignment.topLeft, end: Alignment.bottomRight),
+          gradient: LinearGradient(
+            colors: [
+              widget.color1 ?? const Color(0xFFCB1841),
+              widget.color2 ?? const Color(0xFF2604DE),
+            ],
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+          ),
           boxShadow: const [
-            BoxShadow(
-              color: Colors.grey,
-              blurRadius: 12,
-              offset: Offset(0, 6),
-            ),
+            BoxShadow(color: Colors.grey, blurRadius: 12, offset: Offset(0, 6)),
           ],
         ),
         child: Column(

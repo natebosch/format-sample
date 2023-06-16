@@ -77,7 +77,6 @@ case_noDefault(int e) {
 
 condition() {
   late int v;
-  switch (v = 0) {
-  }
+  switch (v = 0) {}
   v;
 }

@@ -4,12 +4,13 @@ import 'package:core_custom_tools/util/coordinates/endereco.dart';
 class ConvertPlacemarkToEndereco {
   static Endereco convert(Placemark p) {
     return Endereco(
-        rua: p.street ?? "",
-        numero: p.subThoroughfare ?? "",
-        bairro: p.subLocality ?? "",
-        cidade: p.subAdministrativeArea ?? "",
-        estado: p.administrativeArea ?? "",
-        pais: p.country ?? "");
+      rua: p.street ?? "",
+      numero: p.subThoroughfare ?? "",
+      bairro: p.subLocality ?? "",
+      cidade: p.subAdministrativeArea ?? "",
+      estado: p.administrativeArea ?? "",
+      pais: p.country ?? "",
+    );
   }
 
   static List<Endereco> convertList(List<Placemark> placemarks) {

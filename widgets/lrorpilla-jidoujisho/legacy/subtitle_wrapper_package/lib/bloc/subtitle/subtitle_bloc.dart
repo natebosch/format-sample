@@ -29,9 +29,7 @@ class SubtitleBloc extends Bloc<SubtitleEvent, SubtitleState> {
   }
 
   @override
-  Stream<SubtitleState> mapEventToState(
-    SubtitleEvent event,
-  ) async* {
+  Stream<SubtitleState> mapEventToState(SubtitleEvent event) async* {
     if (event is LoadSubtitle) {
       yield* loadSubtitle();
     } else if (event is InitSubtitles) {

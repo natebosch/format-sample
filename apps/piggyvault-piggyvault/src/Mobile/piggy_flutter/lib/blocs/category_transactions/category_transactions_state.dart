@@ -24,15 +24,18 @@ class CategoryTransactionsLoaded extends CategoryTransactionsState {
   final TransactionsResult filterdCategoryTransactions;
   final GetTransactionsInput filters;
 
-  CategoryTransactionsLoaded(
-      {@required this.allCategoryTransactions,
-      @required this.filterdCategoryTransactions,
-      @required this.filters})
-      : super(filters);
+  CategoryTransactionsLoaded({
+    @required this.allCategoryTransactions,
+    @required this.filterdCategoryTransactions,
+    @required this.filters,
+  }) : super(filters);
 
   @override
-  List<Object> get props =>
-      [allCategoryTransactions, filterdCategoryTransactions, filters];
+  List<Object> get props => [
+    allCategoryTransactions,
+    filterdCategoryTransactions,
+    filters,
+  ];
 }
 
 class CategoryTransactionsError extends CategoryTransactionsState {

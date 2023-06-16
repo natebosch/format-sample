@@ -20,8 +20,10 @@ class SmolTextTabbingBarComponent extends StatefulWidget {
   /// [textRyan(), callAmanda(), facetimeFouzan()]
   final List<VoidCallback> itemActions;
 
-  const SmolTextTabbingBarComponent(
-      {required this.itemTitles, required this.itemActions});
+  const SmolTextTabbingBarComponent({
+    required this.itemTitles,
+    required this.itemActions,
+  });
 
   @override
   _SmolTextTabbingBarComponentState createState() =>
@@ -67,25 +69,27 @@ class _SmolTextTabbingBarComponentState
       tabButtons.add(Padding(
         padding: const EdgeInsets.fromLTRB(0.0, 3.0, 15.0, 3.0),
         child: SmolButtonElement(
-            decorationVariant: element.tabPriority!,
-            buttonTitle: element.tabTitle,
-            buttonHint: 'Changes selected tab to ${element.tabTitle}.',
-            buttonAction: () => {
-                  element.onTabSelection(),
-                }),
+          decorationVariant: element.tabPriority!,
+          buttonTitle: element.tabTitle,
+          buttonHint: 'Changes selected tab to ${element.tabTitle}.',
+          buttonAction: () => {element.onTabSelection()},
+        ),
       ));
     }
 
     var smolTextContent = Row(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        mainAxisSize: MainAxisSize.min,
-        children: tabButtons);
+      crossAxisAlignment: CrossAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      mainAxisSize: MainAxisSize.min,
+      children: tabButtons,
+    );
 
     var smolTextContainer = Column(
       children: [
         SingleChildScrollView(
-            scrollDirection: Axis.horizontal, child: smolTextContent),
+          scrollDirection: Axis.horizontal,
+          child: smolTextContent,
+        ),
       ],
     );
 

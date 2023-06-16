@@ -15,8 +15,9 @@ typedef ComputeCallback<Q, R> = FutureOr<R> Function(Q message);
 /// Note: On web this falls back to using [scheduleMicrotask]
 abstract class ComputePool {
   /// Create a new compute pool with the requested number of worker isolates
-  factory ComputePool.createWith({int workersCount = 2}) =>
-      ComputePoolImpl.createWith(workersCount: workersCount);
+  factory ComputePool.createWith({
+    int workersCount = 2,
+  }) => ComputePoolImpl.createWith(workersCount: workersCount);
 
   /// Shuts down the compute pool. Submitting new work will result in an
   /// error future being returned
@@ -27,6 +28,9 @@ abstract class ComputePool {
   void shutdown();
 
   /// Submit a task to be executed on an isolate in this pool
-  Future<R> compute<Q, R>(ComputeCallback<Q, R> callback, Q message,
-      {String? debugLabel});
+  Future<R> compute<Q, R>(
+    ComputeCallback<Q, R> callback,
+    Q message, {
+    String? debugLabel,
+  });
 }

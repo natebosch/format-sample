@@ -25,23 +25,26 @@ void main() {
 
       when(() => mockLocalization.logIn).thenReturn('Log in');
       when(() => mockLocalization.logOut).thenReturn('Log out');
-      when(() => mockAuthService.isLoggedInStream).thenAnswer((_) => isLoggedInStreamController.stream);
+      when(() => mockAuthService.isLoggedInStream).thenAnswer(
+        (_) => isLoggedInStreamController.stream,
+      );
     });
 
     testWidgets('Shows correct button text', (WidgetTester tester) async {
       when(() => mockAuthService.isLoggedIn).thenReturn(false);
 
       final driverTester = await tester.getDriverTester<LogInOutButtonDriver>(
-          driverBuilder: () => LogInOutButtonDriver(),
-          parentWidgetBuilder: (driverWidget) {
-            return MultiProvider(
-              providers: [
-                Provider<Localization>.value(value: mockLocalization),
-                Provider<AuthService>.value(value: mockAuthService),
-              ],
-              child: driverWidget,
-            );
-          });
+        driverBuilder: () => LogInOutButtonDriver(),
+        parentWidgetBuilder: (driverWidget) {
+          return MultiProvider(
+            providers: [
+              Provider<Localization>.value(value: mockLocalization),
+              Provider<AuthService>.value(value: mockAuthService),
+            ],
+            child: driverWidget,
+          );
+        },
+      );
 
       final driver = driverTester.driver;
       expect(driver.buttonText, equals('Log in'));
@@ -50,10 +53,12 @@ void main() {
       expect(driver.buttonText, equals('Log out'));
     });
 
-    testWidgets('Handles log in/out toggle button correctly', (WidgetTester tester) async {
-      when(() => mockAuthService.isLoggedIn).thenReturn(false);
+    testWidgets(
+      'Handles log in/out toggle button correctly',
+      (WidgetTester tester) async {
+        when(() => mockAuthService.isLoggedIn).thenReturn(false);
 
-      final driverTester = await tester.getDriverTester<LogInOutButtonDriver>(
+        final driverTester = await tester.getDriverTester<LogInOutButtonDriver>(
           driverBuilder: () => LogInOutButtonDriver(),
           parentWidgetBuilder: (driverWidget) {
             return MultiProvider(
@@ -63,21 +68,25 @@ void main() {
               ],
               child: driverWidget,
             );
-          });
+          },
+        );
 
-      final driver = driverTester.driver;
-      driver.toggleLogInOut();
-      verify(() => mockAuthService.logIn()).called(1);
-      verifyNever(() => mockAuthService.logOut());
+        final driver = driverTester.driver;
+        driver.toggleLogInOut();
+        verify(() => mockAuthService.logIn()).called(1);
+        verifyNever(() => mockAuthService.logOut());
 
-      when(() => mockAuthService.isLoggedIn).thenReturn(true);
-      driver.toggleLogInOut();
-      verifyNever(() => mockAuthService.logIn());
-      verify(() => mockAuthService.logOut()).called(1);
-    });
+        when(() => mockAuthService.isLoggedIn).thenReturn(true);
+        driver.toggleLogInOut();
+        verifyNever(() => mockAuthService.logIn());
+        verify(() => mockAuthService.logOut()).called(1);
+      },
+    );
 
-    testWidgets('When isLoggedInStream emits then notifyWidgets is called', (WidgetTester tester) async {
-      final driverTester = await tester.getDriverTester<LogInOutButtonDriver>(
+    testWidgets(
+      'When isLoggedInStream emits then notifyWidgets is called',
+      (WidgetTester tester) async {
+        final driverTester = await tester.getDriverTester<LogInOutButtonDriver>(
           driverBuilder: () => LogInOutButtonDriver(),
           parentWidgetBuilder: (driverWidget) {
             return MultiProvider(
@@ -87,15 +96,20 @@ void main() {
               ],
               child: driverWidget,
             );
-          });
+          },
+        );
 
-      isLoggedInStreamController.add(true);
-      isLoggedInStreamController.add(false);
+        isLoggedInStreamController.add(true);
+        isLoggedInStreamController.add(false);
 
-      // Wait for the driver to receive 2 notifyWidget calls.
-      await driverTester.waitForNotifyWidget(numberOfCalls: 2, requireExactNumberOfCalls: true);
-      // Verify no more calls to `notifyWidget`
-      await driverTester.verifyNoMoreCallsToNotifyWidget();
-    });
+        // Wait for the driver to receive 2 notifyWidget calls.
+        await driverTester.waitForNotifyWidget(
+          numberOfCalls: 2,
+          requireExactNumberOfCalls: true,
+        );
+        // Verify no more calls to `notifyWidget`
+        await driverTester.verifyNoMoreCallsToNotifyWidget();
+      },
+    );
   });
 }

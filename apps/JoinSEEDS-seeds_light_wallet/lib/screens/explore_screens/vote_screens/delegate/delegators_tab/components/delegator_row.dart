@@ -19,10 +19,15 @@ class DelegatorRow extends StatelessWidget {
         nickname: delegator.nickname,
       ),
       title: Text(
-        (!delegator.nickname.isNullOrEmpty) ? delegator.nickname : delegator.nickname,
+        (!delegator.nickname.isNullOrEmpty)
+            ? delegator.nickname
+            : delegator.nickname,
         style: Theme.of(context).textTheme.button,
       ),
-      subtitle: Text(delegator.account, style: Theme.of(context).textTheme.subtitle2OpacityEmphasis),
+      subtitle: Text(
+        delegator.account,
+        style: Theme.of(context).textTheme.subtitle2OpacityEmphasis,
+      ),
     );
   }
 }

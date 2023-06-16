@@ -46,8 +46,9 @@ class Queue extends StatelessWidget {
   void addTracktoPlaylist(track, playlist) async {
     Database db = await idbFactory.open('musicDB');
 
-    ObjectStore ob =
-        db.transaction('tracks', 'readwrite').objectStore('tracks');
+    ObjectStore ob = db.transaction('tracks', 'readwrite').objectStore(
+      'tracks',
+    );
     if (await ob.getObject(track["videoId"]) != null) {
       track = await ob.getObject(track['videoId']);
     }
@@ -63,37 +64,35 @@ class Queue extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(children: <Widget>[
-      Container(
-        padding: EdgeInsets.all(8),
-        child: Text(
-          "Queue",
-          style: Theme.of(context).textTheme.title,
+    return Column(
+      children: <Widget>[
+        Container(
+          padding: EdgeInsets.all(8),
+          child: Text("Queue", style: Theme.of(context).textTheme.title),
         ),
-      ),
-      ButtonBar(
-        children: <Widget>[
-          RaisedButton.icon(
-            icon: Icon(Icons.queue_music),
-            color: Theme.of(context).primaryColor,
-            label: Text("Save as Queue"),
-            onPressed: () async {
-              var pname = await mainKey.currentState.createPlaylist();
-              if (pname != false) {
-                for (var t in queue.value) {
-                  await addTracktoPlaylist(t, pname);
+        ButtonBar(
+          children: <Widget>[
+            RaisedButton.icon(
+              icon: Icon(Icons.queue_music),
+              color: Theme.of(context).primaryColor,
+              label: Text("Save as Queue"),
+              onPressed: () async {
+                var pname = await mainKey.currentState.createPlaylist();
+                if (pname != false) {
+                  for (var t in queue.value) {
+                    await addTracktoPlaylist(t, pname);
+                  }
+                  Navigator.of(context).pop();
                 }
-                Navigator.of(context).pop();
-              }
-            },
-          ),
-          RaisedButton.icon(
-            icon: Icon(Icons.add_to_queue),
-            color: Theme.of(context).primaryColor,
-            label: Text("Add to Queue"),
-            onPressed: () async {
-              var pl = await getPlaylists();
-              showDialog(
+              },
+            ),
+            RaisedButton.icon(
+              icon: Icon(Icons.add_to_queue),
+              color: Theme.of(context).primaryColor,
+              label: Text("Add to Queue"),
+              onPressed: () async {
+                var pl = await getPlaylists();
+                showDialog(
                   context: context,
                   builder: (context) {
                     return AlertDialog(
@@ -111,35 +110,41 @@ class Queue extends StatelessWidget {
                                   Navigator.of(context).pop();
                                 },
                               ),
-                            )
+                            ),
                         ],
                       ),
                     );
-                  });
-            },
-          ),
-        ],
-      ),
-      ValueListenableBuilder(
-        valueListenable: mainState.currentIndex,
-        builder: (context, i, wid) {
-          return StatefulBuilder(builder: (context, setState) {
-            return Expanded(
-              child: ReorderableListView(
-                children: buildList(),
-                onReorder: (i, j) {
-                  setState(() {
-                    var current = queue.value[mainState.currentIndex.value];
-                    var t = queue.value.removeAt(i);
-                    queue.value.insert(i < j ? j - 1 : j, t);
-                    mainState.currentIndex.value = queue.value.indexOf(current);
-                  });
-                },
-              ),
+                  },
+                );
+              },
+            ),
+          ],
+        ),
+        ValueListenableBuilder(
+          valueListenable: mainState.currentIndex,
+          builder: (context, i, wid) {
+            return StatefulBuilder(
+              builder: (context, setState) {
+                return Expanded(
+                  child: ReorderableListView(
+                    children: buildList(),
+                    onReorder: (i, j) {
+                      setState(() {
+                        var current = queue.value[mainState.currentIndex.value];
+                        var t = queue.value.removeAt(i);
+                        queue.value.insert(i < j ? j - 1 : j, t);
+                        mainState.currentIndex.value = queue.value.indexOf(
+                          current,
+                        );
+                      });
+                    },
+                  ),
+                );
+              },
             );
-          });
-        },
-      )
-    ]);
+          },
+        ),
+      ],
+    );
   }
 }

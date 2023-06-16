@@ -10,8 +10,8 @@ abstract class PuzzleStore {
   static const storeName = 'puzzles';
   static const Uuid _uuid = Uuid();
 
-  static Future<Map<String, String>> registry() =>
-      NamedDataStorage.active.readRegistry(storeName);
+  static Future<Map<String, String>> registry() => NamedDataStorage.active
+      .readRegistry(storeName);
 
   static Future<String?> saveNewPuzzle(NamedPuzzleData puzzleData) async {
     final Map<String, String> registry =
@@ -19,8 +19,11 @@ abstract class PuzzleStore {
     final String uuid =
         _uuid.v4(); // Assume that the registry doesn't contain the new uuid.
 
-    bool dataWritten = await NamedDataStorage.active
-        .writeData(storeName, uuid, jsonEncode(puzzleData.puzzleData.toJson()));
+    bool dataWritten = await NamedDataStorage.active.writeData(
+      storeName,
+      uuid,
+      jsonEncode(puzzleData.puzzleData.toJson()),
+    );
 
     if (dataWritten) {
       registry[uuid] = puzzleData.name;
@@ -32,8 +35,11 @@ abstract class PuzzleStore {
   }
 
   static Future<bool> updatePuzzle(String uuid, PuzzleData puzzleData) async {
-    return NamedDataStorage.active
-        .writeData(storeName, uuid, jsonEncode(puzzleData.toJson()));
+    return NamedDataStorage.active.writeData(
+      storeName,
+      uuid,
+      jsonEncode(puzzleData.toJson()),
+    );
   }
 
   static Future<NamedPuzzleData?> readPuzzle(String uuid) async {
@@ -44,8 +50,9 @@ abstract class PuzzleStore {
 
     if (registry.containsKey(uuid) && jsonEncoded != null)
       return NamedPuzzleData.fromPuzzleData(
-          name: registry[uuid]!,
-          puzzleData: PuzzleData.fromJson(jsonDecode(jsonEncoded)));
+        name: registry[uuid]!,
+        puzzleData: PuzzleData.fromJson(jsonDecode(jsonEncoded)),
+      );
   }
 
   static Future<bool> deletePuzzle(String uuid) async {

@@ -28,8 +28,11 @@ class ChangingNameSheet extends StatefulWidget {
   final AccountName newName;
   final Currency fee;
 
-  ChangingNameSheet(
-      {@required this.account, @required this.newName, @required this.fee});
+  ChangingNameSheet({
+    @required this.account,
+    @required this.newName,
+    @required this.fee,
+  });
 
   _ChangingNameSheetState createState() => _ChangingNameSheetState();
 }
@@ -44,10 +47,10 @@ class _ChangingNameSheetState extends State<ChangingNameSheet> {
     _authSub = EventTaxiImpl.singleton()
         .registerTo<AuthenticatedEvent>()
         .listen((event) {
-      if (event.authType == AUTH_EVENT_TYPE.CHANGE) {
-        doChange();
-      }
-    });
+          if (event.authType == AUTH_EVENT_TYPE.CHANGE) {
+            doChange();
+          }
+        });
   }
 
   void _destroyBus() {
@@ -73,30 +76,31 @@ class _ChangingNameSheetState extends State<ChangingNameSheet> {
     OverlayState overlayState = Overlay.of(context);
     _overlay = OverlayEntry(
       builder: (context) => BackdropFilter(
-        filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
-        child: Container(
-          width: double.maxFinite,
-          height: double.maxFinite,
-          color: StateContainer.of(context).curTheme.overlay20,
-          child: Center(
-            child: //Container for the animation
-                Container(
-              margin: EdgeInsetsDirectional.only(
-                  top: MediaQuery.of(context).padding.top),
-              //Width/Height ratio for the animation is needed because BoxFit is not working as expected
+            filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
+            child: Container(
               width: double.maxFinite,
-              height: MediaQuery.of(context).size.width,
+              height: double.maxFinite,
+              color: StateContainer.of(context).curTheme.overlay20,
               child: Center(
-                child: FlareActor(
-                  StateContainer.of(context).curTheme.animationNameChange,
-                  animation: "main",
-                  fit: BoxFit.contain,
+                child: //Container for the animation
+                    Container(
+                  margin: EdgeInsetsDirectional.only(
+                    top: MediaQuery.of(context).padding.top,
+                  ),
+                  //Width/Height ratio for the animation is needed because BoxFit is not working as expected
+                  width: double.maxFinite,
+                  height: MediaQuery.of(context).size.width,
+                  child: Center(
+                    child: FlareActor(
+                      StateContainer.of(context).curTheme.animationNameChange,
+                      animation: "main",
+                      fit: BoxFit.contain,
+                    ),
+                  ),
                 ),
               ),
             ),
           ),
-        ),
-      ),
     );
     overlayState.insert(_overlay);
   }
@@ -137,30 +141,34 @@ class _ChangingNameSheetState extends State<ChangingNameSheet> {
                         height: 50,
                         width: 50,
                         child: FlatButton(
-                            highlightColor:
-                                StateContainer.of(context).curTheme.textLight15,
-                            splashColor:
-                                StateContainer.of(context).curTheme.textLight30,
-                            onPressed: () {
-                              Navigator.of(context).pop();
-                            },
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(50.0)),
-                            padding: EdgeInsets.all(0.0),
-                            child: Icon(AppIcons.close,
-                                color: StateContainer.of(context)
-                                    .curTheme
-                                    .textLight,
-                                size: 20)),
+                          highlightColor:
+                              StateContainer.of(context).curTheme.textLight15,
+                          splashColor:
+                              StateContainer.of(context).curTheme.textLight30,
+                          onPressed: () {
+                            Navigator.of(context).pop();
+                          },
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(50.0),
+                          ),
+                          padding: EdgeInsets.all(0.0),
+                          child: Icon(
+                            AppIcons.close,
+                            color:
+                                StateContainer.of(context).curTheme.textLight,
+                            size: 20,
+                          ),
+                        ),
                       ),
                       // Header
                       Container(
                         width: MediaQuery.of(context).size.width - 130,
                         alignment: Alignment(0, 0),
                         child: AutoSizeText(
-                          toUppercase(AppLocalization.of(context)
-                              .changingNameSheetHeader
-                              ,context),
+                          toUppercase(
+                            AppLocalization.of(context).changingNameSheetHeader,
+                            context,
+                          ),
                           style: AppStyles.header(context),
                           maxLines: 1,
                           stepGranularity: 0.1,
@@ -168,10 +176,7 @@ class _ChangingNameSheetState extends State<ChangingNameSheet> {
                         ),
                       ),
                       // Sized Box
-                      SizedBox(
-                        height: 50,
-                        width: 65,
-                      ),
+                      SizedBox(height: 50, width: 65),
                     ],
                   ),
                 ),
@@ -210,10 +215,10 @@ class _ChangingNameSheetState extends State<ChangingNameSheet> {
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(12),
                           border: Border.all(
-                              width: 1,
-                              color: StateContainer.of(context)
-                                  .curTheme
-                                  .textDark15),
+                            width: 1,
+                            color:
+                                StateContainer.of(context).curTheme.textDark15,
+                          ),
                           color: StateContainer.of(context).curTheme.textDark10,
                         ),
                         child: AutoSizeText(
@@ -249,10 +254,11 @@ class _ChangingNameSheetState extends State<ChangingNameSheet> {
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(12),
                                 border: Border.all(
-                                    width: 1,
-                                    color: StateContainer.of(context)
-                                        .curTheme
-                                        .primary15),
+                                  width: 1,
+                                  color: StateContainer.of(context)
+                                      .curTheme
+                                      .primary15,
+                                ),
                                 color: StateContainer.of(context)
                                     .curTheme
                                     .primary10,
@@ -264,23 +270,24 @@ class _ChangingNameSheetState extends State<ChangingNameSheet> {
                                       text: "",
                                       style: AppStyles
                                           .iconFontPrimaryBalanceSmallPascal(
-                                              context),
+                                        context,
+                                      ),
                                     ),
                                     TextSpan(
-                                        text: " ",
-                                        style: TextStyle(fontSize: 8)),
+                                      text: " ",
+                                      style: TextStyle(fontSize: 8),
+                                    ),
                                     TextSpan(
-                                        text: widget.fee.toStringOpt(),
-                                        style: AppStyles.balanceSmall(context)),
+                                      text: widget.fee.toStringOpt(),
+                                      style: AppStyles.balanceSmall(context),
+                                    ),
                                   ],
                                 ),
                                 textAlign: TextAlign.center,
                                 maxLines: 1,
                                 minFontSize: 8,
                                 stepGranularity: 1,
-                                style: TextStyle(
-                                  fontSize: 14,
-                                ),
+                                style: TextStyle(fontSize: 14),
                               ),
                             )
                           : SizedBox(),
@@ -294,14 +301,16 @@ class _ChangingNameSheetState extends State<ChangingNameSheet> {
                   children: <Widget>[
                     AppButton(
                       type: AppButtonType.Primary,
-                      text: toUppercase(AppLocalization.of(context)
-                          .confirmButton
-                          ,context),
+                      text: toUppercase(
+                        AppLocalization.of(context).confirmButton,
+                        context,
+                      ),
                       buttonTop: true,
                       onPressed: () async {
                         if (await authenticate()) {
-                          EventTaxiImpl.singleton()
-                              .fire(AuthenticatedEvent(AUTH_EVENT_TYPE.CHANGE));
+                          EventTaxiImpl.singleton().fire(
+                            AuthenticatedEvent(AUTH_EVENT_TYPE.CHANGE),
+                          );
                         }
                       },
                     ),
@@ -312,9 +321,10 @@ class _ChangingNameSheetState extends State<ChangingNameSheet> {
                   children: <Widget>[
                     AppButton(
                       type: AppButtonType.PrimaryOutline,
-                      text: toUppercase(AppLocalization.of(context)
-                          .cancelButton
-                          ,context),
+                      text: toUppercase(
+                        AppLocalization.of(context).cancelButton,
+                        context,
+                      ),
                       onPressed: () {
                         Navigator.of(context).pop();
                       },
@@ -337,7 +347,10 @@ class _ChangingNameSheetState extends State<ChangingNameSheet> {
           await accountState.changeAccountName(widget.newName, fee: fee);
       if (result.isError) {
         ErrorResponse errResp = result;
-        UIUtil.showSnackbar(errResp.errorMessage.replaceAll("founds", "funds"), context);
+        UIUtil.showSnackbar(
+          errResp.errorMessage.replaceAll("founds", "funds"),
+          context,
+        );
         _overlay?.remove();
         Navigator.of(context).pop();
       } else {
@@ -350,38 +363,44 @@ class _ChangingNameSheetState extends State<ChangingNameSheet> {
             walletState.updateAccountName(widget.account, widget.newName);
             Navigator.of(context).popUntil(RouteUtils.withNameLike("/account"));
             AppSheets.showBottomSheet(
-                context: context,
-                closeOnTap: true,
-                widget: ChangedNameSheet(
-                  newName: widget.newName,
-                  fee: fee,
-                ));
+              context: context,
+              closeOnTap: true,
+              widget: ChangedNameSheet(newName: widget.newName, fee: fee),
+            );
           } else {
             if (op.errors.contains("zero fee") &&
                 widget.fee == walletState.NO_FEE) {
               UIUtil.showFeeDialog(
-                  context: context,
-                  onConfirm: () async {
-                    Navigator.of(context).pop();
-                    doChange(fee: walletState.MIN_FEE);
-                  });
+                context: context,
+                onConfirm: () async {
+                  Navigator.of(context).pop();
+                  doChange(fee: walletState.MIN_FEE);
+                },
+              );
             } else {
               UIUtil.showSnackbar("${op.errors}", context);
             }
           }
         } catch (e) {
           UIUtil.showSnackbar(
-              AppLocalization.of(context).somethingWentWrongError, context);
+            AppLocalization.of(context).somethingWentWrongError,
+            context,
+          );
         }
       }
     } catch (e) {
       _overlay?.remove();
       UIUtil.showSnackbar(
-          AppLocalization.of(context).somethingWentWrongError, context);
+        AppLocalization.of(context).somethingWentWrongError,
+        context,
+      );
     }
   }
 
-  Future<bool> _authenticateBiometrics(AuthUtil authUtil, String message) async {
+  Future<bool> _authenticateBiometrics(
+    AuthUtil authUtil,
+    String message,
+  ) async {
     // Biometric auth
     bool authenticated = await authUtil.authenticateWithBiometrics(message);
     if (authenticated) {
@@ -391,9 +410,9 @@ class _ChangingNameSheetState extends State<ChangingNameSheet> {
   }
 
   Future<bool> _authenticatePin(String message) async {
-      String expectedPin = await sl.get<Vault>().getPin();
-      bool result = await Navigator.of(context)
-          .push(MaterialPageRoute<bool>(builder: (BuildContext context) {
+    String expectedPin = await sl.get<Vault>().getPin();
+    bool result = await Navigator.of(context).push(MaterialPageRoute<bool>(
+      builder: (BuildContext context) {
         return PinScreen(
           type: PinOverlayType.ENTER_PIN,
           onSuccess: (pin) {
@@ -402,9 +421,10 @@ class _ChangingNameSheetState extends State<ChangingNameSheet> {
           expectedPin: expectedPin,
           description: message,
         );
-      }));
-      await Future.delayed(Duration(milliseconds: 200));
-      return result != null && result;    
+      },
+    ));
+    await Future.delayed(Duration(milliseconds: 200));
+    return result != null && result;
   }
 
   Future<bool> authenticate() async {

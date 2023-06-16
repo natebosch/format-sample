@@ -15,7 +15,7 @@ class _ChatHomePageState extends State<ChatHomePage> {
     ChatListPage(),
     ChatListPage(),
     ChatListPage(),
-    ChatListPage()
+    ChatListPage(),
   ];
 
   void _onItemTapped(int index) {
@@ -27,16 +27,18 @@ class _ChatHomePageState extends State<ChatHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: _childrenWidgets.elementAt(_currentIndex),
-      ),
+      body: Center(child: _childrenWidgets.elementAt(_currentIndex)),
       bottomNavigationBar: BottomNavigationBar(
         items: [
           BottomNavigationBarItem(icon: Icon(Icons.home), title: Text("Home")),
           BottomNavigationBarItem(
-              icon: Icon(Icons.search), title: Text("Search")),
+            icon: Icon(Icons.search),
+            title: Text("Search"),
+          ),
           BottomNavigationBarItem(
-              icon: Icon(Icons.chat_bubble), title: Text("Chat")),
+            icon: Icon(Icons.chat_bubble),
+            title: Text("Chat"),
+          ),
           BottomNavigationBarItem(icon: Icon(Icons.info), title: Text("About")),
         ],
         currentIndex: _currentIndex,
@@ -48,7 +50,10 @@ class _ChatHomePageState extends State<ChatHomePage> {
         selectedIconTheme: IconThemeData(color: wood_smoke, opacity: 1),
         unselectedIconTheme: IconThemeData(color: trout, opacity: 0.6),
         selectedLabelStyle: TextStyle(
-            color: wood_smoke, fontSize: 12, fontWeight: FontWeight.w800),
+          color: wood_smoke,
+          fontSize: 12,
+          fontWeight: FontWeight.w800,
+        ),
         unselectedLabelStyle:
             TextStyle(color: trout, fontSize: 12, fontWeight: FontWeight.w800),
       ),

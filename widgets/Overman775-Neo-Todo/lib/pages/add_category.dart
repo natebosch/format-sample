@@ -59,12 +59,14 @@ class _AddCategoryState extends State<AddCategory> {
 
   Future saveCategory() async {
     if (_argsHaveCategory) {
-      await context.read<Todo>().editCategory(widget.args.category,
-          TodoCategory(id: widget.args.category.id, title: title, icon: icon));
+      await context.read<Todo>().editCategory(
+        widget.args.category,
+        TodoCategory(id: widget.args.category.id, title: title, icon: icon),
+      );
     } else {
-      await context
-          .read<Todo>()
-          .addCategory(TodoCategory(title: title, icon: icon));
+      await context.read<Todo>().addCategory(
+        TodoCategory(title: title, icon: icon),
+      );
     }
     //go back
     Navigator.of(context).pop();
@@ -90,76 +92,86 @@ class _AddCategoryState extends State<AddCategory> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: NeumorphicTheme.baseColor(context),
-        resizeToAvoidBottomPadding: false,
-        appBar: NeumorphicAppBar(
-          title: _argsHaveCategory
-              ? const Text('add_category.title_edit').tr()
-              : const Text('add_category.title_add').tr(),
+      backgroundColor: NeumorphicTheme.baseColor(context),
+      resizeToAvoidBottomPadding: false,
+      appBar: NeumorphicAppBar(
+        title: _argsHaveCategory
+            ? const Text('add_category.title_edit').tr()
+            : const Text('add_category.title_add').tr(),
+      ),
+      body: Padding(
+        padding: EdgeInsets.fromLTRB(
+          Style.mainPadding,
+          Style.halfPadding,
+          Style.mainPadding,
+          Style.mainPadding,
         ),
-        body: Padding(
-            padding: EdgeInsets.fromLTRB(Style.mainPadding, Style.halfPadding,
-                Style.mainPadding, Style.mainPadding),
-            child: AnimatedOpacity(
-              ///run Opacity animation when page transistion end
-              opacity: _transistionPageEnd ? 1 : 0,
-              duration: const Duration(milliseconds: 300),
-              child: Builder(builder: (context) {
-                //if page transistion not end show empty widget
-                if (!_transistionPageEnd) {
-                  return const SizedBox.shrink();
-                }
-                return Wrap(
-                    direction: Axis.horizontal,
-                    alignment: WrapAlignment.start,
-                    runSpacing: Style.doublePadding,
+        child: AnimatedOpacity(
+          ///run Opacity animation when page transistion end
+          opacity: _transistionPageEnd ? 1 : 0,
+          duration: const Duration(milliseconds: 300),
+          child: Builder(
+            builder: (context) {
+              //if page transistion not end show empty widget
+              if (!_transistionPageEnd) {
+                return const SizedBox.shrink();
+              }
+              return Wrap(
+                direction: Axis.horizontal,
+                alignment: WrapAlignment.start,
+                runSpacing: Style.doublePadding,
+                children: <Widget>[
+                  NeumorphicTextField(
+                    hint: null,
+                    label: 'add_category.name'.tr(),
+                    text: title,
+                    onChanged: categoryTitleChanget,
+                  ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
-                      NeumorphicTextField(
-                          hint: null,
-                          label: 'add_category.name'.tr(),
-                          text: title,
-                          onChanged: categoryTitleChanget),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          TextFieldLabel('add_category.icon'.tr()),
-                          Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 8),
-                            child: Wrap(
-                              alignment: WrapAlignment.spaceAround,
-                              runSpacing: 16,
-                              spacing: 16,
-                              children: icons_list.entries
-                                  .map((item) => NeumorphicRadio(
-                                        groupValue: icon,
-                                        padding: const EdgeInsets.all(16),
-                                        style: const NeumorphicRadioStyle(
-                                          boxShape: NeumorphicBoxShape.circle(),
-                                        ),
-                                        value: item.value,
-                                        child: FaIcon(item.value,
-                                            size: 18,
-                                            color: item.value == icon
-                                                ? NeumorphicTheme.accentColor(
-                                                    context)
-                                                : NeumorphicTheme
-                                                    .defaultTextColor(context)),
-                                        onChanged: iconChanget,
-                                      ))
-                                  .toList(),
+                      TextFieldLabel('add_category.icon'.tr()),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 8),
+                        child: Wrap(
+                          alignment: WrapAlignment.spaceAround,
+                          runSpacing: 16,
+                          spacing: 16,
+                          children: icons_list.entries.map(
+                            (item) => NeumorphicRadio(
+                              groupValue: icon,
+                              padding: const EdgeInsets.all(16),
+                              style: const NeumorphicRadioStyle(
+                                boxShape: NeumorphicBoxShape.circle(),
+                              ),
+                              value: item.value,
+                              child: FaIcon(
+                                item.value,
+                                size: 18,
+                                color: item.value == icon
+                                    ? NeumorphicTheme.accentColor(context)
+                                    : NeumorphicTheme.defaultTextColor(context),
+                              ),
+                              onChanged: iconChanget,
                             ),
-                          ),
-                        ],
+                          ).toList(),
+                        ),
                       ),
-                      SizedBox(
-                        width: Style.halfPadding,
-                      ),
-                      Center(
-                        child: NeumorphicSaveButton(
-                            canSave: _canSave, onPressed: saveCategory),
-                      )
-                    ]);
-              }),
-            )));
+                    ],
+                  ),
+                  SizedBox(width: Style.halfPadding),
+                  Center(
+                    child: NeumorphicSaveButton(
+                      canSave: _canSave,
+                      onPressed: saveCategory,
+                    ),
+                  ),
+                ],
+              );
+            },
+          ),
+        ),
+      ),
+    );
   }
 }

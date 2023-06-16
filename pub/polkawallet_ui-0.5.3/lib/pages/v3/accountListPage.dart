@@ -16,7 +16,7 @@ class AccountListPageParams {
 
 class AccountListPage extends StatelessWidget {
   const AccountListPage(this.plugin, this.keyring, {Key? key})
-      : super(key: key);
+    : super(key: key);
 
   static const String route = '/profile/contacts/list';
   final PolkawalletPlugin plugin;
@@ -28,17 +28,14 @@ class AccountListPage extends StatelessWidget {
         ModalRoute.of(context)!.settings.arguments as AccountListPageParams;
     return Scaffold(
       appBar: AppBar(
-        title: Text(args.title ??
-            I18n.of(context)!.getDic(i18n_full_dic_ui, 'account')!['select']!),
+        title: Text(
+          args.title ??
+              I18n.of(context)!.getDic(i18n_full_dic_ui, 'account')!['select']!,
+        ),
         centerTitle: true,
         leading: BackBtn(),
       ),
-      body: SafeArea(
-        child: AccountSelectList(
-          plugin,
-          args.list,
-        ),
-      ),
+      body: SafeArea(child: AccountSelectList(plugin, args.list)),
     );
   }
 }

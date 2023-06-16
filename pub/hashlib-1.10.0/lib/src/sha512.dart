@@ -33,11 +33,7 @@ class _SHA512 extends BlockHashBase {
 /// - [input] is the string to hash
 /// - The [encoding] is the encoding to use. Default is `input.codeUnits`
 /// - [uppercase] defines if the hexadecimal output should be in uppercase
-String sha512sum(
-  String input, [
-  Encoding? encoding,
-  bool uppercase = false,
-]) {
+String sha512sum(String input, [Encoding? encoding, bool uppercase = false]) {
   return sha512.string(input, encoding).hex(uppercase);
 }
 

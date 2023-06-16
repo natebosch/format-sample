@@ -9,9 +9,7 @@ class NasaReportSkeleton extends StatelessWidget {
     return ListView.separated(
       itemCount: 10,
       separatorBuilder: (context, index) {
-        return Padding(
-          padding: EdgeInsets.only(top: getWidth(context) / 20.0),
-        );
+        return Padding(padding: EdgeInsets.only(top: getWidth(context) / 20.0));
       },
       itemBuilder: (context, index) {
         return Container(

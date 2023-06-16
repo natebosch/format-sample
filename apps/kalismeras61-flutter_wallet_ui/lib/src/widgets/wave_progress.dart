@@ -37,29 +37,36 @@ class WaveProgressState extends State<WaveProgress>
   @override
   Widget build(BuildContext context) {
     return new Container(
-        width: widget.size,
-        height: widget.size,
-        decoration: new BoxDecoration(
-            color: widget.fillColor.withOpacity(.1),
-            shape: BoxShape.circle,
-            boxShadow: [
-              BoxShadow(
-                  color: widget.fillColor.withOpacity(.2),
-                  blurRadius: 10,
-                  offset: Offset(0, 10))
-            ]),
-        child: ClipPath(
-            clipper: CircleClipper(),
-            child: new AnimatedBuilder(
-                animation: controller,
-                builder: (BuildContext context, Widget child) {
-                  return new CustomPaint(
-                      painter: WaveProgressPainter(
-                          controller,
-                          widget.borderColor,
-                          widget.fillColor,
-                          widget.progress));
-                })));
+      width: widget.size,
+      height: widget.size,
+      decoration: new BoxDecoration(
+        color: widget.fillColor.withOpacity(.1),
+        shape: BoxShape.circle,
+        boxShadow: [
+          BoxShadow(
+            color: widget.fillColor.withOpacity(.2),
+            blurRadius: 10,
+            offset: Offset(0, 10),
+          ),
+        ],
+      ),
+      child: ClipPath(
+        clipper: CircleClipper(),
+        child: new AnimatedBuilder(
+          animation: controller,
+          builder: (BuildContext context, Widget child) {
+            return new CustomPaint(
+              painter: WaveProgressPainter(
+                controller,
+                widget.borderColor,
+                widget.fillColor,
+                widget.progress,
+              ),
+            );
+          },
+        ),
+      ),
+    );
   }
 }
 
@@ -69,8 +76,11 @@ class WaveProgressPainter extends CustomPainter {
   double _progress;
 
   WaveProgressPainter(
-      this._animation, this.borderColor, this.fillColor, this._progress)
-      : super(repaint: _animation);
+    this._animation,
+    this.borderColor,
+    this.fillColor,
+    this._progress,
+  ) : super(repaint: _animation);
 
   @override
   void paint(Canvas canvas, Size size) {
@@ -85,12 +95,15 @@ class WaveProgressPainter extends CustomPainter {
     path.moveTo(0.0, baseHeight);
     for (double i = 0.0; i < size.width; i++) {
       path.lineTo(
-          i,
-          baseHeight +
-              sin((i / size.width * 2 * pi * n) +
+        i,
+        baseHeight +
+            sin(
+                  (i / size.width * 2 * pi * n) +
                       (_animation.value * 2 * pi) +
-                      pi * 1) *
-                  amp);
+                      pi * 1,
+                ) *
+                amp,
+      );
     }
 
     path.lineTo(size.width, size.height);
@@ -107,10 +120,11 @@ class WaveProgressPainter extends CustomPainter {
     path.moveTo(0.0, baseHeight);
     for (double i = 0.0; i < size.width; i++) {
       path.lineTo(
-          i,
-          baseHeight +
-              sin((i / size.width * 2 * pi * n) + (_animation.value * 2 * pi)) *
-                  amp);
+        i,
+        baseHeight +
+            sin((i / size.width * 2 * pi * n) + (_animation.value * 2 * pi)) *
+                amp,
+      );
     }
 
     path.lineTo(size.width, size.height);
@@ -134,9 +148,12 @@ class CircleClipper extends CustomClipper<Path> {
   @override
   Path getClip(Size size) {
     return Path()
-      ..addOval(new Rect.fromCircle(
+      ..addOval(
+        new Rect.fromCircle(
           center: new Offset(size.width / 2, size.height / 2),
-          radius: size.width / 2));
+          radius: size.width / 2,
+        ),
+      );
   }
 
   @override

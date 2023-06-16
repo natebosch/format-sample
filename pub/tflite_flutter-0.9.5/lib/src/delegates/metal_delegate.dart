@@ -33,9 +33,7 @@ class GpuDelegate implements Delegate {
 
   factory GpuDelegate({GpuDelegateOptions? options}) {
     if (options == null) {
-      return GpuDelegate._(
-        tflGpuDelegateCreate(nullptr),
-      );
+      return GpuDelegate._(tflGpuDelegateCreate(nullptr));
     }
     return GpuDelegate._(tflGpuDelegateCreate(options.base));
   }

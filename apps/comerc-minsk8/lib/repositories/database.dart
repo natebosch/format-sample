@@ -9,9 +9,8 @@ const _kEnableWebsockets = true;
 typedef CreateServiceCallback = GraphQLService Function();
 
 class DatabaseRepository {
-  DatabaseRepository({
-    CreateServiceCallback createService,
-  }) : _createService = createService ?? createDefaultService;
+  DatabaseRepository({CreateServiceCallback createService})
+    : _createService = createService ?? createDefaultService;
 
   GraphQLService _service;
   final CreateServiceCallback _createService;
@@ -126,9 +125,7 @@ GraphQLService createDefaultService() {
 
 // публично для тестирования
 GraphQLClient createClient() {
-  final httpLink = HttpLink(
-    'https://$kGraphQLEndpoint',
-  );
+  final httpLink = HttpLink('https://$kGraphQLEndpoint');
   final authLink = AuthLink(
     getToken: () async {
       final idToken = await FirebaseAuth.instance.currentUser.getIdToken(true);
@@ -150,16 +147,9 @@ GraphQLClient createClient() {
       ),
     );
     // split request based on type
-    link = Link.split(
-      (request) => request.isSubscription,
-      websocketLink,
-      link,
-    );
+    link = Link.split((request) => request.isSubscription, websocketLink, link);
   }
-  return GraphQLClient(
-    cache: GraphQLCache(),
-    link: link,
-  );
+  return GraphQLClient(cache: GraphQLCache(), link: link);
 }
 
 // публично для тестирования
@@ -306,5 +296,6 @@ mixin API {
 // TODO: выбросить после перехода на GraphQLService
 DocumentNode addFragments(DocumentNode document) {
   return DocumentNode(
-      definitions: [...API.fragments.definitions, ...document.definitions]);
+    definitions: [...API.fragments.definitions, ...document.definitions],
+  );
 }

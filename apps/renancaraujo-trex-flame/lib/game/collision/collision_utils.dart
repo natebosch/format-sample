@@ -6,14 +6,8 @@ import 'package:trex/game/t_rex/t_rex.dart';
 
 bool checkForCollision(Obstacle obstacle, TRex tRex) {
   final tRexBox = CollisionBox(
-    position: Vector2(
-      tRex.x + 1,
-      tRex.y + 1,
-    ),
-    size: Vector2(
-      tRex.config.width - 2,
-      tRex.config.height - 2,
-    ),
+    position: Vector2(tRex.x + 1, tRex.y + 1),
+    size: Vector2(tRex.config.width - 2, tRex.config.height - 2),
   );
 
   final obstacleBox = CollisionBox(
@@ -29,8 +23,9 @@ bool checkForCollision(Obstacle obstacle, TRex tRex) {
 
   if (obstacleBox.toRect().overlaps(tRexBox.toRect())) {
     final collisionBoxes = obstacle.collisionBoxes;
-    final tRexCollisionBoxes =
-        tRex.ducking ? tRexCollisionBoxesDucking : tRexCollisionBoxesRunning;
+    final tRexCollisionBoxes = tRex.ducking
+        ? tRexCollisionBoxesDucking
+        : tRexCollisionBoxesRunning;
 
     bool crashed = false;
 
@@ -64,9 +59,6 @@ CollisionBox createAdjustedCollisionBox(
       box.position.x + adjustment.position.x,
       box.position.y + adjustment.position.y,
     ),
-    size: Vector2(
-      box.size.x,
-      box.size.y,
-    ),
+    size: Vector2(box.size.x, box.size.y),
   );
 }

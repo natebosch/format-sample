@@ -41,8 +41,8 @@ class NearRpcClient {
         "request_type": "view_access_key",
         "finality": "final",
         "account_id": accountId,
-        "public_key": "ed25519:${base58.encode(hash)}"
-      }
+        "public_key": "ed25519:${base58.encode(hash)}",
+      },
     });
     if (res.isSuccess) {
       final nonce = int.tryParse(res.data['result']['nonce'].toString()) ?? 0;
@@ -53,27 +53,20 @@ class NearRpcClient {
     }
   }
 
-  Future<String> getAccountBalance(
-    String accountId,
-  ) async {
-    final res = await networkClient.postHTTP(
-      '',
-      {
-        "jsonrpc": "2.0",
-        "id": "dontcare",
-        "method": "query",
-        "params": {
-          "request_type": "view_account",
-          "finality": "final",
-          "account_id": accountId
-        }
+  Future<String> getAccountBalance(String accountId) async {
+    final res = await networkClient.postHTTP('', {
+      "jsonrpc": "2.0",
+      "id": "dontcare",
+      "method": "query",
+      "params": {
+        "request_type": "view_account",
+        "finality": "final",
+        "account_id": accountId,
       },
-    );
+    });
     if (res.isSuccess) {
       final decodedRes = res.data['result']['amount'].toString();
-      final nearAmount = NearFormatter.yoctoNearToNear(
-        decodedRes,
-      );
+      final nearAmount = NearFormatter.yoctoNearToNear(decodedRes);
       return nearAmount;
     } else {
       return "Error while getting balance";
@@ -85,7 +78,7 @@ class NearRpcClient {
       "jsonrpc": "2.0",
       "id": "dontcare",
       "method": "broadcast_tx_async",
-      "params": params
+      "params": params,
     });
     if (res.isSuccess) {
       return BlockchainResponse(
@@ -94,9 +87,7 @@ class NearRpcClient {
       );
     } else {
       return BlockchainResponse(
-        data: {
-          "error": "'Error while sending transaction'",
-        },
+        data: {"error": "'Error while sending transaction'"},
         status: BlockchainResponses.error,
       );
     }
@@ -107,7 +98,7 @@ class NearRpcClient {
       "jsonrpc": "2.0",
       "id": "dontcare",
       "method": "broadcast_tx_commit",
-      "params": params
+      "params": params,
     });
     if (res.isSuccess) {
       return BlockchainResponse(
@@ -116,9 +107,7 @@ class NearRpcClient {
       );
     } else {
       return BlockchainResponse(
-        data: {
-          "error": "'Error while sending transaction'",
-        },
+        data: {"error": "'Error while sending transaction'"},
         status: BlockchainResponses.error,
       );
     }
@@ -127,19 +116,17 @@ class NearRpcClient {
 
 class NearNetworkClient extends NetworkClient {
   NearNetworkClient({required super.baseUrl, required super.dio}) {
-    dio.interceptors.add(
-      RetryInterceptor(
-        dio: dio,
-        logPrint: log,
-        retries: 5,
-        retryDelays: const [
-          Duration(seconds: 2),
-          Duration(seconds: 1),
-          Duration(seconds: 1),
-          Duration(seconds: 1),
-          Duration(seconds: 1),
-        ],
-      ),
-    );
+    dio.interceptors.add(RetryInterceptor(
+      dio: dio,
+      logPrint: log,
+      retries: 5,
+      retryDelays: const [
+        Duration(seconds: 2),
+        Duration(seconds: 1),
+        Duration(seconds: 1),
+        Duration(seconds: 1),
+        Duration(seconds: 1),
+      ],
+    ));
   }
 }

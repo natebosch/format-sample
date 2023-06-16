@@ -21,10 +21,14 @@ void main() {
     DatabaseReferenceMock firebaseMock = new DatabaseReferenceMock();
     when(firebaseMock.push()).thenReturn(firebaseMock);
     ReduxState state = new ReduxState(
-        firebaseState: new FirebaseState(mainReference: firebaseMock));
+      firebaseState: new FirebaseState(mainReference: firebaseMock),
+    );
 
-    Store<ReduxState> store = new Store<ReduxState>(reducerMock,
-        initialState: state, middleware: [middleware].toList());
+    Store<ReduxState> store = new Store<ReduxState>(
+      reducerMock,
+      initialState: state,
+      middleware: [middleware].toList(),
+    );
 
     WeightEntry weightEntry = new WeightEntry(new DateTime.now(), 70.0, null);
     AddEntryAction action = new AddEntryAction(weightEntry);
@@ -40,10 +44,14 @@ void main() {
     DatabaseReferenceMock firebaseMock = new DatabaseReferenceMock();
     when(firebaseMock.child(typed(any))).thenReturn(firebaseMock);
     ReduxState state = new ReduxState(
-        firebaseState: new FirebaseState(mainReference: firebaseMock));
+      firebaseState: new FirebaseState(mainReference: firebaseMock),
+    );
 
-    Store<ReduxState> store = new Store<ReduxState>(reducerMock,
-        initialState: state, middleware: [middleware].toList());
+    Store<ReduxState> store = new Store<ReduxState>(
+      reducerMock,
+      initialState: state,
+      middleware: [middleware].toList(),
+    );
 
     WeightEntry weightEntry = new WeightEntry(new DateTime.now(), 70.0, null)
       ..key = "key";
@@ -60,10 +68,14 @@ void main() {
     DatabaseReferenceMock firebaseMock = new DatabaseReferenceMock();
     when(firebaseMock.child(typed(any))).thenReturn(firebaseMock);
     ReduxState state = new ReduxState(
-        firebaseState: new FirebaseState(mainReference: firebaseMock));
+      firebaseState: new FirebaseState(mainReference: firebaseMock),
+    );
 
-    Store<ReduxState> store = new Store<ReduxState>(reducerMock,
-        initialState: state, middleware: [middleware].toList());
+    Store<ReduxState> store = new Store<ReduxState>(
+      reducerMock,
+      initialState: state,
+      middleware: [middleware].toList(),
+    );
 
     WeightEntry weightEntry = new WeightEntry(new DateTime.now(), 70.0, null)
       ..key = "key";
@@ -86,8 +98,11 @@ void main() {
       removedEntryState: new RemovedEntryState(lastRemovedEntry: weightEntry),
     );
 
-    Store<ReduxState> store = new Store<ReduxState>(reducerMock,
-        initialState: state, middleware: [middleware].toList());
+    Store<ReduxState> store = new Store<ReduxState>(
+      reducerMock,
+      initialState: state,
+      middleware: [middleware].toList(),
+    );
 
     UndoRemovalAction action = new UndoRemovalAction();
     //when
@@ -108,14 +123,18 @@ void main() {
     };
     DatabaseReferenceMock databaseReferenceMock = new DatabaseReferenceMock();
     when(databaseReferenceMock.child(typed(any))).thenReturn(
-        databaseReferenceMock);
+      databaseReferenceMock,
+    );
     when(databaseReferenceMock.push()).thenReturn(databaseReferenceMock);
     ReduxState state = new ReduxState(
       weightFromNotes: 70.0,
       firebaseState: new FirebaseState(mainReference: databaseReferenceMock),
     );
-    Store<ReduxState> store = new Store(reducer,
-        initialState: state, middleware: [middleware].toList());
+    Store<ReduxState> store = new Store(
+      reducer,
+      initialState: state,
+      middleware: [middleware].toList(),
+    );
     //when
     store.dispatch(new AddDatabaseReferenceAction(databaseReferenceMock));
     //then
@@ -133,14 +152,18 @@ void main() {
     };
     DatabaseReferenceMock databaseReferenceMock = new DatabaseReferenceMock();
     when(databaseReferenceMock.child(typed(any))).thenReturn(
-        databaseReferenceMock);
+      databaseReferenceMock,
+    );
     when(databaseReferenceMock.push()).thenReturn(databaseReferenceMock);
     ReduxState state = new ReduxState(
       weightFromNotes: 70.0,
       firebaseState: new FirebaseState(mainReference: databaseReferenceMock),
     );
-    Store<ReduxState> store = new Store(reducer,
-        initialState: state, middleware: [middleware].toList());
+    Store<ReduxState> store = new Store(
+      reducer,
+      initialState: state,
+      middleware: [middleware].toList(),
+    );
     //when
     store.dispatch(new AddDatabaseReferenceAction(databaseReferenceMock));
     //then
@@ -157,11 +180,12 @@ void main() {
       return state;
     };
     DatabaseReferenceMock databaseReferenceMock = new DatabaseReferenceMock();
-    ReduxState state = new ReduxState(
-      weightFromNotes: null,
+    ReduxState state = new ReduxState(weightFromNotes: null);
+    Store<ReduxState> store = new Store(
+      reducer,
+      initialState: state,
+      middleware: [middleware].toList(),
     );
-    Store<ReduxState> store = new Store(reducer,
-        initialState: state, middleware: [middleware].toList());
     //when
     store.dispatch(new AddDatabaseReferenceAction(databaseReferenceMock));
     //then

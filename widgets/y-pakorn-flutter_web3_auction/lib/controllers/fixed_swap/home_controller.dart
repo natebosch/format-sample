@@ -57,10 +57,8 @@ class FixedSwapHomeController extends GetxController {
   Future<void> fetchPoolInThisPage() async {
     try {
       //await updateTotalLength();
-      final list =
-          await Future.wait<Pool>(pageController.indexListInThisPage.map(
-        (e) => contract.getPoolByIndex(e),
-      ));
+      final list = await Future.wait<Pool>(pageController.indexListInThisPage
+          .map((e) => contract.getPoolByIndex(e)));
       currentPoolList = isYourPool ? list : list.reversed.toList();
     } catch (error) {}
   }

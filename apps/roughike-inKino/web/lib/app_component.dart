@@ -13,10 +13,7 @@ import 'src/routes.dart';
   selector: 'my-app',
   styleUrls: ['app_component.css'],
   templateUrl: 'app_component.html',
-  directives: [
-    AppBarComponent,
-    routerDirectives,
-  ],
+  directives: [AppBarComponent, routerDirectives],
   exports: [Routes],
 )
 class AppComponent implements OnInit, AfterContentInit {

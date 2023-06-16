@@ -32,90 +32,98 @@ class DaoProductList extends AbstractDao {
     const String _TABLE_PRODUCT_LIST_ITEM_COLUMN_BARCODE = 'barcode';
 
     if (oldVersion < 2) {
-      await db.execute('create table $_TABLE_PRODUCT_LIST('
-          '$_TABLE_PRODUCT_LIST_COLUMN_ID INTEGER PRIMARY KEY AUTOINCREMENT,'
-          '$_TABLE_PRODUCT_LIST_COLUMN_TYPE TEXT NOT NULL,'
-          '$_TABLE_PRODUCT_LIST_COLUMN_PARAMETERS TEXT NOT NULL,'
-          '${LocalDatabase.COLUMN_TIMESTAMP} INT NOT NULL'
-          ')');
-
-      await db.execute('CREATE UNIQUE INDEX ${_TABLE_PRODUCT_LIST}_UK '
-          'ON $_TABLE_PRODUCT_LIST('
-          '$_TABLE_PRODUCT_LIST_COLUMN_TYPE,'
-          '$_TABLE_PRODUCT_LIST_COLUMN_PARAMETERS'
-          ')');
+      await db.execute(
+        'create table $_TABLE_PRODUCT_LIST('
+        '$_TABLE_PRODUCT_LIST_COLUMN_ID INTEGER PRIMARY KEY AUTOINCREMENT,'
+        '$_TABLE_PRODUCT_LIST_COLUMN_TYPE TEXT NOT NULL,'
+        '$_TABLE_PRODUCT_LIST_COLUMN_PARAMETERS TEXT NOT NULL,'
+        '${LocalDatabase.COLUMN_TIMESTAMP} INT NOT NULL'
+        ')',
+      );
 
       await db.execute(
-          'create table $_TABLE_PRODUCT_LIST_ITEM(' // to be dropped
-          '$_TABLE_PRODUCT_LIST_ITEM_COLUMN_ID INTEGER PRIMARY KEY AUTOINCREMENT,'
-          '$_TABLE_PRODUCT_LIST_ITEM_COLUMN_LIST_ID INT NOT NULL,'
-          '$_TABLE_PRODUCT_LIST_ITEM_COLUMN_BARCODE TEXT NOT NULL,'
-          '${LocalDatabase.COLUMN_TIMESTAMP} INT NOT NULL,'
-          'FOREIGN KEY ($_TABLE_PRODUCT_LIST_ITEM_COLUMN_LIST_ID)'
-          ' REFERENCES $_TABLE_PRODUCT_LIST'
-          '  ($_TABLE_PRODUCT_LIST_COLUMN_ID)'
-          '   ON DELETE CASCADE,'
-          'FOREIGN KEY ($_TABLE_PRODUCT_LIST_ITEM_COLUMN_BARCODE)'
-          ' REFERENCES ${DaoProduct.TABLE_PRODUCT}'
-          '  (${DaoProduct.TABLE_PRODUCT_COLUMN_BARCODE})'
-          '   ON DELETE CASCADE'
-          ')');
+        'CREATE UNIQUE INDEX ${_TABLE_PRODUCT_LIST}_UK '
+        'ON $_TABLE_PRODUCT_LIST('
+        '$_TABLE_PRODUCT_LIST_COLUMN_TYPE,'
+        '$_TABLE_PRODUCT_LIST_COLUMN_PARAMETERS'
+        ')',
+      );
+
+      await db.execute(
+        'create table $_TABLE_PRODUCT_LIST_ITEM(' // to be dropped
+        '$_TABLE_PRODUCT_LIST_ITEM_COLUMN_ID INTEGER PRIMARY KEY AUTOINCREMENT,'
+        '$_TABLE_PRODUCT_LIST_ITEM_COLUMN_LIST_ID INT NOT NULL,'
+        '$_TABLE_PRODUCT_LIST_ITEM_COLUMN_BARCODE TEXT NOT NULL,'
+        '${LocalDatabase.COLUMN_TIMESTAMP} INT NOT NULL,'
+        'FOREIGN KEY ($_TABLE_PRODUCT_LIST_ITEM_COLUMN_LIST_ID)'
+        ' REFERENCES $_TABLE_PRODUCT_LIST'
+        '  ($_TABLE_PRODUCT_LIST_COLUMN_ID)'
+        '   ON DELETE CASCADE,'
+        'FOREIGN KEY ($_TABLE_PRODUCT_LIST_ITEM_COLUMN_BARCODE)'
+        ' REFERENCES ${DaoProduct.TABLE_PRODUCT}'
+        '  (${DaoProduct.TABLE_PRODUCT_COLUMN_BARCODE})'
+        '   ON DELETE CASCADE'
+        ')',
+      );
     }
     if (oldVersion < 3) {
-      await db.execute('create table $_TABLE_PRODUCT_LIST_EXTRA('
-          '$_TABLE_PRODUCT_LIST_EXTRA_COLUMN_LIST_ID INT NOT NULL,'
-          '$_TABLE_PRODUCT_LIST_EXTRA_COLUMN_KEY TEXT NOT NULL,'
-          '$_TABLE_PRODUCT_LIST_EXTRA_COLUMN_VALUE TEXT NOT NULL,'
-          '${LocalDatabase.COLUMN_TIMESTAMP} INT NOT NULL,'
-          'PRIMARY KEY ('
-          '$_TABLE_PRODUCT_LIST_EXTRA_COLUMN_LIST_ID,'
-          '$_TABLE_PRODUCT_LIST_EXTRA_COLUMN_KEY),'
-          'FOREIGN KEY ($_TABLE_PRODUCT_LIST_EXTRA_COLUMN_LIST_ID)'
-          ' REFERENCES $_TABLE_PRODUCT_LIST'
-          '  ($_TABLE_PRODUCT_LIST_COLUMN_ID)'
-          '   ON DELETE CASCADE'
-          ')');
+      await db.execute(
+        'create table $_TABLE_PRODUCT_LIST_EXTRA('
+        '$_TABLE_PRODUCT_LIST_EXTRA_COLUMN_LIST_ID INT NOT NULL,'
+        '$_TABLE_PRODUCT_LIST_EXTRA_COLUMN_KEY TEXT NOT NULL,'
+        '$_TABLE_PRODUCT_LIST_EXTRA_COLUMN_VALUE TEXT NOT NULL,'
+        '${LocalDatabase.COLUMN_TIMESTAMP} INT NOT NULL,'
+        'PRIMARY KEY ('
+        '$_TABLE_PRODUCT_LIST_EXTRA_COLUMN_LIST_ID,'
+        '$_TABLE_PRODUCT_LIST_EXTRA_COLUMN_KEY),'
+        'FOREIGN KEY ($_TABLE_PRODUCT_LIST_EXTRA_COLUMN_LIST_ID)'
+        ' REFERENCES $_TABLE_PRODUCT_LIST'
+        '  ($_TABLE_PRODUCT_LIST_COLUMN_ID)'
+        '   ON DELETE CASCADE'
+        ')',
+      );
     }
     if (oldVersion < 7) {
       // removing the FK of table product list item to table product
       const String TMP_TABLE_NAME = 'ngjkd';
-      await db.execute('create table $TMP_TABLE_NAME('
-          '$_TABLE_PRODUCT_LIST_ITEM_COLUMN_ID INTEGER PRIMARY KEY AUTOINCREMENT,'
-          '$_TABLE_PRODUCT_LIST_ITEM_COLUMN_LIST_ID INT NOT NULL,'
-          '$_TABLE_PRODUCT_LIST_ITEM_COLUMN_BARCODE TEXT NOT NULL,'
-          '${LocalDatabase.COLUMN_TIMESTAMP} INT NOT NULL,'
-          'FOREIGN KEY ($_TABLE_PRODUCT_LIST_ITEM_COLUMN_LIST_ID)'
-          ' REFERENCES $_TABLE_PRODUCT_LIST'
-          '  ($_TABLE_PRODUCT_LIST_COLUMN_ID)'
-          '   ON DELETE CASCADE '
-          ')');
+      await db.execute(
+        'create table $TMP_TABLE_NAME('
+        '$_TABLE_PRODUCT_LIST_ITEM_COLUMN_ID INTEGER PRIMARY KEY AUTOINCREMENT,'
+        '$_TABLE_PRODUCT_LIST_ITEM_COLUMN_LIST_ID INT NOT NULL,'
+        '$_TABLE_PRODUCT_LIST_ITEM_COLUMN_BARCODE TEXT NOT NULL,'
+        '${LocalDatabase.COLUMN_TIMESTAMP} INT NOT NULL,'
+        'FOREIGN KEY ($_TABLE_PRODUCT_LIST_ITEM_COLUMN_LIST_ID)'
+        ' REFERENCES $_TABLE_PRODUCT_LIST'
+        '  ($_TABLE_PRODUCT_LIST_COLUMN_ID)'
+        '   ON DELETE CASCADE '
+        ')',
+      );
       const String COLUMNS = '$_TABLE_PRODUCT_LIST_ITEM_COLUMN_ID,'
           '$_TABLE_PRODUCT_LIST_ITEM_COLUMN_LIST_ID,'
           '$_TABLE_PRODUCT_LIST_ITEM_COLUMN_BARCODE,'
           '${LocalDatabase.COLUMN_TIMESTAMP} ';
-      await db.execute('insert into $TMP_TABLE_NAME($COLUMNS) '
-          'select $COLUMNS from $_TABLE_PRODUCT_LIST_ITEM');
+      await db.execute(
+        'insert into $TMP_TABLE_NAME($COLUMNS) '
+        'select $COLUMNS from $_TABLE_PRODUCT_LIST_ITEM',
+      );
       await db.execute('drop table $_TABLE_PRODUCT_LIST_ITEM');
       await db.execute(
-          'alter table $TMP_TABLE_NAME rename to $_TABLE_PRODUCT_LIST_ITEM');
+        'alter table $TMP_TABLE_NAME rename to $_TABLE_PRODUCT_LIST_ITEM',
+      );
     }
     if (oldVersion < 8) {
       // moving from product list item to product_extra
       // and dropping table product list item
-      await db.transaction(
-        (final Transaction transaction) async {
-          await _upgradeToVersion8(transaction);
-          await transaction.execute('drop table $_TABLE_PRODUCT_LIST_ITEM');
-        },
-      );
+      await db.transaction((final Transaction transaction) async {
+        await _upgradeToVersion8(transaction);
+        await transaction.execute('drop table $_TABLE_PRODUCT_LIST_ITEM');
+      });
     }
   }
 
   Future<int?> getTimestamp(final ProductList productList) async {
-    final Map<String, dynamic>? record = await _getRecord(
-      productList,
-      localDatabase.database,
-    );
+    final Map<String, dynamic>? record =
+        await _getRecord(productList, localDatabase.database);
     if (record == null) {
       return null;
     }
@@ -126,10 +134,8 @@ class DaoProductList extends AbstractDao {
     final ProductList productList,
     final DatabaseExecutor databaseExecutor,
   ) async {
-    final Map<String, dynamic>? record = await _getRecord(
-      productList,
-      databaseExecutor,
-    );
+    final Map<String, dynamic>? record =
+        await _getRecord(productList, databaseExecutor);
     if (record == null) {
       return null;
     }
@@ -141,8 +147,8 @@ class DaoProductList extends AbstractDao {
       ' AND $_TABLE_PRODUCT_LIST_COLUMN_PARAMETERS = ?';
 
   static List<String> _getProductListUKWhereArgs(
-          final ProductList productList) =>
-      <String>[productList.listType, productList.parameters];
+    final ProductList productList,
+  ) => <String>[productList.listType, productList.parameters];
 
   Future<Map<String, dynamic>?> _getRecord(
     final ProductList productList,
@@ -175,7 +181,8 @@ class DaoProductList extends AbstractDao {
 
   // TODO(monsieurtanuki): remove when this code is never called anymore
   static Future<void> _upgradeToVersion8(
-      final DatabaseExecutor databaseExecutor) async {
+    final DatabaseExecutor databaseExecutor,
+  ) async {
     const String _TABLE_PRODUCT_LIST_ITEM = 'product_list_item';
     const String _TABLE_PRODUCT_LIST_ITEM_COLUMN_ID = '_id';
     const String _TABLE_PRODUCT_LIST_ITEM_COLUMN_LIST_ID = 'list_id';
@@ -183,24 +190,24 @@ class DaoProductList extends AbstractDao {
 
     // listing the product lists that are not concerned
     final Set<int> toBeIgnoredLists = <int>{};
-    final List<Map<String, dynamic>> queryResultsPre =
-        await databaseExecutor.query(
-      _TABLE_PRODUCT_LIST,
-      columns: <String>[_TABLE_PRODUCT_LIST_COLUMN_ID],
-      where: '$_TABLE_PRODUCT_LIST_COLUMN_TYPE in (?, ?, ?)',
-      whereArgs: <String>[
-        ProductList.LIST_TYPE_HISTORY,
-        ProductList.LIST_TYPE_SCAN_HISTORY,
-        ProductList.LIST_TYPE_SCAN_SESSION,
-      ],
-    );
+    final List<Map<String, dynamic>> queryResultsPre = await databaseExecutor
+        .query(
+          _TABLE_PRODUCT_LIST,
+          columns: <String>[_TABLE_PRODUCT_LIST_COLUMN_ID],
+          where: '$_TABLE_PRODUCT_LIST_COLUMN_TYPE in (?, ?, ?)',
+          whereArgs: <String>[
+            ProductList.LIST_TYPE_HISTORY,
+            ProductList.LIST_TYPE_SCAN_HISTORY,
+            ProductList.LIST_TYPE_SCAN_SESSION,
+          ],
+        );
     for (final Map<String, dynamic> row in queryResultsPre) {
       final int id = row[_TABLE_PRODUCT_LIST_COLUMN_ID] as int;
       toBeIgnoredLists.add(id);
     }
 
-    final List<Map<String, dynamic>> queryResults =
-        await databaseExecutor.query(
+    final List<Map<String, dynamic>>
+    queryResults = await databaseExecutor.query(
       _TABLE_PRODUCT_LIST_ITEM,
       columns: <String>[
         _TABLE_PRODUCT_LIST_ITEM_COLUMN_ID,
@@ -270,9 +277,10 @@ class DaoProductList extends AbstractDao {
           final int additionalRecordsNumber =
               -1 + insertParameters.length ~/ numCols;
           await databaseExecutor.rawInsert(
-              'insert into product_extra(${COLUMN_NAMES.join(',')}) '
-              'values($variables)${',($variables)' * additionalRecordsNumber}',
-              insertParameters);
+            'insert into product_extra(${COLUMN_NAMES.join(',')}) '
+            'values($variables)${',($variables)' * additionalRecordsNumber}',
+            insertParameters,
+          );
           insertParameters.clear();
         }
       }
@@ -280,9 +288,10 @@ class DaoProductList extends AbstractDao {
         final int additionalRecordsNumber =
             -1 + insertParameters.length ~/ numCols;
         await databaseExecutor.rawInsert(
-            'insert into product_extra(${COLUMN_NAMES.join(',')}) '
-            'values($variables)${',($variables)' * additionalRecordsNumber}',
-            insertParameters);
+          'insert into product_extra(${COLUMN_NAMES.join(',')}) '
+          'values($variables)${',($variables)' * additionalRecordsNumber}',
+          insertParameters,
+        );
         insertParameters.clear();
       }
     }
@@ -308,35 +317,36 @@ class DaoProductList extends AbstractDao {
     }
   }
 
-  Future<void> put(final ProductList productList) async =>
-      localDatabase.database.transaction(
-        (final Transaction transaction) async =>
-            DaoProductExtra(localDatabase).bulkInsertExtra(
-          databaseExecutor: transaction,
-          productList: productList,
-          productListId: await _getId(productList, transaction),
-        ),
+  Future<void> put(final ProductList productList) async => localDatabase
+      .database
+      .transaction(
+        (final Transaction transaction) async => DaoProductExtra(localDatabase)
+            .bulkInsertExtra(
+              databaseExecutor: transaction,
+              productList: productList,
+              productListId: await _getId(productList, transaction),
+            ),
       );
 
-  Future<int> create(final ProductList productList) async =>
-      _upsertProductList(productList, localDatabase.database);
+  Future<int> create(final ProductList productList) async => _upsertProductList(
+    productList,
+    localDatabase.database,
+  );
 
-  Future<bool> get(final ProductList productList) async =>
-      DaoProductExtra(localDatabase).getList(
-        productList,
-        await _getId(productList, localDatabase.database),
-      );
+  Future<bool> get(final ProductList productList) async => DaoProductExtra(
+    localDatabase,
+  ).getList(productList, await _getId(productList, localDatabase.database));
 
   Future<List<Product>> getFirstProducts(
     final ProductList productList,
     final int limit,
   ) async {
-    final List<String>? barcodes =
-        await DaoProductExtra(localDatabase).getFirstBarcodes(
-      productList,
-      await _getId(productList, localDatabase.database),
-      limit,
-    );
+    final List<String>? barcodes = await DaoProductExtra(localDatabase)
+        .getFirstBarcodes(
+          productList,
+          await _getId(productList, localDatabase.database),
+          limit,
+        );
     final List<Product> result = <Product>[];
     if (barcodes == null) {
       return result;
@@ -374,33 +384,32 @@ class DaoProductList extends AbstractDao {
   }
 
   /// Clears a product list: unlinks all its items
-  Future<void> clear(final ProductList productList) async =>
-      localDatabase.database.transaction(
-        (final Transaction transaction) async {
-          final int? id = await _getId(productList, transaction);
-          await DaoProductExtra(localDatabase).clearList(
-            productList,
-            id,
-            transaction,
-          );
-        },
-      );
+  Future<void> clear(final ProductList productList) async => localDatabase
+      .database
+      .transaction((final Transaction transaction) async {
+        final int? id = await _getId(productList, transaction);
+        await DaoProductExtra(localDatabase).clearList(
+          productList,
+          id,
+          transaction,
+        );
+      });
 
   Future<Map<int, Map<String, String>>> _getExtras({final int? listId}) async {
     final Map<int, Map<String, String>> result = <int, Map<String, String>>{};
-    final List<Map<String, dynamic>> queryResult =
-        await localDatabase.database.query(
-      _TABLE_PRODUCT_LIST_EXTRA,
-      columns: <String>[
-        _TABLE_PRODUCT_LIST_EXTRA_COLUMN_LIST_ID,
-        _TABLE_PRODUCT_LIST_EXTRA_COLUMN_KEY,
-        _TABLE_PRODUCT_LIST_EXTRA_COLUMN_VALUE,
-      ],
-      where: listId == null
-          ? null
-          : '$_TABLE_PRODUCT_LIST_EXTRA_COLUMN_LIST_ID = ?',
-      whereArgs: listId == null ? null : <dynamic>[listId],
-    );
+    final List<Map<String, dynamic>> queryResult = await localDatabase.database
+        .query(
+          _TABLE_PRODUCT_LIST_EXTRA,
+          columns: <String>[
+            _TABLE_PRODUCT_LIST_EXTRA_COLUMN_LIST_ID,
+            _TABLE_PRODUCT_LIST_EXTRA_COLUMN_KEY,
+            _TABLE_PRODUCT_LIST_EXTRA_COLUMN_VALUE,
+          ],
+          where: listId == null
+              ? null
+              : '$_TABLE_PRODUCT_LIST_EXTRA_COLUMN_LIST_ID = ?',
+          whereArgs: listId == null ? null : <dynamic>[listId],
+        );
     for (final Map<String, dynamic> row in queryResult) {
       final int productListId =
           row[_TABLE_PRODUCT_LIST_EXTRA_COLUMN_LIST_ID] as int;
@@ -427,14 +436,14 @@ class DaoProductList extends AbstractDao {
 
     final Map<int, Map<String, String>> extras = await _getExtras();
     final List<ProductList> result = <ProductList>[];
-    final List<Map<String, dynamic>> queryResult =
-        await localDatabase.database.query(
+    final List<Map<String, dynamic>>
+    queryResult = await localDatabase.database.query(
       _TABLE_PRODUCT_LIST,
       columns: <String>[
         _TABLE_PRODUCT_LIST_COLUMN_ID,
         LocalDatabase.COLUMN_TIMESTAMP,
         _TABLE_PRODUCT_LIST_COLUMN_TYPE,
-        _TABLE_PRODUCT_LIST_COLUMN_PARAMETERS
+        _TABLE_PRODUCT_LIST_COLUMN_PARAMETERS,
       ],
       where: typeFilter == null || typeFilter.isEmpty
           ? null
@@ -464,15 +473,11 @@ class DaoProductList extends AbstractDao {
   ) async {
     int? id = await _getId(productList, databaseExecutor);
     if (id == null) {
-      id = await databaseExecutor.insert(
-        _TABLE_PRODUCT_LIST,
-        <String, dynamic>{
-          _TABLE_PRODUCT_LIST_COLUMN_TYPE: productList.listType,
-          _TABLE_PRODUCT_LIST_COLUMN_PARAMETERS: productList.parameters,
-          LocalDatabase.COLUMN_TIMESTAMP: LocalDatabase.nowInMillis(),
-        },
-        conflictAlgorithm: ConflictAlgorithm.fail,
-      );
+      id = await databaseExecutor.insert(_TABLE_PRODUCT_LIST, <String, dynamic>{
+        _TABLE_PRODUCT_LIST_COLUMN_TYPE: productList.listType,
+        _TABLE_PRODUCT_LIST_COLUMN_PARAMETERS: productList.parameters,
+        LocalDatabase.COLUMN_TIMESTAMP: LocalDatabase.nowInMillis(),
+      }, conflictAlgorithm: ConflictAlgorithm.fail);
     } else {
       await databaseExecutor.update(
         _TABLE_PRODUCT_LIST,

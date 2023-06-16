@@ -7,7 +7,7 @@ class CardToSpend extends StatelessWidget {
   final Currency currency;
 
   const CardToSpend({Key key, this.leftToSpend, this.currency})
-      : super(key: key);
+    : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -29,9 +29,7 @@ class CardToSpend extends StatelessWidget {
             ),
             new Padding(
               padding: const EdgeInsets.all(8.0),
-              child: new Text(S
-                  .of(context)
-                  .leftToSpend),
+              child: new Text(S.of(context).leftToSpend),
             ),
           ],
         ),

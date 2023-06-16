@@ -9,7 +9,8 @@ import 'package:tailor_made/widgets/_views/empty_result_view.dart';
 import 'package:tailor_made/widgets/theme_provider.dart';
 
 class PaymentsPage extends StatelessWidget {
-  const PaymentsPage({Key key, this.payments, @required this.userId}) : super(key: key);
+  const PaymentsPage({Key key, this.payments, @required this.userId})
+    : super(key: key);
 
   final List<PaymentModel> payments;
   final String userId;
@@ -27,7 +28,11 @@ class PaymentsPage extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Text("Payments", style: theme.appBarTitle),
-                if (payments != null) Text("${payments.length} Tickets", style: ThemeProvider.of(context).xsmall),
+                if (payments != null)
+                  Text(
+                    "${payments.length} Tickets",
+                    style: ThemeProvider.of(context).xsmall,
+                  ),
               ],
             ),
             backgroundColor: kAppBarBackgroundColor,
@@ -39,21 +44,25 @@ class PaymentsPage extends StatelessWidget {
             centerTitle: false,
             floating: true,
           ),
-          Builder(builder: (context) {
-            if (payments == null) {
-              return StreamBuilder(
-                // TODO: move this out of here
-                stream: Dependencies.di().payments.fetchAll(userId),
-                builder: (_, AsyncSnapshot<List<PaymentModel>> snapshot) {
-                  if (!snapshot.hasData) {
-                    return const SliverFillRemaining(child: MkLoadingSpinner());
-                  }
-                  return _Content(payments: snapshot.data);
-                },
-              );
-            }
-            return _Content(payments: payments);
-          })
+          Builder(
+            builder: (context) {
+              if (payments == null) {
+                return StreamBuilder(
+                  // TODO: move this out of here
+                  stream: Dependencies.di().payments.fetchAll(userId),
+                  builder: (_, AsyncSnapshot<List<PaymentModel>> snapshot) {
+                    if (!snapshot.hasData) {
+                      return const SliverFillRemaining(
+                        child: MkLoadingSpinner(),
+                      );
+                    }
+                    return _Content(payments: snapshot.data);
+                  },
+                );
+              }
+              return _Content(payments: payments);
+            },
+          ),
         ],
       ),
     );

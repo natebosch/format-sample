@@ -7,9 +7,7 @@ import 'package:openfoodfacts/utils/QueryType.dart';
 import 'package:smooth_app/database/product_query.dart';
 
 class KnowledgePanelsQuery {
-  KnowledgePanelsQuery({
-    required this.barcode,
-  });
+  KnowledgePanelsQuery({required this.barcode});
 
   final String barcode;
 

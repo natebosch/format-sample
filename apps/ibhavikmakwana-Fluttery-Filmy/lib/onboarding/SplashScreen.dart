@@ -26,18 +26,14 @@ class AnimatedLogo extends AnimatedWidget {
                 decoration: new BoxDecoration(
                   shape: BoxShape.circle,
                   color: Colors.lightBlueAccent,
-                  border: new Border.all(
-                    color: Colors.lightBlueAccent,
-                  ),
+                  border: new Border.all(color: Colors.lightBlueAccent),
                 ),
                 padding: const EdgeInsets.all(32.0),
                 child: new Container(
                   decoration: new BoxDecoration(
                     shape: BoxShape.circle,
                     color: Colors.blue,
-                    border: new Border.all(
-                      color: Colors.blue,
-                    ),
+                    border: new Border.all(color: Colors.blue),
                   ),
                   padding: const EdgeInsets.all(32.0),
                 ),
@@ -45,9 +41,7 @@ class AnimatedLogo extends AnimatedWidget {
             ),
             new Container(
               margin: new EdgeInsets.symmetric(vertical: 10.0),
-              child: new Image(
-                image: new AssetImage('assets/launcher.png'),
-              ),
+              child: new Image(image: new AssetImage('assets/launcher.png')),
             ),
           ],
         ),
@@ -70,10 +64,7 @@ class _LogoAppState extends State<LogoApp> with TickerProviderStateMixin {
       duration: const Duration(milliseconds: 3000),
       vsync: this,
     );
-    animation = new CurvedAnimation(
-      parent: controller,
-      curve: Curves.ease,
-    );
+    animation = new CurvedAnimation(parent: controller, curve: Curves.ease);
 
     controller.forward();
     animation.addStatusListener((status) {

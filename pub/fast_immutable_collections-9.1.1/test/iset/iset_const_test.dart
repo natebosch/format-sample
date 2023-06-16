@@ -74,14 +74,20 @@ void main() {
 
     ISet<int> iSetNewConfig = iset.withConfig(iset.config.copyWith());
 
-    ISet<int> iSetNewConfigIdentity = iset.withConfig(iset.config.copyWith(isDeepEquals: false));
+    ISet<int> iSetNewConfigIdentity = iset.withConfig(
+      iset.config.copyWith(isDeepEquals: false),
+    );
 
     expect(iSetNewConfig.isDeepEquals, isTrue);
     expect(iSetNewConfigIdentity.isDeepEquals, isFalse);
 
     // 2) With non-empty set, non-sorted configs.
     const Set<int> nonemptySet = <int>{1, 2, 3};
-    expect(const ISetConst(nonemptySet, ConfigSet(isDeepEquals: false)), [1, 2, 3]);
+    expect(const ISetConst(nonemptySet, ConfigSet(isDeepEquals: false)), [
+      1,
+      2,
+      3,
+    ]);
 
     // 3) With empty set and different configs.
     const Set<int> emptySet = <int>{};
@@ -257,7 +263,9 @@ void main() {
 
 // ///////////////////////////////////////////////////////////////////////////////
 
-class MySet<A extends num> with FromISetMixin<A, MySet<A>> implements Iterable<A> {
+class MySet<A extends num>
+    with FromISetMixin<A, MySet<A>>
+    implements Iterable<A> {
   final ISet<A> numbs;
 
   MySet([Iterable<A>? activities]) : numbs = ISet(activities);

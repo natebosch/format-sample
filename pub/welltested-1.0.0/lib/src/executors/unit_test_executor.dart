@@ -19,20 +19,27 @@ class UnitTestExecutor {
   final PathRepository _pathRepository;
   final ModelsExecutor _modelsExecutor;
   UnitTestExecutor(
-      this._generationRepository, this._pathRepository, this._modelsExecutor);
-  Future<TestRequestData> prepareRequest(
-      {required MapEntry<String, MethodDeclaration> method,
-      required AstNode fileAstNode,
-      required Uri fileImport,
-      required DartType className,
-      required Map<String, MethodDeclaration> methodAstNodes,
-      required BuildStep buildStep}) async {
+    this._generationRepository,
+    this._pathRepository,
+    this._modelsExecutor,
+  );
+  Future<TestRequestData> prepareRequest({
+    required MapEntry<String, MethodDeclaration> method,
+    required AstNode fileAstNode,
+    required Uri fileImport,
+    required DartType className,
+    required Map<String, MethodDeclaration> methodAstNodes,
+    required BuildStep buildStep,
+  }) async {
     final ast_method = method.value;
-    final FunctionBodyVisitor functionBodyVisitor =
-        FunctionBodyVisitor(pathExecutor: _pathRepository);
+    final FunctionBodyVisitor functionBodyVisitor = FunctionBodyVisitor(
+      pathExecutor: _pathRepository,
+    );
     ast_method.visitChildren(functionBodyVisitor);
     final processedModels = await _modelsExecutor.processModels(
-        functionBodyVisitor.classElements, buildStep);
+      functionBodyVisitor.classElements,
+      buildStep,
+    );
 
     final TestRequestData testRequestData = TestRequestData(
       fileNode: fileAstNode,

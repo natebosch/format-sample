@@ -44,9 +44,8 @@ class AboutCubit extends Cubit<AboutState> {
   Future<void> load() async {
     emit(const AboutState.loading());
     final appInfo = await _platform.appInfo;
-    emit(AboutState.loaded(
-      appName: appInfo.appName,
-      appVersion: appInfo.version,
-    ));
+    emit(
+      AboutState.loaded(appName: appInfo.appName, appVersion: appInfo.version),
+    );
   }
 }

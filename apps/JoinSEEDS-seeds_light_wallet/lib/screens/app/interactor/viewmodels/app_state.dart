@@ -19,13 +19,13 @@ class AppState extends Equatable {
 
   @override
   List<Object?> get props => [
-        pageState,
-        pageCommand,
-        index,
-        hasNotification,
-        showGuardianRecoveryAlert,
-        showGuardianApproveOrDenyScreen,
-      ];
+    pageState,
+    pageCommand,
+    index,
+    hasNotification,
+    showGuardianRecoveryAlert,
+    showGuardianApproveOrDenyScreen,
+  ];
 
   AppState copyWith({
     PageState? pageState,
@@ -40,12 +40,15 @@ class AppState extends Equatable {
       pageCommand: pageCommand,
       index: index ?? this.index,
       hasNotification: hasNotification ?? this.hasNotification,
-      showGuardianRecoveryAlert: showGuardianRecoveryAlert ?? this.showGuardianRecoveryAlert,
+      showGuardianRecoveryAlert:
+          showGuardianRecoveryAlert ?? this.showGuardianRecoveryAlert,
       showGuardianApproveOrDenyScreen: showGuardianApproveOrDenyScreen,
     );
   }
 
-  factory AppState.initial(GuardianRecoveryRequestData? showGuardianApproveOrDenyScreen) {
+  factory AppState.initial(
+    GuardianRecoveryRequestData? showGuardianApproveOrDenyScreen,
+  ) {
     return AppState(
       pageState: PageState.initial,
       index: 0,

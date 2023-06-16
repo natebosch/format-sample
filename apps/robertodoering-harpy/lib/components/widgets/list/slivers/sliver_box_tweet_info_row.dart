@@ -16,11 +16,7 @@ class SliverBoxTweetListInfoRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SliverToBoxAdapter(
-      child: TweetListInfoRow(
-        icon: icon,
-        text: text,
-        padding: padding,
-      ),
+      child: TweetListInfoRow(icon: icon, text: text, padding: padding),
     );
   }
 }

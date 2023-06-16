@@ -27,16 +27,12 @@ class MyApp extends StatelessWidget {
         ),
         scaffoldBackgroundColor: Colors.lightBlue.shade50,
         cardTheme: CardTheme(
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(16),
-          ),
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
         ),
       ),
       home: HorsProvider(
-        hors: Hors(
-          recognizers: Recognizer.all,
-          tokenParsers: TokenParsers.all,
-        ),
+        hors: Hors(recognizers: Recognizer.all, tokenParsers: TokenParsers.all),
         child: const Page(),
       ),
     );
@@ -46,11 +42,7 @@ class MyApp extends StatelessWidget {
 class HorsProvider extends InheritedWidget {
   final Hors hors;
 
-  const HorsProvider({
-    super.key,
-    required this.hors,
-    required super.child,
-  });
+  const HorsProvider({super.key, required this.hors, required super.child});
 
   @override
   bool updateShouldNotify(HorsProvider oldWidget) => false;
@@ -81,10 +73,8 @@ class Page extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 24),
               ),
               onPressed: () {
-                js.context.callMethod(
-                  'open',
-                  ['https://github.com/Vorkytaka/hors'],
-                );
+                js.context
+                    .callMethod('open', ['https://github.com/Vorkytaka/hors']);
               },
               child: const Text('Github'),
             ),
@@ -92,12 +82,7 @@ class Page extends StatelessWidget {
       ),
       body: SafeArea(
         bottom: false,
-        child: Center(
-          child: SizedBox(
-            width: width,
-            child: const Body(),
-          ),
-        ),
+        child: Center(child: SizedBox(width: width, child: const Body())),
       ),
     );
   }
@@ -126,10 +111,7 @@ class _BodyState extends State<Body> {
 
       _controller = HorsTextEditingController(
         hors: HorsProvider.of(context),
-        dateTokenTextStyle: TextStyle(
-          color: Colors.red,
-          background: paint,
-        ),
+        dateTokenTextStyle: TextStyle(color: Colors.red, background: paint),
       );
       _controller?.addListener(_onTextChanged);
     }
@@ -150,20 +132,14 @@ class _BodyState extends State<Body> {
         Expanded(
           child: ListView(
             reverse: true,
-            padding: const EdgeInsets.symmetric(
-              horizontal: 16,
-              vertical: 16,
-            ),
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
             children: [
               if (_controller?.result != null)
                 Card(
                   child: Column(
                     children: [
                       const SizedBox(height: 16),
-                      Text(
-                        'Текст без дат',
-                        style: theme.textTheme.titleSmall,
-                      ),
+                      Text('Текст без дат', style: theme.textTheme.titleSmall),
                       const SizedBox(height: 8),
                       Text(
                         _controller!.result!.textWithoutTokens.isNotEmpty
@@ -182,8 +158,8 @@ class _BodyState extends State<Body> {
                   padding: EdgeInsets.zero,
                   itemCount: _controller!.result!.tokens.length,
                   itemBuilder: (context, i) => DateTimeTokenCard(
-                    token: _controller!.result!.tokens[i],
-                  ),
+                        token: _controller!.result!.tokens[i],
+                      ),
                 ),
             ],
           ),
@@ -201,10 +177,7 @@ class _BodyState extends State<Body> {
 class Input extends StatelessWidget {
   final TextEditingController? controller;
 
-  const Input({
-    super.key,
-    required this.controller,
-  });
+  const Input({super.key, required this.controller});
 
   @override
   Widget build(BuildContext context) {
@@ -252,10 +225,7 @@ class Input extends StatelessWidget {
 class DateTimeTokenCard extends StatelessWidget {
   final DateTimeToken token;
 
-  const DateTimeTokenCard({
-    super.key,
-    required this.token,
-  });
+  const DateTimeTokenCard({super.key, required this.token});
 
   @override
   Widget build(BuildContext context) {
@@ -305,33 +275,18 @@ class DateTimeTokenCard extends StatelessWidget {
       child: Column(
         children: [
           const SizedBox(height: 16),
-          Text(
-            title,
-            style: theme.textTheme.titleSmall,
-          ),
+          Text(title, style: theme.textTheme.titleSmall),
           const SizedBox(height: 8),
-          Text(
-            dateValue,
-            style: theme.textTheme.titleLarge,
-          ),
+          Text(dateValue, style: theme.textTheme.titleLarge),
           if (dateToValue != null) ...[
             const SizedBox(height: 4),
-            Text(
-              '–',
-              style: theme.textTheme.titleLarge,
-            ),
+            Text('–', style: theme.textTheme.titleLarge),
             const SizedBox(height: 4),
-            Text(
-              dateToValue,
-              style: theme.textTheme.titleLarge,
-            ),
+            Text(dateToValue, style: theme.textTheme.titleLarge),
           ],
           if (spanValue != null) ...[
             const SizedBox(height: 8),
-            Text(
-              spanValue,
-              style: theme.textTheme.titleLarge,
-            ),
+            Text(spanValue, style: theme.textTheme.titleLarge),
           ],
           const SizedBox(height: 16),
         ],
@@ -345,10 +300,7 @@ class HorsTextEditingController extends TextEditingController {
   HorsResult? _result;
   final TextStyle? dateTokenTextStyle;
 
-  HorsTextEditingController({
-    required this.hors,
-    this.dateTokenTextStyle,
-  });
+  HorsTextEditingController({required this.hors, this.dateTokenTextStyle});
 
   HorsResult? get result => _result;
 
@@ -387,28 +339,19 @@ class HorsTextEditingController extends TextEditingController {
 
       final simpleText = text.substring(lastStart, range.start);
       if (simpleText.isNotEmpty) {
-        spans.add(TextSpan(
-          text: simpleText,
-          style: style,
-        ));
+        spans.add(TextSpan(text: simpleText, style: style));
       }
 
       final dateTimeText = text.substring(range.start, range.end);
       if (dateTimeText.isNotEmpty) {
-        spans.add(TextSpan(
-          text: dateTimeText,
-          style: dateStyle,
-        ));
+        spans.add(TextSpan(text: dateTimeText, style: dateStyle));
       }
 
       lastStart = range.end;
     } while (lastStart < length && rangesIterator.moveNext());
 
     if (lastStart < length) {
-      spans.add(TextSpan(
-        text: text.substring(lastStart),
-        style: style,
-      ));
+      spans.add(TextSpan(text: text.substring(lastStart), style: style));
     }
 
     return TextSpan(children: spans);

@@ -19,11 +19,12 @@ class Header extends StatelessWidget {
   Function(int selectedYear) onYearChanged;
   Function(int selectedMonth) onMonthChanged;
 
-  Header(
-      {required this.onViewTypeChanged,
-      required this.onYearChanged,
-      required this.onMonthChanged,
-      required this.onDateTimeReset});
+  Header({
+    required this.onViewTypeChanged,
+    required this.onYearChanged,
+    required this.onMonthChanged,
+    required this.onDateTimeReset,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -46,7 +47,8 @@ class Header extends StatelessWidget {
                       CalendarUtils.goToDay(1);
                       CalendarUtils.previousMonth();
                       onMonthChanged.call(
-                          CalendarUtils.getPartByInt(format: PartFormat.MONTH));
+                        CalendarUtils.getPartByInt(format: PartFormat.MONTH),
+                      );
                     },
                     customBorder: const CircleBorder(),
                     child: Padding(
@@ -83,11 +85,12 @@ class Header extends StatelessWidget {
                               return SelectMonth(
                                 onHeaderChanged: onMonthChanged,
                                 monthStyle: MonthOptions(
-                                    font: CalendarOptions.of(context).font,
-                                    selectedColor: DayOptions.of(context)
-                                        .selectedBackgroundColor,
-                                    backgroundColor: CalendarOptions.of(context)
-                                        .bottomSheetBackColor),
+                                  font: CalendarOptions.of(context).font,
+                                  selectedColor: DayOptions.of(context)
+                                      .selectedBackgroundColor,
+                                  backgroundColor: CalendarOptions.of(context)
+                                      .bottomSheetBackColor,
+                                ),
                               );
                             },
                           );
@@ -118,17 +121,20 @@ class Header extends StatelessWidget {
                               return SelectYear(
                                 onHeaderChanged: onYearChanged,
                                 yearStyle: YearOptions(
-                                    font: CalendarOptions.of(context).font,
-                                    selectedColor: DayOptions.of(context)
-                                        .selectedBackgroundColor,
-                                    backgroundColor: CalendarOptions.of(context)
-                                        .bottomSheetBackColor),
+                                  font: CalendarOptions.of(context).font,
+                                  selectedColor: DayOptions.of(context)
+                                      .selectedBackgroundColor,
+                                  backgroundColor: CalendarOptions.of(context)
+                                      .bottomSheetBackColor,
+                                ),
                               );
                             },
                           );
                         },
                         child: Text(
-                          '${CalendarUtils.getPartByInt(format: PartFormat.YEAR)}',
+                          '${CalendarUtils.getPartByInt(
+                            format: PartFormat.YEAR,
+                          )}',
                           style: TextStyle(
                             fontWeight: FontWeight.w500,
                             fontSize: HeaderOptions.of(context).headerTextSize,
@@ -152,7 +158,8 @@ class Header extends StatelessWidget {
                       CalendarUtils.goToDay(1);
                       CalendarUtils.nextMonth();
                       onMonthChanged.call(
-                          CalendarUtils.getPartByInt(format: PartFormat.MONTH));
+                        CalendarUtils.getPartByInt(format: PartFormat.MONTH),
+                      );
                     },
                     child: Padding(
                       padding: EdgeInsets.all(8),
@@ -173,8 +180,9 @@ class Header extends StatelessWidget {
   }
 
   isInTodayIndex() {
-    return TimelineCalendar.dateTime!
-        .isDateEqual(TimelineCalendar.calendarProvider.getDateTime());
+    return TimelineCalendar.dateTime!.isDateEqual(
+      TimelineCalendar.calendarProvider.getDateTime(),
+    );
   }
 
   buildRefreshView(BuildContext context) {

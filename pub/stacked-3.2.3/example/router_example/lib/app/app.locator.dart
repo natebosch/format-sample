@@ -29,26 +29,35 @@ Future<void> setupExampleLocator({
 }) async {
 // Register environments
   exampleLocator.registerEnvironment(
-      environment: environment, environmentFilter: environmentFilter);
+    environment: environment,
+    environmentFilter: environmentFilter,
+  );
 
 // Register dependencies
   exampleLocator.registerLazySingleton(() => DialogService());
   exampleLocator.registerLazySingleton(() => BottomSheetService());
   exampleLocator.registerLazySingleton(() => RouterService());
-  exampleLocator.registerLazySingleton(() => NavigationService(),
-      registerFor: {"dev"}, instanceName: 'instance1');
+  exampleLocator.registerLazySingleton(
+    () => NavigationService(),
+    registerFor: {"dev"},
+    instanceName: 'instance1',
+  );
   exampleLocator.registerLazySingleton(() => EpochService());
   exampleLocator.registerLazySingleton(() => ThemeService.getInstance());
   exampleLocator.registerLazySingleton(() => InformationService());
-  exampleLocator.registerLazySingleton(() => InformationService(),
-      instanceName: 'infoInstance1');
+  exampleLocator.registerLazySingleton(
+    () => InformationService(),
+    instanceName: 'infoInstance1',
+  );
   exampleLocator.registerFactoryParam<FactoryService, String?, double?>(
-      (param1, param2) => FactoryService(param1, data2: param2));
+    (param1, param2) => FactoryService(param1, data2: param2),
+  );
   exampleLocator.registerSingleton(HistoryViewModel());
   exampleLocator.registerSingleton(FavoritesViewModel());
   if (stackedRouter == null) {
     throw Exception(
-        'Stacked is building to use the Router (Navigator 2.0) navigation but no stackedRouter is supplied. Pass the stackedRouter to the setupLocator function in main.dart');
+      'Stacked is building to use the Router (Navigator 2.0) navigation but no stackedRouter is supplied. Pass the stackedRouter to the setupLocator function in main.dart',
+    );
   }
 
   exampleLocator<RouterService>().setRouter(stackedRouter);

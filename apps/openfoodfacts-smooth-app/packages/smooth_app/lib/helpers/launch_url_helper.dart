@@ -26,7 +26,9 @@ class LaunchUrlHelper {
       }
 
       url = url.replaceAll(
-          'https://openfoodfacts.', 'https://${countryCode}openfoodfacts.');
+        'https://openfoodfacts.',
+        'https://${countryCode}openfoodfacts.',
+      );
     }
 
     if (await canLaunch(url)) {

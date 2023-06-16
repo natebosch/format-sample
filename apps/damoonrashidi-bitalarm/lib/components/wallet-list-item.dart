@@ -12,10 +12,8 @@ class WalletListItem extends StatelessWidget {
     return ListTile(
       title: Text("${wallet.name} - ${wallet.symbol.toUpperCase()}"),
       subtitle: Text(wallet.address),
-      trailing: IconButton(
-        icon: Icon(Icons.remove_circle),
-        onPressed: onPressed,
-      ),
+      trailing:
+          IconButton(icon: Icon(Icons.remove_circle), onPressed: onPressed),
     );
   }
 }

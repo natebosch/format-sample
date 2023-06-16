@@ -16,7 +16,7 @@ class PISpacerRow extends StatelessWidget {
           margin: EdgeInsets.only(left: 20.rpx),
           // constraints: BoxConstraints(maxWidth: 250.rpx),
           child: right,
-        )
+        ),
       ],
     );
   }

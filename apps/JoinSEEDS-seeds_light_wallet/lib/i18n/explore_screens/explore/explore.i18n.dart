@@ -18,7 +18,7 @@ extension Localization on String {
           'Vote': 'Votar',
           'Uh oh! Something went wrong...': 'Ops! Algo deu errado...',
           'Get Seeds': "Obter Seeds",
-        }
+        },
       };
 
   String get i18n => localize(this, _t);

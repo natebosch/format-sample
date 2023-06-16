@@ -4,7 +4,8 @@ import 'package:senior_design_tokens/senior_design_tokens.dart';
 
 import '../../senior_notification_snackbar.dart';
 
-const notificationSnackbarLightTheme = const SeniorNotificationSnackbarThemeData(
+const notificationSnackbarLightTheme =
+    const SeniorNotificationSnackbarThemeData(
   style: SeniorNotificationSnackbarStyle(
     actionButtonColor: SeniorColors.secondaryColor900,
     borderColor: Colors.transparent,

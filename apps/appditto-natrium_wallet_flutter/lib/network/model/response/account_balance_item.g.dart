@@ -13,8 +13,9 @@ AccountBalanceItem _$AccountBalanceItemFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$AccountBalanceItemToJson(AccountBalanceItem instance) =>
-    <String, dynamic>{
-      'balance': instance.balance,
-      'pending': instance.pending,
-    };
+Map<String, dynamic> _$AccountBalanceItemToJson(
+  AccountBalanceItem instance,
+) => <String, dynamic>{
+  'balance': instance.balance,
+  'pending': instance.pending,
+};

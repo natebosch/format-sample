@@ -24,9 +24,7 @@ import 'package:libretrack/core/crash_catcher/crash_catcher.dart';
 
 class IsolateCrashHook implements CrashHook {
   @override
-  Future<void> setup({
-    required List<CrashHandler> handlers,
-  }) async {
+  Future<void> setup({required List<CrashHandler> handlers}) async {
     // Web doesn't have Isolate error listener support
     if (kIsWeb) {
       return;

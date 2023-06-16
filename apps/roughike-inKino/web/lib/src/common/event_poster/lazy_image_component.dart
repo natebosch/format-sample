@@ -4,8 +4,9 @@ import 'dart:js' as js;
 
 import 'package:angular/angular.dart';
 
-final bool supportsIntersectionObserver =
-    js.context.hasProperty('IntersectionObserver');
+final bool supportsIntersectionObserver = js.context.hasProperty(
+  'IntersectionObserver',
+);
 
 @Component(
   selector: 'lazy-img',

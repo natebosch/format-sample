@@ -15,8 +15,11 @@ void main() {
     });
 
     test('test: insert and get a record in CategoryHashTag table', () async {
-      CategoryHashTagEntity data =
-          CategoryHashTagEntity(id: 1, hashTagId: 1, categoryId: 1);
+      CategoryHashTagEntity data = CategoryHashTagEntity(
+        id: 1,
+        hashTagId: 1,
+        categoryId: 1,
+      );
       await dataSource.insert(data);
 
       CategoryHashTagEntity insertedData = await dataSource.get(data.id);
@@ -24,14 +27,20 @@ void main() {
     });
 
     test('test: update a record in CategoryHashTag table', () async {
-      CategoryHashTagEntity data =
-          CategoryHashTagEntity(id: 1, hashTagId: 1, categoryId: 1);
+      CategoryHashTagEntity data = CategoryHashTagEntity(
+        id: 1,
+        hashTagId: 1,
+        categoryId: 1,
+      );
       await dataSource.insert(data);
 
       CategoryHashTagEntity insertedData = await dataSource.get(data.id);
 
       CategoryHashTagEntity dataToUpdate = CategoryHashTagEntity(
-          id: insertedData.id, hashTagId: 1, categoryId: 2);
+        id: insertedData.id,
+        hashTagId: 1,
+        categoryId: 2,
+      );
 
       await dataSource.update(dataToUpdate);
 
@@ -40,12 +49,15 @@ void main() {
     });
 
     test('test: delete all records in CategoryHashTag table', () async {
-      await dataSource
-          .insert(CategoryHashTagEntity(id: 1, hashTagId: 1, categoryId: 1));
-      await dataSource
-          .insert(CategoryHashTagEntity(id: 2, hashTagId: 1, categoryId: 2));
-      await dataSource
-          .insert(CategoryHashTagEntity(id: 3, hashTagId: 1, categoryId: 3));
+      await dataSource.insert(
+        CategoryHashTagEntity(id: 1, hashTagId: 1, categoryId: 1),
+      );
+      await dataSource.insert(
+        CategoryHashTagEntity(id: 2, hashTagId: 1, categoryId: 2),
+      );
+      await dataSource.insert(
+        CategoryHashTagEntity(id: 3, hashTagId: 1, categoryId: 3),
+      );
 
       await dataSource.deleteAll();
 
@@ -56,8 +68,9 @@ void main() {
     test('test: delete a record in CategoryHashTag table', () async {
       await dataSource.deleteAll();
 
-      await dataSource
-          .insert(CategoryHashTagEntity(id: 1, hashTagId: 1, categoryId: 1));
+      await dataSource.insert(
+        CategoryHashTagEntity(id: 1, hashTagId: 1, categoryId: 1),
+      );
 
       await dataSource.delete(1);
 
@@ -68,12 +81,15 @@ void main() {
     test('test: get all records in CategoryHashTag table', () async {
       await dataSource.deleteAll();
 
-      await dataSource
-          .insert(CategoryHashTagEntity(id: 1, hashTagId: 1, categoryId: 3));
-      await dataSource
-          .insert(CategoryHashTagEntity(id: 2, hashTagId: 1, categoryId: 4));
-      await dataSource
-          .insert(CategoryHashTagEntity(id: 3, hashTagId: 4, categoryId: 7));
+      await dataSource.insert(
+        CategoryHashTagEntity(id: 1, hashTagId: 1, categoryId: 3),
+      );
+      await dataSource.insert(
+        CategoryHashTagEntity(id: 2, hashTagId: 1, categoryId: 4),
+      );
+      await dataSource.insert(
+        CategoryHashTagEntity(id: 3, hashTagId: 4, categoryId: 7),
+      );
       List<CategoryHashTagEntity> allRecords = await dataSource.all();
       expect(allRecords.length == 3, true);
     });

@@ -16,13 +16,13 @@ class GeneratorScreen extends StatelessWidget {
   final void Function(GradientDirection) onGradientDirectionChanged;
   final void Function(List<Color>) onColorListChanged;
 
-  const GeneratorScreen(
-      {Key? key,
-      required this.gradient,
-      required this.onGradientStyleChanged,
-      required this.onGradientDirectionChanged,
-      required this.onColorListChanged})
-      : super(key: key);
+  const GeneratorScreen({
+    Key? key,
+    required this.gradient,
+    required this.onGradientStyleChanged,
+    required this.onGradientDirectionChanged,
+    required this.onColorListChanged,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -49,19 +49,25 @@ class GeneratorScreen extends StatelessWidget {
             ),
             const SizedBox(height: 24),
             DirectionSelectionWidget(
-                gradientStyle: gradient.getGradientStyle(),
-                selectedGradientDirection: gradient.getGradientDirection(),
-                onGradientDirectionChanged: onGradientDirectionChanged),
+              gradientStyle: gradient.getGradientStyle(),
+              selectedGradientDirection: gradient.getGradientDirection(),
+              onGradientDirectionChanged: onGradientDirectionChanged,
+            ),
             const SizedBox(height: 24),
             ColorSelectionWidget(
-                colorList: colorList, onColorListChanged: onColorListChanged),
+              colorList: colorList,
+              onColorListChanged: onColorListChanged,
+            ),
             const SizedBox(height: 48),
-            GetGradientButton(onTap: () async {
-              await Clipboard.setData(ClipboardData(text: _generatedCode));
-              await FirebaseAnalytics().logEvent(
+            GetGradientButton(
+              onTap: () async {
+                await Clipboard.setData(ClipboardData(text: _generatedCode));
+                await FirebaseAnalytics().logEvent(
                   name: AppStrings.gradientGeneratedFirebaseAnalyticsKey,
-                  parameters: gradient.toJson());
-            }),
+                  parameters: gradient.toJson(),
+                );
+              },
+            ),
             const SizedBox(height: 100),
           ],
         ),

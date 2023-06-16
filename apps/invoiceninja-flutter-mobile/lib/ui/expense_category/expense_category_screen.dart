@@ -19,10 +19,8 @@ import 'package:invoiceninja_flutter/utils/localization.dart';
 import 'expense_category_screen_vm.dart';
 
 class ExpenseCategoryScreen extends StatelessWidget {
-  const ExpenseCategoryScreen({
-    Key key,
-    @required this.viewModel,
-  }) : super(key: key);
+  const ExpenseCategoryScreen({Key key, @required this.viewModel})
+    : super(key: key);
 
   static const String route = '/$kSettings/$kSettingsExpenseCategories';
 
@@ -37,8 +35,8 @@ class ExpenseCategoryScreen extends StatelessWidget {
 
     return ListScaffold(
       entityType: EntityType.expenseCategory,
-      onHamburgerLongPress: () =>
-          store.dispatch(StartExpenseCategoryMultiselect()),
+      onHamburgerLongPress:
+          () => store.dispatch(StartExpenseCategoryMultiselect()),
       onCancelSettingsSection: kSettingsExpenses,
       onCheckboxPressed: () {
         if (store.state.expenseCategoryListState.isInMultiselect()) {
@@ -49,7 +47,8 @@ class ExpenseCategoryScreen extends StatelessWidget {
       },
       appBarTitle: ListFilter(
         key: ValueKey(
-            '__filter_${state.expenseCategoryListState.filterClearedAt}__'),
+          '__filter_${state.expenseCategoryListState.filterClearedAt}__',
+        ),
         entityType: EntityType.expenseCategory,
         entityIds: viewModel.expenseCategoryList,
         filter: state.expenseCategoryListState.filter,
@@ -66,10 +65,7 @@ class ExpenseCategoryScreen extends StatelessWidget {
         onSelectedSortField: (value) {
           store.dispatch(SortExpenseCategories(value));
         },
-        sortFields: [
-          ExpenseCategoryFields.name,
-          EntityFields.updatedAt,
-        ],
+        sortFields: [ExpenseCategoryFields.name, EntityFields.updatedAt],
         onSelectedState: (EntityState state, value) {
           store.dispatch(FilterExpenseCategoriesByState(state));
         },
@@ -80,14 +76,14 @@ class ExpenseCategoryScreen extends StatelessWidget {
             store.dispatch(StartExpenseCategoryMultiselect());
           }
         },
-        onSelectedCustom1: (value) =>
-            store.dispatch(FilterExpenseCategoriesByCustom1(value)),
-        onSelectedCustom2: (value) =>
-            store.dispatch(FilterExpenseCategoriesByCustom2(value)),
-        onSelectedCustom3: (value) =>
-            store.dispatch(FilterExpenseCategoriesByCustom3(value)),
-        onSelectedCustom4: (value) =>
-            store.dispatch(FilterExpenseCategoriesByCustom4(value)),
+        onSelectedCustom1:
+            (value) => store.dispatch(FilterExpenseCategoriesByCustom1(value)),
+        onSelectedCustom2:
+            (value) => store.dispatch(FilterExpenseCategoriesByCustom2(value)),
+        onSelectedCustom3:
+            (value) => store.dispatch(FilterExpenseCategoriesByCustom3(value)),
+        onSelectedCustom4:
+            (value) => store.dispatch(FilterExpenseCategoriesByCustom4(value)),
       ),
       floatingActionButton: state.prefState.isMenuFloated &&
               userCompany.canCreate(EntityType.expenseCategory)
@@ -96,12 +92,11 @@ class ExpenseCategoryScreen extends StatelessWidget {
               backgroundColor: Theme.of(context).primaryColorDark,
               onPressed: () {
                 createEntityByType(
-                    context: context, entityType: EntityType.expenseCategory);
+                  context: context,
+                  entityType: EntityType.expenseCategory,
+                );
               },
-              child: Icon(
-                Icons.add,
-                color: Colors.white,
-              ),
+              child: Icon(Icons.add, color: Colors.white),
               tooltip: localization.newExpenseCategory,
             )
           : null,

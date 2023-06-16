@@ -13,9 +13,7 @@ class FaIconSchema {
     'type': 'object',
     'title': 'FaIcon',
     'additionalProperties': false,
-    'required': [
-      'icon',
-    ],
+    'required': ['icon'],
     'properties': {
       'color': SchemaHelper.objectSchema(ColorSchema.id),
       'icon': SchemaHelper.objectSchema(IconDataSchema.id),

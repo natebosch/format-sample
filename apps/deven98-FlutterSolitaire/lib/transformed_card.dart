@@ -28,11 +28,7 @@ class _TransformedCardState extends State<TransformedCard> {
   Widget build(BuildContext context) {
     return Transform(
       transform: Matrix4.identity()
-        ..translate(
-          0.0,
-          widget.transformIndex * widget.transformDistance,
-          0.0,
-        ),
+        ..translate(0.0, widget.transformIndex * widget.transformDistance, 0.0),
       child: _buildCard(),
     );
   }
@@ -83,15 +79,10 @@ class _TransformedCardState extends State<TransformedCard> {
                   Center(
                     child: Text(
                       _cardTypeToString(),
-                      style: TextStyle(
-                        fontSize: 16.0,
-                      ),
+                      style: TextStyle(fontSize: 16.0),
                     ),
                   ),
-                  Container(
-                    height: 20.0,
-                    child: _suitToImage(),
-                  )
+                  Container(height: 20.0, child: _suitToImage()),
                 ],
               ),
             ),
@@ -103,16 +94,8 @@ class _TransformedCardState extends State<TransformedCard> {
                   mainAxisAlignment: MainAxisAlignment.end,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    Text(
-                      _cardTypeToString(),
-                      style: TextStyle(
-                        fontSize: 10.0,
-                      ),
-                    ),
-                    Container(
-                      height: 10.0,
-                      child: _suitToImage(),
-                    )
+                    Text(_cardTypeToString(), style: TextStyle(fontSize: 10.0)),
+                    Container(height: 10.0, child: _suitToImage()),
                   ],
                 ),
               ),

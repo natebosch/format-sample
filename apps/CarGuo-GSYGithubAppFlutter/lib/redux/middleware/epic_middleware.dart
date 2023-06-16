@@ -21,15 +21,16 @@ import 'epic_store.dart';
 class EpicMiddleware<State> extends MiddlewareClass<State> {
   final StreamController<dynamic> _actions =
       StreamController<dynamic>.broadcast();
-  final StreamController<Epic<State>> _epics =
-      StreamController.broadcast(sync: true);
+  final StreamController<Epic<State>> _epics = StreamController.broadcast(
+    sync: true,
+  );
 
   final bool supportAsyncGenerators;
   Epic<State> _epic;
   bool _isSubscribed = false;
 
   EpicMiddleware(Epic<State> epic, {this.supportAsyncGenerators = true})
-      : _epic = epic;
+    : _epic = epic;
 
   @override
   void call(Store<State> store, dynamic action, NextDispatcher next) {

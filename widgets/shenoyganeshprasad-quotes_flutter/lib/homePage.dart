@@ -37,17 +37,18 @@ class _HomePageState extends State<HomePage> {
           elevation: 0.0,
           actions: <Widget>[
             IconButton(
-                icon: isDark
-                    ? Icon(Icons.brightness_medium)
-                    : Icon(
-                        Icons.brightness_3,
-                        color: isDark ? Colors.white : Colors.black,
-                      ),
-                onPressed: () {
-                  setState(() {
-                    isDark = !isDark;
-                  });
-                })
+              icon: isDark
+                  ? Icon(Icons.brightness_medium)
+                  : Icon(
+                      Icons.brightness_3,
+                      color: isDark ? Colors.white : Colors.black,
+                    ),
+              onPressed: () {
+                setState(() {
+                  isDark = !isDark;
+                });
+              },
+            ),
           ],
         ),
         body: Center(

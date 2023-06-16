@@ -29,12 +29,12 @@ class WebCardField extends StatefulWidget {
     this.focusNode,
     this.autofocus = false,
     this.dangerouslyUpdateFullCardDetails = false,
-  })  : assert(constraints == null || constraints.debugAssertIsValid()),
-        constraints = (width != null || height != null)
-            ? constraints?.tighten(width: width, height: height) ??
-                BoxConstraints.tightFor(width: width, height: height)
-            : constraints,
-        super(key: key);
+  }) : assert(constraints == null || constraints.debugAssertIsValid()),
+       constraints = (width != null || height != null)
+           ? constraints?.tighten(width: width, height: height) ??
+               BoxConstraints.tightFor(width: width, height: height)
+           : constraints,
+       super(key: key);
 
   final BoxConstraints? constraints;
   final CardFocusCallback? onFocus;
@@ -77,8 +77,10 @@ class WebStripeCardState extends State<WebCardField> with CardFieldContext {
         if (kDebugMode &&
             controller.details !=
                 const CardFieldInputDetails(complete: false)) {
-          dev.log('WARNING! Initial card data value has been ignored. \n'
-              '$kDebugPCIMessage');
+          dev.log(
+            'WARNING! Initial card data value has been ignored. \n'
+            '$kDebugPCIMessage',
+          );
         }
         ambiguate(WidgetsBinding.instance)?.addPostFrameCallback((timeStamp) {
           updateCardDetails(
@@ -138,16 +140,16 @@ class WebStripeCardState extends State<WebCardField> with CardFieldContext {
   }
 
   js.CardElementOptions createOptions() {
-    return js.CardElementOptions(
-      hidePostalCode: !widget.enablePostalCode,
-    );
+    return js.CardElementOptions(hidePostalCode: !widget.enablePostalCode);
   }
 
   @override
   void didUpdateWidget(covariant WebCardField oldWidget) {
     if (widget.controller != oldWidget.controller) {
-      assert(!controller.hasCardField,
-          'CardEditController is already attached to a CardView');
+      assert(
+        !controller.hasCardField,
+        'CardEditController is already attached to a CardView',
+      );
       detachController(oldWidget.controller);
       attachController(oldWidget.controller);
     }

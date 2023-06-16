@@ -31,11 +31,11 @@ class LocalParticipant extends Participant<LocalTrackPublication> {
     required Room room,
     required lk_models.ParticipantInfo info,
   }) : super(
-          room: room,
-          sid: info.sid,
-          identity: info.identity,
-          name: info.name,
-        ) {
+         room: room,
+         sid: info.sid,
+         identity: info.identity,
+         name: info.name,
+       ) {
     updateFromInfo(info);
   }
 
@@ -46,7 +46,8 @@ class LocalParticipant extends Participant<LocalTrackPublication> {
     AudioPublishOptions? publishOptions,
   }) async {
     if (audioTracks.any(
-        (e) => e.track?.mediaStreamTrack.id == track.mediaStreamTrack.id)) {
+      (e) => e.track?.mediaStreamTrack.id == track.mediaStreamTrack.id,
+    )) {
       throw TrackPublishException('track already exists');
     }
 
@@ -91,10 +92,9 @@ class LocalParticipant extends Participant<LocalTrackPublication> {
     await track.onPublish();
     await room.applyAudioSpeakerSettings();
 
-    [events, room.events].emit(LocalTrackPublishedEvent(
-      participant: this,
-      publication: pub,
-    ));
+    [events, room.events].emit(
+      LocalTrackPublishedEvent(participant: this, publication: pub),
+    );
 
     return pub;
   }
@@ -106,7 +106,8 @@ class LocalParticipant extends Participant<LocalTrackPublication> {
     VideoPublishOptions? publishOptions,
   }) async {
     if (videoTracks.any(
-        (e) => e.track?.mediaStreamTrack.id == track.mediaStreamTrack.id)) {
+      (e) => e.track?.mediaStreamTrack.id == track.mediaStreamTrack.id,
+    )) {
       throw TrackPublishException('track already exists');
     }
 
@@ -141,7 +142,8 @@ class LocalParticipant extends Participant<LocalTrackPublication> {
     }
 
     logger.fine(
-        'Compute encodings with resolution: ${dimensions}, options: ${publishOptions}');
+      'Compute encodings with resolution: ${dimensions}, options: ${publishOptions}',
+    );
 
     // Video encodings and simulcasts
     final encodings = Utils.computeVideoEncodings(
@@ -238,10 +240,9 @@ class LocalParticipant extends Participant<LocalTrackPublication> {
     // did publish
     await track.onPublish();
 
-    [events, room.events].emit(LocalTrackPublishedEvent(
-      participant: this,
-      publication: pub,
-    ));
+    [events, room.events].emit(
+      LocalTrackPublishedEvent(participant: this, publication: pub),
+    );
 
     return pub;
   }
@@ -284,10 +285,9 @@ class LocalParticipant extends Participant<LocalTrackPublication> {
     }
 
     if (notify) {
-      [events, room.events].emit(LocalTrackUnpublishedEvent(
-        participant: this,
-        publication: pub,
-      ));
+      [events, room.events].emit(
+        LocalTrackUnpublishedEvent(participant: this, publication: pub),
+      );
     }
 
     await pub.dispose();
@@ -331,11 +331,9 @@ class LocalParticipant extends Participant<LocalTrackPublication> {
   /// Note: this requires `CanUpdateOwnMetadata` permission encoded in the token.
   /// @param metadata
   void setMetadata(String metadata) {
-    room.engine.signalClient
-        .sendUpdateLocalMetadata(lk_rtc.UpdateParticipantMetadata(
-      name: name,
-      metadata: metadata,
-    ));
+    room.engine.signalClient.sendUpdateLocalMetadata(
+      lk_rtc.UpdateParticipantMetadata(name: name, metadata: metadata),
+    );
   }
 
   /// Sets and updates the name of the local participant.
@@ -343,11 +341,9 @@ class LocalParticipant extends Participant<LocalTrackPublication> {
   ///  @param name
   void setName(String name) {
     super.updateName(name);
-    room.engine.signalClient
-        .sendUpdateLocalMetadata(lk_rtc.UpdateParticipantMetadata(
-      name: name,
-      metadata: metadata,
-    ));
+    room.engine.signalClient.sendUpdateLocalMetadata(
+      lk_rtc.UpdateParticipantMetadata(name: name, metadata: metadata),
+    );
   }
 
   /// A convenience property to get all video tracks.
@@ -365,36 +361,53 @@ class LocalParticipant extends Participant<LocalTrackPublication> {
           .toList();
 
   /// Shortcut for publishing a [TrackSource.camera]
-  Future<LocalTrackPublication?> setCameraEnabled(bool enabled,
-      {CameraCaptureOptions? cameraCaptureOptions}) async {
-    return setSourceEnabled(TrackSource.camera, enabled,
-        cameraCaptureOptions: cameraCaptureOptions);
+  Future<LocalTrackPublication?> setCameraEnabled(
+    bool enabled, {
+    CameraCaptureOptions? cameraCaptureOptions,
+  }) async {
+    return setSourceEnabled(
+      TrackSource.camera,
+      enabled,
+      cameraCaptureOptions: cameraCaptureOptions,
+    );
   }
 
   /// Shortcut for publishing a [TrackSource.microphone]
-  Future<LocalTrackPublication?> setMicrophoneEnabled(bool enabled,
-      {AudioCaptureOptions? audioCaptureOptions}) async {
-    return setSourceEnabled(TrackSource.microphone, enabled,
-        audioCaptureOptions: audioCaptureOptions);
+  Future<LocalTrackPublication?> setMicrophoneEnabled(
+    bool enabled, {
+    AudioCaptureOptions? audioCaptureOptions,
+  }) async {
+    return setSourceEnabled(
+      TrackSource.microphone,
+      enabled,
+      audioCaptureOptions: audioCaptureOptions,
+    );
   }
 
   /// Shortcut for publishing a [TrackSource.screenShareVideo]
-  Future<LocalTrackPublication?> setScreenShareEnabled(bool enabled,
-      {bool? captureScreenAudio,
-      ScreenShareCaptureOptions? screenShareCaptureOptions}) async {
-    return setSourceEnabled(TrackSource.screenShareVideo, enabled,
-        captureScreenAudio: captureScreenAudio,
-        screenShareCaptureOptions: screenShareCaptureOptions);
+  Future<LocalTrackPublication?> setScreenShareEnabled(
+    bool enabled, {
+    bool? captureScreenAudio,
+    ScreenShareCaptureOptions? screenShareCaptureOptions,
+  }) async {
+    return setSourceEnabled(
+      TrackSource.screenShareVideo,
+      enabled,
+      captureScreenAudio: captureScreenAudio,
+      screenShareCaptureOptions: screenShareCaptureOptions,
+    );
   }
 
   /// A convenience method to publish a track for a specific [TrackSource].
   /// This is the recommended method to publish tracks.
   Future<LocalTrackPublication?> setSourceEnabled(
-      TrackSource source, bool enabled,
-      {bool? captureScreenAudio,
-      AudioCaptureOptions? audioCaptureOptions,
-      CameraCaptureOptions? cameraCaptureOptions,
-      ScreenShareCaptureOptions? screenShareCaptureOptions}) async {
+    TrackSource source,
+    bool enabled, {
+    bool? captureScreenAudio,
+    AudioCaptureOptions? audioCaptureOptions,
+    CameraCaptureOptions? cameraCaptureOptions,
+    ScreenShareCaptureOptions? screenShareCaptureOptions,
+  }) async {
     logger.fine('setSourceEnabled(source: $source, enabled: $enabled)');
     final publication = getTrackPublicationBySource(source);
     if (publication != null) {
@@ -430,7 +443,8 @@ class LocalParticipant extends Participant<LocalTrackPublication> {
         if (captureScreenAudio != null) {
           captureOptions = captureOptions.copyWith(captureScreenAudio: true);
           final tracks = await LocalVideoTrack.createScreenShareTracksWithAudio(
-              captureOptions);
+            captureOptions,
+          );
           LocalTrackPublication<LocalVideoTrack>? publication;
           for (final track in tracks) {
             if (track is LocalVideoTrack) {
@@ -492,8 +506,10 @@ class LocalParticipant extends Participant<LocalTrackPublication> {
   }
 
   @internal
-  Iterable<lk_rtc.TrackPublishedResponse> publishedTracksInfo() =>
-      trackPublications.values.map((e) => e.toPBTrackPublishedResponse());
+  Iterable<lk_rtc.TrackPublishedResponse>
+  publishedTracksInfo() => trackPublications.values.map(
+    (e) => e.toPBTrackPublishedResponse(),
+  );
 
   @internal
   @override

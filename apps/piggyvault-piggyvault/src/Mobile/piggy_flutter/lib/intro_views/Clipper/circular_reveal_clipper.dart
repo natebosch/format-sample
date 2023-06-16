@@ -22,7 +22,11 @@ class CircularRevealClipper extends CustomClipper<Rect> {
     final diameter = 2 * radius;
 
     return new Rect.fromLTWH(
-        center.dx - radius, center.dy - radius, diameter, diameter);
+      center.dx - radius,
+      center.dy - radius,
+      diameter,
+      diameter,
+    );
   }
 
   @override

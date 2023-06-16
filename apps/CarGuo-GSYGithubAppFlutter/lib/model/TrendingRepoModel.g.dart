@@ -22,17 +22,18 @@ TrendingRepoModel _$TrendingRepoModelFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$TrendingRepoModelToJson(TrendingRepoModel instance) =>
-    <String, dynamic>{
-      'fullName': instance.fullName,
-      'url': instance.url,
-      'description': instance.description,
-      'language': instance.language,
-      'meta': instance.meta,
-      'contributors': instance.contributors,
-      'contributorsUrl': instance.contributorsUrl,
-      'starCount': instance.starCount,
-      'forkCount': instance.forkCount,
-      'name': instance.name,
-      'reposName': instance.reposName,
-    };
+Map<String, dynamic> _$TrendingRepoModelToJson(
+  TrendingRepoModel instance,
+) => <String, dynamic>{
+  'fullName': instance.fullName,
+  'url': instance.url,
+  'description': instance.description,
+  'language': instance.language,
+  'meta': instance.meta,
+  'contributors': instance.contributors,
+  'contributorsUrl': instance.contributorsUrl,
+  'starCount': instance.starCount,
+  'forkCount': instance.forkCount,
+  'name': instance.name,
+  'reposName': instance.reposName,
+};

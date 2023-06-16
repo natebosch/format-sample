@@ -14,21 +14,30 @@ class AllDelegatesStateMapper extends StateMapper {
     if (areAllResultsError(results)) {
       return currentState.copyWith(pageState: PageState.failure);
     } else {
-      final DelegateModel? allianceDelegate = results[_allianceDelegateResponseIndex].valueOrNull;
-      final DelegateModel? campaingDelegate = results[_campaingDelegateResponseIndex].valueOrNull;
-      final DelegateModel? milestoneDelegate = results[_milestoneDelegateResponseIndex].valueOrNull;
+      final DelegateModel? allianceDelegate =
+          results[_allianceDelegateResponseIndex].valueOrNull;
+      final DelegateModel? campaingDelegate =
+          results[_campaingDelegateResponseIndex].valueOrNull;
+      final DelegateModel? milestoneDelegate =
+          results[_milestoneDelegateResponseIndex].valueOrNull;
       final List<CategoryDelegate> currentDelegates = [];
       if (allianceDelegate != null && allianceDelegate.hasDelegate) {
-        currentDelegates
-            .add(CategoryDelegate(category: ProposalCategory.alliance, delegate: allianceDelegate.delegatee));
+        currentDelegates.add(CategoryDelegate(
+          category: ProposalCategory.alliance,
+          delegate: allianceDelegate.delegatee,
+        ));
       }
       if (campaingDelegate != null && campaingDelegate.hasDelegate) {
-        currentDelegates
-            .add(CategoryDelegate(category: ProposalCategory.campaign, delegate: campaingDelegate.delegatee));
+        currentDelegates.add(CategoryDelegate(
+          category: ProposalCategory.campaign,
+          delegate: campaingDelegate.delegatee,
+        ));
       }
       if (milestoneDelegate != null && milestoneDelegate.hasDelegate) {
-        currentDelegates
-            .add(CategoryDelegate(category: ProposalCategory.milestone, delegate: milestoneDelegate.delegatee));
+        currentDelegates.add(CategoryDelegate(
+          category: ProposalCategory.milestone,
+          delegate: milestoneDelegate.delegatee,
+        ));
       }
 
       return currentState.copyWith(currentDelegates: currentDelegates);

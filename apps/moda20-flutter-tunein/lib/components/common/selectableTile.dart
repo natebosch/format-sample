@@ -3,10 +3,6 @@ import 'dart:io';
 import 'package:Tunein/globals.dart';
 import 'package:flutter/material.dart';
 
-
-
-
-
 class SelectableTile extends StatefulWidget {
   final String imageUri;
   Widget leadingWidget;
@@ -21,13 +17,36 @@ class SelectableTile extends StatefulWidget {
   Color initialBackgroundColor;
   Color selectedTextColor;
   Color selectedBackgroundColor;
-  String type="normal";
-  SelectableTile({this.imageUri, this.title, this.onTap, this.isSelected, this.placeHolderAssetUri,
-    this.initialBackgroundColor, this.selectedBackgroundColor, this.selectedTextColor, this.initialTextColor, this.leadingWidget});
+  String type = "normal";
+  SelectableTile({
+    this.imageUri,
+    this.title,
+    this.onTap,
+    this.isSelected,
+    this.placeHolderAssetUri,
+    this.initialBackgroundColor,
+    this.selectedBackgroundColor,
+    this.selectedTextColor,
+    this.initialTextColor,
+    this.leadingWidget,
+  });
 
-  SelectableTile.mediumWithSubtitle({this.imageUri, this.title, this.onTap, this.isSelected, this.placeHolderAssetUri,
-    this.initialBackgroundColor, this.selectedBackgroundColor, this.selectedTextColor, this.initialTextColor, this.subtitle, this.initialSubtitleColor, this.selectedSubtitleColor, this.leadingWidget}){
-    this.type="mediumsub";
+  SelectableTile.mediumWithSubtitle({
+    this.imageUri,
+    this.title,
+    this.onTap,
+    this.isSelected,
+    this.placeHolderAssetUri,
+    this.initialBackgroundColor,
+    this.selectedBackgroundColor,
+    this.selectedTextColor,
+    this.initialTextColor,
+    this.subtitle,
+    this.initialSubtitleColor,
+    this.selectedSubtitleColor,
+    this.leadingWidget,
+  }) {
+    this.type = "mediumsub";
   }
 
   @override
@@ -54,72 +73,75 @@ class _SelectableTileState extends State<SelectableTile> {
     super.initState();
     updateAllItemsWidget();
   }
+
   @override
   Widget build(BuildContext context) {
+    switch (widget.type) {
+      case "normal":
+        {
+          return buildNormal();
+        }
+      case "mediumsub":
+        {
+          return buildMediumSithSub();
+        }
 
-    switch(widget.type){
-      case "normal":{
-        return buildNormal();
-      }
-      case "mediumsub":{
-        return buildMediumSithSub();
-      }
-
-      default:{
-        return buildNormal();
-      }
+      default:
+        {
+          return buildNormal();
+        }
     }
   }
 
   @override
   void didUpdateWidget(SelectableTile oldWidget) {
-    if(
-    imageUri!=widget.imageUri||
-    title!= widget.title||
-    onTap!=widget.onTap||
-    isSelected!=widget.isSelected||
-    placeHolderAssetUri!= widget.placeHolderAssetUri||
-    initialBackgroundColor!=widget.initialBackgroundColor||
-    initialTextColor!=widget.initialTextColor||
-    selectedTextColor!=widget.selectedTextColor||
-    selectedBackgroundColor!=widget.selectedBackgroundColor||
-    subtitle!=widget.subtitle||
-    initialSubtitleColor!=widget.initialSubtitleColor||
-    selectedSubtitleColor!=widget.selectedSubtitleColor||
-    leadingWidget!=widget.leadingWidget
-    ) {
-      setState((){
+    if (imageUri != widget.imageUri ||
+        title != widget.title ||
+        onTap != widget.onTap ||
+        isSelected != widget.isSelected ||
+        placeHolderAssetUri != widget.placeHolderAssetUri ||
+        initialBackgroundColor != widget.initialBackgroundColor ||
+        initialTextColor != widget.initialTextColor ||
+        selectedTextColor != widget.selectedTextColor ||
+        selectedBackgroundColor != widget.selectedBackgroundColor ||
+        subtitle != widget.subtitle ||
+        initialSubtitleColor != widget.initialSubtitleColor ||
+        selectedSubtitleColor != widget.selectedSubtitleColor ||
+        leadingWidget != widget.leadingWidget) {
+      setState(() {
         updateAllItemsWidget();
       });
     }
     super.didUpdateWidget(oldWidget);
   }
 
-  updateAllItemsWidget(){
-    imageUri=widget.imageUri;
-    title= widget.title;
-    onTap=widget.onTap;
-    isSelected=widget.isSelected??false;
-    placeHolderAssetUri= widget.placeHolderAssetUri;
-    initialBackgroundColor=widget.initialBackgroundColor;
-    initialTextColor=widget.initialTextColor;
-    selectedTextColor=widget.selectedTextColor;
-    selectedBackgroundColor=widget.selectedBackgroundColor;
-    subtitle=widget.subtitle;
-    initialSubtitleColor=widget.initialSubtitleColor;
-    selectedSubtitleColor=widget.selectedSubtitleColor;
-    leadingWidget=widget.leadingWidget;
+  updateAllItemsWidget() {
+    imageUri = widget.imageUri;
+    title = widget.title;
+    onTap = widget.onTap;
+    isSelected = widget.isSelected ?? false;
+    placeHolderAssetUri = widget.placeHolderAssetUri;
+    initialBackgroundColor = widget.initialBackgroundColor;
+    initialTextColor = widget.initialTextColor;
+    selectedTextColor = widget.selectedTextColor;
+    selectedBackgroundColor = widget.selectedBackgroundColor;
+    subtitle = widget.subtitle;
+    initialSubtitleColor = widget.initialSubtitleColor;
+    selectedSubtitleColor = widget.selectedSubtitleColor;
+    leadingWidget = widget.leadingWidget;
   }
 
-  Widget buildMediumSithSub(){
+  Widget buildMediumSithSub() {
     return Material(
-      color: isSelected?selectedBackgroundColor??MyTheme.darkBlack:initialBackgroundColor??MyTheme.darkBlack,
+      color: isSelected
+          ? selectedBackgroundColor ?? MyTheme.darkBlack
+          : initialBackgroundColor ?? MyTheme.darkBlack,
       elevation: 16,
       child: InkWell(
-        onTap: (){
-          onTap!=null?onTap(!isSelected):null;
+        onTap: () {
+          onTap != null ? onTap(!isSelected) : null;
           setState(() {
-            isSelected=!isSelected;
+            isSelected = !isSelected;
           });
         },
         child: Container(
@@ -133,16 +155,19 @@ class _SelectableTileState extends State<SelectableTile> {
                 child: SizedBox(
                   height: 50,
                   width: 50,
-                  child: leadingWidget??FadeInImage(
-                    placeholder: AssetImage(placeHolderAssetUri??'images/track.png'),
-                    fadeInDuration: Duration(milliseconds: 200),
-                    fadeOutDuration: Duration(milliseconds: 100),
-                    image: imageUri != null
-                        ? FileImage(
-                      new File(imageUri),
-                    )
-                        : AssetImage(placeHolderAssetUri??'images/track.png'),
-                  ),
+                  child: leadingWidget ??
+                      FadeInImage(
+                        placeholder: AssetImage(
+                          placeHolderAssetUri ?? 'images/track.png',
+                        ),
+                        fadeInDuration: Duration(milliseconds: 200),
+                        fadeOutDuration: Duration(milliseconds: 100),
+                        image: imageUri != null
+                            ? FileImage(new File(imageUri))
+                            : AssetImage(
+                                placeHolderAssetUri ?? 'images/track.png',
+                              ),
+                      ),
                 ),
               ),
               Expanded(
@@ -152,44 +177,42 @@ class _SelectableTileState extends State<SelectableTile> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     Padding(
-                        padding: const EdgeInsets.only(bottom: 8),
-                        child: Text(
-                          (title == null)
-                              ? ""
-                              : title,
-                          overflow: TextOverflow.fade,
-                          maxLines: 1,
-                          textWidthBasis: TextWidthBasis.parent,
-                          softWrap: false,
-                          style: TextStyle(
-                            fontSize: 13.5,
-                            fontWeight: FontWeight.w700,
-                            color: isSelected?selectedTextColor??MyTheme.grey300:initialTextColor??MyTheme.grey300,
-                          ),
-                        )
-
+                      padding: const EdgeInsets.only(bottom: 8),
+                      child: Text(
+                        (title == null) ? "" : title,
+                        overflow: TextOverflow.fade,
+                        maxLines: 1,
+                        textWidthBasis: TextWidthBasis.parent,
+                        softWrap: false,
+                        style: TextStyle(
+                          fontSize: 13.5,
+                          fontWeight: FontWeight.w700,
+                          color: isSelected
+                              ? selectedTextColor ?? MyTheme.grey300
+                              : initialTextColor ?? MyTheme.grey300,
+                        ),
+                      ),
                     ),
                     Padding(
-                        padding: const EdgeInsets.only(bottom: 4),
-                        child: Text(
-                          ( subtitle== null)
-                              ? ""
-                              : subtitle,
-                          overflow: TextOverflow.fade,
-                          maxLines: 1,
-                          textWidthBasis: TextWidthBasis.parent,
-                          softWrap: false,
-                          style: TextStyle(
-                            fontSize: 13.5,
-                            fontWeight: FontWeight.w700,
-                            color: isSelected?selectedSubtitleColor??MyTheme.grey300:initialSubtitleColor??MyTheme.grey300,
-                          ),
-                        )
-
+                      padding: const EdgeInsets.only(bottom: 4),
+                      child: Text(
+                        (subtitle == null) ? "" : subtitle,
+                        overflow: TextOverflow.fade,
+                        maxLines: 1,
+                        textWidthBasis: TextWidthBasis.parent,
+                        softWrap: false,
+                        style: TextStyle(
+                          fontSize: 13.5,
+                          fontWeight: FontWeight.w700,
+                          color: isSelected
+                              ? selectedSubtitleColor ?? MyTheme.grey300
+                              : initialSubtitleColor ?? MyTheme.grey300,
+                        ),
+                      ),
                     ),
                   ],
                 ),
-              )
+              ),
             ],
           ),
         ),
@@ -197,16 +220,18 @@ class _SelectableTileState extends State<SelectableTile> {
     );
   }
 
-  Widget buildNormal(){
+  Widget buildNormal() {
     return Material(
-      color: isSelected?selectedBackgroundColor??MyTheme.darkBlack:initialBackgroundColor??MyTheme.darkBlack,
+      color: isSelected
+          ? selectedBackgroundColor ?? MyTheme.darkBlack
+          : initialBackgroundColor ?? MyTheme.darkBlack,
       elevation: 16,
       child: InkWell(
-        onTap: (){
+        onTap: () {
           print("tapped element, will setState anyways");
-          onTap!=null?onTap(!isSelected):null;
+          onTap != null ? onTap(!isSelected) : null;
           setState(() {
-            isSelected=!isSelected;
+            isSelected = !isSelected;
           });
         },
         child: Container(
@@ -220,16 +245,19 @@ class _SelectableTileState extends State<SelectableTile> {
                 child: SizedBox(
                   height: 30,
                   width: 30,
-                  child: leadingWidget??FadeInImage(
-                    placeholder: AssetImage(placeHolderAssetUri??'images/track.png'),
-                    fadeInDuration: Duration(milliseconds: 200),
-                    fadeOutDuration: Duration(milliseconds: 100),
-                    image: imageUri != null
-                        ? FileImage(
-                      new File(imageUri),
-                    )
-                        : AssetImage(placeHolderAssetUri??'images/track.png'),
-                  ),
+                  child: leadingWidget ??
+                      FadeInImage(
+                        placeholder: AssetImage(
+                          placeHolderAssetUri ?? 'images/track.png',
+                        ),
+                        fadeInDuration: Duration(milliseconds: 200),
+                        fadeOutDuration: Duration(milliseconds: 100),
+                        image: imageUri != null
+                            ? FileImage(new File(imageUri))
+                            : AssetImage(
+                                placeHolderAssetUri ?? 'images/track.png',
+                              ),
+                      ),
                 ),
               ),
               Expanded(
@@ -239,26 +267,25 @@ class _SelectableTileState extends State<SelectableTile> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     Padding(
-                        padding: const EdgeInsets.only(bottom: 8),
-                        child: Text(
-                          (title == null)
-                              ? "Unknon Album"
-                              : title,
-                          overflow: TextOverflow.fade,
-                          maxLines: 1,
-                          textWidthBasis: TextWidthBasis.parent,
-                          softWrap: false,
-                          style: TextStyle(
-                            fontSize: 13.5,
-                            fontWeight: FontWeight.w700,
-                            color: isSelected?selectedTextColor??MyTheme.grey300:initialTextColor??MyTheme.grey300,
-                          ),
-                        )
-
+                      padding: const EdgeInsets.only(bottom: 8),
+                      child: Text(
+                        (title == null) ? "Unknon Album" : title,
+                        overflow: TextOverflow.fade,
+                        maxLines: 1,
+                        textWidthBasis: TextWidthBasis.parent,
+                        softWrap: false,
+                        style: TextStyle(
+                          fontSize: 13.5,
+                          fontWeight: FontWeight.w700,
+                          color: isSelected
+                              ? selectedTextColor ?? MyTheme.grey300
+                              : initialTextColor ?? MyTheme.grey300,
+                        ),
+                      ),
                     ),
                   ],
                 ),
-              )
+              ),
             ],
           ),
         ),
@@ -266,5 +293,3 @@ class _SelectableTileState extends State<SelectableTile> {
     );
   }
 }
-
-

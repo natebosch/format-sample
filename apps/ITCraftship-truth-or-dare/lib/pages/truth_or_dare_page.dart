@@ -64,9 +64,7 @@ class _TruthOrDarePageState extends State<TruthOrDarePage> {
     return Scaffold(
       body: Stack(
         children: [
-          Container(
-            color: _getColor(),
-          ),
+          Container(color: _getColor()),
           AnimatedAlign(
             duration: _animationDuration,
             alignment: Alignment(_horizontalImageAlignment, _alignmentCenter),
@@ -106,7 +104,10 @@ class _TruthOrDarePageState extends State<TruthOrDarePage> {
             child: AnimatedAlign(
               duration: _animationDuration,
               curve: _textCurve ?? Curves.elasticIn,
-              alignment: Alignment(_popButtonHorizontalAlignment, _popButtonVerticalAlignment),
+              alignment: Alignment(
+                _popButtonHorizontalAlignment,
+                _popButtonVerticalAlignment,
+              ),
               child: GestureDetector(
                 onTap: _prepareForPop,
                 child: Image.asset(Images.backArrow),
@@ -117,7 +118,10 @@ class _TruthOrDarePageState extends State<TruthOrDarePage> {
             child: AnimatedAlign(
               duration: _animationDuration,
               curve: _textCurve ?? Curves.elasticIn,
-              alignment: Alignment(_nextButtonHorizontalAlignment, _nextButtonVerticalAlignment),
+              alignment: Alignment(
+                _nextButtonHorizontalAlignment,
+                _nextButtonVerticalAlignment,
+              ),
               child: GestureDetector(
                 onTap: _showNext,
                 child: Row(
@@ -195,7 +199,9 @@ class _TruthOrDarePageState extends State<TruthOrDarePage> {
     });
   }
 
-  Color _getColor() => widget.truthOrDare == TruthOrDare.truth ? AppColors.blueBackground : AppColors.redBackground;
+  Color _getColor() => widget.truthOrDare == TruthOrDare.truth
+      ? AppColors.blueBackground
+      : AppColors.redBackground;
 
   String _getQuestion() => widget.truthOrDare == TruthOrDare.truth
       ? widget.truthOrDareDataSource.getQuestion()

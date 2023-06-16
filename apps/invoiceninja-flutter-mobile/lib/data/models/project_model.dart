@@ -110,12 +110,14 @@ abstract class ProjectEntity extends Object
   @memoized
   int get hashCode;
 
-  ProjectEntity get clone => rebuild((b) => b
-    ..id = BaseEntity.nextId
-    ..number = ''
-    ..documents.clear()
-    ..isChanged = false
-    ..isDeleted = false);
+  ProjectEntity get clone => rebuild(
+    (b) => b
+      ..id = BaseEntity.nextId
+      ..number = ''
+      ..documents.clear()
+      ..isChanged = false
+      ..isDeleted = false,
+  );
 
   @override
   EntityType get entityType {
@@ -162,12 +164,13 @@ abstract class ProjectEntity extends Object
   BuiltList<DocumentEntity> get documents;
 
   @override
-  List<EntityAction> getActions(
-      {UserCompanyEntity userCompany,
-      ClientEntity client,
-      bool includeEdit = false,
-      bool includePreview = false,
-      bool multiselect = false}) {
+  List<EntityAction> getActions({
+    UserCompanyEntity userCompany,
+    ClientEntity client,
+    bool includeEdit = false,
+    bool includePreview = false,
+    bool multiselect = false,
+  }) {
     final actions = <EntityAction>[];
 
     if (!multiselect && !isDeleted) {
@@ -201,19 +204,21 @@ abstract class ProjectEntity extends Object
   }
 
   int compareTo(
-      ProjectEntity project,
-      String sortField,
-      bool sortAscending,
-      BuiltMap<String, UserEntity> userMap,
-      BuiltMap<String, ClientEntity> clientMap) {
+    ProjectEntity project,
+    String sortField,
+    bool sortAscending,
+    BuiltMap<String, UserEntity> userMap,
+    BuiltMap<String, ClientEntity> clientMap,
+  ) {
     int response = 0;
     final ProjectEntity projectA = sortAscending ? this : project;
     final ProjectEntity projectB = sortAscending ? project : this;
 
     switch (sortField) {
       case ProjectFields.name:
-        response =
-            projectA.name.toLowerCase().compareTo(projectB.name.toLowerCase());
+        response = projectA.name.toLowerCase().compareTo(
+          projectB.name.toLowerCase(),
+        );
         break;
       case ProjectFields.taskRate:
         response = projectA.taskRate.compareTo(projectB.taskRate);
@@ -228,16 +233,16 @@ abstract class ProjectEntity extends Object
       case ProjectFields.clientNumber:
         final clientA = clientMap[projectA.clientId] ?? ClientEntity();
         final clientB = clientMap[projectB.clientId] ?? ClientEntity();
-        response = clientA.number
-            .toLowerCase()
-            .compareTo(clientB.number.toLowerCase());
+        response = clientA.number.toLowerCase().compareTo(
+          clientB.number.toLowerCase(),
+        );
         break;
       case ProjectFields.clientIdNumber:
         final clientA = clientMap[projectA.clientId] ?? ClientEntity();
         final clientB = clientMap[projectB.clientId] ?? ClientEntity();
-        response = clientA.idNumber
-            .toLowerCase()
-            .compareTo(clientB.idNumber.toLowerCase());
+        response = clientA.idNumber.toLowerCase().compareTo(
+          clientB.idNumber.toLowerCase(),
+        );
         break;
       case ProjectFields.dueDate:
         response = projectA.dueDate.compareTo(projectB.dueDate);
@@ -256,8 +261,9 @@ abstract class ProjectEntity extends Object
             EntityState.valueOf(projectA.entityState) ?? EntityState.active;
         final stateB =
             EntityState.valueOf(projectB.entityState) ?? EntityState.active;
-        response =
-            stateA.name.toLowerCase().compareTo(stateB.name.toLowerCase());
+        response = stateA.name.toLowerCase().compareTo(
+          stateB.name.toLowerCase(),
+        );
         break;
       case EntityFields.createdAt:
         response = projectA.createdAt.compareTo(projectB.createdAt);
@@ -271,20 +277,21 @@ abstract class ProjectEntity extends Object
       case EntityFields.assignedTo:
         final userA = userMap[projectA.assignedUserId] ?? UserEntity();
         final userB = userMap[projectB.assignedUserId] ?? UserEntity();
-        response = userA.listDisplayName
-            .toLowerCase()
-            .compareTo(userB.listDisplayName.toLowerCase());
+        response = userA.listDisplayName.toLowerCase().compareTo(
+          userB.listDisplayName.toLowerCase(),
+        );
         break;
       case EntityFields.createdBy:
         final userA = userMap[projectA.createdUserId] ?? UserEntity();
         final userB = userMap[projectB.createdUserId] ?? UserEntity();
-        response = userA.listDisplayName
-            .toLowerCase()
-            .compareTo(userB.listDisplayName.toLowerCase());
+        response = userA.listDisplayName.toLowerCase().compareTo(
+          userB.listDisplayName.toLowerCase(),
+        );
         break;
       case ProjectFields.documents:
-        response =
-            projectA.documents.length.compareTo(projectB.documents.length);
+        response = projectA.documents.length.compareTo(
+          projectB.documents.length,
+        );
         break;
       case ProjectFields.number:
         response = (projectA.number ?? '').compareTo(projectB.number ?? '');
@@ -313,8 +320,9 @@ abstract class ProjectEntity extends Object
     return response;
   }
 
-  bool matchesName(String filter) =>
-      name.toLowerCase().contains(filter.toLowerCase());
+  bool matchesName(String filter) => name.toLowerCase().contains(
+    filter.toLowerCase(),
+  );
 
   @override
   bool matchesFilter(String filter) {

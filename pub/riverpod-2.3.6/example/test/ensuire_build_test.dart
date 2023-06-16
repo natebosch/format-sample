@@ -3,8 +3,6 @@ import 'package:test/test.dart';
 
 void main() {
   test('ensure_build', () {
-    expectBuildClean(
-      packageRelativeDirectory: 'packages/riverpod/example',
-    );
+    expectBuildClean(packageRelativeDirectory: 'packages/riverpod/example');
   });
 }

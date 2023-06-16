@@ -28,9 +28,9 @@ class SettingsItem {
                     mainAxisSize: MainAxisSize.max,
                     children: [
                       Text(this.description, textAlign: TextAlign.start),
-                      this.action
+                      this.action,
                     ],
-                  )
+                  ),
                 ],
               ),
             ),

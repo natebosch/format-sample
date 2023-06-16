@@ -22,7 +22,8 @@ GetIt $initGetIt(
   final registerDependencies = _$RegisterDependencies();
   gh.lazySingleton<DialogService>(() => registerDependencies.dialogService);
   gh.lazySingleton<NavigationService>(
-      () => registerDependencies.navigationService);
+    () => registerDependencies.navigationService,
+  );
   gh.lazySingleton<SnackbarService>(() => registerDependencies.snackbarService);
   return get;
 }

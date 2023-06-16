@@ -20,8 +20,10 @@ class _IntroCardState extends State<IntroCard>
   @override
   void initState() {
     super.initState();
-    animationController =
-        AnimationController(duration: Duration(milliseconds: 400), vsync: this);
+    animationController = AnimationController(
+      duration: Duration(milliseconds: 400),
+      vsync: this,
+    );
     animation = Tween(begin: 0, end: 60).animate(animationController)
       ..addListener(() {
         setState(() {});
@@ -49,47 +51,45 @@ class _IntroCardState extends State<IntroCard>
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   Text(
-                    AppLocalizations.of(context)
-                        .translate('near-vision-diagnosis'),
+                    AppLocalizations.of(context).translate(
+                      'near-vision-diagnosis',
+                    ),
                     style: TextStyle(fontSize: 24, fontFamily: 'OpenSans'),
                     textAlign: TextAlign.center,
                   ),
-                  Container(
-                    height: 8,
-                  ),
+                  Container(height: 8),
                   Text(
-                      AppLocalizations.of(context)
-                          .translate('diagnosis-description'),
-                      textAlign: TextAlign.justify,
-                      style: Theme.of(context).textTheme.caption),
-                  Container(
-                    height: 32,
+                    AppLocalizations.of(context).translate(
+                      'diagnosis-description',
+                    ),
+                    textAlign: TextAlign.justify,
+                    style: Theme.of(context).textTheme.caption,
                   ),
+                  Container(height: 32),
                   MaterialButton(
                     child: Text(
-                      AppLocalizations.of(context)
-                          .translate('start')
-                          .toUpperCase(),
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 24,
-                      ),
+                      AppLocalizations.of(context).translate(
+                        'start',
+                      ).toUpperCase(),
+                      style: TextStyle(color: Colors.white, fontSize: 24),
                     ),
                     color: Colors.lightBlueAccent[700],
                     padding: EdgeInsets.only(
-                        top: 16, right: 64, bottom: 16, left: 64),
+                      top: 16,
+                      right: 64,
+                      bottom: 16,
+                      left: 64,
+                    ),
                     shape: StadiumBorder(),
                     onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => NearVisionPage()),
-                      );
+                      Navigator.push(context, MaterialPageRoute(
+                        builder: (context) => NearVisionPage(),
+                      ));
                     },
                   ),
                 ],
               ),
-            )
+            ),
           ],
         ),
       ),

@@ -15,7 +15,11 @@ class GithubMiddleware extends MiddlewareClass<AppState> {
   final GithubTrendingApi api;
 
   @override
-  Future<Null> call(Store<AppState> store, dynamic action, NextDispatcher next) async {
+  Future<Null> call(
+    Store<AppState> store,
+    dynamic action,
+    NextDispatcher next,
+  ) async {
     if (action is InitAction) {
       await _init(action, next, store);
     } else if (action is FetchRepoTrending) {
@@ -28,12 +32,18 @@ class GithubMiddleware extends MiddlewareClass<AppState> {
     }
   }
 
-  Future<void> _init(InitAction action, NextDispatcher next, Store<AppState> store) async {
+  Future<void> _init(
+    InitAction action,
+    NextDispatcher next,
+    Store<AppState> store,
+  ) async {
     final configuration = await loadConfig();
-    final languages = [configuration.popular, configuration.all].expand((x) => x).toList();
+    final languages =
+        [configuration.popular, configuration.all].expand((x) => x).toList();
     next(SetLanguages(languages));
     next(SetCurrentLanguage(configuration.popular[0]));
-    final currentLanguage = store.state.githubState?.currentLanguage ?? configuration.popular[0];
+    final currentLanguage =
+        store.state.githubState?.currentLanguage ?? configuration.popular[0];
     await _fetchTrending(currentLanguage.urlParam, 'weekly', next);
   }
 
@@ -41,7 +51,11 @@ class GithubMiddleware extends MiddlewareClass<AppState> {
     return await api.getLanguages(languageType);
   }
 
-  Future<void> _fetchTrending(String language, String since, NextDispatcher next) async {
+  Future<void> _fetchTrending(
+    String language,
+    String since,
+    NextDispatcher next,
+  ) async {
     next(FetchingTrendingAction());
     final trendingList = await api.getTrending(language, since);
     next(SetRepoTrending(trendingList));

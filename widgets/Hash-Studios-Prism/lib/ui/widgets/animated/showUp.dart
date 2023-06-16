@@ -22,12 +22,13 @@ class ShowUpTransition extends StatefulWidget {
   /// From which direction start the [Slide] animation
   final SlideFromSlide slideSide;
 
-  const ShowUpTransition(
-      {required this.child,
-      this.duration,
-      this.delay,
-      this.slideSide = SlideFromSlide.left,
-      required this.forward});
+  const ShowUpTransition({
+    required this.child,
+    this.duration,
+    this.delay,
+    this.slideSide = SlideFromSlide.left,
+    required this.forward,
+  });
 
   @override
   _ShowUpTransitionState createState() => _ShowUpTransitionState();
@@ -50,8 +51,9 @@ class _ShowUpTransitionState extends State<ShowUpTransition>
   void initState() {
     super.initState();
     _animController = AnimationController(
-        vsync: this,
-        duration: widget.duration ?? const Duration(milliseconds: 400));
+      vsync: this,
+      duration: widget.duration ?? const Duration(milliseconds: 400),
+    );
     switch (widget.slideSide) {
       case SlideFromSlide.left:
         selectedSlide = slideSides[0];
@@ -67,8 +69,11 @@ class _ShowUpTransitionState extends State<ShowUpTransition>
         break;
     }
     _animOffset = Tween<Offset>(begin: selectedSlide, end: Offset.zero).animate(
-        CurvedAnimation(
-            curve: Curves.fastLinearToSlowEaseIn, parent: _animController));
+      CurvedAnimation(
+        curve: Curves.fastLinearToSlowEaseIn,
+        parent: _animController,
+      ),
+    );
   }
 
   @override
@@ -89,10 +94,7 @@ class _ShowUpTransitionState extends State<ShowUpTransition>
     return widget.forward
         ? FadeTransition(
             opacity: _animController,
-            child: SlideTransition(
-              position: _animOffset,
-              child: widget.child,
-            ),
+            child: SlideTransition(position: _animOffset, child: widget.child),
           )
         : Container();
   }

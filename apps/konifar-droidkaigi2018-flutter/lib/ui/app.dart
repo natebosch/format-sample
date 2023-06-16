@@ -29,8 +29,9 @@ class _MyLocalizationsDelegate extends LocalizationsDelegate<Strings> {
 
 class MyApp extends StatefulWidget {
   static FirebaseAnalytics analytics = new FirebaseAnalytics();
-  static FirebaseAnalyticsObserver observer =
-      new FirebaseAnalyticsObserver(analytics: analytics);
+  static FirebaseAnalyticsObserver observer = new FirebaseAnalyticsObserver(
+    analytics: analytics,
+  );
 
   @override
   _MyAppState createState() => new _MyAppState(analytics, observer);
@@ -58,13 +59,8 @@ class _MyAppState extends State<MyApp> {
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
       ],
-      supportedLocales: [
-        const Locale('en', ''),
-        const Locale('ja', ''),
-      ],
-      navigatorObservers: [
-        new FirebaseAnalyticsObserver(analytics: analytics),
-      ],
+      supportedLocales: [const Locale('en', ''), const Locale('ja', '')],
+      navigatorObservers: [new FirebaseAnalyticsObserver(analytics: analytics)],
       theme: themeData,
       showPerformanceOverlay: _showPerformanceOverlay,
       home: new MyHomePage(
@@ -85,8 +81,7 @@ class MyHomePage extends StatefulWidget {
     Key key,
     this.showPerformanceOverlay,
     this.onShowPerformanceOverlayChanged,
-  })
-      : super(key: key);
+  }) : super(key: key);
 
   @override
   _MyHomePageState createState() => new _MyHomePageState();
@@ -201,9 +196,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
           });
         },
       ),
-      body: new Center(
-        child: _buildTransitionsStack(),
-      ),
+      body: new Center(child: _buildTransitionsStack()),
     );
   }
 }

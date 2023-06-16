@@ -29,7 +29,7 @@ class KnowledgePanelGroupCard extends StatelessWidget {
             KnowledgePanelCard(
               panel: allPanels.panelIdToPanelMap[panelId]!,
               allPanels: allPanels,
-            )
+            ),
         ],
       ),
     );

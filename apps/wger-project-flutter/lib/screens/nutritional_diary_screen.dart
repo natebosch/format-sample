@@ -39,19 +39,21 @@ class NutritionalDiaryScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final args = ModalRoute.of(context)!.settings.arguments as NutritionalDiaryArguments;
+    final args =
+        ModalRoute.of(context)!.settings.arguments as NutritionalDiaryArguments;
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(DateFormat.yMd(Localizations.localeOf(context).languageCode).format(args.date)),
+        title: Text(DateFormat.yMd(Localizations.localeOf(context).languageCode)
+            .format(args.date)),
       ),
       body: Consumer<NutritionPlansProvider>(
         builder: (context, nutritionProvider, child) => SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: NutritionalDiaryDetailWidget(args.plan, args.date),
-          ),
-        ),
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: NutritionalDiaryDetailWidget(args.plan, args.date),
+              ),
+            ),
       ),
     );
   }

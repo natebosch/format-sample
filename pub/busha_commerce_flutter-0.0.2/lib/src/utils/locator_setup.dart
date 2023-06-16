@@ -22,11 +22,10 @@ List<Object> servicesList = [
   PaymentService(),
   PayoutService(),
   SocketService(),
-  UrlService()
+  UrlService(),
 ];
 
 Future locatorSetup() async {
-
   HttpOverrides.global = HttpServiceOverrides();
 
   serviceLocator.registerLazySingleton(() => AccountService());
@@ -38,7 +37,6 @@ Future locatorSetup() async {
   serviceLocator.registerLazySingleton(() => SocketService());
   serviceLocator.registerLazySingleton(() => UrlService());
   serviceLocator.registerLazySingleton(() => NavigationHandler());
-
 }
 
 // Future disposeSetup() async {

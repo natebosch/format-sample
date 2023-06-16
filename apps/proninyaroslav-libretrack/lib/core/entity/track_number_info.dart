@@ -45,12 +45,7 @@ class TrackNumberInfo extends Equatable {
   });
 
   @override
-  List<Object?> get props => [
-        trackNumber,
-        description,
-        isArchived,
-        dateAdded,
-      ];
+  List<Object?> get props => [trackNumber, description, isArchived, dateAdded];
 
   @override
   bool get stringify => true;
@@ -60,13 +55,12 @@ class TrackNumberInfo extends Equatable {
     String? description,
     bool? isArchived,
     DateTime? dateAdded,
-  }) =>
-      TrackNumberInfo(
-        trackNumber ?? this.trackNumber,
-        description: description ?? this.description,
-        isArchived: isArchived ?? this.isArchived,
-        dateAdded: dateAdded ?? this.dateAdded,
-      );
+  }) => TrackNumberInfo(
+    trackNumber ?? this.trackNumber,
+    description: description ?? this.description,
+    isArchived: isArchived ?? this.isArchived,
+    dateAdded: dateAdded ?? this.dateAdded,
+  );
 }
 
 @TypeConverters([PostalServiceTypeConverter])
@@ -97,17 +91,14 @@ class TrackNumberService extends Equatable {
     this.isActive = true,
   });
 
-  factory TrackNumberService.fromJson(Map<String, dynamic> json) =>
-      _$TrackNumberServiceFromJson(json);
+  factory TrackNumberService.fromJson(
+    Map<String, dynamic> json,
+  ) => _$TrackNumberServiceFromJson(json);
 
   Map<String, dynamic> toJson() => _$TrackNumberServiceToJson(this);
 
   @override
-  List<Object> get props => [
-        trackNumber,
-        serviceType,
-        isActive,
-      ];
+  List<Object> get props => [trackNumber, serviceType, isActive];
 
   @override
   bool get stringify => true;
@@ -116,10 +107,9 @@ class TrackNumberService extends Equatable {
     String? trackNumber,
     PostalServiceType? serviceType,
     bool? isActive,
-  }) =>
-      TrackNumberService(
-        trackNumber: trackNumber ?? this.trackNumber,
-        serviceType: serviceType ?? this.serviceType,
-        isActive: isActive ?? this.isActive,
-      );
+  }) => TrackNumberService(
+    trackNumber: trackNumber ?? this.trackNumber,
+    serviceType: serviceType ?? this.serviceType,
+    isActive: isActive ?? this.isActive,
+  );
 }

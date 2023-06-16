@@ -5,10 +5,7 @@ import 'package:example/basic_example/models/index.dart';
 import 'package:flutter/material.dart';
 
 class BlurredBackdropImage extends StatelessWidget {
-  const BlurredBackdropImage({
-    super.key,
-    required this.movieDetails,
-  });
+  const BlurredBackdropImage({super.key, required this.movieDetails});
 
   final MovieDetails movieDetails;
 
@@ -17,9 +14,7 @@ class BlurredBackdropImage extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         image: DecorationImage(
-          image: CachedNetworkImageProvider(
-              movieDetails.backdropPath ?? '',
-          ),
+          image: CachedNetworkImageProvider(movieDetails.backdropPath ?? ''),
           fit: BoxFit.cover,
         ),
       ),
@@ -27,9 +22,7 @@ class BlurredBackdropImage extends StatelessWidget {
       child: BackdropFilter(
         filter: ImageFilter.blur(sigmaX: 7.0, sigmaY: 7.0),
         child: Container(
-          decoration: BoxDecoration(
-            color: Colors.white.withOpacity(0.0),
-          ),
+          decoration: BoxDecoration(color: Colors.white.withOpacity(0.0)),
         ),
       ),
     );

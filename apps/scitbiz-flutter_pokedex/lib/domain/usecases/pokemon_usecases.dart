@@ -16,10 +16,7 @@ class GetAllPokemonsUseCase extends NoParamsUseCase<List<Pokemon>> {
 }
 
 class GetPokemonsParams {
-  const GetPokemonsParams({
-    @required this.page,
-    @required this.limit,
-  });
+  const GetPokemonsParams({@required this.page, @required this.limit});
 
   final int page;
   final int limit;

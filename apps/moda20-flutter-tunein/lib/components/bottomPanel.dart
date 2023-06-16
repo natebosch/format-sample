@@ -19,17 +19,18 @@ class BottomPanel extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<MapEntry<PlayerState, Tune>>(
-      stream: musicService.playerState$.where((newValue){
-        if(oldSong!=null && oldSong.id==newValue.value.id){
+      stream: musicService.playerState$.where((newValue) {
+        if (oldSong != null && oldSong.id == newValue.value.id) {
           return false;
-        }else{
-          oldSong= newValue.value;
+        } else {
+          oldSong = newValue.value;
           return true;
         }
       }),
-      builder: (BuildContext context,
-          AsyncSnapshot<MapEntry<PlayerState, Tune>> snapshot) {
-
+      builder: (
+        BuildContext context,
+        AsyncSnapshot<MapEntry<PlayerState, Tune>> snapshot,
+      ) {
         if (!snapshot.hasData) {
           return Container(
             color: MyTheme.bgBottomBar,
@@ -52,22 +53,30 @@ class BottomPanel extends StatelessWidget {
 
         final PlayerState _state = snapshot.data.key;
         final String _artists = getArtists(_currentSong);
-        List<int> currentColors = (_currentSong.colors != null && _currentSong.colors.length!=0)?_currentSong.colors:themeService.defaultColors;
+        List<int> currentColors =
+            (_currentSong.colors != null && _currentSong.colors.length != 0)
+                ? _currentSong.colors
+                : themeService.defaultColors;
         return AnimatedContainer(
-            duration: Duration(milliseconds: 500),
-            curve: Curves.decelerate,
-            color: Color(currentColors[0]),
-            height: double.infinity,
-            width: double.infinity,
-            alignment: Alignment.bottomCenter,
-            child: getBottomPanelLayout(
-                _state, _currentSong, _artists, currentColors));
+          duration: Duration(milliseconds: 500),
+          curve: Curves.decelerate,
+          color: Color(currentColors[0]),
+          height: double.infinity,
+          width: double.infinity,
+          alignment: Alignment.bottomCenter,
+          child: getBottomPanelLayout(
+            _state,
+            _currentSong,
+            _artists,
+            currentColors,
+          ),
+        );
       },
     );
   }
 
   String getArtists(Tune song) {
-    if(song.artist == null) return "Unknow Artist";
+    if (song.artist == null) return "Unknow Artist";
     return song.artist.split(";").reduce((String a, String b) {
       return a + " & " + b;
     });
@@ -82,7 +91,7 @@ class BottomPanel extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: <Widget>[
         Container(
-           width: 60,
+          width: 60,
           height: 60,
           child: Padding(
             padding: EdgeInsets.only(right: 0, left: 5),
@@ -139,7 +148,7 @@ class BottomPanel extends StatelessWidget {
                               if (_currentSong.uri == null) {
                                 return;
                               }
-                              Future.delayed(Duration(milliseconds: 200),(){
+                              Future.delayed(Duration(milliseconds: 200), () {
                                 musicService.playPreviousSong();
                               });
                             },
@@ -148,7 +157,9 @@ class BottomPanel extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: <Widget>[
                                 Padding(
-                                  padding: const EdgeInsets.symmetric(horizontal: 12.0),
+                                  padding: const EdgeInsets.symmetric(
+                                    horizontal: 12.0,
+                                  ),
                                   child: Icon(
                                     IconData(0xeb40, fontFamily: 'boxicons'),
                                     color: new Color(colors[1]).withOpacity(.7),
@@ -162,85 +173,111 @@ class BottomPanel extends StatelessWidget {
                         Material(
                           color: Colors.transparent,
                           child: StreamBuilder(
-                            initialData: MapEntry<PlayerState, Tune>(_state,_currentSong),
+                            initialData: MapEntry<PlayerState, Tune>(
+                              _state,
+                              _currentSong,
+                            ),
                             stream: musicService.playerState$,
-                            builder: (context, AsyncSnapshot<MapEntry<PlayerState, Tune>> snapshot){
+                            builder: (
+                              context,
+                              AsyncSnapshot<MapEntry<PlayerState, Tune>>
+                              snapshot,
+                            ) {
                               PlayerState newStat = snapshot.data.key;
-                              return PlayPauseButtonWidget(newStat, colors, (PlayerState state){
-                                if(state==PlayerState.playing){
-                                  //will run pause
-                                  Future.delayed(Duration(milliseconds: 200),(){
-                                    musicService.playOrPause(null, PlayPauseCurrentSong: true);
-                                  });
-                                  return;
-                                }
-                                if(state==PlayerState.paused){
-                                  //will run play
-                                  Future.delayed(Duration(milliseconds: 200),(){
-                                    musicService.playOrPause(null, PlayPauseCurrentSong: true);
-                                  });
-                                  return;
-                                }
-                              }
+                              return PlayPauseButtonWidget(
+                                newStat,
+                                colors,
+                                (PlayerState state) {
+                                  if (state == PlayerState.playing) {
+                                    //will run pause
+                                    Future.delayed(
+                                      Duration(milliseconds: 200),
+                                      () {
+                                        musicService.playOrPause(
+                                          null,
+                                          PlayPauseCurrentSong: true,
+                                        );
+                                      },
+                                    );
+                                    return;
+                                  }
+                                  if (state == PlayerState.paused) {
+                                    //will run play
+                                    Future.delayed(
+                                      Duration(milliseconds: 200),
+                                      () {
+                                        musicService.playOrPause(
+                                          null,
+                                          PlayPauseCurrentSong: true,
+                                        );
+                                      },
+                                    );
+                                    return;
+                                  }
+                                },
                               );
                             },
                           ),
-                        )
+                        ),
                       ],
-                    )
+                    ),
                   ],
                 ),
-              )
+              ),
             ],
           ),
-        )
+        ),
       ],
     );
   }
 
+  Widget getSlider(List<int> colors, Tune song) {
+    return Stack(
+      children: <Widget>[
+        StreamBuilder(
+          initialData: Duration(milliseconds: 1),
+          stream: musicService.position$,
+          builder: (BuildContext context, AsyncSnapshot<Duration> snapshot) {
+            if (!snapshot.hasData) {
+              return Container();
+            }
+            final Duration _currentDuration = snapshot.data;
 
-  Widget getSlider(List<int> colors, Tune song){
-
-        return Stack(
-          children: <Widget>[
-            StreamBuilder(
-              initialData: Duration(milliseconds: 1),
-              stream: musicService.position$,
-              builder: (BuildContext context,
-                  AsyncSnapshot<Duration> snapshot) {
-                if (!snapshot.hasData) {
-                  return Container();
-                }
-                final Duration _currentDuration = snapshot.data;
-
-                return new LinearProgressIndicator(
-                  value: _currentDuration != null &&
+            return new LinearProgressIndicator(
+              value: _currentDuration != null &&
                       _currentDuration.inMilliseconds > 0
-                      ? (song.duration!=0?_currentDuration.inMilliseconds.toDouble()/song.duration:0)
-                      : 0.0,
-                  valueColor:
-                  new AlwaysStoppedAnimation(Color(colors[1])),
-                  backgroundColor: Color(colors[0]),
-                ) ;
-              },
-            )
-          ],
-        );
+                  ? (song.duration != 0
+                        ? _currentDuration.inMilliseconds.toDouble() /
+                            song.duration
+                        : 0)
+                  : 0.0,
+              valueColor: new AlwaysStoppedAnimation(Color(colors[1])),
+              backgroundColor: Color(colors[0]),
+            );
+          },
+        ),
+      ],
+    );
   }
+
 //Deprecated
-  Widget PlayPauseButton(PlayerState state, Tune _currentSong, List<int> colors){
+  Widget PlayPauseButton(
+    PlayerState state,
+    Tune _currentSong,
+    List<int> colors,
+  ) {
     PlayerState _state = state;
-    return PlayPauseButtonWidget(_state,colors, (PlayerState state){
-      if(state==PlayerState.playing){
+    return PlayPauseButtonWidget(_state, colors, (PlayerState state) {
+      if (state == PlayerState.playing) {
         //will run pause
-        Future.delayed(Duration(milliseconds: 200),(){
+        Future.delayed(Duration(milliseconds: 200), () {
           musicService.pauseMusic(_currentSong);
         });
         return;
       }
-      if(state==PlayerState.paused){
+      if (state == PlayerState.paused) {
         //will run play
-        Future.delayed(Duration(milliseconds: 200),(){
+        Future.delayed(Duration(milliseconds: 200), () {
           musicService.playMusic(_currentSong);
         });
         return;
@@ -254,8 +291,7 @@ class PlayPauseButtonWidget extends StatefulWidget {
   final List<int> colors;
   final Function(PlayerState) onTap;
 
-  PlayPauseButtonWidget(this._state, this.colors, this.onTap){
-  }
+  PlayPauseButtonWidget(this._state, this.colors, this.onTap) {}
 
   @override
   _PlayPauseButtonState createState() => _PlayPauseButtonState();
@@ -266,22 +302,23 @@ class _PlayPauseButtonState extends State<PlayPauseButtonWidget> {
   List<int> colors;
   Function(PlayerState) onTap;
 
-
   @override
   void initState() {
     super.initState();
     _state = widget._state;
-    colors=widget.colors;
-    onTap=widget.onTap;
+    colors = widget.colors;
+    onTap = widget.onTap;
   }
 
   @override
   void didUpdateWidget(PlayPauseButtonWidget oldWidget) {
-    if(oldWidget._state != widget._state || oldWidget.colors != widget.colors || oldWidget.onTap != widget.onTap) {
-      setState((){
+    if (oldWidget._state != widget._state ||
+        oldWidget.colors != widget.colors ||
+        oldWidget.onTap != widget.onTap) {
+      setState(() {
         _state = widget._state;
-        colors=widget.colors;
-        onTap=widget.onTap;
+        colors = widget.colors;
+        onTap = widget.onTap;
       });
     }
     super.didUpdateWidget(oldWidget);
@@ -300,24 +337,18 @@ class _PlayPauseButtonState extends State<PlayPauseButtonWidget> {
             setState(() {
               _state = PlayerState.playing;
             });
-
           } else {
             onTap(_state);
             setState(() {
-              _state=PlayerState.paused;
+              _state = PlayerState.paused;
             });
           }
         },
         icon: _state == PlayerState.playing
-            ? Icon(
-          Icons.pause,
-          color: Color(colors[1]).withOpacity(.7),
-        )
-            : Icon(
-          Icons.play_arrow,
-          color: Color(colors[1]).withOpacity(.7),
-        ),
+            ? Icon(Icons.pause, color: Color(colors[1]).withOpacity(.7))
+            : Icon(Icons.play_arrow, color: Color(colors[1]).withOpacity(.7)),
       ),
-    );;
+    );
+    ;
   }
 }

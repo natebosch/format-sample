@@ -23,7 +23,8 @@ class TransactionsList extends StatefulWidget {
   _TransactionsListState createState() => _TransactionsListState();
 }
 
-class _TransactionsListState extends State<TransactionsList> with AutomaticKeepAliveClientMixin {
+class _TransactionsListState extends State<TransactionsList>
+    with AutomaticKeepAliveClientMixin {
   @override
   bool get wantKeepAlive => true;
 
@@ -34,32 +35,50 @@ class _TransactionsListState extends State<TransactionsList> with AutomaticKeepA
       children: [
         Container(
           padding: const EdgeInsets.only(left: 20, right: 20),
-          child: Row(children: [
-            Expanded(
-                child: Text(testnetMode ? 'Transactions TESTNET' : 'Transactions History'.i18n,
-                    style: Theme.of(context).textTheme.headline7LowEmphasis)),
-          ]),
+          child: Row(
+            children: [
+              Expanded(
+                child: Text(
+                  testnetMode
+                      ? 'Transactions TESTNET'
+                      : 'Transactions History'.i18n,
+                  style: Theme.of(context).textTheme.headline7LowEmphasis,
+                ),
+              ),
+            ],
+          ),
         ),
         const SizedBox(height: 6),
         BlocProvider<TransactionsListBloc>(
-          create: (_) => TransactionsListBloc()..add(const OnLoadTransactionsList()),
+          create: (_) =>
+              TransactionsListBloc()..add(const OnLoadTransactionsList()),
           child: BlocListener<WalletBloc, WalletState>(
             listenWhen: (_, current) => current.pageState == PageState.loading,
             listener: (context, state) {
-              BlocProvider.of<TransactionsListBloc>(context).add(const OnLoadTransactionsList());
+              BlocProvider.of<TransactionsListBloc>(context).add(
+                const OnLoadTransactionsList(),
+              );
             },
             child: BlocConsumer<TransactionsListBloc, TransactionsListState>(
               listenWhen: (_, current) => current.pageCommand != null,
               listener: (context, state) {
                 final pageCommand = state.pageCommand;
-                BlocProvider.of<TransactionsListBloc>(context).add(const ClearTransactionListPageComand());
+                BlocProvider.of<TransactionsListBloc>(context).add(
+                  const ClearTransactionListPageComand(),
+                );
                 if (pageCommand is ShowTransactionDetails) {
-                  TransactionDetailsBottomSheet(pageCommand.transaction).show(context);
+                  TransactionDetailsBottomSheet(pageCommand.transaction).show(
+                    context,
+                  );
                 }
               },
               builder: (context, state) {
                 if (state.isLoadingNoData) {
-                  return Column(children: [for (var i = 0; i < 5; i++) const TransactionLoadingRow()]);
+                  return Column(
+                    children: [
+                      for (var i = 0; i < 5; i++) const TransactionLoadingRow(),
+                    ],
+                  );
                 } else {
                   return ListView.builder(
                     physics: const NeverScrollableScrollPhysics(),
@@ -71,10 +90,13 @@ class _TransactionsListState extends State<TransactionsList> with AutomaticKeepA
                       return TransactionInfoRow(
                         key: Key(model.transactionId ?? "index_$index"),
                         onTap: () {
-                          BlocProvider.of<TransactionsListBloc>(context)
-                              .add(OnTransactionRowTapped(state.transactions[index]));
+                          BlocProvider.of<TransactionsListBloc>(context).add(
+                            OnTransactionRowTapped(state.transactions[index]),
+                          );
                         },
-                        profileAccount: model.to == account ? model.from : model.to,
+                        profileAccount: model.to == account
+                            ? model.from
+                            : model.to,
                         timestamp: model.timestamp,
                         amount: model.quantity,
                         incoming: account == model.to,

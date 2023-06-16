@@ -21,11 +21,19 @@ class ExploreLinkCard extends StatelessWidget {
         height: 120,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(defaultCardBorderRadius),
-          image: DecorationImage(image: AssetImage(backgroundImage), fit: BoxFit.cover),
+          image: DecorationImage(
+            image: AssetImage(backgroundImage),
+            fit: BoxFit.cover,
+          ),
         ),
         child: Padding(
           padding: const EdgeInsets.only(top: 50),
-          child: Center(child: Text("Get Seeds".i18n, style: Theme.of(context).textTheme.buttonWhiteL)),
+          child: Center(
+            child: Text(
+              "Get Seeds".i18n,
+              style: Theme.of(context).textTheme.buttonWhiteL,
+            ),
+          ),
         ),
       ),
     );

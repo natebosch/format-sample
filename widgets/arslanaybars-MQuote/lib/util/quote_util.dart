@@ -61,5 +61,4 @@ class QuoteUtil {
     favQuotes.remove(currentQuote);
     dbHelper.updateQuote(currentQuote);
   }
-
 }

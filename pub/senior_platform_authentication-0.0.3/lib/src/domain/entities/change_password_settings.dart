@@ -25,9 +25,5 @@ class ChangePasswordSettings extends Equatable {
   }
 
   @override
-  List<Object?> get props => [
-        allowed,
-        url,
-        customRecaptchaSiteKey,
-      ];
+  List<Object?> get props => [allowed, url, customRecaptchaSiteKey];
 }

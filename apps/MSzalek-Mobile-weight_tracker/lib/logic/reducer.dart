@@ -11,8 +11,10 @@ ReduxState reduce(ReduxState state, action) {
       _reduceWeightEntryDialogState(state, action);
   FirebaseState firebaseState = _reduceFirebaseState(state, action);
   MainPageReduxState mainPageState = _reduceMainPageState(state, action);
-  DateTime progressChartStartDate =
-      _reduceProgressChartStartDate(state, action);
+  DateTime progressChartStartDate = _reduceProgressChartStartDate(
+    state,
+    action,
+  );
   double weightFromNotes = _reduceWeightFromNotes(state, action);
 
   return new ReduxState(
@@ -73,28 +75,36 @@ RemovedEntryState _reduceRemovedEntryState(ReduxState reduxState, action) {
     newState = newState.copyWith(hasEntryBeenRemoved: false);
   } else if (action is OnRemovedAction) {
     newState = newState.copyWith(
-        hasEntryBeenRemoved: true,
-        lastRemovedEntry: new WeightEntry.fromSnapshot(action.event.snapshot));
+      hasEntryBeenRemoved: true,
+      lastRemovedEntry: new WeightEntry.fromSnapshot(action.event.snapshot),
+    );
   }
   return newState;
 }
 
 WeightEntryDialogReduxState _reduceWeightEntryDialogState(
-    ReduxState reduxState, action) {
+  ReduxState reduxState,
+  action,
+) {
   WeightEntryDialogReduxState newState = reduxState.weightEntryDialogState;
   if (action is UpdateActiveWeightEntry) {
     newState = newState.copyWith(
-        activeEntry: new WeightEntry.copy(action.weightEntry));
+      activeEntry: new WeightEntry.copy(action.weightEntry),
+    );
   } else if (action is OpenAddEntryDialog) {
     newState = newState.copyWith(
-        activeEntry: new WeightEntry(
-            new DateTime.now(),
-            reduxState.entries.isEmpty ? 70.0 : reduxState.entries.first.weight,
-            null),
-        isEditMode: false);
+      activeEntry: new WeightEntry(
+        new DateTime.now(),
+        reduxState.entries.isEmpty ? 70.0 : reduxState.entries.first.weight,
+        null,
+      ),
+      isEditMode: false,
+    );
   } else if (action is OpenEditEntryDialog) {
-    newState =
-        newState.copyWith(activeEntry: action.weightEntry, isEditMode: true);
+    newState = newState.copyWith(
+      activeEntry: action.weightEntry,
+      isEditMode: true,
+    );
   }
   return newState;
 }
@@ -107,14 +117,16 @@ List<WeightEntry> _reduceEntries(ReduxState state, action) {
       ..sort((we1, we2) => we2.dateTime.compareTo(we1.dateTime));
   } else if (action is OnChangedAction) {
     WeightEntry newValue = new WeightEntry.fromSnapshot(action.event.snapshot);
-    WeightEntry oldValue =
-        entries.singleWhere((entry) => entry.key == newValue.key);
+    WeightEntry oldValue = entries.singleWhere(
+      (entry) => entry.key == newValue.key,
+    );
     entries
       ..[entries.indexOf(oldValue)] = newValue
       ..sort((we1, we2) => we2.dateTime.compareTo(we1.dateTime));
   } else if (action is OnRemovedAction) {
-    WeightEntry removedEntry = state.entries
-        .singleWhere((entry) => entry.key == action.event.snapshot.key);
+    WeightEntry removedEntry = state.entries.singleWhere(
+      (entry) => entry.key == action.event.snapshot.key,
+    );
     entries
       ..remove(removedEntry)
       ..sort((we1, we2) => we2.dateTime.compareTo(we1.dateTime));

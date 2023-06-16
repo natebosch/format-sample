@@ -44,26 +44,26 @@ class GameUser {
   /// For every logout of the game the new penguin is given a default
   /// value of 0.0 as [x] and Background.day as [currentBackground]
   factory GameUser.fromUserCredential(User user) => GameUser(
-        id: user.uid,
-        name: user.displayName,
-        x: 0.0,
-        currentBackground: Background.day,
-        isTyping: false,
-      );
+    id: user.uid,
+    name: user.displayName,
+    x: 0.0,
+    currentBackground: Background.day,
+    isTyping: false,
+  );
 
   /// Used in `ClubPenguinGame`
   ///
   /// For every status change the new model is created
   factory GameUser.fromCollection(Map<String, dynamic> data) => GameUser(
-        id: data['id'] as String,
-        name: "Player", // Change later
-        message: data['message'] as String?,
-        currentBackground: data['background'] == null
-            ? Background.day
-            : _stringToBackground(data['background'] as String),
-        x: data["x"] == null ? 0.0 : (data["x"] as num).toDouble(),
-        isTyping: data["isTyping"] == null ? false : (data["isTyping"] as bool),
-      );
+    id: data['id'] as String,
+    name: "Player", // Change later
+    message: data['message'] as String?,
+    currentBackground: data['background'] == null
+        ? Background.day
+        : _stringToBackground(data['background'] as String),
+    x: data["x"] == null ? 0.0 : (data["x"] as num).toDouble(),
+    isTyping: data["isTyping"] == null ? false : (data["isTyping"] as bool),
+  );
 }
 
 Background _stringToBackground(String backgroundString) {

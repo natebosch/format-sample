@@ -20,12 +20,12 @@ class SetCurrencyState extends Equatable {
 
   @override
   List<Object?> get props => [
-        pageState,
-        errorMessage,
-        currentQuery,
-        availableCurrencies,
-        queryCurrenciesResults,
-      ];
+    pageState,
+    errorMessage,
+    currentQuery,
+    availableCurrencies,
+    queryCurrenciesResults,
+  ];
 
   SetCurrencyState copyWith({
     PageState? pageState,
@@ -39,7 +39,8 @@ class SetCurrencyState extends Equatable {
       errorMessage: errorMessage,
       currentQuery: currentQuery ?? this.currentQuery,
       availableCurrencies: availableCurrencies ?? this.availableCurrencies,
-      queryCurrenciesResults: queryCurrenciesResults ?? this.queryCurrenciesResults,
+      queryCurrenciesResults:
+          queryCurrenciesResults ?? this.queryCurrenciesResults,
     );
   }
 

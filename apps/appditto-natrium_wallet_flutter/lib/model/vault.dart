@@ -123,8 +123,9 @@ class Vault {
     if (secret == null) return null;
     // Decrypt and return
     Salsa20Encryptor encrypter = new Salsa20Encryptor(
-        secret.substring(0, secret.length - 8),
-        secret.substring(secret.length - 8));
+      secret.substring(0, secret.length - 8),
+      secret.substring(secret.length - 8),
+    );
     // Encrypt and save
     SharedPreferences prefs = await SharedPreferences.getInstance();
     prefs.setString(key, encrypter.encrypt(value));
@@ -135,8 +136,9 @@ class Vault {
     if (secret == null) return null;
     // Decrypt and return
     Salsa20Encryptor encrypter = new Salsa20Encryptor(
-        secret.substring(0, secret.length - 8),
-        secret.substring(secret.length - 8));
+      secret.substring(0, secret.length - 8),
+      secret.substring(secret.length - 8),
+    );
     SharedPreferences prefs = await SharedPreferences.getInstance();
     String encrypted = prefs.get(key);
     if (encrypted == null) return null;

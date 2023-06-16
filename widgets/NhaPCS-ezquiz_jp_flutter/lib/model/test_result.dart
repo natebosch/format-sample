@@ -10,15 +10,16 @@ class TestResult {
   String test_id;
   String user_id;
 
-  TestResult(
-      {this.total_point,
-      this.correct_count,
-      this.wrong_count,
-      this.test_time,
-      this.test_duration,
-      this.test_name,
-      this.test_id,
-      this.user_id});
+  TestResult({
+    this.total_point,
+    this.correct_count,
+    this.wrong_count,
+    this.test_time,
+    this.test_duration,
+    this.test_name,
+    this.test_id,
+    this.user_id,
+  });
 
   TestResult.fromJson(var map) {
     total_point = map["total_point"];

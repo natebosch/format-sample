@@ -34,8 +34,10 @@ class RemoteConfigAPIService {
 
       final remoteConfig = RemoteConfigResponse.fromJson(jsonDecode(json));
       PMLogger.d("[RemoteConfig] $remoteConfig");
-      final MapboxAdRootConfiguration newConfig =
-          checkVariant(_config, remoteConfig);
+      final MapboxAdRootConfiguration newConfig = checkVariant(
+        _config,
+        remoteConfig,
+      );
       _config = newConfig;
     } catch (e) {
       return _config;
@@ -44,7 +46,9 @@ class RemoteConfigAPIService {
   }
 
   MapboxAdRootConfiguration checkVariant(
-      MapboxAdRootConfiguration config, RemoteConfigResponse remoteConfig) {
+    MapboxAdRootConfiguration config,
+    RemoteConfigResponse remoteConfig,
+  ) {
     final random = Random().nextInt(100) + 1;
     final newConfig = _config;
     RemoteConfigVariant variant;

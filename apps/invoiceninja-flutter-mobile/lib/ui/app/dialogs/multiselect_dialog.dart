@@ -10,12 +10,13 @@ import 'package:invoiceninja_flutter/ui/app/forms/app_dropdown_button.dart';
 import 'package:invoiceninja_flutter/utils/localization.dart';
 import 'package:invoiceninja_flutter/utils/platforms.dart';
 
-void multiselectDialog(
-    {BuildContext context,
-    List<String> options,
-    List<String> selected,
-    List<String> defaultSelected,
-    Function(List<String>) onSelected}) {
+void multiselectDialog({
+  BuildContext context,
+  List<String> options,
+  List<String> selected,
+  List<String> defaultSelected,
+  Function(List<String>) onSelected,
+}) {
   showDialog<AlertDialog>(
     context: context,
     barrierDismissible: false,
@@ -101,17 +102,23 @@ class MultiSelectListState extends State<MultiSelectList> {
 
     final Map<String, String> options = {};
     widget.options
-        .where((option) =>
-            !selected.contains(option) ||
-            widget.allowDuplicates.contains(option))
+        .where(
+          (option) =>
+              !selected.contains(option) ||
+              widget.allowDuplicates.contains(option),
+        )
         .forEach((option) {
-      final columnTitle = state.company.getCustomFieldLabel(option);
-      options[option] =
-          columnTitle.isEmpty ? lookupOption(option) : columnTitle;
-    });
+          final columnTitle = state.company.getCustomFieldLabel(option);
+          options[option] = columnTitle.isEmpty
+              ? lookupOption(option)
+              : columnTitle;
+        });
     final keys = options.keys.toList();
-    keys.sort((a, b) =>
-        lookupOption(a).toLowerCase().compareTo(lookupOption(b).toLowerCase()));
+    keys.sort(
+      (a, b) => lookupOption(a).toLowerCase().compareTo(
+        lookupOption(b).toLowerCase(),
+      ),
+    );
 
     final column = Container(
       width: isMobile(context) ? double.maxFinite : 400,
@@ -212,17 +219,19 @@ class MultiSelectListState extends State<MultiSelectList> {
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: <Widget>[
                   TextButton(
-                      child: Text(localization.reset.toUpperCase()),
-                      onPressed: () {
-                        setState(
-                            () => selected = widget.defaultSelected.toList());
-                        if (widget.liveChanges) {
-                          widget.onSelected(selected);
-                        }
-                      }),
+                    child: Text(localization.reset.toUpperCase()),
+                    onPressed: () {
+                      setState(
+                        () => selected = widget.defaultSelected.toList(),
+                      );
+                      if (widget.liveChanges) {
+                        widget.onSelected(selected);
+                      }
+                    },
+                  ),
                 ],
               ),
-            )
+            ),
         ],
       ),
     );
@@ -234,24 +243,27 @@ class MultiSelectListState extends State<MultiSelectList> {
             content: column,
             actions: [
               TextButton(
-                  child: Text(localization.reset.toUpperCase()),
-                  onPressed: () {
-                    setState(() => selected = widget.defaultSelected.toList());
-                    if (widget.liveChanges) {
-                      widget.onSelected(selected);
-                    }
-                  }),
-              TextButton(
-                  child: Text(localization.cancel.toUpperCase()),
-                  onPressed: () {
-                    Navigator.pop(context);
-                  }),
-              TextButton(
-                  child: Text(localization.save.toUpperCase()),
-                  onPressed: () {
-                    Navigator.pop(context);
+                child: Text(localization.reset.toUpperCase()),
+                onPressed: () {
+                  setState(() => selected = widget.defaultSelected.toList());
+                  if (widget.liveChanges) {
                     widget.onSelected(selected);
-                  })
+                  }
+                },
+              ),
+              TextButton(
+                child: Text(localization.cancel.toUpperCase()),
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+              ),
+              TextButton(
+                child: Text(localization.save.toUpperCase()),
+                onPressed: () {
+                  Navigator.pop(context);
+                  widget.onSelected(selected);
+                },
+              ),
             ],
           )
         : column;

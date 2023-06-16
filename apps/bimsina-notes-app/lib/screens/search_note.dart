@@ -10,12 +10,16 @@ class NotesSearch extends SearchDelegate<Note> {
   ThemeData appBarTheme(BuildContext context) {
     assert(context != null);
     final ThemeData theme = Theme.of(context).copyWith(
-        hintColor: Colors.black,
-        primaryColor: Colors.white,
-        textTheme: TextTheme(
-          headline6: TextStyle(
-              color: Colors.black, fontWeight: FontWeight.bold, fontSize: 16),
-        ));
+      hintColor: Colors.black,
+      primaryColor: Colors.white,
+      textTheme: TextTheme(
+        headline6: TextStyle(
+          color: Colors.black,
+          fontWeight: FontWeight.bold,
+          fontSize: 16,
+        ),
+      ),
+    );
     assert(theme != null);
     return theme;
   }
@@ -24,24 +28,18 @@ class NotesSearch extends SearchDelegate<Note> {
   List<Widget> buildActions(BuildContext context) {
     return [
       IconButton(
-        icon: Icon(
-          Icons.clear,
-          color: Colors.black,
-        ),
+        icon: Icon(Icons.clear, color: Colors.black),
         onPressed: () {
           query = '';
         },
-      )
+      ),
     ];
   }
 
   @override
   Widget buildLeading(BuildContext context) {
     return IconButton(
-      icon: Icon(
-        Icons.arrow_back,
-        color: Colors.black,
-      ),
+      icon: Icon(Icons.arrow_back, color: Colors.black),
       onPressed: () {
         close(context, null);
       },
@@ -54,25 +52,22 @@ class NotesSearch extends SearchDelegate<Note> {
       return Container(
         color: Colors.white,
         child: Center(
-            child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            SizedBox(
-              width: 50,
-              height: 50,
-              child: Icon(
-                Icons.search,
-                size: 50,
-                color: Colors.black,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              SizedBox(
+                width: 50,
+                height: 50,
+                child: Icon(Icons.search, size: 50, color: Colors.black),
               ),
-            ),
-            Text(
-              'Enter a note to search.',
-              style: TextStyle(color: Colors.black),
-            )
-          ],
-        )),
+              Text(
+                'Enter a note to search.',
+                style: TextStyle(color: Colors.black),
+              ),
+            ],
+          ),
+        ),
       );
     } else {
       filteredNotes = [];
@@ -81,25 +76,23 @@ class NotesSearch extends SearchDelegate<Note> {
         return Container(
           color: Colors.white,
           child: Center(
-              child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              SizedBox(
-                width: 50,
-                height: 50,
-                child: Icon(
-                  Icons.sentiment_dissatisfied,
-                  size: 50,
-                  color: Colors.black,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                SizedBox(
+                  width: 50,
+                  height: 50,
+                  child: Icon(
+                    Icons.sentiment_dissatisfied,
+                    size: 50,
+                    color: Colors.black,
+                  ),
                 ),
-              ),
-              Text(
-                'No results found',
-                style: TextStyle(color: Colors.black),
-              )
-            ],
-          )),
+                Text('No results found', style: TextStyle(color: Colors.black)),
+              ],
+            ),
+          ),
         );
       } else {
         return Container(
@@ -108,16 +101,14 @@ class NotesSearch extends SearchDelegate<Note> {
             itemCount: filteredNotes.length == null ? 0 : filteredNotes.length,
             itemBuilder: (context, index) {
               return ListTile(
-                leading: Icon(
-                  Icons.note,
-                  color: Colors.black,
-                ),
+                leading: Icon(Icons.note, color: Colors.black),
                 title: Text(
                   filteredNotes[index].title,
                   style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 18.0,
-                      color: Colors.black),
+                    fontWeight: FontWeight.bold,
+                    fontSize: 18.0,
+                    color: Colors.black,
+                  ),
                 ),
                 subtitle: Text(
                   filteredNotes[index].description,
@@ -150,25 +141,22 @@ class NotesSearch extends SearchDelegate<Note> {
       return Container(
         color: Colors.white,
         child: Center(
-            child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            SizedBox(
-              width: 50,
-              height: 50,
-              child: Icon(
-                Icons.search,
-                size: 50,
-                color: Colors.black,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              SizedBox(
+                width: 50,
+                height: 50,
+                child: Icon(Icons.search, size: 50, color: Colors.black),
               ),
-            ),
-            Text(
-              'Enter a note to search.',
-              style: TextStyle(color: Colors.black),
-            )
-          ],
-        )),
+              Text(
+                'Enter a note to search.',
+                style: TextStyle(color: Colors.black),
+              ),
+            ],
+          ),
+        ),
       );
     } else {
       filteredNotes = [];
@@ -177,25 +165,23 @@ class NotesSearch extends SearchDelegate<Note> {
         return Container(
           color: Colors.white,
           child: Center(
-              child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              SizedBox(
-                width: 50,
-                height: 50,
-                child: Icon(
-                  Icons.sentiment_dissatisfied,
-                  size: 50,
-                  color: Colors.black,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                SizedBox(
+                  width: 50,
+                  height: 50,
+                  child: Icon(
+                    Icons.sentiment_dissatisfied,
+                    size: 50,
+                    color: Colors.black,
+                  ),
                 ),
-              ),
-              Text(
-                'No results found',
-                style: TextStyle(color: Colors.black),
-              )
-            ],
-          )),
+                Text('No results found', style: TextStyle(color: Colors.black)),
+              ],
+            ),
+          ),
         );
       } else {
         return Container(
@@ -204,16 +190,14 @@ class NotesSearch extends SearchDelegate<Note> {
             itemCount: filteredNotes.length == null ? 0 : filteredNotes.length,
             itemBuilder: (context, index) {
               return ListTile(
-                leading: Icon(
-                  Icons.note,
-                  color: Colors.black,
-                ),
+                leading: Icon(Icons.note, color: Colors.black),
                 title: Text(
                   filteredNotes[index].title,
                   style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 18.0,
-                      color: Colors.black),
+                    fontWeight: FontWeight.bold,
+                    fontSize: 18.0,
+                    color: Colors.black,
+                  ),
                 ),
                 subtitle: Text(
                   filteredNotes[index].description,

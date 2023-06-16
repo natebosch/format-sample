@@ -12,12 +12,16 @@ class IRecipeJsonService {
   }
 
   Future<ResultWithValue<List<Recipe>>> getByInputsId(
-      context, String id) async {
+    context,
+    String id,
+  ) async {
     return ResultWithValue<List<Recipe>>(false, List.empty(growable: true), '');
   }
 
   Future<ResultWithValue<List<Recipe>>> getByOutputId(
-      context, String id) async {
+    context,
+    String id,
+  ) async {
     return ResultWithValue<List<Recipe>>(false, List.empty(growable: true), '');
   }
 }

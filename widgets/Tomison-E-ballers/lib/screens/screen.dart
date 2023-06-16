@@ -27,7 +27,8 @@ class _ScreenState extends State<Screen> {
   void initState() {
     super.initState();
     _videoPlayerController1 = VideoPlayerController.network(
-        "https://firebasestorage.googleapis.com/v0/b/tomisin-edc61.appspot.com/o/90'sFootball.mp4?alt=media&token=fba4537b-8f71-4a33-bb6f-0affb775df25");
+      "https://firebasestorage.googleapis.com/v0/b/tomisin-edc61.appspot.com/o/90'sFootball.mp4?alt=media&token=fba4537b-8f71-4a33-bb6f-0affb775df25",
+    );
     _chewieController = ChewieController(
       videoPlayerController: _videoPlayerController1,
       aspectRatio: 3 / 2,
@@ -71,36 +72,44 @@ class _ScreenState extends State<Screen> {
         platform: _platform ?? Theme.of(context).platform,
       ),
       home: Scaffold(
-          appBar: AppBar(
-            title: Text(widget.title),
-            backgroundColor: Colors.transparent,
-            elevation: 0.0,
-            leading: GestureDetector(
-                child: Padding(padding: EdgeInsets.only(right:10.0,top: 10.0,bottom: 10.0),child:Icon(Icons.keyboard_backspace, color: Colors.white)),
-                onTap: () {
-                  Navigator.of(context).pop();
-                }),
-            actions: <Widget>[
-              Hero(
-                  tag: "ball",
-                  child:
-                  Image.asset("images/${ballers[Provider
-                      .of<BallsApi>(context, listen: false)
-                      .i].name}.png", width: 50.0))
-            ],
+        appBar: AppBar(
+          title: Text(widget.title),
+          backgroundColor: Colors.transparent,
+          elevation: 0.0,
+          leading: GestureDetector(
+            child: Padding(
+              padding: EdgeInsets.only(right: 10.0, top: 10.0, bottom: 10.0),
+              child: Icon(Icons.keyboard_backspace, color: Colors.white),
+            ),
+            onTap: () {
+              Navigator.of(context).pop();
+            },
           ),
-          backgroundColor: CupertinoColors.darkBackgroundGray,
-          body: Column(
-            children: [
-              // Padding(child:CircleAvatar(backgroundImage: AssetImage("images/${ballers[2].name}.png"),radius: 30.0,backgroundColor: Colors.transparent,),padding: EdgeInsets.only(left: 15.0)),
-              Padding(child: Chewie(
-                  controller: _chewieController,
-              ), padding: EdgeInsets.only(bottom: 100.0),
-              )
-            ],
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.center,
-          )),
+          actions: <Widget>[
+            Hero(
+              tag: "ball",
+              child: Image.asset(
+                "images/${ballers[
+                  Provider.of<BallsApi>(context, listen: false).i
+                ].name}.png",
+                width: 50.0,
+              ),
+            ),
+          ],
+        ),
+        backgroundColor: CupertinoColors.darkBackgroundGray,
+        body: Column(
+          children: [
+            // Padding(child:CircleAvatar(backgroundImage: AssetImage("images/${ballers[2].name}.png"),radius: 30.0,backgroundColor: Colors.transparent,),padding: EdgeInsets.only(left: 15.0)),
+            Padding(
+              child: Chewie(controller: _chewieController),
+              padding: EdgeInsets.only(bottom: 100.0),
+            ),
+          ],
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.center,
+        ),
+      ),
     );
   }
 }

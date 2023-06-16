@@ -24,9 +24,5 @@ class LoginMFA extends Equatable {
   }
 
   @override
-  List<Object?> get props => [
-        temporaryToken,
-        validationCode,
-        tenant,
-      ];
+  List<Object?> get props => [temporaryToken, validationCode, tenant];
 }

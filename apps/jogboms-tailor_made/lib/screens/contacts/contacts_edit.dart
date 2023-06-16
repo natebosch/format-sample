@@ -7,7 +7,8 @@ import 'package:tailor_made/screens/contacts/_partials/contact_form.dart';
 import 'package:tailor_made/widgets/_partials/mk_app_bar.dart';
 
 class ContactsEditPage extends StatefulWidget {
-  const ContactsEditPage({Key key, this.contact, @required this.userId}) : super(key: key);
+  const ContactsEditPage({Key key, this.contact, @required this.userId})
+    : super(key: key);
 
   final ContactModel contact;
   final String userId;
@@ -16,7 +17,8 @@ class ContactsEditPage extends StatefulWidget {
   _ContactsEditPageState createState() => _ContactsEditPageState();
 }
 
-class _ContactsEditPageState extends State<ContactsEditPage> with SnackBarProviderMixin {
+class _ContactsEditPageState extends State<ContactsEditPage>
+    with SnackBarProviderMixin {
   final ContactPicker _contactPicker = ContactPicker();
   final GlobalKey<ContactFormState> _formKey = GlobalKey<ContactFormState>();
 
@@ -30,22 +32,28 @@ class _ContactsEditPageState extends State<ContactsEditPage> with SnackBarProvid
       appBar: MkAppBar(
         title: const Text("Edit Contact"),
         actions: <Widget>[
-          IconButton(icon: const Icon(Icons.contacts), onPressed: _handleSelectContact),
+          IconButton(
+            icon: const Icon(Icons.contacts),
+            onPressed: _handleSelectContact,
+          ),
         ],
       ),
-      body: ContactForm(key: _formKey, contact: widget.contact, onHandleSubmit: _handleSubmit, userId: widget.userId),
+      body: ContactForm(
+        key: _formKey,
+        contact: widget.contact,
+        onHandleSubmit: _handleSubmit,
+        userId: widget.userId,
+      ),
     );
   }
 
   void _handleSelectContact() async {
     final _selectedContact = await _contactPicker.selectContact();
-    _formKey.currentState.updateContact(
-      widget.contact.rebuild(
-        (b) => b
-          ..fullname = _selectedContact.fullName
-          ..phone = _selectedContact.phoneNumber.number,
-      ),
-    );
+    _formKey.currentState.updateContact(widget.contact.rebuild(
+      (b) => b
+        ..fullname = _selectedContact.fullName
+        ..phone = _selectedContact.phoneNumber.number,
+    ));
   }
 
   void _handleSubmit(ContactModel contact) async {

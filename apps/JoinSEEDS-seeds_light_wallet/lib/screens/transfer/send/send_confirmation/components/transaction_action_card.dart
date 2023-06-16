@@ -25,8 +25,14 @@ class TransactionActionCard extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(action.actionName.inCaps, style: Theme.of(context).textTheme.headline7),
-                  Text(action.accountName, style: Theme.of(context).textTheme.subtitle2),
+                  Text(
+                    action.actionName.inCaps,
+                    style: Theme.of(context).textTheme.headline7,
+                  ),
+                  Text(
+                    action.accountName,
+                    style: Theme.of(context).textTheme.subtitle2,
+                  ),
                 ],
               ),
               const Divider(color: AppColors.grey1),
@@ -38,14 +44,24 @@ class TransactionActionCard extends StatelessWidget {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text(i.key.inCaps, style: Theme.of(context).textTheme.subtitle2OpacityEmphasis),
+                          Text(
+                            i.key.inCaps,
+                            style: Theme.of(context)
+                                .textTheme
+                                .subtitle2OpacityEmphasis,
+                          ),
                           const SizedBox(width: 4),
-                          Flexible(child: Text('${i.value}', style: Theme.of(context).textTheme.subtitle2)),
+                          Flexible(
+                            child: Text(
+                              '${i.value}',
+                              style: Theme.of(context).textTheme.subtitle2,
+                            ),
+                          ),
                         ],
                       ),
                     ),
                 ],
-              )
+              ),
             ],
           ),
         ),

@@ -12,7 +12,8 @@ class ConnectionStateMiddleware extends MiddlewareClass<AppState> {
   void call(Store<AppState> store, action, NextDispatcher next) async {
     if (action is EnigmaCommandErrorEvent) {
       store.dispatch(
-          ConnectionStatusChangedEvent(ConnectionStatusEnum.disconnected));
+        ConnectionStatusChangedEvent(ConnectionStatusEnum.disconnected),
+      );
     } else if (action is WakeUpSuccessEvent) {
       store.dispatch(
         ConnectionStatusChangedEvent(ConnectionStatusEnum.connected),

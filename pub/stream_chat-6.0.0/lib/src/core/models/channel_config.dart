@@ -23,12 +23,13 @@ class ChannelConfig {
     this.typingEvents = false,
     this.uploads = false,
     this.urlEnrichment = false,
-  })  : createdAt = createdAt ?? DateTime.now(),
-        updatedAt = updatedAt ?? DateTime.now();
+  }) : createdAt = createdAt ?? DateTime.now(),
+       updatedAt = updatedAt ?? DateTime.now();
 
   /// Create a new instance from a json
-  factory ChannelConfig.fromJson(Map<String, dynamic> json) =>
-      _$ChannelConfigFromJson(json);
+  factory ChannelConfig.fromJson(
+    Map<String, dynamic> json,
+  ) => _$ChannelConfigFromJson(json);
 
   /// Moderation configuration
   final String automod;

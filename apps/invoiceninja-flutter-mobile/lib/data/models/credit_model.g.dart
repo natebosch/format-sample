@@ -19,13 +19,18 @@ class _$CreditListResponseSerializer
   final String wireName = 'CreditListResponse';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, CreditListResponse object,
-      {FullType specifiedType = FullType.unspecified}) {
+  Iterable<Object> serialize(
+    Serializers serializers,
+    CreditListResponse object, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
     final result = <Object>[
       'data',
-      serializers.serialize(object.data,
-          specifiedType:
-              const FullType(BuiltList, const [const FullType(InvoiceEntity)])),
+      serializers.serialize(
+        object.data,
+        specifiedType:
+            const FullType(BuiltList, const [const FullType(InvoiceEntity)]),
+      ),
     ];
 
     return result;
@@ -33,8 +38,10 @@ class _$CreditListResponseSerializer
 
   @override
   CreditListResponse deserialize(
-      Serializers serializers, Iterable<Object> serialized,
-      {FullType specifiedType = FullType.unspecified}) {
+    Serializers serializers,
+    Iterable<Object> serialized, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
     final result = new CreditListResponseBuilder();
 
     final iterator = serialized.iterator;
@@ -44,10 +51,14 @@ class _$CreditListResponseSerializer
       final Object value = iterator.current;
       switch (key) {
         case 'data':
-          result.data.replace(serializers.deserialize(value,
-                  specifiedType: const FullType(
-                      BuiltList, const [const FullType(InvoiceEntity)]))
-              as BuiltList<Object>);
+          result.data.replace(
+            serializers.deserialize(
+              value,
+              specifiedType: const FullType(BuiltList, const [
+                const FullType(InvoiceEntity),
+              ]),
+            ) as BuiltList<Object>,
+          );
           break;
       }
     }
@@ -64,12 +75,17 @@ class _$CreditItemResponseSerializer
   final String wireName = 'CreditItemResponse';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, CreditItemResponse object,
-      {FullType specifiedType = FullType.unspecified}) {
+  Iterable<Object> serialize(
+    Serializers serializers,
+    CreditItemResponse object, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
     final result = <Object>[
       'data',
-      serializers.serialize(object.data,
-          specifiedType: const FullType(InvoiceEntity)),
+      serializers.serialize(
+        object.data,
+        specifiedType: const FullType(InvoiceEntity),
+      ),
     ];
 
     return result;
@@ -77,8 +93,10 @@ class _$CreditItemResponseSerializer
 
   @override
   CreditItemResponse deserialize(
-      Serializers serializers, Iterable<Object> serialized,
-      {FullType specifiedType = FullType.unspecified}) {
+    Serializers serializers,
+    Iterable<Object> serialized, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
     final result = new CreditItemResponseBuilder();
 
     final iterator = serialized.iterator;
@@ -88,8 +106,12 @@ class _$CreditItemResponseSerializer
       final Object value = iterator.current;
       switch (key) {
         case 'data':
-          result.data.replace(serializers.deserialize(value,
-              specifiedType: const FullType(InvoiceEntity)) as InvoiceEntity);
+          result.data.replace(
+            serializers.deserialize(
+              value,
+              specifiedType: const FullType(InvoiceEntity),
+            ) as InvoiceEntity,
+          );
           break;
       }
     }
@@ -102,9 +124,9 @@ class _$CreditListResponse extends CreditListResponse {
   @override
   final BuiltList<InvoiceEntity> data;
 
-  factory _$CreditListResponse(
-          [void Function(CreditListResponseBuilder) updates]) =>
-      (new CreditListResponseBuilder()..update(updates)).build();
+  factory _$CreditListResponse([
+    void Function(CreditListResponseBuilder) updates,
+  ]) => (new CreditListResponseBuilder()..update(updates)).build();
 
   _$CreditListResponse._({this.data}) : super._() {
     BuiltValueNullFieldError.checkNotNull(data, 'CreditListResponse', 'data');
@@ -112,8 +134,8 @@ class _$CreditListResponse extends CreditListResponse {
 
   @override
   CreditListResponse rebuild(
-          void Function(CreditListResponseBuilder) updates) =>
-      (toBuilder()..update(updates)).build();
+    void Function(CreditListResponseBuilder) updates,
+  ) => (toBuilder()..update(updates)).build();
 
   @override
   CreditListResponseBuilder toBuilder() =>
@@ -182,7 +204,10 @@ class CreditListResponseBuilder
         data.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
-            'CreditListResponse', _$failedField, e.toString());
+          'CreditListResponse',
+          _$failedField,
+          e.toString(),
+        );
       }
       rethrow;
     }
@@ -195,9 +220,9 @@ class _$CreditItemResponse extends CreditItemResponse {
   @override
   final InvoiceEntity data;
 
-  factory _$CreditItemResponse(
-          [void Function(CreditItemResponseBuilder) updates]) =>
-      (new CreditItemResponseBuilder()..update(updates)).build();
+  factory _$CreditItemResponse([
+    void Function(CreditItemResponseBuilder) updates,
+  ]) => (new CreditItemResponseBuilder()..update(updates)).build();
 
   _$CreditItemResponse._({this.data}) : super._() {
     BuiltValueNullFieldError.checkNotNull(data, 'CreditItemResponse', 'data');
@@ -205,8 +230,8 @@ class _$CreditItemResponse extends CreditItemResponse {
 
   @override
   CreditItemResponse rebuild(
-          void Function(CreditItemResponseBuilder) updates) =>
-      (toBuilder()..update(updates)).build();
+    void Function(CreditItemResponseBuilder) updates,
+  ) => (toBuilder()..update(updates)).build();
 
   @override
   CreditItemResponseBuilder toBuilder() =>
@@ -274,7 +299,10 @@ class CreditItemResponseBuilder
         data.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
-            'CreditItemResponse', _$failedField, e.toString());
+          'CreditItemResponse',
+          _$failedField,
+          e.toString(),
+        );
       }
       rethrow;
     }

@@ -16,14 +16,21 @@ class ChatResponseModel with _$ChatResponseModel {
     required UsageModel usage,
     required List<ChoiceModel> choices,
   }) = _ChatResponseModel;
-  factory ChatResponseModel.fromJson(Map<String, dynamic> json) =>
-      _$ChatResponseModelFromJson(json);
+  factory ChatResponseModel.fromJson(
+    Map<String, dynamic> json,
+  ) => _$ChatResponseModelFromJson(json);
 
-  factory ChatResponseModel.mockData() =>
-      const ChatResponseModel(id: '1', usage: UsageModel(), choices: [
-        ChoiceModel(
-            message: MessageModel(
-                role: 'assistant', content: 'Hello! How can I help you'),
-            finishReason: 'stop')
-      ]);
+  factory ChatResponseModel.mockData() => const ChatResponseModel(
+    id: '1',
+    usage: UsageModel(),
+    choices: [
+      ChoiceModel(
+        message: MessageModel(
+          role: 'assistant',
+          content: 'Hello! How can I help you',
+        ),
+        finishReason: 'stop',
+      ),
+    ],
+  );
 }

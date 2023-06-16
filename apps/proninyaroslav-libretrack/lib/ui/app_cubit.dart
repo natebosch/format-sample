@@ -39,24 +39,13 @@ class AppState with _$AppState {
 @singleton
 class AppCubit extends Cubit<AppState> {
   AppCubit(AppSettings pref)
-      : super(
-          AppState.initial(
-            theme: pref.theme,
-            locale: pref.locale,
-          ),
-        );
+    : super(AppState.initial(theme: pref.theme, locale: pref.locale));
 
   void setTheme(AppThemeType theme) {
-    emit(AppState.changed(
-      theme: theme,
-      locale: state.locale,
-    ));
+    emit(AppState.changed(theme: theme, locale: state.locale));
   }
 
   void setLocale(AppLocaleType locale) {
-    emit(AppState.changed(
-      theme: state.theme,
-      locale: locale,
-    ));
+    emit(AppState.changed(theme: state.theme, locale: locale));
   }
 }

@@ -10,22 +10,13 @@ void main() {
       'when called with ShowDatesUpdatedAction, should update state with 7 days from today',
       () {
         final initialState = ShowState.initial();
-        final reducedState = showReducer(
-          initialState,
-          ShowDatesUpdatedAction(
-            listOf(
-              DateTime(2018, 1, 1),
-              DateTime(2018, 1, 2),
-            ),
-          ),
-        );
+        final reducedState = showReducer(initialState, ShowDatesUpdatedAction(
+          listOf(DateTime(2018, 1, 1), DateTime(2018, 1, 2)),
+        ));
 
         expect(
           reducedState.dates,
-          listOf(
-            DateTime(2018, 1, 1),
-            DateTime(2018, 1, 2),
-          ),
+          listOf(DateTime(2018, 1, 1), DateTime(2018, 1, 2)),
         );
 
         // Should also select the first date in the list

@@ -44,11 +44,12 @@ class LineChartInvertAxisState extends LineActionState<LineChartInvertAxis>
     return Stack(
       children: <Widget>[
         Positioned(
-            right: 0,
-            left: 0,
-            top: 0,
-            bottom: 100,
-            child: LineChart(controller)),
+          right: 0,
+          left: 0,
+          top: 0,
+          bottom: 100,
+          child: LineChart(controller),
+        ),
         Positioned(
           left: 0,
           right: 0,
@@ -63,28 +64,33 @@ class LineChartInvertAxisState extends LineActionState<LineChartInvertAxis>
                 children: <Widget>[
                   Expanded(
                     child: Center(
-                        child: Slider(
-                            value: _count.toDouble(),
-                            min: 0,
-                            max: 500,
-                            onChanged: (value) {
-                              _count = value.toInt();
-                              _initLineData(_count, _range);
-                            })),
+                      child: Slider(
+                        value: _count.toDouble(),
+                        min: 0,
+                        max: 500,
+                        onChanged: (value) {
+                          _count = value.toInt();
+                          _initLineData(_count, _range);
+                        },
+                      ),
+                    ),
                   ),
                   Container(
-                      constraints: BoxConstraints.expand(height: 50, width: 60),
-                      padding: EdgeInsets.only(right: 15.0),
-                      child: Center(
-                          child: Text(
+                    constraints: BoxConstraints.expand(height: 50, width: 60),
+                    padding: EdgeInsets.only(right: 15.0),
+                    child: Center(
+                      child: Text(
                         "$_count",
                         textDirection: TextDirection.ltr,
                         textAlign: TextAlign.center,
                         style: TextStyle(
-                            color: ColorUtils.black,
-                            fontSize: 12,
-                            fontWeight: FontWeight.bold),
-                      ))),
+                          color: ColorUtils.black,
+                          fontSize: 12,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                  ),
                 ],
               ),
               Row(
@@ -93,33 +99,38 @@ class LineChartInvertAxisState extends LineActionState<LineChartInvertAxis>
                 children: <Widget>[
                   Expanded(
                     child: Center(
-                        child: Slider(
-                            value: _range,
-                            min: 0,
-                            max: 150,
-                            onChanged: (value) {
-                              _range = value;
-                              _initLineData(_count, _range);
-                            })),
+                      child: Slider(
+                        value: _range,
+                        min: 0,
+                        max: 150,
+                        onChanged: (value) {
+                          _range = value;
+                          _initLineData(_count, _range);
+                        },
+                      ),
+                    ),
                   ),
                   Container(
-                      constraints: BoxConstraints.expand(height: 50, width: 60),
-                      padding: EdgeInsets.only(right: 15.0),
-                      child: Center(
-                          child: Text(
+                    constraints: BoxConstraints.expand(height: 50, width: 60),
+                    padding: EdgeInsets.only(right: 15.0),
+                    child: Center(
+                      child: Text(
                         "${_range.toInt()}",
                         textDirection: TextDirection.ltr,
                         textAlign: TextAlign.center,
                         style: TextStyle(
-                            color: ColorUtils.black,
-                            fontSize: 12,
-                            fontWeight: FontWeight.bold),
-                      ))),
+                          color: ColorUtils.black,
+                          fontSize: 12,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                  ),
                 ],
-              )
+              ),
             ],
           ),
-        )
+        ),
       ],
     );
   }
@@ -133,30 +144,31 @@ class LineChartInvertAxisState extends LineActionState<LineChartInvertAxis>
   void _initController() {
     var desc = Description()..enabled = false;
     controller = LineChartController(
-        axisLeftSettingFunction: (axisLeft, controller) {
-          axisLeft
-            ..setAxisMinimum(0)
-            ..inverted = (true);
-        },
-        axisRightSettingFunction: (axisRight, controller) {
-          axisRight.enabled = (false);
-        },
-        legendSettingFunction: (legend, controller) {
-          legend.shape = (LegendForm.line);
-        },
-        xAxisSettingFunction: (xAxis, controller) {
-          xAxis
-            ..avoidFirstLastClipping = (true)
-            ..setAxisMinimum(0);
-        },
-        drawGridBackground: true,
-        dragXEnabled: true,
-        dragYEnabled: true,
-        scaleXEnabled: true,
-        scaleYEnabled: true,
-        pinchZoomEnabled: true,
-        selectionListener: this,
-        description: desc);
+      axisLeftSettingFunction: (axisLeft, controller) {
+        axisLeft
+          ..setAxisMinimum(0)
+          ..inverted = (true);
+      },
+      axisRightSettingFunction: (axisRight, controller) {
+        axisRight.enabled = (false);
+      },
+      legendSettingFunction: (legend, controller) {
+        legend.shape = (LegendForm.line);
+      },
+      xAxisSettingFunction: (xAxis, controller) {
+        xAxis
+          ..avoidFirstLastClipping = (true)
+          ..setAxisMinimum(0);
+      },
+      drawGridBackground: true,
+      dragXEnabled: true,
+      dragYEnabled: true,
+      scaleXEnabled: true,
+      scaleYEnabled: true,
+      pinchZoomEnabled: true,
+      selectionListener: this,
+      description: desc,
+    );
   }
 
   void _initLineData(int count, double range) async {

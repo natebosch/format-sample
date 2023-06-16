@@ -7,12 +7,9 @@ part of 'process_response.dart';
 // **************************************************************************
 
 ProcessResponse _$ProcessResponseFromJson(Map<String, dynamic> json) {
-  return ProcessResponse(
-    hash: json['hash'] as String,
-  );
+  return ProcessResponse(hash: json['hash'] as String);
 }
 
-Map<String, dynamic> _$ProcessResponseToJson(ProcessResponse instance) =>
-    <String, dynamic>{
-      'hash': instance.hash,
-    };
+Map<String, dynamic> _$ProcessResponseToJson(
+  ProcessResponse instance,
+) => <String, dynamic>{'hash': instance.hash};

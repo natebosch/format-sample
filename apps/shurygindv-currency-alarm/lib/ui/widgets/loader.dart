@@ -11,10 +11,7 @@ class Loader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (name == 'ripple') {
-      return SpinKitRipple(
-        color: Colors.black38,
-        size: 60.0,
-      );
+      return SpinKitRipple(color: Colors.black38, size: 60.0);
     }
 
     throw new Error();

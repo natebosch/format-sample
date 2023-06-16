@@ -28,30 +28,21 @@ class _VerifyOtpState extends State<VerifyOtp> {
       isLoading = true;
     });
     print("Validating OTP");
-    signIn(
-      otpController.text,
-      provider.getVerificationId,
-    ).then((value) {
+    signIn(otpController.text, provider.getVerificationId).then((value) {
       if (value) {
         isUserPresent().then((value1) {
           if (value1) {
-            Navigator.pushReplacement(
-              context,
-              MaterialPageRoute(
-                builder: (context) {
-                  return HomePage();
-                },
-              ),
-            );
+            Navigator.pushReplacement(context, MaterialPageRoute(
+              builder: (context) {
+                return HomePage();
+              },
+            ));
           } else {
-            Navigator.pushReplacement(
-              context,
-              MaterialPageRoute(
-                builder: (context) {
-                  return AddDetails(widget.phoneNumber);
-                },
-              ),
-            );
+            Navigator.pushReplacement(context, MaterialPageRoute(
+              builder: (context) {
+                return AddDetails(widget.phoneNumber);
+              },
+            ));
           }
         });
       }

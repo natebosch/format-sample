@@ -14,8 +14,8 @@ class TodoAvatar extends StatelessWidget {
     this.isLarge = false,
     this.isFinished = false,
     this.showNotification = false,
-  })  : assert(text != null),
-        super(key: key);
+  }) : assert(text != null),
+       super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -54,10 +54,8 @@ class TodoAvatar extends StatelessWidget {
       height: diameter,
       decoration: BoxDecoration(
         shape: BoxShape.circle,
-        border: Border.all(
-          width: 1.0,
-          color: ColorfulApp.of(context).colors.bleak,
-        ),
+        border:
+            Border.all(width: 1.0, color: ColorfulApp.of(context).colors.bleak),
         color: isLarge ? ColorfulApp.of(context).colors.pale : AppColors.white1,
       ),
       child: Center(child: _buildContentInCircle(context)),

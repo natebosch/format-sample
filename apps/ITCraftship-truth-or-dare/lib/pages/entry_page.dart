@@ -19,7 +19,8 @@ class EntryPage extends StatefulWidget {
   _EntryPageState createState() => _EntryPageState();
 }
 
-class _EntryPageState extends State<EntryPage> with SingleTickerProviderStateMixin {
+class _EntryPageState extends State<EntryPage>
+    with SingleTickerProviderStateMixin {
   Timer _timer;
   Color _color = AppColors.blueBackground;
   double _questionMarkRightOffset = _translationQuestionMarkHidden;
@@ -56,23 +57,21 @@ class _EntryPageState extends State<EntryPage> with SingleTickerProviderStateMix
             bottom: 0,
             right: _questionMarkRightOffset,
             duration: _transitionAnimationDuration,
-            curve: _questionMarkRightOffset == _translationQuestionMarkHidden ? Curves.elasticIn : Curves.elasticOut,
+            curve: _questionMarkRightOffset == _translationQuestionMarkHidden
+                ? Curves.elasticIn
+                : Curves.elasticOut,
             onEnd: _animateExclamationMark,
-            child: Image.asset(
-              Images.questionMark,
-              fit: BoxFit.fitHeight,
-            ),
+            child: Image.asset(Images.questionMark, fit: BoxFit.fitHeight),
           ),
           AnimatedPositioned(
             top: 0,
             bottom: 0,
             left: _exclamationMarkLeftOffset,
             duration: _transitionAnimationDuration,
-            curve: _exclamationMarkLeftOffset == _translationHidden ? Curves.elasticIn : Curves.elasticOut,
-            child: Image.asset(
-              Images.exclamationMark,
-              fit: BoxFit.fitHeight,
-            ),
+            curve: _exclamationMarkLeftOffset == _translationHidden
+                ? Curves.elasticIn
+                : Curves.elasticOut,
+            child: Image.asset(Images.exclamationMark, fit: BoxFit.fitHeight),
           ),
           Align(
             alignment: Alignment.center,
@@ -94,7 +93,10 @@ class _EntryPageState extends State<EntryPage> with SingleTickerProviderStateMix
 
   void _startChangeColorTimer() {
     _timer?.cancel();
-    _timer = Timer.periodic(_changeColorTimerDuration, (timer) => _changeColor());
+    _timer = Timer.periodic(
+      _changeColorTimerDuration,
+      (timer) => _changeColor(),
+    );
   }
 
   void _showQuestionMark() {

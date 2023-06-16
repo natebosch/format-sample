@@ -20,42 +20,49 @@ class MockTaskDB extends _i1.Mock implements _i2.TaskDB {
   }
 
   @override
-  _i3.Future<List<_i4.Tasks>> getTasks(
-          {int? startDate = 0, int? endDate = 0, _i4.TaskStatus? taskStatus}) =>
-      (super.noSuchMethod(
-              Invocation.method(#getTasks, [], {
-                #startDate: startDate,
-                #endDate: endDate,
-                #taskStatus: taskStatus
-              }),
-              returnValue: Future.value(<_i4.Tasks>[]))
-          as _i3.Future<List<_i4.Tasks>>);
+  _i3.Future<List<_i4.Tasks>> getTasks({
+    int? startDate = 0,
+    int? endDate = 0,
+    _i4.TaskStatus? taskStatus,
+  }) => (super.noSuchMethod(
+    Invocation.method(#getTasks, [], {
+      #startDate: startDate,
+      #endDate: endDate,
+      #taskStatus: taskStatus,
+    }),
+    returnValue: Future.value(<_i4.Tasks>[]),
+  ) as _i3.Future<List<_i4.Tasks>>);
   @override
-  _i3.Future<List<_i4.Tasks>> getTasksByProject(int? projectId,
-          {_i4.TaskStatus? status}) =>
-      (super.noSuchMethod(
-          Invocation.method(#getTasksByProject, [projectId], {#status: status}),
-          returnValue:
-              Future.value(<_i4.Tasks>[])) as _i3.Future<List<_i4.Tasks>>);
+  _i3.Future<List<_i4.Tasks>> getTasksByProject(
+    int? projectId, {
+    _i4.TaskStatus? status,
+  }) => (super.noSuchMethod(
+    Invocation.method(#getTasksByProject, [projectId], {#status: status}),
+    returnValue: Future.value(<_i4.Tasks>[]),
+  ) as _i3.Future<List<_i4.Tasks>>);
   @override
-  _i3.Future<List<_i4.Tasks>> getTasksByLabel(String? labelName,
-          {_i4.TaskStatus? status}) =>
-      (super.noSuchMethod(
-          Invocation.method(#getTasksByLabel, [labelName], {#status: status}),
-          returnValue:
-              Future.value(<_i4.Tasks>[])) as _i3.Future<List<_i4.Tasks>>);
+  _i3.Future<List<_i4.Tasks>> getTasksByLabel(
+    String? labelName, {
+    _i4.TaskStatus? status,
+  }) => (super.noSuchMethod(
+    Invocation.method(#getTasksByLabel, [labelName], {#status: status}),
+    returnValue: Future.value(<_i4.Tasks>[]),
+  ) as _i3.Future<List<_i4.Tasks>>);
   @override
-  _i3.Future<dynamic> deleteTask(int? taskID) =>
-      (super.noSuchMethod(Invocation.method(#deleteTask, [taskID]),
-          returnValue: Future.value(null)) as _i3.Future<dynamic>);
+  _i3.Future<dynamic> deleteTask(int? taskID) => (super.noSuchMethod(
+    Invocation.method(#deleteTask, [taskID]),
+    returnValue: Future.value(null),
+  ) as _i3.Future<dynamic>);
   @override
   _i3.Future<dynamic> updateTaskStatus(int? taskID, _i4.TaskStatus? status) =>
       (super.noSuchMethod(
-          Invocation.method(#updateTaskStatus, [taskID, status]),
-          returnValue: Future.value(null)) as _i3.Future<dynamic>);
+        Invocation.method(#updateTaskStatus, [taskID, status]),
+        returnValue: Future.value(null),
+      ) as _i3.Future<dynamic>);
   @override
   _i3.Future<dynamic> updateTask(_i4.Tasks? task, {List<int>? labelIDs}) =>
       (super.noSuchMethod(
-          Invocation.method(#updateTask, [task], {#labelIDs: labelIDs}),
-          returnValue: Future.value(null)) as _i3.Future<dynamic>);
+        Invocation.method(#updateTask, [task], {#labelIDs: labelIDs}),
+        returnValue: Future.value(null),
+      ) as _i3.Future<dynamic>);
 }

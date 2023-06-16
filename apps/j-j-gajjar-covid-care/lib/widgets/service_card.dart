@@ -6,9 +6,12 @@ class ServiceCard extends StatelessWidget {
   final IconData icon;
   final Color color;
 
-  const ServiceCard(
-      {Key key, @required this.name, @required this.icon, @required this.color})
-      : super(key: key);
+  const ServiceCard({
+    Key key,
+    @required this.name,
+    @required this.icon,
+    @required this.color,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -46,12 +49,10 @@ class ServiceCard extends StatelessWidget {
               child: Container(
                 height: 84,
                 width: 84,
-                child: Center(
-                  child: Icon(icon, size: 44, color: Colors.white),
-                ),
+                child: Center(child: Icon(icon, size: 44, color: Colors.white)),
               ),
             ),
-          )
+          ),
         ],
       ),
     );

@@ -44,10 +44,7 @@ class _ThriftyAppBarState extends State<ThriftyAppBar> {
                   icon: Icon(Icons.menu),
                 ),
           SizedBox(width: 10),
-          ThriftyLogo(
-            size: 80,
-            color: Theme.of(context).accentColor,
-          ),
+          ThriftyLogo(size: 80, color: Theme.of(context).accentColor),
           Spacer(),
           widget.hideAccount ? Container() : buildCircleAvatar(user),
           SizedBox(width: 20),

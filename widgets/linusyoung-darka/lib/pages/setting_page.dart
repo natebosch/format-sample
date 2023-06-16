@@ -21,60 +21,62 @@ class _SettingPageState extends State<SettingPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text(
-            '${AppLocalizations.of(context).setting}',
-            semanticsLabel: '${AppLocalizations.of(context).setting}',
-          ),
+      appBar: AppBar(
+        title: Text(
+          '${AppLocalizations.of(context).setting}',
+          semanticsLabel: '${AppLocalizations.of(context).setting}',
         ),
-        body: ListView(
-          children: <Widget>[
-            FutureBuilder<int>(
-                future: UserSettingHelper.getThemeMode(),
-                initialData: 0,
-                builder: (BuildContext context, AsyncSnapshot<int> snapshot) {
-                  return snapshot.hasData
-                      ? _themeSetting(snapshot.data)
-                      : _themeSetting(0); //0 is ThemeMode.system
-                }),
-            FutureBuilder<int>(
-              future: UserSettingHelper.getHoleShape(),
-              initialData: 1,
-              builder: (BuildContext context, AsyncSnapshot<int> snapshot) {
-                return snapshot.hasData
-                    ? _holeShapeSetting(snapshot.data)
-                    : _holeShapeSetting(1);
-              },
-            ),
-            FutureBuilder<double>(
-              future: UserSettingHelper.getHoleSize(),
-              initialData: 5.0,
-              builder: (BuildContext context, AsyncSnapshot<double> snapshot) {
-                _holeSize = snapshot.hasData
-                    ? _holeSize = snapshot.data
-                    : _holeSize = 5.0;
-                return _sizeSetting();
-              },
-            ),
-            FutureBuilder<bool>(
-              future: UserSettingHelper.getLeftHandMode(),
-              initialData: false,
-              builder: (BuildContext context, AsyncSnapshot<bool> snapshot) {
-                _leftHand = snapshot.hasData ? snapshot.data : false;
-                return _leftHandMode();
-              },
-            ),
-            FutureBuilder<PackageInfo>(
-              future: PackageInfo.fromPlatform(),
-              builder:
-                  (BuildContext context, AsyncSnapshot<PackageInfo> snapshot) {
-                return snapshot.hasData
-                    ? _versionInfo(snapshot.data.version)
-                    : Container();
-              },
-            ),
-          ],
-        ));
+      ),
+      body: ListView(
+        children: <Widget>[
+          FutureBuilder<int>(
+            future: UserSettingHelper.getThemeMode(),
+            initialData: 0,
+            builder: (BuildContext context, AsyncSnapshot<int> snapshot) {
+              return snapshot.hasData
+                  ? _themeSetting(snapshot.data)
+                  : _themeSetting(0); //0 is ThemeMode.system
+            },
+          ),
+          FutureBuilder<int>(
+            future: UserSettingHelper.getHoleShape(),
+            initialData: 1,
+            builder: (BuildContext context, AsyncSnapshot<int> snapshot) {
+              return snapshot.hasData
+                  ? _holeShapeSetting(snapshot.data)
+                  : _holeShapeSetting(1);
+            },
+          ),
+          FutureBuilder<double>(
+            future: UserSettingHelper.getHoleSize(),
+            initialData: 5.0,
+            builder: (BuildContext context, AsyncSnapshot<double> snapshot) {
+              _holeSize = snapshot.hasData
+                  ? _holeSize = snapshot.data
+                  : _holeSize = 5.0;
+              return _sizeSetting();
+            },
+          ),
+          FutureBuilder<bool>(
+            future: UserSettingHelper.getLeftHandMode(),
+            initialData: false,
+            builder: (BuildContext context, AsyncSnapshot<bool> snapshot) {
+              _leftHand = snapshot.hasData ? snapshot.data : false;
+              return _leftHandMode();
+            },
+          ),
+          FutureBuilder<PackageInfo>(
+            future: PackageInfo.fromPlatform(),
+            builder:
+                (BuildContext context, AsyncSnapshot<PackageInfo> snapshot) {
+              return snapshot.hasData
+                  ? _versionInfo(snapshot.data.version)
+                  : Container();
+            },
+          ),
+        ],
+      ),
+    );
   }
 
   Widget _themeSetting(int userThemeIndex) {
@@ -127,13 +129,7 @@ class _SettingPageState extends State<SettingPage> {
           semanticsLabel: '${AppLocalizations.of(context).holeShape}',
         ),
         trailing: ToggleButtons(
-          children: <Widget>[
-            Icon(Icons.stop),
-            Icon(
-              Icons.lens,
-              size: 15.0,
-            ),
-          ],
+          children: <Widget>[Icon(Icons.stop), Icon(Icons.lens, size: 15.0)],
           onPressed: (int index) {
             setState(() {
               _setShape(index);
@@ -158,33 +154,34 @@ class _SettingPageState extends State<SettingPage> {
 
   Widget _sizeSetting() {
     return Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          Padding(
-            padding: const EdgeInsets.fromLTRB(24.0, 8.0, 16.0, 0.0),
-            child: Text(
-              '${AppLocalizations.of(context).holeSize}',
-              style: Theme.of(context).textTheme.bodyText1,
-              semanticsLabel: '${AppLocalizations.of(context).holeSize}',
-            ),
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        Padding(
+          padding: const EdgeInsets.fromLTRB(24.0, 8.0, 16.0, 0.0),
+          child: Text(
+            '${AppLocalizations.of(context).holeSize}',
+            style: Theme.of(context).textTheme.bodyText1,
+            semanticsLabel: '${AppLocalizations.of(context).holeSize}',
           ),
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Slider(
-              value: _holeSize,
-              onChanged: (newValue) {
-                setState(() {
-                  _holeSize = newValue;
-                  UserSettingHelper.setHoleSize(newValue);
-                });
-              },
-              min: 4.0,
-              max: 10.0,
-              divisions: 6,
-              label: "$_holeSize",
-            ),
+        ),
+        Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Slider(
+            value: _holeSize,
+            onChanged: (newValue) {
+              setState(() {
+                _holeSize = newValue;
+                UserSettingHelper.setHoleSize(newValue);
+              });
+            },
+            min: 4.0,
+            max: 10.0,
+            divisions: 6,
+            label: "$_holeSize",
           ),
-        ]);
+        ),
+      ],
+    );
   }
 
   Widget _leftHandMode() {
@@ -196,13 +193,14 @@ class _SettingPageState extends State<SettingPage> {
           style: Theme.of(context).textTheme.bodyText1,
         ),
         trailing: Switch(
-            value: _leftHand,
-            onChanged: (newValue) {
-              setState(() {
-                _leftHand = newValue;
-                UserSettingHelper.setLeftHandMode(newValue);
-              });
-            }),
+          value: _leftHand,
+          onChanged: (newValue) {
+            setState(() {
+              _leftHand = newValue;
+              UserSettingHelper.setLeftHandMode(newValue);
+            });
+          },
+        ),
       ),
     );
   }
@@ -211,10 +209,7 @@ class _SettingPageState extends State<SettingPage> {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: ListTile(
-        title: Text(
-          'Version',
-          style: Theme.of(context).textTheme.bodyText1,
-        ),
+        title: Text('Version', style: Theme.of(context).textTheme.bodyText1),
         trailing: Text(version),
       ),
     );

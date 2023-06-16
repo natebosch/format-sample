@@ -23,13 +23,18 @@ class _$DesignListResponseSerializer
   final String wireName = 'DesignListResponse';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, DesignListResponse object,
-      {FullType specifiedType = FullType.unspecified}) {
+  Iterable<Object> serialize(
+    Serializers serializers,
+    DesignListResponse object, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
     final result = <Object>[
       'data',
-      serializers.serialize(object.data,
-          specifiedType:
-              const FullType(BuiltList, const [const FullType(DesignEntity)])),
+      serializers.serialize(
+        object.data,
+        specifiedType:
+            const FullType(BuiltList, const [const FullType(DesignEntity)]),
+      ),
     ];
 
     return result;
@@ -37,8 +42,10 @@ class _$DesignListResponseSerializer
 
   @override
   DesignListResponse deserialize(
-      Serializers serializers, Iterable<Object> serialized,
-      {FullType specifiedType = FullType.unspecified}) {
+    Serializers serializers,
+    Iterable<Object> serialized, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
     final result = new DesignListResponseBuilder();
 
     final iterator = serialized.iterator;
@@ -48,10 +55,14 @@ class _$DesignListResponseSerializer
       final Object value = iterator.current;
       switch (key) {
         case 'data':
-          result.data.replace(serializers.deserialize(value,
-                  specifiedType: const FullType(
-                      BuiltList, const [const FullType(DesignEntity)]))
-              as BuiltList<Object>);
+          result.data.replace(
+            serializers.deserialize(
+              value,
+              specifiedType: const FullType(BuiltList, const [
+                const FullType(DesignEntity),
+              ]),
+            ) as BuiltList<Object>,
+          );
           break;
       }
     }
@@ -68,12 +79,17 @@ class _$DesignItemResponseSerializer
   final String wireName = 'DesignItemResponse';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, DesignItemResponse object,
-      {FullType specifiedType = FullType.unspecified}) {
+  Iterable<Object> serialize(
+    Serializers serializers,
+    DesignItemResponse object, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
     final result = <Object>[
       'data',
-      serializers.serialize(object.data,
-          specifiedType: const FullType(DesignEntity)),
+      serializers.serialize(
+        object.data,
+        specifiedType: const FullType(DesignEntity),
+      ),
     ];
 
     return result;
@@ -81,8 +97,10 @@ class _$DesignItemResponseSerializer
 
   @override
   DesignItemResponse deserialize(
-      Serializers serializers, Iterable<Object> serialized,
-      {FullType specifiedType = FullType.unspecified}) {
+    Serializers serializers,
+    Iterable<Object> serialized, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
     final result = new DesignItemResponseBuilder();
 
     final iterator = serialized.iterator;
@@ -92,8 +110,12 @@ class _$DesignItemResponseSerializer
       final Object value = iterator.current;
       switch (key) {
         case 'data':
-          result.data.replace(serializers.deserialize(value,
-              specifiedType: const FullType(DesignEntity)) as DesignEntity);
+          result.data.replace(
+            serializers.deserialize(
+              value,
+              specifiedType: const FullType(DesignEntity),
+            ) as DesignEntity,
+          );
           break;
       }
     }
@@ -107,25 +129,33 @@ class _$DesignPreviewRequestSerializer
   @override
   final Iterable<Type> types = const [
     DesignPreviewRequest,
-    _$DesignPreviewRequest
+    _$DesignPreviewRequest,
   ];
   @override
   final String wireName = 'DesignPreviewRequest';
 
   @override
   Iterable<Object> serialize(
-      Serializers serializers, DesignPreviewRequest object,
-      {FullType specifiedType = FullType.unspecified}) {
+    Serializers serializers,
+    DesignPreviewRequest object, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
     final result = <Object>[
       'entity_type',
-      serializers.serialize(object.entityType,
-          specifiedType: const FullType(EntityType)),
+      serializers.serialize(
+        object.entityType,
+        specifiedType: const FullType(EntityType),
+      ),
       'entity_id',
-      serializers.serialize(object.entityId,
-          specifiedType: const FullType(String)),
+      serializers.serialize(
+        object.entityId,
+        specifiedType: const FullType(String),
+      ),
       'design',
-      serializers.serialize(object.design,
-          specifiedType: const FullType(DesignEntity)),
+      serializers.serialize(
+        object.design,
+        specifiedType: const FullType(DesignEntity),
+      ),
     ];
 
     return result;
@@ -133,8 +163,10 @@ class _$DesignPreviewRequestSerializer
 
   @override
   DesignPreviewRequest deserialize(
-      Serializers serializers, Iterable<Object> serialized,
-      {FullType specifiedType = FullType.unspecified}) {
+    Serializers serializers,
+    Iterable<Object> serialized, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
     final result = new DesignPreviewRequestBuilder();
 
     final iterator = serialized.iterator;
@@ -144,16 +176,24 @@ class _$DesignPreviewRequestSerializer
       final Object value = iterator.current;
       switch (key) {
         case 'entity_type':
-          result.entityType = serializers.deserialize(value,
-              specifiedType: const FullType(EntityType)) as EntityType;
+          result.entityType = serializers.deserialize(
+            value,
+            specifiedType: const FullType(EntityType),
+          ) as EntityType;
           break;
         case 'entity_id':
-          result.entityId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+          result.entityId = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
           break;
         case 'design':
-          result.design.replace(serializers.deserialize(value,
-              specifiedType: const FullType(DesignEntity)) as DesignEntity);
+          result.design.replace(
+            serializers.deserialize(
+              value,
+              specifiedType: const FullType(DesignEntity),
+            ) as DesignEntity,
+          );
           break;
       }
     }
@@ -169,29 +209,44 @@ class _$DesignEntitySerializer implements StructuredSerializer<DesignEntity> {
   final String wireName = 'DesignEntity';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, DesignEntity object,
-      {FullType specifiedType = FullType.unspecified}) {
+  Iterable<Object> serialize(
+    Serializers serializers,
+    DesignEntity object, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
     final result = <Object>[
       'name',
       serializers.serialize(object.name, specifiedType: const FullType(String)),
       'design',
-      serializers.serialize(object.design,
-          specifiedType: const FullType(BuiltMap,
-              const [const FullType(String), const FullType(String)])),
+      serializers.serialize(
+        object.design,
+        specifiedType: const FullType(BuiltMap, const [
+          const FullType(String),
+          const FullType(String),
+        ]),
+      ),
       'is_custom',
-      serializers.serialize(object.isCustom,
-          specifiedType: const FullType(bool)),
+      serializers.serialize(
+        object.isCustom,
+        specifiedType: const FullType(bool),
+      ),
       'is_free',
       serializers.serialize(object.isFree, specifiedType: const FullType(bool)),
       'created_at',
-      serializers.serialize(object.createdAt,
-          specifiedType: const FullType(int)),
+      serializers.serialize(
+        object.createdAt,
+        specifiedType: const FullType(int),
+      ),
       'updated_at',
-      serializers.serialize(object.updatedAt,
-          specifiedType: const FullType(int)),
+      serializers.serialize(
+        object.updatedAt,
+        specifiedType: const FullType(int),
+      ),
       'archived_at',
-      serializers.serialize(object.archivedAt,
-          specifiedType: const FullType(int)),
+      serializers.serialize(
+        object.archivedAt,
+        specifiedType: const FullType(int),
+      ),
       'id',
       serializers.serialize(object.id, specifiedType: const FullType(String)),
     ];
@@ -201,35 +256,42 @@ class _$DesignEntitySerializer implements StructuredSerializer<DesignEntity> {
       result
         ..add('isChanged')
         ..add(
-            serializers.serialize(value, specifiedType: const FullType(bool)));
+          serializers.serialize(value, specifiedType: const FullType(bool)),
+        );
     }
     value = object.isDeleted;
     if (value != null) {
       result
         ..add('is_deleted')
         ..add(
-            serializers.serialize(value, specifiedType: const FullType(bool)));
+          serializers.serialize(value, specifiedType: const FullType(bool)),
+        );
     }
     value = object.createdUserId;
     if (value != null) {
       result
         ..add('user_id')
-        ..add(serializers.serialize(value,
-            specifiedType: const FullType(String)));
+        ..add(
+          serializers.serialize(value, specifiedType: const FullType(String)),
+        );
     }
     value = object.assignedUserId;
     if (value != null) {
       result
         ..add('assigned_user_id')
-        ..add(serializers.serialize(value,
-            specifiedType: const FullType(String)));
+        ..add(
+          serializers.serialize(value, specifiedType: const FullType(String)),
+        );
     }
     return result;
   }
 
   @override
-  DesignEntity deserialize(Serializers serializers, Iterable<Object> serialized,
-      {FullType specifiedType = FullType.unspecified}) {
+  DesignEntity deserialize(
+    Serializers serializers,
+    Iterable<Object> serialized, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
     final result = new DesignEntityBuilder();
 
     final iterator = serialized.iterator;
@@ -239,53 +301,79 @@ class _$DesignEntitySerializer implements StructuredSerializer<DesignEntity> {
       final Object value = iterator.current;
       switch (key) {
         case 'name':
-          result.name = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+          result.name = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
           break;
         case 'design':
-          result.design.replace(serializers.deserialize(value,
-              specifiedType: const FullType(BuiltMap,
-                  const [const FullType(String), const FullType(String)])));
+          result.design.replace(serializers.deserialize(
+            value,
+            specifiedType: const FullType(BuiltMap, const [
+              const FullType(String),
+              const FullType(String),
+            ]),
+          ));
           break;
         case 'is_custom':
-          result.isCustom = serializers.deserialize(value,
-              specifiedType: const FullType(bool)) as bool;
+          result.isCustom = serializers.deserialize(
+            value,
+            specifiedType: const FullType(bool),
+          ) as bool;
           break;
         case 'is_free':
-          result.isFree = serializers.deserialize(value,
-              specifiedType: const FullType(bool)) as bool;
+          result.isFree = serializers.deserialize(
+            value,
+            specifiedType: const FullType(bool),
+          ) as bool;
           break;
         case 'isChanged':
-          result.isChanged = serializers.deserialize(value,
-              specifiedType: const FullType(bool)) as bool;
+          result.isChanged = serializers.deserialize(
+            value,
+            specifiedType: const FullType(bool),
+          ) as bool;
           break;
         case 'created_at':
-          result.createdAt = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+          result.createdAt = serializers.deserialize(
+            value,
+            specifiedType: const FullType(int),
+          ) as int;
           break;
         case 'updated_at':
-          result.updatedAt = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+          result.updatedAt = serializers.deserialize(
+            value,
+            specifiedType: const FullType(int),
+          ) as int;
           break;
         case 'archived_at':
-          result.archivedAt = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+          result.archivedAt = serializers.deserialize(
+            value,
+            specifiedType: const FullType(int),
+          ) as int;
           break;
         case 'is_deleted':
-          result.isDeleted = serializers.deserialize(value,
-              specifiedType: const FullType(bool)) as bool;
+          result.isDeleted = serializers.deserialize(
+            value,
+            specifiedType: const FullType(bool),
+          ) as bool;
           break;
         case 'user_id':
-          result.createdUserId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+          result.createdUserId = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
           break;
         case 'assigned_user_id':
-          result.assignedUserId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+          result.assignedUserId = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
           break;
         case 'id':
-          result.id = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+          result.id = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
           break;
       }
     }
@@ -298,9 +386,9 @@ class _$DesignListResponse extends DesignListResponse {
   @override
   final BuiltList<DesignEntity> data;
 
-  factory _$DesignListResponse(
-          [void Function(DesignListResponseBuilder) updates]) =>
-      (new DesignListResponseBuilder()..update(updates)).build();
+  factory _$DesignListResponse([
+    void Function(DesignListResponseBuilder) updates,
+  ]) => (new DesignListResponseBuilder()..update(updates)).build();
 
   _$DesignListResponse._({this.data}) : super._() {
     BuiltValueNullFieldError.checkNotNull(data, 'DesignListResponse', 'data');
@@ -308,8 +396,8 @@ class _$DesignListResponse extends DesignListResponse {
 
   @override
   DesignListResponse rebuild(
-          void Function(DesignListResponseBuilder) updates) =>
-      (toBuilder()..update(updates)).build();
+    void Function(DesignListResponseBuilder) updates,
+  ) => (toBuilder()..update(updates)).build();
 
   @override
   DesignListResponseBuilder toBuilder() =>
@@ -378,7 +466,10 @@ class DesignListResponseBuilder
         data.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
-            'DesignListResponse', _$failedField, e.toString());
+          'DesignListResponse',
+          _$failedField,
+          e.toString(),
+        );
       }
       rethrow;
     }
@@ -391,9 +482,9 @@ class _$DesignItemResponse extends DesignItemResponse {
   @override
   final DesignEntity data;
 
-  factory _$DesignItemResponse(
-          [void Function(DesignItemResponseBuilder) updates]) =>
-      (new DesignItemResponseBuilder()..update(updates)).build();
+  factory _$DesignItemResponse([
+    void Function(DesignItemResponseBuilder) updates,
+  ]) => (new DesignItemResponseBuilder()..update(updates)).build();
 
   _$DesignItemResponse._({this.data}) : super._() {
     BuiltValueNullFieldError.checkNotNull(data, 'DesignItemResponse', 'data');
@@ -401,8 +492,8 @@ class _$DesignItemResponse extends DesignItemResponse {
 
   @override
   DesignItemResponse rebuild(
-          void Function(DesignItemResponseBuilder) updates) =>
-      (toBuilder()..update(updates)).build();
+    void Function(DesignItemResponseBuilder) updates,
+  ) => (toBuilder()..update(updates)).build();
 
   @override
   DesignItemResponseBuilder toBuilder() =>
@@ -470,7 +561,10 @@ class DesignItemResponseBuilder
         data.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
-            'DesignItemResponse', _$failedField, e.toString());
+          'DesignItemResponse',
+          _$failedField,
+          e.toString(),
+        );
       }
       rethrow;
     }
@@ -487,24 +581,33 @@ class _$DesignPreviewRequest extends DesignPreviewRequest {
   @override
   final DesignEntity design;
 
-  factory _$DesignPreviewRequest(
-          [void Function(DesignPreviewRequestBuilder) updates]) =>
-      (new DesignPreviewRequestBuilder()..update(updates)).build();
+  factory _$DesignPreviewRequest([
+    void Function(DesignPreviewRequestBuilder) updates,
+  ]) => (new DesignPreviewRequestBuilder()..update(updates)).build();
 
   _$DesignPreviewRequest._({this.entityType, this.entityId, this.design})
-      : super._() {
+    : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        entityType, 'DesignPreviewRequest', 'entityType');
+      entityType,
+      'DesignPreviewRequest',
+      'entityType',
+    );
     BuiltValueNullFieldError.checkNotNull(
-        entityId, 'DesignPreviewRequest', 'entityId');
+      entityId,
+      'DesignPreviewRequest',
+      'entityId',
+    );
     BuiltValueNullFieldError.checkNotNull(
-        design, 'DesignPreviewRequest', 'design');
+      design,
+      'DesignPreviewRequest',
+      'design',
+    );
   }
 
   @override
   DesignPreviewRequest rebuild(
-          void Function(DesignPreviewRequestBuilder) updates) =>
-      (toBuilder()..update(updates)).build();
+    void Function(DesignPreviewRequestBuilder) updates,
+  ) => (toBuilder()..update(updates)).build();
 
   @override
   DesignPreviewRequestBuilder toBuilder() =>
@@ -522,8 +625,9 @@ class _$DesignPreviewRequest extends DesignPreviewRequest {
   int __hashCode;
   @override
   int get hashCode {
-    return __hashCode ??= $jf($jc(
-        $jc($jc(0, entityType.hashCode), entityId.hashCode), design.hashCode));
+    return __hashCode ??= $jf(
+      $jc($jc($jc(0, entityType.hashCode), entityId.hashCode), design.hashCode),
+    );
   }
 
   @override
@@ -583,11 +687,18 @@ class DesignPreviewRequestBuilder
     try {
       _$result = _$v ??
           new _$DesignPreviewRequest._(
-              entityType: BuiltValueNullFieldError.checkNotNull(
-                  entityType, 'DesignPreviewRequest', 'entityType'),
-              entityId: BuiltValueNullFieldError.checkNotNull(
-                  entityId, 'DesignPreviewRequest', 'entityId'),
-              design: design.build());
+            entityType: BuiltValueNullFieldError.checkNotNull(
+              entityType,
+              'DesignPreviewRequest',
+              'entityType',
+            ),
+            entityId: BuiltValueNullFieldError.checkNotNull(
+              entityId,
+              'DesignPreviewRequest',
+              'entityId',
+            ),
+            design: design.build(),
+          );
     } catch (_) {
       String _$failedField;
       try {
@@ -595,7 +706,10 @@ class DesignPreviewRequestBuilder
         design.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
-            'DesignPreviewRequest', _$failedField, e.toString());
+          'DesignPreviewRequest',
+          _$failedField,
+          e.toString(),
+        );
       }
       rethrow;
     }
@@ -633,30 +747,39 @@ class _$DesignEntity extends DesignEntity {
   factory _$DesignEntity([void Function(DesignEntityBuilder) updates]) =>
       (new DesignEntityBuilder()..update(updates)).build();
 
-  _$DesignEntity._(
-      {this.name,
-      this.design,
-      this.isCustom,
-      this.isFree,
-      this.isChanged,
-      this.createdAt,
-      this.updatedAt,
-      this.archivedAt,
-      this.isDeleted,
-      this.createdUserId,
-      this.assignedUserId,
-      this.id})
-      : super._() {
+  _$DesignEntity._({
+    this.name,
+    this.design,
+    this.isCustom,
+    this.isFree,
+    this.isChanged,
+    this.createdAt,
+    this.updatedAt,
+    this.archivedAt,
+    this.isDeleted,
+    this.createdUserId,
+    this.assignedUserId,
+    this.id,
+  }) : super._() {
     BuiltValueNullFieldError.checkNotNull(name, 'DesignEntity', 'name');
     BuiltValueNullFieldError.checkNotNull(design, 'DesignEntity', 'design');
     BuiltValueNullFieldError.checkNotNull(isCustom, 'DesignEntity', 'isCustom');
     BuiltValueNullFieldError.checkNotNull(isFree, 'DesignEntity', 'isFree');
     BuiltValueNullFieldError.checkNotNull(
-        createdAt, 'DesignEntity', 'createdAt');
+      createdAt,
+      'DesignEntity',
+      'createdAt',
+    );
     BuiltValueNullFieldError.checkNotNull(
-        updatedAt, 'DesignEntity', 'updatedAt');
+      updatedAt,
+      'DesignEntity',
+      'updatedAt',
+    );
     BuiltValueNullFieldError.checkNotNull(
-        archivedAt, 'DesignEntity', 'archivedAt');
+      archivedAt,
+      'DesignEntity',
+      'archivedAt',
+    );
     BuiltValueNullFieldError.checkNotNull(id, 'DesignEntity', 'id');
   }
 
@@ -688,28 +811,10 @@ class _$DesignEntity extends DesignEntity {
   int __hashCode;
   @override
   int get hashCode {
-    return __hashCode ??= $jf($jc(
-        $jc(
-            $jc(
-                $jc(
-                    $jc(
-                        $jc(
-                            $jc(
-                                $jc(
-                                    $jc(
-                                        $jc(
-                                            $jc($jc(0, name.hashCode),
-                                                design.hashCode),
-                                            isCustom.hashCode),
-                                        isFree.hashCode),
-                                    isChanged.hashCode),
-                                createdAt.hashCode),
-                            updatedAt.hashCode),
-                        archivedAt.hashCode),
-                    isDeleted.hashCode),
-                createdUserId.hashCode),
-            assignedUserId.hashCode),
-        id.hashCode));
+    return __hashCode ??= $jf($jc($jc($jc($jc(
+      $jc($jc($jc($jc($jc($jc($jc($jc(0, name.hashCode), design.hashCode), isCustom.hashCode), isFree.hashCode), isChanged.hashCode), createdAt.hashCode), updatedAt.hashCode), archivedAt.hashCode),
+      isDeleted.hashCode,
+    ), createdUserId.hashCode), assignedUserId.hashCode), id.hashCode));
   }
 
   @override
@@ -827,25 +932,43 @@ class DesignEntityBuilder
     try {
       _$result = _$v ??
           new _$DesignEntity._(
-              name: BuiltValueNullFieldError.checkNotNull(
-                  name, 'DesignEntity', 'name'),
-              design: design.build(),
-              isCustom: BuiltValueNullFieldError.checkNotNull(
-                  isCustom, 'DesignEntity', 'isCustom'),
-              isFree: BuiltValueNullFieldError.checkNotNull(
-                  isFree, 'DesignEntity', 'isFree'),
-              isChanged: isChanged,
-              createdAt: BuiltValueNullFieldError.checkNotNull(
-                  createdAt, 'DesignEntity', 'createdAt'),
-              updatedAt: BuiltValueNullFieldError.checkNotNull(
-                  updatedAt, 'DesignEntity', 'updatedAt'),
-              archivedAt: BuiltValueNullFieldError.checkNotNull(
-                  archivedAt, 'DesignEntity', 'archivedAt'),
-              isDeleted: isDeleted,
-              createdUserId: createdUserId,
-              assignedUserId: assignedUserId,
-              id: BuiltValueNullFieldError.checkNotNull(
-                  id, 'DesignEntity', 'id'));
+            name: BuiltValueNullFieldError.checkNotNull(
+              name,
+              'DesignEntity',
+              'name',
+            ),
+            design: design.build(),
+            isCustom: BuiltValueNullFieldError.checkNotNull(
+              isCustom,
+              'DesignEntity',
+              'isCustom',
+            ),
+            isFree: BuiltValueNullFieldError.checkNotNull(
+              isFree,
+              'DesignEntity',
+              'isFree',
+            ),
+            isChanged: isChanged,
+            createdAt: BuiltValueNullFieldError.checkNotNull(
+              createdAt,
+              'DesignEntity',
+              'createdAt',
+            ),
+            updatedAt: BuiltValueNullFieldError.checkNotNull(
+              updatedAt,
+              'DesignEntity',
+              'updatedAt',
+            ),
+            archivedAt: BuiltValueNullFieldError.checkNotNull(
+              archivedAt,
+              'DesignEntity',
+              'archivedAt',
+            ),
+            isDeleted: isDeleted,
+            createdUserId: createdUserId,
+            assignedUserId: assignedUserId,
+            id: BuiltValueNullFieldError.checkNotNull(id, 'DesignEntity', 'id'),
+          );
     } catch (_) {
       String _$failedField;
       try {
@@ -853,7 +976,10 @@ class DesignEntityBuilder
         design.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
-            'DesignEntity', _$failedField, e.toString());
+          'DesignEntity',
+          _$failedField,
+          e.toString(),
+        );
       }
       rethrow;
     }

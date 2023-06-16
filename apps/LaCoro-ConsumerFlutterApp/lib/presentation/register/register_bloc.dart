@@ -33,9 +33,12 @@ class RegisterBloc extends Bloc<BaseEvent, BaseState> {
         await _useCases.requestSMSCode(event.mobile);
       } else if (event is AuthenticateUserWithSmsEvent) {
         yield LoadingState();
-        final result = await _useCases.authenticateUser(event.smsCode, event.userEntity);
+        final result =
+            await _useCases.authenticateUser(event.smsCode, event.userEntity);
         if (result is Success) {
-          await _preferences.saveProfile(_preferences.getProfile()..isValidated = true);
+          await _preferences.saveProfile(
+            _preferences.getProfile()..isValidated = true,
+          );
           yield SuccessState();
         } else if (result is Failure) {
           yield ErrorState(message: result.exception.toString());

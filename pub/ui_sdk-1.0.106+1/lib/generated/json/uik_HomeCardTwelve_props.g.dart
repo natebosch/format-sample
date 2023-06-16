@@ -10,7 +10,8 @@ import '../../../components/WidgetType.dart';
 import '../../../props/UikContainerTextProps.dart';
 
 UikHomeCardTwelveProps $UikHomeCardTwelvePropsFromJson(
-    Map<String, dynamic> json) {
+  Map<String, dynamic> json,
+) {
   final UikHomeCardTwelveProps uikHomeCardTwelveProps =
       UikHomeCardTwelveProps();
   final String? id = jsonConvert.convert<String>(json['id']);
@@ -21,22 +22,24 @@ UikHomeCardTwelveProps $UikHomeCardTwelvePropsFromJson(
   final String? badgeText = jsonConvert.convert<String>(json['badgeText']);
   if (badgeText != null) {
     uikHomeCardTwelveProps.badgeText = UikContainerText(
-        WidgetType.UikText, UikContainerTextProps.fromJson(json['badgeText']));
+      WidgetType.UikText,
+      UikContainerTextProps.fromJson(json['badgeText']),
+    );
   }
 
   final String? text = jsonConvert.convert<String>(json['text']);
   if (text != null) {
     uikHomeCardTwelveProps.text = UikContainerText(
-        WidgetType.UikText, UikContainerTextProps.fromJson(json['text']));
+      WidgetType.UikText,
+      UikContainerTextProps.fromJson(json['text']),
+    );
   }
 
   final String? image = jsonConvert.convert<String>(json['image']);
   if (image != null) {
     uikHomeCardTwelveProps.image = UikImage(
       WidgetType.UikText,
-      UikImageProps.fromJson(
-        json['image'],
-      ),
+      UikImageProps.fromJson(json['image']),
     );
   }
 

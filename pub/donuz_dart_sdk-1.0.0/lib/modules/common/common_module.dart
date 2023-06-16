@@ -28,9 +28,7 @@ class CommomModule extends BaseModule {
       () async => HttpService(client, config),
     );
     instance.registerLazySingletonAsync<StorageService>(
-      () async => StorageService(
-        await SharedPreferences.getInstance(),
-      ),
+      () async => StorageService(await SharedPreferences.getInstance()),
     );
     instance.registerLazySingletonAsync<BaseConfig>(() async => config);
   }

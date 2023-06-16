@@ -26,7 +26,11 @@ class GalleryView extends StatelessWidget {
       builder: (_, __, ContactJobViewModel vm) {
         return Scaffold(
           backgroundColor: Colors.black87,
-          appBar: _MyAppBar(contact: vm.selectedContact, job: vm.selectedJob, account: vm.account),
+          appBar: _MyAppBar(
+            contact: vm.selectedContact,
+            job: vm.selectedJob,
+            account: vm.account,
+          ),
           body: PhotoView(
             imageProvider: NetworkImage(image.src),
             loadingChild: const MkLoadingSpinner(),
@@ -39,7 +43,8 @@ class GalleryView extends StatelessWidget {
 }
 
 class _MyAppBar extends StatelessWidget implements PreferredSizeWidget {
-  const _MyAppBar({Key key, this.contact, this.job, @required this.account}) : super(key: key);
+  const _MyAppBar({Key key, this.contact, this.job, @required this.account})
+    : super(key: key);
 
   final ContactModel contact;
   final JobModel job;
@@ -64,7 +69,9 @@ class _MyAppBar extends StatelessWidget implements PreferredSizeWidget {
               if (contact != null)
                 IconButton(
                   icon: const Icon(Icons.person, color: Colors.white),
-                  onPressed: () => Dependencies.di().contactsCoordinator.toContact(contact),
+                  onPressed: () => Dependencies.di()
+                      .contactsCoordinator
+                      .toContact(contact),
                 ),
               if (account.hasPremiumEnabled)
                 IconButton(

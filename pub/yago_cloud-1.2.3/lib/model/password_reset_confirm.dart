@@ -39,7 +39,10 @@ class PasswordResetConfirm {
   @override
   int get hashCode =>
       // ignore: unnecessary_parenthesis
-      (newPassword1.hashCode) + (newPassword2.hashCode) + (uid.hashCode) + (token.hashCode);
+      (newPassword1.hashCode) +
+      (newPassword2.hashCode) +
+      (uid.hashCode) +
+      (token.hashCode);
 
   @override
   String toString() =>
@@ -64,13 +67,21 @@ class PasswordResetConfirm {
       // Ensure that the map contains the required keys.
       // Note 1: the values aren't checked for validity beyond being non-null.
       // Note 2: this code is stripped in release mode!
-      assert(() {
-        requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "PasswordResetConfirm[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "PasswordResetConfirm[$key]" has a null value in JSON.');
-        });
-        return true;
-      }());
+      assert(
+        () {
+          requiredKeys.forEach((key) {
+            assert(
+              json.containsKey(key),
+              'Required key "PasswordResetConfirm[$key]" is missing from JSON.',
+            );
+            assert(
+              json[key] != null,
+              'Required key "PasswordResetConfirm[$key]" has a null value in JSON.',
+            );
+          });
+          return true;
+        }(),
+      );
 
       return PasswordResetConfirm(
         newPassword1: mapValueOfType<String>(json, r'new_password1')!,

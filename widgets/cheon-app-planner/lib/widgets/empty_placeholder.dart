@@ -10,11 +10,7 @@ import 'package:cheon/constants.dart';
 class EmptyPlaceholder extends StatelessWidget {
   /// Creates an image showing an illustration of a person holding an empty box
   /// to signify that there is no content available.
-  const EmptyPlaceholder({
-    Key key,
-    this.text,
-    this.svgPath,
-  }) : super(key: key);
+  const EmptyPlaceholder({Key key, this.text, this.svgPath}) : super(key: key);
 
   final String text;
   final String svgPath;
@@ -40,10 +36,7 @@ class EmptyPlaceholder extends StatelessWidget {
                 ? Column(
                     children: <Widget>[
                       const SizedBox(height: 8),
-                      Text(
-                        text,
-                        style: Theme.of(context).textTheme.headline6,
-                      ),
+                      Text(text, style: Theme.of(context).textTheme.headline6),
                     ],
                   )
                 : const SizedBox.shrink(),

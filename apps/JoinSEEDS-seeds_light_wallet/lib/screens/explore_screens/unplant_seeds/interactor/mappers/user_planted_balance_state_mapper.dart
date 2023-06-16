@@ -10,27 +10,34 @@ import 'package:seeds/screens/explore_screens/unplant_seeds/interactor/viewmodel
 import 'package:seeds/utils/rate_states_extensions.dart';
 
 class UserPlantedBalanceStateMapper extends StateMapper {
-  UnplantSeedsState mapResultToState(UnplantSeedsState currentState, List<Result> results) {
+  UnplantSeedsState mapResultToState(
+    UnplantSeedsState currentState,
+    List<Result> results,
+  ) {
     if (areAllResultsError(results)) {
-      return currentState.copyWith(
-        pageState: PageState.failure,
-      );
+      return currentState.copyWith(pageState: PageState.failure);
     } else {
       results.retainWhere((Result i) => i.isValue);
       final values = results.map((Result i) => i.asValue!.value).toList();
       final String selectedFiat = settingsStorage.selectedFiatCurrency;
 
-      final PlantedModel? plantedSeeds = values.firstWhereOrNull((element) => element is PlantedModel);
+      final PlantedModel? plantedSeeds = values.firstWhereOrNull(
+        (element) => element is PlantedModel,
+      );
       final plantedAmount = TokenDataModel(plantedSeeds?.quantity ?? 0);
 
       final List<int> availableRequestIds = [];
       final int millisecondsPerWeek = 24 * 60 * 60 * 1000 * 7;
       bool enableClaimButton = false;
       double availableTotalClaim = 0;
-      final List<RefundModel> refunds = values.firstWhere((i) => i is List<RefundModel>, orElse: () => []);
+      final List<RefundModel> refunds = values.firstWhere(
+        (i) => i is List<RefundModel>,
+        orElse: () => [],
+      );
 
       for (final element in refunds) {
-        final int claimDate = (element.requestTime * 1000) + (element.weeksDelay * millisecondsPerWeek);
+        final int claimDate = (element.requestTime * 1000) +
+            (element.weeksDelay * millisecondsPerWeek);
 
         if (DateTime.now().millisecondsSinceEpoch > claimDate) {
           availableTotalClaim = availableTotalClaim + element.amount;
@@ -47,10 +54,13 @@ class UserPlantedBalanceStateMapper extends StateMapper {
         showMinPlantedBalanceAlert: (plantedSeeds?.quantity ?? 0) <= minPlanted,
         pageState: PageState.success,
         plantedBalance: TokenDataModel.from(plantedSeeds?.quantity ?? 0),
-        plantedBalanceFiat: currentState.ratesState.tokenToFiat(plantedAmount, selectedFiat),
+        plantedBalanceFiat:
+            currentState.ratesState.tokenToFiat(plantedAmount, selectedFiat),
         availableClaimBalance: TokenDataModel(availableTotalClaim),
-        availableClaimBalanceFiat:
-            currentState.ratesState.tokenToFiat(TokenDataModel(availableTotalClaim), selectedFiat),
+        availableClaimBalanceFiat: currentState.ratesState.tokenToFiat(
+          TokenDataModel(availableTotalClaim),
+          selectedFiat,
+        ),
         availableRequestIds: availableRequestIds,
         isClaimButtonEnabled: enableClaimButton,
       );

@@ -10,11 +10,12 @@ class UikProductCardBig extends UikWidget {
   WidgetType _widgetType;
   UikProductCardBigProps _uikProductCardBigProps;
   UikProductCardBig(this._widgetType, this._uikProductCardBigProps)
-      : super(_widgetType, _uikProductCardBigProps);
+    : super(_widgetType, _uikProductCardBigProps);
 
   @override
-  _UikProductCardBigState createState() =>
-      _UikProductCardBigState(_uikProductCardBigProps);
+  _UikProductCardBigState createState() => _UikProductCardBigState(
+    _uikProductCardBigProps,
+  );
 }
 
 class _UikProductCardBigState extends State<UikProductCardBig> {
@@ -52,11 +53,12 @@ class _UikProductCardBigState extends State<UikProductCardBig> {
                   ),
                   if (_uikProductCardBigProps.isBadge == true) ...[
                     Container(
-                        margin: EdgeInsets.only(top: 8, left: 8),
-                        // width: 100,
-                        // height: 24,
-                        child: _uikProductCardBigProps.badge!)
-                  ]
+                      margin: EdgeInsets.only(top: 8, left: 8),
+                      // width: 100,
+                      // height: 24,
+                      child: _uikProductCardBigProps.badge!,
+                    ),
+                  ],
                 ],
               ),
 
@@ -79,7 +81,7 @@ class _UikProductCardBigState extends State<UikProductCardBig> {
                       width: 24,
                       height: 24,
                       child: _uikProductCardBigProps.favIcon,
-                    )
+                    ),
                   ],
                 ),
               ),
@@ -99,7 +101,7 @@ class _UikProductCardBigState extends State<UikProductCardBig> {
                     color: Color(0xFF9E9E9E),
                   ),
                 ),
-              )
+              ),
             ],
           ),
         ),

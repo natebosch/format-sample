@@ -20,8 +20,12 @@ class GSYPullLoadWidget extends StatefulWidget {
   final Key? refreshKey;
 
   GSYPullLoadWidget(
-      this.control, this.itemBuilder, this.onRefresh, this.onLoadMore,
-      {this.refreshKey});
+    this.control,
+    this.itemBuilder,
+    this.onRefresh,
+    this.onLoadMore, {
+    this.refreshKey,
+  });
 
   @override
   _GSYPullLoadWidgetState createState() => _GSYPullLoadWidgetState();
@@ -110,7 +114,7 @@ class _GSYPullLoadWidgetState extends State<GSYPullLoadWidget> {
       key: widget.refreshKey,
 
       ///下拉刷新触发，返回的是一个Future
-      onRefresh: widget.onRefresh ?? ()async{},
+      onRefresh: widget.onRefresh ?? () async {},
       child: new ListView.builder(
         ///保持ListView任何情况都能滚动，解决在RefreshIndicator的兼容问题。
         physics: const AlwaysScrollableScrollPhysics(),
@@ -139,13 +143,16 @@ class _GSYPullLoadWidgetState extends State<GSYPullLoadWidget> {
           TextButton(
             onPressed: () {},
             child: new Image(
-                image: new AssetImage(GSYICons.DEFAULT_USER_ICON),
-                width: 70.0,
-                height: 70.0),
+              image: new AssetImage(GSYICons.DEFAULT_USER_ICON),
+              width: 70.0,
+              height: 70.0,
+            ),
           ),
           Container(
-            child: Text(GSYLocalizations.i18n(context)!.app_empty,
-                style: GSYConstant.normalText),
+            child: Text(
+              GSYLocalizations.i18n(context)!.app_empty,
+              style: GSYConstant.normalText,
+            ),
           ),
         ],
       ),
@@ -159,31 +166,27 @@ class _GSYPullLoadWidgetState extends State<GSYPullLoadWidget> {
         ? new Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-                ///loading框
-                new SpinKitRotatingCircle(
-                    color: Theme.of(context).primaryColor),
-                new Container(
-                  width: 5.0,
-                ),
+              ///loading框
+              new SpinKitRotatingCircle(color: Theme.of(context).primaryColor),
+              new Container(width: 5.0),
 
-                ///加载中文本
-                new Text(
-                  GSYLocalizations.i18n(context)!.load_more_text,
-                  style: TextStyle(
-                    color: Color(0xFF121917),
-                    fontSize: 14.0,
-                    fontWeight: FontWeight.bold,
-                  ),
-                )
-              ])
+              ///加载中文本
+              new Text(
+                GSYLocalizations.i18n(context)!.load_more_text,
+                style: TextStyle(
+                  color: Color(0xFF121917),
+                  fontSize: 14.0,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ],
+          )
 
         /// 不需要加载
-        : new Container();
+          : new Container();
     return new Padding(
       padding: const EdgeInsets.all(20.0),
-      child: new Center(
-        child: bottomWidget,
-      ),
+      child: new Center(child: bottomWidget),
     );
   }
 }

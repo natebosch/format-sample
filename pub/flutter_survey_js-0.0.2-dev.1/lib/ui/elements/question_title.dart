@@ -7,7 +7,7 @@ class QuestionTitle extends StatelessWidget {
   final Widget? child;
 
   const QuestionTitle({Key? key, required this.q, this.child})
-      : super(key: key);
+    : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -15,11 +15,13 @@ class QuestionTitle extends StatelessWidget {
       if (q.description != null && q.description!.isNotEmpty) {
         return Container(
           padding: const EdgeInsets.only(left: 10.0, right: 10.0, bottom: 10.0),
-          child: Text(q.description!,
-              style: TextStyle(
-                  fontFamily: 'SF-UI-Text',
-                  color: Theme.of(context).disabledColor //Color(0xff8b9aa9)
-                  )),
+          child: Text(
+            q.description!,
+            style: TextStyle(
+              fontFamily: 'SF-UI-Text',
+              color: Theme.of(context).disabledColor, //Color(0xff8b9aa9)
+            ),
+          ),
         );
       } else {
         return Container();
@@ -28,58 +30,53 @@ class QuestionTitle extends StatelessWidget {
 
     titleTextStyle() {
       return TextStyle(
-          fontSize: 16.0,
-          fontFamily: 'SF-UI-Text',
-          fontWeight: FontWeight.w900,
-          color: Theme.of(context).disabledColor //Color(0xff242833)
-          );
+        fontSize: 16.0,
+        fontFamily: 'SF-UI-Text',
+        fontWeight: FontWeight.w900,
+        color: Theme.of(context).disabledColor, //Color(0xff242833)
+      );
     }
 
     title() {
       List<Widget> listTitle = <Widget>[];
-      listTitle.add(Builder(builder: (context) {
-        final survey = SurveyProvider.of(context);
-        final status = survey.elementsState.get(q);
-        if (status != null) {
-          if (survey.survey.showQuestionNumbers == "on" &&
-              status.indexAll != null) {
-            return Text(
-              '${status.indexAll! + 1}.',
-              style: titleTextStyle(),
-            );
-          } else if (survey.survey.showQuestionNumbers == "onPage" &&
-              status.indexInPage != null) {
-            return Text(
-              '${status.indexInPage! + 1}.',
-              style: titleTextStyle(),
-            );
+      listTitle.add(Builder(
+        builder: (context) {
+          final survey = SurveyProvider.of(context);
+          final status = survey.elementsState.get(q);
+          if (status != null) {
+            if (survey.survey.showQuestionNumbers == "on" &&
+                status.indexAll != null) {
+              return Text('${status.indexAll! + 1}.', style: titleTextStyle());
+            } else if (survey.survey.showQuestionNumbers == "onPage" &&
+                status.indexInPage != null) {
+              return Text(
+                '${status.indexInPage! + 1}.',
+                style: titleTextStyle(),
+              );
+            }
           }
-        }
 
-        return Container();
-      }));
+          return Container();
+        },
+      ));
 
       if (q.isRequired == true) {
-        listTitle.add(Text(
-          '* ',
-          style: requiredTextStyle,
-        ));
+        listTitle.add(Text('* ', style: requiredTextStyle));
       }
 
-      listTitle.add(Expanded(
-          child: Text(
-        q.title ?? q.name ?? "",
-        style: titleTextStyle(),
-      )));
+      listTitle.add(
+        Expanded(child: Text(q.title ?? q.name ?? "", style: titleTextStyle())),
+      );
 
       return Column(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: listTitle),
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: listTitle,
+          ),
           description(),
         ],
       );
@@ -91,19 +88,17 @@ class QuestionTitle extends StatelessWidget {
       children: [
         title(),
         if (child != null)
-          Padding(
-            padding: const EdgeInsets.only(top: 8.0),
-            child: child!,
-          )
+          Padding(padding: const EdgeInsets.only(top: 8.0), child: child!),
       ],
     );
   }
 
   TextStyle get requiredTextStyle => const TextStyle(
-      fontSize: 16.0,
-      fontFamily: 'SF-UI-Text',
-      fontWeight: FontWeight.w900,
-      color: Colors.red);
+    fontSize: 16.0,
+    fontFamily: 'SF-UI-Text',
+    fontWeight: FontWeight.w900,
+    color: Colors.red,
+  );
 }
 
 extension QuestionTitleExtension on Widget {
@@ -113,10 +108,7 @@ extension QuestionTitleExtension on Widget {
       return this;
     }
     if (element is s.Question) {
-      return QuestionTitle(
-        q: element,
-        child: this,
-      );
+      return QuestionTitle(q: element, child: this);
     }
     return this;
   }

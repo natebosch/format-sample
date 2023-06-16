@@ -9,8 +9,13 @@ class Marker {
 
   static const Color _defaultColor = const Color.fromARGB(1, 255, 0, 0);
 
-  Marker(this.id, this.title, this.latitude, this.longitude,
-      {this.color: _defaultColor});
+  Marker(
+    this.id,
+    this.title,
+    this.latitude,
+    this.longitude, {
+    this.color: _defaultColor,
+  });
 
   @override
   bool operator ==(Object other) =>
@@ -31,8 +36,8 @@ class Marker {
         "r": color.red,
         "g": color.green,
         "b": color.blue,
-        "a": color.alpha
-      }
+        "a": color.alpha,
+      },
     };
   }
 }

@@ -8,11 +8,8 @@ class PlaceState {
   final LoadingStatus loadingStatus;
 
   PlaceState({this.places, this.loadingStatus});
-  factory PlaceState.initial(){
-    return PlaceState(
-      places: [],
-      loadingStatus: LoadingStatus.loading,
-    );
+  factory PlaceState.initial() {
+    return PlaceState(places: [], loadingStatus: LoadingStatus.loading);
   }
 
   PlaceState copyWith({
@@ -29,15 +26,13 @@ class PlaceState {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-          other is PlaceState &&
-              runtimeType == other.runtimeType &&
-              places == other.places &&
-              loadingStatus == other.loadingStatus;
+      other is PlaceState &&
+          runtimeType == other.runtimeType &&
+          places == other.places &&
+          loadingStatus == other.loadingStatus;
 
   @override
-  int get hashCode =>
-      places.hashCode ^
-      loadingStatus.hashCode;
+  int get hashCode => places.hashCode ^ loadingStatus.hashCode;
 
   @override
   String toString() {

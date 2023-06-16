@@ -11,7 +11,13 @@ class FnBriefPanel extends StatefulWidget {
   final Function(RequestModel)? onSelected;
   final Function()? onCleared;
   final bool isExpanded;
-  const FnBriefPanel({Key? key, this.requestList, this.onSelected, this.onCleared, required this.isExpanded}) : super(key: key);
+  const FnBriefPanel({
+    Key? key,
+    this.requestList,
+    this.onSelected,
+    this.onCleared,
+    required this.isExpanded,
+  }) : super(key: key);
   @override
   _FnBriefPanelState createState() => _FnBriefPanelState();
 }
@@ -36,12 +42,8 @@ class _FnBriefPanelState extends State<FnBriefPanel> {
       visible: _requestList.isNotEmpty,
       child: Container(
         decoration: const BoxDecoration(
-          border: Border(
-            right: BorderSide(
-              width: 0.5,
-              color: Color(0xFFF3F3F3),
-            ),
-          ),
+          border:
+              Border(right: BorderSide(width: 0.5, color: Color(0xFFF3F3F3))),
         ),
         child: Column(
           children: [
@@ -49,14 +51,19 @@ class _FnBriefPanelState extends State<FnBriefPanel> {
               children: [
                 Expanded(
                   child: Container(
-                    padding: const EdgeInsets.only(left: 8.0, top: 4.0, bottom: 4.0, right: 6.0),
+                    padding: const EdgeInsets.only(
+                      left: 8.0,
+                      top: 4.0,
+                      bottom: 4.0,
+                      right: 6.0,
+                    ),
                     child: Stack(
                       children: [
                         const Text(
                           "Name",
                           style: TextStyle(
-                              fontSize: 13.0,
-                              fontWeight: FontWeight.bold
+                            fontSize: 13.0,
+                            fontWeight: FontWeight.bold,
                           ),
                         ),
                         Positioned(
@@ -71,53 +78,69 @@ class _FnBriefPanelState extends State<FnBriefPanel> {
                               _doClearAll();
                             },
                           ),
-                        )
+                        ),
                       ],
                     ),
                   ),
-                )
+                ),
               ],
             ),
             Expanded(
-                child: MediaQuery.removePadding(
-                  context: context,
-                  removeTop: true,
-                  child: ListView.builder(
-                    controller: _scrollController,
-                    itemCount: _requestList.length,
-                    itemBuilder: (BuildContext context, int index) {
-                      RequestModel requestModel = _requestList[index];
-                      bool isError = requestModel.response != null && RegExp(r'^[45]').hasMatch(requestModel.response!.statusCode.toString());
-                      String title = widget.isExpanded ? "${requestModel.method} ${requestModel.pathWithQuery}" : _requestList[index].briefUrl;
-                      return InkWell(
-                        onTap: () {
-                          setState(() {
-                            _selectedIndex = index;
-                          });
-                          if (widget.onSelected != null) {
-                            widget.onSelected!(_requestList[index]);
-                          }
-                        },
-                        child: Container(
-                          color: _selectedIndex == index ? (isError ? const Color(0xFFF4D3D0) : Colors.blue) : (index % 2 == 0 ? null : const Color(0xFFF3F3F3)),
-                          child: Padding(
-                            padding: const EdgeInsets.only(left: 4, right: 4, top: 5, bottom: 5),
-                            child: Text(
-                              FnTextUtils.breakWord(title),
-                              maxLines: 1,
-                              overflow: TextOverflow.ellipsis,
-                              style: TextStyle(
-                                  fontSize: 13.0,
-                                  color: isError ? Colors.red : (_selectedIndex == index ? Colors.white : Colors.black)
-                              ),
+              child: MediaQuery.removePadding(
+                context: context,
+                removeTop: true,
+                child: ListView.builder(
+                  controller: _scrollController,
+                  itemCount: _requestList.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    RequestModel requestModel = _requestList[index];
+                    bool isError = requestModel.response != null &&
+                        RegExp(r'^[45]').hasMatch(
+                          requestModel.response!.statusCode.toString(),
+                        );
+                    String title = widget.isExpanded
+                        ? "${requestModel.method} ${requestModel.pathWithQuery}"
+                        : _requestList[index].briefUrl;
+                    return InkWell(
+                      onTap: () {
+                        setState(() {
+                          _selectedIndex = index;
+                        });
+                        if (widget.onSelected != null) {
+                          widget.onSelected!(_requestList[index]);
+                        }
+                      },
+                      child: Container(
+                        color: _selectedIndex == index
+                            ? (isError ? const Color(0xFFF4D3D0) : Colors.blue)
+                            : (index % 2 == 0 ? null : const Color(0xFFF3F3F3)),
+                        child: Padding(
+                          padding: const EdgeInsets.only(
+                            left: 4,
+                            right: 4,
+                            top: 5,
+                            bottom: 5,
+                          ),
+                          child: Text(
+                            FnTextUtils.breakWord(title),
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                            style: TextStyle(
+                              fontSize: 13.0,
+                              color: isError
+                                  ? Colors.red
+                                  : (_selectedIndex == index
+                                        ? Colors.white
+                                        : Colors.black),
                             ),
                           ),
                         ),
-                      );
-                    },
-                  ),
-                )
-            )
+                      ),
+                    );
+                  },
+                ),
+              ),
+            ),
           ],
         ),
       ),
@@ -144,5 +167,4 @@ class _FnBriefPanelState extends State<FnBriefPanel> {
       );
     });
   }
-
 }

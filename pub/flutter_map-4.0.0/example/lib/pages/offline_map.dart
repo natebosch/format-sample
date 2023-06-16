@@ -20,7 +20,8 @@ class OfflineMapPage extends StatelessWidget {
             const Padding(
               padding: EdgeInsets.only(top: 8, bottom: 8),
               child: Text(
-                  'This is an offline map that is showing Anholt Island, Denmark.'),
+                'This is an offline map that is showing Anholt Island, Denmark.',
+              ),
             ),
             Flexible(
               child: FlutterMap(

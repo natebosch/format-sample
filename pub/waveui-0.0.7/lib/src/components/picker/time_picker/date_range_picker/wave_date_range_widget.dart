@@ -70,10 +70,11 @@ class WaveDateRangeWidget extends StatefulWidget {
 
   @override
   State<StatefulWidget> createState() => _DatePickerWidgetState(
-      this.minDateTime,
-      this.maxDateTime,
-      this.initialStartDateTime,
-      this.initialEndDateTime);
+    this.minDateTime,
+    this.maxDateTime,
+    this.initialStartDateTime,
+    this.initialEndDateTime,
+  );
 }
 
 class _DatePickerWidgetState extends State<WaveDateRangeWidget> {
@@ -90,15 +91,27 @@ class _DatePickerWidgetState extends State<WaveDateRangeWidget> {
   bool _isFirstScroll = false;
   bool _isSecondScroll = false;
 
-  _DatePickerWidgetState(DateTime? minDateTime, DateTime? maxDateTime,
-      DateTime? initialStartDateTime, DateTime? initialEndDateTime) {
+  _DatePickerWidgetState(
+    DateTime? minDateTime,
+    DateTime? maxDateTime,
+    DateTime? initialStartDateTime,
+    DateTime? initialEndDateTime,
+  ) {
     // handle current selected year、month、day
     _initData(
-        initialStartDateTime, initialEndDateTime, minDateTime, maxDateTime);
+      initialStartDateTime,
+      initialEndDateTime,
+      minDateTime,
+      maxDateTime,
+    );
   }
 
-  void _initData(DateTime? initialStartDateTime, DateTime? initialEndDateTime,
-      DateTime? minDateTime, DateTime? maxDateTime) {
+  void _initData(
+    DateTime? initialStartDateTime,
+    DateTime? initialEndDateTime,
+    DateTime? minDateTime,
+    DateTime? maxDateTime,
+  ) {
     DateTime initStartDateTime = initialStartDateTime ?? DateTime.now();
     DateTime initEndDateTime = initialEndDateTime ?? DateTime.now();
 
@@ -115,25 +128,34 @@ class _DatePickerWidgetState extends State<WaveDateRangeWidget> {
     this._maxDateTime = maxDateTime ?? DateTime.parse(datePickerMaxDatetime);
 
     // limit the range of year
-    this._currStartYear =
-        min(max(_minDateTime.year, _currStartYear), _maxDateTime.year);
+    this._currStartYear = min(
+      max(_minDateTime.year, _currStartYear),
+      _maxDateTime.year,
+    );
     this._currEndYear = min(_maxDateTime.year, _currEndYear);
 
     // limit the range of month
     this._monthRange = _calcMonthRange();
-    this._currStartMonth =
-        min(max(_monthRange.first, _currStartMonth), _monthRange.last);
+    this._currStartMonth = min(
+      max(_monthRange.first, _currStartMonth),
+      _monthRange.last,
+    );
     this._currEndMonth = min(_monthRange.last, _currEndMonth);
 
     // limit the range of day
     this._startDayRange = _calcDayRange(currMonth: _currStartMonth);
-    this._currStartDay =
-        min(max(_startDayRange.first, _currStartDay), _startDayRange.last);
+    this._currStartDay = min(
+      max(_startDayRange.first, _currStartDay),
+      _startDayRange.last,
+    );
     this._endDayRange = _calcDayRange(currMonth: _currEndMonth);
     this._currEndDay = min(_endDayRange.last, _currEndDay);
 
-    _startSelectedDateTime =
-        DateTime(_currStartYear, _currStartMonth, _currStartDay);
+    _startSelectedDateTime = DateTime(
+      _currStartYear,
+      _currStartMonth,
+      _currStartDay,
+    );
     _endSelectedDateTime = DateTime(_currEndYear, _currEndMonth, _currEndDay);
     _startSelectedIndex = _calcSelectIndexList(true);
     _endSelectedIndex = _calcSelectIndexList(false);
@@ -141,11 +163,17 @@ class _DatePickerWidgetState extends State<WaveDateRangeWidget> {
 
   @override
   Widget build(BuildContext context) {
-    _initData(_startSelectedDateTime, _endSelectedDateTime, _minDateTime,
-        _maxDateTime);
+    _initData(
+      _startSelectedDateTime,
+      _endSelectedDateTime,
+      _minDateTime,
+      _maxDateTime,
+    );
     return GestureDetector(
       child: Material(
-          color: Colors.transparent, child: _renderPickerView(context)),
+        color: Colors.transparent,
+        child: _renderPickerView(context),
+      ),
     );
   }
 
@@ -177,8 +205,12 @@ class _DatePickerWidgetState extends State<WaveDateRangeWidget> {
   /// pressed confirm widget
   void _onPressedConfirm() {
     if (widget.onConfirm != null) {
-      widget.onConfirm!(_startSelectedDateTime, _endSelectedDateTime,
-          _startSelectedIndex, _endSelectedIndex);
+      widget.onConfirm!(
+        _startSelectedDateTime,
+        _endSelectedDateTime,
+        _startSelectedIndex,
+        _endSelectedIndex,
+      );
     }
     Navigator.pop(context);
   }
@@ -200,59 +232,64 @@ class _DatePickerWidgetState extends State<WaveDateRangeWidget> {
 
     List<Widget> pickers = [];
     pickers.add(Expanded(
-        flex: 6,
-        child: Container(
-            height: widget.themeData!.pickerHeight,
-            color: widget.themeData!.backgroundColor,
-            child: WaveDateRangeSideWidget(
-              key: firstGlobalKey,
-              dateFormat: widget.dateFormat,
-              minDateTime: widget.minDateTime,
-              maxDateTime: widget.maxDateTime,
-              initialStartDateTime: _startSelectedDateTime,
-              onInitSelectChange:
-                  (DateTime selectedDateTime, List<int> selected) {
-                _startSelectedDateTime = selectedDateTime;
-                _startSelectedIndex = selected;
-              },
-              onChange: (DateTime selectedDateTime, List<int> selectedIndex) {
-                setState(() {
-                  _startSelectedDateTime = selectedDateTime;
-                  _startSelectedIndex = selectedIndex;
-                  _isFirstScroll = true;
-                });
-              },
-            ))));
+      flex: 6,
+      child: Container(
+        height: widget.themeData!.pickerHeight,
+        color: widget.themeData!.backgroundColor,
+        child: WaveDateRangeSideWidget(
+          key: firstGlobalKey,
+          dateFormat: widget.dateFormat,
+          minDateTime: widget.minDateTime,
+          maxDateTime: widget.maxDateTime,
+          initialStartDateTime: _startSelectedDateTime,
+          onInitSelectChange: (DateTime selectedDateTime, List<int> selected) {
+            _startSelectedDateTime = selectedDateTime;
+            _startSelectedIndex = selected;
+          },
+          onChange: (DateTime selectedDateTime, List<int> selectedIndex) {
+            setState(() {
+              _startSelectedDateTime = selectedDateTime;
+              _startSelectedIndex = selectedIndex;
+              _isFirstScroll = true;
+            });
+          },
+        ),
+      ),
+    ));
     pickers.add(_renderDatePickerMiddleColumnComponent());
     pickers.add(Expanded(
-        flex: 6,
-        child: Container(
-            height: widget.themeData!.pickerHeight,
-            color: widget.themeData!.backgroundColor,
-            child: WaveDateRangeSideWidget(
-              key: secondGlobalKey,
-              dateFormat: widget.dateFormat,
-              minDateTime: _startSelectedDateTime,
-              maxDateTime: widget.maxDateTime,
-              initialStartDateTime:
-                  _endSelectedDateTime.compareTo(_startSelectedDateTime) > 0
-                      ? _endSelectedDateTime
-                      : _startSelectedDateTime,
-              onInitSelectChange:
-                  (DateTime selectedDateTime, List<int> selectedIndex) {
-                _endSelectedDateTime = selectedDateTime;
-                _endSelectedIndex = selectedIndex;
-              },
-              onChange: (DateTime selectedDateTime, List<int> selectedIndex) {
-                setState(() {
-                  _endSelectedDateTime = selectedDateTime;
-                  _endSelectedIndex = selectedIndex;
-                  _isSecondScroll = true;
-                });
-              },
-            ))));
+      flex: 6,
+      child: Container(
+        height: widget.themeData!.pickerHeight,
+        color: widget.themeData!.backgroundColor,
+        child: WaveDateRangeSideWidget(
+          key: secondGlobalKey,
+          dateFormat: widget.dateFormat,
+          minDateTime: _startSelectedDateTime,
+          maxDateTime: widget.maxDateTime,
+          initialStartDateTime:
+              _endSelectedDateTime.compareTo(_startSelectedDateTime) > 0
+                  ? _endSelectedDateTime
+                  : _startSelectedDateTime,
+          onInitSelectChange:
+              (DateTime selectedDateTime, List<int> selectedIndex) {
+            _endSelectedDateTime = selectedDateTime;
+            _endSelectedIndex = selectedIndex;
+          },
+          onChange: (DateTime selectedDateTime, List<int> selectedIndex) {
+            setState(() {
+              _endSelectedDateTime = selectedDateTime;
+              _endSelectedIndex = selectedIndex;
+              _isSecondScroll = true;
+            });
+          },
+        ),
+      ),
+    ));
     return Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween, children: pickers);
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: pickers,
+    );
   }
 
   Widget _renderDatePickerMiddleColumnComponent() {
@@ -261,8 +298,9 @@ class _DatePickerWidgetState extends State<WaveDateRangeWidget> {
       child: Container(
         height: widget.themeData!.pickerHeight,
         decoration: BoxDecoration(
-            border: Border(left: BorderSide.none, right: BorderSide.none),
-            color: widget.themeData!.backgroundColor),
+          border: Border(left: BorderSide.none, right: BorderSide.none),
+          color: widget.themeData!.backgroundColor,
+        ),
         child: WavePicker.builder(
           backgroundColor: widget.themeData!.backgroundColor,
           lineColor: widget.themeData!.dividerColor,

@@ -24,7 +24,9 @@ class ProfileBottom extends StatelessWidget {
       listenWhen: (_, current) => current.pageCommand != null,
       listener: (context, state) {
         final pageCommand = state.pageCommand;
-        BlocProvider.of<ProfileBloc>(context).add(const ClearProfilePageCommand());
+        BlocProvider.of<ProfileBloc>(context).add(
+          const ClearProfilePageCommand(),
+        );
         if (pageCommand is ShowLogoutDialog) {
           showDialog<void>(
             context: context,
@@ -34,7 +36,11 @@ class ProfileBottom extends StatelessWidget {
                 child: const LogoutDialog(),
               );
             },
-          ).whenComplete(() => BlocProvider.of<ProfileBloc>(context).add(const ResetShowLogoutButton()));
+          ).whenComplete(
+            () => BlocProvider.of<ProfileBloc>(context).add(
+              const ResetShowLogoutButton(),
+            ),
+          );
         } else if (pageCommand is ShowLogoutRecoveryPhraseDialog) {
           showDialog<void>(
             context: context,
@@ -44,7 +50,11 @@ class ProfileBottom extends StatelessWidget {
                 child: const LogoutRecoveryPhraseDialog(),
               );
             },
-          ).whenComplete(() => BlocProvider.of<ProfileBloc>(context).add(const ResetShowLogoutButton()));
+          ).whenComplete(
+            () => BlocProvider.of<ProfileBloc>(context).add(
+              const ResetShowLogoutButton(),
+            ),
+          );
         } else if (pageCommand is ShowCitizenshipUpgradeSuccess) {
           Navigator.pop(context, CitizenshipUpgradeInProgressDialog);
           showDialog<void>(
@@ -53,7 +63,9 @@ class ProfileBottom extends StatelessWidget {
             builder: (_) {
               return BlocProvider.value(
                 value: BlocProvider.of<ProfileBloc>(context),
-                child: CitizenshipUpgradeSuccessDialog(isResident: pageCommand.isResident),
+                child: CitizenshipUpgradeSuccessDialog(
+                  isResident: pageCommand.isResident,
+                ),
               );
             },
           );
@@ -70,7 +82,8 @@ class ProfileBottom extends StatelessWidget {
           );
         } else if (pageCommand is ShowErrorMessage) {
           Navigator.pop(context, CitizenshipUpgradeInProgressDialog);
-          SnackBarInfo(pageCommand.message, ScaffoldMessenger.of(context)).show();
+          SnackBarInfo(pageCommand.message, ScaffoldMessenger.of(context))
+              .show();
         }
       },
       child: Padding(
@@ -80,14 +93,18 @@ class ProfileBottom extends StatelessWidget {
             const CitizenshipCard(),
             const SizedBox(height: 16.0),
             BlocBuilder<ProfileBloc, ProfileState>(
-              buildWhen: (previous, current) => previous.hasSecurityNotification != current.hasSecurityNotification,
+              buildWhen: (previous, current) =>
+                  previous.hasSecurityNotification !=
+                  current.hasSecurityNotification,
               builder: (context, state) {
                 return ProfileListTileCard(
                   hasNotification: state.hasSecurityNotification,
                   leadingIcon: Icons.verified_user_outlined,
                   title: 'Security'.i18n,
                   trailing: const Icon(Icons.arrow_forward_ios_sharp),
-                  onTap: () => NavigationService.of(context).navigateTo(Routes.security),
+                  onTap: () => NavigationService.of(context).navigateTo(
+                    Routes.security,
+                  ),
                 );
               },
             ),
@@ -96,14 +113,18 @@ class ProfileBottom extends StatelessWidget {
               leadingIcon: Icons.support,
               title: 'Support'.i18n,
               trailing: const Icon(Icons.arrow_forward_ios_sharp),
-              onTap: () => NavigationService.of(context).navigateTo(Routes.support),
+              onTap: () => NavigationService.of(context).navigateTo(
+                Routes.support,
+              ),
             ),
             const SizedBox(height: 120.0),
             ProfileListTileCard(
               leadingIcon: Icons.logout,
               title: 'Logout'.i18n,
               trailing: const SizedBox.shrink(),
-              onTap: () => BlocProvider.of<ProfileBloc>(context).add(const OnProfileLogoutButtonPressed()),
+              onTap: () => BlocProvider.of<ProfileBloc>(context).add(
+                const OnProfileLogoutButtonPressed(),
+              ),
             ),
             const SizedBox(height: 26.0),
           ],

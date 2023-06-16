@@ -4,37 +4,36 @@ import 'package:flutter_test/flutter_test.dart';
 
 void main() {
   group('Responsive Design Grid Debug Overlay', () {
-    testWidgets('should hide overlay when button is pressed', (widgetTester) async {
-      await widgetTester.pumpWidget(
-        MaterialApp(
+    testWidgets(
+      'should hide overlay when button is pressed',
+      (widgetTester) async {
+        await widgetTester.pumpWidget(MaterialApp(
           home: Scaffold(
             body: ResponsiveDesignGridConfig(
               child: ResponsiveDesignGridDebugOverlay(
                 isVisible: true,
-                child: Container(
-                  height: 100,
-                ),
+                child: Container(height: 100),
               ),
             ),
           ),
-        ),
-      );
+        ));
 
-      await widgetTester.pumpAndSettle();
+        await widgetTester.pumpAndSettle();
 
-      final overlay = find.byType(ResponsiveDesignGridDebugOverlay);
-      final button = find.byType(FloatingActionButton);
-      final gridItem = find.byType(ResponsiveDesignGridItem);
+        final overlay = find.byType(ResponsiveDesignGridDebugOverlay);
+        final button = find.byType(FloatingActionButton);
+        final gridItem = find.byType(ResponsiveDesignGridItem);
 
-      expect(overlay, findsOneWidget);
-      expect(gridItem, findsNWidgets(12));
-      expect(button, findsOneWidget);
+        expect(overlay, findsOneWidget);
+        expect(gridItem, findsNWidgets(12));
+        expect(button, findsOneWidget);
 
-      await widgetTester.tap(button);
+        await widgetTester.tap(button);
 
-      await widgetTester.pumpAndSettle();
+        await widgetTester.pumpAndSettle();
 
-      expect(gridItem, findsNothing);
-    });
+        expect(gridItem, findsNothing);
+      },
+    );
   });
 }

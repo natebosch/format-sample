@@ -13,19 +13,21 @@ class LaunchCell extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(children: <Widget>[
-      ListCell(
-        leading: ProfileImage.small(launch.patchUrl),
-        title: launch.name,
-        subtitle: launch.getLaunchDate(context),
-        trailing: TrailingText(launch.getNumber),
-        onTap: () => Navigator.pushNamed(
-          context,
-          LaunchPage.route,
-          arguments: {'id': launch.id},
+    return Column(
+      children: <Widget>[
+        ListCell(
+          leading: ProfileImage.small(launch.patchUrl),
+          title: launch.name,
+          subtitle: launch.getLaunchDate(context),
+          trailing: TrailingText(launch.getNumber),
+          onTap: () => Navigator.pushNamed(
+                context,
+                LaunchPage.route,
+                arguments: {'id': launch.id},
+              ),
         ),
-      ),
-      Separator.divider(indent: 72)
-    ]);
+        Separator.divider(indent: 72),
+      ],
+    );
   }
 }

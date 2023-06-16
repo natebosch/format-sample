@@ -11,9 +11,16 @@ import 'package:seeds/screens/transfer/send/send_confirmation/interactor/viewmod
 import 'package:seeds/utils/rate_states_extensions.dart';
 
 class SendTransactionStateMapper extends StateMapper {
-  SendConfirmationState mapResultToState(SendConfirmationState currentState, Result result, RatesState rateState) {
+  SendConfirmationState mapResultToState(
+    SendConfirmationState currentState,
+    Result result,
+    RatesState rateState,
+  ) {
     if (result.isError) {
-      return currentState.copyWith(pageState: PageState.failure, errorMessage: result.asError!.error.toString());
+      return currentState.copyWith(
+        pageState: PageState.failure,
+        errorMessage: result.asError!.error.toString(),
+      );
     } else {
       final resultResponse = result.asValue!.value as SendTransactionResponse;
 
@@ -28,7 +35,9 @@ class SendTransactionStateMapper extends StateMapper {
   // known and generic (unknown) types of transactions results. Now we have generic and transfer, could
   // add invite, guardians, etc - all transactions we know about.
   static TransactionPageCommand transactionResultPageCommand(
-      SendTransactionResponse resultResponse, RatesState rateState) {
+    SendTransactionResponse resultResponse,
+    RatesState rateState,
+  ) {
     if (resultResponse.isTransfer) {
       final transfer = resultResponse.transferTransactionModel!;
 
@@ -38,8 +47,14 @@ class SendTransactionStateMapper extends StateMapper {
       // try to get a fiat conversion rate here.
       final TokenModel? token = TokenModel.fromSymbolOrNull(transfer.symbol);
       if (token != null) {
-        final TokenDataModel tokenAmount = TokenDataModel(transfer.doubleQuantity, token: token);
-        fiatAmount = rateState.tokenToFiat(tokenAmount, settingsStorage.selectedFiatCurrency);
+        final TokenDataModel tokenAmount = TokenDataModel(
+          transfer.doubleQuantity,
+          token: token,
+        );
+        fiatAmount = rateState.tokenToFiat(
+          tokenAmount,
+          settingsStorage.selectedFiatCurrency,
+        );
       }
 
       return ShowTransferSuccess(

@@ -22,10 +22,7 @@ enum HomeTabValue { showcase, underway, interplay, profile }
 
 class HomeScreen extends StatefulWidget {
   Route<T> getRoute<T>() {
-    return buildRoute<T>(
-      '/home',
-      builder: (_) => this,
-    );
+    return buildRoute<T>('/home', builder: (_) => this);
   }
 
   HomeScreen() : super(key: globalKey);
@@ -179,10 +176,7 @@ class _HomeScreenState extends State<HomeScreen> {
       },
       tooltip: 'Add Unit',
       elevation: kButtonElevation,
-      child: Icon(
-        Icons.add,
-        size: kBigButtonIconSize * 1.2,
-      ),
+      child: Icon(Icons.add, size: kBigButtonIconSize * 1.2),
     );
   }
 }
@@ -251,9 +245,7 @@ class _NavigationBar extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            SizedBox(height: kBigButtonIconSize),
-          ],
+          children: <Widget>[SizedBox(height: kBigButtonIconSize)],
         ),
       ),
     );
@@ -283,11 +275,7 @@ class _NavigationBar extends StatelessWidget {
                 children: <Widget>[
                   Stack(
                     children: [
-                      Icon(
-                        tab.icon,
-                        color: color,
-                        size: kBigButtonIconSize,
-                      ),
+                      Icon(tab.icon, color: color, size: kBigButtonIconSize),
                       // TODO: добавить анимацию
                       if (tab.hasBadge)
                         Positioned(
@@ -323,12 +311,7 @@ class _NavigationBar extends StatelessWidget {
 enum _NavigationBarTabValue { showcase, underway, chat, profile }
 
 class _NavigationBarTab {
-  _NavigationBarTab({
-    this.title,
-    this.icon,
-    this.value,
-    this.hasBadge = false,
-  });
+  _NavigationBarTab({this.title, this.icon, this.value, this.hasBadge = false});
 
   String title;
   IconData icon;

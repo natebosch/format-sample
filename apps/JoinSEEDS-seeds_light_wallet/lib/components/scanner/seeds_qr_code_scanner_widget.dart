@@ -6,7 +6,8 @@ class SeedsQRCodeScannerWidget extends StatelessWidget {
   final GlobalKey? qrKey;
   final QRViewCreatedCallback? onQRViewCreated;
 
-  const SeedsQRCodeScannerWidget({this.onQRViewCreated, Key? key, this.qrKey}) : super(key: key);
+  const SeedsQRCodeScannerWidget({this.onQRViewCreated, Key? key, this.qrKey})
+    : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -21,10 +22,7 @@ class SeedsQRCodeScannerWidget extends StatelessWidget {
               child: Container(
                 width: width,
                 height: width,
-                child: QRView(
-                  key: qrKey!,
-                  onQRViewCreated: onQRViewCreated!,
-                ),
+                child: QRView(key: qrKey!, onQRViewCreated: onQRViewCreated!),
               ),
             ),
             Center(
@@ -32,13 +30,15 @@ class SeedsQRCodeScannerWidget extends StatelessWidget {
                 width: width,
                 height: width,
                 decoration: ShapeDecoration(
-                    shape: QrScannerOverlayShape(
-                        borderLength: width * 0.2,
-                        borderRadius: 30,
-                        borderWidth: 8,
-                        borderColor: AppColors.green1,
-                        cutOutSize: width,
-                        overlayColor: AppColors.primary)),
+                  shape: QrScannerOverlayShape(
+                    borderLength: width * 0.2,
+                    borderRadius: 30,
+                    borderWidth: 8,
+                    borderColor: AppColors.green1,
+                    cutOutSize: width,
+                    overlayColor: AppColors.primary,
+                  ),
+                ),
               ),
             ),
           ],

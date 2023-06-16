@@ -12,7 +12,8 @@ part of 'app_passwords.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods',
+);
 
 AppPasswords _$AppPasswordsFromJson(Map<String, dynamic> json) {
   return _AppPasswords.fromJson(json);
@@ -31,8 +32,9 @@ mixin _$AppPasswords {
 /// @nodoc
 abstract class $AppPasswordsCopyWith<$Res> {
   factory $AppPasswordsCopyWith(
-          AppPasswords value, $Res Function(AppPasswords) then) =
-      _$AppPasswordsCopyWithImpl<$Res, AppPasswords>;
+    AppPasswords value,
+    $Res Function(AppPasswords) then,
+  ) = _$AppPasswordsCopyWithImpl<$Res, AppPasswords>;
   @useResult
   $Res call({List<SealedAppPassword> passwords});
 }
@@ -49,15 +51,15 @@ class _$AppPasswordsCopyWithImpl<$Res, $Val extends AppPasswords>
 
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? passwords = null,
-  }) {
-    return _then(_value.copyWith(
-      passwords: null == passwords
-          ? _value.passwords
-          : passwords // ignore: cast_nullable_to_non_nullable
-              as List<SealedAppPassword>,
-    ) as $Val);
+  $Res call({Object? passwords = null}) {
+    return _then(
+      _value.copyWith(
+        passwords: null == passwords
+            ? _value.passwords
+            : passwords // ignore: cast_nullable_to_non_nullable
+                  as List<SealedAppPassword>,
+      ) as $Val,
+    );
   }
 }
 
@@ -65,8 +67,9 @@ class _$AppPasswordsCopyWithImpl<$Res, $Val extends AppPasswords>
 abstract class _$$_AppPasswordsCopyWith<$Res>
     implements $AppPasswordsCopyWith<$Res> {
   factory _$$_AppPasswordsCopyWith(
-          _$_AppPasswords value, $Res Function(_$_AppPasswords) then) =
-      __$$_AppPasswordsCopyWithImpl<$Res>;
+    _$_AppPasswords value,
+    $Res Function(_$_AppPasswords) then,
+  ) = __$$_AppPasswordsCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({List<SealedAppPassword> passwords});
@@ -77,19 +80,18 @@ class __$$_AppPasswordsCopyWithImpl<$Res>
     extends _$AppPasswordsCopyWithImpl<$Res, _$_AppPasswords>
     implements _$$_AppPasswordsCopyWith<$Res> {
   __$$_AppPasswordsCopyWithImpl(
-      _$_AppPasswords _value, $Res Function(_$_AppPasswords) _then)
-      : super(_value, _then);
+    _$_AppPasswords _value,
+    $Res Function(_$_AppPasswords) _then,
+  ) : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? passwords = null,
-  }) {
+  $Res call({Object? passwords = null}) {
     return _then(_$_AppPasswords(
       passwords: null == passwords
           ? _value._passwords
           : passwords // ignore: cast_nullable_to_non_nullable
-              as List<SealedAppPassword>,
+                as List<SealedAppPassword>,
     ));
   }
 }
@@ -98,10 +100,11 @@ class __$$_AppPasswordsCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_AppPasswords implements _AppPasswords {
   const _$_AppPasswords({required final List<SealedAppPassword> passwords})
-      : _passwords = passwords;
+    : _passwords = passwords;
 
-  factory _$_AppPasswords.fromJson(Map<String, dynamic> json) =>
-      _$$_AppPasswordsFromJson(json);
+  factory _$_AppPasswords.fromJson(
+    Map<String, dynamic> json,
+  ) => _$$_AppPasswordsFromJson(json);
 
   final List<SealedAppPassword> _passwords;
   @override
@@ -121,32 +124,38 @@ class _$_AppPasswords implements _AppPasswords {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_AppPasswords &&
-            const DeepCollectionEquality()
-                .equals(other._passwords, _passwords));
+            const DeepCollectionEquality().equals(
+              other._passwords,
+              _passwords,
+            ));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_passwords));
+  int get hashCode => Object.hash(
+    runtimeType,
+    const DeepCollectionEquality().hash(_passwords),
+  );
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_AppPasswordsCopyWith<_$_AppPasswords> get copyWith =>
-      __$$_AppPasswordsCopyWithImpl<_$_AppPasswords>(this, _$identity);
+  _$$_AppPasswordsCopyWith<_$_AppPasswords>
+  get copyWith => __$$_AppPasswordsCopyWithImpl<_$_AppPasswords>(
+    this,
+    _$identity,
+  );
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_AppPasswordsToJson(
-      this,
-    );
+    return _$$_AppPasswordsToJson(this);
   }
 }
 
 abstract class _AppPasswords implements AppPasswords {
-  const factory _AppPasswords(
-      {required final List<SealedAppPassword> passwords}) = _$_AppPasswords;
+  const factory _AppPasswords({
+    required final List<SealedAppPassword> passwords,
+  }) = _$_AppPasswords;
 
   factory _AppPasswords.fromJson(Map<String, dynamic> json) =
       _$_AppPasswords.fromJson;

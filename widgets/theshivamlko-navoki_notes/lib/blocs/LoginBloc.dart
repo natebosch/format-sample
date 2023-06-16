@@ -18,8 +18,7 @@ class LoginBloc extends ChangeNotifier {
   void resetPassword(String email) {
     Api.resetPassword(email).then((value) {
       Utils.showToast("An email link is sent to your email");
-    }).catchError((onError) {
-    });
+    }).catchError((onError) {});
   }
 
   Future<String> getToken() async {
@@ -31,9 +30,10 @@ class LoginBloc extends ChangeNotifier {
     //  print(  Utils.userId);
     if (Utils.loginToken != null) {
       bool isValid = await Api.signInWithToken(Utils.loginToken);
-      if (isValid ?? false) openHomePage(token);
+      if (isValid ?? false)
+        openHomePage(token);
       else
-         return null;
+        return null;
     }
 
     return Utils.loginToken;

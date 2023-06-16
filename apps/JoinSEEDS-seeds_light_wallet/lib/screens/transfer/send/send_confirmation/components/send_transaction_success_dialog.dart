@@ -39,8 +39,10 @@ class SendTransactionSuccessDialog extends StatelessWidget {
     required this.onCloseButtonPressed,
   }) : super(key: key);
 
-  factory SendTransactionSuccessDialog.fromPageCommand(
-      {required VoidCallback onCloseButtonPressed, required ShowTransferSuccess pageCommand}) {
+  factory SendTransactionSuccessDialog.fromPageCommand({
+    required VoidCallback onCloseButtonPressed,
+    required ShowTransferSuccess pageCommand,
+  }) {
     return SendTransactionSuccessDialog(
       onCloseButtonPressed: onCloseButtonPressed,
       amount: pageCommand.transactionModel.doubleQuantity.seedsFormatted,
@@ -61,7 +63,9 @@ class SendTransactionSuccessDialog extends StatelessWidget {
     return Center(
       child: SingleChildScrollView(
         child: CustomDialog(
-          icon: SvgPicture.asset('assets/images/security/success_outlined_icon.svg'),
+          icon: SvgPicture.asset(
+            'assets/images/security/success_outlined_icon.svg',
+          ),
           onSingleLargeButtonPressed: onCloseButtonPressed,
           singleLargeButtonTitle: 'Close'.i18n,
           children: [
@@ -72,19 +76,38 @@ class SendTransactionSuccessDialog extends StatelessWidget {
                 Text(amount, style: Theme.of(context).textTheme.headline4),
                 Padding(
                   padding: const EdgeInsets.only(top: 14, left: 4),
-                  child: Text(tokenSymbol, style: Theme.of(context).textTheme.subtitle2),
+                  child: Text(
+                    tokenSymbol,
+                    style: Theme.of(context).textTheme.subtitle2,
+                  ),
                 ),
               ],
             ),
-            Text(fiatAmount?.asFormattedString() ?? "", style: Theme.of(context).textTheme.subtitle2),
+            Text(
+              fiatAmount?.asFormattedString() ?? "",
+              style: Theme.of(context).textTheme.subtitle2,
+            ),
             const SizedBox(height: 30.0),
-            DialogRow(imageUrl: toImage, account: toAccount, name: toName, toOrFromText: "To".i18n),
+            DialogRow(
+              imageUrl: toImage,
+              account: toAccount,
+              name: toName,
+              toOrFromText: "To".i18n,
+            ),
             const SizedBox(height: 30.0),
-            DialogRow(imageUrl: fromImage, account: fromAccount, name: fromName, toOrFromText: "From".i18n),
+            DialogRow(
+              imageUrl: fromImage,
+              account: fromAccount,
+              name: fromName,
+              toOrFromText: "From".i18n,
+            ),
             const SizedBox(height: 30.0),
             Row(
               children: [
-                Text('Date:  '.i18n, style: Theme.of(context).textTheme.subtitle2),
+                Text(
+                  'Date:  '.i18n,
+                  style: Theme.of(context).textTheme.subtitle2,
+                ),
                 const SizedBox(width: 16),
                 Text(
                   DateFormat('dd MMMM yyyy').format(DateTime.now()),
@@ -94,7 +117,10 @@ class SendTransactionSuccessDialog extends StatelessWidget {
             ),
             Row(
               children: [
-                Text('Transaction ID:  '.i18n, style: Theme.of(context).textTheme.subtitle2),
+                Text(
+                  'Transaction ID:  '.i18n,
+                  style: Theme.of(context).textTheme.subtitle2,
+                ),
                 const SizedBox(width: 16),
                 Expanded(
                   child: Text(
@@ -107,25 +133,37 @@ class SendTransactionSuccessDialog extends StatelessWidget {
                   icon: const Icon(Icons.copy),
                   color: AppColors.lightGreen6,
                   onPressed: () {
-                    Clipboard.setData(ClipboardData(text: transactionID)).then(
-                      (_) {
-                        ScaffoldMessenger.maybeOf(context)!
-                            .showSnackBar(SnackBar(content: Text("Copied".i18n), duration: const Duration(seconds: 1)));
-                      },
-                    );
+                    Clipboard.setData(ClipboardData(text: transactionID)).then((
+                      _,
+                    ) {
+                      ScaffoldMessenger.maybeOf(context)!.showSnackBar(SnackBar(
+                        content: Text("Copied".i18n),
+                        duration: const Duration(seconds: 1),
+                      ));
+                    });
                   },
-                )
+                ),
               ],
             ),
             Row(
               children: [
-                Text('Status:  '.i18n, style: Theme.of(context).textTheme.subtitle2),
+                Text(
+                  'Status:  '.i18n,
+                  style: Theme.of(context).textTheme.subtitle2,
+                ),
                 const SizedBox(width: 16),
                 Container(
                   decoration: const BoxDecoration(
-                      borderRadius: BorderRadius.all(Radius.circular(20)), color: AppColors.lightGreen6),
+                    borderRadius: BorderRadius.all(Radius.circular(20)),
+                    color: AppColors.lightGreen6,
+                  ),
                   child: Padding(
-                    padding: const EdgeInsets.only(top: 4, bottom: 4, right: 8, left: 8),
+                    padding: const EdgeInsets.only(
+                      top: 4,
+                      bottom: 4,
+                      right: 8,
+                      left: 8,
+                    ),
                     child: Text(
                       "Successful".i18n,
                       overflow: TextOverflow.ellipsis,
@@ -148,32 +186,56 @@ class DialogRow extends StatelessWidget {
   final String? name;
   final String? toOrFromText;
 
-  const DialogRow({Key? key, this.imageUrl, required this.account, this.name, this.toOrFromText}) : super(key: key);
+  const DialogRow({
+    Key? key,
+    this.imageUrl,
+    required this.account,
+    this.name,
+    this.toOrFromText,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
-        ProfileAvatar(size: 60, image: imageUrl, account: account, nickname: name),
+        ProfileAvatar(
+          size: 60,
+          image: imageUrl,
+          account: account,
+          nickname: name,
+        ),
         Expanded(
           child: Padding(
             padding: const EdgeInsets.only(left: 16, right: 8),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(name ?? account, textAlign: TextAlign.start, style: Theme.of(context).textTheme.button),
+                Text(
+                  name ?? account,
+                  textAlign: TextAlign.start,
+                  style: Theme.of(context).textTheme.button,
+                ),
                 const SizedBox(height: 8),
-                Text(account, style: Theme.of(context).textTheme.subtitle2LowEmphasis)
+                Text(
+                  account,
+                  style: Theme.of(context).textTheme.subtitle2LowEmphasis,
+                ),
               ],
             ),
           ),
         ),
         Container(
           decoration: const BoxDecoration(
-              borderRadius: BorderRadius.all(Radius.elliptical(4, 4)), color: AppColors.lightGreen6),
+            borderRadius: BorderRadius.all(Radius.elliptical(4, 4)),
+            color: AppColors.lightGreen6,
+          ),
           child: Padding(
-            padding: const EdgeInsets.only(top: 4, bottom: 4, right: 8, left: 8),
-            child: Text(toOrFromText!, style: Theme.of(context).textTheme.subtitle2),
+            padding:
+                const EdgeInsets.only(top: 4, bottom: 4, right: 8, left: 8),
+            child: Text(
+              toOrFromText!,
+              style: Theme.of(context).textTheme.subtitle2,
+            ),
           ),
         ),
       ],

@@ -6,7 +6,7 @@ class SectionTitle extends StatelessWidget {
   final String description;
 
   const SectionTitle({Key key, @required this.title, this.description})
-      : super(key: key);
+    : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -15,15 +15,9 @@ class SectionTitle extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          Text(
-            title,
-            style: Styles.mainScreenTitleText,
-          ),
+          Text(title, style: Styles.mainScreenTitleText),
           if (description != null)
-            Text(
-              description,
-              style: Styles.mainScreenDescriptionText,
-            )
+            Text(description, style: Styles.mainScreenDescriptionText),
         ],
       ),
     );

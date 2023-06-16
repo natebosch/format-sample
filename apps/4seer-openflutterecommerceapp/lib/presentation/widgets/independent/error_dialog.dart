@@ -27,32 +27,26 @@ class ErrorDialog extends StatelessWidget {
           ),
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 16.0),
-            child: Text(mainText,
-                style: Theme.of(context)
-                    .textTheme
-                    .display1
-                    .copyWith(color: Theme.of(context).errorColor)),
+            child: Text(
+              mainText,
+              style: Theme.of(context).textTheme.display1.copyWith(
+                color: Theme.of(context).errorColor,
+              ),
+            ),
           ),
-          SizedBox(
-            height: 12.0,
-          ),
+          SizedBox(height: 12.0),
           InkWell(
             onTap: () {
               Navigator.pop(context);
             },
             child: Container(
               padding: EdgeInsets.symmetric(vertical: 16.0),
-              decoration: BoxDecoration(
-                color: AppColors.backgroundLight,
-              ),
+              decoration: BoxDecoration(color: AppColors.backgroundLight),
               child: Row(
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  Text(
-                    'OK',
-                    style: TextStyle(fontWeight: FontWeight.bold),
-                  )
+                  Text('OK', style: TextStyle(fontWeight: FontWeight.bold)),
                 ],
               ),
             ),
@@ -64,13 +58,13 @@ class ErrorDialog extends StatelessWidget {
 
   static Future showErrorDialog(BuildContext context, String text) {
     return showDialog(
-        context: context,
-        builder: (context) {
-          return AlertDialog(
-              contentPadding: EdgeInsets.only(top: 10.0),
-              content: ErrorDialog(
-                mainText: text,
-              ));
-        });
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          contentPadding: EdgeInsets.only(top: 10.0),
+          content: ErrorDialog(mainText: text),
+        );
+      },
+    );
   }
 }

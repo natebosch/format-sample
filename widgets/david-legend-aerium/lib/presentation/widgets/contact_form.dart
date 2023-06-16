@@ -6,11 +6,7 @@ import 'circular_container.dart';
 import 'custom_text_form_field.dart';
 
 class ContactForm extends StatelessWidget {
-  ContactForm({
-    this.padding,
-    this.maxLines = 12,
-    this.controllers,
-  });
+  ContactForm({this.padding, this.maxLines = 12, this.controllers});
 
   final EdgeInsetsGeometry? padding;
   final List<TextEditingController>? controllers;
@@ -59,10 +55,7 @@ class ContactForm extends StatelessWidget {
 }
 
 class SendMessageButton extends StatelessWidget {
-  SendMessageButton({
-    this.message = StringConst.SEND_MESSAGE,
-    this.onPressed,
-  });
+  SendMessageButton({this.message = StringConst.SEND_MESSAGE, this.onPressed});
 
   final String message;
   final VoidCallback? onPressed;
@@ -77,15 +70,13 @@ class SendMessageButton extends StatelessWidget {
         children: [
           Text(
             message,
-            style: theme.textTheme.headline6!.copyWith(color: AppColors.grey100),
+            style:
+                theme.textTheme.headline6!.copyWith(color: AppColors.grey100),
           ),
           SpaceW12(),
           CircularContainer(
-            child: Icon(
-              Icons.send,
-              color: AppColors.secondaryColor,
-            ),
-          )
+            child: Icon(Icons.send, color: AppColors.secondaryColor),
+          ),
         ],
       ),
     );

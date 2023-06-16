@@ -71,6 +71,7 @@ class GraphQLService {
     return (fragments == null)
         ? document
         : DocumentNode(
-            definitions: [...fragments.definitions, ...document.definitions]);
+            definitions: [...fragments.definitions, ...document.definitions],
+          );
   }
 }

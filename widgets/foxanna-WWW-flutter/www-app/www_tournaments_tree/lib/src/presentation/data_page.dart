@@ -8,10 +8,8 @@ import 'package:www_tournaments_tree/src/presentation/subtree_tile.dart';
 import 'package:www_widgets/www_widgets.dart';
 
 class TournamentsTreeDataPage extends StatelessWidget {
-  const TournamentsTreeDataPage({
-    Key? key,
-    required this.tournamentsTree,
-  }) : super(key: key);
+  const TournamentsTreeDataPage({Key? key, required this.tournamentsTree})
+    : super(key: key);
 
   final List<dynamic> tournamentsTree;
 
@@ -37,10 +35,9 @@ class TournamentsTreeDataPage extends StatelessWidget {
             return TournamentsGridTile(
               tournamentInfo: item.info,
               tournamentStatus: item.status,
-              onTap: () => context.dispatch(UserActionTournament.open(
-                info: item.info,
-                status: item.status,
-              )),
+              onTap: () => context.dispatch(
+                UserActionTournament.open(info: item.info, status: item.status),
+              ),
             );
           }
 

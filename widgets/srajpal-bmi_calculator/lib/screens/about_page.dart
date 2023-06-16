@@ -11,17 +11,12 @@ class AboutPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text(APP_TITLE),
-      ),
+      appBar: AppBar(title: const Text(APP_TITLE)),
       body: Column(
         children: <Widget>[
           Container(
             padding: const EdgeInsets.all(10.0),
-            child: const Text(
-              'App Info',
-              style: TEXT_LARGE,
-            ),
+            child: const Text('App Info', style: TEXT_LARGE),
           ),
           MyCard(
             active: true,
@@ -30,9 +25,7 @@ class AboutPage extends StatelessWidget {
               children: <Widget>[
                 Padding(
                   padding: const EdgeInsets.all(20.0),
-                  child: Image.asset(
-                    'assets/images/app_icon.png',
-                  ),
+                  child: Image.asset('assets/images/app_icon.png'),
                 ),
                 MyHR(),
                 Padding(
@@ -99,7 +92,8 @@ class AboutPage extends StatelessWidget {
                           recognizer: TapGestureRecognizer()
                             ..onTap = () {
                               launch(
-                                  'https://dribbble.com/shots/4585382-Simple-BMI-Calculator');
+                                'https://dribbble.com/shots/4585382-Simple-BMI-Calculator',
+                              );
                             },
                         ),
                       ],
@@ -123,7 +117,8 @@ class AboutPage extends StatelessWidget {
                           recognizer: TapGestureRecognizer()
                             ..onTap = () {
                               launch(
-                                  'https://www.udemy.com/user/4b4368a3-b5c8-4529-aa65-2056ec31f37e/');
+                                'https://www.udemy.com/user/4b4368a3-b5c8-4529-aa65-2056ec31f37e/',
+                              );
                             },
                         ),
                         TextSpan(
@@ -143,10 +138,7 @@ class AboutPage extends StatelessWidget {
                   child: RichText(
                     text: const TextSpan(
                       children: <TextSpan>[
-                        TextSpan(
-                          text: 'Disclaimer: \n\n',
-                          style: TEXT_LABEL,
-                        ),
+                        TextSpan(text: 'Disclaimer: \n\n', style: TEXT_LABEL),
                         TextSpan(
                           text:
                               'This app provides information for educational purpose only. The information provided is not medical or treatment advice and may not be treated as such by the user. As such, this App may not be relied upon for the purposes of medical diagnosis or as a recommendation for medical care or treatment. The information on this App is not a substitute for professional medical advice, diagnosis or treatment. All content, including text, graphics, images and information, contained on or available through this App is for general information purposes only.',

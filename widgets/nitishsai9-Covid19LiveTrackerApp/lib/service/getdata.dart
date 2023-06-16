@@ -31,15 +31,16 @@ class Main {
   String coronaMild;
   String recoverd;
 
-  Main(
-      {this.coronaCases,
-      this.coronaClose,
-      this.coronaCritical,
-      this.coronaCurrent,
-      this.coronaDeaths,
-      this.coronaDischarged,
-      this.coronaMild,
-      this.recoverd});
+  Main({
+    this.coronaCases,
+    this.coronaClose,
+    this.coronaCritical,
+    this.coronaCurrent,
+    this.coronaDeaths,
+    this.coronaDischarged,
+    this.coronaMild,
+    this.recoverd,
+  });
 
   Main.fromJson(Map<String, dynamic> json) {
     coronaCases = json['CoronaCases'];

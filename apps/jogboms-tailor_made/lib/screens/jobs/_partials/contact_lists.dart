@@ -14,7 +14,9 @@ class ContactLists extends StatelessWidget {
     return Scaffold(
       appBar: const MkAppBar(title: Text("Select Client")),
       body: (contacts == null || contacts.isEmpty)
-          ? const Center(child: EmptyResultView(message: "No contacts available"))
+          ? const Center(
+              child: EmptyResultView(message: "No contacts available"),
+            )
           : ListView.separated(
               itemCount: contacts.length,
               shrinkWrap: true,

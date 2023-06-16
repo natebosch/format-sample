@@ -19,7 +19,8 @@ part 'managed_identity_schema.g.dart';
 /// * [name] - The schema name  This is set by the user and is for them to easily recognise their schema
 /// * [updatedAt] - Last Time Schema was Updated
 @BuiltValue()
-abstract class ManagedIdentitySchema implements Built<ManagedIdentitySchema, ManagedIdentitySchemaBuilder> {
+abstract class ManagedIdentitySchema
+    implements Built<ManagedIdentitySchema, ManagedIdentitySchemaBuilder> {
   /// The gcs file name  This is a randomly generated name which is used to uniquely identify the file on the blob storage
   @BuiltValueField(wireName: r'blob_name')
   String get blobName;
@@ -50,18 +51,25 @@ abstract class ManagedIdentitySchema implements Built<ManagedIdentitySchema, Man
 
   ManagedIdentitySchema._();
 
-  factory ManagedIdentitySchema([void updates(ManagedIdentitySchemaBuilder b)]) = _$ManagedIdentitySchema;
+  factory ManagedIdentitySchema([
+    void updates(ManagedIdentitySchemaBuilder b),
+  ]) = _$ManagedIdentitySchema;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(ManagedIdentitySchemaBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<ManagedIdentitySchema> get serializer => _$ManagedIdentitySchemaSerializer();
+  static Serializer<ManagedIdentitySchema> get serializer =>
+      _$ManagedIdentitySchemaSerializer();
 }
 
-class _$ManagedIdentitySchemaSerializer implements PrimitiveSerializer<ManagedIdentitySchema> {
+class _$ManagedIdentitySchemaSerializer
+    implements PrimitiveSerializer<ManagedIdentitySchema> {
   @override
-  final Iterable<Type> types = const [ManagedIdentitySchema, _$ManagedIdentitySchema];
+  final Iterable<Type> types = const [
+    ManagedIdentitySchema,
+    _$ManagedIdentitySchema,
+  ];
 
   @override
   final String wireName = r'ManagedIdentitySchema';
@@ -116,7 +124,11 @@ class _$ManagedIdentitySchemaSerializer implements PrimitiveSerializer<ManagedId
     ManagedIdentitySchema object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(
+      serializers,
+      object,
+      specifiedType: specifiedType,
+    ).toList();
   }
 
   void _deserializeProperties(
@@ -208,4 +220,3 @@ class _$ManagedIdentitySchemaSerializer implements PrimitiveSerializer<ManagedId
     return result.build();
   }
 }
-

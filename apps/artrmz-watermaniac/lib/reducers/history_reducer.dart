@@ -4,20 +4,27 @@ import 'package:watermaniac/managers/database/drink_history.dart';
 
 final historyReducers = combineReducers<List<DrinkHistoryEntry>>([
   TypedReducer<List<DrinkHistoryEntry>, DrinkHistoryLoadedAction>(
-      _setLoadedDrinkHistory),
+    _setLoadedDrinkHistory,
+  ),
   TypedReducer<List<DrinkHistoryEntry>, AddDrinkToHistoryAction>(
-      _addDrinkToHistory),
+    _addDrinkToHistory,
+  ),
   TypedReducer<List<DrinkHistoryEntry>, RemoveDrinkFromHistoryAction>(
-      _removeDrinkFromHistory),
+    _removeDrinkFromHistory,
+  ),
 ]);
 
 List<DrinkHistoryEntry> _setLoadedDrinkHistory(
-    List<DrinkHistoryEntry> entries, DrinkHistoryLoadedAction action) {
+  List<DrinkHistoryEntry> entries,
+  DrinkHistoryLoadedAction action,
+) {
   return action.entries;
 }
 
 List<DrinkHistoryEntry> _addDrinkToHistory(
-    List<DrinkHistoryEntry> entries, AddDrinkToHistoryAction action) {
+  List<DrinkHistoryEntry> entries,
+  AddDrinkToHistoryAction action,
+) {
   if (action.entry.id == null) {
     action.entry.id = entries.length + 1;
   }
@@ -25,6 +32,8 @@ List<DrinkHistoryEntry> _addDrinkToHistory(
 }
 
 List<DrinkHistoryEntry> _removeDrinkFromHistory(
-    List<DrinkHistoryEntry> entries, RemoveDrinkFromHistoryAction action) {
+  List<DrinkHistoryEntry> entries,
+  RemoveDrinkFromHistoryAction action,
+) {
   return List.from(entries)..remove(action.entry);
 }

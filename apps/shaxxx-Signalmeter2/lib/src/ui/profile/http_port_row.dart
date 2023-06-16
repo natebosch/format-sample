@@ -5,9 +5,7 @@ import 'padded_form_text_field.dart';
 import 'profile_widget.dart';
 
 class HttpPortRow extends StatelessWidget {
-  const HttpPortRow({
-    Key key,
-  }) : super(key: key);
+  const HttpPortRow({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

@@ -12,14 +12,10 @@ void main() {
     testWidgets('smoke test', (WidgetTester tester) async {
       final expectedStory = stories[0];
       // Build our app and trigger a frame.
-      await tester.pumpWidget(
-        TestWrapper(
-          providers: [ChangeNotifierProvider.value(value: Settings())],
-          child: StoryDetail(
-            story: stories[0],
-          ),
-        ),
-      );
+      await tester.pumpWidget(TestWrapper(
+        providers: [ChangeNotifierProvider.value(value: Settings())],
+        child: StoryDetail(story: stories[0]),
+      ));
 
       expect(find.text(expectedStory.title!), findsOneWidget);
     });

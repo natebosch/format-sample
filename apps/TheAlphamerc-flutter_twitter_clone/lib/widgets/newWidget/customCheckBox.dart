@@ -4,7 +4,7 @@ class CustomCheckBox extends StatefulWidget {
   final bool isChecked;
   final bool visibleSwitch;
   CustomCheckBox({Key key, this.isChecked, this.visibleSwitch})
-      : super(key: key);
+    : super(key: key);
 
   @override
   _CustomCheckBoxState createState() => _CustomCheckBoxState();
@@ -15,7 +15,7 @@ class _CustomCheckBoxState extends State<CustomCheckBox> {
   ValueNotifier<bool> visibleSwitch = ValueNotifier(false);
   @override
   void initState() {
-    isChecked.value = widget.isChecked ;
+    isChecked.value = widget.isChecked;
     visibleSwitch.value = widget.visibleSwitch;
     super.initState();
   }
@@ -35,7 +35,7 @@ class _CustomCheckBoxState extends State<CustomCheckBox> {
             },
           )
         : widget.visibleSwitch == null
-            ? SizedBox(height: 10, width:10,)
+            ? SizedBox(height: 10, width: 10)
             : ValueListenableBuilder(
                 valueListenable: visibleSwitch,
                 builder: (context, value, child) {

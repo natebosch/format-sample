@@ -8,7 +8,12 @@ class ExploreCard extends StatelessWidget {
   final Widget icon;
   final VoidCallback onTap;
 
-  const ExploreCard({Key? key, required this.title, required this.icon, required this.onTap}) : super(key: key);
+  const ExploreCard({
+    Key? key,
+    required this.title,
+    required this.icon,
+    required this.onTap,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -30,11 +35,19 @@ class ExploreCard extends StatelessWidget {
               Container(
                 height: 70,
                 width: 70,
-                decoration: const BoxDecoration(color: AppColors.lightGreen2, shape: BoxShape.circle),
+                decoration: const BoxDecoration(
+                  color: AppColors.lightGreen2,
+                  shape: BoxShape.circle,
+                ),
                 child: Center(child: icon),
               ),
               const SizedBox(height: 20.0),
-              Flexible(child: Text(title, style: Theme.of(context).textTheme.buttonWhiteL)),
+              Flexible(
+                child: Text(
+                  title,
+                  style: Theme.of(context).textTheme.buttonWhiteL,
+                ),
+              ),
             ],
           ),
         ),

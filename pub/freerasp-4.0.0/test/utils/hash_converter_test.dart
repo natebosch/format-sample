@@ -69,11 +69,12 @@ void main() {
             throwsA(isA<FormatException>()),
           );
 
-          final invalidLongerStrippedShaValue =
-              invalidLongerShaValue.replaceAll(':', '');
+          final invalidLongerStrippedShaValue = invalidLongerShaValue
+              .replaceAll(':', '');
           expect(
-            () =>
-                hashConverter.fromSha256toBase64(invalidLongerStrippedShaValue),
+            () => hashConverter.fromSha256toBase64(
+              invalidLongerStrippedShaValue,
+            ),
             throwsA(isA<FormatException>()),
           );
 
@@ -83,11 +84,12 @@ void main() {
             throwsA(isA<FormatException>()),
           );
 
-          final invalidShorterStrippedShaValue =
-              invalidShorterShaValue.replaceAll(':', '');
+          final invalidShorterStrippedShaValue = invalidShorterShaValue
+              .replaceAll(':', '');
           expect(
-            () => hashConverter
-                .fromSha256toBase64(invalidShorterStrippedShaValue),
+            () => hashConverter.fromSha256toBase64(
+              invalidShorterStrippedShaValue,
+            ),
             throwsA(isA<FormatException>()),
           );
         });
@@ -99,8 +101,10 @@ void main() {
             throwsA(isA<FormatException>()),
           );
 
-          final invalidHexStrippedShaValue =
-              invalidHexShaValue.replaceFirst(':', '');
+          final invalidHexStrippedShaValue = invalidHexShaValue.replaceFirst(
+            ':',
+            '',
+          );
           expect(
             () => hashConverter.fromSha256toBase64(invalidHexStrippedShaValue),
             throwsA(isA<FormatException>()),

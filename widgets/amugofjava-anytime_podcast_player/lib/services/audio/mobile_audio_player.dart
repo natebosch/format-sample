@@ -84,7 +84,9 @@ class MobileAudioPlayer {
     if (Platform.isAndroid) {
       _androidLoudnessEnhancer = AndroidLoudnessEnhancer();
       _androidLoudnessEnhancer.setEnabled(true);
-      _audioPipeline = AudioPipeline(androidAudioEffects: [_androidLoudnessEnhancer]);
+      _audioPipeline = AudioPipeline(
+        androidAudioEffects: [_androidLoudnessEnhancer],
+      );
       _audioPlayer = AudioPlayer(audioPipeline: _audioPipeline);
     } else {
       _audioPlayer = AudioPlayer();
@@ -132,7 +134,8 @@ class MobileAudioPlayer {
     }
 
     log.fine(
-        'Setting play URI to $_uri, isLocal $_local and position $_startPosition id $_episodeId speed $_playbackSpeed}');
+      'Setting play URI to $_uri, isLocal $_local and position $_startPosition id $_episodeId speed $_playbackSpeed}',
+    );
 
     _loadTrack = true;
 
@@ -150,17 +153,20 @@ class MobileAudioPlayer {
   Future<void> start() async {
     log.fine('start()');
 
-    _eventSubscription = _audioPlayer.playbackEventStream.listen((event) {
-      _setState(position: _audioPlayer.position);
-    }, onError: (Object error, StackTrace t) async {
-      _reportError(error);
+    _eventSubscription = _audioPlayer.playbackEventStream.listen(
+      (event) {
+        _setState(position: _audioPlayer.position);
+      },
+      onError: (Object error, StackTrace t) async {
+        _reportError(error);
 
-      log.fine('Playback stream error');
-      log.fine(error.toString());
+        log.fine('Playback stream error');
+        log.fine(error.toString());
 
-      await _audioPlayer.stop();
-      await complete();
-    });
+        await _audioPlayer.stop();
+        await complete();
+      },
+    );
   }
 
   void _reportError(Object e) async {
@@ -186,19 +192,18 @@ class MobileAudioPlayer {
 
       var userAgent = Environment.userAgent();
 
-      var headers = <String, String>{
-        'User-Agent': userAgent,
-      };
+      var headers = <String, String>{'User-Agent': userAgent};
 
-      var start = _startPosition > 0 ? Duration(milliseconds: _startPosition) : Duration.zero;
+      var start = _startPosition > 0
+          ? Duration(milliseconds: _startPosition)
+          : Duration.zero;
 
-      log.fine('loading new track $_uri - from position ${start.inSeconds} (${start.inMilliseconds})');
+      log.fine(
+        'loading new track $_uri - from position ${start.inSeconds} (${start.inMilliseconds})',
+      );
 
       if (_local) {
-        await _audioPlayer.setFilePath(
-          _uri,
-          initialPosition: start,
-        );
+        await _audioPlayer.setFilePath(_uri, initialPosition: start);
       } else {
         var d = await _audioPlayer.setUrl(
           _uri,
@@ -208,7 +213,10 @@ class MobileAudioPlayer {
 
         /// If we don't already have a duration and we have been able to calculate it from
         /// beginning to fetch the media, update the current media item with the duration.
-        if (d != null && _mediaItem != null && (_mediaItem.duration == null || _mediaItem.duration.inSeconds == 0)) {
+        if (d != null &&
+            _mediaItem != null &&
+            (_mediaItem.duration == null ||
+                _mediaItem.duration.inSeconds == 0)) {
           _mediaItem = _mediaItem.copyWith(duration: d);
           await AudioServiceBackground.setMediaItem(_mediaItem);
         }
@@ -331,19 +339,27 @@ class MobileAudioPlayer {
   }
 
   Future<void> _setErrorState() async {
-    await _setState(fixedState: AudioProcessingState.error, position: Duration(milliseconds: 0));
+    await _setState(
+      fixedState: AudioProcessingState.error,
+      position: Duration(milliseconds: 0),
+    );
   }
 
   Future<void> _setBufferingState() async {
     if (!_local) {
-      await _setState(fixedState: AudioProcessingState.buffering, position: _audioPlayer.position);
+      await _setState(
+        fixedState: AudioProcessingState.buffering,
+        position: _audioPlayer.position,
+      );
     }
   }
 
   Future<void> _setStoppedState({bool completed = false}) async {
     var p = _audioPlayer.position;
 
-    log.fine('setStoppedState() - position is ${p.inMilliseconds} - completed is $completed');
+    log.fine(
+      'setStoppedState() - position is ${p.inMilliseconds} - completed is $completed',
+    );
 
     await _persistState(LastState.stopped, p);
 
@@ -351,7 +367,9 @@ class MobileAudioPlayer {
     await _audioPlayer.stop();
 
     await _setState(
-      fixedState: completed ? AudioProcessingState.completed : AudioProcessingState.stopped,
+      fixedState: completed
+          ? AudioProcessingState.completed
+          : AudioProcessingState.stopped,
       position: p,
     );
 
@@ -407,7 +425,9 @@ class MobileAudioPlayer {
 
   Future<void> _persistState(LastState state, Duration position) async {
     // Save our completion state to disk so we can query this later
-    log.fine('Saving ${state.toString()} state - episode id $_episodeId - position ${position?.inMilliseconds}');
+    log.fine(
+      'Saving ${state.toString()} state - episode id $_episodeId - position ${position?.inMilliseconds}',
+    );
 
     await PersistentState.persistState(Persistable(
       episodeId: _episodeId,
@@ -420,11 +440,9 @@ class MobileAudioPlayer {
 
   Future<void> _clearPersistentState() async {
     if (!_clearedCompletedState) {
-      await PersistentState.persistState(Persistable(
-        episodeId: 0,
-        position: 0,
-        state: LastState.none,
-      ));
+      await PersistentState.persistState(
+        Persistable(episodeId: 0, position: 0, state: LastState.none),
+      );
 
       _clearedCompletedState = true;
     }
@@ -434,7 +452,9 @@ class MobileAudioPlayer {
     log.fine('Fetching latest position:');
     log.fine(' - Player position is ${_audioPlayer.position?.inMilliseconds}');
 
-    return _audioPlayer.position == null ? 0 : _audioPlayer.position.inMilliseconds;
+    return _audioPlayer.position == null
+        ? 0
+        : _audioPlayer.position.inMilliseconds;
   }
 
   bool get playing => _audioPlayer.playing;

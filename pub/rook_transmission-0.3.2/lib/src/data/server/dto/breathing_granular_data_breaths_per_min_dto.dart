@@ -8,10 +8,7 @@ class BreathingGranularDataBreathsPerMinDTO {
   });
 
   Map<String, Object> toMap() {
-    return {
-      'datetime': dateTime,
-      'breaths_per_min': breathsPerMin,
-    };
+    return {'datetime': dateTime, 'breaths_per_min': breathsPerMin};
   }
 
   @override

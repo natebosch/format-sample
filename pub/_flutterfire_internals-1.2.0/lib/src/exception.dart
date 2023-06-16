@@ -50,11 +50,7 @@ FirebaseException platformExceptionToFirebaseException(
     message = (details['message'] as String?) ?? message;
   }
 
-  return FirebaseException(
-    plugin: plugin,
-    code: code,
-    message: message,
-  );
+  return FirebaseException(plugin: plugin, code: code, message: message);
 }
 
 /// A custom [EventChannel] with default error handling logic.

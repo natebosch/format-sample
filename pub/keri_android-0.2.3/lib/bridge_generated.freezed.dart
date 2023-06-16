@@ -12,7 +12,8 @@ part of 'bridge_generated.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods',
+);
 
 /// @nodoc
 mixin _$DigestType {
@@ -27,8 +28,7 @@ mixin _$DigestType {
     required TResult Function() sha2512,
     required TResult Function(Uint8List field0) blake2B256,
     required TResult Function(Uint8List field0) blake2S256,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? blake3256,
@@ -40,8 +40,7 @@ mixin _$DigestType {
     TResult? Function()? sha2512,
     TResult? Function(Uint8List field0)? blake2B256,
     TResult? Function(Uint8List field0)? blake2S256,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? blake3256,
@@ -54,8 +53,7 @@ mixin _$DigestType {
     TResult Function(Uint8List field0)? blake2B256,
     TResult Function(Uint8List field0)? blake2S256,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(DigestType_Blake3_256 value) blake3256,
@@ -67,8 +65,7 @@ mixin _$DigestType {
     required TResult Function(DigestType_SHA2_512 value) sha2512,
     required TResult Function(DigestType_Blake2B256 value) blake2B256,
     required TResult Function(DigestType_Blake2S256 value) blake2S256,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(DigestType_Blake3_256 value)? blake3256,
@@ -80,8 +77,7 @@ mixin _$DigestType {
     TResult? Function(DigestType_SHA2_512 value)? sha2512,
     TResult? Function(DigestType_Blake2B256 value)? blake2B256,
     TResult? Function(DigestType_Blake2S256 value)? blake2S256,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(DigestType_Blake3_256 value)? blake3256,
@@ -94,15 +90,15 @@ mixin _$DigestType {
     TResult Function(DigestType_Blake2B256 value)? blake2B256,
     TResult Function(DigestType_Blake2S256 value)? blake2S256,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $DigestTypeCopyWith<$Res> {
   factory $DigestTypeCopyWith(
-          DigestType value, $Res Function(DigestType) then) =
-      _$DigestTypeCopyWithImpl<$Res, DigestType>;
+    DigestType value,
+    $Res Function(DigestType) then,
+  ) = _$DigestTypeCopyWithImpl<$Res, DigestType>;
 }
 
 /// @nodoc
@@ -118,18 +114,20 @@ class _$DigestTypeCopyWithImpl<$Res, $Val extends DigestType>
 
 /// @nodoc
 abstract class _$$DigestType_Blake3_256CopyWith<$Res> {
-  factory _$$DigestType_Blake3_256CopyWith(_$DigestType_Blake3_256 value,
-          $Res Function(_$DigestType_Blake3_256) then) =
-      __$$DigestType_Blake3_256CopyWithImpl<$Res>;
+  factory _$$DigestType_Blake3_256CopyWith(
+    _$DigestType_Blake3_256 value,
+    $Res Function(_$DigestType_Blake3_256) then,
+  ) = __$$DigestType_Blake3_256CopyWithImpl<$Res>;
 }
 
 /// @nodoc
 class __$$DigestType_Blake3_256CopyWithImpl<$Res>
     extends _$DigestTypeCopyWithImpl<$Res, _$DigestType_Blake3_256>
     implements _$$DigestType_Blake3_256CopyWith<$Res> {
-  __$$DigestType_Blake3_256CopyWithImpl(_$DigestType_Blake3_256 _value,
-      $Res Function(_$DigestType_Blake3_256) _then)
-      : super(_value, _then);
+  __$$DigestType_Blake3_256CopyWithImpl(
+    _$DigestType_Blake3_256 _value,
+    $Res Function(_$DigestType_Blake3_256) _then,
+  ) : super(_value, _then);
 }
 
 /// @nodoc
@@ -262,9 +260,10 @@ abstract class DigestType_Blake3_256 implements DigestType {
 
 /// @nodoc
 abstract class _$$DigestType_SHA3_256CopyWith<$Res> {
-  factory _$$DigestType_SHA3_256CopyWith(_$DigestType_SHA3_256 value,
-          $Res Function(_$DigestType_SHA3_256) then) =
-      __$$DigestType_SHA3_256CopyWithImpl<$Res>;
+  factory _$$DigestType_SHA3_256CopyWith(
+    _$DigestType_SHA3_256 value,
+    $Res Function(_$DigestType_SHA3_256) then,
+  ) = __$$DigestType_SHA3_256CopyWithImpl<$Res>;
 }
 
 /// @nodoc
@@ -272,8 +271,9 @@ class __$$DigestType_SHA3_256CopyWithImpl<$Res>
     extends _$DigestTypeCopyWithImpl<$Res, _$DigestType_SHA3_256>
     implements _$$DigestType_SHA3_256CopyWith<$Res> {
   __$$DigestType_SHA3_256CopyWithImpl(
-      _$DigestType_SHA3_256 _value, $Res Function(_$DigestType_SHA3_256) _then)
-      : super(_value, _then);
+    _$DigestType_SHA3_256 _value,
+    $Res Function(_$DigestType_SHA3_256) _then,
+  ) : super(_value, _then);
 }
 
 /// @nodoc
@@ -406,9 +406,10 @@ abstract class DigestType_SHA3_256 implements DigestType {
 
 /// @nodoc
 abstract class _$$DigestType_SHA2_256CopyWith<$Res> {
-  factory _$$DigestType_SHA2_256CopyWith(_$DigestType_SHA2_256 value,
-          $Res Function(_$DigestType_SHA2_256) then) =
-      __$$DigestType_SHA2_256CopyWithImpl<$Res>;
+  factory _$$DigestType_SHA2_256CopyWith(
+    _$DigestType_SHA2_256 value,
+    $Res Function(_$DigestType_SHA2_256) then,
+  ) = __$$DigestType_SHA2_256CopyWithImpl<$Res>;
 }
 
 /// @nodoc
@@ -416,8 +417,9 @@ class __$$DigestType_SHA2_256CopyWithImpl<$Res>
     extends _$DigestTypeCopyWithImpl<$Res, _$DigestType_SHA2_256>
     implements _$$DigestType_SHA2_256CopyWith<$Res> {
   __$$DigestType_SHA2_256CopyWithImpl(
-      _$DigestType_SHA2_256 _value, $Res Function(_$DigestType_SHA2_256) _then)
-      : super(_value, _then);
+    _$DigestType_SHA2_256 _value,
+    $Res Function(_$DigestType_SHA2_256) _then,
+  ) : super(_value, _then);
 }
 
 /// @nodoc
@@ -550,18 +552,20 @@ abstract class DigestType_SHA2_256 implements DigestType {
 
 /// @nodoc
 abstract class _$$DigestType_Blake3_512CopyWith<$Res> {
-  factory _$$DigestType_Blake3_512CopyWith(_$DigestType_Blake3_512 value,
-          $Res Function(_$DigestType_Blake3_512) then) =
-      __$$DigestType_Blake3_512CopyWithImpl<$Res>;
+  factory _$$DigestType_Blake3_512CopyWith(
+    _$DigestType_Blake3_512 value,
+    $Res Function(_$DigestType_Blake3_512) then,
+  ) = __$$DigestType_Blake3_512CopyWithImpl<$Res>;
 }
 
 /// @nodoc
 class __$$DigestType_Blake3_512CopyWithImpl<$Res>
     extends _$DigestTypeCopyWithImpl<$Res, _$DigestType_Blake3_512>
     implements _$$DigestType_Blake3_512CopyWith<$Res> {
-  __$$DigestType_Blake3_512CopyWithImpl(_$DigestType_Blake3_512 _value,
-      $Res Function(_$DigestType_Blake3_512) _then)
-      : super(_value, _then);
+  __$$DigestType_Blake3_512CopyWithImpl(
+    _$DigestType_Blake3_512 _value,
+    $Res Function(_$DigestType_Blake3_512) _then,
+  ) : super(_value, _then);
 }
 
 /// @nodoc
@@ -694,9 +698,10 @@ abstract class DigestType_Blake3_512 implements DigestType {
 
 /// @nodoc
 abstract class _$$DigestType_SHA3_512CopyWith<$Res> {
-  factory _$$DigestType_SHA3_512CopyWith(_$DigestType_SHA3_512 value,
-          $Res Function(_$DigestType_SHA3_512) then) =
-      __$$DigestType_SHA3_512CopyWithImpl<$Res>;
+  factory _$$DigestType_SHA3_512CopyWith(
+    _$DigestType_SHA3_512 value,
+    $Res Function(_$DigestType_SHA3_512) then,
+  ) = __$$DigestType_SHA3_512CopyWithImpl<$Res>;
 }
 
 /// @nodoc
@@ -704,8 +709,9 @@ class __$$DigestType_SHA3_512CopyWithImpl<$Res>
     extends _$DigestTypeCopyWithImpl<$Res, _$DigestType_SHA3_512>
     implements _$$DigestType_SHA3_512CopyWith<$Res> {
   __$$DigestType_SHA3_512CopyWithImpl(
-      _$DigestType_SHA3_512 _value, $Res Function(_$DigestType_SHA3_512) _then)
-      : super(_value, _then);
+    _$DigestType_SHA3_512 _value,
+    $Res Function(_$DigestType_SHA3_512) _then,
+  ) : super(_value, _then);
 }
 
 /// @nodoc
@@ -838,18 +844,20 @@ abstract class DigestType_SHA3_512 implements DigestType {
 
 /// @nodoc
 abstract class _$$DigestType_Blake2B512CopyWith<$Res> {
-  factory _$$DigestType_Blake2B512CopyWith(_$DigestType_Blake2B512 value,
-          $Res Function(_$DigestType_Blake2B512) then) =
-      __$$DigestType_Blake2B512CopyWithImpl<$Res>;
+  factory _$$DigestType_Blake2B512CopyWith(
+    _$DigestType_Blake2B512 value,
+    $Res Function(_$DigestType_Blake2B512) then,
+  ) = __$$DigestType_Blake2B512CopyWithImpl<$Res>;
 }
 
 /// @nodoc
 class __$$DigestType_Blake2B512CopyWithImpl<$Res>
     extends _$DigestTypeCopyWithImpl<$Res, _$DigestType_Blake2B512>
     implements _$$DigestType_Blake2B512CopyWith<$Res> {
-  __$$DigestType_Blake2B512CopyWithImpl(_$DigestType_Blake2B512 _value,
-      $Res Function(_$DigestType_Blake2B512) _then)
-      : super(_value, _then);
+  __$$DigestType_Blake2B512CopyWithImpl(
+    _$DigestType_Blake2B512 _value,
+    $Res Function(_$DigestType_Blake2B512) _then,
+  ) : super(_value, _then);
 }
 
 /// @nodoc
@@ -982,9 +990,10 @@ abstract class DigestType_Blake2B512 implements DigestType {
 
 /// @nodoc
 abstract class _$$DigestType_SHA2_512CopyWith<$Res> {
-  factory _$$DigestType_SHA2_512CopyWith(_$DigestType_SHA2_512 value,
-          $Res Function(_$DigestType_SHA2_512) then) =
-      __$$DigestType_SHA2_512CopyWithImpl<$Res>;
+  factory _$$DigestType_SHA2_512CopyWith(
+    _$DigestType_SHA2_512 value,
+    $Res Function(_$DigestType_SHA2_512) then,
+  ) = __$$DigestType_SHA2_512CopyWithImpl<$Res>;
 }
 
 /// @nodoc
@@ -992,8 +1001,9 @@ class __$$DigestType_SHA2_512CopyWithImpl<$Res>
     extends _$DigestTypeCopyWithImpl<$Res, _$DigestType_SHA2_512>
     implements _$$DigestType_SHA2_512CopyWith<$Res> {
   __$$DigestType_SHA2_512CopyWithImpl(
-      _$DigestType_SHA2_512 _value, $Res Function(_$DigestType_SHA2_512) _then)
-      : super(_value, _then);
+    _$DigestType_SHA2_512 _value,
+    $Res Function(_$DigestType_SHA2_512) _then,
+  ) : super(_value, _then);
 }
 
 /// @nodoc
@@ -1126,9 +1136,10 @@ abstract class DigestType_SHA2_512 implements DigestType {
 
 /// @nodoc
 abstract class _$$DigestType_Blake2B256CopyWith<$Res> {
-  factory _$$DigestType_Blake2B256CopyWith(_$DigestType_Blake2B256 value,
-          $Res Function(_$DigestType_Blake2B256) then) =
-      __$$DigestType_Blake2B256CopyWithImpl<$Res>;
+  factory _$$DigestType_Blake2B256CopyWith(
+    _$DigestType_Blake2B256 value,
+    $Res Function(_$DigestType_Blake2B256) then,
+  ) = __$$DigestType_Blake2B256CopyWithImpl<$Res>;
   @useResult
   $Res call({Uint8List field0});
 }
@@ -1137,20 +1148,19 @@ abstract class _$$DigestType_Blake2B256CopyWith<$Res> {
 class __$$DigestType_Blake2B256CopyWithImpl<$Res>
     extends _$DigestTypeCopyWithImpl<$Res, _$DigestType_Blake2B256>
     implements _$$DigestType_Blake2B256CopyWith<$Res> {
-  __$$DigestType_Blake2B256CopyWithImpl(_$DigestType_Blake2B256 _value,
-      $Res Function(_$DigestType_Blake2B256) _then)
-      : super(_value, _then);
+  __$$DigestType_Blake2B256CopyWithImpl(
+    _$DigestType_Blake2B256 _value,
+    $Res Function(_$DigestType_Blake2B256) _then,
+  ) : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? field0 = null,
-  }) {
+  $Res call({Object? field0 = null}) {
     return _then(_$DigestType_Blake2B256(
       null == field0
           ? _value.field0
           : field0 // ignore: cast_nullable_to_non_nullable
-              as Uint8List,
+                as Uint8List,
     ));
   }
 }
@@ -1177,15 +1187,18 @@ class _$DigestType_Blake2B256 implements DigestType_Blake2B256 {
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(field0));
+  int get hashCode => Object.hash(
+    runtimeType,
+    const DeepCollectionEquality().hash(field0),
+  );
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$DigestType_Blake2B256CopyWith<_$DigestType_Blake2B256> get copyWith =>
-      __$$DigestType_Blake2B256CopyWithImpl<_$DigestType_Blake2B256>(
-          this, _$identity);
+  _$$DigestType_Blake2B256CopyWith<_$DigestType_Blake2B256>
+  get copyWith => __$$DigestType_Blake2B256CopyWithImpl<
+    _$DigestType_Blake2B256
+  >(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1304,9 +1317,10 @@ abstract class DigestType_Blake2B256 implements DigestType {
 
 /// @nodoc
 abstract class _$$DigestType_Blake2S256CopyWith<$Res> {
-  factory _$$DigestType_Blake2S256CopyWith(_$DigestType_Blake2S256 value,
-          $Res Function(_$DigestType_Blake2S256) then) =
-      __$$DigestType_Blake2S256CopyWithImpl<$Res>;
+  factory _$$DigestType_Blake2S256CopyWith(
+    _$DigestType_Blake2S256 value,
+    $Res Function(_$DigestType_Blake2S256) then,
+  ) = __$$DigestType_Blake2S256CopyWithImpl<$Res>;
   @useResult
   $Res call({Uint8List field0});
 }
@@ -1315,20 +1329,19 @@ abstract class _$$DigestType_Blake2S256CopyWith<$Res> {
 class __$$DigestType_Blake2S256CopyWithImpl<$Res>
     extends _$DigestTypeCopyWithImpl<$Res, _$DigestType_Blake2S256>
     implements _$$DigestType_Blake2S256CopyWith<$Res> {
-  __$$DigestType_Blake2S256CopyWithImpl(_$DigestType_Blake2S256 _value,
-      $Res Function(_$DigestType_Blake2S256) _then)
-      : super(_value, _then);
+  __$$DigestType_Blake2S256CopyWithImpl(
+    _$DigestType_Blake2S256 _value,
+    $Res Function(_$DigestType_Blake2S256) _then,
+  ) : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? field0 = null,
-  }) {
+  $Res call({Object? field0 = null}) {
     return _then(_$DigestType_Blake2S256(
       null == field0
           ? _value.field0
           : field0 // ignore: cast_nullable_to_non_nullable
-              as Uint8List,
+                as Uint8List,
     ));
   }
 }
@@ -1355,15 +1368,18 @@ class _$DigestType_Blake2S256 implements DigestType_Blake2S256 {
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(field0));
+  int get hashCode => Object.hash(
+    runtimeType,
+    const DeepCollectionEquality().hash(field0),
+  );
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$DigestType_Blake2S256CopyWith<_$DigestType_Blake2S256> get copyWith =>
-      __$$DigestType_Blake2S256CopyWithImpl<_$DigestType_Blake2S256>(
-          this, _$identity);
+  _$$DigestType_Blake2S256CopyWith<_$DigestType_Blake2S256>
+  get copyWith => __$$DigestType_Blake2S256CopyWithImpl<
+    _$DigestType_Blake2S256
+  >(this, _$identity);
 
   @override
   @optionalTypeArgs

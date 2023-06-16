@@ -33,7 +33,9 @@ Future<Iterable<Room>> fetchRoomsOfGroup() async {
 }
 
 Future<Iterable<Message>> fetchMessagesOfRoom(
-    String roomId, String beforeId) async {
+  String roomId,
+  String beforeId,
+) async {
   final messages =
       await gitterApi.room.messagesFromRoomId(roomId, beforeId: beforeId);
   flitterStore.dispatch(new OnMessagesForCurrentRoom(messages));
@@ -73,8 +75,9 @@ Future<Iterable> search(String query) async {
 
 initStores(GitterToken token) async {
   flitterStore = new FlitterStore();
-  gitterStore
-      .dispatch(new AuthGitterAction(token, await initWebSocket(token.access)));
+  gitterStore.dispatch(
+    new AuthGitterAction(token, await initWebSocket(token.access)),
+  );
   fetchRooms();
   fetchGroups();
 }
@@ -96,19 +99,30 @@ subscribeToUnreadMessages(List<Room> rooms) {
   _mapperUnreads.addAll(newRooms);
   for (String roomId in newRooms) {
     gitterSubscriber.subscribeToUserRoomUnreadItems(
-        roomId, gitterSubscriber.user.id, (List<GitterFayeMessage> messages) {
-      for (GitterFayeMessage msg in messages) {
-        if (msg.data != null &&
-            msg.data["notification"] == GitterFayeNotifications.unreadItems) {
-          flitterStore.dispatch(new UnreadMessagesForRoom(
-              roomId: roomId, addMessage: msg.data["items"]["chat"].length));
-        } else if (msg.data != null &&
-            msg.data["notification"] ==
-                GitterFayeNotifications.unreadItemsRemoved) {
-          flitterStore.dispatch(new UnreadMessagesForRoom(
-              roomId: roomId, removeMessage: msg.data["items"]["chat"].length));
+      roomId,
+      gitterSubscriber.user.id,
+      (List<GitterFayeMessage> messages) {
+        for (GitterFayeMessage msg in messages) {
+          if (msg.data != null &&
+              msg.data["notification"] == GitterFayeNotifications.unreadItems) {
+            flitterStore.dispatch(
+              new UnreadMessagesForRoom(
+                roomId: roomId,
+                addMessage: msg.data["items"]["chat"].length,
+              ),
+            );
+          } else if (msg.data != null &&
+              msg.data["notification"] ==
+                  GitterFayeNotifications.unreadItemsRemoved) {
+            flitterStore.dispatch(
+              new UnreadMessagesForRoom(
+                roomId: roomId,
+                removeMessage: msg.data["items"]["chat"].length,
+              ),
+            );
+          }
         }
-      }
-    });
+      },
+    );
   }
 }

@@ -29,13 +29,17 @@ class AnimeDetailPageBloc
 
   @override
   Stream<AnimeDetailPageState> mapEventToState(
-      AnimeDetailPageEvent event) async* {
+    AnimeDetailPageEvent event,
+  ) async* {
     if (event is FetchAnimeDetailsEvent) {
       state.animeDetails = await Fetcher.animeFetcher(event.animeId);
       state.animeEpisodesList =
           await Fetcher.animeEpisodesFetcher(event.animeId);
       state.animeRecommendationsList =
-          await Fetcher.animeRecommendationsFetcher(url: 'https://api.jikan.moe/v3/anime/${event.animeId}/recommendations', param: 'recommendations');
+          await Fetcher.animeRecommendationsFetcher(
+        url: 'https://api.jikan.moe/v3/anime/${event.animeId}/recommendations',
+        param: 'recommendations',
+      );
       state.animeImgUrl = await Fetcher.animeImageStringFetcher(event.animeId);
     }
 

@@ -19,47 +19,55 @@ class HistoryPage extends StatefulWidget {
   final HistoryIntent intent;
   final HistoryViewModel model;
 
-  HistoryPage._({
-    Key key,
-    @required this.intent,
-    @required this.model,
-  }) : super(key: key);
+  HistoryPage._({Key key, @required this.intent, @required this.model})
+    : super(key: key);
 
-  factory HistoryPage({Key key,
+  factory HistoryPage({
+    Key key,
     HistoryIntent intent,
     HistoryViewModel model,
-    UserDataService dataService}) {
-
+    UserDataService dataService,
+  }) {
     final _intent = intent ?? HistoryIntent();
-    final _model = model ?? HistoryViewModel(
-      dataService ?? UserDataService.instance,
-      _intent.retry,
-      _intent.loadMore,
-      _intent.checkInTapped,
-    );
+    final _model = model ??
+        HistoryViewModel(
+          dataService ?? UserDataService.instance,
+          _intent.retry,
+          _intent.loadMore,
+          _intent.checkInTapped,
+        );
 
     return HistoryPage._(key: key, intent: _intent, model: _model);
   }
 
   @override
-  _HistoryPageState createState() => _HistoryPageState(intent: intent, model: model);
+  _HistoryPageState createState() => _HistoryPageState(
+    intent: intent,
+    model: model,
+  );
 }
 
-class _HistoryPageState extends ViewState<HistoryPage, HistoryViewModel, HistoryIntent, HistoryState> {
+class _HistoryPageState
+    extends ViewState<
+      HistoryPage,
+      HistoryViewModel,
+      HistoryIntent,
+      HistoryState
+    > {
   static final _listSectionDateFormatter = DateFormat.yMMMMd();
   static final _listRowCheckInDateFormatter = DateFormat().add_Hm();
 
   _HistoryPageState({
     @required HistoryIntent intent,
-    @required HistoryViewModel model
-  }): super(intent, model);
+    @required HistoryViewModel model,
+  }) : super(intent, model);
 
   @override
   Widget build(BuildContext context) {
     return StreamBuilder(
       stream: stream,
       builder: (BuildContext context, AsyncSnapshot<HistoryState> snapshot) {
-        if( !snapshot.hasData ) {
+        if (!snapshot.hasData) {
           return Container();
         }
 
@@ -81,10 +89,7 @@ class _HistoryPageState extends ViewState<HistoryPage, HistoryViewModel, History
   }
 
   Widget _buildErrorWidget({@required String error}) {
-    return ErrorOccurredWidget(
-      error: error,
-      onRetry: intent.retry
-    );
+    return ErrorOccurredWidget(error: error, onRetry: intent.retry);
   }
 
   Widget _buildEmptyWidget() {
@@ -111,10 +116,7 @@ class _HistoryPageState extends ViewState<HistoryPage, HistoryViewModel, History
             padding: const EdgeInsets.symmetric(horizontal: 20.0),
             child: Text(
               Localization.of(context).homeHistoryWelcomeStart,
-              style: const TextStyle(
-                fontFamily: "Google Sans",
-                fontSize: 20.0,
-              ),
+              style: const TextStyle(fontFamily: "Google Sans", fontSize: 20.0),
               textAlign: TextAlign.center,
             ),
           ),
@@ -132,13 +134,13 @@ class _HistoryPageState extends ViewState<HistoryPage, HistoryViewModel, History
       itemBuilder: (BuildContext context, int index) {
         final item = items[index];
 
-        if( item is HistoryListSection ) {
+        if (item is HistoryListSection) {
           return _buildListSectionWidget(item.date, index);
-        } else if( item is HistoryListRow ) {
+        } else if (item is HistoryListRow) {
           return _buildListRow(item.checkIn);
-        } else if( item is HistoryListLoadMore ) {
+        } else if (item is HistoryListLoadMore) {
           return _buildListLoadMore(context);
-        } else if( item is HistoryListLoading ) {
+        } else if (item is HistoryListLoading) {
           return _buildListLoadingMore();
         }
 
@@ -149,13 +151,14 @@ class _HistoryPageState extends ViewState<HistoryPage, HistoryViewModel, History
 
   Widget _buildListSectionWidget(DateTime date, int index) {
     return Container(
-      padding: EdgeInsets.only(top: index == 0 ? 0.0 : 30.0, left: 16.0, right: 16.0),
+      padding: EdgeInsets.only(
+        top: index == 0 ? 0.0 : 30.0,
+        left: 16.0,
+        right: 16.0,
+      ),
       child: Text(
         _listSectionDateFormatter.format(date),
-        style: const TextStyle(
-          fontFamily: "Google Sans",
-          fontSize: 18.0,
-        ),
+        style: const TextStyle(fontFamily: "Google Sans", fontSize: 18.0),
       ),
     );
   }
@@ -164,23 +167,22 @@ class _HistoryPageState extends ViewState<HistoryPage, HistoryViewModel, History
     return BeerTile(
       beer: checkIn.beer,
       title: checkIn.beer.name,
-      subtitle: "${_listRowCheckInDateFormatter.format(checkIn.date)} - ${(checkIn.quantity.value*100).toStringAsPrecision(2)}cl",
+      subtitle: "${_listRowCheckInDateFormatter.format(
+        checkIn.date,
+      )} - ${(checkIn.quantity.value * 100).toStringAsPrecision(2)}cl",
       thirdWidget: Row(
         children: <Widget>[
-          Image.asset(
-            "images/coin.png",
-            width: 13.0,
-          ),
+          Image.asset("images/coin.png", width: 13.0),
           const Padding(padding: EdgeInsets.only(left: 5.0)),
           Text(
             checkIn.points.toString(),
-            style: const TextStyle(
-              fontSize: 14.0,
-            ),
+            style: const TextStyle(fontSize: 14.0),
           ),
         ],
       ),
-      onTap: () { intent.checkInTapped(checkIn); },
+      onTap: () {
+        intent.checkInTapped(checkIn);
+      },
     );
   }
 
@@ -198,8 +200,6 @@ class _HistoryPageState extends ViewState<HistoryPage, HistoryViewModel, History
   }
 
   Widget _buildListLoadingMore() {
-    return const Center(
-      child: CircularProgressIndicator(),
-    );
+    return const Center(child: CircularProgressIndicator());
   }
 }

@@ -11,16 +11,20 @@ class ForecastData {
 
     for (dynamic e in json['list']) {
       WeatherData w = new WeatherData(
-          date: new DateTime.fromMillisecondsSinceEpoch(e['dt'] * 1000, isUtc: false),
-          name: json['city']['name'],
-          temp : globals.globalTempPreferredUnit((double.parse(e['main']['temp'].toString()))),
-          main: e['weather'][0]['main'],
-          icon: e['weather'][0]['icon']);
+        date: new DateTime.fromMillisecondsSinceEpoch(
+          e['dt'] * 1000,
+          isUtc: false,
+        ),
+        name: json['city']['name'],
+        temp: globals.globalTempPreferredUnit(
+          (double.parse(e['main']['temp'].toString())),
+        ),
+        main: e['weather'][0]['main'],
+        icon: e['weather'][0]['icon'],
+      );
       list.add(w);
     }
 
-    return ForecastData(
-      list: list,
-    );
+    return ForecastData(list: list);
   }
 }

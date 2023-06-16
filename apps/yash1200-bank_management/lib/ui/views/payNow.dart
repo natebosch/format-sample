@@ -43,20 +43,12 @@ class _PayNowState extends State<PayNow> {
         elevation: 0,
         backgroundColor: Colors.white,
         leading: IconButton(
-          icon: Icon(
-            Icons.arrow_back_ios,
-            color: darkColor,
-          ),
+          icon: Icon(Icons.arrow_back_ios, color: darkColor),
           onPressed: () {
             Navigator.pop(context);
           },
         ),
-        title: Text(
-          'Pay',
-          style: TextStyle(
-            color: darkColor,
-          ),
-        ),
+        title: Text('Pay', style: TextStyle(color: darkColor)),
       ),
       body: Center(
         child: Form(
@@ -66,13 +58,9 @@ class _PayNowState extends State<PayNow> {
             padding: EdgeInsets.only(left: 10, right: 10),
             child: Column(
               children: <Widget>[
-                SizedBox(
-                  height: size.height / 40,
-                ),
+                SizedBox(height: size.height / 40),
                 CustomImage('assets/payment.png'),
-                SizedBox(
-                  height: size.height / 40,
-                ),
+                SizedBox(height: size.height / 40),
                 Text(
                   'From: ${widget.snapshot.id}',
                   style: TextStyle(
@@ -81,9 +69,7 @@ class _PayNowState extends State<PayNow> {
                     fontSize: 25,
                   ),
                 ),
-                SizedBox(
-                  height: size.height / 40,
-                ),
+                SizedBox(height: size.height / 40),
                 TextFormField(
                   controller: phoneController,
                   validator: (value) {
@@ -101,9 +87,7 @@ class _PayNowState extends State<PayNow> {
                     border: outlineInputBorder,
                   ),
                 ),
-                SizedBox(
-                  height: size.height / 40,
-                ),
+                SizedBox(height: size.height / 40),
                 TextFormField(
                   controller: amountController,
                   validator: (value) {
@@ -122,9 +106,7 @@ class _PayNowState extends State<PayNow> {
                     border: outlineInputBorder,
                   ),
                 ),
-                SizedBox(
-                  height: size.height / 40,
-                ),
+                SizedBox(height: size.height / 40),
                 TextFormField(
                   controller: descriptionController,
                   validator: (value) {
@@ -141,9 +123,7 @@ class _PayNowState extends State<PayNow> {
                     border: outlineInputBorder,
                   ),
                 ),
-                SizedBox(
-                  height: size.height / 40,
-                ),
+                SizedBox(height: size.height / 40),
                 FlatButton(
                   onPressed: () {
                     if (_fkey.currentState.validate()) {

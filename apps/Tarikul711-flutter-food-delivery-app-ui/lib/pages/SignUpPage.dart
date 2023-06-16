@@ -41,13 +41,10 @@ class SignUpPage extends StatelessWidget {
                     width: 230,
                     height: 100,
                     alignment: Alignment.center,
-                    child: Image.asset(
-                      "assets/images/menus/ic_food_express.png",
-                    ),
+                    child:
+                        Image.asset("assets/images/menus/ic_food_express.png"),
                   ),
-                  SizedBox(
-                    height: 15,
-                  ),
+                  SizedBox(height: 15),
                   Row(
                     children: <Widget>[
                       Flexible(
@@ -58,10 +55,8 @@ class SignUpPage extends StatelessWidget {
                             border: OutlineInputBorder(
                               borderRadius:
                                   BorderRadius.all(Radius.circular(10.0)),
-                              borderSide: BorderSide(
-                                width: 0,
-                                style: BorderStyle.none,
-                              ),
+                              borderSide:
+                                  BorderSide(width: 0, style: BorderStyle.none),
                             ),
                             filled: true,
                             fillColor: Color(0xFFF2F3F5),
@@ -74,9 +69,7 @@ class SignUpPage extends StatelessWidget {
                           ),
                         ),
                       ),
-                      SizedBox(
-                        width: 10,
-                      ),
+                      SizedBox(width: 10),
                       Flexible(
                         flex: 1,
                         child: TextField(
@@ -85,10 +78,8 @@ class SignUpPage extends StatelessWidget {
                             border: OutlineInputBorder(
                               borderRadius:
                                   BorderRadius.all(Radius.circular(10.0)),
-                              borderSide: BorderSide(
-                                width: 0,
-                                style: BorderStyle.none,
-                              ),
+                              borderSide:
+                                  BorderSide(width: 0, style: BorderStyle.none),
                             ),
                             filled: true,
                             fillColor: Color(0xFFF2F3F5),
@@ -103,18 +94,14 @@ class SignUpPage extends StatelessWidget {
                       ),
                     ],
                   ),
-                  SizedBox(
-                    height: 15,
-                  ),
+                  SizedBox(height: 15),
                   TextField(
                     showCursor: true,
                     decoration: InputDecoration(
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                        borderSide: BorderSide(
-                          width: 0,
-                          style: BorderStyle.none,
-                        ),
+                        borderSide:
+                            BorderSide(width: 0, style: BorderStyle.none),
                       ),
                       filled: true,
                       prefixIcon: Icon(
@@ -124,24 +111,21 @@ class SignUpPage extends StatelessWidget {
                       ),
                       fillColor: Color(0xFFF2F3F5),
                       hintStyle: TextStyle(
-                          color: Color(0xFF666666),
-                          fontFamily: defaultFontFamily,
-                          fontSize: defaultFontSize),
+                        color: Color(0xFF666666),
+                        fontFamily: defaultFontFamily,
+                        fontSize: defaultFontSize,
+                      ),
                       hintText: "Phone Number",
                     ),
                   ),
-                  SizedBox(
-                    height: 15,
-                  ),
+                  SizedBox(height: 15),
                   TextField(
                     showCursor: true,
                     decoration: InputDecoration(
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                        borderSide: BorderSide(
-                          width: 0,
-                          style: BorderStyle.none,
-                        ),
+                        borderSide:
+                            BorderSide(width: 0, style: BorderStyle.none),
                       ),
                       filled: true,
                       prefixIcon: Icon(
@@ -158,38 +142,33 @@ class SignUpPage extends StatelessWidget {
                       hintText: "Invitation Code",
                     ),
                   ),
-                  SizedBox(
-                    height: 10,
-                  ),
+                  SizedBox(height: 10),
                   Container(
-                      width: double.infinity,
-                      child: Row(
-                        children: <Widget>[
-                          Icon(
-                            Icons.info_outline,
+                    width: double.infinity,
+                    child: Row(
+                      children: <Widget>[
+                        Icon(
+                          Icons.info_outline,
+                          color: Color(0xFF666666),
+                          size: defaultIconSize,
+                        ),
+                        Text(
+                          " Leave empty if you don't have Invitation Code",
+                          style: TextStyle(
                             color: Color(0xFF666666),
-                            size: defaultIconSize,
+                            fontFamily: defaultFontFamily,
+                            fontSize: defaultFontSize,
+                            fontStyle: FontStyle.normal,
                           ),
-                          Text(
-                            " Leave empty if you don't have Invitation Code",
-                            style: TextStyle(
-                              color: Color(0xFF666666),
-                              fontFamily: defaultFontFamily,
-                              fontSize: defaultFontSize,
-                              fontStyle: FontStyle.normal,
-                            ),
-                            textAlign: TextAlign.left,
-                          ),
-                        ],
-                      )),
-                  SizedBox(
-                    height: 15,
+                          textAlign: TextAlign.left,
+                        ),
+                      ],
+                    ),
                   ),
+                  SizedBox(height: 15),
                   SignInButtonWidget(),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  FacebookGoogleLogin()
+                  SizedBox(height: 10),
+                  FacebookGoogleLogin(),
                 ],
               ),
             ),
@@ -231,7 +210,7 @@ class SignUpPage extends StatelessWidget {
                   ],
                 ),
               ),
-            )
+            ),
           ],
         ),
       ),
@@ -247,36 +226,34 @@ class SignInButtonWidget extends StatelessWidget {
       decoration: new BoxDecoration(
         borderRadius: BorderRadius.all(Radius.circular(5.0)),
         boxShadow: <BoxShadow>[
-          BoxShadow(
-            color: Color(0xFFfbab66),
-          ),
-          BoxShadow(
-            color: Color(0xFFf7418c),
-          ),
+          BoxShadow(color: Color(0xFFfbab66)),
+          BoxShadow(color: Color(0xFFf7418c)),
         ],
         gradient: new LinearGradient(
-            colors: [Color(0xFFf7418c), Color(0xFFfbab66)],
-            begin: const FractionalOffset(0.2, 0.2),
-            end: const FractionalOffset(1.0, 1.0),
-            stops: [0.0, 1.0],
-            tileMode: TileMode.clamp),
+          colors: [Color(0xFFf7418c), Color(0xFFfbab66)],
+          begin: const FractionalOffset(0.2, 0.2),
+          end: const FractionalOffset(1.0, 1.0),
+          stops: [0.0, 1.0],
+          tileMode: TileMode.clamp,
+        ),
       ),
       child: MaterialButton(
-          highlightColor: Colors.transparent,
-          splashColor: Color(0xFFf7418c),
-          //shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(5.0))),
-          child: Padding(
-            padding:
-                const EdgeInsets.symmetric(vertical: 10.0, horizontal: 42.0),
-            child: Text(
-              "SIGN UP",
-              style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 25.0,
-                  fontFamily: "WorkSansBold"),
+        highlightColor: Colors.transparent,
+        splashColor: Color(0xFFf7418c),
+        //shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(5.0))),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 42.0),
+          child: Text(
+            "SIGN UP",
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 25.0,
+              fontFamily: "WorkSansBold",
             ),
           ),
-          onPressed: () => {}),
+        ),
+        onPressed: () => {},
+      ),
     );
   }
 }
@@ -285,96 +262,94 @@ class FacebookGoogleLogin extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        child: Column(
-      children: <Widget>[
-        Padding(
-          padding: EdgeInsets.only(top: 10.0),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Container(
-                decoration: BoxDecoration(
-                  gradient: new LinearGradient(
-                      colors: [
-                        Colors.black12,
-                        Colors.black54,
-                      ],
+      child: Column(
+        children: <Widget>[
+          Padding(
+            padding: EdgeInsets.only(top: 10.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Container(
+                  decoration: BoxDecoration(
+                    gradient: new LinearGradient(
+                      colors: [Colors.black12, Colors.black54],
                       begin: const FractionalOffset(0.0, 0.0),
                       end: const FractionalOffset(1.0, 1.0),
                       stops: [0.0, 1.0],
-                      tileMode: TileMode.clamp),
+                      tileMode: TileMode.clamp,
+                    ),
+                  ),
+                  width: 100.0,
+                  height: 1.0,
                 ),
-                width: 100.0,
-                height: 1.0,
-              ),
-              Padding(
-                padding: EdgeInsets.only(left: 15.0, right: 15.0),
-                child: Text(
-                  "Or",
-                  style: TextStyle(
+                Padding(
+                  padding: EdgeInsets.only(left: 15.0, right: 15.0),
+                  child: Text(
+                    "Or",
+                    style: TextStyle(
                       color: Color(0xFF2c2b2b),
                       fontSize: 16.0,
-                      fontFamily: "WorkSansMedium"),
+                      fontFamily: "WorkSansMedium",
+                    ),
+                  ),
                 ),
-              ),
-              Container(
-                decoration: BoxDecoration(
-                  gradient: new LinearGradient(
-                      colors: [
-                        Colors.black54,
-                        Colors.black12,
-                      ],
+                Container(
+                  decoration: BoxDecoration(
+                    gradient: new LinearGradient(
+                      colors: [Colors.black54, Colors.black12],
                       begin: const FractionalOffset(0.0, 0.0),
                       end: const FractionalOffset(1.0, 1.0),
                       stops: [0.0, 1.0],
-                      tileMode: TileMode.clamp),
+                      tileMode: TileMode.clamp,
+                    ),
+                  ),
+                  width: 100.0,
+                  height: 1.0,
                 ),
-                width: 100.0,
-                height: 1.0,
+              ],
+            ),
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Padding(
+                padding: EdgeInsets.only(top: 10.0, right: 40.0),
+                child: GestureDetector(
+                  onTap: () {},
+                  child: Container(
+                    padding: const EdgeInsets.all(15.0),
+                    decoration: new BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: Color(0xFFf7418c),
+                    ),
+                    child: new Icon(
+                      FontAwesomeIcons.facebookF,
+                      color: Color(0xFFFFFFFF),
+                    ),
+                  ),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.only(top: 10.0),
+                child: GestureDetector(
+                  onTap: () => {},
+                  child: Container(
+                    padding: const EdgeInsets.all(15.0),
+                    decoration: new BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: Color(0xFFf7418c),
+                    ),
+                    child: new Icon(
+                      FontAwesomeIcons.google,
+                      color: Color(0xFFFFFFFF),
+                    ),
+                  ),
+                ),
               ),
             ],
           ),
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Padding(
-              padding: EdgeInsets.only(top: 10.0, right: 40.0),
-              child: GestureDetector(
-                onTap: () {},
-                child: Container(
-                  padding: const EdgeInsets.all(15.0),
-                  decoration: new BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: Color(0xFFf7418c),
-                  ),
-                  child: new Icon(
-                    FontAwesomeIcons.facebookF,
-                    color: Color(0xFFFFFFFF),
-                  ),
-                ),
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.only(top: 10.0),
-              child: GestureDetector(
-                onTap: () => {},
-                child: Container(
-                  padding: const EdgeInsets.all(15.0),
-                  decoration: new BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: Color(0xFFf7418c),
-                  ),
-                  child: new Icon(
-                    FontAwesomeIcons.google,
-                    color: Color(0xFFFFFFFF),
-                  ),
-                ),
-              ),
-            ),
-          ],
-        ),
-      ],
-    ));
+        ],
+      ),
+    );
   }
 }

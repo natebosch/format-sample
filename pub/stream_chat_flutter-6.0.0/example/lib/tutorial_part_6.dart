@@ -27,45 +27,32 @@ import 'package:stream_chat_flutter/stream_chat_flutter.dart';
 /// You can perform these more granular style changes using
 /// [StreamChatTheme.copyWith].
 Future<void> main() async {
-  final client = StreamChatClient(
-    's2dxdhpxd94g',
-    logLevel: Level.INFO,
-  );
+  final client = StreamChatClient('s2dxdhpxd94g', logLevel: Level.INFO);
 
   await client.connectUser(
     User(id: 'super-band-9'),
     '''eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoic3VwZXItYmFuZC05In0.0L6lGoeLwkz0aZRUcpZKsvaXtNEDHBcezVTZ0oPq40A''',
   );
 
-  runApp(
-    MyApp(
-      client: client,
-    ),
-  );
+  runApp(MyApp(client: client));
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({
-    super.key,
-    required this.client,
-  });
+  const MyApp({super.key, required this.client});
 
   final StreamChatClient client;
 
   @override
   Widget build(BuildContext context) {
     final themeData = ThemeData(
-      colorScheme: ColorScheme.fromSwatch(
-        accentColor: Colors.green,
-      ),
+      colorScheme: ColorScheme.fromSwatch(accentColor: Colors.green),
     );
     final defaultTheme = StreamChatThemeData.fromTheme(themeData);
     final colorTheme = defaultTheme.colorTheme;
     final customTheme = StreamChatThemeData(
       channelPreviewTheme: StreamChannelPreviewThemeData(
-        avatarTheme: StreamAvatarThemeData(
-          borderRadius: BorderRadius.circular(8),
-        ),
+        avatarTheme:
+            StreamAvatarThemeData(borderRadius: BorderRadius.circular(8)),
       ),
       messageListViewTheme: const StreamMessageListViewThemeData(
         backgroundColor: Colors.grey,
@@ -74,17 +61,13 @@ class MyApp extends StatelessWidget {
           fit: BoxFit.cover,
         ),
       ),
-      ownMessageTheme: const StreamMessageThemeData(
-        urlAttachmentTitleMaxLine: 1,
-      ),
+      ownMessageTheme:
+          const StreamMessageThemeData(urlAttachmentTitleMaxLine: 1),
       otherMessageTheme: StreamMessageThemeData(
         messageBackgroundColor: colorTheme.textHighEmphasis,
-        messageTextStyle: TextStyle(
-          color: colorTheme.barsBg,
-        ),
-        avatarTheme: StreamAvatarThemeData(
-          borderRadius: BorderRadius.circular(8),
-        ),
+        messageTextStyle: TextStyle(color: colorTheme.barsBg),
+        avatarTheme:
+            StreamAvatarThemeData(borderRadius: BorderRadius.circular(8)),
         urlAttachmentTitleMaxLine: 1,
       ),
     ).merge(defaultTheme);
@@ -92,19 +75,17 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       theme: themeData,
       builder: (context, child) => StreamChat(
-        client: client,
-        streamChatThemeData: customTheme,
-        child: child,
-      ),
+            client: client,
+            streamChatThemeData: customTheme,
+            child: child,
+          ),
       home: const ChannelListPage(),
     );
   }
 }
 
 class ChannelListPage extends StatefulWidget {
-  const ChannelListPage({
-    super.key,
-  });
+  const ChannelListPage({super.key});
 
   @override
   State<ChannelListPage> createState() => _ChannelListPageState();
@@ -113,10 +94,7 @@ class ChannelListPage extends StatefulWidget {
 class _ChannelListPageState extends State<ChannelListPage> {
   late final _listController = StreamChannelListController(
     client: StreamChat.of(context).client,
-    filter: Filter.in_(
-      'members',
-      [StreamChat.of(context).currentUser!.id],
-    ),
+    filter: Filter.in_('members', [StreamChat.of(context).currentUser!.id]),
     channelStateSort: const [SortOption('last_message_at')],
     limit: 20,
   );
@@ -133,14 +111,12 @@ class _ChannelListPageState extends State<ChannelListPage> {
       body: StreamChannelListView(
         controller: _listController,
         onChannelTap: (channel) {
-          Navigator.of(context).push(
-            MaterialPageRoute(
-              builder: (context) => StreamChannel(
-                channel: channel,
-                child: const ChannelPage(),
-              ),
-            ),
-          );
+          Navigator.of(context).push(MaterialPageRoute(
+            builder: (context) => StreamChannel(
+                  channel: channel,
+                  child: const ChannelPage(),
+                ),
+          ));
         },
       ),
     );
@@ -148,9 +124,7 @@ class _ChannelListPageState extends State<ChannelListPage> {
 }
 
 class ChannelPage extends StatelessWidget {
-  const ChannelPage({
-    super.key,
-  });
+  const ChannelPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -160,9 +134,8 @@ class ChannelPage extends StatelessWidget {
         children: <Widget>[
           Expanded(
             child: StreamMessageListView(
-              threadBuilder: (_, parentMessage) => ThreadPage(
-                parent: parentMessage,
-              ),
+              threadBuilder:
+                  (_, parentMessage) => ThreadPage(parent: parentMessage),
             ),
           ),
           const StreamMessageInput(),
@@ -173,26 +146,17 @@ class ChannelPage extends StatelessWidget {
 }
 
 class ThreadPage extends StatelessWidget {
-  const ThreadPage({
-    super.key,
-    this.parent,
-  });
+  const ThreadPage({super.key, this.parent});
 
   final Message? parent;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: StreamThreadHeader(
-        parent: parent!,
-      ),
+      appBar: StreamThreadHeader(parent: parent!),
       body: Column(
         children: <Widget>[
-          Expanded(
-            child: StreamMessageListView(
-              parentMessage: parent,
-            ),
-          ),
+          Expanded(child: StreamMessageListView(parentMessage: parent)),
           StreamMessageInput(
             messageInputController: StreamMessageInputController(
               message: Message(parentId: parent!.id),

@@ -32,9 +32,12 @@ class _MeasureSlideBlockState extends State<MeasureSlideBlock> {
   Widget build(BuildContext context) {
     return SlideDownItem(
       title: widget.title,
-      body: Column(children: [
-        for (var measure in widget.measures) MeasuresSlideBlockItem(measure: measure),
-      ]),
+      body: Column(
+        children: [
+          for (var measure in widget.measures)
+            MeasuresSlideBlockItem(measure: measure),
+        ],
+      ),
       onLongPress: () async {
         final choice = await _showOptionsDialog();
 
@@ -76,11 +79,19 @@ class _MeasureSlideBlockState extends State<MeasureSlideBlock> {
   }
 
   void _onTapEditBlock() {
-    Dependencies.di().measuresCoordinator.toCreateMeasures(widget.title, widget.measures.first.unit, widget.measures);
+    Dependencies.di().measuresCoordinator.toCreateMeasures(
+      widget.title,
+      widget.measures.first.unit,
+      widget.measures,
+    );
   }
 
   void _onTapDeleteBlock() async {
-    final choice = await mkChoiceDialog(context: context, title: "", message: "Are you sure?");
+    final choice = await mkChoiceDialog(
+      context: context,
+      title: "",
+      message: "Are you sure?",
+    );
     if (choice == null || choice == false) {
       return;
     }

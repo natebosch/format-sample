@@ -22,7 +22,8 @@ import 'test_case.dart';
 /// in the testdata folder
 Future<void> main() async {
   final packageUri = await Isolate.resolvePackageUri(
-      Uri.parse('package:yaml_edit/yaml_edit.dart'));
+    Uri.parse('package:yaml_edit/yaml_edit.dart'),
+  );
 
   final testdataUri = packageUri!.resolve('../test/testdata/');
   final inputDirectory = Directory.fromUri(testdataUri.resolve('input/'));
@@ -30,7 +31,9 @@ Future<void> main() async {
 
   if (!inputDirectory.existsSync()) {
     throw FileSystemException(
-        'Testing Directory does not exist!', inputDirectory.path);
+      'Testing Directory does not exist!',
+      inputDirectory.path,
+    );
   }
 
   final testCases =

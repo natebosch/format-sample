@@ -13,9 +13,8 @@ import 'package:humanizer/humanizer.dart';
 part 'post_tweet_cubit.freezed.dart';
 
 class PostTweetCubit extends Cubit<PostTweetState> with HarpyLogger {
-  PostTweetCubit({
-    required this.composeBloc,
-  }) : super(const PostTweetState.inProgress());
+  PostTweetCubit({required this.composeBloc})
+    : super(const PostTweetState.inProgress());
 
   final ComposeBloc composeBloc;
 
@@ -59,12 +58,10 @@ class PostTweetCubit extends Cubit<PostTweetState> with HarpyLogger {
 
     try {
       for (var i = 0; i < mediaFiles.length; i++) {
-        emit(
-          PostTweetState.inProgress(
-            message: composeBloc.state.type.asMessage(i, mediaFiles.length > 1),
-            additionalInfo: 'this may take a moment',
-          ),
-        );
+        emit(PostTweetState.inProgress(
+          message: composeBloc.state.type.asMessage(i, mediaFiles.length > 1),
+          additionalInfo: 'this may take a moment',
+        ));
 
         final mediaId = await app<MediaUploadService>().upload(
           mediaFiles[i],
@@ -114,35 +111,31 @@ class PostTweetCubit extends Cubit<PostTweetState> with HarpyLogger {
         )
         .then((tweet) => TweetData.fromTweet(tweet))
         .handleError((dynamic error, stackTrace) {
-      if (error is Response) {
-        final message = responseErrorMessage(error.body);
-        log.info(
-          'handling error while sending status with message $message',
-          error,
-        );
-        additionalInfo = message;
-      } else {
-        silentErrorHandler(error);
-      }
-    });
+          if (error is Response) {
+            final message = responseErrorMessage(error.body);
+            log.info(
+              'handling error while sending status with message $message',
+              error,
+            );
+            additionalInfo = message;
+          } else {
+            silentErrorHandler(error);
+          }
+        });
 
     if (sentStatus != null) {
-      emit(
-        PostTweetState.success(
-          message: 'tweet successfully sent!',
-          tweet: sentStatus,
-        ),
-      );
+      emit(PostTweetState.success(
+        message: 'tweet successfully sent!',
+        tweet: sentStatus,
+      ));
     } else {
-      emit(
-        PostTweetState.error(
-          message: 'error sending tweet',
-          additionalInfo: additionalInfo != null
-              ? 'twitter error message:\n'
-                  '$additionalInfo'
-              : null,
-        ),
-      );
+      emit(PostTweetState.error(
+        message: 'error sending tweet',
+        additionalInfo: additionalInfo != null
+            ? 'twitter error message:\n'
+                '$additionalInfo'
+            : null,
+      ));
     }
   }
 }
@@ -187,7 +180,7 @@ extension PostTweetStateExtension on PostTweetState {
   bool get inProgress => this is _InProgress;
 
   TweetData? get tweet => maybeMap(
-        success: (value) => value.tweet,
-        orElse: () => null,
-      );
+    success: (value) => value.tweet,
+    orElse: () => null,
+  );
 }

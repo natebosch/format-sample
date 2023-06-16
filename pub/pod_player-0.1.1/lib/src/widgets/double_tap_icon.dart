@@ -39,10 +39,7 @@ class _DoubleTapIconState extends State<DoubleTapIcon>
       duration: const Duration(milliseconds: 200),
     );
     opacityCtr = Tween<double>(begin: 0, end: 1).animate(
-      CurvedAnimation(
-        parent: _animationController,
-        curve: Curves.easeInOut,
-      ),
+      CurvedAnimation(parent: _animationController, curve: Curves.easeInOut),
     );
     final podCtr = Get.find<PodGetXVideoController>(tag: widget.tag);
     if (widget.iconOnly && !widget.isForward) {
@@ -81,10 +78,12 @@ class _DoubleTapIconState extends State<DoubleTapIcon>
       onDoubleTap: _onDoubleTap,
       rippleColor: Colors.white,
       wrapper: (parentWidget, curveRadius) {
-        final forwardRadius =
-            !widget.isForward ? Radius.zero : Radius.circular(curveRadius);
-        final backwardRadius =
-            widget.isForward ? Radius.zero : Radius.circular(curveRadius);
+        final forwardRadius = !widget.isForward
+            ? Radius.zero
+            : Radius.circular(curveRadius);
+        final backwardRadius = widget.isForward
+            ? Radius.zero
+            : Radius.circular(curveRadius);
         return ClipRRect(
           borderRadius: BorderRadius.only(
             bottomLeft: forwardRadius,

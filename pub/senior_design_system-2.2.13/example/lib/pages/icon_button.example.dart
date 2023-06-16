@@ -8,15 +8,11 @@ import '../widgets/panel.dart';
 import '../widgets/page_wrapper.dart';
 
 class IconButtonExample extends StatelessWidget {
-  const IconButtonExample({
-    Key? key,
-  }) : super(key: key);
+  const IconButtonExample({Key? key}) : super(key: key);
 
   void _showMessage(BuildContext context) {
     ScaffoldMessenger.of(context).showSnackBar(
-      SeniorSnackBar.success(
-        message: 'You just tap the icon button',
-      ),
+      SeniorSnackBar.success(message: 'You just tap the icon button'),
     );
   }
 
@@ -31,78 +27,72 @@ class IconButtonExample extends StatelessWidget {
             title: 'Default - disabled - outlined',
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: types
-                  .map(
-                    (type) => Padding(
-                      padding: const EdgeInsets.all(
-                        SeniorSpacing.medium,
+              children: types.map(
+                (type) => Padding(
+                  padding: const EdgeInsets.all(SeniorSpacing.medium),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(SeniorSpacing.small),
+                        child: Column(
+                          children: sizes.map(
+                            (size) => Padding(
+                              padding: const EdgeInsets.only(
+                                bottom: SeniorSpacing.xsmall,
+                              ),
+                              child: SeniorIconButton(
+                                icon: FontAwesomeIcons.rocket,
+                                onTap: () => _showMessage(context),
+                                size: size,
+                                type: type,
+                              ),
+                            ),
+                          ).toList(),
+                        ),
                       ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.all(
-                              SeniorSpacing.small,
+                      Padding(
+                        padding: const EdgeInsets.all(SeniorSpacing.small),
+                        child: Column(
+                          children: sizes.map(
+                            (size) => Padding(
+                              padding: const EdgeInsets.only(
+                                bottom: SeniorSpacing.xsmall,
+                              ),
+                              child: SeniorIconButton(
+                                disabled: true,
+                                icon: FontAwesomeIcons.rocket,
+                                onTap: () => _showMessage(context),
+                                size: size,
+                                type: type,
+                              ),
                             ),
-                            child: Column(
-                              children: sizes
-                                  .map((size) => Padding(
-                                        padding: const EdgeInsets.only(bottom: SeniorSpacing.xsmall),
-                                        child: SeniorIconButton(
-                                          icon: FontAwesomeIcons.rocket,
-                                          onTap: () => _showMessage(context),
-                                          size: size,
-                                          type: type,
-                                        ),
-                                      ))
-                                  .toList(),
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(
-                              SeniorSpacing.small,
-                            ),
-                            child: Column(
-                              children: sizes
-                                  .map((size) => Padding(
-                                        padding: const EdgeInsets.only(bottom: SeniorSpacing.xsmall),
-                                        child: SeniorIconButton(
-                                          disabled: true,
-                                          icon: FontAwesomeIcons.rocket,
-                                          onTap: () => _showMessage(context),
-                                          size: size,
-                                          type: type,
-                                        ),
-                                      ))
-                                  .toList(),
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(
-                              SeniorSpacing.small,
-                            ),
-                            child: Column(
-                              children: sizes
-                                  .map(
-                                    (size) => Padding(
-                                      padding: const EdgeInsets.only(bottom: SeniorSpacing.xsmall),
-                                      child: SeniorIconButton(
-                                        icon: FontAwesomeIcons.rocket,
-                                        onTap: () => _showMessage(context),
-                                        outlined: true,
-                                        size: size,
-                                        type: type,
-                                      ),
-                                    ),
-                                  )
-                                  .toList(),
-                            ),
-                          ),
-                        ],
+                          ).toList(),
+                        ),
                       ),
-                    ),
-                  )
-                  .toList(),
+                      Padding(
+                        padding: const EdgeInsets.all(SeniorSpacing.small),
+                        child: Column(
+                          children: sizes.map(
+                            (size) => Padding(
+                              padding: const EdgeInsets.only(
+                                bottom: SeniorSpacing.xsmall,
+                              ),
+                              child: SeniorIconButton(
+                                icon: FontAwesomeIcons.rocket,
+                                onTap: () => _showMessage(context),
+                                outlined: true,
+                                size: size,
+                                type: type,
+                              ),
+                            ),
+                          ).toList(),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ).toList(),
             ),
           ),
         ),

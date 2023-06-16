@@ -15,8 +15,10 @@ main() {
       final scaff = find.byType(Scaffold);
 
       expect(scaff, findsOneWidget);
-      expect(find.descendant(of: scaff, matching: find.byType(LoadingView)),
-          findsOneWidget);
+      expect(
+        find.descendant(of: scaff, matching: find.byType(LoadingView)),
+        findsOneWidget,
+      );
     });
 
     testWidgets("Fetching Rooms", (WidgetTester tester) async {
@@ -26,17 +28,25 @@ main() {
 
       fetchRoomsOfGroup();
 
-      expect(find.descendant(of: scaff, matching: find.byType(LoadingView)),
-          findsOneWidget);
+      expect(
+        find.descendant(of: scaff, matching: find.byType(LoadingView)),
+        findsOneWidget,
+      );
 
       await tester.pump();
 
-      expect(find.descendant(of: scaff, matching: find.byType(LoadingView)),
-          findsNothing);
-      expect(find.descendant(of: scaff, matching: find.byType(ListView)),
-          findsOneWidget);
-      expect(find.descendant(of: scaff, matching: find.byType(RoomTile)),
-          findsNWidgets(4));
+      expect(
+        find.descendant(of: scaff, matching: find.byType(LoadingView)),
+        findsNothing,
+      );
+      expect(
+        find.descendant(of: scaff, matching: find.byType(ListView)),
+        findsOneWidget,
+      );
+      expect(
+        find.descendant(of: scaff, matching: find.byType(RoomTile)),
+        findsNWidgets(4),
+      );
     });
   });
 }

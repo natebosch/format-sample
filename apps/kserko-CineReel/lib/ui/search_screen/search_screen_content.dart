@@ -46,11 +46,12 @@ class SearchContentScreenState extends State<SearchContentScreen>
     }
 
     return StreamBuilder(
-        stream: isMoviesTab() ? searchMoviesBloc.state : searchPeopleBloc.state,
-        builder: (BuildContext context, AsyncSnapshot<SearchState> snapshot) {
-          final state = snapshot.data;
-          return buildStack(state);
-        });
+      stream: isMoviesTab() ? searchMoviesBloc.state : searchPeopleBloc.state,
+      builder: (BuildContext context, AsyncSnapshot<SearchState> snapshot) {
+        final state = snapshot.data;
+        return buildStack(state);
+      },
+    );
   }
 
   bool isMoviesTab() => widget.tabKey == TabKey.kSearchMovies;
@@ -58,37 +59,40 @@ class SearchContentScreenState extends State<SearchContentScreen>
   Stack buildStack(SearchState state) {
     return Stack(
       children: <Widget>[
-        Flex(direction: Axis.vertical, children: <Widget>[
-          Expanded(
-            child: Stack(
-              children: <Widget>[
-                // Fade in an intro screen if no term has been entered
-                SearchIntro(
-                  visible: state is SearchNoTerm,
-                  isSearchingMovies: isMoviesTab(),
-                ),
+        Flex(
+          direction: Axis.vertical,
+          children: <Widget>[
+            Expanded(
+              child: Stack(
+                children: <Widget>[
+                  // Fade in an intro screen if no term has been entered
+                  SearchIntro(
+                    visible: state is SearchNoTerm,
+                    isSearchingMovies: isMoviesTab(),
+                  ),
 
-                // Fade in an Empty Result screen if the search contained
-                // no items
-                EmptyWidget(visible: state is SearchEmpty),
+                  // Fade in an Empty Result screen if the search contained
+                  // no items
+                  EmptyWidget(visible: state is SearchEmpty),
 
-                // Fade in a loading screen when results are being fetched
-                // from Github
-                LoadingWidget(visible: state is SearchLoading),
+                  // Fade in a loading screen when results are being fetched
+                  // from Github
+                  LoadingWidget(visible: state is SearchLoading),
 
-                // Fade in an error if something went wrong when fetching
-                // the results
-                ErrorsWidget(visible: state is SearchError),
+                  // Fade in an error if something went wrong when fetching
+                  // the results
+                  ErrorsWidget(visible: state is SearchError),
 
-                // Fade in the Result if available
-                SearchResultWidget(
-                  movies: state is SearchPopulated ? state.movies : null,
-                  people: state is SearchPopulated ? state.people : null,
-                ),
-              ],
+                  // Fade in the Result if available
+                  SearchResultWidget(
+                    movies: state is SearchPopulated ? state.movies : null,
+                    people: state is SearchPopulated ? state.people : null,
+                  ),
+                ],
+              ),
             ),
-          )
-        ])
+          ],
+        ),
       ],
     );
   }

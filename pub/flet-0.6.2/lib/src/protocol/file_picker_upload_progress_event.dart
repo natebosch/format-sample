@@ -3,12 +3,15 @@ class FilePickerUploadProgressEvent {
   final double? progress;
   final String? error;
 
-  FilePickerUploadProgressEvent(
-      {required this.name, required this.progress, required this.error});
+  FilePickerUploadProgressEvent({
+    required this.name,
+    required this.progress,
+    required this.error,
+  });
 
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'file_name': name,
-        'progress': progress,
-        'error': error
-      };
+    'file_name': name,
+    'progress': progress,
+    'error': error,
+  };
 }

@@ -11,11 +11,12 @@ class MovieDetailsWidget extends StatelessWidget {
   final bool hasFailed;
   final String backgroundSize;
 
-  MovieDetailsWidget(
-      {@required this.movieDetails,
-      @required this.movieDetailsBloc,
-      bool this.hasFailed,
-      this.backgroundSize});
+  MovieDetailsWidget({
+    @required this.movieDetails,
+    @required this.movieDetailsBloc,
+    bool this.hasFailed,
+    this.backgroundSize,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -27,14 +28,15 @@ class MovieDetailsWidget extends StatelessWidget {
    */
   buildContent(BuildContext context) {
     return Container(
-        child: Stack(
-      children: <Widget>[
-        BlurredImage(
-          imagePath: movieDetails.movieBasic.backdropPath,
-          imageSize: backgroundSize,
-        ),
-        MovieDetailsContentWidget(movieDetails, movieDetailsBloc, hasFailed)
-      ],
-    ));
+      child: Stack(
+        children: <Widget>[
+          BlurredImage(
+            imagePath: movieDetails.movieBasic.backdropPath,
+            imageSize: backgroundSize,
+          ),
+          MovieDetailsContentWidget(movieDetails, movieDetailsBloc, hasFailed),
+        ],
+      ),
+    );
   }
 }

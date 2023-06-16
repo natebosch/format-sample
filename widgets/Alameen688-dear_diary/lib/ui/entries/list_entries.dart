@@ -27,19 +27,22 @@ class _ListEntriesState extends State<ListEntries> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: Consumer<EntryViewModel>(builder: (context, model, child) {
-        List<Entry> entries = model.entries;
-        if (model.viewStatus == ViewStatus.Loading) return LoadingView();
-        if (entries.length < 1) return EmptyView();
-        return ListView.builder(
+      child: Consumer<EntryViewModel>(
+        builder: (context, model, child) {
+          List<Entry> entries = model.entries;
+          if (model.viewStatus == ViewStatus.Loading) return LoadingView();
+          if (entries.length < 1) return EmptyView();
+          return ListView.builder(
             itemCount: entries.length,
             itemBuilder: (BuildContext context, int index) {
               final Entry entry = entries[index];
               final String heroTag = 'diary-image-${entry.id}';
 
               return GestureDetector(
-                onTap: () => Navigator.of(context)
-                    .pushNamed(ViewEntry.routeName, arguments: entry),
+                onTap: () => Navigator.of(context).pushNamed(
+                  ViewEntry.routeName,
+                  arguments: entry,
+                ),
                 child: Container(
                   margin: EdgeInsets.only(bottom: 15.0, top: 15.0),
                   child: Row(
@@ -52,21 +55,23 @@ class _ListEntriesState extends State<ListEntries> {
                           children: <Widget>[
                             CachedNetworkImage(
                               imageUrl: entry.imageUrl,
-                              imageBuilder: (context, imageProvider) =>
-                                  EntryImage(
-                                heroTag: heroTag,
-                                imageProvider: imageProvider,
-                              ),
+                              imageBuilder:
+                                  (context, imageProvider) => EntryImage(
+                                    heroTag: heroTag,
+                                    imageProvider: imageProvider,
+                                  ),
                               placeholder: (context, url) => EntryImage(
-                                heroTag: heroTag,
-                                imageProvider:
-                                    AssetImage('images/entry_placeholder_image.jpg'),
-                              ),
+                                    heroTag: heroTag,
+                                    imageProvider: AssetImage(
+                                      'images/entry_placeholder_image.jpg',
+                                    ),
+                                  ),
                               errorWidget: (context, url, error) => EntryImage(
-                                heroTag: heroTag,
-                                imageProvider:
-                                    AssetImage('images/entry_placeholder_image.jpg'),
-                              ),
+                                    heroTag: heroTag,
+                                    imageProvider: AssetImage(
+                                      'images/entry_placeholder_image.jpg',
+                                    ),
+                                  ),
                             ),
                             Positioned(
                               left: 0.0,
@@ -77,14 +82,16 @@ class _ListEntriesState extends State<ListEntries> {
                                 height: 190,
                                 alignment: Alignment.center,
                                 decoration: BoxDecoration(
-                                    color: Colors.white,
-                                    borderRadius: BorderRadius.circular(10.0),
-                                    boxShadow: [
-                                      BoxShadow(
-                                          color: Colors.black12,
-                                          offset: Offset(0.0, 0.0),
-                                          blurRadius: 10.0),
-                                    ]),
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(10.0),
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Colors.black12,
+                                      offset: Offset(0.0, 0.0),
+                                      blurRadius: 10.0,
+                                    ),
+                                  ],
+                                ),
                                 child: Padding(
                                   padding: const EdgeInsets.all(10.0),
                                   child: Column(
@@ -94,9 +101,10 @@ class _ListEntriesState extends State<ListEntries> {
                                         maxLines: 3,
                                         overflow: TextOverflow.ellipsis,
                                         style: TextStyle(
-                                            color: Colors.black54,
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 20.0),
+                                          color: Colors.black54,
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 20.0,
+                                        ),
                                       ),
                                       Expanded(
                                         child: Column(
@@ -125,12 +133,12 @@ class _ListEntriesState extends State<ListEntries> {
                                                   Icons.arrow_forward,
                                                   size: 26.0,
                                                   color: Colors.blueGrey,
-                                                )
+                                                ),
                                               ],
                                             ),
                                           ],
                                         ),
-                                      )
+                                      ),
                                     ],
                                   ),
                                 ),
@@ -143,8 +151,10 @@ class _ListEntriesState extends State<ListEntries> {
                   ),
                 ),
               );
-            });
-      }),
+            },
+          );
+        },
+      ),
     );
   }
 }
@@ -153,11 +163,8 @@ class EntryImage extends StatelessWidget {
   final String heroTag;
   final ImageProvider imageProvider;
 
-  const EntryImage({
-    Key key,
-    this.heroTag,
-    this.imageProvider,
-  }) : super(key: key);
+  const EntryImage({Key key, this.heroTag, this.imageProvider})
+    : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -170,15 +177,16 @@ class EntryImage extends StatelessWidget {
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
           image: DecorationImage(
-              colorFilter:
-                  ColorFilter.mode(Color(0xFF3C4858), BlendMode.lighten),
-              image: imageProvider,
-              fit: BoxFit.cover),
+            colorFilter: ColorFilter.mode(Color(0xFF3C4858), BlendMode.lighten),
+            image: imageProvider,
+            fit: BoxFit.cover,
+          ),
           boxShadow: [
             BoxShadow(
-                color: Color(0xFF3C4858).withOpacity(.4),
-                offset: Offset(5.0, 5.0),
-                blurRadius: 10.0),
+              color: Color(0xFF3C4858).withOpacity(.4),
+              offset: Offset(5.0, 5.0),
+              blurRadius: 10.0,
+            ),
           ],
         ),
       ),
@@ -196,15 +204,12 @@ class EmptyView extends StatelessWidget {
         Container(
           alignment: Alignment.center,
           margin: EdgeInsets.only(bottom: 15.0),
-          child: Text(
-            'No entries yet',
-            style: TextStyle(fontSize: 20.0),
-          ),
+          child: Text('No entries yet', style: TextStyle(fontSize: 20.0)),
         ),
         Container(
           alignment: Alignment.center,
           child: Text('Click the + button to start writing'),
-        )
+        ),
       ],
     );
   }

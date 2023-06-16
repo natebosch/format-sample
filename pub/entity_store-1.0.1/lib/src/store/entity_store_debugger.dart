@@ -16,10 +16,7 @@ abstract class EntityStoreDebugger {
 
 class EntityStorePrintDebugger extends EntityStoreDebugger {
   final bool showEntityDetail;
-  EntityStorePrintDebugger(
-    super.eventStream, {
-    this.showEntityDetail = false,
-  });
+  EntityStorePrintDebugger(super.eventStream, {this.showEntityDetail = false});
 
   @override
   void onEvent(StoreEvent<dynamic, Entity> event) {
@@ -45,9 +42,7 @@ class EntityStorePrintDebugger extends EntityStoreDebugger {
         )}",
       );
     } else if (event is DeleteEvent) {
-      debugPrint(
-        "[DeleteEvent:${event.entityType}] ${event.entityId}",
-      );
+      debugPrint("[DeleteEvent:${event.entityType}] ${event.entityId}");
     }
   }
 
@@ -67,10 +62,7 @@ class EntityStorePrintDebugger extends EntityStoreDebugger {
     }
   }
 
-  String _entityString(
-    Entity? entity, {
-    required bool showEntityDetail,
-  }) {
+  String _entityString(Entity? entity, {required bool showEntityDetail}) {
     if (entity == null) {
       return "";
     }
@@ -86,8 +78,11 @@ class EntityStorePrintDebugger extends EntityStoreDebugger {
     }
   }
 
-  String _mapToString(Map<String, dynamic> map,
-      {int indent = 2, bool isValue = false}) {
+  String _mapToString(
+    Map<String, dynamic> map, {
+    int indent = 2,
+    bool isValue = false,
+  }) {
     String result = '';
     String indentString = ' ' * indent;
     String childIndentString = " " * (indent - 2);
@@ -109,8 +104,11 @@ class EntityStorePrintDebugger extends EntityStoreDebugger {
     return result;
   }
 
-  String _listToString(List<dynamic> list,
-      {int indent = 2, bool isValue = false}) {
+  String _listToString(
+    List<dynamic> list, {
+    int indent = 2,
+    bool isValue = false,
+  }) {
     String result = '';
     String indentString = ' ' * indent;
     String childIndentString = " " * (indent - 2);

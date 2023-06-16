@@ -10,18 +10,19 @@ import 'intl/messages_all.dart';
 
 class S {
   S(this.localeName);
-  
-  static const AppLocalizationDelegate delegate =
-    AppLocalizationDelegate();
+
+  static const AppLocalizationDelegate delegate = AppLocalizationDelegate();
 
   static Future<S> load(Locale locale) {
-    final String name = locale.countryCode.isEmpty ? locale.languageCode : locale.toString();
+    final String name = locale.countryCode.isEmpty
+        ? locale.languageCode
+        : locale.toString();
     final String localeName = Intl.canonicalizedLocale(name);
     return initializeMessages(localeName).then((_) {
       Intl.defaultLocale = localeName;
       return S(localeName);
     });
-  } 
+  }
 
   static S of(BuildContext context) {
     return Localizations.of<S>(context, S);
@@ -614,7 +615,12 @@ class S {
     );
   }
 
-  String thriftyOverviewTextBudgetSet(dynamic symbol, dynamic spendAmount, dynamic budgetAmount, dynamic monthYear) {
+  String thriftyOverviewTextBudgetSet(
+    dynamic symbol,
+    dynamic spendAmount,
+    dynamic budgetAmount,
+    dynamic monthYear,
+  ) {
     return Intl.message(
       'You have spent $symbol $spendAmount of your total budget of $symbol $budgetAmount in the month of $monthYear.',
       name: 'thriftyOverviewTextBudgetSet',
@@ -766,7 +772,10 @@ class AppLocalizationDelegate extends LocalizationsDelegate<S> {
 
   List<Locale> get supportedLocales {
     return const <Locale>[
-      Locale('es', ''), Locale('kn', ''), Locale('en', ''), Locale('fr', ''),
+      Locale('es', ''),
+      Locale('kn', ''),
+      Locale('en', ''),
+      Locale('fr', ''),
     ];
   }
 

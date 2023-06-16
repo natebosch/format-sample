@@ -15,22 +15,12 @@ class AlcoolGasolina extends StatelessWidget {
       key: _scaffoldKey,
       backgroundColor: Theme.of(context).backgroundColor,
       drawer: FlkDrawer(),
-      appBar: FlkAppBar(
-        "Álcool ou Gasolina?",
-        scaffoldKey: _scaffoldKey,
-      ),
+      appBar: FlkAppBar("Álcool ou Gasolina?", scaffoldKey: _scaffoldKey),
       body: ListView(
         children: <Widget>[
-          SizedBox(
-            height: 30,
-          ),
-          Image.asset(
-            "assets/images/aog-white.png",
-            height: 80,
-          ),
-          SizedBox(
-            height: 10,
-          ),
+          SizedBox(height: 30),
+          Image.asset("assets/images/aog-white.png", height: 80),
+          SizedBox(height: 10),
           Text(
             "Qual será que está compensando hoje?",
             style: TextStyle(
@@ -40,9 +30,7 @@ class AlcoolGasolina extends StatelessWidget {
             ),
             textAlign: TextAlign.center,
           ),
-          SizedBox(
-            height: 30,
-          ),
+          SizedBox(height: 30),
           Container(
             margin: EdgeInsets.only(bottom: 30, left: 30, right: 30),
             decoration: BoxDecoration(
@@ -51,9 +39,7 @@ class AlcoolGasolina extends StatelessWidget {
             ),
             child: Column(
               children: [
-                SizedBox(
-                  height: 30,
-                ),
+                SizedBox(height: 30),
                 Text(
                   "Compensa utilizar álcool",
                   style: TextStyle(
@@ -63,29 +49,19 @@ class AlcoolGasolina extends StatelessWidget {
                   ),
                   textAlign: TextAlign.center,
                 ),
-                SizedBox(
-                  height: 30,
-                ),
+                SizedBox(height: 30),
               ],
             ),
           ),
-          FlkInputLabel(
-            "Gasolina",
-            controller: _gasController,
-          ),
-          SizedBox(
-            height: 10,
-          ),
-          FlkInputLabel(
-            "Álcool",
-            controller: _alcoolController,
-          ),
+          FlkInputLabel("Gasolina", controller: _gasController),
+          SizedBox(height: 10),
+          FlkInputLabel("Álcool", controller: _alcoolController),
           FlkLoadingButton(
             texto: "CALCULAR",
             funcao: () {},
             carregando: true,
             inverter: true,
-          )
+          ),
         ],
       ),
     );

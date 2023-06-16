@@ -26,7 +26,9 @@ class LoginScreenState extends State<LoginScreen>
   void initState() {
     super.initState();
     _loginButtonController = new AnimationController(
-        duration: new Duration(milliseconds: 3000), vsync: this);
+      duration: new Duration(milliseconds: 3000),
+      vsync: this,
+    );
   }
 
   @override
@@ -53,8 +55,8 @@ class LoginScreenState extends State<LoginScreen>
                 child: new Text('No'),
               ),
               new FlatButton(
-                onPressed: () =>
-                    Navigator.pushReplacementNamed(context, "/home"),
+                onPressed:
+                    () => Navigator.pushReplacementNamed(context, "/home"),
                 child: new Text('Yes'),
               ),
             ],
@@ -68,74 +70,72 @@ class LoginScreenState extends State<LoginScreen>
     timeDilation = 0.4;
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light);
     return (new WillPopScope(
-        onWillPop: _onWillPop,
-        child: new Scaffold(
-          body: new Container(
-              child: new Container(
-                  color: Colors.white,
-                  child: new ListView(
-                    padding: const EdgeInsets.all(0.0),
-                    children: <Widget>[
-                      new Stack(
-                        alignment: AlignmentDirectional.bottomCenter,
-                        children: <Widget>[
-                          new Column(
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            children: <Widget>[
-                              Container(
-                                width: 250.0,
-                                height: 250.0,
-                                alignment: Alignment.center,
-                                child: Image.asset('assets/images/logoo.png'),
+      onWillPop: _onWillPop,
+      child: new Scaffold(
+        body: new Container(
+          child: new Container(
+            color: Colors.white,
+            child: new ListView(
+              padding: const EdgeInsets.all(0.0),
+              children: <Widget>[
+                new Stack(
+                  alignment: AlignmentDirectional.bottomCenter,
+                  children: <Widget>[
+                    new Column(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: <Widget>[
+                        Container(
+                          width: 250.0,
+                          height: 250.0,
+                          alignment: Alignment.center,
+                          child: Image.asset('assets/images/logoo.png'),
+                        ),
+                        new FormContainer(),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            Padding(
+                              padding: EdgeInsets.symmetric(horizontal: 20),
+                              child: InkWell(
+                                child: subHeadingText('Forgot Password?'),
+                                onTap: () {
+                                  Navigator.push(context, MaterialPageRoute(
+                                    builder: (context) => ResetPasswordPage(),
+                                  ));
+                                },
                               ),
-                              new FormContainer(),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.end,
-                                children: [
-                                  Padding(
-                                      padding:
-                                          EdgeInsets.symmetric(horizontal: 20),
-                                      child: InkWell(
-                                        child:
-                                            subHeadingText('Forgot Password?'),
-                                        onTap: () {
-                                          Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                                builder: (context) =>
-                                                    ResetPasswordPage()),
-                                          );
-                                        },
-                                      ))
-                                ],
-                              ),
-                              new SignUp()
-                            ],
+                            ),
+                          ],
+                        ),
+                        new SignUp(),
+                      ],
+                    ),
+                    animationStatus == 0
+                        ? new Padding(
+                            padding: const EdgeInsets.only(bottom: 50.0),
+                            child: new InkWell(
+                              onTap: () {
+                                setState(() {
+                                  animationStatus = 1;
+                                });
+                                _playAnimation();
+                              },
+                              child: new SignIn(),
+                            ),
+                          )
+                        : new StaggerAnimation(
+                            buttonController: _loginButtonController.view,
                           ),
-                          animationStatus == 0
-                              ? new Padding(
-                                  padding: const EdgeInsets.only(bottom: 50.0),
-                                  child: new InkWell(
-                                      onTap: () {
-                                        setState(() {
-                                          animationStatus = 1;
-                                        });
-                                        _playAnimation();
-                                      },
-                                      child: new SignIn()),
-                                )
-                              : new StaggerAnimation(
-                                  buttonController:
-                                      _loginButtonController.view),
-                        ],
-                      ),
-                      SizedBox(
-                        height: 20,
-                      ),
-                      _facebookUI()
-                    ],
-                  ))),
-        )));
+                  ],
+                ),
+                SizedBox(height: 20),
+                _facebookUI(),
+              ],
+            ),
+          ),
+        ),
+      ),
+    ));
   }
 }
 
@@ -143,29 +143,22 @@ Widget _facebookUI() {
   return Row(
     mainAxisAlignment: MainAxisAlignment.center,
     children: <Widget>[
-      SizedBox(
-        height: 40,
-      ),
+      SizedBox(height: 40),
       InkWell(
-        child: Image.asset(
-          'assets/images/apple.png',
-          height: 38,
-          width: 40,
-        ),
+        child: Image.asset('assets/images/apple.png', height: 38, width: 40),
         onTap: () {},
       ),
       Text(
         ('   Click here to login using Apple ID'),
         style: TextStyle(
-            fontWeight: FontWeight.w400,
-            letterSpacing: 0.2,
-            color: Colors.black,
-            fontSize: 15.0),
+          fontWeight: FontWeight.w400,
+          letterSpacing: 0.2,
+          color: Colors.black,
+          fontSize: 15.0,
+        ),
         textAlign: TextAlign.center,
       ),
-      SizedBox(
-        height: 20,
-      ),
+      SizedBox(height: 20),
     ],
   );
 }
@@ -175,9 +168,7 @@ class SignUp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return (new FlatButton(
-      padding: const EdgeInsets.only(
-        top: 160.0,
-      ),
+      padding: const EdgeInsets.only(top: 160.0),
       onPressed: () {
         Navigator.push(
           context,
@@ -190,10 +181,11 @@ class SignUp extends StatelessWidget {
         overflow: TextOverflow.ellipsis,
         softWrap: true,
         style: TextStyle(
-            fontWeight: FontWeight.w400,
-            letterSpacing: 0.5,
-            color: Colors.black,
-            fontSize: 15.0),
+          fontWeight: FontWeight.w400,
+          letterSpacing: 0.5,
+          color: Colors.black,
+          fontSize: 15.0,
+        ),
       ),
     ));
   }

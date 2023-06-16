@@ -20,8 +20,9 @@ enum TagAction {
 
   /// Delete the tag
   /// Requires: `int:index`,`TagModel:model`
-  delete
+  delete,
 }
+
 enum TagState { loading, completed }
 
 class TagsBloc extends BlocBase<TagState, TagAction, List<TagModel>> {
@@ -38,8 +39,11 @@ class TagsBloc extends BlocBase<TagState, TagAction, List<TagModel>> {
   }
 
   @override
-  void dispatch(TagAction actionState,
-      {Map<String, dynamic> data, VoidOnComplete onComplete}) {
+  void dispatch(
+    TagAction actionState, {
+    Map<String, dynamic> data,
+    VoidOnComplete onComplete,
+  }) {
     switch (actionState) {
       case TagAction.fetch:
         _getTags();
@@ -64,9 +68,10 @@ class TagsBloc extends BlocBase<TagState, TagAction, List<TagModel>> {
     } else {
       if (resp.object.message.contains("2067")) {
         Fluttertoast.showToast(
-            msg: "Tag already exist",
-            backgroundColor: Colors.red,
-            textColor: Colors.white);
+          msg: "Tag already exist",
+          backgroundColor: Colors.red,
+          textColor: Colors.white,
+        );
       }
     }
   }

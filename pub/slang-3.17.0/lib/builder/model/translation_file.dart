@@ -4,10 +4,7 @@ class TranslationFile {
   final String path; // all forward slash and relative to project root
   final FileReader read;
 
-  TranslationFile({
-    required this.path,
-    required this.read,
-  });
+  TranslationFile({required this.path, required this.read});
 }
 
 typedef FileReader = Future<String> Function();

@@ -19,10 +19,8 @@ class CurrencyBinds {
     );
     CardInjector.instance
         .registerLazySingleton<IUseCase<CurrenciesResponse, CurrencyRequest>>(
-      () => GetCurrenciesUseCase(
-        getIt<ICurrencyRepository>(),
-      ),
-    );
+          () => GetCurrenciesUseCase(getIt<ICurrencyRepository>()),
+        );
     CardInjector.instance.registerLazySingleton<CurrencyCubit>(
       () => CurrencyCubit(
         getIt<IUseCase<CurrenciesResponse, CurrencyRequest>>(),

@@ -6,14 +6,13 @@ part of keyclic_sdk_api;
 
 class ReviewRequestLinksSelfIriTemplateMapping {
   /// Returns a new [ReviewRequestLinksSelfIriTemplateMapping] instance.
-  ReviewRequestLinksSelfIriTemplateMapping({
-    this.reviewRequest,
-  });
+  ReviewRequestLinksSelfIriTemplateMapping({this.reviewRequest});
 
   /// Returns a new [ReviewRequestLinksSelfIriTemplateMapping] instance and imports its values from
   /// [json] if it's non-null, null if [json] is null.
   static ReviewRequestLinksSelfIriTemplateMapping? fromJson(
-      Map<String, dynamic>? json) {
+    Map<String, dynamic>? json,
+  ) {
     if (json == null) {
       return null;
     }
@@ -40,54 +39,62 @@ class ReviewRequestLinksSelfIriTemplateMapping {
   int get hashCode => (reviewRequest == null ? 0 : reviewRequest.hashCode);
 
   static List<ReviewRequestLinksSelfIriTemplateMapping> listFromJson(
-      List<dynamic>? json) {
+    List<dynamic>? json,
+  ) {
     if (json == null) {
       return <ReviewRequestLinksSelfIriTemplateMapping>[];
     }
 
-    return json.fold(<ReviewRequestLinksSelfIriTemplateMapping>[],
-        (List<ReviewRequestLinksSelfIriTemplateMapping> previousValue,
-            element) {
-      final ReviewRequestLinksSelfIriTemplateMapping? object =
-          ReviewRequestLinksSelfIriTemplateMapping.fromJson(element);
-      if (object is ReviewRequestLinksSelfIriTemplateMapping) {
-        previousValue.add(object);
-      }
+    return json.fold(
+      <ReviewRequestLinksSelfIriTemplateMapping>[],
+      (List<ReviewRequestLinksSelfIriTemplateMapping> previousValue, element) {
+        final ReviewRequestLinksSelfIriTemplateMapping? object =
+            ReviewRequestLinksSelfIriTemplateMapping.fromJson(element);
+        if (object is ReviewRequestLinksSelfIriTemplateMapping) {
+          previousValue.add(object);
+        }
 
-      return previousValue;
-    });
+        return previousValue;
+      },
+    );
   }
 
   static Map<String, ReviewRequestLinksSelfIriTemplateMapping> mapFromJson(
-      Map<String, dynamic>? json) {
+    Map<String, dynamic>? json,
+  ) {
     if (json == null) {
       return <String, ReviewRequestLinksSelfIriTemplateMapping>{};
     }
 
     return json.entries.fold(
-        <String, ReviewRequestLinksSelfIriTemplateMapping>{},
-        (Map<String, ReviewRequestLinksSelfIriTemplateMapping> previousValue,
-            element) {
-      final ReviewRequestLinksSelfIriTemplateMapping? object =
-          ReviewRequestLinksSelfIriTemplateMapping.fromJson(element.value);
-      if (object is ReviewRequestLinksSelfIriTemplateMapping) {
-        previousValue[element.key] = object;
-      }
+      <String, ReviewRequestLinksSelfIriTemplateMapping>{},
+      (
+        Map<String, ReviewRequestLinksSelfIriTemplateMapping> previousValue,
+        element,
+      ) {
+        final ReviewRequestLinksSelfIriTemplateMapping? object =
+            ReviewRequestLinksSelfIriTemplateMapping.fromJson(element.value);
+        if (object is ReviewRequestLinksSelfIriTemplateMapping) {
+          previousValue[element.key] = object;
+        }
 
-      return previousValue;
-    });
+        return previousValue;
+      },
+    );
   }
 
   // maps a json object with a list of ReviewRequestLinksSelfIriTemplateMapping-objects as value to a dart map
   static Map<String, List<ReviewRequestLinksSelfIriTemplateMapping>>
-      mapListFromJson(Map<String, dynamic>? json) {
+  mapListFromJson(Map<String, dynamic>? json) {
     if (json == null) {
       return <String, List<ReviewRequestLinksSelfIriTemplateMapping>>{};
     }
 
     return json.map((key, value) {
       return MapEntry<String, List<ReviewRequestLinksSelfIriTemplateMapping>>(
-          key, ReviewRequestLinksSelfIriTemplateMapping.listFromJson(value));
+        key,
+        ReviewRequestLinksSelfIriTemplateMapping.listFromJson(value),
+      );
     });
   }
 

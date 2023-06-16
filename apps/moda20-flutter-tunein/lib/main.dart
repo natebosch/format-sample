@@ -11,12 +11,15 @@ import 'package:simple_permissions/simple_permissions.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 import 'services/locator.dart';
 import 'services/languageService.dart';
+
 Nano nano = Nano();
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await SimplePermissions.requestPermission(Permission.ReadExternalStorage);
-  PermissionStatus permission = await SimplePermissions.requestPermission(Permission.WriteExternalStorage);
+  PermissionStatus permission = await SimplePermissions.requestPermission(
+    Permission.WriteExternalStorage,
+  );
   print(permission);
   setupLocator();
   runApp(new MyApp());
@@ -37,13 +40,8 @@ class MyApp extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.max,
           children: <Widget>[
-            Expanded(
-              child: Root(),
-            ),
-            Container(
-              height: 60,
-              color: Colors.blue,
-            )
+            Expanded(child: Root()),
+            Container(height: 60, color: Colors.blue),
           ],
         ),
       ),
@@ -60,24 +58,23 @@ class Wrapper extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SlidingUpPanel(
-      panel: NowPlayingScreen(controller: layoutService.albumPlayerPageController),
+      panel:
+          NowPlayingScreen(controller: layoutService.albumPlayerPageController),
       controller: layoutService.globalPanelController,
       minHeight: 60,
       maxHeight: MediaQuery.of(context).size.height,
       backdropEnabled: true,
       backdropOpacity: 0.5,
       parallaxEnabled: true,
-        onPanelClosed:(){
-          layoutService.albumPlayerPageController.jumpToPage(1);
-        },
-        onPanelSlide: (value){
-          if(value>=0.3){
-            layoutService.onPanelOpen(value);
-          }
-        },
-      collapsed: Material(
-        child: BottomPanel(),
-      ),
+      onPanelClosed: () {
+        layoutService.albumPlayerPageController.jumpToPage(1);
+      },
+      onPanelSlide: (value) {
+        if (value >= 0.3) {
+          layoutService.onPanelOpen(value);
+        }
+      },
+      collapsed: Material(child: BottomPanel()),
       body: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: "Tune In Music Player",

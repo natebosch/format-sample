@@ -62,17 +62,17 @@ class CreditEditItemsVM extends EntityEditItemsVM {
     Function(InvoiceItemEntity, int) onChangedInvoiceItem,
     Function(int, int) onMovedInvoiceItem,
   }) : super(
-          state: state,
-          company: company,
-          invoice: invoice,
-          addLineItem: addLineItem,
-          deleteLineItem: deleteLineItem,
-          invoiceItemIndex: invoiceItemIndex,
-          onRemoveInvoiceItemPressed: onRemoveInvoiceItemPressed,
-          clearSelectedInvoiceItem: onDoneInvoiceItemPressed,
-          onChangedInvoiceItem: onChangedInvoiceItem,
-          onMovedInvoiceItem: onMovedInvoiceItem,
-        );
+         state: state,
+         company: company,
+         invoice: invoice,
+         addLineItem: addLineItem,
+         deleteLineItem: deleteLineItem,
+         invoiceItemIndex: invoiceItemIndex,
+         onRemoveInvoiceItemPressed: onRemoveInvoiceItemPressed,
+         clearSelectedInvoiceItem: onDoneInvoiceItemPressed,
+         onChangedInvoiceItem: onChangedInvoiceItem,
+         onMovedInvoiceItem: onMovedInvoiceItem,
+       );
 
   factory CreditEditItemsVM.fromStore(Store<AppState> store, bool isTasks) {
     return CreditEditItemsVM(
@@ -90,19 +90,21 @@ class CreditEditItemsVM extends EntityEditItemsVM {
         final credit = store.state.creditUIState.editing;
         if (index == credit.lineItems.length) {
           store.dispatch(AddCreditItem(
-              creditItem: creditItem.rebuild((b) => b
+            creditItem: creditItem.rebuild(
+              (b) => b
                 ..typeId = isTasks
                     ? InvoiceItemEntity.TYPE_TASK
-                    : InvoiceItemEntity.TYPE_STANDARD)));
+                    : InvoiceItemEntity.TYPE_STANDARD,
+            ),
+          ));
         } else {
-          store
-              .dispatch(UpdateCreditItem(creditItem: creditItem, index: index));
+          store.dispatch(
+            UpdateCreditItem(creditItem: creditItem, index: index),
+          );
         }
       },
       onMovedInvoiceItem: (oldIndex, newIndex) {
-        store.dispatch(
-          MoveCreditItem(oldIndex: oldIndex, newIndex: newIndex),
-        );
+        store.dispatch(MoveCreditItem(oldIndex: oldIndex, newIndex: newIndex));
       },
     );
   }

@@ -15,37 +15,46 @@ class _$BranchSerializer implements StructuredSerializer<Branch> {
   final String wireName = 'Branch';
 
   @override
-  Iterable<Object?> serialize(Serializers serializers, Branch object,
-      {FullType specifiedType = FullType.unspecified}) {
+  Iterable<Object?> serialize(
+    Serializers serializers,
+    Branch object, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
     final result = <Object?>[];
     Object? value;
     value = object.name;
     if (value != null) {
       result
         ..add('name')
-        ..add(serializers.serialize(value,
-            specifiedType: const FullType(String)));
+        ..add(
+          serializers.serialize(value, specifiedType: const FullType(String)),
+        );
     }
     value = object.tarballUrl;
     if (value != null) {
       result
         ..add('tarball_url')
-        ..add(serializers.serialize(value,
-            specifiedType: const FullType(String)));
+        ..add(
+          serializers.serialize(value, specifiedType: const FullType(String)),
+        );
     }
     value = object.zipballUrl;
     if (value != null) {
       result
         ..add('zipball_url')
-        ..add(serializers.serialize(value,
-            specifiedType: const FullType(String)));
+        ..add(
+          serializers.serialize(value, specifiedType: const FullType(String)),
+        );
     }
     return result;
   }
 
   @override
-  Branch deserialize(Serializers serializers, Iterable<Object?> serialized,
-      {FullType specifiedType = FullType.unspecified}) {
+  Branch deserialize(
+    Serializers serializers,
+    Iterable<Object?> serialized, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
     final result = new BranchBuilder();
 
     final iterator = serialized.iterator;
@@ -55,16 +64,22 @@ class _$BranchSerializer implements StructuredSerializer<Branch> {
       final Object? value = iterator.current;
       switch (key) {
         case 'name':
-          result.name = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+          result.name = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
           break;
         case 'tarball_url':
-          result.tarballUrl = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+          result.tarballUrl = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
           break;
         case 'zipball_url':
-          result.zipballUrl = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+          result.zipballUrl = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
           break;
       }
     }
@@ -104,8 +119,9 @@ class _$Branch extends Branch {
 
   @override
   int get hashCode {
-    return $jf($jc(
-        $jc($jc(0, name.hashCode), tarballUrl.hashCode), zipballUrl.hashCode));
+    return $jf(
+      $jc($jc($jc(0, name.hashCode), tarballUrl.hashCode), zipballUrl.hashCode),
+    );
   }
 
   @override
@@ -161,7 +177,10 @@ class BranchBuilder implements Builder<Branch, BranchBuilder> {
   _$Branch build() {
     final _$result = _$v ??
         new _$Branch._(
-            name: name, tarballUrl: tarballUrl, zipballUrl: zipballUrl);
+          name: name,
+          tarballUrl: tarballUrl,
+          zipballUrl: zipballUrl,
+        );
     replace(_$result);
     return _$result;
   }

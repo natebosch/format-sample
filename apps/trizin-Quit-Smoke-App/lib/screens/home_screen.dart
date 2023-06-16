@@ -37,9 +37,10 @@ class _HomeScreenState extends State<HomeScreen> {
     currency = pref.getString("currency");
 
     cigaraManager = Cigaratte(
-        dailyCigarattes: pref.getInt("dailycigarattes"),
-        pricePerCigaratte: pref.getDouble("pricePerCigaratte"),
-        startDate: DateTime.parse(pref.getString("startTime")));
+      dailyCigarattes: pref.getInt("dailycigarattes"),
+      pricePerCigaratte: pref.getDouble("pricePerCigaratte"),
+      startDate: DateTime.parse(pref.getString("startTime")),
+    );
   }
 
   int lastRndInt = -1;
@@ -77,33 +78,31 @@ class _HomeScreenState extends State<HomeScreen> {
 
   showAlertDialog(BuildContext context) {
     Widget cancelButton = FlatButton(
-      child: Text(
-        "${langs[lang]["home"]["cancel"]}",
-      ),
+      child: Text("${langs[lang]["home"]["cancel"]}"),
       onPressed: () {
         Navigator.of(context).pop();
       },
     );
     Widget helpButton = FlatButton(
-      child: Text(
-        "${langs[lang]["guide"]["ifyouslip"]["title"]}",
-      ),
+      child: Text("${langs[lang]["guide"]["ifyouslip"]["title"]}"),
       onPressed: () {
         Navigator.of(context).pop();
-        Navigator.push(context, MaterialPageRoute(builder: (_) {
-          return GuideViewScreen(id: "ifyouslip", lang: lang);
-        }));
+        Navigator.push(context, MaterialPageRoute(
+          builder: (_) {
+            return GuideViewScreen(id: "ifyouslip", lang: lang);
+          },
+        ));
       },
     );
     Widget helpButton2 = FlatButton(
-      child: Text(
-        "${langs[lang]["guide"]["managecravings"]["title"]}",
-      ),
+      child: Text("${langs[lang]["guide"]["managecravings"]["title"]}"),
       onPressed: () {
         Navigator.of(context).pop();
-        Navigator.push(context, MaterialPageRoute(builder: (_) {
-          return GuideViewScreen(id: "managecravings", lang: lang);
-        }));
+        Navigator.push(context, MaterialPageRoute(
+          builder: (_) {
+            return GuideViewScreen(id: "managecravings", lang: lang);
+          },
+        ));
       },
     );
     Widget continueButton = FlatButton(
@@ -123,12 +122,7 @@ class _HomeScreenState extends State<HomeScreen> {
     AlertDialog alert = AlertDialog(
       title: Text("${langs[lang]["home"]["resetall"]}"),
       content: Text("${langs[lang]["home"]["resetallq"]}"),
-      actions: [
-        continueButton,
-        helpButton,
-        helpButton2,
-        cancelButton,
-      ],
+      actions: [continueButton, helpButton, helpButton2, cancelButton],
     );
 
     // show the dialog
@@ -152,16 +146,12 @@ class _HomeScreenState extends State<HomeScreen> {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          SizedBox(
-            height: getProportionateScreenHeight(20),
-          ),
+          SizedBox(height: getProportionateScreenHeight(20)),
           AspectRatio(
             aspectRatio: 2.2,
             child: Stack(
               children: [
-                ParticlePainterWidget(
-                  widgetSize: MediaQuery.of(context).size,
-                ),
+                ParticlePainterWidget(widgetSize: MediaQuery.of(context).size),
                 CustomPaint(
                   painter: ProgressPainter(
                     completedPercentage: cigaraManager.getdayPercentage,
@@ -175,18 +165,24 @@ class _HomeScreenState extends State<HomeScreen> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          '${cigaraManager.getdayPercentage.toStringAsFixed(1)}%',
+                          '${cigaraManager.getdayPercentage.toStringAsFixed(
+                            1,
+                          )}%',
                           style: TextStyle(
-                              fontSize: getProportionateScreenWidth(52),
-                              fontWeight: FontWeight.bold,
-                              shadows: [
-                                Shadow(
-                                    color: kShadowColor.withOpacity(.2),
-                                    blurRadius: 32)
-                              ]),
+                            fontSize: getProportionateScreenWidth(52),
+                            fontWeight: FontWeight.bold,
+                            shadows: [
+                              Shadow(
+                                color: kShadowColor.withOpacity(.2),
+                                blurRadius: 32,
+                              ),
+                            ],
+                          ),
                         ),
                         Text(
-                          '${langs[lang]["home"]["day"].toUpperCase()} ${cigaraManager.calculatePassedTime().inDays + 1}',
+                          '${langs[lang]["home"][
+                            "day"
+                          ].toUpperCase()} ${cigaraManager.calculatePassedTime().inDays + 1}',
                           style: TextStyle(
                             fontSize: getProportionateScreenWidth(26),
                             fontWeight: FontWeight.bold,
@@ -213,89 +209,97 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
           ),
-          SizedBox(
-            height: getProportionateScreenHeight(15),
-          ),
+          SizedBox(height: getProportionateScreenHeight(15)),
           SingleChildScrollView(
             scrollDirection: Axis.horizontal,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                SizedBox(
-                  width: getProportionateScreenWidth(15),
+                SizedBox(width: getProportionateScreenWidth(15)),
+                buildCategoryCard(
+                  sc,
+                  context,
+                  color: Colors.green,
+                  icon: Icons.account_balance_wallet,
+                  text: "${langs[lang]["home"]["wallet"]}",
+                  id: "wallet",
+                  onTap: () {
+                    Navigator.push(context, MaterialPageRoute(
+                      builder: (_) {
+                        return WalletScreen(cigaratteManager: cigaraManager);
+                      },
+                    ));
+                  },
                 ),
-                buildCategoryCard(sc, context,
-                    color: Colors.green,
-                    icon: Icons.account_balance_wallet,
-                    text: "${langs[lang]["home"]["wallet"]}",
-                    id: "wallet", onTap: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (_) {
-                    return WalletScreen(
-                      cigaratteManager: cigaraManager,
-                    );
-                  }));
-                }),
-                SizedBox(
-                  width: getProportionateScreenWidth(15),
+                SizedBox(width: getProportionateScreenWidth(15)),
+                buildCategoryCard(
+                  sc,
+                  context,
+                  color: Colors.blue,
+                  icon: Icons.timelapse,
+                  text: "${langs[lang]["home"]["progress"]}",
+                  id: "progress",
+                  onTap: () {
+                    Navigator.push(context, MaterialPageRoute(
+                      builder: (_) {
+                        return ProgressPage(cigaratteManager: cigaraManager);
+                      },
+                    ));
+                  },
                 ),
-                buildCategoryCard(sc, context,
-                    color: Colors.blue,
-                    icon: Icons.timelapse,
-                    text: "${langs[lang]["home"]["progress"]}",
-                    id: "progress", onTap: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (_) {
-                    return ProgressPage(
-                      cigaratteManager: cigaraManager,
-                    );
-                  }));
-                }),
-                SizedBox(
-                  width: getProportionateScreenWidth(15),
+                SizedBox(width: getProportionateScreenWidth(15)),
+                buildCategoryCard(
+                  sc,
+                  context,
+                  color: Colors.red,
+                  icon: Icons.book,
+                  text: "${langs[lang]["home"]["guide"]}",
+                  id: "guide",
+                  onTap: () {
+                    Navigator.push(context, MaterialPageRoute(
+                      builder: (_) {
+                        return GuideScreen(cigaratteManager: cigaraManager);
+                      },
+                    ));
+                  },
                 ),
-                buildCategoryCard(sc, context,
-                    color: Colors.red,
-                    icon: Icons.book,
-                    text: "${langs[lang]["home"]["guide"]}",
-                    id: "guide", onTap: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (_) {
-                    return GuideScreen(
-                      cigaratteManager: cigaraManager,
-                    );
-                  }));
-                }),
-                SizedBox(
-                  width: getProportionateScreenWidth(15),
+                SizedBox(width: getProportionateScreenWidth(15)),
+                buildCategoryCard(
+                  sc,
+                  context,
+                  color: Colors.deepPurple,
+                  icon: Icons.bolt,
+                  text: "${langs[lang]["home"]["reason"]}",
+                  id: "reasons",
+                  onTap: () {
+                    Navigator.push(context, MaterialPageRoute(
+                      builder: (_) {
+                        return ReasonScreen();
+                      },
+                    ));
+                  },
                 ),
-                buildCategoryCard(sc, context,
-                    color: Colors.deepPurple,
-                    icon: Icons.bolt,
-                    text: "${langs[lang]["home"]["reason"]}",
-                    id: "reasons", onTap: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (_) {
-                    return ReasonScreen();
-                  }));
-                }),
-                SizedBox(
-                  width: getProportionateScreenWidth(15),
+                SizedBox(width: getProportionateScreenWidth(15)),
+                buildCategoryCard(
+                  sc,
+                  context,
+                  color: Colors.grey,
+                  icon: Icons.settings,
+                  text: "${langs[lang]["home"]["settings"]}",
+                  id: "settings",
+                  onTap: () {
+                    Navigator.push(context, MaterialPageRoute(
+                      builder: (_) {
+                        return SettingsScreen();
+                      },
+                    )).then((value) => loadData());
+                  },
                 ),
-                buildCategoryCard(sc, context,
-                    color: Colors.grey,
-                    icon: Icons.settings,
-                    text: "${langs[lang]["home"]["settings"]}",
-                    id: "settings", onTap: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (_) {
-                    return SettingsScreen();
-                  })).then((value) => loadData());
-                }),
-                SizedBox(
-                  width: getProportionateScreenWidth(15),
-                ),
+                SizedBox(width: getProportionateScreenWidth(15)),
               ],
             ),
           ),
-          SizedBox(
-            height: getProportionateScreenHeight(5),
-          ),
+          SizedBox(height: getProportionateScreenHeight(5)),
           IconButton(
             icon: Icon(
               Icons.settings_backup_restore,
@@ -305,17 +309,21 @@ class _HomeScreenState extends State<HomeScreen> {
             onPressed: () => showAlertDialog(context),
           ),
           Text(
-            "${_converToText(cigaraManager.calculatePassedTime(), cigaraManager.upcomingEvent["time"])}",
+            "${_converToText(
+              cigaraManager.calculatePassedTime(),
+              cigaraManager.upcomingEvent["time"],
+            )}",
             textAlign: TextAlign.center,
-            style: Theme.of(context)
-                .textTheme
-                .bodyText2
-                .copyWith(fontSize: getProportionateScreenWidth(18)),
+            style: Theme.of(context).textTheme.bodyText2.copyWith(
+              fontSize: getProportionateScreenWidth(18),
+            ),
           ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 8.0),
             child: AutoSizeText(
-              "${langs[lang]["progressDescription"][cigaraManager.upcomingEvent["id"]]}",
+              "${langs[lang]["progressDescription"][
+                cigaraManager.upcomingEvent["id"]
+              ]}",
               textAlign: TextAlign.center,
               style: Theme.of(context).textTheme.bodyText1,
               maxLines: 2,
@@ -326,31 +334,50 @@ class _HomeScreenState extends State<HomeScreen> {
             child: Row(
               children: [
                 buildInfoCard(
-                    context,
-                    "${cigaraManager.calculatePassedTime().inDays} ${langs[lang]["home"]["day"].toLowerCase()}, ${cigaraManager.calculatePassedTime().inHours % 24} ${langs[lang]["home"]["hour"].toLowerCase()}, ${cigaraManager.calculatePassedTime().inMinutes % 60} ${langs[lang]["home"]["minute"].toLowerCase()}, ${cigaraManager.calculatePassedTime().inSeconds % 60} ${langs[lang]["home"]["second"].toLowerCase()}",
-                    "${langs[lang]["home"]["timePassed"]}",
-                    Icons.timer,
-                    Colors.teal),
+                  context,
+                  "${cigaraManager.calculatePassedTime().inDays} ${langs[lang][
+                    "home"
+                  ][
+                    "day"
+                  ].toLowerCase()}, ${cigaraManager.calculatePassedTime().inHours % 24} ${langs[
+                    lang
+                  ]["home"][
+                    "hour"
+                  ].toLowerCase()}, ${cigaraManager.calculatePassedTime().inMinutes % 60} ${langs[
+                    lang
+                  ]["home"][
+                    "minute"
+                  ].toLowerCase()}, ${cigaraManager.calculatePassedTime().inSeconds % 60} ${langs[
+                    lang
+                  ]["home"]["second"].toLowerCase()}",
+                  "${langs[lang]["home"]["timePassed"]}",
+                  Icons.timer,
+                  Colors.teal,
+                ),
                 buildInfoCard(
-                    context,
-                    "${NumberFormat.currency(symbol: currency).format(cigaraManager.getSavedMoney)}",
-                    "${langs[lang]["home"]["moneyEarned"]}",
-                    Icons.account_balance_wallet,
-                    Colors.green),
+                  context,
+                  "${NumberFormat.currency(symbol: currency).format(
+                    cigaraManager.getSavedMoney,
+                  )}",
+                  "${langs[lang]["home"]["moneyEarned"]}",
+                  Icons.account_balance_wallet,
+                  Colors.green,
+                ),
                 buildInfoCard(
-                    context,
-                    "${NumberFormat("#,###").format(cigaraManager.getsavedCigarattes.round())}",
-                    "${langs[lang]["home"]["cigarratesnotsmoked"]}",
-                    Icons.smoke_free,
-                    Colors.red)
+                  context,
+                  "${NumberFormat("#,###").format(
+                    cigaraManager.getsavedCigarattes.round(),
+                  )}",
+                  "${langs[lang]["home"]["cigarratesnotsmoked"]}",
+                  Icons.smoke_free,
+                  Colors.red,
+                ),
               ],
             ),
           ),
           Expanded(child: SizedBox.shrink()),
           buildBottom(),
-          SizedBox(
-            height: getProportionateScreenHeight(25),
-          )
+          SizedBox(height: getProportionateScreenHeight(25)),
         ],
       ),
     );
@@ -368,35 +395,45 @@ class _HomeScreenState extends State<HomeScreen> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               SizedBox(
-                width: getProportionateScreenWidth(days > 100
-                    ? 3
-                    : days > 10
-                        ? 6
-                        : 10),
+                width: getProportionateScreenWidth(
+                  days > 100
+                      ? 3
+                      : days > 10
+                          ? 6
+                          : 10,
+                ),
               ),
               buildDayItem(
-                  count: i % 365,
-                  checked: cigaraManager.calculatePassedTime().inDays + 1 > i,
-                  current: cigaraManager.calculatePassedTime().inDays + 1 == i),
+                count: i % 365,
+                checked: cigaraManager.calculatePassedTime().inDays + 1 > i,
+                current: cigaraManager.calculatePassedTime().inDays + 1 == i,
+              ),
               SizedBox(
-                width: getProportionateScreenWidth(days > 100
-                    ? 3
-                    : days > 10
-                        ? 6
-                        : 10),
+                width: getProportionateScreenWidth(
+                  days > 100
+                      ? 3
+                      : days > 10
+                          ? 6
+                          : 10,
+                ),
               ),
             ],
-          )
+          ),
       ],
     );
   }
 
   String _converToText(Duration passed, Duration requiredTime) {
     if (requiredTime.inDays > passed.inDays) {
-      return "${langs[lang]["home"]["daysafter"].replaceAll("X", (requiredTime.inDays - passed.inDays).toString())}";
+      return "${langs[lang]["home"]["daysafter"].replaceAll(
+        "X",
+        (requiredTime.inDays - passed.inDays).toString(),
+      )}";
     } else if (requiredTime.inSeconds > passed.inSeconds) {
       Duration diff = requiredTime - passed;
-      return "${diff.inHours}:${diff.inMinutes % 60}:${diff.inSeconds % 60} ${langs[lang]["home"]["minafter"]}";
+      return "${diff.inHours}:${diff.inMinutes % 60}:${diff.inSeconds % 60} ${langs[
+        lang
+      ]["home"]["minafter"]}";
     }
     return "";
   }
@@ -407,48 +444,47 @@ class _HomeScreenState extends State<HomeScreen> {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         checked
-            ? Icon(
-                Icons.check,
-                color: Colors.green,
-              )
+            ? Icon(Icons.check, color: Colors.green)
             : current
-                ? Icon(
-                    Icons.adjust,
-                    color: Colors.green,
-                  )
-                : Icon(
-                    Icons.adjust,
-                    color: Theme.of(context).backgroundColor,
-                  ),
-        SizedBox(
-          height: 4,
-        ),
+                ? Icon(Icons.adjust, color: Colors.green)
+                : Icon(Icons.adjust, color: Theme.of(context).backgroundColor),
+        SizedBox(height: 4),
         Container(
           padding: EdgeInsets.all(getProportionateScreenWidth(12)),
           decoration: BoxDecoration(
-              borderRadius:
-                  BorderRadius.circular(getProportionateScreenWidth(24)),
-              color: checked ? Colors.lightGreen : Colors.grey[100],
-              boxShadow: [
-                BoxShadow(
-                    color: kShadowColor.withOpacity(.32),
-                    blurRadius: 12,
-                    offset: Offset(5, 5)),
-                BoxShadow(
-                    color: Colors.white, blurRadius: 12, offset: Offset(-5, -5))
-              ]),
+            borderRadius:
+                BorderRadius.circular(getProportionateScreenWidth(24)),
+            color: checked ? Colors.lightGreen : Colors.grey[100],
+            boxShadow: [
+              BoxShadow(
+                color: kShadowColor.withOpacity(.32),
+                blurRadius: 12,
+                offset: Offset(5, 5),
+              ),
+              BoxShadow(
+                color: Colors.white,
+                blurRadius: 12,
+                offset: Offset(-5, -5),
+              ),
+            ],
+          ),
           child: AutoSizeText(
             "$count",
             style: TextStyle(color: checked ? Colors.white : Colors.grey),
             maxLines: 1,
           ),
-        )
+        ),
       ],
     );
   }
 
-  Padding buildInfoCard(BuildContext context, String title, String text,
-      IconData icon, Color color) {
+  Padding buildInfoCard(
+    BuildContext context,
+    String title,
+    String text,
+    IconData icon,
+    Color color,
+  ) {
     return Padding(
       padding: EdgeInsets.all(getProportionateScreenWidth(20)),
       child: SizedBox(
@@ -457,17 +493,17 @@ class _HomeScreenState extends State<HomeScreen> {
           height: getProportionateScreenHeight(150),
           padding: EdgeInsets.all(getProportionateScreenWidth(20)),
           decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10),
-              border: Border.all(
-                color: Theme.of(context).primaryIconTheme.color,
+            borderRadius: BorderRadius.circular(10),
+            border: Border.all(color: Theme.of(context).primaryIconTheme.color),
+            color: Theme.of(context).backgroundColor,
+            boxShadow: [
+              BoxShadow(
+                color: kShadowColor.withOpacity(.32),
+                offset: Offset(6, 6),
+                blurRadius: 12,
               ),
-              color: Theme.of(context).backgroundColor,
-              boxShadow: [
-                BoxShadow(
-                    color: kShadowColor.withOpacity(.32),
-                    offset: Offset(6, 6),
-                    blurRadius: 12)
-              ]),
+            ],
+          ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.center,
@@ -480,23 +516,22 @@ class _HomeScreenState extends State<HomeScreen> {
                     child: AutoSizeText(
                       title,
                       style: Theme.of(context).textTheme.bodyText2.copyWith(
-                          fontSize: getProportionateScreenWidth(16),
-                          color: color),
+                        fontSize: getProportionateScreenWidth(16),
+                        color: color,
+                      ),
                       maxLines: 2,
                     ),
                   ),
-                  Icon(
-                    icon,
-                    size: getProportionateScreenWidth(28),
-                  ),
+                  Icon(icon, size: getProportionateScreenWidth(28)),
                 ],
               ),
               SizedBox(height: 5),
               AutoSizeText(
                 text,
                 style: Theme.of(context).textTheme.bodyText2.copyWith(
-                    fontWeight: FontWeight.bold,
-                    fontSize: getProportionateScreenWidth(14)),
+                  fontWeight: FontWeight.bold,
+                  fontSize: getProportionateScreenWidth(14),
+                ),
                 maxLines: 2,
               ),
             ],
@@ -506,30 +541,38 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  InkWell buildCategoryCard(Size sc, BuildContext context,
-      {Color color, IconData icon, String text, String id, Function onTap}) {
+  InkWell buildCategoryCard(
+    Size sc,
+    BuildContext context, {
+    Color color,
+    IconData icon,
+    String text,
+    String id,
+    Function onTap,
+  }) {
     return InkWell(
       onTap: onTap,
       child: Ink(
         padding: EdgeInsets.symmetric(
-            horizontal: 10, vertical: getProportionateScreenHeight(15)),
+          horizontal: 10,
+          vertical: getProportionateScreenHeight(15),
+        ),
         decoration: BoxDecoration(
-            border: Border.all(
-              color: Theme.of(context).primaryIconTheme.color,
+          border: Border.all(color: Theme.of(context).primaryIconTheme.color),
+          borderRadius: BorderRadius.circular(12),
+          color: Theme.of(context).backgroundColor,
+          boxShadow: [
+            BoxShadow(
+              color: Colors.white,
+              blurRadius: 15,
+              offset: Offset(-4, -4),
+              spreadRadius: 1.0,
             ),
-            borderRadius: BorderRadius.circular(12),
-            color: Theme.of(context).backgroundColor,
-            boxShadow: [
-              BoxShadow(
-                  color: Colors.white,
-                  blurRadius: 15,
-                  offset: Offset(-4, -4),
-                  spreadRadius: 1.0),
-            ]),
+          ],
+        ),
         child: ConstrainedBox(
-          constraints: BoxConstraints(
-            minWidth: getProportionateScreenWidth(120),
-          ),
+          constraints:
+              BoxConstraints(minWidth: getProportionateScreenWidth(120)),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -541,15 +584,14 @@ class _HomeScreenState extends State<HomeScreen> {
                   size: getProportionateScreenWidth(26),
                 ),
               ),
-              SizedBox(
-                width: 3,
-              ),
+              SizedBox(width: 3),
               AutoSizeText(
                 text,
                 style: Theme.of(context).textTheme.headline4.copyWith(
-                    color: color,
-                    fontSize: getProportionateScreenWidth(20),
-                    fontWeight: FontWeight.w600),
+                  color: color,
+                  fontSize: getProportionateScreenWidth(20),
+                  fontWeight: FontWeight.w600,
+                ),
               ),
             ],
           ),
@@ -559,8 +601,6 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   AppBar buildAppBar(BuildContext context) {
-    return AppBar(
-      actions: [],
-    );
+    return AppBar(actions: []);
   }
 }

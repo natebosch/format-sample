@@ -40,9 +40,9 @@ abstract class LinkModel extends Model {
         .collection(LINKS_COLLECTION)
         .getDocuments()
         .catchError((error) {
-      print('$_tag error on getting documents');
-      _hasError = true;
-    });
+          print('$_tag error on getting documents');
+          _hasError = true;
+        });
     if (_hasError) return StatusCode.failed;
     List<DocumentSnapshot> documents = snapshot.documents;
     Map<String, Link> tempList = Map();
@@ -116,9 +116,9 @@ abstract class LinkModel extends Model {
     bool _hasError = false;
     Response response =
         await http.get(url, headers: {'title': 'title'}).catchError((error) {
-      print('$_tag error on downloading page');
-      _hasError = true;
-    });
+          print('$_tag error on downloading page');
+          _hasError = true;
+        });
     if (_hasError) return StatusCode.failed;
 
     final titleTag = '<meta property="og:title" content="';
@@ -151,7 +151,12 @@ abstract class LinkModel extends Model {
   }
 
   Future<StatusCode> _addLink(
-      String url, title, imageUrl, description, User user) async {
+    String url,
+    title,
+    imageUrl,
+    description,
+    User user,
+  ) async {
     print('$_tag at _addLink');
     bool _hasError = false;
     final linkMap = {
@@ -161,15 +166,15 @@ abstract class LinkModel extends Model {
       IMAGE_URL_FIELD: imageUrl,
       DESCRIPTION_FIELD: description,
       TYPE_FIELD: _getType(url),
-      CREATED_AT_FIELD: DateTime.now().millisecondsSinceEpoch
+      CREATED_AT_FIELD: DateTime.now().millisecondsSinceEpoch,
     };
     DocumentReference documentRef = await _database
         .collection(LINKS_COLLECTION)
         .add(linkMap)
         .catchError((error) {
-      print('$_tag there was an error: $error');
-      _hasError = true;
-    });
+          print('$_tag there was an error: $error');
+          _hasError = true;
+        });
 
     if (_hasError) return StatusCode.failed;
     _createLinkRefForUser(documentRef, user);
@@ -178,13 +183,15 @@ abstract class LinkModel extends Model {
   }
 
   Future<StatusCode> _createLinkRefForUser(
-      DocumentReference documentRef, User user) async {
+    DocumentReference documentRef,
+    User user,
+  ) async {
     print('$_tag at _createUserRef');
     bool _hasError = false;
     Map<String, dynamic> userRefMap = {
       CREATED_BY_FIELD: user.id,
       CREATED_AT_FIELD: DateTime.now().millisecondsSinceEpoch,
-      LINK_ID_FIELD: documentRef.documentID
+      LINK_ID_FIELD: documentRef.documentID,
     };
     await _database
         .collection(USERS_COLLECTION)
@@ -192,9 +199,9 @@ abstract class LinkModel extends Model {
         .collection(LINKS_COLLECTION)
         .add(userRefMap)
         .catchError((error) {
-      print('$_tag error on creating a link ref doc for user: $error');
-      _hasError = true;
-    });
+          print('$_tag error on creating a link ref doc for user: $error');
+          _hasError = true;
+        });
     if (_hasError) return StatusCode.failed;
     return StatusCode.success;
   }
@@ -207,9 +214,9 @@ abstract class LinkModel extends Model {
         .document(link.id)
         .delete()
         .catchError((error) {
-      print('$_tag error on deleting link document');
-      _hasError = true;
-    });
+          print('$_tag error on deleting link document');
+          _hasError = true;
+        });
 
     if (_hasError) {
       _deletingLinkStatus = StatusCode.failed;
@@ -270,15 +277,17 @@ abstract class LinkModel extends Model {
     Map<String, int> reportMap = {REPORTS_FIELD: 1};
 
     await _database.runTransaction((transaction) async {
-      DocumentSnapshot freshSnap = await transaction
-          .get(_database.collection(LINKS_COLLECTION).document(link.id));
+      DocumentSnapshot freshSnap = await transaction.get(
+        _database.collection(LINKS_COLLECTION).document(link.id),
+      );
       if (freshSnap[REPORTS_FIELD] == null)
         await freshSnap.reference.updateData(reportMap).catchError((error) {
           print('$_tag error on creating first report: $error');
           _hasError = true;
         });
-      await transaction.update(freshSnap.reference,
-          {REPORTS_FIELD: freshSnap[REPORTS_FIELD] + 1}).catchError((error) {
+      await transaction.update(freshSnap.reference, {
+        REPORTS_FIELD: freshSnap[REPORTS_FIELD] + 1,
+      }).catchError((error) {
         print('$_tag error on performing transaction for reports: $error');
         _hasError = true;
       });
@@ -294,9 +303,9 @@ abstract class LinkModel extends Model {
         .document(id)
         .get()
         .catchError((error) {
-      print('$_tag error on getting linkg document from id');
-      _hasError = true;
-    });
+          print('$_tag error on getting linkg document from id');
+          _hasError = true;
+        });
     if (_hasError || !document.exists) return null;
     return Link.fromSnapshot(document);
   }

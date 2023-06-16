@@ -33,11 +33,10 @@ class MyApp extends StatelessWidget {
         return widget;
       },
       theme: ThemeData(
-          primarySwatch: Colors.deepPurple,
-          visualDensity: VisualDensity.adaptivePlatformDensity),
-      home: MyHomePage(
-        title: 'quotes.',
+        primarySwatch: Colors.deepPurple,
+        visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
+      home: MyHomePage(title: 'quotes.'),
     );
   }
 }
@@ -79,11 +78,9 @@ class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver {
   }
 
   void random() {
-    setState(
-      () {
-        _index = Random(_index).nextInt(4000);
-      },
-    );
+    setState(() {
+      _index = Random(_index).nextInt(4000);
+    });
   }
 
   @override
@@ -103,12 +100,13 @@ class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver {
                   child: Row(
                     children: <Widget>[
                       new Container(
-                        child: Text("quote.",
-                            style: Theme.of(context)
-                                .textTheme
-                                .headline3
-                                .copyWith(
-                                    color: Colors.white, fontFamily: "appbar")),
+                        child: Text(
+                          "quote.",
+                          style: Theme.of(context).textTheme.headline3.copyWith(
+                            color: Colors.white,
+                            fontFamily: "appbar",
+                          ),
+                        ),
                       ),
                     ],
                   ),
@@ -117,8 +115,9 @@ class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver {
                   width: 355,
                   height: 475,
                   child: new FutureBuilder(
-                    future: DefaultAssetBundle.of(context)
-                        .loadString('json/quotes.json'),
+                    future: DefaultAssetBundle.of(context).loadString(
+                      'json/quotes.json',
+                    ),
                     builder: (context, snapshot) {
                       quote = json.decode(snapshot.data.toString());
                       return new PageView.builder(
@@ -145,13 +144,16 @@ class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver {
                                                   .copyWith(
                                                     fontWeight: FontWeight.bold,
                                                     letterSpacing: 2,
-                                                      color: Colors.white,
-                                                      fontFamily: "fontaa"),
+                                                    color: Colors.white,
+                                                    fontFamily: "fontaa",
+                                                  ),
                                             ),
                                           ),
                                           Padding(
                                             padding: const EdgeInsets.only(
-                                                left: 195.0, top: 25),
+                                              left: 195.0,
+                                              top: 25,
+                                            ),
                                             child: Text(
                                               "- " + quote[_index]['Author'],
                                               style: Theme.of(context)
@@ -159,16 +161,17 @@ class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver {
                                                   .subtitle1
                                                   .copyWith(
                                                     fontWeight: FontWeight.bold,
-                                                      color: Colors.white,
-                                                      fontFamily: "fontaa")
+                                                    color: Colors.white,
+                                                    fontFamily: "fontaa",
+                                                  ),
                                             ),
-                                          )
+                                          ),
                                         ],
                                       ),
                                     ),
                                   ),
                                 ),
-                              )
+                              ),
                             ],
                           );
                         },
@@ -185,11 +188,14 @@ class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver {
                       height: 50,
                       child: new RaisedButton(
                         shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(30)),
+                          borderRadius: BorderRadius.circular(30),
+                        ),
                         elevation: 10,
                         color: Colors.yellow.shade700,
-                        child: new Icon(Icons.panorama_fish_eye,
-                            color: Colors.black),
+                        child: new Icon(
+                          Icons.panorama_fish_eye,
+                          color: Colors.black,
+                        ),
                         onPressed: () {
                           random();
                         },
@@ -200,23 +206,24 @@ class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver {
                       height: 50,
                       child: RaisedButton(
                         shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(30)),
+                          borderRadius: BorderRadius.circular(30),
+                        ),
                         elevation: 10,
                         color: Colors.pink.shade200,
-                        child: Icon(
-                          Icons.share,
-                          color: Colors.black,
-                        ),
+                        child: Icon(Icons.share, color: Colors.black),
                         onPressed: () {
                           Share.share(
-                              "${this.quote[_index]['Quote']}\n\n - ${this.quote[_index]['Author']}");
+                            "${this.quote[_index]['Quote']}\n\n - ${this.quote[
+                              _index
+                            ]['Author']}",
+                          );
                         },
                       ),
                     ),
                   ],
                 ),
               ],
-            )
+            ),
           ],
         ),
       ),
@@ -225,10 +232,5 @@ class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver {
 }
 
 Widget getErrorWidget(BuildContext context, FlutterErrorDetails error) {
-  return Center(
-    child: SpinKitPulse(
-      color: Colors.white,
-      size: 110.0,
-    ),
-  );
+  return Center(child: SpinKitPulse(color: Colors.white, size: 110.0));
 }

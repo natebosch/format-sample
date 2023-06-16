@@ -17,14 +17,8 @@ class CustomToast extends StatelessWidget {
       ),
       child: Wrap(
         children: [
-          if (isSuccessMsg)
-            Icon(
-              Icons.check,
-              color: Colors.white,
-            ),
-          SizedBox(
-            width: 12.0,
-          ),
+          if (isSuccessMsg) Icon(Icons.check, color: Colors.white),
+          SizedBox(width: 12.0),
           Text(
             message,
             softWrap: true,

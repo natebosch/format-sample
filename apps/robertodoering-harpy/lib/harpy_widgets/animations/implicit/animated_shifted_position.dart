@@ -40,9 +40,6 @@ class _AnimatedRelativePositionState
   Widget build(BuildContext context) {
     final offset = _offsetTween!.evaluate(animation);
 
-    return ShiftedPosition(
-      shift: offset,
-      child: widget.child,
-    );
+    return ShiftedPosition(shift: offset, child: widget.child);
   }
 }

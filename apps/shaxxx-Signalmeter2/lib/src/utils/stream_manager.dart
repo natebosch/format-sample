@@ -104,10 +104,7 @@ class StreamUtils {
 
   static Future<int> _findStreamingPort(IProfile profile) async {
     //check if streaming port is available
-    if (await NetworkUtils.isPortOpen(
-      profile.address,
-      profile.streamingPort,
-    )) {
+    if (await NetworkUtils.isPortOpen(profile.address, profile.streamingPort)) {
       return profile.streamingPort;
     } else if (profile.enigma == EnigmaType.enigma2 &&
         profile.streamingPort != 8001 &&
@@ -117,10 +114,7 @@ class StreamUtils {
     return null;
   }
 
-  static bool _needExtraStreamParameters(
-    IProfile profile,
-    int port,
-  ) {
+  static bool _needExtraStreamParameters(IProfile profile, int port) {
     return profile.enigma == EnigmaType.enigma1 || port == null;
   }
 
@@ -142,7 +136,9 @@ class StreamUtils {
   }
 
   static Future<int> _findExtraParametersPort(
-      IProfile profile, Uri extraParametersUri) async {
+    IProfile profile,
+    Uri extraParametersUri,
+  ) async {
     if (await NetworkUtils.isPortOpen(
       profile.address,
       extraParametersUri.port,

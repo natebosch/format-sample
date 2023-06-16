@@ -40,19 +40,23 @@ class _NewMessagePageState extends State<NewMessagePage> {
           ConstrainedBox(
             constraints:
                 BoxConstraints(minWidth: 0, maxWidth: context.width - 104),
-            child: TitleText(user.displayName,
-                fontSize: 16,
-                fontWeight: FontWeight.w800,
-                overflow: TextOverflow.ellipsis),
+            child: TitleText(
+              user.displayName,
+              fontSize: 16,
+              fontWeight: FontWeight.w800,
+              overflow: TextOverflow.ellipsis,
+            ),
           ),
           SizedBox(width: 3),
           user.isVerified
-              ? customIcon(context,
+              ? customIcon(
+                  context,
                   icon: AppIcon.blueTick,
                   istwitterIcon: true,
                   iconColor: AppColor.primary,
                   size: 13,
-                  paddingIcon: 3)
+                  paddingIcon: 3,
+                )
               : SizedBox(width: 0),
         ],
       ),
@@ -75,9 +79,7 @@ class _NewMessagePageState extends State<NewMessagePage> {
           scaffoldKey: widget.scaffoldKey,
           isBackButton: true,
           isbootomLine: true,
-          title: customTitleText(
-            'New Message',
-          ),
+          title: customTitleText('New Message'),
         ),
         body: Consumer<SearchState>(
           builder: (context, state, child) {
@@ -106,15 +108,12 @@ class _NewMessagePageState extends State<NewMessagePage> {
                 Expanded(
                   child: ListView.separated(
                     physics: BouncingScrollPhysics(),
-                    itemBuilder: (context, index) => _userTile(
-                      state.userlist[index],
-                    ),
-                    separatorBuilder: (_, index) => Divider(
-                      height: 0,
-                    ),
+                    itemBuilder:
+                        (context, index) => _userTile(state.userlist[index]),
+                    separatorBuilder: (_, index) => Divider(height: 0),
                     itemCount: state.userlist.length,
                   ),
-                )
+                ),
               ],
             );
           },

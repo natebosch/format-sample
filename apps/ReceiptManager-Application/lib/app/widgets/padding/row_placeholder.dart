@@ -28,9 +28,7 @@ class RowPlaceholder extends StatelessWidget {
       height: 15,
       decoration: BoxDecoration(
         color: Colors.red,
-        borderRadius: BorderRadius.all(
-          Radius.circular(20),
-        ),
+        borderRadius: BorderRadius.all(Radius.circular(20)),
       ),
     );
   }

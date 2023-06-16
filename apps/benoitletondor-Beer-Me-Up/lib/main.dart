@@ -18,7 +18,9 @@ import 'package:beer_me_up/localization/localization.dart';
 void main() => runApp(BeerMeUpApp());
 
 class BeerMeUpApp extends StatelessWidget {
-  static OptOutAwareFirebaseAnalytics analytics = OptOutAwareFirebaseAnalytics(FirebaseAnalytics());
+  static OptOutAwareFirebaseAnalytics analytics = OptOutAwareFirebaseAnalytics(
+    FirebaseAnalytics(),
+  );
   static Config config = Config.create();
   static SentryClient sentry = new SentryClient(dsn: SENTRY_DSN);
 
@@ -43,28 +45,21 @@ class BeerMeUpApp extends StatelessWidget {
         ),
       ),
       home: HomePage(),
-      routes: <String, WidgetBuilder> {
+      routes: <String, WidgetBuilder>{
         ONBOARDING_PAGE_ROUTE: (BuildContext context) => OnboardingPage(),
         LOGIN_PAGE_ROUTE: (BuildContext context) => LoginPage(),
         CHECK_IN_PAGE_ROUTE: (BuildContext context) => CheckInPage(),
         SETTINGS_PAGE_ROUTE: (BuildContext context) => SettingsPage(),
         TOS_PAGE_ROUTE: (BuildContext context) => TOSPage(),
       },
-      navigatorObservers: [
-        FirebaseAnalyticsObserver(analytics: analytics),
-      ],
+      navigatorObservers: [FirebaseAnalyticsObserver(analytics: analytics)],
       localizationsDelegates: [
         const BeerMeUpLocalizationsDelegate(),
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
       ],
-      supportedLocales: [
-        const Locale('en'),
-        const Locale('fr'),
-      ],
+      supportedLocales: [const Locale('en'), const Locale('fr')],
       debugShowCheckedModeBanner: false,
     );
   }
 }
-
-

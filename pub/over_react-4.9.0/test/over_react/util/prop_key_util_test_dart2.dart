@@ -24,7 +24,9 @@ main() {
   group('getPropKey', () {
     test('returns the expected key', () {
       var testProps = Test()..foo = 'baz';
-      var fooPropKey = getPropKey((props) { (props as TestProps).foo; }, Test);   // ignore: avoid_as
+      var fooPropKey = getPropKey((props) {
+        (props as TestProps).foo;
+      }, Test); // ignore: avoid_as
       expect(testProps, equals({fooPropKey: 'baz'}));
     });
 
@@ -33,23 +35,30 @@ main() {
     });
 
     test('throws if you access the prop multiple times', () {
-      expect(() => getPropKey((props) {
-        (props as TestProps).foo; // ignore: avoid_as
-        (props as TestProps).foo; // ignore: avoid_as
-      }, Test), throwsStateError);
+      expect(
+        () => getPropKey((props) {
+          (props as TestProps).foo; // ignore: avoid_as
+          (props as TestProps).foo; // ignore: avoid_as
+        }, Test),
+        throwsStateError,
+      );
     });
 
     test('throws if you access multiple props', () {
-      expect(() => getPropKey((props) {
-        (props as TestProps).foo; // ignore: avoid_as
-        (props as TestProps).bar; // ignore: avoid_as
-      }, Test), throwsStateError);
+      expect(
+        () => getPropKey((props) {
+          (props as TestProps).foo; // ignore: avoid_as
+          (props as TestProps).bar; // ignore: avoid_as
+        }, Test),
+        throwsStateError,
+      );
     });
   });
 }
 
 @Factory()
-UiFactory<TestProps> Test = _$Test; // ignore: undefined_identifier, invalid_assignment
+UiFactory<TestProps> Test =
+    _$Test; // ignore: undefined_identifier, invalid_assignment
 
 @Props()
 class _$TestProps extends UiProps {
@@ -63,4 +72,3 @@ class TestComponent extends UiComponent2<TestProps> {
   @override
   render() {}
 }
-

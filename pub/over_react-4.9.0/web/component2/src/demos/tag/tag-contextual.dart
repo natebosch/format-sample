@@ -22,5 +22,5 @@ ReactElement tagContextualDemo() => Dom.div()(
   (Tag()..skin = TagSkin.SUCCESS)('Success'),
   (Tag()..skin = TagSkin.INFO)('Info'),
   (Tag()..skin = TagSkin.WARNING)('Warning'),
-  (Tag()..skin = TagSkin.DANGER)('Danger')
+  (Tag()..skin = TagSkin.DANGER)('Danger'),
 );

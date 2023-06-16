@@ -17,10 +17,7 @@ import 'package:invoiceninja_flutter/utils/completers.dart';
 import 'package:invoiceninja_flutter/utils/localization.dart';
 
 class PaymentViewScreen extends StatelessWidget {
-  const PaymentViewScreen({
-    Key key,
-    this.isFilter = false,
-  }) : super(key: key);
+  const PaymentViewScreen({Key key, this.isFilter = false}) : super(key: key);
   final bool isFilter;
   static const String route = '/payment/view';
 
@@ -31,10 +28,7 @@ class PaymentViewScreen extends StatelessWidget {
         return PaymentViewVM.fromStore(store);
       },
       builder: (context, vm) {
-        return PaymentView(
-          viewModel: vm,
-          isFilter: isFilter,
-        );
+        return PaymentView(viewModel: vm, isFilter: isFilter);
       },
     );
   }
@@ -59,11 +53,10 @@ class PaymentViewVM {
 
     Future<Null> _handleRefresh(BuildContext context) {
       final completer = snackBarCompleter<Null>(
-          context, AppLocalization.of(context).refreshComplete);
-      store.dispatch(LoadPayment(
-        completer: completer,
-        paymentId: payment.id,
-      ));
+        context,
+        AppLocalization.of(context).refreshComplete,
+      );
+      store.dispatch(LoadPayment(completer: completer, paymentId: payment.id));
       return completer.future;
     }
 
@@ -75,8 +68,10 @@ class PaymentViewVM {
       isLoading: state.isLoading,
       payment: payment,
       onRefreshed: (context) => _handleRefresh(context),
-      onEntityAction: (BuildContext context, EntityAction action) =>
-          handleEntitiesActions([payment], action, autoPop: true),
+      onEntityAction: (
+        BuildContext context,
+        EntityAction action,
+      ) => handleEntitiesActions([payment], action, autoPop: true),
     );
   }
 

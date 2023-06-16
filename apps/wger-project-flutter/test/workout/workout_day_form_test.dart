@@ -49,30 +49,36 @@ void main() {
         localizationsDelegates: AppLocalizations.localizationsDelegates,
         supportedLocales: AppLocalizations.supportedLocales,
         navigatorKey: key,
-        home: Scaffold(
-          body: DayFormWidget(workoutPlan),
-        ),
+        home: Scaffold(body: DayFormWidget(workoutPlan)),
       ),
     );
   }
 
-  testWidgets('Test the widgets on the DayFormWidget', (WidgetTester tester) async {
-    await tester.pumpWidget(createHomeScreen());
-    await tester.pumpAndSettle();
+  testWidgets(
+    'Test the widgets on the DayFormWidget',
+    (WidgetTester tester) async {
+      await tester.pumpWidget(createHomeScreen());
+      await tester.pumpAndSettle();
 
-    expect(find.byType(TextFormField), findsOneWidget);
-    expect(find.byType(CheckboxListTile), findsNWidgets(7));
-    expect(find.byType(ElevatedButton), findsOneWidget);
-  });
+      expect(find.byType(TextFormField), findsOneWidget);
+      expect(find.byType(CheckboxListTile), findsNWidgets(7));
+      expect(find.byType(ElevatedButton), findsOneWidget);
+    },
+  );
 
   testWidgets('Test creating a new day', (WidgetTester tester) async {
-    when(mockWorkoutPlans.addDay(any, any)).thenAnswer((_) => Future.value(Day()));
+    when(mockWorkoutPlans.addDay(any, any)).thenAnswer(
+      (_) => Future.value(Day()),
+    );
 
     await tester.pumpWidget(createHomeScreen());
     await tester.pumpAndSettle();
 
     expect(find.text(''), findsOneWidget, reason: 'New day has no description');
-    await tester.enterText(find.byKey(const Key('field-description')), 'Leg day!');
+    await tester.enterText(
+      find.byKey(const Key('field-description')),
+      'Leg day!',
+    );
     await tester.tap(find.byKey(const Key('field-checkbox-1')));
     await tester.tap(find.byKey(const Key(SUBMIT_BUTTON_KEY_NAME)));
 
@@ -83,19 +89,25 @@ void main() {
     //verify(mockObserver.didPop(any, any));
   });
 
-  testWidgets('Tests the localization of days - EN', (WidgetTester tester) async {
-    await tester.pumpWidget(createHomeScreen());
+  testWidgets(
+    'Tests the localization of days - EN',
+    (WidgetTester tester) async {
+      await tester.pumpWidget(createHomeScreen());
 
-    expect(find.text('Monday'), findsOneWidget);
-    expect(find.text('Tuesday'), findsOneWidget);
-    expect(find.text('Thursday'), findsOneWidget);
-  });
+      expect(find.text('Monday'), findsOneWidget);
+      expect(find.text('Tuesday'), findsOneWidget);
+      expect(find.text('Thursday'), findsOneWidget);
+    },
+  );
 
-  testWidgets('Tests the localization of days - DE', (WidgetTester tester) async {
-    await tester.pumpWidget(createHomeScreen(locale: 'de'));
+  testWidgets(
+    'Tests the localization of days - DE',
+    (WidgetTester tester) async {
+      await tester.pumpWidget(createHomeScreen(locale: 'de'));
 
-    expect(find.text('Montag'), findsOneWidget);
-    expect(find.text('Dienstag'), findsOneWidget);
-    expect(find.text('Donnerstag'), findsOneWidget);
-  });
+      expect(find.text('Montag'), findsOneWidget);
+      expect(find.text('Dienstag'), findsOneWidget);
+      expect(find.text('Donnerstag'), findsOneWidget);
+    },
+  );
 }

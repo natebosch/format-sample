@@ -1578,5 +1578,5 @@ const names = {
   "zu_ZA": "zulų (Pietų Afrika)",
   "zun": "Zuni",
   "zxx": "nėra kalbinio turinio",
-  "zza": "zaza"
+  "zza": "zaza",
 };

@@ -41,7 +41,8 @@ enum FwStandardSqlServerFwDataTypes {
   currencystringnodollarsign('CurrencyStringNoDollarSign'),
   @JsonValue('CurrencyStringNoDollarSignNoDecimalPlaces')
   currencystringnodollarsignnodecimalplaces(
-      'CurrencyStringNoDollarSignNoDecimalPlaces'),
+    'CurrencyStringNoDollarSignNoDecimalPlaces',
+  ),
   @JsonValue('PhoneUS')
   phoneus('PhoneUS'),
   @JsonValue('ZipcodeUS')

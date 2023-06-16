@@ -75,10 +75,7 @@ class _CrashReportDialogState extends State<CrashReportDialog> {
           onPressed: () {
             Navigator.of(context).pop();
           },
-          child: Text(
-            S.of(context).close,
-            textAlign: TextAlign.end,
-          ),
+          child: Text(S.of(context).close, textAlign: TextAlign.end),
         ),
         TextButton(
           onPressed: () async {
@@ -86,10 +83,8 @@ class _CrashReportDialogState extends State<CrashReportDialog> {
               Navigator.of(context).pop();
             }
           },
-          child: Text(
-            S.of(context).crashDialogReport,
-            textAlign: TextAlign.end,
-          ),
+          child:
+              Text(S.of(context).crashDialogReport, textAlign: TextAlign.end),
         ),
       ],
     );
@@ -131,14 +126,11 @@ class _Body extends StatelessWidget {
           expandedCrossAxisAlignment: CrossAxisAlignment.start,
           children: [
             SelectableText(
-              [
-                error.toString(),
-                if (stackTrace != null) stackTrace.toString(),
-              ].join('\n'),
-              style: Theme.of(context)
-                  .textTheme
-                  .bodyText2!
-                  .copyWith(fontFamily: 'RobotoMono'),
+              [error.toString(), if (stackTrace != null) stackTrace.toString()]
+                  .join('\n'),
+              style: Theme.of(context).textTheme.bodyText2!.copyWith(
+                fontFamily: 'RobotoMono',
+              ),
             ),
           ],
         ),

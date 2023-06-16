@@ -26,9 +26,9 @@ class Familia extends DataModel<Familia> {
     BelongsTo<House>? cottage,
     BelongsTo<House>? residence,
     this.dogs,
-  })  : persons = persons ?? HasMany(),
-        cottage = cottage ?? BelongsTo(),
-        residence = residence ?? BelongsTo();
+  }) : persons = persons ?? HasMany(),
+       cottage = cottage ?? BelongsTo(),
+       residence = residence ?? BelongsTo();
 
   // no fromJson or toJson on purpose (testing codegen)
 

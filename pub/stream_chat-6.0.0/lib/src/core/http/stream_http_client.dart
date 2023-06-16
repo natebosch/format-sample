@@ -25,8 +25,8 @@ class StreamHttpClient {
     TokenManager? tokenManager,
     ConnectionIdManager? connectionIdManager,
     Logger? logger,
-  })  : _options = options ?? const StreamHttpClientOptions(),
-        httpClient = dio ?? Dio() {
+  }) : _options = options ?? const StreamHttpClientOptions(),
+       httpClient = dio ?? Dio() {
     httpClient
       ..options.baseUrl = _options.baseUrl
       ..options.receiveTimeout = _options.receiveTimeout
@@ -269,9 +269,7 @@ class StreamHttpClient {
 
   /// Handy method to make http requests from [RequestOptions]
   /// with error parsing.
-  Future<Response<T>> fetch<T>(
-    RequestOptions requestOptions,
-  ) async {
+  Future<Response<T>> fetch<T>(RequestOptions requestOptions) async {
     try {
       final response = await httpClient.fetch<T>(requestOptions);
       return response;

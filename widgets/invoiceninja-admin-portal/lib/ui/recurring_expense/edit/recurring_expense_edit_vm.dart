@@ -56,19 +56,19 @@ class RecurringExpenseEditVM extends AbstractExpenseEditVM {
     bool isSaving,
     ExpenseEntity origExpense,
     Function(BuildContext context, Completer<SelectableEntity> completer)
-        onAddClientPressed,
+    onAddClientPressed,
     Function(BuildContext context, Completer<SelectableEntity> completer)
-        onAddVendorPressed,
+    onAddVendorPressed,
   }) : super(
-          state: state,
-          expense: expense,
-          onChanged: onChanged,
-          onSavePressed: onSavePressed,
-          onCancelPressed: onCancelPressed,
-          origExpense: origExpense,
-          onAddClientPressed: onAddClientPressed,
-          onAddVendorPressed: onAddVendorPressed,
-        );
+         state: state,
+         expense: expense,
+         onChanged: onChanged,
+         onSavePressed: onSavePressed,
+         onCancelPressed: onCancelPressed,
+         origExpense: origExpense,
+         onAddClientPressed: onAddClientPressed,
+         onAddVendorPressed: onAddVendorPressed,
+       );
 
   factory RecurringExpenseEditVM.fromStore(Store<AppState> store) {
     final state = store.state;
@@ -85,9 +85,10 @@ class RecurringExpenseEditVM extends AbstractExpenseEditVM {
       },
       onCancelPressed: (BuildContext context) {
         createEntity(
-            context: context,
-            entity: ExpenseEntity(entityType: EntityType.recurringExpense),
-            force: true);
+          context: context,
+          entity: ExpenseEntity(entityType: EntityType.recurringExpense),
+          force: true,
+        );
         if (state.recurringExpenseUIState.cancelCompleter != null) {
           state.recurringExpenseUIState.cancelCompleter.complete();
         } else {
@@ -100,24 +101,32 @@ class RecurringExpenseEditVM extends AbstractExpenseEditVM {
           final localization = AppLocalization.of(context);
           if (recurringExpense.isOld &&
               !hasRecurringExpenseChanges(
-                  recurringExpense, state.recurringExpenseState.map) &&
+                recurringExpense,
+                state.recurringExpenseState.map,
+              ) &&
               action != null) {
             handleEntityAction(recurringExpense, action);
           } else {
             final Completer<ExpenseEntity> completer =
                 new Completer<ExpenseEntity>();
             store.dispatch(SaveRecurringExpenseRequest(
-                completer: completer, recurringExpense: recurringExpense));
+              completer: completer,
+              recurringExpense: recurringExpense,
+            ));
             return completer.future.then((savedRecurringExpense) {
-              showToast(recurringExpense.isNew
-                  ? localization.createdRecurringExpense
-                  : localization.updatedRecurringExpense);
+              showToast(
+                recurringExpense.isNew
+                    ? localization.createdRecurringExpense
+                    : localization.updatedRecurringExpense,
+              );
               if (state.prefState.isMobile) {
                 store.dispatch(
-                    UpdateCurrentRoute(RecurringExpenseViewScreen.route));
+                  UpdateCurrentRoute(RecurringExpenseViewScreen.route),
+                );
                 if (recurringExpense.isNew) {
-                  Navigator.of(context)
-                      .pushReplacementNamed(RecurringExpenseViewScreen.route);
+                  Navigator.of(context).pushReplacementNamed(
+                    RecurringExpenseViewScreen.route,
+                  );
                 } else {
                   Navigator.of(context).pop(savedRecurringExpense);
                 }
@@ -126,16 +135,18 @@ class RecurringExpenseEditVM extends AbstractExpenseEditVM {
 
                 if (state.prefState.isEditorFullScreen(EntityType.expense)) {
                   editEntity(
-                      context: navigatorKey.currentContext,
-                      entity: savedRecurringExpense);
+                    context: navigatorKey.currentContext,
+                    entity: savedRecurringExpense,
+                  );
                 }
               }
             }).catchError((Object error) {
               showDialog<ErrorDialog>(
-                  context: context,
-                  builder: (BuildContext context) {
-                    return ErrorDialog(error);
-                  });
+                context: context,
+                builder: (BuildContext context) {
+                  return ErrorDialog(error);
+                },
+              );
             });
           }
         });

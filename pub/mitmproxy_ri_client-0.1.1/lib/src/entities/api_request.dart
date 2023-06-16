@@ -36,6 +36,7 @@ class ApiRequest with _$ApiRequest {
     @JsonKey(name: 'response') CompleteResponse? response,
   }) = ResponseApiRequest;
 
-  factory ApiRequest.fromJson(Map<String, dynamic> json) =>
-      _$ApiRequestFromJson(json);
+  factory ApiRequest.fromJson(
+    Map<String, dynamic> json,
+  ) => _$ApiRequestFromJson(json);
 }

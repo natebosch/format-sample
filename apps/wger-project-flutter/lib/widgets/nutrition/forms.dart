@@ -54,7 +54,8 @@ class MealForm extends StatelessWidget {
           children: [
             TextFormField(
               key: const Key('field-time'),
-              decoration: InputDecoration(labelText: AppLocalizations.of(context).time),
+              decoration:
+                  InputDecoration(labelText: AppLocalizations.of(context).time),
               controller: _timeController,
               onTap: () async {
                 // Stop keyboard from appearing
@@ -76,7 +77,8 @@ class MealForm extends StatelessWidget {
             TextFormField(
               maxLength: 25,
               key: const Key('field-name'),
-              decoration: InputDecoration(labelText: AppLocalizations.of(context).name),
+              decoration:
+                  InputDecoration(labelText: AppLocalizations.of(context).name),
               controller: _nameController,
               onSaved: (newValue) {
                 _meal.name = newValue as String;
@@ -94,9 +96,14 @@ class MealForm extends StatelessWidget {
 
                 try {
                   _meal.id == null
-                      ? Provider.of<NutritionPlansProvider>(context, listen: false)
-                          .addMeal(_meal, _planId)
-                      : Provider.of<NutritionPlansProvider>(context, listen: false).editMeal(_meal);
+                      ? Provider.of<NutritionPlansProvider>(
+                          context,
+                          listen: false,
+                        ).addMeal(_meal, _planId)
+                      : Provider.of<NutritionPlansProvider>(
+                          context,
+                          listen: false,
+                        ).editMeal(_meal);
                 } on WgerHttpException catch (error) {
                   showHttpExceptionErrorDialog(error, context);
                 } catch (error) {
@@ -138,7 +145,9 @@ class MealItemForm extends StatelessWidget {
           children: [
             IngredientTypeahead(_ingredientIdController, _ingredientController),
             TextFormField(
-              decoration: InputDecoration(labelText: AppLocalizations.of(context).weight),
+              decoration: InputDecoration(
+                labelText: AppLocalizations.of(context).weight,
+              ),
               controller: _amountController,
               keyboardType: TextInputType.number,
               onFieldSubmitted: (_) {},
@@ -161,7 +170,9 @@ class MealItemForm extends StatelessWidget {
                   return;
                 }
                 _form.currentState!.save();
-                _mealItem.ingredientId = int.parse(_ingredientIdController.text);
+                _mealItem.ingredientId = int.parse(
+                  _ingredientIdController.text,
+                );
 
                 try {
                   Provider.of<NutritionPlansProvider>(context, listen: false)
@@ -187,21 +198,29 @@ class MealItemForm extends StatelessWidget {
                   return Card(
                     child: ListTile(
                       onTap: () {
-                        _ingredientController.text = _listMealItems[index].ingredientObj.name;
+                        _ingredientController.text =
+                            _listMealItems[index].ingredientObj.name;
                         _ingredientIdController.text =
                             _listMealItems[index].ingredientObj.id.toString();
-                        _amountController.text = _listMealItems[index].amount.toStringAsFixed(0);
-                        _mealItem.ingredientId = _listMealItems[index].ingredientId;
+                        _amountController.text = _listMealItems[index]
+                            .amount
+                            .toStringAsFixed(0);
+                        _mealItem.ingredientId =
+                            _listMealItems[index].ingredientId;
                         _mealItem.amount = _listMealItems[index].amount;
                       },
                       title: Text(_listMealItems[index].ingredientObj.name),
-                      subtitle: Text('${_listMealItems[index].amount.toStringAsFixed(0)}$unit'),
+                      subtitle: Text(
+                        '${_listMealItems[index].amount.toStringAsFixed(
+                          0,
+                        )}$unit',
+                      ),
                       trailing: const Icon(Icons.copy),
                     ),
                   );
                 },
               ),
-            )
+            ),
           ],
         ),
       ),
@@ -237,7 +256,9 @@ class IngredientLogForm extends StatelessWidget {
           children: [
             IngredientTypeahead(_ingredientIdController, _ingredientController),
             TextFormField(
-              decoration: InputDecoration(labelText: AppLocalizations.of(context).weight),
+              decoration: InputDecoration(
+                labelText: AppLocalizations.of(context).weight,
+              ),
               controller: _amountController,
               keyboardType: TextInputType.number,
               onFieldSubmitted: (_) {},
@@ -285,11 +306,17 @@ class IngredientLogForm extends StatelessWidget {
                   return;
                 }
                 _form.currentState!.save();
-                _mealItem.ingredientId = int.parse(_ingredientIdController.text);
+                _mealItem.ingredientId = int.parse(
+                  _ingredientIdController.text,
+                );
 
                 try {
-                  Provider.of<NutritionPlansProvider>(context, listen: false).logIngredentToDiary(
-                      _mealItem, _plan.id!, DateTime.parse(_dateController.text));
+                  Provider.of<NutritionPlansProvider>(context, listen: false)
+                      .logIngredentToDiary(
+                        _mealItem,
+                        _plan.id!,
+                        DateTime.parse(_dateController.text),
+                      );
                 } on WgerHttpException catch (error) {
                   showHttpExceptionErrorDialog(error, context);
                 } catch (error) {
@@ -311,21 +338,27 @@ class IngredientLogForm extends StatelessWidget {
                   return Card(
                     child: ListTile(
                       onTap: () {
-                        _ingredientController.text = diaryEntries[index].ingredientObj.name;
+                        _ingredientController.text =
+                            diaryEntries[index].ingredientObj.name;
                         _ingredientIdController.text =
                             diaryEntries[index].ingredientObj.id.toString();
-                        _amountController.text = diaryEntries[index].amount.toStringAsFixed(0);
-                        _mealItem.ingredientId = diaryEntries[index].ingredientId;
+                        _amountController.text = diaryEntries[index]
+                            .amount
+                            .toStringAsFixed(0);
+                        _mealItem.ingredientId =
+                            diaryEntries[index].ingredientId;
                         _mealItem.amount = diaryEntries[index].amount;
                       },
                       title: Text(_plan.logs[index].ingredientObj.name),
-                      subtitle: Text('${diaryEntries[index].amount.toStringAsFixed(0)}$unit'),
+                      subtitle: Text(
+                        '${diaryEntries[index].amount.toStringAsFixed(0)}$unit',
+                      ),
                       trailing: const Icon(Icons.copy),
                     ),
                   );
                 },
               ),
-            )
+            ),
           ],
         ),
       ),
@@ -352,7 +385,9 @@ class PlanForm extends StatelessWidget {
           // Description
           TextFormField(
             key: const Key('field-description'),
-            decoration: InputDecoration(labelText: AppLocalizations.of(context).description),
+            decoration: InputDecoration(
+              labelText: AppLocalizations.of(context).description,
+            ),
             controller: _descriptionController,
             onFieldSubmitted: (_) {},
             onSaved: (newValue) {
@@ -373,11 +408,16 @@ class PlanForm extends StatelessWidget {
               // Save to DB
               try {
                 if (_plan.id != null) {
-                  await Provider.of<NutritionPlansProvider>(context, listen: false).editPlan(_plan);
+                  await Provider.of<NutritionPlansProvider>(
+                    context,
+                    listen: false,
+                  ).editPlan(_plan);
                   Navigator.of(context).pop();
                 } else {
-                  _plan = await Provider.of<NutritionPlansProvider>(context, listen: false)
-                      .addPlan(_plan);
+                  _plan = await Provider.of<NutritionPlansProvider>(
+                    context,
+                    listen: false,
+                  ).addPlan(_plan);
                   Navigator.of(context).pushReplacementNamed(
                     NutritionalPlanScreen.routeName,
                     arguments: _plan,

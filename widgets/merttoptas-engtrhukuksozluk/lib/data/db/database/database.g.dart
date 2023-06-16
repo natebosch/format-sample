@@ -9,14 +9,15 @@ part of 'database.dart';
 class $FloorFavoriteDatabase {
   /// Creates a database builder for a persistent database.
   /// Once a database is built, you should keep a reference to it and re-use it.
-  static _$FavoriteDatabaseBuilder databaseBuilder(String name) =>
-      _$FavoriteDatabaseBuilder(name);
+  static _$FavoriteDatabaseBuilder databaseBuilder(
+    String name,
+  ) => _$FavoriteDatabaseBuilder(name);
 
   /// Creates a database builder for an in memory database.
   /// Information stored in an in memory database disappears when the process is killed.
   /// Once a database is built, you should keep a reference to it and re-use it.
-  static _$FavoriteDatabaseBuilder inMemoryDatabaseBuilder() =>
-      _$FavoriteDatabaseBuilder(null);
+  static _$FavoriteDatabaseBuilder
+  inMemoryDatabaseBuilder() => _$FavoriteDatabaseBuilder(null);
 }
 
 class _$FavoriteDatabaseBuilder {
@@ -46,11 +47,7 @@ class _$FavoriteDatabaseBuilder {
         ? join(await sqflite.getDatabasesPath(), name)
         : ':memory:';
     final database = _$FavoriteDatabase();
-    database.database = await database.open(
-      path,
-      _migrations,
-      _callback,
-    );
+    database.database = await database.open(path, _migrations, _callback);
     return database;
   }
 }
@@ -62,8 +59,11 @@ class _$FavoriteDatabase extends FavoriteDatabase {
 
   FavoriteDao _favoriteDaoInstance;
 
-  Future<sqflite.Database> open(String path, List<Migration> migrations,
-      [Callback callback]) async {
+  Future<sqflite.Database> open(
+    String path,
+    List<Migration> migrations, [
+    Callback callback,
+  ]) async {
     return sqflite.openDatabase(
       path,
       version: 1,
@@ -75,13 +75,18 @@ class _$FavoriteDatabase extends FavoriteDatabase {
       },
       onUpgrade: (database, startVersion, endVersion) async {
         MigrationAdapter.runMigrations(
-            database, startVersion, endVersion, migrations);
+          database,
+          startVersion,
+          endVersion,
+          migrations,
+        );
 
         await callback?.onUpgrade?.call(database, startVersion, endVersion);
       },
       onCreate: (database, version) async {
         await database.execute(
-            'CREATE TABLE IF NOT EXISTS `Favorite` (`id` INTEGER PRIMARY KEY AUTOINCREMENT, `favWordsEng` TEXT, `favWordsTr` TEXT, `favId` INTEGER)');
+          'CREATE TABLE IF NOT EXISTS `Favorite` (`id` INTEGER PRIMARY KEY AUTOINCREMENT, `favWordsEng` TEXT, `favWordsTr` TEXT, `favId` INTEGER)',
+        );
 
         await callback?.onCreate?.call(database, version);
       },
@@ -96,28 +101,30 @@ class _$FavoriteDatabase extends FavoriteDatabase {
 
 class _$FavoriteDao extends FavoriteDao {
   _$FavoriteDao(this.database, this.changeListener)
-      : _queryAdapter = QueryAdapter(database, changeListener),
-        _favoriteInsertionAdapter = InsertionAdapter(
-            database,
-            'Favorite',
-            (Favorite item) => <String, dynamic>{
-                  'id': item.id,
-                  'favWordsEng': item.english,
-                  'favWordsTr': item.turkish,
-                  'favId': item.favId
-                },
-            changeListener),
-        _favoriteDeletionAdapter = DeletionAdapter(
-            database,
-            'Favorite',
-            ['id'],
-            (Favorite item) => <String, dynamic>{
-                  'id': item.id,
-                  'favWordsEng': item.english,
-                  'favWordsTr': item.turkish,
-                  'favId': item.favId
-                },
-            changeListener);
+    : _queryAdapter = QueryAdapter(database, changeListener),
+      _favoriteInsertionAdapter = InsertionAdapter(
+        database,
+        'Favorite',
+        (Favorite item) => <String, dynamic>{
+          'id': item.id,
+          'favWordsEng': item.english,
+          'favWordsTr': item.turkish,
+          'favId': item.favId,
+        },
+        changeListener,
+      ),
+      _favoriteDeletionAdapter = DeletionAdapter(
+        database,
+        'Favorite',
+        ['id'],
+        (Favorite item) => <String, dynamic>{
+          'id': item.id,
+          'favWordsEng': item.english,
+          'favWordsTr': item.turkish,
+          'favId': item.favId,
+        },
+        changeListener,
+      );
 
   final sqflite.DatabaseExecutor database;
 
@@ -126,10 +133,11 @@ class _$FavoriteDao extends FavoriteDao {
   final QueryAdapter _queryAdapter;
 
   static final _favoriteMapper = (Map<String, dynamic> row) => Favorite(
-      id: row['id'] as int,
-      turkish: row['favWordsTr'] as String,
-      english: row['favWordsEng'] as String,
-      favId: row['favId'] as int);
+        id: row['id'] as int,
+        turkish: row['favWordsTr'] as String,
+        english: row['favWordsEng'] as String,
+        favId: row['favId'] as int,
+      );
 
   final InsertionAdapter<Favorite> _favoriteInsertionAdapter;
 
@@ -137,34 +145,45 @@ class _$FavoriteDao extends FavoriteDao {
 
   @override
   Future<List<Favorite>> getAllFavoriteWords() async {
-    return _queryAdapter.queryList('SELECT * FROM favorite',
-        mapper: _favoriteMapper);
+    return _queryAdapter.queryList(
+      'SELECT * FROM favorite',
+      mapper: _favoriteMapper,
+    );
   }
 
   @override
   Future<List<Favorite>> getId(int favWord) async {
-    return _queryAdapter.queryList('SELECT * FROM favorite WHERE favId = ?',
-        arguments: <dynamic>[favWord], mapper: _favoriteMapper);
+    return _queryAdapter.queryList(
+      'SELECT * FROM favorite WHERE favId = ?',
+      arguments: <dynamic>[favWord],
+      mapper: _favoriteMapper,
+    );
   }
 
   @override
   Stream<List<Favorite>> findAllFavoriteStream() {
-    return _queryAdapter.queryListStream('SELECT * FROM favorite',
-        tableName: 'Favorite', mapper: _favoriteMapper);
+    return _queryAdapter.queryListStream(
+      'SELECT * FROM favorite',
+      tableName: 'Favorite',
+      mapper: _favoriteMapper,
+    );
   }
 
   @override
   Future<List<Favorite>> findFavoriteWord(String favWordsEng) async {
     return _queryAdapter.queryList(
-        'SELECT * FROM favorite WHERE favWordsEng = ?',
-        arguments: <dynamic>[favWordsEng],
-        mapper: _favoriteMapper);
+      'SELECT * FROM favorite WHERE favWordsEng = ?',
+      arguments: <dynamic>[favWordsEng],
+      mapper: _favoriteMapper,
+    );
   }
 
   @override
   Future<void> insertFavoriteWord(Favorite favorite) async {
     await _favoriteInsertionAdapter.insert(
-        favorite, sqflite.ConflictAlgorithm.abort);
+      favorite,
+      sqflite.ConflictAlgorithm.abort,
+    );
   }
 
   @override
@@ -181,14 +200,15 @@ class _$FavoriteDao extends FavoriteDao {
 class $FloorHistoryDatabase {
   /// Creates a database builder for a persistent database.
   /// Once a database is built, you should keep a reference to it and re-use it.
-  static _$HistoryDatabaseBuilder databaseBuilder(String name) =>
-      _$HistoryDatabaseBuilder(name);
+  static _$HistoryDatabaseBuilder databaseBuilder(
+    String name,
+  ) => _$HistoryDatabaseBuilder(name);
 
   /// Creates a database builder for an in memory database.
   /// Information stored in an in memory database disappears when the process is killed.
   /// Once a database is built, you should keep a reference to it and re-use it.
-  static _$HistoryDatabaseBuilder inMemoryDatabaseBuilder() =>
-      _$HistoryDatabaseBuilder(null);
+  static _$HistoryDatabaseBuilder
+  inMemoryDatabaseBuilder() => _$HistoryDatabaseBuilder(null);
 }
 
 class _$HistoryDatabaseBuilder {
@@ -218,11 +238,7 @@ class _$HistoryDatabaseBuilder {
         ? join(await sqflite.getDatabasesPath(), name)
         : ':memory:';
     final database = _$HistoryDatabase();
-    database.database = await database.open(
-      path,
-      _migrations,
-      _callback,
-    );
+    database.database = await database.open(path, _migrations, _callback);
     return database;
   }
 }
@@ -234,8 +250,11 @@ class _$HistoryDatabase extends HistoryDatabase {
 
   HistoryDao _historyDaoInstance;
 
-  Future<sqflite.Database> open(String path, List<Migration> migrations,
-      [Callback callback]) async {
+  Future<sqflite.Database> open(
+    String path,
+    List<Migration> migrations, [
+    Callback callback,
+  ]) async {
     return sqflite.openDatabase(
       path,
       version: 1,
@@ -247,13 +266,18 @@ class _$HistoryDatabase extends HistoryDatabase {
       },
       onUpgrade: (database, startVersion, endVersion) async {
         MigrationAdapter.runMigrations(
-            database, startVersion, endVersion, migrations);
+          database,
+          startVersion,
+          endVersion,
+          migrations,
+        );
 
         await callback?.onUpgrade?.call(database, startVersion, endVersion);
       },
       onCreate: (database, version) async {
         await database.execute(
-            'CREATE TABLE IF NOT EXISTS `History` (`id` INTEGER PRIMARY KEY AUTOINCREMENT, `historyWord` TEXT, `historyId` INTEGER)');
+          'CREATE TABLE IF NOT EXISTS `History` (`id` INTEGER PRIMARY KEY AUTOINCREMENT, `historyWord` TEXT, `historyId` INTEGER)',
+        );
 
         await callback?.onCreate?.call(database, version);
       },
@@ -268,26 +292,28 @@ class _$HistoryDatabase extends HistoryDatabase {
 
 class _$HistoryDao extends HistoryDao {
   _$HistoryDao(this.database, this.changeListener)
-      : _queryAdapter = QueryAdapter(database, changeListener),
-        _historyInsertionAdapter = InsertionAdapter(
-            database,
-            'History',
-            (History item) => <String, dynamic>{
-                  'id': item.id,
-                  'historyWord': item.historyWord,
-                  'historyId': item.historyId
-                },
-            changeListener),
-        _historyDeletionAdapter = DeletionAdapter(
-            database,
-            'History',
-            ['id'],
-            (History item) => <String, dynamic>{
-                  'id': item.id,
-                  'historyWord': item.historyWord,
-                  'historyId': item.historyId
-                },
-            changeListener);
+    : _queryAdapter = QueryAdapter(database, changeListener),
+      _historyInsertionAdapter = InsertionAdapter(
+        database,
+        'History',
+        (History item) => <String, dynamic>{
+          'id': item.id,
+          'historyWord': item.historyWord,
+          'historyId': item.historyId,
+        },
+        changeListener,
+      ),
+      _historyDeletionAdapter = DeletionAdapter(
+        database,
+        'History',
+        ['id'],
+        (History item) => <String, dynamic>{
+          'id': item.id,
+          'historyWord': item.historyWord,
+          'historyId': item.historyId,
+        },
+        changeListener,
+      );
 
   final sqflite.DatabaseExecutor database;
 
@@ -296,9 +322,10 @@ class _$HistoryDao extends HistoryDao {
   final QueryAdapter _queryAdapter;
 
   static final _historyMapper = (Map<String, dynamic> row) => History(
-      id: row['id'] as int,
-      historyWord: row['historyWord'] as String,
-      historyId: row['historyId'] as int);
+        id: row['id'] as int,
+        historyWord: row['historyWord'] as String,
+        historyId: row['historyId'] as int,
+      );
 
   final InsertionAdapter<History> _historyInsertionAdapter;
 
@@ -306,20 +333,28 @@ class _$HistoryDao extends HistoryDao {
 
   @override
   Future<List<History>> getAllHistoryWords() async {
-    return _queryAdapter.queryList('SELECT * FROM history',
-        mapper: _historyMapper);
+    return _queryAdapter.queryList(
+      'SELECT * FROM history',
+      mapper: _historyMapper,
+    );
   }
 
   @override
   Future<List<History>> getId(int historyWord) async {
-    return _queryAdapter.queryList('SELECT * FROM history WHERE historyId = ?',
-        arguments: <dynamic>[historyWord], mapper: _historyMapper);
+    return _queryAdapter.queryList(
+      'SELECT * FROM history WHERE historyId = ?',
+      arguments: <dynamic>[historyWord],
+      mapper: _historyMapper,
+    );
   }
 
   @override
   Stream<List<History>> findAllHistoryStream() {
-    return _queryAdapter.queryListStream('SELECT * FROM history',
-        tableName: 'History', mapper: _historyMapper);
+    return _queryAdapter.queryListStream(
+      'SELECT * FROM history',
+      tableName: 'History',
+      mapper: _historyMapper,
+    );
   }
 
   @override
@@ -330,15 +365,18 @@ class _$HistoryDao extends HistoryDao {
   @override
   Future<List<History>> findHistoryWord(String historyWord) async {
     return _queryAdapter.queryList(
-        'SELECT * FROM history WHERE historyWord = ?',
-        arguments: <dynamic>[historyWord],
-        mapper: _historyMapper);
+      'SELECT * FROM history WHERE historyWord = ?',
+      arguments: <dynamic>[historyWord],
+      mapper: _historyMapper,
+    );
   }
 
   @override
   Future<void> insertHistoryWord(History history) async {
     await _historyInsertionAdapter.insert(
-        history, sqflite.ConflictAlgorithm.abort);
+      history,
+      sqflite.ConflictAlgorithm.abort,
+    );
   }
 
   @override

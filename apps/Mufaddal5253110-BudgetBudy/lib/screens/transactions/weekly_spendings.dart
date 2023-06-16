@@ -37,8 +37,7 @@ class _WeeklySpendingsState extends State<WeeklySpendings> {
 
   @override
   Widget build(BuildContext context) {
-    final deleteFn =
-        Provider.of<Transactions>(context).deleteTransaction;
+    final deleteFn = Provider.of<Transactions>(context).deleteTransaction;
     final recentTransaction =
         Provider.of<Transactions>(context, listen: false).rescentTransactions;
     final recentData = PieData().pieChartData(recentTransaction);
@@ -48,65 +47,63 @@ class _WeeklySpendingsState extends State<WeeklySpendings> {
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
           Container(
-              padding: const EdgeInsets.only(
-                  right: 15, top: 10, bottom: 10, left: 15),
-              color: Theme.of(context).primaryColorLight,
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: <Widget>[
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      const Text(
-                        "Total:",
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 18,
-                        ),
-                      ),
-                      Text(
-                        "₹${trxData.getTotal(recentTransaction)}",
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 18,
-                        ),
-                      ),
-                    ],
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      Text(
-                        'Show Chart',
-                        style: Theme.of(context).textTheme.headline1,
-                      ),
-                      Switch.adaptive(
-                        activeColor: Theme.of(context).accentColor,
-                        value: _showChart,
-                        onChanged: (val) {
-                          setState(() {
-                            _showChart = val;
-                          });
-                        },
-                      ),
-                    ],
-                  ),
-                ],
-              )),
+            padding:
+                const EdgeInsets.only(right: 15, top: 10, bottom: 10, left: 15),
+            color: Theme.of(context).primaryColorLight,
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: <Widget>[
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const Text(
+                      "Total:",
+                      style:
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                    ),
+                    Text(
+                      "₹${trxData.getTotal(recentTransaction)}",
+                      style:
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                    ),
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Text(
+                      'Show Chart',
+                      style: Theme.of(context).textTheme.headline1,
+                    ),
+                    Switch.adaptive(
+                      activeColor: Theme.of(context).accentColor,
+                      value: _showChart,
+                      onChanged: (val) {
+                        setState(() {
+                          _showChart = val;
+                        });
+                      },
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
           recentTransaction.isEmpty
               ? NoTransactions()
               : (_showChart
-                  ? weaklyChart(context, recentTransaction, recentData)
-                  : ListView.builder(
-                      shrinkWrap: true,
-                      physics: NeverScrollableScrollPhysics(),
-                      itemBuilder: (ctx, index) {
-                        return TransactionListItems(
+                    ? weaklyChart(context, recentTransaction, recentData)
+                    : ListView.builder(
+                        shrinkWrap: true,
+                        physics: NeverScrollableScrollPhysics(),
+                        itemBuilder: (ctx, index) {
+                          return TransactionListItems(
                             trx: recentTransaction[index],
-                            dltTrxItem: deleteFn);
-                      },
-                      itemCount: recentTransaction.length,
-                    ))
+                            dltTrxItem: deleteFn,
+                          );
+                        },
+                        itemCount: recentTransaction.length,
+                      )),
         ],
       ),
     );
@@ -121,16 +118,12 @@ class _WeeklySpendingsState extends State<WeeklySpendings> {
       children: [
         Card(
           shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.all(
-              Radius.circular(20),
-            ),
+            borderRadius: BorderRadius.all(Radius.circular(20)),
           ),
           color: Theme.of(context).primaryColorDark,
           child: MyPieChart(pieData: recentData),
         ),
-        WeaklyStats(
-          rescentTransactions: recentTransaction,
-        )
+        WeaklyStats(rescentTransactions: recentTransaction),
       ],
     );
   }

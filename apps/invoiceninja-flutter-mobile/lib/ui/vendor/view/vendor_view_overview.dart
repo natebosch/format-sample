@@ -39,8 +39,9 @@ class VendorOverview extends StatelessWidget {
     final state = StoreProvider.of<AppState>(context).state;
     final statics = state.staticState;
     final fields = <String, String>{};
-    final user =
-        vendor.hasUser ? state.userState.get(vendor.assignedUserId) : null;
+    final user = vendor.hasUser
+        ? state.userState.get(vendor.assignedUserId)
+        : null;
 
     if (vendor.hasCurrency && vendor.currencyId != company.currencyId) {
       fields[VendorFields.currencyId] =
@@ -50,33 +51,37 @@ class VendorOverview extends StatelessWidget {
     if (vendor.customValue1.isNotEmpty) {
       final label1 = company.getCustomFieldLabel(CustomFieldType.vendor1);
       fields[label1] = formatCustomValue(
-          context: context,
-          field: CustomFieldType.vendor1,
-          value: vendor.customValue1);
+        context: context,
+        field: CustomFieldType.vendor1,
+        value: vendor.customValue1,
+      );
     }
 
     if (vendor.customValue2.isNotEmpty) {
       final label2 = company.getCustomFieldLabel(CustomFieldType.vendor2);
       fields[label2] = formatCustomValue(
-          context: context,
-          field: CustomFieldType.vendor2,
-          value: vendor.customValue2);
+        context: context,
+        field: CustomFieldType.vendor2,
+        value: vendor.customValue2,
+      );
     }
 
     if (vendor.customValue3.isNotEmpty) {
       final label3 = company.getCustomFieldLabel(CustomFieldType.vendor3);
       fields[label3] = formatCustomValue(
-          context: context,
-          field: CustomFieldType.vendor3,
-          value: vendor.customValue3);
+        context: context,
+        field: CustomFieldType.vendor3,
+        value: vendor.customValue3,
+      );
     }
 
     if (vendor.customValue4.isNotEmpty) {
       final label4 = company.getCustomFieldLabel(CustomFieldType.vendor4);
       fields[label4] = formatCustomValue(
-          context: context,
-          field: CustomFieldType.vendor4,
-          value: vendor.customValue4);
+        context: context,
+        field: CustomFieldType.vendor4,
+        value: vendor.customValue4,
+      );
     }
 
     return ScrollableListView(
@@ -84,22 +89,19 @@ class VendorOverview extends StatelessWidget {
         EntityHeader(
           entity: vendor,
           label: localization.total,
-          value: formatNumber(
-              memoizedCalculateVendorBalance(vendor.id, vendor.currencyId,
-                  state.expenseState.map, state.expenseState.list),
-              context,
-              currencyId: vendor.currencyId ?? company.currencyId),
+          value: formatNumber(memoizedCalculateVendorBalance(
+            vendor.id,
+            vendor.currencyId,
+            state.expenseState.map,
+            state.expenseState.list,
+          ), context, currencyId: vendor.currencyId ?? company.currencyId),
         ),
         ListDivider(),
         if ((vendor.privateNotes ?? '').isNotEmpty) ...[
           IconMessage(vendor.privateNotes, iconData: Icons.lock),
-          ListDivider()
+          ListDivider(),
         ],
-        if (vendor.hasUser)
-          EntityListTile(
-            entity: user,
-            isFilter: isFilter,
-          ),
+        if (vendor.hasUser) EntityListTile(entity: user, isFilter: isFilter),
         FieldGrid(fields),
         if (company.isModuleEnabled(EntityType.expense))
           EntitiesListTile(
@@ -107,9 +109,10 @@ class VendorOverview extends StatelessWidget {
             title: localization.expenses,
             entityType: EntityType.expense,
             isFilter: isFilter,
-            subtitle:
-                memoizedExpenseStatsForVendor(vendor.id, state.expenseState.map)
-                    .present(localization.active, localization.archived),
+            subtitle: memoizedExpenseStatsForVendor(
+              vendor.id,
+              state.expenseState.map,
+            ).present(localization.active, localization.archived),
           ),
         if (company.isModuleEnabled(EntityType.recurringExpense))
           EntitiesListTile(
@@ -118,12 +121,13 @@ class VendorOverview extends StatelessWidget {
             entityType: EntityType.recurringExpense,
             isFilter: isFilter,
             subtitle: memoizedRecurringExpenseStatsForVendor(
-                    vendor.id, state.recurringExpenseState.map)
-                .present(localization.active, localization.archived),
+              vendor.id,
+              state.recurringExpenseState.map,
+            ).present(localization.active, localization.archived),
           ),
         if ((vendor.publicNotes ?? '').isNotEmpty) ...[
           IconMessage(vendor.publicNotes),
-          ListDivider()
+          ListDivider(),
         ],
       ],
     );

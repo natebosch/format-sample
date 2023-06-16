@@ -61,5 +61,5 @@ const names = {
   "yo": "ioruba",
   "zap": "zapoteca",
   "zgh": "tamazight marroquino padrão",
-  "zza": "zaza"
+  "zza": "zaza",
 };

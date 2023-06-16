@@ -46,23 +46,26 @@ class TMDBMovieBasic {
     }
   }
 
-  TMDBMovieBasic(
-      {this.voteCount,
-      this.id,
-      this.video,
-      this.voteAverage,
-      this.title,
-      this.popularity,
-      this.posterPath,
-      this.originalLanguage,
-      this.originalTitle,
-      this.genreIds,
-      this.backdropPath,
-      this.adult,
-      this.overview,
-      this.releaseDate});
+  TMDBMovieBasic({
+    this.voteCount,
+    this.id,
+    this.video,
+    this.voteAverage,
+    this.title,
+    this.popularity,
+    this.posterPath,
+    this.originalLanguage,
+    this.originalTitle,
+    this.genreIds,
+    this.backdropPath,
+    this.adult,
+    this.overview,
+    this.releaseDate,
+  });
 
-  factory TMDBMovieBasic.fromJson(Map<String, dynamic> json) => _$TMDBMovieBasicFromJson(json);
+  factory TMDBMovieBasic.fromJson(
+    Map<String, dynamic> json,
+  ) => _$TMDBMovieBasicFromJson(json);
 
   Map<String, dynamic> toJson() => _$TMDBMovieBasicToJson(this);
 }

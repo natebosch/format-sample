@@ -26,10 +26,7 @@ class AddTaskScreen extends StatelessWidget {
     AddTaskBloc createTaskBloc = BlocProvider.of(context);
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          "Add Task",
-          key: ValueKey(AddTaskKeys.ADD_TASK_TITLE),
-        ),
+        title: Text("Add Task", key: ValueKey(AddTaskKeys.ADD_TASK_TITLE)),
       ),
       body: ListView(
         children: <Widget>[
@@ -37,17 +34,18 @@ class AddTaskScreen extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: TextFormField(
-                  key: ValueKey(AddTaskKeys.ADD_TITLE),
-                  validator: (value) {
-                    var msg = value!.isEmpty ? "Title Cannot be Empty" : null;
-                    return msg;
-                  },
-                  onSaved: (value) {
-                    createTaskBloc.updateTitle = value!;
-                  },
-                  maxLines: null,
-                  keyboardType: TextInputType.multiline,
-                  decoration: InputDecoration(hintText: "Title")),
+                key: ValueKey(AddTaskKeys.ADD_TITLE),
+                validator: (value) {
+                  var msg = value!.isEmpty ? "Title Cannot be Empty" : null;
+                  return msg;
+                },
+                onSaved: (value) {
+                  createTaskBloc.updateTitle = value!;
+                },
+                maxLines: null,
+                keyboardType: TextInputType.multiline,
+                decoration: InputDecoration(hintText: "Title"),
+              ),
             ),
             key: _formState,
           ),
@@ -70,8 +68,8 @@ class AddTaskScreen extends StatelessWidget {
             subtitle: StreamBuilder<int>(
               stream: createTaskBloc.dueDateSelected,
               initialData: DateTime.now().millisecondsSinceEpoch,
-              builder: (context, snapshot) =>
-                  Text(getFormattedDate(snapshot.data!)),
+              builder:
+                  (context, snapshot) => Text(getFormattedDate(snapshot.data!)),
             ),
             onTap: () {
               _selectDate(context);
@@ -83,24 +81,26 @@ class AddTaskScreen extends StatelessWidget {
             subtitle: StreamBuilder<Status>(
               stream: createTaskBloc.prioritySelected,
               initialData: Status.PRIORITY_4,
-              builder: (context, snapshot) =>
-                  Text(priorityText[snapshot.data!.index]),
+              builder: (context, snapshot) => Text(
+                    priorityText[snapshot.data!.index],
+                  ),
             ),
             onTap: () {
               _showPriorityDialog(createTaskBloc, context);
             },
           ),
           ListTile(
-              leading: Icon(Icons.label),
-              title: Text("Labels"),
-              subtitle: StreamBuilder<String>(
-                stream: createTaskBloc.labelSelection,
-                initialData: "No Labels",
-                builder: (context, snapshot) => Text(snapshot.data!),
-              ),
-              onTap: () {
-                _showLabelsDialog(context);
-              }),
+            leading: Icon(Icons.label),
+            title: Text("Labels"),
+            subtitle: StreamBuilder<String>(
+              stream: createTaskBloc.labelSelection,
+              initialData: "No Labels",
+              builder: (context, snapshot) => Text(snapshot.data!),
+            ),
+            onTap: () {
+              _showLabelsDialog(context);
+            },
+          ),
           ListTile(
             leading: Icon(Icons.mode_comment),
             title: Text("Comments"),
@@ -116,26 +116,25 @@ class AddTaskScreen extends StatelessWidget {
             onTap: () {
               showSnackbar(context, "Coming Soon");
             },
-          )
+          ),
         ],
       ),
       floatingActionButton: FloatingActionButton(
-          key: ValueKey(AddTaskKeys.ADD_TASK),
-          child: Icon(Icons.send, color: Colors.white),
-          onPressed: () {
-            if (_formState.currentState!.validate()) {
-              _formState.currentState!.save();
-              createTaskBloc.createTask().listen((value) {
-                if (context.isWiderScreen()) {
-                  context
-                      .bloc<HomeBloc>()
-                      .applyFilter("Today", Filter.byToday());
-                } else {
-                  context.safePop();
-                }
-              });
-            }
-          }),
+        key: ValueKey(AddTaskKeys.ADD_TASK),
+        child: Icon(Icons.send, color: Colors.white),
+        onPressed: () {
+          if (_formState.currentState!.validate()) {
+            _formState.currentState!.save();
+            createTaskBloc.createTask().listen((value) {
+              if (context.isWiderScreen()) {
+                context.bloc<HomeBloc>().applyFilter("Today", Filter.byToday());
+              } else {
+                context.safePop();
+              }
+            });
+          }
+        },
+      ),
     );
   }
 
@@ -153,56 +152,63 @@ class AddTaskScreen extends StatelessWidget {
   }
 
   Future<Status?> _showPriorityDialog(
-      AddTaskBloc createTaskBloc, BuildContext context) async {
+    AddTaskBloc createTaskBloc,
+    BuildContext context,
+  ) async {
     return await showDialog<Status>(
-        context: context,
-        builder: (BuildContext dialogContext) {
-          return SimpleDialog(
-            title: const Text('Select Priority'),
-            children: <Widget>[
-              buildContainer(context, Status.PRIORITY_1),
-              buildContainer(context, Status.PRIORITY_2),
-              buildContainer(context, Status.PRIORITY_3),
-              buildContainer(context, Status.PRIORITY_4),
-            ],
-          );
-        });
+      context: context,
+      builder: (BuildContext dialogContext) {
+        return SimpleDialog(
+          title: const Text('Select Priority'),
+          children: <Widget>[
+            buildContainer(context, Status.PRIORITY_1),
+            buildContainer(context, Status.PRIORITY_2),
+            buildContainer(context, Status.PRIORITY_3),
+            buildContainer(context, Status.PRIORITY_4),
+          ],
+        );
+      },
+    );
   }
 
   Future<Status?> _showProjectsDialog(
-      AddTaskBloc createTaskBloc, BuildContext context) async {
+    AddTaskBloc createTaskBloc,
+    BuildContext context,
+  ) async {
     return showDialog<Status>(
-        context: context,
-        builder: (BuildContext dialogContext) {
-          return StreamBuilder<List<Project>>(
-              stream: createTaskBloc.projects,
-              initialData: <Project>[],
-              builder: (context, snapshot) {
-                return SimpleDialog(
-                  title: const Text('Select Project'),
-                  children:
-                      buildProjects(createTaskBloc, context, snapshot.data!),
-                );
-              });
-        });
+      context: context,
+      builder: (BuildContext dialogContext) {
+        return StreamBuilder<List<Project>>(
+          stream: createTaskBloc.projects,
+          initialData: <Project>[],
+          builder: (context, snapshot) {
+            return SimpleDialog(
+              title: const Text('Select Project'),
+              children: buildProjects(createTaskBloc, context, snapshot.data!),
+            );
+          },
+        );
+      },
+    );
   }
 
   Future<Status?> _showLabelsDialog(BuildContext context) async {
     AddTaskBloc createTaskBloc = BlocProvider.of(context);
     return showDialog<Status>(
-        context: context,
-        builder: (BuildContext context) {
-          return StreamBuilder<List<Label>>(
-              stream: createTaskBloc.labels,
-              initialData: <Label>[],
-              builder: (context, snapshot) {
-                return SimpleDialog(
-                  title: const Text('Select Labels'),
-                  children:
-                      buildLabels(createTaskBloc, context, snapshot.data!),
-                );
-              });
-        });
+      context: context,
+      builder: (BuildContext context) {
+        return StreamBuilder<List<Label>>(
+          stream: createTaskBloc.labels,
+          initialData: <Label>[],
+          builder: (context, snapshot) {
+            return SimpleDialog(
+              title: const Text('Select Labels'),
+              children: buildLabels(createTaskBloc, context, snapshot.data!),
+            );
+          },
+        );
+      },
+    );
   }
 
   List<Widget> buildProjects(
@@ -216,9 +222,7 @@ class AddTaskScreen extends StatelessWidget {
         leading: Container(
           width: 12.0,
           height: 12.0,
-          child: CircleAvatar(
-            backgroundColor: Color(project.colorValue),
-          ),
+          child: CircleAvatar(backgroundColor: Color(project.colorValue)),
         ),
         title: Text(project.name),
         onTap: () {
@@ -255,30 +259,31 @@ class AddTaskScreen extends StatelessWidget {
   GestureDetector buildContainer(BuildContext context, Status status) {
     AddTaskBloc createTaskBloc = BlocProvider.of(context);
     return GestureDetector(
-        onTap: () {
-          createTaskBloc.updatePriority(status);
-          Navigator.pop(context, status);
-        },
+      onTap: () {
+        createTaskBloc.updatePriority(status);
+        Navigator.pop(context, status);
+      },
+      child: Container(
+        color: status == createTaskBloc.lastPrioritySelection
+            ? Colors.grey
+            : Colors.white,
         child: Container(
-            color: status == createTaskBloc.lastPrioritySelection
-                ? Colors.grey
-                : Colors.white,
-            child: Container(
-              margin: const EdgeInsets.symmetric(vertical: 2.0),
-              decoration: BoxDecoration(
-                border: Border(
-                  left: BorderSide(
-                    width: 6.0,
-                    color: priorityColor[status.index],
-                  ),
-                ),
-              ),
-              child: Container(
-                margin: const EdgeInsets.all(12.0),
-                child: Text(priorityText[status.index],
-                    style: TextStyle(fontSize: 18.0)),
-              ),
-            )));
+          margin: const EdgeInsets.symmetric(vertical: 2.0),
+          decoration: BoxDecoration(
+            border: Border(
+              left: BorderSide(width: 6.0, color: priorityColor[status.index]),
+            ),
+          ),
+          child: Container(
+            margin: const EdgeInsets.all(12.0),
+            child: Text(
+              priorityText[status.index],
+              style: TextStyle(fontSize: 18.0),
+            ),
+          ),
+        ),
+      ),
+    );
   }
 }
 

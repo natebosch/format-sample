@@ -1,4 +1,3 @@
-
 /// Class that represents a geo point
 class Location {
   final double latitude;

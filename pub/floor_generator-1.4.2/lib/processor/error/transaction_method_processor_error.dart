@@ -8,9 +8,10 @@ class TransactionMethodProcessorError {
 
   InvalidGenerationSourceError get shouldReturnFuture {
     return InvalidGenerationSourceError(
-        'Transaction method should return `Future<>`',
-        todo:
-            'Please wrap your return value in a `Future`. `Stream`s are not allowed.',
-        element: _methodElement);
+      'Transaction method should return `Future<>`',
+      todo:
+          'Please wrap your return value in a `Future`. `Stream`s are not allowed.',
+      element: _methodElement,
+    );
   }
 }

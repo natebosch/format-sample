@@ -76,7 +76,7 @@ class IntlBasicDictionary {
       'month9': 'September',
       'month10': 'October',
       'month11': 'November',
-      'month12': 'December'
+      'month12': 'December',
     },
     'pt': {
       'unknown': 'desconhecido',
@@ -149,7 +149,7 @@ class IntlBasicDictionary {
       'month9': 'setembro',
       'month10': 'outubro',
       'month11': 'novembro',
-      'month12': 'dezembro'
+      'month12': 'dezembro',
     },
     'fr': {
       'unknown': 'inconnue',
@@ -222,19 +222,25 @@ class IntlBasicDictionary {
       'month9': 'septembre',
       'month10': 'octobre',
       'month11': 'november',
-      'month12': 'décembre'
+      'month12': 'décembre',
     },
   };
 
-  static String? msgUpperCaseInitials(String key,
-      [IntlLocale? locale, IntlLocale? localeFallback]) {
+  static String? msgUpperCaseInitials(
+    String key, [
+    IntlLocale? locale,
+    IntlLocale? localeFallback,
+  ]) {
     var m = msg(key, locale, localeFallback);
     if (m == null) return null;
     return toUpperCaseInitials(m);
   }
 
-  static String? msg(String key,
-      [IntlLocale? locale, IntlLocale? localeFallback]) {
+  static String? msg(
+    String key, [
+    IntlLocale? locale,
+    IntlLocale? localeFallback,
+  ]) {
     key = key.trim().toLowerCase();
     if (key.isEmpty) return null;
 
@@ -262,8 +268,12 @@ class IntlBasicDictionary {
     }
   }
 
-  static String? buildMsg(String key, List<String> vars,
-      [IntlLocale? locale, IntlLocale? localeFallback]) {
+  static String? buildMsg(
+    String key,
+    List<String> vars, [
+    IntlLocale? locale,
+    IntlLocale? localeFallback,
+  ]) {
     var m = msg(key, locale, localeFallback);
     if (m == null) return null;
 

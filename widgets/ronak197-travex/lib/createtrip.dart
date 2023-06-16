@@ -21,7 +21,9 @@ class _CreateTripState extends State<CreateTrip> {
             children: <Widget>[
               InkWell(
                 onTap: () {
-                  Navigator.push(context, MaterialPageRoute( builder: (context) => SearchDestination()));
+                  Navigator.push(context, MaterialPageRoute(
+                    builder: (context) => SearchDestination(),
+                  ));
                 },
                 child: Card(
                   margin: EdgeInsets.only(left: 20.0, right: 20.0, top: 20.0),
@@ -36,11 +38,12 @@ class _CreateTripState extends State<CreateTrip> {
                   ),
                 ),
               ),
-              SizedBox(
-                height: 100.0,
-              ),
+              SizedBox(height: 100.0),
               SvgPicture.asset('assets/letstravel.svg'),
-              Text('Search for the destination you wish for', style: Theme.of(context).textTheme.subtitle, )
+              Text(
+                'Search for the destination you wish for',
+                style: Theme.of(context).textTheme.subtitle,
+              ),
             ],
           ),
         ),
@@ -55,7 +58,6 @@ class SearchDestination extends StatefulWidget {
 }
 
 class _SearchDestinationState extends State<SearchDestination> {
-
   static String destination;
   TextEditingController txt;
 
@@ -65,11 +67,14 @@ class _SearchDestinationState extends State<SearchDestination> {
   List<Prediction> predictionList = new List();
 
   Future<void> getPredAddrList(List<Prediction> predictionList) async {
-    predictionList.forEach((f) {predictedaddr.add(f.description.toString());});
+    predictionList.forEach((f) {
+      predictedaddr.add(f.description.toString());
+    });
   }
 
-  Future<void> getPost() async{
-    String url = 'https://maps.googleapis.com/maps/api/place/autocomplete/json?input=${txt.text.toString()}&key=$apikey';
+  Future<void> getPost() async {
+    String url =
+        'https://maps.googleapis.com/maps/api/place/autocomplete/json?input=${txt.text.toString()}&key=$apikey';
     print(url);
     final response = await http.get('$url');
     predictionList = addressPredictedFromJson(response.body).predictions;
@@ -93,7 +98,7 @@ class _SearchDestinationState extends State<SearchDestination> {
         backgroundColor: Colors.white,
         leading: IconButton(
           icon: Icon(Icons.close, color: Colors.black),
-          onPressed: (){
+          onPressed: () {
             Navigator.pop(context);
           },
         ),
@@ -105,14 +110,16 @@ class _SearchDestinationState extends State<SearchDestination> {
             controller: txt,
             decoration: InputDecoration(
               hintText: "Where to?",
-              contentPadding: EdgeInsets.only(left: 50.0,right: 20.0, top: 10.0, bottom: 10.0),
+              contentPadding: EdgeInsets.only(
+                left: 50.0,
+                right: 20.0,
+                top: 10.0,
+                bottom: 10.0,
+              ),
               focusedBorder: UnderlineInputBorder(borderSide: BorderSide.none),
               border: UnderlineInputBorder(borderSide: BorderSide.none),
             ),
-            style: TextStyle(
-              fontSize: 25.0,
-              color: Colors.black87,
-            ),
+            style: TextStyle(fontSize: 25.0, color: Colors.black87),
             cursorColor: Colors.black,
             onChanged: (value) {
               setState(() {
@@ -125,30 +132,25 @@ class _SearchDestinationState extends State<SearchDestination> {
           ),
         ),
       ),
-      body: (
-        predictedaddr.length != 0 ? ListView.builder(
-            itemCount: 5,
-            itemBuilder: (context, index) {
-              return new ListTile(
-                trailing: Icon(Icons.location_searching),
-                title: new Text(predictedaddr[index]),
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => (
-                              SelectPlaces(
-                                placeId: predictionList[index].placeId,
-                                description: predictionList[index].description,
-                              )
-                          )
-                      )
-                  );
-                },
-              );
-            }) : SizedBox(width: 0.0, height: 0.0,)
-      ),
+      body: (predictedaddr.length != 0
+          ? ListView.builder(
+              itemCount: 5,
+              itemBuilder: (context, index) {
+                return new ListTile(
+                  trailing: Icon(Icons.location_searching),
+                  title: new Text(predictedaddr[index]),
+                  onTap: () {
+                    Navigator.push(context, MaterialPageRoute(
+                      builder: (context) => (SelectPlaces(
+                            placeId: predictionList[index].placeId,
+                            description: predictionList[index].description,
+                          )),
+                    ));
+                  },
+                );
+              },
+            )
+          : SizedBox(width: 0.0, height: 0.0)),
     );
   }
 }
-

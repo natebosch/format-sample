@@ -64,10 +64,7 @@ class _TaskpageState extends State<Taskpage> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Padding(
-                    padding: EdgeInsets.only(
-                      top: 24.0,
-                      bottom: 6.0,
-                    ),
+                    padding: EdgeInsets.only(top: 24.0, bottom: 6.0),
                     child: Row(
                       children: [
                         InkWell(
@@ -78,7 +75,8 @@ class _TaskpageState extends State<Taskpage> {
                             padding: const EdgeInsets.all(24.0),
                             child: Image(
                               image: AssetImage(
-                                  'assets/images/back_arrow_icon.png'),
+                                'assets/images/back_arrow_icon.png',
+                              ),
                             ),
                           ),
                         ),
@@ -91,13 +89,17 @@ class _TaskpageState extends State<Taskpage> {
                                 // Check if the task is null
                                 if (widget.task == null) {
                                   Task _newTask = Task(title: value);
-                                  _taskId = await _dbHelper.insertTask(_newTask);
+                                  _taskId =
+                                      await _dbHelper.insertTask(_newTask);
                                   setState(() {
                                     _contentVisile = true;
                                     _taskTitle = value;
                                   });
                                 } else {
-                                  await _dbHelper.updateTaskTitle(_taskId, value);
+                                  await _dbHelper.updateTaskTitle(
+                                    _taskId,
+                                    value,
+                                  );
                                   print("Task Updated");
                                 }
                                 _descriptionFocus.requestFocus();
@@ -115,34 +117,35 @@ class _TaskpageState extends State<Taskpage> {
                               color: Color(0xFF211551),
                             ),
                           ),
-                        )
+                        ),
                       ],
                     ),
                   ),
                   Visibility(
                     visible: _contentVisile,
                     child: Padding(
-                      padding: EdgeInsets.only(
-                        bottom: 12.0,
-                      ),
+                      padding: EdgeInsets.only(bottom: 12.0),
                       child: TextField(
                         focusNode: _descriptionFocus,
                         onSubmitted: (value) async {
-                          if(value != ""){
-                            if(_taskId != 0){
-                              await _dbHelper.updateTaskDescription(_taskId, value);
+                          if (value != "") {
+                            if (_taskId != 0) {
+                              await _dbHelper.updateTaskDescription(
+                                _taskId,
+                                value,
+                              );
                               _taskDescription = value;
                             }
                           }
                           _todoFocus.requestFocus();
                         },
-                        controller: TextEditingController()..text = _taskDescription,
+                        controller: TextEditingController()
+                          ..text = _taskDescription,
                         decoration: InputDecoration(
                           hintText: "Enter Description for the task...",
                           border: InputBorder.none,
-                          contentPadding: EdgeInsets.symmetric(
-                            horizontal: 24.0,
-                          ),
+                          contentPadding:
+                              EdgeInsets.symmetric(horizontal: 24.0),
                         ),
                       ),
                     ),
@@ -159,10 +162,16 @@ class _TaskpageState extends State<Taskpage> {
                             itemBuilder: (context, index) {
                               return GestureDetector(
                                 onTap: () async {
-                                  if(snapshot.data[index].isDone == 0){
-                                    await _dbHelper.updateTodoDone(snapshot.data[index].id, 1);
+                                  if (snapshot.data[index].isDone == 0) {
+                                    await _dbHelper.updateTodoDone(
+                                      snapshot.data[index].id,
+                                      1,
+                                    );
                                   } else {
-                                    await _dbHelper.updateTodoDone(snapshot.data[index].id, 0);
+                                    await _dbHelper.updateTodoDone(
+                                      snapshot.data[index].id,
+                                      0,
+                                    );
                                   }
                                   setState(() {});
                                 },
@@ -182,22 +191,21 @@ class _TaskpageState extends State<Taskpage> {
                   Visibility(
                     visible: _contentVisile,
                     child: Padding(
-                      padding: EdgeInsets.symmetric(
-                        horizontal: 24.0,
-                      ),
+                      padding: EdgeInsets.symmetric(horizontal: 24.0),
                       child: Row(
                         children: [
                           Container(
                             width: 20.0,
                             height: 20.0,
-                            margin: EdgeInsets.only(
-                              right: 12.0,
-                            ),
+                            margin: EdgeInsets.only(right: 12.0),
                             decoration: BoxDecoration(
-                                color: Colors.transparent,
-                                borderRadius: BorderRadius.circular(6.0),
-                                border: Border.all(
-                                    color: Color(0xFF86829D), width: 1.5)),
+                              color: Colors.transparent,
+                              borderRadius: BorderRadius.circular(6.0),
+                              border: Border.all(
+                                color: Color(0xFF86829D),
+                                width: 1.5,
+                              ),
+                            ),
                             child: Image(
                               image: AssetImage('assets/images/check_icon.png'),
                             ),
@@ -214,7 +222,7 @@ class _TaskpageState extends State<Taskpage> {
                                     Todo _newTodo = Todo(
                                       title: value,
                                       isDone: 0,
-                                        taskId: _taskId,
+                                      taskId: _taskId,
                                     );
                                     await _dbHelper.insertTodo(_newTodo);
                                     setState(() {});
@@ -233,7 +241,7 @@ class _TaskpageState extends State<Taskpage> {
                         ],
                       ),
                     ),
-                  )
+                  ),
                 ],
               ),
               Visibility(
@@ -243,7 +251,7 @@ class _TaskpageState extends State<Taskpage> {
                   right: 24.0,
                   child: GestureDetector(
                     onTap: () async {
-                      if(_taskId != 0) {
+                      if (_taskId != 0) {
                         await _dbHelper.deleteTask(_taskId);
                         Navigator.pop(context);
                       }
@@ -256,14 +264,12 @@ class _TaskpageState extends State<Taskpage> {
                         borderRadius: BorderRadius.circular(20.0),
                       ),
                       child: Image(
-                        image: AssetImage(
-                          "assets/images/delete_icon.png",
-                        ),
+                        image: AssetImage("assets/images/delete_icon.png"),
                       ),
                     ),
                   ),
                 ),
-              )
+              ),
             ],
           ),
         ),

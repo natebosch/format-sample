@@ -9,9 +9,7 @@ class MyApp extends StatelessWidget {
     return new MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flight Search',
-      theme: new ThemeData(
-        primarySwatch: Colors.red,
-      ),
+      theme: new ThemeData(primarySwatch: Colors.red),
       home: new HomePage(),
     );
   }

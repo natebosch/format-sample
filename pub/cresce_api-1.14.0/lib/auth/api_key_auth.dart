@@ -20,7 +20,9 @@ class ApiKeyAuth implements Authentication {
 
   @override
   void applyToParams(
-      List<QueryParam> queryParams, Map<String, String> headerParams) {
+    List<QueryParam> queryParams,
+    Map<String, String> headerParams,
+  ) {
     final value = apiKeyPrefix == null ? apiKey : '$apiKeyPrefix $apiKey';
 
     if (location == 'query' && value != null) {

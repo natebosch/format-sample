@@ -19,9 +19,7 @@ class ResponseHeaderWidget extends StatelessWidget {
             "Headers :",
             style: TextStyle(fontWeight: FontWeight.bold),
           ),
-          const Padding(
-            padding: EdgeInsets.only(top: 8),
-          ),
+          const Padding(padding: EdgeInsets.only(top: 8)),
           ...headers!.entries.map((e) => getListRow(e.key, e.value)),
         ],
       ),
@@ -35,28 +33,15 @@ class ResponseHeaderWidget extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          const CircleAvatar(
-            radius: 2.0,
-            backgroundColor: Colors.black,
-          ),
-          const Padding(
-            padding: EdgeInsets.only(left: 5),
-          ),
+          const CircleAvatar(radius: 2.0, backgroundColor: Colors.black),
+          const Padding(padding: EdgeInsets.only(left: 5)),
           SelectableText(
             '$name: ',
             style: const TextStyle(fontWeight: FontWeight.bold),
           ),
-          const Padding(
-            padding: EdgeInsets.only(left: 5),
-          ),
-          Flexible(
-            child: SelectableText(
-              value.toString(),
-            ),
-          ),
-          const Padding(
-            padding: EdgeInsets.only(bottom: 18),
-          )
+          const Padding(padding: EdgeInsets.only(left: 5)),
+          Flexible(child: SelectableText(value.toString())),
+          const Padding(padding: EdgeInsets.only(bottom: 18)),
         ],
       ),
     );

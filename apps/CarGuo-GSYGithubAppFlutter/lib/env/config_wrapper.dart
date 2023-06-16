@@ -16,7 +16,7 @@ class ConfigWrapper extends StatelessWidget {
 
   static EnvConfig? of(BuildContext context) {
     final _InheritedConfig inheritedConfig =
-    context.dependOnInheritedWidgetOfExactType<_InheritedConfig>()!;
+        context.dependOnInheritedWidgetOfExactType<_InheritedConfig>()!;
     return inheritedConfig.config;
   }
 
@@ -25,11 +25,12 @@ class ConfigWrapper extends StatelessWidget {
   final Widget? child;
 }
 
-
 class _InheritedConfig extends InheritedWidget {
-  const _InheritedConfig(
-      {Key? key, required this.config, required Widget child})
-      : super(key: key, child: child);
+  const _InheritedConfig({
+    Key? key,
+    required this.config,
+    required Widget child,
+  }) : super(key: key, child: child);
 
   final EnvConfig? config;
 

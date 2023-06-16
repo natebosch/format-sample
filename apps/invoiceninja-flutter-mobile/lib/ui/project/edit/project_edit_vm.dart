@@ -84,14 +84,15 @@ class ProjectEditVM {
       },
       onAddClientPressed: (context, completer) {
         createEntity(
-            context: context,
-            entity: ClientEntity(),
-            force: true,
-            completer: completer,
-            cancelCompleter: Completer<Null>()
-              ..future.then((_) {
-                store.dispatch(UpdateCurrentRoute(ProjectEditScreen.route));
-              }));
+          context: context,
+          entity: ClientEntity(),
+          force: true,
+          completer: completer,
+          cancelCompleter: Completer<Null>()
+            ..future.then((_) {
+              store.dispatch(UpdateCurrentRoute(ProjectEditScreen.route));
+            }),
+        );
         completer.future.then((SelectableEntity client) {
           store.dispatch(UpdateCurrentRoute(ProjectEditScreen.route));
         });
@@ -104,11 +105,14 @@ class ProjectEditVM {
           final Completer<ProjectEntity> completer =
               new Completer<ProjectEntity>();
           store.dispatch(
-              SaveProjectRequest(completer: completer, project: project));
+            SaveProjectRequest(completer: completer, project: project),
+          );
           return completer.future.then((savedProject) {
-            showToast(project.isNew
-                ? localization.createdProject
-                : localization.updatedProject);
+            showToast(
+              project.isNew
+                  ? localization.createdProject
+                  : localization.updatedProject,
+            );
 
             if (state.prefState.isMobile) {
               store.dispatch(UpdateCurrentRoute(ProjectViewScreen.route));
@@ -125,10 +129,11 @@ class ProjectEditVM {
             }
           }).catchError((Object error) {
             showDialog<ErrorDialog>(
-                context: navigatorKey.currentContext,
-                builder: (BuildContext context) {
-                  return ErrorDialog(error);
-                });
+              context: navigatorKey.currentContext,
+              builder: (BuildContext context) {
+                return ErrorDialog(error);
+              },
+            );
           });
         });
       },
@@ -145,5 +150,5 @@ class ProjectEditVM {
   final bool isLoading;
   final AppState state;
   final Function(BuildContext context, Completer<SelectableEntity> completer)
-      onAddClientPressed;
+  onAddClientPressed;
 }

@@ -13,15 +13,19 @@ import 'package:invoiceninja_flutter/redux/ui/entity_ui_state.dart';
 import 'package:invoiceninja_flutter/redux/ui/list_ui_state.dart';
 
 EntityUIState creditUIReducer(CreditUIState state, dynamic action) {
-  return state.rebuild((b) => b
-    ..listUIState.replace(creditListReducer(state.listUIState, action))
-    ..editing.replace(editingReducer(state.editing, action))
-    ..editingItemIndex = editingItemReducer(state.editingItemIndex, action)
-    ..selectedId = selectedIdReducer(state.selectedId, action)
-    ..forceSelected = forceSelectedReducer(state.forceSelected, action)
-    ..tabIndex = tabIndexReducer(state.tabIndex, action)
-    ..historyActivityId =
-        historyActivityIdReducer(state.historyActivityId, action));
+  return state.rebuild(
+    (b) => b
+      ..listUIState.replace(creditListReducer(state.listUIState, action))
+      ..editing.replace(editingReducer(state.editing, action))
+      ..editingItemIndex = editingItemReducer(state.editingItemIndex, action)
+      ..selectedId = selectedIdReducer(state.selectedId, action)
+      ..forceSelected = forceSelectedReducer(state.forceSelected, action)
+      ..tabIndex = tabIndexReducer(state.tabIndex, action)
+      ..historyActivityId = historyActivityIdReducer(
+        state.historyActivityId,
+        action,
+      ),
+  );
 }
 
 final forceSelectedReducer = combineReducers<bool>([
@@ -58,23 +62,30 @@ Reducer<String> dropdownFilterReducer = combineReducers([
 ]);
 
 String filtercreditDropdownReducer(
-    String dropdownFilter, FilterCreditDropdown action) {
+  String dropdownFilter,
+  FilterCreditDropdown action,
+) {
   return action.filter;
 }
 
 Reducer<String> selectedIdReducer = combineReducers([
   TypedReducer<String, ArchiveCreditsSuccess>((completer, action) => ''),
   TypedReducer<String, DeleteCreditsSuccess>((completer, action) => ''),
-  TypedReducer<String, PreviewEntity>((selectedId, action) =>
-      action.entityType == EntityType.credit ? action.entityId : selectedId),
+  TypedReducer<String, PreviewEntity>(
+    (selectedId, action) =>
+        action.entityType == EntityType.credit ? action.entityId : selectedId,
+  ),
   TypedReducer<String, ViewCredit>((selectedId, action) => action.creditId),
   TypedReducer<String, AddCreditSuccess>(
-      (selectedId, action) => action.credit.id),
+    (selectedId, action) => action.credit.id,
+  ),
   TypedReducer<String, ShowEmailCredit>(
-      (selectedId, action) => action.credit.id),
+    (selectedId, action) => action.credit.id,
+  ),
   TypedReducer<String, ShowPdfCredit>((selectedId, action) => action.credit.id),
   TypedReducer<String, SelectCompany>(
-      (selectedId, action) => action.clearSelection ? '' : selectedId),
+    (selectedId, action) => action.clearSelection ? '' : selectedId,
+  ),
   TypedReducer<String, ClearEntityFilter>((selectedId, action) => ''),
   TypedReducer<String, SortCredits>((selectedId, action) => ''),
   TypedReducer<String, FilterCredits>((selectedId, action) => ''),
@@ -84,14 +95,17 @@ Reducer<String> selectedIdReducer = combineReducers([
   TypedReducer<String, FilterCreditsByCustom2>((selectedId, action) => ''),
   TypedReducer<String, FilterCreditsByCustom3>((selectedId, action) => ''),
   TypedReducer<String, FilterCreditsByCustom4>((selectedId, action) => ''),
-  TypedReducer<String, ClearEntitySelection>((selectedId, action) =>
-      action.entityType == EntityType.credit ? '' : selectedId),
+  TypedReducer<String, ClearEntitySelection>(
+    (selectedId, action) =>
+        action.entityType == EntityType.credit ? '' : selectedId,
+  ),
   TypedReducer<String, FilterByEntity>(
-      (selectedId, action) => action.clearSelection
-          ? ''
-          : action.entityType == EntityType.credit
-              ? action.entityId
-              : selectedId),
+    (selectedId, action) => action.clearSelection
+        ? ''
+        : action.entityType == EntityType.credit
+            ? action.entityId
+            : selectedId,
+  ),
 ]);
 
 final editingReducer = combineReducers<InvoiceEntity>([
@@ -115,12 +129,16 @@ final editingReducer = combineReducers<InvoiceEntity>([
   }),
   TypedReducer<InvoiceEntity, UpdateCreditClient>((credit, action) {
     final client = action.client;
-    return credit.rebuild((b) => b
-      ..isChanged = true
-      ..clientId = client?.id ?? ''
-      ..invitations.replace((client?.emailContacts ?? <ContactEntity>[])
-          .map((contact) => InvitationEntity(contactId: contact.id))
-          .toList()));
+    return credit.rebuild(
+      (b) => b
+        ..isChanged = true
+        ..clientId = client?.id ?? ''
+        ..invitations.replace(
+          (client?.emailContacts ?? <ContactEntity>[]).map(
+            (contact) => InvitationEntity(contactId: contact.id),
+          ).toList(),
+        ),
+    );
   }),
   TypedReducer<InvoiceEntity, RestoreCreditsSuccess>((credits, action) {
     return action.credits[0];
@@ -137,9 +155,12 @@ final editingReducer = combineReducers<InvoiceEntity>([
   TypedReducer<InvoiceEntity, UpdateCreditItem>(_updateCreditItem),
   TypedReducer<InvoiceEntity, DiscardChanges>(_clearEditing),
   TypedReducer<InvoiceEntity, AddCreditContact>((invoice, action) {
-    return invoice.rebuild((b) => b
-      ..invitations.add(
-          action.invitation ?? InvitationEntity(contactId: action.contact.id)));
+    return invoice.rebuild(
+      (b) => b
+        ..invitations.add(
+          action.invitation ?? InvitationEntity(contactId: action.contact.id),
+        ),
+    );
   }),
   TypedReducer<InvoiceEntity, RemoveCreditContact>((invoice, action) {
     return invoice.rebuild((b) => b..invitations.remove(action.invitation));
@@ -156,7 +177,8 @@ InvoiceEntity _updateEditing(InvoiceEntity credit, dynamic action) {
 
 InvoiceEntity _addCreditItem(InvoiceEntity credit, AddCreditItem action) {
   return credit.rebuild(
-      (b) => b..lineItems.add(action.creditItem ?? InvoiceItemEntity()));
+    (b) => b..lineItems.add(action.creditItem ?? InvoiceItemEntity()),
+  );
 }
 
 InvoiceEntity _addCreditItems(InvoiceEntity credit, AddCreditItems action) {
@@ -189,61 +211,80 @@ final creditListReducer = combineReducers<ListUIState>([
   TypedReducer<ListUIState, StartCreditMultiselect>(_startListMultiselect),
   TypedReducer<ListUIState, AddToCreditMultiselect>(_addToListMultiselect),
   TypedReducer<ListUIState, RemoveFromCreditMultiselect>(
-      _removeFromListMultiselect),
+    _removeFromListMultiselect,
+  ),
   TypedReducer<ListUIState, ClearCreditMultiselect>(_clearListMultiselect),
   TypedReducer<ListUIState, ViewCreditList>(_viewCreditList),
 ]);
 
 ListUIState _viewCreditList(
-    ListUIState creditListState, ViewCreditList action) {
-  return creditListState.rebuild((b) => b
-    ..selectedIds = null
-    ..filter = null
-    ..filterClearedAt = DateTime.now().millisecondsSinceEpoch);
+  ListUIState creditListState,
+  ViewCreditList action,
+) {
+  return creditListState.rebuild(
+    (b) => b
+      ..selectedIds = null
+      ..filter = null
+      ..filterClearedAt = DateTime.now().millisecondsSinceEpoch,
+  );
 }
 
 ListUIState _filterCreditsByCustom1(
-    ListUIState creditListState, FilterCreditsByCustom1 action) {
+  ListUIState creditListState,
+  FilterCreditsByCustom1 action,
+) {
   if (creditListState.custom1Filters.contains(action.value)) {
-    return creditListState
-        .rebuild((b) => b..custom1Filters.remove(action.value));
+    return creditListState.rebuild(
+      (b) => b..custom1Filters.remove(action.value),
+    );
   } else {
     return creditListState.rebuild((b) => b..custom1Filters.add(action.value));
   }
 }
 
 ListUIState _filterCreditsByCustom2(
-    ListUIState creditListState, FilterCreditsByCustom2 action) {
+  ListUIState creditListState,
+  FilterCreditsByCustom2 action,
+) {
   if (creditListState.custom2Filters.contains(action.value)) {
-    return creditListState
-        .rebuild((b) => b..custom2Filters.remove(action.value));
+    return creditListState.rebuild(
+      (b) => b..custom2Filters.remove(action.value),
+    );
   } else {
     return creditListState.rebuild((b) => b..custom2Filters.add(action.value));
   }
 }
 
 ListUIState _filterCreditsByCustom3(
-    ListUIState creditListState, FilterCreditsByCustom3 action) {
+  ListUIState creditListState,
+  FilterCreditsByCustom3 action,
+) {
   if (creditListState.custom3Filters.contains(action.value)) {
-    return creditListState
-        .rebuild((b) => b..custom3Filters.remove(action.value));
+    return creditListState.rebuild(
+      (b) => b..custom3Filters.remove(action.value),
+    );
   } else {
     return creditListState.rebuild((b) => b..custom3Filters.add(action.value));
   }
 }
 
 ListUIState _filterCreditsByCustom4(
-    ListUIState creditListState, FilterCreditsByCustom4 action) {
+  ListUIState creditListState,
+  FilterCreditsByCustom4 action,
+) {
   if (creditListState.custom4Filters.contains(action.value)) {
-    return creditListState
-        .rebuild((b) => b..custom4Filters.remove(action.value));
+    return creditListState.rebuild(
+      (b) => b..custom4Filters.remove(action.value),
+    );
   } else {
     return creditListState.rebuild((b) => b..custom4Filters.add(action.value));
   }
 }
 
 ListUIState _filterCreditsByState(
-    ListUIState creditListState, FilterCreditsByState action) {
+  ListUIState creditListState,
+  FilterCreditsByState action,
+) {
   if (creditListState.stateFilters.contains(action.state)) {
     return creditListState.rebuild((b) => b..stateFilters.remove(action.state));
   } else {
@@ -252,47 +293,63 @@ ListUIState _filterCreditsByState(
 }
 
 ListUIState _filterCreditsByStatus(
-    ListUIState creditListState, FilterCreditsByStatus action) {
+  ListUIState creditListState,
+  FilterCreditsByStatus action,
+) {
   if (creditListState.statusFilters.contains(action.status)) {
-    return creditListState
-        .rebuild((b) => b..statusFilters.remove(action.status));
+    return creditListState.rebuild(
+      (b) => b..statusFilters.remove(action.status),
+    );
   } else {
     return creditListState.rebuild((b) => b..statusFilters.add(action.status));
   }
 }
 
 ListUIState _filterCredits(ListUIState creditListState, FilterCredits action) {
-  return creditListState.rebuild((b) => b
-    ..filter = action.filter
-    ..filterClearedAt = action.filter == null
-        ? DateTime.now().millisecondsSinceEpoch
-        : creditListState.filterClearedAt);
+  return creditListState.rebuild(
+    (b) => b
+      ..filter = action.filter
+      ..filterClearedAt = action.filter == null
+          ? DateTime.now().millisecondsSinceEpoch
+          : creditListState.filterClearedAt,
+  );
 }
 
 ListUIState _sortCredits(ListUIState creditListState, SortCredits action) {
-  return creditListState.rebuild((b) => b
-    ..sortAscending = b.sortField != action.field || !b.sortAscending
-    ..sortField = action.field);
+  return creditListState.rebuild(
+    (b) => b
+      ..sortAscending = b.sortField != action.field || !b.sortAscending
+      ..sortField = action.field,
+  );
 }
 
 ListUIState _startListMultiselect(
-    ListUIState creditListState, StartCreditMultiselect action) {
+  ListUIState creditListState,
+  StartCreditMultiselect action,
+) {
   return creditListState.rebuild((b) => b..selectedIds = ListBuilder());
 }
 
 ListUIState _addToListMultiselect(
-    ListUIState creditListState, AddToCreditMultiselect action) {
+  ListUIState creditListState,
+  AddToCreditMultiselect action,
+) {
   return creditListState.rebuild((b) => b..selectedIds.add(action.entity.id));
 }
 
 ListUIState _removeFromListMultiselect(
-    ListUIState creditListState, RemoveFromCreditMultiselect action) {
-  return creditListState
-      .rebuild((b) => b..selectedIds.remove(action.entity.id));
+  ListUIState creditListState,
+  RemoveFromCreditMultiselect action,
+) {
+  return creditListState.rebuild(
+    (b) => b..selectedIds.remove(action.entity.id),
+  );
 }
 
 ListUIState _clearListMultiselect(
-    ListUIState creditListState, ClearCreditMultiselect action) {
+  ListUIState creditListState,
+  ClearCreditMultiselect action,
+) {
   return creditListState.rebuild((b) => b..selectedIds = null);
 }
 
@@ -309,7 +366,9 @@ final creditsReducer = combineReducers<CreditState>([
 ]);
 
 CreditState _markSentCreditSuccess(
-    CreditState creditState, MarkSentCreditSuccess action) {
+  CreditState creditState,
+  MarkSentCreditSuccess action,
+) {
   final creditMap = Map<String, InvoiceEntity>.fromIterable(
     action.credits,
     key: (dynamic item) => item.id,
@@ -319,7 +378,9 @@ CreditState _markSentCreditSuccess(
 }
 
 CreditState _archiveCreditSuccess(
-    CreditState creditState, ArchiveCreditsSuccess action) {
+  CreditState creditState,
+  ArchiveCreditsSuccess action,
+) {
   return creditState.rebuild((b) {
     for (final credit in action.credits) {
       b.map[credit.id] = credit;
@@ -328,7 +389,9 @@ CreditState _archiveCreditSuccess(
 }
 
 CreditState _deleteCreditSuccess(
-    CreditState creditState, DeleteCreditsSuccess action) {
+  CreditState creditState,
+  DeleteCreditsSuccess action,
+) {
   return creditState.rebuild((b) {
     for (final credit in action.credits) {
       b.map[credit.id] = credit;
@@ -337,7 +400,9 @@ CreditState _deleteCreditSuccess(
 }
 
 CreditState _restoreCreditSuccess(
-    CreditState creditState, RestoreCreditsSuccess action) {
+  CreditState creditState,
+  RestoreCreditsSuccess action,
+) {
   return creditState.rebuild((b) {
     for (final credit in action.credits) {
       b.map[credit.id] = credit;
@@ -346,25 +411,34 @@ CreditState _restoreCreditSuccess(
 }
 
 CreditState _addCredit(CreditState creditState, AddCreditSuccess action) {
-  return creditState.rebuild((b) => b
-    ..map[action.credit.id] = action.credit
-        .rebuild((b) => b..loadedAt = DateTime.now().millisecondsSinceEpoch)
-    ..list.add(action.credit.id));
+  return creditState.rebuild(
+    (b) => b
+      ..map[action.credit.id] = action.credit.rebuild(
+        (b) => b..loadedAt = DateTime.now().millisecondsSinceEpoch,
+      )
+      ..list.add(action.credit.id),
+  );
 }
 
 CreditState _updateCredit(CreditState invoiceState, dynamic action) {
   final InvoiceEntity credit = action.credit;
-  return invoiceState.rebuild((b) => b
-    ..map[credit.id] = credit
-        .rebuild((b) => b..loadedAt = DateTime.now().millisecondsSinceEpoch));
+  return invoiceState.rebuild(
+    (b) => b
+      ..map[credit.id] = credit.rebuild(
+        (b) => b..loadedAt = DateTime.now().millisecondsSinceEpoch,
+      ),
+  );
 }
 
 CreditState _setLoadedCredits(
-        CreditState creditState, LoadCreditsSuccess action) =>
-    creditState.loadCredits(action.credits);
+  CreditState creditState,
+  LoadCreditsSuccess action,
+) => creditState.loadCredits(action.credits);
 
 CreditState _setLoadedCompany(
-    CreditState creditState, LoadCompanySuccess action) {
+  CreditState creditState,
+  LoadCompanySuccess action,
+) {
   final company = action.userCompany.company;
   return creditState.loadCredits(company.credits);
 }

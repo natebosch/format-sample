@@ -17,10 +17,7 @@ class ThinkingIndicator extends ImplicitlyAnimatedWidget {
     this.height = 10.0,
     this.visible = true,
     Key? key,
-  }) : super(
-          duration: Styling.thinkingFadeDuration,
-          key: key,
-        );
+  }) : super(duration: Styling.thinkingFadeDuration, key: key);
 
   @override
   ImplicitlyAnimatedWidgetState createState() => _ThinkingIndicatorState();
@@ -43,10 +40,7 @@ class _ThinkingIndicatorState
         child: Opacity(
           opacity: _opacityTween!.evaluate(animation!),
           child: _opacityTween!.evaluate(animation!) != 0
-              ? _AnimatedCircles(
-                  color: widget.color,
-                  height: widget.height,
-                )
+              ? _AnimatedCircles(color: widget.color, height: widget.height)
               : null,
         ),
       ),
@@ -67,11 +61,8 @@ class _AnimatedCircles extends StatefulWidget {
   final Color color;
   final double height;
 
-  const _AnimatedCircles({
-    required this.color,
-    required this.height,
-    Key? key,
-  }) : super(key: key);
+  const _AnimatedCircles({required this.color, required this.height, Key? key})
+    : super(key: key);
 
   @override
   _AnimatedCirclesState createState() => _AnimatedCirclesState();
@@ -86,15 +77,17 @@ class _AnimatedCirclesState extends State<_AnimatedCircles>
   void initState() {
     super.initState();
     _thinkingController = AnimationController(
-        duration: const Duration(milliseconds: 500), vsync: this)
-      ..addStatusListener((status) {
-        // This bit ensures that the animation reverses course rather than
-        // stopping.
-        if (status == AnimationStatus.completed) _thinkingController.reverse();
-        if (status == AnimationStatus.dismissed) _thinkingController.forward();
-      });
+      duration: const Duration(milliseconds: 500),
+      vsync: this,
+    )..addStatusListener((status) {
+      // This bit ensures that the animation reverses course rather than
+      // stopping.
+      if (status == AnimationStatus.completed) _thinkingController.reverse();
+      if (status == AnimationStatus.dismissed) _thinkingController.forward();
+    });
     _thinkingAnimation = Tween(begin: 0.0, end: widget.height).animate(
-        CurvedAnimation(parent: _thinkingController, curve: Curves.easeOut));
+      CurvedAnimation(parent: _thinkingController, curve: Curves.easeOut),
+    );
     _thinkingController.forward();
   }
 
@@ -109,10 +102,7 @@ class _AnimatedCirclesState extends State<_AnimatedCircles>
       width: widget.height,
       height: widget.height,
       decoration: BoxDecoration(
-        border: Border.all(
-          color: widget.color,
-          width: 2.0,
-        ),
+        border: Border.all(color: widget.color, width: 2.0),
         borderRadius: BorderRadius.all(const Radius.circular(5.0)),
       ),
     );

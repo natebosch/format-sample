@@ -32,6 +32,8 @@ class TestPage extends StatelessWidget {
     );
 
     String channel = 'ch_$orderId';
-    await pubnub.publish(channel, {'message': DateFormat('HH:mm:ss').format(DateTime.now().toLocal())});
+    await pubnub.publish(channel, {
+      'message': DateFormat('HH:mm:ss').format(DateTime.now().toLocal()),
+    });
   }
 }

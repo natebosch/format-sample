@@ -43,9 +43,10 @@ class _VendorViewState extends State<VendorView>
 
     final state = widget.viewModel.state;
     _controller = TabController(
-        vsync: this,
-        length: 3,
-        initialIndex: widget.isFilter ? 0 : state.vendorUIState.tabIndex);
+      vsync: this,
+      length: 3,
+      initialIndex: widget.isFilter ? 0 : state.vendorUIState.tabIndex,
+    );
     _controller.addListener(_onTabChanged);
   }
 
@@ -86,60 +87,51 @@ class _VendorViewState extends State<VendorView>
       appBarBottom: TabBar(
         controller: _controller,
         tabs: [
-          Tab(
-            text: localization.overview,
-          ),
-          Tab(
-            text: localization.details,
-          ),
-          Tab(
-            text: localization.documents,
-          ),
+          Tab(text: localization.overview),
+          Tab(text: localization.details),
+          Tab(text: localization.documents),
         ],
       ),
-      body: Builder(builder: (context) {
-        return Column(
-          children: [
-            Expanded(
-              child: TabBarView(
-                controller: _controller,
-                children: <Widget>[
-                  RefreshIndicator(
-                    onRefresh: () => viewModel.onRefreshed(context),
-                    child: VendorOverview(
-                      viewModel: viewModel,
-                      isFilter: widget.isFilter,
+      body: Builder(
+        builder: (context) {
+          return Column(
+            children: [
+              Expanded(
+                child: TabBarView(
+                  controller: _controller,
+                  children: <Widget>[
+                    RefreshIndicator(
+                      onRefresh: () => viewModel.onRefreshed(context),
+                      child: VendorOverview(
+                        viewModel: viewModel,
+                        isFilter: widget.isFilter,
+                      ),
                     ),
-                  ),
-                  RefreshIndicator(
-                    onRefresh: () => viewModel.onRefreshed(context),
-                    child: VendorViewDetails(vendor: viewModel.vendor),
-                  ),
-                  RefreshIndicator(
-                    onRefresh: () => viewModel.onRefreshed(context),
-                    child: VendorViewDocuments(
-                      viewModel: viewModel,
+                    RefreshIndicator(
+                      onRefresh: () => viewModel.onRefreshed(context),
+                      child: VendorViewDetails(vendor: viewModel.vendor),
                     ),
-                  ),
-                ],
+                    RefreshIndicator(
+                      onRefresh: () => viewModel.onRefreshed(context),
+                      child: VendorViewDocuments(viewModel: viewModel),
+                    ),
+                  ],
+                ),
               ),
-            ),
-            BottomButtons(
-              entity: vendor,
-              action1: EntityAction.newExpense,
-              action2: EntityAction.archive,
-            ),
-          ],
-        );
-      }),
+              BottomButtons(
+                entity: vendor,
+                action1: EntityAction.newExpense,
+                action2: EntityAction.archive,
+              ),
+            ],
+          );
+        },
+      ),
       floatingActionButton: FloatingActionButton(
         heroTag: 'vendor_view_fab',
         backgroundColor: Theme.of(context).primaryColorDark,
         onPressed: () => viewModel.onAddExpensePressed(context),
-        child: Icon(
-          Icons.add,
-          color: Colors.white,
-        ),
+        child: Icon(Icons.add, color: Colors.white),
         tooltip: localization.create,
       ),
     );

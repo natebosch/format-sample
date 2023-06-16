@@ -17,10 +17,7 @@ class YustAuthService {
   String? getCurrentUserId() => null;
 
   /// Sign in by email and password.
-  Future<void> signIn(
-    String email,
-    String password,
-  ) async {
+  Future<void> signIn(String email, String password) async {
     throw UnsupportedError('Not supported. No UI available.');
   }
 

@@ -54,7 +54,8 @@ class FileStorage implements Storage {
     if (!_curDir!.endsWith('/')) {
       _curDir = _curDir! + '/';
     }
-    _curDir = _curDir! + 'ie${ignoreExpires ? 1 : 0}_ps${persistSession ? 1 : 0}/';
+    _curDir =
+        _curDir! + 'ie${ignoreExpires ? 1 : 0}_ps${persistSession ? 1 : 0}/';
   }
 
   @override
@@ -88,10 +89,10 @@ class FileStorage implements Storage {
     if (file.existsSync()) {
       if (readPreHandler != null) {
         return readPreHandler!(file.readAsBytesSync());
-    } else {
-    return file.readAsStringSync();
+      } else {
+        return file.readAsStringSync();
+      }
     }
-  }
     return null;
   }
 

@@ -26,7 +26,9 @@ class AirAsiaBar extends StatelessWidget {
           title: new Text(
             "AirAsia",
             style: TextStyle(
-                fontFamily: 'NothingYouCouldDo', fontWeight: FontWeight.bold),
+              fontFamily: 'NothingYouCouldDo',
+              fontWeight: FontWeight.bold,
+            ),
           ),
         ),
       ],

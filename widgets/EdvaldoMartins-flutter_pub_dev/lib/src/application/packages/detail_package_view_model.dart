@@ -81,24 +81,24 @@ abstract class _DetailPackageViewModel extends BaseViewModel with Store {
 
     onRefresh(value: false);
 
-    response.fold(
-      (failure) => this.failure = failure,
-      (data) {
-        setPackage(data);
-        loadReadme();
-        loadScore();
-      },
-    );
+    response.fold((failure) => this.failure = failure, (data) {
+      setPackage(data);
+      loadReadme();
+      loadScore();
+    });
   }
 
   @action
   Future<void> loadReadme() async {
     _loadingReadme = true;
     var response = await _advancedService.getReadme(
-        gitPath: package.latest.pubspec.homepage);
+      gitPath: package.latest.pubspec.homepage,
+    );
     _loadingReadme = false;
     response.fold(
-        (failure) => this._readme = '', (data) => this._readme = data);
+      (failure) => this._readme = '',
+      (data) => this._readme = data,
+    );
   }
 
   @action

@@ -32,7 +32,8 @@ class Fragment$ClaimPendingCodes {
           fromJson$Enum$claim_pending_code_statuses_enum((l$status as String)),
       code: (l$code as String),
       pending_code: Fragment$ClaimPendingCodes$pending_code.fromJson(
-          (l$pending_code as Map<String, dynamic>)),
+        (l$pending_code as Map<String, dynamic>),
+      ),
       $__typename: (l$$__typename as String),
     );
   }
@@ -56,8 +57,9 @@ class Fragment$ClaimPendingCodes {
     final l$extended_text = extended_text;
     _resultData['extended_text'] = l$extended_text;
     final l$status = status;
-    _resultData['status'] =
-        toJson$Enum$claim_pending_code_statuses_enum(l$status);
+    _resultData['status'] = toJson$Enum$claim_pending_code_statuses_enum(
+      l$status,
+    );
     final l$code = code;
     _resultData['code'] = l$code;
     final l$pending_code = pending_code;
@@ -131,10 +133,7 @@ class Fragment$ClaimPendingCodes {
 extension UtilityExtension$Fragment$ClaimPendingCodes
     on Fragment$ClaimPendingCodes {
   CopyWith$Fragment$ClaimPendingCodes<Fragment$ClaimPendingCodes>
-      get copyWith => CopyWith$Fragment$ClaimPendingCodes(
-            this,
-            (i) => i,
-          );
+  get copyWith => CopyWith$Fragment$ClaimPendingCodes(this, (i) => i);
 }
 
 abstract class CopyWith$Fragment$ClaimPendingCodes<TRes> {
@@ -159,10 +158,7 @@ abstract class CopyWith$Fragment$ClaimPendingCodes<TRes> {
 
 class _CopyWithImpl$Fragment$ClaimPendingCodes<TRes>
     implements CopyWith$Fragment$ClaimPendingCodes<TRes> {
-  _CopyWithImpl$Fragment$ClaimPendingCodes(
-    this._instance,
-    this._then,
-  );
+  _CopyWithImpl$Fragment$ClaimPendingCodes(this._instance, this._then);
 
   final Fragment$ClaimPendingCodes _instance;
 
@@ -177,29 +173,30 @@ class _CopyWithImpl$Fragment$ClaimPendingCodes<TRes>
     Object? code = _undefined,
     Object? pending_code = _undefined,
     Object? $__typename = _undefined,
-  }) =>
-      _then(Fragment$ClaimPendingCodes(
-        id: id == _undefined || id == null ? _instance.id : (id as String),
-        extended_text: extended_text == _undefined
-            ? _instance.extended_text
-            : (extended_text as String?),
-        status: status == _undefined || status == null
-            ? _instance.status
-            : (status as Enum$claim_pending_code_statuses_enum),
-        code: code == _undefined || code == null
-            ? _instance.code
-            : (code as String),
-        pending_code: pending_code == _undefined || pending_code == null
-            ? _instance.pending_code
-            : (pending_code as Fragment$ClaimPendingCodes$pending_code),
-        $__typename: $__typename == _undefined || $__typename == null
-            ? _instance.$__typename
-            : ($__typename as String),
-      ));
+  }) => _then(Fragment$ClaimPendingCodes(
+    id: id == _undefined || id == null ? _instance.id : (id as String),
+    extended_text: extended_text == _undefined
+        ? _instance.extended_text
+        : (extended_text as String?),
+    status: status == _undefined || status == null
+        ? _instance.status
+        : (status as Enum$claim_pending_code_statuses_enum),
+    code: code == _undefined || code == null
+        ? _instance.code
+        : (code as String),
+    pending_code: pending_code == _undefined || pending_code == null
+        ? _instance.pending_code
+        : (pending_code as Fragment$ClaimPendingCodes$pending_code),
+    $__typename: $__typename == _undefined || $__typename == null
+        ? _instance.$__typename
+        : ($__typename as String),
+  ));
   CopyWith$Fragment$ClaimPendingCodes$pending_code<TRes> get pending_code {
     final local$pending_code = _instance.pending_code;
     return CopyWith$Fragment$ClaimPendingCodes$pending_code(
-        local$pending_code, (e) => call(pending_code: e));
+      local$pending_code,
+      (e) => call(pending_code: e),
+    );
   }
 }
 
@@ -216,129 +213,127 @@ class _CopyWithStubImpl$Fragment$ClaimPendingCodes<TRes>
     String? code,
     Fragment$ClaimPendingCodes$pending_code? pending_code,
     String? $__typename,
-  }) =>
-      _res;
-  CopyWith$Fragment$ClaimPendingCodes$pending_code<TRes> get pending_code =>
-      CopyWith$Fragment$ClaimPendingCodes$pending_code.stub(_res);
+  }) => _res;
+  CopyWith$Fragment$ClaimPendingCodes$pending_code<TRes>
+  get pending_code => CopyWith$Fragment$ClaimPendingCodes$pending_code.stub(
+    _res,
+  );
 }
 
 const fragmentDefinitionClaimPendingCodes = FragmentDefinitionNode(
   name: NameNode(value: 'ClaimPendingCodes'),
   typeCondition: TypeConditionNode(
-      on: NamedTypeNode(
-    name: NameNode(value: 'claim_pending_codes'),
-    isNonNull: false,
-  )),
+    on: NamedTypeNode(
+      name: NameNode(value: 'claim_pending_codes'),
+      isNonNull: false,
+    ),
+  ),
   directives: [],
-  selectionSet: SelectionSetNode(selections: [
-    FieldNode(
-      name: NameNode(value: 'claim_pending_code_id'),
-      alias: NameNode(value: 'id'),
-      arguments: [],
-      directives: [],
-      selectionSet: null,
-    ),
-    FieldNode(
-      name: NameNode(value: 'extended_text'),
-      alias: null,
-      arguments: [],
-      directives: [],
-      selectionSet: null,
-    ),
-    FieldNode(
-      name: NameNode(value: 'status'),
-      alias: null,
-      arguments: [],
-      directives: [],
-      selectionSet: null,
-    ),
-    FieldNode(
-      name: NameNode(value: 'code'),
-      alias: null,
-      arguments: [],
-      directives: [],
-      selectionSet: null,
-    ),
-    FieldNode(
-      name: NameNode(value: 'pending_code'),
-      alias: null,
-      arguments: [],
-      directives: [],
-      selectionSet: SelectionSetNode(selections: [
-        FieldNode(
-          name: NameNode(value: 'description'),
-          alias: null,
-          arguments: [],
-          directives: [],
-          selectionSet: null,
+  selectionSet: SelectionSetNode(
+    selections: [
+      FieldNode(
+        name: NameNode(value: 'claim_pending_code_id'),
+        alias: NameNode(value: 'id'),
+        arguments: [],
+        directives: [],
+        selectionSet: null,
+      ),
+      FieldNode(
+        name: NameNode(value: 'extended_text'),
+        alias: null,
+        arguments: [],
+        directives: [],
+        selectionSet: null,
+      ),
+      FieldNode(
+        name: NameNode(value: 'status'),
+        alias: null,
+        arguments: [],
+        directives: [],
+        selectionSet: null,
+      ),
+      FieldNode(
+        name: NameNode(value: 'code'),
+        alias: null,
+        arguments: [],
+        directives: [],
+        selectionSet: null,
+      ),
+      FieldNode(
+        name: NameNode(value: 'pending_code'),
+        alias: null,
+        arguments: [],
+        directives: [],
+        selectionSet: SelectionSetNode(
+          selections: [
+            FieldNode(
+              name: NameNode(value: 'description'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: null,
+            ),
+            FieldNode(
+              name: NameNode(value: 'code'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: null,
+            ),
+            FieldNode(
+              name: NameNode(value: 'document_type'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: null,
+            ),
+            FieldNode(
+              name: NameNode(value: '__typename'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: null,
+            ),
+          ],
         ),
-        FieldNode(
-          name: NameNode(value: 'code'),
-          alias: null,
-          arguments: [],
-          directives: [],
-          selectionSet: null,
-        ),
-        FieldNode(
-          name: NameNode(value: 'document_type'),
-          alias: null,
-          arguments: [],
-          directives: [],
-          selectionSet: null,
-        ),
-        FieldNode(
-          name: NameNode(value: '__typename'),
-          alias: null,
-          arguments: [],
-          directives: [],
-          selectionSet: null,
-        ),
-      ]),
-    ),
-    FieldNode(
-      name: NameNode(value: '__typename'),
-      alias: null,
-      arguments: [],
-      directives: [],
-      selectionSet: null,
-    ),
-  ]),
+      ),
+      FieldNode(
+        name: NameNode(value: '__typename'),
+        alias: null,
+        arguments: [],
+        directives: [],
+        selectionSet: null,
+      ),
+    ],
+  ),
 );
-const documentNodeFragmentClaimPendingCodes = DocumentNode(definitions: [
-  fragmentDefinitionClaimPendingCodes,
-]);
+const documentNodeFragmentClaimPendingCodes = DocumentNode(
+  definitions: [fragmentDefinitionClaimPendingCodes],
+);
 
 extension ClientExtension$Fragment$ClaimPendingCodes on graphql.GraphQLClient {
   void writeFragment$ClaimPendingCodes({
     required Fragment$ClaimPendingCodes data,
     required Map<String, dynamic> idFields,
     bool broadcast = true,
-  }) =>
-      this.writeFragment(
-        graphql.FragmentRequest(
-          idFields: idFields,
-          fragment: const graphql.Fragment(
-            fragmentName: 'ClaimPendingCodes',
-            document: documentNodeFragmentClaimPendingCodes,
-          ),
-        ),
-        data: data.toJson(),
-        broadcast: broadcast,
-      );
+  }) => this.writeFragment(graphql.FragmentRequest(
+    idFields: idFields,
+    fragment: const graphql.Fragment(
+      fragmentName: 'ClaimPendingCodes',
+      document: documentNodeFragmentClaimPendingCodes,
+    ),
+  ), data: data.toJson(), broadcast: broadcast);
   Fragment$ClaimPendingCodes? readFragment$ClaimPendingCodes({
     required Map<String, dynamic> idFields,
     bool optimistic = true,
   }) {
-    final result = this.readFragment(
-      graphql.FragmentRequest(
-        idFields: idFields,
-        fragment: const graphql.Fragment(
-          fragmentName: 'ClaimPendingCodes',
-          document: documentNodeFragmentClaimPendingCodes,
-        ),
+    final result = this.readFragment(graphql.FragmentRequest(
+      idFields: idFields,
+      fragment: const graphql.Fragment(
+        fragmentName: 'ClaimPendingCodes',
+        document: documentNodeFragmentClaimPendingCodes,
       ),
-      optimistic: optimistic,
-    );
+    ), optimistic: optimistic);
     return result == null ? null : Fragment$ClaimPendingCodes.fromJson(result);
   }
 }
@@ -352,7 +347,8 @@ class Fragment$ClaimPendingCodes$pending_code {
   });
 
   factory Fragment$ClaimPendingCodes$pending_code.fromJson(
-      Map<String, dynamic> json) {
+    Map<String, dynamic> json,
+  ) {
     final l$description = json['description'];
     final l$code = json['code'];
     final l$document_type = json['document_type'];
@@ -381,8 +377,9 @@ class Fragment$ClaimPendingCodes$pending_code {
     final l$code = code;
     _resultData['code'] = l$code;
     final l$document_type = document_type;
-    _resultData['document_type'] =
-        toJson$Enum$claim_document_types_enum(l$document_type);
+    _resultData['document_type'] = toJson$Enum$claim_document_types_enum(
+      l$document_type,
+    );
     final l$$__typename = $__typename;
     _resultData['__typename'] = l$$__typename;
     return _resultData;
@@ -438,11 +435,11 @@ class Fragment$ClaimPendingCodes$pending_code {
 extension UtilityExtension$Fragment$ClaimPendingCodes$pending_code
     on Fragment$ClaimPendingCodes$pending_code {
   CopyWith$Fragment$ClaimPendingCodes$pending_code<
-          Fragment$ClaimPendingCodes$pending_code>
-      get copyWith => CopyWith$Fragment$ClaimPendingCodes$pending_code(
-            this,
-            (i) => i,
-          );
+    Fragment$ClaimPendingCodes$pending_code
+  > get copyWith => CopyWith$Fragment$ClaimPendingCodes$pending_code(
+    this,
+    (i) => i,
+  );
 }
 
 abstract class CopyWith$Fragment$ClaimPendingCodes$pending_code<TRes> {
@@ -480,21 +477,20 @@ class _CopyWithImpl$Fragment$ClaimPendingCodes$pending_code<TRes>
     Object? code = _undefined,
     Object? document_type = _undefined,
     Object? $__typename = _undefined,
-  }) =>
-      _then(Fragment$ClaimPendingCodes$pending_code(
-        description: description == _undefined || description == null
-            ? _instance.description
-            : (description as String),
-        code: code == _undefined || code == null
-            ? _instance.code
-            : (code as String),
-        document_type: document_type == _undefined || document_type == null
-            ? _instance.document_type
-            : (document_type as Enum$claim_document_types_enum),
-        $__typename: $__typename == _undefined || $__typename == null
-            ? _instance.$__typename
-            : ($__typename as String),
-      ));
+  }) => _then(Fragment$ClaimPendingCodes$pending_code(
+    description: description == _undefined || description == null
+        ? _instance.description
+        : (description as String),
+    code: code == _undefined || code == null
+        ? _instance.code
+        : (code as String),
+    document_type: document_type == _undefined || document_type == null
+        ? _instance.document_type
+        : (document_type as Enum$claim_document_types_enum),
+    $__typename: $__typename == _undefined || $__typename == null
+        ? _instance.$__typename
+        : ($__typename as String),
+  ));
 }
 
 class _CopyWithStubImpl$Fragment$ClaimPendingCodes$pending_code<TRes>
@@ -508,8 +504,7 @@ class _CopyWithStubImpl$Fragment$ClaimPendingCodes$pending_code<TRes>
     String? code,
     Enum$claim_document_types_enum? document_type,
     String? $__typename,
-  }) =>
-      _res;
+  }) => _res;
 }
 
 class Fragment$ClaimDocuments {
@@ -533,7 +528,8 @@ class Fragment$ClaimDocuments {
       file: l$file == null
           ? null
           : Fragment$ClaimDocuments$file.fromJson(
-              (l$file as Map<String, dynamic>)),
+              (l$file as Map<String, dynamic>),
+            ),
       type: fromJson$Enum$claim_document_types_enum((l$type as String)),
       source: fromJson$Enum$claim_sources_enum((l$source as String)),
       id: (l$id as String),
@@ -633,11 +629,8 @@ class Fragment$ClaimDocuments {
 }
 
 extension UtilityExtension$Fragment$ClaimDocuments on Fragment$ClaimDocuments {
-  CopyWith$Fragment$ClaimDocuments<Fragment$ClaimDocuments> get copyWith =>
-      CopyWith$Fragment$ClaimDocuments(
-        this,
-        (i) => i,
-      );
+  CopyWith$Fragment$ClaimDocuments<Fragment$ClaimDocuments>
+  get copyWith => CopyWith$Fragment$ClaimDocuments(this, (i) => i);
 }
 
 abstract class CopyWith$Fragment$ClaimDocuments<TRes> {
@@ -662,10 +655,7 @@ abstract class CopyWith$Fragment$ClaimDocuments<TRes> {
 
 class _CopyWithImpl$Fragment$ClaimDocuments<TRes>
     implements CopyWith$Fragment$ClaimDocuments<TRes> {
-  _CopyWithImpl$Fragment$ClaimDocuments(
-    this._instance,
-    this._then,
-  );
+  _CopyWithImpl$Fragment$ClaimDocuments(this._instance, this._then);
 
   final Fragment$ClaimDocuments _instance;
 
@@ -680,32 +670,33 @@ class _CopyWithImpl$Fragment$ClaimDocuments<TRes>
     Object? id = _undefined,
     Object? claim_document_id = _undefined,
     Object? $__typename = _undefined,
-  }) =>
-      _then(Fragment$ClaimDocuments(
-        file: file == _undefined
-            ? _instance.file
-            : (file as Fragment$ClaimDocuments$file?),
-        type: type == _undefined || type == null
-            ? _instance.type
-            : (type as Enum$claim_document_types_enum),
-        source: source == _undefined || source == null
-            ? _instance.source
-            : (source as Enum$claim_sources_enum),
-        id: id == _undefined || id == null ? _instance.id : (id as String),
-        claim_document_id:
-            claim_document_id == _undefined || claim_document_id == null
-                ? _instance.claim_document_id
-                : (claim_document_id as String),
-        $__typename: $__typename == _undefined || $__typename == null
-            ? _instance.$__typename
-            : ($__typename as String),
-      ));
+  }) => _then(Fragment$ClaimDocuments(
+    file: file == _undefined
+        ? _instance.file
+        : (file as Fragment$ClaimDocuments$file?),
+    type: type == _undefined || type == null
+        ? _instance.type
+        : (type as Enum$claim_document_types_enum),
+    source: source == _undefined || source == null
+        ? _instance.source
+        : (source as Enum$claim_sources_enum),
+    id: id == _undefined || id == null ? _instance.id : (id as String),
+    claim_document_id:
+        claim_document_id == _undefined || claim_document_id == null
+            ? _instance.claim_document_id
+            : (claim_document_id as String),
+    $__typename: $__typename == _undefined || $__typename == null
+        ? _instance.$__typename
+        : ($__typename as String),
+  ));
   CopyWith$Fragment$ClaimDocuments$file<TRes> get file {
     final local$file = _instance.file;
     return local$file == null
         ? CopyWith$Fragment$ClaimDocuments$file.stub(_then(_instance))
         : CopyWith$Fragment$ClaimDocuments$file(
-            local$file, (e) => call(file: e));
+            local$file,
+            (e) => call(file: e),
+          );
   }
 }
 
@@ -722,143 +713,139 @@ class _CopyWithStubImpl$Fragment$ClaimDocuments<TRes>
     String? id,
     String? claim_document_id,
     String? $__typename,
-  }) =>
-      _res;
-  CopyWith$Fragment$ClaimDocuments$file<TRes> get file =>
-      CopyWith$Fragment$ClaimDocuments$file.stub(_res);
+  }) => _res;
+  CopyWith$Fragment$ClaimDocuments$file<TRes>
+  get file => CopyWith$Fragment$ClaimDocuments$file.stub(_res);
 }
 
 const fragmentDefinitionClaimDocuments = FragmentDefinitionNode(
   name: NameNode(value: 'ClaimDocuments'),
   typeCondition: TypeConditionNode(
-      on: NamedTypeNode(
-    name: NameNode(value: 'claim_documents'),
-    isNonNull: false,
-  )),
+    on: NamedTypeNode(
+      name: NameNode(value: 'claim_documents'),
+      isNonNull: false,
+    ),
+  ),
   directives: [],
-  selectionSet: SelectionSetNode(selections: [
-    FieldNode(
-      name: NameNode(value: 'file'),
-      alias: null,
-      arguments: [],
-      directives: [],
-      selectionSet: SelectionSetNode(selections: [
-        FieldNode(
-          name: NameNode(value: 'file_id'),
-          alias: NameNode(value: 'id'),
-          arguments: [],
-          directives: [],
-          selectionSet: null,
+  selectionSet: SelectionSetNode(
+    selections: [
+      FieldNode(
+        name: NameNode(value: 'file'),
+        alias: null,
+        arguments: [],
+        directives: [],
+        selectionSet: SelectionSetNode(
+          selections: [
+            FieldNode(
+              name: NameNode(value: 'file_id'),
+              alias: NameNode(value: 'id'),
+              arguments: [],
+              directives: [],
+              selectionSet: null,
+            ),
+            FieldNode(
+              name: NameNode(value: 'file_id'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: null,
+            ),
+            FieldNode(
+              name: NameNode(value: 'url'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: null,
+            ),
+            FieldNode(
+              name: NameNode(value: 'name'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: null,
+            ),
+            FieldNode(
+              name: NameNode(value: 'mime_type'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: null,
+            ),
+            FieldNode(
+              name: NameNode(value: '__typename'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: null,
+            ),
+          ],
         ),
-        FieldNode(
-          name: NameNode(value: 'file_id'),
-          alias: null,
-          arguments: [],
-          directives: [],
-          selectionSet: null,
-        ),
-        FieldNode(
-          name: NameNode(value: 'url'),
-          alias: null,
-          arguments: [],
-          directives: [],
-          selectionSet: null,
-        ),
-        FieldNode(
-          name: NameNode(value: 'name'),
-          alias: null,
-          arguments: [],
-          directives: [],
-          selectionSet: null,
-        ),
-        FieldNode(
-          name: NameNode(value: 'mime_type'),
-          alias: null,
-          arguments: [],
-          directives: [],
-          selectionSet: null,
-        ),
-        FieldNode(
-          name: NameNode(value: '__typename'),
-          alias: null,
-          arguments: [],
-          directives: [],
-          selectionSet: null,
-        ),
-      ]),
-    ),
-    FieldNode(
-      name: NameNode(value: 'type'),
-      alias: null,
-      arguments: [],
-      directives: [],
-      selectionSet: null,
-    ),
-    FieldNode(
-      name: NameNode(value: 'source'),
-      alias: null,
-      arguments: [],
-      directives: [],
-      selectionSet: null,
-    ),
-    FieldNode(
-      name: NameNode(value: 'claim_document_id'),
-      alias: NameNode(value: 'id'),
-      arguments: [],
-      directives: [],
-      selectionSet: null,
-    ),
-    FieldNode(
-      name: NameNode(value: 'claim_document_id'),
-      alias: null,
-      arguments: [],
-      directives: [],
-      selectionSet: null,
-    ),
-    FieldNode(
-      name: NameNode(value: '__typename'),
-      alias: null,
-      arguments: [],
-      directives: [],
-      selectionSet: null,
-    ),
-  ]),
+      ),
+      FieldNode(
+        name: NameNode(value: 'type'),
+        alias: null,
+        arguments: [],
+        directives: [],
+        selectionSet: null,
+      ),
+      FieldNode(
+        name: NameNode(value: 'source'),
+        alias: null,
+        arguments: [],
+        directives: [],
+        selectionSet: null,
+      ),
+      FieldNode(
+        name: NameNode(value: 'claim_document_id'),
+        alias: NameNode(value: 'id'),
+        arguments: [],
+        directives: [],
+        selectionSet: null,
+      ),
+      FieldNode(
+        name: NameNode(value: 'claim_document_id'),
+        alias: null,
+        arguments: [],
+        directives: [],
+        selectionSet: null,
+      ),
+      FieldNode(
+        name: NameNode(value: '__typename'),
+        alias: null,
+        arguments: [],
+        directives: [],
+        selectionSet: null,
+      ),
+    ],
+  ),
 );
-const documentNodeFragmentClaimDocuments = DocumentNode(definitions: [
-  fragmentDefinitionClaimDocuments,
-]);
+const documentNodeFragmentClaimDocuments = DocumentNode(
+  definitions: [fragmentDefinitionClaimDocuments],
+);
 
 extension ClientExtension$Fragment$ClaimDocuments on graphql.GraphQLClient {
   void writeFragment$ClaimDocuments({
     required Fragment$ClaimDocuments data,
     required Map<String, dynamic> idFields,
     bool broadcast = true,
-  }) =>
-      this.writeFragment(
-        graphql.FragmentRequest(
-          idFields: idFields,
-          fragment: const graphql.Fragment(
-            fragmentName: 'ClaimDocuments',
-            document: documentNodeFragmentClaimDocuments,
-          ),
-        ),
-        data: data.toJson(),
-        broadcast: broadcast,
-      );
+  }) => this.writeFragment(graphql.FragmentRequest(
+    idFields: idFields,
+    fragment: const graphql.Fragment(
+      fragmentName: 'ClaimDocuments',
+      document: documentNodeFragmentClaimDocuments,
+    ),
+  ), data: data.toJson(), broadcast: broadcast);
   Fragment$ClaimDocuments? readFragment$ClaimDocuments({
     required Map<String, dynamic> idFields,
     bool optimistic = true,
   }) {
-    final result = this.readFragment(
-      graphql.FragmentRequest(
-        idFields: idFields,
-        fragment: const graphql.Fragment(
-          fragmentName: 'ClaimDocuments',
-          document: documentNodeFragmentClaimDocuments,
-        ),
+    final result = this.readFragment(graphql.FragmentRequest(
+      idFields: idFields,
+      fragment: const graphql.Fragment(
+        fragmentName: 'ClaimDocuments',
+        document: documentNodeFragmentClaimDocuments,
       ),
-      optimistic: optimistic,
-    );
+    ), optimistic: optimistic);
     return result == null ? null : Fragment$ClaimDocuments.fromJson(result);
   }
 }
@@ -983,10 +970,7 @@ class Fragment$ClaimDocuments$file {
 extension UtilityExtension$Fragment$ClaimDocuments$file
     on Fragment$ClaimDocuments$file {
   CopyWith$Fragment$ClaimDocuments$file<Fragment$ClaimDocuments$file>
-      get copyWith => CopyWith$Fragment$ClaimDocuments$file(
-            this,
-            (i) => i,
-          );
+  get copyWith => CopyWith$Fragment$ClaimDocuments$file(this, (i) => i);
 }
 
 abstract class CopyWith$Fragment$ClaimDocuments$file<TRes> {
@@ -1010,10 +994,7 @@ abstract class CopyWith$Fragment$ClaimDocuments$file<TRes> {
 
 class _CopyWithImpl$Fragment$ClaimDocuments$file<TRes>
     implements CopyWith$Fragment$ClaimDocuments$file<TRes> {
-  _CopyWithImpl$Fragment$ClaimDocuments$file(
-    this._instance,
-    this._then,
-  );
+  _CopyWithImpl$Fragment$ClaimDocuments$file(this._instance, this._then);
 
   final Fragment$ClaimDocuments$file _instance;
 
@@ -1028,23 +1009,22 @@ class _CopyWithImpl$Fragment$ClaimDocuments$file<TRes>
     Object? name = _undefined,
     Object? mime_type = _undefined,
     Object? $__typename = _undefined,
-  }) =>
-      _then(Fragment$ClaimDocuments$file(
-        id: id == _undefined || id == null ? _instance.id : (id as String),
-        file_id: file_id == _undefined || file_id == null
-            ? _instance.file_id
-            : (file_id as String),
-        url: url == _undefined ? _instance.url : (url as String?),
-        name: name == _undefined || name == null
-            ? _instance.name
-            : (name as String),
-        mime_type: mime_type == _undefined || mime_type == null
-            ? _instance.mime_type
-            : (mime_type as String),
-        $__typename: $__typename == _undefined || $__typename == null
-            ? _instance.$__typename
-            : ($__typename as String),
-      ));
+  }) => _then(Fragment$ClaimDocuments$file(
+    id: id == _undefined || id == null ? _instance.id : (id as String),
+    file_id: file_id == _undefined || file_id == null
+        ? _instance.file_id
+        : (file_id as String),
+    url: url == _undefined ? _instance.url : (url as String?),
+    name: name == _undefined || name == null
+        ? _instance.name
+        : (name as String),
+    mime_type: mime_type == _undefined || mime_type == null
+        ? _instance.mime_type
+        : (mime_type as String),
+    $__typename: $__typename == _undefined || $__typename == null
+        ? _instance.$__typename
+        : ($__typename as String),
+  ));
 }
 
 class _CopyWithStubImpl$Fragment$ClaimDocuments$file<TRes>
@@ -1060,8 +1040,7 @@ class _CopyWithStubImpl$Fragment$ClaimDocuments$file<TRes>
     String? name,
     String? mime_type,
     String? $__typename,
-  }) =>
-      _res;
+  }) => _res;
 }
 
 class Fragment$ClaimCases {
@@ -1142,19 +1121,23 @@ class Fragment$ClaimCases {
       original_claim_case: l$original_claim_case == null
           ? null
           : Fragment$ClaimCases$original_claim_case.fromJson(
-              (l$original_claim_case as Map<String, dynamic>)),
+              (l$original_claim_case as Map<String, dynamic>),
+            ),
       benefit_type:
           fromJson$Enum$insured_benefit_types_enum((l$benefit_type as String)),
       insured_benefit_type: Fragment$ClaimCases$insured_benefit_type.fromJson(
-          (l$insured_benefit_type as Map<String, dynamic>)),
+        (l$insured_benefit_type as Map<String, dynamic>),
+      ),
       medical_provider_name: (l$medical_provider_name as String?),
       diagnosis: (l$diagnosis as String?),
       claim_case_status: Fragment$ClaimCases$claim_case_status.fromJson(
-          (l$claim_case_status as Map<String, dynamic>)),
+        (l$claim_case_status as Map<String, dynamic>),
+      ),
       created_at: (l$created_at as String),
       is_direct_billing: (l$is_direct_billing as bool),
       insured_person: Fragment$ClaimCases$insured_person.fromJson(
-          (l$insured_person as Map<String, dynamic>)),
+        (l$insured_person as Map<String, dynamic>),
+      ),
       event_dates: (l$event_dates as String?),
       request_amount: (l$request_amount as num?)?.toDouble(),
       payment_bank_name: (l$payment_bank_name as String?),
@@ -1166,40 +1149,43 @@ class Fragment$ClaimCases {
       status: fromJson$Enum$claim_case_statuses_enum((l$status as String)),
       code: (l$code as String),
       event_date: (l$event_date as String?),
-      claim_case_input_diagnoses: (l$claim_case_input_diagnoses
-              as List<dynamic>)
-          .map((e) => Fragment$ClaimCases$claim_case_input_diagnoses.fromJson(
-              (e as Map<String, dynamic>)))
-          .toList(),
+      claim_case_input_diagnoses:
+          (l$claim_case_input_diagnoses as List<dynamic>).map(
+            (e) => Fragment$ClaimCases$claim_case_input_diagnoses.fromJson(
+              (e as Map<String, dynamic>),
+            ),
+          ).toList(),
       diseases: (l$diseases as String?),
       treatment_method: (l$treatment_method as String?),
-      action_logs: (l$action_logs as List<dynamic>)
-          .map((e) => Fragment$ClaimCases$action_logs.fromJson(
-              (e as Map<String, dynamic>)))
-          .toList(),
+      action_logs: (l$action_logs as List<dynamic>).map(
+        (e) => Fragment$ClaimCases$action_logs.fromJson(
+          (e as Map<String, dynamic>),
+        ),
+      ).toList(),
       admission_date: (l$admission_date as String?),
-      claim_case_details: (l$claim_case_details as List<dynamic>)
-          .map((e) => Fragment$ClaimCases$claim_case_details.fromJson(
-              (e as Map<String, dynamic>)))
-          .toList(),
+      claim_case_details: (l$claim_case_details as List<dynamic>).map(
+        (e) => Fragment$ClaimCases$claim_case_details.fromJson(
+          (e as Map<String, dynamic>),
+        ),
+      ).toList(),
       discharge_date: (l$discharge_date as String?),
       physical_examination_date: (l$physical_examination_date as String?),
-      claim_pending_codes: (l$claim_pending_codes as List<dynamic>)
-          .map((e) =>
-              Fragment$ClaimPendingCodes.fromJson((e as Map<String, dynamic>)))
-          .toList(),
-      claim_documents: (l$claim_documents as List<dynamic>)
-          .map((e) =>
-              Fragment$ClaimDocuments.fromJson((e as Map<String, dynamic>)))
-          .toList(),
-      assessment_summary: (l$assessment_summary as List<dynamic>)
-          .map((e) => Fragment$ClaimCases$assessment_summary.fromJson(
-              (e as Map<String, dynamic>)))
-          .toList(),
+      claim_pending_codes: (l$claim_pending_codes as List<dynamic>).map(
+        (e) => Fragment$ClaimPendingCodes.fromJson((e as Map<String, dynamic>)),
+      ).toList(),
+      claim_documents: (l$claim_documents as List<dynamic>).map(
+        (e) => Fragment$ClaimDocuments.fromJson((e as Map<String, dynamic>)),
+      ).toList(),
+      assessment_summary: (l$assessment_summary as List<dynamic>).map(
+        (e) => Fragment$ClaimCases$assessment_summary.fromJson(
+          (e as Map<String, dynamic>),
+        ),
+      ).toList(),
       created_by_user: l$created_by_user == null
           ? null
           : Fragment$ClaimCases$created_by_user.fromJson(
-              (l$created_by_user as Map<String, dynamic>)),
+              (l$created_by_user as Map<String, dynamic>),
+            ),
       $__typename: (l$$__typename as String),
     );
   }
@@ -1247,7 +1233,7 @@ class Fragment$ClaimCases {
   final String? event_date;
 
   final List<Fragment$ClaimCases$claim_case_input_diagnoses>
-      claim_case_input_diagnoses;
+  claim_case_input_diagnoses;
 
   final String? diseases;
 
@@ -1280,8 +1266,9 @@ class Fragment$ClaimCases {
     final l$original_claim_case = original_claim_case;
     _resultData['original_claim_case'] = l$original_claim_case?.toJson();
     final l$benefit_type = benefit_type;
-    _resultData['benefit_type'] =
-        toJson$Enum$insured_benefit_types_enum(l$benefit_type);
+    _resultData['benefit_type'] = toJson$Enum$insured_benefit_types_enum(
+      l$benefit_type,
+    );
     final l$insured_benefit_type = insured_benefit_type;
     _resultData['insured_benefit_type'] = l$insured_benefit_type.toJson();
     final l$medical_provider_name = medical_provider_name;
@@ -1655,11 +1642,8 @@ class Fragment$ClaimCases {
 }
 
 extension UtilityExtension$Fragment$ClaimCases on Fragment$ClaimCases {
-  CopyWith$Fragment$ClaimCases<Fragment$ClaimCases> get copyWith =>
-      CopyWith$Fragment$ClaimCases(
-        this,
-        (i) => i,
-      );
+  CopyWith$Fragment$ClaimCases<Fragment$ClaimCases>
+  get copyWith => CopyWith$Fragment$ClaimCases(this, (i) => i);
 }
 
 abstract class CopyWith$Fragment$ClaimCases<TRes> {
@@ -1694,7 +1678,7 @@ abstract class CopyWith$Fragment$ClaimCases<TRes> {
     String? code,
     String? event_date,
     List<Fragment$ClaimCases$claim_case_input_diagnoses>?
-        claim_case_input_diagnoses,
+    claim_case_input_diagnoses,
     String? diseases,
     String? treatment_method,
     List<Fragment$ClaimCases$action_logs>? action_logs,
@@ -1709,55 +1693,69 @@ abstract class CopyWith$Fragment$ClaimCases<TRes> {
     String? $__typename,
   });
   CopyWith$Fragment$ClaimCases$original_claim_case<TRes>
-      get original_claim_case;
+  get original_claim_case;
   CopyWith$Fragment$ClaimCases$insured_benefit_type<TRes>
-      get insured_benefit_type;
+  get insured_benefit_type;
   CopyWith$Fragment$ClaimCases$claim_case_status<TRes> get claim_case_status;
   CopyWith$Fragment$ClaimCases$insured_person<TRes> get insured_person;
   TRes claim_case_input_diagnoses(
-      Iterable<Fragment$ClaimCases$claim_case_input_diagnoses> Function(
-              Iterable<
-                  CopyWith$Fragment$ClaimCases$claim_case_input_diagnoses<
-                      Fragment$ClaimCases$claim_case_input_diagnoses>>)
-          _fn);
+    Iterable<Fragment$ClaimCases$claim_case_input_diagnoses> Function(
+      Iterable<
+        CopyWith$Fragment$ClaimCases$claim_case_input_diagnoses<
+          Fragment$ClaimCases$claim_case_input_diagnoses
+        >
+      >,
+    )
+    _fn,
+  );
   TRes action_logs(
-      Iterable<Fragment$ClaimCases$action_logs> Function(
-              Iterable<
-                  CopyWith$Fragment$ClaimCases$action_logs<
-                      Fragment$ClaimCases$action_logs>>)
-          _fn);
+    Iterable<Fragment$ClaimCases$action_logs> Function(
+      Iterable<
+        CopyWith$Fragment$ClaimCases$action_logs<
+          Fragment$ClaimCases$action_logs
+        >
+      >,
+    )
+    _fn,
+  );
   TRes claim_case_details(
-      Iterable<Fragment$ClaimCases$claim_case_details> Function(
-              Iterable<
-                  CopyWith$Fragment$ClaimCases$claim_case_details<
-                      Fragment$ClaimCases$claim_case_details>>)
-          _fn);
+    Iterable<Fragment$ClaimCases$claim_case_details> Function(
+      Iterable<
+        CopyWith$Fragment$ClaimCases$claim_case_details<
+          Fragment$ClaimCases$claim_case_details
+        >
+      >,
+    )
+    _fn,
+  );
   TRes claim_pending_codes(
-      Iterable<Fragment$ClaimPendingCodes> Function(
-              Iterable<
-                  CopyWith$Fragment$ClaimPendingCodes<
-                      Fragment$ClaimPendingCodes>>)
-          _fn);
+    Iterable<Fragment$ClaimPendingCodes> Function(
+      Iterable<CopyWith$Fragment$ClaimPendingCodes<Fragment$ClaimPendingCodes>>,
+    )
+    _fn,
+  );
   TRes claim_documents(
-      Iterable<Fragment$ClaimDocuments> Function(
-              Iterable<
-                  CopyWith$Fragment$ClaimDocuments<Fragment$ClaimDocuments>>)
-          _fn);
+    Iterable<Fragment$ClaimDocuments> Function(
+      Iterable<CopyWith$Fragment$ClaimDocuments<Fragment$ClaimDocuments>>,
+    )
+    _fn,
+  );
   TRes assessment_summary(
-      Iterable<Fragment$ClaimCases$assessment_summary> Function(
-              Iterable<
-                  CopyWith$Fragment$ClaimCases$assessment_summary<
-                      Fragment$ClaimCases$assessment_summary>>)
-          _fn);
+    Iterable<Fragment$ClaimCases$assessment_summary> Function(
+      Iterable<
+        CopyWith$Fragment$ClaimCases$assessment_summary<
+          Fragment$ClaimCases$assessment_summary
+        >
+      >,
+    )
+    _fn,
+  );
   CopyWith$Fragment$ClaimCases$created_by_user<TRes> get created_by_user;
 }
 
 class _CopyWithImpl$Fragment$ClaimCases<TRes>
     implements CopyWith$Fragment$ClaimCases<TRes> {
-  _CopyWithImpl$Fragment$ClaimCases(
-    this._instance,
-    this._then,
-  );
+  _CopyWithImpl$Fragment$ClaimCases(this._instance, this._then);
 
   final Fragment$ClaimCases _instance;
 
@@ -1800,228 +1798,241 @@ class _CopyWithImpl$Fragment$ClaimCases<TRes>
     Object? assessment_summary = _undefined,
     Object? created_by_user = _undefined,
     Object? $__typename = _undefined,
-  }) =>
-      _then(Fragment$ClaimCases(
-        id: id == _undefined || id == null ? _instance.id : (id as String),
-        original_claim_case: original_claim_case == _undefined
-            ? _instance.original_claim_case
-            : (original_claim_case as Fragment$ClaimCases$original_claim_case?),
-        benefit_type: benefit_type == _undefined || benefit_type == null
-            ? _instance.benefit_type
-            : (benefit_type as Enum$insured_benefit_types_enum),
-        insured_benefit_type:
-            insured_benefit_type == _undefined || insured_benefit_type == null
-                ? _instance.insured_benefit_type
-                : (insured_benefit_type
-                    as Fragment$ClaimCases$insured_benefit_type),
-        medical_provider_name: medical_provider_name == _undefined
-            ? _instance.medical_provider_name
-            : (medical_provider_name as String?),
-        diagnosis: diagnosis == _undefined
-            ? _instance.diagnosis
-            : (diagnosis as String?),
-        claim_case_status:
-            claim_case_status == _undefined || claim_case_status == null
-                ? _instance.claim_case_status
-                : (claim_case_status as Fragment$ClaimCases$claim_case_status),
-        created_at: created_at == _undefined || created_at == null
-            ? _instance.created_at
-            : (created_at as String),
-        is_direct_billing:
-            is_direct_billing == _undefined || is_direct_billing == null
-                ? _instance.is_direct_billing
-                : (is_direct_billing as bool),
-        insured_person: insured_person == _undefined || insured_person == null
-            ? _instance.insured_person
-            : (insured_person as Fragment$ClaimCases$insured_person),
-        event_dates: event_dates == _undefined
-            ? _instance.event_dates
-            : (event_dates as String?),
-        request_amount: request_amount == _undefined
-            ? _instance.request_amount
-            : (request_amount as double?),
-        payment_bank_name: payment_bank_name == _undefined
-            ? _instance.payment_bank_name
-            : (payment_bank_name as String?),
-        payment_bank_city: payment_bank_city == _undefined
-            ? _instance.payment_bank_city
-            : (payment_bank_city as String?),
-        payment_bank_branch: payment_bank_branch == _undefined
-            ? _instance.payment_bank_branch
-            : (payment_bank_branch as String?),
-        payment_account_number: payment_account_number == _undefined
-            ? _instance.payment_account_number
-            : (payment_account_number as String?),
-        payment_account_name: payment_account_name == _undefined
-            ? _instance.payment_account_name
-            : (payment_account_name as String?),
-        medical_provider_phones: medical_provider_phones == _undefined
-            ? _instance.medical_provider_phones
-            : (medical_provider_phones as String?),
-        status: status == _undefined || status == null
-            ? _instance.status
-            : (status as Enum$claim_case_statuses_enum),
-        code: code == _undefined || code == null
-            ? _instance.code
-            : (code as String),
-        event_date: event_date == _undefined
-            ? _instance.event_date
-            : (event_date as String?),
-        claim_case_input_diagnoses: claim_case_input_diagnoses == _undefined ||
-                claim_case_input_diagnoses == null
-            ? _instance.claim_case_input_diagnoses
-            : (claim_case_input_diagnoses
-                as List<Fragment$ClaimCases$claim_case_input_diagnoses>),
-        diseases:
-            diseases == _undefined ? _instance.diseases : (diseases as String?),
-        treatment_method: treatment_method == _undefined
-            ? _instance.treatment_method
-            : (treatment_method as String?),
-        action_logs: action_logs == _undefined || action_logs == null
-            ? _instance.action_logs
-            : (action_logs as List<Fragment$ClaimCases$action_logs>),
-        admission_date: admission_date == _undefined
-            ? _instance.admission_date
-            : (admission_date as String?),
-        claim_case_details:
-            claim_case_details == _undefined || claim_case_details == null
-                ? _instance.claim_case_details
-                : (claim_case_details
-                    as List<Fragment$ClaimCases$claim_case_details>),
-        discharge_date: discharge_date == _undefined
-            ? _instance.discharge_date
-            : (discharge_date as String?),
-        physical_examination_date: physical_examination_date == _undefined
-            ? _instance.physical_examination_date
-            : (physical_examination_date as String?),
-        claim_pending_codes:
-            claim_pending_codes == _undefined || claim_pending_codes == null
-                ? _instance.claim_pending_codes
-                : (claim_pending_codes as List<Fragment$ClaimPendingCodes>),
-        claim_documents:
-            claim_documents == _undefined || claim_documents == null
-                ? _instance.claim_documents
-                : (claim_documents as List<Fragment$ClaimDocuments>),
-        assessment_summary:
-            assessment_summary == _undefined || assessment_summary == null
-                ? _instance.assessment_summary
-                : (assessment_summary
-                    as List<Fragment$ClaimCases$assessment_summary>),
-        created_by_user: created_by_user == _undefined
-            ? _instance.created_by_user
-            : (created_by_user as Fragment$ClaimCases$created_by_user?),
-        $__typename: $__typename == _undefined || $__typename == null
-            ? _instance.$__typename
-            : ($__typename as String),
-      ));
+  }) => _then(Fragment$ClaimCases(
+    id: id == _undefined || id == null ? _instance.id : (id as String),
+    original_claim_case: original_claim_case == _undefined
+        ? _instance.original_claim_case
+        : (original_claim_case as Fragment$ClaimCases$original_claim_case?),
+    benefit_type: benefit_type == _undefined || benefit_type == null
+        ? _instance.benefit_type
+        : (benefit_type as Enum$insured_benefit_types_enum),
+    insured_benefit_type: insured_benefit_type == _undefined ||
+            insured_benefit_type == null
+        ? _instance.insured_benefit_type
+        : (insured_benefit_type as Fragment$ClaimCases$insured_benefit_type),
+    medical_provider_name: medical_provider_name == _undefined
+        ? _instance.medical_provider_name
+        : (medical_provider_name as String?),
+    diagnosis: diagnosis == _undefined
+        ? _instance.diagnosis
+        : (diagnosis as String?),
+    claim_case_status:
+        claim_case_status == _undefined || claim_case_status == null
+            ? _instance.claim_case_status
+            : (claim_case_status as Fragment$ClaimCases$claim_case_status),
+    created_at: created_at == _undefined || created_at == null
+        ? _instance.created_at
+        : (created_at as String),
+    is_direct_billing:
+        is_direct_billing == _undefined || is_direct_billing == null
+            ? _instance.is_direct_billing
+            : (is_direct_billing as bool),
+    insured_person: insured_person == _undefined || insured_person == null
+        ? _instance.insured_person
+        : (insured_person as Fragment$ClaimCases$insured_person),
+    event_dates: event_dates == _undefined
+        ? _instance.event_dates
+        : (event_dates as String?),
+    request_amount: request_amount == _undefined
+        ? _instance.request_amount
+        : (request_amount as double?),
+    payment_bank_name: payment_bank_name == _undefined
+        ? _instance.payment_bank_name
+        : (payment_bank_name as String?),
+    payment_bank_city: payment_bank_city == _undefined
+        ? _instance.payment_bank_city
+        : (payment_bank_city as String?),
+    payment_bank_branch: payment_bank_branch == _undefined
+        ? _instance.payment_bank_branch
+        : (payment_bank_branch as String?),
+    payment_account_number: payment_account_number == _undefined
+        ? _instance.payment_account_number
+        : (payment_account_number as String?),
+    payment_account_name: payment_account_name == _undefined
+        ? _instance.payment_account_name
+        : (payment_account_name as String?),
+    medical_provider_phones: medical_provider_phones == _undefined
+        ? _instance.medical_provider_phones
+        : (medical_provider_phones as String?),
+    status: status == _undefined || status == null
+        ? _instance.status
+        : (status as Enum$claim_case_statuses_enum),
+    code: code == _undefined || code == null
+        ? _instance.code
+        : (code as String),
+    event_date: event_date == _undefined
+        ? _instance.event_date
+        : (event_date as String?),
+    claim_case_input_diagnoses: claim_case_input_diagnoses == _undefined ||
+            claim_case_input_diagnoses == null
+        ? _instance.claim_case_input_diagnoses
+        : (claim_case_input_diagnoses
+              as List<Fragment$ClaimCases$claim_case_input_diagnoses>),
+    diseases: diseases == _undefined
+        ? _instance.diseases
+        : (diseases as String?),
+    treatment_method: treatment_method == _undefined
+        ? _instance.treatment_method
+        : (treatment_method as String?),
+    action_logs: action_logs == _undefined || action_logs == null
+        ? _instance.action_logs
+        : (action_logs as List<Fragment$ClaimCases$action_logs>),
+    admission_date: admission_date == _undefined
+        ? _instance.admission_date
+        : (admission_date as String?),
+    claim_case_details: claim_case_details == _undefined ||
+            claim_case_details == null
+        ? _instance.claim_case_details
+        : (claim_case_details as List<Fragment$ClaimCases$claim_case_details>),
+    discharge_date: discharge_date == _undefined
+        ? _instance.discharge_date
+        : (discharge_date as String?),
+    physical_examination_date: physical_examination_date == _undefined
+        ? _instance.physical_examination_date
+        : (physical_examination_date as String?),
+    claim_pending_codes:
+        claim_pending_codes == _undefined || claim_pending_codes == null
+            ? _instance.claim_pending_codes
+            : (claim_pending_codes as List<Fragment$ClaimPendingCodes>),
+    claim_documents: claim_documents == _undefined || claim_documents == null
+        ? _instance.claim_documents
+        : (claim_documents as List<Fragment$ClaimDocuments>),
+    assessment_summary: assessment_summary == _undefined ||
+            assessment_summary == null
+        ? _instance.assessment_summary
+        : (assessment_summary as List<Fragment$ClaimCases$assessment_summary>),
+    created_by_user: created_by_user == _undefined
+        ? _instance.created_by_user
+        : (created_by_user as Fragment$ClaimCases$created_by_user?),
+    $__typename: $__typename == _undefined || $__typename == null
+        ? _instance.$__typename
+        : ($__typename as String),
+  ));
   CopyWith$Fragment$ClaimCases$original_claim_case<TRes>
-      get original_claim_case {
+  get original_claim_case {
     final local$original_claim_case = _instance.original_claim_case;
     return local$original_claim_case == null
         ? CopyWith$Fragment$ClaimCases$original_claim_case.stub(
-            _then(_instance))
+            _then(_instance),
+          )
         : CopyWith$Fragment$ClaimCases$original_claim_case(
-            local$original_claim_case, (e) => call(original_claim_case: e));
+            local$original_claim_case,
+            (e) => call(original_claim_case: e),
+          );
   }
 
   CopyWith$Fragment$ClaimCases$insured_benefit_type<TRes>
-      get insured_benefit_type {
+  get insured_benefit_type {
     final local$insured_benefit_type = _instance.insured_benefit_type;
     return CopyWith$Fragment$ClaimCases$insured_benefit_type(
-        local$insured_benefit_type, (e) => call(insured_benefit_type: e));
+      local$insured_benefit_type,
+      (e) => call(insured_benefit_type: e),
+    );
   }
 
   CopyWith$Fragment$ClaimCases$claim_case_status<TRes> get claim_case_status {
     final local$claim_case_status = _instance.claim_case_status;
     return CopyWith$Fragment$ClaimCases$claim_case_status(
-        local$claim_case_status, (e) => call(claim_case_status: e));
+      local$claim_case_status,
+      (e) => call(claim_case_status: e),
+    );
   }
 
   CopyWith$Fragment$ClaimCases$insured_person<TRes> get insured_person {
     final local$insured_person = _instance.insured_person;
     return CopyWith$Fragment$ClaimCases$insured_person(
-        local$insured_person, (e) => call(insured_person: e));
+      local$insured_person,
+      (e) => call(insured_person: e),
+    );
   }
 
   TRes claim_case_input_diagnoses(
-          Iterable<Fragment$ClaimCases$claim_case_input_diagnoses> Function(
-                  Iterable<
-                      CopyWith$Fragment$ClaimCases$claim_case_input_diagnoses<
-                          Fragment$ClaimCases$claim_case_input_diagnoses>>)
-              _fn) =>
-      call(
-          claim_case_input_diagnoses: _fn(_instance.claim_case_input_diagnoses
-              .map((e) =>
-                  CopyWith$Fragment$ClaimCases$claim_case_input_diagnoses(
-                    e,
-                    (i) => i,
-                  ))).toList());
+    Iterable<Fragment$ClaimCases$claim_case_input_diagnoses> Function(
+      Iterable<
+        CopyWith$Fragment$ClaimCases$claim_case_input_diagnoses<
+          Fragment$ClaimCases$claim_case_input_diagnoses
+        >
+      >,
+    )
+    _fn,
+  ) => call(
+    claim_case_input_diagnoses: _fn(_instance.claim_case_input_diagnoses.map(
+      (e) => CopyWith$Fragment$ClaimCases$claim_case_input_diagnoses(
+        e,
+        (i) => i,
+      ),
+    )).toList(),
+  );
   TRes action_logs(
-          Iterable<Fragment$ClaimCases$action_logs> Function(
-                  Iterable<
-                      CopyWith$Fragment$ClaimCases$action_logs<
-                          Fragment$ClaimCases$action_logs>>)
-              _fn) =>
-      call(
-          action_logs: _fn(_instance.action_logs
-              .map((e) => CopyWith$Fragment$ClaimCases$action_logs(
-                    e,
-                    (i) => i,
-                  ))).toList());
+    Iterable<Fragment$ClaimCases$action_logs> Function(
+      Iterable<
+        CopyWith$Fragment$ClaimCases$action_logs<
+          Fragment$ClaimCases$action_logs
+        >
+      >,
+    )
+    _fn,
+  ) => call(
+    action_logs: _fn(_instance.action_logs.map(
+      (e) => CopyWith$Fragment$ClaimCases$action_logs(e, (i) => i),
+    )).toList(),
+  );
   TRes claim_case_details(
-          Iterable<Fragment$ClaimCases$claim_case_details> Function(
-                  Iterable<
-                      CopyWith$Fragment$ClaimCases$claim_case_details<
-                          Fragment$ClaimCases$claim_case_details>>)
-              _fn) =>
-      call(
-          claim_case_details: _fn(_instance.claim_case_details
-              .map((e) => CopyWith$Fragment$ClaimCases$claim_case_details(
-                    e,
-                    (i) => i,
-                  ))).toList());
+    Iterable<Fragment$ClaimCases$claim_case_details> Function(
+      Iterable<
+        CopyWith$Fragment$ClaimCases$claim_case_details<
+          Fragment$ClaimCases$claim_case_details
+        >
+      >,
+    )
+    _fn,
+  ) => call(
+    claim_case_details: _fn(_instance.claim_case_details.map(
+      (e) => CopyWith$Fragment$ClaimCases$claim_case_details(e, (i) => i),
+    )).toList(),
+  );
   TRes claim_pending_codes(
-          Iterable<Fragment$ClaimPendingCodes> Function(
-                  Iterable<
-                      CopyWith$Fragment$ClaimPendingCodes<
-                          Fragment$ClaimPendingCodes>>)
-              _fn) =>
-      call(
-          claim_pending_codes: _fn(_instance.claim_pending_codes
-              .map((e) => CopyWith$Fragment$ClaimPendingCodes(
-                    e,
-                    (i) => i,
-                  ))).toList());
+    Iterable<Fragment$ClaimPendingCodes> Function(
+      Iterable<CopyWith$Fragment$ClaimPendingCodes<Fragment$ClaimPendingCodes>>,
+    )
+    _fn,
+  ) => call(
+    claim_pending_codes: _fn(_instance.claim_pending_codes.map(
+      (e) => CopyWith$Fragment$ClaimPendingCodes(e, (i) => i),
+    )).toList(),
+  );
   TRes claim_documents(
-          Iterable<Fragment$ClaimDocuments> Function(
-                  Iterable<
-                      CopyWith$Fragment$ClaimDocuments<
-                          Fragment$ClaimDocuments>>)
-              _fn) =>
-      call(
-          claim_documents: _fn(_instance.claim_documents
-              .map((e) => CopyWith$Fragment$ClaimDocuments(
-                    e,
-                    (i) => i,
-                  ))).toList());
+    Iterable<Fragment$ClaimDocuments> Function(
+      Iterable<CopyWith$Fragment$ClaimDocuments<Fragment$ClaimDocuments>>,
+    )
+    _fn,
+  ) => call(
+    claim_documents: _fn(_instance.claim_documents.map(
+      (e) => CopyWith$Fragment$ClaimDocuments(e, (i) => i),
+    )).toList(),
+  );
   TRes assessment_summary(
-          Iterable<Fragment$ClaimCases$assessment_summary> Function(
-                  Iterable<
-                      CopyWith$Fragment$ClaimCases$assessment_summary<
-                          Fragment$ClaimCases$assessment_summary>>)
-              _fn) =>
-      call(
-          assessment_summary: _fn(_instance.assessment_summary
-              .map((e) => CopyWith$Fragment$ClaimCases$assessment_summary(
-                    e,
-                    (i) => i,
-                  ))).toList());
+    Iterable<Fragment$ClaimCases$assessment_summary> Function(
+      Iterable<
+        CopyWith$Fragment$ClaimCases$assessment_summary<
+          Fragment$ClaimCases$assessment_summary
+        >
+      >,
+    )
+    _fn,
+  ) => call(
+    assessment_summary: _fn(_instance.assessment_summary.map(
+      (e) => CopyWith$Fragment$ClaimCases$assessment_summary(e, (i) => i),
+    )).toList(),
+  );
   CopyWith$Fragment$ClaimCases$created_by_user<TRes> get created_by_user {
     final local$created_by_user = _instance.created_by_user;
     return local$created_by_user == null
         ? CopyWith$Fragment$ClaimCases$created_by_user.stub(_then(_instance))
         : CopyWith$Fragment$ClaimCases$created_by_user(
-            local$created_by_user, (e) => call(created_by_user: e));
+            local$created_by_user,
+            (e) => call(created_by_user: e),
+          );
   }
 }
 
@@ -2054,7 +2065,7 @@ class _CopyWithStubImpl$Fragment$ClaimCases<TRes>
     String? code,
     String? event_date,
     List<Fragment$ClaimCases$claim_case_input_diagnoses>?
-        claim_case_input_diagnoses,
+    claim_case_input_diagnoses,
     String? diseases,
     String? treatment_method,
     List<Fragment$ClaimCases$action_logs>? action_logs,
@@ -2067,63 +2078,465 @@ class _CopyWithStubImpl$Fragment$ClaimCases<TRes>
     List<Fragment$ClaimCases$assessment_summary>? assessment_summary,
     Fragment$ClaimCases$created_by_user? created_by_user,
     String? $__typename,
-  }) =>
-      _res;
+  }) => _res;
   CopyWith$Fragment$ClaimCases$original_claim_case<TRes>
-      get original_claim_case =>
-          CopyWith$Fragment$ClaimCases$original_claim_case.stub(_res);
+  get original_claim_case => CopyWith$Fragment$ClaimCases$original_claim_case
+      .stub(_res);
   CopyWith$Fragment$ClaimCases$insured_benefit_type<TRes>
-      get insured_benefit_type =>
-          CopyWith$Fragment$ClaimCases$insured_benefit_type.stub(_res);
-  CopyWith$Fragment$ClaimCases$claim_case_status<TRes> get claim_case_status =>
-      CopyWith$Fragment$ClaimCases$claim_case_status.stub(_res);
-  CopyWith$Fragment$ClaimCases$insured_person<TRes> get insured_person =>
-      CopyWith$Fragment$ClaimCases$insured_person.stub(_res);
+  get insured_benefit_type => CopyWith$Fragment$ClaimCases$insured_benefit_type
+      .stub(_res);
+  CopyWith$Fragment$ClaimCases$claim_case_status<TRes>
+  get claim_case_status => CopyWith$Fragment$ClaimCases$claim_case_status.stub(
+    _res,
+  );
+  CopyWith$Fragment$ClaimCases$insured_person<TRes>
+  get insured_person => CopyWith$Fragment$ClaimCases$insured_person.stub(_res);
   claim_case_input_diagnoses(_fn) => _res;
   action_logs(_fn) => _res;
   claim_case_details(_fn) => _res;
   claim_pending_codes(_fn) => _res;
   claim_documents(_fn) => _res;
   assessment_summary(_fn) => _res;
-  CopyWith$Fragment$ClaimCases$created_by_user<TRes> get created_by_user =>
-      CopyWith$Fragment$ClaimCases$created_by_user.stub(_res);
+  CopyWith$Fragment$ClaimCases$created_by_user<TRes>
+  get created_by_user => CopyWith$Fragment$ClaimCases$created_by_user.stub(
+    _res,
+  );
 }
 
 const fragmentDefinitionClaimCases = FragmentDefinitionNode(
   name: NameNode(value: 'ClaimCases'),
   typeCondition: TypeConditionNode(
-      on: NamedTypeNode(
-    name: NameNode(value: 'claim_cases'),
-    isNonNull: false,
-  )),
+    on: NamedTypeNode(name: NameNode(value: 'claim_cases'), isNonNull: false),
+  ),
   directives: [],
-  selectionSet: SelectionSetNode(selections: [
-    FieldNode(
-      name: NameNode(value: 'claim_case_id'),
-      alias: NameNode(value: 'id'),
-      arguments: [],
-      directives: [],
-      selectionSet: null,
-    ),
-    FieldNode(
-      name: NameNode(value: 'original_claim_case'),
-      alias: null,
-      arguments: [],
-      directives: [],
-      selectionSet: SelectionSetNode(selections: [
-        FieldNode(
-          name: NameNode(value: 'benefit_type'),
-          alias: null,
-          arguments: [],
-          directives: [],
-          selectionSet: null,
+  selectionSet: SelectionSetNode(
+    selections: [
+      FieldNode(
+        name: NameNode(value: 'claim_case_id'),
+        alias: NameNode(value: 'id'),
+        arguments: [],
+        directives: [],
+        selectionSet: null,
+      ),
+      FieldNode(
+        name: NameNode(value: 'original_claim_case'),
+        alias: null,
+        arguments: [],
+        directives: [],
+        selectionSet: SelectionSetNode(
+          selections: [
+            FieldNode(
+              name: NameNode(value: 'benefit_type'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: null,
+            ),
+            FieldNode(
+              name: NameNode(value: 'insured_benefit_type'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: SelectionSetNode(
+                selections: [
+                  FieldNode(
+                    name: NameNode(value: 'comment'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null,
+                  ),
+                  FieldNode(
+                    name: NameNode(value: 'value'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null,
+                  ),
+                  FieldNode(
+                    name: NameNode(value: '__typename'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null,
+                  ),
+                ],
+              ),
+            ),
+            FieldNode(
+              name: NameNode(value: 'diagnosis'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: null,
+            ),
+            FieldNode(
+              name: NameNode(value: 'created_at'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: null,
+            ),
+            FieldNode(
+              name: NameNode(value: 'is_direct_billing'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: null,
+            ),
+            FieldNode(
+              name: NameNode(value: 'insured_person'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: SelectionSetNode(
+                selections: [
+                  FieldNode(
+                    name: NameNode(value: 'insured_person_id'),
+                    alias: NameNode(value: 'id'),
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null,
+                  ),
+                  FieldNode(
+                    name: NameNode(value: 'name'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null,
+                  ),
+                  FieldNode(
+                    name: NameNode(value: '__typename'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null,
+                  ),
+                ],
+              ),
+            ),
+            FieldNode(
+              name: NameNode(value: 'event_date'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: null,
+            ),
+            FieldNode(
+              name: NameNode(value: 'requested_amount'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: null,
+            ),
+            FieldNode(
+              name: NameNode(value: 'medical_provider_name'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: null,
+            ),
+            FieldNode(
+              name: NameNode(value: 'code'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: null,
+            ),
+            FieldNode(
+              name: NameNode(value: 'event_date'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: null,
+            ),
+            FieldNode(
+              name: NameNode(value: 'admission_date'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: null,
+            ),
+            FieldNode(
+              name: NameNode(value: 'discharge_date'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: null,
+            ),
+            FieldNode(
+              name: NameNode(value: 'physical_examination_date'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: null,
+            ),
+            FieldNode(
+              name: NameNode(value: 'claim_case_input_diagnoses'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: SelectionSetNode(
+                selections: [
+                  FieldNode(
+                    name: NameNode(value: 'id'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null,
+                  ),
+                  FieldNode(
+                    name: NameNode(value: 'icd_metadata_id'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null,
+                  ),
+                  FieldNode(
+                    name: NameNode(value: 'icd'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: SelectionSetNode(
+                      selections: [
+                        FieldNode(
+                          name: NameNode(value: 'title'),
+                          alias: null,
+                          arguments: [],
+                          directives: [],
+                          selectionSet: null,
+                        ),
+                        FieldNode(
+                          name: NameNode(value: 'value'),
+                          alias: null,
+                          arguments: [],
+                          directives: [],
+                          selectionSet: null,
+                        ),
+                        FieldNode(
+                          name: NameNode(value: '__typename'),
+                          alias: null,
+                          arguments: [],
+                          directives: [],
+                          selectionSet: null,
+                        ),
+                      ],
+                    ),
+                  ),
+                  FieldNode(
+                    name: NameNode(value: '__typename'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null,
+                  ),
+                ],
+              ),
+            ),
+            FieldNode(
+              name: NameNode(value: 'medical_provider'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: SelectionSetNode(
+                selections: [
+                  FieldNode(
+                    name: NameNode(value: 'medical_provider_id'),
+                    alias: NameNode(value: 'id'),
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null,
+                  ),
+                  FieldNode(
+                    name: NameNode(value: 'city_id'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null,
+                  ),
+                  FieldNode(
+                    name: NameNode(value: 'city'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: SelectionSetNode(
+                      selections: [
+                        FieldNode(
+                          name: NameNode(value: 'name'),
+                          alias: null,
+                          arguments: [],
+                          directives: [],
+                          selectionSet: null,
+                        ),
+                        FieldNode(
+                          name: NameNode(value: '__typename'),
+                          alias: null,
+                          arguments: [],
+                          directives: [],
+                          selectionSet: null,
+                        ),
+                      ],
+                    ),
+                  ),
+                  FieldNode(
+                    name: NameNode(value: '__typename'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null,
+                  ),
+                ],
+              ),
+            ),
+            FieldNode(
+              name: NameNode(value: 'claim_case_beneficiary'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: SelectionSetNode(
+                selections: [
+                  FieldNode(
+                    name: NameNode(value: 'id'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null,
+                  ),
+                  FieldNode(
+                    name: NameNode(value: 'payment_method'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null,
+                  ),
+                  FieldNode(
+                    name: NameNode(value: 'bank'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: SelectionSetNode(
+                      selections: [
+                        FieldNode(
+                          name: NameNode(value: 'vn_name'),
+                          alias: null,
+                          arguments: [],
+                          directives: [],
+                          selectionSet: null,
+                        ),
+                        FieldNode(
+                          name: NameNode(value: 'en_name'),
+                          alias: null,
+                          arguments: [],
+                          directives: [],
+                          selectionSet: null,
+                        ),
+                        FieldNode(
+                          name: NameNode(value: '__typename'),
+                          alias: null,
+                          arguments: [],
+                          directives: [],
+                          selectionSet: null,
+                        ),
+                      ],
+                    ),
+                  ),
+                  FieldNode(
+                    name: NameNode(value: 'bank_account_number'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null,
+                  ),
+                  FieldNode(
+                    name: NameNode(value: 'bank_branch'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null,
+                  ),
+                  FieldNode(
+                    name: NameNode(value: 'bank_city'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null,
+                  ),
+                  FieldNode(
+                    name: NameNode(value: 'bank_id'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null,
+                  ),
+                  FieldNode(
+                    name: NameNode(value: 'beneficiary_name'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null,
+                  ),
+                  FieldNode(
+                    name: NameNode(value: 'bank_branch'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null,
+                  ),
+                  FieldNode(
+                    name: NameNode(value: 'paper_issue_date'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null,
+                  ),
+                  FieldNode(
+                    name: NameNode(value: 'paper_issue_place'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null,
+                  ),
+                  FieldNode(
+                    name: NameNode(value: 'paper_id'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null,
+                  ),
+                  FieldNode(
+                    name: NameNode(value: '__typename'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null,
+                  ),
+                ],
+              ),
+            ),
+            FieldNode(
+              name: NameNode(value: '__typename'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: null,
+            ),
+          ],
         ),
-        FieldNode(
-          name: NameNode(value: 'insured_benefit_type'),
-          alias: null,
-          arguments: [],
-          directives: [],
-          selectionSet: SelectionSetNode(selections: [
+      ),
+      FieldNode(
+        name: NameNode(value: 'benefit_type'),
+        alias: null,
+        arguments: [],
+        directives: [],
+        selectionSet: null,
+      ),
+      FieldNode(
+        name: NameNode(value: 'insured_benefit_type'),
+        alias: null,
+        arguments: [],
+        directives: [],
+        selectionSet: SelectionSetNode(
+          selections: [
             FieldNode(
               name: NameNode(value: 'comment'),
               alias: null,
@@ -2145,35 +2558,75 @@ const fragmentDefinitionClaimCases = FragmentDefinitionNode(
               directives: [],
               selectionSet: null,
             ),
-          ]),
+          ],
         ),
-        FieldNode(
-          name: NameNode(value: 'diagnosis'),
-          alias: null,
-          arguments: [],
-          directives: [],
-          selectionSet: null,
+      ),
+      FieldNode(
+        name: NameNode(value: 'medical_provider_name'),
+        alias: null,
+        arguments: [],
+        directives: [],
+        selectionSet: null,
+      ),
+      FieldNode(
+        name: NameNode(value: 'diagnosis'),
+        alias: null,
+        arguments: [],
+        directives: [],
+        selectionSet: null,
+      ),
+      FieldNode(
+        name: NameNode(value: 'claim_case_status'),
+        alias: null,
+        arguments: [],
+        directives: [],
+        selectionSet: SelectionSetNode(
+          selections: [
+            FieldNode(
+              name: NameNode(value: 'value'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: null,
+            ),
+            FieldNode(
+              name: NameNode(value: 'comment'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: null,
+            ),
+            FieldNode(
+              name: NameNode(value: '__typename'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: null,
+            ),
+          ],
         ),
-        FieldNode(
-          name: NameNode(value: 'created_at'),
-          alias: null,
-          arguments: [],
-          directives: [],
-          selectionSet: null,
-        ),
-        FieldNode(
-          name: NameNode(value: 'is_direct_billing'),
-          alias: null,
-          arguments: [],
-          directives: [],
-          selectionSet: null,
-        ),
-        FieldNode(
-          name: NameNode(value: 'insured_person'),
-          alias: null,
-          arguments: [],
-          directives: [],
-          selectionSet: SelectionSetNode(selections: [
+      ),
+      FieldNode(
+        name: NameNode(value: 'created_at'),
+        alias: null,
+        arguments: [],
+        directives: [],
+        selectionSet: null,
+      ),
+      FieldNode(
+        name: NameNode(value: 'is_direct_billing'),
+        alias: null,
+        arguments: [],
+        directives: [],
+        selectionSet: null,
+      ),
+      FieldNode(
+        name: NameNode(value: 'insured_person'),
+        alias: null,
+        arguments: [],
+        directives: [],
+        selectionSet: SelectionSetNode(
+          selections: [
             FieldNode(
               name: NameNode(value: 'insured_person_id'),
               alias: NameNode(value: 'id'),
@@ -2195,70 +2648,100 @@ const fragmentDefinitionClaimCases = FragmentDefinitionNode(
               directives: [],
               selectionSet: null,
             ),
-          ]),
+          ],
         ),
-        FieldNode(
-          name: NameNode(value: 'event_date'),
-          alias: null,
-          arguments: [],
-          directives: [],
-          selectionSet: null,
-        ),
-        FieldNode(
-          name: NameNode(value: 'requested_amount'),
-          alias: null,
-          arguments: [],
-          directives: [],
-          selectionSet: null,
-        ),
-        FieldNode(
-          name: NameNode(value: 'medical_provider_name'),
-          alias: null,
-          arguments: [],
-          directives: [],
-          selectionSet: null,
-        ),
-        FieldNode(
-          name: NameNode(value: 'code'),
-          alias: null,
-          arguments: [],
-          directives: [],
-          selectionSet: null,
-        ),
-        FieldNode(
-          name: NameNode(value: 'event_date'),
-          alias: null,
-          arguments: [],
-          directives: [],
-          selectionSet: null,
-        ),
-        FieldNode(
-          name: NameNode(value: 'admission_date'),
-          alias: null,
-          arguments: [],
-          directives: [],
-          selectionSet: null,
-        ),
-        FieldNode(
-          name: NameNode(value: 'discharge_date'),
-          alias: null,
-          arguments: [],
-          directives: [],
-          selectionSet: null,
-        ),
-        FieldNode(
-          name: NameNode(value: 'physical_examination_date'),
-          alias: null,
-          arguments: [],
-          directives: [],
-          selectionSet: null,
-        ),
-        FieldNode(
-          name: NameNode(value: 'claim_case_input_diagnoses'),
-          alias: null,
-          arguments: [],
-          directives: [],
-          selectionSet: SelectionSetNode(selections: [
+      ),
+      FieldNode(
+        name: NameNode(value: 'event_dates'),
+        alias: null,
+        arguments: [],
+        directives: [],
+        selectionSet: null,
+      ),
+      FieldNode(
+        name: NameNode(value: 'request_amount'),
+        alias: null,
+        arguments: [],
+        directives: [],
+        selectionSet: null,
+      ),
+      FieldNode(
+        name: NameNode(value: 'payment_bank_name'),
+        alias: null,
+        arguments: [],
+        directives: [],
+        selectionSet: null,
+      ),
+      FieldNode(
+        name: NameNode(value: 'payment_bank_city'),
+        alias: null,
+        arguments: [],
+        directives: [],
+        selectionSet: null,
+      ),
+      FieldNode(
+        name: NameNode(value: 'payment_bank_branch'),
+        alias: null,
+        arguments: [],
+        directives: [],
+        selectionSet: null,
+      ),
+      FieldNode(
+        name: NameNode(value: 'payment_account_number'),
+        alias: null,
+        arguments: [],
+        directives: [],
+        selectionSet: null,
+      ),
+      FieldNode(
+        name: NameNode(value: 'payment_account_name'),
+        alias: null,
+        arguments: [],
+        directives: [],
+        selectionSet: null,
+      ),
+      FieldNode(
+        name: NameNode(value: 'medical_provider_name'),
+        alias: null,
+        arguments: [],
+        directives: [],
+        selectionSet: null,
+      ),
+      FieldNode(
+        name: NameNode(value: 'medical_provider_phones'),
+        alias: null,
+        arguments: [],
+        directives: [],
+        selectionSet: null,
+      ),
+      FieldNode(
+        name: NameNode(value: 'status'),
+        alias: null,
+        arguments: [],
+        directives: [],
+        selectionSet: null,
+      ),
+      FieldNode(
+        name: NameNode(value: 'code'),
+        alias: null,
+        arguments: [],
+        directives: [],
+        selectionSet: null,
+      ),
+      FieldNode(
+        name: NameNode(value: 'event_date'),
+        alias: null,
+        arguments: [],
+        directives: [],
+        selectionSet: null,
+      ),
+      FieldNode(
+        name: NameNode(value: 'claim_case_input_diagnoses'),
+        alias: null,
+        arguments: [],
+        directives: [],
+        selectionSet: SelectionSetNode(
+          selections: [
             FieldNode(
               name: NameNode(value: 'id'),
               alias: null,
@@ -2278,29 +2761,31 @@ const fragmentDefinitionClaimCases = FragmentDefinitionNode(
               alias: null,
               arguments: [],
               directives: [],
-              selectionSet: SelectionSetNode(selections: [
-                FieldNode(
-                  name: NameNode(value: 'title'),
-                  alias: null,
-                  arguments: [],
-                  directives: [],
-                  selectionSet: null,
-                ),
-                FieldNode(
-                  name: NameNode(value: 'value'),
-                  alias: null,
-                  arguments: [],
-                  directives: [],
-                  selectionSet: null,
-                ),
-                FieldNode(
-                  name: NameNode(value: '__typename'),
-                  alias: null,
-                  arguments: [],
-                  directives: [],
-                  selectionSet: null,
-                ),
-              ]),
+              selectionSet: SelectionSetNode(
+                selections: [
+                  FieldNode(
+                    name: NameNode(value: 'title'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null,
+                  ),
+                  FieldNode(
+                    name: NameNode(value: 'value'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null,
+                  ),
+                  FieldNode(
+                    name: NameNode(value: '__typename'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null,
+                  ),
+                ],
+              ),
             ),
             FieldNode(
               name: NameNode(value: '__typename'),
@@ -2309,915 +2794,505 @@ const fragmentDefinitionClaimCases = FragmentDefinitionNode(
               directives: [],
               selectionSet: null,
             ),
-          ]),
+          ],
         ),
-        FieldNode(
-          name: NameNode(value: 'medical_provider'),
-          alias: null,
-          arguments: [],
-          directives: [],
-          selectionSet: SelectionSetNode(selections: [
+      ),
+      FieldNode(
+        name: NameNode(value: 'diseases'),
+        alias: null,
+        arguments: [],
+        directives: [],
+        selectionSet: null,
+      ),
+      FieldNode(
+        name: NameNode(value: 'treatment_method'),
+        alias: null,
+        arguments: [],
+        directives: [],
+        selectionSet: null,
+      ),
+      FieldNode(
+        name: NameNode(value: 'action_logs'),
+        alias: null,
+        arguments: [],
+        directives: [],
+        selectionSet: SelectionSetNode(
+          selections: [
             FieldNode(
-              name: NameNode(value: 'medical_provider_id'),
+              name: NameNode(value: 'created_at'),
               alias: NameNode(value: 'id'),
               arguments: [],
               directives: [],
               selectionSet: null,
             ),
             FieldNode(
-              name: NameNode(value: 'city_id'),
+              name: NameNode(value: 'new_value'),
               alias: null,
               arguments: [],
               directives: [],
               selectionSet: null,
             ),
             FieldNode(
-              name: NameNode(value: 'city'),
-              alias: null,
-              arguments: [],
-              directives: [],
-              selectionSet: SelectionSetNode(selections: [
-                FieldNode(
-                  name: NameNode(value: 'name'),
-                  alias: null,
-                  arguments: [],
-                  directives: [],
-                  selectionSet: null,
-                ),
-                FieldNode(
-                  name: NameNode(value: '__typename'),
-                  alias: null,
-                  arguments: [],
-                  directives: [],
-                  selectionSet: null,
-                ),
-              ]),
-            ),
-            FieldNode(
-              name: NameNode(value: '__typename'),
-              alias: null,
-              arguments: [],
-              directives: [],
-              selectionSet: null,
-            ),
-          ]),
-        ),
-        FieldNode(
-          name: NameNode(value: 'claim_case_beneficiary'),
-          alias: null,
-          arguments: [],
-          directives: [],
-          selectionSet: SelectionSetNode(selections: [
-            FieldNode(
-              name: NameNode(value: 'id'),
+              name: NameNode(value: 'old_value'),
               alias: null,
               arguments: [],
               directives: [],
               selectionSet: null,
             ),
             FieldNode(
-              name: NameNode(value: 'payment_method'),
-              alias: null,
-              arguments: [],
-              directives: [],
-              selectionSet: null,
-            ),
-            FieldNode(
-              name: NameNode(value: 'bank'),
-              alias: null,
-              arguments: [],
-              directives: [],
-              selectionSet: SelectionSetNode(selections: [
-                FieldNode(
-                  name: NameNode(value: 'vn_name'),
-                  alias: null,
-                  arguments: [],
-                  directives: [],
-                  selectionSet: null,
-                ),
-                FieldNode(
-                  name: NameNode(value: 'en_name'),
-                  alias: null,
-                  arguments: [],
-                  directives: [],
-                  selectionSet: null,
-                ),
-                FieldNode(
-                  name: NameNode(value: '__typename'),
-                  alias: null,
-                  arguments: [],
-                  directives: [],
-                  selectionSet: null,
-                ),
-              ]),
-            ),
-            FieldNode(
-              name: NameNode(value: 'bank_account_number'),
-              alias: null,
-              arguments: [],
-              directives: [],
-              selectionSet: null,
-            ),
-            FieldNode(
-              name: NameNode(value: 'bank_branch'),
-              alias: null,
-              arguments: [],
-              directives: [],
-              selectionSet: null,
-            ),
-            FieldNode(
-              name: NameNode(value: 'bank_city'),
-              alias: null,
-              arguments: [],
-              directives: [],
-              selectionSet: null,
-            ),
-            FieldNode(
-              name: NameNode(value: 'bank_id'),
-              alias: null,
-              arguments: [],
-              directives: [],
-              selectionSet: null,
-            ),
-            FieldNode(
-              name: NameNode(value: 'beneficiary_name'),
-              alias: null,
-              arguments: [],
-              directives: [],
-              selectionSet: null,
-            ),
-            FieldNode(
-              name: NameNode(value: 'bank_branch'),
-              alias: null,
-              arguments: [],
-              directives: [],
-              selectionSet: null,
-            ),
-            FieldNode(
-              name: NameNode(value: 'paper_issue_date'),
-              alias: null,
-              arguments: [],
-              directives: [],
-              selectionSet: null,
-            ),
-            FieldNode(
-              name: NameNode(value: 'paper_issue_place'),
-              alias: null,
-              arguments: [],
-              directives: [],
-              selectionSet: null,
-            ),
-            FieldNode(
-              name: NameNode(value: 'paper_id'),
-              alias: null,
-              arguments: [],
-              directives: [],
-              selectionSet: null,
-            ),
-            FieldNode(
-              name: NameNode(value: '__typename'),
-              alias: null,
-              arguments: [],
-              directives: [],
-              selectionSet: null,
-            ),
-          ]),
-        ),
-        FieldNode(
-          name: NameNode(value: '__typename'),
-          alias: null,
-          arguments: [],
-          directives: [],
-          selectionSet: null,
-        ),
-      ]),
-    ),
-    FieldNode(
-      name: NameNode(value: 'benefit_type'),
-      alias: null,
-      arguments: [],
-      directives: [],
-      selectionSet: null,
-    ),
-    FieldNode(
-      name: NameNode(value: 'insured_benefit_type'),
-      alias: null,
-      arguments: [],
-      directives: [],
-      selectionSet: SelectionSetNode(selections: [
-        FieldNode(
-          name: NameNode(value: 'comment'),
-          alias: null,
-          arguments: [],
-          directives: [],
-          selectionSet: null,
-        ),
-        FieldNode(
-          name: NameNode(value: 'value'),
-          alias: null,
-          arguments: [],
-          directives: [],
-          selectionSet: null,
-        ),
-        FieldNode(
-          name: NameNode(value: '__typename'),
-          alias: null,
-          arguments: [],
-          directives: [],
-          selectionSet: null,
-        ),
-      ]),
-    ),
-    FieldNode(
-      name: NameNode(value: 'medical_provider_name'),
-      alias: null,
-      arguments: [],
-      directives: [],
-      selectionSet: null,
-    ),
-    FieldNode(
-      name: NameNode(value: 'diagnosis'),
-      alias: null,
-      arguments: [],
-      directives: [],
-      selectionSet: null,
-    ),
-    FieldNode(
-      name: NameNode(value: 'claim_case_status'),
-      alias: null,
-      arguments: [],
-      directives: [],
-      selectionSet: SelectionSetNode(selections: [
-        FieldNode(
-          name: NameNode(value: 'value'),
-          alias: null,
-          arguments: [],
-          directives: [],
-          selectionSet: null,
-        ),
-        FieldNode(
-          name: NameNode(value: 'comment'),
-          alias: null,
-          arguments: [],
-          directives: [],
-          selectionSet: null,
-        ),
-        FieldNode(
-          name: NameNode(value: '__typename'),
-          alias: null,
-          arguments: [],
-          directives: [],
-          selectionSet: null,
-        ),
-      ]),
-    ),
-    FieldNode(
-      name: NameNode(value: 'created_at'),
-      alias: null,
-      arguments: [],
-      directives: [],
-      selectionSet: null,
-    ),
-    FieldNode(
-      name: NameNode(value: 'is_direct_billing'),
-      alias: null,
-      arguments: [],
-      directives: [],
-      selectionSet: null,
-    ),
-    FieldNode(
-      name: NameNode(value: 'insured_person'),
-      alias: null,
-      arguments: [],
-      directives: [],
-      selectionSet: SelectionSetNode(selections: [
-        FieldNode(
-          name: NameNode(value: 'insured_person_id'),
-          alias: NameNode(value: 'id'),
-          arguments: [],
-          directives: [],
-          selectionSet: null,
-        ),
-        FieldNode(
-          name: NameNode(value: 'name'),
-          alias: null,
-          arguments: [],
-          directives: [],
-          selectionSet: null,
-        ),
-        FieldNode(
-          name: NameNode(value: '__typename'),
-          alias: null,
-          arguments: [],
-          directives: [],
-          selectionSet: null,
-        ),
-      ]),
-    ),
-    FieldNode(
-      name: NameNode(value: 'event_dates'),
-      alias: null,
-      arguments: [],
-      directives: [],
-      selectionSet: null,
-    ),
-    FieldNode(
-      name: NameNode(value: 'request_amount'),
-      alias: null,
-      arguments: [],
-      directives: [],
-      selectionSet: null,
-    ),
-    FieldNode(
-      name: NameNode(value: 'payment_bank_name'),
-      alias: null,
-      arguments: [],
-      directives: [],
-      selectionSet: null,
-    ),
-    FieldNode(
-      name: NameNode(value: 'payment_bank_city'),
-      alias: null,
-      arguments: [],
-      directives: [],
-      selectionSet: null,
-    ),
-    FieldNode(
-      name: NameNode(value: 'payment_bank_branch'),
-      alias: null,
-      arguments: [],
-      directives: [],
-      selectionSet: null,
-    ),
-    FieldNode(
-      name: NameNode(value: 'payment_account_number'),
-      alias: null,
-      arguments: [],
-      directives: [],
-      selectionSet: null,
-    ),
-    FieldNode(
-      name: NameNode(value: 'payment_account_name'),
-      alias: null,
-      arguments: [],
-      directives: [],
-      selectionSet: null,
-    ),
-    FieldNode(
-      name: NameNode(value: 'medical_provider_name'),
-      alias: null,
-      arguments: [],
-      directives: [],
-      selectionSet: null,
-    ),
-    FieldNode(
-      name: NameNode(value: 'medical_provider_phones'),
-      alias: null,
-      arguments: [],
-      directives: [],
-      selectionSet: null,
-    ),
-    FieldNode(
-      name: NameNode(value: 'status'),
-      alias: null,
-      arguments: [],
-      directives: [],
-      selectionSet: null,
-    ),
-    FieldNode(
-      name: NameNode(value: 'code'),
-      alias: null,
-      arguments: [],
-      directives: [],
-      selectionSet: null,
-    ),
-    FieldNode(
-      name: NameNode(value: 'event_date'),
-      alias: null,
-      arguments: [],
-      directives: [],
-      selectionSet: null,
-    ),
-    FieldNode(
-      name: NameNode(value: 'claim_case_input_diagnoses'),
-      alias: null,
-      arguments: [],
-      directives: [],
-      selectionSet: SelectionSetNode(selections: [
-        FieldNode(
-          name: NameNode(value: 'id'),
-          alias: null,
-          arguments: [],
-          directives: [],
-          selectionSet: null,
-        ),
-        FieldNode(
-          name: NameNode(value: 'icd_metadata_id'),
-          alias: null,
-          arguments: [],
-          directives: [],
-          selectionSet: null,
-        ),
-        FieldNode(
-          name: NameNode(value: 'icd'),
-          alias: null,
-          arguments: [],
-          directives: [],
-          selectionSet: SelectionSetNode(selections: [
-            FieldNode(
-              name: NameNode(value: 'title'),
-              alias: null,
-              arguments: [],
-              directives: [],
-              selectionSet: null,
-            ),
-            FieldNode(
-              name: NameNode(value: 'value'),
-              alias: null,
-              arguments: [],
-              directives: [],
-              selectionSet: null,
-            ),
-            FieldNode(
-              name: NameNode(value: '__typename'),
-              alias: null,
-              arguments: [],
-              directives: [],
-              selectionSet: null,
-            ),
-          ]),
-        ),
-        FieldNode(
-          name: NameNode(value: '__typename'),
-          alias: null,
-          arguments: [],
-          directives: [],
-          selectionSet: null,
-        ),
-      ]),
-    ),
-    FieldNode(
-      name: NameNode(value: 'diseases'),
-      alias: null,
-      arguments: [],
-      directives: [],
-      selectionSet: null,
-    ),
-    FieldNode(
-      name: NameNode(value: 'treatment_method'),
-      alias: null,
-      arguments: [],
-      directives: [],
-      selectionSet: null,
-    ),
-    FieldNode(
-      name: NameNode(value: 'action_logs'),
-      alias: null,
-      arguments: [],
-      directives: [],
-      selectionSet: SelectionSetNode(selections: [
-        FieldNode(
-          name: NameNode(value: 'created_at'),
-          alias: NameNode(value: 'id'),
-          arguments: [],
-          directives: [],
-          selectionSet: null,
-        ),
-        FieldNode(
-          name: NameNode(value: 'new_value'),
-          alias: null,
-          arguments: [],
-          directives: [],
-          selectionSet: null,
-        ),
-        FieldNode(
-          name: NameNode(value: 'old_value'),
-          alias: null,
-          arguments: [],
-          directives: [],
-          selectionSet: null,
-        ),
-        FieldNode(
-          name: NameNode(value: 'created_at'),
-          alias: null,
-          arguments: [],
-          directives: [],
-          selectionSet: null,
-        ),
-        FieldNode(
-          name: NameNode(value: '__typename'),
-          alias: null,
-          arguments: [],
-          directives: [],
-          selectionSet: null,
-        ),
-      ]),
-    ),
-    FieldNode(
-      name: NameNode(value: 'admission_date'),
-      alias: null,
-      arguments: [],
-      directives: [],
-      selectionSet: null,
-    ),
-    FieldNode(
-      name: NameNode(value: 'claim_case_details'),
-      alias: null,
-      arguments: [],
-      directives: [],
-      selectionSet: SelectionSetNode(selections: [
-        FieldNode(
-          name: NameNode(value: 'claim_case_detail_id'),
-          alias: NameNode(value: 'id'),
-          arguments: [],
-          directives: [],
-          selectionSet: null,
-        ),
-        FieldNode(
-          name: NameNode(value: 'total_paid_amount'),
-          alias: null,
-          arguments: [],
-          directives: [],
-          selectionSet: null,
-        ),
-        FieldNode(
-          name: NameNode(value: 'note'),
-          alias: null,
-          arguments: [],
-          directives: [],
-          selectionSet: null,
-        ),
-        FieldNode(
-          name: NameNode(value: 'plan_insured_benefit'),
-          alias: null,
-          arguments: [],
-          directives: [],
-          selectionSet: SelectionSetNode(selections: [
-            FieldNode(
-              name: NameNode(value: 'id'),
-              alias: null,
-              arguments: [],
-              directives: [],
-              selectionSet: null,
-            ),
-            FieldNode(
-              name: NameNode(value: 'plan_id'),
-              alias: null,
-              arguments: [],
-              directives: [],
-              selectionSet: null,
-            ),
-            FieldNode(
-              name: NameNode(value: 'plan_balance_benefits'),
-              alias: null,
-              arguments: [],
-              directives: [],
-              selectionSet: SelectionSetNode(selections: [
-                FieldNode(
-                  name: NameNode(value: 'id'),
-                  alias: null,
-                  arguments: [],
-                  directives: [],
-                  selectionSet: null,
-                ),
-                FieldNode(
-                  name: NameNode(value: 'plan_balance'),
-                  alias: null,
-                  arguments: [],
-                  directives: [],
-                  selectionSet: SelectionSetNode(selections: [
-                    FieldNode(
-                      name: NameNode(value: 'id'),
-                      alias: null,
-                      arguments: [],
-                      directives: [],
-                      selectionSet: null,
-                    ),
-                    FieldNode(
-                      name: NameNode(value: 'name'),
-                      alias: null,
-                      arguments: [],
-                      directives: [],
-                      selectionSet: null,
-                    ),
-                    FieldNode(
-                      name: NameNode(value: '__typename'),
-                      alias: null,
-                      arguments: [],
-                      directives: [],
-                      selectionSet: null,
-                    ),
-                  ]),
-                ),
-                FieldNode(
-                  name: NameNode(value: '__typename'),
-                  alias: null,
-                  arguments: [],
-                  directives: [],
-                  selectionSet: null,
-                ),
-              ]),
-            ),
-            FieldNode(
-              name: NameNode(value: 'insured_benefit'),
-              alias: null,
-              arguments: [],
-              directives: [],
-              selectionSet: SelectionSetNode(selections: [
-                FieldNode(
-                  name: NameNode(value: 'id'),
-                  alias: null,
-                  arguments: [],
-                  directives: [],
-                  selectionSet: null,
-                ),
-                FieldNode(
-                  name: NameNode(value: 'code'),
-                  alias: null,
-                  arguments: [],
-                  directives: [],
-                  selectionSet: null,
-                ),
-                FieldNode(
-                  name: NameNode(value: 'name'),
-                  alias: null,
-                  arguments: [],
-                  directives: [],
-                  selectionSet: null,
-                ),
-                FieldNode(
-                  name: NameNode(value: 'insured_benefit_type'),
-                  alias: null,
-                  arguments: [],
-                  directives: [],
-                  selectionSet: SelectionSetNode(selections: [
-                    FieldNode(
-                      name: NameNode(value: 'comment'),
-                      alias: null,
-                      arguments: [],
-                      directives: [],
-                      selectionSet: null,
-                    ),
-                    FieldNode(
-                      name: NameNode(value: 'value'),
-                      alias: null,
-                      arguments: [],
-                      directives: [],
-                      selectionSet: null,
-                    ),
-                    FieldNode(
-                      name: NameNode(value: '__typename'),
-                      alias: null,
-                      arguments: [],
-                      directives: [],
-                      selectionSet: null,
-                    ),
-                  ]),
-                ),
-                FieldNode(
-                  name: NameNode(value: '__typename'),
-                  alias: null,
-                  arguments: [],
-                  directives: [],
-                  selectionSet: null,
-                ),
-              ]),
-            ),
-            FieldNode(
-              name: NameNode(value: '__typename'),
-              alias: null,
-              arguments: [],
-              directives: [],
-              selectionSet: null,
-            ),
-          ]),
-        ),
-        FieldNode(
-          name: NameNode(value: '__typename'),
-          alias: null,
-          arguments: [],
-          directives: [],
-          selectionSet: null,
-        ),
-      ]),
-    ),
-    FieldNode(
-      name: NameNode(value: 'discharge_date'),
-      alias: null,
-      arguments: [],
-      directives: [],
-      selectionSet: null,
-    ),
-    FieldNode(
-      name: NameNode(value: 'physical_examination_date'),
-      alias: null,
-      arguments: [],
-      directives: [],
-      selectionSet: null,
-    ),
-    FieldNode(
-      name: NameNode(value: 'claim_pending_codes'),
-      alias: null,
-      arguments: [
-        ArgumentNode(
-          name: NameNode(value: 'where'),
-          value: ObjectValueNode(fields: [
-            ObjectFieldNode(
-              name: NameNode(value: 'status'),
-              value: ObjectValueNode(fields: [
-                ObjectFieldNode(
-                  name: NameNode(value: '_eq'),
-                  value: EnumValueNode(name: NameNode(value: 'O')),
-                )
-              ]),
-            )
-          ]),
-        )
-      ],
-      directives: [],
-      selectionSet: SelectionSetNode(selections: [
-        FragmentSpreadNode(
-          name: NameNode(value: 'ClaimPendingCodes'),
-          directives: [],
-        ),
-        FieldNode(
-          name: NameNode(value: '__typename'),
-          alias: null,
-          arguments: [],
-          directives: [],
-          selectionSet: null,
-        ),
-      ]),
-    ),
-    FieldNode(
-      name: NameNode(value: 'claim_documents'),
-      alias: null,
-      arguments: [
-        ArgumentNode(
-          name: NameNode(value: 'where'),
-          value: ObjectValueNode(fields: [
-            ObjectFieldNode(
-              name: NameNode(value: 'source'),
-              value: ObjectValueNode(fields: [
-                ObjectFieldNode(
-                  name: NameNode(value: '_nin'),
-                  value: ListValueNode(values: [
-                    EnumValueNode(name: NameNode(value: 'Assessments'))
-                  ]),
-                )
-              ]),
-            )
-          ]),
-        )
-      ],
-      directives: [],
-      selectionSet: SelectionSetNode(selections: [
-        FragmentSpreadNode(
-          name: NameNode(value: 'ClaimDocuments'),
-          directives: [],
-        ),
-        FieldNode(
-          name: NameNode(value: '__typename'),
-          alias: null,
-          arguments: [],
-          directives: [],
-          selectionSet: null,
-        ),
-      ]),
-    ),
-    FieldNode(
-      name: NameNode(value: 'claim_notes'),
-      alias: NameNode(value: 'assessment_summary'),
-      arguments: [
-        ArgumentNode(
-          name: NameNode(value: 'where'),
-          value: ObjectValueNode(fields: [
-            ObjectFieldNode(
-              name: NameNode(value: 'type'),
-              value: ObjectValueNode(fields: [
-                ObjectFieldNode(
-                  name: NameNode(value: '_eq'),
-                  value: EnumValueNode(
-                      name: NameNode(value: 'ASSESSMENT_SUMMARY')),
-                )
-              ]),
-            )
-          ]),
-        ),
-        ArgumentNode(
-          name: NameNode(value: 'order_by'),
-          value: ObjectValueNode(fields: [
-            ObjectFieldNode(
               name: NameNode(value: 'created_at'),
-              value: EnumValueNode(name: NameNode(value: 'desc')),
-            )
-          ]),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: null,
+            ),
+            FieldNode(
+              name: NameNode(value: '__typename'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: null,
+            ),
+          ],
         ),
-        ArgumentNode(
-          name: NameNode(value: 'limit'),
-          value: IntValueNode(value: '1'),
+      ),
+      FieldNode(
+        name: NameNode(value: 'admission_date'),
+        alias: null,
+        arguments: [],
+        directives: [],
+        selectionSet: null,
+      ),
+      FieldNode(
+        name: NameNode(value: 'claim_case_details'),
+        alias: null,
+        arguments: [],
+        directives: [],
+        selectionSet: SelectionSetNode(
+          selections: [
+            FieldNode(
+              name: NameNode(value: 'claim_case_detail_id'),
+              alias: NameNode(value: 'id'),
+              arguments: [],
+              directives: [],
+              selectionSet: null,
+            ),
+            FieldNode(
+              name: NameNode(value: 'total_paid_amount'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: null,
+            ),
+            FieldNode(
+              name: NameNode(value: 'note'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: null,
+            ),
+            FieldNode(
+              name: NameNode(value: 'plan_insured_benefit'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: SelectionSetNode(
+                selections: [
+                  FieldNode(
+                    name: NameNode(value: 'id'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null,
+                  ),
+                  FieldNode(
+                    name: NameNode(value: 'plan_id'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null,
+                  ),
+                  FieldNode(
+                    name: NameNode(value: 'plan_balance_benefits'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: SelectionSetNode(
+                      selections: [
+                        FieldNode(
+                          name: NameNode(value: 'id'),
+                          alias: null,
+                          arguments: [],
+                          directives: [],
+                          selectionSet: null,
+                        ),
+                        FieldNode(
+                          name: NameNode(value: 'plan_balance'),
+                          alias: null,
+                          arguments: [],
+                          directives: [],
+                          selectionSet: SelectionSetNode(
+                            selections: [
+                              FieldNode(
+                                name: NameNode(value: 'id'),
+                                alias: null,
+                                arguments: [],
+                                directives: [],
+                                selectionSet: null,
+                              ),
+                              FieldNode(
+                                name: NameNode(value: 'name'),
+                                alias: null,
+                                arguments: [],
+                                directives: [],
+                                selectionSet: null,
+                              ),
+                              FieldNode(
+                                name: NameNode(value: '__typename'),
+                                alias: null,
+                                arguments: [],
+                                directives: [],
+                                selectionSet: null,
+                              ),
+                            ],
+                          ),
+                        ),
+                        FieldNode(
+                          name: NameNode(value: '__typename'),
+                          alias: null,
+                          arguments: [],
+                          directives: [],
+                          selectionSet: null,
+                        ),
+                      ],
+                    ),
+                  ),
+                  FieldNode(
+                    name: NameNode(value: 'insured_benefit'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: SelectionSetNode(
+                      selections: [
+                        FieldNode(
+                          name: NameNode(value: 'id'),
+                          alias: null,
+                          arguments: [],
+                          directives: [],
+                          selectionSet: null,
+                        ),
+                        FieldNode(
+                          name: NameNode(value: 'code'),
+                          alias: null,
+                          arguments: [],
+                          directives: [],
+                          selectionSet: null,
+                        ),
+                        FieldNode(
+                          name: NameNode(value: 'name'),
+                          alias: null,
+                          arguments: [],
+                          directives: [],
+                          selectionSet: null,
+                        ),
+                        FieldNode(
+                          name: NameNode(value: 'insured_benefit_type'),
+                          alias: null,
+                          arguments: [],
+                          directives: [],
+                          selectionSet: SelectionSetNode(
+                            selections: [
+                              FieldNode(
+                                name: NameNode(value: 'comment'),
+                                alias: null,
+                                arguments: [],
+                                directives: [],
+                                selectionSet: null,
+                              ),
+                              FieldNode(
+                                name: NameNode(value: 'value'),
+                                alias: null,
+                                arguments: [],
+                                directives: [],
+                                selectionSet: null,
+                              ),
+                              FieldNode(
+                                name: NameNode(value: '__typename'),
+                                alias: null,
+                                arguments: [],
+                                directives: [],
+                                selectionSet: null,
+                              ),
+                            ],
+                          ),
+                        ),
+                        FieldNode(
+                          name: NameNode(value: '__typename'),
+                          alias: null,
+                          arguments: [],
+                          directives: [],
+                          selectionSet: null,
+                        ),
+                      ],
+                    ),
+                  ),
+                  FieldNode(
+                    name: NameNode(value: '__typename'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null,
+                  ),
+                ],
+              ),
+            ),
+            FieldNode(
+              name: NameNode(value: '__typename'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: null,
+            ),
+          ],
         ),
-      ],
-      directives: [],
-      selectionSet: SelectionSetNode(selections: [
-        FieldNode(
-          name: NameNode(value: 'id'),
-          alias: null,
-          arguments: [],
-          directives: [],
-          selectionSet: null,
+      ),
+      FieldNode(
+        name: NameNode(value: 'discharge_date'),
+        alias: null,
+        arguments: [],
+        directives: [],
+        selectionSet: null,
+      ),
+      FieldNode(
+        name: NameNode(value: 'physical_examination_date'),
+        alias: null,
+        arguments: [],
+        directives: [],
+        selectionSet: null,
+      ),
+      FieldNode(
+        name: NameNode(value: 'claim_pending_codes'),
+        alias: null,
+        arguments: [
+          ArgumentNode(
+            name: NameNode(value: 'where'),
+            value: ObjectValueNode(
+              fields: [
+                ObjectFieldNode(
+                  name: NameNode(value: 'status'),
+                  value: ObjectValueNode(
+                    fields: [
+                      ObjectFieldNode(
+                        name: NameNode(value: '_eq'),
+                        value: EnumValueNode(name: NameNode(value: 'O')),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+        directives: [],
+        selectionSet: SelectionSetNode(
+          selections: [
+            FragmentSpreadNode(
+              name: NameNode(value: 'ClaimPendingCodes'),
+              directives: [],
+            ),
+            FieldNode(
+              name: NameNode(value: '__typename'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: null,
+            ),
+          ],
         ),
-        FieldNode(
-          name: NameNode(value: 'content'),
-          alias: null,
-          arguments: [],
-          directives: [],
-          selectionSet: null,
+      ),
+      FieldNode(
+        name: NameNode(value: 'claim_documents'),
+        alias: null,
+        arguments: [
+          ArgumentNode(
+            name: NameNode(value: 'where'),
+            value: ObjectValueNode(
+              fields: [
+                ObjectFieldNode(
+                  name: NameNode(value: 'source'),
+                  value: ObjectValueNode(
+                    fields: [
+                      ObjectFieldNode(
+                        name: NameNode(value: '_nin'),
+                        value: ListValueNode(
+                          values: [
+                            EnumValueNode(name: NameNode(value: 'Assessments')),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+        directives: [],
+        selectionSet: SelectionSetNode(
+          selections: [
+            FragmentSpreadNode(
+              name: NameNode(value: 'ClaimDocuments'),
+              directives: [],
+            ),
+            FieldNode(
+              name: NameNode(value: '__typename'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: null,
+            ),
+          ],
         ),
-        FieldNode(
-          name: NameNode(value: '__typename'),
-          alias: null,
-          arguments: [],
-          directives: [],
-          selectionSet: null,
+      ),
+      FieldNode(
+        name: NameNode(value: 'claim_notes'),
+        alias: NameNode(value: 'assessment_summary'),
+        arguments: [
+          ArgumentNode(
+            name: NameNode(value: 'where'),
+            value: ObjectValueNode(
+              fields: [
+                ObjectFieldNode(
+                  name: NameNode(value: 'type'),
+                  value: ObjectValueNode(
+                    fields: [
+                      ObjectFieldNode(
+                        name: NameNode(value: '_eq'),
+                        value: EnumValueNode(
+                          name: NameNode(value: 'ASSESSMENT_SUMMARY'),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+          ArgumentNode(
+            name: NameNode(value: 'order_by'),
+            value: ObjectValueNode(
+              fields: [
+                ObjectFieldNode(
+                  name: NameNode(value: 'created_at'),
+                  value: EnumValueNode(name: NameNode(value: 'desc')),
+                ),
+              ],
+            ),
+          ),
+          ArgumentNode(
+            name: NameNode(value: 'limit'),
+            value: IntValueNode(value: '1'),
+          ),
+        ],
+        directives: [],
+        selectionSet: SelectionSetNode(
+          selections: [
+            FieldNode(
+              name: NameNode(value: 'id'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: null,
+            ),
+            FieldNode(
+              name: NameNode(value: 'content'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: null,
+            ),
+            FieldNode(
+              name: NameNode(value: '__typename'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: null,
+            ),
+          ],
         ),
-      ]),
-    ),
-    FieldNode(
-      name: NameNode(value: 'created_by_user'),
-      alias: null,
-      arguments: [],
-      directives: [],
-      selectionSet: SelectionSetNode(selections: [
-        FieldNode(
-          name: NameNode(value: 'user_id'),
-          alias: NameNode(value: 'id'),
-          arguments: [],
-          directives: [],
-          selectionSet: null,
+      ),
+      FieldNode(
+        name: NameNode(value: 'created_by_user'),
+        alias: null,
+        arguments: [],
+        directives: [],
+        selectionSet: SelectionSetNode(
+          selections: [
+            FieldNode(
+              name: NameNode(value: 'user_id'),
+              alias: NameNode(value: 'id'),
+              arguments: [],
+              directives: [],
+              selectionSet: null,
+            ),
+            FieldNode(
+              name: NameNode(value: 'name'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: null,
+            ),
+            FieldNode(
+              name: NameNode(value: '__typename'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: null,
+            ),
+          ],
         ),
-        FieldNode(
-          name: NameNode(value: 'name'),
-          alias: null,
-          arguments: [],
-          directives: [],
-          selectionSet: null,
-        ),
-        FieldNode(
-          name: NameNode(value: '__typename'),
-          alias: null,
-          arguments: [],
-          directives: [],
-          selectionSet: null,
-        ),
-      ]),
-    ),
-    FieldNode(
-      name: NameNode(value: '__typename'),
-      alias: null,
-      arguments: [],
-      directives: [],
-      selectionSet: null,
-    ),
-  ]),
+      ),
+      FieldNode(
+        name: NameNode(value: '__typename'),
+        alias: null,
+        arguments: [],
+        directives: [],
+        selectionSet: null,
+      ),
+    ],
+  ),
 );
-const documentNodeFragmentClaimCases = DocumentNode(definitions: [
-  fragmentDefinitionClaimCases,
-  fragmentDefinitionClaimPendingCodes,
-  fragmentDefinitionClaimDocuments,
-]);
+const documentNodeFragmentClaimCases = DocumentNode(
+  definitions: [
+    fragmentDefinitionClaimCases,
+    fragmentDefinitionClaimPendingCodes,
+    fragmentDefinitionClaimDocuments,
+  ],
+);
 
 extension ClientExtension$Fragment$ClaimCases on graphql.GraphQLClient {
   void writeFragment$ClaimCases({
     required Fragment$ClaimCases data,
     required Map<String, dynamic> idFields,
     bool broadcast = true,
-  }) =>
-      this.writeFragment(
-        graphql.FragmentRequest(
-          idFields: idFields,
-          fragment: const graphql.Fragment(
-            fragmentName: 'ClaimCases',
-            document: documentNodeFragmentClaimCases,
-          ),
-        ),
-        data: data.toJson(),
-        broadcast: broadcast,
-      );
+  }) => this.writeFragment(graphql.FragmentRequest(
+    idFields: idFields,
+    fragment: const graphql.Fragment(
+      fragmentName: 'ClaimCases',
+      document: documentNodeFragmentClaimCases,
+    ),
+  ), data: data.toJson(), broadcast: broadcast);
   Fragment$ClaimCases? readFragment$ClaimCases({
     required Map<String, dynamic> idFields,
     bool optimistic = true,
   }) {
-    final result = this.readFragment(
-      graphql.FragmentRequest(
-        idFields: idFields,
-        fragment: const graphql.Fragment(
-          fragmentName: 'ClaimCases',
-          document: documentNodeFragmentClaimCases,
-        ),
+    final result = this.readFragment(graphql.FragmentRequest(
+      idFields: idFields,
+      fragment: const graphql.Fragment(
+        fragmentName: 'ClaimCases',
+        document: documentNodeFragmentClaimCases,
       ),
-      optimistic: optimistic,
-    );
+    ), optimistic: optimistic);
     return result == null ? null : Fragment$ClaimCases.fromJson(result);
   }
 }
@@ -3244,7 +3319,8 @@ class Fragment$ClaimCases$original_claim_case {
   });
 
   factory Fragment$ClaimCases$original_claim_case.fromJson(
-      Map<String, dynamic> json) {
+    Map<String, dynamic> json,
+  ) {
     final l$benefit_type = json['benefit_type'];
     final l$insured_benefit_type = json['insured_benefit_type'];
     final l$diagnosis = json['diagnosis'];
@@ -3267,13 +3343,15 @@ class Fragment$ClaimCases$original_claim_case {
           fromJson$Enum$insured_benefit_types_enum((l$benefit_type as String)),
       insured_benefit_type:
           Fragment$ClaimCases$original_claim_case$insured_benefit_type.fromJson(
-              (l$insured_benefit_type as Map<String, dynamic>)),
+        (l$insured_benefit_type as Map<String, dynamic>),
+      ),
       diagnosis: (l$diagnosis as String?),
       created_at: (l$created_at as String),
       is_direct_billing: (l$is_direct_billing as bool),
       insured_person:
           Fragment$ClaimCases$original_claim_case$insured_person.fromJson(
-              (l$insured_person as Map<String, dynamic>)),
+        (l$insured_person as Map<String, dynamic>),
+      ),
       event_date: (l$event_date as String?),
       requested_amount: (l$requested_amount as num?)?.toDouble(),
       medical_provider_name: (l$medical_provider_name as String?),
@@ -3281,20 +3359,22 @@ class Fragment$ClaimCases$original_claim_case {
       admission_date: (l$admission_date as String?),
       discharge_date: (l$discharge_date as String?),
       physical_examination_date: (l$physical_examination_date as String?),
-      claim_case_input_diagnoses: (l$claim_case_input_diagnoses
-              as List<dynamic>)
-          .map((e) =>
-              Fragment$ClaimCases$original_claim_case$claim_case_input_diagnoses
-                  .fromJson((e as Map<String, dynamic>)))
-          .toList(),
+      claim_case_input_diagnoses:
+          (l$claim_case_input_diagnoses as List<dynamic>).map(
+            (
+              e,
+            ) => Fragment$ClaimCases$original_claim_case$claim_case_input_diagnoses
+                .fromJson((e as Map<String, dynamic>)),
+          ).toList(),
       medical_provider: l$medical_provider == null
           ? null
           : Fragment$ClaimCases$original_claim_case$medical_provider.fromJson(
-              (l$medical_provider as Map<String, dynamic>)),
+              (l$medical_provider as Map<String, dynamic>),
+            ),
       claim_case_beneficiary: l$claim_case_beneficiary == null
           ? null
           : Fragment$ClaimCases$original_claim_case$claim_case_beneficiary
-              .fromJson((l$claim_case_beneficiary as Map<String, dynamic>)),
+                .fromJson((l$claim_case_beneficiary as Map<String, dynamic>)),
       $__typename: (l$$__typename as String),
     );
   }
@@ -3302,7 +3382,7 @@ class Fragment$ClaimCases$original_claim_case {
   final Enum$insured_benefit_types_enum benefit_type;
 
   final Fragment$ClaimCases$original_claim_case$insured_benefit_type
-      insured_benefit_type;
+  insured_benefit_type;
 
   final String? diagnosis;
 
@@ -3327,21 +3407,22 @@ class Fragment$ClaimCases$original_claim_case {
   final String? physical_examination_date;
 
   final List<Fragment$ClaimCases$original_claim_case$claim_case_input_diagnoses>
-      claim_case_input_diagnoses;
+  claim_case_input_diagnoses;
 
   final Fragment$ClaimCases$original_claim_case$medical_provider?
-      medical_provider;
+  medical_provider;
 
   final Fragment$ClaimCases$original_claim_case$claim_case_beneficiary?
-      claim_case_beneficiary;
+  claim_case_beneficiary;
 
   final String $__typename;
 
   Map<String, dynamic> toJson() {
     final _resultData = <String, dynamic>{};
     final l$benefit_type = benefit_type;
-    _resultData['benefit_type'] =
-        toJson$Enum$insured_benefit_types_enum(l$benefit_type);
+    _resultData['benefit_type'] = toJson$Enum$insured_benefit_types_enum(
+      l$benefit_type,
+    );
     final l$insured_benefit_type = insured_benefit_type;
     _resultData['insured_benefit_type'] = l$insured_benefit_type.toJson();
     final l$diagnosis = diagnosis;
@@ -3530,11 +3611,11 @@ class Fragment$ClaimCases$original_claim_case {
 extension UtilityExtension$Fragment$ClaimCases$original_claim_case
     on Fragment$ClaimCases$original_claim_case {
   CopyWith$Fragment$ClaimCases$original_claim_case<
-          Fragment$ClaimCases$original_claim_case>
-      get copyWith => CopyWith$Fragment$ClaimCases$original_claim_case(
-            this,
-            (i) => i,
-          );
+    Fragment$ClaimCases$original_claim_case
+  > get copyWith => CopyWith$Fragment$ClaimCases$original_claim_case(
+    this,
+    (i) => i,
+  );
 }
 
 abstract class CopyWith$Fragment$ClaimCases$original_claim_case<TRes> {
@@ -3549,7 +3630,7 @@ abstract class CopyWith$Fragment$ClaimCases$original_claim_case<TRes> {
   TRes call({
     Enum$insured_benefit_types_enum? benefit_type,
     Fragment$ClaimCases$original_claim_case$insured_benefit_type?
-        insured_benefit_type,
+    insured_benefit_type,
     String? diagnosis,
     String? created_at,
     bool? is_direct_billing,
@@ -3562,26 +3643,31 @@ abstract class CopyWith$Fragment$ClaimCases$original_claim_case<TRes> {
     String? discharge_date,
     String? physical_examination_date,
     List<Fragment$ClaimCases$original_claim_case$claim_case_input_diagnoses>?
-        claim_case_input_diagnoses,
+    claim_case_input_diagnoses,
     Fragment$ClaimCases$original_claim_case$medical_provider? medical_provider,
     Fragment$ClaimCases$original_claim_case$claim_case_beneficiary?
-        claim_case_beneficiary,
+    claim_case_beneficiary,
     String? $__typename,
   });
   CopyWith$Fragment$ClaimCases$original_claim_case$insured_benefit_type<TRes>
-      get insured_benefit_type;
+  get insured_benefit_type;
   CopyWith$Fragment$ClaimCases$original_claim_case$insured_person<TRes>
-      get insured_person;
+  get insured_person;
   TRes claim_case_input_diagnoses(
-      Iterable<Fragment$ClaimCases$original_claim_case$claim_case_input_diagnoses> Function(
-              Iterable<
-                  CopyWith$Fragment$ClaimCases$original_claim_case$claim_case_input_diagnoses<
-                      Fragment$ClaimCases$original_claim_case$claim_case_input_diagnoses>>)
-          _fn);
+    Iterable<Fragment$ClaimCases$original_claim_case$claim_case_input_diagnoses>
+    Function(
+      Iterable<
+        CopyWith$Fragment$ClaimCases$original_claim_case$claim_case_input_diagnoses<
+          Fragment$ClaimCases$original_claim_case$claim_case_input_diagnoses
+        >
+      >,
+    )
+    _fn,
+  );
   CopyWith$Fragment$ClaimCases$original_claim_case$medical_provider<TRes>
-      get medical_provider;
+  get medical_provider;
   CopyWith$Fragment$ClaimCases$original_claim_case$claim_case_beneficiary<TRes>
-      get claim_case_beneficiary;
+  get claim_case_beneficiary;
 }
 
 class _CopyWithImpl$Fragment$ClaimCases$original_claim_case<TRes>
@@ -3615,114 +3701,128 @@ class _CopyWithImpl$Fragment$ClaimCases$original_claim_case<TRes>
     Object? medical_provider = _undefined,
     Object? claim_case_beneficiary = _undefined,
     Object? $__typename = _undefined,
-  }) =>
-      _then(Fragment$ClaimCases$original_claim_case(
-        benefit_type: benefit_type == _undefined || benefit_type == null
-            ? _instance.benefit_type
-            : (benefit_type as Enum$insured_benefit_types_enum),
-        insured_benefit_type: insured_benefit_type == _undefined ||
-                insured_benefit_type == null
-            ? _instance.insured_benefit_type
-            : (insured_benefit_type
-                as Fragment$ClaimCases$original_claim_case$insured_benefit_type),
-        diagnosis: diagnosis == _undefined
-            ? _instance.diagnosis
-            : (diagnosis as String?),
-        created_at: created_at == _undefined || created_at == null
-            ? _instance.created_at
-            : (created_at as String),
-        is_direct_billing:
-            is_direct_billing == _undefined || is_direct_billing == null
-                ? _instance.is_direct_billing
-                : (is_direct_billing as bool),
-        insured_person: insured_person == _undefined || insured_person == null
-            ? _instance.insured_person
-            : (insured_person
-                as Fragment$ClaimCases$original_claim_case$insured_person),
-        event_date: event_date == _undefined
-            ? _instance.event_date
-            : (event_date as String?),
-        requested_amount: requested_amount == _undefined
-            ? _instance.requested_amount
-            : (requested_amount as double?),
-        medical_provider_name: medical_provider_name == _undefined
-            ? _instance.medical_provider_name
-            : (medical_provider_name as String?),
-        code: code == _undefined || code == null
-            ? _instance.code
-            : (code as String),
-        admission_date: admission_date == _undefined
-            ? _instance.admission_date
-            : (admission_date as String?),
-        discharge_date: discharge_date == _undefined
-            ? _instance.discharge_date
-            : (discharge_date as String?),
-        physical_examination_date: physical_examination_date == _undefined
-            ? _instance.physical_examination_date
-            : (physical_examination_date as String?),
-        claim_case_input_diagnoses: claim_case_input_diagnoses == _undefined ||
-                claim_case_input_diagnoses == null
-            ? _instance.claim_case_input_diagnoses
-            : (claim_case_input_diagnoses as List<
-                Fragment$ClaimCases$original_claim_case$claim_case_input_diagnoses>),
-        medical_provider: medical_provider == _undefined
-            ? _instance.medical_provider
-            : (medical_provider
-                as Fragment$ClaimCases$original_claim_case$medical_provider?),
-        claim_case_beneficiary: claim_case_beneficiary == _undefined
-            ? _instance.claim_case_beneficiary
-            : (claim_case_beneficiary
-                as Fragment$ClaimCases$original_claim_case$claim_case_beneficiary?),
-        $__typename: $__typename == _undefined || $__typename == null
-            ? _instance.$__typename
-            : ($__typename as String),
-      ));
+  }) => _then(Fragment$ClaimCases$original_claim_case(
+    benefit_type: benefit_type == _undefined || benefit_type == null
+        ? _instance.benefit_type
+        : (benefit_type as Enum$insured_benefit_types_enum),
+    insured_benefit_type: insured_benefit_type == _undefined ||
+            insured_benefit_type == null
+        ? _instance.insured_benefit_type
+        : (insured_benefit_type
+              as Fragment$ClaimCases$original_claim_case$insured_benefit_type),
+    diagnosis: diagnosis == _undefined
+        ? _instance.diagnosis
+        : (diagnosis as String?),
+    created_at: created_at == _undefined || created_at == null
+        ? _instance.created_at
+        : (created_at as String),
+    is_direct_billing:
+        is_direct_billing == _undefined || is_direct_billing == null
+            ? _instance.is_direct_billing
+            : (is_direct_billing as bool),
+    insured_person: insured_person == _undefined || insured_person == null
+        ? _instance.insured_person
+        : (insured_person
+              as Fragment$ClaimCases$original_claim_case$insured_person),
+    event_date: event_date == _undefined
+        ? _instance.event_date
+        : (event_date as String?),
+    requested_amount: requested_amount == _undefined
+        ? _instance.requested_amount
+        : (requested_amount as double?),
+    medical_provider_name: medical_provider_name == _undefined
+        ? _instance.medical_provider_name
+        : (medical_provider_name as String?),
+    code: code == _undefined || code == null
+        ? _instance.code
+        : (code as String),
+    admission_date: admission_date == _undefined
+        ? _instance.admission_date
+        : (admission_date as String?),
+    discharge_date: discharge_date == _undefined
+        ? _instance.discharge_date
+        : (discharge_date as String?),
+    physical_examination_date: physical_examination_date == _undefined
+        ? _instance.physical_examination_date
+        : (physical_examination_date as String?),
+    claim_case_input_diagnoses: claim_case_input_diagnoses == _undefined ||
+            claim_case_input_diagnoses == null
+        ? _instance.claim_case_input_diagnoses
+        : (claim_case_input_diagnoses as List<
+            Fragment$ClaimCases$original_claim_case$claim_case_input_diagnoses
+          >),
+    medical_provider: medical_provider == _undefined
+        ? _instance.medical_provider
+        : (medical_provider
+              as Fragment$ClaimCases$original_claim_case$medical_provider?),
+    claim_case_beneficiary: claim_case_beneficiary == _undefined
+        ? _instance.claim_case_beneficiary
+        : (claim_case_beneficiary
+              as Fragment$ClaimCases$original_claim_case$claim_case_beneficiary?),
+    $__typename: $__typename == _undefined || $__typename == null
+        ? _instance.$__typename
+        : ($__typename as String),
+  ));
   CopyWith$Fragment$ClaimCases$original_claim_case$insured_benefit_type<TRes>
-      get insured_benefit_type {
+  get insured_benefit_type {
     final local$insured_benefit_type = _instance.insured_benefit_type;
     return CopyWith$Fragment$ClaimCases$original_claim_case$insured_benefit_type(
-        local$insured_benefit_type, (e) => call(insured_benefit_type: e));
+      local$insured_benefit_type,
+      (e) => call(insured_benefit_type: e),
+    );
   }
 
   CopyWith$Fragment$ClaimCases$original_claim_case$insured_person<TRes>
-      get insured_person {
+  get insured_person {
     final local$insured_person = _instance.insured_person;
     return CopyWith$Fragment$ClaimCases$original_claim_case$insured_person(
-        local$insured_person, (e) => call(insured_person: e));
+      local$insured_person,
+      (e) => call(insured_person: e),
+    );
   }
 
   TRes claim_case_input_diagnoses(
-          Iterable<Fragment$ClaimCases$original_claim_case$claim_case_input_diagnoses> Function(
-                  Iterable<
-                      CopyWith$Fragment$ClaimCases$original_claim_case$claim_case_input_diagnoses<
-                          Fragment$ClaimCases$original_claim_case$claim_case_input_diagnoses>>)
-              _fn) =>
-      call(
-          claim_case_input_diagnoses: _fn(_instance.claim_case_input_diagnoses
-              .map((e) =>
-                  CopyWith$Fragment$ClaimCases$original_claim_case$claim_case_input_diagnoses(
-                    e,
-                    (i) => i,
-                  ))).toList());
+    Iterable<Fragment$ClaimCases$original_claim_case$claim_case_input_diagnoses>
+    Function(
+      Iterable<
+        CopyWith$Fragment$ClaimCases$original_claim_case$claim_case_input_diagnoses<
+          Fragment$ClaimCases$original_claim_case$claim_case_input_diagnoses
+        >
+      >,
+    )
+    _fn,
+  ) => call(
+    claim_case_input_diagnoses: _fn(_instance.claim_case_input_diagnoses.map(
+      (
+        e,
+      ) => CopyWith$Fragment$ClaimCases$original_claim_case$claim_case_input_diagnoses(
+        e,
+        (i) => i,
+      ),
+    )).toList(),
+  );
   CopyWith$Fragment$ClaimCases$original_claim_case$medical_provider<TRes>
-      get medical_provider {
+  get medical_provider {
     final local$medical_provider = _instance.medical_provider;
     return local$medical_provider == null
         ? CopyWith$Fragment$ClaimCases$original_claim_case$medical_provider
-            .stub(_then(_instance))
+              .stub(_then(_instance))
         : CopyWith$Fragment$ClaimCases$original_claim_case$medical_provider(
-            local$medical_provider, (e) => call(medical_provider: e));
+            local$medical_provider,
+            (e) => call(medical_provider: e),
+          );
   }
 
   CopyWith$Fragment$ClaimCases$original_claim_case$claim_case_beneficiary<TRes>
-      get claim_case_beneficiary {
+  get claim_case_beneficiary {
     final local$claim_case_beneficiary = _instance.claim_case_beneficiary;
     return local$claim_case_beneficiary == null
         ? CopyWith$Fragment$ClaimCases$original_claim_case$claim_case_beneficiary
-            .stub(_then(_instance))
+              .stub(_then(_instance))
         : CopyWith$Fragment$ClaimCases$original_claim_case$claim_case_beneficiary(
             local$claim_case_beneficiary,
-            (e) => call(claim_case_beneficiary: e));
+            (e) => call(claim_case_beneficiary: e),
+          );
   }
 }
 
@@ -3735,7 +3835,7 @@ class _CopyWithStubImpl$Fragment$ClaimCases$original_claim_case<TRes>
   call({
     Enum$insured_benefit_types_enum? benefit_type,
     Fragment$ClaimCases$original_claim_case$insured_benefit_type?
-        insured_benefit_type,
+    insured_benefit_type,
     String? diagnosis,
     String? created_at,
     bool? is_direct_billing,
@@ -3748,30 +3848,25 @@ class _CopyWithStubImpl$Fragment$ClaimCases$original_claim_case<TRes>
     String? discharge_date,
     String? physical_examination_date,
     List<Fragment$ClaimCases$original_claim_case$claim_case_input_diagnoses>?
-        claim_case_input_diagnoses,
+    claim_case_input_diagnoses,
     Fragment$ClaimCases$original_claim_case$medical_provider? medical_provider,
     Fragment$ClaimCases$original_claim_case$claim_case_beneficiary?
-        claim_case_beneficiary,
+    claim_case_beneficiary,
     String? $__typename,
-  }) =>
-      _res;
+  }) => _res;
   CopyWith$Fragment$ClaimCases$original_claim_case$insured_benefit_type<TRes>
-      get insured_benefit_type =>
-          CopyWith$Fragment$ClaimCases$original_claim_case$insured_benefit_type
-              .stub(_res);
+  get insured_benefit_type => CopyWith$Fragment$ClaimCases$original_claim_case$insured_benefit_type
+      .stub(_res);
   CopyWith$Fragment$ClaimCases$original_claim_case$insured_person<TRes>
-      get insured_person =>
-          CopyWith$Fragment$ClaimCases$original_claim_case$insured_person.stub(
-              _res);
+  get insured_person => CopyWith$Fragment$ClaimCases$original_claim_case$insured_person
+      .stub(_res);
   claim_case_input_diagnoses(_fn) => _res;
   CopyWith$Fragment$ClaimCases$original_claim_case$medical_provider<TRes>
-      get medical_provider =>
-          CopyWith$Fragment$ClaimCases$original_claim_case$medical_provider
-              .stub(_res);
+  get medical_provider => CopyWith$Fragment$ClaimCases$original_claim_case$medical_provider
+      .stub(_res);
   CopyWith$Fragment$ClaimCases$original_claim_case$claim_case_beneficiary<TRes>
-      get claim_case_beneficiary =>
-          CopyWith$Fragment$ClaimCases$original_claim_case$claim_case_beneficiary
-              .stub(_res);
+  get claim_case_beneficiary => CopyWith$Fragment$ClaimCases$original_claim_case$claim_case_beneficiary
+      .stub(_res);
 }
 
 class Fragment$ClaimCases$original_claim_case$insured_benefit_type {
@@ -3782,7 +3877,8 @@ class Fragment$ClaimCases$original_claim_case$insured_benefit_type {
   });
 
   factory Fragment$ClaimCases$original_claim_case$insured_benefit_type.fromJson(
-      Map<String, dynamic> json) {
+    Map<String, dynamic> json,
+  ) {
     final l$comment = json['comment'];
     final l$value = json['value'];
     final l$$__typename = json['__typename'];
@@ -3815,11 +3911,7 @@ class Fragment$ClaimCases$original_claim_case$insured_benefit_type {
     final l$comment = comment;
     final l$value = value;
     final l$$__typename = $__typename;
-    return Object.hashAll([
-      l$comment,
-      l$value,
-      l$$__typename,
-    ]);
+    return Object.hashAll([l$comment, l$value, l$$__typename]);
   }
 
   @override
@@ -3854,38 +3946,37 @@ class Fragment$ClaimCases$original_claim_case$insured_benefit_type {
 extension UtilityExtension$Fragment$ClaimCases$original_claim_case$insured_benefit_type
     on Fragment$ClaimCases$original_claim_case$insured_benefit_type {
   CopyWith$Fragment$ClaimCases$original_claim_case$insured_benefit_type<
-          Fragment$ClaimCases$original_claim_case$insured_benefit_type>
-      get copyWith =>
-          CopyWith$Fragment$ClaimCases$original_claim_case$insured_benefit_type(
-            this,
-            (i) => i,
-          );
+    Fragment$ClaimCases$original_claim_case$insured_benefit_type
+  >
+  get copyWith => CopyWith$Fragment$ClaimCases$original_claim_case$insured_benefit_type(
+    this,
+    (i) => i,
+  );
 }
 
 abstract class CopyWith$Fragment$ClaimCases$original_claim_case$insured_benefit_type<
-    TRes> {
+  TRes
+> {
   factory CopyWith$Fragment$ClaimCases$original_claim_case$insured_benefit_type(
     Fragment$ClaimCases$original_claim_case$insured_benefit_type instance,
     TRes Function(Fragment$ClaimCases$original_claim_case$insured_benefit_type)
-        then,
+    then,
   ) = _CopyWithImpl$Fragment$ClaimCases$original_claim_case$insured_benefit_type;
 
   factory CopyWith$Fragment$ClaimCases$original_claim_case$insured_benefit_type.stub(
-          TRes res) =
-      _CopyWithStubImpl$Fragment$ClaimCases$original_claim_case$insured_benefit_type;
+    TRes res,
+  ) = _CopyWithStubImpl$Fragment$ClaimCases$original_claim_case$insured_benefit_type;
 
-  TRes call({
-    String? comment,
-    String? value,
-    String? $__typename,
-  });
+  TRes call({String? comment, String? value, String? $__typename});
 }
 
 class _CopyWithImpl$Fragment$ClaimCases$original_claim_case$insured_benefit_type<
-        TRes>
+  TRes
+>
     implements
         CopyWith$Fragment$ClaimCases$original_claim_case$insured_benefit_type<
-            TRes> {
+          TRes
+        > {
   _CopyWithImpl$Fragment$ClaimCases$original_claim_case$insured_benefit_type(
     this._instance,
     this._then,
@@ -3894,7 +3985,8 @@ class _CopyWithImpl$Fragment$ClaimCases$original_claim_case$insured_benefit_type
   final Fragment$ClaimCases$original_claim_case$insured_benefit_type _instance;
 
   final TRes Function(
-      Fragment$ClaimCases$original_claim_case$insured_benefit_type) _then;
+    Fragment$ClaimCases$original_claim_case$insured_benefit_type,
+  ) _then;
 
   static const _undefined = <dynamic, dynamic>{};
 
@@ -3902,36 +3994,33 @@ class _CopyWithImpl$Fragment$ClaimCases$original_claim_case$insured_benefit_type
     Object? comment = _undefined,
     Object? value = _undefined,
     Object? $__typename = _undefined,
-  }) =>
-      _then(Fragment$ClaimCases$original_claim_case$insured_benefit_type(
-        comment: comment == _undefined || comment == null
-            ? _instance.comment
-            : (comment as String),
-        value: value == _undefined || value == null
-            ? _instance.value
-            : (value as String),
-        $__typename: $__typename == _undefined || $__typename == null
-            ? _instance.$__typename
-            : ($__typename as String),
-      ));
+  }) => _then(Fragment$ClaimCases$original_claim_case$insured_benefit_type(
+    comment: comment == _undefined || comment == null
+        ? _instance.comment
+        : (comment as String),
+    value: value == _undefined || value == null
+        ? _instance.value
+        : (value as String),
+    $__typename: $__typename == _undefined || $__typename == null
+        ? _instance.$__typename
+        : ($__typename as String),
+  ));
 }
 
 class _CopyWithStubImpl$Fragment$ClaimCases$original_claim_case$insured_benefit_type<
-        TRes>
+  TRes
+>
     implements
         CopyWith$Fragment$ClaimCases$original_claim_case$insured_benefit_type<
-            TRes> {
+          TRes
+        > {
   _CopyWithStubImpl$Fragment$ClaimCases$original_claim_case$insured_benefit_type(
-      this._res);
+    this._res,
+  );
 
   TRes _res;
 
-  call({
-    String? comment,
-    String? value,
-    String? $__typename,
-  }) =>
-      _res;
+  call({String? comment, String? value, String? $__typename}) => _res;
 }
 
 class Fragment$ClaimCases$original_claim_case$insured_person {
@@ -3942,7 +4031,8 @@ class Fragment$ClaimCases$original_claim_case$insured_person {
   });
 
   factory Fragment$ClaimCases$original_claim_case$insured_person.fromJson(
-      Map<String, dynamic> json) {
+    Map<String, dynamic> json,
+  ) {
     final l$id = json['id'];
     final l$name = json['name'];
     final l$$__typename = json['__typename'];
@@ -3975,11 +4065,7 @@ class Fragment$ClaimCases$original_claim_case$insured_person {
     final l$id = id;
     final l$name = name;
     final l$$__typename = $__typename;
-    return Object.hashAll([
-      l$id,
-      l$name,
-      l$$__typename,
-    ]);
+    return Object.hashAll([l$id, l$name, l$$__typename]);
   }
 
   @override
@@ -4013,30 +4099,27 @@ class Fragment$ClaimCases$original_claim_case$insured_person {
 extension UtilityExtension$Fragment$ClaimCases$original_claim_case$insured_person
     on Fragment$ClaimCases$original_claim_case$insured_person {
   CopyWith$Fragment$ClaimCases$original_claim_case$insured_person<
-          Fragment$ClaimCases$original_claim_case$insured_person>
-      get copyWith =>
-          CopyWith$Fragment$ClaimCases$original_claim_case$insured_person(
-            this,
-            (i) => i,
-          );
+    Fragment$ClaimCases$original_claim_case$insured_person
+  >
+  get copyWith => CopyWith$Fragment$ClaimCases$original_claim_case$insured_person(
+    this,
+    (i) => i,
+  );
 }
 
 abstract class CopyWith$Fragment$ClaimCases$original_claim_case$insured_person<
-    TRes> {
+  TRes
+> {
   factory CopyWith$Fragment$ClaimCases$original_claim_case$insured_person(
     Fragment$ClaimCases$original_claim_case$insured_person instance,
     TRes Function(Fragment$ClaimCases$original_claim_case$insured_person) then,
   ) = _CopyWithImpl$Fragment$ClaimCases$original_claim_case$insured_person;
 
   factory CopyWith$Fragment$ClaimCases$original_claim_case$insured_person.stub(
-          TRes res) =
-      _CopyWithStubImpl$Fragment$ClaimCases$original_claim_case$insured_person;
+    TRes res,
+  ) = _CopyWithStubImpl$Fragment$ClaimCases$original_claim_case$insured_person;
 
-  TRes call({
-    String? id,
-    String? name,
-    String? $__typename,
-  });
+  TRes call({String? id, String? name, String? $__typename});
 }
 
 class _CopyWithImpl$Fragment$ClaimCases$original_claim_case$insured_person<TRes>
@@ -4050,7 +4133,7 @@ class _CopyWithImpl$Fragment$ClaimCases$original_claim_case$insured_person<TRes>
   final Fragment$ClaimCases$original_claim_case$insured_person _instance;
 
   final TRes Function(Fragment$ClaimCases$original_claim_case$insured_person)
-      _then;
+  _then;
 
   static const _undefined = <dynamic, dynamic>{};
 
@@ -4058,33 +4141,29 @@ class _CopyWithImpl$Fragment$ClaimCases$original_claim_case$insured_person<TRes>
     Object? id = _undefined,
     Object? name = _undefined,
     Object? $__typename = _undefined,
-  }) =>
-      _then(Fragment$ClaimCases$original_claim_case$insured_person(
-        id: id == _undefined || id == null ? _instance.id : (id as String),
-        name: name == _undefined || name == null
-            ? _instance.name
-            : (name as String),
-        $__typename: $__typename == _undefined || $__typename == null
-            ? _instance.$__typename
-            : ($__typename as String),
-      ));
+  }) => _then(Fragment$ClaimCases$original_claim_case$insured_person(
+    id: id == _undefined || id == null ? _instance.id : (id as String),
+    name: name == _undefined || name == null
+        ? _instance.name
+        : (name as String),
+    $__typename: $__typename == _undefined || $__typename == null
+        ? _instance.$__typename
+        : ($__typename as String),
+  ));
 }
 
 class _CopyWithStubImpl$Fragment$ClaimCases$original_claim_case$insured_person<
-        TRes>
+  TRes
+>
     implements
         CopyWith$Fragment$ClaimCases$original_claim_case$insured_person<TRes> {
   _CopyWithStubImpl$Fragment$ClaimCases$original_claim_case$insured_person(
-      this._res);
+    this._res,
+  );
 
   TRes _res;
 
-  call({
-    String? id,
-    String? name,
-    String? $__typename,
-  }) =>
-      _res;
+  call({String? id, String? name, String? $__typename}) => _res;
 }
 
 class Fragment$ClaimCases$original_claim_case$claim_case_input_diagnoses {
@@ -4096,7 +4175,8 @@ class Fragment$ClaimCases$original_claim_case$claim_case_input_diagnoses {
   });
 
   factory Fragment$ClaimCases$original_claim_case$claim_case_input_diagnoses.fromJson(
-      Map<String, dynamic> json) {
+    Map<String, dynamic> json,
+  ) {
     final l$id = json['id'];
     final l$icd_metadata_id = json['icd_metadata_id'];
     final l$icd = json['icd'];
@@ -4116,7 +4196,7 @@ class Fragment$ClaimCases$original_claim_case$claim_case_input_diagnoses {
   final String icd_metadata_id;
 
   final Fragment$ClaimCases$original_claim_case$claim_case_input_diagnoses$icd
-      icd;
+  icd;
 
   final String $__typename;
 
@@ -4139,12 +4219,7 @@ class Fragment$ClaimCases$original_claim_case$claim_case_input_diagnoses {
     final l$icd_metadata_id = icd_metadata_id;
     final l$icd = icd;
     final l$$__typename = $__typename;
-    return Object.hashAll([
-      l$id,
-      l$icd_metadata_id,
-      l$icd,
-      l$$__typename,
-    ]);
+    return Object.hashAll([l$id, l$icd_metadata_id, l$icd, l$$__typename]);
   }
 
   @override
@@ -4184,26 +4259,28 @@ class Fragment$ClaimCases$original_claim_case$claim_case_input_diagnoses {
 extension UtilityExtension$Fragment$ClaimCases$original_claim_case$claim_case_input_diagnoses
     on Fragment$ClaimCases$original_claim_case$claim_case_input_diagnoses {
   CopyWith$Fragment$ClaimCases$original_claim_case$claim_case_input_diagnoses<
-          Fragment$ClaimCases$original_claim_case$claim_case_input_diagnoses>
-      get copyWith =>
-          CopyWith$Fragment$ClaimCases$original_claim_case$claim_case_input_diagnoses(
-            this,
-            (i) => i,
-          );
+    Fragment$ClaimCases$original_claim_case$claim_case_input_diagnoses
+  >
+  get copyWith => CopyWith$Fragment$ClaimCases$original_claim_case$claim_case_input_diagnoses(
+    this,
+    (i) => i,
+  );
 }
 
 abstract class CopyWith$Fragment$ClaimCases$original_claim_case$claim_case_input_diagnoses<
-    TRes> {
+  TRes
+> {
   factory CopyWith$Fragment$ClaimCases$original_claim_case$claim_case_input_diagnoses(
     Fragment$ClaimCases$original_claim_case$claim_case_input_diagnoses instance,
     TRes Function(
-            Fragment$ClaimCases$original_claim_case$claim_case_input_diagnoses)
-        then,
+      Fragment$ClaimCases$original_claim_case$claim_case_input_diagnoses,
+    )
+    then,
   ) = _CopyWithImpl$Fragment$ClaimCases$original_claim_case$claim_case_input_diagnoses;
 
   factory CopyWith$Fragment$ClaimCases$original_claim_case$claim_case_input_diagnoses.stub(
-          TRes res) =
-      _CopyWithStubImpl$Fragment$ClaimCases$original_claim_case$claim_case_input_diagnoses;
+    TRes res,
+  ) = _CopyWithStubImpl$Fragment$ClaimCases$original_claim_case$claim_case_input_diagnoses;
 
   TRes call({
     String? id,
@@ -4212,24 +4289,28 @@ abstract class CopyWith$Fragment$ClaimCases$original_claim_case$claim_case_input
     String? $__typename,
   });
   CopyWith$Fragment$ClaimCases$original_claim_case$claim_case_input_diagnoses$icd<
-      TRes> get icd;
+    TRes
+  > get icd;
 }
 
 class _CopyWithImpl$Fragment$ClaimCases$original_claim_case$claim_case_input_diagnoses<
-        TRes>
+  TRes
+>
     implements
         CopyWith$Fragment$ClaimCases$original_claim_case$claim_case_input_diagnoses<
-            TRes> {
+          TRes
+        > {
   _CopyWithImpl$Fragment$ClaimCases$original_claim_case$claim_case_input_diagnoses(
     this._instance,
     this._then,
   );
 
   final Fragment$ClaimCases$original_claim_case$claim_case_input_diagnoses
-      _instance;
+  _instance;
 
   final TRes Function(
-      Fragment$ClaimCases$original_claim_case$claim_case_input_diagnoses) _then;
+    Fragment$ClaimCases$original_claim_case$claim_case_input_diagnoses,
+  ) _then;
 
   static const _undefined = <dynamic, dynamic>{};
 
@@ -4238,36 +4319,42 @@ class _CopyWithImpl$Fragment$ClaimCases$original_claim_case$claim_case_input_dia
     Object? icd_metadata_id = _undefined,
     Object? icd = _undefined,
     Object? $__typename = _undefined,
-  }) =>
-      _then(Fragment$ClaimCases$original_claim_case$claim_case_input_diagnoses(
-        id: id == _undefined || id == null ? _instance.id : (id as String),
-        icd_metadata_id:
-            icd_metadata_id == _undefined || icd_metadata_id == null
-                ? _instance.icd_metadata_id
-                : (icd_metadata_id as String),
-        icd: icd == _undefined || icd == null
-            ? _instance.icd
-            : (icd
+  }) => _then(
+    Fragment$ClaimCases$original_claim_case$claim_case_input_diagnoses(
+      id: id == _undefined || id == null ? _instance.id : (id as String),
+      icd_metadata_id: icd_metadata_id == _undefined || icd_metadata_id == null
+          ? _instance.icd_metadata_id
+          : (icd_metadata_id as String),
+      icd: icd == _undefined || icd == null
+          ? _instance.icd
+          : (icd
                 as Fragment$ClaimCases$original_claim_case$claim_case_input_diagnoses$icd),
-        $__typename: $__typename == _undefined || $__typename == null
-            ? _instance.$__typename
-            : ($__typename as String),
-      ));
+      $__typename: $__typename == _undefined || $__typename == null
+          ? _instance.$__typename
+          : ($__typename as String),
+    ),
+  );
   CopyWith$Fragment$ClaimCases$original_claim_case$claim_case_input_diagnoses$icd<
-      TRes> get icd {
+    TRes
+  > get icd {
     final local$icd = _instance.icd;
     return CopyWith$Fragment$ClaimCases$original_claim_case$claim_case_input_diagnoses$icd(
-        local$icd, (e) => call(icd: e));
+      local$icd,
+      (e) => call(icd: e),
+    );
   }
 }
 
 class _CopyWithStubImpl$Fragment$ClaimCases$original_claim_case$claim_case_input_diagnoses<
-        TRes>
+  TRes
+>
     implements
         CopyWith$Fragment$ClaimCases$original_claim_case$claim_case_input_diagnoses<
-            TRes> {
+          TRes
+        > {
   _CopyWithStubImpl$Fragment$ClaimCases$original_claim_case$claim_case_input_diagnoses(
-      this._res);
+    this._res,
+  );
 
   TRes _res;
 
@@ -4276,13 +4363,12 @@ class _CopyWithStubImpl$Fragment$ClaimCases$original_claim_case$claim_case_input
     String? icd_metadata_id,
     Fragment$ClaimCases$original_claim_case$claim_case_input_diagnoses$icd? icd,
     String? $__typename,
-  }) =>
-      _res;
+  }) => _res;
   CopyWith$Fragment$ClaimCases$original_claim_case$claim_case_input_diagnoses$icd<
-          TRes>
-      get icd =>
-          CopyWith$Fragment$ClaimCases$original_claim_case$claim_case_input_diagnoses$icd
-              .stub(_res);
+    TRes
+  >
+  get icd => CopyWith$Fragment$ClaimCases$original_claim_case$claim_case_input_diagnoses$icd
+      .stub(_res);
 }
 
 class Fragment$ClaimCases$original_claim_case$claim_case_input_diagnoses$icd {
@@ -4293,7 +4379,8 @@ class Fragment$ClaimCases$original_claim_case$claim_case_input_diagnoses$icd {
   });
 
   factory Fragment$ClaimCases$original_claim_case$claim_case_input_diagnoses$icd.fromJson(
-      Map<String, dynamic> json) {
+    Map<String, dynamic> json,
+  ) {
     final l$title = json['title'];
     final l$value = json['value'];
     final l$$__typename = json['__typename'];
@@ -4326,11 +4413,7 @@ class Fragment$ClaimCases$original_claim_case$claim_case_input_diagnoses$icd {
     final l$title = title;
     final l$value = value;
     final l$$__typename = $__typename;
-    return Object.hashAll([
-      l$title,
-      l$value,
-      l$$__typename,
-    ]);
+    return Object.hashAll([l$title, l$value, l$$__typename]);
   }
 
   @override
@@ -4365,51 +4448,51 @@ class Fragment$ClaimCases$original_claim_case$claim_case_input_diagnoses$icd {
 extension UtilityExtension$Fragment$ClaimCases$original_claim_case$claim_case_input_diagnoses$icd
     on Fragment$ClaimCases$original_claim_case$claim_case_input_diagnoses$icd {
   CopyWith$Fragment$ClaimCases$original_claim_case$claim_case_input_diagnoses$icd<
-          Fragment$ClaimCases$original_claim_case$claim_case_input_diagnoses$icd>
-      get copyWith =>
-          CopyWith$Fragment$ClaimCases$original_claim_case$claim_case_input_diagnoses$icd(
-            this,
-            (i) => i,
-          );
+    Fragment$ClaimCases$original_claim_case$claim_case_input_diagnoses$icd
+  >
+  get copyWith => CopyWith$Fragment$ClaimCases$original_claim_case$claim_case_input_diagnoses$icd(
+    this,
+    (i) => i,
+  );
 }
 
 abstract class CopyWith$Fragment$ClaimCases$original_claim_case$claim_case_input_diagnoses$icd<
-    TRes> {
+  TRes
+> {
   factory CopyWith$Fragment$ClaimCases$original_claim_case$claim_case_input_diagnoses$icd(
     Fragment$ClaimCases$original_claim_case$claim_case_input_diagnoses$icd
-        instance,
+    instance,
     TRes Function(
-            Fragment$ClaimCases$original_claim_case$claim_case_input_diagnoses$icd)
-        then,
+      Fragment$ClaimCases$original_claim_case$claim_case_input_diagnoses$icd,
+    )
+    then,
   ) = _CopyWithImpl$Fragment$ClaimCases$original_claim_case$claim_case_input_diagnoses$icd;
 
   factory CopyWith$Fragment$ClaimCases$original_claim_case$claim_case_input_diagnoses$icd.stub(
-          TRes res) =
-      _CopyWithStubImpl$Fragment$ClaimCases$original_claim_case$claim_case_input_diagnoses$icd;
+    TRes res,
+  ) = _CopyWithStubImpl$Fragment$ClaimCases$original_claim_case$claim_case_input_diagnoses$icd;
 
-  TRes call({
-    String? title,
-    String? value,
-    String? $__typename,
-  });
+  TRes call({String? title, String? value, String? $__typename});
 }
 
 class _CopyWithImpl$Fragment$ClaimCases$original_claim_case$claim_case_input_diagnoses$icd<
-        TRes>
+  TRes
+>
     implements
         CopyWith$Fragment$ClaimCases$original_claim_case$claim_case_input_diagnoses$icd<
-            TRes> {
+          TRes
+        > {
   _CopyWithImpl$Fragment$ClaimCases$original_claim_case$claim_case_input_diagnoses$icd(
     this._instance,
     this._then,
   );
 
   final Fragment$ClaimCases$original_claim_case$claim_case_input_diagnoses$icd
-      _instance;
+  _instance;
 
   final TRes Function(
-          Fragment$ClaimCases$original_claim_case$claim_case_input_diagnoses$icd)
-      _then;
+    Fragment$ClaimCases$original_claim_case$claim_case_input_diagnoses$icd,
+  ) _then;
 
   static const _undefined = <dynamic, dynamic>{};
 
@@ -4417,37 +4500,35 @@ class _CopyWithImpl$Fragment$ClaimCases$original_claim_case$claim_case_input_dia
     Object? title = _undefined,
     Object? value = _undefined,
     Object? $__typename = _undefined,
-  }) =>
-      _then(
-          Fragment$ClaimCases$original_claim_case$claim_case_input_diagnoses$icd(
-        title: title == _undefined || title == null
-            ? _instance.title
-            : (title as String),
-        value: value == _undefined || value == null
-            ? _instance.value
-            : (value as String),
-        $__typename: $__typename == _undefined || $__typename == null
-            ? _instance.$__typename
-            : ($__typename as String),
-      ));
+  }) => _then(
+    Fragment$ClaimCases$original_claim_case$claim_case_input_diagnoses$icd(
+      title: title == _undefined || title == null
+          ? _instance.title
+          : (title as String),
+      value: value == _undefined || value == null
+          ? _instance.value
+          : (value as String),
+      $__typename: $__typename == _undefined || $__typename == null
+          ? _instance.$__typename
+          : ($__typename as String),
+    ),
+  );
 }
 
 class _CopyWithStubImpl$Fragment$ClaimCases$original_claim_case$claim_case_input_diagnoses$icd<
-        TRes>
+  TRes
+>
     implements
         CopyWith$Fragment$ClaimCases$original_claim_case$claim_case_input_diagnoses$icd<
-            TRes> {
+          TRes
+        > {
   _CopyWithStubImpl$Fragment$ClaimCases$original_claim_case$claim_case_input_diagnoses$icd(
-      this._res);
+    this._res,
+  );
 
   TRes _res;
 
-  call({
-    String? title,
-    String? value,
-    String? $__typename,
-  }) =>
-      _res;
+  call({String? title, String? value, String? $__typename}) => _res;
 }
 
 class Fragment$ClaimCases$original_claim_case$medical_provider {
@@ -4459,7 +4540,8 @@ class Fragment$ClaimCases$original_claim_case$medical_provider {
   });
 
   factory Fragment$ClaimCases$original_claim_case$medical_provider.fromJson(
-      Map<String, dynamic> json) {
+    Map<String, dynamic> json,
+  ) {
     final l$id = json['id'];
     final l$city_id = json['city_id'];
     final l$city = json['city'];
@@ -4470,7 +4552,7 @@ class Fragment$ClaimCases$original_claim_case$medical_provider {
       city: l$city == null
           ? null
           : Fragment$ClaimCases$original_claim_case$medical_provider$city
-              .fromJson((l$city as Map<String, dynamic>)),
+                .fromJson((l$city as Map<String, dynamic>)),
       $__typename: (l$$__typename as String),
     );
   }
@@ -4502,12 +4584,7 @@ class Fragment$ClaimCases$original_claim_case$medical_provider {
     final l$city_id = city_id;
     final l$city = city;
     final l$$__typename = $__typename;
-    return Object.hashAll([
-      l$id,
-      l$city_id,
-      l$city,
-      l$$__typename,
-    ]);
+    return Object.hashAll([l$id, l$city_id, l$city, l$$__typename]);
   }
 
   @override
@@ -4546,25 +4623,26 @@ class Fragment$ClaimCases$original_claim_case$medical_provider {
 extension UtilityExtension$Fragment$ClaimCases$original_claim_case$medical_provider
     on Fragment$ClaimCases$original_claim_case$medical_provider {
   CopyWith$Fragment$ClaimCases$original_claim_case$medical_provider<
-          Fragment$ClaimCases$original_claim_case$medical_provider>
-      get copyWith =>
-          CopyWith$Fragment$ClaimCases$original_claim_case$medical_provider(
-            this,
-            (i) => i,
-          );
+    Fragment$ClaimCases$original_claim_case$medical_provider
+  >
+  get copyWith => CopyWith$Fragment$ClaimCases$original_claim_case$medical_provider(
+    this,
+    (i) => i,
+  );
 }
 
 abstract class CopyWith$Fragment$ClaimCases$original_claim_case$medical_provider<
-    TRes> {
+  TRes
+> {
   factory CopyWith$Fragment$ClaimCases$original_claim_case$medical_provider(
     Fragment$ClaimCases$original_claim_case$medical_provider instance,
     TRes Function(Fragment$ClaimCases$original_claim_case$medical_provider)
-        then,
+    then,
   ) = _CopyWithImpl$Fragment$ClaimCases$original_claim_case$medical_provider;
 
   factory CopyWith$Fragment$ClaimCases$original_claim_case$medical_provider.stub(
-          TRes res) =
-      _CopyWithStubImpl$Fragment$ClaimCases$original_claim_case$medical_provider;
+    TRes res,
+  ) = _CopyWithStubImpl$Fragment$ClaimCases$original_claim_case$medical_provider;
 
   TRes call({
     String? id,
@@ -4573,14 +4651,16 @@ abstract class CopyWith$Fragment$ClaimCases$original_claim_case$medical_provider
     String? $__typename,
   });
   CopyWith$Fragment$ClaimCases$original_claim_case$medical_provider$city<TRes>
-      get city;
+  get city;
 }
 
 class _CopyWithImpl$Fragment$ClaimCases$original_claim_case$medical_provider<
-        TRes>
+  TRes
+>
     implements
         CopyWith$Fragment$ClaimCases$original_claim_case$medical_provider<
-            TRes> {
+          TRes
+        > {
   _CopyWithImpl$Fragment$ClaimCases$original_claim_case$medical_provider(
     this._instance,
     this._then,
@@ -4589,7 +4669,7 @@ class _CopyWithImpl$Fragment$ClaimCases$original_claim_case$medical_provider<
   final Fragment$ClaimCases$original_claim_case$medical_provider _instance;
 
   final TRes Function(Fragment$ClaimCases$original_claim_case$medical_provider)
-      _then;
+  _then;
 
   static const _undefined = <dynamic, dynamic>{};
 
@@ -4598,36 +4678,40 @@ class _CopyWithImpl$Fragment$ClaimCases$original_claim_case$medical_provider<
     Object? city_id = _undefined,
     Object? city = _undefined,
     Object? $__typename = _undefined,
-  }) =>
-      _then(Fragment$ClaimCases$original_claim_case$medical_provider(
-        id: id == _undefined || id == null ? _instance.id : (id as String),
-        city_id: city_id == _undefined ? _instance.city_id : (city_id as int?),
-        city: city == _undefined
-            ? _instance.city
-            : (city
-                as Fragment$ClaimCases$original_claim_case$medical_provider$city?),
-        $__typename: $__typename == _undefined || $__typename == null
-            ? _instance.$__typename
-            : ($__typename as String),
-      ));
+  }) => _then(Fragment$ClaimCases$original_claim_case$medical_provider(
+    id: id == _undefined || id == null ? _instance.id : (id as String),
+    city_id: city_id == _undefined ? _instance.city_id : (city_id as int?),
+    city: city == _undefined
+        ? _instance.city
+        : (city
+              as Fragment$ClaimCases$original_claim_case$medical_provider$city?),
+    $__typename: $__typename == _undefined || $__typename == null
+        ? _instance.$__typename
+        : ($__typename as String),
+  ));
   CopyWith$Fragment$ClaimCases$original_claim_case$medical_provider$city<TRes>
-      get city {
+  get city {
     final local$city = _instance.city;
     return local$city == null
         ? CopyWith$Fragment$ClaimCases$original_claim_case$medical_provider$city
-            .stub(_then(_instance))
+              .stub(_then(_instance))
         : CopyWith$Fragment$ClaimCases$original_claim_case$medical_provider$city(
-            local$city, (e) => call(city: e));
+            local$city,
+            (e) => call(city: e),
+          );
   }
 }
 
 class _CopyWithStubImpl$Fragment$ClaimCases$original_claim_case$medical_provider<
-        TRes>
+  TRes
+>
     implements
         CopyWith$Fragment$ClaimCases$original_claim_case$medical_provider<
-            TRes> {
+          TRes
+        > {
   _CopyWithStubImpl$Fragment$ClaimCases$original_claim_case$medical_provider(
-      this._res);
+    this._res,
+  );
 
   TRes _res;
 
@@ -4636,12 +4720,10 @@ class _CopyWithStubImpl$Fragment$ClaimCases$original_claim_case$medical_provider
     int? city_id,
     Fragment$ClaimCases$original_claim_case$medical_provider$city? city,
     String? $__typename,
-  }) =>
-      _res;
+  }) => _res;
   CopyWith$Fragment$ClaimCases$original_claim_case$medical_provider$city<TRes>
-      get city =>
-          CopyWith$Fragment$ClaimCases$original_claim_case$medical_provider$city
-              .stub(_res);
+  get city => CopyWith$Fragment$ClaimCases$original_claim_case$medical_provider$city
+      .stub(_res);
 }
 
 class Fragment$ClaimCases$original_claim_case$medical_provider$city {
@@ -4651,7 +4733,8 @@ class Fragment$ClaimCases$original_claim_case$medical_provider$city {
   });
 
   factory Fragment$ClaimCases$original_claim_case$medical_provider$city.fromJson(
-      Map<String, dynamic> json) {
+    Map<String, dynamic> json,
+  ) {
     final l$name = json['name'];
     final l$$__typename = json['__typename'];
     return Fragment$ClaimCases$original_claim_case$medical_provider$city(
@@ -4677,10 +4760,7 @@ class Fragment$ClaimCases$original_claim_case$medical_provider$city {
   int get hashCode {
     final l$name = name;
     final l$$__typename = $__typename;
-    return Object.hashAll([
-      l$name,
-      l$$__typename,
-    ]);
+    return Object.hashAll([l$name, l$$__typename]);
   }
 
   @override
@@ -4710,37 +4790,37 @@ class Fragment$ClaimCases$original_claim_case$medical_provider$city {
 extension UtilityExtension$Fragment$ClaimCases$original_claim_case$medical_provider$city
     on Fragment$ClaimCases$original_claim_case$medical_provider$city {
   CopyWith$Fragment$ClaimCases$original_claim_case$medical_provider$city<
-          Fragment$ClaimCases$original_claim_case$medical_provider$city>
-      get copyWith =>
-          CopyWith$Fragment$ClaimCases$original_claim_case$medical_provider$city(
-            this,
-            (i) => i,
-          );
+    Fragment$ClaimCases$original_claim_case$medical_provider$city
+  >
+  get copyWith => CopyWith$Fragment$ClaimCases$original_claim_case$medical_provider$city(
+    this,
+    (i) => i,
+  );
 }
 
 abstract class CopyWith$Fragment$ClaimCases$original_claim_case$medical_provider$city<
-    TRes> {
+  TRes
+> {
   factory CopyWith$Fragment$ClaimCases$original_claim_case$medical_provider$city(
     Fragment$ClaimCases$original_claim_case$medical_provider$city instance,
     TRes Function(Fragment$ClaimCases$original_claim_case$medical_provider$city)
-        then,
+    then,
   ) = _CopyWithImpl$Fragment$ClaimCases$original_claim_case$medical_provider$city;
 
   factory CopyWith$Fragment$ClaimCases$original_claim_case$medical_provider$city.stub(
-          TRes res) =
-      _CopyWithStubImpl$Fragment$ClaimCases$original_claim_case$medical_provider$city;
+    TRes res,
+  ) = _CopyWithStubImpl$Fragment$ClaimCases$original_claim_case$medical_provider$city;
 
-  TRes call({
-    String? name,
-    String? $__typename,
-  });
+  TRes call({String? name, String? $__typename});
 }
 
 class _CopyWithImpl$Fragment$ClaimCases$original_claim_case$medical_provider$city<
-        TRes>
+  TRes
+>
     implements
         CopyWith$Fragment$ClaimCases$original_claim_case$medical_provider$city<
-            TRes> {
+          TRes
+        > {
   _CopyWithImpl$Fragment$ClaimCases$original_claim_case$medical_provider$city(
     this._instance,
     this._then,
@@ -4749,39 +4829,38 @@ class _CopyWithImpl$Fragment$ClaimCases$original_claim_case$medical_provider$cit
   final Fragment$ClaimCases$original_claim_case$medical_provider$city _instance;
 
   final TRes Function(
-      Fragment$ClaimCases$original_claim_case$medical_provider$city) _then;
+    Fragment$ClaimCases$original_claim_case$medical_provider$city,
+  ) _then;
 
   static const _undefined = <dynamic, dynamic>{};
 
   TRes call({
     Object? name = _undefined,
     Object? $__typename = _undefined,
-  }) =>
-      _then(Fragment$ClaimCases$original_claim_case$medical_provider$city(
-        name: name == _undefined || name == null
-            ? _instance.name
-            : (name as String),
-        $__typename: $__typename == _undefined || $__typename == null
-            ? _instance.$__typename
-            : ($__typename as String),
-      ));
+  }) => _then(Fragment$ClaimCases$original_claim_case$medical_provider$city(
+    name: name == _undefined || name == null
+        ? _instance.name
+        : (name as String),
+    $__typename: $__typename == _undefined || $__typename == null
+        ? _instance.$__typename
+        : ($__typename as String),
+  ));
 }
 
 class _CopyWithStubImpl$Fragment$ClaimCases$original_claim_case$medical_provider$city<
-        TRes>
+  TRes
+>
     implements
         CopyWith$Fragment$ClaimCases$original_claim_case$medical_provider$city<
-            TRes> {
+          TRes
+        > {
   _CopyWithStubImpl$Fragment$ClaimCases$original_claim_case$medical_provider$city(
-      this._res);
+    this._res,
+  );
 
   TRes _res;
 
-  call({
-    String? name,
-    String? $__typename,
-  }) =>
-      _res;
+  call({String? name, String? $__typename}) => _res;
 }
 
 class Fragment$ClaimCases$original_claim_case$claim_case_beneficiary {
@@ -4801,7 +4880,8 @@ class Fragment$ClaimCases$original_claim_case$claim_case_beneficiary {
   });
 
   factory Fragment$ClaimCases$original_claim_case$claim_case_beneficiary.fromJson(
-      Map<String, dynamic> json) {
+    Map<String, dynamic> json,
+  ) {
     final l$id = json['id'];
     final l$payment_method = json['payment_method'];
     final l$bank = json['bank'];
@@ -4817,11 +4897,12 @@ class Fragment$ClaimCases$original_claim_case$claim_case_beneficiary {
     return Fragment$ClaimCases$original_claim_case$claim_case_beneficiary(
       id: (l$id as String),
       payment_method: fromJson$Enum$payout_payment_methods_enum(
-          (l$payment_method as String)),
+        (l$payment_method as String),
+      ),
       bank: l$bank == null
           ? null
           : Fragment$ClaimCases$original_claim_case$claim_case_beneficiary$bank
-              .fromJson((l$bank as Map<String, dynamic>)),
+                .fromJson((l$bank as Map<String, dynamic>)),
       bank_account_number: (l$bank_account_number as String?),
       bank_branch: (l$bank_branch as String?),
       bank_city: (l$bank_city as String?),
@@ -4839,7 +4920,7 @@ class Fragment$ClaimCases$original_claim_case$claim_case_beneficiary {
   final Enum$payout_payment_methods_enum payment_method;
 
   final Fragment$ClaimCases$original_claim_case$claim_case_beneficiary$bank?
-      bank;
+  bank;
 
   final String? bank_account_number;
 
@@ -4864,8 +4945,9 @@ class Fragment$ClaimCases$original_claim_case$claim_case_beneficiary {
     final l$id = id;
     _resultData['id'] = l$id;
     final l$payment_method = payment_method;
-    _resultData['payment_method'] =
-        toJson$Enum$payout_payment_methods_enum(l$payment_method);
+    _resultData['payment_method'] = toJson$Enum$payout_payment_methods_enum(
+      l$payment_method,
+    );
     final l$bank = bank;
     _resultData['bank'] = l$bank?.toJson();
     final l$bank_account_number = bank_account_number;
@@ -4996,26 +5078,28 @@ class Fragment$ClaimCases$original_claim_case$claim_case_beneficiary {
 extension UtilityExtension$Fragment$ClaimCases$original_claim_case$claim_case_beneficiary
     on Fragment$ClaimCases$original_claim_case$claim_case_beneficiary {
   CopyWith$Fragment$ClaimCases$original_claim_case$claim_case_beneficiary<
-          Fragment$ClaimCases$original_claim_case$claim_case_beneficiary>
-      get copyWith =>
-          CopyWith$Fragment$ClaimCases$original_claim_case$claim_case_beneficiary(
-            this,
-            (i) => i,
-          );
+    Fragment$ClaimCases$original_claim_case$claim_case_beneficiary
+  >
+  get copyWith => CopyWith$Fragment$ClaimCases$original_claim_case$claim_case_beneficiary(
+    this,
+    (i) => i,
+  );
 }
 
 abstract class CopyWith$Fragment$ClaimCases$original_claim_case$claim_case_beneficiary<
-    TRes> {
+  TRes
+> {
   factory CopyWith$Fragment$ClaimCases$original_claim_case$claim_case_beneficiary(
     Fragment$ClaimCases$original_claim_case$claim_case_beneficiary instance,
     TRes Function(
-            Fragment$ClaimCases$original_claim_case$claim_case_beneficiary)
-        then,
+      Fragment$ClaimCases$original_claim_case$claim_case_beneficiary,
+    )
+    then,
   ) = _CopyWithImpl$Fragment$ClaimCases$original_claim_case$claim_case_beneficiary;
 
   factory CopyWith$Fragment$ClaimCases$original_claim_case$claim_case_beneficiary.stub(
-          TRes res) =
-      _CopyWithStubImpl$Fragment$ClaimCases$original_claim_case$claim_case_beneficiary;
+    TRes res,
+  ) = _CopyWithStubImpl$Fragment$ClaimCases$original_claim_case$claim_case_beneficiary;
 
   TRes call({
     String? id,
@@ -5032,24 +5116,28 @@ abstract class CopyWith$Fragment$ClaimCases$original_claim_case$claim_case_benef
     String? $__typename,
   });
   CopyWith$Fragment$ClaimCases$original_claim_case$claim_case_beneficiary$bank<
-      TRes> get bank;
+    TRes
+  > get bank;
 }
 
 class _CopyWithImpl$Fragment$ClaimCases$original_claim_case$claim_case_beneficiary<
-        TRes>
+  TRes
+>
     implements
         CopyWith$Fragment$ClaimCases$original_claim_case$claim_case_beneficiary<
-            TRes> {
+          TRes
+        > {
   _CopyWithImpl$Fragment$ClaimCases$original_claim_case$claim_case_beneficiary(
     this._instance,
     this._then,
   );
 
   final Fragment$ClaimCases$original_claim_case$claim_case_beneficiary
-      _instance;
+  _instance;
 
   final TRes Function(
-      Fragment$ClaimCases$original_claim_case$claim_case_beneficiary) _then;
+    Fragment$ClaimCases$original_claim_case$claim_case_beneficiary,
+  ) _then;
 
   static const _undefined = <dynamic, dynamic>{};
 
@@ -5066,61 +5154,65 @@ class _CopyWithImpl$Fragment$ClaimCases$original_claim_case$claim_case_beneficia
     Object? paper_issue_place = _undefined,
     Object? paper_id = _undefined,
     Object? $__typename = _undefined,
-  }) =>
-      _then(Fragment$ClaimCases$original_claim_case$claim_case_beneficiary(
-        id: id == _undefined || id == null ? _instance.id : (id as String),
-        payment_method: payment_method == _undefined || payment_method == null
-            ? _instance.payment_method
-            : (payment_method as Enum$payout_payment_methods_enum),
-        bank: bank == _undefined
-            ? _instance.bank
-            : (bank
-                as Fragment$ClaimCases$original_claim_case$claim_case_beneficiary$bank?),
-        bank_account_number: bank_account_number == _undefined
-            ? _instance.bank_account_number
-            : (bank_account_number as String?),
-        bank_branch: bank_branch == _undefined
-            ? _instance.bank_branch
-            : (bank_branch as String?),
-        bank_city: bank_city == _undefined
-            ? _instance.bank_city
-            : (bank_city as String?),
-        bank_id:
-            bank_id == _undefined ? _instance.bank_id : (bank_id as String?),
-        beneficiary_name:
-            beneficiary_name == _undefined || beneficiary_name == null
-                ? _instance.beneficiary_name
-                : (beneficiary_name as String),
-        paper_issue_date: paper_issue_date == _undefined
-            ? _instance.paper_issue_date
-            : (paper_issue_date as String?),
-        paper_issue_place: paper_issue_place == _undefined
-            ? _instance.paper_issue_place
-            : (paper_issue_place as String?),
-        paper_id:
-            paper_id == _undefined ? _instance.paper_id : (paper_id as String?),
-        $__typename: $__typename == _undefined || $__typename == null
-            ? _instance.$__typename
-            : ($__typename as String),
-      ));
+  }) => _then(Fragment$ClaimCases$original_claim_case$claim_case_beneficiary(
+    id: id == _undefined || id == null ? _instance.id : (id as String),
+    payment_method: payment_method == _undefined || payment_method == null
+        ? _instance.payment_method
+        : (payment_method as Enum$payout_payment_methods_enum),
+    bank: bank == _undefined
+        ? _instance.bank
+        : (bank
+              as Fragment$ClaimCases$original_claim_case$claim_case_beneficiary$bank?),
+    bank_account_number: bank_account_number == _undefined
+        ? _instance.bank_account_number
+        : (bank_account_number as String?),
+    bank_branch: bank_branch == _undefined
+        ? _instance.bank_branch
+        : (bank_branch as String?),
+    bank_city: bank_city == _undefined
+        ? _instance.bank_city
+        : (bank_city as String?),
+    bank_id: bank_id == _undefined ? _instance.bank_id : (bank_id as String?),
+    beneficiary_name: beneficiary_name == _undefined || beneficiary_name == null
+        ? _instance.beneficiary_name
+        : (beneficiary_name as String),
+    paper_issue_date: paper_issue_date == _undefined
+        ? _instance.paper_issue_date
+        : (paper_issue_date as String?),
+    paper_issue_place: paper_issue_place == _undefined
+        ? _instance.paper_issue_place
+        : (paper_issue_place as String?),
+    paper_id: paper_id == _undefined
+        ? _instance.paper_id
+        : (paper_id as String?),
+    $__typename: $__typename == _undefined || $__typename == null
+        ? _instance.$__typename
+        : ($__typename as String),
+  ));
   CopyWith$Fragment$ClaimCases$original_claim_case$claim_case_beneficiary$bank<
-      TRes> get bank {
+    TRes
+  > get bank {
     final local$bank = _instance.bank;
     return local$bank == null
         ? CopyWith$Fragment$ClaimCases$original_claim_case$claim_case_beneficiary$bank
-            .stub(_then(_instance))
+              .stub(_then(_instance))
         : CopyWith$Fragment$ClaimCases$original_claim_case$claim_case_beneficiary$bank(
-            local$bank, (e) => call(bank: e));
+            local$bank,
+            (e) => call(bank: e),
+          );
   }
 }
 
 class _CopyWithStubImpl$Fragment$ClaimCases$original_claim_case$claim_case_beneficiary<
-        TRes>
+  TRes
+>
     implements
         CopyWith$Fragment$ClaimCases$original_claim_case$claim_case_beneficiary<
-            TRes> {
+          TRes
+        > {
   _CopyWithStubImpl$Fragment$ClaimCases$original_claim_case$claim_case_beneficiary(
-      this._res);
+    this._res,
+  );
 
   TRes _res;
 
@@ -5137,13 +5229,12 @@ class _CopyWithStubImpl$Fragment$ClaimCases$original_claim_case$claim_case_benef
     String? paper_issue_place,
     String? paper_id,
     String? $__typename,
-  }) =>
-      _res;
+  }) => _res;
   CopyWith$Fragment$ClaimCases$original_claim_case$claim_case_beneficiary$bank<
-          TRes>
-      get bank =>
-          CopyWith$Fragment$ClaimCases$original_claim_case$claim_case_beneficiary$bank
-              .stub(_res);
+    TRes
+  >
+  get bank => CopyWith$Fragment$ClaimCases$original_claim_case$claim_case_beneficiary$bank
+      .stub(_res);
 }
 
 class Fragment$ClaimCases$original_claim_case$claim_case_beneficiary$bank {
@@ -5154,7 +5245,8 @@ class Fragment$ClaimCases$original_claim_case$claim_case_beneficiary$bank {
   });
 
   factory Fragment$ClaimCases$original_claim_case$claim_case_beneficiary$bank.fromJson(
-      Map<String, dynamic> json) {
+    Map<String, dynamic> json,
+  ) {
     final l$vn_name = json['vn_name'];
     final l$en_name = json['en_name'];
     final l$$__typename = json['__typename'];
@@ -5187,11 +5279,7 @@ class Fragment$ClaimCases$original_claim_case$claim_case_beneficiary$bank {
     final l$vn_name = vn_name;
     final l$en_name = en_name;
     final l$$__typename = $__typename;
-    return Object.hashAll([
-      l$vn_name,
-      l$en_name,
-      l$$__typename,
-    ]);
+    return Object.hashAll([l$vn_name, l$en_name, l$$__typename]);
   }
 
   @override
@@ -5226,51 +5314,51 @@ class Fragment$ClaimCases$original_claim_case$claim_case_beneficiary$bank {
 extension UtilityExtension$Fragment$ClaimCases$original_claim_case$claim_case_beneficiary$bank
     on Fragment$ClaimCases$original_claim_case$claim_case_beneficiary$bank {
   CopyWith$Fragment$ClaimCases$original_claim_case$claim_case_beneficiary$bank<
-          Fragment$ClaimCases$original_claim_case$claim_case_beneficiary$bank>
-      get copyWith =>
-          CopyWith$Fragment$ClaimCases$original_claim_case$claim_case_beneficiary$bank(
-            this,
-            (i) => i,
-          );
+    Fragment$ClaimCases$original_claim_case$claim_case_beneficiary$bank
+  >
+  get copyWith => CopyWith$Fragment$ClaimCases$original_claim_case$claim_case_beneficiary$bank(
+    this,
+    (i) => i,
+  );
 }
 
 abstract class CopyWith$Fragment$ClaimCases$original_claim_case$claim_case_beneficiary$bank<
-    TRes> {
+  TRes
+> {
   factory CopyWith$Fragment$ClaimCases$original_claim_case$claim_case_beneficiary$bank(
     Fragment$ClaimCases$original_claim_case$claim_case_beneficiary$bank
-        instance,
+    instance,
     TRes Function(
-            Fragment$ClaimCases$original_claim_case$claim_case_beneficiary$bank)
-        then,
+      Fragment$ClaimCases$original_claim_case$claim_case_beneficiary$bank,
+    )
+    then,
   ) = _CopyWithImpl$Fragment$ClaimCases$original_claim_case$claim_case_beneficiary$bank;
 
   factory CopyWith$Fragment$ClaimCases$original_claim_case$claim_case_beneficiary$bank.stub(
-          TRes res) =
-      _CopyWithStubImpl$Fragment$ClaimCases$original_claim_case$claim_case_beneficiary$bank;
+    TRes res,
+  ) = _CopyWithStubImpl$Fragment$ClaimCases$original_claim_case$claim_case_beneficiary$bank;
 
-  TRes call({
-    String? vn_name,
-    String? en_name,
-    String? $__typename,
-  });
+  TRes call({String? vn_name, String? en_name, String? $__typename});
 }
 
 class _CopyWithImpl$Fragment$ClaimCases$original_claim_case$claim_case_beneficiary$bank<
-        TRes>
+  TRes
+>
     implements
         CopyWith$Fragment$ClaimCases$original_claim_case$claim_case_beneficiary$bank<
-            TRes> {
+          TRes
+        > {
   _CopyWithImpl$Fragment$ClaimCases$original_claim_case$claim_case_beneficiary$bank(
     this._instance,
     this._then,
   );
 
   final Fragment$ClaimCases$original_claim_case$claim_case_beneficiary$bank
-      _instance;
+  _instance;
 
   final TRes Function(
-          Fragment$ClaimCases$original_claim_case$claim_case_beneficiary$bank)
-      _then;
+    Fragment$ClaimCases$original_claim_case$claim_case_beneficiary$bank,
+  ) _then;
 
   static const _undefined = <dynamic, dynamic>{};
 
@@ -5278,36 +5366,35 @@ class _CopyWithImpl$Fragment$ClaimCases$original_claim_case$claim_case_beneficia
     Object? vn_name = _undefined,
     Object? en_name = _undefined,
     Object? $__typename = _undefined,
-  }) =>
-      _then(Fragment$ClaimCases$original_claim_case$claim_case_beneficiary$bank(
-        vn_name: vn_name == _undefined || vn_name == null
-            ? _instance.vn_name
-            : (vn_name as String),
-        en_name: en_name == _undefined || en_name == null
-            ? _instance.en_name
-            : (en_name as String),
-        $__typename: $__typename == _undefined || $__typename == null
-            ? _instance.$__typename
-            : ($__typename as String),
-      ));
+  }) => _then(
+    Fragment$ClaimCases$original_claim_case$claim_case_beneficiary$bank(
+      vn_name: vn_name == _undefined || vn_name == null
+          ? _instance.vn_name
+          : (vn_name as String),
+      en_name: en_name == _undefined || en_name == null
+          ? _instance.en_name
+          : (en_name as String),
+      $__typename: $__typename == _undefined || $__typename == null
+          ? _instance.$__typename
+          : ($__typename as String),
+    ),
+  );
 }
 
 class _CopyWithStubImpl$Fragment$ClaimCases$original_claim_case$claim_case_beneficiary$bank<
-        TRes>
+  TRes
+>
     implements
         CopyWith$Fragment$ClaimCases$original_claim_case$claim_case_beneficiary$bank<
-            TRes> {
+          TRes
+        > {
   _CopyWithStubImpl$Fragment$ClaimCases$original_claim_case$claim_case_beneficiary$bank(
-      this._res);
+    this._res,
+  );
 
   TRes _res;
 
-  call({
-    String? vn_name,
-    String? en_name,
-    String? $__typename,
-  }) =>
-      _res;
+  call({String? vn_name, String? en_name, String? $__typename}) => _res;
 }
 
 class Fragment$ClaimCases$insured_benefit_type {
@@ -5318,7 +5405,8 @@ class Fragment$ClaimCases$insured_benefit_type {
   });
 
   factory Fragment$ClaimCases$insured_benefit_type.fromJson(
-      Map<String, dynamic> json) {
+    Map<String, dynamic> json,
+  ) {
     final l$comment = json['comment'];
     final l$value = json['value'];
     final l$$__typename = json['__typename'];
@@ -5351,11 +5439,7 @@ class Fragment$ClaimCases$insured_benefit_type {
     final l$comment = comment;
     final l$value = value;
     final l$$__typename = $__typename;
-    return Object.hashAll([
-      l$comment,
-      l$value,
-      l$$__typename,
-    ]);
+    return Object.hashAll([l$comment, l$value, l$$__typename]);
   }
 
   @override
@@ -5389,11 +5473,11 @@ class Fragment$ClaimCases$insured_benefit_type {
 extension UtilityExtension$Fragment$ClaimCases$insured_benefit_type
     on Fragment$ClaimCases$insured_benefit_type {
   CopyWith$Fragment$ClaimCases$insured_benefit_type<
-          Fragment$ClaimCases$insured_benefit_type>
-      get copyWith => CopyWith$Fragment$ClaimCases$insured_benefit_type(
-            this,
-            (i) => i,
-          );
+    Fragment$ClaimCases$insured_benefit_type
+  > get copyWith => CopyWith$Fragment$ClaimCases$insured_benefit_type(
+    this,
+    (i) => i,
+  );
 }
 
 abstract class CopyWith$Fragment$ClaimCases$insured_benefit_type<TRes> {
@@ -5405,11 +5489,7 @@ abstract class CopyWith$Fragment$ClaimCases$insured_benefit_type<TRes> {
   factory CopyWith$Fragment$ClaimCases$insured_benefit_type.stub(TRes res) =
       _CopyWithStubImpl$Fragment$ClaimCases$insured_benefit_type;
 
-  TRes call({
-    String? comment,
-    String? value,
-    String? $__typename,
-  });
+  TRes call({String? comment, String? value, String? $__typename});
 }
 
 class _CopyWithImpl$Fragment$ClaimCases$insured_benefit_type<TRes>
@@ -5429,18 +5509,17 @@ class _CopyWithImpl$Fragment$ClaimCases$insured_benefit_type<TRes>
     Object? comment = _undefined,
     Object? value = _undefined,
     Object? $__typename = _undefined,
-  }) =>
-      _then(Fragment$ClaimCases$insured_benefit_type(
-        comment: comment == _undefined || comment == null
-            ? _instance.comment
-            : (comment as String),
-        value: value == _undefined || value == null
-            ? _instance.value
-            : (value as String),
-        $__typename: $__typename == _undefined || $__typename == null
-            ? _instance.$__typename
-            : ($__typename as String),
-      ));
+  }) => _then(Fragment$ClaimCases$insured_benefit_type(
+    comment: comment == _undefined || comment == null
+        ? _instance.comment
+        : (comment as String),
+    value: value == _undefined || value == null
+        ? _instance.value
+        : (value as String),
+    $__typename: $__typename == _undefined || $__typename == null
+        ? _instance.$__typename
+        : ($__typename as String),
+  ));
 }
 
 class _CopyWithStubImpl$Fragment$ClaimCases$insured_benefit_type<TRes>
@@ -5449,12 +5528,7 @@ class _CopyWithStubImpl$Fragment$ClaimCases$insured_benefit_type<TRes>
 
   TRes _res;
 
-  call({
-    String? comment,
-    String? value,
-    String? $__typename,
-  }) =>
-      _res;
+  call({String? comment, String? value, String? $__typename}) => _res;
 }
 
 class Fragment$ClaimCases$claim_case_status {
@@ -5465,7 +5539,8 @@ class Fragment$ClaimCases$claim_case_status {
   });
 
   factory Fragment$ClaimCases$claim_case_status.fromJson(
-      Map<String, dynamic> json) {
+    Map<String, dynamic> json,
+  ) {
     final l$value = json['value'];
     final l$comment = json['comment'];
     final l$$__typename = json['__typename'];
@@ -5498,11 +5573,7 @@ class Fragment$ClaimCases$claim_case_status {
     final l$value = value;
     final l$comment = comment;
     final l$$__typename = $__typename;
-    return Object.hashAll([
-      l$value,
-      l$comment,
-      l$$__typename,
-    ]);
+    return Object.hashAll([l$value, l$comment, l$$__typename]);
   }
 
   @override
@@ -5536,11 +5607,11 @@ class Fragment$ClaimCases$claim_case_status {
 extension UtilityExtension$Fragment$ClaimCases$claim_case_status
     on Fragment$ClaimCases$claim_case_status {
   CopyWith$Fragment$ClaimCases$claim_case_status<
-          Fragment$ClaimCases$claim_case_status>
-      get copyWith => CopyWith$Fragment$ClaimCases$claim_case_status(
-            this,
-            (i) => i,
-          );
+    Fragment$ClaimCases$claim_case_status
+  > get copyWith => CopyWith$Fragment$ClaimCases$claim_case_status(
+    this,
+    (i) => i,
+  );
 }
 
 abstract class CopyWith$Fragment$ClaimCases$claim_case_status<TRes> {
@@ -5552,11 +5623,7 @@ abstract class CopyWith$Fragment$ClaimCases$claim_case_status<TRes> {
   factory CopyWith$Fragment$ClaimCases$claim_case_status.stub(TRes res) =
       _CopyWithStubImpl$Fragment$ClaimCases$claim_case_status;
 
-  TRes call({
-    String? value,
-    String? comment,
-    String? $__typename,
-  });
+  TRes call({String? value, String? comment, String? $__typename});
 }
 
 class _CopyWithImpl$Fragment$ClaimCases$claim_case_status<TRes>
@@ -5576,17 +5643,15 @@ class _CopyWithImpl$Fragment$ClaimCases$claim_case_status<TRes>
     Object? value = _undefined,
     Object? comment = _undefined,
     Object? $__typename = _undefined,
-  }) =>
-      _then(Fragment$ClaimCases$claim_case_status(
-        value: value == _undefined || value == null
-            ? _instance.value
-            : (value as String),
-        comment:
-            comment == _undefined ? _instance.comment : (comment as String?),
-        $__typename: $__typename == _undefined || $__typename == null
-            ? _instance.$__typename
-            : ($__typename as String),
-      ));
+  }) => _then(Fragment$ClaimCases$claim_case_status(
+    value: value == _undefined || value == null
+        ? _instance.value
+        : (value as String),
+    comment: comment == _undefined ? _instance.comment : (comment as String?),
+    $__typename: $__typename == _undefined || $__typename == null
+        ? _instance.$__typename
+        : ($__typename as String),
+  ));
 }
 
 class _CopyWithStubImpl$Fragment$ClaimCases$claim_case_status<TRes>
@@ -5595,12 +5660,7 @@ class _CopyWithStubImpl$Fragment$ClaimCases$claim_case_status<TRes>
 
   TRes _res;
 
-  call({
-    String? value,
-    String? comment,
-    String? $__typename,
-  }) =>
-      _res;
+  call({String? value, String? comment, String? $__typename}) => _res;
 }
 
 class Fragment$ClaimCases$insured_person {
@@ -5611,7 +5671,8 @@ class Fragment$ClaimCases$insured_person {
   });
 
   factory Fragment$ClaimCases$insured_person.fromJson(
-      Map<String, dynamic> json) {
+    Map<String, dynamic> json,
+  ) {
     final l$id = json['id'];
     final l$name = json['name'];
     final l$$__typename = json['__typename'];
@@ -5644,11 +5705,7 @@ class Fragment$ClaimCases$insured_person {
     final l$id = id;
     final l$name = name;
     final l$$__typename = $__typename;
-    return Object.hashAll([
-      l$id,
-      l$name,
-      l$$__typename,
-    ]);
+    return Object.hashAll([l$id, l$name, l$$__typename]);
   }
 
   @override
@@ -5682,11 +5739,8 @@ class Fragment$ClaimCases$insured_person {
 extension UtilityExtension$Fragment$ClaimCases$insured_person
     on Fragment$ClaimCases$insured_person {
   CopyWith$Fragment$ClaimCases$insured_person<
-          Fragment$ClaimCases$insured_person>
-      get copyWith => CopyWith$Fragment$ClaimCases$insured_person(
-            this,
-            (i) => i,
-          );
+    Fragment$ClaimCases$insured_person
+  > get copyWith => CopyWith$Fragment$ClaimCases$insured_person(this, (i) => i);
 }
 
 abstract class CopyWith$Fragment$ClaimCases$insured_person<TRes> {
@@ -5698,19 +5752,12 @@ abstract class CopyWith$Fragment$ClaimCases$insured_person<TRes> {
   factory CopyWith$Fragment$ClaimCases$insured_person.stub(TRes res) =
       _CopyWithStubImpl$Fragment$ClaimCases$insured_person;
 
-  TRes call({
-    String? id,
-    String? name,
-    String? $__typename,
-  });
+  TRes call({String? id, String? name, String? $__typename});
 }
 
 class _CopyWithImpl$Fragment$ClaimCases$insured_person<TRes>
     implements CopyWith$Fragment$ClaimCases$insured_person<TRes> {
-  _CopyWithImpl$Fragment$ClaimCases$insured_person(
-    this._instance,
-    this._then,
-  );
+  _CopyWithImpl$Fragment$ClaimCases$insured_person(this._instance, this._then);
 
   final Fragment$ClaimCases$insured_person _instance;
 
@@ -5722,16 +5769,15 @@ class _CopyWithImpl$Fragment$ClaimCases$insured_person<TRes>
     Object? id = _undefined,
     Object? name = _undefined,
     Object? $__typename = _undefined,
-  }) =>
-      _then(Fragment$ClaimCases$insured_person(
-        id: id == _undefined || id == null ? _instance.id : (id as String),
-        name: name == _undefined || name == null
-            ? _instance.name
-            : (name as String),
-        $__typename: $__typename == _undefined || $__typename == null
-            ? _instance.$__typename
-            : ($__typename as String),
-      ));
+  }) => _then(Fragment$ClaimCases$insured_person(
+    id: id == _undefined || id == null ? _instance.id : (id as String),
+    name: name == _undefined || name == null
+        ? _instance.name
+        : (name as String),
+    $__typename: $__typename == _undefined || $__typename == null
+        ? _instance.$__typename
+        : ($__typename as String),
+  ));
 }
 
 class _CopyWithStubImpl$Fragment$ClaimCases$insured_person<TRes>
@@ -5740,12 +5786,7 @@ class _CopyWithStubImpl$Fragment$ClaimCases$insured_person<TRes>
 
   TRes _res;
 
-  call({
-    String? id,
-    String? name,
-    String? $__typename,
-  }) =>
-      _res;
+  call({String? id, String? name, String? $__typename}) => _res;
 }
 
 class Fragment$ClaimCases$claim_case_input_diagnoses {
@@ -5757,7 +5798,8 @@ class Fragment$ClaimCases$claim_case_input_diagnoses {
   });
 
   factory Fragment$ClaimCases$claim_case_input_diagnoses.fromJson(
-      Map<String, dynamic> json) {
+    Map<String, dynamic> json,
+  ) {
     final l$id = json['id'];
     final l$icd_metadata_id = json['icd_metadata_id'];
     final l$icd = json['icd'];
@@ -5766,7 +5808,8 @@ class Fragment$ClaimCases$claim_case_input_diagnoses {
       id: (l$id as String),
       icd_metadata_id: (l$icd_metadata_id as String),
       icd: Fragment$ClaimCases$claim_case_input_diagnoses$icd.fromJson(
-          (l$icd as Map<String, dynamic>)),
+        (l$icd as Map<String, dynamic>),
+      ),
       $__typename: (l$$__typename as String),
     );
   }
@@ -5798,12 +5841,7 @@ class Fragment$ClaimCases$claim_case_input_diagnoses {
     final l$icd_metadata_id = icd_metadata_id;
     final l$icd = icd;
     final l$$__typename = $__typename;
-    return Object.hashAll([
-      l$id,
-      l$icd_metadata_id,
-      l$icd,
-      l$$__typename,
-    ]);
+    return Object.hashAll([l$id, l$icd_metadata_id, l$icd, l$$__typename]);
   }
 
   @override
@@ -5842,11 +5880,11 @@ class Fragment$ClaimCases$claim_case_input_diagnoses {
 extension UtilityExtension$Fragment$ClaimCases$claim_case_input_diagnoses
     on Fragment$ClaimCases$claim_case_input_diagnoses {
   CopyWith$Fragment$ClaimCases$claim_case_input_diagnoses<
-          Fragment$ClaimCases$claim_case_input_diagnoses>
-      get copyWith => CopyWith$Fragment$ClaimCases$claim_case_input_diagnoses(
-            this,
-            (i) => i,
-          );
+    Fragment$ClaimCases$claim_case_input_diagnoses
+  > get copyWith => CopyWith$Fragment$ClaimCases$claim_case_input_diagnoses(
+    this,
+    (i) => i,
+  );
 }
 
 abstract class CopyWith$Fragment$ClaimCases$claim_case_input_diagnoses<TRes> {
@@ -5856,8 +5894,8 @@ abstract class CopyWith$Fragment$ClaimCases$claim_case_input_diagnoses<TRes> {
   ) = _CopyWithImpl$Fragment$ClaimCases$claim_case_input_diagnoses;
 
   factory CopyWith$Fragment$ClaimCases$claim_case_input_diagnoses.stub(
-          TRes res) =
-      _CopyWithStubImpl$Fragment$ClaimCases$claim_case_input_diagnoses;
+    TRes res,
+  ) = _CopyWithStubImpl$Fragment$ClaimCases$claim_case_input_diagnoses;
 
   TRes call({
     String? id,
@@ -5886,24 +5924,24 @@ class _CopyWithImpl$Fragment$ClaimCases$claim_case_input_diagnoses<TRes>
     Object? icd_metadata_id = _undefined,
     Object? icd = _undefined,
     Object? $__typename = _undefined,
-  }) =>
-      _then(Fragment$ClaimCases$claim_case_input_diagnoses(
-        id: id == _undefined || id == null ? _instance.id : (id as String),
-        icd_metadata_id:
-            icd_metadata_id == _undefined || icd_metadata_id == null
-                ? _instance.icd_metadata_id
-                : (icd_metadata_id as String),
-        icd: icd == _undefined || icd == null
-            ? _instance.icd
-            : (icd as Fragment$ClaimCases$claim_case_input_diagnoses$icd),
-        $__typename: $__typename == _undefined || $__typename == null
-            ? _instance.$__typename
-            : ($__typename as String),
-      ));
+  }) => _then(Fragment$ClaimCases$claim_case_input_diagnoses(
+    id: id == _undefined || id == null ? _instance.id : (id as String),
+    icd_metadata_id: icd_metadata_id == _undefined || icd_metadata_id == null
+        ? _instance.icd_metadata_id
+        : (icd_metadata_id as String),
+    icd: icd == _undefined || icd == null
+        ? _instance.icd
+        : (icd as Fragment$ClaimCases$claim_case_input_diagnoses$icd),
+    $__typename: $__typename == _undefined || $__typename == null
+        ? _instance.$__typename
+        : ($__typename as String),
+  ));
   CopyWith$Fragment$ClaimCases$claim_case_input_diagnoses$icd<TRes> get icd {
     final local$icd = _instance.icd;
     return CopyWith$Fragment$ClaimCases$claim_case_input_diagnoses$icd(
-        local$icd, (e) => call(icd: e));
+      local$icd,
+      (e) => call(icd: e),
+    );
   }
 }
 
@@ -5918,10 +5956,11 @@ class _CopyWithStubImpl$Fragment$ClaimCases$claim_case_input_diagnoses<TRes>
     String? icd_metadata_id,
     Fragment$ClaimCases$claim_case_input_diagnoses$icd? icd,
     String? $__typename,
-  }) =>
-      _res;
-  CopyWith$Fragment$ClaimCases$claim_case_input_diagnoses$icd<TRes> get icd =>
-      CopyWith$Fragment$ClaimCases$claim_case_input_diagnoses$icd.stub(_res);
+  }) => _res;
+  CopyWith$Fragment$ClaimCases$claim_case_input_diagnoses$icd<TRes>
+  get icd => CopyWith$Fragment$ClaimCases$claim_case_input_diagnoses$icd.stub(
+    _res,
+  );
 }
 
 class Fragment$ClaimCases$claim_case_input_diagnoses$icd {
@@ -5932,7 +5971,8 @@ class Fragment$ClaimCases$claim_case_input_diagnoses$icd {
   });
 
   factory Fragment$ClaimCases$claim_case_input_diagnoses$icd.fromJson(
-      Map<String, dynamic> json) {
+    Map<String, dynamic> json,
+  ) {
     final l$title = json['title'];
     final l$value = json['value'];
     final l$$__typename = json['__typename'];
@@ -5965,11 +6005,7 @@ class Fragment$ClaimCases$claim_case_input_diagnoses$icd {
     final l$title = title;
     final l$value = value;
     final l$$__typename = $__typename;
-    return Object.hashAll([
-      l$title,
-      l$value,
-      l$$__typename,
-    ]);
+    return Object.hashAll([l$title, l$value, l$$__typename]);
   }
 
   @override
@@ -6003,30 +6039,26 @@ class Fragment$ClaimCases$claim_case_input_diagnoses$icd {
 extension UtilityExtension$Fragment$ClaimCases$claim_case_input_diagnoses$icd
     on Fragment$ClaimCases$claim_case_input_diagnoses$icd {
   CopyWith$Fragment$ClaimCases$claim_case_input_diagnoses$icd<
-          Fragment$ClaimCases$claim_case_input_diagnoses$icd>
-      get copyWith =>
-          CopyWith$Fragment$ClaimCases$claim_case_input_diagnoses$icd(
-            this,
-            (i) => i,
-          );
+    Fragment$ClaimCases$claim_case_input_diagnoses$icd
+  > get copyWith => CopyWith$Fragment$ClaimCases$claim_case_input_diagnoses$icd(
+    this,
+    (i) => i,
+  );
 }
 
 abstract class CopyWith$Fragment$ClaimCases$claim_case_input_diagnoses$icd<
-    TRes> {
+  TRes
+> {
   factory CopyWith$Fragment$ClaimCases$claim_case_input_diagnoses$icd(
     Fragment$ClaimCases$claim_case_input_diagnoses$icd instance,
     TRes Function(Fragment$ClaimCases$claim_case_input_diagnoses$icd) then,
   ) = _CopyWithImpl$Fragment$ClaimCases$claim_case_input_diagnoses$icd;
 
   factory CopyWith$Fragment$ClaimCases$claim_case_input_diagnoses$icd.stub(
-          TRes res) =
-      _CopyWithStubImpl$Fragment$ClaimCases$claim_case_input_diagnoses$icd;
+    TRes res,
+  ) = _CopyWithStubImpl$Fragment$ClaimCases$claim_case_input_diagnoses$icd;
 
-  TRes call({
-    String? title,
-    String? value,
-    String? $__typename,
-  });
+  TRes call({String? title, String? value, String? $__typename});
 }
 
 class _CopyWithImpl$Fragment$ClaimCases$claim_case_input_diagnoses$icd<TRes>
@@ -6047,34 +6079,29 @@ class _CopyWithImpl$Fragment$ClaimCases$claim_case_input_diagnoses$icd<TRes>
     Object? title = _undefined,
     Object? value = _undefined,
     Object? $__typename = _undefined,
-  }) =>
-      _then(Fragment$ClaimCases$claim_case_input_diagnoses$icd(
-        title: title == _undefined || title == null
-            ? _instance.title
-            : (title as String),
-        value: value == _undefined || value == null
-            ? _instance.value
-            : (value as String),
-        $__typename: $__typename == _undefined || $__typename == null
-            ? _instance.$__typename
-            : ($__typename as String),
-      ));
+  }) => _then(Fragment$ClaimCases$claim_case_input_diagnoses$icd(
+    title: title == _undefined || title == null
+        ? _instance.title
+        : (title as String),
+    value: value == _undefined || value == null
+        ? _instance.value
+        : (value as String),
+    $__typename: $__typename == _undefined || $__typename == null
+        ? _instance.$__typename
+        : ($__typename as String),
+  ));
 }
 
 class _CopyWithStubImpl$Fragment$ClaimCases$claim_case_input_diagnoses$icd<TRes>
     implements
         CopyWith$Fragment$ClaimCases$claim_case_input_diagnoses$icd<TRes> {
   _CopyWithStubImpl$Fragment$ClaimCases$claim_case_input_diagnoses$icd(
-      this._res);
+    this._res,
+  );
 
   TRes _res;
 
-  call({
-    String? title,
-    String? value,
-    String? $__typename,
-  }) =>
-      _res;
+  call({String? title, String? value, String? $__typename}) => _res;
 }
 
 class Fragment$ClaimCases$action_logs {
@@ -6183,10 +6210,7 @@ class Fragment$ClaimCases$action_logs {
 extension UtilityExtension$Fragment$ClaimCases$action_logs
     on Fragment$ClaimCases$action_logs {
   CopyWith$Fragment$ClaimCases$action_logs<Fragment$ClaimCases$action_logs>
-      get copyWith => CopyWith$Fragment$ClaimCases$action_logs(
-            this,
-            (i) => i,
-          );
+  get copyWith => CopyWith$Fragment$ClaimCases$action_logs(this, (i) => i);
 }
 
 abstract class CopyWith$Fragment$ClaimCases$action_logs<TRes> {
@@ -6209,10 +6233,7 @@ abstract class CopyWith$Fragment$ClaimCases$action_logs<TRes> {
 
 class _CopyWithImpl$Fragment$ClaimCases$action_logs<TRes>
     implements CopyWith$Fragment$ClaimCases$action_logs<TRes> {
-  _CopyWithImpl$Fragment$ClaimCases$action_logs(
-    this._instance,
-    this._then,
-  );
+  _CopyWithImpl$Fragment$ClaimCases$action_logs(this._instance, this._then);
 
   final Fragment$ClaimCases$action_logs _instance;
 
@@ -6226,22 +6247,21 @@ class _CopyWithImpl$Fragment$ClaimCases$action_logs<TRes>
     Object? old_value = _undefined,
     Object? created_at = _undefined,
     Object? $__typename = _undefined,
-  }) =>
-      _then(Fragment$ClaimCases$action_logs(
-        id: id == _undefined || id == null ? _instance.id : (id as String),
-        new_value: new_value == _undefined
-            ? _instance.new_value
-            : (new_value as String?),
-        old_value: old_value == _undefined
-            ? _instance.old_value
-            : (old_value as String?),
-        created_at: created_at == _undefined || created_at == null
-            ? _instance.created_at
-            : (created_at as String),
-        $__typename: $__typename == _undefined || $__typename == null
-            ? _instance.$__typename
-            : ($__typename as String),
-      ));
+  }) => _then(Fragment$ClaimCases$action_logs(
+    id: id == _undefined || id == null ? _instance.id : (id as String),
+    new_value: new_value == _undefined
+        ? _instance.new_value
+        : (new_value as String?),
+    old_value: old_value == _undefined
+        ? _instance.old_value
+        : (old_value as String?),
+    created_at: created_at == _undefined || created_at == null
+        ? _instance.created_at
+        : (created_at as String),
+    $__typename: $__typename == _undefined || $__typename == null
+        ? _instance.$__typename
+        : ($__typename as String),
+  ));
 }
 
 class _CopyWithStubImpl$Fragment$ClaimCases$action_logs<TRes>
@@ -6256,8 +6276,7 @@ class _CopyWithStubImpl$Fragment$ClaimCases$action_logs<TRes>
     String? old_value,
     String? created_at,
     String? $__typename,
-  }) =>
-      _res;
+  }) => _res;
 }
 
 class Fragment$ClaimCases$claim_case_details {
@@ -6270,7 +6289,8 @@ class Fragment$ClaimCases$claim_case_details {
   });
 
   factory Fragment$ClaimCases$claim_case_details.fromJson(
-      Map<String, dynamic> json) {
+    Map<String, dynamic> json,
+  ) {
     final l$id = json['id'];
     final l$total_paid_amount = json['total_paid_amount'];
     final l$note = json['note'];
@@ -6282,7 +6302,8 @@ class Fragment$ClaimCases$claim_case_details {
       note: (l$note as String?),
       plan_insured_benefit:
           Fragment$ClaimCases$claim_case_details$plan_insured_benefit.fromJson(
-              (l$plan_insured_benefit as Map<String, dynamic>)),
+        (l$plan_insured_benefit as Map<String, dynamic>),
+      ),
       $__typename: (l$$__typename as String),
     );
   }
@@ -6294,7 +6315,7 @@ class Fragment$ClaimCases$claim_case_details {
   final String? note;
 
   final Fragment$ClaimCases$claim_case_details$plan_insured_benefit
-      plan_insured_benefit;
+  plan_insured_benefit;
 
   final String $__typename;
 
@@ -6370,11 +6391,11 @@ class Fragment$ClaimCases$claim_case_details {
 extension UtilityExtension$Fragment$ClaimCases$claim_case_details
     on Fragment$ClaimCases$claim_case_details {
   CopyWith$Fragment$ClaimCases$claim_case_details<
-          Fragment$ClaimCases$claim_case_details>
-      get copyWith => CopyWith$Fragment$ClaimCases$claim_case_details(
-            this,
-            (i) => i,
-          );
+    Fragment$ClaimCases$claim_case_details
+  > get copyWith => CopyWith$Fragment$ClaimCases$claim_case_details(
+    this,
+    (i) => i,
+  );
 }
 
 abstract class CopyWith$Fragment$ClaimCases$claim_case_details<TRes> {
@@ -6391,11 +6412,11 @@ abstract class CopyWith$Fragment$ClaimCases$claim_case_details<TRes> {
     double? total_paid_amount,
     String? note,
     Fragment$ClaimCases$claim_case_details$plan_insured_benefit?
-        plan_insured_benefit,
+    plan_insured_benefit,
     String? $__typename,
   });
   CopyWith$Fragment$ClaimCases$claim_case_details$plan_insured_benefit<TRes>
-      get plan_insured_benefit;
+  get plan_insured_benefit;
 }
 
 class _CopyWithImpl$Fragment$ClaimCases$claim_case_details<TRes>
@@ -6417,28 +6438,29 @@ class _CopyWithImpl$Fragment$ClaimCases$claim_case_details<TRes>
     Object? note = _undefined,
     Object? plan_insured_benefit = _undefined,
     Object? $__typename = _undefined,
-  }) =>
-      _then(Fragment$ClaimCases$claim_case_details(
-        id: id == _undefined || id == null ? _instance.id : (id as String),
-        total_paid_amount:
-            total_paid_amount == _undefined || total_paid_amount == null
-                ? _instance.total_paid_amount
-                : (total_paid_amount as double),
-        note: note == _undefined ? _instance.note : (note as String?),
-        plan_insured_benefit: plan_insured_benefit == _undefined ||
-                plan_insured_benefit == null
-            ? _instance.plan_insured_benefit
-            : (plan_insured_benefit
-                as Fragment$ClaimCases$claim_case_details$plan_insured_benefit),
-        $__typename: $__typename == _undefined || $__typename == null
-            ? _instance.$__typename
-            : ($__typename as String),
-      ));
+  }) => _then(Fragment$ClaimCases$claim_case_details(
+    id: id == _undefined || id == null ? _instance.id : (id as String),
+    total_paid_amount:
+        total_paid_amount == _undefined || total_paid_amount == null
+            ? _instance.total_paid_amount
+            : (total_paid_amount as double),
+    note: note == _undefined ? _instance.note : (note as String?),
+    plan_insured_benefit: plan_insured_benefit == _undefined ||
+            plan_insured_benefit == null
+        ? _instance.plan_insured_benefit
+        : (plan_insured_benefit
+              as Fragment$ClaimCases$claim_case_details$plan_insured_benefit),
+    $__typename: $__typename == _undefined || $__typename == null
+        ? _instance.$__typename
+        : ($__typename as String),
+  ));
   CopyWith$Fragment$ClaimCases$claim_case_details$plan_insured_benefit<TRes>
-      get plan_insured_benefit {
+  get plan_insured_benefit {
     final local$plan_insured_benefit = _instance.plan_insured_benefit;
     return CopyWith$Fragment$ClaimCases$claim_case_details$plan_insured_benefit(
-        local$plan_insured_benefit, (e) => call(plan_insured_benefit: e));
+      local$plan_insured_benefit,
+      (e) => call(plan_insured_benefit: e),
+    );
   }
 }
 
@@ -6453,14 +6475,12 @@ class _CopyWithStubImpl$Fragment$ClaimCases$claim_case_details<TRes>
     double? total_paid_amount,
     String? note,
     Fragment$ClaimCases$claim_case_details$plan_insured_benefit?
-        plan_insured_benefit,
+    plan_insured_benefit,
     String? $__typename,
-  }) =>
-      _res;
+  }) => _res;
   CopyWith$Fragment$ClaimCases$claim_case_details$plan_insured_benefit<TRes>
-      get plan_insured_benefit =>
-          CopyWith$Fragment$ClaimCases$claim_case_details$plan_insured_benefit
-              .stub(_res);
+  get plan_insured_benefit => CopyWith$Fragment$ClaimCases$claim_case_details$plan_insured_benefit
+      .stub(_res);
 }
 
 class Fragment$ClaimCases$claim_case_details$plan_insured_benefit {
@@ -6473,7 +6493,8 @@ class Fragment$ClaimCases$claim_case_details$plan_insured_benefit {
   });
 
   factory Fragment$ClaimCases$claim_case_details$plan_insured_benefit.fromJson(
-      Map<String, dynamic> json) {
+    Map<String, dynamic> json,
+  ) {
     final l$id = json['id'];
     final l$plan_id = json['plan_id'];
     final l$plan_balance_benefits = json['plan_balance_benefits'];
@@ -6482,11 +6503,12 @@ class Fragment$ClaimCases$claim_case_details$plan_insured_benefit {
     return Fragment$ClaimCases$claim_case_details$plan_insured_benefit(
       id: (l$id as String),
       plan_id: (l$plan_id as String),
-      plan_balance_benefits: (l$plan_balance_benefits as List<dynamic>)
-          .map((e) =>
-              Fragment$ClaimCases$claim_case_details$plan_insured_benefit$plan_balance_benefits
-                  .fromJson((e as Map<String, dynamic>)))
-          .toList(),
+      plan_balance_benefits: (l$plan_balance_benefits as List<dynamic>).map(
+        (
+          e,
+        ) => Fragment$ClaimCases$claim_case_details$plan_insured_benefit$plan_balance_benefits
+            .fromJson((e as Map<String, dynamic>)),
+      ).toList(),
       insured_benefit:
           Fragment$ClaimCases$claim_case_details$plan_insured_benefit$insured_benefit
               .fromJson((l$insured_benefit as Map<String, dynamic>)),
@@ -6499,11 +6521,11 @@ class Fragment$ClaimCases$claim_case_details$plan_insured_benefit {
   final String plan_id;
 
   final List<
-          Fragment$ClaimCases$claim_case_details$plan_insured_benefit$plan_balance_benefits>
-      plan_balance_benefits;
+    Fragment$ClaimCases$claim_case_details$plan_insured_benefit$plan_balance_benefits
+  > plan_balance_benefits;
 
   final Fragment$ClaimCases$claim_case_details$plan_insured_benefit$insured_benefit
-      insured_benefit;
+  insured_benefit;
 
   final String $__typename;
 
@@ -6589,50 +6611,63 @@ class Fragment$ClaimCases$claim_case_details$plan_insured_benefit {
 extension UtilityExtension$Fragment$ClaimCases$claim_case_details$plan_insured_benefit
     on Fragment$ClaimCases$claim_case_details$plan_insured_benefit {
   CopyWith$Fragment$ClaimCases$claim_case_details$plan_insured_benefit<
-          Fragment$ClaimCases$claim_case_details$plan_insured_benefit>
-      get copyWith =>
-          CopyWith$Fragment$ClaimCases$claim_case_details$plan_insured_benefit(
-            this,
-            (i) => i,
-          );
+    Fragment$ClaimCases$claim_case_details$plan_insured_benefit
+  >
+  get copyWith => CopyWith$Fragment$ClaimCases$claim_case_details$plan_insured_benefit(
+    this,
+    (i) => i,
+  );
 }
 
 abstract class CopyWith$Fragment$ClaimCases$claim_case_details$plan_insured_benefit<
-    TRes> {
+  TRes
+> {
   factory CopyWith$Fragment$ClaimCases$claim_case_details$plan_insured_benefit(
     Fragment$ClaimCases$claim_case_details$plan_insured_benefit instance,
     TRes Function(Fragment$ClaimCases$claim_case_details$plan_insured_benefit)
-        then,
+    then,
   ) = _CopyWithImpl$Fragment$ClaimCases$claim_case_details$plan_insured_benefit;
 
   factory CopyWith$Fragment$ClaimCases$claim_case_details$plan_insured_benefit.stub(
-          TRes res) =
-      _CopyWithStubImpl$Fragment$ClaimCases$claim_case_details$plan_insured_benefit;
+    TRes res,
+  ) = _CopyWithStubImpl$Fragment$ClaimCases$claim_case_details$plan_insured_benefit;
 
   TRes call({
     String? id,
     String? plan_id,
-    List<Fragment$ClaimCases$claim_case_details$plan_insured_benefit$plan_balance_benefits>?
-        plan_balance_benefits,
+    List<
+      Fragment$ClaimCases$claim_case_details$plan_insured_benefit$plan_balance_benefits
+    >?
+    plan_balance_benefits,
     Fragment$ClaimCases$claim_case_details$plan_insured_benefit$insured_benefit?
-        insured_benefit,
+    insured_benefit,
     String? $__typename,
   });
   TRes plan_balance_benefits(
-      Iterable<Fragment$ClaimCases$claim_case_details$plan_insured_benefit$plan_balance_benefits> Function(
-              Iterable<
-                  CopyWith$Fragment$ClaimCases$claim_case_details$plan_insured_benefit$plan_balance_benefits<
-                      Fragment$ClaimCases$claim_case_details$plan_insured_benefit$plan_balance_benefits>>)
-          _fn);
+    Iterable<
+      Fragment$ClaimCases$claim_case_details$plan_insured_benefit$plan_balance_benefits
+    >
+    Function(
+      Iterable<
+        CopyWith$Fragment$ClaimCases$claim_case_details$plan_insured_benefit$plan_balance_benefits<
+          Fragment$ClaimCases$claim_case_details$plan_insured_benefit$plan_balance_benefits
+        >
+      >,
+    )
+    _fn,
+  );
   CopyWith$Fragment$ClaimCases$claim_case_details$plan_insured_benefit$insured_benefit<
-      TRes> get insured_benefit;
+    TRes
+  > get insured_benefit;
 }
 
 class _CopyWithImpl$Fragment$ClaimCases$claim_case_details$plan_insured_benefit<
-        TRes>
+  TRes
+>
     implements
         CopyWith$Fragment$ClaimCases$claim_case_details$plan_insured_benefit<
-            TRes> {
+          TRes
+        > {
   _CopyWithImpl$Fragment$ClaimCases$claim_case_details$plan_insured_benefit(
     this._instance,
     this._then,
@@ -6641,7 +6676,8 @@ class _CopyWithImpl$Fragment$ClaimCases$claim_case_details$plan_insured_benefit<
   final Fragment$ClaimCases$claim_case_details$plan_insured_benefit _instance;
 
   final TRes Function(
-      Fragment$ClaimCases$claim_case_details$plan_insured_benefit) _then;
+    Fragment$ClaimCases$claim_case_details$plan_insured_benefit,
+  ) _then;
 
   static const _undefined = <dynamic, dynamic>{};
 
@@ -6651,72 +6687,88 @@ class _CopyWithImpl$Fragment$ClaimCases$claim_case_details$plan_insured_benefit<
     Object? plan_balance_benefits = _undefined,
     Object? insured_benefit = _undefined,
     Object? $__typename = _undefined,
-  }) =>
-      _then(Fragment$ClaimCases$claim_case_details$plan_insured_benefit(
-        id: id == _undefined || id == null ? _instance.id : (id as String),
-        plan_id: plan_id == _undefined || plan_id == null
-            ? _instance.plan_id
-            : (plan_id as String),
-        plan_balance_benefits: plan_balance_benefits == _undefined ||
-                plan_balance_benefits == null
+  }) => _then(Fragment$ClaimCases$claim_case_details$plan_insured_benefit(
+    id: id == _undefined || id == null ? _instance.id : (id as String),
+    plan_id: plan_id == _undefined || plan_id == null
+        ? _instance.plan_id
+        : (plan_id as String),
+    plan_balance_benefits:
+        plan_balance_benefits == _undefined || plan_balance_benefits == null
             ? _instance.plan_balance_benefits
             : (plan_balance_benefits as List<
-                Fragment$ClaimCases$claim_case_details$plan_insured_benefit$plan_balance_benefits>),
-        insured_benefit: insured_benefit == _undefined ||
-                insured_benefit == null
-            ? _instance.insured_benefit
-            : (insured_benefit
-                as Fragment$ClaimCases$claim_case_details$plan_insured_benefit$insured_benefit),
-        $__typename: $__typename == _undefined || $__typename == null
-            ? _instance.$__typename
-            : ($__typename as String),
-      ));
+                Fragment$ClaimCases$claim_case_details$plan_insured_benefit$plan_balance_benefits
+              >),
+    insured_benefit: insured_benefit == _undefined || insured_benefit == null
+        ? _instance.insured_benefit
+        : (insured_benefit
+              as Fragment$ClaimCases$claim_case_details$plan_insured_benefit$insured_benefit),
+    $__typename: $__typename == _undefined || $__typename == null
+        ? _instance.$__typename
+        : ($__typename as String),
+  ));
   TRes plan_balance_benefits(
-          Iterable<Fragment$ClaimCases$claim_case_details$plan_insured_benefit$plan_balance_benefits> Function(
-                  Iterable<
-                      CopyWith$Fragment$ClaimCases$claim_case_details$plan_insured_benefit$plan_balance_benefits<
-                          Fragment$ClaimCases$claim_case_details$plan_insured_benefit$plan_balance_benefits>>)
-              _fn) =>
-      call(
-          plan_balance_benefits: _fn(_instance.plan_balance_benefits.map((e) =>
-              CopyWith$Fragment$ClaimCases$claim_case_details$plan_insured_benefit$plan_balance_benefits(
-                e,
-                (i) => i,
-              ))).toList());
+    Iterable<
+      Fragment$ClaimCases$claim_case_details$plan_insured_benefit$plan_balance_benefits
+    >
+    Function(
+      Iterable<
+        CopyWith$Fragment$ClaimCases$claim_case_details$plan_insured_benefit$plan_balance_benefits<
+          Fragment$ClaimCases$claim_case_details$plan_insured_benefit$plan_balance_benefits
+        >
+      >,
+    )
+    _fn,
+  ) => call(
+    plan_balance_benefits: _fn(_instance.plan_balance_benefits.map(
+      (
+        e,
+      ) => CopyWith$Fragment$ClaimCases$claim_case_details$plan_insured_benefit$plan_balance_benefits(
+        e,
+        (i) => i,
+      ),
+    )).toList(),
+  );
   CopyWith$Fragment$ClaimCases$claim_case_details$plan_insured_benefit$insured_benefit<
-      TRes> get insured_benefit {
+    TRes
+  > get insured_benefit {
     final local$insured_benefit = _instance.insured_benefit;
     return CopyWith$Fragment$ClaimCases$claim_case_details$plan_insured_benefit$insured_benefit(
-        local$insured_benefit, (e) => call(insured_benefit: e));
+      local$insured_benefit,
+      (e) => call(insured_benefit: e),
+    );
   }
 }
 
 class _CopyWithStubImpl$Fragment$ClaimCases$claim_case_details$plan_insured_benefit<
-        TRes>
+  TRes
+>
     implements
         CopyWith$Fragment$ClaimCases$claim_case_details$plan_insured_benefit<
-            TRes> {
+          TRes
+        > {
   _CopyWithStubImpl$Fragment$ClaimCases$claim_case_details$plan_insured_benefit(
-      this._res);
+    this._res,
+  );
 
   TRes _res;
 
   call({
     String? id,
     String? plan_id,
-    List<Fragment$ClaimCases$claim_case_details$plan_insured_benefit$plan_balance_benefits>?
-        plan_balance_benefits,
+    List<
+      Fragment$ClaimCases$claim_case_details$plan_insured_benefit$plan_balance_benefits
+    >?
+    plan_balance_benefits,
     Fragment$ClaimCases$claim_case_details$plan_insured_benefit$insured_benefit?
-        insured_benefit,
+    insured_benefit,
     String? $__typename,
-  }) =>
-      _res;
+  }) => _res;
   plan_balance_benefits(_fn) => _res;
   CopyWith$Fragment$ClaimCases$claim_case_details$plan_insured_benefit$insured_benefit<
-          TRes>
-      get insured_benefit =>
-          CopyWith$Fragment$ClaimCases$claim_case_details$plan_insured_benefit$insured_benefit
-              .stub(_res);
+    TRes
+  >
+  get insured_benefit => CopyWith$Fragment$ClaimCases$claim_case_details$plan_insured_benefit$insured_benefit
+      .stub(_res);
 }
 
 class Fragment$ClaimCases$claim_case_details$plan_insured_benefit$plan_balance_benefits {
@@ -6727,7 +6779,8 @@ class Fragment$ClaimCases$claim_case_details$plan_insured_benefit$plan_balance_b
   });
 
   factory Fragment$ClaimCases$claim_case_details$plan_insured_benefit$plan_balance_benefits.fromJson(
-      Map<String, dynamic> json) {
+    Map<String, dynamic> json,
+  ) {
     final l$id = json['id'];
     final l$plan_balance = json['plan_balance'];
     final l$$__typename = json['__typename'];
@@ -6743,7 +6796,7 @@ class Fragment$ClaimCases$claim_case_details$plan_insured_benefit$plan_balance_b
   final String id;
 
   final Fragment$ClaimCases$claim_case_details$plan_insured_benefit$plan_balance_benefits$plan_balance
-      plan_balance;
+  plan_balance;
 
   final String $__typename;
 
@@ -6763,11 +6816,7 @@ class Fragment$ClaimCases$claim_case_details$plan_insured_benefit$plan_balance_b
     final l$id = id;
     final l$plan_balance = plan_balance;
     final l$$__typename = $__typename;
-    return Object.hashAll([
-      l$id,
-      l$plan_balance,
-      l$$__typename,
-    ]);
+    return Object.hashAll([l$id, l$plan_balance, l$$__typename]);
   }
 
   @override
@@ -6802,54 +6851,59 @@ class Fragment$ClaimCases$claim_case_details$plan_insured_benefit$plan_balance_b
 extension UtilityExtension$Fragment$ClaimCases$claim_case_details$plan_insured_benefit$plan_balance_benefits
     on Fragment$ClaimCases$claim_case_details$plan_insured_benefit$plan_balance_benefits {
   CopyWith$Fragment$ClaimCases$claim_case_details$plan_insured_benefit$plan_balance_benefits<
-          Fragment$ClaimCases$claim_case_details$plan_insured_benefit$plan_balance_benefits>
-      get copyWith =>
-          CopyWith$Fragment$ClaimCases$claim_case_details$plan_insured_benefit$plan_balance_benefits(
-            this,
-            (i) => i,
-          );
+    Fragment$ClaimCases$claim_case_details$plan_insured_benefit$plan_balance_benefits
+  >
+  get copyWith => CopyWith$Fragment$ClaimCases$claim_case_details$plan_insured_benefit$plan_balance_benefits(
+    this,
+    (i) => i,
+  );
 }
 
 abstract class CopyWith$Fragment$ClaimCases$claim_case_details$plan_insured_benefit$plan_balance_benefits<
-    TRes> {
+  TRes
+> {
   factory CopyWith$Fragment$ClaimCases$claim_case_details$plan_insured_benefit$plan_balance_benefits(
     Fragment$ClaimCases$claim_case_details$plan_insured_benefit$plan_balance_benefits
-        instance,
+    instance,
     TRes Function(
-            Fragment$ClaimCases$claim_case_details$plan_insured_benefit$plan_balance_benefits)
-        then,
+      Fragment$ClaimCases$claim_case_details$plan_insured_benefit$plan_balance_benefits,
+    )
+    then,
   ) = _CopyWithImpl$Fragment$ClaimCases$claim_case_details$plan_insured_benefit$plan_balance_benefits;
 
   factory CopyWith$Fragment$ClaimCases$claim_case_details$plan_insured_benefit$plan_balance_benefits.stub(
-          TRes res) =
-      _CopyWithStubImpl$Fragment$ClaimCases$claim_case_details$plan_insured_benefit$plan_balance_benefits;
+    TRes res,
+  ) = _CopyWithStubImpl$Fragment$ClaimCases$claim_case_details$plan_insured_benefit$plan_balance_benefits;
 
   TRes call({
     String? id,
     Fragment$ClaimCases$claim_case_details$plan_insured_benefit$plan_balance_benefits$plan_balance?
-        plan_balance,
+    plan_balance,
     String? $__typename,
   });
   CopyWith$Fragment$ClaimCases$claim_case_details$plan_insured_benefit$plan_balance_benefits$plan_balance<
-      TRes> get plan_balance;
+    TRes
+  > get plan_balance;
 }
 
 class _CopyWithImpl$Fragment$ClaimCases$claim_case_details$plan_insured_benefit$plan_balance_benefits<
-        TRes>
+  TRes
+>
     implements
         CopyWith$Fragment$ClaimCases$claim_case_details$plan_insured_benefit$plan_balance_benefits<
-            TRes> {
+          TRes
+        > {
   _CopyWithImpl$Fragment$ClaimCases$claim_case_details$plan_insured_benefit$plan_balance_benefits(
     this._instance,
     this._then,
   );
 
   final Fragment$ClaimCases$claim_case_details$plan_insured_benefit$plan_balance_benefits
-      _instance;
+  _instance;
 
   final TRes Function(
-          Fragment$ClaimCases$claim_case_details$plan_insured_benefit$plan_balance_benefits)
-      _then;
+    Fragment$ClaimCases$claim_case_details$plan_insured_benefit$plan_balance_benefits,
+  ) _then;
 
   static const _undefined = <dynamic, dynamic>{};
 
@@ -6857,48 +6911,53 @@ class _CopyWithImpl$Fragment$ClaimCases$claim_case_details$plan_insured_benefit$
     Object? id = _undefined,
     Object? plan_balance = _undefined,
     Object? $__typename = _undefined,
-  }) =>
-      _then(
-          Fragment$ClaimCases$claim_case_details$plan_insured_benefit$plan_balance_benefits(
-        id: id == _undefined || id == null ? _instance.id : (id as String),
-        plan_balance: plan_balance == _undefined || plan_balance == null
-            ? _instance.plan_balance
-            : (plan_balance
+  }) => _then(
+    Fragment$ClaimCases$claim_case_details$plan_insured_benefit$plan_balance_benefits(
+      id: id == _undefined || id == null ? _instance.id : (id as String),
+      plan_balance: plan_balance == _undefined || plan_balance == null
+          ? _instance.plan_balance
+          : (plan_balance
                 as Fragment$ClaimCases$claim_case_details$plan_insured_benefit$plan_balance_benefits$plan_balance),
-        $__typename: $__typename == _undefined || $__typename == null
-            ? _instance.$__typename
-            : ($__typename as String),
-      ));
+      $__typename: $__typename == _undefined || $__typename == null
+          ? _instance.$__typename
+          : ($__typename as String),
+    ),
+  );
   CopyWith$Fragment$ClaimCases$claim_case_details$plan_insured_benefit$plan_balance_benefits$plan_balance<
-      TRes> get plan_balance {
+    TRes
+  > get plan_balance {
     final local$plan_balance = _instance.plan_balance;
     return CopyWith$Fragment$ClaimCases$claim_case_details$plan_insured_benefit$plan_balance_benefits$plan_balance(
-        local$plan_balance, (e) => call(plan_balance: e));
+      local$plan_balance,
+      (e) => call(plan_balance: e),
+    );
   }
 }
 
 class _CopyWithStubImpl$Fragment$ClaimCases$claim_case_details$plan_insured_benefit$plan_balance_benefits<
-        TRes>
+  TRes
+>
     implements
         CopyWith$Fragment$ClaimCases$claim_case_details$plan_insured_benefit$plan_balance_benefits<
-            TRes> {
+          TRes
+        > {
   _CopyWithStubImpl$Fragment$ClaimCases$claim_case_details$plan_insured_benefit$plan_balance_benefits(
-      this._res);
+    this._res,
+  );
 
   TRes _res;
 
   call({
     String? id,
     Fragment$ClaimCases$claim_case_details$plan_insured_benefit$plan_balance_benefits$plan_balance?
-        plan_balance,
+    plan_balance,
     String? $__typename,
-  }) =>
-      _res;
+  }) => _res;
   CopyWith$Fragment$ClaimCases$claim_case_details$plan_insured_benefit$plan_balance_benefits$plan_balance<
-          TRes>
-      get plan_balance =>
-          CopyWith$Fragment$ClaimCases$claim_case_details$plan_insured_benefit$plan_balance_benefits$plan_balance
-              .stub(_res);
+    TRes
+  >
+  get plan_balance => CopyWith$Fragment$ClaimCases$claim_case_details$plan_insured_benefit$plan_balance_benefits$plan_balance
+      .stub(_res);
 }
 
 class Fragment$ClaimCases$claim_case_details$plan_insured_benefit$plan_balance_benefits$plan_balance {
@@ -6909,7 +6968,8 @@ class Fragment$ClaimCases$claim_case_details$plan_insured_benefit$plan_balance_b
   });
 
   factory Fragment$ClaimCases$claim_case_details$plan_insured_benefit$plan_balance_benefits$plan_balance.fromJson(
-      Map<String, dynamic> json) {
+    Map<String, dynamic> json,
+  ) {
     final l$id = json['id'];
     final l$name = json['name'];
     final l$$__typename = json['__typename'];
@@ -6942,11 +7002,7 @@ class Fragment$ClaimCases$claim_case_details$plan_insured_benefit$plan_balance_b
     final l$id = id;
     final l$name = name;
     final l$$__typename = $__typename;
-    return Object.hashAll([
-      l$id,
-      l$name,
-      l$$__typename,
-    ]);
+    return Object.hashAll([l$id, l$name, l$$__typename]);
   }
 
   @override
@@ -6981,51 +7037,51 @@ class Fragment$ClaimCases$claim_case_details$plan_insured_benefit$plan_balance_b
 extension UtilityExtension$Fragment$ClaimCases$claim_case_details$plan_insured_benefit$plan_balance_benefits$plan_balance
     on Fragment$ClaimCases$claim_case_details$plan_insured_benefit$plan_balance_benefits$plan_balance {
   CopyWith$Fragment$ClaimCases$claim_case_details$plan_insured_benefit$plan_balance_benefits$plan_balance<
-          Fragment$ClaimCases$claim_case_details$plan_insured_benefit$plan_balance_benefits$plan_balance>
-      get copyWith =>
-          CopyWith$Fragment$ClaimCases$claim_case_details$plan_insured_benefit$plan_balance_benefits$plan_balance(
-            this,
-            (i) => i,
-          );
+    Fragment$ClaimCases$claim_case_details$plan_insured_benefit$plan_balance_benefits$plan_balance
+  >
+  get copyWith => CopyWith$Fragment$ClaimCases$claim_case_details$plan_insured_benefit$plan_balance_benefits$plan_balance(
+    this,
+    (i) => i,
+  );
 }
 
 abstract class CopyWith$Fragment$ClaimCases$claim_case_details$plan_insured_benefit$plan_balance_benefits$plan_balance<
-    TRes> {
+  TRes
+> {
   factory CopyWith$Fragment$ClaimCases$claim_case_details$plan_insured_benefit$plan_balance_benefits$plan_balance(
     Fragment$ClaimCases$claim_case_details$plan_insured_benefit$plan_balance_benefits$plan_balance
-        instance,
+    instance,
     TRes Function(
-            Fragment$ClaimCases$claim_case_details$plan_insured_benefit$plan_balance_benefits$plan_balance)
-        then,
+      Fragment$ClaimCases$claim_case_details$plan_insured_benefit$plan_balance_benefits$plan_balance,
+    )
+    then,
   ) = _CopyWithImpl$Fragment$ClaimCases$claim_case_details$plan_insured_benefit$plan_balance_benefits$plan_balance;
 
   factory CopyWith$Fragment$ClaimCases$claim_case_details$plan_insured_benefit$plan_balance_benefits$plan_balance.stub(
-          TRes res) =
-      _CopyWithStubImpl$Fragment$ClaimCases$claim_case_details$plan_insured_benefit$plan_balance_benefits$plan_balance;
+    TRes res,
+  ) = _CopyWithStubImpl$Fragment$ClaimCases$claim_case_details$plan_insured_benefit$plan_balance_benefits$plan_balance;
 
-  TRes call({
-    String? id,
-    String? name,
-    String? $__typename,
-  });
+  TRes call({String? id, String? name, String? $__typename});
 }
 
 class _CopyWithImpl$Fragment$ClaimCases$claim_case_details$plan_insured_benefit$plan_balance_benefits$plan_balance<
-        TRes>
+  TRes
+>
     implements
         CopyWith$Fragment$ClaimCases$claim_case_details$plan_insured_benefit$plan_balance_benefits$plan_balance<
-            TRes> {
+          TRes
+        > {
   _CopyWithImpl$Fragment$ClaimCases$claim_case_details$plan_insured_benefit$plan_balance_benefits$plan_balance(
     this._instance,
     this._then,
   );
 
   final Fragment$ClaimCases$claim_case_details$plan_insured_benefit$plan_balance_benefits$plan_balance
-      _instance;
+  _instance;
 
   final TRes Function(
-          Fragment$ClaimCases$claim_case_details$plan_insured_benefit$plan_balance_benefits$plan_balance)
-      _then;
+    Fragment$ClaimCases$claim_case_details$plan_insured_benefit$plan_balance_benefits$plan_balance,
+  ) _then;
 
   static const _undefined = <dynamic, dynamic>{};
 
@@ -7033,35 +7089,33 @@ class _CopyWithImpl$Fragment$ClaimCases$claim_case_details$plan_insured_benefit$
     Object? id = _undefined,
     Object? name = _undefined,
     Object? $__typename = _undefined,
-  }) =>
-      _then(
-          Fragment$ClaimCases$claim_case_details$plan_insured_benefit$plan_balance_benefits$plan_balance(
-        id: id == _undefined || id == null ? _instance.id : (id as String),
-        name: name == _undefined || name == null
-            ? _instance.name
-            : (name as String),
-        $__typename: $__typename == _undefined || $__typename == null
-            ? _instance.$__typename
-            : ($__typename as String),
-      ));
+  }) => _then(
+    Fragment$ClaimCases$claim_case_details$plan_insured_benefit$plan_balance_benefits$plan_balance(
+      id: id == _undefined || id == null ? _instance.id : (id as String),
+      name: name == _undefined || name == null
+          ? _instance.name
+          : (name as String),
+      $__typename: $__typename == _undefined || $__typename == null
+          ? _instance.$__typename
+          : ($__typename as String),
+    ),
+  );
 }
 
 class _CopyWithStubImpl$Fragment$ClaimCases$claim_case_details$plan_insured_benefit$plan_balance_benefits$plan_balance<
-        TRes>
+  TRes
+>
     implements
         CopyWith$Fragment$ClaimCases$claim_case_details$plan_insured_benefit$plan_balance_benefits$plan_balance<
-            TRes> {
+          TRes
+        > {
   _CopyWithStubImpl$Fragment$ClaimCases$claim_case_details$plan_insured_benefit$plan_balance_benefits$plan_balance(
-      this._res);
+    this._res,
+  );
 
   TRes _res;
 
-  call({
-    String? id,
-    String? name,
-    String? $__typename,
-  }) =>
-      _res;
+  call({String? id, String? name, String? $__typename}) => _res;
 }
 
 class Fragment$ClaimCases$claim_case_details$plan_insured_benefit$insured_benefit {
@@ -7074,7 +7128,8 @@ class Fragment$ClaimCases$claim_case_details$plan_insured_benefit$insured_benefi
   });
 
   factory Fragment$ClaimCases$claim_case_details$plan_insured_benefit$insured_benefit.fromJson(
-      Map<String, dynamic> json) {
+    Map<String, dynamic> json,
+  ) {
     final l$id = json['id'];
     final l$code = json['code'];
     final l$name = json['name'];
@@ -7098,7 +7153,7 @@ class Fragment$ClaimCases$claim_case_details$plan_insured_benefit$insured_benefi
   final String name;
 
   final Fragment$ClaimCases$claim_case_details$plan_insured_benefit$insured_benefit$insured_benefit_type
-      insured_benefit_type;
+  insured_benefit_type;
 
   final String $__typename;
 
@@ -7175,56 +7230,61 @@ class Fragment$ClaimCases$claim_case_details$plan_insured_benefit$insured_benefi
 extension UtilityExtension$Fragment$ClaimCases$claim_case_details$plan_insured_benefit$insured_benefit
     on Fragment$ClaimCases$claim_case_details$plan_insured_benefit$insured_benefit {
   CopyWith$Fragment$ClaimCases$claim_case_details$plan_insured_benefit$insured_benefit<
-          Fragment$ClaimCases$claim_case_details$plan_insured_benefit$insured_benefit>
-      get copyWith =>
-          CopyWith$Fragment$ClaimCases$claim_case_details$plan_insured_benefit$insured_benefit(
-            this,
-            (i) => i,
-          );
+    Fragment$ClaimCases$claim_case_details$plan_insured_benefit$insured_benefit
+  >
+  get copyWith => CopyWith$Fragment$ClaimCases$claim_case_details$plan_insured_benefit$insured_benefit(
+    this,
+    (i) => i,
+  );
 }
 
 abstract class CopyWith$Fragment$ClaimCases$claim_case_details$plan_insured_benefit$insured_benefit<
-    TRes> {
+  TRes
+> {
   factory CopyWith$Fragment$ClaimCases$claim_case_details$plan_insured_benefit$insured_benefit(
     Fragment$ClaimCases$claim_case_details$plan_insured_benefit$insured_benefit
-        instance,
+    instance,
     TRes Function(
-            Fragment$ClaimCases$claim_case_details$plan_insured_benefit$insured_benefit)
-        then,
+      Fragment$ClaimCases$claim_case_details$plan_insured_benefit$insured_benefit,
+    )
+    then,
   ) = _CopyWithImpl$Fragment$ClaimCases$claim_case_details$plan_insured_benefit$insured_benefit;
 
   factory CopyWith$Fragment$ClaimCases$claim_case_details$plan_insured_benefit$insured_benefit.stub(
-          TRes res) =
-      _CopyWithStubImpl$Fragment$ClaimCases$claim_case_details$plan_insured_benefit$insured_benefit;
+    TRes res,
+  ) = _CopyWithStubImpl$Fragment$ClaimCases$claim_case_details$plan_insured_benefit$insured_benefit;
 
   TRes call({
     String? id,
     String? code,
     String? name,
     Fragment$ClaimCases$claim_case_details$plan_insured_benefit$insured_benefit$insured_benefit_type?
-        insured_benefit_type,
+    insured_benefit_type,
     String? $__typename,
   });
   CopyWith$Fragment$ClaimCases$claim_case_details$plan_insured_benefit$insured_benefit$insured_benefit_type<
-      TRes> get insured_benefit_type;
+    TRes
+  > get insured_benefit_type;
 }
 
 class _CopyWithImpl$Fragment$ClaimCases$claim_case_details$plan_insured_benefit$insured_benefit<
-        TRes>
+  TRes
+>
     implements
         CopyWith$Fragment$ClaimCases$claim_case_details$plan_insured_benefit$insured_benefit<
-            TRes> {
+          TRes
+        > {
   _CopyWithImpl$Fragment$ClaimCases$claim_case_details$plan_insured_benefit$insured_benefit(
     this._instance,
     this._then,
   );
 
   final Fragment$ClaimCases$claim_case_details$plan_insured_benefit$insured_benefit
-      _instance;
+  _instance;
 
   final TRes Function(
-          Fragment$ClaimCases$claim_case_details$plan_insured_benefit$insured_benefit)
-      _then;
+    Fragment$ClaimCases$claim_case_details$plan_insured_benefit$insured_benefit,
+  ) _then;
 
   static const _undefined = <dynamic, dynamic>{};
 
@@ -7234,40 +7294,46 @@ class _CopyWithImpl$Fragment$ClaimCases$claim_case_details$plan_insured_benefit$
     Object? name = _undefined,
     Object? insured_benefit_type = _undefined,
     Object? $__typename = _undefined,
-  }) =>
-      _then(
-          Fragment$ClaimCases$claim_case_details$plan_insured_benefit$insured_benefit(
-        id: id == _undefined || id == null ? _instance.id : (id as String),
-        code: code == _undefined || code == null
-            ? _instance.code
-            : (code as String),
-        name: name == _undefined || name == null
-            ? _instance.name
-            : (name as String),
-        insured_benefit_type: insured_benefit_type == _undefined ||
-                insured_benefit_type == null
-            ? _instance.insured_benefit_type
-            : (insured_benefit_type
+  }) => _then(
+    Fragment$ClaimCases$claim_case_details$plan_insured_benefit$insured_benefit(
+      id: id == _undefined || id == null ? _instance.id : (id as String),
+      code: code == _undefined || code == null
+          ? _instance.code
+          : (code as String),
+      name: name == _undefined || name == null
+          ? _instance.name
+          : (name as String),
+      insured_benefit_type: insured_benefit_type == _undefined ||
+              insured_benefit_type == null
+          ? _instance.insured_benefit_type
+          : (insured_benefit_type
                 as Fragment$ClaimCases$claim_case_details$plan_insured_benefit$insured_benefit$insured_benefit_type),
-        $__typename: $__typename == _undefined || $__typename == null
-            ? _instance.$__typename
-            : ($__typename as String),
-      ));
+      $__typename: $__typename == _undefined || $__typename == null
+          ? _instance.$__typename
+          : ($__typename as String),
+    ),
+  );
   CopyWith$Fragment$ClaimCases$claim_case_details$plan_insured_benefit$insured_benefit$insured_benefit_type<
-      TRes> get insured_benefit_type {
+    TRes
+  > get insured_benefit_type {
     final local$insured_benefit_type = _instance.insured_benefit_type;
     return CopyWith$Fragment$ClaimCases$claim_case_details$plan_insured_benefit$insured_benefit$insured_benefit_type(
-        local$insured_benefit_type, (e) => call(insured_benefit_type: e));
+      local$insured_benefit_type,
+      (e) => call(insured_benefit_type: e),
+    );
   }
 }
 
 class _CopyWithStubImpl$Fragment$ClaimCases$claim_case_details$plan_insured_benefit$insured_benefit<
-        TRes>
+  TRes
+>
     implements
         CopyWith$Fragment$ClaimCases$claim_case_details$plan_insured_benefit$insured_benefit<
-            TRes> {
+          TRes
+        > {
   _CopyWithStubImpl$Fragment$ClaimCases$claim_case_details$plan_insured_benefit$insured_benefit(
-      this._res);
+    this._res,
+  );
 
   TRes _res;
 
@@ -7276,15 +7342,14 @@ class _CopyWithStubImpl$Fragment$ClaimCases$claim_case_details$plan_insured_bene
     String? code,
     String? name,
     Fragment$ClaimCases$claim_case_details$plan_insured_benefit$insured_benefit$insured_benefit_type?
-        insured_benefit_type,
+    insured_benefit_type,
     String? $__typename,
-  }) =>
-      _res;
+  }) => _res;
   CopyWith$Fragment$ClaimCases$claim_case_details$plan_insured_benefit$insured_benefit$insured_benefit_type<
-          TRes>
-      get insured_benefit_type =>
-          CopyWith$Fragment$ClaimCases$claim_case_details$plan_insured_benefit$insured_benefit$insured_benefit_type
-              .stub(_res);
+    TRes
+  >
+  get insured_benefit_type => CopyWith$Fragment$ClaimCases$claim_case_details$plan_insured_benefit$insured_benefit$insured_benefit_type
+      .stub(_res);
 }
 
 class Fragment$ClaimCases$claim_case_details$plan_insured_benefit$insured_benefit$insured_benefit_type {
@@ -7295,7 +7360,8 @@ class Fragment$ClaimCases$claim_case_details$plan_insured_benefit$insured_benefi
   });
 
   factory Fragment$ClaimCases$claim_case_details$plan_insured_benefit$insured_benefit$insured_benefit_type.fromJson(
-      Map<String, dynamic> json) {
+    Map<String, dynamic> json,
+  ) {
     final l$comment = json['comment'];
     final l$value = json['value'];
     final l$$__typename = json['__typename'];
@@ -7328,11 +7394,7 @@ class Fragment$ClaimCases$claim_case_details$plan_insured_benefit$insured_benefi
     final l$comment = comment;
     final l$value = value;
     final l$$__typename = $__typename;
-    return Object.hashAll([
-      l$comment,
-      l$value,
-      l$$__typename,
-    ]);
+    return Object.hashAll([l$comment, l$value, l$$__typename]);
   }
 
   @override
@@ -7367,51 +7429,51 @@ class Fragment$ClaimCases$claim_case_details$plan_insured_benefit$insured_benefi
 extension UtilityExtension$Fragment$ClaimCases$claim_case_details$plan_insured_benefit$insured_benefit$insured_benefit_type
     on Fragment$ClaimCases$claim_case_details$plan_insured_benefit$insured_benefit$insured_benefit_type {
   CopyWith$Fragment$ClaimCases$claim_case_details$plan_insured_benefit$insured_benefit$insured_benefit_type<
-          Fragment$ClaimCases$claim_case_details$plan_insured_benefit$insured_benefit$insured_benefit_type>
-      get copyWith =>
-          CopyWith$Fragment$ClaimCases$claim_case_details$plan_insured_benefit$insured_benefit$insured_benefit_type(
-            this,
-            (i) => i,
-          );
+    Fragment$ClaimCases$claim_case_details$plan_insured_benefit$insured_benefit$insured_benefit_type
+  >
+  get copyWith => CopyWith$Fragment$ClaimCases$claim_case_details$plan_insured_benefit$insured_benefit$insured_benefit_type(
+    this,
+    (i) => i,
+  );
 }
 
 abstract class CopyWith$Fragment$ClaimCases$claim_case_details$plan_insured_benefit$insured_benefit$insured_benefit_type<
-    TRes> {
+  TRes
+> {
   factory CopyWith$Fragment$ClaimCases$claim_case_details$plan_insured_benefit$insured_benefit$insured_benefit_type(
     Fragment$ClaimCases$claim_case_details$plan_insured_benefit$insured_benefit$insured_benefit_type
-        instance,
+    instance,
     TRes Function(
-            Fragment$ClaimCases$claim_case_details$plan_insured_benefit$insured_benefit$insured_benefit_type)
-        then,
+      Fragment$ClaimCases$claim_case_details$plan_insured_benefit$insured_benefit$insured_benefit_type,
+    )
+    then,
   ) = _CopyWithImpl$Fragment$ClaimCases$claim_case_details$plan_insured_benefit$insured_benefit$insured_benefit_type;
 
   factory CopyWith$Fragment$ClaimCases$claim_case_details$plan_insured_benefit$insured_benefit$insured_benefit_type.stub(
-          TRes res) =
-      _CopyWithStubImpl$Fragment$ClaimCases$claim_case_details$plan_insured_benefit$insured_benefit$insured_benefit_type;
+    TRes res,
+  ) = _CopyWithStubImpl$Fragment$ClaimCases$claim_case_details$plan_insured_benefit$insured_benefit$insured_benefit_type;
 
-  TRes call({
-    String? comment,
-    String? value,
-    String? $__typename,
-  });
+  TRes call({String? comment, String? value, String? $__typename});
 }
 
 class _CopyWithImpl$Fragment$ClaimCases$claim_case_details$plan_insured_benefit$insured_benefit$insured_benefit_type<
-        TRes>
+  TRes
+>
     implements
         CopyWith$Fragment$ClaimCases$claim_case_details$plan_insured_benefit$insured_benefit$insured_benefit_type<
-            TRes> {
+          TRes
+        > {
   _CopyWithImpl$Fragment$ClaimCases$claim_case_details$plan_insured_benefit$insured_benefit$insured_benefit_type(
     this._instance,
     this._then,
   );
 
   final Fragment$ClaimCases$claim_case_details$plan_insured_benefit$insured_benefit$insured_benefit_type
-      _instance;
+  _instance;
 
   final TRes Function(
-          Fragment$ClaimCases$claim_case_details$plan_insured_benefit$insured_benefit$insured_benefit_type)
-      _then;
+    Fragment$ClaimCases$claim_case_details$plan_insured_benefit$insured_benefit$insured_benefit_type,
+  ) _then;
 
   static const _undefined = <dynamic, dynamic>{};
 
@@ -7419,37 +7481,35 @@ class _CopyWithImpl$Fragment$ClaimCases$claim_case_details$plan_insured_benefit$
     Object? comment = _undefined,
     Object? value = _undefined,
     Object? $__typename = _undefined,
-  }) =>
-      _then(
-          Fragment$ClaimCases$claim_case_details$plan_insured_benefit$insured_benefit$insured_benefit_type(
-        comment: comment == _undefined || comment == null
-            ? _instance.comment
-            : (comment as String),
-        value: value == _undefined || value == null
-            ? _instance.value
-            : (value as String),
-        $__typename: $__typename == _undefined || $__typename == null
-            ? _instance.$__typename
-            : ($__typename as String),
-      ));
+  }) => _then(
+    Fragment$ClaimCases$claim_case_details$plan_insured_benefit$insured_benefit$insured_benefit_type(
+      comment: comment == _undefined || comment == null
+          ? _instance.comment
+          : (comment as String),
+      value: value == _undefined || value == null
+          ? _instance.value
+          : (value as String),
+      $__typename: $__typename == _undefined || $__typename == null
+          ? _instance.$__typename
+          : ($__typename as String),
+    ),
+  );
 }
 
 class _CopyWithStubImpl$Fragment$ClaimCases$claim_case_details$plan_insured_benefit$insured_benefit$insured_benefit_type<
-        TRes>
+  TRes
+>
     implements
         CopyWith$Fragment$ClaimCases$claim_case_details$plan_insured_benefit$insured_benefit$insured_benefit_type<
-            TRes> {
+          TRes
+        > {
   _CopyWithStubImpl$Fragment$ClaimCases$claim_case_details$plan_insured_benefit$insured_benefit$insured_benefit_type(
-      this._res);
+    this._res,
+  );
 
   TRes _res;
 
-  call({
-    String? comment,
-    String? value,
-    String? $__typename,
-  }) =>
-      _res;
+  call({String? comment, String? value, String? $__typename}) => _res;
 }
 
 class Fragment$ClaimCases$assessment_summary {
@@ -7460,7 +7520,8 @@ class Fragment$ClaimCases$assessment_summary {
   });
 
   factory Fragment$ClaimCases$assessment_summary.fromJson(
-      Map<String, dynamic> json) {
+    Map<String, dynamic> json,
+  ) {
     final l$id = json['id'];
     final l$content = json['content'];
     final l$$__typename = json['__typename'];
@@ -7493,11 +7554,7 @@ class Fragment$ClaimCases$assessment_summary {
     final l$id = id;
     final l$content = content;
     final l$$__typename = $__typename;
-    return Object.hashAll([
-      l$id,
-      l$content,
-      l$$__typename,
-    ]);
+    return Object.hashAll([l$id, l$content, l$$__typename]);
   }
 
   @override
@@ -7531,11 +7588,11 @@ class Fragment$ClaimCases$assessment_summary {
 extension UtilityExtension$Fragment$ClaimCases$assessment_summary
     on Fragment$ClaimCases$assessment_summary {
   CopyWith$Fragment$ClaimCases$assessment_summary<
-          Fragment$ClaimCases$assessment_summary>
-      get copyWith => CopyWith$Fragment$ClaimCases$assessment_summary(
-            this,
-            (i) => i,
-          );
+    Fragment$ClaimCases$assessment_summary
+  > get copyWith => CopyWith$Fragment$ClaimCases$assessment_summary(
+    this,
+    (i) => i,
+  );
 }
 
 abstract class CopyWith$Fragment$ClaimCases$assessment_summary<TRes> {
@@ -7547,11 +7604,7 @@ abstract class CopyWith$Fragment$ClaimCases$assessment_summary<TRes> {
   factory CopyWith$Fragment$ClaimCases$assessment_summary.stub(TRes res) =
       _CopyWithStubImpl$Fragment$ClaimCases$assessment_summary;
 
-  TRes call({
-    String? id,
-    String? content,
-    String? $__typename,
-  });
+  TRes call({String? id, String? content, String? $__typename});
 }
 
 class _CopyWithImpl$Fragment$ClaimCases$assessment_summary<TRes>
@@ -7571,16 +7624,15 @@ class _CopyWithImpl$Fragment$ClaimCases$assessment_summary<TRes>
     Object? id = _undefined,
     Object? content = _undefined,
     Object? $__typename = _undefined,
-  }) =>
-      _then(Fragment$ClaimCases$assessment_summary(
-        id: id == _undefined || id == null ? _instance.id : (id as String),
-        content: content == _undefined || content == null
-            ? _instance.content
-            : (content as String),
-        $__typename: $__typename == _undefined || $__typename == null
-            ? _instance.$__typename
-            : ($__typename as String),
-      ));
+  }) => _then(Fragment$ClaimCases$assessment_summary(
+    id: id == _undefined || id == null ? _instance.id : (id as String),
+    content: content == _undefined || content == null
+        ? _instance.content
+        : (content as String),
+    $__typename: $__typename == _undefined || $__typename == null
+        ? _instance.$__typename
+        : ($__typename as String),
+  ));
 }
 
 class _CopyWithStubImpl$Fragment$ClaimCases$assessment_summary<TRes>
@@ -7589,12 +7641,7 @@ class _CopyWithStubImpl$Fragment$ClaimCases$assessment_summary<TRes>
 
   TRes _res;
 
-  call({
-    String? id,
-    String? content,
-    String? $__typename,
-  }) =>
-      _res;
+  call({String? id, String? content, String? $__typename}) => _res;
 }
 
 class Fragment$ClaimCases$created_by_user {
@@ -7605,7 +7652,8 @@ class Fragment$ClaimCases$created_by_user {
   });
 
   factory Fragment$ClaimCases$created_by_user.fromJson(
-      Map<String, dynamic> json) {
+    Map<String, dynamic> json,
+  ) {
     final l$id = json['id'];
     final l$name = json['name'];
     final l$$__typename = json['__typename'];
@@ -7638,11 +7686,7 @@ class Fragment$ClaimCases$created_by_user {
     final l$id = id;
     final l$name = name;
     final l$$__typename = $__typename;
-    return Object.hashAll([
-      l$id,
-      l$name,
-      l$$__typename,
-    ]);
+    return Object.hashAll([l$id, l$name, l$$__typename]);
   }
 
   @override
@@ -7676,11 +7720,9 @@ class Fragment$ClaimCases$created_by_user {
 extension UtilityExtension$Fragment$ClaimCases$created_by_user
     on Fragment$ClaimCases$created_by_user {
   CopyWith$Fragment$ClaimCases$created_by_user<
-          Fragment$ClaimCases$created_by_user>
-      get copyWith => CopyWith$Fragment$ClaimCases$created_by_user(
-            this,
-            (i) => i,
-          );
+    Fragment$ClaimCases$created_by_user
+  >
+  get copyWith => CopyWith$Fragment$ClaimCases$created_by_user(this, (i) => i);
 }
 
 abstract class CopyWith$Fragment$ClaimCases$created_by_user<TRes> {
@@ -7692,19 +7734,12 @@ abstract class CopyWith$Fragment$ClaimCases$created_by_user<TRes> {
   factory CopyWith$Fragment$ClaimCases$created_by_user.stub(TRes res) =
       _CopyWithStubImpl$Fragment$ClaimCases$created_by_user;
 
-  TRes call({
-    String? id,
-    String? name,
-    String? $__typename,
-  });
+  TRes call({String? id, String? name, String? $__typename});
 }
 
 class _CopyWithImpl$Fragment$ClaimCases$created_by_user<TRes>
     implements CopyWith$Fragment$ClaimCases$created_by_user<TRes> {
-  _CopyWithImpl$Fragment$ClaimCases$created_by_user(
-    this._instance,
-    this._then,
-  );
+  _CopyWithImpl$Fragment$ClaimCases$created_by_user(this._instance, this._then);
 
   final Fragment$ClaimCases$created_by_user _instance;
 
@@ -7716,16 +7751,15 @@ class _CopyWithImpl$Fragment$ClaimCases$created_by_user<TRes>
     Object? id = _undefined,
     Object? name = _undefined,
     Object? $__typename = _undefined,
-  }) =>
-      _then(Fragment$ClaimCases$created_by_user(
-        id: id == _undefined || id == null ? _instance.id : (id as String),
-        name: name == _undefined || name == null
-            ? _instance.name
-            : (name as String),
-        $__typename: $__typename == _undefined || $__typename == null
-            ? _instance.$__typename
-            : ($__typename as String),
-      ));
+  }) => _then(Fragment$ClaimCases$created_by_user(
+    id: id == _undefined || id == null ? _instance.id : (id as String),
+    name: name == _undefined || name == null
+        ? _instance.name
+        : (name as String),
+    $__typename: $__typename == _undefined || $__typename == null
+        ? _instance.$__typename
+        : ($__typename as String),
+  ));
 }
 
 class _CopyWithStubImpl$Fragment$ClaimCases$created_by_user<TRes>
@@ -7734,12 +7768,7 @@ class _CopyWithStubImpl$Fragment$ClaimCases$created_by_user<TRes>
 
   TRes _res;
 
-  call({
-    String? id,
-    String? name,
-    String? $__typename,
-  }) =>
-      _res;
+  call({String? id, String? name, String? $__typename}) => _res;
 }
 
 class Query$getClaimCases {
@@ -7752,9 +7781,9 @@ class Query$getClaimCases {
     final l$claim_cases = json['claim_cases'];
     final l$$__typename = json['__typename'];
     return Query$getClaimCases(
-      claim_cases: (l$claim_cases as List<dynamic>)
-          .map((e) => Fragment$ClaimCases.fromJson((e as Map<String, dynamic>)))
-          .toList(),
+      claim_cases: (l$claim_cases as List<dynamic>).map(
+        (e) => Fragment$ClaimCases.fromJson((e as Map<String, dynamic>)),
+      ).toList(),
       $__typename: (l$$__typename as String),
     );
   }
@@ -7812,11 +7841,8 @@ class Query$getClaimCases {
 }
 
 extension UtilityExtension$Query$getClaimCases on Query$getClaimCases {
-  CopyWith$Query$getClaimCases<Query$getClaimCases> get copyWith =>
-      CopyWith$Query$getClaimCases(
-        this,
-        (i) => i,
-      );
+  CopyWith$Query$getClaimCases<Query$getClaimCases>
+  get copyWith => CopyWith$Query$getClaimCases(this, (i) => i);
 }
 
 abstract class CopyWith$Query$getClaimCases<TRes> {
@@ -7828,22 +7854,18 @@ abstract class CopyWith$Query$getClaimCases<TRes> {
   factory CopyWith$Query$getClaimCases.stub(TRes res) =
       _CopyWithStubImpl$Query$getClaimCases;
 
-  TRes call({
-    List<Fragment$ClaimCases>? claim_cases,
-    String? $__typename,
-  });
+  TRes call({List<Fragment$ClaimCases>? claim_cases, String? $__typename});
   TRes claim_cases(
-      Iterable<Fragment$ClaimCases> Function(
-              Iterable<CopyWith$Fragment$ClaimCases<Fragment$ClaimCases>>)
-          _fn);
+    Iterable<Fragment$ClaimCases> Function(
+      Iterable<CopyWith$Fragment$ClaimCases<Fragment$ClaimCases>>,
+    )
+    _fn,
+  );
 }
 
 class _CopyWithImpl$Query$getClaimCases<TRes>
     implements CopyWith$Query$getClaimCases<TRes> {
-  _CopyWithImpl$Query$getClaimCases(
-    this._instance,
-    this._then,
-  );
+  _CopyWithImpl$Query$getClaimCases(this._instance, this._then);
 
   final Query$getClaimCases _instance;
 
@@ -7854,25 +7876,24 @@ class _CopyWithImpl$Query$getClaimCases<TRes>
   TRes call({
     Object? claim_cases = _undefined,
     Object? $__typename = _undefined,
-  }) =>
-      _then(Query$getClaimCases(
-        claim_cases: claim_cases == _undefined || claim_cases == null
-            ? _instance.claim_cases
-            : (claim_cases as List<Fragment$ClaimCases>),
-        $__typename: $__typename == _undefined || $__typename == null
-            ? _instance.$__typename
-            : ($__typename as String),
-      ));
+  }) => _then(Query$getClaimCases(
+    claim_cases: claim_cases == _undefined || claim_cases == null
+        ? _instance.claim_cases
+        : (claim_cases as List<Fragment$ClaimCases>),
+    $__typename: $__typename == _undefined || $__typename == null
+        ? _instance.$__typename
+        : ($__typename as String),
+  ));
   TRes claim_cases(
-          Iterable<Fragment$ClaimCases> Function(
-                  Iterable<CopyWith$Fragment$ClaimCases<Fragment$ClaimCases>>)
-              _fn) =>
-      call(
-          claim_cases:
-              _fn(_instance.claim_cases.map((e) => CopyWith$Fragment$ClaimCases(
-                    e,
-                    (i) => i,
-                  ))).toList());
+    Iterable<Fragment$ClaimCases> Function(
+      Iterable<CopyWith$Fragment$ClaimCases<Fragment$ClaimCases>>,
+    )
+    _fn,
+  ) => call(
+    claim_cases: _fn(_instance.claim_cases.map(
+      (e) => CopyWith$Fragment$ClaimCases(e, (i) => i),
+    )).toList(),
+  );
 }
 
 class _CopyWithStubImpl$Query$getClaimCases<TRes>
@@ -7881,54 +7902,71 @@ class _CopyWithStubImpl$Query$getClaimCases<TRes>
 
   TRes _res;
 
-  call({
-    List<Fragment$ClaimCases>? claim_cases,
-    String? $__typename,
-  }) =>
-      _res;
+  call({List<Fragment$ClaimCases>? claim_cases, String? $__typename}) => _res;
   claim_cases(_fn) => _res;
 }
 
-const documentNodeQuerygetClaimCases = DocumentNode(definitions: [
-  OperationDefinitionNode(
-    type: OperationType.query,
-    name: NameNode(value: 'getClaimCases'),
-    variableDefinitions: [],
-    directives: [],
-    selectionSet: SelectionSetNode(selections: [
-      FieldNode(
-        name: NameNode(value: 'claim_cases'),
-        alias: null,
-        arguments: [
-          ArgumentNode(
-            name: NameNode(value: 'order_by'),
-            value: ObjectValueNode(fields: [
-              ObjectFieldNode(
-                name: NameNode(value: 'created_at'),
-                value: EnumValueNode(name: NameNode(value: 'desc')),
-              )
-            ]),
-          ),
-          ArgumentNode(
-            name: NameNode(value: 'where'),
-            value: ObjectValueNode(fields: [
-              ObjectFieldNode(
-                name: NameNode(value: 'status'),
-                value: ObjectValueNode(fields: [
-                  ObjectFieldNode(
-                    name: NameNode(value: '_neq'),
-                    value: EnumValueNode(name: NameNode(value: 'Cancelled')),
-                  )
-                ]),
-              )
-            ]),
-          ),
-        ],
-        directives: [],
-        selectionSet: SelectionSetNode(selections: [
-          FragmentSpreadNode(
-            name: NameNode(value: 'ClaimCases'),
+const documentNodeQuerygetClaimCases = DocumentNode(
+  definitions: [
+    OperationDefinitionNode(
+      type: OperationType.query,
+      name: NameNode(value: 'getClaimCases'),
+      variableDefinitions: [],
+      directives: [],
+      selectionSet: SelectionSetNode(
+        selections: [
+          FieldNode(
+            name: NameNode(value: 'claim_cases'),
+            alias: null,
+            arguments: [
+              ArgumentNode(
+                name: NameNode(value: 'order_by'),
+                value: ObjectValueNode(
+                  fields: [
+                    ObjectFieldNode(
+                      name: NameNode(value: 'created_at'),
+                      value: EnumValueNode(name: NameNode(value: 'desc')),
+                    ),
+                  ],
+                ),
+              ),
+              ArgumentNode(
+                name: NameNode(value: 'where'),
+                value: ObjectValueNode(
+                  fields: [
+                    ObjectFieldNode(
+                      name: NameNode(value: 'status'),
+                      value: ObjectValueNode(
+                        fields: [
+                          ObjectFieldNode(
+                            name: NameNode(value: '_neq'),
+                            value: EnumValueNode(
+                              name: NameNode(value: 'Cancelled'),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
             directives: [],
+            selectionSet: SelectionSetNode(
+              selections: [
+                FragmentSpreadNode(
+                  name: NameNode(value: 'ClaimCases'),
+                  directives: [],
+                ),
+                FieldNode(
+                  name: NameNode(value: '__typename'),
+                  alias: null,
+                  arguments: [],
+                  directives: [],
+                  selectionSet: null,
+                ),
+              ],
+            ),
           ),
           FieldNode(
             name: NameNode(value: '__typename'),
@@ -7937,23 +7975,17 @@ const documentNodeQuerygetClaimCases = DocumentNode(definitions: [
             directives: [],
             selectionSet: null,
           ),
-        ]),
+        ],
       ),
-      FieldNode(
-        name: NameNode(value: '__typename'),
-        alias: null,
-        arguments: [],
-        directives: [],
-        selectionSet: null,
-      ),
-    ]),
-  ),
-  fragmentDefinitionClaimCases,
-  fragmentDefinitionClaimPendingCodes,
-  fragmentDefinitionClaimDocuments,
-]);
-Query$getClaimCases _parserFn$Query$getClaimCases(Map<String, dynamic> data) =>
-    Query$getClaimCases.fromJson(data);
+    ),
+    fragmentDefinitionClaimCases,
+    fragmentDefinitionClaimPendingCodes,
+    fragmentDefinitionClaimDocuments,
+  ],
+);
+Query$getClaimCases _parserFn$Query$getClaimCases(
+  Map<String, dynamic> data,
+) => Query$getClaimCases.fromJson(data);
 typedef OnQueryComplete$Query$getClaimCases = FutureOr<void> Function(
   Map<String, dynamic>?,
   Query$getClaimCases?,
@@ -7972,35 +8004,35 @@ class Options$Query$getClaimCases
     graphql.Context? context,
     OnQueryComplete$Query$getClaimCases? onComplete,
     graphql.OnQueryError? onError,
-  })  : onCompleteWithParsed = onComplete,
-        super(
-          operationName: operationName,
-          fetchPolicy: fetchPolicy,
-          errorPolicy: errorPolicy,
-          cacheRereadPolicy: cacheRereadPolicy,
-          optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
-          pollInterval: pollInterval,
-          context: context,
-          onComplete: onComplete == null
-              ? null
-              : (data) => onComplete(
-                    data,
-                    data == null ? null : _parserFn$Query$getClaimCases(data),
-                  ),
-          onError: onError,
-          document: documentNodeQuerygetClaimCases,
-          parserFn: _parserFn$Query$getClaimCases,
-        );
+  }) : onCompleteWithParsed = onComplete,
+       super(
+         operationName: operationName,
+         fetchPolicy: fetchPolicy,
+         errorPolicy: errorPolicy,
+         cacheRereadPolicy: cacheRereadPolicy,
+         optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
+         pollInterval: pollInterval,
+         context: context,
+         onComplete: onComplete == null
+             ? null
+             : (data) => onComplete(
+                 data,
+                 data == null ? null : _parserFn$Query$getClaimCases(data),
+               ),
+         onError: onError,
+         document: documentNodeQuerygetClaimCases,
+         parserFn: _parserFn$Query$getClaimCases,
+       );
 
   final OnQueryComplete$Query$getClaimCases? onCompleteWithParsed;
 
   @override
   List<Object?> get properties => [
-        ...super.onComplete == null
-            ? super.properties
-            : super.properties.where((property) => property != onComplete),
-        onCompleteWithParsed,
-      ];
+    ...super.onComplete == null
+        ? super.properties
+        : super.properties.where((property) => property != onComplete),
+    onCompleteWithParsed,
+  ];
 }
 
 class WatchOptions$Query$getClaimCases
@@ -8018,66 +8050,59 @@ class WatchOptions$Query$getClaimCases
     bool carryForwardDataOnException = true,
     bool fetchResults = false,
   }) : super(
-          operationName: operationName,
-          fetchPolicy: fetchPolicy,
-          errorPolicy: errorPolicy,
-          cacheRereadPolicy: cacheRereadPolicy,
-          optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
-          context: context,
-          document: documentNodeQuerygetClaimCases,
-          pollInterval: pollInterval,
-          eagerlyFetchResults: eagerlyFetchResults,
-          carryForwardDataOnException: carryForwardDataOnException,
-          fetchResults: fetchResults,
-          parserFn: _parserFn$Query$getClaimCases,
-        );
+         operationName: operationName,
+         fetchPolicy: fetchPolicy,
+         errorPolicy: errorPolicy,
+         cacheRereadPolicy: cacheRereadPolicy,
+         optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
+         context: context,
+         document: documentNodeQuerygetClaimCases,
+         pollInterval: pollInterval,
+         eagerlyFetchResults: eagerlyFetchResults,
+         carryForwardDataOnException: carryForwardDataOnException,
+         fetchResults: fetchResults,
+         parserFn: _parserFn$Query$getClaimCases,
+       );
 }
 
 class FetchMoreOptions$Query$getClaimCases extends graphql.FetchMoreOptions {
-  FetchMoreOptions$Query$getClaimCases(
-      {required graphql.UpdateQuery updateQuery})
-      : super(
-          updateQuery: updateQuery,
-          document: documentNodeQuerygetClaimCases,
-        );
+  FetchMoreOptions$Query$getClaimCases({
+    required graphql.UpdateQuery updateQuery,
+  }) : super(
+         updateQuery: updateQuery,
+         document: documentNodeQuerygetClaimCases,
+       );
 }
 
 extension ClientExtension$Query$getClaimCases on graphql.GraphQLClient {
-  Future<graphql.QueryResult<Query$getClaimCases>> query$getClaimCases(
-          [Options$Query$getClaimCases? options]) async =>
-      await this.query(options ?? Options$Query$getClaimCases());
-  graphql.ObservableQuery<Query$getClaimCases> watchQuery$getClaimCases(
-          [WatchOptions$Query$getClaimCases? options]) =>
-      this.watchQuery(options ?? WatchOptions$Query$getClaimCases());
+  Future<graphql.QueryResult<Query$getClaimCases>> query$getClaimCases([
+    Options$Query$getClaimCases? options,
+  ]) async => await this.query(options ?? Options$Query$getClaimCases());
+  graphql.ObservableQuery<Query$getClaimCases> watchQuery$getClaimCases([
+    WatchOptions$Query$getClaimCases? options,
+  ]) => this.watchQuery(options ?? WatchOptions$Query$getClaimCases());
   void writeQuery$getClaimCases({
     required Query$getClaimCases data,
     bool broadcast = true,
-  }) =>
-      this.writeQuery(
-        graphql.Request(
-            operation:
-                graphql.Operation(document: documentNodeQuerygetClaimCases)),
-        data: data.toJson(),
-        broadcast: broadcast,
-      );
+  }) => this.writeQuery(graphql.Request(
+    operation: graphql.Operation(document: documentNodeQuerygetClaimCases),
+  ), data: data.toJson(), broadcast: broadcast);
   Query$getClaimCases? readQuery$getClaimCases({bool optimistic = true}) {
-    final result = this.readQuery(
-      graphql.Request(
-          operation:
-              graphql.Operation(document: documentNodeQuerygetClaimCases)),
-      optimistic: optimistic,
-    );
+    final result = this.readQuery(graphql.Request(
+      operation: graphql.Operation(document: documentNodeQuerygetClaimCases),
+    ), optimistic: optimistic);
     return result == null ? null : Query$getClaimCases.fromJson(result);
   }
 }
 
-graphql_flutter.QueryHookResult<Query$getClaimCases> useQuery$getClaimCases(
-        [Options$Query$getClaimCases? options]) =>
-    graphql_flutter.useQuery(options ?? Options$Query$getClaimCases());
-graphql.ObservableQuery<Query$getClaimCases> useWatchQuery$getClaimCases(
-        [WatchOptions$Query$getClaimCases? options]) =>
-    graphql_flutter
-        .useWatchQuery(options ?? WatchOptions$Query$getClaimCases());
+graphql_flutter.QueryHookResult<Query$getClaimCases> useQuery$getClaimCases([
+  Options$Query$getClaimCases? options,
+]) => graphql_flutter.useQuery(options ?? Options$Query$getClaimCases());
+graphql.ObservableQuery<Query$getClaimCases> useWatchQuery$getClaimCases([
+  WatchOptions$Query$getClaimCases? options,
+]) => graphql_flutter.useWatchQuery(
+  options ?? WatchOptions$Query$getClaimCases(),
+);
 
 class Query$getClaimCases$Widget
     extends graphql_flutter.Query<Query$getClaimCases> {
@@ -8086,8 +8111,8 @@ class Query$getClaimCases$Widget
     Options$Query$getClaimCases? options,
     required graphql_flutter.QueryBuilder<Query$getClaimCases> builder,
   }) : super(
-          key: key,
-          options: options ?? Options$Query$getClaimCases(),
-          builder: builder,
-        );
+         key: key,
+         options: options ?? Options$Query$getClaimCases(),
+         builder: builder,
+       );
 }

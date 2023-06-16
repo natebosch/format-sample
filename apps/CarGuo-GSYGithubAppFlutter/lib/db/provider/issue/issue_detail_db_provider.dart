@@ -31,7 +31,7 @@ class IssueDetailDbProvider extends BaseDbProvider {
     Map<String, dynamic> map = {
       columnFullName: fullName,
       columnData: data,
-      columnNumber: number
+      columnNumber: number,
     };
     if (id != null) {
       map[columnId] = id;
@@ -62,13 +62,16 @@ class IssueDetailDbProvider extends BaseDbProvider {
   }
 
   Future _getProvider(Database db, String? fullName, String number) async {
-    List<Map<String, dynamic>> maps = await db.query(name,
-        columns: [columnId, columnFullName, columnNumber, columnData],
-        where: "$columnFullName = ? and $columnNumber = ?",
-        whereArgs: [fullName, number]);
+    List<Map<String, dynamic>> maps = await db.query(
+      name,
+      columns: [columnId, columnFullName, columnNumber, columnData],
+      where: "$columnFullName = ? and $columnNumber = ?",
+      whereArgs: [fullName, number],
+    );
     if (maps.length > 0) {
-      RepositoryDetailDbProvider provider =
-          RepositoryDetailDbProvider.fromMap(maps.first);
+      RepositoryDetailDbProvider provider = RepositoryDetailDbProvider.fromMap(
+        maps.first,
+      );
       return provider;
     }
     return null;
@@ -79,9 +82,11 @@ class IssueDetailDbProvider extends BaseDbProvider {
     Database db = await getDataBase();
     var provider = await _getProvider(db, fullName, number);
     if (provider != null) {
-      await db.delete(name,
-          where: "$columnFullName = ? and $columnNumber = ?",
-          whereArgs: [fullName, number]);
+      await db.delete(
+        name,
+        where: "$columnFullName = ? and $columnNumber = ?",
+        whereArgs: [fullName, number],
+      );
     }
     return await db.insert(name, toMap(fullName, number, dataMapString));
   }

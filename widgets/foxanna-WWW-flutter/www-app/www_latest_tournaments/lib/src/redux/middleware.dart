@@ -9,9 +9,8 @@ import 'package:www_redux_actions/www_redux_actions.dart';
 @injectable
 class LatestTournamentsMiddleware
     implements IMiddleware<ILatestTournamentsStateHolder> {
-  LatestTournamentsMiddleware({
-    required ILatestTournamentsProvider provider,
-  }) : _provider = provider;
+  LatestTournamentsMiddleware({required ILatestTournamentsProvider provider})
+    : _provider = provider;
 
   final ILatestTournamentsProvider _provider;
 
@@ -21,18 +20,26 @@ class LatestTournamentsMiddleware
   late final _middleware = _createMiddleware();
 
   List<Middleware<ILatestTournamentsStateHolder>> _createMiddleware() => [
-        TypedMiddleware<ILatestTournamentsStateHolder, OpenLatestSystemAction>(
-            _onOpen),
-        TypedMiddleware<ILatestTournamentsStateHolder, RefreshLatestUserAction>(
-            _onRefresh),
-        TypedMiddleware<ILatestTournamentsStateHolder, LoadLatestUserAction>(
-            _onLoad),
-        TypedMiddleware<ILatestTournamentsStateHolder,
-            ScrolledCloseToTheEndLatestUserAction>(_onScrolled),
-      ];
+    TypedMiddleware<ILatestTournamentsStateHolder, OpenLatestSystemAction>(
+      _onOpen,
+    ),
+    TypedMiddleware<ILatestTournamentsStateHolder, RefreshLatestUserAction>(
+      _onRefresh,
+    ),
+    TypedMiddleware<ILatestTournamentsStateHolder, LoadLatestUserAction>(
+      _onLoad,
+    ),
+    TypedMiddleware<
+      ILatestTournamentsStateHolder,
+      ScrolledCloseToTheEndLatestUserAction
+    >(_onScrolled),
+  ];
 
-  void _onOpen(Store<ILatestTournamentsStateHolder> store,
-      OpenLatestSystemAction action, NextDispatcher next) {
+  void _onOpen(
+    Store<ILatestTournamentsStateHolder> store,
+    OpenLatestSystemAction action,
+    NextDispatcher next,
+  ) {
     next(action);
 
     store.dispatch(const SystemActionNavigation.latest());
@@ -40,16 +47,22 @@ class LatestTournamentsMiddleware
     store.dispatch(const UserActionLatest.load());
   }
 
-  Future<void> _onRefresh(Store<ILatestTournamentsStateHolder> store,
-      RefreshLatestUserAction action, NextDispatcher next) async {
+  Future<void> _onRefresh(
+    Store<ILatestTournamentsStateHolder> store,
+    RefreshLatestUserAction action,
+    NextDispatcher next,
+  ) async {
     next(action);
 
-    await store.state.latestTournamentsState
-        .traverseFuture((state) => _refresh(store, state));
+    await store.state.latestTournamentsState.traverseFuture(
+      (state) => _refresh(store, state),
+    );
   }
 
-  Future<void> _refresh(Store<ILatestTournamentsStateHolder> store,
-      LatestTournamentsState state) async {
+  Future<void> _refresh(
+    Store<ILatestTournamentsStateHolder> store,
+    LatestTournamentsState state,
+  ) async {
     if (state is RefreshingLatestTournamentsState) {
       return;
     }
@@ -60,28 +73,34 @@ class LatestTournamentsMiddleware
 
       final data = await _provider.get(page: page);
 
-      store.dispatch(SystemActionLatest.completed(
-        data: data,
-        nexPage: page + 1,
-      ));
+      store.dispatch(
+        SystemActionLatest.completed(data: data, nexPage: page + 1),
+      );
     } on Exception catch (e) {
       store.dispatch(SystemActionLatest.failed(exception: e));
     } on Error catch (e) {
       store.dispatch(
-          SystemActionLatest.failed(exception: Exception(e.toString())));
+        SystemActionLatest.failed(exception: Exception(e.toString())),
+      );
     }
   }
 
-  Future<void> _onLoad(Store<ILatestTournamentsStateHolder> store,
-      LoadLatestUserAction action, NextDispatcher next) async {
+  Future<void> _onLoad(
+    Store<ILatestTournamentsStateHolder> store,
+    LoadLatestUserAction action,
+    NextDispatcher next,
+  ) async {
     next(action);
 
-    await store.state.latestTournamentsState
-        .traverseFuture((state) => _load(store, state));
+    await store.state.latestTournamentsState.traverseFuture(
+      (state) => _load(store, state),
+    );
   }
 
-  Future<void> _load(Store<ILatestTournamentsStateHolder> store,
-      LatestTournamentsState state) async {
+  Future<void> _load(
+    Store<ILatestTournamentsStateHolder> store,
+    LatestTournamentsState state,
+  ) async {
     if (state is LoadingFirstPageLatestTournamentsState ||
         state is LoadingWithDataLatestTournamentsState ||
         state is RefreshingLatestTournamentsState) {
@@ -94,20 +113,23 @@ class LatestTournamentsMiddleware
 
       final data = await _provider.get(page: page);
 
-      store.dispatch(SystemActionLatest.completed(
-        data: data,
-        nexPage: page + 1,
-      ));
+      store.dispatch(
+        SystemActionLatest.completed(data: data, nexPage: page + 1),
+      );
     } on Exception catch (e) {
       store.dispatch(SystemActionLatest.failed(exception: e));
     } on Error catch (e) {
       store.dispatch(
-          SystemActionLatest.failed(exception: Exception(e.toString())));
+        SystemActionLatest.failed(exception: Exception(e.toString())),
+      );
     }
   }
 
-  Future<void> _onScrolled(Store<ILatestTournamentsStateHolder> store,
-      ScrolledCloseToTheEndLatestUserAction action, NextDispatcher next) async {
+  Future<void> _onScrolled(
+    Store<ILatestTournamentsStateHolder> store,
+    ScrolledCloseToTheEndLatestUserAction action,
+    NextDispatcher next,
+  ) async {
     next(action);
 
     store.state.latestTournamentsState.forEach((state) {

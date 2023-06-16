@@ -6,9 +6,7 @@ class ThemeState {
   ThemeState(this.themeMode);
 
   ThemeState.fromJson(Map<String, dynamic> json)
-      : themeMode = readStringSafe(json, 'themeMode');
+    : themeMode = readStringSafe(json, 'themeMode');
 
-  Map<String, dynamic> toJson() => {
-        'themeMode': themeMode,
-      };
+  Map<String, dynamic> toJson() => {'themeMode': themeMode};
 }

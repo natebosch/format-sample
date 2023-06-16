@@ -28,7 +28,8 @@ class GetReceiptUseCase
 
   @override
   Future<Stream<GetReceiptUseCaseResponse?>> buildUseCaseStream(
-      GetReceiptUseCaseParams? params) async {
+    GetReceiptUseCaseParams? params,
+  ) async {
     final controller = StreamController<GetReceiptUseCaseResponse>();
     try {
       final receipts = receiptRepository.getReceipts();

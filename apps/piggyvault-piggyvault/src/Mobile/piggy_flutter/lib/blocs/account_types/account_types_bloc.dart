@@ -6,16 +6,15 @@ import 'package:piggy_flutter/repositories/account_repository.dart';
 import './bloc.dart';
 
 class AccountTypesBloc extends Bloc<AccountTypesEvent, AccountTypesState> {
-  AccountTypesBloc({@required this.accountRepository})
-      : assert(accountRepository != null),
-        super(AccountTypesLoading());
+  AccountTypesBloc({
+    @required this.accountRepository,
+  }) : assert(accountRepository != null),
+       super(AccountTypesLoading());
 
   final AccountRepository accountRepository;
 
   @override
-  Stream<AccountTypesState> mapEventToState(
-    AccountTypesEvent event,
-  ) async* {
+  Stream<AccountTypesState> mapEventToState(AccountTypesEvent event) async* {
     if (event is AccountTypesLoad) {
       yield AccountTypesLoading();
       try {

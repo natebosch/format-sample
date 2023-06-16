@@ -12,10 +12,7 @@ class ProfileScreen extends StatefulWidget {
   final UserBloc userBloc;
   final String feed;
 
-  ProfileScreen({
-    this.userBloc,
-    this.feed,
-  });
+  ProfileScreen({this.userBloc, this.feed});
 
   @override
   _ProfileScreenState createState() => _ProfileScreenState();
@@ -43,25 +40,21 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
         if (state is ProfileError) {
           child = Layout(
-            child: ErrorContainer(
-              error: locale.profileFailedToLoad,
-            ),
+            child: ErrorContainer(error: locale.profileFailedToLoad),
           );
         } else if (state is ProfileLoaded) {
-          actions.addAll(
-            <Widget>[
-              if (user != null && user.username != state.profile.username)
-                IconButton(
-                  icon: state.profile.following
-                      ? Icon(Icons.star)
-                      : Icon(Icons.star_border),
-                  onPressed: () => _profileBloc
-                    ..add(
-                      ToggleFollowUserEvent(username: state.profile.username),
-                    ),
-                ),
-            ],
-          );
+          actions.addAll(<Widget>[
+            if (user != null && user.username != state.profile.username)
+              IconButton(
+                icon: state.profile.following
+                    ? Icon(Icons.star)
+                    : Icon(Icons.star_border),
+                onPressed: () => _profileBloc
+                  ..add(
+                    ToggleFollowUserEvent(username: state.profile.username),
+                  ),
+              ),
+          ]);
 
           child = ProfilePage(
             user: user,
@@ -69,9 +62,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             initialFeed: widget.feed,
           );
         } else {
-          child = const Center(
-            child: CircularProgressIndicator(),
-          );
+          child = const Center(child: CircularProgressIndicator());
         }
 
         return Layout(

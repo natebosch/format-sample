@@ -5,21 +5,26 @@ import 'Bloc_Provider.dart';
 
 class AlarmBloc implements BlocBase {
   final _alarmController = StreamController<List<AlarmInfo>>.broadcast();
-  StreamSink<List<AlarmInfo>> get _inAlarms => _alarmController.sink; // Input stream. We add our notes to the stream using this variable.
+  StreamSink<List<AlarmInfo>> get _inAlarms => _alarmController
+      .sink; // Input stream. We add our notes to the stream using this variable.
   Stream<List<AlarmInfo>> get outAlarms => _alarmController.stream;
 
-  final _addAlarmController = StreamController<AlarmInfo>.broadcast();///ADD STREAM
+  final _addAlarmController = StreamController<AlarmInfo>.broadcast();
+
+  ///ADD STREAM
   StreamSink<AlarmInfo> get inAddAlarm => _addAlarmController.sink;
 
+  final _updateAlarmController = StreamController<AlarmInfo>.broadcast();
 
-  final _updateAlarmController = StreamController<AlarmInfo>.broadcast();///UPDATE STREAM
+  ///UPDATE STREAM
   StreamSink<AlarmInfo> get inUpdateAlarm => _updateAlarmController.sink;
 
+  final _deleteAlarmController = StreamController<int>.broadcast();
 
-  final _deleteAlarmController = StreamController<int>.broadcast();///DELETE STREAM
+  ///DELETE STREAM
   StreamSink<int> get inDeleteAlarm => _deleteAlarmController.sink;
 
-  AlarmBloc(){
+  AlarmBloc() {
     getAlarm();
 
     _addAlarmController.stream.listen(addAlarms);
@@ -53,5 +58,5 @@ class AlarmBloc implements BlocBase {
     _addAlarmController.close();
     _updateAlarmController.close();
     _deleteAlarmController.close();
-  }// Output stream. This one will be used within our pages to display the notes.
+  } // Output stream. This one will be used within our pages to display the notes.
 }

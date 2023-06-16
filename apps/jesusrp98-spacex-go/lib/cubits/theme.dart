@@ -24,9 +24,7 @@ class ThemeCubit extends HydratedCubit<ThemeState> {
 
   @override
   Map<String, int> toJson(ThemeState state) {
-    return {
-      'value': state.index,
-    };
+    return {'value': state.index};
   }
 
   ThemeState get theme => state;

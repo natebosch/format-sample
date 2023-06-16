@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 
 /// Elevarm UI's Content Divider component widget.
 class ElevarmDivider extends StatelessWidget {
-
   /// The divider's height extent
   final double? height;
 
@@ -19,7 +18,6 @@ class ElevarmDivider extends StatelessWidget {
   /// The color to use when painting the line
   final Color? color;
 
-
   /// The content widget displayed in the middle of the divider.
   final Widget? child;
 
@@ -30,29 +28,29 @@ class ElevarmDivider extends StatelessWidget {
     this.indent,
     this.endIndent,
     this.color = ElevarmColors.neutral100,
-    this.child ,
+    this.child,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    if(child != null){
+    if (child != null) {
       return Row(
         children: <Widget>[
-            Expanded(child: _buildDivider),
-            Container(
-              margin:const EdgeInsets.symmetric(horizontal: 8),
-              child: child!
-            ),
-            Expanded(child: _buildDivider),
+          Expanded(child: _buildDivider),
+          Container(
+            margin: const EdgeInsets.symmetric(horizontal: 8),
+            child: child!,
+          ),
+          Expanded(child: _buildDivider),
         ],
       );
-    }else{
+    } else {
       return _buildDivider;
     }
   }
 
   /// Builds a single [Divider].
-  Widget  get  _buildDivider {
+  Widget get _buildDivider {
     return Divider(
       key: key,
       height: height,

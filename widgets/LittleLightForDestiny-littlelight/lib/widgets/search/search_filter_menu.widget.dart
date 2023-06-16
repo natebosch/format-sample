@@ -30,27 +30,31 @@ class _SearchFilterMenuState extends State<SearchFilterMenu> {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-        child: Column(
-      children: [
-        AppBar(
-          title: TranslatedTextWidget("Filters"),
-          automaticallyImplyLeading: false,
-          actions: <Widget>[Container()],
-          leading: IconButton(
-            enableFeedback: false,
-            icon: Icon(Icons.close),
-            onPressed: () {
-              Navigator.of(context).pop();
-            },
+      child: Column(
+        children: [
+          AppBar(
+            title: TranslatedTextWidget("Filters"),
+            automaticallyImplyLeading: false,
+            actions: <Widget>[Container()],
+            leading: IconButton(
+              enableFeedback: false,
+              icon: Icon(Icons.close),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
           ),
-        ),
-        Expanded(
+          Expanded(
             child: ListView(
-                padding: EdgeInsets.only(
-                    bottom: MediaQuery.of(context).padding.bottom),
-                children: buildFilters(context)))
-      ],
-    ));
+              padding: EdgeInsets.only(
+                bottom: MediaQuery.of(context).padding.bottom,
+              ),
+              children: buildFilters(context),
+            ),
+          ),
+        ],
+      ),
+    );
   }
 
   List<Widget> buildFilters(BuildContext context) {

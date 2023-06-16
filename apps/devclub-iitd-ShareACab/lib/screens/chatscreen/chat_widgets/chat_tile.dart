@@ -21,19 +21,24 @@ class _ChatTileState extends State<ChatTile> {
     return Container(
       padding: EdgeInsets.symmetric(vertical: 15),
       decoration: BoxDecoration(
-          border: Border(
-        bottom: BorderSide(width: 0.15, color: Theme.of(context).accentColor),
-      )),
+        border: Border(
+          bottom: BorderSide(width: 0.15, color: Theme.of(context).accentColor),
+        ),
+      ),
       child: ListTile(
         onTap: () {
-          Navigator.push(context, MaterialPageRoute(builder: (context) => ChatScreen(widget.docId)));
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => ChatScreen(widget.docId)),
+          );
         },
         leading: CircleAvatar(
           backgroundColor: Theme.of(context).accentColor,
           radius: 30,
           child: Padding(
             padding: EdgeInsets.all(6),
-            child: widget.destination == 'New Delhi Railway Station' || widget.destination == 'Hazrat Nizamuddin Railway Station'
+            child: widget.destination == 'New Delhi Railway Station' ||
+                    widget.destination == 'Hazrat Nizamuddin Railway Station'
                 ? Icon(
                     Icons.train,
                     color: getVisibleColorOnAccentColor(context),
@@ -53,7 +58,8 @@ class _ChatTileState extends State<ChatTile> {
           widget.destination,
           style: Theme.of(context).textTheme.bodyText1,
         ),
-        trailing: Text(DateFormat.yMMMd().format(widget.lastMessageAt.toDate())),
+        trailing:
+            Text(DateFormat.yMMMd().format(widget.lastMessageAt.toDate())),
       ),
     );
   }

@@ -30,7 +30,8 @@ class MyRoundSliderThumpShape extends SliderComponentShape {
   @override
   Size getPreferredSize(bool isEnabled, bool isDiscrete) {
     return Size.fromRadius(
-        isEnabled == true ? enabledThumbRadius : _disabledThumbRadius);
+      isEnabled == true ? enabledThumbRadius : _disabledThumbRadius,
+    );
   }
 
   @override
@@ -69,7 +70,11 @@ class MyRoundSliderThumpShape extends SliderComponentShape {
 
     canvas.drawRect(
       Rect.fromLTRB(
-          center.dx - 10, center.dy + 10, center.dx + 10, center.dy - 10),
+        center.dx - 10,
+        center.dy + 10,
+        center.dx + 10,
+        center.dy - 10,
+      ),
       Paint()
         ..color = Colors.white
         ..style = PaintingStyle.fill

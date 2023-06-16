@@ -11,7 +11,7 @@ import 'RepoCommit.dart';
 part 'CommitsComparison.g.dart';
 
 @JsonSerializable()
-class CommitsComparison{
+class CommitsComparison {
   String? url;
   @JsonKey(name: "html_url")
   String? htmlUrl;
@@ -36,7 +36,9 @@ class CommitsComparison{
     this.files,
   );
 
-  factory CommitsComparison.fromJson(Map<String, dynamic> json) => _$CommitsComparisonFromJson(json);
+  factory CommitsComparison.fromJson(
+    Map<String, dynamic> json,
+  ) => _$CommitsComparisonFromJson(json);
 
   Map<String, dynamic> toJson() => _$CommitsComparisonToJson(this);
 }

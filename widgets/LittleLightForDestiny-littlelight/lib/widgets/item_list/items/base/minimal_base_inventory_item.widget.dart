@@ -15,14 +15,20 @@ import 'package:little_light/widgets/item_tags/item_tag.widget.dart';
 class MinimalBaseInventoryItemWidget extends BaseInventoryItemWidget
     with MinimalInfoLabelMixin {
   MinimalBaseInventoryItemWidget(
-      DestinyItemComponent item,
-      DestinyInventoryItemDefinition itemDefinition,
-      DestinyItemInstanceComponent instanceInfo,
-      {@required String characterId,
-      Key key,
-      @required String uniqueId})
-      : super(item, itemDefinition, instanceInfo,
-            uniqueId: uniqueId, characterId: characterId, key: key);
+    DestinyItemComponent item,
+    DestinyInventoryItemDefinition itemDefinition,
+    DestinyItemInstanceComponent instanceInfo, {
+    @required String characterId,
+    Key key,
+    @required String uniqueId,
+  }) : super(
+         item,
+         itemDefinition,
+         instanceInfo,
+         uniqueId: uniqueId,
+         characterId: characterId,
+         key: key,
+       );
 
   @override
   Widget build(BuildContext context) {
@@ -40,91 +46,84 @@ class MinimalBaseInventoryItemWidget extends BaseInventoryItemWidget
     final reusable = profile.getItemReusablePlugs(item?.itemInstanceId);
     final sockets = profile.getItemSockets(item?.itemInstanceId);
     final tags = WishlistsService().getWishlistBuildTags(
-        itemHash: item?.itemHash, reusablePlugs: reusable, sockets: sockets);
+      itemHash: item?.itemHash,
+      reusablePlugs: reusable,
+      sockets: sockets,
+    );
     if (tags == null) return Container();
     return Positioned.fill(
-        child: FractionallySizedBox(
-            alignment: Alignment.topRight,
-            widthFactor: .3,
-            child: Container(
-                margin: EdgeInsets.all(2),
-                foregroundDecoration:
-                    WishlistCornerBadgeDecoration(tags: tags))));
+      child: FractionallySizedBox(
+        alignment: Alignment.topRight,
+        widthFactor: .3,
+        child: Container(
+          margin: EdgeInsets.all(2),
+          foregroundDecoration: WishlistCornerBadgeDecoration(tags: tags),
+        ),
+      ),
+    );
   }
 
   @override
   Widget positionedIcon(BuildContext context) {
     return Positioned(
-        top: 0, left: 0, right: 0, bottom: 0, child: itemIcon(context));
+      top: 0,
+      left: 0,
+      right: 0,
+      bottom: 0,
+      child: itemIcon(context),
+    );
   }
 
   @override
   Widget primaryStatWidget(BuildContext context) {
-    if ([DestinyItemType.Subclass, DestinyItemType.Engram]
-        .contains(definition?.itemType)) {
+    if ([DestinyItemType.Subclass, DestinyItemType.Engram].contains(
+      definition?.itemType,
+    )) {
       return Container();
     }
     if ((definition?.inventory?.maxStackSize ?? 0) > 1) {
-      return infoContainer(
-          context,
-          Text(
-            "x${item.quantity}",
-            style: TextStyle(
-              fontSize: 12,
-              fontWeight: FontWeight.w700,
-            ),
-            textAlign: TextAlign.right,
-          ));
+      return infoContainer(context, Text(
+        "x${item.quantity}",
+        style: TextStyle(fontSize: 12, fontWeight: FontWeight.w700),
+        textAlign: TextAlign.right,
+      ));
     }
     if (instanceInfo?.primaryStat?.value != null) {
-      return infoContainer(
-          context,
-          Text(
-            "${instanceInfo?.primaryStat?.value}",
-            style: TextStyle(
-              fontSize: 12,
-              fontWeight: FontWeight.w700,
-            ),
-            textAlign: TextAlign.right,
-          ));
+      return infoContainer(context, Text(
+        "${instanceInfo?.primaryStat?.value}",
+        style: TextStyle(fontSize: 12, fontWeight: FontWeight.w700),
+        textAlign: TextAlign.right,
+      ));
     }
     return super.primaryStatWidget(context);
   }
 
   Widget buildItemTags(BuildContext context) {
     List<Widget> items = [];
-    var notes = ItemNotesService()
-        .getNotesForItem(item?.itemHash, item?.itemInstanceId);
+    var notes = ItemNotesService().getNotesForItem(
+      item?.itemHash,
+      item?.itemInstanceId,
+    );
     var tags = ItemNotesService().tagsByIds(notes?.tags);
     var locked = item?.state?.contains(ItemState.Locked) ?? false;
     if (tags != null) {
-      items.addAll(tags.map((t) => ItemTagWidget(
-            t,
-            fontSize: titleFontSize,
-            padding: 0,
-          )));
+      items.addAll(
+        tags.map((t) => ItemTagWidget(t, fontSize: titleFontSize, padding: 0)),
+      );
     }
     if (locked) {
       items.add(
-          Container(child: Icon(FontAwesomeIcons.lock, size: titleFontSize)));
+        Container(child: Icon(FontAwesomeIcons.lock, size: titleFontSize)),
+      );
     }
     if ((items?.length ?? 0) == 0) return Container();
-    items = items
-        .expand((i) => [
-              i,
-              Container(
-                width: padding / 4,
-              )
-            ])
-        .toList();
+    items = items.expand((i) => [i, Container(width: padding / 4)]).toList();
     items.removeLast();
     return Positioned(
-        right: padding,
-        bottom: titleFontSize + padding * 4,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: items,
-        ));
+      right: padding,
+      bottom: titleFontSize + padding * 4,
+      child: Row(mainAxisAlignment: MainAxisAlignment.end, children: items),
+    );
   }
 
   @override

@@ -1,5 +1,6 @@
 const appName = "SwitchDecor";
-const appDesc = "This project is written in Flutter, which is an open-source project that"
+const appDesc =
+    "This project is written in Flutter, which is an open-source project that"
     " allows you to build beautiful native apps on iOS and Android from a single codebase.";
 const creditTitle = "CREDIT";
 const developerTitle = "DEVELOPER";

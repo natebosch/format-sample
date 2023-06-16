@@ -29,10 +29,13 @@ class ImportDatabaseEvent extends SettingsEvent {
   final String path;
   final TimersBloc timers;
   final ProjectsBloc projects;
-  const ImportDatabaseEvent(this.path, this.timers, this.projects)
-      : assert(path != null),
-        assert(timers != null),
-        assert(projects != null);
+  const ImportDatabaseEvent(
+    this.path,
+    this.timers,
+    this.projects,
+  ) : assert(path != null),
+      assert(timers != null),
+      assert(projects != null);
   @override
   List<Object> get props => [path, timers, projects];
 }
@@ -55,43 +58,44 @@ class SetBoolValueEvent extends SettingsEvent {
   final bool showBadgeCounts;
   final bool showRunningTimersAsNotifications;
 
-  const SetBoolValueEvent(
-      {this.exportGroupTimers,
-      this.exportIncludeDate,
-      this.exportIncludeProject,
-      this.exportIncludeDescription,
-      this.exportIncludeProjectDescription,
-      this.exportIncludeStartTime,
-      this.exportIncludeEndTime,
-      this.exportIncludeDurationHours,
-      this.exportIncludeNotes,
-      this.groupTimers,
-      this.collapseDays,
-      this.autocompleteDescription,
-      this.defaultFilterStartDateToMonday,
-      this.oneTimerAtATime,
-      this.showBadgeCounts,
-      this.showRunningTimersAsNotifications});
+  const SetBoolValueEvent({
+    this.exportGroupTimers,
+    this.exportIncludeDate,
+    this.exportIncludeProject,
+    this.exportIncludeDescription,
+    this.exportIncludeProjectDescription,
+    this.exportIncludeStartTime,
+    this.exportIncludeEndTime,
+    this.exportIncludeDurationHours,
+    this.exportIncludeNotes,
+    this.groupTimers,
+    this.collapseDays,
+    this.autocompleteDescription,
+    this.defaultFilterStartDateToMonday,
+    this.oneTimerAtATime,
+    this.showBadgeCounts,
+    this.showRunningTimersAsNotifications,
+  });
 
   @override
   List<Object> get props => [
-        exportGroupTimers,
-        exportIncludeDate,
-        exportIncludeProject,
-        exportIncludeDescription,
-        exportIncludeProjectDescription,
-        exportIncludeStartTime,
-        exportIncludeEndTime,
-        exportIncludeDurationHours,
-        exportIncludeNotes,
-        groupTimers,
-        collapseDays,
-        autocompleteDescription,
-        defaultFilterStartDateToMonday,
-        oneTimerAtATime,
-        showBadgeCounts,
-        showRunningTimersAsNotifications,
-      ];
+    exportGroupTimers,
+    exportIncludeDate,
+    exportIncludeProject,
+    exportIncludeDescription,
+    exportIncludeProjectDescription,
+    exportIncludeStartTime,
+    exportIncludeEndTime,
+    exportIncludeDurationHours,
+    exportIncludeNotes,
+    groupTimers,
+    collapseDays,
+    autocompleteDescription,
+    defaultFilterStartDateToMonday,
+    oneTimerAtATime,
+    showBadgeCounts,
+    showRunningTimersAsNotifications,
+  ];
 }
 
 class SetDefaultFilterDays extends SettingsEvent {

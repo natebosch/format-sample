@@ -49,7 +49,10 @@ class MapWidget extends StatefulWidget {
   }
 
   static LatLng calculateEndingGlobalCoordinates(
-      LatLng start, double startBearing, double distance) {
+    LatLng start,
+    double startBearing,
+    double distance,
+  ) {
     const piOver180 = PI / 180.0;
 
     double toDegrees(double radians) {
@@ -130,10 +133,13 @@ class MapWidget extends StatefulWidget {
     sinSigma = sin(sigma);
     // eq. 8
     final phi2 = atan2(
-        sinU1 * cosSigma + cosU1 * sinSigma * cosAlpha1,
-        (1.0 - f) *
-            sqrt(sin2Alpha +
-                pow(sinU1 * sinSigma - cosU1 * cosSigma * cosAlpha1, 2.0)));
+      sinU1 * cosSigma + cosU1 * sinSigma * cosAlpha1,
+      (1.0 - f) *
+          sqrt(
+            sin2Alpha +
+                pow(sinU1 * sinSigma - cosU1 * cosSigma * cosAlpha1, 2.0),
+          ),
+    );
     // eq. 9
     // This fixes the pole crossing defect spotted by Matt Feemster. When a
     // path passes a pole and essentially crosses a line of latitude twice -
@@ -179,8 +185,10 @@ class MapWidget extends StatefulWidget {
     final result = MapAddress();
     try {
       final placemarks = await Geolocator().placemarkFromCoordinates(
-          center.latitude, center.longitude,
-          localeIdentifier: 'ru');
+        center.latitude,
+        center.longitude,
+        localeIdentifier: 'ru',
+      );
       final placemark = placemarks[0];
       if (placemark.locality != '') {
         result.simple = placemark.locality;
@@ -229,18 +237,26 @@ class _MapWidgetState extends State<MapWidget> with TickerProviderStateMixin {
     // Create some tweens. These serve to split up the transition from one location to another.
     // In our case, we want to split the transition be<tween> our current map center and the destination.
     final latTween = Tween<double>(
-        begin: _mapController.center.latitude, end: destCenter.latitude);
+      begin: _mapController.center.latitude,
+      end: destCenter.latitude,
+    );
     final lngTween = Tween<double>(
-        begin: _mapController.center.longitude, end: destCenter.longitude);
+      begin: _mapController.center.longitude,
+      end: destCenter.longitude,
+    );
     final zoomTween = Tween<double>(begin: _mapController.zoom, end: destZoom);
 
     // Create a animation controller that has a duration and a TickerProvider.
-    final controller =
-        AnimationController(duration: Duration(milliseconds: 500), vsync: this);
+    final controller = AnimationController(
+      duration: Duration(milliseconds: 500),
+      vsync: this,
+    );
     // The animation determines what path the animation will take. You can try different Curves values, although I found
     // fastOutSlowIn to be my favorite.
-    final animation =
-        CurvedAnimation(parent: controller, curve: Curves.fastOutSlowIn);
+    final animation = CurvedAnimation(
+      parent: controller,
+      curve: Curves.fastOutSlowIn,
+    );
 
     controller.addListener(() {
       _mapController.move(
@@ -250,8 +266,9 @@ class _MapWidgetState extends State<MapWidget> with TickerProviderStateMixin {
     });
 
     animation.addStatusListener((status) {
-      if ([AnimationStatus.completed, AnimationStatus.dismissed]
-          .contains(status)) {
+      if ([AnimationStatus.completed, AnimationStatus.dismissed].contains(
+        status,
+      )) {
         controller.dispose();
       }
     });
@@ -281,19 +298,21 @@ class _MapWidgetState extends State<MapWidget> with TickerProviderStateMixin {
           tileProvider: CachedNetworkTileProvider(),
         ),
         if (appState['currentPosition'] != null)
-          CircleLayerOptions(circles: <CircleMarker>[
-            CircleMarker(
-              // useRadiusInMeter: true,
-              radius: 4,
-              color: Colors.blue,
-              borderColor: Colors.black,
-              borderStrokeWidth: 1,
-              point: LatLng(
-                appState['currentPosition'][0] as double,
-                appState['currentPosition'][1] as double,
+          CircleLayerOptions(
+            circles: <CircleMarker>[
+              CircleMarker(
+                // useRadiusInMeter: true,
+                radius: 4,
+                color: Colors.blue,
+                borderColor: Colors.black,
+                borderStrokeWidth: 1,
+                point: LatLng(
+                  appState['currentPosition'][0] as double,
+                  appState['currentPosition'][1] as double,
+                ),
               ),
-            ),
-          ]),
+            ],
+          ),
         if (widget.markerPoint != null)
           MarkerLayerOptions(
             markers: <Marker>[
@@ -303,10 +322,10 @@ class _MapWidgetState extends State<MapWidget> with TickerProviderStateMixin {
                 point: widget.markerPoint,
                 anchorPos: AnchorPos.align(AnchorAlign.top),
                 builder: (_) => Icon(
-                  Icons.location_on,
-                  size: markerIconSize,
-                  color: Colors.pinkAccent,
-                ),
+                      Icons.location_on,
+                      size: markerIconSize,
+                      color: Colors.pinkAccent,
+                    ),
               ),
             ],
           ),

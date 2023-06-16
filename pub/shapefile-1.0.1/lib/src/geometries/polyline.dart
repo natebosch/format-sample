@@ -14,7 +14,7 @@ Map<String, dynamic> parsePolyLine(ByteData record) {
       points = List.generate(m, (j) {
         var point = [
           record.getFloat64(i, Endian.little),
-          record.getFloat64(i + 8, Endian.little)
+          record.getFloat64(i + 8, Endian.little),
         ];
         i += 16;
         return point;
@@ -25,6 +25,7 @@ Map<String, dynamic> parsePolyLine(ByteData record) {
       : {
           "type": "MultiLineString",
           "coordinates": parts.mapIndexed(
-              (i, j) => points.sublist(i, j == last ? null : parts[j + 1]))
+            (i, j) => points.sublist(i, j == last ? null : parts[j + 1]),
+          ),
         };
 }

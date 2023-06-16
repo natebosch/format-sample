@@ -13,13 +13,15 @@ const Duration _kCategoryDisplayDuration = Duration(milliseconds: 250);
 
 /// A callback used to find information about the category node at the given
 /// `categoryPath`.
-typedef CategoryPathSelector<T extends Comparable<T>>
-    = Future<SmoothCategory<T>?> Function(Iterable<T> categoryPath);
+typedef CategoryPathSelector<
+  T extends Comparable<T>
+> = Future<SmoothCategory<T>?> Function(Iterable<T> categoryPath);
 
 /// A callback used to notify that the visible path in the [SmoothCategoryPicker]
 /// has changed to the given path.
 typedef CategoryPathChangedCallback<T extends Object> = void Function(
-    Iterable<T> categoryPath);
+  Iterable<T> categoryPath,
+);
 
 /// A callback used to notify that the [SmoothCategoryPicker] has requested a new
 /// category to be added at the given path.
@@ -28,7 +30,8 @@ typedef AddCategoryCallback<T extends Object> = void Function(List<T> path);
 /// A callback used by the [SmoothCategoryPicker] to notify that the set of selected
 /// categories has changed.
 typedef CategoriesChangedCallback<T extends Object> = void Function(
-    Set<T> categories);
+  Set<T> categories,
+);
 
 /// A Picker for hierarchical categories or other hierarchical data.
 ///
@@ -53,9 +56,9 @@ class SmoothCategoryPicker<T extends Comparable<T>> extends StatefulWidget {
     required this.onPathChanged,
     this.onAddCategory,
     Key? key,
-  })  : assert(currentPath.isNotEmpty),
-        currentCategories = currentCategories ?? <T>{},
-        super(key: key);
+  }) : assert(currentPath.isNotEmpty),
+       currentCategories = currentCategories ?? <T>{},
+       super(key: key);
 
   /// The current set of selected categories.
   ///
@@ -108,16 +111,21 @@ class _SmoothCategoryPickerState<T extends Comparable<T>>
               children: <Widget>[
                 Text(
                   // TODO(gspencergoog): Internationalize this.
-                  'No Category Found for ${widget.currentPath.map<String>((T item) => item.toString()).join(' > ')}',
+                  'No Category Found for ${widget.currentPath.map<String>(
+                    (T item) => item.toString(),
+                  ).join(' > ')}',
                 ),
                 TextButton(
-                    child: const Text('BACK'),
-                    onPressed: () {
-                      setState(() {
-                        widget.onPathChanged(widget.currentPath
-                            .sublist(0, widget.currentPath.length - 1));
-                      });
-                    }),
+                  child: const Text('BACK'),
+                  onPressed: () {
+                    setState(() {
+                      widget.onPathChanged(widget.currentPath.sublist(
+                        0,
+                        widget.currentPath.length - 1,
+                      ));
+                    });
+                  },
+                ),
               ],
             ),
           );
@@ -137,8 +145,8 @@ class _SmoothCategoryPickerState<T extends Comparable<T>>
                 child: SmoothCategoryDisplay<T>(
                   categories: widget.currentCategories,
                   onDeleted: (T item) {
-                    widget.onCategoriesChanged(
-                        widget.currentCategories.difference(<T>{item}));
+                    widget.onCategoriesChanged(widget.currentCategories
+                        .difference(<T>{item}));
                   },
                 ),
               ),
@@ -151,8 +159,9 @@ class _SmoothCategoryPickerState<T extends Comparable<T>>
                     onPressed: category.value != widget.currentPath.first
                         ? () {
                             setState(() {
-                              widget.onPathChanged(widget.currentPath
-                                  .take(widget.currentPath.length - 1));
+                              widget.onPathChanged(widget.currentPath.take(
+                                widget.currentPath.length - 1,
+                              ));
                             });
                           }
                         : null,
@@ -215,9 +224,9 @@ abstract class SmoothCategory<T extends Comparable<T>> {
 
   /// Returns the child node with the value given.
   Future<SmoothCategory<T>?> getChild(T childValue) async {
-    final List<SmoothCategory<T>> results = await getChildren()
-        .where((SmoothCategory<T> child) => child.value == childValue)
-        .toList();
+    final List<SmoothCategory<T>> results = await getChildren().where(
+      (SmoothCategory<T> child) => child.value == childValue,
+    ).toList();
     if (results.isEmpty) {
       return null;
     }
@@ -225,9 +234,9 @@ abstract class SmoothCategory<T extends Comparable<T>> {
   }
 
   Future<SmoothCategory<T>?> findInDescendants(T value) async {
-    final List<SmoothCategory<T>> results = await getDescendants()
-        .where((SmoothCategory<T> child) => child.value == value)
-        .toList();
+    final List<SmoothCategory<T>> results = await getDescendants().where(
+      (SmoothCategory<T> child) => child.value == value,
+    ).toList();
     if (results.isEmpty) {
       return null;
     }
@@ -327,12 +336,15 @@ class _CategoryViewState<T extends Comparable<T>>
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<List<_CategoryPage<T>>>(
-      future: _generatePages(widget.currentPath)
-          .then((List<_CategoryPage<T>> pageList) {
-        return pageList;
-      }),
-      builder: (BuildContext context,
-          AsyncSnapshot<List<_CategoryPage<T>>> snapshot) {
+      future: _generatePages(widget.currentPath).then(
+        (List<_CategoryPage<T>> pageList) {
+          return pageList;
+        },
+      ),
+      builder: (
+        BuildContext context,
+        AsyncSnapshot<List<_CategoryPage<T>>> snapshot,
+      ) {
         if (snapshot.data == null) {
           return const SizedBox();
         }
@@ -389,7 +401,7 @@ class _CategoryPage<T extends Comparable<T>> extends StatelessWidget {
               },
             ),
             if (category != childCategories.last) const Divider(),
-          ]
+          ],
         ],
       ),
     );
@@ -426,7 +438,9 @@ class _CategoryItem<T extends SmoothCategory<dynamic>> extends StatelessWidget {
                 Checkbox(value: selected, onChanged: onSelect)
               else
                 const SizedBox(
-                    width: Checkbox.width + 32.0, height: Checkbox.width),
+                  width: Checkbox.width + 32.0,
+                  height: Checkbox.width,
+                ),
               Expanded(
                 flex: 2,
                 child: GestureDetector(
@@ -460,7 +474,7 @@ class _CategoryItem<T extends SmoothCategory<dynamic>> extends StatelessWidget {
 /// when they are.
 class SmoothCategoryDisplay<T extends Object> extends StatefulWidget {
   SmoothCategoryDisplay({Set<T>? categories, this.onDeleted})
-      : categories = categories ?? <T>{};
+    : categories = categories ?? <T>{};
 
   /// The set of categories to display.
   ///
@@ -517,11 +531,15 @@ class _SmoothCategoryDisplayState<T extends Object>
         }
       }
     }
-    final Set<T> addedCategories =
-        widget.categories.difference(displayed.keys.toSet());
+    final Set<T> addedCategories = widget.categories.difference(
+      displayed.keys.toSet(),
+    );
     for (final T category in addedCategories) {
       final AnimationController newController = AnimationController(
-          vsync: this, value: 0, duration: _kCategoryDisplayDuration)
+        vsync: this,
+        value: 0,
+        duration: _kCategoryDisplayDuration,
+      )
         ..addStatusListener(_cleanup)
         ..forward();
       displayed[category] = newController;
@@ -601,13 +619,17 @@ class _AnimatedInputChipState extends State<AnimatedInputChip> {
   void initState() {
     super.initState();
     _scale = Tween<Size>(
-        begin: const Size(0, _kCategoryHeight),
-        end: const Size(_kMaxCategoryWidth, _kCategoryHeight));
-    _sizeAnimation =
-        CurvedAnimation(parent: widget.visible, curve: Curves.easeInOut)
-            .drive(_scale);
-    _opacityAnimation =
-        CurvedAnimation(parent: widget.visible, curve: Curves.easeInOutExpo);
+      begin: const Size(0, _kCategoryHeight),
+      end: const Size(_kMaxCategoryWidth, _kCategoryHeight),
+    );
+    _sizeAnimation = CurvedAnimation(
+      parent: widget.visible,
+      curve: Curves.easeInOut,
+    ).drive(_scale);
+    _opacityAnimation = CurvedAnimation(
+      parent: widget.visible,
+      curve: Curves.easeInOutExpo,
+    );
   }
 
   @override
@@ -620,10 +642,7 @@ class _AnimatedInputChipState extends State<AnimatedInputChip> {
         onDeleted: widget.onDeleted,
         deleteIcon: FadeTransition(
           opacity: _opacityAnimation,
-          child: const Icon(
-            Icons.cancel,
-            size: 18,
-          ),
+          child: const Icon(Icons.cancel, size: 18),
         ),
       ),
     );

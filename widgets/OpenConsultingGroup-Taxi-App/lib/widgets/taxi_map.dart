@@ -38,13 +38,14 @@ class _TaxiMapState extends State<TaxiMap> {
 
   Circle createCircle(Color color, LatLng position) {
     return Circle(
-        circleId: CircleId(position.toString()),
-        fillColor: color,
-        strokeColor: color.withOpacity(0.4),
-        center: position,
-        strokeWidth: 75,
-        radius: 32.0,
-        visible: true);
+      circleId: CircleId(position.toString()),
+      fillColor: color,
+      strokeColor: color.withOpacity(0.4),
+      center: position,
+      strokeWidth: 75,
+      radius: 32.0,
+      visible: true,
+    );
   }
 
   @override
@@ -75,13 +76,16 @@ class _TaxiMapState extends State<TaxiMap> {
               CameraPosition(target: LatLng(17.0, 24.0), zoom: 8.0),
           onMapCreated: (controller) async {
             this.controller = controller;
-            BlocProvider.of<TaxiBookingBloc>(context)
-                .add(TaxiBookingStartEvent());
+            BlocProvider.of<TaxiBookingBloc>(context).add(
+              TaxiBookingStartEvent(),
+            );
             currentLocation = await LocationController.getCurrentLocation();
             controller.animateCamera(
-                CameraUpdate.newLatLngZoom(currentLocation.position, 12));
-            BlocProvider.of<TaxiBookingBloc>(context)
-                .add(TaxiBookingStartEvent());
+              CameraUpdate.newLatLngZoom(currentLocation.position, 12),
+            );
+            BlocProvider.of<TaxiBookingBloc>(context).add(
+              TaxiBookingStartEvent(),
+            );
           },
           myLocationButtonEnabled: false,
           markers: markers,
@@ -109,9 +113,7 @@ class _TaxiMapState extends State<TaxiMap> {
       markers.add(Marker(
         markerId: MarkerId("${taxi.id}"),
         position: LatLng(taxi.position.latitude, taxi.position.longitude),
-        infoWindow: InfoWindow(
-          title: taxi.title,
-        ),
+        infoWindow: InfoWindow(title: taxi.title),
         icon: descriptor,
       ));
     }));
@@ -119,16 +121,17 @@ class _TaxiMapState extends State<TaxiMap> {
   }
 
   Future<Marker> createMarker(
-      Color color, LatLng position, String title) async {
+    Color color,
+    LatLng position,
+    String title,
+  ) async {
     final Uint8List markerIcon =
         await getBytesFromAsset("images/location.png", 100);
     BitmapDescriptor descriptor = BitmapDescriptor.fromBytes(markerIcon);
     return Marker(
       markerId: MarkerId("${position.toString()}"),
       position: position,
-      infoWindow: InfoWindow(
-        title: title,
-      ),
+      infoWindow: InfoWindow(title: title),
       icon: descriptor,
     );
   }
@@ -142,20 +145,19 @@ class _TaxiMapState extends State<TaxiMap> {
     markers.add(startM);
     markers.add(endM);
     for (int i = 1; i < result.length; i++) {
-      polylines.add(
-        Polyline(
-            polylineId: PolylineId("${result[i].toString()}"),
-            color: Colors.black,
-            points: [result[i - 1], result[i]],
-            width: 3,
-            visible: true,
-            startCap: Cap.roundCap,
-            jointType: JointType.mitered,
-            endCap: Cap.roundCap,
-            geodesic: true,
-            patterns: [PatternItem.dash(12)],
-            zIndex: 1),
-      );
+      polylines.add(Polyline(
+        polylineId: PolylineId("${result[i].toString()}"),
+        color: Colors.black,
+        points: [result[i - 1], result[i]],
+        width: 3,
+        visible: true,
+        startCap: Cap.roundCap,
+        jointType: JointType.mitered,
+        endCap: Cap.roundCap,
+        geodesic: true,
+        patterns: [PatternItem.dash(12)],
+        zIndex: 1,
+      ));
     }
     result.forEach((val) {});
 
@@ -165,8 +167,10 @@ class _TaxiMapState extends State<TaxiMap> {
 
   Future<Uint8List> getBytesFromAsset(String path, int width) async {
     ByteData data = await rootBundle.load(path);
-    ui.Codec codec = await ui.instantiateImageCodec(data.buffer.asUint8List(),
-        targetWidth: width);
+    ui.Codec codec = await ui.instantiateImageCodec(
+      data.buffer.asUint8List(),
+      targetWidth: width,
+    );
     ui.FrameInfo fi = await codec.getNextFrame();
     return (await fi.image.toByteData(format: ui.ImageByteFormat.png))
         .buffer

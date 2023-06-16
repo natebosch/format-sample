@@ -32,8 +32,11 @@ import 'package:woosignal/models/response/tax_rate.dart';
 // REMEMBER TO ADD THIS METHOD E.G. "examplePay" TO THE APP_PAYMENT_METHODS
 // AS THE PAY METHOD
 
-examplePay(context,
-    {@required CheckoutConfirmationPageState state, TaxRate taxRate}) async {
+examplePay(
+  context, {
+  @required CheckoutConfirmationPageState state,
+  TaxRate taxRate,
+}) async {
   // HANDLE YOUR PAYMENT INTEGRATION HERE
   // ...
   // ...
@@ -53,7 +56,8 @@ examplePay(context,
     showToastNotification(
       context,
       title: trans(context, "Error"),
-      description: trans(context, "Something went wrong, please contact our store"),
+      description:
+          trans(context, "Something went wrong, please contact our store"),
     );
     state.reloadState(showLoader: false);
   }

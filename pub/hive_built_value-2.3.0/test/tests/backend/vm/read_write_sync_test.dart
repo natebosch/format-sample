@@ -1,8 +1,12 @@
 import 'package:hive_built_value/src/backend/vm/read_write_sync.dart';
 import 'package:test/test.dart';
 
-Future _asyncRead(ReadWriteSync rw, int id, List<String> history,
-    {bool? throwError = false}) {
+Future _asyncRead(
+  ReadWriteSync rw,
+  int id,
+  List<String> history, {
+  bool? throwError = false,
+}) {
   return rw.syncRead(() async {
     history.add('startread$id');
     await Future.delayed(Duration(milliseconds: 10));
@@ -13,8 +17,12 @@ Future _asyncRead(ReadWriteSync rw, int id, List<String> history,
   });
 }
 
-Future _asyncWrite(ReadWriteSync rw, int id, List<String> history,
-    {bool? throwError = false}) {
+Future _asyncWrite(
+  ReadWriteSync rw,
+  int id,
+  List<String> history, {
+  bool? throwError = false,
+}) {
   return rw.syncWrite(() async {
     history.add('startwrite$id');
     await Future.delayed(Duration(milliseconds: 10));
@@ -25,8 +33,12 @@ Future _asyncWrite(ReadWriteSync rw, int id, List<String> history,
   });
 }
 
-Future _asyncReadWrite(ReadWriteSync rw, int id, List<String> history,
-    {bool? throwError = false}) {
+Future _asyncReadWrite(
+  ReadWriteSync rw,
+  int id,
+  List<String> history, {
+  bool? throwError = false,
+}) {
   return rw.syncReadWrite(() async {
     history.add('startreadwrite$id');
     await Future.delayed(Duration(milliseconds: 10));
@@ -45,8 +57,12 @@ typedef _Operation = Future Function(
 });
 
 Future _asyncOperation(
-    ReadWriteSync rw, _Operation operation, int id, List<String> history,
-    {bool throwError = false}) async {
+  ReadWriteSync rw,
+  _Operation operation,
+  int id,
+  List<String> history, {
+  bool throwError = false,
+}) async {
   history.add('before$id');
   try {
     await operation(rw, id, history, throwError: throwError);
@@ -72,7 +88,7 @@ void main() {
           'before0', 'before1', 'before2',
           'startread0', 'stopread0', 'after0',
           'startread1', 'stopread1', 'after1',
-          'startread2', 'stopread2', 'after2'
+          'startread2', 'stopread2', 'after2',
         ]);
       });
 
@@ -102,7 +118,7 @@ void main() {
           'before0', 'before1', 'before2',
           'startread0', 'stopread0', 'after0',
           'startread1', 'error1', 'after1',
-          'startread2', 'stopread2', 'after2'
+          'startread2', 'stopread2', 'after2',
         ]);
       });
     });
@@ -121,7 +137,7 @@ void main() {
           'before0', 'before1', 'before2',
           'startwrite0', 'stopwrite0', 'after0',
           'startwrite1', 'stopwrite1', 'after1',
-          'startwrite2', 'stopwrite2', 'after2'
+          'startwrite2', 'stopwrite2', 'after2',
         ]);
       });
 
@@ -151,7 +167,7 @@ void main() {
           'before0', 'before1', 'before2',
           'startwrite0', 'stopwrite0', 'after0',
           'startwrite1', 'error1', 'after1',
-          'startwrite2', 'stopwrite2', 'after2'
+          'startwrite2', 'stopwrite2', 'after2',
         ]);
       });
     });
@@ -184,8 +200,13 @@ void main() {
         var rw = ReadWriteSync();
         var history = <String>[];
         var r1 = _asyncOperation(rw, _asyncReadWrite, 0, history);
-        var r2 =
-            _asyncOperation(rw, _asyncReadWrite, 1, history, throwError: true);
+        var r2 = _asyncOperation(
+          rw,
+          _asyncReadWrite,
+          1,
+          history,
+          throwError: true,
+        );
         var r3 = _asyncOperation(rw, _asyncReadWrite, 2, history);
         await Future.wait([r1, r2, r3]);
 
@@ -194,7 +215,7 @@ void main() {
           'before0', 'before1', 'before2',
           'startreadwrite0', 'stopreadwrite0', 'after0',
           'startreadwrite1', 'error1', 'after1',
-          'startreadwrite2', 'stopreadwrite2', 'after2'
+          'startreadwrite2', 'stopreadwrite2', 'after2',
         ]);
       });
     });

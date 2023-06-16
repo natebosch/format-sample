@@ -71,11 +71,7 @@ class ControlDeckState extends State<ControlDeck> {
   }
 
   Widget _buildMiddleTabItem() {
-    return Expanded(
-      child: SizedBox(
-        height: widget.height,
-      ),
-    );
+    return Expanded(child: SizedBox(height: widget.height));
   }
 
   Widget _image(String text, bool isPng) {
@@ -117,7 +113,7 @@ class ControlDeckState extends State<ControlDeck> {
                       color: widget.labelColor,
                       fontWeight: FontWeight.w600,
                     ),
-                  )
+                  ),
               ],
             ),
           ),

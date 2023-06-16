@@ -37,9 +37,7 @@ class _SignUpPageState extends State<SignUpPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomPadding: true,
-      appBar: AppBar(
-        title: const Text('Sign Up'),
-      ),
+      appBar: AppBar(title: const Text('Sign Up')),
       body: SingleChildScrollView(
         child: Container(
           padding: const EdgeInsets.all(16.0),
@@ -48,19 +46,14 @@ class _SignUpPageState extends State<SignUpPage> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  Text(
-                    'YATP',
-                    style: Theme.of(context).textTheme.headline3,
-                  ),
+                  Text('YATP', style: Theme.of(context).textTheme.headline3),
                 ],
               ),
               Text(
                 'Yet another TODO application',
                 style: Theme.of(context).textTheme.headline6,
               ),
-              const SizedBox(
-                height: 16.0,
-              ),
+              const SizedBox(height: 16.0),
               Form(
                 key: _formKey,
                 child: Column(
@@ -72,18 +65,16 @@ class _SignUpPageState extends State<SignUpPage> {
                         Container(
                           width: MediaQuery.of(context).size.width / 2.0 - 32,
                           child: TextFormField(
-                            decoration: const InputDecoration(
-                              labelText: 'First Name',
-                            ),
+                            decoration:
+                                const InputDecoration(labelText: 'First Name'),
                             onSaved: (String input) => _firstName = input,
                           ),
                         ),
                         Container(
                           width: MediaQuery.of(context).size.width / 2.0 - 32,
                           child: TextFormField(
-                            decoration: const InputDecoration(
-                              labelText: 'Last Name',
-                            ),
+                            decoration:
+                                const InputDecoration(labelText: 'Last Name'),
                             onSaved: (String input) => _lastName = input,
                           ),
                         ),
@@ -94,7 +85,9 @@ class _SignUpPageState extends State<SignUpPage> {
                         labelText: 'Email',
                         icon: Icon(Icons.mail_outline),
                       ),
-                      validator: (String input) => !input.contains('@') ? 'Please input valid email id' : null,
+                      validator: (String input) => !input.contains('@')
+                          ? 'Please input valid email id'
+                          : null,
                       onSaved: (String input) => _email = input,
                     ),
                     const SizedBox(height: 24.0),
@@ -103,7 +96,8 @@ class _SignUpPageState extends State<SignUpPage> {
                         labelText: 'Password',
                         icon: Icon(Icons.vpn_key),
                       ),
-                      validator: (String input) => input.length < 6 ? 'Check your password field' : null,
+                      validator: (String input) =>
+                          input.length < 6 ? 'Check your password field' : null,
                       onSaved: (String input) => _password = input,
                       obscureText: true,
                     ),
@@ -114,9 +108,7 @@ class _SignUpPageState extends State<SignUpPage> {
               IsSigningUpContainer(
                 builder: (BuildContext context, bool isLoading) {
                   if (isLoading) {
-                    return const Center(
-                      child: CircularProgressIndicator(),
-                    );
+                    return const Center(child: CircularProgressIndicator());
                   }
                   return Container(
                     padding: const EdgeInsets.all(16.0),
@@ -125,7 +117,9 @@ class _SignUpPageState extends State<SignUpPage> {
                       onPressed: _onSubmit,
                       child: Text(
                         'Sign Up',
-                        style: Theme.of(context).textTheme.bodyText1.copyWith(color: Colors.black),
+                        style: Theme.of(context).textTheme.bodyText1.copyWith(
+                          color: Colors.black,
+                        ),
                       ),
                       color: Colors.white,
                     ),
@@ -137,10 +131,13 @@ class _SignUpPageState extends State<SignUpPage> {
                 padding: const EdgeInsets.all(16.0),
                 width: MediaQuery.of(context).size.width,
                 child: RaisedButton(
-                  onPressed: () => Navigator.pushNamed(context, AppRoutes.login),
+                  onPressed:
+                      () => Navigator.pushNamed(context, AppRoutes.login),
                   child: Text(
                     'Login?',
-                    style: Theme.of(context).textTheme.bodyText1.copyWith(color: Colors.black),
+                    style: Theme.of(context).textTheme.bodyText1.copyWith(
+                      color: Colors.black,
+                    ),
                   ),
                   color: Colors.white,
                 ),

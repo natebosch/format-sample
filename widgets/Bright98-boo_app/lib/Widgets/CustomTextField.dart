@@ -40,27 +40,28 @@ class _CustomTextFieldState extends State<CustomTextField> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-        padding: EdgeInsets.symmetric(vertical: 5),
-        child: TextFormField(
-          initialValue: '',
-          key: widget.key,
-          keyboardType: widget.type,
-          obscureText: widget.hideContext,
-          decoration: InputDecoration(
-            contentPadding: EdgeInsets.symmetric(horizontal: 25, vertical: 5),
-            labelText: widget.label,
-            labelStyle: TextStyle(color: widget.color),
-            focusedBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(50),
-              borderSide: BorderSide(color: widget.color, width: 1.5),
-            ),
-            enabledBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(50),
-              borderSide: BorderSide(width: 1.5, color: widget.color),
-            ),
+      padding: EdgeInsets.symmetric(vertical: 5),
+      child: TextFormField(
+        initialValue: '',
+        key: widget.key,
+        keyboardType: widget.type,
+        obscureText: widget.hideContext,
+        decoration: InputDecoration(
+          contentPadding: EdgeInsets.symmetric(horizontal: 25, vertical: 5),
+          labelText: widget.label,
+          labelStyle: TextStyle(color: widget.color),
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(50),
+            borderSide: BorderSide(color: widget.color, width: 1.5),
           ),
-          onChanged: widget.onchange,
-          focusNode: myFocusNode,
-        ));
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(50),
+            borderSide: BorderSide(width: 1.5, color: widget.color),
+          ),
+        ),
+        onChanged: widget.onchange,
+        focusNode: myFocusNode,
+      ),
+    );
   }
 }

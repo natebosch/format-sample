@@ -20,12 +20,13 @@ class FormArguments {
   final int? menuIndex;
   final int? tabIndex;
   final Object? object;
-  FormArguments(
-      {this.message,
-      this.menuName,
-      this.menuIndex,
-      this.tabIndex,
-      this.object});
+  FormArguments({
+    this.message,
+    this.menuName,
+    this.menuIndex,
+    this.tabIndex,
+    this.object,
+  });
   String toString() => 'msg: $message menuIndex: $menuIndex '
       'object: $object';
 }

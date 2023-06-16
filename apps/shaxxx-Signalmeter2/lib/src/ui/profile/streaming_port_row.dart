@@ -6,9 +6,7 @@ import 'padded_form_text_field.dart';
 import 'profile_widget.dart';
 
 class StreamingPortRow extends StatelessWidget {
-  const StreamingPortRow({
-    Key key,
-  }) : super(key: key);
+  const StreamingPortRow({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

@@ -23,18 +23,15 @@ class _TextSpanState extends State<TextSpanExample> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text(widget.title),
-        ),
-        body: textSpanPage());
+      appBar: AppBar(title: Text(widget.title)),
+      body: textSpanPage(),
+    );
   }
 
   Widget textSpanPage() {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
-      children: <Widget>[
-        textSpan(),
-      ],
+      children: <Widget>[textSpan()],
     );
   }
 
@@ -64,9 +61,7 @@ class _TextSpanState extends State<TextSpanExample> {
               color: Colors.blue.shade900,
             ),
           ),
-          const TextSpan(
-            text: 'Playground',
-          ),
+          const TextSpan(text: 'Playground'),
         ],
       ),
       textAlign: TextAlign.center,

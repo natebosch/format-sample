@@ -24,7 +24,9 @@ void main() {
     test('can access Supabase singleton', () async {
       final client = Supabase.instance.client;
       await expectLater(
-          await SupabaseAuth.instance.initialSession, isA<Session>());
+        await SupabaseAuth.instance.initialSession,
+        isA<Session>(),
+      );
       expect(client, isNotNull);
     });
 
@@ -58,7 +60,9 @@ void main() {
 
     test('initial session contains the error', () async {
       await expectLater(
-          SupabaseAuth.instance.initialSession, throwsA(isA<AuthException>()));
+        SupabaseAuth.instance.initialSession,
+        throwsA(isA<AuthException>()),
+      );
     });
   });
 
@@ -84,10 +88,11 @@ void main() {
     tearDown(() => Supabase.instance.dispose());
 
     test(
-        'Having `code` as the query parameter triggers `getSessionFromUrl` call on initialize',
-        () async {
-      expect(pkceHttpClient.requestCount, 1);
-      expect(pkceHttpClient.lastRequestBody['auth_code'], 'my-code-verifier');
-    });
+      'Having `code` as the query parameter triggers `getSessionFromUrl` call on initialize',
+      () async {
+        expect(pkceHttpClient.requestCount, 1);
+        expect(pkceHttpClient.lastRequestBody['auth_code'], 'my-code-verifier');
+      },
+    );
   });
 }

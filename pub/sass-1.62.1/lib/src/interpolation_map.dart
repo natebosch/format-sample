@@ -30,13 +30,15 @@ class InterpolationMap {
   /// Each target location at index `i` corresponds to the character in the
   /// generated string after `interpolation.contents[i]`.
   InterpolationMap(
-      this._interpolation, Iterable<SourceLocation> targetLocations)
-      : _targetLocations = List.unmodifiable(targetLocations) {
+    this._interpolation,
+    Iterable<SourceLocation> targetLocations,
+  ) : _targetLocations = List.unmodifiable(targetLocations) {
     var expectedLocations = math.max(0, _interpolation.contents.length - 1);
     if (_targetLocations.length != expectedLocations) {
       throw ArgumentError(
-          "InterpolationMap must have $expectedLocations targetLocations if the "
-          "interpolation has ${_interpolation.contents.length} components.");
+        "InterpolationMap must have $expectedLocations targetLocations if the "
+        "interpolation has ${_interpolation.contents.length} components.",
+      );
     }
   }
 
@@ -56,8 +58,9 @@ class InterpolationMap {
         .any((content) => content is Expression)) {
       return SourceSpanFormatException(error.message, source, error.source);
     } else {
-      return MultiSourceSpanFormatException(error.message, source, "",
-          {target: "error in interpolated output"}, error.source);
+      return MultiSourceSpanFormatException(error.message, source, "", {
+        target: "error in interpolated output",
+      }, error.source);
     }
   }
 
@@ -71,14 +74,19 @@ class InterpolationMap {
       if (end is FileSpan) return start.expand(end);
 
       return _interpolation.span.file.span(
-          _expandInterpolationSpanLeft(start.start),
-          (end as FileLocation).offset);
+        _expandInterpolationSpanLeft(start.start),
+        (end as FileLocation).offset,
+      );
     } else if (end is FileSpan) {
-      return _interpolation.span.file.span((start as FileLocation).offset,
-          _expandInterpolationSpanRight(end.end));
+      return _interpolation.span.file.span(
+        (start as FileLocation).offset,
+        _expandInterpolationSpanRight(end.end),
+      );
     } else {
-      return _interpolation.span.file
-          .span((start as FileLocation).offset, (end as FileLocation).offset);
+      return _interpolation.span.file.span(
+        (start as FileLocation).offset,
+        (end as FileLocation).offset,
+      );
     }
   }
 
@@ -97,15 +105,17 @@ class InterpolationMap {
     var previousLocation = index == 0
         ? _interpolation.span.start
         : _interpolation.span.file.location(_expandInterpolationSpanRight(
-            (_interpolation.contents[index - 1] as Expression).span.end));
+            (_interpolation.contents[index - 1] as Expression).span.end,
+          ));
     var offsetInString =
         target.offset - (index == 0 ? 0 : _targetLocations[index - 1].offset);
 
     // This produces slightly incorrect mappings if there are _unnecessary_
     // escapes in the source file, but that's unlikely enough that it's probably
     // not worth doing a reparse here to fix it.
-    return previousLocation.file
-        .location(previousLocation.offset + offsetInString);
+    return previousLocation.file.location(
+      previousLocation.offset + offsetInString,
+    );
   }
 
   /// Return the index in [_interpolation.contents] at which [target] points.

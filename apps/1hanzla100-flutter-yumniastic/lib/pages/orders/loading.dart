@@ -17,9 +17,7 @@ class _LoadingOrdersState extends State<LoadingOrders> {
     Response res =
         await get("https://yumniastic.herokuapp.com/api/user-orders/$token/");
     Map data = jsonDecode(res.body);
-    Map args = {
-      "data": data,
-    };
+    Map args = {"data": data};
     Navigator.pushReplacementNamed(context, "/orders", arguments: args);
     // print(data);
   }
@@ -29,10 +27,7 @@ class _LoadingOrdersState extends State<LoadingOrders> {
     getOrders();
     return Scaffold(
       body: Center(
-        child: SpinKitThreeBounce(
-          color: Colors.deepPurple,
-          size: 50.0,
-        ),
+        child: SpinKitThreeBounce(color: Colors.deepPurple, size: 50.0),
       ),
     );
   }

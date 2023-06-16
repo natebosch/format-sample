@@ -18,27 +18,29 @@ class ContactMobileTab extends StatelessWidget {
         children: [
           CustomSectionHeading(text: "\nGet in Touch"),
           CustomSectionSubHeading(
-              text: "Let's build something together :)\n\n"),
+            text: "Let's build something together :)\n\n",
+          ),
           CarouselSlider.builder(
             itemCount: 3,
-            itemBuilder: (BuildContext context, int itemIndex, int i) =>
-                Padding(
-              padding: const EdgeInsets.symmetric(vertical: 10.0),
-              child: ProjectCard(
-                cardWidth: width > 480 ? width * 0.5 : width * 0.8,
-                projectIconData: kContactIcons[i],
-                projectTitle: kContactTitles[i],
-                projectDescription: kContactDetails[i],
-              ),
-            ),
+            itemBuilder:
+                (BuildContext context, int itemIndex, int i) => Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 10.0),
+                  child: ProjectCard(
+                    cardWidth: width > 480 ? width * 0.5 : width * 0.8,
+                    projectIconData: kContactIcons[i],
+                    projectTitle: kContactTitles[i],
+                    projectDescription: kContactDetails[i],
+                  ),
+                ),
             options: CarouselOptions(
-                height: height * 0.3,
-                autoPlay: true,
-                autoPlayInterval: Duration(seconds: 5),
-                enlargeCenterPage: true,
-                autoPlayCurve: Curves.fastOutSlowIn,
-                autoPlayAnimationDuration: Duration(milliseconds: 800),
-                enableInfiniteScroll: false),
+              height: height * 0.3,
+              autoPlay: true,
+              autoPlayInterval: Duration(seconds: 5),
+              enlargeCenterPage: true,
+              autoPlayCurve: Curves.fastOutSlowIn,
+              autoPlayAnimationDuration: Duration(milliseconds: 800),
+              enableInfiniteScroll: false,
+            ),
           ),
         ],
       ),

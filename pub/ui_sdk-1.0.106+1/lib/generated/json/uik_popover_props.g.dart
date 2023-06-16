@@ -30,8 +30,9 @@ UikPopoverProps $UikPopoverPropsFromJson(Map<String, dynamic> json) {
     uikPopoverProps.description = description;
   }
 
-  final String? textfieldData =
-      jsonConvert.convert<String>(json['textfieldData']);
+  final String? textfieldData = jsonConvert.convert<String>(
+    json['textfieldData'],
+  );
   if (textfieldData != null) {
     uikPopoverProps.textfieldData = textfieldData;
   }

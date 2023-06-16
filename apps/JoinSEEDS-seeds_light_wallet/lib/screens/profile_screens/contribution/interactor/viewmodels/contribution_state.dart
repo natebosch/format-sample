@@ -7,12 +7,20 @@ class ContributionState extends Equatable {
   final String? errorMessage;
   final ScoresViewModel? score;
 
-  const ContributionState({required this.pageState, this.errorMessage, this.score});
+  const ContributionState({
+    required this.pageState,
+    this.errorMessage,
+    this.score,
+  });
 
   @override
   List<Object?> get props => [pageState, errorMessage, score];
 
-  ContributionState copyWith({PageState? pageState, String? errorMessage, ScoresViewModel? score}) {
+  ContributionState copyWith({
+    PageState? pageState,
+    String? errorMessage,
+    ScoresViewModel? score,
+  }) {
     return ContributionState(
       pageState: pageState ?? this.pageState,
       errorMessage: errorMessage,

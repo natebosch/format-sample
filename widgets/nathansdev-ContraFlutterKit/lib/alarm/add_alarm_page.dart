@@ -56,14 +56,15 @@ class _AddAlarmPageState extends State<AddAlarmPage> {
                 child: Align(
                   alignment: Alignment.bottomLeft,
                   child: ButtonRoundWithShadow(
-                      size: 48,
-                      borderColor: wood_smoke,
-                      color: white,
-                      callback: () {
-                        Navigator.pop(context);
-                      },
-                      shadowColor: wood_smoke,
-                      iconPath: "assets/icons/arrow_back.svg"),
+                    size: 48,
+                    borderColor: wood_smoke,
+                    color: white,
+                    callback: () {
+                      Navigator.pop(context);
+                    },
+                    shadowColor: wood_smoke,
+                    iconPath: "assets/icons/arrow_back.svg",
+                  ),
                 ),
               ),
             ),
@@ -75,12 +76,7 @@ class _AddAlarmPageState extends State<AddAlarmPage> {
                 text: "Add Alarm",
               ),
             ),
-            Expanded(
-              flex: 1,
-              child: SizedBox(
-                width: 20,
-              ),
-            )
+            Expanded(flex: 1, child: SizedBox(width: 20)),
           ],
         ),
       ),
@@ -91,21 +87,31 @@ class _AddAlarmPageState extends State<AddAlarmPage> {
             child: ContraTimePickerSpinner(
               is24HourMode: true,
               highlightedTextStyle: TextStyle(
-                  color: wood_smoke, fontSize: 36, fontWeight: FontWeight.bold),
+                color: wood_smoke,
+                fontSize: 36,
+                fontWeight: FontWeight.bold,
+              ),
               normalTextStyle: TextStyle(
-                  color: santas_gray,
-                  fontSize: 36,
-                  fontWeight: FontWeight.w800),
+                color: santas_gray,
+                fontSize: 36,
+                fontWeight: FontWeight.w800,
+              ),
             ),
           ),
           AlarmLabelWidget(
             label: AlarmLabel(
-                title: "Repeat", selected: false, selectedText: "Never"),
+              title: "Repeat",
+              selected: false,
+              selectedText: "Never",
+            ),
             onTap: () {},
           ),
           AlarmLabelWidget(
             label: AlarmLabel(
-                title: "Title", selected: true, selectedText: "Never"),
+              title: "Title",
+              selected: true,
+              selectedText: "Never",
+            ),
             onTap: () {
               _showAddLabelBottomSheet();
             },
@@ -127,7 +133,7 @@ class _AddAlarmPageState extends State<AddAlarmPage> {
                   activeTrackColor: lightening_yellow,
                   inactiveTrackColor: santas_gray,
                   inactiveThumbColor: white,
-                )
+                ),
               ],
             ),
           ),
@@ -142,7 +148,7 @@ class _AddAlarmPageState extends State<AddAlarmPage> {
               textSize: 21,
               textColor: white,
             ),
-          )
+          ),
         ],
       ),
     );

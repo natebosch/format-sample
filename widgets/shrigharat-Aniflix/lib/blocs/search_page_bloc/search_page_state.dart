@@ -1,7 +1,6 @@
 import 'package:AniFlix/models/Anime.dart';
 
 class SearchPageState {
-
   List<Anime> animeList;
 
   SearchPageState._();
@@ -9,5 +8,4 @@ class SearchPageState {
   factory SearchPageState.initial() {
     return SearchPageState._()..animeList = [];
   }
-
 }

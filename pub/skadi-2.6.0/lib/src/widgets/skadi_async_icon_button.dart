@@ -100,16 +100,9 @@ class _SkadiAsyncIconButtonState extends State<SkadiAsyncIconButton> {
 
     final Widget buttonContent = Stack(
       children: [
-        Padding(
-          padding: widget.padding,
-          child: widget.icon,
-        ),
+        Padding(padding: widget.padding, child: widget.icon),
         if (widget.badge != null)
-          Positioned(
-            top: 0,
-            right: 0,
-            child: widget.badge!,
-          ),
+          Positioned(top: 0, right: 0, child: widget.badge!),
       ],
     );
 
@@ -130,16 +123,16 @@ class _SkadiAsyncIconButtonState extends State<SkadiAsyncIconButton> {
           child: ConditionalWidget(
             condition: _isLoading,
             onTrue: () => Padding(
-              padding: widget.padding,
-              child: Center(
-                child: providedLoadingWidget ??
-                    const SizedBox(
-                      width: defaultIconSize,
-                      height: defaultIconSize,
-                      child: CircularProgressIndicator.adaptive(),
-                    ),
-              ),
-            ),
+                  padding: widget.padding,
+                  child: Center(
+                    child: providedLoadingWidget ??
+                        const SizedBox(
+                          width: defaultIconSize,
+                          height: defaultIconSize,
+                          child: CircularProgressIndicator.adaptive(),
+                        ),
+                  ),
+                ),
             onFalse: () => buttonContent,
           ),
         ),

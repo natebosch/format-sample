@@ -9,15 +9,16 @@ class PromoCodeEntity extends Entity<int> {
   final bool wasUsed;
   final DateTime dateExpires;
 
-  PromoCodeEntity(
-    {int id,
+  PromoCodeEntity({
+    int id,
     this.title,
     this.image,
     this.promoCode,
     this.discountPercent,
     this.belongsToUser,
     this.wasUsed,
-    this.dateExpires}) : super(id);
+    this.dateExpires,
+  }) : super(id);
 
   @override
   Map<String, dynamic> toMap() {
@@ -29,19 +30,19 @@ class PromoCodeEntity extends Entity<int> {
       'discountPercent': discountPercent,
       'belongsToUser': belongsToUser,
       'wasUsed': wasUsed,
-      'dateExpires': dateExpires
+      'dateExpires': dateExpires,
     };
   }
 
   @override
-  List<Object> get props =>
-    [id, 
-    title, 
-    image, 
-    promoCode, 
-    discountPercent, 
-    belongsToUser, 
+  List<Object> get props => [
+    id,
+    title,
+    image,
+    promoCode,
+    discountPercent,
+    belongsToUser,
     wasUsed,
-    dateExpires
+    dateExpires,
   ];
 }

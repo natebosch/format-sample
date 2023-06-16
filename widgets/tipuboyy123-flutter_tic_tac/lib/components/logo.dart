@@ -22,7 +22,7 @@ class Logo extends StatelessWidget {
                       radius: 0.18,
                       colors: [
                         Colors.transparent,
-                        Colors.white.withOpacity(.35)
+                        Colors.white.withOpacity(.35),
                       ],
                       stops: [1, 1],
                     ),
@@ -58,10 +58,10 @@ class Logo extends StatelessWidget {
                     width: 140,
                   ),
                 ),
-              )
+              ),
             ],
           ),
-        )
+        ),
       ],
     );
   }

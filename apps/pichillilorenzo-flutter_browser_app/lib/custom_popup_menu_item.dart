@@ -9,7 +9,7 @@ class CustomPopupMenuItem<T> extends PopupMenuEntry<T> {
     this.textStyle,
     this.isIconButtonRow = false,
     required this.child,
-  })  : super(key: key);
+  }) : super(key: key);
 
   final T? value;
 
@@ -72,10 +72,7 @@ class CustomPopupMenuItemState<T, W extends CustomPopupMenuItem<T>>
     }
 
     if (widget.isIconButtonRow) {
-      return Material(
-        color: Colors.white,
-        child: item,
-      );
+      return Material(color: Colors.white, child: item);
     }
 
     return InkWell(

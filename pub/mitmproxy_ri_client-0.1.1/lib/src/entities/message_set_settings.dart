@@ -15,11 +15,12 @@ class MessageSetSettings with _$MessageSetSettings implements ApiResponse {
 
   /// Create settings including or excluding both messages at once.
   // ignore: avoid_positional_boolean_parameters
-  factory MessageSetSettings.includeBoth(bool includeBoth) =>
-      MessageSetSettings(
-        includeRequest: includeBoth,
-        includeResponse: includeBoth,
-      );
+  factory MessageSetSettings.includeBoth(
+    bool includeBoth,
+  ) => MessageSetSettings(
+    includeRequest: includeBoth,
+    includeResponse: includeBoth,
+  );
 
   /// Settings to include all messages.
   static const includeAll = MessageSetSettings(
@@ -45,6 +46,7 @@ class MessageSetSettings with _$MessageSetSettings implements ApiResponse {
     includeResponse: false,
   );
 
-  factory MessageSetSettings.fromJson(Map<String, dynamic> json) =>
-      _$MessageSetSettingsFromJson(json);
+  factory MessageSetSettings.fromJson(
+    Map<String, dynamic> json,
+  ) => _$MessageSetSettingsFromJson(json);
 }

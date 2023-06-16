@@ -37,10 +37,12 @@ class RatingStars extends StatelessWidget {
       type: MaterialType.transparency,
       child: InkWell(
         enableFeedback: onTap != null,
-        onTap: onTap != null ? () {
-          performSelectionHaptic(context);
-          onTap(index);
-        } : null,
+        onTap: onTap != null
+            ? () {
+                performSelectionHaptic(context);
+                onTap(index);
+              }
+            : null,
         borderRadius: const BorderRadius.all(Radius.circular(50.0)),
         child: Container(
           padding: EdgeInsets.all(paddingBetweenStars ?? 0.0),
@@ -53,5 +55,4 @@ class RatingStars extends StatelessWidget {
       ),
     );
   }
-
 }

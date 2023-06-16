@@ -9,22 +9,23 @@ class QuestionsBottomAppBarTimerButton extends StatelessWidget {
   const QuestionsBottomAppBarTimerButton({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) =>
-      WWWStoreConnector<ITimerStateHolder, Option<bool>>(
-        converter: (state) => state.timerState.map((state) => state.isRunning),
-        builder: (context, isRunning) => isRunning.fold(
-          () => const SizedBox(),
-          (isRunning) => FloatingActionButton(
-            tooltip: isRunning
-                ? context.translations.tooltipPauseTimer
-                : context.translations.tooltipStartTimer,
-            onPressed: () => context.dispatch(isRunning
-                ? const UserActionTimer.stop()
-                : const UserActionTimer.start()),
-            child: Icon(
-              isRunning ? Icons.timer_off : Icons.timer,
-            ),
-          ),
+  Widget build(
+    BuildContext context,
+  ) => WWWStoreConnector<ITimerStateHolder, Option<bool>>(
+    converter: (state) => state.timerState.map((state) => state.isRunning),
+    builder: (context, isRunning) => isRunning.fold(
+      () => const SizedBox(),
+      (isRunning) => FloatingActionButton(
+        tooltip: isRunning
+            ? context.translations.tooltipPauseTimer
+            : context.translations.tooltipStartTimer,
+        onPressed: () => context.dispatch(
+          isRunning
+              ? const UserActionTimer.stop()
+              : const UserActionTimer.start(),
         ),
-      );
+        child: Icon(isRunning ? Icons.timer_off : Icons.timer),
+      ),
+    ),
+  );
 }

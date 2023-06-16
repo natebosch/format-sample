@@ -25,19 +25,23 @@ class _$LinkListingResponseSerializer
   @override
   final Iterable<Type> types = const [
     LinkListingResponse,
-    _$LinkListingResponse
+    _$LinkListingResponse,
   ];
   @override
   final String wireName = 'LinkListingResponse';
 
   @override
   Iterable<Object> serialize(
-      Serializers serializers, LinkListingResponse object,
-      {FullType specifiedType = FullType.unspecified}) {
+    Serializers serializers,
+    LinkListingResponse object, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
     final result = <Object>[
       'data',
-      serializers.serialize(object.data,
-          specifiedType: const FullType(LinkListingData)),
+      serializers.serialize(
+        object.data,
+        specifiedType: const FullType(LinkListingData),
+      ),
     ];
 
     return result;
@@ -45,8 +49,10 @@ class _$LinkListingResponseSerializer
 
   @override
   LinkListingResponse deserialize(
-      Serializers serializers, Iterable<Object> serialized,
-      {FullType specifiedType = FullType.unspecified}) {
+    Serializers serializers,
+    Iterable<Object> serialized, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
     final result = new LinkListingResponseBuilder();
 
     final iterator = serialized.iterator;
@@ -56,9 +62,12 @@ class _$LinkListingResponseSerializer
       final dynamic value = iterator.current;
       switch (key) {
         case 'data':
-          result.data.replace(serializers.deserialize(value,
-                  specifiedType: const FullType(LinkListingData))
-              as LinkListingData);
+          result.data.replace(
+            serializers.deserialize(
+              value,
+              specifiedType: const FullType(LinkListingData),
+            ) as LinkListingData,
+          );
           break;
       }
     }
@@ -75,33 +84,44 @@ class _$LinkListingDataSerializer
   final String wireName = 'LinkListingData';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, LinkListingData object,
-      {FullType specifiedType = FullType.unspecified}) {
+  Iterable<Object> serialize(
+    Serializers serializers,
+    LinkListingData object, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
     final result = <Object>[
       'children',
-      serializers.serialize(object.children,
-          specifiedType:
-              const FullType(BuiltList, const [const FullType(LinkChild)])),
+      serializers.serialize(
+        object.children,
+        specifiedType:
+            const FullType(BuiltList, const [const FullType(LinkChild)]),
+      ),
     ];
     if (object.after != null) {
       result
         ..add('after')
-        ..add(serializers.serialize(object.after,
-            specifiedType: const FullType(String)));
+        ..add(serializers.serialize(
+          object.after,
+          specifiedType: const FullType(String),
+        ));
     }
     if (object.before != null) {
       result
         ..add('before')
-        ..add(serializers.serialize(object.before,
-            specifiedType: const FullType(String)));
+        ..add(serializers.serialize(
+          object.before,
+          specifiedType: const FullType(String),
+        ));
     }
     return result;
   }
 
   @override
   LinkListingData deserialize(
-      Serializers serializers, Iterable<Object> serialized,
-      {FullType specifiedType = FullType.unspecified}) {
+    Serializers serializers,
+    Iterable<Object> serialized, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
     final result = new LinkListingDataBuilder();
 
     final iterator = serialized.iterator;
@@ -111,18 +131,25 @@ class _$LinkListingDataSerializer
       final dynamic value = iterator.current;
       switch (key) {
         case 'after':
-          result.after = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+          result.after = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
           break;
         case 'before':
-          result.before = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+          result.before = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
           break;
         case 'children':
-          result.children.replace(serializers.deserialize(value,
-                  specifiedType: const FullType(
-                      BuiltList, const [const FullType(LinkChild)]))
-              as BuiltList<dynamic>);
+          result.children.replace(
+            serializers.deserialize(
+              value,
+              specifiedType:
+                  const FullType(BuiltList, const [const FullType(LinkChild)]),
+            ) as BuiltList<dynamic>,
+          );
           break;
       }
     }
@@ -138,20 +165,28 @@ class _$LinkChildSerializer implements StructuredSerializer<LinkChild> {
   final String wireName = 'LinkChild';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, LinkChild object,
-      {FullType specifiedType = FullType.unspecified}) {
+  Iterable<Object> serialize(
+    Serializers serializers,
+    LinkChild object, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
     final result = <Object>[
       'data',
-      serializers.serialize(object.data,
-          specifiedType: const FullType(LinkChildData)),
+      serializers.serialize(
+        object.data,
+        specifiedType: const FullType(LinkChildData),
+      ),
     ];
 
     return result;
   }
 
   @override
-  LinkChild deserialize(Serializers serializers, Iterable<Object> serialized,
-      {FullType specifiedType = FullType.unspecified}) {
+  LinkChild deserialize(
+    Serializers serializers,
+    Iterable<Object> serialized, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
     final result = new LinkChildBuilder();
 
     final iterator = serialized.iterator;
@@ -161,8 +196,12 @@ class _$LinkChildSerializer implements StructuredSerializer<LinkChild> {
       final dynamic value = iterator.current;
       switch (key) {
         case 'data':
-          result.data.replace(serializers.deserialize(value,
-              specifiedType: const FullType(LinkChildData)) as LinkChildData);
+          result.data.replace(
+            serializers.deserialize(
+              value,
+              specifiedType: const FullType(LinkChildData),
+            ) as LinkChildData,
+          );
           break;
       }
     }
@@ -178,74 +217,103 @@ class _$LinkChildDataSerializer implements StructuredSerializer<LinkChildData> {
   final String wireName = 'LinkChildData';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, LinkChildData object,
-      {FullType specifiedType = FullType.unspecified}) {
+  Iterable<Object> serialize(
+    Serializers serializers,
+    LinkChildData object, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
     final result = <Object>[
       'name',
       serializers.serialize(object.name, specifiedType: const FullType(String)),
       'title',
-      serializers.serialize(object.title,
-          specifiedType: const FullType(String)),
+      serializers.serialize(
+        object.title,
+        specifiedType: const FullType(String),
+      ),
       'subreddit',
-      serializers.serialize(object.subreddit,
-          specifiedType: const FullType(String)),
+      serializers.serialize(
+        object.subreddit,
+        specifiedType: const FullType(String),
+      ),
       'subreddit_id',
-      serializers.serialize(object.subredditId,
-          specifiedType: const FullType(String)),
+      serializers.serialize(
+        object.subredditId,
+        specifiedType: const FullType(String),
+      ),
       'permalink',
-      serializers.serialize(object.permalink,
-          specifiedType: const FullType(String)),
+      serializers.serialize(
+        object.permalink,
+        specifiedType: const FullType(String),
+      ),
       'author',
-      serializers.serialize(object.author,
-          specifiedType: const FullType(String)),
+      serializers.serialize(
+        object.author,
+        specifiedType: const FullType(String),
+      ),
       'score',
       serializers.serialize(object.score, specifiedType: const FullType(int)),
       'thumbnail',
-      serializers.serialize(object.thumbnail,
-          specifiedType: const FullType(String)),
+      serializers.serialize(
+        object.thumbnail,
+        specifiedType: const FullType(String),
+      ),
       'over_18',
       serializers.serialize(object.over18, specifiedType: const FullType(bool)),
       'is_video',
-      serializers.serialize(object.isVideo,
-          specifiedType: const FullType(bool)),
+      serializers.serialize(
+        object.isVideo,
+        specifiedType: const FullType(bool),
+      ),
     ];
     if (object.likes != null) {
       result
         ..add('likes')
-        ..add(serializers.serialize(object.likes,
-            specifiedType: const FullType(bool)));
+        ..add(serializers.serialize(
+          object.likes,
+          specifiedType: const FullType(bool),
+        ));
     }
     if (object.thumbnailWidth != null) {
       result
         ..add('thumbnail_width')
-        ..add(serializers.serialize(object.thumbnailWidth,
-            specifiedType: const FullType(int)));
+        ..add(serializers.serialize(
+          object.thumbnailWidth,
+          specifiedType: const FullType(int),
+        ));
     }
     if (object.thumbnailHeight != null) {
       result
         ..add('thumbnail_height')
-        ..add(serializers.serialize(object.thumbnailHeight,
-            specifiedType: const FullType(int)));
+        ..add(serializers.serialize(
+          object.thumbnailHeight,
+          specifiedType: const FullType(int),
+        ));
     }
     if (object.preview != null) {
       result
         ..add('preview')
-        ..add(serializers.serialize(object.preview,
-            specifiedType: const FullType(Preview)));
+        ..add(serializers.serialize(
+          object.preview,
+          specifiedType: const FullType(Preview),
+        ));
     }
     if (object.media != null) {
       result
         ..add('media')
-        ..add(serializers.serialize(object.media,
-            specifiedType: const FullType(Media)));
+        ..add(serializers.serialize(
+          object.media,
+          specifiedType: const FullType(Media),
+        ));
     }
     return result;
   }
 
   @override
   LinkChildData deserialize(
-      Serializers serializers, Iterable<Object> serialized,
-      {FullType specifiedType = FullType.unspecified}) {
+    Serializers serializers,
+    Iterable<Object> serialized, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
     final result = new LinkChildDataBuilder();
 
     final iterator = serialized.iterator;
@@ -255,64 +323,96 @@ class _$LinkChildDataSerializer implements StructuredSerializer<LinkChildData> {
       final dynamic value = iterator.current;
       switch (key) {
         case 'name':
-          result.name = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+          result.name = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
           break;
         case 'title':
-          result.title = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+          result.title = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
           break;
         case 'subreddit':
-          result.subreddit = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+          result.subreddit = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
           break;
         case 'subreddit_id':
-          result.subredditId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+          result.subredditId = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
           break;
         case 'permalink':
-          result.permalink = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+          result.permalink = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
           break;
         case 'author':
-          result.author = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+          result.author = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
           break;
         case 'score':
-          result.score = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+          result.score = serializers.deserialize(
+            value,
+            specifiedType: const FullType(int),
+          ) as int;
           break;
         case 'likes':
-          result.likes = serializers.deserialize(value,
-              specifiedType: const FullType(bool)) as bool;
+          result.likes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(bool),
+          ) as bool;
           break;
         case 'thumbnail':
-          result.thumbnail = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+          result.thumbnail = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
           break;
         case 'thumbnail_width':
-          result.thumbnailWidth = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+          result.thumbnailWidth = serializers.deserialize(
+            value,
+            specifiedType: const FullType(int),
+          ) as int;
           break;
         case 'thumbnail_height':
-          result.thumbnailHeight = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+          result.thumbnailHeight = serializers.deserialize(
+            value,
+            specifiedType: const FullType(int),
+          ) as int;
           break;
         case 'over_18':
-          result.over18 = serializers.deserialize(value,
-              specifiedType: const FullType(bool)) as bool;
+          result.over18 = serializers.deserialize(
+            value,
+            specifiedType: const FullType(bool),
+          ) as bool;
           break;
         case 'preview':
-          result.preview.replace(serializers.deserialize(value,
-              specifiedType: const FullType(Preview)) as Preview);
+          result.preview.replace(
+            serializers.deserialize(
+              value,
+              specifiedType: const FullType(Preview),
+            ) as Preview,
+          );
           break;
         case 'media':
-          result.media.replace(serializers.deserialize(value,
-              specifiedType: const FullType(Media)) as Media);
+          result.media.replace(
+            serializers.deserialize(value, specifiedType: const FullType(Media))
+                as Media,
+          );
           break;
         case 'is_video':
-          result.isVideo = serializers.deserialize(value,
-              specifiedType: const FullType(bool)) as bool;
+          result.isVideo = serializers.deserialize(
+            value,
+            specifiedType: const FullType(bool),
+          ) as bool;
           break;
       }
     }
@@ -328,26 +428,36 @@ class _$PreviewSerializer implements StructuredSerializer<Preview> {
   final String wireName = 'Preview';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, Preview object,
-      {FullType specifiedType = FullType.unspecified}) {
+  Iterable<Object> serialize(
+    Serializers serializers,
+    Preview object, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
     final result = <Object>[
       'images',
-      serializers.serialize(object.images,
-          specifiedType:
-              const FullType(BuiltList, const [const FullType(PreviewImage)])),
+      serializers.serialize(
+        object.images,
+        specifiedType:
+            const FullType(BuiltList, const [const FullType(PreviewImage)]),
+      ),
     ];
     if (object.redditVideoPreview != null) {
       result
         ..add('reddit_video_preview')
-        ..add(serializers.serialize(object.redditVideoPreview,
-            specifiedType: const FullType(RedditVideo)));
+        ..add(serializers.serialize(
+          object.redditVideoPreview,
+          specifiedType: const FullType(RedditVideo),
+        ));
     }
     return result;
   }
 
   @override
-  Preview deserialize(Serializers serializers, Iterable<Object> serialized,
-      {FullType specifiedType = FullType.unspecified}) {
+  Preview deserialize(
+    Serializers serializers,
+    Iterable<Object> serialized, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
     final result = new PreviewBuilder();
 
     final iterator = serialized.iterator;
@@ -357,14 +467,22 @@ class _$PreviewSerializer implements StructuredSerializer<Preview> {
       final dynamic value = iterator.current;
       switch (key) {
         case 'images':
-          result.images.replace(serializers.deserialize(value,
-                  specifiedType: const FullType(
-                      BuiltList, const [const FullType(PreviewImage)]))
-              as BuiltList<dynamic>);
+          result.images.replace(
+            serializers.deserialize(
+              value,
+              specifiedType: const FullType(BuiltList, const [
+                const FullType(PreviewImage),
+              ]),
+            ) as BuiltList<dynamic>,
+          );
           break;
         case 'reddit_video_preview':
-          result.redditVideoPreview.replace(serializers.deserialize(value,
-              specifiedType: const FullType(RedditVideo)) as RedditVideo);
+          result.redditVideoPreview.replace(
+            serializers.deserialize(
+              value,
+              specifiedType: const FullType(RedditVideo),
+            ) as RedditVideo,
+          );
           break;
       }
     }
@@ -380,24 +498,33 @@ class _$PreviewImageSerializer implements StructuredSerializer<PreviewImage> {
   final String wireName = 'PreviewImage';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, PreviewImage object,
-      {FullType specifiedType = FullType.unspecified}) {
+  Iterable<Object> serialize(
+    Serializers serializers,
+    PreviewImage object, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
     final result = <Object>[
       'source',
-      serializers.serialize(object.source,
-          specifiedType: const FullType(Image)),
+      serializers.serialize(
+        object.source,
+        specifiedType: const FullType(Image),
+      ),
       'resolutions',
-      serializers.serialize(object.resolutions,
-          specifiedType:
-              const FullType(BuiltList, const [const FullType(Image)])),
+      serializers.serialize(
+        object.resolutions,
+        specifiedType: const FullType(BuiltList, const [const FullType(Image)]),
+      ),
     ];
 
     return result;
   }
 
   @override
-  PreviewImage deserialize(Serializers serializers, Iterable<Object> serialized,
-      {FullType specifiedType = FullType.unspecified}) {
+  PreviewImage deserialize(
+    Serializers serializers,
+    Iterable<Object> serialized, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
     final result = new PreviewImageBuilder();
 
     final iterator = serialized.iterator;
@@ -407,14 +534,19 @@ class _$PreviewImageSerializer implements StructuredSerializer<PreviewImage> {
       final dynamic value = iterator.current;
       switch (key) {
         case 'source':
-          result.source.replace(serializers.deserialize(value,
-              specifiedType: const FullType(Image)) as Image);
+          result.source.replace(
+            serializers.deserialize(value, specifiedType: const FullType(Image))
+                as Image,
+          );
           break;
         case 'resolutions':
-          result.resolutions.replace(serializers.deserialize(value,
-                  specifiedType:
-                      const FullType(BuiltList, const [const FullType(Image)]))
-              as BuiltList<dynamic>);
+          result.resolutions.replace(
+            serializers.deserialize(
+              value,
+              specifiedType:
+                  const FullType(BuiltList, const [const FullType(Image)]),
+            ) as BuiltList<dynamic>,
+          );
           break;
       }
     }
@@ -430,8 +562,11 @@ class _$ImageSerializer implements StructuredSerializer<Image> {
   final String wireName = 'Image';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, Image object,
-      {FullType specifiedType = FullType.unspecified}) {
+  Iterable<Object> serialize(
+    Serializers serializers,
+    Image object, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
     final result = <Object>[
       'url',
       serializers.serialize(object.url, specifiedType: const FullType(String)),
@@ -445,8 +580,11 @@ class _$ImageSerializer implements StructuredSerializer<Image> {
   }
 
   @override
-  Image deserialize(Serializers serializers, Iterable<Object> serialized,
-      {FullType specifiedType = FullType.unspecified}) {
+  Image deserialize(
+    Serializers serializers,
+    Iterable<Object> serialized, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
     final result = new ImageBuilder();
 
     final iterator = serialized.iterator;
@@ -456,16 +594,22 @@ class _$ImageSerializer implements StructuredSerializer<Image> {
       final dynamic value = iterator.current;
       switch (key) {
         case 'url':
-          result.url = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+          result.url = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
           break;
         case 'width':
-          result.width = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+          result.width = serializers.deserialize(
+            value,
+            specifiedType: const FullType(int),
+          ) as int;
           break;
         case 'height':
-          result.height = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+          result.height = serializers.deserialize(
+            value,
+            specifiedType: const FullType(int),
+          ) as int;
           break;
       }
     }
@@ -481,21 +625,29 @@ class _$MediaSerializer implements StructuredSerializer<Media> {
   final String wireName = 'Media';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, Media object,
-      {FullType specifiedType = FullType.unspecified}) {
+  Iterable<Object> serialize(
+    Serializers serializers,
+    Media object, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
     final result = <Object>[];
     if (object.redditVideo != null) {
       result
         ..add('reddit_video')
-        ..add(serializers.serialize(object.redditVideo,
-            specifiedType: const FullType(RedditVideo)));
+        ..add(serializers.serialize(
+          object.redditVideo,
+          specifiedType: const FullType(RedditVideo),
+        ));
     }
     return result;
   }
 
   @override
-  Media deserialize(Serializers serializers, Iterable<Object> serialized,
-      {FullType specifiedType = FullType.unspecified}) {
+  Media deserialize(
+    Serializers serializers,
+    Iterable<Object> serialized, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
     final result = new MediaBuilder();
 
     final iterator = serialized.iterator;
@@ -505,8 +657,12 @@ class _$MediaSerializer implements StructuredSerializer<Media> {
       final dynamic value = iterator.current;
       switch (key) {
         case 'reddit_video':
-          result.redditVideo.replace(serializers.deserialize(value,
-              specifiedType: const FullType(RedditVideo)) as RedditVideo);
+          result.redditVideo.replace(
+            serializers.deserialize(
+              value,
+              specifiedType: const FullType(RedditVideo),
+            ) as RedditVideo,
+          );
           break;
       }
     }
@@ -522,20 +678,28 @@ class _$RedditVideoSerializer implements StructuredSerializer<RedditVideo> {
   final String wireName = 'RedditVideo';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, RedditVideo object,
-      {FullType specifiedType = FullType.unspecified}) {
+  Iterable<Object> serialize(
+    Serializers serializers,
+    RedditVideo object, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
     final result = <Object>[
       'fallback_url',
-      serializers.serialize(object.fallbackUrl,
-          specifiedType: const FullType(String)),
+      serializers.serialize(
+        object.fallbackUrl,
+        specifiedType: const FullType(String),
+      ),
     ];
 
     return result;
   }
 
   @override
-  RedditVideo deserialize(Serializers serializers, Iterable<Object> serialized,
-      {FullType specifiedType = FullType.unspecified}) {
+  RedditVideo deserialize(
+    Serializers serializers,
+    Iterable<Object> serialized, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
     final result = new RedditVideoBuilder();
 
     final iterator = serialized.iterator;
@@ -545,8 +709,10 @@ class _$RedditVideoSerializer implements StructuredSerializer<RedditVideo> {
       final dynamic value = iterator.current;
       switch (key) {
         case 'fallback_url':
-          result.fallbackUrl = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+          result.fallbackUrl = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
           break;
       }
     }
@@ -559,9 +725,9 @@ class _$LinkListingResponse extends LinkListingResponse {
   @override
   final LinkListingData data;
 
-  factory _$LinkListingResponse(
-          [void Function(LinkListingResponseBuilder) updates]) =>
-      (new LinkListingResponseBuilder()..update(updates)).build();
+  factory _$LinkListingResponse([
+    void Function(LinkListingResponseBuilder) updates,
+  ]) => (new LinkListingResponseBuilder()..update(updates)).build();
 
   _$LinkListingResponse._({this.data}) : super._() {
     if (data == null) {
@@ -571,8 +737,8 @@ class _$LinkListingResponse extends LinkListingResponse {
 
   @override
   LinkListingResponse rebuild(
-          void Function(LinkListingResponseBuilder) updates) =>
-      (toBuilder()..update(updates)).build();
+    void Function(LinkListingResponseBuilder) updates,
+  ) => (toBuilder()..update(updates)).build();
 
   @override
   LinkListingResponseBuilder toBuilder() =>
@@ -641,7 +807,10 @@ class LinkListingResponseBuilder
         data.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
-            'LinkListingResponse', _$failedField, e.toString());
+          'LinkListingResponse',
+          _$failedField,
+          e.toString(),
+        );
       }
       rethrow;
     }
@@ -687,7 +856,8 @@ class _$LinkListingData extends LinkListingData {
   @override
   int get hashCode {
     return $jf(
-        $jc($jc($jc(0, after.hashCode), before.hashCode), children.hashCode));
+      $jc($jc($jc(0, after.hashCode), before.hashCode), children.hashCode),
+    );
   }
 
   @override
@@ -748,7 +918,10 @@ class LinkListingDataBuilder
     try {
       _$result = _$v ??
           new _$LinkListingData._(
-              after: after, before: before, children: children.build());
+            after: after,
+            before: before,
+            children: children.build(),
+          );
     } catch (_) {
       String _$failedField;
       try {
@@ -756,7 +929,10 @@ class LinkListingDataBuilder
         children.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
-            'LinkListingData', _$failedField, e.toString());
+          'LinkListingData',
+          _$failedField,
+          e.toString(),
+        );
       }
       rethrow;
     }
@@ -845,7 +1021,10 @@ class LinkChildBuilder implements Builder<LinkChild, LinkChildBuilder> {
         data.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
-            'LinkChild', _$failedField, e.toString());
+          'LinkChild',
+          _$failedField,
+          e.toString(),
+        );
       }
       rethrow;
     }
@@ -889,23 +1068,23 @@ class _$LinkChildData extends LinkChildData {
   factory _$LinkChildData([void Function(LinkChildDataBuilder) updates]) =>
       (new LinkChildDataBuilder()..update(updates)).build();
 
-  _$LinkChildData._(
-      {this.name,
-      this.title,
-      this.subreddit,
-      this.subredditId,
-      this.permalink,
-      this.author,
-      this.score,
-      this.likes,
-      this.thumbnail,
-      this.thumbnailWidth,
-      this.thumbnailHeight,
-      this.over18,
-      this.preview,
-      this.media,
-      this.isVideo})
-      : super._() {
+  _$LinkChildData._({
+    this.name,
+    this.title,
+    this.subreddit,
+    this.subredditId,
+    this.permalink,
+    this.author,
+    this.score,
+    this.likes,
+    this.thumbnail,
+    this.thumbnailWidth,
+    this.thumbnailHeight,
+    this.over18,
+    this.preview,
+    this.media,
+    this.isVideo,
+  }) : super._() {
     if (name == null) {
       throw new BuiltValueNullFieldError('LinkChildData', 'name');
     }
@@ -968,36 +1147,10 @@ class _$LinkChildData extends LinkChildData {
 
   @override
   int get hashCode {
-    return $jf($jc(
-        $jc(
-            $jc(
-                $jc(
-                    $jc(
-                        $jc(
-                            $jc(
-                                $jc(
-                                    $jc(
-                                        $jc(
-                                            $jc(
-                                                $jc(
-                                                    $jc(
-                                                        $jc(
-                                                            $jc(0,
-                                                                name.hashCode),
-                                                            title.hashCode),
-                                                        subreddit.hashCode),
-                                                    subredditId.hashCode),
-                                                permalink.hashCode),
-                                            author.hashCode),
-                                        score.hashCode),
-                                    likes.hashCode),
-                                thumbnail.hashCode),
-                            thumbnailWidth.hashCode),
-                        thumbnailHeight.hashCode),
-                    over18.hashCode),
-                preview.hashCode),
-            media.hashCode),
-        isVideo.hashCode));
+    return $jf($jc($jc($jc(
+      $jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc(0, name.hashCode), title.hashCode), subreddit.hashCode), subredditId.hashCode), permalink.hashCode), author.hashCode), score.hashCode), likes.hashCode), thumbnail.hashCode), thumbnailWidth.hashCode), thumbnailHeight.hashCode), over18.hashCode),
+      preview.hashCode,
+    ), media.hashCode), isVideo.hashCode));
   }
 
   @override
@@ -1131,21 +1284,22 @@ class LinkChildDataBuilder
     try {
       _$result = _$v ??
           new _$LinkChildData._(
-              name: name,
-              title: title,
-              subreddit: subreddit,
-              subredditId: subredditId,
-              permalink: permalink,
-              author: author,
-              score: score,
-              likes: likes,
-              thumbnail: thumbnail,
-              thumbnailWidth: thumbnailWidth,
-              thumbnailHeight: thumbnailHeight,
-              over18: over18,
-              preview: _preview?.build(),
-              media: _media?.build(),
-              isVideo: isVideo);
+            name: name,
+            title: title,
+            subreddit: subreddit,
+            subredditId: subredditId,
+            permalink: permalink,
+            author: author,
+            score: score,
+            likes: likes,
+            thumbnail: thumbnail,
+            thumbnailWidth: thumbnailWidth,
+            thumbnailHeight: thumbnailHeight,
+            over18: over18,
+            preview: _preview?.build(),
+            media: _media?.build(),
+            isVideo: isVideo,
+          );
     } catch (_) {
       String _$failedField;
       try {
@@ -1155,7 +1309,10 @@ class LinkChildDataBuilder
         _media?.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
-            'LinkChildData', _$failedField, e.toString());
+          'LinkChildData',
+          _$failedField,
+          e.toString(),
+        );
       }
       rethrow;
     }
@@ -1252,8 +1409,9 @@ class PreviewBuilder implements Builder<Preview, PreviewBuilder> {
     try {
       _$result = _$v ??
           new _$Preview._(
-              images: images.build(),
-              redditVideoPreview: _redditVideoPreview?.build());
+            images: images.build(),
+            redditVideoPreview: _redditVideoPreview?.build(),
+          );
     } catch (_) {
       String _$failedField;
       try {
@@ -1263,7 +1421,10 @@ class PreviewBuilder implements Builder<Preview, PreviewBuilder> {
         _redditVideoPreview?.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
-            'Preview', _$failedField, e.toString());
+          'Preview',
+          _$failedField,
+          e.toString(),
+        );
       }
       rethrow;
     }
@@ -1363,7 +1524,9 @@ class PreviewImageBuilder
     try {
       _$result = _$v ??
           new _$PreviewImage._(
-              source: source.build(), resolutions: resolutions.build());
+            source: source.build(),
+            resolutions: resolutions.build(),
+          );
     } catch (_) {
       String _$failedField;
       try {
@@ -1373,7 +1536,10 @@ class PreviewImageBuilder
         resolutions.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
-            'PreviewImage', _$failedField, e.toString());
+          'PreviewImage',
+          _$failedField,
+          e.toString(),
+        );
       }
       rethrow;
     }
@@ -1564,7 +1730,10 @@ class MediaBuilder implements Builder<Media, MediaBuilder> {
         _redditVideo?.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
-            'Media', _$failedField, e.toString());
+          'Media',
+          _$failedField,
+          e.toString(),
+        );
       }
       rethrow;
     }

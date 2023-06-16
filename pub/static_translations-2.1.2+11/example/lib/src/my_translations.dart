@@ -5,15 +5,9 @@ import 'package:static_translations/static_translations.dart';
 class MyTranslations {
   MyTranslations._();
 
-  static const en = TranslationEntry(
-    key: 'en',
-    value: 'English',
-  );
+  static const en = TranslationEntry(key: 'en', value: 'English');
 
-  static const es = TranslationEntry(
-    key: 'es',
-    value: 'Spanish',
-  );
+  static const es = TranslationEntry(key: 'es', value: 'Spanish');
 
   static const title = TranslationEntry(
     key: 'title',
@@ -25,12 +19,7 @@ class MyTranslations {
     value: 'Welcome, {name}',
   );
 
-  static final _all = [
-    en,
-    es,
-    title,
-    welcome_message,
-  ];
+  static final _all = [en, es, title, welcome_message];
 
   static TranslationEntry fromKey(String key) {
     TranslationEntry? entry;

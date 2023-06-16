@@ -89,9 +89,8 @@ class DetailsActionsState with _$DetailsActionsState {
   const factory DetailsActionsState.sharingString() =
       DetailsActionsStateSharingString;
 
-  const factory DetailsActionsState.shareStringSuccess({
-    required String text,
-  }) = DetailsActionsStateShareStringSuccess;
+  const factory DetailsActionsState.shareStringSuccess({required String text}) =
+      DetailsActionsStateShareStringSuccess;
 
   const factory DetailsActionsState.copyingTrack() =
       DetailsActionsStateCopyingTrack;
@@ -134,9 +133,8 @@ class DetailsActionsCubit extends Cubit<DetailsActionsState> {
 
   Future<void> moveToArchive(ParcelInfo info) async {
     emit(const DetailsActionsState.movingToArchive());
-    final res = await _trackRepo.updateTrack(
-      info.trackInfo.copyWith(isArchived: true),
-    );
+    final res =
+        await _trackRepo.updateTrack(info.trackInfo.copyWith(isArchived: true));
     res.when(
       (value) => emit(const DetailsActionsState.moveToArchiveSuccess()),
       error: (e) => emit(DetailsActionsState.moveToArchiveFailed(error: e)),
@@ -157,17 +155,16 @@ class DetailsActionsCubit extends Cubit<DetailsActionsState> {
   Future<void> refresh(ParcelInfo info) async {
     emit(const DetailsActionsState.refreshing());
 
-    final resList = await _trackingScheduler.enqueueOneshot(
-      [info.trackInfo.trackNumber],
-    );
+    final resList = await _trackingScheduler
+        .enqueueOneshot([info.trackInfo.trackNumber]);
     resList.first.when(
       success: (trackNumber) {
         emit(const DetailsActionsState.refreshSuccess());
       },
       dissalowed: (trackNumber, remainingTime) {
-        emit(DetailsActionsState.refreshFreqLimited(
-          remainingTime: remainingTime,
-        ));
+        emit(
+          DetailsActionsState.refreshFreqLimited(remainingTime: remainingTime),
+        );
       },
       error: (trackNumber, error) {
         emit(DetailsActionsState.refreshFailed(
@@ -182,20 +179,16 @@ class DetailsActionsCubit extends Cubit<DetailsActionsState> {
 
   void copyTrackNumber(ParcelInfo info) {
     emit(const DetailsActionsState.copyingTrack());
-    emit(
-      DetailsActionsState.copyTrackSuccess(
-        trackNumber: info.trackInfo.trackNumber,
-      ),
-    );
+    emit(DetailsActionsState.copyTrackSuccess(
+      trackNumber: info.trackInfo.trackNumber,
+    ));
   }
 
   void buildShareString(ParcelInfo info) {
     emit(const DetailsActionsState.sharingString());
-    emit(
-      DetailsActionsState.shareStringSuccess(
-        text: UiUtils.buildTrackShareString(info.trackInfo),
-      ),
-    );
+    emit(DetailsActionsState.shareStringSuccess(
+      text: UiUtils.buildTrackShareString(info.trackInfo),
+    ));
   }
 
   Future<void> markAsRead(ParcelInfo info) async {
@@ -220,9 +213,9 @@ class DetailsActionsCubit extends Cubit<DetailsActionsState> {
   Future<void> activateTracking(ParcelInfo info) async {
     emit(const DetailsActionsState.activating());
     final res = await _trackRepo.updateTrackNumberServices(
-      info.trackServices
-          .map((trackService) => trackService.copyWith(isActive: true))
-          .toList(),
+      info.trackServices.map(
+        (trackService) => trackService.copyWith(isActive: true),
+      ).toList(),
     );
     res.when(
       (value) => emit(const DetailsActionsState.activateSuccess()),

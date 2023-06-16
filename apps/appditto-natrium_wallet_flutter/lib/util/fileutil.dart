@@ -1,7 +1,6 @@
 import 'dart:io';
 
 class FileUtil {
-
   /// Check first 8-bytes of PNG
   /// This isn't 100% sufficient to determine if our download was successful,
   /// but it's probably good enough for most cases
@@ -22,7 +21,7 @@ class FileUtil {
         asBytes[5] == 10 &&
         asBytes[6] == 26 &&
         asBytes[7] == 10) {
-          return true;
+      return true;
     }
     // Not a valid PNG, delete it
     await file.delete();
@@ -34,7 +33,9 @@ class FileUtil {
     if (!await file.exists()) {
       return false;
     }
-    RegExp svgRegex = RegExp(r'/^\s*(?:<\?xml[^>]*>\s*)?(?:<!doctype svg[^>]*\s*(?:\[?(?:\s*<![^>]*>\s*)*\]?)*[^>]*>\s*)?<svg[^>]*>[^]*<\/svg>\s*$/i');
+    RegExp svgRegex = RegExp(
+      r'/^\s*(?:<\?xml[^>]*>\s*)?(?:<!doctype svg[^>]*\s*(?:\[?(?:\s*<![^>]*>\s*)*\]?)*[^>]*>\s*)?<svg[^>]*>[^]*<\/svg>\s*$/i',
+    );
     // Read file as string
     String svgContents = await file.readAsString();
     if (svgRegex.hasMatch(svgContents)) {

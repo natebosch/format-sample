@@ -23,15 +23,17 @@ class HistoryEntries extends HiveObject with Sortable {
   List<HistoryEntry> entries;
 
   /// Creates a new history entries instance.
-  HistoryEntries({
-    @required this.entries,
-  });
+  HistoryEntries({@required this.entries});
 
   /// Returns the date.
   DateTime get date => formatter.parse(key);
 
   /// Inserts the specified entry at the specified date.
-  static Future<HistoryEntries> insertEntry(DateTime date, HistoryEntry entry, [Box<HistoryEntries> entriesBox]) async {
+  static Future<HistoryEntries> insertEntry(
+    DateTime date,
+    HistoryEntry entry, [
+    Box<HistoryEntries> entriesBox,
+  ]) async {
     if (entriesBox == null) {
       entriesBox = await Hive.openBox<HistoryEntries>(HIVE_BOX);
     }
@@ -73,7 +75,9 @@ class HistoryEntries extends HiveObject with Sortable {
 
   /// Sorts the entries thanks to the beers box.
   Future<void> sortEntries(Box<Beer> beers) {
-    entries.sort((a, b) => beers.get(a.beerId).name.compareTo(beers.get(b.beerId).name));
+    entries.sort(
+      (a, b) => beers.get(a.beerId).name.compareTo(beers.get(b.beerId).name),
+    );
     return save();
   }
 }
@@ -98,11 +102,7 @@ class HistoryEntry extends AppObject {
   bool moreThanQuantity;
 
   /// Creates a new history entry instance.
-  HistoryEntry({
-    this.beerId,
-    double quantity,
-    this.times = 1,
-  }) {
+  HistoryEntry({this.beerId, double quantity, this.times = 1}) {
     _quantity = quantity;
     updateMoreThanQuantity();
   }

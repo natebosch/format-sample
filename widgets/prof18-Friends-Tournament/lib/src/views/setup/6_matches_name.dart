@@ -62,13 +62,17 @@ class MatchesName extends StatelessWidget implements SetupPage {
   }
 
   Widget renderTextFields(
-      int matchesNumber, Map<int, String> matchesName, BuildContext context) {
+    int matchesNumber,
+    Map<int, String> matchesName,
+    BuildContext context,
+  ) {
     if (_textFieldsList.length != matchesNumber) {
       _textFieldsList.clear();
       for (int i = 0; i < matchesNumber; i++) {
         TextFieldWrapper textFieldWrapper = TextFieldWrapper(
-            TextEditingController(),
-            "${AppLocalizations.of(context).translate('match_label')} ${i + 1}");
+          TextEditingController(),
+          "${AppLocalizations.of(context).translate('match_label')} ${i + 1}",
+        );
         if (matchesName.containsKey(i)) {
           textFieldWrapper.value = matchesName[i];
           textFieldWrapper.textEditingController.text = matchesName[i];
@@ -83,37 +87,32 @@ class MatchesName extends StatelessWidget implements SetupPage {
           flex: 3,
           child: Padding(
             padding: Margins.regular,
-            child: SvgPicture.asset(
-              'assets/matches-art.svg',
-            ),
+            child: SvgPicture.asset('assets/matches-art.svg'),
           ),
         ),
         Padding(
           padding: const EdgeInsets.only(
-              top: MarginsRaw.regular,
-              bottom: MarginsRaw.small,
-              left: MarginsRaw.regular,
-              right: MarginsRaw.regular),
+            top: MarginsRaw.regular,
+            bottom: MarginsRaw.small,
+            left: MarginsRaw.regular,
+            right: MarginsRaw.regular,
+          ),
           child: Text(
             AppLocalizations.of(context).translate('matches_name_title'),
-            style: TextStyle(
-              fontSize: 36,
-              fontWeight: FontWeight.bold,
-            ),
+            style: TextStyle(fontSize: 36, fontWeight: FontWeight.bold),
           ),
         ),
         Padding(
           padding: const EdgeInsets.only(
-              top: MarginsRaw.regular,
-              left: MarginsRaw.regular,
-              right: MarginsRaw.regular),
+            top: MarginsRaw.regular,
+            left: MarginsRaw.regular,
+            right: MarginsRaw.regular,
+          ),
           child: Container(
             alignment: Alignment.topLeft,
             decoration: BoxDecoration(
               color: AppColors.blue,
-              borderRadius: BorderRadius.circular(
-                MarginsRaw.borderRadius,
-              ),
+              borderRadius: BorderRadius.circular(MarginsRaw.borderRadius),
             ),
             height: 6,
             width: 60,
@@ -135,7 +134,7 @@ class MatchesName extends StatelessWidget implements SetupPage {
               itemCount: _textFieldsList.length,
             ),
           ),
-        )
+        ),
       ],
     );
   }
@@ -186,13 +185,11 @@ class MatchesName extends StatelessWidget implements SetupPage {
   @override
   bool onNextPressed(BuildContext context) {
     if (areNamesDuplicate()) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text(
-            AppLocalizations.of(context).translate('match_name_duplicated'),
-          ),
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text(
+          AppLocalizations.of(context).translate('match_name_duplicated'),
         ),
-      );
+      ));
       return false;
     }
 
@@ -201,14 +198,11 @@ class MatchesName extends StatelessWidget implements SetupPage {
     if (_savedValues.length == _textFieldsList.length && isMatchNamesValid()) {
       return true;
     } else {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text(
-            AppLocalizations.of(context)
-                .translate('matches_name_empty_fields_message'),
-          ),
-        ),
-      );
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text(AppLocalizations.of(context).translate(
+          'matches_name_empty_fields_message',
+        )),
+      ));
       return false;
     }
   }

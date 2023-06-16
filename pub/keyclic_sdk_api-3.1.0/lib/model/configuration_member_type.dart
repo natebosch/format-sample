@@ -6,11 +6,7 @@ part of keyclic_sdk_api;
 
 class ConfigurationMemberType {
   /// Returns a new [ConfigurationMemberType] instance.
-  ConfigurationMemberType({
-    this.id,
-    this.roles = const [],
-    this.type,
-  });
+  ConfigurationMemberType({this.id, this.roles = const [], this.type});
 
   /// Returns a new [ConfigurationMemberType] instance and imports its values from
   /// [json] if it's non-null, null if [json] is null.
@@ -56,46 +52,54 @@ class ConfigurationMemberType {
       return <ConfigurationMemberType>[];
     }
 
-    return json.fold(<ConfigurationMemberType>[],
-        (List<ConfigurationMemberType> previousValue, element) {
-      final ConfigurationMemberType? object =
-          ConfigurationMemberType.fromJson(element);
-      if (object is ConfigurationMemberType) {
-        previousValue.add(object);
-      }
+    return json.fold(
+      <ConfigurationMemberType>[],
+      (List<ConfigurationMemberType> previousValue, element) {
+        final ConfigurationMemberType? object =
+            ConfigurationMemberType.fromJson(element);
+        if (object is ConfigurationMemberType) {
+          previousValue.add(object);
+        }
 
-      return previousValue;
-    });
+        return previousValue;
+      },
+    );
   }
 
   static Map<String, ConfigurationMemberType> mapFromJson(
-      Map<String, dynamic>? json) {
+    Map<String, dynamic>? json,
+  ) {
     if (json == null) {
       return <String, ConfigurationMemberType>{};
     }
 
-    return json.entries.fold(<String, ConfigurationMemberType>{},
-        (Map<String, ConfigurationMemberType> previousValue, element) {
-      final ConfigurationMemberType? object =
-          ConfigurationMemberType.fromJson(element.value);
-      if (object is ConfigurationMemberType) {
-        previousValue[element.key] = object;
-      }
+    return json.entries.fold(
+      <String, ConfigurationMemberType>{},
+      (Map<String, ConfigurationMemberType> previousValue, element) {
+        final ConfigurationMemberType? object =
+            ConfigurationMemberType.fromJson(element.value);
+        if (object is ConfigurationMemberType) {
+          previousValue[element.key] = object;
+        }
 
-      return previousValue;
-    });
+        return previousValue;
+      },
+    );
   }
 
   // maps a json object with a list of ConfigurationMemberType-objects as value to a dart map
   static Map<String, List<ConfigurationMemberType>> mapListFromJson(
-      Map<String, dynamic>? json) {
+    Map<String, dynamic>? json,
+  ) {
     if (json == null) {
       return <String, List<ConfigurationMemberType>>{};
     }
 
     return json.map((key, value) {
       return MapEntry<String, List<ConfigurationMemberType>>(
-          key, ConfigurationMemberType.listFromJson(value));
+        key,
+        ConfigurationMemberType.listFromJson(value),
+      );
     });
   }
 

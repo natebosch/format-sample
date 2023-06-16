@@ -29,6 +29,7 @@ class RadarrMovieFile with _$RadarrMovieFile, JsonSerializableMixin {
     String? edition,
   }) = _RadarrMovieFile;
 
-  factory RadarrMovieFile.fromJson(Map<String, Object?> json) =>
-      _$RadarrMovieFileFromJson(json);
+  factory RadarrMovieFile.fromJson(
+    Map<String, Object?> json,
+  ) => _$RadarrMovieFileFromJson(json);
 }

@@ -55,17 +55,17 @@ class BouncingScrollSimulation extends Simulation {
       final double finalX = _frictionSimulation.finalX;
       if (velocity > 0.0 && finalX > trailingExtent) {
         _springTime = _frictionSimulation.timeAtX(trailingExtent);
-        _springSimulation = _overscrollSimulation(
-          trailingExtent,
-          math.min(_frictionSimulation.dx(_springTime), maxSpringTransferVelocity),
-        );
+        _springSimulation = _overscrollSimulation(trailingExtent, math.min(
+          _frictionSimulation.dx(_springTime),
+          maxSpringTransferVelocity,
+        ));
         assert(_springTime.isFinite);
       } else if (velocity < 0.0 && finalX < leadingExtent) {
         _springTime = _frictionSimulation.timeAtX(leadingExtent);
-        _springSimulation = _underscrollSimulation(
-          leadingExtent,
-          math.min(_frictionSimulation.dx(_springTime), maxSpringTransferVelocity),
-        );
+        _springSimulation = _underscrollSimulation(leadingExtent, math.min(
+          _frictionSimulation.dx(_springTime),
+          maxSpringTransferVelocity,
+        ));
         assert(_springTime.isFinite);
       } else {
         _springTime = double.infinity;
@@ -125,7 +125,10 @@ class BouncingScrollSimulation extends Simulation {
 
   @override
   String toString() {
-    return '${objectRuntimeType(this, 'BouncingScrollSimulation')}(leadingExtent: $leadingExtent, trailingExtent: $trailingExtent)';
+    return '${objectRuntimeType(
+      this,
+      'BouncingScrollSimulation',
+    )}(leadingExtent: $leadingExtent, trailingExtent: $trailingExtent)';
   }
 }
 
@@ -182,7 +185,9 @@ class ClampingScrollSimulation extends Simulation {
     final double scaledFriction = friction * _decelerationForFriction(0.84);
 
     // See getSplineDeceleration().
-    final double deceleration = math.log(0.35 * velocity.abs() / scaledFriction);
+    final double deceleration = math.log(
+      0.35 * velocity.abs() / scaledFriction,
+    );
 
     return math.exp(deceleration / (_kDecelerationRate - 1.0));
   }
@@ -204,7 +209,9 @@ class ClampingScrollSimulation extends Simulation {
   //      = 1.2 t^3 - 3.27 t^2 + 3.065 t
   static const double _initialVelocityPenetration = 3.065;
   static double _flingDistancePenetration(double t) {
-    return (1.2 * t * t * t) - (3.27 * t * t) + (_initialVelocityPenetration * t);
+    return (1.2 * t * t * t) -
+        (3.27 * t * t) +
+        (_initialVelocityPenetration * t);
   }
 
   // The derivative of the _flingDistancePenetration() function.

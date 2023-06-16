@@ -9,7 +9,10 @@ import 'package:seeds/screens/explore_screens/unplant_seeds/interactor/viewmodel
 import 'package:seeds/utils/rate_states_extensions.dart';
 
 class AmountChangerMapper extends StateMapper {
-  UnplantSeedsState mapResultToState(UnplantSeedsState currentState, String quantity) {
+  UnplantSeedsState mapResultToState(
+    UnplantSeedsState currentState,
+    String quantity,
+  ) {
     final double parsedQuantity = double.tryParse(quantity) ?? 0;
     final selectedFiat = settingsStorage.selectedFiatCurrency;
 
@@ -19,18 +22,23 @@ class AmountChangerMapper extends StateMapper {
     tokenAmount = currentState.unplantedInputAmount.copyWith(parsedQuantity);
     fiatAmount = currentState.ratesState.tokenToFiat(tokenAmount, selectedFiat);
 
-    final TextEditingValue newAmountController =
-        TextEditingValue(text: quantity, selection: TextSelection.fromPosition(TextPosition(offset: quantity.length)));
+    final TextEditingValue newAmountController = TextEditingValue(
+      text: quantity,
+      selection:
+          TextSelection.fromPosition(TextPosition(offset: quantity.length)),
+    );
 
     return currentState.copyWith(
       pageCommand: UpdateTextController(newAmountController),
       onFocus: false,
       unplantedInputAmount: tokenAmount,
       unplantedInputAmountFiat: fiatAmount,
-      isUnplantSeedsButtonEnabled:
-          parsedQuantity > 0 && parsedQuantity <= currentAvailable && parsedQuantity <= (currentAvailable - minPlanted),
+      isUnplantSeedsButtonEnabled: parsedQuantity > 0 &&
+          parsedQuantity <= currentAvailable &&
+          parsedQuantity <= (currentAvailable - minPlanted),
       showOverBalanceAlert: parsedQuantity > currentAvailable,
-      showMinPlantedBalanceAlert: parsedQuantity > (currentAvailable - minPlanted),
+      showMinPlantedBalanceAlert:
+          parsedQuantity > (currentAvailable - minPlanted),
     );
   }
 }

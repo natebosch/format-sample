@@ -25,19 +25,15 @@ void main() async {
       prefs.getString('locale') ?? Platform.localeName.split('_').first;
   final token = prefs.getString('token') ?? '';
 
-  runApp(
-    MultiProvider(
-      providers: [
-        ChangeNotifierProvider<AppLocale>(
-          create: (context) => AppLocale(localeCode),
-        ),
-        ChangeNotifierProvider<Cart>(
-          create: (context) => Cart(),
-        ),
-      ],
-      child: RhoshopApp(token),
-    ),
-  );
+  runApp(MultiProvider(
+    providers: [
+      ChangeNotifierProvider<AppLocale>(
+        create: (context) => AppLocale(localeCode),
+      ),
+      ChangeNotifierProvider<Cart>(create: (context) => Cart()),
+    ],
+    child: RhoshopApp(token),
+  ));
 }
 
 class RhoshopApp extends StatefulWidget {
@@ -63,9 +59,7 @@ class _RhoshopAppState extends State<RhoshopApp> {
     ]);
 
     SystemChrome.setSystemUIOverlayStyle(
-      SystemUiOverlayStyle(
-        statusBarColor: AppColors.primary,
-      ),
+      SystemUiOverlayStyle(statusBarColor: AppColors.primary),
     );
 
     Provider.of<Cart>(context, listen: false).load();
@@ -74,95 +68,98 @@ class _RhoshopAppState extends State<RhoshopApp> {
       client: ValueNotifier(createGqlClient(token: widget.token)),
       child: Consumer<AppLocale>(
         builder: (context, appLocale, child) => MaterialApp(
-          debugShowCheckedModeBanner: false,
-          onGenerateTitle: (context) => AppLocalization.of(context).appTitle,
-          builder: (context, child) {
-            return ScrollConfiguration(
-              behavior: WithoutGlowScrollBehavior(),
-              child: child,
-            );
-          },
-          localizationsDelegates: [
-            const AppLocalizationDelegate(),
-            GlobalMaterialLocalizations.delegate,
-            GlobalWidgetsLocalizations.delegate
-          ],
-          supportedLocales: AppLocalizationDelegate.supportedLocaleCodes.map(
-            (code) => Locale(code, ''),
-          ),
-          locale: appLocale.locale,
-          initialRoute: widget.token.isEmpty ? Routes.intro : Routes.home,
-          routes: {
-            Routes.intro: (context) => IntroScreen(),
-            Routes.signIn: (context) => SignInScreen(),
-            Routes.signUp: (context) => SignUpScreen(),
-            Routes.home: (context) => HomeScreen(),
-            Routes.category: (context) =>
-                CategoryScreen(ModalRoute.of(context).settings.arguments),
-            Routes.notifications: (context) => NotificationsScreen(),
-            Routes.product: (context) =>
-                ProductScreen(ModalRoute.of(context).settings.arguments),
-            Routes.cart: (context) => CartScreen(),
-            Routes.orderConfirmation: (context) => OrderConfirmationScreen(),
-            Routes.settings: (context) => SettingsScreen(),
-            Routes.myOrders: (context) => MyOrdersScreen(),
-            Routes.profile: (context) => ProfileScreen(),
-          },
-          theme: ThemeData(
-            primaryColor: AppColors.primary,
-            visualDensity: VisualDensity.adaptivePlatformDensity,
-            textTheme: TextTheme(
-              headline1: TextStyle(
-                color: AppColors.primaryText,
-                fontSize: 46,
-                fontFamily: 'Nunito',
-                fontWeight: FontWeight.w700,
-              ),
-              headline2: TextStyle(
-                color: AppColors.primaryText,
-                fontSize: 28,
-                fontFamily: 'Nunito',
-                fontWeight: FontWeight.w700,
-              ),
-              headline3: TextStyle(
-                color: AppColors.primaryText,
-                fontSize: 24,
-                fontFamily: 'Nunito',
-                fontWeight: FontWeight.w600,
-              ),
-              headline4: TextStyle(
-                color: AppColors.primaryText,
-                fontSize: 20,
-                fontFamily: 'Nunito',
-                fontWeight: FontWeight.w600,
-              ),
-              subtitle2: TextStyle(
-                color: AppColors.primaryText,
-                fontSize: 18,
-                fontFamily: 'Nunito',
-                fontWeight: FontWeight.w400,
-              ),
-              bodyText1: TextStyle(
-                color: AppColors.primaryText,
-                fontSize: 18,
-                fontFamily: 'Nunito',
-                fontWeight: FontWeight.w400,
-              ),
-              bodyText2: TextStyle(
-                color: AppColors.descriptionText,
-                fontSize: 16,
-                fontFamily: 'Nunito',
-                fontWeight: FontWeight.w400,
-              ),
-              button: TextStyle(
-                color: AppColors.secondaryText,
-                fontSize: 20,
-                fontFamily: 'Nunito',
-                fontWeight: FontWeight.w400,
+              debugShowCheckedModeBanner: false,
+              onGenerateTitle: (context) =>
+                  AppLocalization.of(context).appTitle,
+              builder: (context, child) {
+                return ScrollConfiguration(
+                  behavior: WithoutGlowScrollBehavior(),
+                  child: child,
+                );
+              },
+              localizationsDelegates: [
+                const AppLocalizationDelegate(),
+                GlobalMaterialLocalizations.delegate,
+                GlobalWidgetsLocalizations.delegate,
+              ],
+              supportedLocales: AppLocalizationDelegate.supportedLocaleCodes
+                  .map((code) => Locale(code, '')),
+              locale: appLocale.locale,
+              initialRoute: widget.token.isEmpty ? Routes.intro : Routes.home,
+              routes: {
+                Routes.intro: (context) => IntroScreen(),
+                Routes.signIn: (context) => SignInScreen(),
+                Routes.signUp: (context) => SignUpScreen(),
+                Routes.home: (context) => HomeScreen(),
+                Routes.category: (context) => CategoryScreen(
+                      ModalRoute.of(context).settings.arguments,
+                    ),
+                Routes.notifications: (context) => NotificationsScreen(),
+                Routes.product: (context) => ProductScreen(
+                      ModalRoute.of(context).settings.arguments,
+                    ),
+                Routes.cart: (context) => CartScreen(),
+                Routes.orderConfirmation: (context) =>
+                    OrderConfirmationScreen(),
+                Routes.settings: (context) => SettingsScreen(),
+                Routes.myOrders: (context) => MyOrdersScreen(),
+                Routes.profile: (context) => ProfileScreen(),
+              },
+              theme: ThemeData(
+                primaryColor: AppColors.primary,
+                visualDensity: VisualDensity.adaptivePlatformDensity,
+                textTheme: TextTheme(
+                  headline1: TextStyle(
+                    color: AppColors.primaryText,
+                    fontSize: 46,
+                    fontFamily: 'Nunito',
+                    fontWeight: FontWeight.w700,
+                  ),
+                  headline2: TextStyle(
+                    color: AppColors.primaryText,
+                    fontSize: 28,
+                    fontFamily: 'Nunito',
+                    fontWeight: FontWeight.w700,
+                  ),
+                  headline3: TextStyle(
+                    color: AppColors.primaryText,
+                    fontSize: 24,
+                    fontFamily: 'Nunito',
+                    fontWeight: FontWeight.w600,
+                  ),
+                  headline4: TextStyle(
+                    color: AppColors.primaryText,
+                    fontSize: 20,
+                    fontFamily: 'Nunito',
+                    fontWeight: FontWeight.w600,
+                  ),
+                  subtitle2: TextStyle(
+                    color: AppColors.primaryText,
+                    fontSize: 18,
+                    fontFamily: 'Nunito',
+                    fontWeight: FontWeight.w400,
+                  ),
+                  bodyText1: TextStyle(
+                    color: AppColors.primaryText,
+                    fontSize: 18,
+                    fontFamily: 'Nunito',
+                    fontWeight: FontWeight.w400,
+                  ),
+                  bodyText2: TextStyle(
+                    color: AppColors.descriptionText,
+                    fontSize: 16,
+                    fontFamily: 'Nunito',
+                    fontWeight: FontWeight.w400,
+                  ),
+                  button: TextStyle(
+                    color: AppColors.secondaryText,
+                    fontSize: 20,
+                    fontFamily: 'Nunito',
+                    fontWeight: FontWeight.w400,
+                  ),
+                ),
               ),
             ),
-          ),
-        ),
       ),
     );
   }

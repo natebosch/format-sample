@@ -70,19 +70,14 @@ class _AppState extends State<App> with WidgetsBindingObserver {
     BuildContext? context = navigatorKey.currentState?.overlay?.context;
 
     if (context != null) {
-      Future.delayed(
-          Duration.zero, () {
-            showDialog(
-              context: context,
-              builder: (context) {
-                return AlertDialog(
-                  title: Text(title),
-                  content: Text(content),
-                );
-              },
-            );
-          }
-      );
+      Future.delayed(Duration.zero, () {
+        showDialog(
+          context: context,
+          builder: (context) {
+            return AlertDialog(title: Text(title), content: Text(content));
+          },
+        );
+      });
     }
   }
 
@@ -91,25 +86,14 @@ class _AppState extends State<App> with WidgetsBindingObserver {
     return MaterialApp(
       navigatorKey: navigatorKey,
       home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Airbridge Flutter SDK Example'),
-        ),
+        appBar: AppBar(title: const Text('Airbridge Flutter SDK Example')),
         body: getBody(),
         bottomNavigationBar: BottomNavigationBar(
           onTap: onTap,
           items: [
-            BottomNavigationBarItem(
-              icon: Icon(Icons.home),
-              label: 'Home',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.link),
-              label: 'Web',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.info),
-              label: 'Log',
-            ),
+            BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+            BottomNavigationBarItem(icon: Icon(Icons.link), label: 'Web'),
+            BottomNavigationBarItem(icon: Icon(Icons.info), label: 'Log'),
           ],
           currentIndex: _selectedIndex,
         ),
@@ -118,7 +102,7 @@ class _AppState extends State<App> with WidgetsBindingObserver {
   }
 
   Widget getBody() {
-    switch(_selectedIndex) {
+    switch (_selectedIndex) {
       case 0:
         return homePage;
       case 1:
@@ -148,20 +132,17 @@ Future<void> init() async {
   Log.info('init');
 
   Storage.set('user', User(
-      id: 'test',
-      email: 'test@ab180.co',
-      phone: '000-0000-0000',
-      alias: {
-        'alias_key1': 'value1',
-        'alias_key2': 'value2'
-      },
-      attributes: {
-        'attributes_key2': 3,
-        'attributes_key5': 2200000000,
-        'attributes_key4': 10.4,
-        'attributes_key3': true,
-        'attributes_key1': 'value1'
-      }
+    id: 'test',
+    email: 'test@ab180.co',
+    phone: '000-0000-0000',
+    alias: {'alias_key1': 'value1', 'alias_key2': 'value2'},
+    attributes: {
+      'attributes_key2': 3,
+      'attributes_key5': 2200000000,
+      'attributes_key4': 10.4,
+      'attributes_key3': true,
+      'attributes_key1': 'value1',
+    },
   ));
 
   Storage.set('deviceUUID', await Airbridge.state.deviceUUID);

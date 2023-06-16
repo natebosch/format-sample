@@ -9,17 +9,17 @@ String getProductName(Product product, AppLocalizations appLocalizations) =>
     product.productName ?? appLocalizations.unknownProductName;
 
 /// Padding to be used while building the SmoothCard on any Product card.
-const EdgeInsets SMOOTH_CARD_PADDING =
-    EdgeInsets.symmetric(horizontal: 12.0, vertical: 4.0);
+const EdgeInsets SMOOTH_CARD_PADDING = EdgeInsets.symmetric(
+  horizontal: 12.0,
+  vertical: 4.0,
+);
 
 /// A SmoothCard on Product cards using default margin and padding.
 Widget buildProductSmoothCard({
   Widget? header,
   required Widget body,
   EdgeInsets? padding = EdgeInsets.zero,
-  EdgeInsets? margin = const EdgeInsets.symmetric(
-    horizontal: SMALL_SPACE,
-  ),
+  EdgeInsets? margin = const EdgeInsets.symmetric(horizontal: SMALL_SPACE),
 }) {
   return SmoothCard(
     margin: margin,

@@ -24,25 +24,21 @@ class SpeakerBox extends StatelessWidget {
                 padding: const EdgeInsets.all(16.0),
                 children: <Widget>[
                   Center(
-                    child: SpeakerBoxImage(
-                      image: speaker.image,
-                      size: 120.0,
-                    ),
+                    child: SpeakerBoxImage(image: speaker.image, size: 120.0),
                   ),
                   SizedBox(height: 15.0),
                   Center(
-                    child: Text(
-                      speaker.name,
-                      style: Styles.bottomSheetTitleText,
-                    ),
+                    child:
+                        Text(speaker.name, style: Styles.bottomSheetTitleText),
                   ),
                   SizedBox(height: 15.0),
                   Text(
                     speaker.details,
                     textAlign: TextAlign.justify,
-                    style: Styles.bottomSheetDescriptionText
-                        .copyWith(fontSize: 14.0),
-                  )
+                    style: Styles.bottomSheetDescriptionText.copyWith(
+                      fontSize: 14.0,
+                    ),
+                  ),
                 ],
               ),
             );
@@ -63,10 +59,7 @@ class SpeakerBox extends StatelessWidget {
         padding: const EdgeInsets.all(8.0),
         child: Row(
           children: <Widget>[
-            SpeakerBoxImage(
-              image: speaker.image,
-              size: 50.0,
-            ),
+            SpeakerBoxImage(image: speaker.image, size: 50.0),
             SizedBox(width: 15.0),
             Flexible(
               child: Text(

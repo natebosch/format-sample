@@ -191,5 +191,5 @@ const names = {
   "zh": "ਚੀਨੀ",
   "zun": "Zuni",
   "zxx": "ਕੋਈ ਭਾਸ਼ਾਈ ਸਮੱਗਰੀ ਨਹੀਂ",
-  "zza": "Zaza"
+  "zza": "Zaza",
 };

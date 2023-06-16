@@ -6,7 +6,8 @@ import 'package:deer/presentation/screen/todo_detail/todo_detail_screen.dart';
 import 'package:deer/presentation/screen/todo_list/todo_list_actions.dart';
 import 'package:deer/presentation/shared/widgets/box_decoration.dart';
 import 'package:deer/presentation/shared/widgets/dismissible.dart';
-import 'package:deer/presentation/shared/widgets/dropdown.dart' as CustomDropdown;
+import 'package:deer/presentation/shared/widgets/dropdown.dart'
+    as CustomDropdown;
 import 'package:deer/presentation/shared/widgets/label.dart';
 import 'package:deer/presentation/shared/widgets/todo_adder.dart';
 import 'package:deer/presentation/shared/widgets/todo_tile.dart';
@@ -77,9 +78,9 @@ class _TodoListScreenState extends State<TodoListScreen> {
   }
 
   void _showArchive() {
-    Navigator.of(context).push(MaterialPageRoute(
-      builder: (context) => ArchiveListScreen(),
-    ));
+    Navigator.of(context).push(
+      MaterialPageRoute(builder: (context) => ArchiveListScreen()),
+    );
   }
 
   @override
@@ -130,19 +131,21 @@ class _TodoListScreenState extends State<TodoListScreen> {
               Text('Filter by:'),
               const SizedBox(width: 8.0),
               Container(
-                padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 4.0),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 12.0, vertical: 4.0),
                 decoration: roundedShape(context),
                 child: CustomDropdown.DropdownButtonHideUnderline(
                   child: CustomDropdown.DropdownButton<String>(
                     isDense: true,
                     value: state.filter,
-                    items: filters
-                        .map((f) => CustomDropdown.DropdownMenuItem<String>(
-                              child: Text(f),
-                              value: f,
-                            ))
-                        .toList(),
-                    onChanged: (filter) => _bloc.actions.add(FilterBy(filter: filter)),
+                    items: filters.map(
+                      (f) => CustomDropdown.DropdownMenuItem<String>(
+                        child: Text(f),
+                        value: f,
+                      ),
+                    ).toList(),
+                    onChanged:
+                        (filter) => _bloc.actions.add(FilterBy(filter: filter)),
                   ),
                 ),
               ),
@@ -155,14 +158,19 @@ class _TodoListScreenState extends State<TodoListScreen> {
 
   Widget _buildBody(TodoListState state) {
     return Container(
-      decoration: BoxDecoration(gradient: ColorfulApp.of(context).colors.brightGradient),
+      decoration: BoxDecoration(
+        gradient: ColorfulApp.of(context).colors.brightGradient,
+      ),
       child: Column(
         children: <Widget>[
           Expanded(
             child: state.todos.length == 0
                 ? Center(
                     child: SingleChildScrollView(
-                      child: buildCentralLabel(text: 'Todo list is empty!', context: context),
+                      child: buildCentralLabel(
+                        text: 'Todo list is empty!',
+                        context: context,
+                      ),
                     ),
                   )
                 : ListView.builder(
@@ -172,8 +180,14 @@ class _TodoListScreenState extends State<TodoListScreen> {
                       final todo = state.todos[index];
                       return Dismissible(
                         key: Key(todo.addedDate.toIso8601String()),
-                        background: buildDismissibleBackground(context: context, leftToRight: true),
-                        secondaryBackground: buildDismissibleBackground(context: context, leftToRight: false),
+                        background: buildDismissibleBackground(
+                          context: context,
+                          leftToRight: true,
+                        ),
+                        secondaryBackground: buildDismissibleBackground(
+                          context: context,
+                          leftToRight: false,
+                        ),
                         onDismissed: (_) => _archiveTodo(todo),
                         child: TodoTile(
                           todo: todo,

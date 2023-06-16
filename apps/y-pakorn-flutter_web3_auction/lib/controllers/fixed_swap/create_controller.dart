@@ -27,7 +27,7 @@ class FixedSwapCreateController extends GetxController {
     2.days,
     3.days,
     4.days,
-    7.days
+    7.days,
   ];
 
   bool isNoLimitPerWallet = true;
@@ -41,21 +41,26 @@ class FixedSwapCreateController extends GetxController {
 
   BigInt _currentTokenBalance = BigInt.zero;
 
-  ControllerBundle tokenController =
-      ControllerBundle(validator: defaultTokenValidator);
+  ControllerBundle tokenController = ControllerBundle(
+    validator: defaultTokenValidator,
+  );
 
   ControllerBundle? amountController;
 
-  ControllerBundle poolNameController = ControllerBundle(validator: (val) {
-    if (val == null || val.isEmpty) return 'empty string';
-    if (val.length > 15) return 'length must no more than 15';
-    return null;
-  });
+  ControllerBundle poolNameController = ControllerBundle(
+    validator: (val) {
+      if (val == null || val.isEmpty) return 'empty string';
+      if (val.length > 15) return 'length must no more than 15';
+      return null;
+    },
+  );
 
-  ControllerBundle ratioController =
-      ControllerBundle(validator: defaultDecimalValidator);
-  ControllerBundle maxPerWalletController =
-      ControllerBundle(validator: defaultDecimalValidator);
+  ControllerBundle ratioController = ControllerBundle(
+    validator: defaultDecimalValidator,
+  );
+  ControllerBundle maxPerWalletController = ControllerBundle(
+    validator: defaultDecimalValidator,
+  );
 
   List<CurrencyToken> get availableCurrency =>
       Web3Controller.to.currentChain?.fixedSwapCurrency ?? [];
@@ -109,7 +114,9 @@ class FixedSwapCreateController extends GetxController {
         token0Address: currentToken.first.address,
         token1Address: selectedCurrency!.address,
         amountTotalToken0: toBase(
-            Decimal.parse(amountController!.text), currentToken.first.decimal),
+          Decimal.parse(amountController!.text),
+          currentToken.first.decimal,
+        ),
         amountTotalToken1: toBase(totalCurrencyAmountByRatio),
         claimDelayInSec: 0.seconds,
         maxPerWallet: isNoLimitPerWallet
@@ -140,7 +147,7 @@ class FixedSwapCreateController extends GetxController {
           contract.getBalanceOf(
             tokenController.text,
             Web3Controller.to.selectedAddress,
-          )
+          ),
         ]);
 
         _currentToken = [res[0] as Token];
@@ -161,17 +168,19 @@ class FixedSwapCreateController extends GetxController {
   void onInit() {
     //print('create controller init');
 
-    amountController = ControllerBundle(validator: (val) {
-      if (val == null || val.isEmpty) return 'empty amount';
-      if (Decimal.tryParse(val) == null || Decimal.parse(val).isNegative)
-        return 'wrong value';
-      if (Decimal.parse(val) == Decimal.zero) return 'zero amount';
-      if (toBase(Decimal.parse(val)) > currentTokenBalance)
-        return 'exceed current balance';
-      if (!totalCurrencyAmountByRatio.hasFinitePrecision)
-        return 'infinite decimal';
-      return null;
-    });
+    amountController = ControllerBundle(
+      validator: (val) {
+        if (val == null || val.isEmpty) return 'empty amount';
+        if (Decimal.tryParse(val) == null || Decimal.parse(val).isNegative)
+          return 'wrong value';
+        if (Decimal.parse(val) == Decimal.zero) return 'zero amount';
+        if (toBase(Decimal.parse(val)) > currentTokenBalance)
+          return 'exceed current balance';
+        if (!totalCurrencyAmountByRatio.hasFinitePrecision)
+          return 'infinite decimal';
+        return null;
+      },
+    );
 
     super.onInit();
   }
@@ -193,8 +202,9 @@ class FixedSwapCreateController extends GetxController {
     final resAmount = amountController!.validate();
     final resPoolName = poolNameController.validate();
     final resRatio = ratioController.validate();
-    final resMax =
-        isNoLimitPerWallet ? true : maxPerWalletController.validate();
+    final resMax = isNoLimitPerWallet
+        ? true
+        : maxPerWalletController.validate();
     return resAmount && resPoolName && resRatio && resMax;
   }
 }

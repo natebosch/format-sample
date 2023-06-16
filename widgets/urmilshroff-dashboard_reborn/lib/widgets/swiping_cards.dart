@@ -43,9 +43,10 @@ class SwipingCards extends StatelessWidget {
 
             var start = padding +
                 max(
-                    primaryCardLeft -
-                        horizontalInset * -delta * (isOnRight ? 15 : 1),
-                    0.0);
+                  primaryCardLeft -
+                      horizontalInset * -delta * (isOnRight ? 15 : 1),
+                  0.0,
+                );
 
             var cardItem = Positioned.directional(
               top: padding + verticalInset * max(-delta, 0.0),
@@ -86,7 +87,7 @@ class SwipingCards extends StatelessWidget {
                                 ),
                               ],
                             ),
-                          )
+                          ),
                         ],
                       ),
                     ),
@@ -96,9 +97,7 @@ class SwipingCards extends StatelessWidget {
             );
             cardList.add(cardItem);
           }
-          return Stack(
-            children: cardList,
-          );
+          return Stack(children: cardList);
         },
       ),
     );

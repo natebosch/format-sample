@@ -21,30 +21,26 @@ import 'package:invoiceninja_flutter/utils/completers.dart';
 import 'package:invoiceninja_flutter/utils/localization.dart';
 
 class ViewClientList implements PersistUI {
-  ViewClientList({
-    this.force = false,
-  });
+  ViewClientList({this.force = false});
 
   final bool force;
 }
 
 class ViewClient implements PersistUI, PersistPrefs {
-  ViewClient({
-    @required this.clientId,
-    this.force = false,
-  });
+  ViewClient({@required this.clientId, this.force = false});
 
   final String clientId;
   final bool force;
 }
 
 class EditClient implements PersistUI, PersistPrefs {
-  EditClient(
-      {@required this.client,
-      this.contact,
-      this.completer,
-      this.cancelCompleter,
-      this.force = false});
+  EditClient({
+    @required this.client,
+    this.contact,
+    this.completer,
+    this.cancelCompleter,
+    this.force = false,
+  });
 
   final ClientEntity client;
   final ContactEntity contact;
@@ -284,7 +280,10 @@ class FilterClientsByCustom4 implements PersistUI {
 }
 
 void handleClientAction(
-    BuildContext context, List<BaseEntity> clients, EntityAction action) async {
+  BuildContext context,
+  List<BaseEntity> clients,
+  EntityAction action,
+) async {
   if (clients.isEmpty) {
     return;
   }
@@ -309,41 +308,46 @@ void handleClientAction(
       }
       break;
     case EntityAction.settings:
-      store.dispatch(ViewSettings(
-        client: client,
-        section: kSettingsLocalization,
-      ));
+      store.dispatch(
+        ViewSettings(client: client, section: kSettingsLocalization),
+      );
       break;
     case EntityAction.newTask:
       createEntity(
-          context: context,
-          entity:
-              TaskEntity(state: state).rebuild((b) => b..clientId = client.id),
-          filterEntity: client);
+        context: context,
+        entity:
+            TaskEntity(state: state).rebuild((b) => b..clientId = client.id),
+        filterEntity: client,
+      );
       break;
     case EntityAction.newInvoice:
       createEntity(
-          context: context,
-          entity: InvoiceEntity(state: state, client: client),
-          filterEntity: client);
+        context: context,
+        entity: InvoiceEntity(state: state, client: client),
+        filterEntity: client,
+      );
       break;
     case EntityAction.newRecurringInvoice:
       createEntity(
-          context: context,
-          entity: InvoiceEntity(
-              state: state,
-              client: client,
-              entityType: EntityType.recurringInvoice),
-          filterEntity: client);
+        context: context,
+        entity: InvoiceEntity(
+          state: state,
+          client: client,
+          entityType: EntityType.recurringInvoice,
+        ),
+        filterEntity: client,
+      );
       break;
     case EntityAction.newRecurringExpense:
       createEntity(
-          context: context,
-          entity: ExpenseEntity(
-              state: state,
-              client: client,
-              entityType: EntityType.recurringExpense),
-          filterEntity: client);
+        context: context,
+        entity: ExpenseEntity(
+          state: state,
+          client: client,
+          entityType: EntityType.recurringExpense,
+        ),
+        filterEntity: client,
+      );
       break;
     case EntityAction.newQuote:
       createEntity(
@@ -392,27 +396,39 @@ void handleClientAction(
       break;
     case EntityAction.restore:
       final message = clientIds.length > 1
-          ? localization.restoredClients
-              .replaceFirst(':value', clientIds.length.toString())
+          ? localization.restoredClients.replaceFirst(
+              ':value',
+              clientIds.length.toString(),
+            )
           : localization.restoredClient;
       store.dispatch(RestoreClientsRequest(
-          snackBarCompleter<Null>(context, message), clientIds));
+        snackBarCompleter<Null>(context, message),
+        clientIds,
+      ));
       break;
     case EntityAction.archive:
       final message = clientIds.length > 1
-          ? localization.archivedClients
-              .replaceFirst(':value', clientIds.length.toString())
+          ? localization.archivedClients.replaceFirst(
+              ':value',
+              clientIds.length.toString(),
+            )
           : localization.archivedClient;
       store.dispatch(ArchiveClientsRequest(
-          snackBarCompleter<Null>(context, message), clientIds));
+        snackBarCompleter<Null>(context, message),
+        clientIds,
+      ));
       break;
     case EntityAction.delete:
       final message = clientIds.length > 1
-          ? localization.deletedClients
-              .replaceFirst(':value', clientIds.length.toString())
+          ? localization.deletedClients.replaceFirst(
+              ':value',
+              clientIds.length.toString(),
+            )
           : localization.deletedClient;
       store.dispatch(DeleteClientsRequest(
-          snackBarCompleter<Null>(context, message), clientIds));
+        snackBarCompleter<Null>(context, message),
+        clientIds,
+      ));
       break;
     case EntityAction.toggleMultiselect:
       if (!store.state.clientListState.isInMultiselect()) {
@@ -432,9 +448,7 @@ void handleClientAction(
       }
       break;
     case EntityAction.more:
-      showEntityActionsDialog(
-        entities: [client],
-      );
+      showEntityActionsDialog(entities: [client]);
       break;
     default:
       print('## Error: action $action not handled in client_actions');

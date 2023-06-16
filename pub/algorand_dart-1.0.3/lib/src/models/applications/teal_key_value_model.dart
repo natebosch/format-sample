@@ -8,13 +8,11 @@ class TealKeyValue {
   final String key;
   final TealValue value;
 
-  TealKeyValue({
-    required this.key,
-    required this.value,
-  });
+  TealKeyValue({required this.key, required this.value});
 
-  factory TealKeyValue.fromJson(Map<String, dynamic> json) =>
-      _$TealKeyValueFromJson(json);
+  factory TealKeyValue.fromJson(
+    Map<String, dynamic> json,
+  ) => _$TealKeyValueFromJson(json);
 
   Map<String, dynamic> toJson() => _$TealKeyValueToJson(this);
 }

@@ -14,7 +14,6 @@ const double kRunSpacing = 20.0;
 const double kMainAxisSpacing = 16.0;
 const double kCrossAxisSpacing = 16.0;
 
-
 class SkillsSection extends StatefulWidget {
   SkillsSection({Key? key});
   @override
@@ -80,9 +79,8 @@ class _SkillsSectionState extends State<SkillsSection>
                     ContentArea(
                       width: contentAreaWidthSm,
                       child: Center(
-                        child: Column(
-                          children: _buildBoxesSm(Data.skillCardData),
-                        ),
+                        child:
+                            Column(children: _buildBoxesSm(Data.skillCardData)),
                       ),
                     ),
                   ],
@@ -109,9 +107,7 @@ class _SkillsSectionState extends State<SkillsSection>
                     SpaceH40(),
                     ContentArea(
                       width: contentAreaWidthSm,
-                      child: Center(
-                        child: _buildSkillBoxes(boxHeight: 250),
-                      ),
+                      child: Center(child: _buildSkillBoxes(boxHeight: 250)),
                     ),
                   ],
                 ),
@@ -139,10 +135,8 @@ class _SkillsSectionState extends State<SkillsSection>
                       padding:
                           EdgeInsets.symmetric(horizontal: Sizes.HEIGHT_48),
                       child: Center(
-                        child: _buildSkillBoxes(
-                          boxHeight: 250,
-                          crossAxisCount: 2,
-                        ),
+                        child:
+                            _buildSkillBoxes(boxHeight: 250, crossAxisCount: 2),
                       ),
                     ),
                   ],
@@ -161,15 +155,12 @@ class _SkillsSectionState extends State<SkillsSection>
   ) {
     List<Widget> items = [];
     for (int index = 0; index < skillLevels.length; index++) {
-      items.add(
-        SkillLevel(
-          skillLevelWidth: width,
-          controller: _controller,
-          skill: skillLevels[index].skill,
-          
-          level: skillLevels[index].level,
-        ),
-      );
+      items.add(SkillLevel(
+        skillLevelWidth: width,
+        controller: _controller,
+        skill: skillLevels[index].skill,
+        level: skillLevels[index].level,
+      ));
     }
     return items;
   }
@@ -216,15 +207,13 @@ class _SkillsSectionState extends State<SkillsSection>
     List<Widget> items = [];
     for (int index = 0; index < skill.length; index++) {
       if (index != 1 && index != 5) {
-        items.add(
-          SkillCard(
-            width: widthOfScreen(context),
-            height: 200,
-            title: skill[index].title,
-            description: skill[index].description,
-            iconData: skill[index].iconData,
-          ),
-        );
+        items.add(SkillCard(
+          width: widthOfScreen(context),
+          height: 200,
+          title: skill[index].title,
+          description: skill[index].description,
+          iconData: skill[index].iconData,
+        ));
         items.add(SpaceH16());
       }
     }
@@ -246,10 +235,7 @@ class _SkillsSectionState extends State<SkillsSection>
                   body: StringConst.SKILLS_DESC,
                   child: Wrap(
                     runSpacing: kRunSpacing,
-                    children: _buildSkillSection(
-                      Data.skillLevelData,
-                      width,
-                    ),
+                    children: _buildSkillSection(Data.skillLevelData, width),
                   ),
                 ),
               ],
@@ -268,10 +254,7 @@ class _SkillsSectionState extends State<SkillsSection>
       body: StringConst.SKILLS_DESC,
       child: Wrap(
         runSpacing: kRunSpacing,
-        children: _buildSkillSection(
-          Data.skillLevelData,
-          width,
-        ),
+        children: _buildSkillSection(Data.skillLevelData, width),
       ),
     );
   }

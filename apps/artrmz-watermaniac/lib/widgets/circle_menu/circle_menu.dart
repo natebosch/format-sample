@@ -9,10 +9,7 @@ class AnchoredRadialMenu extends StatefulWidget {
   final Menu menu;
   final Widget child;
 
-  AnchoredRadialMenu({
-    this.menu,
-    this.child,
-  });
+  AnchoredRadialMenu({this.menu, this.child});
 
   @override
   _AnchoredRadialMenuState createState() => _AnchoredRadialMenuState();
@@ -50,9 +47,8 @@ class _RadialMenuState extends State<RadialMenu>
   void initState() {
     super.initState();
 
-    _menuController = RadialMenuController(
-      vsync: this,
-    )..addListener(() => setState(() {}));
+    _menuController = RadialMenuController(vsync: this)
+      ..addListener(() => setState(() {}));
   }
 
   @override
@@ -63,9 +59,7 @@ class _RadialMenuState extends State<RadialMenu>
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: buildIcons()..addAll([buildCenter()]),
-    );
+    return Stack(children: buildIcons()..addAll([buildCenter()]));
   }
 
   Widget buildCenter() {
@@ -94,14 +88,13 @@ class _RadialMenuState extends State<RadialMenu>
     return CenterAbout(
       position: widget.anchor,
       child: Transform(
-          transform: Matrix4.identity()..scale(scale, scale),
-          alignment: Alignment.center,
-          child: GestureDetector(
-            onTap: onPressed,
-            child: CircleMenuToggleButton(
-              expanded: expanded,
-            ),
-          )),
+        transform: Matrix4.identity()..scale(scale, scale),
+        alignment: Alignment.center,
+        child: GestureDetector(
+          onTap: onPressed,
+          child: CircleMenuToggleButton(expanded: expanded),
+        ),
+      ),
     );
   }
 
@@ -115,20 +108,22 @@ class _RadialMenuState extends State<RadialMenu>
       ++index;
 
       return buildIcon(
-          text: item.text,
-          angle: myAngle,
-          bubbleColor: Colors.white,
-          textColor: Colors.black,
-          onPressed: item.onPressed);
+        text: item.text,
+        angle: myAngle,
+        bubbleColor: Colors.white,
+        textColor: Colors.black,
+        onPressed: item.onPressed,
+      );
     }).toList(growable: true);
   }
 
-  Widget buildIcon(
-      {String text,
-      Color bubbleColor,
-      Color textColor,
-      double angle,
-      VoidCallback onPressed}) {
+  Widget buildIcon({
+    String text,
+    Color bubbleColor,
+    Color textColor,
+    double angle,
+    VoidCallback onPressed,
+  }) {
     if (_menuController.state == RadialMenuState.open) {
       return Container();
     }
@@ -172,12 +167,13 @@ class IconBubble extends StatelessWidget {
   final Color textColor;
   final VoidCallback onPressed;
 
-  IconBubble(
-      {this.text,
-      this.diameter,
-      this.bubbleColor,
-      this.textColor,
-      this.onPressed});
+  IconBubble({
+    this.text,
+    this.diameter,
+    this.bubbleColor,
+    this.textColor,
+    this.onPressed,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -187,16 +183,18 @@ class IconBubble extends StatelessWidget {
         width: diameter,
         height: diameter,
         decoration: BoxDecoration(
-            shape: BoxShape.circle,
-            color: bubbleColor,
-            boxShadow: [
-              BoxShadow(color: Colors.black.withAlpha(75), blurRadius: 8.0)
-            ]),
+          shape: BoxShape.circle,
+          color: bubbleColor,
+          boxShadow: [
+            BoxShadow(color: Colors.black.withAlpha(75), blurRadius: 8.0),
+          ],
+        ),
         child: Center(
-            child: Text(
-          text,
-          style: TextStyle(color: textColor, fontWeight: FontWeight.w600),
-        )),
+          child: Text(
+            text,
+            style: TextStyle(color: textColor, fontWeight: FontWeight.w600),
+          ),
+        ),
       ),
     );
   }
@@ -211,8 +209,10 @@ class PolarPosition extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final radialPosition = Offset(origin.dx + (cos(coord.angle) * coord.radius),
-        origin.dy + (sin(coord.angle) * coord.radius));
+    final radialPosition = Offset(
+      origin.dx + (cos(coord.angle) * coord.radius),
+      origin.dy + (sin(coord.angle) * coord.radius),
+    );
 
     return CenterAbout(position: radialPosition, child: child);
   }

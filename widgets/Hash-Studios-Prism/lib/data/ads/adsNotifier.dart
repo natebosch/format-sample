@@ -64,8 +64,8 @@ class AdsNotifier extends ChangeNotifier {
       return;
     }
     rewardedAd!.fullScreenContentCallback = FullScreenContentCallback(
-      onAdShowedFullScreenContent: (RewardedAd ad) =>
-          logger.d('ad onAdShowedFullScreenContent.'),
+      onAdShowedFullScreenContent:
+          (RewardedAd ad) => logger.d('ad onAdShowedFullScreenContent.'),
       onAdDismissedFullScreenContent: (RewardedAd ad) {
         logger.d('$ad onAdDismissedFullScreenContent.');
         ad.dispose();
@@ -78,11 +78,15 @@ class AdsNotifier extends ChangeNotifier {
       },
     );
 
-    rewardedAd!.show(onUserEarnedReward: (RewardedAd ad, RewardItem reward) {
-      logger.d('$ad with reward $RewardItem(${reward.amount}, ${reward.type}');
-      rewardFn(reward.amount);
-      if (downloadCoins >= 10) rewardFunc();
-    });
+    rewardedAd!.show(
+      onUserEarnedReward: (RewardedAd ad, RewardItem reward) {
+        logger.d(
+          '$ad with reward $RewardItem(${reward.amount}, ${reward.type}',
+        );
+        rewardFn(reward.amount);
+        if (downloadCoins >= 10) rewardFunc();
+      },
+    );
     rewardedAd = null;
     notifyListeners();
   }

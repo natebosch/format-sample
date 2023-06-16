@@ -25,11 +25,7 @@ const Duration _kFrontLayerSwitchDuration = Duration(milliseconds: 300);
 class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return ShowCaseWidget(
-      builder: Builder(
-        builder: (context) => _HomeView(),
-      ),
-    );
+    return ShowCaseWidget(builder: Builder(builder: (context) => _HomeView()));
   }
 }
 
@@ -132,14 +128,13 @@ class _HomeViewState extends State<_HomeView> with RouteAware {
                     ),
                     finalStateVisible: viewModel.connectionState ==
                         ConnectionStatusEnum.disconnected,
-                  ))
+                  ),
+                )
               : null,
           child: Backdrop(
             backTitle: Text(MessageProvider.of(context).options),
             backLayer: SettingsView(onSettingsChanged: onSettingsChanged),
-            frontAction: AnimatedSwitcher(
-              duration: _kFrontLayerSwitchDuration,
-            ),
+            frontAction: AnimatedSwitcher(duration: _kFrontLayerSwitchDuration),
             frontTitle: const Text('SignalMeter'),
             frontLayer: AnimatedSwitcher(
               duration: _kFrontLayerSwitchDuration,

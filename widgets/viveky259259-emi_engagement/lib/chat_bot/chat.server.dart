@@ -5,7 +5,10 @@ import 'package:emi_engagement/user_profile/user_model.dart';
 
 class ChatServer {
   static addMessageToServer(
-      ChatMessageModel message, UserModel userModel, String repliedOldMessage) {
+    ChatMessageModel message,
+    UserModel userModel,
+    String repliedOldMessage,
+  ) {
     Firestore db = Firestore.instance;
     CollectionReference chatRef = db.collection(DatabaseCollections.USER_CHATS);
 

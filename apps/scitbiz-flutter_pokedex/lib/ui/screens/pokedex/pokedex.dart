@@ -18,7 +18,8 @@ class PokedexScreen extends StatefulWidget {
   State<StatefulWidget> createState() => _PokedexScreenState();
 }
 
-class _PokedexScreenState extends State<PokedexScreen> with SingleTickerProviderStateMixin {
+class _PokedexScreenState extends State<PokedexScreen>
+    with SingleTickerProviderStateMixin {
   Animation<double> _fabAnimation;
   AnimationController _fabController;
   bool _isFabMenuVisible = false;
@@ -30,10 +31,7 @@ class _PokedexScreenState extends State<PokedexScreen> with SingleTickerProvider
       duration: animationDuration,
     );
 
-    _fabAnimation = _fabController.curvedTweenAnimation(
-      begin: 0.0,
-      end: 1.0,
-    );
+    _fabAnimation = _fabController.curvedTweenAnimation(begin: 0.0, end: 1.0);
 
     super.initState();
   }

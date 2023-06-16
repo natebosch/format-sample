@@ -61,13 +61,13 @@ class FPCSecondaryGradientOutlineButton extends StatelessWidget {
           title: this.title,
           textAlign: TextAlign.center,
           titleStyle: this.titleStyle?.copyWith(
-                    color: this.titleStyle?.color ?? theme.secondary,
-                    fontWeight: this.titleStyle?.fontWeight ??
-                        textStyle.fontWeightMedium,
-                    fontFamily: this.titleStyle?.fontFamily ??
-                        textStyle.fontFamilyMedium,
-                    package: textStyle.package,
-                  ) ??
+                color: this.titleStyle?.color ?? theme.secondary,
+                fontWeight:
+                    this.titleStyle?.fontWeight ?? textStyle.fontWeightMedium,
+                fontFamily:
+                    this.titleStyle?.fontFamily ?? textStyle.fontFamilyMedium,
+                package: textStyle.package,
+              ) ??
               TextStyle(
                 color: theme.secondary,
                 fontWeight: textStyle.fontWeightMedium,

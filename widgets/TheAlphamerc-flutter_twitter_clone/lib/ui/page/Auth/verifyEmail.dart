@@ -39,9 +39,7 @@ class _VerifyEmailPageState extends State<VerifyEmailPage> {
                   subTitle:
                       'Send email verification email link to ${state.user.email} to verify address',
                 ),
-                SizedBox(
-                  height: 30,
-                ),
+                SizedBox(height: 30),
                 _submitButton(context),
               ],
       ),
@@ -56,16 +54,12 @@ class _VerifyEmailPageState extends State<VerifyEmailPage> {
       child: Wrap(
         children: <Widget>[
           MaterialButton(
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(30),
-            ),
+            shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
             color: Colors.blueAccent,
             onPressed: _submit,
             padding: EdgeInsets.symmetric(horizontal: 30, vertical: 10),
-            child: TitleText(
-              'Send Link',
-              color: Colors.white,
-            ),
+            child: TitleText('Send Link', color: Colors.white),
           ),
         ],
       ),

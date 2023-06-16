@@ -22,23 +22,25 @@ class DaoProduct extends AbstractDao implements BulkDeletable {
     final int newVersion,
   ) async {
     if (oldVersion < 1) {
-      await db.execute('create table $TABLE_PRODUCT('
-          '$TABLE_PRODUCT_COLUMN_BARCODE TEXT PRIMARY KEY,'
-          '$_TABLE_PRODUCT_COLUMN_JSON TEXT NOT NULL,'
-          '${LocalDatabase.COLUMN_TIMESTAMP} INT NOT NULL'
-          ')');
+      await db.execute(
+        'create table $TABLE_PRODUCT('
+        '$TABLE_PRODUCT_COLUMN_BARCODE TEXT PRIMARY KEY,'
+        '$_TABLE_PRODUCT_COLUMN_JSON TEXT NOT NULL,'
+        '${LocalDatabase.COLUMN_TIMESTAMP} INT NOT NULL'
+        ')',
+      );
     }
   }
 
   // TODO(monsieurtanuki): probably not relevant anymore; use product extra instead?
   Future<int?> getLastUpdate(final String barcode) async {
-    final List<Map<String, dynamic>> queryResult =
-        await localDatabase.database.query(
-      TABLE_PRODUCT,
-      columns: <String>[LocalDatabase.COLUMN_TIMESTAMP],
-      where: '$TABLE_PRODUCT_COLUMN_BARCODE = ?',
-      whereArgs: <dynamic>[barcode],
-    );
+    final List<Map<String, dynamic>> queryResult = await localDatabase.database
+        .query(
+          TABLE_PRODUCT,
+          columns: <String>[LocalDatabase.COLUMN_TIMESTAMP],
+          where: '$TABLE_PRODUCT_COLUMN_BARCODE = ?',
+          whereArgs: <dynamic>[barcode],
+        );
     if (queryResult.isEmpty) {
       // not found
       return null;
@@ -58,32 +60,32 @@ class DaoProduct extends AbstractDao implements BulkDeletable {
     if (barcodes.isEmpty) {
       return result;
     }
-    final List<Map<String, dynamic>> queryResults =
-        await localDatabase.database.query(
-      TABLE_PRODUCT,
-      columns: <String>[
-        TABLE_PRODUCT_COLUMN_BARCODE,
-        _TABLE_PRODUCT_COLUMN_JSON,
-      ],
-      where:
-          '$TABLE_PRODUCT_COLUMN_BARCODE in(? ${',?' * (barcodes.length - 1)})',
-      whereArgs: barcodes,
-    );
+    final List<Map<String, dynamic>> queryResults = await localDatabase.database
+        .query(
+          TABLE_PRODUCT,
+          columns: <String>[
+            TABLE_PRODUCT_COLUMN_BARCODE,
+            _TABLE_PRODUCT_COLUMN_JSON,
+          ],
+          where:
+              '$TABLE_PRODUCT_COLUMN_BARCODE in(? ${',?' * (barcodes.length - 1)})',
+          whereArgs: barcodes,
+        );
     return _getAll(queryResults);
   }
 
   Future<Map<String, Product>> getAllWithExtras(final String extraKey) async {
-    final List<Map<String, dynamic>> queryResults =
-        await localDatabase.database.rawQuery(
-      'select '
-      '  a.$TABLE_PRODUCT_COLUMN_BARCODE '
-      ', a.$_TABLE_PRODUCT_COLUMN_JSON '
-      'from '
-      '  $TABLE_PRODUCT a '
-      'where '
-      '  exists(${DaoProductExtra.getExistsSubQuery()})',
-      DaoProductExtra.getExistsSubQueryArgs(extraKey),
-    );
+    final List<Map<String, dynamic>> queryResults = await localDatabase.database
+        .rawQuery(
+          'select '
+              '  a.$TABLE_PRODUCT_COLUMN_BARCODE '
+              ', a.$_TABLE_PRODUCT_COLUMN_JSON '
+              'from '
+              '  $TABLE_PRODUCT a '
+              'where '
+              '  exists(${DaoProductExtra.getExistsSubQuery()})',
+          DaoProductExtra.getExistsSubQueryArgs(extraKey),
+        );
     return _getAll(queryResults);
   }
 
@@ -105,7 +107,9 @@ class DaoProduct extends AbstractDao implements BulkDeletable {
   // TODO(monsieurtanuki): check only the fields that are deemed relevant
   // TODO(monsieurtanuki): consider space-separated fields as distinct keywords
   Future<List<Product>> getSuggestions(
-      final String pattern, final int minLength) async {
+    final String pattern,
+    final int minLength,
+  ) async {
     final List<Product> result = <Product>[];
     if (pattern.trim().length < minLength) {
       return result;
@@ -124,17 +128,17 @@ class DaoProduct extends AbstractDao implements BulkDeletable {
     }
     final List<Map<String, dynamic>> queryResults =
         await localDatabase.database.rawQuery(
-      'select'
-      '  a.$TABLE_PRODUCT_COLUMN_BARCODE '
-      ', a.$_TABLE_PRODUCT_COLUMN_JSON '
-      'from '
-      '  $TABLE_PRODUCT a '
-      'where '
-      '  $whereClause '
-      'order by '
-      '  $orderBy',
-      whereArgs,
-    );
+          'select'
+          '  a.$TABLE_PRODUCT_COLUMN_BARCODE '
+          ', a.$_TABLE_PRODUCT_COLUMN_JSON '
+          'from '
+          '  $TABLE_PRODUCT a '
+          'where '
+          '  $whereClause '
+          'order by '
+          '  $orderBy',
+          whereArgs,
+        );
     for (final Map<String, dynamic> row in queryResults) {
       result.add(_getProductFromQueryResult(row));
     }
@@ -142,8 +146,8 @@ class DaoProduct extends AbstractDao implements BulkDeletable {
   }
 
   /// Upserts products in database
-  Future<void> put(final List<Product> products) async =>
-      localDatabase.database.transaction((final Transaction transaction) async {
+  Future<void> put(final List<Product> products) async => localDatabase.database
+      .transaction((final Transaction transaction) async {
         final int timestamp = LocalDatabase.nowInMillis();
         final DaoProductExtra daoProductExtra = DaoProductExtra(localDatabase);
         await _bulkUpsertLoop(transaction, products, timestamp);
@@ -189,10 +193,10 @@ class DaoProduct extends AbstractDao implements BulkDeletable {
 
   @override
   List<String> getInsertColumns() => <String>[
-        TABLE_PRODUCT_COLUMN_BARCODE,
-        _TABLE_PRODUCT_COLUMN_JSON,
-        LocalDatabase.COLUMN_TIMESTAMP,
-      ];
+    TABLE_PRODUCT_COLUMN_BARCODE,
+    _TABLE_PRODUCT_COLUMN_JSON,
+    LocalDatabase.COLUMN_TIMESTAMP,
+  ];
 
   @override
   String getDeleteWhere(final List<dynamic> deleteWhereArgs) =>

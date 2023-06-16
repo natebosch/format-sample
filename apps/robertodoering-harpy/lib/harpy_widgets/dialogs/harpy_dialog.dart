@@ -123,10 +123,7 @@ class _HarpyDialogState extends State<HarpyDialog> {
     return DefaultTextStyle(
       style: textTheme.headline6!.copyWith(height: 1.2),
       textAlign: TextAlign.center,
-      child: Padding(
-        padding: _titlePadding,
-        child: widget.title,
-      ),
+      child: Padding(padding: _titlePadding, child: widget.title),
     );
   }
 
@@ -137,10 +134,8 @@ class _HarpyDialogState extends State<HarpyDialog> {
           child: DefaultTextStyle(
             style: textTheme.subtitle2!,
             textAlign: TextAlign.center,
-            child: Padding(
-              padding: widget.contentPadding,
-              child: widget.content,
-            ),
+            child:
+                Padding(padding: widget.contentPadding, child: widget.content),
           ),
         ),
       ),
@@ -155,19 +150,14 @@ class _HarpyDialogState extends State<HarpyDialog> {
                 Expanded(child: Center(child: action)),
             ],
           )
-        : Wrap(
-            alignment: WrapAlignment.spaceAround,
-            children: widget.actions!,
-          );
+        : Wrap(alignment: WrapAlignment.spaceAround, children: widget.actions!);
 
     if (widget.constrainActionSize) {
       return FutureBuilder<Size>(
         future: _dialogSizeCompleter.future,
         builder: (context, snapshot) {
           return ConstrainedBox(
-            constraints: BoxConstraints(
-              maxWidth: snapshot.data?.width ?? 0,
-            ),
+            constraints: BoxConstraints(maxWidth: snapshot.data?.width ?? 0),
             child: actions,
           );
         },

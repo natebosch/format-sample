@@ -59,7 +59,8 @@ class FollariBloc implements BlocBase {
   Future<void> loadFavorites() async {
     try {
       _favoriteRackStopData = favoriteRackFromJson(
-          await preferences.loadData('_favoriteRackStopData'));
+        await preferences.loadData('_favoriteRackStopData'),
+      );
       _inFavorites.add(_favoriteRackStopData);
     } on NoSuchMethodError catch (e) {
       print('loadSettings: Invalid Settings Data');
@@ -70,7 +71,9 @@ class FollariBloc implements BlocBase {
   Future<bool> _saveFavorites() async {
     print('saveFavorites()');
     return preferences.saveData(
-        '_favoriteRackStopData', favoriteRackToJson(_favoriteRackStopData));
+      '_favoriteRackStopData',
+      favoriteRackToJson(_favoriteRackStopData),
+    );
   }
 
   void addFavorite(FavoriteRack favoriteRack) {
@@ -110,8 +113,9 @@ class FollariBloc implements BlocBase {
   }
 
   bool isFavorite(Rack rack) {
-    return _favoriteRackStopData
-        .any((favoriteRackStopData) => favoriteRackStopData.rackId == rack.id);
+    return _favoriteRackStopData.any(
+      (favoriteRackStopData) => favoriteRackStopData.rackId == rack.id,
+    );
   }
 
   ///Injects saved [_favoriteRackStopData] into actual [_rackStops]
@@ -119,8 +123,11 @@ class FollariBloc implements BlocBase {
     favoriteRackStops.clear();
 
     //Used to speed up processing favorites
-    final Map<String, Rack> _rackStopsMap = Map.fromIterable(_rackStops,
-        key: (item) => item.id, value: (item) => item);
+    final Map<String, Rack> _rackStopsMap = Map.fromIterable(
+      _rackStops,
+      key: (item) => item.id,
+      value: (item) => item,
+    );
 
     for (final favoriteRackStop in _favoriteRackStopData) {
       _rackStopsMap[favoriteRackStop.rackId].customName =

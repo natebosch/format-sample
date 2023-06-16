@@ -25,30 +25,31 @@ class LauncherConfiguration {
   final String infoUrl;
   final String wikiUrl;
 
-  LauncherConfiguration(
-      {this.name,
-      this.description,
-      this.family,
-      this.fullName,
-      this.variant,
-      this.minStage,
-      this.maxStage,
-      this.length,
-      this.diameter,
-      this.launchMass,
-      this.geoCapacity,
-      this.leoCapacity,
-      this.thrust,
-      this.infoUrl,
-      this.wikiUrl,
-      this.id,
-      this.image,
-      this.manufacturer,
-      this.consecutiveSuccessfulLaunches,
-      this.totalLaunchCount,
-      this.successfulLaunches,
-      this.failedLaunches,
-      this.pendingLaunches});
+  LauncherConfiguration({
+    this.name,
+    this.description,
+    this.family,
+    this.fullName,
+    this.variant,
+    this.minStage,
+    this.maxStage,
+    this.length,
+    this.diameter,
+    this.launchMass,
+    this.geoCapacity,
+    this.leoCapacity,
+    this.thrust,
+    this.infoUrl,
+    this.wikiUrl,
+    this.id,
+    this.image,
+    this.manufacturer,
+    this.consecutiveSuccessfulLaunches,
+    this.totalLaunchCount,
+    this.successfulLaunches,
+    this.failedLaunches,
+    this.pendingLaunches,
+  });
 
   factory LauncherConfiguration.fromJson(Map<String, dynamic> json) {
     var image = json['image_url'];

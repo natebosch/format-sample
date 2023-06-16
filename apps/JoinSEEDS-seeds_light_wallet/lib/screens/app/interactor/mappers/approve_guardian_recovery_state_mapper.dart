@@ -8,7 +8,9 @@ class ApproveGuardianRecoveryStateMapper extends StateMapper {
   AppState mapResultToState(AppState currentState, Result result) {
     if (result.isError) {
       return currentState.copyWith(
-          pageState: PageState.failure, pageCommand: ShowErrorMessage("Oops, something went wrong".i18n));
+        pageState: PageState.failure,
+        pageCommand: ShowErrorMessage("Oops, something went wrong".i18n),
+      );
     } else {
       return currentState.copyWith(
         pageState: PageState.success,

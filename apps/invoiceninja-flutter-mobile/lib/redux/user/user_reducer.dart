@@ -14,11 +14,13 @@ import 'package:invoiceninja_flutter/redux/user/user_actions.dart';
 import 'package:invoiceninja_flutter/redux/user/user_state.dart';
 
 EntityUIState userUIReducer(UserUIState state, dynamic action) {
-  return state.rebuild((b) => b
-    ..listUIState.replace(userListReducer(state.listUIState, action))
-    ..editing.replace(editingReducer(state.editing, action))
-    ..selectedId = selectedIdReducer(state.selectedId, action)
-    ..forceSelected = forceSelectedReducer(state.forceSelected, action));
+  return state.rebuild(
+    (b) => b
+      ..listUIState.replace(userListReducer(state.listUIState, action))
+      ..editing.replace(editingReducer(state.editing, action))
+      ..selectedId = selectedIdReducer(state.selectedId, action)
+      ..forceSelected = forceSelectedReducer(state.forceSelected, action),
+  );
 }
 
 final forceSelectedReducer = combineReducers<bool>([
@@ -35,13 +37,17 @@ final forceSelectedReducer = combineReducers<bool>([
 Reducer<String> selectedIdReducer = combineReducers([
   TypedReducer<String, ArchiveUserSuccess>((completer, action) => ''),
   TypedReducer<String, DeleteUserSuccess>((completer, action) => ''),
-  TypedReducer<String, PreviewEntity>((selectedId, action) =>
-      action.entityType == EntityType.user ? action.entityId : selectedId),
+  TypedReducer<String, PreviewEntity>(
+    (selectedId, action) =>
+        action.entityType == EntityType.user ? action.entityId : selectedId,
+  ),
   TypedReducer<String, ViewUser>((String selectedId, action) => action.userId),
   TypedReducer<String, AddUserSuccess>(
-      (String selectedId, action) => action.user.id),
+    (String selectedId, action) => action.user.id,
+  ),
   TypedReducer<String, SelectCompany>(
-      (selectedId, action) => action.clearSelection ? '' : selectedId),
+    (selectedId, action) => action.clearSelection ? '' : selectedId,
+  ),
   TypedReducer<String, ClearEntityFilter>((selectedId, action) => ''),
   TypedReducer<String, SortUsers>((selectedId, action) => ''),
   TypedReducer<String, FilterUsers>((selectedId, action) => ''),
@@ -50,14 +56,17 @@ Reducer<String> selectedIdReducer = combineReducers([
   TypedReducer<String, FilterUsersByCustom2>((selectedId, action) => ''),
   TypedReducer<String, FilterUsersByCustom3>((selectedId, action) => ''),
   TypedReducer<String, FilterUsersByCustom4>((selectedId, action) => ''),
-  TypedReducer<String, ClearEntitySelection>((selectedId, action) =>
-      action.entityType == EntityType.user ? '' : selectedId),
+  TypedReducer<String, ClearEntitySelection>(
+    (selectedId, action) =>
+        action.entityType == EntityType.user ? '' : selectedId,
+  ),
   TypedReducer<String, FilterByEntity>(
-      (selectedId, action) => action.clearSelection
-          ? ''
-          : action.entityType == EntityType.user
-              ? action.entityId
-              : selectedId),
+    (selectedId, action) => action.clearSelection
+        ? ''
+        : action.entityType == EntityType.user
+            ? action.entityId
+            : selectedId,
+  ),
 ]);
 
 final editingReducer = combineReducers<UserEntity>([
@@ -98,20 +107,25 @@ final userListReducer = combineReducers<ListUIState>([
   TypedReducer<ListUIState, StartUserMultiselect>(_startListMultiselect),
   TypedReducer<ListUIState, AddToUserMultiselect>(_addToListMultiselect),
   TypedReducer<ListUIState, RemoveFromUserMultiselect>(
-      _removeFromListMultiselect),
+    _removeFromListMultiselect,
+  ),
   TypedReducer<ListUIState, ClearUserMultiselect>(_clearListMultiselect),
   TypedReducer<ListUIState, ViewUserList>(_viewUserList),
 ]);
 
 ListUIState _viewUserList(ListUIState userListState, ViewUserList action) {
-  return userListState.rebuild((b) => b
-    ..selectedIds = null
-    ..filter = null
-    ..filterClearedAt = DateTime.now().millisecondsSinceEpoch);
+  return userListState.rebuild(
+    (b) => b
+      ..selectedIds = null
+      ..filter = null
+      ..filterClearedAt = DateTime.now().millisecondsSinceEpoch,
+  );
 }
 
 ListUIState _filterUsersByCustom1(
-    ListUIState userListState, FilterUsersByCustom1 action) {
+  ListUIState userListState,
+  FilterUsersByCustom1 action,
+) {
   if (userListState.custom1Filters.contains(action.value)) {
     return userListState.rebuild((b) => b..custom1Filters.remove(action.value));
   } else {
@@ -120,7 +134,9 @@ ListUIState _filterUsersByCustom1(
 }
 
 ListUIState _filterUsersByCustom2(
-    ListUIState userListState, FilterUsersByCustom2 action) {
+  ListUIState userListState,
+  FilterUsersByCustom2 action,
+) {
   if (userListState.custom2Filters.contains(action.value)) {
     return userListState.rebuild((b) => b..custom2Filters.remove(action.value));
   } else {
@@ -129,7 +145,9 @@ ListUIState _filterUsersByCustom2(
 }
 
 ListUIState _filterUsersByCustom3(
-    ListUIState userListState, FilterUsersByCustom3 action) {
+  ListUIState userListState,
+  FilterUsersByCustom3 action,
+) {
   if (userListState.custom3Filters.contains(action.value)) {
     return userListState.rebuild((b) => b..custom3Filters.remove(action.value));
   } else {
@@ -138,7 +156,9 @@ ListUIState _filterUsersByCustom3(
 }
 
 ListUIState _filterUsersByCustom4(
-    ListUIState userListState, FilterUsersByCustom4 action) {
+  ListUIState userListState,
+  FilterUsersByCustom4 action,
+) {
   if (userListState.custom4Filters.contains(action.value)) {
     return userListState.rebuild((b) => b..custom4Filters.remove(action.value));
   } else {
@@ -147,7 +167,9 @@ ListUIState _filterUsersByCustom4(
 }
 
 ListUIState _filterUsersByState(
-    ListUIState userListState, FilterUsersByState action) {
+  ListUIState userListState,
+  FilterUsersByState action,
+) {
   if (userListState.stateFilters.contains(action.state)) {
     return userListState.rebuild((b) => b..stateFilters.remove(action.state));
   } else {
@@ -156,36 +178,48 @@ ListUIState _filterUsersByState(
 }
 
 ListUIState _filterUsers(ListUIState userListState, FilterUsers action) {
-  return userListState.rebuild((b) => b
-    ..filter = action.filter
-    ..filterClearedAt = action.filter == null
-        ? DateTime.now().millisecondsSinceEpoch
-        : userListState.filterClearedAt);
+  return userListState.rebuild(
+    (b) => b
+      ..filter = action.filter
+      ..filterClearedAt = action.filter == null
+          ? DateTime.now().millisecondsSinceEpoch
+          : userListState.filterClearedAt,
+  );
 }
 
 ListUIState _sortUsers(ListUIState userListState, SortUsers action) {
-  return userListState.rebuild((b) => b
-    ..sortAscending = b.sortField != action.field || !b.sortAscending
-    ..sortField = action.field);
+  return userListState.rebuild(
+    (b) => b
+      ..sortAscending = b.sortField != action.field || !b.sortAscending
+      ..sortField = action.field,
+  );
 }
 
 ListUIState _startListMultiselect(
-    ListUIState userListState, StartUserMultiselect action) {
+  ListUIState userListState,
+  StartUserMultiselect action,
+) {
   return userListState.rebuild((b) => b..selectedIds = ListBuilder());
 }
 
 ListUIState _addToListMultiselect(
-    ListUIState userListState, AddToUserMultiselect action) {
+  ListUIState userListState,
+  AddToUserMultiselect action,
+) {
   return userListState.rebuild((b) => b..selectedIds.add(action.entity.id));
 }
 
 ListUIState _removeFromListMultiselect(
-    ListUIState userListState, RemoveFromUserMultiselect action) {
+  ListUIState userListState,
+  RemoveFromUserMultiselect action,
+) {
   return userListState.rebuild((b) => b..selectedIds.remove(action.entity.id));
 }
 
 ListUIState _clearListMultiselect(
-    ListUIState userListState, ClearUserMultiselect action) {
+  ListUIState userListState,
+  ClearUserMultiselect action,
+) {
   return userListState.rebuild((b) => b..selectedIds = null);
 }
 
@@ -229,15 +263,19 @@ UserState _restoreUserSuccess(UserState userState, RestoreUserSuccess action) {
 }
 
 UserState _removeUserSuccess(UserState userState, RemoveUserSuccess action) {
-  return userState.rebuild((b) => b
-    ..map.remove(action.userId)
-    ..list.remove(action.userId));
+  return userState.rebuild(
+    (b) => b
+      ..map.remove(action.userId)
+      ..list.remove(action.userId),
+  );
 }
 
 UserState _addUser(UserState userState, AddUserSuccess action) {
-  return userState.rebuild((b) => b
-    ..map[action.user.id] = action.user
-    ..list.add(action.user.id));
+  return userState.rebuild(
+    (b) => b
+      ..map[action.user.id] = action.user
+      ..list.add(action.user.id),
+  );
 }
 
 UserState _updateUser(UserState userState, SaveUserSuccess action) {
@@ -249,12 +287,16 @@ UserState _updateAuthUser(UserState userState, SaveAuthUserSuccess action) {
 }
 
 UserState _connectOAuthUser(
-    UserState userState, ConnecOAuthUserSuccess action) {
+  UserState userState,
+  ConnecOAuthUserSuccess action,
+) {
   return userState.rebuild((b) => b..map[action.user.id] = action.user);
 }
 
 UserState _connectGmailUser(
-    UserState userState, ConnecGmailUserSuccess action) {
+  UserState userState,
+  ConnecGmailUserSuccess action,
+) {
   return userState.rebuild((b) => b..map[action.user.id] = action.user);
 }
 
@@ -263,23 +305,27 @@ UserState _setLoadedUser(UserState userState, LoadUserSuccess action) {
 }
 
 UserState _setLoadedUsers(UserState userState, LoadUsersSuccess action) {
-  final state = userState.rebuild((b) => b
-    ..map.addAll(Map.fromIterable(
-      action.users,
-      key: (dynamic item) => item.id,
-      value: (dynamic item) => item,
-    )));
+  final state = userState.rebuild(
+    (b) => b
+      ..map.addAll(Map.fromIterable(
+        action.users,
+        key: (dynamic item) => item.id,
+        value: (dynamic item) => item,
+      )),
+  );
 
   return state.rebuild((b) => b..list.replace(state.map.keys));
 }
 
 UserState _setLoadedCompany(UserState userState, LoadCompanySuccess action) {
-  final state = userState.rebuild((b) => b
-    ..map.addAll(Map.fromIterable(
-      action.userCompany.company.users,
-      key: (dynamic item) => item.id,
-      value: (dynamic item) => item,
-    )));
+  final state = userState.rebuild(
+    (b) => b
+      ..map.addAll(Map.fromIterable(
+        action.userCompany.company.users,
+        key: (dynamic item) => item.id,
+        value: (dynamic item) => item,
+      )),
+  );
 
   return state.rebuild((b) => b..list.replace(state.map.keys));
 }

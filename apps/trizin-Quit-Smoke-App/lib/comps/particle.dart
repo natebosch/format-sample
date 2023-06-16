@@ -14,7 +14,7 @@ class ParticlePainter extends CustomPainter {
   Paint bgPaint;
 
   ParticlePainter({this.particleCount, this.particles})
-      : super(repaint: particles) {
+    : super(repaint: particles) {
     mPaint = new Paint();
     bgPaint = new Paint()..color = Color.fromARGB(120, 145, 132, 245);
   }
@@ -36,8 +36,9 @@ class ParticlePainter extends CustomPainter {
   _drawParticle(Particle particle, Canvas canvas) {
     final random = Random();
     canvas.drawOval(
-        Rect.fromLTWH(particle.x, particle.y, particle.r, particle.r),
-        Paint()..color = particle.color);
+      Rect.fromLTWH(particle.x, particle.y, particle.r, particle.r),
+      Paint()..color = particle.color,
+    );
   }
 }
 
@@ -50,14 +51,15 @@ class Particle {
   double r = 3;
   final Color color;
 
-  Particle(
-      {double xval,
-      double yval,
-      double avalX,
-      double avalY,
-      double vvalX,
-      double vvalY,
-      this.color}) {
+  Particle({
+    double xval,
+    double yval,
+    double avalX,
+    double avalY,
+    double vvalX,
+    double vvalY,
+    this.color,
+  }) {
     x = xval;
     y = yval;
     vX = vvalX;

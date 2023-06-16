@@ -1,4 +1,3 @@
-
 import 'dart:async';
 
 import 'package:flutter/material.dart';
@@ -45,12 +44,14 @@ class RankingBloc {
   final _setMyRankingUserInfoUsecase = SetMyRankingUserInfoUsecase();
   final _signInWithGoogleUsecase = SignInWithGoogleUsecase();
   final _signOutUsecase = SignOutUsecase();
-  final _increaseRankingUserInfosCountUsecase = IncreaseRankingUserInfosCountUsecase();
+  final _increaseRankingUserInfosCountUsecase =
+      IncreaseRankingUserInfosCountUsecase();
   final _addThumbUpUsecase = AddThumbUpUsecase();
   final _getTodayUsecase = GetTodayUsecase();
   final _syncTodayWithServerUsecase = SyncTodayWithServerUsecase();
   final _isSignedInUsecase = IsSignedInUsecase();
-  final _updateRankingUserInfosCompletionRatioUsecase = UpdateRankingUserInfosCompletionRatioUsecase();
+  final _updateRankingUserInfosCompletionRatioUsecase =
+      UpdateRankingUserInfosCompletionRatioUsecase();
   final _setUserDisplayNameUsecase = SetUserDisplayNameUsecase();
 
   RankingBloc() {
@@ -69,8 +70,9 @@ class RankingBloc {
       myRankingUserInfoState: myRankingInfoState,
     ));
 
-    _rankingUserInfosEventSubscription = _observeRankingUserInfosUsecase.invoke()
-      .listen((event) async {
+    _rankingUserInfosEventSubscription = _observeRankingUserInfosUsecase
+        .invoke()
+        .listen((event) async {
 //      final updatedThumbedUpUids = Map.of(_state.value.thumbedUpUids);
 //      for (final rankingUserInfo in event.rankingUserInfos) {
 //        final hasThumbedUp = await _getHasThumbedUpUidUsecase.invoke(rankingUserInfo.uid);
@@ -85,49 +87,68 @@ class RankingBloc {
 //        }
 //      }
 
-      _state.add(_state.value.buildNew(
-        rankingUserInfos: event.rankingUserInfos,
-        hasMoreRankingInfos: event.hasMore,
-        isRankingUserInfosLoading: false,
+          _state.add(_state.value.buildNew(
+            rankingUserInfos: event.rankingUserInfos,
+            hasMoreRankingInfos: event.hasMore,
+            isRankingUserInfosLoading: false,
 //        thumbedUpUids: updatedThumbedUpUids,
-      ));
+          ));
 
-      final isSignedIn = await _isSignedInUsecase.invoke();
-      if (isSignedIn) {
-        final todaySyncedSuccessful = await _syncTodayWithServerUsecase.invoke();
-        if (todaySyncedSuccessful) {
-          final today = await _getTodayUsecase.invoke();
-          if (today != DateRepository.INVALID_DATE) {
-            final List<RankingUserInfo> updateNeededRankingUserInfos = [];
+          final isSignedIn = await _isSignedInUsecase.invoke();
+          if (isSignedIn) {
+            final todaySyncedSuccessful =
+                await _syncTodayWithServerUsecase.invoke();
+            if (todaySyncedSuccessful) {
+              final today = await _getTodayUsecase.invoke();
+              if (today != DateRepository.INVALID_DATE) {
+                final List<RankingUserInfo> updateNeededRankingUserInfos = [];
 
-            event.rankingUserInfos.forEach((it) {
-              if (it.uid == myRankingInfoState.data.uid || completionRatioUpdatedUids.containsKey(it.uid)) {
-                return;
-              }
+                event.rankingUserInfos.forEach((it) {
+                  if (it.uid == myRankingInfoState.data.uid ||
+                      completionRatioUpdatedUids.containsKey(it.uid)) {
+                    return;
+                  }
 
-              final firstLaunchDate = it.firstLaunchDateMillis != 0 ? DateTime.fromMillisecondsSinceEpoch(it.firstLaunchDateMillis)
-                : DateRepository.INVALID_DATE;
-              if (firstLaunchDate != DateRepository.INVALID_DATE) {
-                final beforeTodayDaysCount = today.difference(firstLaunchDate).inDays;
-                final completedDaysCount = it.completedDaysCount;
-                final double completionRatio = completedDaysCount > beforeTodayDaysCount ? 1
-                  : beforeTodayDaysCount > 0 ? completedDaysCount / beforeTodayDaysCount : 0;
+                  final firstLaunchDate = it.firstLaunchDateMillis != 0
+                      ? DateTime.fromMillisecondsSinceEpoch(
+                          it.firstLaunchDateMillis,
+                        )
+                      : DateRepository.INVALID_DATE;
+                  if (firstLaunchDate != DateRepository.INVALID_DATE) {
+                    final beforeTodayDaysCount =
+                        today.difference(firstLaunchDate).inDays;
+                    final completedDaysCount = it.completedDaysCount;
+                    final double completionRatio =
+                        completedDaysCount > beforeTodayDaysCount
+                            ? 1
+                            : beforeTodayDaysCount > 0
+                                ? completedDaysCount / beforeTodayDaysCount
+                                : 0;
 
-                if (it.completionRatio.toStringAsFixed(4) != completionRatio.toStringAsFixed(4)) {
-                  final updated = it.buildNew(completionRatio: completionRatio);
-                  updateNeededRankingUserInfos.add(updated);
+                    if (it.completionRatio.toStringAsFixed(4) !=
+                        completionRatio.toStringAsFixed(4)) {
+                      final updated = it.buildNew(
+                        completionRatio: completionRatio,
+                      );
+                      updateNeededRankingUserInfos.add(updated);
+                    }
+                  }
+                });
+
+                if (updateNeededRankingUserInfos.isNotEmpty) {
+                  completionRatioUpdatedUids.addEntries(
+                    updateNeededRankingUserInfos.map(
+                      (it) => MapEntry(it.uid, true),
+                    ),
+                  );
+                  _updateRankingUserInfosCompletionRatioUsecase.invoke(
+                    updateNeededRankingUserInfos,
+                  );
                 }
               }
-            });
-
-            if (updateNeededRankingUserInfos.isNotEmpty) {
-              completionRatioUpdatedUids.addEntries(updateNeededRankingUserInfos.map((it) => MapEntry(it.uid, true)));
-              _updateRankingUserInfosCompletionRatioUsecase.invoke(updateNeededRankingUserInfos);
             }
           }
-        }
-      }
-    });
+        });
 
     _initRankingUserInfosCountUsecase.invoke();
   }
@@ -167,7 +188,8 @@ class RankingBloc {
 
       final signOutSuccess = await _signOutUsecase.invoke();
       if (signOutSuccess) {
-        final myRankingUserInfoState = await _getMyRankingUserInfoUsecase.invoke();
+        final myRankingUserInfoState =
+            await _getMyRankingUserInfoUsecase.invoke();
         _state.add(_state.value.buildNew(
           myRankingUserInfoState: myRankingUserInfoState,
           showMyRankingInfoLoading: false,
@@ -175,12 +197,11 @@ class RankingBloc {
 
         _initRankingUserInfosCountUsecase.invoke();
       } else {
-        final errorSigningOutText = AppLocalizations.of(context).errorSigningOut;
+        final errorSigningOutText =
+            AppLocalizations.of(context).errorSigningOut;
         delegator.showSnackBar(errorSigningOutText, const Duration(seconds: 2));
 
-        _state.add(_state.value.buildNew(
-          showMyRankingInfoLoading: false,
-        ));
+        _state.add(_state.value.buildNew(showMyRankingInfoLoading: false));
       }
     });
   }
@@ -200,22 +221,27 @@ class RankingBloc {
     switch (updateResult) {
       case SetMyRankingUserInfoResult.SUCCESS:
         final myRankingInfoState = await _getMyRankingUserInfoUsecase.invoke();
-        _state.add(_state.value.buildNew(
-          myRankingUserInfoState: myRankingInfoState,
-        ));
+        _state.add(
+          _state.value.buildNew(myRankingUserInfoState: myRankingInfoState),
+        );
         break;
       case SetMyRankingUserInfoResult.FAIL_TRY_LATER:
-        delegator.showSnackBar(AppLocalizations.of(context).tryUpdateLater, const Duration(seconds: 2));
+        delegator.showSnackBar(
+          AppLocalizations.of(context).tryUpdateLater,
+          const Duration(seconds: 2),
+        );
         break;
       case SetMyRankingUserInfoResult.FAIL_NO_INTERNET:
-        delegator.showSnackBar(AppLocalizations.of(context).checkInternet, const Duration(seconds: 2));
+        delegator.showSnackBar(
+          AppLocalizations.of(context).checkInternet,
+          const Duration(seconds: 2),
+        );
         break;
-      default: break;
+      default:
+        break;
     }
 
-    _state.add(_state.value.buildNew(
-      showMyRankingInfoLoading: false,
-    ));
+    _state.add(_state.value.buildNew(showMyRankingInfoLoading: false));
   }
 
   Future<void> onLoadMoreRankingInfosClicked(BuildContext context) async {
@@ -234,9 +260,7 @@ class RankingBloc {
 
     final errorSigningInText = AppLocalizations.of(context).errorSigningIn;
 
-    _state.add(_state.value.buildNew(
-      showMyRankingInfoLoading: true,
-    ));
+    _state.add(_state.value.buildNew(showMyRankingInfoLoading: true));
 
     final myRankingUserInfo = await _signInWithGoogleUsecase.invoke();
     if (!myRankingUserInfo.isSignedIn) {
@@ -261,7 +285,10 @@ class RankingBloc {
     return false;
   }
 
-  Future<void> onThumbUpClicked(BuildContext context, RankingUserInfo userInfo) async {
+  Future<void> onThumbUpClicked(
+    BuildContext context,
+    RankingUserInfo userInfo,
+  ) async {
     final isSignedIn = await _isSignedInUsecase.invoke();
     if (!isSignedIn) {
       onSignInClicked(context);
@@ -281,9 +308,7 @@ class RankingBloc {
       return;
     }
 
-    _state.add(_state.value.buildNew(
-      showMyRankingInfoLoading: true,
-    ));
+    _state.add(_state.value.buildNew(showMyRankingInfoLoading: true));
 
     final myRankingUserInfoState = await _getMyRankingUserInfoUsecase.invoke();
     _state.add(_state.value.buildNew(
@@ -304,9 +329,7 @@ class RankingBloc {
   }
 
   void onDisplayNameEditorTextChanged(String text) {
-    _state.add(_state.value.buildNew(
-      displayNameEditorText: text,
-    ));
+    _state.add(_state.value.buildNew(displayNameEditorText: text));
   }
 
   void onCancelEditDisplayNameClicked() {
@@ -322,7 +345,10 @@ class RankingBloc {
     final prevName = myRankingUserInfoState.data.name;
     final newName = _state.value.displayNameEditorText;
     final isMyRankingInfoLoading = _state.value.showMyRankingInfoLoading;
-    if (uid.isEmpty || newName.isEmpty || isMyRankingInfoLoading || prevName == newName) {
+    if (uid.isEmpty ||
+        newName.isEmpty ||
+        isMyRankingInfoLoading ||
+        prevName == newName) {
       _state.add(_state.value.buildNew(
         isEditingDisplayName: false,
         displayNameEditorText: '',
@@ -339,11 +365,10 @@ class RankingBloc {
       displayNameEditorText: '',
     ));
 
-    final nameUpdateSuccessful = await _setUserDisplayNameUsecase.invoke(uid, newName);
+    final nameUpdateSuccessful =
+        await _setUserDisplayNameUsecase.invoke(uid, newName);
     if (!nameUpdateSuccessful) {
-      _state.add(_state.value.buildNew(
-        showMyRankingInfoLoading: false,
-      ));
+      _state.add(_state.value.buildNew(showMyRankingInfoLoading: false));
       delegator.showSnackBar(checkInternet, const Duration(seconds: 2));
       return;
     }
@@ -352,9 +377,9 @@ class RankingBloc {
     switch (updateResult) {
       case SetMyRankingUserInfoResult.SUCCESS:
         final myRankingInfoState = await _getMyRankingUserInfoUsecase.invoke();
-        _state.add(_state.value.buildNew(
-          myRankingUserInfoState: myRankingInfoState,
-        ));
+        _state.add(
+          _state.value.buildNew(myRankingUserInfoState: myRankingInfoState),
+        );
         break;
       case SetMyRankingUserInfoResult.FAIL_TRY_LATER:
         await _setUserDisplayNameUsecase.invoke(uid, prevName);
@@ -364,12 +389,11 @@ class RankingBloc {
         await _setUserDisplayNameUsecase.invoke(uid, prevName);
         delegator.showSnackBar(checkInternet, const Duration(seconds: 2));
         break;
-      default: break;
+      default:
+        break;
     }
 
-    _state.add(_state.value.buildNew(
-      showMyRankingInfoLoading: false,
-    ));
+    _state.add(_state.value.buildNew(showMyRankingInfoLoading: false));
   }
 
   void dispose() {

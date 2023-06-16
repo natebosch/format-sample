@@ -43,6 +43,3 @@ const getTournamentScoreQuery =
     "INNER JOIN players ON tournament_player.id_player = players.id "
     "WHERE tournament_player.id_tournament = <> "
     "ORDER BY final_score DESC;";
-
-
-

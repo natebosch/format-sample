@@ -73,20 +73,15 @@ class _HomePageState extends State<HomePage> {
           backgroundColor: Colors.grey.shade800,
           elevation: 0,
           centerTitle: false,
-          title: Text(
-            'Zefyr',
-            style: GoogleFonts.fondamento(color: Colors.white),
-          ),
+          title:
+              Text('Zefyr', style: GoogleFonts.fondamento(color: Colors.white)),
           actions: [
             IconButton(
               icon: Icon(Icons.settings, size: 16),
               onPressed: _showSettings,
             ),
             if (_settings.assetsPath.isNotEmpty)
-              IconButton(
-                icon: Icon(Icons.save, size: 16),
-                onPressed: _save,
-              )
+              IconButton(icon: Icon(Icons.save, size: 16), onPressed: _save),
           ],
         ),
         menuBar: Material(
@@ -109,7 +104,10 @@ class _HomePageState extends State<HomePage> {
 
   Widget _buildMenuBar(BuildContext context) {
     final headerStyle = TextStyle(
-        fontSize: 11, color: Colors.grey.shade500, fontWeight: FontWeight.bold);
+      fontSize: 11,
+      color: Colors.grey.shade500,
+      fontWeight: FontWeight.bold,
+    );
     final itemStyle = TextStyle(color: Colors.white);
     return ListView(
       children: [
@@ -187,50 +185,38 @@ class _HomePageState extends State<HomePage> {
   }
 
   void _expanded() {
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (BuildContext context) => SettingsProvider(
-          settings: _settings,
-          child: ExpandedLayout(),
-        ),
-      ),
-    );
+    Navigator.push(context, MaterialPageRoute(
+      builder: (BuildContext context) => SettingsProvider(
+            settings: _settings,
+            child: ExpandedLayout(),
+          ),
+    ));
   }
 
   void _readOnlyView() {
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (BuildContext context) => SettingsProvider(
-          settings: _settings,
-          child: ReadOnlyView(),
-        ),
-      ),
-    );
+    Navigator.push(context, MaterialPageRoute(
+      builder: (BuildContext context) => SettingsProvider(
+            settings: _settings,
+            child: ReadOnlyView(),
+          ),
+    ));
   }
 
   void _scrollable() {
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (BuildContext context) => SettingsProvider(
-          settings: _settings,
-          child: ScrollableLayout(),
-        ),
-      ),
-    );
+    Navigator.push(context, MaterialPageRoute(
+      builder: (BuildContext context) => SettingsProvider(
+            settings: _settings,
+            child: ScrollableLayout(),
+          ),
+    ));
   }
 
   void _decoratedField() {
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (BuildContext context) => SettingsProvider(
-          settings: _settings,
-          child: DecoratedFieldDemo(),
-        ),
-      ),
-    );
+    Navigator.push(context, MaterialPageRoute(
+      builder: (BuildContext context) => SettingsProvider(
+            settings: _settings,
+            child: DecoratedFieldDemo(),
+          ),
+    ));
   }
 }

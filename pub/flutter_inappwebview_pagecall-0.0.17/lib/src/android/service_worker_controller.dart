@@ -11,7 +11,8 @@ import '../types.dart';
 class AndroidServiceWorkerController {
   static AndroidServiceWorkerController? _instance;
   static const MethodChannel _channel = const MethodChannel(
-      'com.pichillilorenzo/flutter_inappwebview_android_serviceworkercontroller');
+    'com.pichillilorenzo/flutter_inappwebview_android_serviceworkercontroller',
+  );
 
   AndroidServiceWorkerController._();
 
@@ -113,7 +114,8 @@ class AndroidServiceWorkerController {
   static Future<AndroidCacheMode?> getCacheMode() async {
     Map<String, dynamic> args = <String, dynamic>{};
     return AndroidCacheMode.fromValue(
-        await _channel.invokeMethod('getCacheMode', args));
+      await _channel.invokeMethod('getCacheMode', args),
+    );
   }
 
   ///Enables or disables content URL access from Service Workers.
@@ -182,7 +184,7 @@ class AndroidServiceWorkerClient {
   ///
   ///**NOTE**: available on Android 24+.
   final Future<WebResourceResponse?> Function(WebResourceRequest request)?
-      shouldInterceptRequest;
+  shouldInterceptRequest;
 
   AndroidServiceWorkerClient({this.shouldInterceptRequest});
 }

@@ -2,16 +2,10 @@ class ShareChatroomRequest {
   final int chatroomId;
   final String domain;
 
-  ShareChatroomRequest._({
-    required this.chatroomId,
-    required this.domain,
-  });
+  ShareChatroomRequest._({required this.chatroomId, required this.domain});
 
   toJson() {
-    return {
-      'chatroom_id': chatroomId,
-      'domain': domain,
-    };
+    return {'chatroom_id': chatroomId, 'domain': domain};
   }
 }
 
@@ -30,9 +24,6 @@ class ShareChatroomRequestBuilder {
   }
 
   ShareChatroomRequest build() {
-    return ShareChatroomRequest._(
-      chatroomId: _chatroomId!,
-      domain: _domain!,
-    );
+    return ShareChatroomRequest._(chatroomId: _chatroomId!, domain: _domain!);
   }
 }

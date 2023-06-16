@@ -15,8 +15,11 @@ class PlainSeedDisplay extends StatefulWidget {
   final bool obscureSeed;
   final bool showButton;
 
-  PlainSeedDisplay(
-      {@required this.seed, this.obscureSeed = false, this.showButton = true});
+  PlainSeedDisplay({
+    @required this.seed,
+    this.obscureSeed = false,
+    this.showButton = true,
+  });
 
   _PlainSeedDisplayState createState() => _PlainSeedDisplayState();
 }
@@ -42,9 +45,10 @@ class _PlainSeedDisplayState extends State<PlainSeedDisplay> {
         // The paragraph
         Container(
           margin: EdgeInsets.only(
-              left: smallScreen(context) ? 30 : 40,
-              right: smallScreen(context) ? 30 : 40,
-              top: 15.0),
+            left: smallScreen(context) ? 30 : 40,
+            right: smallScreen(context) ? 30 : 40,
+            top: 15.0,
+          ),
           alignment: Alignment.centerLeft,
           child: AutoSizeText(
             AppLocalization.of(context).seedDescription,
@@ -55,52 +59,55 @@ class _PlainSeedDisplayState extends State<PlainSeedDisplay> {
         ),
         // Container for the seed
         GestureDetector(
-            behavior: HitTestBehavior.opaque,
-            onTap: () {
-              if (widget.obscureSeed) {
-                setState(() {
-                  _seedObscured = !_seedObscured;
-                });
-              }
-            },
-            child: Column(
-              children: <Widget>[
-                Container(
-                  padding: EdgeInsets.symmetric(horizontal: 25.0, vertical: 15),
-                  margin: EdgeInsets.only(top: 25),
-                  decoration: BoxDecoration(
-                    color:
-                        StateContainer.of(context).curTheme.backgroundDarkest,
-                    borderRadius: BorderRadius.circular(25),
-                  ),
-                  child: UIUtil.threeLineSeedText(
-                      context,
-                      widget.obscureSeed && _seedObscured
-                          ? _obscuredSeed
-                          : widget.seed,
-                      textStyle: _seedCopied
-                          ? AppStyles.textStyleSeedGreen(context)
-                          : AppStyles.textStyleSeed(context)),
+          behavior: HitTestBehavior.opaque,
+          onTap: () {
+            if (widget.obscureSeed) {
+              setState(() {
+                _seedObscured = !_seedObscured;
+              });
+            }
+          },
+          child: Column(
+            children: <Widget>[
+              Container(
+                padding: EdgeInsets.symmetric(horizontal: 25.0, vertical: 15),
+                margin: EdgeInsets.only(top: 25),
+                decoration: BoxDecoration(
+                  color: StateContainer.of(context).curTheme.backgroundDarkest,
+                  borderRadius: BorderRadius.circular(25),
                 ),
-                // Tap to reveal or hide
-                widget.obscureSeed
-                    ? Container(
-                        margin: EdgeInsetsDirectional.only(top: 8),
-                        child: _seedObscured
-                            ? AutoSizeText(
-                                AppLocalization.of(context).tapToReveal,
-                                style: AppStyles.textStyleParagraphThinPrimary(
-                                    context),
-                              )
-                            : Text(
-                                AppLocalization.of(context).tapToHide,
-                                style: AppStyles.textStyleParagraphThinPrimary(
-                                    context),
+                child: UIUtil.threeLineSeedText(
+                  context,
+                  widget.obscureSeed && _seedObscured
+                      ? _obscuredSeed
+                      : widget.seed,
+                  textStyle: _seedCopied
+                      ? AppStyles.textStyleSeedGreen(context)
+                      : AppStyles.textStyleSeed(context),
+                ),
+              ),
+              // Tap to reveal or hide
+              widget.obscureSeed
+                  ? Container(
+                      margin: EdgeInsetsDirectional.only(top: 8),
+                      child: _seedObscured
+                          ? AutoSizeText(
+                              AppLocalization.of(context).tapToReveal,
+                              style: AppStyles.textStyleParagraphThinPrimary(
+                                context,
                               ),
-                      )
-                    : SizedBox(),
-              ],
-            )),
+                            )
+                          : Text(
+                              AppLocalization.of(context).tapToHide,
+                              style: AppStyles.textStyleParagraphThinPrimary(
+                                context,
+                              ),
+                            ),
+                    )
+                  : SizedBox(),
+            ],
+          ),
+        ),
         // Container for the copy button
         widget.showButton
             ? Container(
@@ -115,12 +122,14 @@ class _PlainSeedDisplayState extends State<PlainSeedDisplay> {
                     if (_seedCopiedTimer != null) {
                       _seedCopiedTimer.cancel();
                     }
-                    _seedCopiedTimer =
-                        new Timer(const Duration(milliseconds: 1500), () {
-                      setState(() {
-                        _seedCopied = false;
-                      });
-                    });
+                    _seedCopiedTimer = new Timer(
+                      const Duration(milliseconds: 1500),
+                      () {
+                        setState(() {
+                          _seedCopied = false;
+                        });
+                      },
+                    );
                   },
                   splashColor: _seedCopied
                       ? Colors.transparent
@@ -132,14 +141,18 @@ class _PlainSeedDisplayState extends State<PlainSeedDisplay> {
                       ? StateContainer.of(context).curTheme.success
                       : StateContainer.of(context).curTheme.primary,
                   shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(100.0)),
+                    borderRadius: BorderRadius.circular(100.0),
+                  ),
                   borderSide: BorderSide(
-                      color: _seedCopied
-                          ? StateContainer.of(context).curTheme.success
-                          : StateContainer.of(context).curTheme.primary,
-                      width: 1.0),
+                    color: _seedCopied
+                        ? StateContainer.of(context).curTheme.success
+                        : StateContainer.of(context).curTheme.primary,
+                    width: 1.0,
+                  ),
                   child: AutoSizeText(
-                    _seedCopied ? AppLocalization.of(context).copied : AppLocalization.of(context).copy,
+                    _seedCopied
+                        ? AppLocalization.of(context).copied
+                        : AppLocalization.of(context).copy,
                     textAlign: TextAlign.center,
                     style: _seedCopied
                         ? AppStyles.textStyleButtonSuccessSmallOutline(context)

@@ -34,15 +34,17 @@ class KnowledgePanelElementCard extends StatelessWidget {
         );
       case KnowledgePanelElementType.PANEL_GROUP:
         return KnowledgePanelGroupCard(
-            groupElement: knowledgePanelElement.panelGroupElement!,
-            allPanels: allPanels);
+          groupElement: knowledgePanelElement.panelGroupElement!,
+          allPanels: allPanels,
+        );
       case KnowledgePanelElementType.TABLE:
         return KnowledgePanelTableCard(
           tableElement: knowledgePanelElement.tableElement!,
         );
       case KnowledgePanelElementType.UNKNOWN:
         throw UnsupportedError(
-            'ElementType not supported yet: ${knowledgePanelElement.elementType}');
+          'ElementType not supported yet: ${knowledgePanelElement.elementType}',
+        );
     }
   }
 }

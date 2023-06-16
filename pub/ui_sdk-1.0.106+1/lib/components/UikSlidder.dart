@@ -9,7 +9,7 @@ class UikSlidder extends UikWidget {
   WidgetType _widgetType;
   UikSlidderProps _uikSlidderProps;
   UikSlidder(this._widgetType, this._uikSlidderProps)
-      : super(_widgetType, _uikSlidderProps);
+    : super(_widgetType, _uikSlidderProps);
 
   @override
   _UikSlidderState createState() => _UikSlidderState(_uikSlidderProps);
@@ -34,9 +34,7 @@ class _UikSlidderState extends State<UikSlidder> {
                   : PolygonSliderThumb(thumbRadius: 4),
               rangeThumbShape: (_uikSlidderProps.isRounded != null)
                   ? RoundRangeSliderThumbShape()
-                  : DuoPolygonSliderThumb(
-                      thumbRadius: 4,
-                    ),
+                  : DuoPolygonSliderThumb(thumbRadius: 4),
             ),
             child: (_uikSlidderProps.isRange == null)
                 ? Container(
@@ -87,11 +85,11 @@ class _UikSlidderState extends State<UikSlidder> {
                           //    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Container(
-                              margin: EdgeInsets.only(
-                                left: 15,
-                              ),
+                              margin: EdgeInsets.only(left: 15),
                               child: Text(
-                                '${double.parse((initialValues.start).toStringAsFixed(2))}',
+                                '${double.parse((initialValues.start).toStringAsFixed(
+                                  2,
+                                ))}',
                                 style: TextStyle(
                                   fontWeight: FontWeight.w500,
                                   fontSize: 16,
@@ -100,11 +98,11 @@ class _UikSlidderState extends State<UikSlidder> {
                             ),
                             Spacer(),
                             Container(
-                              margin: const EdgeInsets.only(
-                                right: 15,
-                              ),
+                              margin: const EdgeInsets.only(right: 15),
                               child: Text(
-                                '${double.parse((initialValues.end).toStringAsFixed(2))}',
+                                '${double.parse((initialValues.end).toStringAsFixed(
+                                  2,
+                                ))}',
                                 style: TextStyle(
                                   fontWeight: FontWeight.w500,
                                   fontSize: 16,

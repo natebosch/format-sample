@@ -26,8 +26,9 @@ class _TransactionFromState extends State<TransactionFrom> {
                   groupValue: provider.transactionFromIndex,
                   onChanged: (index) async {
                     provider.setTransactionFromIndex(index);
-                    provider
-                        .setTransactionFrom(snapshot.data[index].documentID);
+                    provider.setTransactionFrom(
+                      snapshot.data[index].documentID,
+                    );
                     provider.setTransactionFromBalance(
                       await getBranchBalance(snapshot.data[index].documentID),
                     );
@@ -48,9 +49,7 @@ class _TransactionFromState extends State<TransactionFrom> {
             },
           );
         } else {
-          return Center(
-            child: CircularProgressIndicator(),
-          );
+          return Center(child: CircularProgressIndicator());
         }
       },
     );

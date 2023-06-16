@@ -4,10 +4,11 @@ import 'package:bloc/bloc.dart';
 import 'package:minsk8/import.dart';
 
 class AuthenticationCubit extends Cubit<AuthenticationState> {
-  AuthenticationCubit(AuthenticationRepository repository)
-      : assert(repository != null),
-        _repository = repository,
-        super(AuthenticationState.unknown()) {
+  AuthenticationCubit(
+    AuthenticationRepository repository,
+  ) : assert(repository != null),
+      _repository = repository,
+      super(AuthenticationState.unknown()) {
     _userSubscription = repository.user.listen(changeUser);
   }
 
@@ -102,10 +103,10 @@ class AuthenticationState extends Equatable {
   const AuthenticationState.unknown() : this._();
 
   const AuthenticationState.authenticated(UserModel user)
-      : this._(status: AuthenticationStatus.authenticated, user: user);
+    : this._(status: AuthenticationStatus.authenticated, user: user);
 
   const AuthenticationState.unauthenticated()
-      : this._(status: AuthenticationStatus.unauthenticated);
+    : this._(status: AuthenticationStatus.unauthenticated);
 
   final AuthenticationStatus status;
   final UserModel user;

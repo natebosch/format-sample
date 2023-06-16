@@ -22,10 +22,9 @@ class AllSessionsPageState extends State<AllSessionsPage>
   void initState() {
     super.initState();
 
-    new RepositoryFactory()
-        .getRoomRepository()
-        .findAll()
-        .then((r) => setRooms(r.values.toList()));
+    new RepositoryFactory().getRoomRepository().findAll().then(
+      (r) => setRooms(r.values.toList()),
+    );
   }
 
   @override
@@ -59,9 +58,7 @@ class AllSessionsPageState extends State<AllSessionsPage>
   @override
   Widget build(BuildContext context) {
     if (_rooms.isEmpty) {
-      return new Center(
-        child: const CircularProgressIndicator(),
-      );
+      return new Center(child: const CircularProgressIndicator());
     }
 
     _restoreTabIndex().then((int i) => _controller?.index = i);

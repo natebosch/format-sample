@@ -43,14 +43,20 @@ class _CurrencyConverterState extends State<CurrencyConverterView> {
     super.dispose();
   }
 
-  Future<ConverterResult> _convertCurrency(double amount,
-      {CurrencyType buy, CurrencyType sell}) async {
+  Future<ConverterResult> _convertCurrency(
+    double amount, {
+    CurrencyType buy,
+    CurrencyType sell,
+  }) async {
     return converterService.convert(amount, buy, sell);
   }
 
   Future<ConverterResult> _fetchBuy(double amount) async {
-    var result = await _convertCurrency(amount,
-        buy: _buyCurrencyType, sell: _sellCurrencytype);
+    var result = await _convertCurrency(
+      amount,
+      buy: _buyCurrencyType,
+      sell: _sellCurrencytype,
+    );
 
     print(result.rate);
 
@@ -71,8 +77,11 @@ class _CurrencyConverterState extends State<CurrencyConverterView> {
 
   // ==
   Future<ConverterResult> _fetchSell(double amount) async {
-    var result = await _convertCurrency(amount,
-        buy: _sellCurrencytype, sell: _buyCurrencyType);
+    var result = await _convertCurrency(
+      amount,
+      buy: _sellCurrencytype,
+      sell: _buyCurrencyType,
+    );
 
     print(result.rate);
 
@@ -189,48 +198,54 @@ class _CurrencyConverterState extends State<CurrencyConverterView> {
   }
 
   Widget _buildBuyInput() => CurrencyTextInput(
-        labelText: t("converter.buyLabel"),
-        type: _buyCurrencyType,
-        isEnabled: _isBuyEnabled,
-        onChanged: _handleBuyInputChanges,
-        isFetching: _isBuyFetching,
-        controller: buyInput,
-      );
+    labelText: t("converter.buyLabel"),
+    type: _buyCurrencyType,
+    isEnabled: _isBuyEnabled,
+    onChanged: _handleBuyInputChanges,
+    isFetching: _isBuyFetching,
+    controller: buyInput,
+  );
 
   Widget _buildBuyCurrencySelector() => CurrencyRadioSection(
-      titleText: t('converter.buy'),
-      value: _buyCurrencyType,
-      onChanged: _handleBuyRadioInputChanges);
+    titleText: t('converter.buy'),
+    value: _buyCurrencyType,
+    onChanged: _handleBuyRadioInputChanges,
+  );
 
   Widget _buildSellInput() => CurrencyTextInput(
-        labelText: t("converter.sellLabel"),
-        type: _sellCurrencytype,
-        isEnabled: _isSellEnabled,
-        onChanged: _handleSellInputChanges,
-        isFetching: _isSellFetching,
-        controller: sellInput,
-      );
+    labelText: t("converter.sellLabel"),
+    type: _sellCurrencytype,
+    isEnabled: _isSellEnabled,
+    onChanged: _handleSellInputChanges,
+    isFetching: _isSellFetching,
+    controller: sellInput,
+  );
 
   Widget _buildSellCurrencySelector() => CurrencyRadioSection(
-      titleText: t('converter.sell'),
-      value: _sellCurrencytype,
-      onChanged: _handleSellRadioInputChanges);
+    titleText: t('converter.sell'),
+    value: _sellCurrencytype,
+    onChanged: _handleSellRadioInputChanges,
+  );
 
   @override
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.only(top: 20),
-      child: Column(children: [
-        _buildBuyInput(),
-        _buildSellInput(),
-        Container(
-          margin: const EdgeInsets.only(top: 20),
-          child: Column(children: [
-            _buildBuyCurrencySelector(),
-            _buildSellCurrencySelector(),
-          ]),
-        )
-      ]),
+      child: Column(
+        children: [
+          _buildBuyInput(),
+          _buildSellInput(),
+          Container(
+            margin: const EdgeInsets.only(top: 20),
+            child: Column(
+              children: [
+                _buildBuyCurrencySelector(),
+                _buildSellCurrencySelector(),
+              ],
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

@@ -20,9 +20,7 @@ class _TransactionPageState extends State<TransactionPage> {
       builder: (context, snapshot) {
         if (snapshot.hasData) {
           if (snapshot.data.length == 0) {
-            return Center(
-              child: Text('No Transactions done'),
-            );
+            return Center(child: Text('No Transactions done'));
           } else {
             return ListView.builder(
               physics: NeverScrollableScrollPhysics(),
@@ -32,18 +30,15 @@ class _TransactionPageState extends State<TransactionPage> {
                 return ListTile(
                   title: Text(
                     snapshot.data[index].data()['desc'],
-                    style: TextStyle(
-                      fontWeight: FontWeight.w400,
-                      fontSize: 18,
-                    ),
+                    style: TextStyle(fontWeight: FontWeight.w400, fontSize: 18),
                   ),
                   subtitle: Text(
-                    'Balance: ${snapshot.data[index].data()['balance'].toString()}'
+                    'Balance: ${snapshot.data[index].data()[
+                          'balance'
+                        ].toString()}'
                     '(${snapshot.data[index].data()['type'] == 1 ? '+' : '-'}'
                     '${snapshot.data[index].data()['amount'].toString()})',
-                    style: TextStyle(
-                      fontWeight: FontWeight.w300,
-                    ),
+                    style: TextStyle(fontWeight: FontWeight.w300),
                   ),
                   trailing: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -59,13 +54,12 @@ class _TransactionPageState extends State<TransactionPage> {
                         ),
                       ),
                       Text(
-                        DateFormat.MMMd()
-                            .format(DateTime.fromMillisecondsSinceEpoch(
-                                snapshot.data[index].data()['time']))
-                            .toString(),
-                        style: TextStyle(
-                          fontWeight: FontWeight.w300,
-                        ),
+                        DateFormat.MMMd().format(
+                          DateTime.fromMillisecondsSinceEpoch(
+                            snapshot.data[index].data()['time'],
+                          ),
+                        ).toString(),
+                        style: TextStyle(fontWeight: FontWeight.w300),
                       ),
                     ],
                   ),
@@ -74,9 +68,7 @@ class _TransactionPageState extends State<TransactionPage> {
             );
           }
         } else {
-          return Center(
-            child: CircularProgressIndicator(),
-          );
+          return Center(child: CircularProgressIndicator());
         }
       },
     );

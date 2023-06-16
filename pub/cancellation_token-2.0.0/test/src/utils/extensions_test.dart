@@ -45,30 +45,33 @@ void main() {
         token.cancel();
       });
 
-      test('detaches from the cancellation token after completing with a value',
-          () async {
-        final CancellationToken token = CancellationToken();
+      test(
+        'detaches from the cancellation token after completing with a value',
+        () async {
+          final CancellationToken token = CancellationToken();
 
-        await expectLater(
-          Future<String>.value('Test value').asCancellable(token),
-          completes,
-        );
+          await expectLater(
+            Future<String>.value('Test value').asCancellable(token),
+            completes,
+          );
 
-        expect(token.hasCancellables, isFalse);
-      });
+          expect(token.hasCancellables, isFalse);
+        },
+      );
 
       test(
-          'detaches from the cancellation token after completing with an error',
-          () async {
-        final CancellationToken token = CancellationToken();
+        'detaches from the cancellation token after completing with an error',
+        () async {
+          final CancellationToken token = CancellationToken();
 
-        await expectLater(
-          Future<String>.error(_TestException()).asCancellable(token),
-          throwsA(isA<_TestException>()),
-        );
+          await expectLater(
+            Future<String>.error(_TestException()).asCancellable(token),
+            throwsA(isA<_TestException>()),
+          );
 
-        expect(token.hasCancellables, isFalse);
-      });
+          expect(token.hasCancellables, isFalse);
+        },
+      );
     });
   });
 }

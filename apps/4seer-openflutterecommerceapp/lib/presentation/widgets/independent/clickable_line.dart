@@ -11,32 +11,39 @@ class OpenFlutterClickableLine extends StatelessWidget {
   final Color textColor;
   final Function(SortRules) onTap;
 
-  const OpenFlutterClickableLine(
-      {Key key,
-      @required this.width,
-      @required this.height,
-      @required this.title,
-      @required this.onTap,
-      @required this.sortRules,
-      this.backgroundColor,
-      this.textColor})
-      : super(key: key);
+  const OpenFlutterClickableLine({
+    Key key,
+    @required this.width,
+    @required this.height,
+    @required this.title,
+    @required this.onTap,
+    @required this.sortRules,
+    this.backgroundColor,
+    this.textColor,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     var _theme = Theme.of(context);
     return InkWell(
-        onTap: (() => {onTap(sortRules)}),
-        child: Container(
-            padding: EdgeInsets.symmetric(
-                horizontal: AppSizes.sidePadding,
-                vertical: AppSizes.linePadding),
-            alignment: Alignment.centerLeft,
-            height: height,
-            width: width,
-            color: backgroundColor,
-            child: Text(title,
-                style: _theme.textTheme.display1.copyWith(
-                    fontWeight: FontWeight.normal, color: textColor))));
+      onTap: (() => {onTap(sortRules)}),
+      child: Container(
+        padding: EdgeInsets.symmetric(
+          horizontal: AppSizes.sidePadding,
+          vertical: AppSizes.linePadding,
+        ),
+        alignment: Alignment.centerLeft,
+        height: height,
+        width: width,
+        color: backgroundColor,
+        child: Text(
+          title,
+          style: _theme.textTheme.display1.copyWith(
+            fontWeight: FontWeight.normal,
+            color: textColor,
+          ),
+        ),
+      ),
+    );
   }
 }

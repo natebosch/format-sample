@@ -8,17 +8,20 @@ UikSelectFilesProps $UikSelectFilesPropsFromJson(Map<String, dynamic> json) {
   final String? id = jsonConvert.convert<String>(json['id']);
 
   final double? leftPadding = jsonConvert.convert<double>(json["leftPadding"]);
-  final double? rightPadding =
-      jsonConvert.convert<double>(json["rightPadding"]);
+  final double? rightPadding = jsonConvert.convert<double>(
+    json["rightPadding"],
+  );
   final double? topPadding = jsonConvert.convert<double>(json["topPadding"]);
-  final double? bottomPadding =
-      jsonConvert.convert<double>(json["bottomPadding"]);
+  final double? bottomPadding = jsonConvert.convert<double>(
+    json["bottomPadding"],
+  );
 
   final double? leftMargin = jsonConvert.convert<double>(json["leftMargin"]);
   final double? rightMargin = jsonConvert.convert<double>(json["rightMargin"]);
   final double? topMargin = jsonConvert.convert<double>(json["topMargin"]);
-  final double? bottomMargin =
-      jsonConvert.convert<double>(json["bottomMargin"]);
+  final double? bottomMargin = jsonConvert.convert<double>(
+    json["bottomMargin"],
+  );
 
   if (id != null) {
     uikSelectFilesProps.id = id;

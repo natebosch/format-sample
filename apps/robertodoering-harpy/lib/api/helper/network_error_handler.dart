@@ -75,9 +75,9 @@ Duration? _limitResetDuration(Response response) {
   try {
     final limitReset = int.parse(response.headers['x-rate-limit-reset']!);
 
-    return DateTime.fromMillisecondsSinceEpoch(
-      limitReset * 1000,
-    ).difference(DateTime.now());
+    return DateTime.fromMillisecondsSinceEpoch(limitReset * 1000).difference(
+      DateTime.now(),
+    );
   } catch (e) {
     return null;
   }

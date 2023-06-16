@@ -32,10 +32,8 @@ class GameSummaryScreen extends StatelessWidget {
           Expanded(
             child: Padding(
               padding: const EdgeInsets.only(left: 8.0),
-              child: Text(
-                question.name,
-                style: Theme.of(context).textTheme.body1,
-              ),
+              child:
+                  Text(question.name, style: Theme.of(context).textTheme.body1),
             ),
           ),
         ],
@@ -49,32 +47,30 @@ class GameSummaryScreen extends StatelessWidget {
   ) {
     var chunks = partition(questions, 2).toList();
     return List.generate(
-        chunks.length,
-        (index) => Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 32),
-              child: Row(
-                children: [
-                  Expanded(
-                      child: buildQuestionItem(
-                          context, chunks[index].elementAt(0))),
-                  Expanded(
-                      child: buildQuestionItem(
-                          context,
-                          chunks[index].length > 1
-                              ? chunks[index].elementAt(1)
-                              : null)),
-                ],
+      chunks.length,
+      (index) => Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 32),
+        child: Row(
+          children: [
+            Expanded(
+              child: buildQuestionItem(context, chunks[index].elementAt(0)),
+            ),
+            Expanded(
+              child: buildQuestionItem(
+                context,
+                chunks[index].length > 1 ? chunks[index].elementAt(1) : null,
               ),
-            )).toList();
+            ),
+          ],
+        ),
+      ),
+    ).toList();
   }
 
   openGallery(BuildContext context, FileSystemEntity item) {
     GalleryModel.of(context).setActive(item);
 
-    Navigator.pushNamed(
-      context,
-      '/game-gallery',
-    );
+    Navigator.pushNamed(context, '/game-gallery');
   }
 
   @override
@@ -108,8 +104,8 @@ class GameSummaryScreen extends StatelessWidget {
                         child: Text(
                           model.questionsPassed.length.toString(),
                           style: Theme.of(context).textTheme.display2.copyWith(
-                                color: Theme.of(context).textTheme.body1.color,
-                              ),
+                            color: Theme.of(context).textTheme.body1.color,
+                          ),
                         ),
                       ),
                     ),
@@ -138,10 +134,7 @@ class GameSummaryScreen extends StatelessWidget {
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 16),
-                  child: Divider(
-                    indent: 32,
-                    endIndent: 32,
-                  ),
+                  child: Divider(indent: 32, endIndent: 32),
                 ),
                 RaisedButton.icon(
                   label: Text(AppLocalizations.of(context).summaryBack),

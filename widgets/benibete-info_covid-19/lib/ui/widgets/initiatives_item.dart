@@ -10,9 +10,12 @@ class InitiativesItem extends StatelessWidget {
   final String body;
   final Function(bool) onExpansionChanged;
 
-  const InitiativesItem(
-      {Key key, this.title, this.body, this.onExpansionChanged})
-      : super(key: key);
+  const InitiativesItem({
+    Key key,
+    this.title,
+    this.body,
+    this.onExpansionChanged,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -24,31 +27,30 @@ class InitiativesItem extends StatelessWidget {
       padding: const EdgeInsets.all(0.0),
       margin: const EdgeInsets.all(0.0),
       childrenPadding: const EdgeInsets.only(left: 12, right: 12),
-      titleTextStyle: Theme.of(context)
-          .textTheme
-          .display3
-          .copyWith(color: Covid19Colors.green),
+      titleTextStyle: Theme.of(context).textTheme.display3.copyWith(
+        color: Covid19Colors.green,
+      ),
       onExpansionChanged: onExpansionChanged,
       children: <Widget>[
         Html(
-            useRichText: true,
-            data: body.replaceAll("\\n", ""),
-            backgroundColor: Colors.white,
-            defaultTextStyle: Theme.of(context).textTheme.body1,
-            onLinkTap: launchURL,
-            linkStyle: Theme.of(context)
-                .textTheme
-                .body1
-                .copyWith(color: Theme.of(context).primaryColor),
-            customRender: (node, children) {
-              if (node is dom.Element) {
-                switch (node.localName) {
-                  case "custom_tag":
-                    return Column(children: children);
-                }
+          useRichText: true,
+          data: body.replaceAll("\\n", ""),
+          backgroundColor: Colors.white,
+          defaultTextStyle: Theme.of(context).textTheme.body1,
+          onLinkTap: launchURL,
+          linkStyle: Theme.of(context).textTheme.body1.copyWith(
+            color: Theme.of(context).primaryColor,
+          ),
+          customRender: (node, children) {
+            if (node is dom.Element) {
+              switch (node.localName) {
+                case "custom_tag":
+                  return Column(children: children);
               }
-              return null;
-            })
+            }
+            return null;
+          },
+        ),
       ],
     );
   }

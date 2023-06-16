@@ -3,8 +3,9 @@ import 'package:fpdart/fpdart.dart';
 typedef MessageResponse = String;
 typedef AnalyticsResponse = int;
 
-TaskEither<String, MessageResponse> resendVerificationEmail =
-    TaskEither.of("done");
+TaskEither<String, MessageResponse> resendVerificationEmail = TaskEither.of(
+  "done",
+);
 
 TaskEither<String, AnalyticsResponse> registerAnalytics = TaskEither.of(1);
 

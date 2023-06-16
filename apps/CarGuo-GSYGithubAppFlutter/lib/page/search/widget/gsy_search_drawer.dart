@@ -22,7 +22,6 @@ class GSYSearchDrawer extends StatefulWidget {
 }
 
 class _GSYSearchDrawerState extends State<GSYSearchDrawer> {
-
   final double itemWidth = 200.0;
 
   @override
@@ -33,9 +32,7 @@ class _GSYSearchDrawerState extends State<GSYSearchDrawer> {
         child: Container(
           color: GSYColors.white,
           child: new SingleChildScrollView(
-            child: new Column(
-              children: _renderList(),
-            ),
+            child: new Column(children: _renderList()),
           ),
         ),
       ),
@@ -44,9 +41,7 @@ class _GSYSearchDrawerState extends State<GSYSearchDrawer> {
 
   _renderList() {
     List<Widget> list = [];
-    list.add(new Container(
-      width: itemWidth,
-    ));
+    list.add(new Container(width: itemWidth));
     list.add(_renderTitle(GSYLocalizations.i18n(context)!.search_type));
     for (int i = 0; i < searchFilterType.length; i++) {
       FilterModel model = searchFilterType[i];
@@ -64,7 +59,8 @@ class _GSYSearchDrawerState extends State<GSYSearchDrawer> {
     for (int i = 0; i < searchLanguageType.length; i++) {
       FilterModel model = searchLanguageType[i];
       list.add(
-          _renderItem(model, searchLanguageType, i, widget.languageCallback));
+        _renderItem(model, searchLanguageType, i, widget.languageCallback),
+      );
       list.add(_renderDivider());
     }
     return list;
@@ -93,8 +89,12 @@ class _GSYSearchDrawerState extends State<GSYSearchDrawer> {
     );
   }
 
-  _renderItem(FilterModel model, List<FilterModel> list, int index,
-      SearchSelectItemChanged<String?>? select) {
+  _renderItem(
+    FilterModel model,
+    List<FilterModel> list,
+    int index,
+    SearchSelectItemChanged<String?>? select,
+  ) {
     return new Stack(
       children: <Widget>[
         new Container(
@@ -106,8 +106,9 @@ class _GSYSearchDrawerState extends State<GSYSearchDrawer> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 new Center(
-                    child: new Checkbox(
-                        value: model.select, onChanged: (value) {})),
+                  child:
+                      new Checkbox(value: model.select, onChanged: (value) {}),
+                ),
                 new Center(child: Text(model.name!)),
               ],
             ),
@@ -123,10 +124,8 @@ class _GSYSearchDrawerState extends State<GSYSearchDrawer> {
             });
             select?.call(model.value);
           },
-          child: new Container(
-            width: itemWidth,
-          ),
-        )
+          child: new Container(width: itemWidth),
+        ),
       ],
     );
   }

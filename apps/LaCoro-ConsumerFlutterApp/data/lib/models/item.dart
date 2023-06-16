@@ -21,14 +21,16 @@ class Item extends ParseObject with ItemEntity implements ParseCloneable {
   static const String keyPosition = 'position';
   static const String keyPicture = 'picture';
 
-
   String get name => get<String>(keyName);
 
   set name(String name) => set<String>(keyName, name);
 
   String get description => get<String>(keyDescription);
 
-  set description(String description) => set<String>(keyDescription, description);
+  set description(String description) => set<String>(
+    keyDescription,
+    description,
+  );
 
   String get picture => get<String>(keyPicture);
 

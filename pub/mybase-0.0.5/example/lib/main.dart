@@ -14,19 +14,18 @@ import 'package:mybase/mybase.dart';
 import 'package:mybase_example/demos/TestPage.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
-
 final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
 Future<void> main() async {
-
   // 绑定引擎
   WidgetsFlutterBinding.ensureInitialized();
 
   // 设置状态条
   if (FFPlatform.isAndroid) {
     SystemUiOverlayStyle systemUiOverlayStyle = const SystemUiOverlayStyle(
-        statusBarColor: Colors.transparent, //全局设置透明
-        statusBarIconBrightness: Brightness.light);
+      statusBarColor: Colors.transparent, //全局设置透明
+      statusBarIconBrightness: Brightness.light,
+    );
     SystemChrome.setSystemUIOverlayStyle(systemUiOverlayStyle);
   }
 
@@ -43,7 +42,6 @@ Future<void> main() async {
     );
   }
 
-
   // YCGlobalManger().init();
 
   runApp(const MyApp());
@@ -56,7 +54,7 @@ class MyApp extends StatefulWidget {
   State<MyApp> createState() => _MyAppState();
 }
 
-class _MyAppState extends State<MyApp> with WidgetsBindingObserver{
+class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
   // final _mybasePlugin = Mybase(); await _mybasePlugin.getPlatformVersion()
 
   @override
@@ -71,26 +69,28 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver{
 
   @override
   Widget build(BuildContext context) {
-    return ResponsiveApp(builder: (ctx){
-      return MaterialApp(
-        // debugShowCheckedModeBanner: false,
-        navigatorObservers: [routeObserver],
-        navigatorKey: navigatorKey,
-        // title: AppConfig.AppName,
-        onGenerateTitle: (context) {
-          return "演示";
-        },
-        theme: ThemeData(
-          primarySwatch: FFColor.createMaterialColor(rgba(20, 21, 19, 1)),
-          primaryColor: FFColor.createMaterialColor(rgba(20, 21, 19, 1)),
-          platform: TargetPlatform.iOS,
-        ),
-        home: home(),
-      );
-    });
+    return ResponsiveApp(
+      builder: (ctx) {
+        return MaterialApp(
+          // debugShowCheckedModeBanner: false,
+          navigatorObservers: [routeObserver],
+          navigatorKey: navigatorKey,
+          // title: AppConfig.AppName,
+          onGenerateTitle: (context) {
+            return "演示";
+          },
+          theme: ThemeData(
+            primarySwatch: FFColor.createMaterialColor(rgba(20, 21, 19, 1)),
+            primaryColor: FFColor.createMaterialColor(rgba(20, 21, 19, 1)),
+            platform: TargetPlatform.iOS,
+          ),
+          home: home(),
+        );
+      },
+    );
   }
 
-  Widget home(){
+  Widget home() {
     if (FFPlatform.isWeb) {
       return TestPage();
     }

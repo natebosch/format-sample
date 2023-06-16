@@ -9,7 +9,7 @@ class Lime {
   final Site site = new Site(SiteSetting.STANDARD);
   static final Lime _lime = new Lime._internal();
 
-  factory Lime(){
+  factory Lime() {
     return _lime;
   }
 
@@ -19,4 +19,3 @@ class Lime {
     return distance * 100;
   }
 }
-

@@ -14,7 +14,9 @@ final RegExp _transformValidator = RegExp('^($_transformCommandAtom)*\$');
 final RegExp _transformCommand = RegExp(_transformCommandAtom);
 
 typedef _MatrixParser = AffineMatrix Function(
-    String? paramsStr, AffineMatrix current);
+  String? paramsStr,
+  AffineMatrix current,
+);
 
 const Map<String, _MatrixParser> _matrixParsers = <String, _MatrixParser>{
   'matrix': _parseSvgMatrix,
@@ -143,8 +145,11 @@ bool isPercentage(String? val) => val?.endsWith('%') ?? false;
 /// Parses value from the form '25%', 0.25 or 25.0 as a double.
 /// Note: Percentage or decimals will be multiplied by the total
 /// view box size, where as doubles will be returned as is.
-double? parsePatternUnitToDouble(String rawValue, String mode,
-    {ViewportNode? viewBox}) {
+double? parsePatternUnitToDouble(
+  String rawValue,
+  String mode, {
+  ViewportNode? viewBox,
+}) {
   double? value;
   double? viewBoxValue;
   if (viewBox != null) {

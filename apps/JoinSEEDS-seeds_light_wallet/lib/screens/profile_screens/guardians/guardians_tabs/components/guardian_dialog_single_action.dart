@@ -9,14 +9,14 @@ class GuardianDialogSingleAction extends StatelessWidget {
   final GestureTapCallback? onButtonTab;
   final String buttonTitle;
   final String title;
-  const GuardianDialogSingleAction(
-      {Key? key,
-      required this.image,
-      required this.description,
-      this.onButtonTab,
-      required this.buttonTitle,
-      required this.title})
-      : super(key: key);
+  const GuardianDialogSingleAction({
+    Key? key,
+    required this.image,
+    required this.description,
+    this.onButtonTab,
+    required this.buttonTitle,
+    required this.title,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -31,8 +31,13 @@ class GuardianDialogSingleAction extends StatelessWidget {
               width: 250,
               decoration: BoxDecoration(
                 color: AppColors.white,
-                borderRadius: const BorderRadius.all(Radius.circular(defaultCardBorderRadius)),
-                image: DecorationImage(image: AssetImage(image), fit: BoxFit.fitWidth),
+                borderRadius: const BorderRadius.all(
+                  Radius.circular(defaultCardBorderRadius),
+                ),
+                image: DecorationImage(
+                  image: AssetImage(image),
+                  fit: BoxFit.fitWidth,
+                ),
               ),
             ),
             const SizedBox(height: 20),

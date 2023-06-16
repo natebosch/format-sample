@@ -7,7 +7,11 @@ part 'explore_state.dart';
 
 class ExploreBloc extends Bloc<ExploreEvent, ExploreState> {
   ExploreBloc() : super(ExploreState.initial()) {
-    on<OnExploreCardTapped>((event, emit) => emit(state.copyWith(pageCommand: NavigateToRoute(event.route))));
+    on<OnExploreCardTapped>(
+      (event, emit) => emit(
+        state.copyWith(pageCommand: NavigateToRoute(event.route)),
+      ),
+    );
     on<ClearExplorePageCommand>((_, emit) => emit(state.copyWith()));
   }
 }

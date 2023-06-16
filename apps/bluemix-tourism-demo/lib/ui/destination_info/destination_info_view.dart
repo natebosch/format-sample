@@ -30,27 +30,34 @@ class _DestinationInfoState extends State<DestinationInfoView>
   Animation<double> servicesInfoAnimation;
   Animation<double> locationsAnimation;
 
-
   @override
   initState() {
     locationsAnimationController = new AnimationController(
-        duration: const Duration(milliseconds: 400), vsync: this);
+      duration: const Duration(milliseconds: 400),
+      vsync: this,
+    );
 
     servicesAnimationController = new AnimationController(
-        duration: const Duration(milliseconds: 300), vsync: this);
+      duration: const Duration(milliseconds: 300),
+      vsync: this,
+    );
 
     var curvedAnimation = new CurvedAnimation(
-        parent: locationsAnimationController, curve: Curves.fastOutSlowIn);
+      parent: locationsAnimationController,
+      curve: Curves.fastOutSlowIn,
+    );
     var curvedAnimation2 = new CurvedAnimation(
-        parent: servicesAnimationController, curve: Curves.fastOutSlowIn);
+      parent: servicesAnimationController,
+      curve: Curves.fastOutSlowIn,
+    );
 
-    servicesInfoAnimation =
-        new Tween<double>(begin: 90.0, end: 180.0).animate(curvedAnimation)
-          ..addListener(() {
-            setState(() {
-              // the state that has changed here is the animation object’s value
-            });
-          });
+    servicesInfoAnimation = new Tween<double>(begin: 90.0, end: 180.0).animate(
+      curvedAnimation,
+    )..addListener(() {
+      setState(() {
+        // the state that has changed here is the animation object’s value
+      });
+    });
 
     servicesInfoAnimation.addStatusListener((status) {
       if (status == AnimationStatus.completed) {
@@ -60,13 +67,13 @@ class _DestinationInfoState extends State<DestinationInfoView>
         Navigator.pop(context);
       }
     });
-    locationsAnimation =
-        new Tween<double>(begin: 270.0, end: 180.0).animate(curvedAnimation2)
-          ..addListener(() {
-            setState(() {
-              // the state that has changed here is the animation object’s value
-            });
-          });
+    locationsAnimation = new Tween<double>(begin: 270.0, end: 180.0).animate(
+      curvedAnimation2,
+    )..addListener(() {
+      setState(() {
+        // the state that has changed here is the animation object’s value
+      });
+    });
     locationsAnimation.addStatusListener((status) {
       debugPrint('status: $status');
       if (status == AnimationStatus.dismissed) {
@@ -81,7 +88,6 @@ class _DestinationInfoState extends State<DestinationInfoView>
   _collapseAnimations() {
     servicesAnimationController.reverse();
   }
-
 
   Widget _imageAndDesc(String image, String desc) {
     return new Row(
@@ -103,59 +109,73 @@ class _DestinationInfoState extends State<DestinationInfoView>
         ),
         new Padding(
           padding: const EdgeInsets.symmetric(vertical: 5.0, horizontal: 5.0),
-          child: Text(desc,
-              style: new TextStyle(
-                color: AppColors.tertiaryTextColor,
-                fontSize: 17.0,
-              )),
+          child: Text(
+            desc,
+            style: new TextStyle(
+              color: AppColors.tertiaryTextColor,
+              fontSize: 17.0,
+            ),
+          ),
         ),
       ],
     );
   }
 
   Widget _buildServicesInfo(
-      BuildContext context, double degrees, AlignmentGeometry alignment) {
+    BuildContext context,
+    double degrees,
+    AlignmentGeometry alignment,
+  ) {
     bool isAr = StoreProvider.of<AppState>(context).state.isAr;
 
     return new Transform(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 15.0),
-          child: new ClipPath(
-            clipper: NotchedClipper(),
-            child: Container(
-              decoration: cardGradientBackground(),
-              child: new Padding(
-                  padding: const EdgeInsets.symmetric(
-                      horizontal: 20.0, vertical: 5.0),
-                  child: Column(
-                    children: <Widget>[
-                      _imageAndDesc(
-                          'images/icons/airplane(1).png',
-                          isAr
-                              ? destinationCard.destination.airlinesAr
-                              : destinationCard.destination.airlines),
-                      _imageAndDesc(
-                          'images/icons/food.png',
-                          isAr
-                              ? destinationCard.destination.foodAr
-                              : destinationCard.destination.food),
-                      _imageAndDesc(
-                          'images/icons/hotel.png',
-                          isAr
-                              ? '${Translations.of(context).hotels} ${destinationCard.destination.hotelStars}' +
-                                  ' ${Translations.of(context).star}'
-                              : '${destinationCard.destination.hotelStars}-${Translations.of(context).star}' +
-                                  '${Translations.of(context).hotels}'),
-                    ],
-                  )),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 15.0),
+        child: new ClipPath(
+          clipper: NotchedClipper(),
+          child: Container(
+            decoration: cardGradientBackground(),
+            child: new Padding(
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 20.0, vertical: 5.0),
+              child: Column(
+                children: <Widget>[
+                  _imageAndDesc(
+                    'images/icons/airplane(1).png',
+                    isAr
+                        ? destinationCard.destination.airlinesAr
+                        : destinationCard.destination.airlines,
+                  ),
+                  _imageAndDesc(
+                    'images/icons/food.png',
+                    isAr
+                        ? destinationCard.destination.foodAr
+                        : destinationCard.destination.food,
+                  ),
+                  _imageAndDesc(
+                    'images/icons/hotel.png',
+                    isAr
+                        ? '${Translations.of(
+                              context,
+                            ).hotels} ${destinationCard.destination.hotelStars}' +
+                            ' ${Translations.of(context).star}'
+                        : '${destinationCard.destination.hotelStars}-${Translations.of(
+                              context,
+                            ).star}' +
+                            '${Translations.of(context).hotels}',
+                  ),
+                ],
+              ),
             ),
           ),
         ),
-        alignment: alignment,
-        transform: perspective.scaled(1.0, 1.0, 1.0)
-          ..rotateX(math.pi - degrees * math.pi / 180)
-          ..rotateY(0.0)
-          ..rotateZ(0.0));
+      ),
+      alignment: alignment,
+      transform: perspective.scaled(1.0, 1.0, 1.0)
+        ..rotateX(math.pi - degrees * math.pi / 180)
+        ..rotateY(0.0)
+        ..rotateZ(0.0),
+    );
   }
 
   Widget _buildLocations(BuildContext context) {
@@ -165,35 +185,40 @@ class _DestinationInfoState extends State<DestinationInfoView>
       return new SizedBox(
         height: 120.0,
         child: new ListView(
-            scrollDirection: Axis.horizontal,
-            children: destinationCard.destination.activities
-                .map((d) => (Column(
-                      children: <Widget>[
-                        new Container(
-                            width: 75.0,
-                            height: 75.0,
-                            margin: const EdgeInsets.all(8.0),
-                            decoration: new BoxDecoration(
-                              borderRadius: new BorderRadius.all(
-                                  new Radius.circular(75.0)),
-                            ),
-                            child: ClipOval(
-                                child: FadeInImage.assetNetwork(
-                                    placeholder: 'images/placeholder.png',
-                                    fit: BoxFit.cover,
-                                    image: d.photo != null
-                                        ? d.photo
-                                            .replaceAll('~', ServerAPI.host)
-                                        : 'images/placeholder.png'))),
-                        Text(isAr ? d.cityAr : d.city,
-                            style: new TextStyle(
-                              color: AppColors.tertiaryTextColor,
-                              fontSize: 15.0,
-                            ))
-                      ],
-                      // onTapped: () => _openEventDetails(context, d),
-                    )))
-                .toList()),
+          scrollDirection: Axis.horizontal,
+          children: destinationCard.destination.activities.map(
+            (d) => (Column(
+                  children: <Widget>[
+                    new Container(
+                      width: 75.0,
+                      height: 75.0,
+                      margin: const EdgeInsets.all(8.0),
+                      decoration: new BoxDecoration(
+                        borderRadius:
+                            new BorderRadius.all(new Radius.circular(75.0)),
+                      ),
+                      child: ClipOval(
+                        child: FadeInImage.assetNetwork(
+                          placeholder: 'images/placeholder.png',
+                          fit: BoxFit.cover,
+                          image: d.photo != null
+                              ? d.photo.replaceAll('~', ServerAPI.host)
+                              : 'images/placeholder.png',
+                        ),
+                      ),
+                    ),
+                    Text(
+                      isAr ? d.cityAr : d.city,
+                      style: new TextStyle(
+                        color: AppColors.tertiaryTextColor,
+                        fontSize: 15.0,
+                      ),
+                    ),
+                  ],
+                  // onTapped: () => _openEventDetails(context, d),
+                )),
+          ).toList(),
+        ),
       );
     } else {
       return Container();
@@ -201,32 +226,38 @@ class _DestinationInfoState extends State<DestinationInfoView>
   }
 
   Widget _buildLocationsInfo(
-      BuildContext context, double degrees, AlignmentGeometry alignment) {
+    BuildContext context,
+    double degrees,
+    AlignmentGeometry alignment,
+  ) {
     return new Transform(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 15.0),
-          child: new ClipPath(
-            clipper: NotchedClipper(
-                bottomLeft: false,
-                bottomRight: false,
-                topLeft: true,
-                topRight: true),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 15.0),
+        child: new ClipPath(
+          clipper: NotchedClipper(
+            bottomLeft: false,
+            bottomRight: false,
+            topLeft: true,
+            topRight: true,
+          ),
 //      clipper: BottomWaveClipper(),
-            child: Container(
-              decoration: cardGradientBackground(),
+          child: Container(
+            decoration: cardGradientBackground(),
 //        margin: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
-              child: new Padding(
-                  padding: const EdgeInsets.symmetric(
-                      horizontal: 0.0, vertical: 15.0),
-                  child: _buildLocations(context)),
+            child: new Padding(
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 0.0, vertical: 15.0),
+              child: _buildLocations(context),
             ),
           ),
         ),
-        alignment: alignment,
-        transform: perspective.scaled(1.0, 1.0, 1.0)
-          ..rotateX(math.pi - degrees * math.pi / 180)
-          ..rotateY(0.0)
-          ..rotateZ(0.0));
+      ),
+      alignment: alignment,
+      transform: perspective.scaled(1.0, 1.0, 1.0)
+        ..rotateX(math.pi - degrees * math.pi / 180)
+        ..rotateY(0.0)
+        ..rotateZ(0.0),
+    );
   }
 
   Widget buildInfo() {
@@ -246,24 +277,27 @@ class _DestinationInfoState extends State<DestinationInfoView>
         .destinationCard;
 
     return new Stack(
-        fit: StackFit.expand,
-        alignment: Alignment.bottomCenter,
-        children: <Widget>[
-          new Container(
-            decoration: gradientBackDecoration(),
+      fit: StackFit.expand,
+      alignment: Alignment.bottomCenter,
+      children: <Widget>[
+        new Container(decoration: gradientBackDecoration()),
+        new Scaffold(
+          backgroundColor: Colors.transparent,
+          body: new Container(
+            decoration: new BoxDecoration(
+              boxShadow: [
+                new BoxShadow(
+                  color: Colors.black12,
+                  blurRadius: 30.0,
+                  offset: const Offset(0.0, 75.0),
+                ),
+              ],
+            ),
+            child: infoInScrollView(context),
           ),
-          new Scaffold(
-              backgroundColor: Colors.transparent,
-              body: new Container(
-                decoration: new BoxDecoration(boxShadow: [
-                  new BoxShadow(
-                      color: Colors.black12,
-                      blurRadius: 30.0,
-                      offset: const Offset(0.0, 75.0)),
-                ]),
-                child: infoInScrollView(context),
-              ))
-        ]);
+        ),
+      ],
+    );
   }
 
   CustomScrollView infoInScrollView(BuildContext context) {
@@ -279,10 +313,7 @@ class _DestinationInfoState extends State<DestinationInfoView>
           automaticallyImplyLeading: true,
           leading: new InkWell(
             onTap: () => _collapseAnimations(),
-            child: Icon(
-              Icons.arrow_back,
-              color: AppColors.accentColor,
-            ),
+            child: Icon(Icons.arrow_back, color: AppColors.accentColor),
           ),
         ),
         new SliverPadding(
@@ -290,13 +321,19 @@ class _DestinationInfoState extends State<DestinationInfoView>
           sliver: new SliverList(
             delegate: new SliverChildListDelegate([
               buildInfo(),
-              _buildServicesInfo(context, servicesInfoAnimation.value,
-                  FractionalOffset.topCenter),
-              _buildLocationsInfo(context, locationsAnimation.value,
-                  FractionalOffset.topCenter),
+              _buildServicesInfo(
+                context,
+                servicesInfoAnimation.value,
+                FractionalOffset.topCenter,
+              ),
+              _buildLocationsInfo(
+                context,
+                locationsAnimation.value,
+                FractionalOffset.topCenter,
+              ),
             ]),
           ),
-        )
+        ),
       ],
     );
   }

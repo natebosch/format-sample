@@ -5,7 +5,11 @@ import 'package:seeds/screens/authentication/sign_up/viewmodels/bloc.dart';
 import 'package:seeds/screens/authentication/sign_up/viewmodels/states/create_username_state.dart';
 
 class CreateUsernameMapper extends StateMapper {
-  SignupState mapValidateUsernameToState(SignupState currentState, String username, Result result) {
+  SignupState mapValidateUsernameToState(
+    SignupState currentState,
+    String username,
+    Result result,
+  ) {
     final createUsernameCurrentState = currentState.createUsernameState;
 
     if (result.isError) {
@@ -20,11 +24,17 @@ class CreateUsernameMapper extends StateMapper {
 
     // We got a success response which means username is taken, so we should ask user to pick another username
     return currentState.copyWith(
-        createUsernameState:
-            CreateUsernameState.error(createUsernameCurrentState, 'The username is already taken.'.i18n));
+      createUsernameState: CreateUsernameState.error(
+        createUsernameCurrentState,
+        'The username is already taken.'.i18n,
+      ),
+    );
   }
 
-  SignupState mapGenerateUsernameToState(SignupState currentState, String fullname) {
+  SignupState mapGenerateUsernameToState(
+    SignupState currentState,
+    String fullname,
+  ) {
     final generatedUsername = _generateUsername(fullname);
 
     final createUsernameCurrentState = currentState.createUsernameState;
@@ -38,12 +48,14 @@ class CreateUsernameMapper extends StateMapper {
   }
 
   String _generateUsername(String fullname) {
-    String suggestedUsername = fullname.toLowerCase().trim().split('').map((character) {
-      // ignore: unnecessary_raw_strings
-      final legalChar = RegExp(r'[a-z]|1|2|3|4|5').allMatches(character).isNotEmpty;
+    String suggestedUsername =
+        fullname.toLowerCase().trim().split('').map((character) {
+          // ignore: unnecessary_raw_strings
+          final legalChar =
+              RegExp(r'[a-z]|1|2|3|4|5').allMatches(character).isNotEmpty;
 
-      return legalChar ? character : '';
-    }).join();
+          return legalChar ? character : '';
+        }).join();
 
     suggestedUsername = suggestedUsername.padRight(12, '1');
 

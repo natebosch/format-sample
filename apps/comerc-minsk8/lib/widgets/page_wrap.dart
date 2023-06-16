@@ -21,13 +21,13 @@ class PageWrapper extends StatefulWidget {
     this.poolForReloadTabs,
     this.hasAppBar = false,
   }) :
-        // assert(
-        //   !dataPool.any(
-        //     (element) =>
-        //         !(element is SourceList || element is List<SourceList>),
-        //   ),
-        // ),
-        super(key: key);
+       // assert(
+       //   !dataPool.any(
+       //     (element) =>
+       //         !(element is SourceList || element is List<SourceList>),
+       //   ),
+       // ),
+       super(key: key);
 
   final int pageIndex;
   final int tabsLength;
@@ -50,10 +50,7 @@ class PageWrapperState extends State<PageWrapper>
   @override
   void initState() {
     super.initState();
-    _tabController = TabController(
-      length: widget.tabsLength,
-      vsync: this,
-    );
+    _tabController = TabController(length: widget.tabsLength, vsync: this);
     if (widget.poolForReloadTabs != null &&
         widget.dataPool is List<SourceList>) {
       _addListener();
@@ -70,8 +67,9 @@ class PageWrapperState extends State<PageWrapper>
         // если для категории еще не было загрузки (переходом по tab-у),
         // то добавление нового unit-а в /add_unit зря добавит tab в widget.poolForReloadTabs,
         // а потому удаление выполняю в любом случае, без оглядки на sourceList.isLoadDataByTabChange
-        final isContaintsInPool =
-            widget.poolForReloadTabs.remove(_tabController.index);
+        final isContaintsInPool = widget.poolForReloadTabs.remove(
+          _tabController.index,
+        );
         if (sourceList.isLoadDataByTabChange) {
           if (_tabController.index > 0) {
             final sourceListBefore = widget.dataPool[_tabController.index - 1];
@@ -103,9 +101,7 @@ class PageWrapperState extends State<PageWrapper>
       isScrollable: true,
       tabs: List.generate(
         widget.tabsLength,
-        (int tabIndex) => Tab(
-          text: widget.getTabName(tabIndex),
-        ),
+        (int tabIndex) => Tab(text: widget.getTabName(tabIndex)),
       ),
     );
     final tabBarHeight = tabBar.preferredSize.height;
@@ -123,36 +119,40 @@ class PageWrapperState extends State<PageWrapper>
       pinnedHeaderSliverHeightBuilder: () => pinnedHeaderHeight,
       innerScrollPositionKeyBuilder: () => Key('${widget.pageIndex}-$tabIndex'),
       headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) => [
-        if (widget.hasAppBar)
-          SliverPersistentHeader(
-            delegate: CommonSliverPersistentHeaderDelegate(
-              builder: (BuildContext context, double shrinkOffset,
-                  bool overlapsContent) {
-                return _AppBar();
-              },
-              height: kToolbarHeight,
-            ),
-          ),
-        PullToRefreshContainer(
-          (PullToRefreshScrollNotificationInfo info) {
-            return SliverPersistentHeader(
-              pinned: true,
-              delegate: CommonSliverPersistentHeaderDelegate(
-                builder: (BuildContext context, double shrinkOffset,
-                    bool overlapsContent) {
-                  return _TabBar(
-                    info: info,
-                    shrinkOffset: shrinkOffset,
-                    // overlapsContent: overlapsContent,
-                    tabBar: tabBar,
-                  );
-                },
-                height: tabBarHeight,
+            if (widget.hasAppBar)
+              SliverPersistentHeader(
+                delegate: CommonSliverPersistentHeaderDelegate(
+                  builder: (
+                    BuildContext context,
+                    double shrinkOffset,
+                    bool overlapsContent,
+                  ) {
+                    return _AppBar();
+                  },
+                  height: kToolbarHeight,
+                ),
               ),
-            );
-          },
-        ),
-      ],
+            PullToRefreshContainer((PullToRefreshScrollNotificationInfo info) {
+              return SliverPersistentHeader(
+                pinned: true,
+                delegate: CommonSliverPersistentHeaderDelegate(
+                  builder: (
+                    BuildContext context,
+                    double shrinkOffset,
+                    bool overlapsContent,
+                  ) {
+                    return _TabBar(
+                      info: info,
+                      shrinkOffset: shrinkOffset,
+                      // overlapsContent: overlapsContent,
+                      tabBar: tabBar,
+                    );
+                  },
+                  height: tabBarHeight,
+                ),
+              );
+            }),
+          ],
       body: TabBarView(
         controller: _tabController,
         children: List.generate(
@@ -183,8 +183,8 @@ class PageWrapperState extends State<PageWrapper>
     // }
     if (!result) {
       final snackBar = SnackBar(
-          content:
-              Text('Не удалось выполнить обновление. Попробуйте ещё раз.'));
+        content: Text('Не удалось выполнить обновление. Попробуйте ещё раз.'),
+      );
       Scaffold.of(context).showSnackBar(snackBar);
     }
     return result;
@@ -207,7 +207,9 @@ class _AppBar extends StatelessWidget {
           Container(
             padding: EdgeInsets.only(top: 4),
             child: Text(
-              "${appState['ShowcaseMap.address']} — ${appState['ShowcaseMap.radius']} км",
+              "${appState['ShowcaseMap.address']} — ${appState[
+                'ShowcaseMap.radius'
+              ]} км",
               style: TextStyle(
                 fontSize: kFontSize,
                 fontWeight: FontWeight.w600,
@@ -223,9 +225,7 @@ class _AppBar extends StatelessWidget {
           icon: Icon(FontAwesomeIcons.slidersH),
           iconSize: kButtonIconSize,
           onPressed: () {
-            navigator.push(
-              ShowcaseMapScreen().getRoute(),
-            );
+            navigator.push(ShowcaseMapScreen().getRoute());
           },
         ),
         if (isInDebugMode) _LogoutButton(),

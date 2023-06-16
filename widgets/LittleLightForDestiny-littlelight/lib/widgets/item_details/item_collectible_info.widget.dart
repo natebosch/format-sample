@@ -32,14 +32,12 @@ class ItemCollectibleInfoWidgetState extends State<ItemCollectibleInfoWidget>
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
-          getHeader(
-            TranslatedTextWidget(
-              "How to get",
-              uppercase: true,
-              textAlign: TextAlign.left,
-              style: TextStyle(fontWeight: FontWeight.bold),
-            ),
-          ),
+          getHeader(TranslatedTextWidget(
+            "How to get",
+            uppercase: true,
+            textAlign: TextAlign.left,
+            style: TextStyle(fontWeight: FontWeight.bold),
+          )),
           visible
               ? Container(
                   padding: EdgeInsets.all(8),
@@ -50,8 +48,9 @@ class ItemCollectibleInfoWidgetState extends State<ItemCollectibleInfoWidget>
                       if (collectible == null) return "";
                       return collectible.sourceString;
                     },
-                  ))
-              : Container()
+                  ),
+                )
+              : Container(),
         ],
       ),
     );

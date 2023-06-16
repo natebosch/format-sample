@@ -33,10 +33,7 @@ class _CurrencySetupScreenState extends State<CurrencySetupScreen> {
               SizedBox(height: 15),
               Text(
                 S.of(context).currencySetupTextHeadline,
-                style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
-                ),
+                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
               ),
               SizedBox(height: 50),
               CurrencyGridView(),
@@ -49,9 +46,7 @@ class _CurrencySetupScreenState extends State<CurrencySetupScreen> {
 }
 
 class CurrencyGridView extends StatelessWidget {
-  const CurrencyGridView({
-    Key key,
-  }) : super(key: key);
+  const CurrencyGridView({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -64,20 +59,19 @@ class CurrencyGridView extends StatelessWidget {
         childAspectRatio: 2,
         mainAxisSpacing: 40,
         shrinkWrap: true,
-        children: currencyProvider.currencies
-            .map((Currency currency) => CurrencyCircle(
-                currency: currency,
-                onPressed: () async {
-                  await UserDatabaseService(user).updateUserCurrency(currency);
-                  Navigator.pushReplacementNamed(context, HomeScreen.routeName);
-                }))
-            .toList(),
+        children: currencyProvider.currencies.map(
+          (Currency currency) => CurrencyCircle(
+            currency: currency,
+            onPressed: () async {
+              await UserDatabaseService(user).updateUserCurrency(currency);
+              Navigator.pushReplacementNamed(context, HomeScreen.routeName);
+            },
+          ),
+        ).toList(),
       );
     }
 
-    return Center(
-      child: CircularProgressIndicator(),
-    );
+    return Center(child: CircularProgressIndicator());
   }
 }
 
@@ -85,11 +79,8 @@ class CurrencyCircle extends StatelessWidget {
   final Currency currency;
   final Function onPressed;
 
-  const CurrencyCircle({
-    Key key,
-    this.currency,
-    this.onPressed,
-  }) : super(key: key);
+  const CurrencyCircle({Key key, this.currency, this.onPressed})
+    : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -101,10 +92,7 @@ class CurrencyCircle extends StatelessWidget {
       onPressed: this.onPressed,
       child: Text(
         currency.symbol,
-        style: TextStyle(
-          fontSize: 30,
-          fontWeight: FontWeight.w500,
-        ),
+        style: TextStyle(fontSize: 30, fontWeight: FontWeight.w500),
       ),
     );
   }

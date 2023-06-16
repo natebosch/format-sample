@@ -26,9 +26,7 @@ class FeedbackScreen extends StatelessWidget {
           Logo(size: kBigButtonIconSize),
           SizedBox(height: 16),
           Text('⭐ ⭐ ⭐ ⭐ ⭐'),
-          SizedBox(
-            height: 16,
-          ),
+          SizedBox(height: 16),
           Text(
             'Нравится приложение?',
             style: TextStyle(
@@ -36,25 +34,17 @@ class FeedbackScreen extends StatelessWidget {
               color: Colors.black.withOpacity(0.8),
             ),
           ),
-          SizedBox(
-            height: 16,
-          ),
+          SizedBox(height: 16),
           Text(
             'Оцени нас в $_market\nи оставь отзыв',
             textAlign: TextAlign.center,
           ),
-          SizedBox(
-            height: 24,
-          ),
+          SizedBox(height: 24),
           Text(
             'Мы станем ещё лучше',
-            style: TextStyle(
-              color: Colors.black.withOpacity(0.6),
-            ),
+            style: TextStyle(color: Colors.black.withOpacity(0.6)),
           ),
-          SizedBox(
-            height: 8,
-          ),
+          SizedBox(height: 8),
           SizedBox(
             width: 200,
             child: Column(
@@ -100,14 +90,9 @@ class FeedbackScreen extends StatelessWidget {
       ),
     );
     return Scaffold(
-      appBar: ExtendedAppBar(
-        isForeground: true,
-        withModel: true,
-      ),
+      appBar: ExtendedAppBar(isForeground: true, withModel: true),
       backgroundColor: Colors.white,
-      body: SafeArea(
-        child: ScrollBody(child: child),
-      ),
+      body: SafeArea(child: ScrollBody(child: child)),
     );
   }
 }

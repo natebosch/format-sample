@@ -4,11 +4,17 @@ import 'package:firebase_auth/firebase_auth.dart';
 class ChatDatabase {
   final _auth = FirebaseAuth.instance;
 
-  final CollectionReference chatLists = Firestore.instance.collection('chatroom');
+  final CollectionReference chatLists = Firestore.instance.collection(
+    'chatroom',
+  );
   final CollectionReference group = Firestore.instance.collection('group');
 
   //adding user to chat room
-  Future<void> createChatRoom(String docId, String uid, String destination) async {
+  Future<void> createChatRoom(
+    String docId,
+    String uid,
+    String destination,
+  ) async {
     var user = await _auth.currentUser();
     await chatLists.document(docId).setData({
       'lastMessage': Timestamp.now(),
@@ -22,7 +28,7 @@ class ChatDatabase {
   Future<void> exitChatRoom(String docId) async {
     var user = await _auth.currentUser();
     await chatLists.document(docId).updateData({
-      'users': FieldValue.arrayRemove([user.uid.toString()])
+      'users': FieldValue.arrayRemove([user.uid.toString()]),
     });
   }
 
@@ -37,7 +43,7 @@ class ChatDatabase {
   // kicking a user from chat group
   Future<void> kickedChatRoom(String groupID, String userID) async {
     await chatLists.document(groupID).updateData({
-      'users': FieldValue.arrayRemove([userID.toString()])
+      'users': FieldValue.arrayRemove([userID.toString()]),
     });
   }
 }

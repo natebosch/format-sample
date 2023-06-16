@@ -24,9 +24,7 @@ class _ManualTicketPageState extends State<ManualTicketPage> {
       bloc: widget.bloc,
       builder: (context, state) {
         return Scaffold(
-          appBar: AppBar(
-            title: Text('Ręczne sprawdzanie biletów'),
-          ),
+          appBar: AppBar(title: Text('Ręczne sprawdzanie biletów')),
           body: GestureDetector(
             onTap: () {
               FocusScope.of(context).requestFocus(FocusNode());
@@ -57,17 +55,15 @@ class _ManualTicketPageState extends State<ManualTicketPage> {
                     },
                   ),
                   Text(
-                      'Numer zamówienia (order no.) ma 9 znaków i zaczyna się od OT'),
+                    'Numer zamówienia (order no.) ma 9 znaków i zaczyna się od OT',
+                  ),
                   Text('Numer biletu (ticket id.) ma 20 znaków'),
                   RaisedButton(
                     child: Text('Szukaj'),
                     onPressed: value.length > 0 ? onSearch : null,
                   ),
                   if (state is TicketScannedState)
-                    TicketInfo(
-                      bloc: widget.bloc,
-                      state: state,
-                    ),
+                    TicketInfo(bloc: widget.bloc, state: state),
                   if (state is TicketValidatedState)
                     TicketValidated(
                       bloc: widget.bloc,

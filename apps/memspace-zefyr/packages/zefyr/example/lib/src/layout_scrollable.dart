@@ -33,13 +33,11 @@ class _ScrollableLayoutState extends State<ScrollableLayout> {
           controller: _scrollController,
           children: [
             ListTile(
-              leading: Icon(
-                Icons.warning_sharp,
-                color: Colors.green,
-              ),
+              leading: Icon(Icons.warning_sharp, color: Colors.green),
               title: Text('Please review your document'),
               subtitle: Text(
-                  'Below you can see Zefyr editor which is embedded into this ListView'),
+                'Below you can see Zefyr editor which is embedded into this ListView',
+              ),
             ),
             Divider(),
             ZefyrEditor(
@@ -52,19 +50,17 @@ class _ScrollableLayoutState extends State<ScrollableLayout> {
             ),
             Divider(),
             ListTile(
-              leading: Icon(
-                Icons.question_answer,
-                color: Colors.blue,
-              ),
+              leading: Icon(Icons.question_answer, color: Colors.blue),
               title: Text('Everything looks good?'),
               subtitle: Text('If yes then just hit the Submit button'),
               trailing: TextButton(
                 style: ButtonStyle(
                   backgroundColor: MaterialStateProperty.all<Color>(
-                      Theme.of(context).accentColor),
+                    Theme.of(context).accentColor,
+                  ),
                 ),
-                onPressed: () =>
-                    showDialog(context: context, builder: _buildThanks),
+                onPressed:
+                    () => showDialog(context: context, builder: _buildThanks),
                 child: Text(
                   'Submit',
                   style: Theme.of(context).accentTextTheme.button,
@@ -85,7 +81,7 @@ class _ScrollableLayoutState extends State<ScrollableLayout> {
         TextButton(
           onPressed: () => Navigator.pop(context),
           child: Text('Close'),
-        )
+        ),
       ],
     );
   }

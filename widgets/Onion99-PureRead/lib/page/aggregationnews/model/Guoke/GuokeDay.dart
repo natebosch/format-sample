@@ -20,7 +20,7 @@ class GuokeDay {
   final String date_modified;
   final String url;
   final String title;
-    final String small_image;
+  final String small_image;
   final String summary;
   final bool is_liyan_article;
   final String ukey_author;
@@ -53,7 +53,6 @@ class GuokeDay {
     this.date_created,
     this.resource_url,
   });
-
 
   GuokeDay copyWith({
     String image,
@@ -217,29 +216,29 @@ class GuokeDay {
   @override
   int get hashCode {
     return image.hashCode ^
-    is_replyable.hashCode ^
-    preface.hashCode ^
-    id.hashCode ^
-    is_editor_recommend.hashCode ^
-    copyright.hashCode ^
-    image_description.hashCode ^
-    is_show_summary.hashCode ^
-    minisite_key.hashCode ^
-    subject_key.hashCode ^
-    date_published.hashCode ^
-    video_content.hashCode ^
-    replies_count.hashCode ^
-    is_author_external.hashCode ^
-    recommends_count.hashCode ^
-    title_hide.hashCode ^
-    date_modified.hashCode ^
-    url.hashCode ^
-    title.hashCode ^
-    small_image.hashCode ^
-    summary.hashCode ^
-    is_liyan_article.hashCode ^
-    ukey_author.hashCode ^
-    date_created.hashCode ^
-    resource_url.hashCode;
+        is_replyable.hashCode ^
+        preface.hashCode ^
+        id.hashCode ^
+        is_editor_recommend.hashCode ^
+        copyright.hashCode ^
+        image_description.hashCode ^
+        is_show_summary.hashCode ^
+        minisite_key.hashCode ^
+        subject_key.hashCode ^
+        date_published.hashCode ^
+        video_content.hashCode ^
+        replies_count.hashCode ^
+        is_author_external.hashCode ^
+        recommends_count.hashCode ^
+        title_hide.hashCode ^
+        date_modified.hashCode ^
+        url.hashCode ^
+        title.hashCode ^
+        small_image.hashCode ^
+        summary.hashCode ^
+        is_liyan_article.hashCode ^
+        ukey_author.hashCode ^
+        date_created.hashCode ^
+        resource_url.hashCode;
   }
 }

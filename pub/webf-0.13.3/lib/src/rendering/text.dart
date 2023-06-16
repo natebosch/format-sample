@@ -13,24 +13,26 @@ import 'package:webf/rendering.dart';
 // Carriage returns (U+000D) are treated identically to spaces (U+0020) in all respects.
 // https://drafts.csswg.org/css-text/#white-space-rules
 final String _documentWhiteSpace = '\u0020\u0009\u000A\u000D';
-final RegExp _collapseWhiteSpaceReg = RegExp(r'[' + _documentWhiteSpace + r']+');
-final RegExp _trimLeftWhitespaceReg = RegExp(r'^[' + _documentWhiteSpace + r']([^' + _documentWhiteSpace + r']+)');
-final RegExp _trimRightWhitespaceReg = RegExp(r'([^' + _documentWhiteSpace + r']+)[' + _documentWhiteSpace + r']$');
+final RegExp _collapseWhiteSpaceReg = RegExp(
+  r'[' + _documentWhiteSpace + r']+',
+);
+final RegExp _trimLeftWhitespaceReg = RegExp(
+  r'^[' + _documentWhiteSpace + r']([^' + _documentWhiteSpace + r']+)',
+);
+final RegExp _trimRightWhitespaceReg = RegExp(
+  r'([^' + _documentWhiteSpace + r']+)[' + _documentWhiteSpace + r']$',
+);
 
 class TextParentData extends ContainerBoxParentData<RenderBox> {}
 
 enum WhiteSpace { normal, nowrap, pre, preWrap, preLine, breakSpaces }
 
-class RenderTextBox extends RenderBox with RenderObjectWithChildMixin<RenderBox> {
-  RenderTextBox(
-    data, {
-    required this.renderStyle,
-  }) : _data = data {
+class RenderTextBox extends RenderBox
+    with RenderObjectWithChildMixin<RenderBox> {
+  RenderTextBox(data, {required this.renderStyle}) : _data = data {
     TextSpan text = CSSTextMixin.createTextSpan(_data, renderStyle);
-    _renderParagraph = child = WebFRenderParagraph(
-      text,
-      textDirection: TextDirection.ltr,
-    );
+    _renderParagraph =
+        child = WebFRenderParagraph(text, textDirection: TextDirection.ltr);
   }
 
   String _data;
@@ -60,13 +62,16 @@ class RenderTextBox extends RenderBox with RenderObjectWithChildMixin<RenderBox>
       // pre-wrap  Preserve  Preserve  Wrap     Hang
       // pre-line  Preserve  Collapse  Wrap     Remove
       // break-spaces  Preserve  Preserve  Wrap  Wrap
-      CSSRenderStyle parentRenderStyle = (parent as RenderLayoutBox).renderStyle;
+      CSSRenderStyle parentRenderStyle =
+          (parent as RenderLayoutBox).renderStyle;
       WhiteSpace whiteSpace = parentRenderStyle.whiteSpace;
       if (whiteSpace == WhiteSpace.pre ||
           whiteSpace == WhiteSpace.preLine ||
           whiteSpace == WhiteSpace.preWrap ||
           whiteSpace == WhiteSpace.breakSpaces) {
-        return whiteSpace == WhiteSpace.preLine ? _collapseWhitespace(_data) : _data;
+        return whiteSpace == WhiteSpace.preLine
+            ? _collapseWhitespace(_data)
+            : _data;
       } else {
         String collapsedData = _collapseWhitespace(_data);
         // TODO:
@@ -74,7 +79,8 @@ class RenderTextBox extends RenderBox with RenderObjectWithChildMixin<RenderBox>
         //   <p><span>foo </span> bar</p>
         // Refs:
         //   https://github.com/WebKit/WebKit/blob/6a970b217d59f36e64606ed03f5238d572c23c48/Source/WebCore/layout/inlineformatting/InlineLineBuilder.cpp#L295
-        RenderObject? previousSibling = (parentData as RenderLayoutParentData).previousSibling;
+        RenderObject? previousSibling =
+            (parentData as RenderLayoutParentData).previousSibling;
 
         if (previousSibling == null) {
           collapsedData = _trimLeftWhitespace(collapsedData);
@@ -83,14 +89,18 @@ class RenderTextBox extends RenderBox with RenderObjectWithChildMixin<RenderBox>
                 previousSibling.renderStyle.display == CSSDisplay.flex)) {
           // If previousSibling is block,should trimLeft slef.
           CSSDisplay? display = previousSibling.renderStyle.display;
-          if (display == CSSDisplay.block || display == CSSDisplay.sliver || display == CSSDisplay.flex) {
+          if (display == CSSDisplay.block ||
+              display == CSSDisplay.sliver ||
+              display == CSSDisplay.flex) {
             collapsedData = _trimLeftWhitespace(collapsedData);
           }
-        } else if (previousSibling is RenderTextBox && isEndWithSpace(previousSibling.data)) {
+        } else if (previousSibling is RenderTextBox &&
+            isEndWithSpace(previousSibling.data)) {
           collapsedData = _trimLeftWhitespace(collapsedData);
         }
 
-        RenderObject? nextSibling = (parentData as RenderLayoutParentData).nextSibling;
+        RenderObject? nextSibling =
+            (parentData as RenderLayoutParentData).nextSibling;
         if (nextSibling == null) {
           collapsedData = _trimRightWhitespace(collapsedData);
         } else if (nextSibling is RenderBoxModel &&
@@ -98,7 +108,9 @@ class RenderTextBox extends RenderBox with RenderObjectWithChildMixin<RenderBox>
                 nextSibling.renderStyle.display == CSSDisplay.flex)) {
           // If nextSibling is block,should trimRight slef.
           CSSDisplay? display = nextSibling.renderStyle.display;
-          if (display == CSSDisplay.block || display == CSSDisplay.sliver || display == CSSDisplay.flex) {
+          if (display == CSSDisplay.block ||
+              display == CSSDisplay.sliver ||
+              display == CSSDisplay.flex) {
             collapsedData = _trimRightWhitespace(collapsedData);
           }
         }
@@ -189,7 +201,8 @@ class RenderTextBox extends RenderBox with RenderObjectWithChildMixin<RenderBox>
   }
 
   BoxConstraints getConstraints() {
-    if (renderStyle.whiteSpace == WhiteSpace.nowrap && renderStyle.effectiveTextOverflow != TextOverflow.ellipsis) {
+    if (renderStyle.whiteSpace == WhiteSpace.nowrap &&
+        renderStyle.effectiveTextOverflow != TextOverflow.ellipsis) {
       return BoxConstraints();
     }
 
@@ -198,15 +211,20 @@ class RenderTextBox extends RenderBox with RenderObjectWithChildMixin<RenderBox>
       RenderBoxModel parentRenderBoxModel = parent as RenderBoxModel;
       BoxConstraints parentConstraints = parentRenderBoxModel.constraints;
 
-      if (parentRenderBoxModel.isScrollingContentBox && parentRenderBoxModel is! RenderFlexLayout) {
-        maxConstraintWidth = (parentRenderBoxModel.parent as RenderBoxModel).constraints.maxWidth;
+      if (parentRenderBoxModel.isScrollingContentBox &&
+          parentRenderBoxModel is! RenderFlexLayout) {
+        maxConstraintWidth = (parentRenderBoxModel.parent as RenderBoxModel)
+            .constraints
+            .maxWidth;
       } else if (parentConstraints.maxWidth == double.infinity) {
         final ParentData? parentParentData = parentRenderBoxModel.parentData;
         // Width of positioned element does not constrained by parent.
-        if (parentParentData is RenderLayoutParentData && parentParentData.isPositioned) {
+        if (parentParentData is RenderLayoutParentData &&
+            parentParentData.isPositioned) {
           maxConstraintWidth = double.infinity;
         } else {
-          maxConstraintWidth = parentRenderBoxModel.renderStyle.contentMaxConstraintsWidth;
+          maxConstraintWidth =
+              parentRenderBoxModel.renderStyle.contentMaxConstraintsWidth;
           // @FIXME: Each character in the text will be placed in a new line when remaining space of
           // parent is 0 cause word-break behavior can not be specified in flutter.
           // https://github.com/flutter/flutter/issues/61081
@@ -222,13 +240,20 @@ class RenderTextBox extends RenderBox with RenderObjectWithChildMixin<RenderBox>
         double horizontalBorderLength = borderEdge.horizontal;
         double horizontalPaddingLength = padding.horizontal;
 
-        maxConstraintWidth = parentConstraints.maxWidth - horizontalPaddingLength - horizontalBorderLength;
+        maxConstraintWidth = parentConstraints.maxWidth -
+            horizontalPaddingLength -
+            horizontalBorderLength;
       }
     }
 
     // Text will not overflow from container, so it can inherit
     // constraints from parents
-    return BoxConstraints(minWidth: 0, maxWidth: maxConstraintWidth, minHeight: 0, maxHeight: double.infinity);
+    return BoxConstraints(
+      minWidth: 0,
+      maxWidth: maxConstraintWidth,
+      minHeight: 0,
+      maxHeight: double.infinity,
+    );
   }
 
   // Empty string is the minimum size character, use it as the base size
@@ -242,11 +267,9 @@ class RenderTextBox extends RenderBox with RenderObjectWithChildMixin<RenderBox>
       locale: CSSText.getLocale(),
     );
     TextPainter painter = TextPainter(
-        text: TextSpan(
-          text: ' ',
-          style: textStyle,
-        ),
-        textDirection: TextDirection.ltr);
+      text: TextSpan(text: ' ', style: textStyle),
+      textDirection: TextDirection.ltr,
+    );
     painter.layout();
     return painter.size;
   }
@@ -261,23 +284,28 @@ class RenderTextBox extends RenderBox with RenderObjectWithChildMixin<RenderBox>
 
     String clippedText = data;
     RenderBoxModel parentRenderBoxModel = parent as RenderBoxModel;
-    BoxConstraints? parentContentConstraints = parentRenderBoxModel.contentConstraints;
+    BoxConstraints? parentContentConstraints =
+        parentRenderBoxModel.contentConstraints;
     // Text only need to render in parent container's content area when
     // white-space is nowrap and overflow is hidden/clip.
     CSSOverflowType effectiveOverflowX = renderStyle.effectiveOverflowX;
 
     if (parentContentConstraints != null &&
-        (effectiveOverflowX == CSSOverflowType.hidden || effectiveOverflowX == CSSOverflowType.clip)) {
+        (effectiveOverflowX == CSSOverflowType.hidden ||
+            effectiveOverflowX == CSSOverflowType.clip)) {
       // Max character to display in one line.
       int? maxCharsOfLine;
       // Max lines in parent.
       int? maxLines;
 
       if (parentContentConstraints.maxWidth.isFinite) {
-        maxCharsOfLine = (parentContentConstraints.maxWidth / minCharSize.width).ceil();
+        maxCharsOfLine =
+            (parentContentConstraints.maxWidth / minCharSize.width).ceil();
       }
       if (parentContentConstraints.maxHeight.isFinite) {
-        maxLines = (parentContentConstraints.maxHeight / (_lineHeight ?? minCharSize.height)).ceil();
+        maxLines = (parentContentConstraints.maxHeight /
+                (_lineHeight ?? minCharSize.height))
+            .ceil();
       }
 
       if (renderStyle.whiteSpace == WhiteSpace.nowrap) {
@@ -306,12 +334,18 @@ class RenderTextBox extends RenderBox with RenderObjectWithChildMixin<RenderBox>
 
   // '   a b c' => 'a b c'
   static String _trimLeftWhitespace(String string) {
-    return string.replaceAllMapped(_trimLeftWhitespaceReg, (Match m) => '${m[1]}');
+    return string.replaceAllMapped(
+      _trimLeftWhitespaceReg,
+      (Match m) => '${m[1]}',
+    );
   }
 
   // 'a b c    ' => 'a b c'
   static String _trimRightWhitespace(String string) {
-    return string.replaceAllMapped(_trimRightWhitespaceReg, (Match m) => '${m[1]}');
+    return string.replaceAllMapped(
+      _trimRightWhitespaceReg,
+      (Match m) => '${m[1]}',
+    );
   }
 
   @override

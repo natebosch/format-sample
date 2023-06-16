@@ -24,9 +24,9 @@ Map<String, dynamic> trapezoid(List<double> hueVec, double saturation) {
     // out which of the basis vectors we will use
     double maxAngle = cos((pi * 2 / 3) - EPSILON);
 
-    List<int> mask = BASIS
-        .map((vector) => vecDot(hueVec, vector) > maxAngle ? 1 : 0)
-        .toList();
+    List<int> mask = BASIS.map(
+      (vector) => vecDot(hueVec, vector) > maxAngle ? 1 : 0,
+    ).toList();
 
     int count = mask.fold(0, (acc, value) => acc + value);
 
@@ -91,12 +91,15 @@ Map<String, dynamic> trapezoid(List<double> hueVec, double saturation) {
     cw = 1;
 
     rgb = vecMul<double>(
-        rgb.map<double>((i) => i.toDouble()).toList(), saturation * 2);
+      rgb.map<double>((i) => i.toDouble()).toList(),
+      saturation * 2,
+    );
   }
 
   //  # scale back to the pilot color space
   rgb = vecInt(
-      vecMul<double>(rgb.map<double>((i) => i.toDouble()).toList(), 255));
+    vecMul<double>(rgb.map<double>((i) => i.toDouble()).toList(), 255),
+  );
   int out_cw = (max(0, cw * CWMAX)).toInt();
 
   //     # the wiz light appears to have 5 different LEDs, r, g, b, warm_white, and cold_white
@@ -115,10 +118,7 @@ Map<String, dynamic> rgb2rgbcw(List<int> rgb) {
   // saturation, there's probably a better pythonese way of doing this
 
   List<double> hueVec = vecAdd(
-    vecAdd(
-      vecMul(BASIS[0], rgbSca[0]),
-      vecMul(BASIS[1], rgbSca[1]),
-    ),
+    vecAdd(vecMul(BASIS[0], rgbSca[0]), vecMul(BASIS[1], rgbSca[1])),
     vecMul(BASIS[2], rgbSca[2]),
   );
 

@@ -31,8 +31,9 @@ class MainApp extends StatelessWidget {
       supportedLocales: context.supportedLocales,
       locale: context.locale,
       theme: ThemeData(
-          primarySwatch: ThemeColors.material,
-          canvasColor: ThemeColors.secondary),
+        primarySwatch: ThemeColors.material,
+        canvasColor: ThemeColors.secondary,
+      ),
       navigatorObservers: [TransitionRouteObserver()],
       initialRoute: hasSession ? Base.route : Provider.screen.route,
       routes: {
@@ -58,13 +59,12 @@ Future<void> init() async {
 Future<void> initApp(String name, StatelessWidget appWidget) async {
   await init();
   await EasyLocalization.ensureInitialized();
-  runApp(
-    EasyLocalization(
-        supportedLocales: const [Locale('en', 'US'), Locale('ja', 'JP')],
-        path: 'assets/langs', // <-- change the path of the translation files
-        fallbackLocale: const Locale('ja', 'JP'),
-        child: appWidget),
-  );
+  runApp(EasyLocalization(
+    supportedLocales: const [Locale('en', 'US'), Locale('ja', 'JP')],
+    path: 'assets/langs', // <-- change the path of the translation files
+    fallbackLocale: const Locale('ja', 'JP'),
+    child: appWidget,
+  ));
 }
 
 class ThemeColors {

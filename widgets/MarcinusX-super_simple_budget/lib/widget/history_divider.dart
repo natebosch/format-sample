@@ -7,20 +7,12 @@ class HistoryDivider extends StatelessWidget {
     return new Row(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: <Widget>[
-        new Expanded(
-            child: new Divider(
-          color: Colors.white,
-        )),
+        new Expanded(child: new Divider(color: Colors.white)),
         new Padding(
           padding: const EdgeInsets.all(8.0),
-          child: new Text(S
-              .of(context)
-              .history),
+          child: new Text(S.of(context).history),
         ),
-        new Expanded(
-            child: new Divider(
-          color: Colors.white,
-        )),
+        new Expanded(child: new Divider(color: Colors.white)),
       ],
     );
   }

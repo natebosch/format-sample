@@ -11,8 +11,10 @@ abstract class AccountsState extends Equatable {
 class AccountsLoading extends AccountsState {}
 
 class AccountsLoaded extends AccountsState {
-  const AccountsLoaded(
-      [this.userAccounts = const [], this.familyAccounts = const []]);
+  const AccountsLoaded([
+    this.userAccounts = const [],
+    this.familyAccounts = const [],
+  ]);
 
   final List<Account> userAccounts;
   final List<Account> familyAccounts;

@@ -96,8 +96,9 @@ class _FeedPageState extends State<FeedPage> {
 
   void _handleKeyEvent(RawKeyEvent event) {
     final currentItem = itemPositions.firstWhere(
-        (element) => element.itemLeadingEdge >= 0,
-        orElse: () => null);
+      (element) => element.itemLeadingEdge >= 0,
+      orElse: () => null,
+    );
 
     var index = currentItem?.index ?? 0;
     var alignment = currentItem?.itemLeadingEdge ?? 0;
@@ -176,9 +177,7 @@ class _FeedPageState extends State<FeedPage> {
 
         isCommentView = true;
 
-        posts = [
-          await dp.getPost('${widget.userId}/feed/${widget.postId}'),
-        ];
+        posts = [await dp.getPost('${widget.userId}/feed/${widget.postId}')];
 
         setState(() {});
       } else {
@@ -195,16 +194,16 @@ class _FeedPageState extends State<FeedPage> {
           final User initialUser = users.get(widget.userId);
 
           if (initialUser?.skyfeedId == null) {
-            userSub =
-                dp.getProfileStream(widget.userId, localId).listen((event) {
-              dp.checkFollowingUpdater();
-            });
+            userSub = dp.getProfileStream(widget.userId, localId).listen(
+              (event) {
+                dp.checkFollowingUpdater();
+              },
+            );
           }
 
           dp.addTemporaryUserForFeedPage(widget.userId);
 
           // TODO getProfileStream, then recheck
-
         }
       }
     } else {
@@ -372,8 +371,9 @@ class _FeedPageState extends State<FeedPage> {
 
     final remainingSpacing = freeSpace - (widget.maxWidth ?? 0);
 
-    double leftSpacing =
-        widget.center ? remainingSpacing / 2 : widget.sidePadding + 332;
+    double leftSpacing = widget.center
+        ? remainingSpacing / 2
+        : widget.sidePadding + 332;
 
     double rightSpacing = widget.center
         ? remainingSpacing / 2
@@ -398,9 +398,8 @@ class _FeedPageState extends State<FeedPage> {
             : EdgeInsets.only(
                 top: (isMobile || widget.showBackButton) ? 0 : 32,
                 left: leftSpacing + widget.sidePadding,
-                right: rightSpacing + widget.sidePadding //widget.sidePadding,
-                ),
-
+                right: rightSpacing + widget.sidePadding, //widget.sidePadding,
+              ),
         itemScrollController: itemScrollController,
         itemPositionsListener: itemPositionsListener,
         // controller: _controller,
@@ -439,9 +438,7 @@ class _FeedPageState extends State<FeedPage> {
                           padding: const EdgeInsets.only(top: 1.0),
                           child: Text(
                             'Back',
-                            style: TextStyle(
-                              color: SkyColors.follow,
-                            ),
+                            style: TextStyle(color: SkyColors.follow),
                           ),
                         ),
                       ],
@@ -481,13 +478,8 @@ class _FeedPageState extends State<FeedPage> {
             if (index == 0) {
               return Row(
                 children: [
-                  SizedBox(
-                    width: 8,
-                  ),
-                  Text(
-                    'Notifications',
-                    style: titleTextStyle,
-                  ),
+                  SizedBox(width: 8),
+                  Text('Notifications', style: titleTextStyle),
                   Spacer(),
                   _isProcessingBatchAction
                       ? Padding(
@@ -524,13 +516,14 @@ class _FeedPageState extends State<FeedPage> {
                               });
                             }
                           },
-                          itemBuilder: (BuildContext context) =>
-                              <PopupMenuEntry<String>>[
-                            const PopupMenuItem<String>(
-                              value: 'acceptAll',
-                              child: Text('Accept all followers'),
-                            ),
-                          ],
+                          itemBuilder: (
+                            BuildContext context,
+                          ) => <PopupMenuEntry<String>>[
+                                const PopupMenuItem<String>(
+                                  value: 'acceptAll',
+                                  child: Text('Accept all followers'),
+                                ),
+                              ],
                         ),
                   /*  RaisedButton(
                     child: Text('Accept all'),
@@ -582,10 +575,7 @@ class _FeedPageState extends State<FeedPage> {
                       color: SkyColors.red,
                       child: Padding(
                         padding: const EdgeInsets.all(4.0),
-                        child: Icon(
-                          Icons.close,
-                          color: Colors.white,
-                        ),
+                        child: Icon(Icons.close, color: Colors.white),
                       ),
                     ),
                   ),
@@ -601,9 +591,7 @@ class _FeedPageState extends State<FeedPage> {
                           padding: const EdgeInsets.all(16.0),
                           child: Text(
                             'Loading post...',
-                            style: TextStyle(
-                              fontStyle: FontStyle.italic,
-                            ),
+                            style: TextStyle(fontStyle: FontStyle.italic),
                           ),
                         ),
                       ),
@@ -643,17 +631,12 @@ class _FeedPageState extends State<FeedPage> {
         },
         separatorBuilder: (context, index) {
           if (isMobile) {
-            return Divider(
-              height: 1,
-              thickness: 1,
-            );
+            return Divider(height: 1, thickness: 1);
           } else {
             if (index == 0 && !rd.currentConfiguration.isHomePage) {
               return SizedBox();
             } else {
-              return SizedBox(
-                height: 12,
-              );
+              return SizedBox(height: 12);
             }
           }
         },

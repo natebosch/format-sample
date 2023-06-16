@@ -111,15 +111,17 @@ class Review {
       return <String, Review>{};
     }
 
-    return json.entries.fold(<String, Review>{},
-        (Map<String, Review> previousValue, element) {
-      final Review? object = Review.fromJson(element.value);
-      if (object is Review) {
-        previousValue[element.key] = object;
-      }
+    return json.entries.fold(
+      <String, Review>{},
+      (Map<String, Review> previousValue, element) {
+        final Review? object = Review.fromJson(element.value);
+        if (object is Review) {
+          previousValue[element.key] = object;
+        }
 
-      return previousValue;
-    });
+        return previousValue;
+      },
+    );
   }
 
   // maps a json object with a list of Review-objects as value to a dart map

@@ -9,12 +9,13 @@ class DailyGoalView extends StatefulWidget {
   final int dailyGoal;
   final DailyGoalChangedCallback changed;
 
-  DailyGoalView(
-      {Key key,
-      @required this.age,
-      @required this.gender,
-      @required this.dailyGoal,
-      @required this.changed});
+  DailyGoalView({
+    Key key,
+    @required this.age,
+    @required this.gender,
+    @required this.dailyGoal,
+    @required this.changed,
+  });
 
 /*
 TODO: Add option for peple actively doing Sports
@@ -79,8 +80,9 @@ class _DailyGoalViewState extends State<DailyGoalView> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-        padding: EdgeInsets.all(8.0),
-        child: Column(children: <Widget>[
+      padding: EdgeInsets.all(8.0),
+      child: Column(
+        children: <Widget>[
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
@@ -126,7 +128,9 @@ class _DailyGoalViewState extends State<DailyGoalView> {
                 ),
               ],
             ),
-          )
-        ]));
+          ),
+        ],
+      ),
+    );
   }
 }

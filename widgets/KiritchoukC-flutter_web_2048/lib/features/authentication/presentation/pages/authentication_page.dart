@@ -27,17 +27,15 @@ class AuthenticationPage extends StatelessWidget {
         child: BlocListener<AuthenticationBloc, AuthenticationState>(
           listener: (context, state) {
             if (state is AuthenticationErrorState) {
-              Scaffold.of(context).showSnackBar(
-                SnackBar(
-                  content: Text(
-                    state.message,
-                    textAlign: TextAlign.center,
-                    style: const TextStyle(color: Colors.white),
-                  ),
-                  duration: const Duration(seconds: 3),
-                  backgroundColor: Colors.grey.shade700,
+              Scaffold.of(context).showSnackBar(SnackBar(
+                content: Text(
+                  state.message,
+                  textAlign: TextAlign.center,
+                  style: const TextStyle(color: Colors.white),
                 ),
-              );
+                duration: const Duration(seconds: 3),
+                backgroundColor: Colors.grey.shade700,
+              ));
             }
 
             if (state is UserNotFoundState) {
@@ -78,9 +76,7 @@ class AuthenticationPage extends StatelessWidget {
 }
 
 class InitialAuthenticationPage extends StatelessWidget {
-  const InitialAuthenticationPage({
-    Key key,
-  }) : super(key: key);
+  const InitialAuthenticationPage({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -108,22 +104,11 @@ class OrDivider extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
-        Container(
-          width: 120,
-          height: 1,
-          color: Colors.white60,
-        ),
+        Container(width: 120, height: 1, color: Colors.white60),
         const HorizontalSpacing.medium(),
-        Text(
-          'OR',
-          style: TextStyle(color: Colors.white60),
-        ),
+        Text('OR', style: TextStyle(color: Colors.white60)),
         const HorizontalSpacing.medium(),
-        Container(
-          width: 120,
-          height: 1,
-          color: Colors.white60,
-        ),
+        Container(width: 120, height: 1, color: Colors.white60),
       ],
     );
   }

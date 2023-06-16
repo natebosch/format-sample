@@ -52,10 +52,10 @@ class NatoAppState extends State<MainScreen> {
         ttsState = TtsState.stopped;
       });
       Flushbar(
-          message: "Could not use Text to Speech",
-          duration: Duration(seconds: 5),
-          backgroundColor: Colors.red)
-        ..show(context);
+        message: "Could not use Text to Speech",
+        duration: Duration(seconds: 5),
+        backgroundColor: Colors.red,
+      )..show(context);
     });
   }
 
@@ -68,10 +68,10 @@ class NatoAppState extends State<MainScreen> {
   Future speak(String text) async {
     if (getLanguage(tts) == null) {
       Flushbar(
-          message: "Language is not available for Text to Speech",
-          duration: Duration(seconds: 5),
-          backgroundColor: Colors.red)
-        ..show(context);
+        message: "Language is not available for Text to Speech",
+        duration: Duration(seconds: 5),
+        backgroundColor: Colors.red,
+      )..show(context);
 
       return;
     }
@@ -97,7 +97,9 @@ class NatoAppState extends State<MainScreen> {
       theme: ThemeData.light(),
       darkTheme: ThemeData.dark(),
       home: new Scaffold(
-          appBar: new AppBar(title: new Text(_title), actions: <Widget>[
+        appBar: new AppBar(
+          title: new Text(_title),
+          actions: <Widget>[
             new IconButton(
               icon: new Icon(Icons.view_list),
               onPressed: () {
@@ -105,29 +107,31 @@ class NatoAppState extends State<MainScreen> {
               },
             ),
             new IconButton(
-                icon: new Icon(Icons.settings),
-                onPressed: () {
-                  Navigator.of(context).pushNamed('/SettingsScreen');
-                })
-          ]),
-          body: new Container(
-            padding: const EdgeInsets.fromLTRB(10.0, 20.0, 10.0, 0.0),
-            child: new Column(children: <Widget>[
+              icon: new Icon(Icons.settings),
+              onPressed: () {
+                Navigator.of(context).pushNamed('/SettingsScreen');
+              },
+            ),
+          ],
+        ),
+        body: new Container(
+          padding: const EdgeInsets.fromLTRB(10.0, 20.0, 10.0, 0.0),
+          child: new Column(
+            children: <Widget>[
               new TextField(
-                  autocorrect: false,
-                  autofocus: true,
-                  decoration: new InputDecoration(),
-                  textAlign: TextAlign.center,
-                  maxLength: 60,
-                  onChanged: (String str) {
-                    onTextChanged(str);
-                  },
-                  onSubmitted: (String str) {
-                    onTextChanged(str);
-                  }),
-              new Padding(
-                padding: new EdgeInsets.only(top: 120.0),
+                autocorrect: false,
+                autofocus: true,
+                decoration: new InputDecoration(),
+                textAlign: TextAlign.center,
+                maxLength: 60,
+                onChanged: (String str) {
+                  onTextChanged(str);
+                },
+                onSubmitted: (String str) {
+                  onTextChanged(str);
+                },
               ),
+              new Padding(padding: new EdgeInsets.only(top: 120.0)),
               new SelectableText(
                 _phonetizedText,
                 style: new TextStyle(
@@ -138,24 +142,27 @@ class NatoAppState extends State<MainScreen> {
                 ),
                 textAlign: TextAlign.center,
               ),
-            ]),
+            ],
           ),
-          floatingActionButton: new FloatingActionButton(
-              elevation: 0.0,
-              child: ttsButton,
-              onPressed: () {
-                // separate words with a dot, so tts takes a pause in between words
-                var text = _phonetizedText.replaceAll(new RegExp(r' '), '. ');
-                if (ttsState == TtsState.stopped) {
-                  ttsButton = new Icon(Icons.stop);
-                  setState(() {});
-                  speak(text);
-                } else {
-                  ttsButton = new Icon(Icons.volume_up);
-                  setState(() {});
-                  stop();
-                }
-              })),
+        ),
+        floatingActionButton: new FloatingActionButton(
+          elevation: 0.0,
+          child: ttsButton,
+          onPressed: () {
+            // separate words with a dot, so tts takes a pause in between words
+            var text = _phonetizedText.replaceAll(new RegExp(r' '), '. ');
+            if (ttsState == TtsState.stopped) {
+              ttsButton = new Icon(Icons.stop);
+              setState(() {});
+              speak(text);
+            } else {
+              ttsButton = new Icon(Icons.volume_up);
+              setState(() {});
+              stop();
+            }
+          },
+        ),
+      ),
     );
   }
 }

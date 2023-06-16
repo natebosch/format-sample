@@ -11,7 +11,7 @@ class Puzzles extends StatelessWidget {
   final TabKind initialTab;
 
   const Puzzles({Key? key, this.initialTab = TabKind.Original})
-      : super(key: key);
+    : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -23,26 +23,26 @@ class Puzzles extends StatelessWidget {
       initialIndex: initialTab.index,
       child: Scaffold(
         appBar: AppBar(
-            title: Text(NyaNyaLocalizations.of(context).puzzlesTitle),
-            bottom: TabBar(
-              tabs: [
-                Tab(
-                  icon: displayIcons
-                      ? FaIcon(FontAwesomeIcons.puzzlePiece)
-                      : null,
-                  text: NyaNyaLocalizations.of(context).originalTab,
-                ),
-                Tab(
-                  icon: displayIcons ? FaIcon(FontAwesomeIcons.globe) : null,
-                  text: NyaNyaLocalizations.of(context).communityTab,
-                ),
-                Tab(
-                  icon:
-                      displayIcons ? FaIcon(FontAwesomeIcons.mobileAlt) : null,
-                  text: NyaNyaLocalizations.of(context).deviceTab,
-                ),
-              ],
-            )),
+          title: Text(NyaNyaLocalizations.of(context).puzzlesTitle),
+          bottom: TabBar(
+            tabs: [
+              Tab(
+                icon: displayIcons
+                    ? FaIcon(FontAwesomeIcons.puzzlePiece)
+                    : null,
+                text: NyaNyaLocalizations.of(context).originalTab,
+              ),
+              Tab(
+                icon: displayIcons ? FaIcon(FontAwesomeIcons.globe) : null,
+                text: NyaNyaLocalizations.of(context).communityTab,
+              ),
+              Tab(
+                icon: displayIcons ? FaIcon(FontAwesomeIcons.mobileAlt) : null,
+                text: NyaNyaLocalizations.of(context).deviceTab,
+              ),
+            ],
+          ),
+        ),
         drawer: DefaultDrawer(),
         body: TabBarView(
           children: [OriginalPuzzles(), CommunityPuzzles(), LocalPuzzles()],

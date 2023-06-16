@@ -29,28 +29,28 @@ class HomeState extends State<Home> {
       double age = double.parse(_ageController.text);
       double weight = double.parse(_weightController.text);
       double height = double.parse(_heightController.text);
-      _meter = height/3.2808;
+      _meter = height / 3.2808;
 
-      if((_ageController.text.isNotEmpty || age > 0) &&
+      if ((_ageController.text.isNotEmpty || age > 0) &&
           ((_heightController.text.isNotEmpty || height > 0) &&
-              (_weightController.text.isNotEmpty || weight > 0))){
-        _result = weight/(_meter*_meter);
-      }else{
+              (_weightController.text.isNotEmpty || weight > 0))) {
+        _result = weight / (_meter * _meter);
+      } else {
         print("Error");
       }
 
-      if((double.parse(_result.toStringAsFixed(1)) < 18.5)){
+      if ((double.parse(_result.toStringAsFixed(1)) < 18.5)) {
         _finalResultPrint = "UnderWeight";
         print(_finalResultPrint);
-      }else if(double.parse(_result.toStringAsFixed(1))>18.5 &&
-          (double.parse(_result.toStringAsFixed(1)) <=25.0)){
+      } else if (double.parse(_result.toStringAsFixed(1)) > 18.5 &&
+          (double.parse(_result.toStringAsFixed(1)) <= 25.0)) {
         _finalResultPrint = "Normal";
         print(_finalResultPrint);
-      }else if((double.parse(_result.toStringAsFixed(1))>25.0)
-      && (double.parse(_result.toStringAsFixed(1))) < 30.0){
+      } else if ((double.parse(_result.toStringAsFixed(1)) > 25.0) &&
+          (double.parse(_result.toStringAsFixed(1))) < 30.0) {
         _finalResultPrint = "OverWeight";
         print(_finalResultPrint);
-      }else if((double.parse(_result.toStringAsFixed(1))) >= 30.0){
+      } else if ((double.parse(_result.toStringAsFixed(1))) >= 30.0) {
         _finalResultPrint = "Obesity";
         print(_finalResultPrint);
       }
@@ -117,31 +117,33 @@ class HomeState extends State<Home> {
                   new Row(
                     children: <Widget>[
                       new Container(
-                          margin: EdgeInsets.only(left: 100.0),
-                          child: new RaisedButton(
-                            onPressed: _bmiValue,
-                            color: Colors.red,
-                            child: new Text(
-                              "Calculate",
-                              style: new TextStyle(
-                                color: Colors.white,
-                                fontSize: 20.0,
-                              ),
+                        margin: EdgeInsets.only(left: 100.0),
+                        child: new RaisedButton(
+                          onPressed: _bmiValue,
+                          color: Colors.red,
+                          child: new Text(
+                            "Calculate",
+                            style: new TextStyle(
+                              color: Colors.white,
+                              fontSize: 20.0,
                             ),
-                          )),
+                          ),
+                        ),
+                      ),
                       new Container(
-                          margin: EdgeInsets.only(left: 10.0),
-                          child: new RaisedButton(
-                            onPressed: _clear,
-                            color: Colors.red,
-                            child: new Text(
-                              "Clear",
-                              style: new TextStyle(
-                                color: Colors.white,
-                                fontSize: 20.0,
-                              ),
+                        margin: EdgeInsets.only(left: 10.0),
+                        child: new RaisedButton(
+                          onPressed: _clear,
+                          color: Colors.red,
+                          child: new Text(
+                            "Clear",
+                            style: new TextStyle(
+                              color: Colors.white,
+                              fontSize: 20.0,
                             ),
-                          ))
+                          ),
+                        ),
+                      ),
                     ],
                   ),
                   new Padding(padding: EdgeInsets.all(10.0)),
@@ -149,21 +151,23 @@ class HomeState extends State<Home> {
                   new Text(
                     '$_doneResult',
                     style: new TextStyle(
-                        fontSize: 30.0,
-                        fontWeight: FontWeight.w800,
-                        color: Colors.red),
+                      fontSize: 30.0,
+                      fontWeight: FontWeight.w800,
+                      color: Colors.red,
+                    ),
                   ),
 
                   new Text(
                     "$_finalResultPrint",
                     style: new TextStyle(
-                        fontSize: 28.0,
-                        fontWeight: FontWeight.w800,
-                        color: Colors.red),
-                  )
+                      fontSize: 28.0,
+                      fontWeight: FontWeight.w800,
+                      color: Colors.red,
+                    ),
+                  ),
                 ],
               ),
-            )
+            ),
           ],
         ),
       ),

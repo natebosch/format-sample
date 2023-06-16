@@ -27,11 +27,7 @@ class _MoleState extends State<Mole> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: 100,
-      height: 100,
-      child: _buildMole(),
-    );
+    return Container(width: 100, height: 100, child: _buildMole());
   }
 
   Widget _buildMole() {
@@ -44,7 +40,7 @@ class _MoleState extends State<Mole> {
           children: [
             if (_moleIsVisible)
               GestureDetector(onTap: () => _hitMole(), child: _mole()),
-            ...particles.map((it) => it.buildWidget())
+            ...particles.map((it) => it.buildWidget()),
           ],
         );
       },
@@ -54,8 +50,9 @@ class _MoleState extends State<Mole> {
   Widget _mole() {
     return Container(
       decoration: BoxDecoration(
-          color: GSYColors.primaryValue,
-          borderRadius: BorderRadius.circular(50)),
+        color: GSYColors.primaryValue,
+        borderRadius: BorderRadius.circular(50),
+      ),
     );
   }
 
@@ -127,16 +124,18 @@ class MoleParticle {
           width: 100,
           height: 100,
           decoration: BoxDecoration(
-              color: GSYColors.primaryValue.withAlpha(alpha),
-              borderRadius: BorderRadius.circular(50)),
+            color: GSYColors.primaryValue.withAlpha(alpha),
+            borderRadius: BorderRadius.circular(50),
+          ),
         ),
       ),
     );
   }
 
   double progress() {
-    return ((DateTime.now().duration() - startTime) / duration)
-        .clamp(0.0, 1.0)
-        .toDouble();
+    return ((DateTime.now().duration() - startTime) / duration).clamp(
+      0.0,
+      1.0,
+    ).toDouble();
   }
 }

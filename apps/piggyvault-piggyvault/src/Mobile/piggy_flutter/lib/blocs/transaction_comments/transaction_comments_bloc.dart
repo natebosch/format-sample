@@ -8,9 +8,10 @@ class TransactionCommentsBloc
     extends Bloc<TransactionCommentsEvent, TransactionCommentsState> {
   final TransactionRepository transactionRepository;
 
-  TransactionCommentsBloc({@required this.transactionRepository})
-      : assert(transactionRepository != null),
-        super(TransactionCommentsLoading());
+  TransactionCommentsBloc({
+    @required this.transactionRepository,
+  }) : assert(transactionRepository != null),
+       super(TransactionCommentsLoading());
 
   @override
   Stream<TransactionCommentsState> mapEventToState(
@@ -20,7 +21,9 @@ class TransactionCommentsBloc
       yield TransactionCommentsLoading();
       try {
         await transactionRepository.createOrUpdateTransactionComment(
-            event.transactionId, event.comment);
+          event.transactionId,
+          event.comment,
+        );
         add(LoadTransactionComments(transactionId: event.transactionId));
       } catch (error) {
         yield TransactionCommentsError(errorMessage: error.toString());
@@ -28,8 +31,9 @@ class TransactionCommentsBloc
     } else if (event is LoadTransactionComments) {
       yield TransactionCommentsLoading();
       try {
-        final comments = await transactionRepository
-            .getTransactionComments(event.transactionId);
+        final comments = await transactionRepository.getTransactionComments(
+          event.transactionId,
+        );
 
         yield TransactionCommentsLoaded(comments: comments);
       } catch (error) {

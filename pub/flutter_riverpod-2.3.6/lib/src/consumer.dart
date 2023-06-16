@@ -366,8 +366,8 @@ typedef ConsumerBuilder = Widget Function(
 class Consumer extends ConsumerWidget {
   /// {@template riverpod.consumer}
   const Consumer({super.key, required ConsumerBuilder builder, Widget? child})
-      : _child = child,
-        _builder = builder;
+    : _child = child,
+      _builder = builder;
 
   final ConsumerBuilder _builder;
   final Widget? _child;
@@ -512,7 +512,7 @@ class ConsumerStatefulElement extends StatefulElement implements WidgetRef {
   var _dependencies =
       <ProviderListenable<Object?>, ProviderSubscription<Object?>>{};
   Map<ProviderListenable<Object?>, ProviderSubscription<Object?>>?
-      _oldDependencies;
+  _oldDependencies;
   final _listeners = <ProviderSubscription<Object?>>[];
   List<_ListenManual<Object?>>? _manualListeners;
 
@@ -557,10 +557,7 @@ class ConsumerStatefulElement extends StatefulElement implements WidgetRef {
         return oldDependency;
       }
 
-      return _container.listen<Res>(
-        target,
-        (_, __) => markNeedsBuild(),
-      );
+      return _container.listen<Res>(target, (_, __) => markNeedsBuild());
     }).read() as Res;
   }
 
@@ -632,15 +629,13 @@ class ConsumerStatefulElement extends StatefulElement implements WidgetRef {
   }) {
     final listeners = _manualListeners ??= [];
 
-    final sub = _ListenManual(
-      ProviderScope.containerOf(this, listen: false).listen(
-        provider,
-        listener,
-        onError: onError,
-        fireImmediately: fireImmediately,
-      ),
-      this,
-    );
+    final sub = _ListenManual(ProviderScope.containerOf(this, listen: false)
+        .listen(
+          provider,
+          listener,
+          onError: onError,
+          fireImmediately: fireImmediately,
+        ), this);
     listeners.add(sub);
 
     return sub;

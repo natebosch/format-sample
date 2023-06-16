@@ -13,10 +13,7 @@ void main() {
 
     testWidgets('should draw its text', (WidgetTester tester) async {
       await tester.pumpWidget(
-        _buildApp(FastOutlineButton(
-          onTap: () {},
-          text: buttonText,
-        )),
+        _buildApp(FastOutlineButton(onTap: () {}, text: buttonText)),
       );
 
       await tester.pumpAndSettle();
@@ -30,10 +27,7 @@ void main() {
 
     testWidgets('should draw its child', (WidgetTester tester) async {
       await tester.pumpWidget(
-        _buildApp(FastOutlineButton(
-          onTap: () {},
-          child: Text(buttonText),
-        )),
+        _buildApp(FastOutlineButton(onTap: () {}, child: Text(buttonText))),
       );
       await tester.pumpAndSettle();
 
@@ -44,110 +38,110 @@ void main() {
       expect(text, findsOneWidget);
     });
 
-    testWidgets('should react to user interactions',
-        (WidgetTester tester) async {
-      var tapped = false;
+    testWidgets(
+      'should react to user interactions',
+      (WidgetTester tester) async {
+        var tapped = false;
 
-      await tester.pumpWidget(
-        _buildApp(FastOutlineButton(
+        await tester.pumpWidget(_buildApp(FastOutlineButton(
           text: buttonText,
           onTap: () {
             tapped = true;
           },
-        )),
-      );
+        )));
 
-      await tester.pumpAndSettle();
+        await tester.pumpAndSettle();
 
-      final button = find.byType(FastOutlineButton);
-      expect(button, findsOneWidget);
+        final button = find.byType(FastOutlineButton);
+        expect(button, findsOneWidget);
 
-      await tester.tap(button);
-      await tester.pump();
+        await tester.tap(button);
+        await tester.pump();
 
-      expect(tapped, isTrue);
-    });
+        expect(tapped, isTrue);
+      },
+    );
 
-    testWidgets('should react to user interactions if disabled',
-        (WidgetTester tester) async {
-      var tapped = false;
+    testWidgets(
+      'should react to user interactions if disabled',
+      (WidgetTester tester) async {
+        var tapped = false;
 
-      await tester.pumpWidget(
-        _buildApp(FastOutlineButton(
+        await tester.pumpWidget(_buildApp(FastOutlineButton(
           text: buttonText,
           onTap: () {
             tapped = true;
           },
           isEnabled: false,
-        )),
-      );
+        )));
 
-      await tester.pumpAndSettle();
+        await tester.pumpAndSettle();
 
-      final button = find.byType(FastOutlineButton);
-      expect(button, findsOneWidget);
+        final button = find.byType(FastOutlineButton);
+        expect(button, findsOneWidget);
 
-      await tester.tap(button);
-      await tester.pump();
+        await tester.tap(button);
+        await tester.pump();
 
-      expect(tapped, isFalse);
-    });
+        expect(tapped, isFalse);
+      },
+    );
 
-    testWidgets('should should trottle time if required',
-        (WidgetTester tester) async {
-      var count = 0;
+    testWidgets(
+      'should should trottle time if required',
+      (WidgetTester tester) async {
+        var count = 0;
 
-      await tester.pumpWidget(
-        _buildApp(FastOutlineButton(
+        await tester.pumpWidget(_buildApp(FastOutlineButton(
           text: buttonText,
           onTap: () {
             count++;
           },
           shouldTrottleTime: true,
-        )),
-      );
+        )));
 
-      await tester.pumpAndSettle();
+        await tester.pumpAndSettle();
 
-      final button = find.byType(FastOutlineButton);
-      expect(button, findsOneWidget);
+        final button = find.byType(FastOutlineButton);
+        expect(button, findsOneWidget);
 
-      await tester.tap(button);
-      await tester.pump();
-      await tester.tap(button);
-      await tester.pump();
+        await tester.tap(button);
+        await tester.pump();
+        await tester.tap(button);
+        await tester.pump();
 
-      expect(count, equals(1));
-    });
+        expect(count, equals(1));
+      },
+    );
 
-    testWidgets('should should trottle time for a certain amount of time',
-        (WidgetTester tester) async {
-      var count = 0;
+    testWidgets(
+      'should should trottle time for a certain amount of time',
+      (WidgetTester tester) async {
+        var count = 0;
 
-      await tester.pumpWidget(
-        _buildApp(FastOutlineButton(
+        await tester.pumpWidget(_buildApp(FastOutlineButton(
           text: buttonText,
           onTap: () {
             count++;
           },
           shouldTrottleTime: true,
           trottleTimeDuration: Duration(milliseconds: 500),
-        )),
-      );
+        )));
 
-      await tester.pumpAndSettle();
+        await tester.pumpAndSettle();
 
-      final button = find.byType(FastOutlineButton);
-      expect(button, findsOneWidget);
+        final button = find.byType(FastOutlineButton);
+        expect(button, findsOneWidget);
 
-      await tester.tap(button);
-      await tester.pump();
-      await tester.tap(button);
-      await tester.pump(Duration(milliseconds: 500));
-      await tester.tap(button);
-      await tester.pump();
+        await tester.tap(button);
+        await tester.pump();
+        await tester.tap(button);
+        await tester.pump(Duration(milliseconds: 500));
+        await tester.tap(button);
+        await tester.pump();
 
-      expect(count, equals(2));
-    });
+        expect(count, equals(2));
+      },
+    );
   });
 }

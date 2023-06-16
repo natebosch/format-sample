@@ -20,23 +20,14 @@ class Reward {
   final String? name;
   final int? amount;
 
-  const Reward({
-    this.name,
-    this.amount,
-  });
+  const Reward({this.name, this.amount});
 
   Map<String, dynamic> toJson() {
-    return <String, dynamic>{
-      'name': name,
-      'amount': amount,
-    };
+    return <String, dynamic>{'name': name, 'amount': amount};
   }
 
   static Reward fromJson(Map<dynamic, dynamic> args) {
-    return Reward(
-      name: args['name'],
-      amount: args['amount'] ?? 0,
-    );
+    return Reward(name: args['name'], amount: args['amount'] ?? 0);
   }
 }
 
@@ -70,9 +61,7 @@ class RewardAd {
 
   Future<Reward> getReward() async {
     final Map<dynamic, dynamic> args =
-        await Ads.instance.channelReward.invokeMethod(
-      'getRewardAdReward',
-    );
+        await Ads.instance.channelReward.invokeMethod('getRewardAdReward');
     return Reward.fromJson(args);
   }
 
@@ -83,10 +72,7 @@ class RewardAd {
   Future<bool?> _initAd() async {
     return await Ads.instance.channelReward.invokeMethod(
       'initRewardAd',
-      <String, dynamic>{
-        'id': id,
-        'openInHmsCore': openInHmsCore,
-      },
+      <String, dynamic>{'id': id, 'openInHmsCore': openInHmsCore},
     );
   }
 
@@ -113,49 +99,33 @@ class RewardAd {
   Future<bool?> isLoaded() async {
     return await Ads.instance.channelReward.invokeMethod(
       'isAdLoaded',
-      <String, dynamic>{
-        'id': id,
-        'adType': _adType,
-      },
+      <String, dynamic>{'id': id, 'adType': _adType},
     );
   }
 
   Future<bool?> show() async {
-    return await Ads.instance.channelReward.invokeMethod(
-      'showRewardAd',
-      <String, dynamic>{
-        'id': id,
-      },
-    );
+    return await Ads.instance.channelReward
+        .invokeMethod('showRewardAd', <String, dynamic>{'id': id});
   }
 
   Future<bool?> pause() async {
     return await Ads.instance.channelReward.invokeMethod(
       'pauseAd',
-      <String, dynamic>{
-        'id': id,
-        'adType': _adType,
-      },
+      <String, dynamic>{'id': id, 'adType': _adType},
     );
   }
 
   Future<bool?> resume() async {
     return await Ads.instance.channelReward.invokeMethod(
       'resumeAd',
-      <String, dynamic>{
-        'id': id,
-        'adType': _adType,
-      },
+      <String, dynamic>{'id': id, 'adType': _adType},
     );
   }
 
   Future<bool?> destroy() async {
     return await Ads.instance.channelReward.invokeMethod(
       'destroyAd',
-      <String, dynamic>{
-        'id': id,
-        'adType': _adType,
-      },
+      <String, dynamic>{'id': id, 'adType': _adType},
     );
   }
 
@@ -168,19 +138,11 @@ class RewardAd {
           argumentsMap['event'],
         );
         if (rewardAdEvent == RewardAdEvent.failedToLoad) {
-          _listener?.call(
-            rewardAdEvent,
-            errorCode: argumentsMap['errorCode'],
-          );
+          _listener?.call(rewardAdEvent, errorCode: argumentsMap['errorCode']);
         } else if (rewardAdEvent == RewardAdEvent.rewarded) {
-          _listener?.call(
-            rewardAdEvent,
-            reward: Reward.fromJson(argumentsMap),
-          );
+          _listener?.call(rewardAdEvent, reward: Reward.fromJson(argumentsMap));
         } else {
-          _listener?.call(
-            rewardAdEvent,
-          );
+          _listener?.call(rewardAdEvent);
         }
       },
     );

@@ -6,7 +6,11 @@ import 'package:tailor_made/widgets/_partials/mk_dots.dart';
 import 'package:tailor_made/widgets/theme_provider.dart';
 
 class ContactsFilterButton extends StatelessWidget {
-  const ContactsFilterButton({Key key, @required this.vm, @required this.onTapSort}) : super(key: key);
+  const ContactsFilterButton({
+    Key key,
+    @required this.vm,
+    @required this.onTapSort,
+  }) : super(key: key);
 
   final ContactsViewModel vm;
   final ValueSetter<SortType> onTapSort;
@@ -27,37 +31,49 @@ class ContactsFilterButton extends StatelessWidget {
                 return [
                   _Option(
                     enabled: vm.sortFn != SortType.jobs,
-                    style: _optionTheme.copyWith(color: _colorTestFn(SortType.jobs)),
+                    style: _optionTheme.copyWith(
+                      color: _colorTestFn(SortType.jobs),
+                    ),
                     text: "Sort by Jobs",
                     type: SortType.jobs,
                   ),
                   _Option(
                     enabled: vm.sortFn != SortType.names,
-                    style: _optionTheme.copyWith(color: _colorTestFn(SortType.names)),
+                    style: _optionTheme.copyWith(
+                      color: _colorTestFn(SortType.names),
+                    ),
                     text: "Sort by Name",
                     type: SortType.names,
                   ),
                   _Option(
                     enabled: vm.sortFn != SortType.completed,
-                    style: _optionTheme.copyWith(color: _colorTestFn(SortType.completed)),
+                    style: _optionTheme.copyWith(
+                      color: _colorTestFn(SortType.completed),
+                    ),
                     text: "Sort by Completed",
                     type: SortType.completed,
                   ),
                   _Option(
                     enabled: vm.sortFn != SortType.pending,
-                    style: _optionTheme.copyWith(color: _colorTestFn(SortType.pending)),
+                    style: _optionTheme.copyWith(
+                      color: _colorTestFn(SortType.pending),
+                    ),
                     text: "Sort by Pending",
                     type: SortType.pending,
                   ),
                   _Option(
                     enabled: vm.sortFn != SortType.recent,
-                    style: _optionTheme.copyWith(color: _colorTestFn(SortType.recent)),
+                    style: _optionTheme.copyWith(
+                      color: _colorTestFn(SortType.recent),
+                    ),
                     text: "Sort by Recent",
                     type: SortType.recent,
                   ),
                   _Option(
                     enabled: vm.sortFn != SortType.reset,
-                    style: _optionTheme.copyWith(color: _colorTestFn(SortType.reset)),
+                    style: _optionTheme.copyWith(
+                      color: _colorTestFn(SortType.reset),
+                    ),
                     text: "No Sort",
                     type: SortType.reset,
                   ),
@@ -74,7 +90,8 @@ class ContactsFilterButton extends StatelessWidget {
     );
   }
 
-  Color _colorTestFn(SortType type) => vm.sortFn == type ? kAccentColor : Colors.black87;
+  Color _colorTestFn(SortType type) =>
+      vm.sortFn == type ? kAccentColor : Colors.black87;
 }
 
 class _Option extends PopupMenuItem<SortType> {
@@ -84,7 +101,12 @@ class _Option extends PopupMenuItem<SortType> {
     @required this.text,
     @required this.type,
     @required this.style,
-  }) : super(key: key, enabled: enabled, value: type, child: Text(text, style: style));
+  }) : super(
+         key: key,
+         enabled: enabled,
+         value: type,
+         child: Text(text, style: style),
+       );
 
   final String text;
   final SortType type;

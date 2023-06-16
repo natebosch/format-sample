@@ -16,13 +16,10 @@ class App extends StatelessWidget {
         child: new Container(
           child: new Stack(
             fit: StackFit.expand,
-            children: <Widget>[
-              new CustomAppBar(),
-              new MoviesList()
-            ],
+            children: <Widget>[new CustomAppBar(), new MoviesList()],
           ),
         ),
-      )
+      ),
     );
   }
 }

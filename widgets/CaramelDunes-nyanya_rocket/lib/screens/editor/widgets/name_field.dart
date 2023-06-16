@@ -14,9 +14,8 @@ class NameFormField extends StatelessWidget {
       autovalidateMode: AutovalidateMode.always,
       textCapitalization: TextCapitalization.words,
       maxLength: 24,
-      decoration: InputDecoration(
-        labelText: NyaNyaLocalizations.of(context).nameLabel,
-      ),
+      decoration:
+          InputDecoration(labelText: NyaNyaLocalizations.of(context).nameLabel),
       onSaved: onSaved,
       validator: (String? value) {
         if (value == null || !CreateTab.nameRegExp.hasMatch(value)) {

@@ -20,10 +20,8 @@ import 'package:invoiceninja_flutter/utils/localization.dart';
 import 'recurring_invoice_screen_vm.dart';
 
 class RecurringInvoiceScreen extends StatelessWidget {
-  const RecurringInvoiceScreen({
-    Key key,
-    @required this.viewModel,
-  }) : super(key: key);
+  const RecurringInvoiceScreen({Key key, @required this.viewModel})
+    : super(key: key);
 
   static const String route = '/recurring_invoice';
 
@@ -39,11 +37,12 @@ class RecurringInvoiceScreen extends StatelessWidget {
 
     return ListScaffold(
       entityType: EntityType.recurringInvoice,
-      onHamburgerLongPress: () =>
-          store.dispatch(StartRecurringInvoiceMultiselect()),
+      onHamburgerLongPress:
+          () => store.dispatch(StartRecurringInvoiceMultiselect()),
       appBarTitle: ListFilter(
         key: ValueKey(
-            '__filter_${state.recurringInvoiceListState.filterClearedAt}__'),
+          '__filter_${state.recurringInvoiceListState.filterClearedAt}__',
+        ),
         entityType: EntityType.recurringInvoice,
         entityIds: viewModel.recurringInvoiceList,
         filter: state.recurringInvoiceListState.filter,
@@ -112,22 +111,30 @@ class RecurringInvoiceScreen extends StatelessWidget {
               ..name = localization.completed,
           ),
         ],
-        customValues1: company.getCustomFieldValues(CustomFieldType.invoice1,
-            excludeBlank: true),
-        customValues2: company.getCustomFieldValues(CustomFieldType.invoice2,
-            excludeBlank: true),
-        customValues3: company.getCustomFieldValues(CustomFieldType.invoice3,
-            excludeBlank: true),
-        customValues4: company.getCustomFieldValues(CustomFieldType.invoice4,
-            excludeBlank: true),
-        onSelectedCustom1: (value) =>
-            store.dispatch(FilterRecurringInvoicesByCustom1(value)),
-        onSelectedCustom2: (value) =>
-            store.dispatch(FilterRecurringInvoicesByCustom2(value)),
-        onSelectedCustom3: (value) =>
-            store.dispatch(FilterRecurringInvoicesByCustom3(value)),
-        onSelectedCustom4: (value) =>
-            store.dispatch(FilterRecurringInvoicesByCustom4(value)),
+        customValues1: company.getCustomFieldValues(
+          CustomFieldType.invoice1,
+          excludeBlank: true,
+        ),
+        customValues2: company.getCustomFieldValues(
+          CustomFieldType.invoice2,
+          excludeBlank: true,
+        ),
+        customValues3: company.getCustomFieldValues(
+          CustomFieldType.invoice3,
+          excludeBlank: true,
+        ),
+        customValues4: company.getCustomFieldValues(
+          CustomFieldType.invoice4,
+          excludeBlank: true,
+        ),
+        onSelectedCustom1:
+            (value) => store.dispatch(FilterRecurringInvoicesByCustom1(value)),
+        onSelectedCustom2:
+            (value) => store.dispatch(FilterRecurringInvoicesByCustom2(value)),
+        onSelectedCustom3:
+            (value) => store.dispatch(FilterRecurringInvoicesByCustom3(value)),
+        onSelectedCustom4:
+            (value) => store.dispatch(FilterRecurringInvoicesByCustom4(value)),
       ),
       floatingActionButton: state.prefState.isMenuFloated &&
               userCompany.canCreate(EntityType.recurringInvoice)
@@ -136,12 +143,11 @@ class RecurringInvoiceScreen extends StatelessWidget {
               backgroundColor: Theme.of(context).primaryColorDark,
               onPressed: () {
                 createEntityByType(
-                    context: context, entityType: EntityType.recurringInvoice);
+                  context: context,
+                  entityType: EntityType.recurringInvoice,
+                );
               },
-              child: Icon(
-                Icons.add,
-                color: Colors.white,
-              ),
+              child: Icon(Icons.add, color: Colors.white),
               tooltip: localization.newRecurringInvoice,
             )
           : null,

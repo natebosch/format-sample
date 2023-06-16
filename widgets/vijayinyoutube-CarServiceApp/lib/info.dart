@@ -14,38 +14,31 @@ class _RentPageState extends State<RentPage> {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
-        title: ListTile(
-          trailing: Icon(
-            Icons.clear_all,
-            color: Colors.black,
-          ),
-        ),
+        title: ListTile(trailing: Icon(Icons.clear_all, color: Colors.black)),
       ),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 10),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            GradientText("Explore",
-                gradient: LinearGradient(colors: [
-                  Color(0xFFFF1000),
-                  Color(0xFF2508FF),
-                ]),
-                style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
-                textAlign: TextAlign.center),
-            SizedBox(
-              height: 5,
+            GradientText(
+              "Explore",
+              gradient: LinearGradient(
+                colors: [Color(0xFFFF1000), Color(0xFF2508FF)],
+              ),
+              style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+              textAlign: TextAlign.center,
             ),
+            SizedBox(height: 5),
             Container(
               height: 2.5,
               decoration: BoxDecoration(
                 gradient: LinearGradient(
-                    colors: <Color>[Color(0xFF2508FF), Color(0xFFFF1000)]),
+                  colors: <Color>[Color(0xFF2508FF), Color(0xFFFF1000)],
+                ),
               ),
             ),
-            SizedBox(
-              height: 10,
-            ),
+            SizedBox(height: 10),
             Container(
               color: Colors.transparent,
               height: 175,
@@ -55,19 +48,20 @@ class _RentPageState extends State<RentPage> {
                 children: <Widget>[
                   Container(
                     decoration: BoxDecoration(
-                        gradient: LinearGradient(
-                            begin: Alignment.topRight,
-                            end: Alignment.bottomLeft,
-                            colors: <Color>[Colors.pink[100], Colors.pink]),
-                        borderRadius: new BorderRadius.circular(10)),
+                      gradient: LinearGradient(
+                        begin: Alignment.topRight,
+                        end: Alignment.bottomLeft,
+                        colors: <Color>[Colors.pink[100], Colors.pink],
+                      ),
+                      borderRadius: new BorderRadius.circular(10),
+                    ),
                     height: 175,
                     width: 125,
                     child: GestureDetector(
                       onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => DetailsPage()));
+                        Navigator.push(context, MaterialPageRoute(
+                          builder: (context) => DetailsPage(),
+                        ));
                       },
                       child: Hero(
                         tag: "bmwcar",
@@ -84,9 +78,10 @@ class _RentPageState extends State<RentPage> {
                                   Text(
                                     "BMW",
                                     style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.bold),
+                                      color: Colors.white,
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.bold,
+                                    ),
                                   ),
                                   Image.asset(
                                     "assets/bmw.png",
@@ -110,16 +105,18 @@ class _RentPageState extends State<RentPage> {
                                   Text(
                                     "All Series",
                                     style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 15,
-                                        fontWeight: FontWeight.bold),
+                                      color: Colors.white,
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.bold,
+                                    ),
                                   ),
                                   Text(
                                     "\$35",
                                     style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 15,
-                                        fontWeight: FontWeight.bold),
+                                      color: Colors.white,
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.bold,
+                                    ),
                                   ),
                                 ],
                               ),
@@ -129,9 +126,10 @@ class _RentPageState extends State<RentPage> {
                                   Text(
                                     "per day",
                                     style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 10,
-                                        fontWeight: FontWeight.normal),
+                                      color: Colors.white,
+                                      fontSize: 10,
+                                      fontWeight: FontWeight.normal,
+                                    ),
                                   ),
                                 ],
                               ),
@@ -141,16 +139,16 @@ class _RentPageState extends State<RentPage> {
                       ),
                     ),
                   ),
-                  SizedBox(
-                    width: 7,
-                  ),
+                  SizedBox(width: 7),
                   Container(
                     decoration: BoxDecoration(
-                        gradient: LinearGradient(
-                            begin: Alignment.topRight,
-                            end: Alignment.bottomLeft,
-                            colors: <Color>[Colors.blue[100], Colors.blue]),
-                        borderRadius: new BorderRadius.circular(10)),
+                      gradient: LinearGradient(
+                        begin: Alignment.topRight,
+                        end: Alignment.bottomLeft,
+                        colors: <Color>[Colors.blue[100], Colors.blue],
+                      ),
+                      borderRadius: new BorderRadius.circular(10),
+                    ),
                     height: 175,
                     width: 125,
                     child: Card(
@@ -165,9 +163,10 @@ class _RentPageState extends State<RentPage> {
                               Text(
                                 "Benz",
                                 style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.bold),
+                                  color: Colors.white,
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
+                                ),
                               ),
                               Image.asset(
                                 "assets/benzlogo.png",
@@ -192,16 +191,18 @@ class _RentPageState extends State<RentPage> {
                               Text(
                                 "All Series",
                                 style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.bold),
+                                  color: Colors.white,
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.bold,
+                                ),
                               ),
                               Text(
                                 "\$22",
                                 style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.bold),
+                                  color: Colors.white,
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.bold,
+                                ),
                               ),
                             ],
                           ),
@@ -211,9 +212,10 @@ class _RentPageState extends State<RentPage> {
                               Text(
                                 "per day",
                                 style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 10,
-                                    fontWeight: FontWeight.normal),
+                                  color: Colors.white,
+                                  fontSize: 10,
+                                  fontWeight: FontWeight.normal,
+                                ),
                               ),
                             ],
                           ),
@@ -221,16 +223,16 @@ class _RentPageState extends State<RentPage> {
                       ),
                     ),
                   ),
-                  SizedBox(
-                    width: 7,
-                  ),
+                  SizedBox(width: 7),
                   Container(
                     decoration: BoxDecoration(
-                        gradient: LinearGradient(
-                            begin: Alignment.topRight,
-                            end: Alignment.bottomLeft,
-                            colors: <Color>[Colors.orange[100], Colors.orange]),
-                        borderRadius: new BorderRadius.circular(10)),
+                      gradient: LinearGradient(
+                        begin: Alignment.topRight,
+                        end: Alignment.bottomLeft,
+                        colors: <Color>[Colors.orange[100], Colors.orange],
+                      ),
+                      borderRadius: new BorderRadius.circular(10),
+                    ),
                     height: 175,
                     width: 125,
                     child: Card(
@@ -245,9 +247,10 @@ class _RentPageState extends State<RentPage> {
                               Text(
                                 "Jaguar",
                                 style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.bold),
+                                  color: Colors.white,
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
+                                ),
                               ),
                               Image.asset(
                                 "assets/jaguarlogo.png",
@@ -272,16 +275,18 @@ class _RentPageState extends State<RentPage> {
                               Text(
                                 "All Series",
                                 style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.bold),
+                                  color: Colors.white,
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.bold,
+                                ),
                               ),
                               Text(
                                 "\$20",
                                 style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.bold),
+                                  color: Colors.white,
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.bold,
+                                ),
                               ),
                             ],
                           ),
@@ -291,9 +296,10 @@ class _RentPageState extends State<RentPage> {
                               Text(
                                 "per day",
                                 style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 10,
-                                    fontWeight: FontWeight.normal),
+                                  color: Colors.white,
+                                  fontSize: 10,
+                                  fontWeight: FontWeight.normal,
+                                ),
                               ),
                             ],
                           ),
@@ -301,16 +307,16 @@ class _RentPageState extends State<RentPage> {
                       ),
                     ),
                   ),
-                  SizedBox(
-                    width: 7,
-                  ),
+                  SizedBox(width: 7),
                   Container(
                     decoration: BoxDecoration(
-                        gradient: LinearGradient(
-                            begin: Alignment.topRight,
-                            end: Alignment.bottomLeft,
-                            colors: <Color>[Colors.green[100], Colors.green]),
-                        borderRadius: new BorderRadius.circular(10)),
+                      gradient: LinearGradient(
+                        begin: Alignment.topRight,
+                        end: Alignment.bottomLeft,
+                        colors: <Color>[Colors.green[100], Colors.green],
+                      ),
+                      borderRadius: new BorderRadius.circular(10),
+                    ),
                     height: 175,
                     width: 125,
                     child: Card(
@@ -325,9 +331,10 @@ class _RentPageState extends State<RentPage> {
                               Text(
                                 "Audi",
                                 style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.bold),
+                                  color: Colors.white,
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
+                                ),
                               ),
                               Image.asset(
                                 "assets/audilogo.png",
@@ -352,16 +359,18 @@ class _RentPageState extends State<RentPage> {
                               Text(
                                 "All Series",
                                 style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.bold),
+                                  color: Colors.white,
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.bold,
+                                ),
                               ),
                               Text(
                                 "\$28",
                                 style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.bold),
+                                  color: Colors.white,
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.bold,
+                                ),
                               ),
                             ],
                           ),
@@ -371,9 +380,10 @@ class _RentPageState extends State<RentPage> {
                               Text(
                                 "per day",
                                 style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 10,
-                                    fontWeight: FontWeight.normal),
+                                  color: Colors.white,
+                                  fontSize: 10,
+                                  fontWeight: FontWeight.normal,
+                                ),
                               ),
                             ],
                           ),
@@ -384,47 +394,44 @@ class _RentPageState extends State<RentPage> {
                 ],
               ),
             ),
-            SizedBox(
-              height: 10,
-            ),
+            SizedBox(height: 10),
             Row(
               children: <Widget>[
                 Expanded(
                   child: Container(
                     height: 2.5,
                     decoration: BoxDecoration(
-                      gradient: LinearGradient(colors: <Color>[
-                        Color(0xFFFF1000),
-                        Color(0xFF2508FF)
-                      ]),
+                      gradient: LinearGradient(
+                        colors: <Color>[Color(0xFFFF1000), Color(0xFF2508FF)],
+                      ),
                     ),
                   ),
                 ),
-                GradientText("Top Rated  ",
-                    gradient: LinearGradient(colors: [
+                GradientText(
+                  "Top Rated  ",
+                  gradient: LinearGradient(
+                    colors: [
                       Color(0xFFFF1000),
                       Color(0xFF2508FF),
                       Color(0xFFFF1000),
-                    ]),
-                    style:
-                        TextStyle(fontSize: 15, fontWeight: FontWeight.normal),
-                    textAlign: TextAlign.center),
+                    ],
+                  ),
+                  style: TextStyle(fontSize: 15, fontWeight: FontWeight.normal),
+                  textAlign: TextAlign.center,
+                ),
                 Expanded(
                   child: Container(
                     height: 2.5,
                     decoration: BoxDecoration(
-                      gradient: LinearGradient(colors: <Color>[
-                        Color(0xFF2508FF),
-                        Color(0xFFFF1000)
-                      ]),
+                      gradient: LinearGradient(
+                        colors: <Color>[Color(0xFF2508FF), Color(0xFFFF1000)],
+                      ),
                     ),
                   ),
                 ),
               ],
             ),
-            SizedBox(
-              height: 5,
-            ),
+            SizedBox(height: 5),
             SingleChildScrollView(
               child: Container(
                 height: MediaQuery.of(context).size.height * 0.42,
@@ -539,17 +546,16 @@ Widget toyotacar() {
           child: Text(
             "Toyota Fortuner",
             style: TextStyle(
-                fontWeight: FontWeight.bold, fontSize: 15, color: Colors.black),
+              fontWeight: FontWeight.bold,
+              fontSize: 15,
+              color: Colors.black,
+            ),
           ),
         ),
-        SizedBox(
-          height: 5,
-        ),
+        SizedBox(height: 5),
         Row(
           children: <Widget>[
-            SizedBox(
-              width: 5,
-            ),
+            SizedBox(width: 5),
             Container(
               width: 45,
               decoration: BoxDecoration(
@@ -562,9 +568,7 @@ Widget toyotacar() {
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 9.5),
               ),
             ),
-            SizedBox(
-              width: 5,
-            ),
+            SizedBox(width: 5),
             Container(
               width: 35,
               decoration: BoxDecoration(
@@ -579,47 +583,24 @@ Widget toyotacar() {
             ),
           ],
         ),
-        SizedBox(
-          height: 5,
-        ),
+        SizedBox(height: 5),
         Row(
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
             Text(
               "Ratings",
               style: TextStyle(
-                  fontWeight: FontWeight.normal,
-                  fontSize: 7,
-                  color: Colors.grey),
+                fontWeight: FontWeight.normal,
+                fontSize: 7,
+                color: Colors.grey,
+              ),
             ),
-            SizedBox(
-              width: 10,
-            ),
-            Icon(
-              Icons.star,
-              size: 10,
-              color: Colors.orangeAccent,
-            ),
-            Icon(
-              Icons.star,
-              size: 10,
-              color: Colors.orangeAccent,
-            ),
-            Icon(
-              Icons.star,
-              size: 10,
-              color: Colors.orangeAccent,
-            ),
-            Icon(
-              Icons.star,
-              size: 10,
-              color: Colors.orangeAccent,
-            ),
-            Icon(
-              Icons.star,
-              size: 10,
-              color: Colors.orangeAccent,
-            ),
+            SizedBox(width: 10),
+            Icon(Icons.star, size: 10, color: Colors.orangeAccent),
+            Icon(Icons.star, size: 10, color: Colors.orangeAccent),
+            Icon(Icons.star, size: 10, color: Colors.orangeAccent),
+            Icon(Icons.star, size: 10, color: Colors.orangeAccent),
+            Icon(Icons.star, size: 10, color: Colors.orangeAccent),
           ],
         ),
       ],
@@ -637,17 +618,16 @@ Widget hundaicar() {
           child: Text(
             " Honda Creta   ",
             style: TextStyle(
-                fontWeight: FontWeight.bold, fontSize: 15, color: Colors.black),
+              fontWeight: FontWeight.bold,
+              fontSize: 15,
+              color: Colors.black,
+            ),
           ),
         ),
-        SizedBox(
-          height: 5,
-        ),
+        SizedBox(height: 5),
         Row(
           children: <Widget>[
-            SizedBox(
-              width: 5,
-            ),
+            SizedBox(width: 5),
             Container(
               width: 35,
               decoration: BoxDecoration(
@@ -660,9 +640,7 @@ Widget hundaicar() {
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 9.5),
               ),
             ),
-            SizedBox(
-              width: 5,
-            ),
+            SizedBox(width: 5),
             Container(
               width: 45,
               decoration: BoxDecoration(
@@ -677,47 +655,24 @@ Widget hundaicar() {
             ),
           ],
         ),
-        SizedBox(
-          height: 5,
-        ),
+        SizedBox(height: 5),
         Row(
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
             Text(
               "Ratings",
               style: TextStyle(
-                  fontWeight: FontWeight.normal,
-                  fontSize: 7,
-                  color: Colors.grey),
+                fontWeight: FontWeight.normal,
+                fontSize: 7,
+                color: Colors.grey,
+              ),
             ),
-            SizedBox(
-              width: 10,
-            ),
-            Icon(
-              Icons.star,
-              size: 10,
-              color: Colors.orangeAccent,
-            ),
-            Icon(
-              Icons.star,
-              size: 10,
-              color: Colors.orangeAccent,
-            ),
-            Icon(
-              Icons.star,
-              size: 10,
-              color: Colors.orangeAccent,
-            ),
-            Icon(
-              Icons.star,
-              size: 10,
-              color: Colors.orangeAccent,
-            ),
-            Icon(
-              Icons.star,
-              size: 10,
-              color: Colors.grey,
-            ),
+            SizedBox(width: 10),
+            Icon(Icons.star, size: 10, color: Colors.orangeAccent),
+            Icon(Icons.star, size: 10, color: Colors.orangeAccent),
+            Icon(Icons.star, size: 10, color: Colors.orangeAccent),
+            Icon(Icons.star, size: 10, color: Colors.orangeAccent),
+            Icon(Icons.star, size: 10, color: Colors.grey),
           ],
         ),
       ],
@@ -735,17 +690,16 @@ Widget volkswagencar() {
           child: Text(
             " VolksWagen   ",
             style: TextStyle(
-                fontWeight: FontWeight.bold, fontSize: 15, color: Colors.black),
+              fontWeight: FontWeight.bold,
+              fontSize: 15,
+              color: Colors.black,
+            ),
           ),
         ),
-        SizedBox(
-          height: 5,
-        ),
+        SizedBox(height: 5),
         Row(
           children: <Widget>[
-            SizedBox(
-              width: 5,
-            ),
+            SizedBox(width: 5),
             Container(
               width: 45,
               decoration: BoxDecoration(
@@ -758,9 +712,7 @@ Widget volkswagencar() {
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 9.5),
               ),
             ),
-            SizedBox(
-              width: 5,
-            ),
+            SizedBox(width: 5),
             Container(
               width: 35,
               decoration: BoxDecoration(
@@ -775,47 +727,24 @@ Widget volkswagencar() {
             ),
           ],
         ),
-        SizedBox(
-          height: 5,
-        ),
+        SizedBox(height: 5),
         Row(
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
             Text(
               "Ratings",
               style: TextStyle(
-                  fontWeight: FontWeight.normal,
-                  fontSize: 7,
-                  color: Colors.grey),
+                fontWeight: FontWeight.normal,
+                fontSize: 7,
+                color: Colors.grey,
+              ),
             ),
-            SizedBox(
-              width: 10,
-            ),
-            Icon(
-              Icons.star,
-              size: 10,
-              color: Colors.orangeAccent,
-            ),
-            Icon(
-              Icons.star,
-              size: 10,
-              color: Colors.orangeAccent,
-            ),
-            Icon(
-              Icons.star,
-              size: 10,
-              color: Colors.orangeAccent,
-            ),
-            Icon(
-              Icons.star,
-              size: 10,
-              color: Colors.orangeAccent,
-            ),
-            Icon(
-              Icons.star,
-              size: 10,
-              color: Colors.grey,
-            ),
+            SizedBox(width: 10),
+            Icon(Icons.star, size: 10, color: Colors.orangeAccent),
+            Icon(Icons.star, size: 10, color: Colors.orangeAccent),
+            Icon(Icons.star, size: 10, color: Colors.orangeAccent),
+            Icon(Icons.star, size: 10, color: Colors.orangeAccent),
+            Icon(Icons.star, size: 10, color: Colors.grey),
           ],
         ),
       ],

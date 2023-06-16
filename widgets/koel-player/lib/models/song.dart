@@ -82,8 +82,8 @@ class Song {
   bool get hasCustomImage {
     return image is CachedNetworkImageProvider &&
         !(image as CachedNetworkImageProvider).url.endsWith(
-              '/unknown-album.png',
-            );
+          '/unknown-album.png',
+        );
   }
 
   String get cacheKey => 'CACHE_$id';
@@ -153,18 +153,16 @@ class Song {
     List<Song> songs = [];
 
     for (int i = 0; i < count; ++i) {
-      songs.add(
-        Song.fake(
-          title: title,
-          length: length,
-          track: track,
-          createdAt: createdAt,
-          liked: liked,
-          playCount: playCount,
-          artist: artist,
-          album: album,
-        ),
-      );
+      songs.add(Song.fake(
+        title: title,
+        length: length,
+        track: track,
+        createdAt: createdAt,
+        liked: liked,
+        playCount: playCount,
+        artist: artist,
+        album: album,
+      ));
     }
 
     return songs;

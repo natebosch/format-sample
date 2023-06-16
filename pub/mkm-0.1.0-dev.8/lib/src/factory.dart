@@ -41,7 +41,8 @@ import 'type/wrapper.dart';
 
 class AccountFactoryManager {
   factory AccountFactoryManager() => _instance;
-  static final AccountFactoryManager _instance = AccountFactoryManager._internal();
+  static final AccountFactoryManager _instance =
+      AccountFactoryManager._internal();
   AccountFactoryManager._internal();
 
   AccountGeneralFactory generalFactory = AccountGeneralFactory();
@@ -50,9 +51,9 @@ class AccountFactoryManager {
 class AccountGeneralFactory {
   AccountGeneralFactory() : _addressFactory = null, _idFactory = null;
 
-  AddressFactory?                    _addressFactory;
-  IDFactory?                         _idFactory;
-  final Map<int, MetaFactory>        _metaFactories = {};
+  AddressFactory? _addressFactory;
+  IDFactory? _idFactory;
+  final Map<int, MetaFactory> _metaFactories = {};
   final Map<String, DocumentFactory> _docFactories = {};
 
   ///
@@ -62,6 +63,7 @@ class AccountGeneralFactory {
   void setAddressFactory(AddressFactory? factory) {
     _addressFactory = factory;
   }
+
   AddressFactory? getAddressFactory() {
     return _addressFactory;
   }
@@ -101,6 +103,7 @@ class AccountGeneralFactory {
   void setIDFactory(IDFactory? factory) {
     _idFactory = factory;
   }
+
   IDFactory? getIDFactory() {
     return _idFactory;
   }
@@ -165,6 +168,7 @@ class AccountGeneralFactory {
       _metaFactories[version] = factory;
     }
   }
+
   MetaFactory? getMetaFactory(int version) {
     return _metaFactories[version];
   }
@@ -173,8 +177,12 @@ class AccountGeneralFactory {
     return meta['type'] ?? 0;
   }
 
-  Meta? createMeta(int version, VerifyKey pKey,
-      {String? seed, Uint8List? fingerprint}) {
+  Meta? createMeta(
+    int version,
+    VerifyKey pKey, {
+    String? seed,
+    Uint8List? fingerprint,
+  }) {
     MetaFactory? factory = getMetaFactory(version);
     assert(factory != null, 'meta type not supported: $version');
     return factory?.createMeta(pKey, seed: seed, fingerprint: fingerprint);
@@ -200,7 +208,7 @@ class AccountGeneralFactory {
     int version = getMetaType(info);
     MetaFactory? factory = getMetaFactory(version);
     if (factory == null) {
-      factory = getMetaFactory(0);  // unknown
+      factory = getMetaFactory(0); // unknown
       assert(factory != null, 'cannot parse meta: $meta');
     }
     return factory?.parseMeta(info);
@@ -240,6 +248,7 @@ class AccountGeneralFactory {
     Address? gen = Address.generate(meta, old.type);
     return old == gen;
   }
+
   bool matchKey(VerifyKey pKey, Meta meta) {
     // check whether the public key equals to meta.key
     if (pKey == meta.key) {
@@ -269,6 +278,7 @@ class AccountGeneralFactory {
       _docFactories[docType] = factory;
     }
   }
+
   DocumentFactory? getDocumentFactory(String docType) {
     return _docFactories[docType];
   }
@@ -277,11 +287,19 @@ class AccountGeneralFactory {
     return doc['type'];
   }
 
-  Document? createDocument(String docType, ID identifier,
-      {String? data, String? signature}) {
+  Document? createDocument(
+    String docType,
+    ID identifier, {
+    String? data,
+    String? signature,
+  }) {
     DocumentFactory? factory = getDocumentFactory(docType);
     assert(factory != null, 'document type not supported: $docType');
-    return factory?.createDocument(identifier, data: data, signature: signature);
+    return factory?.createDocument(
+      identifier,
+      data: data,
+      signature: signature,
+    );
   }
 
   Document? parseDocument(Object? doc) {
@@ -296,9 +314,11 @@ class AccountGeneralFactory {
       return null;
     }
     String? docType = getDocumentType(info);
-    DocumentFactory? factory = docType == null ? null : getDocumentFactory(docType);
+    DocumentFactory? factory = docType == null
+        ? null
+        : getDocumentFactory(docType);
     if (factory == null) {
-      factory = getDocumentFactory('*');  // unknown
+      factory = getDocumentFactory('*'); // unknown
       assert(factory != null, 'cannot parse document: $doc');
     }
     return factory?.parseDocument(info);

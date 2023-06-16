@@ -63,16 +63,13 @@ Future<Widget> getVids(Worksheet sheet) async {
   print(links);
   List<Widget> vids = [];
   for (int i = 1; i < links.length; i++) {
-    vids.add(Videos('https://drive.google.com/uc?export=view&id=' + links[i][0],
-        links[i][1], links[i][2]));
+    vids.add(Videos(
+      'https://drive.google.com/uc?export=view&id=' + links[i][0],
+      links[i][1],
+      links[i][2],
+    ));
   }
-  return Container(
-    child: SingleChildScrollView(
-      child: Column(
-        children: vids,
-      ),
-    ),
-  );
+  return Container(child: SingleChildScrollView(child: Column(children: vids)));
 }
 
 class Vidscr extends StatelessWidget {
@@ -90,9 +87,10 @@ class Vidscr extends StatelessWidget {
                 Text(
                   'NO   INTERNET CONNECTION',
                   style: TextStyle(
-                      fontFamily: 'Orbitron',
-                      fontSize: 20,
-                      color: Colors.red.shade700),
+                    fontFamily: 'Orbitron',
+                    fontSize: 20,
+                    color: Colors.red.shade700,
+                  ),
                 ),
               ],
             ),

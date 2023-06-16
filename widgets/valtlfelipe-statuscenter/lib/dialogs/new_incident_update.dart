@@ -29,10 +29,13 @@ class _NewIncidentUpdateDialogState extends State<NewIncidentUpdateDialog> {
   @override
   void initState() {
     _isSaving = false;
-    _data.components = widget.incident.components
-        .map((Component c) =>
-            AffectedComponent(code: c.id, name: c.name, newStatus: c.status))
-        .toList();
+    _data.components = widget.incident.components.map(
+      (Component c) => AffectedComponent(
+        code: c.id,
+        name: c.name,
+        newStatus: c.status,
+      ),
+    ).toList();
     super.initState();
   }
 
@@ -43,8 +46,10 @@ class _NewIncidentUpdateDialogState extends State<NewIncidentUpdateDialog> {
       });
       _formKey.currentState.save();
 
-      await new IncidentsClient()
-          .createNewUpdate(widget.incident.id, this._data);
+      await new IncidentsClient().createNewUpdate(
+        widget.incident.id,
+        this._data,
+      );
 
       Navigator.pop(context, 'refresh');
     }
@@ -53,9 +58,7 @@ class _NewIncidentUpdateDialogState extends State<NewIncidentUpdateDialog> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('New update'),
-      ),
+      appBar: AppBar(title: Text('New update')),
       body: Container(
         padding: EdgeInsets.all(20),
         child: SingleChildScrollView(

@@ -22,8 +22,9 @@ class CreateRecordingJobResponse {
     required this.jobConfiguration,
   });
 
-  factory CreateRecordingJobResponse.fromJson(Map<String, dynamic> json) =>
-      _$CreateRecordingJobResponseFromJson(json);
+  factory CreateRecordingJobResponse.fromJson(
+    Map<String, dynamic> json,
+  ) => _$CreateRecordingJobResponseFromJson(json);
 
   Map<String, dynamic> toJson() => _$CreateRecordingJobResponseToJson(this);
 

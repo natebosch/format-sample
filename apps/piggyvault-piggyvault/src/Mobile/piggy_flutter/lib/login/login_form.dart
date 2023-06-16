@@ -17,96 +17,96 @@ class _LoginFormState extends State<LoginForm> {
   @override
   Widget build(BuildContext context) {
     _onLoginButtonPressed() {
-      BlocProvider.of<LoginBloc>(context).add(
-        LoginButtonPressed(
-          tenancyName: _tenancyNameController.text.trim(),
-          username: _usernameController.text.trim(),
-          password: _passwordController.text,
-        ),
-      );
+      BlocProvider.of<LoginBloc>(context).add(LoginButtonPressed(
+        tenancyName: _tenancyNameController.text.trim(),
+        username: _usernameController.text.trim(),
+        password: _passwordController.text,
+      ));
     }
 
-    return BlocListener<LoginBloc, LoginState>(listener: (context, state) {
-      if (state is LoginFailure) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
+    return BlocListener<LoginBloc, LoginState>(
+      listener: (context, state) {
+        if (state is LoginFailure) {
+          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
             content: Text('${state.errorMessage}'),
             backgroundColor: Colors.red,
-          ),
-        );
-      }
-    }, child: BlocBuilder<LoginBloc, LoginState>(builder: (context, state) {
-      return Center(
-          child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: <Widget>[
-          Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: <Widget>[
-              logo,
-              SizedBox(
-                height: 30.0,
-              ),
-              Text(
-                "Welcome to ${UIData.appName}",
-                style:
-                    TextStyle(fontWeight: FontWeight.w700, color: Colors.green),
-              ),
-              SizedBox(
-                height: 5.0,
-              ),
-              Text(
-                "Sign in to continue",
-                style: TextStyle(color: Colors.grey),
-              ),
-            ],
-          ),
-          Container(
+          ));
+        }
+      },
+      child: BlocBuilder<LoginBloc, LoginState>(
+        builder: (context, state) {
+          return Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
-              mainAxisSize: MainAxisSize.min,
               children: <Widget>[
-                familyField(),
-                usernameField(),
-                passwordField(),
-                SizedBox(
-                  height: 30.0,
-                ),
-                Container(
-                  padding:
-                      EdgeInsets.symmetric(vertical: 0.0, horizontal: 30.0),
-                  width: double.infinity,
-                  child: ElevatedButton(
-                    child: Text(
-                      "SIGN IN",
-                      style: TextStyle(color: Colors.white),
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    logo,
+                    SizedBox(height: 30.0),
+                    Text(
+                      "Welcome to ${UIData.appName}",
+                      style: TextStyle(
+                        fontWeight: FontWeight.w700,
+                        color: Colors.green,
+                      ),
                     ),
-                    style: ElevatedButton.styleFrom(
-                        primary: Colors.green,
-                        padding: EdgeInsets.all(12.0),
-                        shape: StadiumBorder()),
-                    onPressed:
-                        state is! LoginLoading ? _onLoginButtonPressed : null,
-                  ),
+                    SizedBox(height: 5.0),
+                    Text(
+                      "Sign in to continue",
+                      style: TextStyle(color: Colors.grey),
+                    ),
+                  ],
                 ),
                 Container(
-                  child: state is LoginLoading
-                      ? CircularProgressIndicator()
-                      : null,
-                ),
-                SizedBox(
-                  height: 5.0,
-                ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    mainAxisSize: MainAxisSize.min,
+                    children: <Widget>[
+                      familyField(),
+                      usernameField(),
+                      passwordField(),
+                      SizedBox(height: 30.0),
+                      Container(
+                        padding: EdgeInsets.symmetric(
+                          vertical: 0.0,
+                          horizontal: 30.0,
+                        ),
+                        width: double.infinity,
+                        child: ElevatedButton(
+                          child: Text(
+                            "SIGN IN",
+                            style: TextStyle(color: Colors.white),
+                          ),
+                          style: ElevatedButton.styleFrom(
+                            primary: Colors.green,
+                            padding: EdgeInsets.all(12.0),
+                            shape: StadiumBorder(),
+                          ),
+                          onPressed: state is! LoginLoading
+                              ? _onLoginButtonPressed
+                              : null,
+                        ),
+                      ),
+                      Container(
+                        child: state is LoginLoading
+                            ? CircularProgressIndicator()
+                            : null,
+                      ),
+                      SizedBox(height: 5.0),
 //        Text(
 //          "SIGN UP FOR AN ACCOUNT",
 //          style: TextStyle(color: Colors.grey),
 //        ),
+                    ],
+                  ),
+                ),
               ],
             ),
-          )
-        ],
-      ));
-    }));
+          );
+        },
+      ),
+    );
   }
 
   final logo = Hero(

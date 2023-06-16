@@ -16,22 +16,29 @@ class _AddCommentDialogState extends State<AddCommentDialog> {
 
 Future<String?> showCommentDialog(BuildContext context) async {
   return await showDialog<String>(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          content: TextField(),
-          actions: <Widget>[
-            TextButton(
-                onPressed: () {
-                  Navigator.pop(context, "");
-                },
-                child: Text("CANCEL",
-                    style: TextStyle(color: Theme.of(context).accentColor))),
-            TextButton(
-                onPressed: () {},
-                child: Text("SAVE",
-                    style: TextStyle(color: Theme.of(context).accentColor)))
-          ],
-        );
-      });
+    context: context,
+    builder: (BuildContext context) {
+      return AlertDialog(
+        content: TextField(),
+        actions: <Widget>[
+          TextButton(
+            onPressed: () {
+              Navigator.pop(context, "");
+            },
+            child: Text(
+              "CANCEL",
+              style: TextStyle(color: Theme.of(context).accentColor),
+            ),
+          ),
+          TextButton(
+            onPressed: () {},
+            child: Text(
+              "SAVE",
+              style: TextStyle(color: Theme.of(context).accentColor),
+            ),
+          ),
+        ],
+      );
+    },
+  );
 }

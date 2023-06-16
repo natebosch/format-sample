@@ -34,9 +34,11 @@ void main() {
       required Iterable<Tournament> expectedTournaments,
     }) async {
       // arrange
-      TestArrange.when(() => httpClientMock.get(Uri(
-              path: '/last', queryParameters: <String, dynamic>{'page': '0'})))
-          .thenAnswer((_) => Future.value(apiResponse));
+      TestArrange.when(
+        () => httpClientMock.get(
+          Uri(path: '/last', queryParameters: <String, dynamic>{'page': '0'}),
+        ),
+      ).thenAnswer((_) => Future.value(apiResponse));
 
       final loader = createLoader();
 

@@ -22,7 +22,10 @@ class _WelcomeScreenState extends State<WelcomeScreen>
   void initState() {
     super.initState();
     controller = AnimationController(
-        upperBound: 1, vsync: this, duration: Duration(seconds: 1));
+      upperBound: 1,
+      vsync: this,
+      duration: Duration(seconds: 1),
+    );
     controller.forward();
     animation1 = CurvedAnimation(parent: controller, curve: Curves.decelerate);
 // animation2 = ColorTween(begin: Colors.grey, end: Colors.lightBlueAccent).animate(controller)
@@ -45,9 +48,7 @@ class _WelcomeScreenState extends State<WelcomeScreen>
       // backgroundColor:
       //     Color(0XFF4dd0e1).withOpacity(0.90), // withOpacity(controller.value),
       body: Padding(
-        padding: EdgeInsets.symmetric(
-          horizontal: 30,
-        ),
+        padding: EdgeInsets.symmetric(horizontal: 30),
         child: SafeArea(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -73,13 +74,12 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                       textAlign: TextAlign.start,
                       speed: Duration(milliseconds: 555),
                       textStyle: TextStyle(
-                          fontSize: 40,
-                          fontWeight: FontWeight.w800,
-                          color: Colors.white),
+                        fontSize: 40,
+                        fontWeight: FontWeight.w800,
+                        color: Colors.white,
+                      ),
                     ),
-                    SizedBox(
-                      height: 130,
-                    ),
+                    SizedBox(height: 130),
                   ],
                 ),
               ),
@@ -91,9 +91,7 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                   Navigator.pushNamed(context, 'login_page');
                 },
               ),
-              SizedBox(
-                height: 5,
-              ),
+              SizedBox(height: 5),
               RoundedButtons(
                 text: 'Regsiter',
                 colour: Colors.redAccent,
@@ -101,10 +99,7 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                   Navigator.pushNamed(context, 'register_page');
                 },
               ),
-              SizedBox(
-                height: 50,
-              ),
-
+              SizedBox(height: 50),
             ],
           ),
         ),

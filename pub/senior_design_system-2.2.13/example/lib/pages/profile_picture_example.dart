@@ -24,9 +24,7 @@ class _ProfilePictureExampleState extends State<ProfilePictureExample> {
               radius: 45 / 2,
               name: 'Gustavo  Biolado   Senci',
             ),
-            const SizedBox(
-              height: 30,
-            ),
+            const SizedBox(height: 30),
             const SeniorProfilePicture(
               isLoading: true,
               radius: 45,

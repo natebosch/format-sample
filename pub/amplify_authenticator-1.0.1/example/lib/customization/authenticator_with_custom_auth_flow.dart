@@ -80,10 +80,7 @@ class AuthenticatorWithCustomAuthFlow extends StatelessWidget {
 }
 
 class CustomConfirmSignInView extends StatelessWidget {
-  const CustomConfirmSignInView({
-    super.key,
-    required this.state,
-  });
+  const CustomConfirmSignInView({super.key, required this.state});
 
   final AuthenticatorState state;
 
@@ -123,10 +120,7 @@ class CustomConfirmSignInView extends StatelessWidget {
 }
 
 class CustomSignInView extends StatelessWidget {
-  const CustomSignInView({
-    super.key,
-    required this.state,
-  });
+  const CustomSignInView({super.key, required this.state});
 
   final AuthenticatorState state;
 
@@ -166,10 +160,7 @@ class CustomSignInView extends StatelessWidget {
 }
 
 class NavigateToSignInButton extends StatelessWidget {
-  const NavigateToSignInButton({
-    super.key,
-    required this.state,
-  });
+  const NavigateToSignInButton({super.key, required this.state});
 
   final AuthenticatorState state;
 
@@ -189,10 +180,7 @@ class NavigateToSignInButton extends StatelessWidget {
 }
 
 class NavigateToSignUpButton extends StatelessWidget {
-  const NavigateToSignUpButton({
-    super.key,
-    required this.state,
-  });
+  const NavigateToSignUpButton({super.key, required this.state});
 
   final AuthenticatorState state;
 
@@ -203,9 +191,7 @@ class NavigateToSignUpButton extends StatelessWidget {
       children: [
         const Text('Don\'t have an account?'),
         TextButton(
-          onPressed: () => state.changeStep(
-            AuthenticatorStep.signUp,
-          ),
+          onPressed: () => state.changeStep(AuthenticatorStep.signUp),
           child: const Text('Sign Up'),
         ),
       ],

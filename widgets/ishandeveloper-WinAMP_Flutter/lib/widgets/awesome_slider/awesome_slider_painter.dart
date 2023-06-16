@@ -83,14 +83,17 @@ class CustomSliderPaint extends CustomPainter {
       ..maskFilter = topLeftShadowBlurFactor;
 
     roundedRectangleTopLeftShadow.addRRect(RRect.fromLTRBR(
-        0.0 - roundedRectangleTopLeftShadowShift + _increment(),
-        0.0 - roundedRectangleTopLeftShadowShift,
-        thumbSize - roundedRectangleTopLeftShadowShift + _increment(),
-        thumbSize - roundedRectangleTopLeftShadowShift,
-        Radius.circular(roundedThumbRadius)));
+      0.0 - roundedRectangleTopLeftShadowShift + _increment(),
+      0.0 - roundedRectangleTopLeftShadowShift,
+      thumbSize - roundedRectangleTopLeftShadowShift + _increment(),
+      thumbSize - roundedRectangleTopLeftShadowShift,
+      Radius.circular(roundedThumbRadius),
+    ));
     if (topLeftShadow == true)
       canvas.drawPath(
-          roundedRectangleTopLeftShadow, roundedRectangleTopLeftShadowPaint);
+        roundedRectangleTopLeftShadow,
+        roundedRectangleTopLeftShadowPaint,
+      );
 
     ///    Rounded Rectangle Bottom Right Shadow Paint
 
@@ -99,14 +102,17 @@ class CustomSliderPaint extends CustomPainter {
       ..color = bottomRightShadowColor
       ..maskFilter = bottomRightShadowBlurFactor;
     roundedRectangleBottomRightShadow.addRRect(RRect.fromLTRBR(
-        0.0 + roundedRectangleBottomRightShadowShift + _increment(),
-        0.0 + roundedRectangleBottomRightShadowShift,
-        thumbSize + roundedRectangleBottomRightShadowShift + _increment(),
-        thumbSize + roundedRectangleBottomRightShadowShift,
-        Radius.circular(roundedThumbRadius)));
+      0.0 + roundedRectangleBottomRightShadowShift + _increment(),
+      0.0 + roundedRectangleBottomRightShadowShift,
+      thumbSize + roundedRectangleBottomRightShadowShift + _increment(),
+      thumbSize + roundedRectangleBottomRightShadowShift,
+      Radius.circular(roundedThumbRadius),
+    ));
     if (bottomRightShadow == true)
-      canvas.drawPath(roundedRectangleBottomRightShadow,
-          roundedRectangleBottomRightShadowPaint);
+      canvas.drawPath(
+        roundedRectangleBottomRightShadow,
+        roundedRectangleBottomRightShadowPaint,
+      );
 
     ///   Rounded Rectangle Thumb Paint
 
@@ -114,11 +120,12 @@ class CustomSliderPaint extends CustomPainter {
     Paint roundedRectanglePaint = Paint()..color = thumbColor;
 
     roundedRectangle.addRRect(RRect.fromLTRBR(
-        -5.0 + _increment(),
-        0.0,
-        thumbSize+5 + _increment(),
-        thumbSize,
-        Radius.circular(roundedThumbRadius)));
+      -5.0 + _increment(),
+      0.0,
+      thumbSize + 5 + _increment(),
+      thumbSize,
+      Radius.circular(roundedThumbRadius),
+    ));
     canvas.drawPath(roundedRectangle, roundedRectanglePaint);
   }
 

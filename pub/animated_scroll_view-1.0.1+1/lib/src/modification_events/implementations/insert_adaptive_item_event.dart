@@ -49,8 +49,9 @@ class InsertAdaptiveItemEvent<T> extends ModificationEvent<T> {
     required this.item,
     this.forceNotify = false,
     this.removeInfluencedAnimationConfig = const AnimationControllerConfig(),
-    this.insertAnimationConfig =
-        const AnimationControllerConfig(initialValue: 0),
+    this.insertAnimationConfig = const AnimationControllerConfig(
+      initialValue: 0,
+    ),
     this.customScrollViewEventBuilder,
   });
 
@@ -127,14 +128,12 @@ class InsertAdaptiveItemEvent<T> extends ModificationEvent<T> {
       removeInfluencedAnimationConfig: removeInfluencedAnimationConfig,
     );
 
-    eventController.add(
-      scrollViewType.when<ModificationEvent<T>, T>(
-        grid: () => influenced,
-        list: () => simple,
-        pageView: () => influenced,
-        orElse: (type) => customScrollViewEventBuilder?.call(type) ?? simple,
-      ),
-    );
+    eventController.add(scrollViewType.when<ModificationEvent<T>, T>(
+      grid: () => influenced,
+      list: () => simple,
+      pageView: () => influenced,
+      orElse: (type) => customScrollViewEventBuilder?.call(type) ?? simple,
+    ));
   }
 }
 
@@ -152,21 +151,19 @@ extension InsertAdaptiveItemEventExtension<T> on EventController<T> {
     int? index,
     bool forceNotify = false,
     bool forceVisible = false,
-    AnimationControllerConfig insertAnimationConfig =
-        const AnimationControllerConfig(initialValue: 0),
+    AnimationControllerConfig
+    insertAnimationConfig = const AnimationControllerConfig(initialValue: 0),
     AnimationControllerConfig removeInfluencedAnimationConfig =
         const AnimationControllerConfig(),
     EventBuilder<T>? customScrollViewEventBuilder,
   }) {
-    return add(
-      InsertAdaptiveItemEvent(
-        item: item,
-        index: index,
-        forceNotify: forceNotify,
-        insertAnimationConfig: insertAnimationConfig,
-        customScrollViewEventBuilder: customScrollViewEventBuilder,
-        removeInfluencedAnimationConfig: removeInfluencedAnimationConfig,
-      ),
-    );
+    return add(InsertAdaptiveItemEvent(
+      item: item,
+      index: index,
+      forceNotify: forceNotify,
+      insertAnimationConfig: insertAnimationConfig,
+      customScrollViewEventBuilder: customScrollViewEventBuilder,
+      removeInfluencedAnimationConfig: removeInfluencedAnimationConfig,
+    ));
   }
 }

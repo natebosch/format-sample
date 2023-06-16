@@ -61,23 +61,29 @@ class _ClientViewDetailsState extends State<ClientViewDetails> {
         listTiles.add(AppListTile(
           buttons: [
             Expanded(
-                child: OutlinedButton(
-              child: Text(localization.viewPortal.toUpperCase()),
-              onPressed: () {
-                launch('${contact.silentLink}&client_hash=${client.clientHash}',
-                    forceWebView: false, forceSafariVC: false);
-              },
-            )),
+              child: OutlinedButton(
+                child: Text(localization.viewPortal.toUpperCase()),
+                onPressed: () {
+                  launch(
+                    '${contact.silentLink}&client_hash=${client.clientHash}',
+                    forceWebView: false,
+                    forceSafariVC: false,
+                  );
+                },
+              ),
+            ),
             SizedBox(width: kTableColumnGap),
             Expanded(
-                child: OutlinedButton(
-              child: Text(localization.copyLink.toUpperCase()),
-              onPressed: () {
-                Clipboard.setData(ClipboardData(text: contact.link));
-                showToast(
-                    localization.copiedToClipboard.replaceFirst(':value ', ''));
-              },
-            )),
+              child: OutlinedButton(
+                child: Text(localization.copyLink.toUpperCase()),
+                onPressed: () {
+                  Clipboard.setData(ClipboardData(text: contact.link));
+                  showToast(
+                    localization.copiedToClipboard.replaceFirst(':value ', ''),
+                  );
+                },
+              ),
+            ),
           ],
           icon: Icons.email,
           title: contact.fullName.isEmpty
@@ -105,8 +111,10 @@ class _ClientViewDetailsState extends State<ClientViewDetails> {
             copyValue: contact.phone,
             subtitle: localization.phone,
             onTap: () => setState(() {
-              _launched =
-                  _launchURL(context, 'sms:' + cleanPhoneNumber(contact.phone));
+              _launched = _launchURL(
+                context,
+                'sms:' + cleanPhoneNumber(contact.phone),
+              );
               //_launched = _launchURL('tel:' + cleanPhoneNumber(contact.phone));
             }),
           ));
@@ -130,8 +138,10 @@ class _ClientViewDetailsState extends State<ClientViewDetails> {
           title: client.phone,
           subtitle: localization.phone,
           onTap: () => setState(() {
-            _launched =
-                _launchURL(context, 'sms:' + cleanPhoneNumber(client.phone));
+            _launched = _launchURL(
+              context,
+              'sms:' + cleanPhoneNumber(client.phone),
+            );
             //_launched = _launchURL('tel:' + cleanPhoneNumber(client.workPhone));
           }),
         ));
@@ -169,30 +179,36 @@ class _ClientViewDetailsState extends State<ClientViewDetails> {
 
       if (billingAddress.isNotEmpty) {
         listTiles.add(AppListTile(
-            icon: Icons.pin_drop,
-            title: billingAddress,
-            subtitle: localization.billingAddress,
-            onTap: () {
-              _launched = _launchURL(
-                  context,
-                  getMapURL(context) +
-                      Uri.encodeFull(
-                          formatAddress(object: client, delimiter: ',')));
-            }));
+          icon: Icons.pin_drop,
+          title: billingAddress,
+          subtitle: localization.billingAddress,
+          onTap: () {
+            _launched = _launchURL(
+              context,
+              getMapURL(context) +
+                  Uri.encodeFull(formatAddress(object: client, delimiter: ',')),
+            );
+          },
+        ));
       }
 
       if (shippingAddress.isNotEmpty) {
         listTiles.add(AppListTile(
-            icon: Icons.pin_drop,
-            title: shippingAddress,
-            subtitle: localization.shippingAddress,
-            onTap: () {
-              _launched = _launchURL(
-                  context,
-                  getMapURL(context) +
-                      Uri.encodeFull(formatAddress(
-                          object: client, delimiter: ',', isShipping: true)));
-            }));
+          icon: Icons.pin_drop,
+          title: shippingAddress,
+          subtitle: localization.shippingAddress,
+          onTap: () {
+            _launched = _launchURL(
+              context,
+              getMapURL(context) +
+                  Uri.encodeFull(formatAddress(
+                    object: client,
+                    delimiter: ',',
+                    isShipping: true,
+                  )),
+            );
+          },
+        ));
       }
 
       listTiles.add(Padding(
@@ -203,8 +219,6 @@ class _ClientViewDetailsState extends State<ClientViewDetails> {
       return listTiles;
     }
 
-    return ScrollableListView(
-      children: _buildDetailsList(),
-    );
+    return ScrollableListView(children: _buildDetailsList());
   }
 }

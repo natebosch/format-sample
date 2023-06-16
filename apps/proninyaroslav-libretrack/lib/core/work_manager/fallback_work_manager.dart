@@ -43,10 +43,10 @@ class FallbackWorkManager implements WorkManager {
     required ConstraintsManager constraintsManager,
     required WorkersProvider workersProvider,
     required DateTimeProvider dateTimeProvider,
-  })  : _repo = repo,
-        _constraintsManager = constraintsManager,
-        _workersProvider = workersProvider,
-        _dateTimeProvider = dateTimeProvider;
+  }) : _repo = repo,
+       _constraintsManager = constraintsManager,
+       _workersProvider = workersProvider,
+       _dateTimeProvider = dateTimeProvider;
 
   @override
   Future<void> init() async {}
@@ -121,16 +121,14 @@ class FallbackWorkManager implements WorkManager {
     WorkParams? params,
     Duration? frequency,
   ) async {
-    await _repo.addWork(
-      WorkInfo.from(
-        id: workId,
-        workerName: workerName,
-        type: WorkType.periodic,
-        frequency: frequency,
-        inputData: params?.inputData,
-        constraints: params?.constraints,
-      ),
-    );
+    await _repo.addWork(WorkInfo.from(
+      id: workId,
+      workerName: workerName,
+      type: WorkType.periodic,
+      frequency: frequency,
+      inputData: params?.inputData,
+      constraints: params?.constraints,
+    ));
   }
 
   @override
@@ -153,9 +151,9 @@ class FallbackWorkManager implements WorkManager {
         if (_isTooFast(info)) {
           return true;
         } else {
-          await _repo.updateWork(info.copyWith(
-            lastRunning: _dateTimeProvider.now(),
-          ));
+          await _repo.updateWork(
+            info.copyWith(lastRunning: _dateTimeProvider.now()),
+          );
         }
       }
       run = () async {
@@ -190,11 +188,7 @@ class FallbackWorkManager implements WorkManager {
       await run();
     }
 
-    return result?.when(
-          success: () => true,
-          failure: () => false,
-        ) ??
-        true;
+    return result?.when(success: () => true, failure: () => false) ?? true;
   }
 
   Future<bool> execute(String id) async {
@@ -229,12 +223,14 @@ class FallbackWorkManager implements WorkManager {
   static void _printResult(WorkResult result, WorkInfo info) {
     result.when(
       success: () {
-        log(withStack: false)
-            .i('[WorkManager] Worker result SUCCESS for $info');
+        log(withStack: false).i(
+          '[WorkManager] Worker result SUCCESS for $info',
+        );
       },
       failure: () {
-        log(withStack: false)
-            .e('[WorkManager] Worker result FAILURE for $info');
+        log(withStack: false).e(
+          '[WorkManager] Worker result FAILURE for $info',
+        );
       },
     );
   }

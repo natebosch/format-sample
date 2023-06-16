@@ -22,10 +22,10 @@ class GlobalState {
     @required this.webRequester,
     @required this.routeObserver,
     @required this.applicationSettings,
-  })  : assert(satellites != null),
-        assert(webRequester != null),
-        assert(routeObserver != null),
-        assert(applicationSettings != null);
+  }) : assert(satellites != null),
+       assert(webRequester != null),
+       assert(routeObserver != null),
+       assert(applicationSettings != null);
 
   static GlobalState initial() {
     return GlobalState(

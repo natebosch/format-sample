@@ -35,76 +35,85 @@ import '../utils.dart';
 void main() {
   Widget createHomeScreen({locale = 'en'}) {
     final client = MockClient();
-    when(client.delete(
-      any,
-      headers: anyNamed('headers'),
-    )).thenAnswer((_) async => http.Response('', 200));
-    when(client.post(
-      any,
-      headers: anyNamed('headers'),
-      body: anyNamed('body'),
-    )).thenAnswer(
-        (_) async => http.Response('{"id": 3, "date": "2021-01-01", "weight": "80"}', 200));
+    when(client.delete(any, headers: anyNamed('headers'))).thenAnswer(
+      (_) async => http.Response('', 200),
+    );
+    when(client.post(any, headers: anyNamed('headers'), body: anyNamed('body')))
+        .thenAnswer(
+          (_) async => http.Response(
+            '{"id": 3, "date": "2021-01-01", "weight": "80"}',
+            200,
+          ),
+        );
 
     return ChangeNotifierProvider<BodyWeightProvider>(
-      create: (context) => BodyWeightProvider(
-        testAuthProvider,
-        [
-          weightEntry1,
-          weightEntry2,
-        ],
-        client,
-      ),
+      create: (context) => BodyWeightProvider(testAuthProvider, [
+        weightEntry1,
+        weightEntry2,
+      ], client),
       child: MaterialApp(
         locale: Locale(locale),
         localizationsDelegates: AppLocalizations.localizationsDelegates,
         supportedLocales: AppLocalizations.supportedLocales,
         home: WeightScreen(),
-        routes: {
-          FormScreen.routeName: (ctx) => FormScreen(),
-        },
+        routes: {FormScreen.routeName: (ctx) => FormScreen()},
       ),
     );
   }
 
-  testWidgets('Test the widgets on the body weight screen', (WidgetTester tester) async {
-    await tester.pumpWidget(createHomeScreen());
+  testWidgets(
+    'Test the widgets on the body weight screen',
+    (WidgetTester tester) async {
+      await tester.pumpWidget(createHomeScreen());
 
-    //debugDumpApp();
-    expect(find.text('Weight'), findsOneWidget);
-    expect(find.byType(MeasurementChartWidget), findsOneWidget);
-    expect(find.byType(Dismissible), findsNWidgets(2));
-    expect(find.byType(ListTile), findsNWidgets(2));
-  });
+      //debugDumpApp();
+      expect(find.text('Weight'), findsOneWidget);
+      expect(find.byType(MeasurementChartWidget), findsOneWidget);
+      expect(find.byType(Dismissible), findsNWidgets(2));
+      expect(find.byType(ListTile), findsNWidgets(2));
+    },
+  );
 
-  testWidgets('Test deleting an item by dragging the dismissible', (WidgetTester tester) async {
-    await tester.pumpWidget(createHomeScreen());
+  testWidgets(
+    'Test deleting an item by dragging the dismissible',
+    (WidgetTester tester) async {
+      await tester.pumpWidget(createHomeScreen());
 
-    await tester.drag(find.byKey(const Key('1')), const Offset(-500.0, 0.0));
-    await tester.pumpAndSettle();
-    expect(find.byType(ListTile), findsOneWidget);
-  });
+      await tester.drag(find.byKey(const Key('1')), const Offset(-500.0, 0.0));
+      await tester.pumpAndSettle();
+      expect(find.byType(ListTile), findsOneWidget);
+    },
+  );
 
-  testWidgets('Test the form on the body weight screen', (WidgetTester tester) async {
-    await tester.pumpWidget(createHomeScreen());
+  testWidgets(
+    'Test the form on the body weight screen',
+    (WidgetTester tester) async {
+      await tester.pumpWidget(createHomeScreen());
 
-    expect(find.byType(WeightForm), findsNothing);
-    await tester.tap(find.byType(FloatingActionButton));
-    await tester.pumpAndSettle();
-    expect(find.byType(WeightForm), findsOneWidget);
-  });
+      expect(find.byType(WeightForm), findsNothing);
+      await tester.tap(find.byType(FloatingActionButton));
+      await tester.pumpAndSettle();
+      expect(find.byType(WeightForm), findsOneWidget);
+    },
+  );
 
-  testWidgets('Tests the localization of dates - EN', (WidgetTester tester) async {
-    await tester.pumpWidget(createHomeScreen());
+  testWidgets(
+    'Tests the localization of dates - EN',
+    (WidgetTester tester) async {
+      await tester.pumpWidget(createHomeScreen());
 
-    expect(find.text('1/1/2021'), findsOneWidget);
-    expect(find.text('1/10/2021'), findsOneWidget);
-  });
+      expect(find.text('1/1/2021'), findsOneWidget);
+      expect(find.text('1/10/2021'), findsOneWidget);
+    },
+  );
 
-  testWidgets('Tests the localization of dates - DE', (WidgetTester tester) async {
-    await tester.pumpWidget(createHomeScreen(locale: 'de'));
+  testWidgets(
+    'Tests the localization of dates - DE',
+    (WidgetTester tester) async {
+      await tester.pumpWidget(createHomeScreen(locale: 'de'));
 
-    expect(find.text('1.1.2021'), findsOneWidget);
-    expect(find.text('10.1.2021'), findsOneWidget);
-  });
+      expect(find.text('1.1.2021'), findsOneWidget);
+      expect(find.text('10.1.2021'), findsOneWidget);
+    },
+  );
 }

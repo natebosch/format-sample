@@ -22,42 +22,43 @@ part 'html.g.dart';
 /// Html
 ///
 /// Properties:
-/// * [type] 
-/// * [name] 
-/// * [state] 
-/// * [visible] 
-/// * [useDisplayValuesInDynamicTexts] 
-/// * [visibleIf] 
-/// * [width] 
-/// * [minWidth] 
-/// * [maxWidth] 
-/// * [startWithNewLine] 
-/// * [indent] 
-/// * [page] 
-/// * [title] 
-/// * [titleLocation] 
-/// * [description] 
-/// * [descriptionLocation] 
-/// * [hideNumber] 
-/// * [valueName] 
-/// * [enableIf] 
-/// * [defaultValue] 
-/// * [defaultValueExpression] 
-/// * [correctAnswer] 
-/// * [clearIfInvisible] 
-/// * [isRequired] 
-/// * [requiredIf] 
-/// * [requiredErrorText] 
-/// * [readOnly] 
-/// * [validators] 
-/// * [bindings] 
-/// * [renderAs] 
-/// * [showCommentArea] 
-/// * [commentText] 
-/// * [commentPlaceholder] 
-/// * [html] 
+/// * [type]
+/// * [name]
+/// * [state]
+/// * [visible]
+/// * [useDisplayValuesInDynamicTexts]
+/// * [visibleIf]
+/// * [width]
+/// * [minWidth]
+/// * [maxWidth]
+/// * [startWithNewLine]
+/// * [indent]
+/// * [page]
+/// * [title]
+/// * [titleLocation]
+/// * [description]
+/// * [descriptionLocation]
+/// * [hideNumber]
+/// * [valueName]
+/// * [enableIf]
+/// * [defaultValue]
+/// * [defaultValueExpression]
+/// * [correctAnswer]
+/// * [clearIfInvisible]
+/// * [isRequired]
+/// * [requiredIf]
+/// * [requiredErrorText]
+/// * [readOnly]
+/// * [validators]
+/// * [bindings]
+/// * [renderAs]
+/// * [showCommentArea]
+/// * [commentText]
+/// * [commentPlaceholder]
+/// * [html]
 @BuiltValue()
-abstract class Html implements HtmlconditionitemAllOf, Nonvalue, Built<Html, HtmlBuilder> {
+abstract class Html
+    implements HtmlconditionitemAllOf, Nonvalue, Built<Html, HtmlBuilder> {
   Html._();
 
   factory Html([void updates(HtmlBuilder b)]) = _$Html;
@@ -113,7 +114,8 @@ class _$HtmlSerializer implements PrimitiveSerializer<Html> {
       yield r'validators';
       yield serializers.serialize(
         object.validators,
-        specifiedType: const FullType(BuiltList, [FullType(QuestionAllOfValidatorsInner)]),
+        specifiedType:
+            const FullType(BuiltList, [FullType(QuestionAllOfValidatorsInner)]),
       );
     }
     if (object.bindings != null) {
@@ -327,7 +329,11 @@ class _$HtmlSerializer implements PrimitiveSerializer<Html> {
     Html object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(
+      serializers,
+      object,
+      specifiedType: specifiedType,
+    ).toList();
   }
 
   void _deserializeProperties(
@@ -374,7 +380,9 @@ class _$HtmlSerializer implements PrimitiveSerializer<Html> {
         case r'validators':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(QuestionAllOfValidatorsInner)]),
+            specifiedType: const FullType(BuiltList, [
+              FullType(QuestionAllOfValidatorsInner),
+            ]),
           ) as BuiltList<QuestionAllOfValidatorsInner>;
           result.validators.replace(valueDes);
           break;
@@ -609,4 +617,3 @@ class _$HtmlSerializer implements PrimitiveSerializer<Html> {
     return result.build();
   }
 }
-

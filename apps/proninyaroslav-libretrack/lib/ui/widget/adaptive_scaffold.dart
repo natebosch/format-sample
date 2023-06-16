@@ -53,10 +53,7 @@ class AdaptiveScaffoldState extends State<AdaptiveScaffold> {
 
   /// Shows [SnackBar] or [Toast] depending on the type of [AdaptiveScaffold]
   /// (full-screen or dialog).
-  void showAdaptiveToast({
-    required String text,
-    bool isLong = false,
-  }) {
+  void showAdaptiveToast({required String text, bool isLong = false}) {
     switch (_getScaffoldType(context)) {
       case _ScaffoldType.fullScreen:
         final state = ScaffoldMessenger.maybeOf(context);
@@ -66,9 +63,7 @@ class AdaptiveScaffoldState extends State<AdaptiveScaffold> {
                   content: Text(text),
                   duration: UiUtils.snackBarDisplayLongDuration,
                 )
-              : SnackBar(
-                  content: Text(text),
-                );
+              : SnackBar(content: Text(text));
           state.showSnackBar(snackbar);
         } else {
           Toast.of(context).show(text: text, isLong: isLong);
@@ -89,10 +84,7 @@ class AdaptiveScaffoldState extends State<AdaptiveScaffold> {
     switch (newScaffoldType) {
       case _ScaffoldType.fullScreen:
         return Scaffold(
-          appBar: AppBar(
-            title: widget.title,
-            actions: widget.actions,
-          ),
+          appBar: AppBar(title: widget.title, actions: widget.actions),
           body: widget.body,
           floatingActionButton: widget.floatingActionButton,
           floatingActionButtonLocation: widget.floatingActionButtonLocation,
@@ -130,17 +122,16 @@ class AdaptiveScaffoldState extends State<AdaptiveScaffold> {
               ],
             ),
             content: ConstrainedBox(
-              constraints: BoxConstraints.tight(
-                const Size(600, 600),
-              ),
+              constraints: BoxConstraints.tight(const Size(600, 600)),
               child: Scaffold(
                 body: widget.body,
                 floatingActionButton: widget.floatingActionButton,
                 floatingActionButtonLocation:
                     widget.floatingActionButtonLocation,
                 bottomNavigationBar: BottomNavigationBarTheme(
-                  data: BottomNavigationBarTheme.of(context)
-                      .copyWith(elevation: 0.0),
+                  data: BottomNavigationBarTheme.of(context).copyWith(
+                    elevation: 0.0,
+                  ),
                   child: widget.bottomNavigationBar ?? const SizedBox.shrink(),
                 ),
               ),
@@ -162,7 +153,4 @@ class AdaptiveScaffoldState extends State<AdaptiveScaffold> {
   }
 }
 
-enum _ScaffoldType {
-  fullScreen,
-  dialog,
-}
+enum _ScaffoldType { fullScreen, dialog }

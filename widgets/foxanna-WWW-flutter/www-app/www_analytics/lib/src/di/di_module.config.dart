@@ -16,24 +16,39 @@ import '../service/firebase.dart'
 
 // ignore_for_file: lines_longer_than_80_chars
 /// initializes the registration of provided dependencies inside of [GetIt]
-_i1.GetIt $initGetIt(_i1.GetIt get,
-    {String? environment, _i2.EnvironmentFilter? environmentFilter}) {
+_i1.GetIt $initGetIt(
+  _i1.GetIt get, {
+  String? environment,
+  _i2.EnvironmentFilter? environmentFilter,
+}) {
   final gh = _i2.GetItHelper(get, environment, environmentFilter);
   final firebaseConfigInjectableModule = _$FirebaseConfigInjectableModule();
-  gh.factory<bool>(() => firebaseConfigInjectableModule.enableAnalytics,
-      instanceName: 'enableAnalytics');
-  gh.factory<bool>(() => firebaseConfigInjectableModule.enableCrashlytics,
-      instanceName: 'enableCrashlytics');
-  gh.lazySingleton<_i3.IFirebaseWrapper>(() => _i3.FirebaseWrapper(
+  gh.factory<bool>(
+    () => firebaseConfigInjectableModule.enableAnalytics,
+    instanceName: 'enableAnalytics',
+  );
+  gh.factory<bool>(
+    () => firebaseConfigInjectableModule.enableCrashlytics,
+    instanceName: 'enableCrashlytics',
+  );
+  gh.lazySingleton<_i3.IFirebaseWrapper>(
+    () => _i3.FirebaseWrapper(
       crashlyticsEnabled: get<bool>(instanceName: 'enableCrashlytics'),
-      analyticsEnabled: get<bool>(instanceName: 'enableAnalytics')));
+      analyticsEnabled: get<bool>(instanceName: 'enableAnalytics'),
+    ),
+  );
   gh.lazySingleton<_i4.ICrashService>(
-      () => _i4.CrashService(wrapper: get<_i3.IFirebaseWrapper>()));
+    () => _i4.CrashService(wrapper: get<_i3.IFirebaseWrapper>()),
+  );
   gh.lazySingleton<_i5.ICrashWrapper>(
-      () => _i5.CrashWrapper(crashService: get<_i4.ICrashService>()));
-  gh.lazySingleton<_i6.IAnalyticsService>(() => _i6.AnalyticsService(
+    () => _i5.CrashWrapper(crashService: get<_i4.ICrashService>()),
+  );
+  gh.lazySingleton<_i6.IAnalyticsService>(
+    () => _i6.AnalyticsService(
       wrapper: get<_i3.IFirebaseWrapper>(),
-      crashService: get<_i4.ICrashService>()));
+      crashService: get<_i4.ICrashService>(),
+    ),
+  );
   return get;
 }
 

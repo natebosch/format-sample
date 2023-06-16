@@ -158,32 +158,18 @@ void main() {
         ),
       };
 
-      when(
-        () => mockTrackNumberRepo.getTrackByTrackNumber('1'),
-      ).thenAnswer(
-        (_) async => const StorageResult(
-          TrackNumberInfo('1'),
-        ),
+      when(() => mockTrackNumberRepo.getTrackByTrackNumber('1')).thenAnswer(
+        (_) async => const StorageResult(TrackNumberInfo('1')),
       );
-      when(
-        () => mockTrackNumberRepo.getTrackByTrackNumber('5'),
-      ).thenAnswer(
-        (_) async => const StorageResult(
-          TrackNumberInfo('5'),
-        ),
+      when(() => mockTrackNumberRepo.getTrackByTrackNumber('5')).thenAnswer(
+        (_) async => const StorageResult(TrackNumberInfo('5')),
       );
+      when(() => mockNotifyManager.newActivitiesNotify(lastActivities))
+          .thenAnswer((_) async => {});
       when(
-        () => mockNotifyManager.newActivitiesNotify(lastActivities),
-      ).thenAnswer(
-        (_) async => {},
-      );
-      when(
-        () => mockNotifyManager.parcelsHardErrorNotify(
-          [const TrackNumberInfo('5')],
-        ),
-      ).thenAnswer(
-        (_) async => {},
-      );
+        () => mockNotifyManager
+            .parcelsHardErrorNotify([const TrackNumberInfo('5')]),
+      ).thenAnswer((_) async => {});
       when(() => mockPref.trackingNotifications).thenReturn(true);
       when(() => mockPref.trackingErrorNotifications).thenReturn(true);
 
@@ -191,13 +177,11 @@ void main() {
         trackingInfo: trackingInfo,
         trackingResult: trackingResult,
       );
+      verify(() => mockNotifyManager.newActivitiesNotify(lastActivities))
+          .called(1);
       verify(
-        () => mockNotifyManager.newActivitiesNotify(lastActivities),
-      ).called(1);
-      verify(
-        () => mockNotifyManager.parcelsHardErrorNotify([
-          const TrackNumberInfo('5'),
-        ]),
+        () => mockNotifyManager
+            .parcelsHardErrorNotify([const TrackNumberInfo('5')]),
       ).called(1);
     });
 
@@ -205,33 +189,23 @@ void main() {
       when(() => mockPref.trackingNotifications).thenReturn(false);
       when(() => mockPref.trackingErrorNotifications).thenReturn(false);
       await notifyTask.show(trackingInfo: [], trackingResult: []);
-      verifyNever(
-        () => mockNotifyManager.newActivitiesNotify(any()),
-      );
+      verifyNever(() => mockNotifyManager.newActivitiesNotify(any()));
     });
 
     test('Tracking failed', () async {
-      when(
-        () => mockTrackNumberRepo.getTrackByTrackNumber('1'),
-      ).thenAnswer(
-        (_) async => const StorageResult(
-          TrackNumberInfo('1'),
-        ),
+      when(() => mockTrackNumberRepo.getTrackByTrackNumber('1')).thenAnswer(
+        (_) async => const StorageResult(TrackNumberInfo('1')),
       );
       when(
-        () => mockNotifyManager.trackingFailedNotify(
-          [const TrackNumberInfo('1')],
-        ),
-      ).thenAnswer(
-        (_) async => {},
-      );
+        () => mockNotifyManager
+            .trackingFailedNotify([const TrackNumberInfo('1')]),
+      ).thenAnswer((_) async => {});
       when(() => mockPref.trackingErrorNotifications).thenReturn(true);
 
       await notifyTask.trackingFailedNotify(['1']);
       verify(
-        () => mockNotifyManager.trackingFailedNotify(
-          [const TrackNumberInfo('1')],
-        ),
+        () => mockNotifyManager
+            .trackingFailedNotify([const TrackNumberInfo('1')]),
       ).called(1);
     });
   });

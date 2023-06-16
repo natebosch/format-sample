@@ -27,7 +27,8 @@ class HomeShowcase extends StatelessWidget {
           return getMetaKindName(MetaKindValue.values[tabIndex]);
         }
         return getKindName(
-            KindValue.values[tabIndex - MetaKindValue.values.length]);
+          KindValue.values[tabIndex - MetaKindValue.values.length],
+        );
       },
       dataPool: dataPool,
       buildList: (int tabIndex) {
@@ -40,9 +41,6 @@ class HomeShowcase extends StatelessWidget {
       poolForReloadTabs: poolForReloadTabs,
       hasAppBar: true,
     );
-    return SafeArea(
-      bottom: false,
-      child: child,
-    );
+    return SafeArea(bottom: false, child: child);
   }
 }

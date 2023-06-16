@@ -32,18 +32,11 @@ class SubtitleController {
     _subtitleBloc = null;
   }
 
-  void updateSubtitleUrl({
-    required String url,
-    Map<String, String>? headers,
-  }) {
+  void updateSubtitleUrl({required String url, Map<String, String>? headers}) {
     if (_attached) {
       subtitleUrl = url;
       headers = headers;
-      _subtitleBloc!.add(
-        InitSubtitles(
-          subtitleController: this,
-        ),
-      );
+      _subtitleBloc!.add(InitSubtitles(subtitleController: this));
     } else {
       throw Exception('Seems that the controller is not correctly attached.');
     }
@@ -53,28 +46,16 @@ class SubtitleController {
     timeOffset = offset;
   }
 
-  void updateSubtitleContent({
-    required String content,
-  }) {
+  void updateSubtitleContent({required String content}) {
     if (_attached) {
       subtitlesContent = content;
-      _subtitleBloc!.add(
-        InitSubtitles(
-          subtitleController: this,
-        ),
-      );
+      _subtitleBloc!.add(InitSubtitles(subtitleController: this));
     } else {
       throw Exception('Seems that the controller is not correctly attached.');
     }
   }
 }
 
-enum SubtitleDecoder {
-  utf8,
-  latin1,
-}
+enum SubtitleDecoder { utf8, latin1 }
 
-enum SubtitleType {
-  webvtt,
-  srt,
-}
+enum SubtitleType { webvtt, srt }

@@ -25,11 +25,19 @@ class StoreDetailsBloc extends Bloc<BaseEvent, BaseState> {
       if (event is GetSortedItemsEvent) {
         yield* loadStoreItems();
       } else if (event is UpdateProductEvent) {
-        products.update(event.product, (value) => event.quantity, ifAbsent: () => 1);
+        products.update(
+          event.product,
+          (value) => event.quantity,
+          ifAbsent: () => 1,
+        );
         if (products[event.product] < 1) {
           products.remove(event.product);
         }
-        yield CartChangedSate(quantity: _getProductsQuantity(), cartTotal: _getCartTotal(), products: products);
+        yield CartChangedSate(
+          quantity: _getProductsQuantity(),
+          cartTotal: _getCartTotal(),
+          products: products,
+        );
       }
     } catch (error) {
       yield ErrorState();
@@ -40,7 +48,12 @@ class StoreDetailsBloc extends Bloc<BaseEvent, BaseState> {
     yield LoadingState();
     final result = await _storeUseCases.getStoreItems(store.id);
     if (result is Success<Map<ItemEntity, List<ItemEntity>>>) {
-      final items = result.data.map((key, value) => MapEntry(ItemUIMapper().processSingleElement(key), ItemUIMapper().processList(value)));
+      final items = result.data.map(
+        (key, value) => MapEntry(
+          ItemUIMapper().processSingleElement(key),
+          ItemUIMapper().processList(value),
+        ),
+      );
       yield SuccessState(data: items);
     } else {
       yield ErrorState();
@@ -52,7 +65,11 @@ class StoreDetailsBloc extends Bloc<BaseEvent, BaseState> {
   }
 
   double _getCartTotal() {
-    return products.isEmpty ? 0 : products.entries.map((entry) => (entry.key.price * entry.value.toDouble())).reduce((a, b) => a + b);
+    return products.isEmpty
+        ? 0
+        : products.entries
+              .map((entry) => (entry.key.price * entry.value.toDouble()))
+              .reduce((a, b) => a + b);
   }
 }
 
@@ -72,5 +89,6 @@ class CartChangedSate extends BaseState {
   final double cartTotal;
   final Map<ItemUI, int> products;
 
-  CartChangedSate({this.quantity, this.cartTotal, this.products}) : super([quantity, cartTotal, products]);
+  CartChangedSate({this.quantity, this.cartTotal, this.products})
+    : super([quantity, cartTotal, products]);
 }

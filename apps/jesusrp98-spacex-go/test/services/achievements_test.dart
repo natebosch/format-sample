@@ -21,9 +21,9 @@ void main() {
 
       when(response.statusCode).thenReturn(200);
       when(response.data).thenReturn(json);
-      when(
-        client.get(Url.companyAchievements),
-      ).thenAnswer((_) => Future.value(response));
+      when(client.get(Url.companyAchievements)).thenAnswer(
+        (_) => Future.value(response),
+      );
 
       final output = await service.getAchievements();
       expect(output.data.cast<String>(), json);

@@ -1,17 +1,28 @@
 import 'package:flutter/material.dart';
 
-gradientTextStyle(TextStyle textWidget, Gradient gradient,
-    {double width = 200.0, double height = 200.0}) {
-  final Shader textShader =
-      gradient.createShader(Rect.fromLTWH(0.0, 0.0, width, height));
+gradientTextStyle(
+  TextStyle textWidget,
+  Gradient gradient, {
+  double width = 200.0,
+  double height = 200.0,
+}) {
+  final Shader textShader = gradient.createShader(
+    Rect.fromLTWH(0.0, 0.0, width, height),
+  );
 
   return textWidget.copyWith(foreground: Paint()..shader = textShader);
 }
 
-Widget _gradientContainer(BuildContext context, Gradient gradient,
-    double incHeightBy, double incWidthBy, Widget child) {
-  final ButtonThemeData buttonTheme =
-      ButtonTheme.of(context).copyWith(padding: const EdgeInsets.all(0.0));
+Widget _gradientContainer(
+  BuildContext context,
+  Gradient gradient,
+  double incHeightBy,
+  double incWidthBy,
+  Widget child,
+) {
+  final ButtonThemeData buttonTheme = ButtonTheme.of(context).copyWith(
+    padding: const EdgeInsets.all(0.0),
+  );
   return new Container(
     height: buttonTheme.height + incHeightBy,
     width: buttonTheme.minWidth + incWidthBy,
@@ -21,11 +32,12 @@ Widget _gradientContainer(BuildContext context, Gradient gradient,
 }
 
 class CircularGradientButton extends StatelessWidget {
-  CircularGradientButton(
-      {@required this.gradient,
-      @required this.child,
-      @required this.callback,
-      this.elevation = 2.0});
+  CircularGradientButton({
+    @required this.gradient,
+    @required this.child,
+    @required this.callback,
+    this.elevation = 2.0,
+  });
 
   final Widget child;
   final Gradient gradient;
@@ -43,16 +55,17 @@ class CircularGradientButton extends StatelessWidget {
 }
 
 class GradientButton extends StatelessWidget {
-  GradientButton(
-      {@required this.gradient,
-      @required this.child,
-      @required this.callback,
-      this.shape,
-      this.shapeRadius,
-      this.textStyle,
-      this.elevation = 5.0,
-      this.increaseHeightBy = 0.0,
-      this.increaseWidthBy = 0.0});
+  GradientButton({
+    @required this.gradient,
+    @required this.child,
+    @required this.callback,
+    this.shape,
+    this.shapeRadius,
+    this.textStyle,
+    this.elevation = 5.0,
+    this.increaseHeightBy = 0.0,
+    this.increaseWidthBy = 0.0,
+  });
 
   final Widget child;
   final Gradient gradient;
@@ -82,7 +95,12 @@ class GradientButton extends StatelessWidget {
       textStyle: textStyleCopy,
       onPressed: callback,
       child: _gradientContainer(
-          context, gradient, increaseHeightBy, increaseWidthBy, child),
+        context,
+        gradient,
+        increaseHeightBy,
+        increaseWidthBy,
+        child,
+      ),
     );
   }
 }

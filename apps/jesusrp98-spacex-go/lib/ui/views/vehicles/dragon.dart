@@ -21,18 +21,18 @@ class DragonPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final DragonVehicle _dragon = context.watch<VehiclesCubit>().getVehicle(id);
     return Scaffold(
-      body: CustomScrollView(slivers: <Widget>[
-        SliverBar(
-          title: _dragon.name,
-          header: SwiperHeader(
-            list: _dragon.photos,
-            builder: (_, index) => CacheImage(_dragon.getPhoto(index)),
-          ),
-          actions: <Widget>[
-            IconButton(
-              icon: IconShadow(Icons.adaptive.share),
-              onPressed: () => Share.share(
-                context.translate(
+      body: CustomScrollView(
+        slivers: <Widget>[
+          SliverBar(
+            title: _dragon.name,
+            header: SwiperHeader(
+              list: _dragon.photos,
+              builder: (_, index) => CacheImage(_dragon.getPhoto(index)),
+            ),
+            actions: <Widget>[
+              IconButton(
+                icon: IconShadow(Icons.adaptive.share),
+                onPressed: () => Share.share(context.translate(
                   'spacex.other.share.capsule.body',
                   parameters: {
                     'name': _dragon.name,
@@ -43,35 +43,38 @@ class DragonPage extends StatelessWidget {
                             'spacex.other.share.capsule.people',
                             parameters: {'people': _dragon.crew.toString()},
                           )
-                        : context
-                            .translate('spacex.other.share.capsule.no_people'),
-                    'details': Url.shareDetails
+                        : context.translate(
+                            'spacex.other.share.capsule.no_people',
+                          ),
+                    'details': Url.shareDetails,
                   },
-                ),
+                )),
+                tooltip: context.translate('spacex.other.menu.share'),
               ),
-              tooltip: context.translate('spacex.other.menu.share'),
-            ),
-          ],
-          menuItemBuilder: (context) => [
-            for (final item in Menu.wikipedia)
-              PopupMenuItem(
-                value: item,
-                child: Text(context.translate(item)),
-              )
-          ],
-          onMenuItemSelected: (text) => context.openUrl(_dragon.url),
-        ),
-        SliverSafeArea(
-          top: false,
-          sliver: SliverToBoxAdapter(
-            child: RowLayout.cards(children: <Widget>[
-              _capsuleCard(context),
-              _specsCard(context),
-              _thrustersCard(context),
-            ]),
+            ],
+            menuItemBuilder: (context) => [
+                  for (final item in Menu.wikipedia)
+                    PopupMenuItem(
+                      value: item,
+                      child: Text(context.translate(item)),
+                    ),
+                ],
+            onMenuItemSelected: (text) => context.openUrl(_dragon.url),
           ),
-        ),
-      ]),
+          SliverSafeArea(
+            top: false,
+            sliver: SliverToBoxAdapter(
+              child: RowLayout.cards(
+                children: <Widget>[
+                  _capsuleCard(context),
+                  _specsCard(context),
+                  _thrustersCard(context),
+                ],
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 
@@ -80,22 +83,25 @@ class DragonPage extends StatelessWidget {
     return CardCell.body(
       context,
       title: context.translate('spacex.vehicle.capsule.description.title'),
-      child: RowLayout(children: <Widget>[
-        RowItem.text(
-          context.translate('spacex.vehicle.capsule.description.launch_maiden'),
-          _dragon.getFullFirstFlight,
-        ),
-        RowItem.text(
-          context.translate('spacex.vehicle.capsule.description.crew_capacity'),
-          _dragon.getCrew(context),
-        ),
-        RowItem.boolean(
-          context.translate('spacex.vehicle.capsule.description.active'),
-          _dragon.active,
-        ),
-        Separator.divider(),
-        ExpandText(_dragon.description)
-      ]),
+      child: RowLayout(
+        children: <Widget>[
+          RowItem.text(context.translate(
+            'spacex.vehicle.capsule.description.launch_maiden',
+          ), _dragon.getFullFirstFlight),
+          RowItem.text(
+            context.translate(
+              'spacex.vehicle.capsule.description.crew_capacity',
+            ),
+            _dragon.getCrew(context),
+          ),
+          RowItem.boolean(
+            context.translate('spacex.vehicle.capsule.description.active'),
+            _dragon.active,
+          ),
+          Separator.divider(),
+          ExpandText(_dragon.description),
+        ],
+      ),
     );
   }
 
@@ -104,37 +110,33 @@ class DragonPage extends StatelessWidget {
     return CardCell.body(
       context,
       title: context.translate('spacex.vehicle.capsule.specifications.title'),
-      child: RowLayout(children: <Widget>[
-        RowItem.text(
-          context.translate(
+      child: RowLayout(
+        children: <Widget>[
+          RowItem.text(context.translate(
             'spacex.vehicle.capsule.specifications.payload_launch',
-          ),
-          _dragon.getLaunchMass,
-        ),
-        RowItem.text(
-          context.translate(
+          ), _dragon.getLaunchMass),
+          RowItem.text(context.translate(
             'spacex.vehicle.capsule.specifications.payload_return',
+          ), _dragon.getReturnMass),
+          RowItem.boolean(
+            context.translate('spacex.vehicle.capsule.description.reusable'),
+            _dragon.reusable,
           ),
-          _dragon.getReturnMass,
-        ),
-        RowItem.boolean(
-          context.translate('spacex.vehicle.capsule.description.reusable'),
-          _dragon.reusable,
-        ),
-        Separator.divider(),
-        RowItem.text(
-          context.translate('spacex.vehicle.capsule.specifications.height'),
-          _dragon.getHeight,
-        ),
-        RowItem.text(
-          context.translate('spacex.vehicle.capsule.specifications.diameter'),
-          _dragon.getDiameter,
-        ),
-        RowItem.text(
-          context.translate('spacex.vehicle.capsule.specifications.mass'),
-          _dragon.getMass(context),
-        ),
-      ]),
+          Separator.divider(),
+          RowItem.text(
+            context.translate('spacex.vehicle.capsule.specifications.height'),
+            _dragon.getHeight,
+          ),
+          RowItem.text(
+            context.translate('spacex.vehicle.capsule.specifications.diameter'),
+            _dragon.getDiameter,
+          ),
+          RowItem.text(
+            context.translate('spacex.vehicle.capsule.specifications.mass'),
+            _dragon.getMass(context),
+          ),
+        ],
+      ),
     );
   }
 
@@ -143,44 +145,48 @@ class DragonPage extends StatelessWidget {
     return CardCell.body(
       context,
       title: context.translate('spacex.vehicle.capsule.thruster.title'),
-      child: RowLayout(children: <Widget>[
-        for (final thruster in _dragon.thrusters)
-          _getThruster(
-            context: context,
-            thruster: thruster,
-            isFirst: _dragon.thrusters.first == thruster,
-          ),
-      ]),
+      child: RowLayout(
+        children: <Widget>[
+          for (final thruster in _dragon.thrusters)
+            _getThruster(
+              context: context,
+              thruster: thruster,
+              isFirst: _dragon.thrusters.first == thruster,
+            ),
+        ],
+      ),
     );
   }
 
   Widget _getThruster({BuildContext context, Thruster thruster, bool isFirst}) {
-    return RowLayout(children: <Widget>[
-      if (!isFirst) Separator.divider(),
-      RowItem.text(
-        context.translate('spacex.vehicle.capsule.thruster.model'),
-        thruster.model,
-      ),
-      RowItem.text(
-        context.translate('spacex.vehicle.capsule.thruster.amount'),
-        thruster.getAmount,
-      ),
-      RowItem.text(
-        context.translate('spacex.vehicle.capsule.thruster.fuel'),
-        thruster.getFuel,
-      ),
-      RowItem.text(
-        context.translate('spacex.vehicle.capsule.thruster.oxidizer'),
-        thruster.getOxidizer,
-      ),
-      RowItem.text(
-        context.translate('spacex.vehicle.capsule.thruster.thrust'),
-        thruster.getThrust,
-      ),
-      RowItem.text(
-        context.translate('spacex.vehicle.capsule.thruster.isp'),
-        thruster.getIsp,
-      ),
-    ]);
+    return RowLayout(
+      children: <Widget>[
+        if (!isFirst) Separator.divider(),
+        RowItem.text(
+          context.translate('spacex.vehicle.capsule.thruster.model'),
+          thruster.model,
+        ),
+        RowItem.text(
+          context.translate('spacex.vehicle.capsule.thruster.amount'),
+          thruster.getAmount,
+        ),
+        RowItem.text(
+          context.translate('spacex.vehicle.capsule.thruster.fuel'),
+          thruster.getFuel,
+        ),
+        RowItem.text(
+          context.translate('spacex.vehicle.capsule.thruster.oxidizer'),
+          thruster.getOxidizer,
+        ),
+        RowItem.text(
+          context.translate('spacex.vehicle.capsule.thruster.thrust'),
+          thruster.getThrust,
+        ),
+        RowItem.text(
+          context.translate('spacex.vehicle.capsule.thruster.isp'),
+          thruster.getIsp,
+        ),
+      ],
+    );
   }
 }

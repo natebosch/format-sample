@@ -46,9 +46,9 @@ class ProfileListItemViewModel {
     this.onDelete,
     String name,
     String address,
-  })  : _name = name,
-        _address = address,
-        isClickable = _isDisconnected(connectionStatus);
+  }) : _name = name,
+       _address = address,
+       isClickable = _isDisconnected(connectionStatus);
 
   static bool _isDisconnected(ConnectionStatusEnum connectionStatus) {
     return connectionStatus == ConnectionStatusEnum.disconnected ||
@@ -74,40 +74,27 @@ class ProfileListItemViewModel {
       onConnect: !_isDisconnected(store.state.connectionState)
           ? null
           : () {
-              store.dispatch(
-                WakeUpEvent(
-                  profile: profile,
-                ),
-              );
+              store.dispatch(WakeUpEvent(profile: profile));
             },
       onDisconnect:
           store.state.connectionState != ConnectionStatusEnum.connected
               ? null
               : () {
-                  store.dispatch(
-                    SentToSleepEvent(
-                      profile: profile,
-                    ),
-                  );
+                  store.dispatch(SentToSleepEvent(profile: profile));
                 },
       onTap: () {
-        store.dispatch(
-          ProfileSelectedEvent(profile),
-        );
+        store.dispatch(ProfileSelectedEvent(profile));
       },
       onEdit: _isDisconnected(store.state.connectionState)
           ? () {
-              store.dispatch(NavigateToAction(
-                AppRoutes.profile,
-                arguments: profile,
-              ));
+              store.dispatch(
+                NavigateToAction(AppRoutes.profile, arguments: profile),
+              );
             }
           : null,
       onDelete: _isDisconnected(store.state.connectionState)
           ? () {
-              store.dispatch(
-                ProfileDeletedEvent(profile),
-              );
+              store.dispatch(ProfileDeletedEvent(profile));
             }
           : null,
     );

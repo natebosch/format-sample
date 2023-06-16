@@ -5,7 +5,7 @@ import 'package:built_redux/built_redux.dart';
 
 part 'app_actions.g.dart';
 
-abstract class AppActions extends ReduxActions{
+abstract class AppActions extends ReduxActions {
   DetailActions get detailActions;
   HomeActions get homeActions;
   LoginActions get loginActions;

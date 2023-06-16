@@ -10,18 +10,24 @@ import 'package:seeds/screens/wallet/components/transactions_list/interactor/vie
 import 'package:seeds/screens/wallet/components/transactions_list/interactor/viewmodels/transactions_list_events.dart';
 import 'package:seeds/screens/wallet/components/transactions_list/interactor/viewmodels/transactions_list_state.dart';
 
-class TransactionsListBloc extends Bloc<TransactionsListEvent, TransactionsListState> {
+class TransactionsListBloc
+    extends Bloc<TransactionsListEvent, TransactionsListState> {
   StreamSubscription<int>? _tickerSubscription;
   StreamSubscription? eventBusSubscription;
 
   TransactionsListBloc() : super(TransactionsListState.initial()) {
-    _tickerSubscription = Stream.periodic(const Duration(seconds: 20), (x) => x).listen((counter) {
-      add(OnTransactionDisplayTick(counter));
-    });
-    eventBusSubscription = eventBus.on<OnNewTransactionEventBus>().listen((event) async {
-      await Future.delayed(const Duration(milliseconds: 500)); // the blockchain needs 0.5 seconds to process
-      add(const OnLoadTransactionsList());
-    });
+    _tickerSubscription = Stream.periodic(const Duration(seconds: 20), (x) => x)
+        .listen((counter) {
+          add(OnTransactionDisplayTick(counter));
+        });
+    eventBusSubscription = eventBus.on<OnNewTransactionEventBus>().listen(
+      (event) async {
+        await Future.delayed(
+          const Duration(milliseconds: 500),
+        ); // the blockchain needs 0.5 seconds to process
+        add(const OnLoadTransactionsList());
+      },
+    );
   }
 
   @override
@@ -32,7 +38,9 @@ class TransactionsListBloc extends Bloc<TransactionsListEvent, TransactionsListS
   }
 
   @override
-  Stream<TransactionsListState> mapEventToState(TransactionsListEvent event) async* {
+  Stream<TransactionsListState> mapEventToState(
+    TransactionsListEvent event,
+  ) async* {
     if (event is OnLoadTransactionsList) {
       yield state.copyWith(pageState: PageState.loading);
 
@@ -42,7 +50,9 @@ class TransactionsListBloc extends Bloc<TransactionsListEvent, TransactionsListS
     } else if (event is OnTransactionDisplayTick) {
       yield state.copyWith(counter: event.count);
     } else if (event is OnTransactionRowTapped) {
-      yield state.copyWith(pageCommand: ShowTransactionDetails(event.transaction));
+      yield state.copyWith(
+        pageCommand: ShowTransactionDetails(event.transaction),
+      );
     } else if (event is ClearTransactionListPageComand) {
       yield state.copyWith();
     }

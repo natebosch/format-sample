@@ -4,11 +4,7 @@ import 'package:provider/provider.dart';
 import 'theme_service.dart';
 
 class ThemeInjector extends StatelessWidget {
-  const ThemeInjector({
-    super.key,
-    this.themeService,
-    required this.child,
-  });
+  const ThemeInjector({super.key, this.themeService, required this.child});
 
   final ThemeService? themeService;
   final Widget child;

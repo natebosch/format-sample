@@ -11,25 +11,26 @@ part of 'tracking_task.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods',
+);
 
 /// @nodoc
 class _$TrackingTaskStateTearOff {
   const _$TrackingTaskStateTearOff();
 
-  TrackingTaskStateLoading loading(
-      {required List<TrackingInfo> trackingInfoList}) {
-    return TrackingTaskStateLoading(
-      trackingInfoList: trackingInfoList,
-    );
+  TrackingTaskStateLoading loading({
+    required List<TrackingInfo> trackingInfoList,
+  }) {
+    return TrackingTaskStateLoading(trackingInfoList: trackingInfoList);
   }
 
-  TrackingTaskStateLoaded loaded(
-      {required List<TrackingTaskResult> result,
-      required List<TrackingInfo> trackingInfoList,
-      required List<TrackingResponseInfo> responseInfoList,
-      List<TrackNumberService>? unsupportedServices,
-      List<TrackNumberService>? disabledServices}) {
+  TrackingTaskStateLoaded loaded({
+    required List<TrackingTaskResult> result,
+    required List<TrackingInfo> trackingInfoList,
+    required List<TrackingResponseInfo> responseInfoList,
+    List<TrackNumberService>? unsupportedServices,
+    List<TrackNumberService>? disabledServices,
+  }) {
     return TrackingTaskStateLoaded(
       result: result,
       trackingInfoList: trackingInfoList,
@@ -51,58 +52,55 @@ mixin _$TrackingTaskState {
   TResult when<TResult extends Object?>({
     required TResult Function(List<TrackingInfo> trackingInfoList) loading,
     required TResult Function(
-            List<TrackingTaskResult> result,
-            List<TrackingInfo> trackingInfoList,
-            List<TrackingResponseInfo> responseInfoList,
-            List<TrackNumberService>? unsupportedServices,
-            List<TrackNumberService>? disabledServices)
-        loaded,
-  }) =>
-      throw _privateConstructorUsedError;
+      List<TrackingTaskResult> result,
+      List<TrackingInfo> trackingInfoList,
+      List<TrackingResponseInfo> responseInfoList,
+      List<TrackNumberService>? unsupportedServices,
+      List<TrackNumberService>? disabledServices,
+    )
+    loaded,
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(List<TrackingInfo> trackingInfoList)? loading,
     TResult Function(
-            List<TrackingTaskResult> result,
-            List<TrackingInfo> trackingInfoList,
-            List<TrackingResponseInfo> responseInfoList,
-            List<TrackNumberService>? unsupportedServices,
-            List<TrackNumberService>? disabledServices)?
-        loaded,
-  }) =>
-      throw _privateConstructorUsedError;
+      List<TrackingTaskResult> result,
+      List<TrackingInfo> trackingInfoList,
+      List<TrackingResponseInfo> responseInfoList,
+      List<TrackNumberService>? unsupportedServices,
+      List<TrackNumberService>? disabledServices,
+    )?
+    loaded,
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(List<TrackingInfo> trackingInfoList)? loading,
     TResult Function(
-            List<TrackingTaskResult> result,
-            List<TrackingInfo> trackingInfoList,
-            List<TrackingResponseInfo> responseInfoList,
-            List<TrackNumberService>? unsupportedServices,
-            List<TrackNumberService>? disabledServices)?
-        loaded,
+      List<TrackingTaskResult> result,
+      List<TrackingInfo> trackingInfoList,
+      List<TrackingResponseInfo> responseInfoList,
+      List<TrackNumberService>? unsupportedServices,
+      List<TrackNumberService>? disabledServices,
+    )?
+    loaded,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(TrackingTaskStateLoading value) loading,
     required TResult Function(TrackingTaskStateLoaded value) loaded,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(TrackingTaskStateLoading value)? loading,
     TResult Function(TrackingTaskStateLoaded value)? loaded,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(TrackingTaskStateLoading value)? loading,
     TResult Function(TrackingTaskStateLoaded value)? loaded,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $TrackingTaskStateCopyWith<TrackingTaskState> get copyWith =>
@@ -112,8 +110,9 @@ mixin _$TrackingTaskState {
 /// @nodoc
 abstract class $TrackingTaskStateCopyWith<$Res> {
   factory $TrackingTaskStateCopyWith(
-          TrackingTaskState value, $Res Function(TrackingTaskState) then) =
-      _$TrackingTaskStateCopyWithImpl<$Res>;
+    TrackingTaskState value,
+    $Res Function(TrackingTaskState) then,
+  ) = _$TrackingTaskStateCopyWithImpl<$Res>;
   $Res call({List<TrackingInfo> trackingInfoList});
 }
 
@@ -127,14 +126,12 @@ class _$TrackingTaskStateCopyWithImpl<$Res>
   final $Res Function(TrackingTaskState) _then;
 
   @override
-  $Res call({
-    Object? trackingInfoList = freezed,
-  }) {
+  $Res call({Object? trackingInfoList = freezed}) {
     return _then(_value.copyWith(
       trackingInfoList: trackingInfoList == freezed
           ? _value.trackingInfoList
           : trackingInfoList // ignore: cast_nullable_to_non_nullable
-              as List<TrackingInfo>,
+                as List<TrackingInfo>,
     ));
   }
 }
@@ -142,9 +139,10 @@ class _$TrackingTaskStateCopyWithImpl<$Res>
 /// @nodoc
 abstract class $TrackingTaskStateLoadingCopyWith<$Res>
     implements $TrackingTaskStateCopyWith<$Res> {
-  factory $TrackingTaskStateLoadingCopyWith(TrackingTaskStateLoading value,
-          $Res Function(TrackingTaskStateLoading) then) =
-      _$TrackingTaskStateLoadingCopyWithImpl<$Res>;
+  factory $TrackingTaskStateLoadingCopyWith(
+    TrackingTaskStateLoading value,
+    $Res Function(TrackingTaskStateLoading) then,
+  ) = _$TrackingTaskStateLoadingCopyWithImpl<$Res>;
   @override
   $Res call({List<TrackingInfo> trackingInfoList});
 }
@@ -153,23 +151,22 @@ abstract class $TrackingTaskStateLoadingCopyWith<$Res>
 class _$TrackingTaskStateLoadingCopyWithImpl<$Res>
     extends _$TrackingTaskStateCopyWithImpl<$Res>
     implements $TrackingTaskStateLoadingCopyWith<$Res> {
-  _$TrackingTaskStateLoadingCopyWithImpl(TrackingTaskStateLoading _value,
-      $Res Function(TrackingTaskStateLoading) _then)
-      : super(_value, (v) => _then(v as TrackingTaskStateLoading));
+  _$TrackingTaskStateLoadingCopyWithImpl(
+    TrackingTaskStateLoading _value,
+    $Res Function(TrackingTaskStateLoading) _then,
+  ) : super(_value, (v) => _then(v as TrackingTaskStateLoading));
 
   @override
   TrackingTaskStateLoading get _value =>
       super._value as TrackingTaskStateLoading;
 
   @override
-  $Res call({
-    Object? trackingInfoList = freezed,
-  }) {
+  $Res call({Object? trackingInfoList = freezed}) {
     return _then(TrackingTaskStateLoading(
       trackingInfoList: trackingInfoList == freezed
           ? _value.trackingInfoList
           : trackingInfoList // ignore: cast_nullable_to_non_nullable
-              as List<TrackingInfo>,
+                as List<TrackingInfo>,
     ));
   }
 }
@@ -202,8 +199,10 @@ class _$TrackingTaskStateLoading
     return identical(this, other) ||
         (other is TrackingTaskStateLoading &&
             (identical(other.trackingInfoList, trackingInfoList) ||
-                const DeepCollectionEquality()
-                    .equals(other.trackingInfoList, trackingInfoList)));
+                const DeepCollectionEquality().equals(
+                  other.trackingInfoList,
+                  trackingInfoList,
+                )));
   }
 
   @override
@@ -213,21 +212,23 @@ class _$TrackingTaskStateLoading
 
   @JsonKey(ignore: true)
   @override
-  $TrackingTaskStateLoadingCopyWith<TrackingTaskStateLoading> get copyWith =>
-      _$TrackingTaskStateLoadingCopyWithImpl<TrackingTaskStateLoading>(
-          this, _$identity);
+  $TrackingTaskStateLoadingCopyWith<TrackingTaskStateLoading>
+  get copyWith => _$TrackingTaskStateLoadingCopyWithImpl<
+    TrackingTaskStateLoading
+  >(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(List<TrackingInfo> trackingInfoList) loading,
     required TResult Function(
-            List<TrackingTaskResult> result,
-            List<TrackingInfo> trackingInfoList,
-            List<TrackingResponseInfo> responseInfoList,
-            List<TrackNumberService>? unsupportedServices,
-            List<TrackNumberService>? disabledServices)
-        loaded,
+      List<TrackingTaskResult> result,
+      List<TrackingInfo> trackingInfoList,
+      List<TrackingResponseInfo> responseInfoList,
+      List<TrackNumberService>? unsupportedServices,
+      List<TrackNumberService>? disabledServices,
+    )
+    loaded,
   }) {
     return loading(trackingInfoList);
   }
@@ -237,12 +238,13 @@ class _$TrackingTaskStateLoading
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(List<TrackingInfo> trackingInfoList)? loading,
     TResult Function(
-            List<TrackingTaskResult> result,
-            List<TrackingInfo> trackingInfoList,
-            List<TrackingResponseInfo> responseInfoList,
-            List<TrackNumberService>? unsupportedServices,
-            List<TrackNumberService>? disabledServices)?
-        loaded,
+      List<TrackingTaskResult> result,
+      List<TrackingInfo> trackingInfoList,
+      List<TrackingResponseInfo> responseInfoList,
+      List<TrackNumberService>? unsupportedServices,
+      List<TrackNumberService>? disabledServices,
+    )?
+    loaded,
   }) {
     return loading?.call(trackingInfoList);
   }
@@ -252,12 +254,13 @@ class _$TrackingTaskStateLoading
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(List<TrackingInfo> trackingInfoList)? loading,
     TResult Function(
-            List<TrackingTaskResult> result,
-            List<TrackingInfo> trackingInfoList,
-            List<TrackingResponseInfo> responseInfoList,
-            List<TrackNumberService>? unsupportedServices,
-            List<TrackNumberService>? disabledServices)?
-        loaded,
+      List<TrackingTaskResult> result,
+      List<TrackingInfo> trackingInfoList,
+      List<TrackingResponseInfo> responseInfoList,
+      List<TrackNumberService>? unsupportedServices,
+      List<TrackNumberService>? disabledServices,
+    )?
+    loaded,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -299,9 +302,9 @@ class _$TrackingTaskStateLoading
 }
 
 abstract class TrackingTaskStateLoading implements TrackingTaskState {
-  const factory TrackingTaskStateLoading(
-          {required List<TrackingInfo> trackingInfoList}) =
-      _$TrackingTaskStateLoading;
+  const factory TrackingTaskStateLoading({
+    required List<TrackingInfo> trackingInfoList,
+  }) = _$TrackingTaskStateLoading;
 
   @override
   List<TrackingInfo> get trackingInfoList => throw _privateConstructorUsedError;
@@ -314,25 +317,28 @@ abstract class TrackingTaskStateLoading implements TrackingTaskState {
 /// @nodoc
 abstract class $TrackingTaskStateLoadedCopyWith<$Res>
     implements $TrackingTaskStateCopyWith<$Res> {
-  factory $TrackingTaskStateLoadedCopyWith(TrackingTaskStateLoaded value,
-          $Res Function(TrackingTaskStateLoaded) then) =
-      _$TrackingTaskStateLoadedCopyWithImpl<$Res>;
+  factory $TrackingTaskStateLoadedCopyWith(
+    TrackingTaskStateLoaded value,
+    $Res Function(TrackingTaskStateLoaded) then,
+  ) = _$TrackingTaskStateLoadedCopyWithImpl<$Res>;
   @override
-  $Res call(
-      {List<TrackingTaskResult> result,
-      List<TrackingInfo> trackingInfoList,
-      List<TrackingResponseInfo> responseInfoList,
-      List<TrackNumberService>? unsupportedServices,
-      List<TrackNumberService>? disabledServices});
+  $Res call({
+    List<TrackingTaskResult> result,
+    List<TrackingInfo> trackingInfoList,
+    List<TrackingResponseInfo> responseInfoList,
+    List<TrackNumberService>? unsupportedServices,
+    List<TrackNumberService>? disabledServices,
+  });
 }
 
 /// @nodoc
 class _$TrackingTaskStateLoadedCopyWithImpl<$Res>
     extends _$TrackingTaskStateCopyWithImpl<$Res>
     implements $TrackingTaskStateLoadedCopyWith<$Res> {
-  _$TrackingTaskStateLoadedCopyWithImpl(TrackingTaskStateLoaded _value,
-      $Res Function(TrackingTaskStateLoaded) _then)
-      : super(_value, (v) => _then(v as TrackingTaskStateLoaded));
+  _$TrackingTaskStateLoadedCopyWithImpl(
+    TrackingTaskStateLoaded _value,
+    $Res Function(TrackingTaskStateLoaded) _then,
+  ) : super(_value, (v) => _then(v as TrackingTaskStateLoaded));
 
   @override
   TrackingTaskStateLoaded get _value => super._value as TrackingTaskStateLoaded;
@@ -349,23 +355,23 @@ class _$TrackingTaskStateLoadedCopyWithImpl<$Res>
       result: result == freezed
           ? _value.result
           : result // ignore: cast_nullable_to_non_nullable
-              as List<TrackingTaskResult>,
+                as List<TrackingTaskResult>,
       trackingInfoList: trackingInfoList == freezed
           ? _value.trackingInfoList
           : trackingInfoList // ignore: cast_nullable_to_non_nullable
-              as List<TrackingInfo>,
+                as List<TrackingInfo>,
       responseInfoList: responseInfoList == freezed
           ? _value.responseInfoList
           : responseInfoList // ignore: cast_nullable_to_non_nullable
-              as List<TrackingResponseInfo>,
+                as List<TrackingResponseInfo>,
       unsupportedServices: unsupportedServices == freezed
           ? _value.unsupportedServices
           : unsupportedServices // ignore: cast_nullable_to_non_nullable
-              as List<TrackNumberService>?,
+                as List<TrackNumberService>?,
       disabledServices: disabledServices == freezed
           ? _value.disabledServices
           : disabledServices // ignore: cast_nullable_to_non_nullable
-              as List<TrackNumberService>?,
+                as List<TrackNumberService>?,
     ));
   }
 }
@@ -375,12 +381,13 @@ class _$TrackingTaskStateLoadedCopyWithImpl<$Res>
 class _$TrackingTaskStateLoaded
     with DiagnosticableTreeMixin
     implements TrackingTaskStateLoaded {
-  const _$TrackingTaskStateLoaded(
-      {required this.result,
-      required this.trackingInfoList,
-      required this.responseInfoList,
-      this.unsupportedServices,
-      this.disabledServices});
+  const _$TrackingTaskStateLoaded({
+    required this.result,
+    required this.trackingInfoList,
+    required this.responseInfoList,
+    this.unsupportedServices,
+    this.disabledServices,
+  });
 
   @override
   final List<TrackingTaskResult> result;
@@ -423,17 +430,25 @@ class _$TrackingTaskStateLoaded
             (identical(other.result, result) ||
                 const DeepCollectionEquality().equals(other.result, result)) &&
             (identical(other.trackingInfoList, trackingInfoList) ||
-                const DeepCollectionEquality()
-                    .equals(other.trackingInfoList, trackingInfoList)) &&
+                const DeepCollectionEquality().equals(
+                  other.trackingInfoList,
+                  trackingInfoList,
+                )) &&
             (identical(other.responseInfoList, responseInfoList) ||
-                const DeepCollectionEquality()
-                    .equals(other.responseInfoList, responseInfoList)) &&
+                const DeepCollectionEquality().equals(
+                  other.responseInfoList,
+                  responseInfoList,
+                )) &&
             (identical(other.unsupportedServices, unsupportedServices) ||
-                const DeepCollectionEquality()
-                    .equals(other.unsupportedServices, unsupportedServices)) &&
+                const DeepCollectionEquality().equals(
+                  other.unsupportedServices,
+                  unsupportedServices,
+                )) &&
             (identical(other.disabledServices, disabledServices) ||
-                const DeepCollectionEquality()
-                    .equals(other.disabledServices, disabledServices)));
+                const DeepCollectionEquality().equals(
+                  other.disabledServices,
+                  disabledServices,
+                )));
   }
 
   @override
@@ -447,24 +462,31 @@ class _$TrackingTaskStateLoaded
 
   @JsonKey(ignore: true)
   @override
-  $TrackingTaskStateLoadedCopyWith<TrackingTaskStateLoaded> get copyWith =>
-      _$TrackingTaskStateLoadedCopyWithImpl<TrackingTaskStateLoaded>(
-          this, _$identity);
+  $TrackingTaskStateLoadedCopyWith<TrackingTaskStateLoaded>
+  get copyWith => _$TrackingTaskStateLoadedCopyWithImpl<
+    TrackingTaskStateLoaded
+  >(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(List<TrackingInfo> trackingInfoList) loading,
     required TResult Function(
-            List<TrackingTaskResult> result,
-            List<TrackingInfo> trackingInfoList,
-            List<TrackingResponseInfo> responseInfoList,
-            List<TrackNumberService>? unsupportedServices,
-            List<TrackNumberService>? disabledServices)
-        loaded,
+      List<TrackingTaskResult> result,
+      List<TrackingInfo> trackingInfoList,
+      List<TrackingResponseInfo> responseInfoList,
+      List<TrackNumberService>? unsupportedServices,
+      List<TrackNumberService>? disabledServices,
+    )
+    loaded,
   }) {
-    return loaded(result, trackingInfoList, responseInfoList,
-        unsupportedServices, disabledServices);
+    return loaded(
+      result,
+      trackingInfoList,
+      responseInfoList,
+      unsupportedServices,
+      disabledServices,
+    );
   }
 
   @override
@@ -472,15 +494,21 @@ class _$TrackingTaskStateLoaded
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(List<TrackingInfo> trackingInfoList)? loading,
     TResult Function(
-            List<TrackingTaskResult> result,
-            List<TrackingInfo> trackingInfoList,
-            List<TrackingResponseInfo> responseInfoList,
-            List<TrackNumberService>? unsupportedServices,
-            List<TrackNumberService>? disabledServices)?
-        loaded,
+      List<TrackingTaskResult> result,
+      List<TrackingInfo> trackingInfoList,
+      List<TrackingResponseInfo> responseInfoList,
+      List<TrackNumberService>? unsupportedServices,
+      List<TrackNumberService>? disabledServices,
+    )?
+    loaded,
   }) {
-    return loaded?.call(result, trackingInfoList, responseInfoList,
-        unsupportedServices, disabledServices);
+    return loaded?.call(
+      result,
+      trackingInfoList,
+      responseInfoList,
+      unsupportedServices,
+      disabledServices,
+    );
   }
 
   @override
@@ -488,17 +516,23 @@ class _$TrackingTaskStateLoaded
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(List<TrackingInfo> trackingInfoList)? loading,
     TResult Function(
-            List<TrackingTaskResult> result,
-            List<TrackingInfo> trackingInfoList,
-            List<TrackingResponseInfo> responseInfoList,
-            List<TrackNumberService>? unsupportedServices,
-            List<TrackNumberService>? disabledServices)?
-        loaded,
+      List<TrackingTaskResult> result,
+      List<TrackingInfo> trackingInfoList,
+      List<TrackingResponseInfo> responseInfoList,
+      List<TrackNumberService>? unsupportedServices,
+      List<TrackNumberService>? disabledServices,
+    )?
+    loaded,
     required TResult orElse(),
   }) {
     if (loaded != null) {
-      return loaded(result, trackingInfoList, responseInfoList,
-          unsupportedServices, disabledServices);
+      return loaded(
+        result,
+        trackingInfoList,
+        responseInfoList,
+        unsupportedServices,
+        disabledServices,
+      );
     }
     return orElse();
   }
@@ -536,12 +570,13 @@ class _$TrackingTaskStateLoaded
 }
 
 abstract class TrackingTaskStateLoaded implements TrackingTaskState {
-  const factory TrackingTaskStateLoaded(
-      {required List<TrackingTaskResult> result,
-      required List<TrackingInfo> trackingInfoList,
-      required List<TrackingResponseInfo> responseInfoList,
-      List<TrackNumberService>? unsupportedServices,
-      List<TrackNumberService>? disabledServices}) = _$TrackingTaskStateLoaded;
+  const factory TrackingTaskStateLoaded({
+    required List<TrackingTaskResult> result,
+    required List<TrackingInfo> trackingInfoList,
+    required List<TrackingResponseInfo> responseInfoList,
+    List<TrackNumberService>? unsupportedServices,
+    List<TrackNumberService>? disabledServices,
+  }) = _$TrackingTaskStateLoaded;
 
   List<TrackingTaskResult> get result => throw _privateConstructorUsedError;
   @override
@@ -568,11 +603,12 @@ abstract class TrackingTaskStateLoaded implements TrackingTaskState {
 class _$TrackingTaskResultTearOff {
   const _$TrackingTaskResultTearOff();
 
-  _TrackingTaskResult call(
-      {required TrackNumberService trackService,
-      required ShipmentInfo info,
-      required List<ShipmentActivityInfo> activity,
-      List<String>? alternateTracks}) {
+  _TrackingTaskResult call({
+    required TrackNumberService trackService,
+    required ShipmentInfo info,
+    required List<ShipmentActivityInfo> activity,
+    List<String>? alternateTracks,
+  }) {
     return _TrackingTaskResult(
       trackService: trackService,
       info: info,
@@ -600,13 +636,15 @@ mixin _$TrackingTaskResult {
 /// @nodoc
 abstract class $TrackingTaskResultCopyWith<$Res> {
   factory $TrackingTaskResultCopyWith(
-          TrackingTaskResult value, $Res Function(TrackingTaskResult) then) =
-      _$TrackingTaskResultCopyWithImpl<$Res>;
-  $Res call(
-      {TrackNumberService trackService,
-      ShipmentInfo info,
-      List<ShipmentActivityInfo> activity,
-      List<String>? alternateTracks});
+    TrackingTaskResult value,
+    $Res Function(TrackingTaskResult) then,
+  ) = _$TrackingTaskResultCopyWithImpl<$Res>;
+  $Res call({
+    TrackNumberService trackService,
+    ShipmentInfo info,
+    List<ShipmentActivityInfo> activity,
+    List<String>? alternateTracks,
+  });
 }
 
 /// @nodoc
@@ -629,19 +667,19 @@ class _$TrackingTaskResultCopyWithImpl<$Res>
       trackService: trackService == freezed
           ? _value.trackService
           : trackService // ignore: cast_nullable_to_non_nullable
-              as TrackNumberService,
+                as TrackNumberService,
       info: info == freezed
           ? _value.info
           : info // ignore: cast_nullable_to_non_nullable
-              as ShipmentInfo,
+                as ShipmentInfo,
       activity: activity == freezed
           ? _value.activity
           : activity // ignore: cast_nullable_to_non_nullable
-              as List<ShipmentActivityInfo>,
+                as List<ShipmentActivityInfo>,
       alternateTracks: alternateTracks == freezed
           ? _value.alternateTracks
           : alternateTracks // ignore: cast_nullable_to_non_nullable
-              as List<String>?,
+                as List<String>?,
     ));
   }
 }
@@ -650,14 +688,16 @@ class _$TrackingTaskResultCopyWithImpl<$Res>
 abstract class _$TrackingTaskResultCopyWith<$Res>
     implements $TrackingTaskResultCopyWith<$Res> {
   factory _$TrackingTaskResultCopyWith(
-          _TrackingTaskResult value, $Res Function(_TrackingTaskResult) then) =
-      __$TrackingTaskResultCopyWithImpl<$Res>;
+    _TrackingTaskResult value,
+    $Res Function(_TrackingTaskResult) then,
+  ) = __$TrackingTaskResultCopyWithImpl<$Res>;
   @override
-  $Res call(
-      {TrackNumberService trackService,
-      ShipmentInfo info,
-      List<ShipmentActivityInfo> activity,
-      List<String>? alternateTracks});
+  $Res call({
+    TrackNumberService trackService,
+    ShipmentInfo info,
+    List<ShipmentActivityInfo> activity,
+    List<String>? alternateTracks,
+  });
 }
 
 /// @nodoc
@@ -665,8 +705,9 @@ class __$TrackingTaskResultCopyWithImpl<$Res>
     extends _$TrackingTaskResultCopyWithImpl<$Res>
     implements _$TrackingTaskResultCopyWith<$Res> {
   __$TrackingTaskResultCopyWithImpl(
-      _TrackingTaskResult _value, $Res Function(_TrackingTaskResult) _then)
-      : super(_value, (v) => _then(v as _TrackingTaskResult));
+    _TrackingTaskResult _value,
+    $Res Function(_TrackingTaskResult) _then,
+  ) : super(_value, (v) => _then(v as _TrackingTaskResult));
 
   @override
   _TrackingTaskResult get _value => super._value as _TrackingTaskResult;
@@ -682,19 +723,19 @@ class __$TrackingTaskResultCopyWithImpl<$Res>
       trackService: trackService == freezed
           ? _value.trackService
           : trackService // ignore: cast_nullable_to_non_nullable
-              as TrackNumberService,
+                as TrackNumberService,
       info: info == freezed
           ? _value.info
           : info // ignore: cast_nullable_to_non_nullable
-              as ShipmentInfo,
+                as ShipmentInfo,
       activity: activity == freezed
           ? _value.activity
           : activity // ignore: cast_nullable_to_non_nullable
-              as List<ShipmentActivityInfo>,
+                as List<ShipmentActivityInfo>,
       alternateTracks: alternateTracks == freezed
           ? _value.alternateTracks
           : alternateTracks // ignore: cast_nullable_to_non_nullable
-              as List<String>?,
+                as List<String>?,
     ));
   }
 }
@@ -704,11 +745,12 @@ class __$TrackingTaskResultCopyWithImpl<$Res>
 class _$_TrackingTaskResult
     with DiagnosticableTreeMixin
     implements _TrackingTaskResult {
-  const _$_TrackingTaskResult(
-      {required this.trackService,
-      required this.info,
-      required this.activity,
-      this.alternateTracks});
+  const _$_TrackingTaskResult({
+    required this.trackService,
+    required this.info,
+    required this.activity,
+    this.alternateTracks,
+  });
 
   @override
   final TrackNumberService trackService;
@@ -740,16 +782,22 @@ class _$_TrackingTaskResult
     return identical(this, other) ||
         (other is _TrackingTaskResult &&
             (identical(other.trackService, trackService) ||
-                const DeepCollectionEquality()
-                    .equals(other.trackService, trackService)) &&
+                const DeepCollectionEquality().equals(
+                  other.trackService,
+                  trackService,
+                )) &&
             (identical(other.info, info) ||
                 const DeepCollectionEquality().equals(other.info, info)) &&
             (identical(other.activity, activity) ||
-                const DeepCollectionEquality()
-                    .equals(other.activity, activity)) &&
+                const DeepCollectionEquality().equals(
+                  other.activity,
+                  activity,
+                )) &&
             (identical(other.alternateTracks, alternateTracks) ||
-                const DeepCollectionEquality()
-                    .equals(other.alternateTracks, alternateTracks)));
+                const DeepCollectionEquality().equals(
+                  other.alternateTracks,
+                  alternateTracks,
+                )));
   }
 
   @override
@@ -762,16 +810,20 @@ class _$_TrackingTaskResult
 
   @JsonKey(ignore: true)
   @override
-  _$TrackingTaskResultCopyWith<_TrackingTaskResult> get copyWith =>
-      __$TrackingTaskResultCopyWithImpl<_TrackingTaskResult>(this, _$identity);
+  _$TrackingTaskResultCopyWith<_TrackingTaskResult>
+  get copyWith => __$TrackingTaskResultCopyWithImpl<_TrackingTaskResult>(
+    this,
+    _$identity,
+  );
 }
 
 abstract class _TrackingTaskResult implements TrackingTaskResult {
-  const factory _TrackingTaskResult(
-      {required TrackNumberService trackService,
-      required ShipmentInfo info,
-      required List<ShipmentActivityInfo> activity,
-      List<String>? alternateTracks}) = _$_TrackingTaskResult;
+  const factory _TrackingTaskResult({
+    required TrackNumberService trackService,
+    required ShipmentInfo info,
+    required List<ShipmentActivityInfo> activity,
+    List<String>? alternateTracks,
+  }) = _$_TrackingTaskResult;
 
   @override
   TrackNumberService get trackService => throw _privateConstructorUsedError;
@@ -792,9 +844,7 @@ class _$TrackingTaskParamsTearOff {
   const _$TrackingTaskParamsTearOff();
 
   _TrackingTaskParams call({Locale? locale}) {
-    return _TrackingTaskParams(
-      locale: locale,
-    );
+    return _TrackingTaskParams(locale: locale);
   }
 }
 
@@ -813,8 +863,9 @@ mixin _$TrackingTaskParams {
 /// @nodoc
 abstract class $TrackingTaskParamsCopyWith<$Res> {
   factory $TrackingTaskParamsCopyWith(
-          TrackingTaskParams value, $Res Function(TrackingTaskParams) then) =
-      _$TrackingTaskParamsCopyWithImpl<$Res>;
+    TrackingTaskParams value,
+    $Res Function(TrackingTaskParams) then,
+  ) = _$TrackingTaskParamsCopyWithImpl<$Res>;
   $Res call({Locale? locale});
 
   $LocaleCopyWith<$Res>? get locale;
@@ -830,14 +881,12 @@ class _$TrackingTaskParamsCopyWithImpl<$Res>
   final $Res Function(TrackingTaskParams) _then;
 
   @override
-  $Res call({
-    Object? locale = freezed,
-  }) {
+  $Res call({Object? locale = freezed}) {
     return _then(_value.copyWith(
       locale: locale == freezed
           ? _value.locale
           : locale // ignore: cast_nullable_to_non_nullable
-              as Locale?,
+                as Locale?,
     ));
   }
 
@@ -857,8 +906,9 @@ class _$TrackingTaskParamsCopyWithImpl<$Res>
 abstract class _$TrackingTaskParamsCopyWith<$Res>
     implements $TrackingTaskParamsCopyWith<$Res> {
   factory _$TrackingTaskParamsCopyWith(
-          _TrackingTaskParams value, $Res Function(_TrackingTaskParams) then) =
-      __$TrackingTaskParamsCopyWithImpl<$Res>;
+    _TrackingTaskParams value,
+    $Res Function(_TrackingTaskParams) then,
+  ) = __$TrackingTaskParamsCopyWithImpl<$Res>;
   @override
   $Res call({Locale? locale});
 
@@ -871,21 +921,20 @@ class __$TrackingTaskParamsCopyWithImpl<$Res>
     extends _$TrackingTaskParamsCopyWithImpl<$Res>
     implements _$TrackingTaskParamsCopyWith<$Res> {
   __$TrackingTaskParamsCopyWithImpl(
-      _TrackingTaskParams _value, $Res Function(_TrackingTaskParams) _then)
-      : super(_value, (v) => _then(v as _TrackingTaskParams));
+    _TrackingTaskParams _value,
+    $Res Function(_TrackingTaskParams) _then,
+  ) : super(_value, (v) => _then(v as _TrackingTaskParams));
 
   @override
   _TrackingTaskParams get _value => super._value as _TrackingTaskParams;
 
   @override
-  $Res call({
-    Object? locale = freezed,
-  }) {
+  $Res call({Object? locale = freezed}) {
     return _then(_TrackingTaskParams(
       locale: locale == freezed
           ? _value.locale
           : locale // ignore: cast_nullable_to_non_nullable
-              as Locale?,
+                as Locale?,
     ));
   }
 }
@@ -927,8 +976,11 @@ class _$_TrackingTaskParams
 
   @JsonKey(ignore: true)
   @override
-  _$TrackingTaskParamsCopyWith<_TrackingTaskParams> get copyWith =>
-      __$TrackingTaskParamsCopyWithImpl<_TrackingTaskParams>(this, _$identity);
+  _$TrackingTaskParamsCopyWith<_TrackingTaskParams>
+  get copyWith => __$TrackingTaskParamsCopyWithImpl<_TrackingTaskParams>(
+    this,
+    _$identity,
+  );
 }
 
 abstract class _TrackingTaskParams implements TrackingTaskParams {
@@ -946,10 +998,11 @@ abstract class _TrackingTaskParams implements TrackingTaskParams {
 class _$_FailedRequestTearOff {
   const _$_FailedRequestTearOff();
 
-  _FailedRequestData call(
-      {required TransactionId id,
-      required TrackNumberService trackService,
-      required _FailedRequestReason reason}) {
+  _FailedRequestData call({
+    required TransactionId id,
+    required TrackNumberService trackService,
+    required _FailedRequestReason reason,
+  }) {
     return _FailedRequestData(
       id: id,
       trackService: trackService,
@@ -975,12 +1028,14 @@ mixin _$_FailedRequest {
 /// @nodoc
 abstract class _$FailedRequestCopyWith<$Res> {
   factory _$FailedRequestCopyWith(
-          _FailedRequest value, $Res Function(_FailedRequest) then) =
-      __$FailedRequestCopyWithImpl<$Res>;
-  $Res call(
-      {TransactionId id,
-      TrackNumberService trackService,
-      _FailedRequestReason reason});
+    _FailedRequest value,
+    $Res Function(_FailedRequest) then,
+  ) = __$FailedRequestCopyWithImpl<$Res>;
+  $Res call({
+    TransactionId id,
+    TrackNumberService trackService,
+    _FailedRequestReason reason,
+  });
 
   _$FailedRequestReasonCopyWith<$Res> get reason;
 }
@@ -1004,15 +1059,15 @@ class __$FailedRequestCopyWithImpl<$Res>
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as TransactionId,
+                as TransactionId,
       trackService: trackService == freezed
           ? _value.trackService
           : trackService // ignore: cast_nullable_to_non_nullable
-              as TrackNumberService,
+                as TrackNumberService,
       reason: reason == freezed
           ? _value.reason
           : reason // ignore: cast_nullable_to_non_nullable
-              as _FailedRequestReason,
+                as _FailedRequestReason,
     ));
   }
 
@@ -1028,13 +1083,15 @@ class __$FailedRequestCopyWithImpl<$Res>
 abstract class _$FailedRequestDataCopyWith<$Res>
     implements _$FailedRequestCopyWith<$Res> {
   factory _$FailedRequestDataCopyWith(
-          _FailedRequestData value, $Res Function(_FailedRequestData) then) =
-      __$FailedRequestDataCopyWithImpl<$Res>;
+    _FailedRequestData value,
+    $Res Function(_FailedRequestData) then,
+  ) = __$FailedRequestDataCopyWithImpl<$Res>;
   @override
-  $Res call(
-      {TransactionId id,
-      TrackNumberService trackService,
-      _FailedRequestReason reason});
+  $Res call({
+    TransactionId id,
+    TrackNumberService trackService,
+    _FailedRequestReason reason,
+  });
 
   @override
   _$FailedRequestReasonCopyWith<$Res> get reason;
@@ -1045,8 +1102,9 @@ class __$FailedRequestDataCopyWithImpl<$Res>
     extends __$FailedRequestCopyWithImpl<$Res>
     implements _$FailedRequestDataCopyWith<$Res> {
   __$FailedRequestDataCopyWithImpl(
-      _FailedRequestData _value, $Res Function(_FailedRequestData) _then)
-      : super(_value, (v) => _then(v as _FailedRequestData));
+    _FailedRequestData _value,
+    $Res Function(_FailedRequestData) _then,
+  ) : super(_value, (v) => _then(v as _FailedRequestData));
 
   @override
   _FailedRequestData get _value => super._value as _FailedRequestData;
@@ -1061,15 +1119,15 @@ class __$FailedRequestDataCopyWithImpl<$Res>
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as TransactionId,
+                as TransactionId,
       trackService: trackService == freezed
           ? _value.trackService
           : trackService // ignore: cast_nullable_to_non_nullable
-              as TrackNumberService,
+                as TrackNumberService,
       reason: reason == freezed
           ? _value.reason
           : reason // ignore: cast_nullable_to_non_nullable
-              as _FailedRequestReason,
+                as _FailedRequestReason,
     ));
   }
 }
@@ -1079,8 +1137,11 @@ class __$FailedRequestDataCopyWithImpl<$Res>
 class _$_FailedRequestData
     with DiagnosticableTreeMixin
     implements _FailedRequestData {
-  const _$_FailedRequestData(
-      {required this.id, required this.trackService, required this.reason});
+  const _$_FailedRequestData({
+    required this.id,
+    required this.trackService,
+    required this.reason,
+  });
 
   @override
   final TransactionId id;
@@ -1111,8 +1172,10 @@ class _$_FailedRequestData
             (identical(other.id, id) ||
                 const DeepCollectionEquality().equals(other.id, id)) &&
             (identical(other.trackService, trackService) ||
-                const DeepCollectionEquality()
-                    .equals(other.trackService, trackService)) &&
+                const DeepCollectionEquality().equals(
+                  other.trackService,
+                  trackService,
+                )) &&
             (identical(other.reason, reason) ||
                 const DeepCollectionEquality().equals(other.reason, reason)));
   }
@@ -1126,15 +1189,19 @@ class _$_FailedRequestData
 
   @JsonKey(ignore: true)
   @override
-  _$FailedRequestDataCopyWith<_FailedRequestData> get copyWith =>
-      __$FailedRequestDataCopyWithImpl<_FailedRequestData>(this, _$identity);
+  _$FailedRequestDataCopyWith<_FailedRequestData>
+  get copyWith => __$FailedRequestDataCopyWithImpl<_FailedRequestData>(
+    this,
+    _$identity,
+  );
 }
 
 abstract class _FailedRequestData implements _FailedRequest {
-  const factory _FailedRequestData(
-      {required TransactionId id,
-      required TrackNumberService trackService,
-      required _FailedRequestReason reason}) = _$_FailedRequestData;
+  const factory _FailedRequestData({
+    required TransactionId id,
+    required TrackNumberService trackService,
+    required _FailedRequestReason reason,
+  }) = _$_FailedRequestData;
 
   @override
   TransactionId get id => throw _privateConstructorUsedError;
@@ -1170,49 +1237,44 @@ mixin _$_FailedRequestReason {
   TResult when<TResult extends Object?>({
     required TResult Function() missingService,
     required TResult Function() missingAuthData,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? missingService,
     TResult Function()? missingAuthData,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? missingService,
     TResult Function()? missingAuthData,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_FailedRequestMissingService value)
-        missingService,
+    missingService,
     required TResult Function(_FailedRequestMissingAuthData value)
-        missingAuthData,
-  }) =>
-      throw _privateConstructorUsedError;
+    missingAuthData,
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_FailedRequestMissingService value)? missingService,
     TResult Function(_FailedRequestMissingAuthData value)? missingAuthData,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_FailedRequestMissingService value)? missingService,
     TResult Function(_FailedRequestMissingAuthData value)? missingAuthData,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$FailedRequestReasonCopyWith<$Res> {
-  factory _$FailedRequestReasonCopyWith(_FailedRequestReason value,
-          $Res Function(_FailedRequestReason) then) =
-      __$FailedRequestReasonCopyWithImpl<$Res>;
+  factory _$FailedRequestReasonCopyWith(
+    _FailedRequestReason value,
+    $Res Function(_FailedRequestReason) then,
+  ) = __$FailedRequestReasonCopyWithImpl<$Res>;
 }
 
 /// @nodoc
@@ -1228,9 +1290,9 @@ class __$FailedRequestReasonCopyWithImpl<$Res>
 /// @nodoc
 abstract class _$FailedRequestMissingServiceCopyWith<$Res> {
   factory _$FailedRequestMissingServiceCopyWith(
-          _FailedRequestMissingService value,
-          $Res Function(_FailedRequestMissingService) then) =
-      __$FailedRequestMissingServiceCopyWithImpl<$Res>;
+    _FailedRequestMissingService value,
+    $Res Function(_FailedRequestMissingService) then,
+  ) = __$FailedRequestMissingServiceCopyWithImpl<$Res>;
 }
 
 /// @nodoc
@@ -1238,9 +1300,9 @@ class __$FailedRequestMissingServiceCopyWithImpl<$Res>
     extends __$FailedRequestReasonCopyWithImpl<$Res>
     implements _$FailedRequestMissingServiceCopyWith<$Res> {
   __$FailedRequestMissingServiceCopyWithImpl(
-      _FailedRequestMissingService _value,
-      $Res Function(_FailedRequestMissingService) _then)
-      : super(_value, (v) => _then(v as _FailedRequestMissingService));
+    _FailedRequestMissingService _value,
+    $Res Function(_FailedRequestMissingService) _then,
+  ) : super(_value, (v) => _then(v as _FailedRequestMissingService));
 
   @override
   _FailedRequestMissingService get _value =>
@@ -1309,9 +1371,9 @@ class _$_FailedRequestMissingService
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_FailedRequestMissingService value)
-        missingService,
+    missingService,
     required TResult Function(_FailedRequestMissingAuthData value)
-        missingAuthData,
+    missingAuthData,
   }) {
     return missingService(this);
   }
@@ -1346,9 +1408,9 @@ abstract class _FailedRequestMissingService implements _FailedRequestReason {
 /// @nodoc
 abstract class _$FailedRequestMissingAuthDataCopyWith<$Res> {
   factory _$FailedRequestMissingAuthDataCopyWith(
-          _FailedRequestMissingAuthData value,
-          $Res Function(_FailedRequestMissingAuthData) then) =
-      __$FailedRequestMissingAuthDataCopyWithImpl<$Res>;
+    _FailedRequestMissingAuthData value,
+    $Res Function(_FailedRequestMissingAuthData) then,
+  ) = __$FailedRequestMissingAuthDataCopyWithImpl<$Res>;
 }
 
 /// @nodoc
@@ -1356,9 +1418,9 @@ class __$FailedRequestMissingAuthDataCopyWithImpl<$Res>
     extends __$FailedRequestReasonCopyWithImpl<$Res>
     implements _$FailedRequestMissingAuthDataCopyWith<$Res> {
   __$FailedRequestMissingAuthDataCopyWithImpl(
-      _FailedRequestMissingAuthData _value,
-      $Res Function(_FailedRequestMissingAuthData) _then)
-      : super(_value, (v) => _then(v as _FailedRequestMissingAuthData));
+    _FailedRequestMissingAuthData _value,
+    $Res Function(_FailedRequestMissingAuthData) _then,
+  ) : super(_value, (v) => _then(v as _FailedRequestMissingAuthData));
 
   @override
   _FailedRequestMissingAuthData get _value =>
@@ -1382,7 +1444,8 @@ class _$_FailedRequestMissingAuthData
     super.debugFillProperties(properties);
     properties
       ..add(
-          DiagnosticsProperty('type', '_FailedRequestReason.missingAuthData'));
+        DiagnosticsProperty('type', '_FailedRequestReason.missingAuthData'),
+      );
   }
 
   @override
@@ -1428,9 +1491,9 @@ class _$_FailedRequestMissingAuthData
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_FailedRequestMissingService value)
-        missingService,
+    missingService,
     required TResult Function(_FailedRequestMissingAuthData value)
-        missingAuthData,
+    missingAuthData,
   }) {
     return missingAuthData(this);
   }

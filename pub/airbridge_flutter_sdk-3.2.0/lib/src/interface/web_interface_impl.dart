@@ -7,7 +7,6 @@ import '../data/event_option.dart';
 import '../data/user.dart';
 
 class AirbridgeWebInterfaceImpl implements AirbridgeWebInterface {
-
   final MethodChannel _eventMethodChannel;
   final MethodChannel _stateMethodChannel;
 
@@ -20,9 +19,10 @@ class AirbridgeWebInterfaceImpl implements AirbridgeWebInterface {
     this._eventMethodChannel,
     this._stateMethodChannel,
     this._webToken,
-    this._postCommandFunction) {
-      _script = _getScript();
-    }
+    this._postCommandFunction,
+  ) {
+    _script = _getScript();
+  }
 
   @override
   String get script => _script;
@@ -55,7 +55,7 @@ class AirbridgeWebInterfaceImpl implements AirbridgeWebInterface {
             value: payload["value"],
             customAttributes: payload["custom_attributes"],
             semanticAttributes: payload["semantic_attributes"],
-          ).toMap()
+          ).toMap(),
         };
         _eventMethodChannel.invokeMethod('trackEvent', param);
         break;
@@ -101,5 +101,5 @@ class AirbridgeWebInterfaceImpl implements AirbridgeWebInterface {
                 }));
             };
         """;
-    }
+  }
 }

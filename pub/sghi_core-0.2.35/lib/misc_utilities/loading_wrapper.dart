@@ -16,7 +16,7 @@ class LoadingWrapper extends StatelessWidget {
           children: <Widget>[
             loader,
             smallVerticalSizedBox,
-            const Text(UserFeedBackTexts.savingFile)
+            const Text(UserFeedBackTexts.savingFile),
           ],
         ),
       ),

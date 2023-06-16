@@ -37,10 +37,6 @@ class FlutterDeviceContextInfoProvider implements DeviceContextInfoProvider {
 
   Future<AppInfo> _getAppInfo() async {
     final info = await PackageInfo.fromPlatform();
-    return AppInfo(
-      info.appName,
-      info.packageName,
-      info.version,
-    );
+    return AppInfo(info.appName, info.packageName, info.version);
   }
 }

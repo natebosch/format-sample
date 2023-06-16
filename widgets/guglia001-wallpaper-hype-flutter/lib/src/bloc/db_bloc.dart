@@ -1,5 +1,5 @@
 import 'dart:async';
- import 'package:wallpaper_dope/src/models/db_model.dart';
+import 'package:wallpaper_dope/src/models/db_model.dart';
 import 'package:wallpaper_dope/src/providers/db_provider.dart';
 
 class DBbloc {
@@ -20,14 +20,12 @@ class DBbloc {
     _dbBlocController?.close();
   }
 
-  agregarFoto( DBModel foto ) async {
+  agregarFoto(DBModel foto) async {
     await DBProvider.db.nuevaFoto(foto);
     obtenerFotosGuardadas();
-
   }
 
   obtenerFotosGuardadas() async {
     _dbBlocController.sink.add(await DBProvider.db.getTodosLosScans());
   }
-
 }

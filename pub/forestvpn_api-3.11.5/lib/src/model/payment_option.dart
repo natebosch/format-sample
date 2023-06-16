@@ -11,12 +11,13 @@ part 'payment_option.g.dart';
 /// PaymentOption
 ///
 /// Properties:
-/// * [id] 
-/// * [slug] 
-/// * [name] 
-/// * [description] 
+/// * [id]
+/// * [slug]
+/// * [name]
+/// * [description]
 @BuiltValue()
-abstract class PaymentOption implements Built<PaymentOption, PaymentOptionBuilder> {
+abstract class PaymentOption
+    implements Built<PaymentOption, PaymentOptionBuilder> {
   @BuiltValueField(wireName: r'id')
   String get id;
 
@@ -31,13 +32,15 @@ abstract class PaymentOption implements Built<PaymentOption, PaymentOptionBuilde
 
   PaymentOption._();
 
-  factory PaymentOption([void updates(PaymentOptionBuilder b)]) = _$PaymentOption;
+  factory PaymentOption([void updates(PaymentOptionBuilder b)]) =
+      _$PaymentOption;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(PaymentOptionBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<PaymentOption> get serializer => _$PaymentOptionSerializer();
+  static Serializer<PaymentOption> get serializer =>
+      _$PaymentOptionSerializer();
 }
 
 class _$PaymentOptionSerializer implements PrimitiveSerializer<PaymentOption> {
@@ -82,7 +85,11 @@ class _$PaymentOptionSerializer implements PrimitiveSerializer<PaymentOption> {
     PaymentOption object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(
+      serializers,
+      object,
+      specifiedType: specifiedType,
+    ).toList();
   }
 
   void _deserializeProperties(
@@ -153,4 +160,3 @@ class _$PaymentOptionSerializer implements PrimitiveSerializer<PaymentOption> {
     return result.build();
   }
 }
-

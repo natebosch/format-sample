@@ -45,8 +45,10 @@ void main() {
       expect(speaker.id, "903eaf98-bf70-42a1-80da-6af3c5ec6668");
       expect(speaker.bio, 'Engineer');
       expect(speaker.tagLine, 'doraemon');
-      expect(speaker.profilePicture,
-          'https://sessionize.com/image?f=afd0e1c9743bf6de07b4a003b93ef4dc,200,200,True,False,50a020e5-f98f-41bd-b182-acc2b902a920.jpg');
+      expect(
+        speaker.profilePicture,
+        'https://sessionize.com/image?f=afd0e1c9743bf6de07b4a003b93ef4dc,200,200,True,False,50a020e5-f98f-41bd-b182-acc2b902a920.jpg',
+      );
       expect(speaker.isTopSpeaker, isFalse);
       expect(speaker.links, hasLength(1));
       expect(speaker.links[0].url, 'https://twitter.com/konifar');

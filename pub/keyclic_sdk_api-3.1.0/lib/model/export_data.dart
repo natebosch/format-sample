@@ -6,11 +6,7 @@ part of keyclic_sdk_api;
 
 class ExportData {
   /// Returns a new [ExportData] instance.
-  ExportData({
-    this.contentType,
-    this.organization,
-    this.groupBy,
-  });
+  ExportData({this.contentType, this.organization, this.groupBy});
 
   /// Returns a new [ExportData] instance and imports its values from
   /// [json] if it's non-null, null if [json] is null.
@@ -71,27 +67,32 @@ class ExportData {
       return <String, ExportData>{};
     }
 
-    return json.entries.fold(<String, ExportData>{},
-        (Map<String, ExportData> previousValue, element) {
-      final ExportData? object = ExportData.fromJson(element.value);
-      if (object is ExportData) {
-        previousValue[element.key] = object;
-      }
+    return json.entries.fold(
+      <String, ExportData>{},
+      (Map<String, ExportData> previousValue, element) {
+        final ExportData? object = ExportData.fromJson(element.value);
+        if (object is ExportData) {
+          previousValue[element.key] = object;
+        }
 
-      return previousValue;
-    });
+        return previousValue;
+      },
+    );
   }
 
   // maps a json object with a list of ExportData-objects as value to a dart map
   static Map<String, List<ExportData>> mapListFromJson(
-      Map<String, dynamic>? json) {
+    Map<String, dynamic>? json,
+  ) {
     if (json == null) {
       return <String, List<ExportData>>{};
     }
 
     return json.map((key, value) {
       return MapEntry<String, List<ExportData>>(
-          key, ExportData.listFromJson(value));
+        key,
+        ExportData.listFromJson(value),
+      );
     });
   }
 
@@ -123,7 +124,8 @@ class ExportDataContentTypeEnum {
   static const pdf = ExportDataContentTypeEnum._(r'application/pdf');
   static const vndPeriodOpenxmlformatsOfficedocumentPeriodSpreadsheetmlPeriodSheet =
       ExportDataContentTypeEnum._(
-          r'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+    r'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+  );
 
   /// List of all possible values in this [enum][ExportDataContentTypeEnum].
   static const values = <ExportDataContentTypeEnum>[
@@ -131,16 +133,14 @@ class ExportDataContentTypeEnum {
     vndPeriodOpenxmlformatsOfficedocumentPeriodSpreadsheetmlPeriodSheet,
   ];
 
-  static ExportDataContentTypeEnum? fromJson(dynamic value) =>
-      ExportDataContentTypeEnumTypeTransformer().decode(value);
+  static ExportDataContentTypeEnum? fromJson(
+    dynamic value,
+  ) => ExportDataContentTypeEnumTypeTransformer().decode(value);
 
   static List<ExportDataContentTypeEnum> listFromJson(List<dynamic> json) {
-    return json
-        .map((value) {
-          return ExportDataContentTypeEnum.fromJson(value);
-        })
-        .whereType<ExportDataContentTypeEnum>()
-        .toList();
+    return json.map((value) {
+      return ExportDataContentTypeEnum.fromJson(value);
+    }).whereType<ExportDataContentTypeEnum>().toList();
   }
 }
 

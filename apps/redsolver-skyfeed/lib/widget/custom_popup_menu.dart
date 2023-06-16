@@ -3,10 +3,7 @@ import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import 'package:universal_platform/universal_platform.dart';
 
-enum PressType {
-  longPress,
-  singleClick,
-}
+enum PressType { longPress, singleClick }
 
 class CustomPopupMenuController extends ChangeNotifier {
   bool menuIsShowing = false;
@@ -77,9 +74,7 @@ class _CustomPopupMenuState extends State<CustomPopupMenu> {
           children: <Widget>[
             GestureDetector(
               onTap: () => _hideMenu(),
-              child: Container(
-                color: widget.barrierColor,
-              ),
+              child: Container(color: widget.barrierColor),
             ),
             Center(
               child: Container(
@@ -97,17 +92,11 @@ class _CustomPopupMenuState extends State<CustomPopupMenu> {
                   ),
                   children: <Widget>[
                     if (widget.showArrow)
-                      LayoutId(
-                        id: _MenuLayoutId.arrow,
-                        child: arrow,
-                      ),
+                      LayoutId(id: _MenuLayoutId.arrow, child: arrow),
                     if (widget.showArrow)
                       LayoutId(
                         id: _MenuLayoutId.downArrow,
-                        child: Transform.rotate(
-                          angle: math.pi,
-                          child: arrow,
-                        ),
+                        child: Transform.rotate(angle: math.pi, child: arrow),
                       ),
                     LayoutId(
                       id: _MenuLayoutId.content,
@@ -196,11 +185,7 @@ class _CustomPopupMenuState extends State<CustomPopupMenu> {
   }
 }
 
-enum _MenuLayoutId {
-  arrow,
-  downArrow,
-  content,
-}
+enum _MenuLayoutId { arrow, downArrow, content }
 
 enum _MenuPosition {
   bottomLeft,
@@ -240,16 +225,10 @@ class _MenuLayoutDelegate extends MultiChildLayoutDelegate {
       );
     }
     if (hasChild(_MenuLayoutId.arrow)) {
-      arrowSize = layoutChild(
-        _MenuLayoutId.arrow,
-        BoxConstraints.loose(size),
-      );
+      arrowSize = layoutChild(_MenuLayoutId.arrow, BoxConstraints.loose(size));
     }
     if (hasChild(_MenuLayoutId.downArrow)) {
-      layoutChild(
-        _MenuLayoutId.downArrow,
-        BoxConstraints.loose(size),
-      );
+      layoutChild(_MenuLayoutId.downArrow, BoxConstraints.loose(size));
     }
 
     bool isTop = false;
@@ -262,8 +241,9 @@ class _MenuLayoutDelegate extends MultiChildLayoutDelegate {
     } else if (anchorCenterX + contentSize.width / 2 > size.width) {
       menuPosition = isTop ? _MenuPosition.topRight : _MenuPosition.bottomRight;
     } else {
-      menuPosition =
-          isTop ? _MenuPosition.topCenter : _MenuPosition.bottomCenter;
+      menuPosition = isTop
+          ? _MenuPosition.topCenter
+          : _MenuPosition.bottomCenter;
     }
 
     switch (menuPosition) {
@@ -278,16 +258,20 @@ class _MenuLayoutDelegate extends MultiChildLayoutDelegate {
         );
         break;
       case _MenuPosition.bottomLeft:
-        arrowOffset = Offset(anchorCenterX - arrowSize.width / 2,
-            anchorBottomY + verticalMargin);
+        arrowOffset = Offset(
+          anchorCenterX - arrowSize.width / 2,
+          anchorBottomY + verticalMargin,
+        );
         contentOffset = Offset(
           0,
           anchorBottomY + verticalMargin + arrowSize.height,
         );
         break;
       case _MenuPosition.bottomRight:
-        arrowOffset = Offset(anchorCenterX - arrowSize.width / 2,
-            anchorBottomY + verticalMargin);
+        arrowOffset = Offset(
+          anchorCenterX - arrowSize.width / 2,
+          anchorBottomY + verticalMargin,
+        );
         contentOffset = Offset(
           size.width - contentSize.width,
           anchorBottomY + verticalMargin + arrowSize.height,

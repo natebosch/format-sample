@@ -7,11 +7,11 @@ class UserCart extends StatelessWidget {
   final double? height;
 
   const UserCart({Key? key, this.color, this.width, this.height})
-      : super(key: key);
+    : super(key: key);
 
   @override
   Widget build(BuildContext context) => SvgPicture.string(
-        '''
+    '''
 <svg width="24" height="24" stroke-width="1.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M22 12.5L21.1667 15M21.1667 15L20 18.5H15.5L14.5 15H21.1667Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
 <path d="M16.5 20.51L16.51 20.4989" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
@@ -20,9 +20,10 @@ class UserCart extends StatelessWidget {
 <path d="M2 18C2 14.134 5.13401 11 9 11C10.635 11 12.1391 11.5606 13.3306 12.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>
 ''',
-        colorFilter:
-            color != null ? ColorFilter.mode(color!, BlendMode.srcIn) : null,
-        width: width,
-        height: height,
-      );
+    colorFilter: color != null
+        ? ColorFilter.mode(color!, BlendMode.srcIn)
+        : null,
+    width: width,
+    height: height,
+  );
 }

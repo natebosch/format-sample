@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_games/ui/item_image_height.dart';
 
 class ScreenshotContainerItem extends StatelessWidget {
-  ScreenshotContainerItem(this.buildContext, this.screenshot,
-      {this.height = 400});
+  ScreenshotContainerItem(
+    this.buildContext,
+    this.screenshot, {
+    this.height = 400,
+  });
   final BuildContext buildContext;
   final String screenshot;
   final double height;
@@ -14,9 +17,7 @@ class ScreenshotContainerItem extends StatelessWidget {
       padding: const EdgeInsets.only(top: 16, right: 12, bottom: 16),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          ImageHeightItem(context, screenshot, height - 32),
-        ],
+        children: [ImageHeightItem(context, screenshot, height - 32)],
       ),
     );
   }

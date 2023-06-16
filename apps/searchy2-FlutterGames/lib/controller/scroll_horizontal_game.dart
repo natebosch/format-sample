@@ -11,12 +11,13 @@ class HorizontalGameController extends StatelessWidget {
     return SizedBox.fromSize(
       size: const Size.fromHeight(240),
       child: ListView.builder(
-          itemCount: gameItems.length,
-          scrollDirection: Axis.horizontal,
-          padding: const EdgeInsets.only(left: 12, top: 4),
-          itemBuilder: (BuildContext context, int position) {
-            return GameContainerItem(context, gameItems[position]);
-          }),
+        itemCount: gameItems.length,
+        scrollDirection: Axis.horizontal,
+        padding: const EdgeInsets.only(left: 12, top: 4),
+        itemBuilder: (BuildContext context, int position) {
+          return GameContainerItem(context, gameItems[position]);
+        },
+      ),
     );
   }
 }

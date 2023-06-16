@@ -11,14 +11,11 @@ class NotificarePurchaseFailedEvent {
   // iOS-specific properties
   final String? errorMessage;
 
-  NotificarePurchaseFailedEvent({
-    this.code,
-    this.message,
-    this.errorMessage,
-  });
+  NotificarePurchaseFailedEvent({this.code, this.message, this.errorMessage});
 
-  factory NotificarePurchaseFailedEvent.fromJson(Map<String, dynamic> json) =>
-      _$NotificarePurchaseFailedEventFromJson(json);
+  factory NotificarePurchaseFailedEvent.fromJson(
+    Map<String, dynamic> json,
+  ) => _$NotificarePurchaseFailedEventFromJson(json);
 
   Map<String, dynamic> toJson() => _$NotificarePurchaseFailedEventToJson(this);
 }

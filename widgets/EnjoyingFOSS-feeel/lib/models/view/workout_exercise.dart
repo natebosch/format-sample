@@ -27,6 +27,9 @@ class WorkoutExercise {
   int? duration;
   int? breakBeforeDuration;
 
-  WorkoutExercise(
-      {required this.exercise, this.duration, this.breakBeforeDuration});
+  WorkoutExercise({
+    required this.exercise,
+    this.duration,
+    this.breakBeforeDuration,
+  });
 }

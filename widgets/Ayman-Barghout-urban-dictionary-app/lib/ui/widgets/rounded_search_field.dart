@@ -5,9 +5,7 @@ import 'package:urban_dict_slang/core/blocs/definitions_bloc/bloc.dart';
 import 'package:urban_dict_slang/core/blocs/term_bloc/bloc.dart';
 
 class RoundedSearchField extends StatefulWidget {
-  const RoundedSearchField({
-    Key key,
-  }) : super(key: key);
+  const RoundedSearchField({Key key}) : super(key: key);
 
   @override
   _RoundedSearchFieldState createState() => _RoundedSearchFieldState();
@@ -19,17 +17,16 @@ class _RoundedSearchFieldState extends State<RoundedSearchField> {
   void _onSearch(String term) {
     BlocProvider.of<TermBloc>(context).add(ChangeTerm(newTerm: term));
     BlocProvider.of<DefinitionsBloc>(context).add(FetchDefinitions(term));
-    WidgetsBinding.instance
-        .addPostFrameCallback((_) => _searchController.clear());
+    WidgetsBinding.instance.addPostFrameCallback(
+      (_) => _searchController.clear(),
+    );
     FocusScope.of(context).requestFocus(FocusNode());
   }
 
   @override
   Widget build(BuildContext context) {
     return TextField(
-      inputFormatters: [
-        LengthLimitingTextInputFormatter(30),
-      ],
+      inputFormatters: [LengthLimitingTextInputFormatter(30)],
       controller: _searchController,
       onSubmitted: (value) => _onSearch(value),
       style: TextStyle(
@@ -41,18 +38,16 @@ class _RoundedSearchFieldState extends State<RoundedSearchField> {
         filled: true,
         fillColor: Colors.white,
         suffixIcon: IconButton(
-          icon: Icon(
-            Icons.arrow_right,
-            size: 35.0,
-          ),
+          icon: Icon(Icons.arrow_right, size: 35.0),
           onPressed: () => _onSearch(_searchController.text),
         ),
         contentPadding: const EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 5.0),
         prefixIcon: const Icon(Icons.search),
         hintText: "Search...",
         border: OutlineInputBorder(
-            borderSide: const BorderSide(color: Colors.white, width: 32.0),
-            borderRadius: BorderRadius.circular(25.0)),
+          borderSide: const BorderSide(color: Colors.white, width: 32.0),
+          borderRadius: BorderRadius.circular(25.0),
+        ),
         focusedBorder: OutlineInputBorder(
           borderSide: const BorderSide(color: Colors.white, width: 32.0),
           borderRadius: BorderRadius.circular(25.0),

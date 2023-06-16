@@ -16,7 +16,7 @@ class SharedPreferencesApi {
   /// available for dependency injection.  If it is left null, the default
   /// BinaryMessenger will be used which routes to the host platform.
   SharedPreferencesApi({BinaryMessenger? binaryMessenger})
-      : _binaryMessenger = binaryMessenger;
+    : _binaryMessenger = binaryMessenger;
   final BinaryMessenger? _binaryMessenger;
 
   static const MessageCodec<Object?> codec = StandardMessageCodec();
@@ -24,8 +24,10 @@ class SharedPreferencesApi {
   /// Removes property from shared preferences data set.
   Future<bool> remove(String arg_key) async {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
-        'dev.flutter.pigeon.SharedPreferencesApi.remove', codec,
-        binaryMessenger: _binaryMessenger);
+      'dev.flutter.pigeon.SharedPreferencesApi.remove',
+      codec,
+      binaryMessenger: _binaryMessenger,
+    );
     final List<Object?>? replyList =
         await channel.send(<Object?>[arg_key]) as List<Object?>?;
     if (replyList == null) {
@@ -52,8 +54,10 @@ class SharedPreferencesApi {
   /// Adds property to shared preferences data set of type bool.
   Future<bool> setBool(String arg_key, bool arg_value) async {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
-        'dev.flutter.pigeon.SharedPreferencesApi.setBool', codec,
-        binaryMessenger: _binaryMessenger);
+      'dev.flutter.pigeon.SharedPreferencesApi.setBool',
+      codec,
+      binaryMessenger: _binaryMessenger,
+    );
     final List<Object?>? replyList =
         await channel.send(<Object?>[arg_key, arg_value]) as List<Object?>?;
     if (replyList == null) {
@@ -80,8 +84,10 @@ class SharedPreferencesApi {
   /// Adds property to shared preferences data set of type String.
   Future<bool> setString(String arg_key, String arg_value) async {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
-        'dev.flutter.pigeon.SharedPreferencesApi.setString', codec,
-        binaryMessenger: _binaryMessenger);
+      'dev.flutter.pigeon.SharedPreferencesApi.setString',
+      codec,
+      binaryMessenger: _binaryMessenger,
+    );
     final List<Object?>? replyList =
         await channel.send(<Object?>[arg_key, arg_value]) as List<Object?>?;
     if (replyList == null) {
@@ -108,8 +114,10 @@ class SharedPreferencesApi {
   /// Adds property to shared preferences data set of type int.
   Future<bool> setInt(String arg_key, int arg_value) async {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
-        'dev.flutter.pigeon.SharedPreferencesApi.setInt', codec,
-        binaryMessenger: _binaryMessenger);
+      'dev.flutter.pigeon.SharedPreferencesApi.setInt',
+      codec,
+      binaryMessenger: _binaryMessenger,
+    );
     final List<Object?>? replyList =
         await channel.send(<Object?>[arg_key, arg_value]) as List<Object?>?;
     if (replyList == null) {
@@ -136,8 +144,10 @@ class SharedPreferencesApi {
   /// Adds property to shared preferences data set of type double.
   Future<bool> setDouble(String arg_key, double arg_value) async {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
-        'dev.flutter.pigeon.SharedPreferencesApi.setDouble', codec,
-        binaryMessenger: _binaryMessenger);
+      'dev.flutter.pigeon.SharedPreferencesApi.setDouble',
+      codec,
+      binaryMessenger: _binaryMessenger,
+    );
     final List<Object?>? replyList =
         await channel.send(<Object?>[arg_key, arg_value]) as List<Object?>?;
     if (replyList == null) {
@@ -164,8 +174,10 @@ class SharedPreferencesApi {
   /// Adds property to shared preferences data set of type List<String>.
   Future<bool> setStringList(String arg_key, List<String?> arg_value) async {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
-        'dev.flutter.pigeon.SharedPreferencesApi.setStringList', codec,
-        binaryMessenger: _binaryMessenger);
+      'dev.flutter.pigeon.SharedPreferencesApi.setStringList',
+      codec,
+      binaryMessenger: _binaryMessenger,
+    );
     final List<Object?>? replyList =
         await channel.send(<Object?>[arg_key, arg_value]) as List<Object?>?;
     if (replyList == null) {
@@ -192,8 +204,10 @@ class SharedPreferencesApi {
   /// Removes all properties from shared preferences data set with matching prefix.
   Future<bool> clearWithPrefix(String arg_prefix) async {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
-        'dev.flutter.pigeon.SharedPreferencesApi.clearWithPrefix', codec,
-        binaryMessenger: _binaryMessenger);
+      'dev.flutter.pigeon.SharedPreferencesApi.clearWithPrefix',
+      codec,
+      binaryMessenger: _binaryMessenger,
+    );
     final List<Object?>? replyList =
         await channel.send(<Object?>[arg_prefix]) as List<Object?>?;
     if (replyList == null) {
@@ -220,8 +234,10 @@ class SharedPreferencesApi {
   /// Gets all properties from shared preferences data set with matching prefix.
   Future<Map<String?, Object?>> getAllWithPrefix(String arg_prefix) async {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
-        'dev.flutter.pigeon.SharedPreferencesApi.getAllWithPrefix', codec,
-        binaryMessenger: _binaryMessenger);
+      'dev.flutter.pigeon.SharedPreferencesApi.getAllWithPrefix',
+      codec,
+      binaryMessenger: _binaryMessenger,
+    );
     final List<Object?>? replyList =
         await channel.send(<Object?>[arg_prefix]) as List<Object?>?;
     if (replyList == null) {

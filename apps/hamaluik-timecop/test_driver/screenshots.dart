@@ -11,22 +11,26 @@ import 'package:flutter_driver/driver_extension.dart';
 import 'dart:ui' as ui;
 
 Future<void> main() async {
-  enableFlutterDriverExtension(handler: (String query) async {
-    if (query == "direction") {
-      if (ui.window.locale.languageCode == "ar") {
-        return "rtl";
+  enableFlutterDriverExtension(
+    handler: (String query) async {
+      if (query == "direction") {
+        if (ui.window.locale.languageCode == "ar") {
+          return "rtl";
+        } else {
+          return "ltr";
+        }
       } else {
-        return "ltr";
+        return null;
       }
-    } else {
-      return null;
-    }
-  });
+    },
+  );
   WidgetsApp.debugAllowBannerOverride = false; // remove debug banner
 
   final SettingsProvider settings = MockSettingsProvider();
   settings.setBool("collapseDays", false);
   final DataProvider data = MockDataProvider(ui.window.locale);
-  final NotificationsProvider notifications = NotificationsProvider(FlutterLocalNotificationsPlugin());
+  final NotificationsProvider notifications = NotificationsProvider(
+    FlutterLocalNotificationsPlugin(),
+  );
   return runMain(settings, data, notifications);
 }

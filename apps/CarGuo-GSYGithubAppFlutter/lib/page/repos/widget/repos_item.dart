@@ -21,8 +21,12 @@ class ReposItem extends StatelessWidget {
   ReposItem(this.reposViewModel, {this.onPressed}) : super();
 
   ///仓库item的底部状态，比如star数量等
-  _getBottomItem(BuildContext context, IconData icon, String? text,
-      {int flex = 3}) {
+  _getBottomItem(
+    BuildContext context,
+    IconData icon,
+    String? text, {
+    int flex = 3,
+  }) {
     return new Expanded(
       flex: flex,
       child: new Center(
@@ -45,89 +49,110 @@ class ReposItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return new Container(
       child: new GSYCardItem(
-          child: new TextButton(
-              onPressed: onPressed,
-              child: new Padding(
-                padding: new EdgeInsets.only(
-                    left: 0.0, top: 10.0, right: 10.0, bottom: 10.0),
-                child: new Column(
-                  mainAxisSize: MainAxisSize.min,
+        child: new TextButton(
+          onPressed: onPressed,
+          child: new Padding(
+            padding: new EdgeInsets.only(
+              left: 0.0,
+              top: 10.0,
+              right: 10.0,
+              bottom: 10.0,
+            ),
+            child: new Column(
+              mainAxisSize: MainAxisSize.min,
+              children: <Widget>[
+                new Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    new Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                        ///头像
-                        new GSYUserIconWidget(
-                            padding: const EdgeInsets.only(
-                                top: 0.0, right: 5.0, left: 0.0),
-                            width: 40.0,
-                            height: 40.0,
-                            image: reposViewModel.ownerPic,
-                            onPressed: () {
-                              NavigatorUtils.goPerson(
-                                  context, reposViewModel.ownerName);
-                            }),
-                        new Expanded(
-                          child: new Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: <Widget>[
-                              ///仓库名
-                              new Text(reposViewModel.repositoryName ?? "",
-                                  style: GSYConstant.normalTextBold),
-
-                              ///用户名
-                              new GSYIConText(
-                                GSYICons.REPOS_ITEM_USER,
-                                reposViewModel.ownerName,
-                                GSYConstant.smallSubLightText,
-                                GSYColors.subLightTextColor,
-                                10.0,
-                                padding: 3.0,
-                              ),
-                            ],
-                          ),
-                        ),
-
-                        ///仓库语言
-                        new Text(reposViewModel.repositoryType!,
-                            style: GSYConstant.smallSubText),
-                      ],
+                    ///头像
+                    new GSYUserIconWidget(
+                      padding: const EdgeInsets.only(
+                        top: 0.0,
+                        right: 5.0,
+                        left: 0.0,
+                      ),
+                      width: 40.0,
+                      height: 40.0,
+                      image: reposViewModel.ownerPic,
+                      onPressed: () {
+                        NavigatorUtils.goPerson(
+                          context,
+                          reposViewModel.ownerName,
+                        );
+                      },
                     ),
-                    new Container(
+                    new Expanded(
+                      child: new Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          ///仓库名
+                          new Text(
+                            reposViewModel.repositoryName ?? "",
+                            style: GSYConstant.normalTextBold,
+                          ),
 
-                        ///仓库描述
-                        child: new Text(
-                          reposViewModel.repositoryDes!,
-                          style: GSYConstant.smallSubText,
-                          maxLines: 3,
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                        margin: new EdgeInsets.only(top: 6.0, bottom: 2.0),
-                        alignment: Alignment.topLeft),
-                    new Padding(padding: EdgeInsets.all(10.0)),
+                          ///用户名
+                          new GSYIConText(
+                            GSYICons.REPOS_ITEM_USER,
+                            reposViewModel.ownerName,
+                            GSYConstant.smallSubLightText,
+                            GSYColors.subLightTextColor,
+                            10.0,
+                            padding: 3.0,
+                          ),
+                        ],
+                      ),
+                    ),
 
-                    ///仓库状态数值
-                    new Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                        _getBottomItem(context, GSYICons.REPOS_ITEM_STAR,
-                            reposViewModel.repositoryStar),
-                        new SizedBox(
-                          width: 5,
-                        ),
-                        _getBottomItem(context, GSYICons.REPOS_ITEM_FORK,
-                            reposViewModel.repositoryFork),
-                        new SizedBox(
-                          width: 5,
-                        ),
-                        _getBottomItem(context, GSYICons.REPOS_ITEM_ISSUE,
-                            reposViewModel.repositoryWatch,
-                            flex: 4),
-                      ],
+                    ///仓库语言
+                    new Text(
+                      reposViewModel.repositoryType!,
+                      style: GSYConstant.smallSubText,
                     ),
                   ],
                 ),
-              ))),
+                new Container(
+                  ///仓库描述
+                  child: new Text(
+                    reposViewModel.repositoryDes!,
+                    style: GSYConstant.smallSubText,
+                    maxLines: 3,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                  margin: new EdgeInsets.only(top: 6.0, bottom: 2.0),
+                  alignment: Alignment.topLeft,
+                ),
+                new Padding(padding: EdgeInsets.all(10.0)),
+
+                ///仓库状态数值
+                new Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    _getBottomItem(
+                      context,
+                      GSYICons.REPOS_ITEM_STAR,
+                      reposViewModel.repositoryStar,
+                    ),
+                    new SizedBox(width: 5),
+                    _getBottomItem(
+                      context,
+                      GSYICons.REPOS_ITEM_FORK,
+                      reposViewModel.repositoryFork,
+                    ),
+                    new SizedBox(width: 5),
+                    _getBottomItem(
+                      context,
+                      GSYICons.REPOS_ITEM_ISSUE,
+                      reposViewModel.repositoryWatch,
+                      flex: 4,
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
     );
   }
 }

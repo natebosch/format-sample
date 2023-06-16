@@ -33,16 +33,10 @@ class ElevarmInputFileCard extends StatelessWidget {
         child: Container(
           decoration: BoxDecoration(
             border: Border.all(color: ElevarmColors.neutral50),
-            borderRadius: const BorderRadius.all(
-              Radius.circular(
-                ElevarmBorderRadius.md,
-              ),
-            ),
+            borderRadius:
+                const BorderRadius.all(Radius.circular(ElevarmBorderRadius.md)),
           ),
-          padding: const EdgeInsets.symmetric(
-            vertical: 16.0,
-            horizontal: 24.0,
-          ),
+          padding: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 24.0),
           child: Column(
             children: [
               Container(
@@ -51,10 +45,8 @@ class ElevarmInputFileCard extends StatelessWidget {
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
                   color: ElevarmColors.neutral100,
-                  border: Border.all(
-                    color: ElevarmColors.neutral50,
-                    width: 8.0,
-                  ),
+                  border:
+                      Border.all(color: ElevarmColors.neutral50, width: 8.0),
                 ),
                 child: const ElevarmIcon(
                   ElevarmIconsOutline.uploadCloud02,
@@ -80,7 +72,7 @@ class ElevarmInputFileCard extends StatelessWidget {
                         fontWeight: ElevarmFontWeights.regular,
                         color: ElevarmColors.neutral400,
                       ),
-                    )
+                    ),
                   ],
                 ),
               ),

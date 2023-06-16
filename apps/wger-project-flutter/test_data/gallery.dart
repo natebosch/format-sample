@@ -47,6 +47,6 @@ List<gallery.Image> getTestImages() {
           'https://raw.githubusercontent.com/wger-project/flutter/master/android/fastlane/metadata/android/en-US/images/phoneScreenshots/05%20-%20weight.png',
       description: '',
       date: DateTime(2021, 2, 22),
-    )
+    ),
   ];
 }

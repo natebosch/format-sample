@@ -12,6 +12,7 @@ abstract class IPatientRepository {
   /// read all patients
   /// return Right(List<Patient>) when tha cal successful
   /// return Let(RequestFailure) when the call fails
-  Future<Either<RequestFailure, List<Patient>>> getPatients(
-      {required PatientRequest request});
+  Future<Either<RequestFailure, List<Patient>>> getPatients({
+    required PatientRequest request,
+  });
 }

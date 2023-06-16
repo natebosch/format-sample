@@ -6,17 +6,21 @@ import 'package:google_sign_in/google_sign_in.dart';
 class AuthService {
   static FirebaseAuth _auth = FirebaseAuth.instance;
 
-  final GoogleSignIn _googleSignIn = GoogleSignIn(scopes: [
-    'https://www.googleapis.com/auth/plus.me',
-    'https://www.googleapis.com/auth/userinfo.email',
-    'https://www.googleapis.com/auth/userinfo.profile',
-  ]);
+  final GoogleSignIn _googleSignIn = GoogleSignIn(
+    scopes: [
+      'https://www.googleapis.com/auth/plus.me',
+      'https://www.googleapis.com/auth/userinfo.email',
+      'https://www.googleapis.com/auth/userinfo.profile',
+    ],
+  );
 
-  Future<User> get getUser =>
-      _auth.currentUser().then((user) => User.fromFirebaseUser(user));
+  Future<User> get getUser => _auth.currentUser().then(
+    (user) => User.fromFirebaseUser(user),
+  );
 
-  Stream<User> get user =>
-      _auth.onAuthStateChanged.map((user) => User.fromFirebaseUser(user));
+  Stream<User> get user => _auth.onAuthStateChanged.map(
+    (user) => User.fromFirebaseUser(user),
+  );
 
   Future<User> signInWithGoogle() async {
     try {

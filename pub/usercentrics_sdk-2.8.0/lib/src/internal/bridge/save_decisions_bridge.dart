@@ -25,16 +25,13 @@ class MethodChannelSaveDecisions extends SaveDecisionsBridge {
     required List<UserDecision> decisions,
     required UsercentricsConsentType consentType,
   }) async {
-    final result = await channel.invokeMethod(
-      _name,
-      {
-        'decisions':
-            decisions.map((e) => UserDecisionSerializer.serialize(e)).toList(),
-        'consentType': ConsentTypeSerializer.serialize(consentType),
-      },
-    );
-    return (result as List)
-        .map((e) => ConsentSerializer.deserialize(e))
-        .toList();
+    final result = await channel.invokeMethod(_name, {
+      'decisions':
+          decisions.map((e) => UserDecisionSerializer.serialize(e)).toList(),
+      'consentType': ConsentTypeSerializer.serialize(consentType),
+    });
+    return (result as List).map(
+      (e) => ConsentSerializer.deserialize(e),
+    ).toList();
   }
 }

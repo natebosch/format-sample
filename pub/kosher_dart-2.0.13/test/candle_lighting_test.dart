@@ -4,7 +4,11 @@ import 'package:kosher_dart/kosher_dart.dart';
 
 void main() {
   GeoLocation geoLocation = GeoLocation.setLocation(
-      "Jerusalem", 31.7964453, 35.2453987, DateTime.now());
+    "Jerusalem",
+    31.7964453,
+    35.2453987,
+    DateTime.now(),
+  );
   ComplexZmanimCalendar complexZmanimCalendar =
       ComplexZmanimCalendar.intGeoLocation(geoLocation);
   test('testWeekend', () async {

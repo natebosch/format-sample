@@ -5,17 +5,10 @@ const genericBuild = [
   'muscular',
   'regular',
   'beefy',
-  'round'
+  'round',
 ];
 
-const strongBuild = [
-  'muscular',
-  'regular',
-  'beefy',
-  'massive',
-  'round',
-  'fat',
-];
+const strongBuild = ['muscular', 'regular', 'beefy', 'massive', 'round', 'fat'];
 
 const lightBuild = [
   'anorexic',
@@ -23,5 +16,5 @@ const lightBuild = [
   'lean',
   'athletic',
   'muscular',
-  'regular'
+  'regular',
 ];

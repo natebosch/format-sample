@@ -24,7 +24,8 @@ TaskFunction createMicrobenchmarkTask() {
       Future<Map<String, double>> _run() async {
         print('Running $benchmarkPath');
         final Directory appDir = dir(
-            path.join(flutterDirectory.path, 'dev/benchmarks/microbenchmarks'));
+          path.join(flutterDirectory.path, 'dev/benchmarks/microbenchmarks'),
+        );
         final Process flutterProcess = await inDirectory(appDir, () async {
           final List<String> options = <String>[
             '-v',
@@ -35,10 +36,7 @@ TaskFunction createMicrobenchmarkTask() {
             device.deviceId,
           ];
           options.add(benchmarkPath);
-          return startFlutter(
-            'run',
-            options: options,
-          );
+          return startFlutter('run', options: options);
         });
 
         return readJsonResults(flutterProcess);
@@ -62,7 +60,9 @@ TaskFunction createMicrobenchmarkTask() {
       ...await _runMicrobench('lib/foundation/change_notifier_bench.dart'),
     };
 
-    return TaskResult.success(allResults,
-        benchmarkScoreKeys: allResults.keys.toList());
+    return TaskResult.success(
+      allResults,
+      benchmarkScoreKeys: allResults.keys.toList(),
+    );
   };
 }

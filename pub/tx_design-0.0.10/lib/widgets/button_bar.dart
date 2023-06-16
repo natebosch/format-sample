@@ -40,21 +40,21 @@ class TxButtonBar extends StatelessWidget {
     this.buttonMinWidth,
     this.layoutBehavior,
     this.buttonAlignedDropdown,
-  })  : assert(menus.isNotEmpty),
-        actions = [
-          TxPopupMenuButton(
-            itemBuilder: (context) {
-              return <PopupMenuEntry>[
-                for (int i = 0; i < menus.length; i++) ...[
-                  menus[i],
-                  if (i != menus.length - 1) const PopupMenuDivider(),
-                ]
-              ];
-            },
-            icon: const Icon(Icons.more_horiz),
-          ),
-          ...?actions,
-        ];
+  }) : assert(menus.isNotEmpty),
+       actions = [
+         TxPopupMenuButton(
+           itemBuilder: (context) {
+             return <PopupMenuEntry>[
+               for (int i = 0; i < menus.length; i++) ...[
+                 menus[i],
+                 if (i != menus.length - 1) const PopupMenuDivider(),
+               ],
+             ];
+           },
+           icon: const Icon(Icons.more_horiz),
+         ),
+         ...?actions,
+       ];
 
   /// 主按钮
   ///
@@ -203,21 +203,21 @@ class TxFilterButtonBar extends TxButtonBar {
     VoidCallback? onReset,
     super.actions,
   }) : super(
-          mainButtonBuilder: confirmButtonBuilder ??
-              (style) {
-                return ElevatedButton(
-                  onPressed: onConfirm,
-                  style: style,
-                  child: const Text('确定'),
-                );
-              },
-          secondaryButtonBuilder: resetButtonBuilder ??
-              (style) {
-                return OutlinedButton(
-                  onPressed: onReset,
-                  style: style,
-                  child: const Text('重置'),
-                );
-              },
-        );
+         mainButtonBuilder: confirmButtonBuilder ??
+             (style) {
+               return ElevatedButton(
+                 onPressed: onConfirm,
+                 style: style,
+                 child: const Text('确定'),
+               );
+             },
+         secondaryButtonBuilder: resetButtonBuilder ??
+             (style) {
+               return OutlinedButton(
+                 onPressed: onReset,
+                 style: style,
+                 child: const Text('重置'),
+               );
+             },
+       );
 }

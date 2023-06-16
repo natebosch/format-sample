@@ -14,13 +14,13 @@ class MovieListWidget extends StatefulWidget {
   final MovieBloc movieBloc;
   final TMDBGenre genre;
 
-  MovieListWidget(
-      {Key key,
-      @required this.movies,
-      @required this.tabKey,
-      @required this.movieBloc,
-      this.genre})
-      : super(key: key);
+  MovieListWidget({
+    Key key,
+    @required this.movies,
+    @required this.tabKey,
+    @required this.movieBloc,
+    this.genre,
+  }) : super(key: key);
 
   @override
   MovieListWidgetState createState() {

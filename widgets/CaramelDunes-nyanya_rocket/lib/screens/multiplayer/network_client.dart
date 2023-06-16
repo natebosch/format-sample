@@ -13,35 +13,40 @@ class NetworkClient extends GameTicker<MultiplayerGameState> {
   final List<String> _playerNicknames = List.filled(4, '<empty>');
   final ValueNotifier<GameState> gameStream = ValueNotifier(GameState());
   final ValueNotifier<Duration> timeStream = ValueNotifier(Duration.zero);
-  final List<ValueNotifier<int>> scoreStreams =
-      List.generate(4, (_) => ValueNotifier(0), growable: false);
-  final ValueNotifier<NetworkGameStatus> statusNotifier =
-      ValueNotifier(NetworkGameStatus.ConnectingToServer);
+  final List<ValueNotifier<int>> scoreStreams = List.generate(
+    4,
+    (_) => ValueNotifier(0),
+    growable: false,
+  );
+  final ValueNotifier<NetworkGameStatus> statusNotifier = ValueNotifier(
+    NetworkGameStatus.ConnectingToServer,
+  );
 
   final void Function(GameEvent event, Duration animationDuration)? onGameEvent;
   final void Function(PlayerColor assignedColor)? onRegisterSuccess;
 
   PlayerColor? assignedColor;
 
-  NetworkClient(
-      {required InternetAddress serverAddress,
-      required String nickname,
-      int port = 43122,
-      int? ticket,
-      this.onGameEvent,
-      this.onRegisterSuccess})
-      : super(MultiplayerGameState(), MultiplayerGameSimulator()) {
+  NetworkClient({
+    required InternetAddress serverAddress,
+    required String nickname,
+    int port = 43122,
+    int? ticket,
+    this.onGameEvent,
+    this.onRegisterSuccess,
+  }) : super(MultiplayerGameState(), MultiplayerGameSimulator()) {
     gameSimulator.onEntityInRocket = _handleEntityInRocket;
 
     print('Connecting to $serverAddress:$port using ticket $ticket');
     _socket = ClientSocket(
-        serverAddress: serverAddress,
-        serverPort: port,
-        nickname: nickname,
-        ticket: ticket ?? 0,
-        onGameUpdate: _handleGame,
-        onPlayerRegister: _handleRegisterSuccess,
-        onPlayerNicknames: _handlePlayerNicknames);
+      serverAddress: serverAddress,
+      serverPort: port,
+      nickname: nickname,
+      ticket: ticket ?? 0,
+      onGameUpdate: _handleGame,
+      onPlayerRegister: _handleRegisterSuccess,
+      onPlayerNicknames: _handlePlayerNicknames,
+    );
   }
 
   NetworkGameStatus get status => _status;
@@ -63,7 +68,10 @@ class NetworkClient extends GameTicker<MultiplayerGameState> {
   }
 
   Duration computeAnimationDuration(
-      GameEvent event, int tickCount, int pauseUntil) {
+    GameEvent event,
+    int tickCount,
+    int pauseUntil,
+  ) {
     switch (event) {
       case GameEvent.SlowDown:
         return GameTicker.updatePeriod * (pauseUntil - tickCount);
@@ -91,13 +99,16 @@ class NetworkClient extends GameTicker<MultiplayerGameState> {
   }
 
   void _mixGameEvents(
-      MultiplayerGameState newGame, MultiplayerGameState afterCatchup) {
+    MultiplayerGameState newGame,
+    MultiplayerGameState afterCatchup,
+  ) {
     if (newGame.currentEvent != GameEvent.None &&
         newGame.eventEnd != afterCatchup.eventEnd) {
-      onGameEvent?.call(
-          newGame.currentEvent,
-          computeAnimationDuration(
-              newGame.currentEvent, newGame.tickCount, newGame.pauseUntil));
+      onGameEvent?.call(newGame.currentEvent, computeAnimationDuration(
+        newGame.currentEvent,
+        newGame.tickCount,
+        newGame.pauseUntil,
+      ));
     }
   }
 
@@ -126,8 +137,10 @@ class NetworkClient extends GameTicker<MultiplayerGameState> {
       // Only use our time frame if we are less than 60 ticks (~0.5 seconds)
       // in advance on the server.
       if (earliness <= 60) {
-        (gameSimulator as MultiplayerGameSimulator)
-            .fastForward(receivedGame, earliness);
+        (gameSimulator as MultiplayerGameSimulator).fastForward(
+          receivedGame,
+          earliness,
+        );
       }
 
       _mixGameEvents(receivedGame, game);

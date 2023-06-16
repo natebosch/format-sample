@@ -15,56 +15,42 @@ class MessageTypeTestEntry {
 
 void main() {
   final expectedResults = [
-    MessageTypeTestEntry(
-      {
-        'type': 'connection_ack',
-        'payload': {'connectionTimeoutMs': 300000}
-      },
-      MessageType.connectionAck,
-    ),
-    MessageTypeTestEntry(
-      {
-        'type': 'ka',
-      },
-      MessageType.keepAlive,
-    ),
-    MessageTypeTestEntry(
-      {'id': 'abc-123', 'type': 'start_ack'},
-      MessageType.startAck,
-    ),
-    MessageTypeTestEntry(
-      {
-        'id': 'xyz-456',
-        'type': 'data',
-        'payload': {
-          'data': {
-            'onCreateBlog': {
-              'id': 'def-789',
-              'name': 'Integration Test Blog - subscription create',
-              'createdAt': '2022-09-26T21:41:14.711Z',
-              'updatedAt': '2022-09-26T21:41:14.711Z'
-            }
+    MessageTypeTestEntry({
+      'type': 'connection_ack',
+      'payload': {'connectionTimeoutMs': 300000},
+    }, MessageType.connectionAck),
+    MessageTypeTestEntry({'type': 'ka'}, MessageType.keepAlive),
+    MessageTypeTestEntry({
+      'id': 'abc-123',
+      'type': 'start_ack',
+    }, MessageType.startAck),
+    MessageTypeTestEntry({
+      'id': 'xyz-456',
+      'type': 'data',
+      'payload': {
+        'data': {
+          'onCreateBlog': {
+            'id': 'def-789',
+            'name': 'Integration Test Blog - subscription create',
+            'createdAt': '2022-09-26T21:41:14.711Z',
+            'updatedAt': '2022-09-26T21:41:14.711Z',
           },
-          'errors': null
-        }
+        },
+        'errors': null,
       },
-      MessageType.data,
-    ),
-    MessageTypeTestEntry(
-      {
-        'id': 'abc-456',
-        'type': 'error',
-        'payload': {
-          'errors': [
-            {
-              'errorType': 'UnknownOperationError',
-              'message': 'Unknown operation id abc-456'
-            }
-          ]
-        }
+    }, MessageType.data),
+    MessageTypeTestEntry({
+      'id': 'abc-456',
+      'type': 'error',
+      'payload': {
+        'errors': [
+          {
+            'errorType': 'UnknownOperationError',
+            'message': 'Unknown operation id abc-456',
+          },
+        ],
       },
-      MessageType.error,
-    ),
+    }, MessageType.error),
   ];
 
   group('WebSocketMessage should create expected messages from JSON', () {
@@ -83,32 +69,24 @@ void main() {
       final errors = [
         {
           'message': errorMessage,
-          'path': ['onCreateBlog', 'updatedAt']
-        }
+          'path': ['onCreateBlog', 'updatedAt'],
+        },
       ];
       final entry = {
         'id': 'xyz-456',
         'type': 'data',
-        'payload': {'data': null, 'errors': errors}
+        'payload': {'data': null, 'errors': errors},
       };
       final message = WebSocketMessage.fromJson(entry);
       expect(message.messageType, MessageType.data);
-      expect(
-        message.payload!.toJson()['errors'],
-        errors,
-      );
+      expect(message.payload!.toJson()['errors'], errors);
 
       /// GraphQLResponseDecoder should handle a payload with errors.
       final response = GraphQLResponseDecoder.instance.decode<String>(
-        request: GraphQLRequest<String>(
-          document: '',
-        ),
+        request: GraphQLRequest<String>(document: ''),
         response: message.payload!.toJson(),
       );
-      expect(
-        response.errors.first.message,
-        errorMessage,
-      );
+      expect(response.errors.first.message, errorMessage);
     });
   });
 }

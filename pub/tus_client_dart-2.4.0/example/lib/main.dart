@@ -16,9 +16,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'TUS Client Upload Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.teal,
-      ),
+      theme: ThemeData(primarySwatch: Colors.teal),
       home: UploadPage(),
     );
   }
@@ -39,9 +37,7 @@ class _UploadPageState extends State<UploadPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('TUS Client Upload Demo'),
-      ),
+      appBar: AppBar(title: Text('TUS Client Upload Demo')),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -93,7 +89,8 @@ class _UploadPageState extends State<UploadPage> {
                           : () async {
                               final tempDir = await getTemporaryDirectory();
                               final tempDirectory = Directory(
-                                  '${tempDir.path}/${_file?.name}_uploads');
+                                '${tempDir.path}/${_file?.name}_uploads',
+                              );
                               if (!tempDirectory.existsSync()) {
                                 tempDirectory.createSync(recursive: true);
                               }
@@ -126,7 +123,8 @@ class _UploadPageState extends State<UploadPage> {
                                   });
                                 },
                                 uri: Uri.parse(
-                                    "https://tusd.tusdemo.net/files/"),
+                                  "https://tusd.tusdemo.net/files/",
+                                ),
                                 metadata: {
                                   'testMetaData': 'testMetaData',
                                   'testMetaData2': 'testMetaData2',
@@ -178,7 +176,10 @@ class _UploadPageState extends State<UploadPage> {
                   padding: const EdgeInsets.all(1),
                   width: double.infinity,
                   child: Text(
-                      "Progress: ${_progress.toStringAsFixed(1)}%, estimated time: ${_printDuration(_estimate)}"),
+                    "Progress: ${_progress.toStringAsFixed(
+                      1,
+                    )}%, estimated time: ${_printDuration(_estimate)}",
+                  ),
                 ),
               ],
             ),
@@ -232,10 +233,7 @@ class _UploadPageState extends State<UploadPage> {
         return XFile(chosenFile.path!);
       } else {
         // Web
-        return XFile.fromData(
-          chosenFile.bytes!,
-          name: chosenFile.name,
-        );
+        return XFile.fromData(chosenFile.bytes!, name: chosenFile.name);
       }
     }
     return XFile('');

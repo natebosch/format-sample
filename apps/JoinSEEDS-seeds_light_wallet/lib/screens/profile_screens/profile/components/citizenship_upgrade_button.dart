@@ -19,9 +19,8 @@ class CitizenshipUpgradeButton extends StatelessWidget {
     switch (citizenshipUpgradeStatus) {
       case CitizenshipUpgradeStatus.canResident:
         return MaterialButton(
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(8.0),
-          ),
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.0)),
           color: AppColors.darkGreen2,
           padding: const EdgeInsets.all(8.0),
           onPressed: onPressed,
@@ -33,9 +32,8 @@ class CitizenshipUpgradeButton extends StatelessWidget {
 
       case CitizenshipUpgradeStatus.canCitizen:
         return MaterialButton(
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(8.0),
-          ),
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.0)),
           color: AppColors.darkGreen2,
           padding: const EdgeInsets.all(8.0),
           onPressed: onPressed,

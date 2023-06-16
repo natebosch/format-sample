@@ -17,63 +17,84 @@ class _$GAliasedHeroReqSerializer
   final String wireName = 'GAliasedHeroReq';
 
   @override
-  Iterable<Object?> serialize(Serializers serializers, GAliasedHeroReq object,
-      {FullType specifiedType = FullType.unspecified}) {
+  Iterable<Object?> serialize(
+    Serializers serializers,
+    GAliasedHeroReq object, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
     final result = <Object?>[
       'vars',
-      serializers.serialize(object.vars,
-          specifiedType: const FullType(_i3.GAliasedHeroVars)),
+      serializers.serialize(
+        object.vars,
+        specifiedType: const FullType(_i3.GAliasedHeroVars),
+      ),
       'operation',
-      serializers.serialize(object.operation,
-          specifiedType: const FullType(_i4.Operation)),
+      serializers.serialize(
+        object.operation,
+        specifiedType: const FullType(_i4.Operation),
+      ),
       'executeOnListen',
-      serializers.serialize(object.executeOnListen,
-          specifiedType: const FullType(bool)),
+      serializers.serialize(
+        object.executeOnListen,
+        specifiedType: const FullType(bool),
+      ),
     ];
     Object? value;
     value = object.requestId;
     if (value != null) {
       result
         ..add('requestId')
-        ..add(serializers.serialize(value,
-            specifiedType: const FullType(String)));
+        ..add(
+          serializers.serialize(value, specifiedType: const FullType(String)),
+        );
     }
     value = object.optimisticResponse;
     if (value != null) {
       result
         ..add('optimisticResponse')
-        ..add(serializers.serialize(value,
-            specifiedType: const FullType(_i2.GAliasedHeroData)));
+        ..add(serializers.serialize(
+          value,
+          specifiedType: const FullType(_i2.GAliasedHeroData),
+        ));
     }
     value = object.updateCacheHandlerKey;
     if (value != null) {
       result
         ..add('updateCacheHandlerKey')
-        ..add(serializers.serialize(value,
-            specifiedType: const FullType(String)));
+        ..add(
+          serializers.serialize(value, specifiedType: const FullType(String)),
+        );
     }
     value = object.updateCacheHandlerContext;
     if (value != null) {
       result
         ..add('updateCacheHandlerContext')
-        ..add(serializers.serialize(value,
-            specifiedType: const FullType(
-                Map, const [const FullType(String), const FullType(dynamic)])));
+        ..add(serializers.serialize(
+          value,
+          specifiedType: const FullType(Map, const [
+            const FullType(String),
+            const FullType(dynamic),
+          ]),
+        ));
     }
     value = object.fetchPolicy;
     if (value != null) {
       result
         ..add('fetchPolicy')
-        ..add(serializers.serialize(value,
-            specifiedType: const FullType(_i1.FetchPolicy)));
+        ..add(serializers.serialize(
+          value,
+          specifiedType: const FullType(_i1.FetchPolicy),
+        ));
     }
     return result;
   }
 
   @override
   GAliasedHeroReq deserialize(
-      Serializers serializers, Iterable<Object?> serialized,
-      {FullType specifiedType = FullType.unspecified}) {
+    Serializers serializers,
+    Iterable<Object?> serialized, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
     final result = new GAliasedHeroReqBuilder();
 
     final iterator = serialized.iterator;
@@ -83,42 +104,59 @@ class _$GAliasedHeroReqSerializer
       final Object? value = iterator.current;
       switch (key) {
         case 'vars':
-          result.vars.replace(serializers.deserialize(value,
-                  specifiedType: const FullType(_i3.GAliasedHeroVars))!
-              as _i3.GAliasedHeroVars);
+          result.vars.replace(
+            serializers.deserialize(
+              value,
+              specifiedType: const FullType(_i3.GAliasedHeroVars),
+            )! as _i3.GAliasedHeroVars,
+          );
           break;
         case 'operation':
-          result.operation = serializers.deserialize(value,
-              specifiedType: const FullType(_i4.Operation))! as _i4.Operation;
+          result.operation = serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i4.Operation),
+          )! as _i4.Operation;
           break;
         case 'requestId':
-          result.requestId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String?;
+          result.requestId = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String?;
           break;
         case 'optimisticResponse':
-          result.optimisticResponse.replace(serializers.deserialize(value,
-                  specifiedType: const FullType(_i2.GAliasedHeroData))!
-              as _i2.GAliasedHeroData);
+          result.optimisticResponse.replace(
+            serializers.deserialize(
+              value,
+              specifiedType: const FullType(_i2.GAliasedHeroData),
+            )! as _i2.GAliasedHeroData,
+          );
           break;
         case 'updateCacheHandlerKey':
-          result.updateCacheHandlerKey = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String?;
+          result.updateCacheHandlerKey = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String?;
           break;
         case 'updateCacheHandlerContext':
-          result.updateCacheHandlerContext = serializers.deserialize(value,
-              specifiedType: const FullType(Map, const [
-                const FullType(String),
-                const FullType(dynamic)
-              ])) as Map<String, dynamic>?;
+          result.updateCacheHandlerContext = serializers.deserialize(
+            value,
+            specifiedType: const FullType(Map, const [
+              const FullType(String),
+              const FullType(dynamic),
+            ]),
+          ) as Map<String, dynamic>?;
           break;
         case 'fetchPolicy':
-          result.fetchPolicy = serializers.deserialize(value,
-                  specifiedType: const FullType(_i1.FetchPolicy))
-              as _i1.FetchPolicy?;
+          result.fetchPolicy = serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i1.FetchPolicy),
+          ) as _i1.FetchPolicy?;
           break;
         case 'executeOnListen':
-          result.executeOnListen = serializers.deserialize(value,
-              specifiedType: const FullType(bool))! as bool;
+          result.executeOnListen = serializers.deserialize(
+            value,
+            specifiedType: const FullType(bool),
+          )! as bool;
           break;
       }
     }
@@ -136,7 +174,9 @@ class _$GAliasedHeroReq extends GAliasedHeroReq {
   final String? requestId;
   @override
   final _i2.GAliasedHeroData? Function(
-      _i2.GAliasedHeroData?, _i2.GAliasedHeroData?)? updateResult;
+    _i2.GAliasedHeroData?,
+    _i2.GAliasedHeroData?,
+  )? updateResult;
   @override
   final _i2.GAliasedHeroData? optimisticResponse;
   @override
@@ -151,22 +191,28 @@ class _$GAliasedHeroReq extends GAliasedHeroReq {
   factory _$GAliasedHeroReq([void Function(GAliasedHeroReqBuilder)? updates]) =>
       (new GAliasedHeroReqBuilder()..update(updates))._build();
 
-  _$GAliasedHeroReq._(
-      {required this.vars,
-      required this.operation,
-      this.requestId,
-      this.updateResult,
-      this.optimisticResponse,
-      this.updateCacheHandlerKey,
-      this.updateCacheHandlerContext,
-      this.fetchPolicy,
-      required this.executeOnListen})
-      : super._() {
+  _$GAliasedHeroReq._({
+    required this.vars,
+    required this.operation,
+    this.requestId,
+    this.updateResult,
+    this.optimisticResponse,
+    this.updateCacheHandlerKey,
+    this.updateCacheHandlerContext,
+    this.fetchPolicy,
+    required this.executeOnListen,
+  }) : super._() {
     BuiltValueNullFieldError.checkNotNull(vars, r'GAliasedHeroReq', 'vars');
     BuiltValueNullFieldError.checkNotNull(
-        operation, r'GAliasedHeroReq', 'operation');
+      operation,
+      r'GAliasedHeroReq',
+      'operation',
+    );
     BuiltValueNullFieldError.checkNotNull(
-        executeOnListen, r'GAliasedHeroReq', 'executeOnListen');
+      executeOnListen,
+      r'GAliasedHeroReq',
+      'executeOnListen',
+    );
   }
 
   @override
@@ -195,20 +241,13 @@ class _$GAliasedHeroReq extends GAliasedHeroReq {
 
   @override
   int get hashCode {
-    return $jf($jc(
-        $jc(
-            $jc(
-                $jc(
-                    $jc(
-                        $jc(
-                            $jc($jc($jc(0, vars.hashCode), operation.hashCode),
-                                requestId.hashCode),
-                            updateResult.hashCode),
-                        optimisticResponse.hashCode),
-                    updateCacheHandlerKey.hashCode),
-                updateCacheHandlerContext.hashCode),
-            fetchPolicy.hashCode),
-        executeOnListen.hashCode));
+    return $jf($jc($jc($jc(
+      $jc($jc($jc(
+        $jc($jc($jc(0, vars.hashCode), operation.hashCode), requestId.hashCode),
+        updateResult.hashCode,
+      ), optimisticResponse.hashCode), updateCacheHandlerKey.hashCode),
+      updateCacheHandlerContext.hashCode,
+    ), fetchPolicy.hashCode), executeOnListen.hashCode));
   }
 
   @override
@@ -245,14 +284,16 @@ class GAliasedHeroReqBuilder
   set requestId(String? requestId) => _$this._requestId = requestId;
 
   _i2.GAliasedHeroData? Function(_i2.GAliasedHeroData?, _i2.GAliasedHeroData?)?
-      _updateResult;
+  _updateResult;
   _i2.GAliasedHeroData? Function(_i2.GAliasedHeroData?, _i2.GAliasedHeroData?)?
-      get updateResult => _$this._updateResult;
+  get updateResult => _$this._updateResult;
   set updateResult(
-          _i2.GAliasedHeroData? Function(
-                  _i2.GAliasedHeroData?, _i2.GAliasedHeroData?)?
-              updateResult) =>
-      _$this._updateResult = updateResult;
+    _i2.GAliasedHeroData? Function(
+      _i2.GAliasedHeroData?,
+      _i2.GAliasedHeroData?,
+    )?
+    updateResult,
+  ) => _$this._updateResult = updateResult;
 
   _i2.GAliasedHeroDataBuilder? _optimisticResponse;
   _i2.GAliasedHeroDataBuilder get optimisticResponse =>
@@ -269,8 +310,8 @@ class GAliasedHeroReqBuilder
   Map<String, dynamic>? get updateCacheHandlerContext =>
       _$this._updateCacheHandlerContext;
   set updateCacheHandlerContext(
-          Map<String, dynamic>? updateCacheHandlerContext) =>
-      _$this._updateCacheHandlerContext = updateCacheHandlerContext;
+    Map<String, dynamic>? updateCacheHandlerContext,
+  ) => _$this._updateCacheHandlerContext = updateCacheHandlerContext;
 
   _i1.FetchPolicy? _fetchPolicy;
   _i1.FetchPolicy? get fetchPolicy => _$this._fetchPolicy;
@@ -322,17 +363,24 @@ class GAliasedHeroReqBuilder
     try {
       _$result = _$v ??
           new _$GAliasedHeroReq._(
-              vars: vars.build(),
-              operation: BuiltValueNullFieldError.checkNotNull(
-                  operation, r'GAliasedHeroReq', 'operation'),
-              requestId: requestId,
-              updateResult: updateResult,
-              optimisticResponse: _optimisticResponse?.build(),
-              updateCacheHandlerKey: updateCacheHandlerKey,
-              updateCacheHandlerContext: updateCacheHandlerContext,
-              fetchPolicy: fetchPolicy,
-              executeOnListen: BuiltValueNullFieldError.checkNotNull(
-                  executeOnListen, r'GAliasedHeroReq', 'executeOnListen'));
+            vars: vars.build(),
+            operation: BuiltValueNullFieldError.checkNotNull(
+              operation,
+              r'GAliasedHeroReq',
+              'operation',
+            ),
+            requestId: requestId,
+            updateResult: updateResult,
+            optimisticResponse: _optimisticResponse?.build(),
+            updateCacheHandlerKey: updateCacheHandlerKey,
+            updateCacheHandlerContext: updateCacheHandlerContext,
+            fetchPolicy: fetchPolicy,
+            executeOnListen: BuiltValueNullFieldError.checkNotNull(
+              executeOnListen,
+              r'GAliasedHeroReq',
+              'executeOnListen',
+            ),
+          );
     } catch (_) {
       late String _$failedField;
       try {
@@ -343,7 +391,10 @@ class GAliasedHeroReqBuilder
         _optimisticResponse?.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
-            r'GAliasedHeroReq', _$failedField, e.toString());
+          r'GAliasedHeroReq',
+          _$failedField,
+          e.toString(),
+        );
       }
       rethrow;
     }

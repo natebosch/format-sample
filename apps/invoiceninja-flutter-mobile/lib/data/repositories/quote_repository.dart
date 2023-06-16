@@ -19,27 +19,32 @@ import 'package:invoiceninja_flutter/redux/app/app_state.dart';
 import 'package:invoiceninja_flutter/utils/serialization.dart';
 
 class QuoteRepository {
-  const QuoteRepository({
-    this.webClient = const WebClient(),
-  });
+  const QuoteRepository({this.webClient = const WebClient()});
 
   final WebClient webClient;
 
   Future<InvoiceEntity> loadItem(
-      Credentials credentials, String entityId) async {
+    Credentials credentials,
+    String entityId,
+  ) async {
     final dynamic response = await webClient.get(
-        '${credentials.url}/quotes/$entityId?include=history,activities',
-        credentials.token);
+      '${credentials.url}/quotes/$entityId?include=history,activities',
+      credentials.token,
+    );
 
     final InvoiceItemResponse quoteResponse = await compute<dynamic, dynamic>(
-        SerializationUtils.computeDecode,
-        <dynamic>[InvoiceItemResponse.serializer, response]);
+      SerializationUtils.computeDecode,
+      <dynamic>[InvoiceItemResponse.serializer, response],
+    );
 
     return quoteResponse.data;
   }
 
   Future<BuiltList<InvoiceEntity>> loadList(
-      Credentials credentials, int createdAt, bool filterDeleted) async {
+    Credentials credentials,
+    int createdAt,
+    bool filterDeleted,
+  ) async {
     String url = credentials.url + '/quotes?created_at=$createdAt';
 
     if (filterDeleted) {
@@ -49,24 +54,33 @@ class QuoteRepository {
     final dynamic response = await webClient.get(url, credentials.token);
 
     final InvoiceListResponse quoteResponse = await compute<dynamic, dynamic>(
-        SerializationUtils.computeDecode,
-        <dynamic>[InvoiceListResponse.serializer, response]);
+      SerializationUtils.computeDecode,
+      <dynamic>[InvoiceListResponse.serializer, response],
+    );
 
     return quoteResponse.data;
   }
 
   Future<List<InvoiceEntity>> bulkAction(
-      Credentials credentials, List<String> ids, EntityAction action) async {
+    Credentials credentials,
+    List<String> ids,
+    EntityAction action,
+  ) async {
     if (ids.length > kMaxEntitiesPerBulkAction) {
       ids = ids.sublist(0, kMaxEntitiesPerBulkAction);
     }
 
     final url = credentials.url + '/quotes/bulk';
-    final dynamic response = await webClient.post(url, credentials.token,
-        data: json.encode({'ids': ids, 'action': action.toApiParam()}));
+    final dynamic response = await webClient.post(
+      url,
+      credentials.token,
+      data: json.encode({'ids': ids, 'action': action.toApiParam()}),
+    );
 
-    final InvoiceListResponse invoiceResponse =
-        serializers.deserializeWith(InvoiceListResponse.serializer, response);
+    final InvoiceListResponse invoiceResponse = serializers.deserializeWith(
+      InvoiceListResponse.serializer,
+      response,
+    );
 
     return invoiceResponse.data.toList();
   }
@@ -101,14 +115,21 @@ class QuoteRepository {
           await webClient.put(url, credentials.token, data: json.encode(data));
     }
 
-    final InvoiceItemResponse quoteResponse =
-        serializers.deserializeWith(InvoiceItemResponse.serializer, response);
+    final InvoiceItemResponse quoteResponse = serializers.deserializeWith(
+      InvoiceItemResponse.serializer,
+      response,
+    );
 
     return quoteResponse.data;
   }
 
-  Future<InvoiceEntity> emailQuote(Credentials credentials, InvoiceEntity quote,
-      EmailTemplate template, String subject, String body) async {
+  Future<InvoiceEntity> emailQuote(
+    Credentials credentials,
+    InvoiceEntity quote,
+    EmailTemplate template,
+    String subject,
+    String body,
+  ) async {
     final data = {
       'entity': '${quote.entityType}',
       'entity_id': quote.id,
@@ -118,27 +139,37 @@ class QuoteRepository {
     };
 
     final dynamic response = await webClient.post(
-        credentials.url + '/emails', credentials.token,
-        data: json.encode(data));
+      credentials.url + '/emails',
+      credentials.token,
+      data: json.encode(data),
+    );
 
-    final InvoiceItemResponse invoiceResponse =
-        serializers.deserializeWith(InvoiceItemResponse.serializer, response);
+    final InvoiceItemResponse invoiceResponse = serializers.deserializeWith(
+      InvoiceItemResponse.serializer,
+      response,
+    );
 
     return invoiceResponse.data;
   }
 
-  Future<InvoiceEntity> uploadDocument(Credentials credentials,
-      BaseEntity entity, MultipartFile multipartFile) async {
-    final fields = <String, String>{
-      '_method': 'put',
-    };
+  Future<InvoiceEntity> uploadDocument(
+    Credentials credentials,
+    BaseEntity entity,
+    MultipartFile multipartFile,
+  ) async {
+    final fields = <String, String>{'_method': 'put'};
 
     final dynamic response = await webClient.post(
-        '${credentials.url}/quotes/${entity.id}/upload', credentials.token,
-        data: fields, multipartFiles: [multipartFile]);
+      '${credentials.url}/quotes/${entity.id}/upload',
+      credentials.token,
+      data: fields,
+      multipartFiles: [multipartFile],
+    );
 
-    final InvoiceItemResponse invoiceResponse =
-        serializers.deserializeWith(InvoiceItemResponse.serializer, response);
+    final InvoiceItemResponse invoiceResponse = serializers.deserializeWith(
+      InvoiceItemResponse.serializer,
+      response,
+    );
 
     return invoiceResponse.data;
   }

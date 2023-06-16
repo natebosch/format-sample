@@ -7,7 +7,6 @@ import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 class MockAdpieSdkPlatform
     with MockPlatformInterfaceMixin
     implements AdpieSdkPlatform {
-
   @override
   Future<String?> getPlatformVersion() => Future.value('42');
 }

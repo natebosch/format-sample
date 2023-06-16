@@ -13,11 +13,12 @@ class AccountTransactionsBloc
   final TransactionBloc transactionBloc;
   StreamSubscription transactionBlocSubscription;
 
-  AccountTransactionsBloc(
-      {@required this.transactionRepository, @required this.transactionBloc})
-      : assert(transactionRepository != null),
-        assert(transactionBloc != null),
-        super(AccountTransactionsEmpty(null)) {
+  AccountTransactionsBloc({
+    @required this.transactionRepository,
+    @required this.transactionBloc,
+  }) : assert(transactionRepository != null),
+       assert(transactionBloc != null),
+       super(AccountTransactionsEmpty(null)) {
     transactionBlocSubscription = transactionBloc.listen((state) {
       if (state is TransactionSaved) {
         if (this.state.filters != null) {
@@ -40,9 +41,10 @@ class AccountTransactionsBloc
           yield AccountTransactionsEmpty(event.input);
         } else {
           yield AccountTransactionsLoaded(
-              allAccountTransactions: result,
-              filterdAccountTransactions: result,
-              filters: event.input);
+            allAccountTransactions: result,
+            filterdAccountTransactions: result,
+            filters: event.input,
+          );
         }
       } catch (e) {
         yield AccountTransactionsError(event.input);
@@ -51,30 +53,36 @@ class AccountTransactionsBloc
       if (this.state is AccountTransactionsLoaded) {
         if (event.query == null || event.query == "") {
           yield AccountTransactionsLoaded(
-              allAccountTransactions:
-                  (state as AccountTransactionsLoaded).allAccountTransactions,
-              filterdAccountTransactions:
-                  (state as AccountTransactionsLoaded).allAccountTransactions,
-              filters: state.filters);
+            allAccountTransactions:
+                (state as AccountTransactionsLoaded).allAccountTransactions,
+            filterdAccountTransactions:
+                (state as AccountTransactionsLoaded).allAccountTransactions,
+            filters: state.filters,
+          );
         } else {
           var filteredTransactions = (state as AccountTransactionsLoaded)
               .allAccountTransactions
               .transactions
-              .where((t) => t.description
-                  .toLowerCase()
-                  .contains(event.query.toLowerCase()))
+              .where(
+                (t) => t.description.toLowerCase().contains(
+                  event.query.toLowerCase(),
+                ),
+              )
               .toList();
           var filteredTransactionsResult = TransactionsResult(
-              sections: transactionRepository.groupTransactions(
-                  transactions: filteredTransactions,
-                  groupBy: TransactionsGroupBy.Date),
-              transactions: filteredTransactions);
+            sections: transactionRepository.groupTransactions(
+              transactions: filteredTransactions,
+              groupBy: TransactionsGroupBy.Date,
+            ),
+            transactions: filteredTransactions,
+          );
 
           yield AccountTransactionsLoaded(
-              allAccountTransactions:
-                  (state as AccountTransactionsLoaded).allAccountTransactions,
-              filterdAccountTransactions: filteredTransactionsResult,
-              filters: state.filters);
+            allAccountTransactions:
+                (state as AccountTransactionsLoaded).allAccountTransactions,
+            filterdAccountTransactions: filteredTransactionsResult,
+            filters: state.filters,
+          );
         }
       }
     }

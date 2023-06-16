@@ -33,13 +33,16 @@ class _TicketsPageState extends State<TicketsPage>
       double duration = 0.6;
       double end = duration + start;
       return new Tween<double>(begin: 800.0, end: 0.0).animate(
-          new CurvedAnimation(
-              parent: cardEntranceAnimationController,
-              curve: new Interval(start, end, curve: Curves.decelerate)));
+        new CurvedAnimation(
+          parent: cardEntranceAnimationController,
+          curve: new Interval(start, end, curve: Curves.decelerate),
+        ),
+      );
     }).toList();
     fabAnimation = new CurvedAnimation(
-        parent: cardEntranceAnimationController,
-        curve: Interval(0.7, 1.0, curve: Curves.decelerate));
+      parent: cardEntranceAnimationController,
+      curve: Interval(0.7, 1.0, curve: Curves.decelerate),
+    );
     cardEntranceAnimationController.forward();
   }
 
@@ -54,17 +57,13 @@ class _TicketsPageState extends State<TicketsPage>
     return Scaffold(
       body: new Stack(
         children: <Widget>[
-          AirAsiaBar(
-            height: 180.0,
-          ),
+          AirAsiaBar(height: 180.0),
           Positioned.fill(
             top: MediaQuery.of(context).padding.top + 64.0,
             child: SingleChildScrollView(
-              child: new Column(
-                children: _buildTickets().toList(),
-              ),
+              child: new Column(children: _buildTickets().toList()),
             ),
-          )
+          ),
         ],
       ),
       floatingActionButton: _buildFab(),

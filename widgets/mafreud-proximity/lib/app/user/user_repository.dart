@@ -3,9 +3,7 @@ import 'user_model.dart';
 import 'user_remote_data_source.dart';
 
 final userRepositoryProvider = Provider<UserRepository>((ref) {
-  return UserRepository(
-    ref.watch(userRemoteDataSourceProvider),
-  );
+  return UserRepository(ref.watch(userRemoteDataSourceProvider));
 });
 
 class UserRepository {

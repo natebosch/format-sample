@@ -55,8 +55,9 @@ class LbSetupQrCodeScannerState<T extends LbSetupQrCodeScanner>
       if (qrCode == null ||
           (scanData.code != null && scanData.code != qrCode!.code)) {
         try {
-          LicenseQrCode response =
-              LicenseQrCode.fromJson(jsonDecode(scanData.code ?? "{}"));
+          LicenseQrCode response = LicenseQrCode.fromJson(
+            jsonDecode(scanData.code ?? "{}"),
+          );
           setState(() {
             qrCode = scanData;
             licenseToken = response.lic!.tk;
@@ -77,19 +78,10 @@ class LbSetupQrCodeScannerState<T extends LbSetupQrCodeScanner>
   Widget build(BuildContext context) {
     return Column(
       children: <Widget>[
-        Expanded(
-          flex: 1,
-          child: Text(
-            messageText,
-            maxLines: 2,
-          ),
-        ),
+        Expanded(flex: 1, child: Text(messageText, maxLines: 2)),
         Expanded(
           flex: 7,
-          child: QRView(
-            key: qrKey,
-            onQRViewCreated: _onQRViewCreated,
-          ),
+          child: QRView(key: qrKey, onQRViewCreated: _onQRViewCreated),
         ),
         Expanded(
           flex: 2,
@@ -100,7 +92,7 @@ class LbSetupQrCodeScannerState<T extends LbSetupQrCodeScanner>
               ElevatedButton(
                 onPressed: () => Navigator.of(context).pop(licenseToken),
                 child: const Text("CONFIRM"),
-              )
+              ),
             ],
           ),
         ),

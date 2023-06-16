@@ -13,13 +13,13 @@ import 'spark_chart_trackball.dart';
 @immutable
 class SparkChartTrackballRenderer extends StatefulWidget {
   /// Creates the trackball renderer.
-  const SparkChartTrackballRenderer(
-      {Key? key,
-      this.trackball,
-      this.coordinatePoints,
-      this.dataPoints,
-      this.sparkChart})
-      : super(key: key);
+  const SparkChartTrackballRenderer({
+    Key? key,
+    this.trackball,
+    this.coordinatePoints,
+    this.dataPoints,
+    this.sparkChart,
+  }) : super(key: key);
 
   /// Specifies the spark chart trackball.
   final SparkChartTrackball? trackball;
@@ -109,46 +109,88 @@ class _SparckChartTrackballRendererState
   @override
   Widget build(BuildContext context) {
     return MouseRegion(
-        // Using the _enableMouseHover property, prevented mouse hover function in mobile platforms. The mouse hover event should not be triggered for mobile platforms and logged an issue regarding this to the Flutter team.
-        // Issue:  https://github.com/flutter/flutter/issues/68690
-        onHover: (PointerHoverEvent event) => _enableMouseHover
-            ? _enableAndUpdateTrackball(context, event.position)
-            : null,
-        onExit: (PointerExitEvent event) => _hide(),
-        child: Listener(
-          onPointerUp: (PointerUpEvent event) => _hide(),
-          child: GestureDetector(
-              onVerticalDragStart: (widget.trackball != null && widget.trackball!.activationMode != SparkChartActivationMode.doubleTap)
-                  ? (DragStartDetails details) =>
-                      _updateDragValue(context, details.globalPosition)
-                  : null,
-              onVerticalDragUpdate: (widget.trackball != null && widget.trackball!.activationMode != SparkChartActivationMode.doubleTap)
-                  ? (DragUpdateDetails details) =>
-                      _updateDragValue(context, details.globalPosition)
-                  : null,
-              onHorizontalDragStart:
-                  (widget.trackball != null && widget.trackball!.activationMode != SparkChartActivationMode.doubleTap)
-                      ? (DragStartDetails details) =>
-                          _updateDragValue(context, details.globalPosition)
-                      : null,
-              onHorizontalDragUpdate:
-                  (widget.trackball != null && widget.trackball!.activationMode != SparkChartActivationMode.doubleTap)
-                      ? (DragUpdateDetails details) =>
-                          _updateDragValue(context, details.globalPosition)
-                      : null,
-              onTapDown: (widget.trackball != null && widget.trackball!.activationMode == SparkChartActivationMode.tap)
-                  ? (TapDownDetails details) =>
-                      _enableAndUpdateTrackball(context, details.globalPosition)
-                  : null,
-              onLongPressStart: (widget.trackball != null && widget.trackball!.activationMode == SparkChartActivationMode.longPress)
-                  ? (LongPressStartDetails details) =>
-                      _enableAndUpdateTrackball(context, details.globalPosition)
-                  : null,
-              onLongPressMoveUpdate: (widget.trackball != null && widget.trackball!.activationMode == SparkChartActivationMode.longPress) ? (LongPressMoveUpdateDetails details) => _updateDragValue(context, details.globalPosition) : null,
-              onDoubleTapDown: (widget.trackball != null && widget.trackball!.activationMode == SparkChartActivationMode.doubleTap) ? (TapDownDetails details) => _enableAndUpdateTrackball(context, details.globalPosition) : null,
-              onDoubleTap: (widget.trackball != null && widget.trackball!.activationMode == SparkChartActivationMode.doubleTap) ? () => _updateDragValue(context, _globalPosition!) : null,
-              child: _addTrackballPainter()),
-        ));
+      // Using the _enableMouseHover property, prevented mouse hover function in mobile platforms. The mouse hover event should not be triggered for mobile platforms and logged an issue regarding this to the Flutter team.
+      // Issue:  https://github.com/flutter/flutter/issues/68690
+      onHover: (PointerHoverEvent event) => _enableMouseHover
+          ? _enableAndUpdateTrackball(context, event.position)
+          : null,
+      onExit: (PointerExitEvent event) => _hide(),
+      child: Listener(
+        onPointerUp: (PointerUpEvent event) => _hide(),
+        child: GestureDetector(
+          onVerticalDragStart: (widget.trackball != null &&
+                    widget.trackball!.activationMode !=
+                        SparkChartActivationMode.doubleTap)
+              ? (DragStartDetails details) => _updateDragValue(
+                  context,
+                  details.globalPosition,
+                )
+              : null,
+          onVerticalDragUpdate: (widget.trackball != null &&
+                    widget.trackball!.activationMode !=
+                        SparkChartActivationMode.doubleTap)
+              ? (DragUpdateDetails details) => _updateDragValue(
+                  context,
+                  details.globalPosition,
+                )
+              : null,
+          onHorizontalDragStart: (widget.trackball != null &&
+                    widget.trackball!.activationMode !=
+                        SparkChartActivationMode.doubleTap)
+              ? (DragStartDetails details) => _updateDragValue(
+                  context,
+                  details.globalPosition,
+                )
+              : null,
+          onHorizontalDragUpdate: (widget.trackball != null &&
+                    widget.trackball!.activationMode !=
+                        SparkChartActivationMode.doubleTap)
+              ? (DragUpdateDetails details) => _updateDragValue(
+                  context,
+                  details.globalPosition,
+                )
+              : null,
+          onTapDown: (widget.trackball != null &&
+                    widget.trackball!.activationMode ==
+                        SparkChartActivationMode.tap)
+              ? (TapDownDetails details) => _enableAndUpdateTrackball(
+                  context,
+                  details.globalPosition,
+                )
+              : null,
+          onLongPressStart: (widget.trackball != null &&
+                    widget.trackball!.activationMode ==
+                        SparkChartActivationMode.longPress)
+              ? (LongPressStartDetails details) => _enableAndUpdateTrackball(
+                  context,
+                  details.globalPosition,
+                )
+              : null,
+          onLongPressMoveUpdate: (widget.trackball != null &&
+                    widget.trackball!.activationMode ==
+                        SparkChartActivationMode.longPress)
+              ? (LongPressMoveUpdateDetails details) => _updateDragValue(
+                  context,
+                  details.globalPosition,
+                )
+              : null,
+          onDoubleTapDown: (widget.trackball != null &&
+                    widget.trackball!.activationMode ==
+                        SparkChartActivationMode.doubleTap)
+              ? (TapDownDetails details) => _enableAndUpdateTrackball(
+                  context,
+                  details.globalPosition,
+                )
+              : null,
+          onDoubleTap: (widget.trackball != null &&
+                    widget.trackball!.activationMode ==
+                        SparkChartActivationMode.doubleTap)
+              ? () => _updateDragValue(context, _globalPosition!)
+              : null,
+          child: _addTrackballPainter(),
+        ),
+      ),
+    );
   }
 
   /// Method to hide the trackball.
@@ -160,10 +202,12 @@ class _SparckChartTrackballRendererState
 
       _trackballRepaintNotifier!.value++;
       _timer = Timer(
-          Duration(milliseconds: widget.trackball!.hideDelay.toInt()), () {
-        _trackballRepaintNotifier!.value++;
-        _endTrackballDragging();
-      });
+        Duration(milliseconds: widget.trackball!.hideDelay.toInt()),
+        () {
+          _trackballRepaintNotifier!.value++;
+          _endTrackballDragging();
+        },
+      );
     }
   }
 
@@ -175,9 +219,14 @@ class _SparckChartTrackballRendererState
         return Container(
           child: RepaintBoundary(
             child: CustomPaint(
-                painter: TrackballPainter(_trackballRepaintNotifier!,
-                    _isTrackballEnabled, widget.trackball, this),
-                size: Size(constraints.maxWidth, constraints.maxHeight)),
+              painter: TrackballPainter(
+                _trackballRepaintNotifier!,
+                _isTrackballEnabled,
+                widget.trackball,
+                this,
+              ),
+              size: Size(constraints.maxWidth, constraints.maxHeight),
+            ),
           ),
         );
       },
@@ -189,10 +238,18 @@ class _SparckChartTrackballRendererState
     final RenderBox renderBox = context.findRenderObject() as RenderBox;
     final Size renderBoxSize = renderBox.size;
     final Offset renderBoxOffset = renderBox.localToGlobal(Offset.zero);
-    _areaBounds = Rect.fromLTWH(renderBoxOffset.dx, renderBoxOffset.dy,
-        renderBoxSize.width, renderBoxSize.height);
-    _localBounds =
-        Rect.fromLTWH(0, 0, renderBoxSize.width, renderBoxSize.height);
+    _areaBounds = Rect.fromLTWH(
+      renderBoxOffset.dx,
+      renderBoxOffset.dy,
+      renderBoxSize.width,
+      renderBoxSize.height,
+    );
+    _localBounds = Rect.fromLTWH(
+      0,
+      0,
+      renderBoxSize.width,
+      renderBoxSize.height,
+    );
     _globalPosition = globalPosition;
     _touchPosition = renderBox.globalToLocal(globalPosition);
     if (_localBounds!.contains(_touchPosition!)) {
@@ -260,12 +317,12 @@ class _SparckChartTrackballRendererState
 class TrackballPainter extends CustomPainter {
   /// Creates the painter to render the trackball.
   TrackballPainter(
-      ValueNotifier<num> notifier,
-      this._isRepaint,
-      this._trackball,
-      // ignore: library_private_types_in_public_api
-      this._rendererState)
-      : super(repaint: notifier);
+    ValueNotifier<num> notifier,
+    this._isRepaint,
+    this._trackball,
+    // ignore: library_private_types_in_public_api
+    this._rendererState,
+  ) : super(repaint: notifier);
 
   /// Specifies whether to repaint the series.
   final bool _isRepaint;
@@ -288,7 +345,11 @@ class TrackballPainter extends CustomPainter {
 
   /// Method to render the trackball tooltip.
   void _renderTrackballTooltip(
-      Canvas canvas, Offset? screenPoint, num index, Size size) {
+    Canvas canvas,
+    Offset? screenPoint,
+    num index,
+    Size size,
+  ) {
     Offset labelOffset = screenPoint!;
     final String dataLabel = _getTrackballLabel();
     final TextStyle labelStyle = _getTrackballLabelStyle();
@@ -303,8 +364,12 @@ class TrackballPainter extends CustomPainter {
 
     final double textWidth = textSize.height / 2;
     borderRadius = _getBorderRadius(borderRadius, textWidth);
-    Rect labelRect = Rect.fromLTWH(screenPoint.dx, screenPoint.dy,
-        textSize.width + 15, textSize.height + 10);
+    Rect labelRect = Rect.fromLTWH(
+      screenPoint.dx,
+      screenPoint.dy,
+      textSize.width + 15,
+      textSize.height + 10,
+    );
     const double tooltipPadding = 5;
     const double pointerWidth = 5;
     const double pointerLength = 7;
@@ -360,14 +425,28 @@ class TrackballPainter extends CustomPainter {
         xPosition = xPosition < 0
             ? 0
             : (tooltipRight > totalWidth
-                ? totalWidth - labelRect.width
-                : xPosition);
+                  ? totalWidth - labelRect.width
+                  : xPosition);
       }
 
       labelRect = Rect.fromLTWH(
-          xPosition, yPosition, labelRect.width, labelRect.height);
-      _drawTrackballRect(canvas, textSize, labelRect, isRight, borderRadius,
-          pointerWidth, pointerLength, screenPoint, isTop, isBottom);
+        xPosition,
+        yPosition,
+        labelRect.width,
+        labelRect.height,
+      );
+      _drawTrackballRect(
+        canvas,
+        textSize,
+        labelRect,
+        isRight,
+        borderRadius,
+        pointerWidth,
+        pointerLength,
+        screenPoint,
+        isTop,
+        isBottom,
+      );
 
       final double labelOffsetX =
           (labelRect.left + labelRect.width / 2) - textSize.width / 2;
@@ -387,7 +466,10 @@ class TrackballPainter extends CustomPainter {
     if (_trackball!.tooltipFormatter != null) {
       final TooltipFormatterDetails tooltipFormatterDetails =
           TooltipFormatterDetails(
-              x: currentPoint.actualX, y: currentPoint.y, label: dataLabel);
+        x: currentPoint.actualX,
+        y: currentPoint.y,
+        label: dataLabel,
+      );
       dataLabel = _trackball!.tooltipFormatter!(tooltipFormatterDetails);
     }
 
@@ -397,41 +479,44 @@ class TrackballPainter extends CustomPainter {
   /// Method to return the trackball label style.
   TextStyle _getTrackballLabelStyle() {
     return _trackball!.labelStyle.copyWith(
-        color: _trackball!.labelStyle.color ??
-            (_rendererState._themeData!.brightness == Brightness.light
-                ? const Color.fromRGBO(229, 229, 229, 1)
-                : const Color.fromRGBO(0, 0, 0, 1)));
+      color: _trackball!.labelStyle.color ??
+          (_rendererState._themeData!.brightness == Brightness.light
+              ? const Color.fromRGBO(229, 229, 229, 1)
+              : const Color.fromRGBO(0, 0, 0, 1)),
+    );
   }
 
   /// Method to get the border radius.
   BorderRadius _getBorderRadius(BorderRadius borderRadius, double value) {
     return BorderRadius.only(
-        topLeft: borderRadius.topLeft.x > value
-            ? BorderRadius.circular(value).topLeft
-            : borderRadius.topLeft,
-        topRight: borderRadius.topRight.x > value
-            ? BorderRadius.circular(value).topRight
-            : borderRadius.topRight,
-        bottomLeft: borderRadius.bottomLeft.x > value
-            ? BorderRadius.circular(value).bottomLeft
-            : borderRadius.bottomLeft,
-        bottomRight: borderRadius.bottomRight.x > value
-            ? BorderRadius.circular(value).bottomRight
-            : borderRadius.bottomRight);
+      topLeft: borderRadius.topLeft.x > value
+          ? BorderRadius.circular(value).topLeft
+          : borderRadius.topLeft,
+      topRight: borderRadius.topRight.x > value
+          ? BorderRadius.circular(value).topRight
+          : borderRadius.topRight,
+      bottomLeft: borderRadius.bottomLeft.x > value
+          ? BorderRadius.circular(value).bottomLeft
+          : borderRadius.bottomLeft,
+      bottomRight: borderRadius.bottomRight.x > value
+          ? BorderRadius.circular(value).bottomRight
+          : borderRadius.bottomRight,
+    );
   }
 
   /// Method to draw the trackball rect.
   void _drawTrackballRect(
-      Canvas canvas,
-      Size textSize,
-      Rect rect,
-      bool isRight,
-      BorderRadius borderRadius,
-      double pointerWidth,
-      double pointerLength,
-      Offset screenPoint,
-      bool isTop,
-      bool isBottom) {
+    Canvas canvas,
+    Size textSize,
+    Rect rect,
+    bool isRight,
+    BorderRadius borderRadius,
+    double pointerWidth,
+    double pointerLength,
+    Offset screenPoint,
+    bool isTop,
+    bool isBottom,
+  ) {
     final Color backgroundColor =
         _rendererState._themeData!.brightness == Brightness.light
             ? const Color.fromRGBO(79, 79, 79, 1)
@@ -457,7 +542,9 @@ class TrackballPainter extends CustomPainter {
       path.moveTo(rect.left + rect.width / 2 - pointerWidth, yValue);
       path.lineTo(rect.left + rect.width / 2 + pointerWidth, yValue);
       path.lineTo(
-          screenPoint.dx, yValue + (isBottom ? -pointerLength : pointerLength));
+        screenPoint.dx,
+        yValue + (isBottom ? -pointerLength : pointerLength),
+      );
       path.lineTo(rect.left + rect.width / 2 - pointerWidth, yValue);
     }
 
@@ -485,7 +572,11 @@ class TrackballPainter extends CustomPainter {
 
   /// Method to render the trackball line.
   void _drawTrackLine(
-      Canvas canvas, Rect areaBounds, Offset screenPoint, Size size) {
+    Canvas canvas,
+    Rect areaBounds,
+    Offset screenPoint,
+    Size size,
+  ) {
     final Paint paint = Paint()
       ..color = _trackball!.color ??
           (_rendererState._themeData!.brightness == Brightness.light

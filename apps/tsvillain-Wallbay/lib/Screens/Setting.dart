@@ -24,18 +24,14 @@ class _SettingState extends State<Setting> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("About"),
-      ),
+      appBar: AppBar(title: Text("About")),
       body: Column(
         children: <Widget>[
           ListTile(
             title: Text("Recommend"),
             subtitle: Text("Share this app with your friends and family."),
             onTap: () {
-              Share.share(
-                "$message\n${url + _packageName}",
-              );
+              Share.share("$message\n${url + _packageName}");
             },
           ),
           ListTile(
@@ -51,7 +47,7 @@ class _SettingState extends State<Setting> {
           ListTile(
             title: Text("App Version"),
             subtitle: Text("${_version ?? "1.0.0"} "),
-          )
+          ),
         ],
       ),
     );

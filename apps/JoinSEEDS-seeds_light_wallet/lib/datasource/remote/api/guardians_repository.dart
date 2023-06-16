@@ -31,12 +31,14 @@ class GuardiansRepository extends EosRepository with NetworkRepository {
       return currentPermissions;
     }
 
-    final Permission ownerPermission =
-        (currentPermissions.asValue!.value as List<Permission>).firstWhere((item) => item.permName == 'owner');
+    final Permission ownerPermission = (currentPermissions.asValue!.value
+            as List<Permission>)
+        .firstWhere((item) => item.permName == 'owner');
 
     // Check if permissions are already set?
     // ignore: unnecessary_cast
-    for (final Map<String, dynamic> acct in ownerPermission.requiredAuth.accounts as List<dynamic>) {
+    for (final Map<String, dynamic> acct
+        in ownerPermission.requiredAuth.accounts as List<dynamic>) {
       if (acct['permission']['actor'] == accountGuards) {
         print('permission already set, doing nothing');
         return currentPermissions;
@@ -45,7 +47,7 @@ class GuardiansRepository extends EosRepository with NetworkRepository {
 
     ownerPermission.requiredAuth.accounts.add({
       'weight': ownerPermission.requiredAuth.threshold,
-      'permission': {'actor': accountGuards, 'permission': 'eosio.code'}
+      'permission': {'actor': accountGuards, 'permission': 'eosio.code'},
     });
 
     return await _updatePermission(ownerPermission);
@@ -70,14 +72,14 @@ class GuardiansRepository extends EosRepository with NetworkRepository {
           'user_account': accountName,
           'guardian_accounts': guardians,
           'time_delay_sec': guardianRecoveryTimeDelaySec,
-        }
+        },
     ];
 
     for (final action in actions) {
       action.authorization = [
         Authorization()
           ..actor = accountName
-          ..permission = permissionActive
+          ..permission = permissionActive,
       ];
     }
 
@@ -85,9 +87,11 @@ class GuardiansRepository extends EosRepository with NetworkRepository {
 
     return buildEosClient()
         .pushTransaction(transaction)
-        .then((dynamic response) => mapEosResponse(response, (dynamic map) {
-              return response["transaction_id"];
-            }))
+        .then(
+          (dynamic response) => mapEosResponse(response, (dynamic map) {
+            return response["transaction_id"];
+          }),
+        )
         .catchError((error) => mapEosError(error));
   }
 
@@ -105,27 +109,26 @@ class GuardiansRepository extends EosRepository with NetworkRepository {
       Action()
         ..account = accountGuards
         ..name = actionNameClaim
-        ..data = {'user_account': userAccount}
+        ..data = {'user_account': userAccount},
     ];
 
     for (final action in actions) {
       action.authorization = [
         Authorization()
           ..actor = accountGuards
-          ..permission = permissionApplication
+          ..permission = permissionApplication,
       ];
     }
 
-    final transaction = Transaction()
-      ..actions = [
-        ...actions,
-      ];
+    final transaction = Transaction()..actions = [...actions];
 
     return EOSClient(baseURL, 'v1', privateKeys: [onboardingPrivateKey])
         .pushTransaction(transaction)
-        .then((dynamic response) => mapEosResponse(response, (dynamic map) {
-              return response["transaction_id"];
-            }))
+        .then(
+          (dynamic response) => mapEosResponse(response, (dynamic map) {
+            return response["transaction_id"];
+          }),
+        )
         .catchError((error) => mapEosError(error));
   }
 
@@ -144,18 +147,20 @@ class GuardiansRepository extends EosRepository with NetworkRepository {
         ..authorization = [
           Authorization()
             ..actor = accountName
-            ..permission = permissionOwner
+            ..permission = permissionOwner,
         ]
-        ..data = {'user_account': accountName}
+        ..data = {'user_account': accountName},
     ];
 
     final transaction = buildFreeTransaction(actions, accountName);
 
     return buildEosClient()
         .pushTransaction(transaction)
-        .then((dynamic response) => mapEosResponse(response, (dynamic map) {
-              return response["transaction_id"];
-            }))
+        .then(
+          (dynamic response) => mapEosResponse(response, (dynamic map) {
+            return response["transaction_id"];
+          }),
+        )
         .catchError((error) => mapEosError(error));
   }
 
@@ -178,22 +183,24 @@ class GuardiansRepository extends EosRepository with NetworkRepository {
         ..authorization = [
           Authorization()
             ..actor = accountName
-            ..permission = permissionOwner
+            ..permission = permissionOwner,
         ]
         ..data = {
           'guardian_account': accountName,
           'user_account': userAccount,
           'new_public_key': publicKey,
-        }
+        },
     ];
 
     final transaction = buildFreeTransaction(actions, accountName);
 
     return buildEosClient()
         .pushTransaction(transaction)
-        .then((dynamic response) => mapEosResponse(response, (dynamic map) {
-              return response["transaction_id"];
-            }))
+        .then(
+          (dynamic response) => mapEosResponse(response, (dynamic map) {
+            return response["transaction_id"];
+          }),
+        )
         .catchError((error) => mapEosError(error));
   }
 
@@ -206,10 +213,14 @@ class GuardiansRepository extends EosRepository with NetworkRepository {
 
     return http
         .post(url, headers: headers, body: body)
-        .then((http.Response response) => mapHttpResponse(response, (dynamic body) {
-              final List<dynamic> allAccounts = body['permissions'].toList();
-              return allAccounts.map((item) => Permission.fromJson(item)).toList();
-            }))
+        .then(
+          (http.Response response) => mapHttpResponse(response, (dynamic body) {
+            final List<dynamic> allAccounts = body['permissions'].toList();
+            return allAccounts.map(
+              (item) => Permission.fromJson(item),
+            ).toList();
+          }),
+        )
         .catchError((error) => mapHttpError(error));
   }
 
@@ -229,15 +240,15 @@ class GuardiansRepository extends EosRepository with NetworkRepository {
           'account': accountName,
           'permission': permission.permName,
           'parent': permission.parent,
-          'auth': permissionsMap
-        }
+          'auth': permissionsMap,
+        },
     ];
 
     for (final action in actions) {
       action.authorization = [
         Authorization()
           ..actor = accountName
-          ..permission = permissionOwner
+          ..permission = permissionOwner,
       ];
     }
 
@@ -245,9 +256,11 @@ class GuardiansRepository extends EosRepository with NetworkRepository {
 
     return buildEosClient()
         .pushTransaction(transaction)
-        .then((dynamic response) => mapEosResponse(response, (dynamic map) {
-              return response["transaction_id"];
-            }))
+        .then(
+          (dynamic response) => mapEosResponse(response, (dynamic map) {
+            return response["transaction_id"];
+          }),
+        )
         .catchError((error) => mapEosError(error));
   }
 
@@ -257,18 +270,21 @@ class GuardiansRepository extends EosRepository with NetworkRepository {
     final String requestURL = "$baseURL/v1/chain/get_table_rows";
 
     final String request = createRequest(
-        code: accountGuards,
-        scope: accountGuards,
-        table: tableRecover,
-        lowerBound: accountName,
-        upperBound: accountName);
+      code: accountGuards,
+      scope: accountGuards,
+      table: tableRecover,
+      lowerBound: accountName,
+      upperBound: accountName,
+    );
 
     return http
         .post(Uri.parse(requestURL), headers: headers, body: request)
-        .then((http.Response response) => mapHttpResponse(response, (dynamic body) {
-              final rows = body["rows"] as List<dynamic>;
-              return UserRecoversModel.fromTableRows(rows);
-            }))
+        .then(
+          (http.Response response) => mapHttpResponse(response, (dynamic body) {
+            final rows = body["rows"] as List<dynamic>;
+            return UserRecoversModel.fromTableRows(rows);
+          }),
+        )
         .catchError((error) => mapHttpError(error));
   }
 
@@ -287,15 +303,22 @@ class GuardiansRepository extends EosRepository with NetworkRepository {
 
     return http
         .post(Uri.parse(requestURL), headers: headers, body: request)
-        .then((http.Response response) => mapHttpResponse(response, (dynamic body) {
-              final rows = body["rows"] as List<dynamic>;
-              return UserGuardiansModel.fromTableRows(rows);
-            }))
+        .then(
+          (http.Response response) => mapHttpResponse(response, (dynamic body) {
+            final rows = body["rows"] as List<dynamic>;
+            return UserGuardiansModel.fromTableRows(rows);
+          }),
+        )
         .catchError((error) => mapHttpError(error));
   }
 
-  Future<Result<dynamic>> generateRecoveryRequest(String accountName, String publicKey) async {
-    print('[ESR] generateRecoveryRequest: $accountName publicKey: ($publicKey)');
+  Future<Result<dynamic>> generateRecoveryRequest(
+    String accountName,
+    String publicKey,
+  ) async {
+    print(
+      '[ESR] generateRecoveryRequest: $accountName publicKey: ($publicKey)',
+    );
 
     final List<esr.Authorization> auth = [esr.ESRConstants.PlaceholderAuth];
 
@@ -311,22 +334,31 @@ class GuardiansRepository extends EosRepository with NetworkRepository {
       ..authorization = auth
       ..data = data;
 
-    final esr.SigningRequestCreateArguments args = esr.SigningRequestCreateArguments(action: action, chainId: chainId);
+    final esr.SigningRequestCreateArguments args =
+        esr.SigningRequestCreateArguments(action: action, chainId: chainId);
 
-    return esr.SigningRequestManager.create(args,
-            options: esr.defaultSigningRequestEncodingOptions(
-              nodeUrl: remoteConfigurations.hyphaEndPoint,
-            ))
-        .then((esr.SigningRequestManager response) => ValueResult(response.encode()))
+    return esr.SigningRequestManager.create(
+          args,
+          options: esr.defaultSigningRequestEncodingOptions(
+            nodeUrl: remoteConfigurations.hyphaEndPoint,
+          ),
+        )
+        .then(
+          (esr.SigningRequestManager response) => ValueResult(
+            response.encode(),
+          ),
+        )
         // ignore: return_of_invalid_type_from_catch_error
         .catchError((error) => mapEosError(error));
   }
 }
 
 // method to properly convert RequiredAuth to JSON - the library doesn't work
-Map<String, dynamic> _requiredAuthToJson(RequiredAuth instance) => <String, dynamic>{
-      'threshold': instance.threshold,
-      'keys': List<dynamic>.from(instance.keys!.map((e) => e.toJson())),
-      'accounts': instance.accounts,
-      'waits': instance.waits
-    };
+Map<String, dynamic> _requiredAuthToJson(
+  RequiredAuth instance,
+) => <String, dynamic>{
+  'threshold': instance.threshold,
+  'keys': List<dynamic>.from(instance.keys!.map((e) => e.toJson())),
+  'accounts': instance.accounts,
+  'waits': instance.waits,
+};

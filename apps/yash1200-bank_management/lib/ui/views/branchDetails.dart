@@ -38,10 +38,7 @@ class _BranchDetailsState extends State<BranchDetails>
 
   showAddSheet(BuildContext context) {
     ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text('Getting data'),
-        duration: Duration(seconds: 1),
-      ),
+      SnackBar(content: Text('Getting data'), duration: Duration(seconds: 1)),
     );
     getAddAmount().then((value) {
       if (widget.snapshot.id == 'Master') {
@@ -86,26 +83,15 @@ class _BranchDetailsState extends State<BranchDetails>
         elevation: 0,
         backgroundColor: Colors.white,
         leading: IconButton(
-          icon: Icon(
-            Icons.arrow_back_ios,
-            color: darkColor,
-          ),
+          icon: Icon(Icons.arrow_back_ios, color: darkColor),
           onPressed: () {
             Navigator.pop(context);
           },
         ),
-        title: Text(
-          widget.snapshot.id,
-          style: TextStyle(
-            color: darkColor,
-          ),
-        ),
+        title: Text(widget.snapshot.id, style: TextStyle(color: darkColor)),
         actions: <Widget>[
           PopupMenuButton(
-            icon: Icon(
-              Icons.more_vert,
-              color: darkColor,
-            ),
+            icon: Icon(Icons.more_vert, color: darkColor),
             elevation: 2,
             onSelected: (value) {
               switch (value) {
@@ -118,14 +104,9 @@ class _BranchDetailsState extends State<BranchDetails>
               }
             },
             itemBuilder: (context) {
-              return choices.map(
-                (String choice) {
-                  return PopupMenuItem(
-                    value: choice,
-                    child: Text(choice),
-                  );
-                },
-              ).toList();
+              return choices.map((String choice) {
+                return PopupMenuItem(value: choice, child: Text(choice));
+              }).toList();
             },
           ),
         ],
@@ -135,9 +116,7 @@ class _BranchDetailsState extends State<BranchDetails>
         physics: BouncingScrollPhysics(),
         padding: EdgeInsets.only(left: 10, right: 10),
         children: <Widget>[
-          SizedBox(
-            height: size.height / 40,
-          ),
+          SizedBox(height: size.height / 40),
           Hero(
             tag: widget.snapshot.id,
             child: Container(
@@ -154,31 +133,22 @@ class _BranchDetailsState extends State<BranchDetails>
                 children: <Widget>[
                   Row(
                     children: <Widget>[
-                      Icon(
-                        FontAwesomeIcons.rupeeSign,
-                        color: Colors.white,
-                      ),
-                      SizedBox(
-                        width: 5,
-                      ),
+                      Icon(FontAwesomeIcons.rupeeSign, color: Colors.white),
+                      SizedBox(width: 5),
                       FutureBuilder(
                         future: getBranchBalance(widget.snapshot.id),
                         builder: (context, snapshot) {
                           if (snapshot.hasData) {
                             return Text(
                               snapshot.data.toString(),
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 30,
-                              ),
+                              style:
+                                  TextStyle(color: Colors.white, fontSize: 30),
                             );
                           } else {
                             return Text(
                               '0',
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 30,
-                              ),
+                              style:
+                                  TextStyle(color: Colors.white, fontSize: 30),
                             );
                           }
                         },
@@ -197,30 +167,22 @@ class _BranchDetailsState extends State<BranchDetails>
               ),
             ),
           ),
-          SizedBox(
-            height: size.height / 40,
-          ),
+          SizedBox(height: size.height / 40),
           Padding(
             padding: const EdgeInsets.only(left: 50, right: 50),
             child: FlatButton(
               onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) {
-                      return PayNow(widget.snapshot);
-                    },
-                  ),
-                );
+                Navigator.push(context, MaterialPageRoute(
+                  builder: (context) {
+                    return PayNow(widget.snapshot);
+                  },
+                ));
               },
               color: Colors.white,
               shape: roundedRectangleBorder,
               child: Text(
                 'Pay Now',
-                style: TextStyle(
-                  color: darkColor,
-                  fontSize: 16,
-                ),
+                style: TextStyle(color: darkColor, fontSize: 16),
               ),
             ),
           ),
@@ -234,38 +196,25 @@ class _BranchDetailsState extends State<BranchDetails>
               shape: roundedRectangleBorder,
               child: Text(
                 'Update Money',
-                style: TextStyle(
-                  color: darkColor,
-                  fontSize: 16,
-                ),
+                style: TextStyle(color: darkColor, fontSize: 16),
               ),
             ),
           ),
-          SizedBox(
-            height: size.height / 80,
-          ),
+          SizedBox(height: size.height / 80),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
-              Text(
-                'Recent',
-                style: defaultTextStyleLarge,
-              ),
+              Text('Recent', style: defaultTextStyleLarge),
               IconButton(
                 icon: Icon(Icons.filter_list),
                 onPressed: () {
                   showFilterSheet(context);
                 },
-              )
+              ),
             ],
           ),
-          SizedBox(
-            height: size.height / 80,
-          ),
-          TransactionPage(
-            widget.snapshot.id,
-            provider.transactionIndex,
-          ),
+          SizedBox(height: size.height / 80),
+          TransactionPage(widget.snapshot.id, provider.transactionIndex),
         ],
       ),
     );

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
+
 //contact screen
 class ContactDeatils extends StatefulWidget {
   @override
@@ -10,80 +11,87 @@ class _ContactDeatilsState extends State<ContactDeatils> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
       appBar: AppBar(
         backgroundColor: Color(0xff85160f),
-        title: Text("Important Contact Details", style: TextStyle(color: Colors.white),),
+        title: Text(
+          "Important Contact Details",
+          style: TextStyle(color: Colors.white),
+        ),
         centerTitle: true,
         leading: IconButton(
-            icon: Icon(Icons.arrow_back),
-            color: Colors.white,
-            onPressed: () => Navigator.of(context).pop()),
+          icon: Icon(Icons.arrow_back),
+          color: Colors.white,
+          onPressed: () => Navigator.of(context).pop(),
+        ),
       ),
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
-
             ListTile(
-              title: Text("Samved Hospital",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20.0),),
+              title: Text(
+                "Samved Hospital",
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0),
+              ),
               subtitle: Text("Tap to call"),
               onTap: () => AllCallEmail()._AUSamved(),
               trailing: IconButton(
-                  icon: Icon(Icons.location_on, color: Color(0xff85160f)),
-                  onPressed: () => AllCallEmail()._launchMapsamved()),
+                icon: Icon(Icons.location_on, color: Color(0xff85160f)),
+                onPressed: () => AllCallEmail()._launchMapsamved(),
+              ),
             ),
-            Divider(
-              color: Colors.black,
-            ),
-
+            Divider(color: Colors.black),
             ListTile(
-              title: Text("Medical Room",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20.0),),
+              title: Text(
+                "Medical Room",
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0),
+              ),
               subtitle: Text("Tap to call"),
               onTap: () => AllCallEmail()._AUSstu(),
               trailing: IconButton(
-                  icon: Icon(Icons.mail, color: Color(0xff85160f)),
-                  onPressed: () => AllCallEmail()._AUSetuMail()),
+                icon: Icon(Icons.mail, color: Color(0xff85160f)),
+                onPressed: () => AllCallEmail()._AUSetuMail(),
+              ),
             ),
-            Divider(
-              color: Colors.black,
-            ),
-
-
+            Divider(color: Colors.black),
             ListTile(
-              title: Text("University Office",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20.0),),
+              title: Text(
+                "University Office",
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0),
+              ),
               subtitle: Text("Tap to call"),
               onTap: () => AllCallEmail()._AUO(),
               trailing: IconButton(
-                  icon: Icon(Icons.mail, color: Color(0xff85160f)),
-                  onPressed: () => AllCallEmail()._AUMail()),
+                icon: Icon(Icons.mail, color: Color(0xff85160f)),
+                onPressed: () => AllCallEmail()._AUMail(),
+              ),
             ),
-            Divider(
-              color: Colors.black,
-            ),
-
+            Divider(color: Colors.black),
             ListTile(
-              title: Text("University Counselor",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20.0),),
+              title: Text(
+                "University Counselor",
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0),
+              ),
               subtitle: Text("Tap to call"),
               onTap: () => AllCallEmail()._AUOC(),
               trailing: IconButton(
-                  icon: Icon(Icons.mail, color: Color(0xff85160f)),
-                  onPressed: () => AllCallEmail()._AUCMail()),
+                icon: Icon(Icons.mail, color: Color(0xff85160f)),
+                onPressed: () => AllCallEmail()._AUCMail(),
+              ),
             ),
-            Divider(
-              color: Colors.black,
-            ),
-
+            Divider(color: Colors.black),
             ListTile(
-              title: Text("AURIS Support",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20.0),),
+              title: Text(
+                "AURIS Support",
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0),
+              ),
               trailing: IconButton(
-                  icon: Icon(Icons.mail, color: Color(0xff85160f)),
-                  onPressed: () => AllCallEmail()._AUAM()),
+                icon: Icon(Icons.mail, color: Color(0xff85160f)),
+                onPressed: () => AllCallEmail()._AUAM(),
+              ),
             ),
-            Divider(
-              color: Colors.black,
-            ),
+            Divider(color: Colors.black),
 
-           /* ListTile(
+            /* ListTile(
               title: Text("Programme Office",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20.0),),
               subtitle: Text("Tap to call"),
               onTap: () => AllCallEmail()._AUSstu(),// Pending che
@@ -96,16 +104,18 @@ class _ContactDeatilsState extends State<ContactDeatils> {
             ),*/
 
             ListTile(
-              title: Text("Office of Admission and Financial Aids",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20.0),),
+              title: Text(
+                "Office of Admission and Financial Aids",
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0),
+              ),
               subtitle: Text("Tap to call"),
               onTap: () => AllCallEmail()._AUOAF(),
               trailing: IconButton(
-                  icon: Icon(Icons.mail, color: Color(0xff85160f)),
-                  onPressed: () => AllCallEmail()._AUOAFM()),
+                icon: Icon(Icons.mail, color: Color(0xff85160f)),
+                onPressed: () => AllCallEmail()._AUOAFM(),
+              ),
             ),
-            Divider(
-              color: Colors.black,
-            ),
+            Divider(color: Colors.black),
           ],
         ),
       ),

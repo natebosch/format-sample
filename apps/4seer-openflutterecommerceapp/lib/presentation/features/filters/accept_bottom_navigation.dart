@@ -25,11 +25,8 @@ class AcceptBottomNavigation extends StatelessWidget {
             ),
           ),
           Expanded(
-            child: OpenFlutterButton(
-              title: 'Apply',
-              onPressed: onApply,
-            ),
-          )
+            child: OpenFlutterButton(title: 'Apply', onPressed: onApply),
+          ),
         ],
       ),
     );

@@ -14,10 +14,7 @@ class MainWidget extends StatefulWidget {
   final EscapeGame escapeGame;
 
   /// Creates a new [MainWidget] instance.
-  const MainWidget({
-    super.key,
-    required this.escapeGame,
-  });
+  const MainWidget({super.key, required this.escapeGame});
 
   @override
   State<StatefulWidget> createState() => _MainWidgetState();
@@ -29,12 +26,12 @@ class _MainWidgetState extends State<MainWidget> {
   void initState() {
     super.initState();
     for (String asset in [
-      'assets/backgrounds/bedroom.png',
-      'assets/backgrounds/bedroom-present.png',
-      'assets/backgrounds/desk.png',
-      'assets/backgrounds/living-room.png',
-      'assets/glitch/image.webp',
-    ]) {
+          'assets/backgrounds/bedroom.png',
+          'assets/backgrounds/bedroom-present.png',
+          'assets/backgrounds/desk.png',
+          'assets/backgrounds/living-room.png',
+          'assets/glitch/image.webp',
+        ]) {
       precacheImage(AssetImage(asset), context);
     }
     // for (String asset in [
@@ -51,31 +48,29 @@ class _MainWidgetState extends State<MainWidget> {
 
   @override
   Widget build(BuildContext context) => MaterialApp(
-        navigatorKey: navigatorKey,
-        title: 'ERROR 1980',
-        theme: ThemeData(
-          primarySwatch: Colors.indigo,
-          scrollbarTheme: ScrollbarThemeData(thumbVisibility: MaterialStateProperty.all(true)),
-        ),
-        locale: const Locale('en'),
-        localizationsDelegates: const [
-          GlobalMaterialLocalizations.delegate,
-          GlobalWidgetsLocalizations.delegate,
-          GlobalCupertinoLocalizations.delegate,
-        ],
-        supportedLocales: const [Locale('en')],
-        home: EscapeGameWidget(
-          baseSize: const Size(975.2, 392.0),
-          backgroundColor: Colors.black,
-          beforeGameStartBuilder: (context, escapeGame) => TitleScreen(
-            child: PlayButton(
-              escapeGame: escapeGame,
-            ),
+    navigatorKey: navigatorKey,
+    title: 'ERROR 1980',
+    theme: ThemeData(
+      primarySwatch: Colors.indigo,
+      scrollbarTheme:
+          ScrollbarThemeData(thumbVisibility: MaterialStateProperty.all(true)),
+    ),
+    locale: const Locale('en'),
+    localizationsDelegates: const [
+      GlobalMaterialLocalizations.delegate,
+      GlobalWidgetsLocalizations.delegate,
+      GlobalCupertinoLocalizations.delegate,
+    ],
+    supportedLocales: const [Locale('en')],
+    home: EscapeGameWidget(
+      baseSize: const Size(975.2, 392.0),
+      backgroundColor: Colors.black,
+      beforeGameStartBuilder: (context, escapeGame) => TitleScreen(
+            child: PlayButton(escapeGame: escapeGame),
           ),
-          afterGameFinishedBuilder: (context, escapeGame) => const TitleScreen(
-            child: EndMessage(),
-          ),
-          escapeGame: widget.escapeGame,
-        ),
-      );
+      afterGameFinishedBuilder:
+          (context, escapeGame) => const TitleScreen(child: EndMessage()),
+      escapeGame: widget.escapeGame,
+    ),
+  );
 }

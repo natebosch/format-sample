@@ -11,7 +11,6 @@ class RoutePaths {
   static final Map<String, WidgetBuilder> routes = {
     splash: (_) => SplashView(),
     setup: (_) => SetupView(),
-    main: (_) => MainView()
+    main: (_) => MainView(),
   };
-
 }

@@ -39,11 +39,8 @@ class _SplashScreenState extends State<SplashScreen> {
             Text(
               'Pokedex',
               textAlign: TextAlign.center,
-              style: TextStyle(
-                fontSize: 24,
-                fontWeight: FontWeight.w600,
-              ),
-            )
+              style: TextStyle(fontSize: 24, fontWeight: FontWeight.w600),
+            ),
           ],
         ),
       ),

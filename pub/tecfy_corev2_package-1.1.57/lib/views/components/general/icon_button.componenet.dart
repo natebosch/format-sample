@@ -4,9 +4,12 @@ class AppIconButton extends StatefulWidget {
   final Widget icon;
   final String? tooltip;
   final Future Function()? onPressed;
-  const AppIconButton(
-      {Key? key, required this.icon, required this.onPressed, this.tooltip})
-      : super(key: key);
+  const AppIconButton({
+    Key? key,
+    required this.icon,
+    required this.onPressed,
+    this.tooltip,
+  }) : super(key: key);
 
   @override
   _AppIconButtonState createState() => _AppIconButtonState();

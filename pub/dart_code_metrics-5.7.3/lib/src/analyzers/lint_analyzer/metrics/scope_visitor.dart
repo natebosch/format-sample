@@ -84,7 +84,8 @@ class ScopeVisitor extends RecursiveAstVisitor<void> {
   }
 
   void _registerFunctionDeclaration(FunctionType type, Declaration node) {
-    _functions
-        .add(ScopedFunctionDeclaration(type, node, _enclosingDeclaration));
+    _functions.add(
+      ScopedFunctionDeclaration(type, node, _enclosingDeclaration),
+    );
   }
 }

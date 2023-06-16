@@ -83,44 +83,44 @@ class _$Multipletext extends Multipletext {
   factory _$Multipletext([void Function(MultipletextBuilder)? updates]) =>
       (new MultipletextBuilder()..update(updates))._build();
 
-  _$Multipletext._(
-      {this.items,
-      this.itemSize,
-      this.colCount,
-      this.type,
-      this.name,
-      this.state,
-      this.visible,
-      this.useDisplayValuesInDynamicTexts,
-      this.visibleIf,
-      this.width,
-      this.minWidth,
-      this.maxWidth,
-      this.startWithNewLine,
-      this.indent,
-      this.page,
-      this.title,
-      this.titleLocation,
-      this.description,
-      this.descriptionLocation,
-      this.hideNumber,
-      this.valueName,
-      this.enableIf,
-      this.defaultValue,
-      this.defaultValueExpression,
-      this.correctAnswer,
-      this.clearIfInvisible,
-      this.isRequired,
-      this.requiredIf,
-      this.requiredErrorText,
-      this.readOnly,
-      this.validators,
-      this.bindings,
-      this.renderAs,
-      this.showCommentArea,
-      this.commentText,
-      this.commentPlaceholder})
-      : super._();
+  _$Multipletext._({
+    this.items,
+    this.itemSize,
+    this.colCount,
+    this.type,
+    this.name,
+    this.state,
+    this.visible,
+    this.useDisplayValuesInDynamicTexts,
+    this.visibleIf,
+    this.width,
+    this.minWidth,
+    this.maxWidth,
+    this.startWithNewLine,
+    this.indent,
+    this.page,
+    this.title,
+    this.titleLocation,
+    this.description,
+    this.descriptionLocation,
+    this.hideNumber,
+    this.valueName,
+    this.enableIf,
+    this.defaultValue,
+    this.defaultValueExpression,
+    this.correctAnswer,
+    this.clearIfInvisible,
+    this.isRequired,
+    this.requiredIf,
+    this.requiredErrorText,
+    this.readOnly,
+    this.validators,
+    this.bindings,
+    this.renderAs,
+    this.showCommentArea,
+    this.commentText,
+    this.commentPlaceholder,
+  }) : super._();
 
   @override
   Multipletext rebuild(void Function(MultipletextBuilder) updates) =>
@@ -226,7 +226,9 @@ class _$Multipletext extends Multipletext {
           ..add('state', state)
           ..add('visible', visible)
           ..add(
-              'useDisplayValuesInDynamicTexts', useDisplayValuesInDynamicTexts)
+            'useDisplayValuesInDynamicTexts',
+            useDisplayValuesInDynamicTexts,
+          )
           ..add('visibleIf', visibleIf)
           ..add('width', width)
           ..add('minWidth', minWidth)
@@ -301,8 +303,8 @@ class MultipletextBuilder
   bool? get useDisplayValuesInDynamicTexts =>
       _$this._useDisplayValuesInDynamicTexts;
   set useDisplayValuesInDynamicTexts(
-          covariant bool? useDisplayValuesInDynamicTexts) =>
-      _$this._useDisplayValuesInDynamicTexts = useDisplayValuesInDynamicTexts;
+    covariant bool? useDisplayValuesInDynamicTexts,
+  ) => _$this._useDisplayValuesInDynamicTexts = useDisplayValuesInDynamicTexts;
 
   String? _visibleIf;
   String? get visibleIf => _$this._visibleIf;
@@ -356,8 +358,8 @@ class MultipletextBuilder
   QuestionDescriptionLocation? get descriptionLocation =>
       _$this._descriptionLocation;
   set descriptionLocation(
-          covariant QuestionDescriptionLocation? descriptionLocation) =>
-      _$this._descriptionLocation = descriptionLocation;
+    covariant QuestionDescriptionLocation? descriptionLocation,
+  ) => _$this._descriptionLocation = descriptionLocation;
 
   bool? _hideNumber;
   bool? get hideNumber => _$this._hideNumber;
@@ -413,8 +415,8 @@ class MultipletextBuilder
   ListBuilder<QuestionAllOfValidatorsInner> get validators =>
       _$this._validators ??= new ListBuilder<QuestionAllOfValidatorsInner>();
   set validators(
-          covariant ListBuilder<QuestionAllOfValidatorsInner>? validators) =>
-      _$this._validators = validators;
+    covariant ListBuilder<QuestionAllOfValidatorsInner>? validators,
+  ) => _$this._validators = validators;
 
   String? _bindings;
   String? get bindings => _$this._bindings;
@@ -507,42 +509,43 @@ class MultipletextBuilder
     try {
       _$result = _$v ??
           new _$Multipletext._(
-              items: _items?.build(),
-              itemSize: itemSize,
-              colCount: colCount,
-              type: type,
-              name: name,
-              state: state,
-              visible: visible,
-              useDisplayValuesInDynamicTexts: useDisplayValuesInDynamicTexts,
-              visibleIf: visibleIf,
-              width: _width?.build(),
-              minWidth: _minWidth?.build(),
-              maxWidth: _maxWidth?.build(),
-              startWithNewLine: startWithNewLine,
-              indent: indent,
-              page: page,
-              title: title,
-              titleLocation: titleLocation,
-              description: description,
-              descriptionLocation: descriptionLocation,
-              hideNumber: hideNumber,
-              valueName: valueName,
-              enableIf: enableIf,
-              defaultValue: defaultValue,
-              defaultValueExpression: defaultValueExpression,
-              correctAnswer: correctAnswer,
-              clearIfInvisible: clearIfInvisible,
-              isRequired: isRequired,
-              requiredIf: requiredIf,
-              requiredErrorText: requiredErrorText,
-              readOnly: readOnly,
-              validators: _validators?.build(),
-              bindings: bindings,
-              renderAs: renderAs,
-              showCommentArea: showCommentArea,
-              commentText: commentText,
-              commentPlaceholder: commentPlaceholder);
+            items: _items?.build(),
+            itemSize: itemSize,
+            colCount: colCount,
+            type: type,
+            name: name,
+            state: state,
+            visible: visible,
+            useDisplayValuesInDynamicTexts: useDisplayValuesInDynamicTexts,
+            visibleIf: visibleIf,
+            width: _width?.build(),
+            minWidth: _minWidth?.build(),
+            maxWidth: _maxWidth?.build(),
+            startWithNewLine: startWithNewLine,
+            indent: indent,
+            page: page,
+            title: title,
+            titleLocation: titleLocation,
+            description: description,
+            descriptionLocation: descriptionLocation,
+            hideNumber: hideNumber,
+            valueName: valueName,
+            enableIf: enableIf,
+            defaultValue: defaultValue,
+            defaultValueExpression: defaultValueExpression,
+            correctAnswer: correctAnswer,
+            clearIfInvisible: clearIfInvisible,
+            isRequired: isRequired,
+            requiredIf: requiredIf,
+            requiredErrorText: requiredErrorText,
+            readOnly: readOnly,
+            validators: _validators?.build(),
+            bindings: bindings,
+            renderAs: renderAs,
+            showCommentArea: showCommentArea,
+            commentText: commentText,
+            commentPlaceholder: commentPlaceholder,
+          );
     } catch (_) {
       late String _$failedField;
       try {
@@ -560,7 +563,10 @@ class MultipletextBuilder
         _validators?.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
-            r'Multipletext', _$failedField, e.toString());
+          r'Multipletext',
+          _$failedField,
+          e.toString(),
+        );
       }
       rethrow;
     }

@@ -31,20 +31,16 @@ class ScaffoldSchema {
       'extendBodyBehindAppBar': SchemaHelper.boolSchema,
       'floatingActionButton':
           SchemaHelper.objectSchema(JsonWidgetDataSchema.id),
-      'floatingActionButtonAnimator': SchemaHelper.objectSchema(
-        FloatingActionButtonAnimatorSchema.id,
-      ),
-      'floatingActionButtonLocation': SchemaHelper.objectSchema(
-        FloatingActionButtonLocationSchema.id,
-      ),
+      'floatingActionButtonAnimator':
+          SchemaHelper.objectSchema(FloatingActionButtonAnimatorSchema.id),
+      'floatingActionButtonLocation':
+          SchemaHelper.objectSchema(FloatingActionButtonLocationSchema.id),
       'onDrawerChanged': SchemaHelper.stringSchema,
       'onEndDrawerChanged': SchemaHelper.stringSchema,
-      'persistentFooterAlignment': SchemaHelper.objectSchema(
-        AlignmentDirectionalSchema.id,
-      ),
-      'persistentFooterButtons': SchemaHelper.arraySchema(
-        JsonWidgetDataSchema.id,
-      ),
+      'persistentFooterAlignment':
+          SchemaHelper.objectSchema(AlignmentDirectionalSchema.id),
+      'persistentFooterButtons':
+          SchemaHelper.arraySchema(JsonWidgetDataSchema.id),
       'primary': SchemaHelper.boolSchema,
       'resizeToAvoidBottomInset': SchemaHelper.boolSchema,
       'restorationId': SchemaHelper.stringSchema,

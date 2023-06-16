@@ -13,13 +13,13 @@ class FortuneWheel extends StatefulWidget {
   final double current;
   final List<Luck> items;
 
-  const FortuneWheel(
-      {Key key,
-      @required this.sizeScreen,
-      @required this.angle,
-      @required this.current,
-      @required this.items})
-      : super(key: key);
+  const FortuneWheel({
+    Key key,
+    @required this.sizeScreen,
+    @required this.angle,
+    @required this.current,
+    @required this.items,
+  }) : super(key: key);
 
   @override
   State<StatefulWidget> createState() {
@@ -28,8 +28,10 @@ class FortuneWheel extends StatefulWidget {
 }
 
 class _FortuneWheelState extends State<FortuneWheel> {
-  Size get size => Size(MediaQuery.of(context).size.width * 0.8,
-      MediaQuery.of(context).size.width * 0.8);
+  Size get size => Size(
+    MediaQuery.of(context).size.width * 0.8,
+    MediaQuery.of(context).size.width * 0.8,
+  );
 
   double _rotote(int index) => (index / widget.items.length) * 2 * pi;
 
@@ -43,8 +45,9 @@ class _FortuneWheelState extends State<FortuneWheel> {
           height: size.height,
           width: size.width,
           decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              boxShadow: [BoxShadow(blurRadius: 20, color: Colors.black38)]),
+            shape: BoxShape.circle,
+            boxShadow: [BoxShadow(blurRadius: 20, color: Colors.black38)],
+          ),
         ),
         Transform.rotate(
           angle: -(widget.current + widget.angle) * 2 * pi,
@@ -53,16 +56,12 @@ class _FortuneWheelState extends State<FortuneWheel> {
             children: <Widget>[
               for (var luck in widget.items) ...[_buildCard(luck)],
               for (var luck in widget.items) ...[
-                _buildImage(widget.sizeScreen, luck)
+                _buildImage(widget.sizeScreen, luck),
               ],
             ],
           ),
         ),
-        Container(
-          height: size.height,
-          width: size.width,
-          child: ArrowView(),
-        ),
+        Container(height: size.height, width: size.width, child: ArrowView()),
       ],
     );
   }
@@ -96,8 +95,11 @@ class _FortuneWheelState extends State<FortuneWheel> {
               BoxConstraints.expand(height: size.height / 3, width: 44),
           child: Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Text("${luck.coins}",
-                textAlign: TextAlign.center, style: ResStyles.big(sizeScreen)),
+            child: Text(
+              "${luck.coins}",
+              textAlign: TextAlign.center,
+              style: ResStyles.big(sizeScreen),
+            ),
           ),
         ),
       ),
@@ -140,10 +142,12 @@ class ArrowView extends StatelessWidget {
             clipper: _ArrowClipper(),
             child: Container(
               decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                      begin: Alignment.topCenter,
-                      end: Alignment.bottomCenter,
-                      colors: [Colors.black12, Colors.black])),
+                gradient: LinearGradient(
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  colors: [Colors.black12, Colors.black],
+                ),
+              ),
               height: 40,
               width: 40,
             ),

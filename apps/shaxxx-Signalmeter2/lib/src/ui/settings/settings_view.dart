@@ -10,8 +10,9 @@ import '../../constants.dart';
 import 'settings_viewmodel.dart';
 
 const double _kItemHeight = 48.0;
-const EdgeInsetsDirectional _kItemPadding =
-    EdgeInsetsDirectional.only(start: 56.0);
+const EdgeInsetsDirectional _kItemPadding = EdgeInsetsDirectional.only(
+  start: 56.0,
+);
 
 class _OptionsItem extends StatelessWidget {
   const _OptionsItem({Key key, this.child}) : super(key: key);
@@ -31,10 +32,8 @@ class _OptionsItem extends StatelessWidget {
           style: DefaultTextStyle.of(context).style,
           maxLines: 2,
           overflow: TextOverflow.fade,
-          child: IconTheme(
-            data: Theme.of(context).primaryIconTheme,
-            child: child,
-          ),
+          child:
+              IconTheme(data: Theme.of(context).primaryIconTheme, child: child),
         ),
       ),
     );
@@ -55,11 +54,7 @@ class _BooleanItem extends StatelessWidget {
       child: Row(
         children: <Widget>[
           Expanded(child: Text(title)),
-          Switch(
-            key: switchKey,
-            value: value,
-            onChanged: onChanged,
-          ),
+          Switch(key: switchKey, value: value, onChanged: onChanged),
         ],
       ),
     );
@@ -75,10 +70,7 @@ class _ActionItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return _OptionsItem(
-      child: _FlatButton(
-        onPressed: onTap,
-        child: Text(text),
-      ),
+      child: _FlatButton(onPressed: onTap, child: Text(text)),
     );
   }
 }
@@ -115,13 +107,8 @@ class _Heading extends StatelessWidget {
     final theme = Theme.of(context);
     return _OptionsItem(
       child: DefaultTextStyle(
-        style: theme.textTheme.bodyText2.copyWith(
-          color: theme.accentColor,
-        ),
-        child: Semantics(
-          child: Text(text),
-          header: true,
-        ),
+        style: theme.textTheme.bodyText2.copyWith(color: theme.accentColor),
+        child: Semantics(child: Text(text), header: true),
       ),
     );
   }
@@ -140,9 +127,7 @@ class _DbPrimaryItem extends StatelessWidget {
       applicationSettings.dbIsPrimaryLevel,
       (bool value) {
         onSettingsChanged(
-          applicationSettings.copyWith(
-            dbIsPrimaryLevel: value,
-          ),
+          applicationSettings.copyWith(dbIsPrimaryLevel: value),
         );
       },
       switchKey: const Key('dbprimary_item'),
@@ -177,9 +162,7 @@ class _ChannelUpDownButtons extends StatelessWidget {
         ],
         onChanged: (ChannelUpDownButtonsEnum value) {
           onSettingsChanged(
-            applicationSettings.copyWith(
-              channelUpDownButtons: value,
-            ),
+            applicationSettings.copyWith(channelUpDownButtons: value),
           );
         },
       ),
@@ -190,50 +173,51 @@ class _ChannelUpDownButtons extends StatelessWidget {
 class SettingsView extends StatelessWidget {
   final ValueChanged<ApplicationSettings> onSettingsChanged;
 
-  const SettingsView({
-    Key key,
-    @required this.onSettingsChanged,
-  }) : super(key: key);
+  const SettingsView({Key key, @required this.onSettingsChanged})
+    : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     var locale = Localizations.localeOf(context);
-    var languageCode =
-        SignalMeterLocalizationsDelegate.getWebLanguageCode(locale);
+    var languageCode = SignalMeterLocalizationsDelegate.getWebLanguageCode(
+      locale,
+    );
     if (languageCode.isNotEmpty) {
       languageCode += '/';
     }
     var url = krkadoniUrl + '/#/' + languageCode + 'using';
     return StoreConnector<AppState, SettingsViewModel>(
-        distinct: true,
-        converter: (store) {
-          return SettingsViewModel.fromStore(store);
-        },
-        builder: (context, viewModel) {
-          return DefaultTextStyle(
-            style: theme.primaryTextTheme.subtitle1,
-            child: ListView(
-              padding: const EdgeInsets.only(bottom: 124.0, right: 20),
-              children: <Widget>[
-                _Heading(MessageProvider.of(context).signal),
-                _DbPrimaryItem(
-                    viewModel.applicationSettings, onSettingsChanged),
-                _Heading(MessageProvider.of(context).mapChannelUpDownTo),
-                _ChannelUpDownButtons(
-                    viewModel.applicationSettings, onSettingsChanged),
-                const _Heading('SignalMeter'),
-                _ActionItem(
-                  MessageProvider.of(context).actionAbout,
-                  viewModel.onAbout,
-                ),
-                _ActionItem(
-                  MessageProvider.of(context).informationsSupport,
-                  () => viewModel.onSupport(url),
-                ),
-              ],
-            ),
-          );
-        });
+      distinct: true,
+      converter: (store) {
+        return SettingsViewModel.fromStore(store);
+      },
+      builder: (context, viewModel) {
+        return DefaultTextStyle(
+          style: theme.primaryTextTheme.subtitle1,
+          child: ListView(
+            padding: const EdgeInsets.only(bottom: 124.0, right: 20),
+            children: <Widget>[
+              _Heading(MessageProvider.of(context).signal),
+              _DbPrimaryItem(viewModel.applicationSettings, onSettingsChanged),
+              _Heading(MessageProvider.of(context).mapChannelUpDownTo),
+              _ChannelUpDownButtons(
+                viewModel.applicationSettings,
+                onSettingsChanged,
+              ),
+              const _Heading('SignalMeter'),
+              _ActionItem(
+                MessageProvider.of(context).actionAbout,
+                viewModel.onAbout,
+              ),
+              _ActionItem(
+                MessageProvider.of(context).informationsSupport,
+                () => viewModel.onSupport(url),
+              ),
+            ],
+          ),
+        );
+      },
+    );
   }
 }

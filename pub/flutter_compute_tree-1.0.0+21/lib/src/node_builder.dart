@@ -19,12 +19,7 @@ class CTBuilder<T extends Object> extends CTWidget {
     return changed;
   }
 
-  const CTBuilder(
-    this.builder, {
-    super.key,
-    this.dep,
-    this.when,
-  });
+  const CTBuilder(this.builder, {super.key, this.dep, this.when});
 
   @override
   Widget build(CTNode n) {

@@ -58,13 +58,22 @@ class _SignupState extends State<Signup> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             _entryFeild('Name', controller: _nameController),
-            _entryFeild('Enter email',
-                controller: _emailController, isEmail: true),
+            _entryFeild(
+              'Enter email',
+              controller: _emailController,
+              isEmail: true,
+            ),
             // _entryFeild('Mobile no',controller: _mobileController),
-            _entryFeild('Enter password',
-                controller: _passwordController, isPassword: true),
-            _entryFeild('Confirm password',
-                controller: _confirmController, isPassword: true),
+            _entryFeild(
+              'Enter password',
+              controller: _passwordController,
+              isPassword: true,
+            ),
+            _entryFeild(
+              'Confirm password',
+              controller: _confirmController,
+              isPassword: true,
+            ),
             _submitButton(context),
 
             Divider(height: 30),
@@ -81,10 +90,12 @@ class _SignupState extends State<Signup> {
     );
   }
 
-  Widget _entryFeild(String hint,
-      {TextEditingController controller,
-      bool isPassword = false,
-      bool isEmail = false}) {
+  Widget _entryFeild(
+    String hint, {
+    TextEditingController controller,
+    bool isPassword = false,
+    bool isEmail = false,
+  }) {
     return Container(
       margin: EdgeInsets.symmetric(vertical: 15),
       decoration: BoxDecoration(
@@ -103,9 +114,7 @@ class _SignupState extends State<Signup> {
           hintText: hint,
           border: InputBorder.none,
           focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.all(
-              Radius.circular(30.0),
-            ),
+            borderRadius: BorderRadius.all(Radius.circular(30.0)),
             borderSide: BorderSide(color: Colors.blue),
           ),
           contentPadding: EdgeInsets.symmetric(vertical: 15, horizontal: 20),
@@ -132,7 +141,9 @@ class _SignupState extends State<Signup> {
     }
     if (_emailController.text.length > 27) {
       Utility.customSnackBar(
-          _scaffoldKey, 'Name length cannot exceed 27 character');
+        _scaffoldKey,
+        'Name length cannot exceed 27 character',
+      );
       return;
     }
     if (_emailController.text == null ||
@@ -144,7 +155,9 @@ class _SignupState extends State<Signup> {
       return;
     } else if (_passwordController.text != _confirmController.text) {
       Utility.customSnackBar(
-          _scaffoldKey, 'Password and confirm password did not match');
+        _scaffoldKey,
+        'Password and confirm password did not match',
+      );
       return;
     }
 
@@ -166,21 +179,20 @@ class _SignupState extends State<Signup> {
     );
     state
         .signUp(
-      user,
-      password: _passwordController.text,
-      scaffoldKey: _scaffoldKey,
-    )
+          user,
+          password: _passwordController.text,
+          scaffoldKey: _scaffoldKey,
+        )
         .then((status) {
-      print(status);
-    }).whenComplete(
-      () {
-        loader.hideLoader();
-        if (state.authStatus == AuthStatus.LOGGED_IN) {
-          Navigator.pop(context);
-          widget.loginCallback();
-        }
-      },
-    );
+          print(status);
+        })
+        .whenComplete(() {
+          loader.hideLoader();
+          if (state.authStatus == AuthStatus.LOGGED_IN) {
+            Navigator.pop(context);
+            widget.loginCallback();
+          }
+        });
   }
 
   @override

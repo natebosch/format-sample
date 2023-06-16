@@ -41,11 +41,8 @@ class _EmptyCardDeckState extends State<EmptyCardDeck> {
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: <Widget>[
                         Center(
-                          child: Container(
-                            height: 20.0,
-                            child: _suitToImage(),
-                          ),
-                        )
+                          child: Container(height: 20.0, child: _suitToImage()),
+                        ),
                       ],
                     ),
                   ),
@@ -54,9 +51,7 @@ class _EmptyCardDeckState extends State<EmptyCardDeck> {
             : TransformedCard(
                 playingCard: widget.cardsAdded.last,
                 columnIndex: widget.columnIndex,
-                attachedCards: [
-                  widget.cardsAdded.last,
-                ],
+                attachedCards: [widget.cardsAdded.last],
               );
       },
       onWillAccept: (value) {
@@ -72,10 +67,7 @@ class _EmptyCardDeckState extends State<EmptyCardDeck> {
         return false;
       },
       onAccept: (value) {
-        widget.onCardAdded(
-          value["cards"],
-          value["fromIndex"],
-        );
+        widget.onCardAdded(value["cards"], value["fromIndex"]);
       },
     );
   }

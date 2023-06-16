@@ -18,8 +18,10 @@ class S {
   static S? _current;
 
   static S get current {
-    assert(_current != null,
-        'No instance of S was loaded. Try to initialize the S delegate before accessing S.current.');
+    assert(
+      _current != null,
+      'No instance of S was loaded. Try to initialize the S delegate before accessing S.current.',
+    );
     return _current!;
   }
 
@@ -41,8 +43,10 @@ class S {
 
   static S of(BuildContext context) {
     final instance = S.maybeOf(context);
-    assert(instance != null,
-        'No instance of S present in the widget tree. Did you add S.delegate in localizationsDelegates?');
+    assert(
+      instance != null,
+      'No instance of S present in the widget tree. Did you add S.delegate in localizationsDelegates?',
+    );
     return instance!;
   }
 
@@ -52,22 +56,12 @@ class S {
 
   /// `Cancel`
   String get cancel {
-    return Intl.message(
-      'Cancel',
-      name: 'cancel',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Cancel', name: 'cancel', desc: '', args: []);
   }
 
   /// `Continue`
   String get continueParty {
-    return Intl.message(
-      'Continue',
-      name: 'continueParty',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Continue', name: 'continueParty', desc: '', args: []);
   }
 
   /// `Create the party`
@@ -82,22 +76,12 @@ class S {
 
   /// `Dark Mode`
   String get darkMode {
-    return Intl.message(
-      'Dark Mode',
-      name: 'darkMode',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Dark Mode', name: 'darkMode', desc: '', args: []);
   }
 
   /// `Delete`
   String get delete {
-    return Intl.message(
-      'Delete',
-      name: 'delete',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Delete', name: 'delete', desc: '', args: []);
   }
 
   /// `Deleted {name}`
@@ -132,12 +116,7 @@ class S {
 
   /// `Language`
   String get language {
-    return Intl.message(
-      'Language',
-      name: 'language',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Language', name: 'language', desc: '', args: []);
   }
 
   /// `Click on the button`
@@ -202,12 +181,7 @@ class S {
 
   /// `Party Name`
   String get partyName {
-    return Intl.message(
-      'Party Name',
-      name: 'partyName',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Party Name', name: 'partyName', desc: '', args: []);
   }
 
   /// `Number of players`
@@ -222,32 +196,17 @@ class S {
 
   /// `Name`
   String get playerName {
-    return Intl.message(
-      'Name',
-      name: 'playerName',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Name', name: 'playerName', desc: '', args: []);
   }
 
   /// `Score`
   String get playerScore {
-    return Intl.message(
-      'Score',
-      name: 'playerScore',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Score', name: 'playerScore', desc: '', args: []);
   }
 
   /// ` Restart`
   String get restart {
-    return Intl.message(
-      ' Restart',
-      name: 'restart',
-      desc: '',
-      args: [],
-    );
+    return Intl.message(' Restart', name: 'restart', desc: '', args: []);
   }
 
   /// `Select a main color`
@@ -284,52 +243,27 @@ class S {
 
   /// `Start`
   String get start {
-    return Intl.message(
-      'Start',
-      name: 'start',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Start', name: 'start', desc: '', args: []);
   }
 
   /// `Today`
   String get today {
-    return Intl.message(
-      'Today',
-      name: 'today',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Today', name: 'today', desc: '', args: []);
   }
 
   /// `Undo`
   String get undo {
-    return Intl.message(
-      'Undo',
-      name: 'undo',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Undo', name: 'undo', desc: '', args: []);
   }
 
   /// `View Scores`
   String get viewScores {
-    return Intl.message(
-      'View Scores',
-      name: 'viewScores',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('View Scores', name: 'viewScores', desc: '', args: []);
   }
 
   /// `Yesterday`
   String get yesterday {
-    return Intl.message(
-      'Yesterday',
-      name: 'yesterday',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Yesterday', name: 'yesterday', desc: '', args: []);
   }
 }
 

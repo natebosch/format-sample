@@ -47,12 +47,14 @@ class _DashboardChartState extends State<DashboardChart> {
     if (selectedDatum.isNotEmpty) {
       date = selectedDatum.first.datum.date;
       selectedDatum
-          .where((charts.SeriesDatum datumPair) =>
-              datumPair.series.id == DashboardChart.PERIOD_CURRENT)
+          .where(
+            (charts.SeriesDatum datumPair) =>
+                datumPair.series.id == DashboardChart.PERIOD_CURRENT,
+          )
           .forEach((charts.SeriesDatum datumPair) {
-        total += datumPair.datum.amount;
-        measures[datumPair.series.displayName] = datumPair.datum.amount;
-      });
+            total += datumPair.datum.amount;
+            measures[datumPair.series.displayName] = datumPair.datum.amount;
+          });
     }
 
     setState(() {
@@ -101,13 +103,16 @@ class _DashboardChartState extends State<DashboardChart> {
          */
       ],
       domainAxis: charts.DateTimeAxisSpec(
-          renderSpec: charts.SmallTickRendererSpec(
-              labelStyle: charts.TextStyleSpec(color: color),
-              lineStyle: charts.LineStyleSpec(color: color))),
+        renderSpec: charts.SmallTickRendererSpec(
+          labelStyle: charts.TextStyleSpec(color: color),
+          lineStyle: charts.LineStyleSpec(color: color),
+        ),
+      ),
       primaryMeasureAxis: charts.NumericAxisSpec(
         renderSpec: charts.GridlineRendererSpec(
-            labelStyle: charts.TextStyleSpec(color: color),
-            lineStyle: charts.LineStyleSpec(color: color)),
+          labelStyle: charts.TextStyleSpec(color: color),
+          lineStyle: charts.LineStyleSpec(color: color),
+        ),
       ),
     );
 
@@ -116,10 +121,7 @@ class _DashboardChartState extends State<DashboardChart> {
       children: <Widget>[
         Padding(
           padding: EdgeInsets.only(bottom: 24, top: 8),
-          child: Text(
-            widget.title,
-            style: theme.textTheme.headline5,
-          ),
+          child: Text(widget.title, style: theme.textTheme.headline5),
         ),
         Divider(height: 1.0),
         LimitedBox(
@@ -133,20 +135,24 @@ class _DashboardChartState extends State<DashboardChart> {
               final bool isIncrease = dataGroup.total > dataGroup.previousTotal;
               final String changeAmount = (isIncrease ? '+' : '') +
                   formatNumber(
-                      dataGroup.total - dataGroup.previousTotal, context,
-                      currencyId: widget.currencyId);
+                    dataGroup.total - dataGroup.previousTotal,
+                    context,
+                    currencyId: widget.currencyId,
+                  );
               final changePercent = (isIncrease ? '+' : '') +
                   formatNumber(
-                      dataGroup.total != 0 && dataGroup.previousTotal != 0
-                          ? round(
-                              (dataGroup.total - dataGroup.previousTotal) /
-                                  dataGroup.previousTotal *
-                                  100,
-                              2)
-                          : 0.0,
-                      context,
-                      formatNumberType: FormatNumberType.percent,
-                      currencyId: widget.currencyId);
+                    dataGroup.total != 0 && dataGroup.previousTotal != 0
+                        ? round(
+                            (dataGroup.total - dataGroup.previousTotal) /
+                                dataGroup.previousTotal *
+                                100,
+                            2,
+                          )
+                        : 0.0,
+                    context,
+                    formatNumberType: FormatNumberType.percent,
+                    currencyId: widget.currencyId,
+                  );
               final String changeString = dataGroup.total == 0 ||
                       dataGroup.previousTotal == 0 ||
                       dataGroup.total == dataGroup.previousTotal
@@ -167,16 +173,23 @@ class _DashboardChartState extends State<DashboardChart> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
-                      Text(localization.lookup(dataGroup.name),
-                          style: theme.textTheme.headline6.copyWith(
-                            color: isSelected ? Colors.white : null,
-                          )),
+                      Text(
+                        localization.lookup(dataGroup.name),
+                        style: theme.textTheme.headline6.copyWith(
+                          color: isSelected ? Colors.white : null,
+                        ),
+                      ),
                       SizedBox(height: 4),
                       Text(
-                          formatNumber(dataGroup.total, context,
-                              currencyId: widget.currencyId),
-                          style: theme.textTheme.headline5.copyWith(
-                              color: isSelected ? Colors.white : null)),
+                        formatNumber(
+                          dataGroup.total,
+                          context,
+                          currencyId: widget.currencyId,
+                        ),
+                        style: theme.textTheme.headline5.copyWith(
+                          color: isSelected ? Colors.white : null,
+                        ),
+                      ),
                       SizedBox(height: 4),
                       changeString.isNotEmpty
                           ? Text(
@@ -201,9 +214,7 @@ class _DashboardChartState extends State<DashboardChart> {
           height: 240.0,
           child: Padding(
             padding: const EdgeInsets.all(16.0),
-            child: ClipRect(
-              child: chart,
-            ),
+            child: ClipRect(child: chart),
           ),
         ),
         Divider(height: 1.0),
@@ -216,16 +227,16 @@ class _DashboardChartState extends State<DashboardChart> {
                 child: Text(
                   localization.average +
                       ': ' +
-                      formatNumber(series.average, context,
-                          currencyId: widget.currencyId),
+                      formatNumber(
+                        series.average,
+                        context,
+                        currencyId: widget.currencyId,
+                      ),
                   style: theme.textTheme.headline6,
                 ),
               ),
               _selected != null
-                  ? Text(
-                      _selected,
-                      style: theme.textTheme.headline6,
-                    )
+                  ? Text(_selected, style: theme.textTheme.headline6)
                   : SizedBox(),
             ],
           ),

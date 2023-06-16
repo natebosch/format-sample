@@ -4,9 +4,7 @@ import 'package:harpy/components/components.dart';
 
 /// Builds the screen with a list of the followers for the specified user.
 class FollowersScreen extends StatelessWidget {
-  const FollowersScreen({
-    required this.userId,
-  });
+  const FollowersScreen({required this.userId});
 
   /// The [userId] of the user whom to search the followers for.
   final String userId;

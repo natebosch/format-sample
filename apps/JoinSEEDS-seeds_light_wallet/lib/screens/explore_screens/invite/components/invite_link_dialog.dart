@@ -32,7 +32,9 @@ class _InviteLinkDialogState extends State<InviteLinkDialog> {
           child: Center(
             child: SingleChildScrollView(
               child: CustomDialog(
-                icon: SvgPicture.asset('assets/images/security/success_outlined_icon.svg'),
+                icon: SvgPicture.asset(
+                  'assets/images/security/success_outlined_icon.svg',
+                ),
                 rightButtonTitle: 'Share'.i18n,
                 leftButtonTitle: _showCloseDialogButton ? 'Close'.i18n : '',
                 onLeftButtonPressed: () => Navigator.of(context).pop(),
@@ -44,17 +46,29 @@ class _InviteLinkDialogState extends State<InviteLinkDialog> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text(state.tokenAmount.amountString(), style: Theme.of(context).textTheme.headline4),
+                      Text(
+                        state.tokenAmount.amountString(),
+                        style: Theme.of(context).textTheme.headline4,
+                      ),
                       Padding(
                         padding: const EdgeInsets.only(top: 12, left: 4),
-                        child: Text(state.tokenAmount.symbol, style: Theme.of(context).textTheme.subtitle2),
+                        child: Text(
+                          state.tokenAmount.symbol,
+                          style: Theme.of(context).textTheme.subtitle2,
+                        ),
                       ),
                     ],
                   ),
                   const SizedBox(height: 4.0),
-                  Text(state.fiatAmount.asFormattedString(), style: Theme.of(context).textTheme.subtitle2),
+                  Text(
+                    state.fiatAmount.asFormattedString(),
+                    style: Theme.of(context).textTheme.subtitle2,
+                  ),
                   const SizedBox(height: 20.0),
-                  QrCodeGeneratorWidget(data: state.dynamicSecretLink!, size: 254),
+                  QrCodeGeneratorWidget(
+                    data: state.dynamicSecretLink!,
+                    size: 254,
+                  ),
                   const SizedBox(height: 20.0),
                   Text(
                     'Share this link with the person you want to invite!'.i18n,

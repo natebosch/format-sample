@@ -16,11 +16,16 @@ class _BlinkAnimationState extends State<BlinkAnimation>
   initState() {
     super.initState();
     controller = AnimationController(
-        duration: const Duration(milliseconds: 170), vsync: this);
-    final CurvedAnimation curve =
-        CurvedAnimation(parent: controller, curve: Curves.linear);
-    animation =
-        ColorTween(begin: widget.color, end: Colors.white).animate(curve);
+      duration: const Duration(milliseconds: 170),
+      vsync: this,
+    );
+    final CurvedAnimation curve = CurvedAnimation(
+      parent: controller,
+      curve: Curves.linear,
+    );
+    animation = ColorTween(begin: widget.color, end: Colors.white).animate(
+      curve,
+    );
     animation.addStatusListener((status) {
       if (status == AnimationStatus.completed) {
         controller.reverse();
@@ -46,9 +51,7 @@ class _BlinkAnimationState extends State<BlinkAnimation>
             child: new Container(
               decoration: BoxDecoration(
                 color: animation.value,
-                borderRadius: BorderRadius.all(
-                  Radius.circular(30),
-                ),
+                borderRadius: BorderRadius.all(Radius.circular(30)),
               ),
             ),
           );

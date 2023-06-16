@@ -37,8 +37,11 @@ const _defaultService = 'bsky.social';
 typedef To<T> = T Function(Map<String, Object?> json);
 
 /// A function type that express factory for URI.
-typedef UriFactory = Uri Function(String authority,
-    [String unencodedPath, Map<String, dynamic>? queryParameters]);
+typedef UriFactory = Uri Function(
+  String authority, [
+  String unencodedPath,
+  Map<String, dynamic>? queryParameters,
+]);
 
 /// Performs GET communication to the ATP server.
 ///
@@ -153,24 +156,13 @@ Future<XRPCResponse<T>> query<T>(
   final Duration timeout = const Duration(seconds: 10),
   final To<T>? to,
   final GetClient? getClient,
-}) async =>
-    _buildResponse<T>(
-      checkStatus(
-        await (getClient ?? http.get)
-            .call(
-              _getUriFactory(protocol).call(
-                service ?? _defaultService,
-                '/xrpc/$methodId',
-                convertParameters(
-                  removeNullValues(parameters) ?? {},
-                ),
-              ),
-              headers: headers,
-            )
-            .timeout(timeout),
-      ),
-      to,
-    );
+}) async => _buildResponse<T>(checkStatus(
+  await (getClient ?? http.get).call(_getUriFactory(protocol).call(
+    service ?? _defaultService,
+    '/xrpc/$methodId',
+    convertParameters(removeNullValues(parameters) ?? {}),
+  ), headers: headers).timeout(timeout),
+), to);
 
 /// Performs POST communication to the ATP server.
 ///
@@ -287,29 +279,17 @@ Future<XRPCResponse<T>> procedure<T>(
   final Duration timeout = const Duration(seconds: 10),
   final To<T>? to,
   final PostClient? postClient,
-}) async =>
-    _buildResponse<T>(
-      checkStatus(
-        await (postClient ?? http.post)
-            .call(
-              _getUriFactory(protocol).call(
-                service ?? _defaultService,
-                '/xrpc/$methodId',
-              ),
-              headers: {
-                'Content-type': 'application/json',
-              }..addAll(headers ?? {}),
-              body: body != null
-                  ? jsonEncode(
-                      removeNullValues(body) ?? {},
-                    )
-                  : null,
-              encoding: utf8,
-            )
-            .timeout(timeout),
-      ),
-      to,
-    );
+}) async => _buildResponse<T>(checkStatus(
+  await (postClient ?? http.post).call(
+    _getUriFactory(protocol).call(
+      service ?? _defaultService,
+      '/xrpc/$methodId',
+    ),
+    headers: {'Content-type': 'application/json'}..addAll(headers ?? {}),
+    body: body != null ? jsonEncode(removeNullValues(body) ?? {}) : null,
+    encoding: utf8,
+  ).timeout(timeout),
+), to);
 
 /// Uploads blob.
 Future<XRPCResponse<T>> upload<T>(
@@ -321,22 +301,17 @@ Future<XRPCResponse<T>> upload<T>(
   final Duration timeout = const Duration(seconds: 10),
   final To<T>? to,
   final PostClient? postClient,
-}) async =>
-    _buildResponse(
-      checkStatus(
-        await (postClient ?? http.post).call(
-          _getUriFactory(protocol).call(
-            service ?? _defaultService,
-            '/xrpc/${methodId.toString()}',
-          ),
-          headers: {
-            'Content-Type': lookupMimeType(file.path)!,
-          }..addAll(headers ?? {}),
-          body: file.readAsBytesSync(),
-        ),
-      ),
-      to,
-    );
+}) async => _buildResponse(checkStatus(
+  await (postClient ?? http.post).call(
+    _getUriFactory(protocol).call(
+      service ?? _defaultService,
+      '/xrpc/${methodId.toString()}',
+    ),
+    headers:
+        {'Content-Type': lookupMimeType(file.path)!}..addAll(headers ?? {}),
+    body: file.readAsBytesSync(),
+  ),
+), to);
 
 /// Subscribes endpoints associated with [methodId] in WebSocket.
 XRPCResponse<Subscription<T>> subscribe<T>(
@@ -350,39 +325,37 @@ XRPCResponse<Subscription<T>> subscribe<T>(
 
   final controller = StreamController<T>();
 
-  channel.stream.listen((event) {
-    final merged = {};
+  channel.stream.listen(
+    (event) {
+      final merged = {};
 
-    int offset = 0;
-    while (offset < event.length) {
-      final result = decodeCbor(event, offset);
-      offset += result.bytesRead;
+      int offset = 0;
+      while (offset < event.length) {
+        final result = decodeCbor(event, offset);
+        offset += result.bytesRead;
 
-      merged.addAll(result.decoded);
-    }
+        merged.addAll(result.decoded);
+      }
 
-    controller.sink.add(
-      to != null
-          ? to.call(jsonDecode(jsonEncode(merged)))
-          : jsonEncode(merged) as T,
-    );
-  }, onError: (_) async {
-    await channel.sink.close();
-  }, onDone: () async {
-    await channel.sink.close();
-  });
+      controller.sink.add(
+        to != null
+            ? to.call(jsonDecode(jsonEncode(merged)))
+            : jsonEncode(merged) as T,
+      );
+    },
+    onError: (_) async {
+      await channel.sink.close();
+    },
+    onDone: () async {
+      await channel.sink.close();
+    },
+  );
 
   return XRPCResponse<Subscription<T>>(
     headers: {},
     status: HttpStatus.ok,
-    request: XRPCRequest(
-      method: HttpMethod.get,
-      url: uri,
-    ),
-    data: Subscription(
-      channel: channel,
-      controller: controller,
-    ),
+    request: XRPCRequest(method: HttpMethod.get, url: uri),
+    data: Subscription(channel: channel, controller: controller),
   );
 }
 
@@ -395,33 +368,23 @@ http.Response checkStatus(final http.Response response) {
   }
 
   if (statusCode == 401) {
-    throw UnauthorizedException(
-      _buildErrorResponse(response),
-    );
+    throw UnauthorizedException(_buildErrorResponse(response));
   }
 
   if (statusCode == 429) {
-    throw RateLimitExceededException(
-      _buildErrorResponse(response),
-    );
+    throw RateLimitExceededException(_buildErrorResponse(response));
   }
 
   if (statusCode >= 400 && statusCode < 500) {
-    throw InvalidRequestException(
-      _buildErrorResponse(response),
-    );
+    throw InvalidRequestException(_buildErrorResponse(response));
   }
 
   if ((statusCode >= 100 && statusCode < 200) ||
       (statusCode >= 300 && statusCode < 400)) {
-    throw XRPCNotSupportedException(
-      _buildErrorResponse(response),
-    );
+    throw XRPCNotSupportedException(_buildErrorResponse(response));
   }
 
-  throw InternalServerErrorException(
-    _buildErrorResponse(response),
-  );
+  throw InternalServerErrorException(_buildErrorResponse(response));
 }
 
 @visibleForTesting
@@ -455,58 +418,45 @@ dynamic removeNullValues(final dynamic object) {
 }
 
 @visibleForTesting
-Map<String, dynamic> convertParameters(final Map<String, dynamic> parameters) =>
-    parameters.map((key, value) {
-      if (value is List?) {
-        return MapEntry(
-          key,
-          value?.map((e) => e.toString()).toList(),
-        );
-      } else if (value is Serializable) {
-        return MapEntry(
-          key,
-          value.value,
-        );
-      }
+Map<String, dynamic> convertParameters(
+  final Map<String, dynamic> parameters,
+) => parameters.map((key, value) {
+  if (value is List?) {
+    return MapEntry(key, value?.map((e) => e.toString()).toList());
+  } else if (value is Serializable) {
+    return MapEntry(key, value.value);
+  }
 
-      if (value is DateTime) {
-        return MapEntry(key, value.toUtc().toIso8601String());
-      }
+  if (value is DateTime) {
+    return MapEntry(key, value.toUtc().toIso8601String());
+  }
 
-      return MapEntry(key, value.toString());
-    });
+  return MapEntry(key, value.toString());
+});
 
 /// Returns the response object.
 XRPCResponse<T> _buildResponse<T>(
   final http.Response response,
   final To<T>? to,
-) =>
-    XRPCResponse(
-      headers: response.headers,
-      status: HttpStatus.valueOf(response.statusCode),
-      request: XRPCRequest(
-        method: HttpMethod.valueOf(response.request!.method),
-        url: response.request!.url,
-      ),
-      data: _transformData(response.body, to),
-    );
+) => XRPCResponse(
+  headers: response.headers,
+  status: HttpStatus.valueOf(response.statusCode),
+  request: XRPCRequest(
+    method: HttpMethod.valueOf(response.request!.method),
+    url: response.request!.url,
+  ),
+  data: _transformData(response.body, to),
+);
 
 /// Returns the error response.
-XRPCResponse<XRPCError> _buildErrorResponse(final http.Response response) =>
-    _buildResponse(
-      response,
-      XRPCError.fromJson,
-    );
+XRPCResponse<XRPCError> _buildErrorResponse(
+  final http.Response response,
+) => _buildResponse(response, XRPCError.fromJson);
 
 /// Returns the transformed data object.
-T _transformData<T>(
-  final String body,
-  final To<T>? to,
-) {
+T _transformData<T>(final String body, final To<T>? to) {
   if (to != null) {
-    return to.call(
-      jsonDecode(body),
-    );
+    return to.call(jsonDecode(body));
   }
 
   if (T == String) {

@@ -1,21 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:journal/blocs/journal_edit_bloc.dart';
 
-
 class JournalEditBlocProvider extends InheritedWidget {
-    final JournalEditBloc journalEditBloc;
+  final JournalEditBloc journalEditBloc;
 
-    const JournalEditBlocProvider(
-    {Key key, Widget child, this.journalEditBloc})
+  const JournalEditBlocProvider({Key key, Widget child, this.journalEditBloc})
     : super(key: key, child: child);
 
+  static JournalEditBlocProvider of(BuildContext context) {
+    return (context.inheritFromWidgetOfExactType(JournalEditBlocProvider)
+        as JournalEditBlocProvider);
+  }
 
-    static JournalEditBlocProvider of(BuildContext context) {
-    return (context.inheritFromWidgetOfExactType(JournalEditBlocProvider) as
-    JournalEditBlocProvider);
-    }
-
-    @override
-    bool updateShouldNotify(JournalEditBlocProvider old) => false;
-
+  @override
+  bool updateShouldNotify(JournalEditBlocProvider old) => false;
 }

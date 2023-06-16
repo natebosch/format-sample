@@ -26,10 +26,7 @@ class ViewExpenseList implements PersistUI {
 }
 
 class ViewExpense implements PersistUI, PersistPrefs {
-  ViewExpense({
-    @required this.expenseId,
-    this.force = false,
-  });
+  ViewExpense({@required this.expenseId, this.force = false});
 
   final String expenseId;
   final bool force;
@@ -248,7 +245,10 @@ class FilterExpensesByCustom4 implements PersistUI {
 }
 
 void handleExpenseAction(
-    BuildContext context, List<BaseEntity> expenses, EntityAction action) {
+  BuildContext context,
+  List<BaseEntity> expenses,
+  EntityAction action,
+) {
   final store = StoreProvider.of<AppState>(context);
   final state = store.state;
   final localization = AppLocalization.of(context);
@@ -270,51 +270,65 @@ void handleExpenseAction(
     case EntityAction.cloneToRecurring:
       createEntity(
         context: context,
-        entity: expense.clone
-            .rebuild((b) => b..entityType = EntityType.recurringExpense),
+        entity: expense.clone.rebuild(
+          (b) => b..entityType = EntityType.recurringExpense,
+        ),
       );
       break;
     case EntityAction.invoiceExpense:
-      final items = expenses
-          .where((entity) {
-            final expense = entity as ExpenseEntity;
-            return !expense.isDeleted && !expense.isInvoiced;
-          })
-          .map((expense) => convertExpenseToInvoiceItem(
-                expense: expense,
-                context: context,
-              ))
-          .toList();
+      final items = expenses.where((entity) {
+        final expense = entity as ExpenseEntity;
+        return !expense.isDeleted && !expense.isInvoiced;
+      }).map(
+        (expense) => convertExpenseToInvoiceItem(
+          expense: expense,
+          context: context,
+        ),
+      ).toList();
       if (items.isNotEmpty) {
         createEntity(
-            context: context,
-            entity: InvoiceEntity(state: state, client: client)
-                .rebuild((b) => b..lineItems.addAll(items)));
+          context: context,
+          entity: InvoiceEntity(state: state, client: client).rebuild(
+            (b) => b..lineItems.addAll(items),
+          ),
+        );
       }
       break;
     case EntityAction.restore:
       final message = expenseIds.length > 1
-          ? localization.restoredExpenses
-              .replaceFirst(':value', expenseIds.length.toString())
+          ? localization.restoredExpenses.replaceFirst(
+              ':value',
+              expenseIds.length.toString(),
+            )
           : localization.restoredExpense;
       store.dispatch(RestoreExpenseRequest(
-          snackBarCompleter<Null>(context, message), expenseIds));
+        snackBarCompleter<Null>(context, message),
+        expenseIds,
+      ));
       break;
     case EntityAction.archive:
       final message = expenseIds.length > 1
-          ? localization.archivedExpenses
-              .replaceFirst(':value', expenseIds.length.toString())
+          ? localization.archivedExpenses.replaceFirst(
+              ':value',
+              expenseIds.length.toString(),
+            )
           : localization.archivedExpense;
       store.dispatch(ArchiveExpenseRequest(
-          snackBarCompleter<Null>(context, message), expenseIds));
+        snackBarCompleter<Null>(context, message),
+        expenseIds,
+      ));
       break;
     case EntityAction.delete:
       final message = expenseIds.length > 1
-          ? localization.deletedExpenses
-              .replaceFirst(':value', expenseIds.length.toString())
+          ? localization.deletedExpenses.replaceFirst(
+              ':value',
+              expenseIds.length.toString(),
+            )
           : localization.deletedExpense;
       store.dispatch(DeleteExpenseRequest(
-          snackBarCompleter<Null>(context, message), expenseIds));
+        snackBarCompleter<Null>(context, message),
+        expenseIds,
+      ));
       break;
     case EntityAction.toggleMultiselect:
       if (!store.state.expenseListState.isInMultiselect()) {
@@ -334,9 +348,7 @@ void handleExpenseAction(
       }
       break;
     case EntityAction.more:
-      showEntityActionsDialog(
-        entities: [expense],
-      );
+      showEntityActionsDialog(entities: [expense]);
       break;
   }
 }

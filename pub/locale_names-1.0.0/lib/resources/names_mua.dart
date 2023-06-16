@@ -269,5 +269,5 @@ const names = {
   "vi": "Vietnamiya",
   "yo": "Yoruba",
   "zh": "zah Syiŋ",
-  "zu": "Zulu"
+  "zu": "Zulu",
 };

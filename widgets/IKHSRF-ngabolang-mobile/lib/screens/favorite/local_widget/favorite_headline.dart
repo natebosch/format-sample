@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class FavoriteHeadline extends StatelessWidget {
-  const FavoriteHeadline({
-    Key key,
-  }) : super(key: key);
+  const FavoriteHeadline({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -16,10 +14,7 @@ class FavoriteHeadline extends StatelessWidget {
           onPressed: () => Get.back(),
         ),
         SizedBox(width: 10.0),
-        Text(
-          'Your Favourite List',
-          style: TextStyle(fontSize: 30),
-        ),
+        Text('Your Favourite List', style: TextStyle(fontSize: 30)),
       ],
     );
   }

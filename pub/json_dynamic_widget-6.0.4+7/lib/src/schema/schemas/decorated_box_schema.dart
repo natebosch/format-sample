@@ -12,12 +12,10 @@ class DecoratedBoxSchema {
         'https://api.flutter.dev/flutter/widgets/DecoratedBox-class.html',
     'title': 'DecoratedBox',
     'additionalProperties': false,
-    'required': [
-      'decoration',
-    ],
+    'required': ['decoration'],
     'properties': {
       'decoration': SchemaHelper.objectSchema(BoxDecorationSchema.id),
       'position': SchemaHelper.objectSchema(DecorationPositionSchema.id),
-    }
+    },
   };
 }

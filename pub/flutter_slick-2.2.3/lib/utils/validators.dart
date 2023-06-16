@@ -14,10 +14,7 @@ class LengthValidator<T> extends FieldValidator<T> {
   final int? min;
   final int? max;
 
-  LengthValidator({
-    this.min,
-    this.max,
-  });
+  LengthValidator({this.min, this.max});
 
   @override
   String? call(T? value) {
@@ -127,10 +124,7 @@ class RangeValidator extends FieldValidator<double> {
   final double? min;
   final double? max;
 
-  RangeValidator({
-    this.min,
-    this.max,
-  });
+  RangeValidator({this.min, this.max});
 
   @override
   String? call(double? value) {
@@ -145,10 +139,7 @@ class DateRangeValidator extends FieldValidator<DateTime> {
   final DateTime? min;
   final DateTime? max;
 
-  DateRangeValidator({
-    this.min,
-    this.max,
-  });
+  DateRangeValidator({this.min, this.max});
 
   @override
   String? call(DateTime? value) {
@@ -167,10 +158,7 @@ class FieldMatchValidator<T> extends FieldValidator<T> {
   final String fieldName;
   final T Function() getFieldValue;
 
-  FieldMatchValidator(
-    this.fieldName,
-    this.getFieldValue,
-  );
+  FieldMatchValidator(this.fieldName, this.getFieldValue);
 
   @override
   String? call(T? value) {

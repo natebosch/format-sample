@@ -33,8 +33,9 @@ void main() {
       integration(fixture.hub, fixture.options);
 
       expect(
-          fixture.options.sdk.integrations.contains('loadContextsIntegration'),
-          true);
+        fixture.options.sdk.integrations.contains('loadContextsIntegration'),
+        true,
+      );
     });
 
     test('take breadcrumbs from native if scope sync is enabled', () async {
@@ -45,7 +46,7 @@ void main() {
 
       final nativeBreadcrumb = Breadcrumb(message: 'native');
       Map<String, dynamic> loadContexts = {
-        'breadcrumbs': [nativeBreadcrumb.toJson()]
+        'breadcrumbs': [nativeBreadcrumb.toJson()],
       };
 
       final future = Future.value(loadContexts);
@@ -69,7 +70,7 @@ void main() {
 
       final nativeBreadcrumb = Breadcrumb(message: 'native');
       Map<String, dynamic> loadContexts = {
-        'breadcrumbs': [nativeBreadcrumb.toJson()]
+        'breadcrumbs': [nativeBreadcrumb.toJson()],
       };
 
       final future = Future.value(loadContexts);

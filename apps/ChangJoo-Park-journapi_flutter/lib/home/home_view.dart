@@ -30,45 +30,49 @@ class HomeView extends StatelessWidget {
       init: HomeController(),
       builder: (controller) {
         return Scaffold(
-            body: CustomScrollView(
-          slivers: [
-            // Appbar
-            SliverAppBar(
-              pinned: true,
-              backgroundColor: Color(0xfff7fafc),
-              title: Row(
-                children: [
-                  SvgPicture.asset(
-                    'assets/images/logo.svg',
-                    semanticsLabel: 'Journapi Logo',
-                    width: 30,
-                    height: 30,
-                  ),
-                  Text(
-                    'Journapi',
-                    style: TextStyle(
-                      fontFamily: 'JetBrainsMono',
-                      color: Colors.grey.shade800,
-                      fontSize: 14,
-                      fontWeight: FontWeight.bold,
-                      letterSpacing: 1,
+          body: CustomScrollView(
+            slivers: [
+              // Appbar
+              SliverAppBar(
+                pinned: true,
+                backgroundColor: Color(0xfff7fafc),
+                title: Row(
+                  children: [
+                    SvgPicture.asset(
+                      'assets/images/logo.svg',
+                      semanticsLabel: 'Journapi Logo',
+                      width: 30,
+                      height: 30,
                     ),
-                  )
-                ],
-              ),
-              actions: [
-                IconButton(
+                    Text(
+                      'Journapi',
+                      style: TextStyle(
+                        fontFamily: 'JetBrainsMono',
+                        color: Colors.grey.shade800,
+                        fontSize: 14,
+                        fontWeight: FontWeight.bold,
+                        letterSpacing: 1,
+                      ),
+                    ),
+                  ],
+                ),
+                actions: [
+                  IconButton(
                     icon: Icon(Icons.logout, color: Colors.grey),
                     onPressed: () {
                       controller.signout();
-                    }),
-              ],
-            ),
-            // Composer
-            SliverToBoxAdapter(
-              child: Obx(() => Padding(
+                    },
+                  ),
+                ],
+              ),
+              // Composer
+              SliverToBoxAdapter(
+                child: Obx(
+                  () => Padding(
                     padding: const EdgeInsets.symmetric(
-                        horizontal: 16.0, vertical: 8.0),
+                      horizontal: 16.0,
+                      vertical: 8.0,
+                    ),
                     child: Collapsible(
                       key: ValueKey('COMPOSER'),
                       openInitialized: true,
@@ -129,8 +133,9 @@ class HomeView extends StatelessWidget {
                                   width: double.infinity,
                                   child: ElevatedButton(
                                     style: ElevatedButton.styleFrom(
-                                        primary: Color(0xff63b3ed),
-                                        elevation: 0),
+                                      primary: Color(0xff63b3ed),
+                                      elevation: 0,
+                                    ),
                                     child: Text(
                                       'Add to my journal',
                                       style: TextStyle(
@@ -143,15 +148,17 @@ class HomeView extends StatelessWidget {
                                       if (formKey.currentState.validate()) {
                                         controller
                                             .createBullet(
-                                                controller
-                                                    .newBulletController.text,
-                                                controller.newDate.value)
+                                              controller
+                                                  .newBulletController
+                                                  .text,
+                                              controller.newDate.value,
+                                            )
                                             .then((value) {
-                                          controller.newBulletController
-                                              .clear();
-                                          controller.newDate.value =
-                                              DateTime.now();
-                                        });
+                                              controller.newBulletController
+                                                  .clear();
+                                              controller.newDate.value =
+                                                  DateTime.now();
+                                            });
                                       }
                                     },
                                   ),
@@ -162,30 +169,34 @@ class HomeView extends StatelessWidget {
                         ),
                       ),
                     ),
-                  )),
-            ),
-            // List
-            Obx(
-              () => SliverList(
-                delegate: SliverChildListDelegate(
-                  controller.bullets.entries.map((MapEntry e) {
-                    List list = List.from(e.value);
-                    List<String> elements = '${e.key}'.split('-');
-                    final yearIndex = 2;
-                    final dayIndex = 0;
-                    final monthIndex = 1;
-                    String year = elements[yearIndex];
-                    String month = months[int.parse(elements[monthIndex]) - 1];
-                    String day = elements[dayIndex];
-                    String title = '$day $month $year';
-                    DateTime now = DateTime.now();
-                    bool isToday = '${now.year}'.substring(2, 4) == year &&
-                        now.month == int.parse(elements[monthIndex]) &&
-                        '${now.day}' == day;
-                    return Padding(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 16.0, vertical: 8.0),
-                      child: Collapsible(
+                  ),
+                ),
+              ),
+              // List
+              Obx(
+                () => SliverList(
+                  delegate: SliverChildListDelegate(
+                    controller.bullets.entries.map((MapEntry e) {
+                      List list = List.from(e.value);
+                      List<String> elements = '${e.key}'.split('-');
+                      final yearIndex = 2;
+                      final dayIndex = 0;
+                      final monthIndex = 1;
+                      String year = elements[yearIndex];
+                      String month =
+                          months[int.parse(elements[monthIndex]) - 1];
+                      String day = elements[dayIndex];
+                      String title = '$day $month $year';
+                      DateTime now = DateTime.now();
+                      bool isToday = '${now.year}'.substring(2, 4) == year &&
+                          now.month == int.parse(elements[monthIndex]) &&
+                          '${now.day}' == day;
+                      return Padding(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 16.0,
+                          vertical: 8.0,
+                        ),
+                        child: Collapsible(
                           title: title,
                           openInitialized: isToday,
                           child: Column(
@@ -202,21 +213,29 @@ class HomeView extends StatelessWidget {
                                   print(bulletId);
                                   controller.deleteBullet(bulletId);
                                 },
-                                onSaveClicked: (int bulletId, String bullet,
-                                    DateTime dateTime) {
+                                onSaveClicked: (
+                                  int bulletId,
+                                  String bullet,
+                                  DateTime dateTime,
+                                ) {
                                   return controller.updateBullet(
-                                      bulletId, bullet, dateTime);
+                                    bulletId,
+                                    bullet,
+                                    dateTime,
+                                  );
                                 },
                               );
                             }).toList(),
-                          )),
-                    );
-                  }).toList(),
+                          ),
+                        ),
+                      );
+                    }).toList(),
+                  ),
                 ),
               ),
-            )
-          ],
-        ));
+            ],
+          ),
+        );
       },
     );
   }

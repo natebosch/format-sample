@@ -10,12 +10,15 @@ import 'package:uuid/uuid.dart';
 
 part 'job.g.dart';
 
-abstract class JobModel with ModelInterface implements Built<JobModel, JobModelBuilder> {
+abstract class JobModel
+    with ModelInterface
+    implements Built<JobModel, JobModelBuilder> {
   factory JobModel([void updates(JobModelBuilder b)]) = _$JobModel;
 
   JobModel._();
 
-  factory JobModel.fromSnapshot(Snapshot snapshot) => JobModel.fromJson(snapshot.data)..reference = snapshot.reference;
+  factory JobModel.fromSnapshot(Snapshot snapshot) =>
+      JobModel.fromJson(snapshot.data)..reference = snapshot.reference;
 
   static void _initializeBuilder(JobModelBuilder b) => b
     ..id = Uuid().v1()
@@ -70,14 +73,19 @@ abstract class JobModel with ModelInterface implements Built<JobModel, JobModelB
   DateTime get dueAt;
 
   @override
-  Map<String, dynamic> toMap() => serializers.serializeWith(JobModel.serializer, this);
+  Map<String, dynamic> toMap() => serializers.serializeWith(
+    JobModel.serializer,
+    this,
+  );
 
   static JobModel fromJson(Map<String, dynamic> map) {
     // TODO: investigate this
-    Map<String, double> newMeasurements =
-        map["measurements"] != null ? map["measurements"].cast<String, double>() : <String, double>{};
+    Map<String, double> newMeasurements = map["measurements"] != null
+        ? map["measurements"].cast<String, double>()
+        : <String, double>{};
     if (newMeasurements.isNotEmpty) {
-      newMeasurements = newMeasurements..removeWhere((key, value) => value == null);
+      newMeasurements = newMeasurements
+        ..removeWhere((key, value) => value == null);
     }
     map["measurements"] = newMeasurements;
     return serializers.deserializeWith(JobModel.serializer, map);

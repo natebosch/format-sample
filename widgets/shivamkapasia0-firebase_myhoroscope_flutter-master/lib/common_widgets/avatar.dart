@@ -30,10 +30,7 @@ class Avatar extends StatelessWidget {
     if (borderColor != null && borderWidth != null) {
       return BoxDecoration(
         shape: BoxShape.circle,
-        border: Border.all(
-          color: borderColor,
-          width: borderWidth,
-        ),
+        border: Border.all(color: borderColor, width: borderWidth),
       );
     }
     return null;

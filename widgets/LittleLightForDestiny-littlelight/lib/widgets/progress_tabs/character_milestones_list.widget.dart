@@ -27,7 +27,7 @@ class _CharacterMilestonesListWidgetState
     3181387331,
     1342567285,
     2590427074,
-    2712317338
+    2712317338,
   ];
   Map<String, DestinyMilestone> milestones;
   Map<int, DestinyMilestoneDefinition> milestoneDefinitions;
@@ -54,10 +54,9 @@ class _CharacterMilestonesListWidgetState
   Widget build(BuildContext context) {
     var screenPadding = MediaQuery.of(context).padding;
     return SingleChildScrollView(
-      padding: EdgeInsets.only(left:screenPadding.left, right:screenPadding.right),
-      child: Column(
-        children: buildMilestones(context),
-      ),
+      padding:
+          EdgeInsets.only(left: screenPadding.left, right: screenPadding.right),
+      child: Column(children: buildMilestones(context)),
     );
   }
 
@@ -65,13 +64,13 @@ class _CharacterMilestonesListWidgetState
     List<Widget> widgets = [];
     if (milestoneDefinitions == null) return widgets;
     widgets.add(Container(
-        height: 112,
-        child: CharacterInfoWidget(characterId: widget.characterId)));
-    widgets.add(Container(
-      height: 8,
+      height: 112,
+      child: CharacterInfoWidget(characterId: widget.characterId),
     ));
-    var raidMilestones =
-        milestones.values.where((m) => raidHashes.contains(m.milestoneHash));
+    widgets.add(Container(height: 8));
+    var raidMilestones = milestones.values.where(
+      (m) => raidHashes.contains(m.milestoneHash),
+    );
     var otherMilestones = milestones.values.where((m) {
       return !raidHashes.contains(m.milestoneHash) &&
           ((m.availableQuests?.length ?? 0) > 0 ||

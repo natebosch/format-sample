@@ -14,9 +14,11 @@ class EditGoal extends StatefulWidget {
   final NotificationCenter notificationCenter;
   final IRepository repository;
 
-  EditGoal(this.goal,
-      {@required this.repository,
-      @required this.notificationCenter}); //constructor
+  EditGoal(
+    this.goal, {
+    @required this.repository,
+    @required this.notificationCenter,
+  }); //constructor
 
   @override
   State<StatefulWidget> createState() {
@@ -35,8 +37,9 @@ class EditGoalState extends State<EditGoal> {
   TextEditingController _titleTextController;
 
   EditGoalState(this.goal, this.notificationCenter, this.repository) {
-    this._titleTextController =
-        new TextEditingController(text: this.goal.title);
+    this._titleTextController = new TextEditingController(
+      text: this.goal.title,
+    );
     this._bodyTextController = new TextEditingController(text: this.goal.body);
   }
 
@@ -63,9 +66,7 @@ class EditGoalState extends State<EditGoal> {
           child: Form(
             child: ListView(
               children: <Widget>[
-                SizedBox(
-                  height: 40.0,
-                ),
+                SizedBox(height: 40.0),
                 Hero(
                   tag: 'dartIcon${goal.id}',
                   child: Container(
@@ -78,104 +79,86 @@ class EditGoalState extends State<EditGoal> {
                     ),
                   ),
                 ),
-                SizedBox(
-                  height: 15.0,
-                ),
+                SizedBox(height: 15.0),
                 Center(
                   child: Text(
                     'Edit Goal',
                     style: TextStyle(
-                        color: this.invertColor,
-                        fontWeight: FontWeight.w700,
-                        fontSize: 22.0),
+                      color: this.invertColor,
+                      fontWeight: FontWeight.w700,
+                      fontSize: 22.0,
+                    ),
                   ),
                 ),
-                SizedBox(
-                  height: 15.0,
-                ),
+                SizedBox(height: 15.0),
                 TextField(
                   controller: this._titleTextController,
                   keyboardType: TextInputType.multiline,
                   maxLines: null,
-                  style: TextStyle(
-                    color: this.invertColor,
-                  ),
+                  style: TextStyle(color: this.invertColor),
                   onChanged: this.updateTitle,
                   decoration: InputDecoration(
                     enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
-                        color: this.invertColor,
-                      ),
+                      borderSide: BorderSide(color: this.invertColor),
                     ),
                     focusedBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: MyColors.green),
                     ),
                     border: OutlineInputBorder(),
                     hintText: 'Goal Title',
-                    hintStyle: TextStyle(
-                      color: this.invertColor,
-                    ),
+                    hintStyle: TextStyle(color: this.invertColor),
                     contentPadding: const EdgeInsets.all(15.0),
                   ),
                 ),
-                SizedBox(
-                  height: 15.0,
-                ),
+                SizedBox(height: 15.0),
                 TextField(
                   controller: this._bodyTextController,
                   keyboardType: TextInputType.multiline,
                   maxLines: null,
-                  style: TextStyle(
-                    color: this.invertColor,
-                  ),
+                  style: TextStyle(color: this.invertColor),
                   onChanged: this.updateBody,
                   decoration: InputDecoration(
                     enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
-                        color: this.invertColor,
-                      ),
+                      borderSide: BorderSide(color: this.invertColor),
                     ),
                     focusedBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: MyColors.green),
                     ),
                     border: OutlineInputBorder(),
                     hintText: 'Description',
-                    hintStyle: TextStyle(
-                      color: this.invertColor,
-                    ),
+                    hintStyle: TextStyle(color: this.invertColor),
                     contentPadding: const EdgeInsets.all(15.0),
                   ),
                 ),
-                SizedBox(
-                  height: 15.0,
-                ),
+                SizedBox(height: 15.0),
                 Theme(
                   data: Theme.of(context).copyWith(
-                      primaryColor: MyColors.purple,
-                      accentColor: MyColors.yellow),
+                    primaryColor: MyColors.purple,
+                    accentColor: MyColors.yellow,
+                  ),
                   child: Builder(
                     builder: (context) => OutlineButton(
-                      child: Text(
-                        goal.deadLine == null
-                            ? 'ADD DEADLINE'
-                            : 'EDIT DEADLINE',
-                        style: TextStyle(
-                          color: this.invertColor,
-                          fontWeight: FontWeight.w500,
+                          child: Text(
+                            goal.deadLine == null
+                                ? 'ADD DEADLINE'
+                                : 'EDIT DEADLINE',
+                            style: TextStyle(
+                              color: this.invertColor,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                          onPressed: () {
+                            this.editDeadLine(context);
+                          },
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(5.0),
+                          ),
+                          borderSide: BorderSide(color: MyColors.purple),
+                          highlightedBorderColor: MyColors.yellow,
+                          splashColor: MyColors.yellow,
                         ),
-                      ),
-                      onPressed: () {
-                        this.editDeadLine(context);
-                      },
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(5.0),
-                      ),
-                      borderSide: BorderSide(color: MyColors.purple),
-                      highlightedBorderColor: MyColors.yellow,
-                      splashColor: MyColors.yellow,
-                    ),
                   ),
-                )
+                ),
               ],
             ),
           ),
@@ -243,9 +226,8 @@ class EditGoalState extends State<EditGoal> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(8.0),
-          ),
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.0)),
           title: Text(
             'Done with \'${goal.title}\'?',
             style:
@@ -253,16 +235,16 @@ class EditGoalState extends State<EditGoal> {
           ),
           content: Text(
             'This goal will be deleted!',
-            style: TextStyle(
-              color: this.invertColor,
-            ),
+            style: TextStyle(color: this.invertColor),
           ),
           actions: <Widget>[
             FlatButton(
               child: Text(
                 'CANCEL',
                 style: TextStyle(
-                    color: this.invertColor, fontWeight: FontWeight.w500),
+                  color: this.invertColor,
+                  fontWeight: FontWeight.w500,
+                ),
               ),
               onPressed: Navigator.of(context).pop,
             ),
@@ -292,7 +274,12 @@ class EditGoalState extends State<EditGoal> {
     if (dueTime == null) return;
 
     DateTime deadLine = DateTime(
-        dueDate.year, dueDate.month, dueDate.day, dueTime.hour, dueTime.minute);
+      dueDate.year,
+      dueDate.month,
+      dueDate.day,
+      dueTime.hour,
+      dueTime.minute,
+    );
 
     setState(() {
       goal.deadLine = deadLine;

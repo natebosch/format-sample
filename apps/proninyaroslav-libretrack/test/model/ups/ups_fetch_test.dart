@@ -58,9 +58,7 @@ void main() {
         payload: 'body',
       );
 
-      when(
-        () => mockClient.send(request),
-      ).thenAnswer(
+      when(() => mockClient.send(request)).thenAnswer(
         (_) async => HttpResponse.success(body: expectedResponse.payload),
       );
 

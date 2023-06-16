@@ -5,5 +5,6 @@ import 'package:stream_channel/stream_channel.dart';
 import 'package:test/test.dart';
 
 /// Starts the redirect test HTTP server out-of-process.
-Future<StreamChannel<Object?>> startServer() async =>
-    spawnHybridUri('response_body_streamed_server.dart');
+Future<StreamChannel<Object?>> startServer() async => spawnHybridUri(
+  'response_body_streamed_server.dart',
+);

@@ -73,9 +73,7 @@ abstract class _$$FlawedOnMountProps extends _$FlawedOnMountProps
 class _$$FlawedOnMountProps$PlainMap extends _$$FlawedOnMountProps {
   // This initializer of `_props` to an empty map, as well as the reassignment
   // of `_props` in the constructor body is necessary to work around a DDC bug: https://github.com/dart-lang/sdk/issues/36217
-  _$$FlawedOnMountProps$PlainMap(Map backingMap)
-      : this._props = {},
-        super._() {
+  _$$FlawedOnMountProps$PlainMap(Map backingMap) : this._props = {}, super._() {
     this._props = backingMap ?? {};
   }
 
@@ -91,8 +89,8 @@ class _$$FlawedOnMountProps$JsMap extends _$$FlawedOnMountProps {
   // This initializer of `_props` to an empty map, as well as the reassignment
   // of `_props` in the constructor body is necessary to work around a DDC bug: https://github.com/dart-lang/sdk/issues/36217
   _$$FlawedOnMountProps$JsMap(JsBackedMap backingMap)
-      : this._props = JsBackedMap(),
-        super._() {
+    : this._props = JsBackedMap(),
+      super._() {
     this._props = backingMap ?? JsBackedMap();
   }
 
@@ -115,24 +113,28 @@ class _$FlawedOnMountComponent extends FlawedOnMountComponent {
   @override
   set props(Map value) {
     assert(
-        getBackingMap(value) is JsBackedMap,
-        'Component2.props should never be set directly in '
-        'production. If this is required for testing, the '
-        'component should be rendered within the test. If '
-        'that does not have the necessary result, the last '
-        'resort is to use typedPropsFactoryJs.');
+      getBackingMap(value) is JsBackedMap,
+      'Component2.props should never be set directly in '
+      'production. If this is required for testing, the '
+      'component should be rendered within the test. If '
+      'that does not have the necessary result, the last '
+      'resort is to use typedPropsFactoryJs.',
+    );
     super.props = value;
-    _cachedTypedProps =
-        typedPropsFactoryJs(getBackingMap(value) as JsBackedMap);
+    _cachedTypedProps = typedPropsFactoryJs(
+      getBackingMap(value) as JsBackedMap,
+    );
   }
 
   @override
-  _$$FlawedOnMountProps$JsMap typedPropsFactoryJs(JsBackedMap backingMap) =>
-      _$$FlawedOnMountProps$JsMap(backingMap);
+  _$$FlawedOnMountProps$JsMap typedPropsFactoryJs(
+    JsBackedMap backingMap,
+  ) => _$$FlawedOnMountProps$JsMap(backingMap);
 
   @override
-  _$$FlawedOnMountProps typedPropsFactory(Map backingMap) =>
-      _$$FlawedOnMountProps(backingMap);
+  _$$FlawedOnMountProps typedPropsFactory(
+    Map backingMap,
+  ) => _$$FlawedOnMountProps(backingMap);
 
   /// Let `UiComponent` internals know that this class has been generated.
   @override
@@ -145,6 +147,6 @@ class _$FlawedOnMountComponent extends FlawedOnMountComponent {
   /// Used in `*ConsumedProps` methods if [consumedProps] is not overridden.
   @override
   final List<ConsumedProps> $defaultConsumedProps = const [
-    _$metaForFlawedOnMountProps
+    _$metaForFlawedOnMountProps,
   ];
 }

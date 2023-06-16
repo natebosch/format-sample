@@ -55,71 +55,83 @@ class _DescriptionFieldState extends State<DescriptionField> {
     final SettingsBloc settings = BlocProvider.of<SettingsBloc>(context);
 
     return BlocBuilder<DashboardBloc, DashboardState>(
-        builder: (BuildContext context, DashboardState state) {
-      if (state.timerWasStarted) {
-        _controller.clear();
-        _focus.unfocus();
-        bloc.add(ResetEvent());
-      }
+      builder: (BuildContext context, DashboardState state) {
+        if (state.timerWasStarted) {
+          _controller.clear();
+          _focus.unfocus();
+          bloc.add(ResetEvent());
+        }
 
-      if (settings.state.autocompleteDescription) {
-        return TypeAheadField<String>(
-          direction: AxisDirection.up,
-          textFieldConfiguration: TextFieldConfiguration<String>(
+        if (settings.state.autocompleteDescription) {
+          return TypeAheadField<String>(
+            direction: AxisDirection.up,
+            textFieldConfiguration: TextFieldConfiguration<String>(
               focusNode: _focus,
               controller: _controller,
               autocorrect: true,
               decoration: InputDecoration(
-                  hintText: L10N.of(context).tr.whatAreYouDoing),
-              onChanged: (dynamic description) =>
-                  bloc.add(DescriptionChangedEvent(description as String)),
+                hintText: L10N.of(context).tr.whatAreYouDoing,
+              ),
+              onChanged: (dynamic description) => bloc.add(
+                DescriptionChangedEvent(description as String),
+              ),
               onSubmitted: (dynamic description) {
                 _focus.unfocus();
                 bloc.add(DescriptionChangedEvent(description as String));
-              }),
-          itemBuilder: (BuildContext context, String desc) =>
-              ListTile(title: Text(desc)),
-          onSuggestionSelected: (String description) {
-            _controller.text = description;
-            bloc.add(DescriptionChangedEvent(description));
-          },
-          suggestionsCallback: (pattern) async {
-            if (pattern.length < 2) return [];
+              },
+            ),
+            itemBuilder: (BuildContext context, String desc) => ListTile(
+                  title: Text(desc),
+                ),
+            onSuggestionSelected: (String description) {
+              _controller.text = description;
+              bloc.add(DescriptionChangedEvent(description));
+            },
+            suggestionsCallback: (pattern) async {
+              if (pattern.length < 2) return [];
 
-            ProjectsBloc projectsBloc = BlocProvider.of<ProjectsBloc>(context);
-            List<String> descriptions = timers.state.timers
-                .where((timer) => timer.description != null)
-                .where((timer) =>
-                    !(projectsBloc.getProjectByID(timer.projectID)?.archived ==
-                        true))
-                .where((timer) =>
-                    timer.description
-                        .toLowerCase()
-                        .contains(pattern.toLowerCase()) ??
-                    false)
-                .map((timer) => timer.description)
-                .toSet()
-                .toList();
-            return descriptions;
-          },
-        );
-      } else {
-        return TextField(
-          key: Key("descriptionField"),
-          focusNode: _focus,
-          controller: _controller,
-          autocorrect: true,
-          decoration: InputDecoration(
-            hintText: L10N.of(context).tr.whatAreYouDoing,
-          ),
-          onChanged: (String description) =>
-              bloc.add(DescriptionChangedEvent(description)),
-          onSubmitted: (String description) {
-            _focus.unfocus();
-            bloc.add(DescriptionChangedEvent(description));
-          },
-        );
-      }
-    });
+              ProjectsBloc projectsBloc = BlocProvider.of<ProjectsBloc>(
+                context,
+              );
+              List<String> descriptions = timers.state.timers
+                  .where((timer) => timer.description != null)
+                  .where(
+                    (timer) => !(projectsBloc.getProjectByID(
+                          timer.projectID,
+                        )?.archived ==
+                        true),
+                  )
+                  .where(
+                    (timer) =>
+                        timer.description.toLowerCase().contains(
+                          pattern.toLowerCase(),
+                        ) ??
+                        false,
+                  )
+                  .map((timer) => timer.description)
+                  .toSet()
+                  .toList();
+              return descriptions;
+            },
+          );
+        } else {
+          return TextField(
+            key: Key("descriptionField"),
+            focusNode: _focus,
+            controller: _controller,
+            autocorrect: true,
+            decoration:
+                InputDecoration(hintText: L10N.of(context).tr.whatAreYouDoing),
+            onChanged: (String description) => bloc.add(
+              DescriptionChangedEvent(description),
+            ),
+            onSubmitted: (String description) {
+              _focus.unfocus();
+              bloc.add(DescriptionChangedEvent(description));
+            },
+          );
+        }
+      },
+    );
   }
 }

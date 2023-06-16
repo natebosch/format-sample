@@ -15,11 +15,11 @@ class AppTransferCompleteSheet {
 
   mainBottomSheet(BuildContext context) {
     AppSheets.showAppHeightNineSheet(
-        context: context,
-        closeOnTap: true,
-        builder: (BuildContext context) {
-          return StatefulBuilder(
-              builder: (BuildContext context, StateSetter setState) {
+      context: context,
+      closeOnTap: true,
+      builder: (BuildContext context) {
+        return StatefulBuilder(
+          builder: (BuildContext context, StateSetter setState) {
             return SafeArea(
               minimum: EdgeInsets.only(
                 bottom: MediaQuery.of(context).size.height * 0.035,
@@ -37,19 +37,20 @@ class AppTransferCompleteSheet {
                           // Success tick (icon)
                           Container(
                             margin: EdgeInsets.only(bottom: 30),
-                            child: Icon(AppIcons.success,
-                                size: 100,
-                                color: StateContainer.of(context)
-                                    .curTheme
-                                    .success),
+                            child: Icon(
+                              AppIcons.success,
+                              size: 100,
+                              color:
+                                  StateContainer.of(context).curTheme.success,
+                            ),
                           ),
                           Container(
                             margin: EdgeInsets.only(bottom: 20),
                             constraints: BoxConstraints(
-                                maxHeight:
-                                    MediaQuery.of(context).size.height * 0.2,
-                                maxWidth:
-                                    MediaQuery.of(context).size.width * 0.6),
+                              maxHeight:
+                                  MediaQuery.of(context).size.height * 0.2,
+                              maxWidth: MediaQuery.of(context).size.width * 0.6,
+                            ),
                             child: Stack(
                               children: <Widget>[
                                 Center(
@@ -58,7 +59,7 @@ class AppTransferCompleteSheet {
                                     color: StateContainer.of(context)
                                         .curTheme
                                         .text45,
-                                    width: MediaQuery.of(context).size.width
+                                    width: MediaQuery.of(context).size.width,
                                   ),
                                 ),
                                 Center(
@@ -67,33 +68,37 @@ class AppTransferCompleteSheet {
                                     color: StateContainer.of(context)
                                         .curTheme
                                         .success,
-                                    width: MediaQuery.of(context).size.width
+                                    width: MediaQuery.of(context).size.width,
                                   ),
                                 ),
                               ],
                             ),
                           ),
                           Container(
-                              alignment: AlignmentDirectional(-1, 0),
-                              margin: EdgeInsets.symmetric(
-                                  horizontal: smallScreen(context) ? 35 : 60),
-                              child: Text(
-                                AppLocalization.of(context)
-                                    .transferComplete
-                                    .replaceAll("%1", transferAmount),
-                                style: AppStyles.textStyleParagraphSuccess(
-                                    context),
-                                textAlign: TextAlign.start,
-                              )),
+                            alignment: AlignmentDirectional(-1, 0),
+                            margin: EdgeInsets.symmetric(
+                              horizontal: smallScreen(context) ? 35 : 60,
+                            ),
+                            child: Text(
+                              AppLocalization.of(context)
+                                  .transferComplete
+                                  .replaceAll("%1", transferAmount),
+                              style:
+                                  AppStyles.textStyleParagraphSuccess(context),
+                              textAlign: TextAlign.start,
+                            ),
+                          ),
                           Container(
-                              alignment: AlignmentDirectional(-1, 0),
-                              margin: EdgeInsets.symmetric(
-                                  horizontal: smallScreen(context) ? 35 : 60),
-                              child: Text(
-                                AppLocalization.of(context).transferClose,
-                                style: AppStyles.textStyleParagraph(context),
-                                textAlign: TextAlign.start,
-                              )),
+                            alignment: AlignmentDirectional(-1, 0),
+                            margin: EdgeInsets.symmetric(
+                              horizontal: smallScreen(context) ? 35 : 60,
+                            ),
+                            child: Text(
+                              AppLocalization.of(context).transferClose,
+                              style: AppStyles.textStyleParagraph(context),
+                              textAlign: TextAlign.start,
+                            ),
+                          ),
                         ],
                       ),
                     ),
@@ -115,7 +120,9 @@ class AppTransferCompleteSheet {
                 ),
               ),
             );
-          });
-        });
+          },
+        );
+      },
+    );
   }
 }

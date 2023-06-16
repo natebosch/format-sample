@@ -1,9 +1,6 @@
 import 'package:fluttertoast/fluttertoast.dart';
 
-enum ToastPosition {
-  Top,
-  Bottom,
-}
+enum ToastPosition { Top, Bottom }
 
 ToastGravity _ToastPositionToToastGravity(ToastPosition position) {
   switch (position) {

@@ -12,9 +12,7 @@ class LoginScreen extends StatefulWidget {
 }
 
 class LoginScreenState extends State<LoginScreen> {
-
   final AuthMethods _authMethods = AuthMethods();
-
 
   bool isLoginPressed = false;
 
@@ -22,38 +20,35 @@ class LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: UniversalVariables.blackColor,
-      body:Stack(
-        children:[Center(
-          child:loginButton(),
-      ),
+      body: Stack(
+        children: [
+          Center(child: loginButton()),
           isLoginPressed
-           ? Center(
-            child: CircularProgressIndicator(),
-          )
-              :Container(
-
-          )
-    ],
+              ? Center(child: CircularProgressIndicator())
+              : Container(),
+        ],
       ),
     );
   }
 
   Widget loginButton() {
     return Shimmer.fromColors(
-    baseColor: Colors.white,
-        highlightColor: UniversalVariables.senderColor,
-        child:FlatButton(
-      padding: EdgeInsets.all(35),
-      child: Text(
-        "LOGIN",
-        style: TextStyle(
-            fontSize: 35, fontWeight: FontWeight.w900, letterSpacing: 1.2),
-      ),
-      onPressed: () => performLogin(),
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+      baseColor: Colors.white,
+      highlightColor: UniversalVariables.senderColor,
+      child: FlatButton(
+        padding: EdgeInsets.all(35),
+        child: Text(
+          "LOGIN",
+          style: TextStyle(
+            fontSize: 35,
+            fontWeight: FontWeight.w900,
+            letterSpacing: 1.2,
+          ),
+        ),
+        onPressed: () => performLogin(),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
       ),
     );
-    
   }
 
   void performLogin() {
@@ -74,22 +69,23 @@ class LoginScreenState extends State<LoginScreen> {
 
   void authenticateUser(FirebaseUser user) {
     _authMethods.authenticateUser(user).then((isNewUser) {
-
       setState(() {
         isLoginPressed = false;
       });
       if (isNewUser) {
         _authMethods.addDataToDb(user).then((value) {
-          Navigator.pushReplacement(context,
-              MaterialPageRoute(builder: (context) {
-                return HomeScreen();
-              }));
+          Navigator.pushReplacement(context, MaterialPageRoute(
+            builder: (context) {
+              return HomeScreen();
+            },
+          ));
         });
       } else {
-        Navigator.pushReplacement(context,
-            MaterialPageRoute(builder: (context) {
-              return HomeScreen();
-            }));
+        Navigator.pushReplacement(context, MaterialPageRoute(
+          builder: (context) {
+            return HomeScreen();
+          },
+        ));
       }
     });
   }

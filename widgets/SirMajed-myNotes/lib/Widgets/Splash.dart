@@ -17,11 +17,13 @@ class SplashState extends State<Splash> with AfterLayoutMixin<Splash> {
 
     if (_firstTime) {
       Navigator.of(context).pushReplacement(
-          new MaterialPageRoute(builder: (context) => new MyApp()));
+        new MaterialPageRoute(builder: (context) => new MyApp()),
+      );
     } else {
       await prefs.setBool('seen', true);
       Navigator.of(context).pushReplacement(
-          new MaterialPageRoute(builder: (context) => new WelcomeScreen()));
+        new MaterialPageRoute(builder: (context) => new WelcomeScreen()),
+      );
     }
   }
 
@@ -32,10 +34,7 @@ class SplashState extends State<Splash> with AfterLayoutMixin<Splash> {
   Widget build(BuildContext context) {
     return new Scaffold(
       body: new Center(
-        child: SpinKitFadingCube(
-                    color: Colors.redAccent,
-                    size: 40.0,
-                  ),
+        child: SpinKitFadingCube(color: Colors.redAccent, size: 40.0),
       ),
     );
   }

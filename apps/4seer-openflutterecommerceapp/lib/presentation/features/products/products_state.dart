@@ -15,12 +15,7 @@ abstract class ProductsState extends Equatable {
   final FilterRules filterRules;
   final String error;
 
-  ProductsState({
-    this.data,
-    this.filterRules,
-    this.sortBy,
-    this.error,
-  });
+  ProductsState({this.data, this.filterRules, this.sortBy, this.error});
 
   ProductsState copyWith({
     ProductListData data,
@@ -52,11 +47,18 @@ class ProductsListViewState extends ProductsState {
     FilterRules filterRules,
     String error,
   }) : super(
-    data: data, sortBy: sortBy, filterRules: filterRules, error: error);
+         data: data,
+         sortBy: sortBy,
+         filterRules: filterRules,
+         error: error,
+       );
 
   ProductsTileViewState getTiles() {
     return ProductsTileViewState(
-        data: data, sortBy: sortBy, filterRules: filterRules);
+      data: data,
+      sortBy: sortBy,
+      filterRules: filterRules,
+    );
   }
 
   @override
@@ -77,13 +79,17 @@ class ProductsListViewState extends ProductsState {
 
 @immutable
 class ProductsTileViewState extends ProductsState {
-  ProductsTileViewState(
-      {ProductListData data,
-      SortRules sortBy,
-      FilterRules filterRules,
-      String error})
-      : super(
-            data: data, sortBy: sortBy, filterRules: filterRules, error: error);
+  ProductsTileViewState({
+    ProductListData data,
+    SortRules sortBy,
+    FilterRules filterRules,
+    String error,
+  }) : super(
+         data: data,
+         sortBy: sortBy,
+         filterRules: filterRules,
+         error: error,
+       );
 
   @override
   ProductsTileViewState copyWith({
@@ -102,6 +108,9 @@ class ProductsTileViewState extends ProductsState {
 
   ProductsListViewState getList() {
     return ProductsListViewState(
-        data: data, sortBy: sortBy, filterRules: filterRules);
+      data: data,
+      sortBy: sortBy,
+      filterRules: filterRules,
+    );
   }
 }

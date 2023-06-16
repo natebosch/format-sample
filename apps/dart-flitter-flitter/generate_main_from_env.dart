@@ -4,15 +4,14 @@ main() {
   File file = new File("lib/main.dart");
   if (!file.existsSync()) {
     file.createSync(recursive: true);
-    file.writeAsStringSync(
-        _generate(Platform.environment["GITTER_APP_ID"],
-            Platform.environment["GITTER_APP_SECRET"]));
+    file.writeAsStringSync(_generate(
+      Platform.environment["GITTER_APP_ID"],
+      Platform.environment["GITTER_APP_SECRET"],
+    ));
   }
 }
 
-
-String _generate(String appId, String appSecret) =>
-    '''
+String _generate(String appId, String appSecret) => '''
 import 'package:flitter/app.dart' as flitter;
 import 'package:flitter/services/flitter_config.dart';
 

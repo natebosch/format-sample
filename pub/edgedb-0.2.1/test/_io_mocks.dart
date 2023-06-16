@@ -191,34 +191,46 @@ class FileMock implements File {
   Uri get uri => throw UnimplementedError();
 
   @override
-  Stream<FileSystemEvent> watch(
-      {int events = FileSystemEvent.all, bool recursive = false}) {
+  Stream<FileSystemEvent> watch({
+    int events = FileSystemEvent.all,
+    bool recursive = false,
+  }) {
     throw UnimplementedError();
   }
 
   @override
-  Future<File> writeAsBytes(List<int> bytes,
-      {FileMode mode = FileMode.write, bool flush = false}) {
+  Future<File> writeAsBytes(
+    List<int> bytes, {
+    FileMode mode = FileMode.write,
+    bool flush = false,
+  }) {
     throw UnimplementedError();
   }
 
   @override
-  void writeAsBytesSync(List<int> bytes,
-      {FileMode mode = FileMode.write, bool flush = false}) {}
+  void writeAsBytesSync(
+    List<int> bytes, {
+    FileMode mode = FileMode.write,
+    bool flush = false,
+  }) {}
 
   @override
-  Future<File> writeAsString(String contents,
-      {FileMode mode = FileMode.write,
-      Encoding encoding = utf8,
-      bool flush = false}) {
+  Future<File> writeAsString(
+    String contents, {
+    FileMode mode = FileMode.write,
+    Encoding encoding = utf8,
+    bool flush = false,
+  }) {
     throw UnimplementedError();
   }
 
   @override
-  void writeAsStringSync(String contents,
-      {FileMode mode = FileMode.write,
-      Encoding encoding = utf8,
-      bool flush = false}) {}
+  void writeAsStringSync(
+    String contents, {
+    FileMode mode = FileMode.write,
+    Encoding encoding = utf8,
+    bool flush = false,
+  }) {}
 }
 
 class DirectoryMock implements Directory {
@@ -269,14 +281,18 @@ class DirectoryMock implements Directory {
   bool get isAbsolute => p.isAbsolute(_path);
 
   @override
-  Stream<FileSystemEntity> list(
-      {bool recursive = false, bool followLinks = true}) {
+  Stream<FileSystemEntity> list({
+    bool recursive = false,
+    bool followLinks = true,
+  }) {
     throw UnimplementedError();
   }
 
   @override
-  List<FileSystemEntity> listSync(
-      {bool recursive = false, bool followLinks = true}) {
+  List<FileSystemEntity> listSync({
+    bool recursive = false,
+    bool followLinks = true,
+  }) {
     throw UnimplementedError();
   }
 
@@ -284,7 +300,8 @@ class DirectoryMock implements Directory {
   Directory get parent {
     final parts = p.split(_path);
     return Directory(
-        parts.length == 1 ? parts[0] : p.joinAll(parts..removeLast()));
+      parts.length == 1 ? parts[0] : p.joinAll(parts..removeLast()),
+    );
   }
 
   @override
@@ -324,8 +341,10 @@ class DirectoryMock implements Directory {
   Uri get uri => throw UnimplementedError();
 
   @override
-  Stream<FileSystemEvent> watch(
-      {int events = FileSystemEvent.all, bool recursive = false}) {
+  Stream<FileSystemEvent> watch({
+    int events = FileSystemEvent.all,
+    bool recursive = false,
+  }) {
     throw UnimplementedError();
   }
 }

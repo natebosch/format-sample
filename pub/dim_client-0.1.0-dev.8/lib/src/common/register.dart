@@ -71,15 +71,30 @@ class Register {
     //  Step 4: generate visa with ID and sign with private key
     //
     PrivateKey msgKey = PrivateKey.generate(AsymmetricKey.kRSA)!;
-    Visa visa = _visa(identifier, msgKey.publicKey as EncryptKey, idKey,
-        name: name, avatar: avatar);
+    Visa visa = _visa(
+      identifier,
+      msgKey.publicKey as EncryptKey,
+      idKey,
+      name: name,
+      avatar: avatar,
+    );
     //
     //  Step 5: save private key, meta & visa in local storage
     //          don't forget to upload them onto the DIM station
     //
     await database.saveMeta(meta, identifier);
-    await database.savePrivateKey(idKey, PrivateKeyDBI.kMeta, identifier, decrypt: 0);
-    await database.savePrivateKey(msgKey, PrivateKeyDBI.kVisa, identifier, decrypt: 1);
+    await database.savePrivateKey(
+      idKey,
+      PrivateKeyDBI.kMeta,
+      identifier,
+      decrypt: 0,
+    );
+    await database.savePrivateKey(
+      msgKey,
+      PrivateKeyDBI.kVisa,
+      identifier,
+      decrypt: 1,
+    );
     await database.saveDocument(visa);
     // OK
     return identifier;
@@ -90,7 +105,11 @@ class Register {
   /// @param founder - group founder
   /// @param title   - group name
   /// @return group ID
-  Future<ID> createGroup(ID founder, {required String name, String? seed}) async {
+  Future<ID> createGroup(
+    ID founder, {
+    required String name,
+    String? seed,
+  }) async {
     if (seed == null) {
       Random random = Random();
       int r = random.nextInt(999990000) + 10000; // 10,000 ~ 999,999,999
@@ -99,7 +118,8 @@ class Register {
     //
     //  Step 1: get private key of founder
     //
-    SignKey privateKey = (await database.getPrivateKeyForVisaSignature(founder))!;
+    SignKey privateKey =
+        (await database.getPrivateKeyForVisaSignature(founder))!;
     //
     //  Step 2: generate meta with private key (and meta seed)
     //
@@ -127,8 +147,13 @@ class Register {
   }
 
   // create user document
-  static Visa _visa(ID identifier, EncryptKey visaKey, SignKey idKey,
-      {required String name, String? avatar}) {
+  static Visa _visa(
+    ID identifier,
+    EncryptKey visaKey,
+    SignKey idKey, {
+    required String name,
+    String? avatar,
+  }) {
     assert(identifier.isUser, 'user ID error: $identifier');
     Visa visa = BaseVisa.fromID(identifier);
     visa.name = name;
@@ -138,9 +163,13 @@ class Register {
     assert(sig != null, 'failed to sign visa: $identifier');
     return visa;
   }
+
   // create group document
-  static Bulletin _bulletin(ID identifier, SignKey privateKey,
-      {required String name}) {
+  static Bulletin _bulletin(
+    ID identifier,
+    SignKey privateKey, {
+    required String name,
+  }) {
     assert(identifier.isGroup, 'group ID error: $identifier');
     Bulletin doc = BaseBulletin.fromID(identifier);
     doc.name = name;
@@ -162,6 +191,7 @@ class Register {
 
     _loaded = true;
   }
+
   static bool _loaded = false;
 }
 
@@ -172,15 +202,30 @@ void _registerFactories() {
   registerAllFactories();
 
   // Handshake
-  Command.setFactory(HandshakeCommand.kHandshake, CommandParser((dict) => HandshakeCommand(dict)));
+  Command.setFactory(
+    HandshakeCommand.kHandshake,
+    CommandParser((dict) => HandshakeCommand(dict)),
+  );
   // Receipt
-  Command.setFactory(ReceiptCommand.kReceipt, CommandParser((dict) => ReceiptCommand(dict)));
+  Command.setFactory(
+    ReceiptCommand.kReceipt,
+    CommandParser((dict) => ReceiptCommand(dict)),
+  );
   // Login
-  Command.setFactory(LoginCommand.kLogin, CommandParser((dict) => LoginCommand(dict)));
+  Command.setFactory(
+    LoginCommand.kLogin,
+    CommandParser((dict) => LoginCommand(dict)),
+  );
   // Report
-  Command.setFactory(ReportCommand.kReport, CommandParser((dict) => ReportCommand(dict)));
+  Command.setFactory(
+    ReportCommand.kReport,
+    CommandParser((dict) => ReportCommand(dict)),
+  );
   // Mute
   // Block
   // ANS
-  Command.setFactory(AnsCommand.kANS, CommandParser((dict) => AnsCommand(dict)));
+  Command.setFactory(
+    AnsCommand.kANS,
+    CommandParser((dict) => AnsCommand(dict)),
+  );
 }

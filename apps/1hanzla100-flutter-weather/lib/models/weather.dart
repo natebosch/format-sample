@@ -10,17 +10,18 @@ class WeatherData {
   String name;
   String icon;
 
-  WeatherData(
-      {this.condition,
-      this.temperature,
-      this.feelsLike,
-      this.visibility,
-      this.pressure,
-      this.humidity,
-      this.windSpeed,
-      this.country,
-      this.name,
-      this.icon});
+  WeatherData({
+    this.condition,
+    this.temperature,
+    this.feelsLike,
+    this.visibility,
+    this.pressure,
+    this.humidity,
+    this.windSpeed,
+    this.country,
+    this.name,
+    this.icon,
+  });
 
   factory WeatherData.fromJson(Map<String, dynamic> json) {
     return WeatherData(

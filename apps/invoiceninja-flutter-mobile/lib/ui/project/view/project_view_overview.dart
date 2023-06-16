@@ -41,8 +41,10 @@ class _ProjectOverviewState extends State<ProjectOverview> {
   @override
   void initState() {
     super.initState();
-    _timer = Timer.periodic(Duration(seconds: 1),
-        (Timer timer) => mounted ? setState(() => false) : false);
+    _timer = Timer.periodic(
+      Duration(seconds: 1),
+      (Timer timer) => mounted ? setState(() => false) : false,
+    );
   }
 
   @override
@@ -62,37 +64,45 @@ class _ProjectOverviewState extends State<ProjectOverview> {
 
     final Map<String, String> fields = {
       ProjectFields.dueDate: formatDate(project.dueDate, context),
-      ProjectFields.taskRate: formatNumber(project.taskRate, context,
-          formatNumberType: FormatNumberType.money, clientId: project.clientId),
+      ProjectFields.taskRate: formatNumber(
+        project.taskRate,
+        context,
+        formatNumberType: FormatNumberType.money,
+        clientId: project.clientId,
+      ),
     };
 
     if (project.customValue1.isNotEmpty) {
       final label1 = company.getCustomFieldLabel(CustomFieldType.project1);
       fields[label1] = formatCustomValue(
-          context: context,
-          field: CustomFieldType.project1,
-          value: project.customValue1);
+        context: context,
+        field: CustomFieldType.project1,
+        value: project.customValue1,
+      );
     }
     if (project.customValue2.isNotEmpty) {
       final label2 = company.getCustomFieldLabel(CustomFieldType.project2);
       fields[label2] = formatCustomValue(
-          context: context,
-          field: CustomFieldType.project2,
-          value: project.customValue2);
+        context: context,
+        field: CustomFieldType.project2,
+        value: project.customValue2,
+      );
     }
     if (project.customValue3.isNotEmpty) {
       final label3 = company.getCustomFieldLabel(CustomFieldType.project3);
       fields[label3] = formatCustomValue(
-          context: context,
-          field: CustomFieldType.project3,
-          value: project.customValue3);
+        context: context,
+        field: CustomFieldType.project3,
+        value: project.customValue3,
+      );
     }
     if (project.customValue2.isNotEmpty) {
       final label4 = company.getCustomFieldLabel(CustomFieldType.project4);
       fields[label4] = formatCustomValue(
-          context: context,
-          field: CustomFieldType.project4,
-          value: project.customValue4);
+        context: context,
+        field: CustomFieldType.project4,
+        value: project.customValue4,
+      );
     }
 
     List<Widget> _buildView() {
@@ -101,7 +111,8 @@ class _ProjectOverviewState extends State<ProjectOverview> {
           entity: project,
           label: localization.total,
           value: formatDuration(
-              taskDurationForProject(project, state.taskState.map)),
+            taskDurationForProject(project, state.taskState.map),
+          ),
           secondLabel: localization.budgeted,
           secondValue:
               formatDuration(Duration(hours: project.budgetedHours.toInt())),
@@ -109,12 +120,9 @@ class _ProjectOverviewState extends State<ProjectOverview> {
         ListDivider(),
         if ((project.privateNotes ?? '').isNotEmpty) ...[
           IconMessage(project.privateNotes, iconData: Icons.lock),
-          ListDivider()
+          ListDivider(),
         ],
-        EntityListTile(
-          entity: client,
-          isFilter: widget.isFilter,
-        ),
+        EntityListTile(entity: client, isFilter: widget.isFilter),
         EntityListTile(
           entity: state.userState.get(project.assignedUserId),
           isFilter: widget.isFilter,
@@ -125,9 +133,10 @@ class _ProjectOverviewState extends State<ProjectOverview> {
             isFilter: widget.isFilter,
             entityType: EntityType.task,
             title: localization.tasks,
-            subtitle:
-                memoizedTaskStatsForProject(project.id, state.taskState.map)
-                    .present(localization.active, localization.archived),
+            subtitle: memoizedTaskStatsForProject(
+              project.id,
+              state.taskState.map,
+            ).present(localization.active, localization.archived),
           ),
         if (company.isModuleEnabled(EntityType.expense))
           EntitiesListTile(
@@ -136,8 +145,9 @@ class _ProjectOverviewState extends State<ProjectOverview> {
             entityType: EntityType.expense,
             title: localization.expenses,
             subtitle: memoizedExpenseStatsForProject(
-                    project.id, state.expenseState.map)
-                .present(localization.active, localization.archived),
+              project.id,
+              state.expenseState.map,
+            ).present(localization.active, localization.archived),
           ),
         if (company.isModuleEnabled(EntityType.invoice))
           EntitiesListTile(
@@ -146,15 +156,14 @@ class _ProjectOverviewState extends State<ProjectOverview> {
             entityType: EntityType.invoice,
             title: localization.invoices,
             subtitle: memoizedInvoiceStatsForProject(
-                    project.id, state.invoiceState.map)
-                .present(localization.active, localization.archived),
+              project.id,
+              state.invoiceState.map,
+            ).present(localization.active, localization.archived),
             hideNew: true,
           ),
       ];
 
-      widgets.addAll([
-        FieldGrid(fields),
-      ]);
+      widgets.addAll([FieldGrid(fields)]);
 
       if ((project.publicNotes ?? '').isNotEmpty) {
         widgets.addAll([IconMessage(project.publicNotes), ListDivider()]);
@@ -165,9 +174,7 @@ class _ProjectOverviewState extends State<ProjectOverview> {
 
     return RefreshIndicator(
       onRefresh: () => widget.viewModel.onRefreshed(context),
-      child: ScrollableListView(
-        children: _buildView(),
-      ),
+      child: ScrollableListView(children: _buildView()),
     );
   }
 }

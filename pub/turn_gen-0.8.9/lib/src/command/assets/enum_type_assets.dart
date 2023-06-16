@@ -97,15 +97,14 @@ enum TypeNameFile with Comparable<TypeNameFile> {
     T Function()? onlyName,
     T Function()? identical,
     T Function()? init,
-  }) =>
-      map<T>(
-        notNormal: notNormal ?? orElse,
-        normal: normal ?? orElse,
-        onlyExtension: onlyExtension ?? orElse,
-        onlyName: onlyName ?? orElse,
-        identical: identical ?? orElse,
-        init: init ?? orElse,
-      );
+  }) => map<T>(
+    notNormal: notNormal ?? orElse,
+    normal: normal ?? orElse,
+    onlyExtension: onlyExtension ?? orElse,
+    onlyName: onlyName ?? orElse,
+    identical: identical ?? orElse,
+    init: init ?? orElse,
+  );
 
   T maybeMapValue<T>({
     required T orElse,
@@ -115,15 +114,14 @@ enum TypeNameFile with Comparable<TypeNameFile> {
     T? onlyName,
     T? identical,
     T? init,
-  }) =>
-      mapValue<T>(
-        notNormal: notNormal ?? orElse,
-        normal: normal ?? orElse,
-        onlyExtension: onlyExtension ?? orElse,
-        onlyName: onlyName ?? orElse,
-        identical: identical ?? orElse,
-        init: init ?? orElse,
-      );
+  }) => mapValue<T>(
+    notNormal: notNormal ?? orElse,
+    normal: normal ?? orElse,
+    onlyExtension: onlyExtension ?? orElse,
+    onlyName: onlyName ?? orElse,
+    identical: identical ?? orElse,
+    init: init ?? orElse,
+  );
 
   T? maybeMapOrNull<T>({
     T Function()? notNormal,
@@ -132,16 +130,15 @@ enum TypeNameFile with Comparable<TypeNameFile> {
     T Function()? onlyName,
     T Function()? identical,
     T Function()? init,
-  }) =>
-      maybeMap<T?>(
-        orElse: () => null,
-        notNormal: notNormal,
-        normal: normal,
-        onlyExtension: onlyExtension,
-        onlyName: onlyName,
-        identical: identical,
-        init: init,
-      );
+  }) => maybeMap<T?>(
+    orElse: () => null,
+    notNormal: notNormal,
+    normal: normal,
+    onlyExtension: onlyExtension,
+    onlyName: onlyName,
+    identical: identical,
+    init: init,
+  );
 
   T? maybeMapOrNullValue<T>({
     T? notNormal,
@@ -150,16 +147,15 @@ enum TypeNameFile with Comparable<TypeNameFile> {
     T? onlyName,
     T? identical,
     T? init,
-  }) =>
-      maybeMapValue<T?>(
-        orElse: null,
-        notNormal: notNormal,
-        normal: normal,
-        onlyExtension: onlyExtension,
-        onlyName: onlyName,
-        identical: identical,
-        init: init,
-      );
+  }) => maybeMapValue<T?>(
+    orElse: null,
+    notNormal: notNormal,
+    normal: normal,
+    onlyExtension: onlyExtension,
+    onlyName: onlyName,
+    identical: identical,
+    init: init,
+  );
 
   static List<String> getValues() =>
       TypeNameFile.values.map((e) => e.value).toList();

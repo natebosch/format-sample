@@ -32,29 +32,29 @@ class _InfoBarsPageState extends State<InfoBarsPage> with PageMixin {
           ' will remain in the content area until closed by the user but will '
           'not necessarily break user flow.',
         ),
-        subtitle(
-          content: const Text(
-            'A InfoBar as a popup',
-          ),
-        ),
+        subtitle(content: const Text('A InfoBar as a popup')),
         CardHighlight(
           backgroundColor: FluentTheme.of(context).micaBackgroundColor,
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: Button(
               onPressed: () {
-                displayInfoBar(context, builder: (context, close) {
-                  return InfoBar(
-                    title: const Text('You can not do that :/'),
-                    content: const Text(
-                        'A proper warning message of why the user can not do that :/'),
-                    action: IconButton(
-                      icon: const Icon(FluentIcons.clear),
-                      onPressed: close,
-                    ),
-                    severity: InfoBarSeverity.warning,
-                  );
-                });
+                displayInfoBar(
+                  context,
+                  builder: (context, close) {
+                    return InfoBar(
+                      title: const Text('You can not do that :/'),
+                      content: const Text(
+                        'A proper warning message of why the user can not do that :/',
+                      ),
+                      action: IconButton(
+                        icon: const Icon(FluentIcons.clear),
+                        onPressed: close,
+                      ),
+                      severity: InfoBarSeverity.warning,
+                    );
+                  },
+                );
               },
               child: const Text('Show InfoBar'),
             ),
@@ -109,14 +109,12 @@ class _InfoBarsPageState extends State<InfoBarsPage> with PageMixin {
                   width: 150.0,
                   child: ComboBox<InfoBarSeverity>(
                     isExpanded: true,
-                    items: InfoBarSeverity.values
-                        .map(
-                          (severity) => ComboBoxItem(
-                            child: Text(severity.name),
-                            value: severity,
-                          ),
-                        )
-                        .toList(),
+                    items: InfoBarSeverity.values.map(
+                      (severity) => ComboBoxItem(
+                        child: Text(severity.name),
+                        value: severity,
+                      ),
+                    ).toList(),
                     value: severity,
                     onChanged: (v) => setState(() => severity = v ?? severity),
                     popupColor: () {
@@ -177,10 +175,7 @@ class _InfoBarsPageState extends State<InfoBarsPage> with PageMixin {
                     isLong: _isLong,
                     onClose: () => setState(() => _secondOpen = false),
                     action: _hasActionButton
-                        ? Button(
-                            child: const Text('Action'),
-                            onPressed: () {},
-                          )
+                        ? Button(child: const Text('Action'), onPressed: () {})
                         : null,
                     isIconVisible: _isIconVisible,
                   ),
@@ -214,12 +209,12 @@ class _InfoBarsPageState extends State<InfoBarsPage> with PageMixin {
   title: const Text('Title'),
   content: Text(
     ${_isLong ? '"Essential app message for your users to be informed '
-                  'of, acknowledge, or take action on. Lorem Ipsum is '
-                  'simply dummy text of the printing and typesetting '
-                  'industry. Lorem Ipsum has been the industry\'s '
-                  'standard dummy text ever since the 1500s, when an '
-                  'unknown printer took a galley of type and scrambled '
-                  'it to make a type specimen book."' : '"A short essential message"'}
+                'of, acknowledge, or take action on. Lorem Ipsum is '
+                'simply dummy text of the printing and typesetting '
+                'industry. Lorem Ipsum has been the industry\'s '
+                'standard dummy text ever since the 1500s, when an '
+                'unknown printer took a galley of type and scrambled '
+                'it to make a type specimen book."' : '"A short essential message"'}
   ),
   severity: $severity,
   isLong: true,

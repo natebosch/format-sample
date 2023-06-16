@@ -24,10 +24,7 @@ class ChipsSection extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            header,
-            style: BreweryTheme.sectionHeader,
-          ),
+          Text(header, style: BreweryTheme.sectionHeader),
           Padding(
             padding: EdgeInsets.only(top: 10.0, bottom: 10.0),
             child: Divider(),
@@ -36,29 +33,22 @@ class ChipsSection extends StatelessWidget {
             crossAxisAlignment: WrapCrossAlignment.center,
             spacing: 5.0,
             runSpacing: 5.0,
-            children: List.generate(
-              list.length,
-              (index) {
-                if (onChipTap != null) {
-                  if (clickableIf == null || clickableIf!(list[index])) {
-                    return ActionChip(
-                      label: Text(
-                        list[index],
-                        style: TextStyle(decoration: TextDecoration.underline),
-                      ),
-                      onPressed: () => onChipTap!(list[index]),
-                    );
-                  }
+            children: List.generate(list.length, (index) {
+              if (onChipTap != null) {
+                if (clickableIf == null || clickableIf!(list[index])) {
+                  return ActionChip(
+                    label: Text(
+                      list[index],
+                      style: TextStyle(decoration: TextDecoration.underline),
+                    ),
+                    onPressed: () => onChipTap!(list[index]),
+                  );
                 }
-                return Chip(
-                  label: Text(list[index]),
-                );
-              },
-            ),
+              }
+              return Chip(label: Text(list[index]));
+            }),
           ),
-          SizedBox(
-            height: 40.0,
-          ),
+          SizedBox(height: 40.0),
         ],
       ),
     );

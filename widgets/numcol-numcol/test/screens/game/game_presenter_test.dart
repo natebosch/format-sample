@@ -35,8 +35,11 @@ void main() {
     _mockTimer = MockTimer();
     _mockGame = MockGame();
     _mockAudio = MockAudioPlayer();
-    _gameScreenPresenter =
-        GameScreenPresenter(_mockGameScreenView, _mockGame, _mockAudio);
+    _gameScreenPresenter = GameScreenPresenter(
+      _mockGameScreenView,
+      _mockGame,
+      _mockAudio,
+    );
     when(_mockGame.replyStream).thenAnswer((_) => _replyStreamer.stream);
     when(_mockGame.gameoverStream).thenAnswer((_) => _gameoverStreamer.stream);
   });
@@ -59,8 +62,9 @@ void main() {
         test('it redirects to game over screen', () {
           _gameoverStreamer.add(null);
           _gameoverStreamer.done.then((_) {
-            verify(_mockGameScreenView.redirectToWithParameter(
-                Routes.gameover, any));
+            verify(
+              _mockGameScreenView.redirectToWithParameter(Routes.gameover, any),
+            );
           });
         });
       });
@@ -85,9 +89,7 @@ void main() {
 
     group('On get answers', () {
       test('it return game answers', () {
-        var answers = <Answer>[
-          Answer(1, Color.blue, Number.one),
-        ];
+        var answers = <Answer>[Answer(1, Color.blue, Number.one)];
         when(_mockGame.answers).thenReturn(answers);
         expect(_gameScreenPresenter.answers, answers);
       });

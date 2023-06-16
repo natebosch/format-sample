@@ -78,13 +78,13 @@ abstract class YustDoc {
     String? modifiedBy,
     String? userId,
     String? envId,
-  })  : _id = id,
-        _createdAt = createdAt,
-        _createdBy = createdBy,
-        _modifiedAt = modifiedAt,
-        _modifiedBy = modifiedBy,
-        _userId = userId,
-        _envId = envId;
+  }) : _id = id,
+       _createdAt = createdAt,
+       _createdBy = createdBy,
+       _modifiedAt = modifiedAt,
+       _modifiedBy = modifiedBy,
+       _userId = userId,
+       _envId = envId;
 
   YustDoc.fromJson(Map<String, dynamic> json) : _id = '';
 
@@ -92,8 +92,12 @@ abstract class YustDoc {
 
   Map<String, dynamic> toExportJson() {
     final filteredJson = toJson();
-    Yust.helpers.removeKeysFromMap(
-        filteredJson, ['createdBy', 'modifiedBy', 'userId', 'envId']);
+    Yust.helpers.removeKeysFromMap(filteredJson, [
+      'createdBy',
+      'modifiedBy',
+      'userId',
+      'envId',
+    ]);
     return filteredJson;
   }
 

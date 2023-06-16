@@ -8,7 +8,6 @@
 //  distributed under the License is distributed on an "AS IS" BASIS,
 //  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/app/controllers/account_order_detail_controller.dart';
@@ -44,7 +43,6 @@ class _AccountOrderDetailPageState extends NyState<AccountOrderDetailPage> {
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       appBar: AppBar(
         leading: Container(
@@ -55,7 +53,7 @@ class _AccountOrderDetailPageState extends NyState<AccountOrderDetailPage> {
           margin: EdgeInsets.only(left: 0),
         ),
         title: Text(
-          "${trans(context, "Order").capitalize()} #${_orderId.toString()}"
+          "${trans(context, "Order").capitalize()} #${_orderId.toString()}",
         ),
         centerTitle: true,
       ),
@@ -68,10 +66,13 @@ class _AccountOrderDetailPageState extends NyState<AccountOrderDetailPage> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  Text("${trans(context, "Date Ordered").capitalize()}: " +
-                      dateFormatted(
+                  Text(
+                    "${trans(context, "Date Ordered").capitalize()}: " +
+                        dateFormatted(
                           date: _order.dateCreated,
-                          formatType: formatForDateTime(FormatType.Date))),
+                          formatType: formatForDateTime(FormatType.Date),
+                        ),
+                  ),
                   Container(
                     margin: EdgeInsets.only(top: 10, bottom: 10),
                     padding: EdgeInsets.symmetric(horizontal: 16, vertical: 16),
@@ -81,34 +82,33 @@ class _AccountOrderDetailPageState extends NyState<AccountOrderDetailPage> {
                       children: <Widget>[
                         Flexible(
                           child: Text(
-                              "${trans(context, "Ships to").capitalize()}:"),
+                            "${trans(context, "Ships to").capitalize()}:",
+                          ),
                         ),
                         Flexible(
-                          child: Text(
+                          child: Text([
                             [
-                              [
-                                _order.shipping.firstName,
-                                _order.shipping.lastName
-                              ].where((t) => t != null).toList().join(" "),
-                              _order.shipping.address1,
-                              _order.shipping.address2,
-                              _order.shipping.city,
-                              _order.shipping.state,
-                              _order.shipping.postcode,
-                              _order.shipping.country,
-                            ]
-                                .where((t) => (t != "" && t != null))
-                                .toList()
-                                .join("\n"),
-                            textAlign: TextAlign.right,
-                          ),
+                              _order.shipping.firstName,
+                              _order.shipping.lastName,
+                            ].where((t) => t != null).toList().join(" "),
+                            _order.shipping.address1,
+                            _order.shipping.address2,
+                            _order.shipping.city,
+                            _order.shipping.state,
+                            _order.shipping.postcode,
+                            _order.shipping.country,
+                          ].where((t) => (t != "" && t != null)).toList().join(
+                            "\n",
+                          ), textAlign: TextAlign.right),
                         ),
                       ],
                     ),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(8),
                       boxShadow:
-                      (Theme.of(context).brightness == Brightness.light) ? wsBoxShadow() : null,
+                          (Theme.of(context).brightness == Brightness.light)
+                              ? wsBoxShadow()
+                              : null,
                       color: (Theme.of(context).brightness == Brightness.light)
                           ? Colors.white
                           : Color(0xFF2C2C2C),
@@ -120,12 +120,18 @@ class _AccountOrderDetailPageState extends NyState<AccountOrderDetailPage> {
                         return Card(
                           child: ListTile(
                             contentPadding: EdgeInsets.only(
-                                top: 5, bottom: 5, left: 8, right: 6),
+                              top: 5,
+                              bottom: 5,
+                              left: 8,
+                              right: 6,
+                            ),
                             title: Container(
                               decoration: BoxDecoration(
                                 border: Border(
                                   bottom: BorderSide(
-                                      color: HexColor("#fcfcfc"), width: 1),
+                                    color: HexColor("#fcfcfc"),
+                                    width: 1,
+                                  ),
                                 ),
                               ),
                               child: Row(
@@ -142,8 +148,8 @@ class _AccountOrderDetailPageState extends NyState<AccountOrderDetailPage> {
                                   ),
                                   Text(
                                     formatStringCurrency(
-                                            total: _order.lineItems[i].price)
-                                        .capitalize(),
+                                      total: _order.lineItems[i].price,
+                                    ).capitalize(),
                                     maxLines: 1,
                                     overflow: TextOverflow.ellipsis,
                                   ),
@@ -175,7 +181,9 @@ class _AccountOrderDetailPageState extends NyState<AccountOrderDetailPage> {
                                         textAlign: TextAlign.left,
                                       ),
                                       Text(
-                                        "x${_order.lineItems[i].quantity.toString()}",
+                                        "x${_order.lineItems[
+                                              i
+                                            ].quantity.toString()}",
                                         style: Theme.of(context)
                                             .textTheme
                                             .bodyText1,

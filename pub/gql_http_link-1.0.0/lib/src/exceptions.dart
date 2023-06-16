@@ -14,9 +14,9 @@ class HttpLinkParserException extends ResponseFormatException {
     required StackTrace? originalStackTrace,
     required this.response,
   }) : super(
-          originalException: originalException,
-          originalStackTrace: originalStackTrace,
-        );
+         originalException: originalException,
+         originalStackTrace: originalStackTrace,
+       );
 }
 
 /// Exception occurring when network fails
@@ -30,8 +30,5 @@ class HttpLinkServerException extends ServerException {
     required this.response,
     required Response parsedResponse,
     int? statusCode,
-  }) : super(
-          parsedResponse: parsedResponse,
-          statusCode: statusCode,
-        );
+  }) : super(parsedResponse: parsedResponse, statusCode: statusCode);
 }

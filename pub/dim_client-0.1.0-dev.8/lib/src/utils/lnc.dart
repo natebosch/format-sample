@@ -33,7 +33,6 @@ import 'weak.dart';
 
 ///  Notification observer
 abstract class Observer {
-
   Future<void> onReceiveNotification(Notification notification);
 }
 
@@ -51,7 +50,6 @@ class Notification {
     return '<$clazz name="$name">\n\t<sender>$sender</sender>\n'
         '\t<info>$userInfo</info>\n</$clazz>';
   }
-
 }
 
 ///  Notification center
@@ -83,7 +81,11 @@ class NotificationCenter {
   /// @param name   - notification name
   /// @param sender - who post this notification
   /// @param info   - extra info
-  Future<void> postNotification(String name, dynamic sender, [Map? info]) async {
+  Future<void> postNotification(
+    String name,
+    dynamic sender, [
+    Map? info,
+  ]) async {
     await center.postNotification(name, sender, info);
   }
 
@@ -93,11 +95,9 @@ class NotificationCenter {
   Future<void> post(Notification notification) async {
     await center.post(notification);
   }
-
 }
 
 class BaseCenter {
-
   // name => WeakSet<Observer>
   final Map<String, Set<Observer>> _observers = {};
 
@@ -145,7 +145,11 @@ class BaseCenter {
   /// @param name     - notification name
   /// @param sender   - notification sender
   /// @param info     - extra info
-  Future<void> postNotification(String name, dynamic sender, [Map? info]) async {
+  Future<void> postNotification(
+    String name,
+    dynamic sender, [
+    Map? info,
+  ]) async {
     return await post(Notification(name, sender, info));
   }
 
@@ -158,8 +162,10 @@ class BaseCenter {
     List<Future> tasks = [];
     for (Observer item in listeners) {
       try {
-        tasks.add(item.onReceiveNotification(notification).onError((error, st) =>
-            Log.error('observer error: $error, $st, $notification')
+        tasks.add(item.onReceiveNotification(notification).onError(
+          (error, st) => Log.error(
+            'observer error: $error, $st, $notification',
+          ),
         ));
       } catch (ex, stackTrace) {
         Log.error('sync call observer error: $ex, $stackTrace, $notification');
@@ -168,5 +174,4 @@ class BaseCenter {
     // wait all tasks finished
     await Future.wait(tasks);
   }
-
 }

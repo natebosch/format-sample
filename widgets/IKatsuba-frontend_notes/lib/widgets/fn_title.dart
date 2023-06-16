@@ -8,8 +8,9 @@ class FnTitle extends StatelessWidget {
         Text(
           'Frontend',
           style: TextStyle(
-              color: Theme.of(context).textTheme.caption.color,
-              fontWeight: FontWeight.w400),
+            color: Theme.of(context).textTheme.caption.color,
+            fontWeight: FontWeight.w400,
+          ),
         ),
         Text('Notes'),
       ],

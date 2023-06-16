@@ -17,9 +17,11 @@ void macroPerfTestE2E(
   ControlCallback? body,
   ControlCallback? setup,
 }) {
-  final WidgetsBinding _binding = IntegrationTestWidgetsFlutterBinding.ensureInitialized();
+  final WidgetsBinding _binding =
+      IntegrationTestWidgetsFlutterBinding.ensureInitialized();
   assert(_binding is IntegrationTestWidgetsFlutterBinding);
-  final IntegrationTestWidgetsFlutterBinding binding = _binding as IntegrationTestWidgetsFlutterBinding;
+  final IntegrationTestWidgetsFlutterBinding binding =
+      _binding as IntegrationTestWidgetsFlutterBinding;
   binding.framePolicy = LiveTestWidgetsFlutterBindingFramePolicy.benchmarkLive;
 
   testWidgets(testName, (WidgetTester tester) async {
@@ -40,7 +42,10 @@ void macroPerfTestE2E(
       if (i < 0) {
         i = routeName.length;
       }
-      final Finder button = find.byKey(ValueKey<String>(routeName.substring(0, i)), skipOffstage: false);
+      final Finder button = find.byKey(
+        ValueKey<String>(routeName.substring(0, i)),
+        skipOffstage: false,
+      );
       await tester.scrollUntilVisible(button, 50);
       expect(button, findsOneWidget);
       await tester.pumpAndSettle();

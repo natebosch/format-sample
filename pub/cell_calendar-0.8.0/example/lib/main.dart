@@ -24,10 +24,7 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatelessWidget {
-  const MyHomePage({
-    super.key,
-    required this.title,
-  });
+  const MyHomePage({super.key, required this.title});
 
   final String title;
 
@@ -36,9 +33,7 @@ class MyHomePage extends StatelessWidget {
     final events = sampleEvents();
     final cellCalendarPageController = CellCalendarPageController();
     return Scaffold(
-      appBar: AppBar(
-        title: Text(title),
-      ),
+      appBar: AppBar(title: Text(title)),
       body: CellCalendar(
         cellCalendarPageController: cellCalendarPageController,
         events: events,
@@ -48,9 +43,7 @@ class MyHomePage extends StatelessWidget {
             padding: const EdgeInsets.only(bottom: 4.0),
             child: Text(
               labels[dayIndex],
-              style: const TextStyle(
-                fontWeight: FontWeight.bold,
-              ),
+              style: const TextStyle(fontWeight: FontWeight.bold),
               textAlign: TextAlign.center,
             ),
           );
@@ -81,7 +74,7 @@ class MyHomePage extends StatelessWidget {
                       duration: const Duration(milliseconds: 300),
                     );
                   },
-                )
+                ),
               ],
             ),
           );
@@ -94,27 +87,24 @@ class MyHomePage extends StatelessWidget {
                 eventDate.day == date.day;
           }).toList();
           showDialog(
-              context: context,
-              builder: (_) => AlertDialog(
-                    title: Text("${date.month.monthName} ${date.day}"),
-                    content: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: eventsOnTheDate
-                          .map(
-                            (event) => Container(
-                              width: double.infinity,
-                              padding: const EdgeInsets.all(4),
-                              margin: const EdgeInsets.only(bottom: 12),
-                              color: event.eventBackgroundColor,
-                              child: Text(
-                                event.eventName,
-                                style: event.eventTextStyle,
-                              ),
-                            ),
-                          )
-                          .toList(),
-                    ),
-                  ));
+            context: context,
+            builder: (_) => AlertDialog(
+                  title: Text("${date.month.monthName} ${date.day}"),
+                  content: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: eventsOnTheDate.map(
+                      (event) => Container(
+                        width: double.infinity,
+                        padding: const EdgeInsets.all(4),
+                        margin: const EdgeInsets.only(bottom: 12),
+                        color: event.eventBackgroundColor,
+                        child:
+                            Text(event.eventName, style: event.eventTextStyle),
+                      ),
+                    ).toList(),
+                  ),
+                ),
+          );
         },
         onPageChanged: (firstDate, lastDate) {
           /// Called when the page was changed

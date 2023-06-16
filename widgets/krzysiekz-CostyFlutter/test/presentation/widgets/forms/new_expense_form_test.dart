@@ -15,8 +15,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 
-class MockCurrencyBloc extends MockBloc<CurrencyState> implements CurrencyBloc {
-}
+class MockCurrencyBloc extends MockBloc<CurrencyState>
+    implements CurrencyBloc {}
 
 class MockUserBloc extends MockBloc<UserState> implements UserBloc {}
 
@@ -54,7 +54,7 @@ void main() {
   const List<Currency> tCurrencies = [
     Currency(name: "USD"),
     Currency(name: "PLN"),
-    Currency(name: "EUR")
+    Currency(name: "EUR"),
   ];
 
   const List<User> tUsers = [
@@ -70,9 +70,7 @@ void main() {
       when(currencyBloc.state).thenAnswer(
         (_) => const CurrencyLoaded(tCurrencies),
       );
-      when(userBloc.state).thenAnswer(
-        (_) => const UserLoaded(tUsers),
-      );
+      when(userBloc.state).thenAnswer((_) => const UserLoaded(tUsers));
 
       testedWidget = MultiBlocProvider(
         providers: [
@@ -83,135 +81,144 @@ void main() {
         ],
         child: MaterialApp(
           locale: const Locale('en'),
-          home: Scaffold(
-            body: NewExpenseForm(project: tProject),
-          ),
-          localizationsDelegates: const [
-            AppLocalizations.delegate,
-          ],
+          home: Scaffold(body: NewExpenseForm(project: tProject)),
+          localizationsDelegates: const [AppLocalizations.delegate],
         ),
       );
     });
 
-    testWidgets('should display all available currencies and users properly',
-        (WidgetTester tester) async {
-      await tester.runAsync(() async {
-        //arrange
-        await tester.pumpWidget(testedWidget);
-        await tester.pumpAndSettle();
-        //assert
-        final currencyDropdownFinder =
-            find.byKey(const Key(Keys.expenseFormCurrencyKey));
-        expect(currencyDropdownFinder, findsOneWidget);
+    testWidgets(
+      'should display all available currencies and users properly',
+      (WidgetTester tester) async {
+        await tester.runAsync(() async {
+          //arrange
+          await tester.pumpWidget(testedWidget);
+          await tester.pumpAndSettle();
+          //assert
+          final currencyDropdownFinder = find.byKey(
+            const Key(Keys.expenseFormCurrencyKey),
+          );
+          expect(currencyDropdownFinder, findsOneWidget);
 
-        final CurrencyDropdownField currencyDropdownField =
-            currencyDropdownFinder.evaluate().first.widget
-                as CurrencyDropdownField;
+          final CurrencyDropdownField currencyDropdownField =
+              currencyDropdownFinder.evaluate().first.widget
+                  as CurrencyDropdownField;
 
-        expect(currencyDropdownField.currencies, tCurrencies);
-        expect(find.text(tProject.defaultCurrency.name).hitTestable(),
-            findsOneWidget);
+          expect(currencyDropdownField.currencies, tCurrencies);
+          expect(
+            find.text(tProject.defaultCurrency.name).hitTestable(),
+            findsOneWidget,
+          );
 
-        final receivers =
-            find.byKey(const Key(Keys.expenseFormReceiversFieldKey));
-        expect(receivers, findsOneWidget);
-        final MultiSelectChip receiversWidget =
-            receivers.evaluate().first.widget as MultiSelectChip;
-        expect(receiversWidget.userList, tUsers);
+          final receivers = find.byKey(
+            const Key(Keys.expenseFormReceiversFieldKey),
+          );
+          expect(receivers, findsOneWidget);
+          final MultiSelectChip receiversWidget =
+              receivers.evaluate().first.widget as MultiSelectChip;
+          expect(receiversWidget.userList, tUsers);
 
-        final receiverJohn = find.byKey(const Key("receiver_John"));
-        expect(receiverJohn, findsOneWidget);
-        final ChoiceChip receiverJohnChoiceChip =
-            receiverJohn.evaluate().first.widget as ChoiceChip;
-        expect(receiverJohnChoiceChip.selected, true);
+          final receiverJohn = find.byKey(const Key("receiver_John"));
+          expect(receiverJohn, findsOneWidget);
+          final ChoiceChip receiverJohnChoiceChip =
+              receiverJohn.evaluate().first.widget as ChoiceChip;
+          expect(receiverJohnChoiceChip.selected, true);
 
-        final receiverKate = find.byKey(const Key("receiver_Kate"));
-        expect(receiverKate, findsOneWidget);
-        final ChoiceChip receiverKateChoiceChip =
-            receiverKate.evaluate().first.widget as ChoiceChip;
-        expect(receiverKateChoiceChip.selected, true);
-      });
-    });
+          final receiverKate = find.byKey(const Key("receiver_Kate"));
+          expect(receiverKate, findsOneWidget);
+          final ChoiceChip receiverKateChoiceChip =
+              receiverKate.evaluate().first.widget as ChoiceChip;
+          expect(receiverKateChoiceChip.selected, true);
+        });
+      },
+    );
 
-    testWidgets('should display proper validation errors when no data provided',
-        (WidgetTester tester) async {
-      await tester.runAsync(() async {
-        //arrange
-        await tester.pumpWidget(testedWidget);
-        await tester.pumpAndSettle();
-        //act
-        final addExpenseButtonFinder =
-            find.byKey(const Key(Keys.expenseFormAddEditButtonKey));
-        expect(addExpenseButtonFinder, findsOneWidget);
-        await tester.tap(addExpenseButtonFinder);
-        await tester.pumpAndSettle();
-        //assert
-        expect(find.text('Add expense'), findsOneWidget);
-        expect(find.text('Description is required.'), findsOneWidget);
-        expect(find.text('Field required.'), findsOneWidget);
-        expect(find.text('Please select a user'), findsOneWidget);
+    testWidgets(
+      'should display proper validation errors when no data provided',
+      (WidgetTester tester) async {
+        await tester.runAsync(() async {
+          //arrange
+          await tester.pumpWidget(testedWidget);
+          await tester.pumpAndSettle();
+          //act
+          final addExpenseButtonFinder = find.byKey(
+            const Key(Keys.expenseFormAddEditButtonKey),
+          );
+          expect(addExpenseButtonFinder, findsOneWidget);
+          await tester.tap(addExpenseButtonFinder);
+          await tester.pumpAndSettle();
+          //assert
+          expect(find.text('Add expense'), findsOneWidget);
+          expect(find.text('Description is required.'), findsOneWidget);
+          expect(find.text('Field required.'), findsOneWidget);
+          expect(find.text('Please select a user'), findsOneWidget);
 
-        verify(currencyBloc.add(argThat(isA<GetCurrenciesEvent>())));
-        verify(userBloc.add(argThat(isA<GetUsersEvent>())));
+          verify(currencyBloc.add(argThat(isA<GetCurrenciesEvent>())));
+          verify(userBloc.add(argThat(isA<GetUsersEvent>())));
 
-        verifyNever(expenseBloc.add(argThat(isA<AddExpenseEvent>())));
-      });
-    });
+          verifyNever(expenseBloc.add(argThat(isA<AddExpenseEvent>())));
+        });
+      },
+    );
 
-    testWidgets('should add expense with default currency and users',
-        (WidgetTester tester) async {
-      await tester.runAsync(() async {
-        //arrange
-        await tester.pumpWidget(testedWidget);
-        await tester.pumpAndSettle();
-        //act
-        final descriptionFieldFinder =
-            find.byKey(const Key(Keys.expenseFormDescriptionFieldKey));
-        expect(descriptionFieldFinder, findsOneWidget);
-        await tester.enterText(descriptionFieldFinder, "Some description");
-        await tester.pumpAndSettle();
+    testWidgets(
+      'should add expense with default currency and users',
+      (WidgetTester tester) async {
+        await tester.runAsync(() async {
+          //arrange
+          await tester.pumpWidget(testedWidget);
+          await tester.pumpAndSettle();
+          //act
+          final descriptionFieldFinder = find.byKey(
+            const Key(Keys.expenseFormDescriptionFieldKey),
+          );
+          expect(descriptionFieldFinder, findsOneWidget);
+          await tester.enterText(descriptionFieldFinder, "Some description");
+          await tester.pumpAndSettle();
 
-        final amountFieldFinder =
-            find.byKey(const Key(Keys.expenseFormAmountFieldKey));
-        expect(amountFieldFinder, findsOneWidget);
-        await tester.enterText(amountFieldFinder, "10");
-        await tester.pumpAndSettle();
+          final amountFieldFinder = find.byKey(
+            const Key(Keys.expenseFormAmountFieldKey),
+          );
+          expect(amountFieldFinder, findsOneWidget);
+          await tester.enterText(amountFieldFinder, "10");
+          await tester.pumpAndSettle();
 
-        final userFinder = find.byKey(const Key(Keys.expenseFormUserKey));
-        expect(userFinder, findsOneWidget);
-        await tester.tap(userFinder);
-        await tester.pumpAndSettle();
+          final userFinder = find.byKey(const Key(Keys.expenseFormUserKey));
+          expect(userFinder, findsOneWidget);
+          await tester.tap(userFinder);
+          await tester.pumpAndSettle();
 
-        final userJohn = find.text("John").hitTestable();
-        expect(userJohn, findsOneWidget);
-        await tester.tap(userJohn);
-        await tester.pumpAndSettle();
+          final userJohn = find.text("John").hitTestable();
+          expect(userJohn, findsOneWidget);
+          await tester.tap(userJohn);
+          await tester.pumpAndSettle();
 
-        await tester
-            .tap(find.byKey(const Key(Keys.expenseFormAddEditButtonKey)));
-        await tester.pumpAndSettle();
-        //assert
-        expect(find.text('Description is required.'), findsNothing);
-        expect(find.text('Amount is required'), findsNothing);
-        expect(find.text('Please select a user'), findsNothing);
+          await tester.tap(
+            find.byKey(const Key(Keys.expenseFormAddEditButtonKey)),
+          );
+          await tester.pumpAndSettle();
+          //assert
+          expect(find.text('Description is required.'), findsNothing);
+          expect(find.text('Amount is required'), findsNothing);
+          expect(find.text('Please select a user'), findsNothing);
 
-        verify(currencyBloc.add(argThat(isA<GetCurrenciesEvent>())));
-        verify(userBloc.add(argThat(isA<GetUsersEvent>())));
+          verify(currencyBloc.add(argThat(isA<GetCurrenciesEvent>())));
+          verify(userBloc.add(argThat(isA<GetUsersEvent>())));
 
-        final AddExpenseEvent calledAddExpenseEvent =
-            verify(expenseBloc.add(captureThat(isA<AddExpenseEvent>())))
-                .captured
-                .single as AddExpenseEvent;
-        expect(calledAddExpenseEvent.currency, tProject.defaultCurrency);
-        expect(calledAddExpenseEvent.project, tProject);
-        expect(calledAddExpenseEvent.amount, Decimal.parse("10"));
-        expect(calledAddExpenseEvent.description, "Some description");
-        expect(calledAddExpenseEvent.receivers, tUsers);
+          final AddExpenseEvent calledAddExpenseEvent = verify(
+            expenseBloc.add(captureThat(isA<AddExpenseEvent>())),
+          ).captured.single as AddExpenseEvent;
+          expect(calledAddExpenseEvent.currency, tProject.defaultCurrency);
+          expect(calledAddExpenseEvent.project, tProject);
+          expect(calledAddExpenseEvent.amount, Decimal.parse("10"));
+          expect(calledAddExpenseEvent.description, "Some description");
+          expect(calledAddExpenseEvent.receivers, tUsers);
 
-        verify(expenseBloc.add(argThat(isA<GetExpensesEvent>())));
-        verify(reportBloc.add(argThat(isA<GetReportEvent>())));
-      });
-    });
+          verify(expenseBloc.add(argThat(isA<GetExpensesEvent>())));
+          verify(reportBloc.add(argThat(isA<GetReportEvent>())));
+        });
+      },
+    );
   });
 
   group('edit expense', () {
@@ -223,18 +230,17 @@ void main() {
       when(currencyBloc.state).thenAnswer(
         (_) => const CurrencyLoaded(tCurrencies),
       );
-      when(userBloc.state).thenAnswer(
-        (_) => const UserLoaded(tUsers),
-      );
+      when(userBloc.state).thenAnswer((_) => const UserLoaded(tUsers));
 
       tExpense = UserExpense(
-          id: 1,
-          receivers: const [User(id: 1, name: "John")],
-          user: const User(id: 2, name: "Kate"),
-          amount: Decimal.parse("10"),
-          description: "Some description",
-          currency: tCurrencies[0],
-          dateTime: DateTime.now());
+        id: 1,
+        receivers: const [User(id: 1, name: "John")],
+        user: const User(id: 2, name: "Kate"),
+        amount: Decimal.parse("10"),
+        description: "Some description",
+        currency: tCurrencies[0],
+        dateTime: DateTime.now(),
+      );
 
       testedWidget = MultiBlocProvider(
         providers: [
@@ -248,39 +254,39 @@ void main() {
           home: Scaffold(
             body: NewExpenseForm(project: tProject, expenseToEdit: tExpense),
           ),
-          localizationsDelegates: const [
-            AppLocalizations.delegate,
-          ],
+          localizationsDelegates: const [AppLocalizations.delegate],
         ),
       );
     });
 
-    testWidgets('should prepopulate data properly during edit',
-        (WidgetTester tester) async {
-      await tester.runAsync(() async {
-        //arrange
-        await tester.pumpWidget(testedWidget);
-        await tester.pumpAndSettle();
-        //assert
-        expect(find.text('Some description'), findsOneWidget);
-        expect(find.byKey(const Key('user_1')), findsOneWidget);
-        expect(find.text('10'), findsOneWidget);
-        expect(find.text('USD').hitTestable(), findsOneWidget);
-        expect(find.text('Edit expense'), findsOneWidget);
+    testWidgets(
+      'should prepopulate data properly during edit',
+      (WidgetTester tester) async {
+        await tester.runAsync(() async {
+          //arrange
+          await tester.pumpWidget(testedWidget);
+          await tester.pumpAndSettle();
+          //assert
+          expect(find.text('Some description'), findsOneWidget);
+          expect(find.byKey(const Key('user_1')), findsOneWidget);
+          expect(find.text('10'), findsOneWidget);
+          expect(find.text('USD').hitTestable(), findsOneWidget);
+          expect(find.text('Edit expense'), findsOneWidget);
 
-        final receiverJohn = find.byKey(const Key("receiver_John"));
-        expect(receiverJohn, findsOneWidget);
-        final ChoiceChip receiverJohnChoiceChip =
-            receiverJohn.evaluate().first.widget as ChoiceChip;
-        expect(receiverJohnChoiceChip.selected, true);
+          final receiverJohn = find.byKey(const Key("receiver_John"));
+          expect(receiverJohn, findsOneWidget);
+          final ChoiceChip receiverJohnChoiceChip =
+              receiverJohn.evaluate().first.widget as ChoiceChip;
+          expect(receiverJohnChoiceChip.selected, true);
 
-        final receiverKate = find.byKey(const Key("receiver_Kate"));
-        expect(receiverKate, findsOneWidget);
-        final ChoiceChip receiverKateChoiceChip =
-            receiverKate.evaluate().first.widget as ChoiceChip;
-        expect(receiverKateChoiceChip.selected, false);
-      });
-    });
+          final receiverKate = find.byKey(const Key("receiver_Kate"));
+          expect(receiverKate, findsOneWidget);
+          final ChoiceChip receiverKateChoiceChip =
+              receiverKate.evaluate().first.widget as ChoiceChip;
+          expect(receiverKateChoiceChip.selected, false);
+        });
+      },
+    );
 
     testWidgets('should edit expense', (WidgetTester tester) async {
       await tester.runAsync(() async {
@@ -288,14 +294,16 @@ void main() {
         await tester.pumpWidget(testedWidget);
         await tester.pumpAndSettle();
         //act
-        final descriptionFieldFinder =
-            find.byKey(const Key(Keys.expenseFormDescriptionFieldKey));
+        final descriptionFieldFinder = find.byKey(
+          const Key(Keys.expenseFormDescriptionFieldKey),
+        );
         expect(descriptionFieldFinder, findsOneWidget);
         await tester.enterText(descriptionFieldFinder, "New description");
         await tester.pumpAndSettle();
 
-        final amountFieldFinder =
-            find.byKey(const Key(Keys.expenseFormAmountFieldKey));
+        final amountFieldFinder = find.byKey(
+          const Key(Keys.expenseFormAmountFieldKey),
+        );
         expect(amountFieldFinder, findsOneWidget);
         await tester.enterText(amountFieldFinder, "20");
         await tester.pumpAndSettle();
@@ -310,8 +318,9 @@ void main() {
         await tester.tap(userKate);
         await tester.pumpAndSettle();
 
-        final currencyDropDown =
-            find.byKey(const Key(Keys.expenseFormCurrencyKey));
+        final currencyDropDown = find.byKey(
+          const Key(Keys.expenseFormCurrencyKey),
+        );
         expect(currencyDropDown, findsOneWidget);
         await tester.tap(currencyDropDown);
         await tester.pumpAndSettle();
@@ -331,8 +340,9 @@ void main() {
         await tester.tap(receiverKate);
         await tester.pumpAndSettle();
 
-        await tester
-            .tap(find.byKey(const Key(Keys.expenseFormAddEditButtonKey)));
+        await tester.tap(
+          find.byKey(const Key(Keys.expenseFormAddEditButtonKey)),
+        );
         await tester.pumpAndSettle();
         //assert
         expect(find.text('Description is required'), findsNothing);
@@ -342,10 +352,9 @@ void main() {
         verify(currencyBloc.add(argThat(isA<GetCurrenciesEvent>())));
         verify(userBloc.add(argThat(isA<GetUsersEvent>())));
 
-        final ModifyExpenseEvent calledAddExpenseEvent =
-            verify(expenseBloc.add(captureThat(isA<ModifyExpenseEvent>())))
-                .captured
-                .single as ModifyExpenseEvent;
+        final ModifyExpenseEvent calledAddExpenseEvent = verify(
+          expenseBloc.add(captureThat(isA<ModifyExpenseEvent>())),
+        ).captured.single as ModifyExpenseEvent;
         expect(calledAddExpenseEvent.expense.id, tExpense.id);
         expect(calledAddExpenseEvent.expense.currency, tCurrencies[1]);
         expect(calledAddExpenseEvent.expense.amount, Decimal.parse("20"));

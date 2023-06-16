@@ -22,49 +22,49 @@ part 'file.g.dart';
 /// File
 ///
 /// Properties:
-/// * [type] 
-/// * [name] 
-/// * [state] 
-/// * [visible] 
-/// * [useDisplayValuesInDynamicTexts] 
-/// * [visibleIf] 
-/// * [width] 
-/// * [minWidth] 
-/// * [maxWidth] 
-/// * [startWithNewLine] 
-/// * [indent] 
-/// * [page] 
-/// * [title] 
-/// * [titleLocation] 
-/// * [description] 
-/// * [descriptionLocation] 
-/// * [hideNumber] 
-/// * [valueName] 
-/// * [enableIf] 
-/// * [defaultValue] 
-/// * [defaultValueExpression] 
-/// * [correctAnswer] 
-/// * [clearIfInvisible] 
-/// * [isRequired] 
-/// * [requiredIf] 
-/// * [requiredErrorText] 
-/// * [readOnly] 
-/// * [validators] 
-/// * [bindings] 
-/// * [renderAs] 
-/// * [showCommentArea] 
-/// * [commentText] 
-/// * [commentPlaceholder] 
-/// * [showPreview] 
-/// * [allowMultiple] 
-/// * [allowImagesPreview] 
-/// * [imageHeight] 
-/// * [imageWidth] 
-/// * [acceptedTypes] 
-/// * [storeDataAsText] 
-/// * [waitForUpload] 
-/// * [maxSize] 
-/// * [needConfirmRemoveFile] 
+/// * [type]
+/// * [name]
+/// * [state]
+/// * [visible]
+/// * [useDisplayValuesInDynamicTexts]
+/// * [visibleIf]
+/// * [width]
+/// * [minWidth]
+/// * [maxWidth]
+/// * [startWithNewLine]
+/// * [indent]
+/// * [page]
+/// * [title]
+/// * [titleLocation]
+/// * [description]
+/// * [descriptionLocation]
+/// * [hideNumber]
+/// * [valueName]
+/// * [enableIf]
+/// * [defaultValue]
+/// * [defaultValueExpression]
+/// * [correctAnswer]
+/// * [clearIfInvisible]
+/// * [isRequired]
+/// * [requiredIf]
+/// * [requiredErrorText]
+/// * [readOnly]
+/// * [validators]
+/// * [bindings]
+/// * [renderAs]
+/// * [showCommentArea]
+/// * [commentText]
+/// * [commentPlaceholder]
+/// * [showPreview]
+/// * [allowMultiple]
+/// * [allowImagesPreview]
+/// * [imageHeight]
+/// * [imageWidth]
+/// * [acceptedTypes]
+/// * [storeDataAsText]
+/// * [waitForUpload]
+/// * [maxSize]
+/// * [needConfirmRemoveFile]
 @BuiltValue()
 abstract class File implements FileAllOf, Question, Built<File, FileBuilder> {
   File._();
@@ -122,7 +122,8 @@ class _$FileSerializer implements PrimitiveSerializer<File> {
       yield r'validators';
       yield serializers.serialize(
         object.validators,
-        specifiedType: const FullType(BuiltList, [FullType(QuestionAllOfValidatorsInner)]),
+        specifiedType:
+            const FullType(BuiltList, [FullType(QuestionAllOfValidatorsInner)]),
       );
     }
     if (object.bindings != null) {
@@ -399,7 +400,11 @@ class _$FileSerializer implements PrimitiveSerializer<File> {
     File object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(
+      serializers,
+      object,
+      specifiedType: specifiedType,
+    ).toList();
   }
 
   void _deserializeProperties(
@@ -446,7 +451,9 @@ class _$FileSerializer implements PrimitiveSerializer<File> {
         case r'validators':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(QuestionAllOfValidatorsInner)]),
+            specifiedType: const FullType(BuiltList, [
+              FullType(QuestionAllOfValidatorsInner),
+            ]),
           ) as BuiltList<QuestionAllOfValidatorsInner>;
           result.validators.replace(valueDes);
           break;
@@ -744,4 +751,3 @@ class _$FileSerializer implements PrimitiveSerializer<File> {
     return result.build();
   }
 }
-

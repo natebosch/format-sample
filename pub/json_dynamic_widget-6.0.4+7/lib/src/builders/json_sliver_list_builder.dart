@@ -50,18 +50,12 @@ class JsonSliverListBuilder extends JsonWidgetBuilder {
 
     if (map != null) {
       result = JsonSliverListBuilder(
-        addAutomaticKeepAlives: JsonClass.parseBool(
-          map['addAutomaticKeepAlives'],
-          whenNull: true,
-        ),
-        addRepaintBoundaries: JsonClass.parseBool(
-          map['addRepaintBoundaries'],
-          whenNull: true,
-        ),
-        addSemanticIndexes: JsonClass.parseBool(
-          map['addSemanticIndexes'],
-          whenNull: true,
-        ),
+        addAutomaticKeepAlives:
+            JsonClass.parseBool(map['addAutomaticKeepAlives'], whenNull: true),
+        addRepaintBoundaries:
+            JsonClass.parseBool(map['addRepaintBoundaries'], whenNull: true),
+        addSemanticIndexes:
+            JsonClass.parseBool(map['addSemanticIndexes'], whenNull: true),
         findChildIndexCallback: map['findChildIndexCallback'],
         semanticIndexCallback: map['semanticIndexCallback'],
         semanticIndexOffset:

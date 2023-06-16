@@ -14,13 +14,14 @@ class TransactionModel extends Equatable {
   String get symbol => quantity.split(" ")[1];
   double get doubleQuantity => quantity.quantityAsDouble;
 
-  const TransactionModel(
-      {required this.from,
-      required this.to,
-      required this.quantity,
-      required this.memo,
-      required this.timestamp,
-      required this.transactionId});
+  const TransactionModel({
+    required this.from,
+    required this.to,
+    required this.quantity,
+    required this.memo,
+    required this.timestamp,
+    required this.transactionId,
+  });
 
   @override
   List<Object?> get props => [transactionId];
@@ -48,7 +49,9 @@ class TransactionModel extends Equatable {
     );
   }
 
-  static TransactionModel? fromTransaction(GenericTransactionModel genericModel) {
+  static TransactionModel? fromTransaction(
+    GenericTransactionModel genericModel,
+  ) {
     if (genericModel.transaction.isTransfer) {
       final action = genericModel.transaction.actions.first;
       final data = action.data;

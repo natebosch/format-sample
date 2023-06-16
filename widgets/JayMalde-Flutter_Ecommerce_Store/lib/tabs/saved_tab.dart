@@ -19,34 +19,26 @@ class SavedTab extends StatelessWidget {
             builder: (context, snapshot) {
               if (snapshot.hasError) {
                 return Scaffold(
-                  body: Center(
-                    child: Text("Error: ${snapshot.error}"),
-                  ),
+                  body: Center(child: Text("Error: ${snapshot.error}")),
                 );
               }
               //Collection Data Ready to Display
               if (snapshot.connectionState == ConnectionState.done) {
                 //Display the data in list view
                 return ListView(
-                  padding: EdgeInsets.only(
-                    top: 100.0,
-                    bottom: 12.0,
-                  ),
+                  padding: EdgeInsets.only(top: 100.0, bottom: 12.0),
                   children: snapshot.data.docs.map((document) {
                     return GestureDetector(
                       onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => ProductPage(
-                                productId: document.id,
-                              ),
-                            ));
+                        Navigator.push(context, MaterialPageRoute(
+                          builder:
+                              (context) => ProductPage(productId: document.id),
+                        ));
                       },
                       child: FutureBuilder(
-                        future: _firebaseServices.productsRef
-                            .doc(document.id)
-                            .get(),
+                        future: _firebaseServices.productsRef.doc(
+                          document.id,
+                        ).get(),
                         builder: (context, productSnap) {
                           if (productSnap.hasError) {
                             return Container(
@@ -78,9 +70,7 @@ class SavedTab extends StatelessWidget {
                                     ),
                                   ),
                                   Container(
-                                    padding: EdgeInsets.only(
-                                      left: 16.0,
-                                    ),
+                                    padding: EdgeInsets.only(left: 16.0),
                                     child: Column(
                                       mainAxisAlignment:
                                           MainAxisAlignment.start,
@@ -90,9 +80,10 @@ class SavedTab extends StatelessWidget {
                                         Text(
                                           "${_productMap['name']}",
                                           style: TextStyle(
-                                              fontSize: 18.0,
-                                              color: Colors.black,
-                                              fontWeight: FontWeight.w600),
+                                            fontSize: 18.0,
+                                            color: Colors.black,
+                                            fontWeight: FontWeight.w600,
+                                          ),
                                         ),
                                         Padding(
                                           padding: const EdgeInsets.symmetric(
@@ -101,18 +92,22 @@ class SavedTab extends StatelessWidget {
                                           child: Text(
                                             "\₹${_productMap['price']}",
                                             style: TextStyle(
-                                                fontSize: 16.0,
-                                                color: Theme.of(context)
-                                                    .accentColor,
-                                                fontWeight: FontWeight.w600),
+                                              fontSize: 16.0,
+                                              color:
+                                                  Theme.of(context).accentColor,
+                                              fontWeight: FontWeight.w600,
+                                            ),
                                           ),
                                         ),
                                         Text(
-                                          "Quantity - ${document.data()['quantity']}",
+                                          "Quantity - ${document.data()[
+                                            'quantity'
+                                          ]}",
                                           style: TextStyle(
-                                              fontSize: 16.0,
-                                              color: Colors.black,
-                                              fontWeight: FontWeight.w600),
+                                            fontSize: 16.0,
+                                            color: Colors.black,
+                                            fontWeight: FontWeight.w600,
+                                          ),
                                         ),
                                       ],
                                     ),
@@ -122,9 +117,7 @@ class SavedTab extends StatelessWidget {
                             );
                           }
                           return Container(
-                            child: Center(
-                              child: CircularProgressIndicator(),
-                            ),
+                            child: Center(child: CircularProgressIndicator()),
                           );
                         },
                       ),
@@ -132,16 +125,10 @@ class SavedTab extends StatelessWidget {
                   }).toList(),
                 );
               }
-              return Scaffold(
-                body: Center(
-                  child: CircularProgressIndicator(),
-                ),
-              );
+              return Scaffold(body: Center(child: CircularProgressIndicator()));
             },
           ),
-          CustomActionBar(
-            title: "Saved Products",
-          ),
+          CustomActionBar(title: "Saved Products"),
         ],
       ),
     );

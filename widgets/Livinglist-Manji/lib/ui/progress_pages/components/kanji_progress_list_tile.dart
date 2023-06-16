@@ -9,8 +9,11 @@ class KanjiProgressListTile extends StatelessWidget {
   final ValueChanged<String> onLongPressed;
   final VoidCallback onTap;
 
-  KanjiProgressListTile({this.kanji, this.onLongPressed, this.onTap})
-      : assert(kanji != null);
+  KanjiProgressListTile({
+    this.kanji,
+    this.onLongPressed,
+    this.onTap,
+  }) : assert(kanji != null);
 
   @override
   Widget build(BuildContext context) {
@@ -19,8 +22,10 @@ class KanjiProgressListTile extends StatelessWidget {
         if (onTap != null) {
           onTap();
         } else {
-          Navigator.push(context,
-              MaterialPageRoute(builder: (_) => KanjiDetailPage(kanji: kanji)));
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (_) => KanjiDetailPage(kanji: kanji)),
+          );
         }
       },
       onLongPress: () {
@@ -42,14 +47,16 @@ class KanjiProgressListTile extends StatelessWidget {
                 initialData: SettingsBloc.instance.tempFontSelection,
                 builder: (_, snapshot) {
                   if (snapshot.hasData) {
-                    return Text(kanji.kanji,
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 28,
-                          fontFamily: snapshot.data == FontSelection.handwriting
-                              ? Fonts.kazei
-                              : Fonts.ming,
-                        ));
+                    return Text(
+                      kanji.kanji,
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 28,
+                        fontFamily: snapshot.data == FontSelection.handwriting
+                            ? Fonts.kazei
+                            : Fonts.ming,
+                      ),
+                    );
                   }
                   return Container();
                 },
@@ -59,12 +66,10 @@ class KanjiProgressListTile extends StatelessWidget {
         ),
       ),
       title: Text(
-          'Studied ${kanji.timeStamps.length} ${kanji.timeStamps.length <= 1 ? 'time' : 'times'}',
-          style: const TextStyle(color: Colors.white)),
-      subtitle: Text(
-        kanji.meaning,
-        style: const TextStyle(color: Colors.grey),
+        'Studied ${kanji.timeStamps.length} ${kanji.timeStamps.length <= 1 ? 'time' : 'times'}',
+        style: const TextStyle(color: Colors.white),
       ),
+      subtitle: Text(kanji.meaning, style: const TextStyle(color: Colors.grey)),
     );
   }
 }

@@ -6,9 +6,7 @@ part of keyclic_sdk_api;
 
 class DocumentPatchPermission {
   /// Returns a new [DocumentPatchPermission] instance.
-  DocumentPatchPermission({
-    this.targetGroup,
-  });
+  DocumentPatchPermission({this.targetGroup});
 
   /// Returns a new [DocumentPatchPermission] instance and imports its values from
   /// [json] if it's non-null, null if [json] is null.
@@ -17,9 +15,7 @@ class DocumentPatchPermission {
       return null;
     }
 
-    return DocumentPatchPermission(
-      targetGroup: json[r'targetGroup'],
-    );
+    return DocumentPatchPermission(targetGroup: json[r'targetGroup']);
   }
 
   String? targetGroup;
@@ -42,46 +38,54 @@ class DocumentPatchPermission {
       return <DocumentPatchPermission>[];
     }
 
-    return json.fold(<DocumentPatchPermission>[],
-        (List<DocumentPatchPermission> previousValue, element) {
-      final DocumentPatchPermission? object =
-          DocumentPatchPermission.fromJson(element);
-      if (object is DocumentPatchPermission) {
-        previousValue.add(object);
-      }
+    return json.fold(
+      <DocumentPatchPermission>[],
+      (List<DocumentPatchPermission> previousValue, element) {
+        final DocumentPatchPermission? object =
+            DocumentPatchPermission.fromJson(element);
+        if (object is DocumentPatchPermission) {
+          previousValue.add(object);
+        }
 
-      return previousValue;
-    });
+        return previousValue;
+      },
+    );
   }
 
   static Map<String, DocumentPatchPermission> mapFromJson(
-      Map<String, dynamic>? json) {
+    Map<String, dynamic>? json,
+  ) {
     if (json == null) {
       return <String, DocumentPatchPermission>{};
     }
 
-    return json.entries.fold(<String, DocumentPatchPermission>{},
-        (Map<String, DocumentPatchPermission> previousValue, element) {
-      final DocumentPatchPermission? object =
-          DocumentPatchPermission.fromJson(element.value);
-      if (object is DocumentPatchPermission) {
-        previousValue[element.key] = object;
-      }
+    return json.entries.fold(
+      <String, DocumentPatchPermission>{},
+      (Map<String, DocumentPatchPermission> previousValue, element) {
+        final DocumentPatchPermission? object =
+            DocumentPatchPermission.fromJson(element.value);
+        if (object is DocumentPatchPermission) {
+          previousValue[element.key] = object;
+        }
 
-      return previousValue;
-    });
+        return previousValue;
+      },
+    );
   }
 
   // maps a json object with a list of DocumentPatchPermission-objects as value to a dart map
   static Map<String, List<DocumentPatchPermission>> mapListFromJson(
-      Map<String, dynamic>? json) {
+    Map<String, dynamic>? json,
+  ) {
     if (json == null) {
       return <String, List<DocumentPatchPermission>>{};
     }
 
     return json.map((key, value) {
       return MapEntry<String, List<DocumentPatchPermission>>(
-          key, DocumentPatchPermission.listFromJson(value));
+        key,
+        DocumentPatchPermission.listFromJson(value),
+      );
     });
   }
 

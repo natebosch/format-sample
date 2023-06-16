@@ -8,10 +8,7 @@ class GetRegulationImpl extends GetRegulation {
   final RegulationRepository _repository;
   final FindEstablishmentById _establishmentById;
 
-  GetRegulationImpl(
-    this._repository,
-    this._establishmentById,
-  );
+  GetRegulationImpl(this._repository, this._establishmentById);
 
   @override
   Future<Regulation?> call() async {

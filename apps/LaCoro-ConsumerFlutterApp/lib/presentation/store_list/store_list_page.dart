@@ -25,7 +25,9 @@ class StoreListPage extends StatefulWidget {
   static const STORE_LIST_ROUTE = '/store_list';
 
   @override
-  _StoreListPageState createState() => _StoreListPageState((Injector.getInjector().get()));
+  _StoreListPageState createState() => _StoreListPageState(
+    (Injector.getInjector().get()),
+  );
 }
 
 class _StoreListPageState extends State<StoreListPage> {
@@ -49,7 +51,9 @@ class _StoreListPageState extends State<StoreListPage> {
     _focusNode.addListener(() {
       //TODO no funciona el desenfoque del textLabel al regresar a la lista
     });
-    _bloc.add(GetStoresEvent(searchQuery: _textFieldController.text.toString()));
+    _bloc.add(
+      GetStoresEvent(searchQuery: _textFieldController.text.toString()),
+    );
     _bloc.add(LoadLastOrderEvent());
 
     _wasEmpty = _textFieldController.text.isEmpty;
@@ -78,77 +82,111 @@ class _StoreListPageState extends State<StoreListPage> {
       backgroundColor: Theme.of(context).backgroundColor,
       drawer: DrawerMenu(
         onHistoryPressed: () async {
-          await Navigator.pushNamed(context, await _bloc.isUserValidated() ? OrderHistoryPage.ORDER_HISTORY_ROUTE : RegisterPage.REGISTER_ROUTE);
+          await Navigator.pushNamed(
+            context,
+            await _bloc.isUserValidated()
+                ? OrderHistoryPage.ORDER_HISTORY_ROUTE
+                : RegisterPage.REGISTER_ROUTE,
+          );
           _bloc.add(LoadLastOrderEvent());
         },
       ),
       appBar: AppBar(
-          elevation: 0,
-          title: GestureDetector(
-            onTap: () async {
-              await Navigator.pushNamed(context, MyAddressPage.MY_ADDRESS_ROUTE, arguments: [true, true]);
-              _bloc.add(GetStoresEvent(searchQuery: _textFieldController.text.toString()));
-              _bloc.add(LoadLastOrderEvent());
-            },
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: <Widget>[
-                Text('${currentAddress.address}, ${currentAddress.cityEntity.name}',
-                    style: AppTextStyle.section.copyWith(color: Theme.of(context).accentColor)),
-                Icon(
-                  Icons.keyboard_arrow_down,
-                  size: 36,
+        elevation: 0,
+        title: GestureDetector(
+          onTap: () async {
+            await Navigator.pushNamed(
+              context,
+              MyAddressPage.MY_ADDRESS_ROUTE,
+              arguments: [true, true],
+            );
+            _bloc.add(
+              GetStoresEvent(searchQuery: _textFieldController.text.toString()),
+            );
+            _bloc.add(LoadLastOrderEvent());
+          },
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              Text(
+                '${currentAddress.address}, ${currentAddress.cityEntity.name}',
+                style: AppTextStyle.section.copyWith(
                   color: Theme.of(context).accentColor,
-                )
-              ],
-            ),
-          )),
+                ),
+              ),
+              Icon(
+                Icons.keyboard_arrow_down,
+                size: 36,
+                color: Theme.of(context).accentColor,
+              ),
+            ],
+          ),
+        ),
+      ),
       body: BlocListener(
         bloc: _bloc,
         listener: (context, state) {
           _refreshController.refreshCompleted();
           handleCurrentState(state);
         },
-        child: Stack(children: [
-          Column(
-            children: <Widget>[
-              AnimatedSwitcher(
-                duration: Duration(milliseconds: 500),
-                child: lastOrder == null
-                    ? SizedBox(height: 8)
-                    : InkWell(
-                        onTap: () async {
-                          await Navigator.pushNamed(context, OrderStatusPage.ORDER_STATUS_ROUTE);
-                          _bloc.add(LoadLastOrderEvent());
-                        },
-                        child: OrderStatusBanner(),
-                      ),
-              ),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    Wrap(
-                      children: <Widget>[
-                        Padding(
-                          padding: const EdgeInsets.all(16.0),
-                          child: Material(
-                            borderRadius: BorderRadius.all(Radius.circular(6.0)),
-                            shadowColor: AppColors.greyMedium,
-                            elevation: 2,
-                            color: Colors.white,
-                            child: TextField(
+        child: Stack(
+          children: [
+            Column(
+              children: <Widget>[
+                AnimatedSwitcher(
+                  duration: Duration(milliseconds: 500),
+                  child: lastOrder == null
+                      ? SizedBox(height: 8)
+                      : InkWell(
+                          onTap: () async {
+                            await Navigator.pushNamed(
+                              context,
+                              OrderStatusPage.ORDER_STATUS_ROUTE,
+                            );
+                            _bloc.add(LoadLastOrderEvent());
+                          },
+                          child: OrderStatusBanner(),
+                        ),
+                ),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Wrap(
+                        children: <Widget>[
+                          Padding(
+                            padding: const EdgeInsets.all(16.0),
+                            child: Material(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(6.0)),
+                              shadowColor: AppColors.greyMedium,
+                              elevation: 2,
+                              color: Colors.white,
+                              child: TextField(
                                 focusNode: _focusNode,
                                 controller: _textFieldController,
-                                onEditingComplete: () => setState(() => _searchQuery = _textFieldController.text.trim()),
+                                onEditingComplete: () => setState(
+                                      () => _searchQuery =
+                                          _textFieldController.text.trim(),
+                                    ),
                                 decoration: InputDecoration(
                                   filled: true,
                                   //fillColor: Colors.red,
-                                  prefixIcon: Icon(Icons.search, color: AppColors.greyMedium, size: 24),
-                                  suffixIcon: _textFieldController.text.isNotEmpty
+                                  prefixIcon: Icon(
+                                    Icons.search,
+                                    color: AppColors.greyMedium,
+                                    size: 24,
+                                  ),
+                                  suffixIcon: _textFieldController
+                                            .text
+                                            .isNotEmpty
                                       ? IconButton(
-                                          icon: Icon(Icons.cancel, color: Colors.black, size: 26),
+                                          icon: Icon(
+                                            Icons.cancel,
+                                            color: Colors.black,
+                                            size: 26,
+                                          ),
                                           onPressed: () {
                                             setState(() {
                                               _searchQuery = null;
@@ -160,7 +198,8 @@ class _StoreListPageState extends State<StoreListPage> {
                                         )
                                       : SizedBox(),
                                   focusedBorder: OutlineInputBorder(
-                                    borderRadius: BorderRadius.all(Radius.circular(6)),
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(6)),
                                     borderSide: BorderSide(
                                       width: 2,
                                       color: Theme.of(context).accentColor,
@@ -175,36 +214,48 @@ class _StoreListPageState extends State<StoreListPage> {
                                 keyboardType: TextInputType.text,
                                 onSubmitted: (value) {
                                   _bloc.add(GetStoresEvent(searchQuery: value));
-                                }),
+                                },
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: _searchQuery == null || _searchQuery.isEmpty
+                                ? SizedBox()
+                                : Center(
+                                    child: Text('Search for $_searchQuery'),
+                                  ),
+                          ),
+                        ],
+                      ),
+                      Expanded(
+                        child: LazyLoadScrollView(
+                          onEndOfPage: () {
+                            if (_stores != null &&
+                                _stores.length >= StoreUseCases.PAGE_SIZE)
+                              _bloc.add(LoadMoreStoresEvent(
+                                searchQuery:
+                                    _textFieldController.text.toString(),
+                              ));
+                          },
+                          child: SmartRefresher(
+                            controller: _refreshController,
+                            enablePullDown: true,
+                            onRefresh: () => _bloc.add(GetStoresEvent(
+                              searchQuery: _textFieldController.text.toString(),
+                            )),
+                            child: buildList(),
                           ),
                         ),
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: _searchQuery == null || _searchQuery.isEmpty ? SizedBox() : Center(child: Text('Search for $_searchQuery')),
-                        ),
-                      ],
-                    ),
-                    Expanded(
-                      child: LazyLoadScrollView(
-                        onEndOfPage: () {
-                          if (_stores != null && _stores.length >= StoreUseCases.PAGE_SIZE)
-                            _bloc.add(LoadMoreStoresEvent(searchQuery: _textFieldController.text.toString()));
-                        },
-                        child: SmartRefresher(
-                          controller: _refreshController,
-                          enablePullDown: true,
-                          onRefresh: () => _bloc.add(GetStoresEvent(searchQuery: _textFieldController.text.toString())),
-                          child: buildList(),
-                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
-              ),
-            ],
-          ),
-          Center(child: _loading ? CircularProgressIndicator() : null),
-        ]),
+              ],
+            ),
+            Center(child: _loading ? CircularProgressIndicator() : null),
+          ],
+        ),
       ),
     );
   }
@@ -221,7 +272,9 @@ class _StoreListPageState extends State<StoreListPage> {
     } else if (state is SuccessState<OrderEntity>) {
       setLastOrderInfo(state.data);
     } else if (state is ErrorState) {
-      scaffoldKey.currentState.showSnackBar(SnackBar(content: Text(state.message), duration: Duration(seconds: 3)));
+      scaffoldKey.currentState.showSnackBar(
+        SnackBar(content: Text(state.message), duration: Duration(seconds: 3)),
+      );
     }
   }
 
@@ -231,10 +284,17 @@ class _StoreListPageState extends State<StoreListPage> {
       itemCount: _stores?.length ?? 0,
       itemBuilder: (c, index) {
         return InkWell(
-          child: Hero(tag: _stores[index].name, child: StoreItem(storeItem: _stores[index])),
+          child: Hero(
+            tag: _stores[index].name,
+            child: StoreItem(storeItem: _stores[index]),
+          ),
           onTap: () async {
             if (_focusNode.hasFocus) _textFieldController.clear();
-            await Navigator.pushNamed(context, StoreDetailsPage.STORE_DETAILS_ROUTE, arguments: _stores[index]);
+            await Navigator.pushNamed(
+              context,
+              StoreDetailsPage.STORE_DETAILS_ROUTE,
+              arguments: _stores[index],
+            );
             _bloc.add(LoadLastOrderEvent());
           },
         );
@@ -243,7 +303,9 @@ class _StoreListPageState extends State<StoreListPage> {
   }
 
   void setLastOrderInfo(OrderEntity order) {
-    if (order != null && (order.orderStatus.value == OrderStatus.ORDER_PLACED.value || order.orderStatus.value == OrderStatus.ORDER_IN_PROGRESS.value)) {
+    if (order != null &&
+        (order.orderStatus.value == OrderStatus.ORDER_PLACED.value ||
+            order.orderStatus.value == OrderStatus.ORDER_IN_PROGRESS.value)) {
       setState(() => lastOrder = order);
       _bloc.subscribeOrderUpdates(order, (order) {
         setState(() {

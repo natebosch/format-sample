@@ -22,6 +22,7 @@ AppState reducer(AppState state, dynamic action) {
     b
       ..auth = authReducer(state.auth, action).toBuilder()
       ..todo = todoReducers(state.todo, action).toBuilder()
-      ..pendingActions = pendingActions(state.pendingActions, action).toBuilder();
+      ..pendingActions =
+          pendingActions(state.pendingActions, action).toBuilder();
   });
 }

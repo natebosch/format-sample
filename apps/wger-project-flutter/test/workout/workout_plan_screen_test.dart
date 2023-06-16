@@ -33,55 +33,64 @@ void main() {
     final client = MockClient();
 
     return ChangeNotifierProvider<WorkoutPlansProvider>(
-      create: (context) =>
-          WorkoutPlansProvider(testAuthProvider, testExercisesProvider, [], client),
+      create: (context) => WorkoutPlansProvider(
+            testAuthProvider,
+            testExercisesProvider,
+            [],
+            client,
+          ),
       child: MaterialApp(
         locale: Locale(locale),
         localizationsDelegates: AppLocalizations.localizationsDelegates,
         supportedLocales: AppLocalizations.supportedLocales,
         navigatorKey: key,
         home: TextButton(
-          onPressed: () => key.currentState!.push(
-            MaterialPageRoute<void>(
-              settings: RouteSettings(arguments: getWorkout()),
-              builder: (_) => WorkoutPlanScreen(),
-            ),
-          ),
+          onPressed: () => key.currentState!.push(MaterialPageRoute<void>(
+            settings: RouteSettings(arguments: getWorkout()),
+            builder: (_) => WorkoutPlanScreen(),
+          )),
           child: const SizedBox(),
         ),
-        routes: {
-          WorkoutPlanScreen.routeName: (ctx) => WorkoutPlanScreen(),
-        },
+        routes: {WorkoutPlanScreen.routeName: (ctx) => WorkoutPlanScreen()},
       ),
     );
   }
 
-  testWidgets('Test the widgets on the nutritional plan screen', (WidgetTester tester) async {
-    await tester.pumpWidget(createHomeScreen());
-    await tester.tap(find.byType(TextButton));
-    await tester.pumpAndSettle();
+  testWidgets(
+    'Test the widgets on the nutritional plan screen',
+    (WidgetTester tester) async {
+      await tester.pumpWidget(createHomeScreen());
+      await tester.tap(find.byType(TextButton));
+      await tester.pumpAndSettle();
 
-    expect(find.text('test workout 1'), findsOneWidget);
-    expect(find.text('test day 1'), findsOneWidget);
-    expect(find.text('test day 2'), findsOneWidget);
-    expect(find.byType(Dismissible), findsNWidgets(2));
-  });
+      expect(find.text('test workout 1'), findsOneWidget);
+      expect(find.text('test day 1'), findsOneWidget);
+      expect(find.text('test day 2'), findsOneWidget);
+      expect(find.byType(Dismissible), findsNWidgets(2));
+    },
+  );
 
-  testWidgets('Tests the localization of times - EN', (WidgetTester tester) async {
-    await tester.pumpWidget(createHomeScreen());
-    await tester.tap(find.byType(TextButton));
-    await tester.pumpAndSettle();
+  testWidgets(
+    'Tests the localization of times - EN',
+    (WidgetTester tester) async {
+      await tester.pumpWidget(createHomeScreen());
+      await tester.tap(find.byType(TextButton));
+      await tester.pumpAndSettle();
 
-    expect(find.text('Monday, Tuesday'), findsOneWidget);
-    expect(find.text('Thursday'), findsOneWidget);
-  });
+      expect(find.text('Monday, Tuesday'), findsOneWidget);
+      expect(find.text('Thursday'), findsOneWidget);
+    },
+  );
 
-  testWidgets('Tests the localization of times - DE', (WidgetTester tester) async {
-    await tester.pumpWidget(createHomeScreen(locale: 'de'));
-    await tester.tap(find.byType(TextButton));
-    await tester.pumpAndSettle();
+  testWidgets(
+    'Tests the localization of times - DE',
+    (WidgetTester tester) async {
+      await tester.pumpWidget(createHomeScreen(locale: 'de'));
+      await tester.tap(find.byType(TextButton));
+      await tester.pumpAndSettle();
 
-    expect(find.text('Montag, Dienstag'), findsOneWidget);
-    expect(find.text('Donnerstag'), findsOneWidget);
-  });
+      expect(find.text('Montag, Dienstag'), findsOneWidget);
+      expect(find.text('Donnerstag'), findsOneWidget);
+    },
+  );
 }

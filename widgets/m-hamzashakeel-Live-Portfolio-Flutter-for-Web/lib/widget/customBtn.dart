@@ -8,9 +8,11 @@ class OutlinedCustomBtn extends StatelessWidget {
   final String btnText;
   final Function onPressed;
 
-  const OutlinedCustomBtn(
-      {Key key, @required this.btnText, @required this.onPressed})
-      : super(key: key);
+  const OutlinedCustomBtn({
+    Key key,
+    @required this.btnText,
+    @required this.onPressed,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -18,8 +20,9 @@ class OutlinedCustomBtn extends StatelessWidget {
     return MaterialButton(
       hoverColor: kPrimaryColor.withAlpha(150),
       shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(5.0),
-          side: BorderSide(color: kPrimaryColor)),
+        borderRadius: BorderRadius.circular(5.0),
+        side: BorderSide(color: kPrimaryColor),
+      ),
       onPressed: onPressed,
       child: Text(
         btnText,
@@ -38,25 +41,22 @@ class CustomFilledBtn extends StatelessWidget {
   final Widget child;
   final Function onPressed;
   final Color btnColor;
-  const CustomFilledBtn(
-      {Key key,
-      this.height,
-      this.btnColor,
-      this.width = 200.0,
-      this.onPressed,
-      this.child})
-      : super(key: key);
+  const CustomFilledBtn({
+    Key key,
+    this.height,
+    this.btnColor,
+    this.width = 200.0,
+    this.onPressed,
+    this.child,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       height: height,
       width: width,
-      child: MaterialButton(
-        color: btnColor,
-        onPressed: onPressed,
-        child: child,
-      ),
+      child:
+          MaterialButton(color: btnColor, onPressed: onPressed, child: child),
     );
   }
 }

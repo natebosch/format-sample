@@ -34,11 +34,7 @@ class CoinInfoScreen extends StatelessWidget {
                 child: IconButton(
                   onPressed: () => Navigator.pop(context),
                   splashColor: Colors.white,
-                  icon: Icon(
-                    Icons.arrow_back,
-                    color: Colors.white,
-                    size: 26,
-                  ),
+                  icon: Icon(Icons.arrow_back, color: Colors.white, size: 26),
                 ),
               ),
             ),
@@ -46,9 +42,8 @@ class CoinInfoScreen extends StatelessWidget {
           ),
         ),
         body: ListView(
-          physics: AlwaysScrollableScrollPhysics(
-            parent: BouncingScrollPhysics(),
-          ),
+          physics:
+              AlwaysScrollableScrollPhysics(parent: BouncingScrollPhysics()),
           children: <Widget>[
             Padding(
               padding:
@@ -81,7 +76,7 @@ class CoinInfoScreen extends StatelessWidget {
                           fontSize: 22,
                           fontWeight: FontWeight.w600,
                         ),
-                      )
+                      ),
                     ],
                   ),
                 ),
@@ -96,18 +91,14 @@ class CoinInfoScreen extends StatelessWidget {
                     flex: 2,
                     child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                      child: TimeModeButton(
-                        mode: SelectedTimeMode.Daily,
-                      ),
+                      child: TimeModeButton(mode: SelectedTimeMode.Daily),
                     ),
                   ),
                   Flexible(
                     flex: 2,
                     child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                      child: TimeModeButton(
-                        mode: SelectedTimeMode.Hourly,
-                      ),
+                      child: TimeModeButton(mode: SelectedTimeMode.Hourly),
                     ),
                   ),
                 ],
@@ -119,8 +110,10 @@ class CoinInfoScreen extends StatelessWidget {
               padding: EdgeInsets.symmetric(vertical: 20.0),
               child: StreamBuilder<SelectedTimeMode>(
                 stream: _coinInfoBloc.timeMode$,
-                builder: (BuildContext context,
-                    AsyncSnapshot<SelectedTimeMode> snapshot) {
+                builder: (
+                  BuildContext context,
+                  AsyncSnapshot<SelectedTimeMode> snapshot,
+                ) {
                   if (!snapshot.hasData) {
                     return Container();
                   }
@@ -128,10 +121,7 @@ class CoinInfoScreen extends StatelessWidget {
                   final SelectedTimeMode _mode = snapshot.data;
                   return Padding(
                     padding: const EdgeInsets.symmetric(vertical: 22.0),
-                    child: CoinInfoGraph(
-                      key: UniqueKey(),
-                      mode: _mode,
-                    ),
+                    child: CoinInfoGraph(key: UniqueKey(), mode: _mode),
                   );
                 },
               ),
@@ -148,10 +138,7 @@ class CoinInfoScreen extends StatelessWidget {
                     color: Color(0xFF4CDA63),
                     child: Text(
                       "Buy ${_coin.coinInfo.fullName}",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 16,
-                      ),
+                      style: TextStyle(color: Colors.white, fontSize: 16),
                     ),
                     onPressed: () {
                       _showSnackBar("this feature is coming soon.");
@@ -167,23 +154,19 @@ class CoinInfoScreen extends StatelessWidget {
   }
 
   void _spamSnackBar(CoinInfoBloc _coinInfoBloc) {
-    _coinInfoBloc.isLoading$.listen(
-      (bool isLoading) {
-        if (isLoading) {
-          _showSnackBar("Loading in progress, don't spam.");
-        }
-      },
-    );
+    _coinInfoBloc.isLoading$.listen((bool isLoading) {
+      if (isLoading) {
+        _showSnackBar("Loading in progress, don't spam.");
+      }
+    });
   }
 
   void _showSnackBar(String title) {
-    _scaffoldKey.currentState.showSnackBar(
-      SnackBar(
-        backgroundColor: Colors.red,
-        elevation: 0.0,
-        duration: Duration(milliseconds: 1500),
-        content: Text(title),
-      ),
-    );
+    _scaffoldKey.currentState.showSnackBar(SnackBar(
+      backgroundColor: Colors.red,
+      elevation: 0.0,
+      duration: Duration(milliseconds: 1500),
+      content: Text(title),
+    ));
   }
 }

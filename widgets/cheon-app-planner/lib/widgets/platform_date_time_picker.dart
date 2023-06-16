@@ -72,10 +72,7 @@ Stream<TimeOfDay> showPlatformTimePicker({
   assert(initialTime != null);
 
   if (isMaterial(context)) {
-    yield await showTimePicker(
-          context: context,
-          initialTime: initialTime,
-        ) ??
+    yield await showTimePicker(context: context, initialTime: initialTime) ??
         initialTime;
   } else {
     final StreamController<TimeOfDay> controller =

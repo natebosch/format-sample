@@ -22,7 +22,9 @@ class AsanaModel {
   final String description;
   final String warnings;
 
-  factory AsanaModel.fromJson(Map<String, dynamic> json) => _$AsanaModelFromJson(json);
+  factory AsanaModel.fromJson(
+    Map<String, dynamic> json,
+  ) => _$AsanaModelFromJson(json);
 
   Map<String, dynamic> toJson() => _$AsanaModelToJson(this);
 

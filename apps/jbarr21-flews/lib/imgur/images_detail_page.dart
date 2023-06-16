@@ -18,17 +18,19 @@ class _ImagesDetailPageState extends State<ImagesDetailPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.image.id),
-      ),
+      appBar: AppBar(title: Text(widget.image.id)),
       body: Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            Expanded(
-                child: Image.network('http://i.imgur.com/7unwhF0.jpg',
-                    fit: BoxFit.fitWidth))
-          ]),
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Expanded(
+            child: Image.network(
+              'http://i.imgur.com/7unwhF0.jpg',
+              fit: BoxFit.fitWidth,
+            ),
+          ),
+        ],
+      ),
       floatingActionButton: FloatingActionButton(
         onPressed: _onFloatingActionButtonPressed,
         tooltip: 'Add',

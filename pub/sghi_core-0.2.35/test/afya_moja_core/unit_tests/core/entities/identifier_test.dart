@@ -9,26 +9,14 @@ void main() {
         <String, dynamic>{
           'id': 'testId',
           'type': IdentifierType.CCC.name,
-          'value': 'myCCCNumber'
+          'value': 'myCCCNumber',
         },
       );
 
-      expect(
-        identifierFromJson.type,
-        IdentifierType.CCC,
-      );
-      expect(
-        identifierFromJson.id,
-        'testId',
-      );
-      expect(
-        identifierFromJson.value,
-        'myCCCNumber',
-      );
-      expect(
-        Identifier.initial().type,
-        IdentifierType.UNKNOWN,
-      );
+      expect(identifierFromJson.type, IdentifierType.CCC);
+      expect(identifierFromJson.id, 'testId');
+      expect(identifierFromJson.value, 'myCCCNumber');
+      expect(Identifier.initial().type, IdentifierType.UNKNOWN);
     });
   });
 }

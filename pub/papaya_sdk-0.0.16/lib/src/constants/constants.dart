@@ -29,8 +29,9 @@ final headingStyle = TextStyle(
 );
 
 // Form Error
-final RegExp emailValidatorRegExp =
-    RegExp(r"^[a-zA-Z0-9.]+@[a-zA-Z0-9]+\.[a-zA-Z]+");
+final RegExp emailValidatorRegExp = RegExp(
+  r"^[a-zA-Z0-9.]+@[a-zA-Z0-9]+\.[a-zA-Z]+",
+);
 
 final RegExp phoneValidatorRegExp = RegExp(r'^(84|0[3|5|7|8|9])[0-9]{8}$');
 

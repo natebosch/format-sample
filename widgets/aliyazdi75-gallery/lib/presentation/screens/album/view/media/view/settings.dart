@@ -45,13 +45,11 @@ class _SettingsWidgetState extends State<SettingsWidget>
       vsync: this,
       duration: animationDuration,
     )..addListener(() => setState(() {}));
-    jumpButtonAnimation = Tween<double>(
-      begin: startPosition,
-      end: endPosition,
-    ).animate(CurvedAnimation(
-      parent: jumpButtonAnimationController,
-      curve: animationCurve,
-    ));
+    jumpButtonAnimation = Tween<double>(begin: startPosition, end: endPosition)
+        .animate(CurvedAnimation(
+          parent: jumpButtonAnimationController,
+          curve: animationCurve,
+        ));
     widget.scrollController.addListener(() {
       _scrollControllerOffset = widget.scrollController.offset;
       if (_scrollControllerOffset >= 200 && !_jumpButtonExist) {
@@ -80,11 +78,8 @@ class _SettingsWidgetState extends State<SettingsWidget>
       child: Column(
         children: <Widget>[
           Transform(
-            transform: Matrix4.translationValues(
-              0.0,
-              jumpButtonAnimation.value,
-              0.0,
-            ),
+            transform:
+                Matrix4.translationValues(0.0, jumpButtonAnimation.value, 0.0),
             child: FloatingActionButton(
               heroTag: 'Up',
               onPressed: () => widget.onJumpIconTap(),
@@ -101,26 +96,27 @@ class _SettingsWidgetState extends State<SettingsWidget>
               duration: animationDuration,
               curve: animationCurve,
               builder: (context, color, child) => FloatingActionButton(
-                heroTag: 'Grip',
-                backgroundColor: color,
-                onPressed: () {
-                  if (widget.gridView) {
-                    gridViewAnimationController.forward();
-                    _hideJumpButton();
-                  } else {
-                    gridViewAnimationController.reverse();
-                    if (_scrollControllerOffset >= 200 && !_jumpButtonExist) {
-                      _showJumpButton();
-                    }
-                  }
-                  widget.onGridViewIconTap();
-                },
-                child: AnimatedIcon(
-                  icon: AnimatedIcons.view_list,
-                  progress: gridViewAnimationController,
-                  color: Colors.white,
-                ),
-              ),
+                    heroTag: 'Grip',
+                    backgroundColor: color,
+                    onPressed: () {
+                      if (widget.gridView) {
+                        gridViewAnimationController.forward();
+                        _hideJumpButton();
+                      } else {
+                        gridViewAnimationController.reverse();
+                        if (_scrollControllerOffset >= 200 &&
+                            !_jumpButtonExist) {
+                          _showJumpButton();
+                        }
+                      }
+                      widget.onGridViewIconTap();
+                    },
+                    child: AnimatedIcon(
+                      icon: AnimatedIcons.view_list,
+                      progress: gridViewAnimationController,
+                      color: Colors.white,
+                    ),
+                  ),
             ),
           ),
         ],

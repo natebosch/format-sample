@@ -55,14 +55,16 @@ class _NotificationScreenState extends State<NotificationScreen> {
           ),
           actions: <Widget>[
             IconButton(
-                tooltip: "Notification Settings",
-                icon: const Icon(JamIcons.settings_alt),
-                onPressed: () {
-                  showModalBottomSheet(
-                      isScrollControlled: true,
-                      context: context,
-                      builder: (context) => NotificationSettingsSheet());
-                })
+              tooltip: "Notification Settings",
+              icon: const Icon(JamIcons.settings_alt),
+              onPressed: () {
+                showModalBottomSheet(
+                  isScrollControlled: true,
+                  context: context,
+                  builder: (context) => NotificationSettingsSheet(),
+                );
+              },
+            ),
           ],
         ),
         body: Container(
@@ -70,17 +72,16 @@ class _NotificationScreenState extends State<NotificationScreen> {
               ? ListView.builder(
                   itemCount: notifications.length,
                   itemBuilder: (BuildContext context, int index) {
-                    box.put(
-                        box.keys.toList()[index],
-                        InAppNotif(
-                            pageName: notifications[index].pageName,
-                            title: notifications[index].title,
-                            body: notifications[index].body,
-                            imageUrl: notifications[index].imageUrl,
-                            arguments: notifications[index].arguments,
-                            url: notifications[index].url,
-                            createdAt: notifications[index].createdAt,
-                            read: true));
+                    box.put(box.keys.toList()[index], InAppNotif(
+                      pageName: notifications[index].pageName,
+                      title: notifications[index].title,
+                      body: notifications[index].body,
+                      imageUrl: notifications[index].imageUrl,
+                      arguments: notifications[index].arguments,
+                      url: notifications[index].url,
+                      createdAt: notifications[index].createdAt,
+                      read: true,
+                    ));
                     return Dismissible(
                       onDismissed: (DismissDirection direction) {
                         setState(() {
@@ -90,7 +91,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
                       },
                       dismissThresholds: const {
                         DismissDirection.startToEnd: 0.5,
-                        DismissDirection.endToStart: 0.5
+                        DismissDirection.endToStart: 0.5,
                       },
                       secondaryBackground: Container(
                         color: Colors.red,
@@ -119,8 +120,11 @@ class _NotificationScreenState extends State<NotificationScreen> {
                   },
                 )
               : Center(
-                  child: Text('No new notifications',
-                      style: TextStyle(color: Theme.of(context).accentColor))),
+                  child: Text(
+                    'No new notifications',
+                    style: TextStyle(color: Theme.of(context).accentColor),
+                  ),
+                ),
         ),
         floatingActionButton: notifications!.isNotEmpty
             ? FloatingActionButton(
@@ -129,18 +133,21 @@ class _NotificationScreenState extends State<NotificationScreen> {
                 onPressed: () {
                   final AlertDialog deleteNotificationsPopUp = AlertDialog(
                     shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10)),
+                      borderRadius: BorderRadius.circular(10),
+                    ),
                     title: Text(
                       'Clear all notifications?',
                       style: TextStyle(
-                          fontWeight: FontWeight.w700,
-                          fontSize: 16,
-                          color: Theme.of(context).accentColor),
+                        fontWeight: FontWeight.w700,
+                        fontSize: 16,
+                        color: Theme.of(context).accentColor,
+                      ),
                     ),
                     actions: [
                       FlatButton(
                         shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(5)),
+                          borderRadius: BorderRadius.circular(5),
+                        ),
                         color: Theme.of(context).hintColor,
                         onPressed: () {
                           Navigator.of(context).pop();
@@ -151,25 +158,20 @@ class _NotificationScreenState extends State<NotificationScreen> {
                         },
                         child: const Text(
                           'YES',
-                          style: TextStyle(
-                            fontSize: 16.0,
-                            color: Colors.white,
-                          ),
+                          style: TextStyle(fontSize: 16.0, color: Colors.white),
                         ),
                       ),
                       FlatButton(
                         shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(5)),
+                          borderRadius: BorderRadius.circular(5),
+                        ),
                         color: Theme.of(context).errorColor,
                         onPressed: () {
                           Navigator.of(context).pop();
                         },
                         child: const Text(
                           'NO',
-                          style: TextStyle(
-                            fontSize: 16.0,
-                            color: Colors.white,
-                          ),
+                          style: TextStyle(fontSize: 16.0, color: Colors.white),
                         ),
                       ),
                     ],
@@ -178,10 +180,10 @@ class _NotificationScreenState extends State<NotificationScreen> {
                   );
 
                   showModal(
-                      context: context,
-                      configuration: const FadeScaleTransitionConfiguration(),
-                      builder: (BuildContext context) =>
-                          deleteNotificationsPopUp);
+                    context: context,
+                    configuration: const FadeScaleTransitionConfiguration(),
+                    builder: (BuildContext context) => deleteNotificationsPopUp,
+                  );
                 },
                 child: const Icon(JamIcons.trash),
               )
@@ -233,9 +235,10 @@ class NotificationCard extends StatelessWidget {
       title: Text(
         notification!.title!,
         style: TextStyle(
-            color: Theme.of(context).accentColor,
-            fontWeight: FontWeight.w500,
-            fontFamily: "Proxima Nova"),
+          color: Theme.of(context).accentColor,
+          fontWeight: FontWeight.w500,
+          fontFamily: "Proxima Nova",
+        ),
       ),
       subtitle: Text(
         notification!.body!,
@@ -246,8 +249,11 @@ class NotificationCard extends StatelessWidget {
           onTap: () {
             if (notification!.url == "") {
               if (notification!.pageName != null) {
-                Navigator.pushNamed(context, notification!.pageName!,
-                    arguments: notification!.arguments);
+                Navigator.pushNamed(
+                  context,
+                  notification!.pageName!,
+                  arguments: notification!.arguments,
+                );
               }
             } else {
               launch(notification!.url!);
@@ -261,7 +267,9 @@ class NotificationCard extends StatelessWidget {
               children: [
                 ColorFiltered(
                   colorFilter: const ColorFilter.mode(
-                      Colors.black, BlendMode.saturation),
+                    Colors.black,
+                    BlendMode.saturation,
+                  ),
                   child: SizedBox(
                     width: MediaQuery.of(context).size.width,
                     height: MediaQuery.of(context).size.width * 9 / 16,
@@ -298,7 +306,7 @@ class NotificationCard extends StatelessWidget {
               ],
             ),
           ),
-        )
+        ),
       ],
     );
   }
@@ -324,8 +332,10 @@ class _NotificationSettingsSheetState extends State<NotificationSettingsSheet> {
         main.prefs.get("postsSubscriber", defaultValue: true) as bool?;
     inappSubscriber =
         main.prefs.get("inappSubscriber", defaultValue: true) as bool?;
-    recommendationsSubscriber = main.prefs
-        .get("recommendationsSubscriber", defaultValue: true) as bool?;
+    recommendationsSubscriber = main.prefs.get(
+      "recommendationsSubscriber",
+      defaultValue: true,
+    ) as bool?;
   }
 
   @override
@@ -359,10 +369,11 @@ class _NotificationSettingsSheetState extends State<NotificationSettingsSheet> {
                     height: 5,
                     width: 30,
                     decoration: BoxDecoration(
-                        color: Theme.of(context).hintColor,
-                        borderRadius: BorderRadius.circular(500)),
+                      color: Theme.of(context).hintColor,
+                      borderRadius: BorderRadius.circular(500),
+                    ),
                   ),
-                )
+                ),
               ],
             ),
             Padding(
@@ -383,16 +394,15 @@ class _NotificationSettingsSheetState extends State<NotificationSettingsSheet> {
             ),
             SwitchListTile(
               activeColor: Theme.of(context).errorColor,
-              secondary: const Icon(
-                JamIcons.user_plus,
-              ),
+              secondary: const Icon(JamIcons.user_plus),
               value: followersSubscriber!,
               title: Text(
                 "Followers",
                 style: TextStyle(
-                    color: Theme.of(context).accentColor,
-                    fontWeight: FontWeight.w500,
-                    fontFamily: "Proxima Nova"),
+                  color: Theme.of(context).accentColor,
+                  fontWeight: FontWeight.w500,
+                  fontFamily: "Proxima Nova",
+                ),
               ),
               subtitle: const Text(
                 "Get notifications for new followers.",
@@ -406,10 +416,12 @@ class _NotificationSettingsSheetState extends State<NotificationSettingsSheet> {
                   });
                   if (value) {
                     home.f.subscribeToTopic(
-                        globals.prismUser.email.split("@")[0].toString());
+                      globals.prismUser.email.split("@")[0].toString(),
+                    );
                   } else {
                     home.f.unsubscribeFromTopic(
-                        globals.prismUser.email.split("@")[0].toString());
+                      globals.prismUser.email.split("@")[0].toString(),
+                    );
                     main.prefs.put("postsSubscriber", value);
                     setState(() {
                       postsSubscriber = value;
@@ -423,16 +435,15 @@ class _NotificationSettingsSheetState extends State<NotificationSettingsSheet> {
             ),
             SwitchListTile(
               activeColor: Theme.of(context).errorColor,
-              secondary: const Icon(
-                JamIcons.pictures,
-              ),
+              secondary: const Icon(JamIcons.pictures),
               value: postsSubscriber!,
               title: Text(
                 "Posts",
                 style: TextStyle(
-                    color: Theme.of(context).accentColor,
-                    fontWeight: FontWeight.w500,
-                    fontFamily: "Proxima Nova"),
+                  color: Theme.of(context).accentColor,
+                  fontWeight: FontWeight.w500,
+                  fontFamily: "Proxima Nova",
+                ),
               ),
               subtitle: const Text(
                 "Get notifications for posts from the artists you follow.",
@@ -458,16 +469,15 @@ class _NotificationSettingsSheetState extends State<NotificationSettingsSheet> {
             ),
             SwitchListTile(
               activeColor: Theme.of(context).errorColor,
-              secondary: const Icon(
-                JamIcons.picture,
-              ),
+              secondary: const Icon(JamIcons.picture),
               value: inappSubscriber!,
               title: Text(
                 "In-App",
                 style: TextStyle(
-                    color: Theme.of(context).accentColor,
-                    fontWeight: FontWeight.w500,
-                    fontFamily: "Proxima Nova"),
+                  color: Theme.of(context).accentColor,
+                  fontWeight: FontWeight.w500,
+                  fontFamily: "Proxima Nova",
+                ),
               ),
               subtitle: const Text(
                 "Get in app notifications for giveaways, contests and reviews.",
@@ -487,9 +497,10 @@ class _NotificationSettingsSheetState extends State<NotificationSettingsSheet> {
               title: Text(
                 "Recommendations",
                 style: TextStyle(
-                    color: Theme.of(context).accentColor,
-                    fontWeight: FontWeight.w500,
-                    fontFamily: "Proxima Nova"),
+                  color: Theme.of(context).accentColor,
+                  fontWeight: FontWeight.w500,
+                  fontFamily: "Proxima Nova",
+                ),
               ),
               subtitle: const Text(
                 "Get recommendations from Prism.",
@@ -507,9 +518,7 @@ class _NotificationSettingsSheetState extends State<NotificationSettingsSheet> {
                 }
               },
             ),
-            const SizedBox(
-              height: 24,
-            )
+            const SizedBox(height: 24),
           ],
         ),
       ),

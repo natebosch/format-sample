@@ -62,7 +62,9 @@ class XfxMenu extends StatelessWidget {
         XContainerWithLabel(
           xclMenu.label,
           color: xclMenu.color_BTN,
-          textStyle: XStyles.xStyTextForLabel(xclMenu.label_Color ?? XColors.foregroundLight),
+          textStyle: XStyles.xStyTextForLabel(
+            xclMenu.label_Color ?? XColors.foregroundLight,
+          ),
         ),
         Wrap(
           spacing: 5,
@@ -76,8 +78,11 @@ class XfxMenu extends StatelessWidget {
               label_Color: xclMenuItem.label_Color,
               backGroundColor: xclMenuItem.color_BTN,
               icon: xclMenuItem.icon_BTN,
-              icon_Widget: xclMenuItem.image_Icon_BTN != null ? Image.memory(xclMenuItem.image_Icon_BTN!) : null,
-              label_Style: XStyles.xStyTextForLargeTitle(xclMenuItem.label_Color),
+              icon_Widget: xclMenuItem.image_Icon_BTN != null
+                  ? Image.memory(xclMenuItem.image_Icon_BTN!)
+                  : null,
+              label_Style:
+                  XStyles.xStyTextForLargeTitle(xclMenuItem.label_Color),
               width: width_menuItems ?? menuItem_WidthDefault,
               height: height_menuItems ?? 40,
               onPressed: () {
@@ -97,23 +102,24 @@ class XfxMenu extends StatelessWidget {
         Row(
           children: [
             Expanded(
-                child: XBtnbase(
-              margin: EdgeInsets.symmetric(vertical: 5, horizontal: 20),
-              label: "Sincronizza",
-              label_Color: XColors.warning,
-              backGroundColor: Colors.grey[800],
-              icon: Icons.refresh,
-              label_Style: XStyles.xStyTextForLargeTitle(XColors.warning),
-              width: width_menuItems ?? menuItem_WidthDefault,
-              height: height_menuItems ?? 40,
-              onPressed: () {
-                if (functOnSync != null) {
-                  functOnSync!();
-                }
-              },
-            ))
+              child: XBtnbase(
+                margin: EdgeInsets.symmetric(vertical: 5, horizontal: 20),
+                label: "Sincronizza",
+                label_Color: XColors.warning,
+                backGroundColor: Colors.grey[800],
+                icon: Icons.refresh,
+                label_Style: XStyles.xStyTextForLargeTitle(XColors.warning),
+                width: width_menuItems ?? menuItem_WidthDefault,
+                height: height_menuItems ?? 40,
+                onPressed: () {
+                  if (functOnSync != null) {
+                    functOnSync!();
+                  }
+                },
+              ),
+            ),
           ],
-        )
+        ),
       ],
     );
   }
@@ -121,60 +127,90 @@ class XfxMenu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-        width: MediaQuery.of(context).size.width < XUtils.widthMin_Layout ? (MediaQuery.of(context).size.width - 10) : 350,
-        child: Container(
-          margin: EdgeInsets.only(right: 10),
-          padding: EdgeInsets.only(top: 20),
-          color: menu_BackGroundColor ?? Colors.white,
-          child: Column(children: [
+      width: MediaQuery.of(context).size.width < XUtils.widthMin_Layout
+          ? (MediaQuery.of(context).size.width - 10)
+          : 350,
+      child: Container(
+        margin: EdgeInsets.only(right: 10),
+        padding: EdgeInsets.only(top: 20),
+        color: menu_BackGroundColor ?? Colors.white,
+        child: Column(
+          children: [
             SizedBox(height: 20),
             GestureDetector(
               onTap: () {
                 onPressed_PinnedBTN != null ? onPressed_PinnedBTN!() : null;
               },
-              child: Row(children: [
-                logOut_Visible ?? false
-                    ? XBtnbase(
-                        margin: EdgeInsets.symmetric(horizontal: 8),
-                        icon: Icons.power_settings_new,
-                        width: 50,
-                        height: 50,
-                        onPressed: logOut_OnTap,
-                        icon_Color: Colors.red,
-                      )
-                    : Container(),
-                title != ""
-                    ? Expanded(
-                        child: Container(
+              child: Row(
+                children: [
+                  logOut_Visible ?? false
+                      ? XBtnbase(
+                          margin: EdgeInsets.symmetric(horizontal: 8),
+                          icon: Icons.power_settings_new,
+                          width: 50,
+                          height: 50,
+                          onPressed: logOut_OnTap,
+                          icon_Color: Colors.red,
+                        )
+                      : Container(),
+                  title != ""
+                      ? Expanded(
+                          child: Container(
                             color: Colors.transparent,
                             alignment: Alignment.center,
                             margin: EdgeInsets.only(left: 10),
                             child: Text(
                               title!,
-                              style: title_Style ?? XStyles.xStyleText(fontSize: 12, colorText: XColors.backgroundDark, letterSpacing: 1.5),
-                            )))
-                    : Expanded(child: Container()),
-                XBtnbase(
-                    icon: MediaQuery.of(context).size.width < XUtils.widthMin_Layout ? Icons.close : (pinned_Value ? Icons.arrow_back_ios : Icons.arrow_forward_ios_rounded),
+                              style: title_Style ??
+                                  XStyles.xStyleText(
+                                    fontSize: 12,
+                                    colorText: XColors.backgroundDark,
+                                    letterSpacing: 1.5,
+                                  ),
+                            ),
+                          ),
+                        )
+                      : Expanded(child: Container()),
+                  XBtnbase(
+                    icon: MediaQuery.of(context).size.width <
+                            XUtils.widthMin_Layout
+                        ? Icons.close
+                        : (pinned_Value
+                              ? Icons.arrow_back_ios
+                              : Icons.arrow_forward_ios_rounded),
                     icon_Color: XColors.backgroundLight,
                     width: 40,
                     height: 40,
                     onPressed: () {
-                      onPressed_PinnedBTN != null ? onPressed_PinnedBTN!() : null;
-                    })
-              ]),
-            ),
-            Expanded(
-                child: SingleChildScrollView(
-              child: Column(
-                children: [
-                  Wrap(spacing: 5, runSpacing: 5, alignment: WrapAlignment.start, children: menuGroups.map((xclMenu) => xBuilder_XMenu(xclMenu)).toList()),
+                      onPressed_PinnedBTN != null
+                          ? onPressed_PinnedBTN!()
+                          : null;
+                    },
+                  ),
                 ],
               ),
-            )),
-            SizedBox(height: 15)
-          ]),
-        ));
+            ),
+            Expanded(
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    Wrap(
+                      spacing: 5,
+                      runSpacing: 5,
+                      alignment: WrapAlignment.start,
+                      children: menuGroups.map(
+                        (xclMenu) => xBuilder_XMenu(xclMenu),
+                      ).toList(),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            SizedBox(height: 15),
+          ],
+        ),
+      ),
+    );
   }
 }
 

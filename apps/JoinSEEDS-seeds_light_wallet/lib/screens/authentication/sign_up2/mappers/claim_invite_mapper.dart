@@ -7,7 +7,10 @@ import 'package:seeds/screens/authentication/sign_up2/viewmodels/signup_bloc.dar
 import 'package:seeds/utils/string_extension.dart';
 
 class ClaimInviteMapper extends StateMapper {
-  SignupState mapInviteMnemonicToState(SignupState currentState, Result result) {
+  SignupState mapInviteMnemonicToState(
+    SignupState currentState,
+    Result result,
+  ) {
     if (result.isError) {
       return currentState.copyWith(
         claimInviteView: ClaimInviteView.fail, // No screen UI for error
@@ -25,7 +28,10 @@ class ClaimInviteMapper extends StateMapper {
     }
   }
 
-  SignupState mapValidateInviteCodeToState(SignupState currentState, Result result) {
+  SignupState mapValidateInviteCodeToState(
+    SignupState currentState,
+    Result result,
+  ) {
     if (result.isError) {
       return currentState.copyWith(
         claimInviteView: ClaimInviteView.fail, // No screen UI for error
@@ -38,15 +44,18 @@ class ClaimInviteMapper extends StateMapper {
         final InviteModel inviteModel = inviteModels.first;
         if (!inviteModel.isClaimed) {
           // invite code is valid and can be claimed
-          return currentState.copyWith(claimInviteView: ClaimInviteView.success, inviteModel: inviteModel);
+          return currentState.copyWith(
+            claimInviteView: ClaimInviteView.success,
+            inviteModel: inviteModel,
+          );
         } else {
           // invite code is valid but claimed before
           return currentState.copyWith(
             claimInviteView: ClaimInviteView.fail, // No screen UI for error
             pageCommand: ShowErrorMessage(''), // Error dialog
-            errorMessage: 'Invite was already claimed'.i18n.fill(
-              [inviteModel.sponsor, inviteModel.account ?? ''],
-            ),
+            errorMessage: 'Invite was already claimed'
+                .i18n
+                .fill([inviteModel.sponsor, inviteModel.account ?? '']),
           );
         }
       } else {

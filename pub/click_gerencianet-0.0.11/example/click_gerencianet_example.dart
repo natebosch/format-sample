@@ -19,7 +19,14 @@ Future<void> main() async {
     ),
   );
 
-  print(await gn.novoPixComRegistro(valor: 2, idFP: 2, idDocumento: 2, descricao: 'TESTE DART COM PARTNER TOKEN'));
+  print(
+    await gn.novoPixComRegistro(
+      valor: 2,
+      idFP: 2,
+      idDocumento: 2,
+      descricao: 'TESTE DART COM PARTNER TOKEN',
+    ),
+  );
 
   //print(await gn.gerarPixCopiaCola(descricao1: 'pagamento teste', valor: 100, txId: '1410'));
 

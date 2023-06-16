@@ -30,8 +30,10 @@ abstract class CreateMultipartUploadRequest
         _i1.HttpInput<CreateMultipartUploadRequestPayload>,
         _i2.AWSEquatable<CreateMultipartUploadRequest>
     implements
-        Built<CreateMultipartUploadRequest,
-            CreateMultipartUploadRequestBuilder>,
+        Built<
+          CreateMultipartUploadRequest,
+          CreateMultipartUploadRequestBuilder
+        >,
         _i1.EmptyPayload,
         _i1.HasPayload<CreateMultipartUploadRequestPayload> {
   factory CreateMultipartUploadRequest({
@@ -100,9 +102,9 @@ abstract class CreateMultipartUploadRequest
     );
   }
 
-  factory CreateMultipartUploadRequest.build(
-          [void Function(CreateMultipartUploadRequestBuilder) updates]) =
-      _$CreateMultipartUploadRequest;
+  factory CreateMultipartUploadRequest.build([
+    void Function(CreateMultipartUploadRequestBuilder) updates,
+  ]) = _$CreateMultipartUploadRequest;
 
   const CreateMultipartUploadRequest._();
 
@@ -110,137 +112,132 @@ abstract class CreateMultipartUploadRequest
     CreateMultipartUploadRequestPayload payload,
     _i2.AWSBaseHttpRequest request, {
     Map<String, String> labels = const {},
-  }) =>
-      CreateMultipartUploadRequest.build((b) {
-        if (request.headers['x-amz-acl'] != null) {
-          b.acl =
-              _i3.ObjectCannedAcl.values.byValue(request.headers['x-amz-acl']!);
-        }
-        if (request.headers['Cache-Control'] != null) {
-          b.cacheControl = request.headers['Cache-Control']!;
-        }
-        if (request.headers['Content-Disposition'] != null) {
-          b.contentDisposition = request.headers['Content-Disposition']!;
-        }
-        if (request.headers['Content-Encoding'] != null) {
-          b.contentEncoding = request.headers['Content-Encoding']!;
-        }
-        if (request.headers['Content-Language'] != null) {
-          b.contentLanguage = request.headers['Content-Language']!;
-        }
-        if (request.headers['Content-Type'] != null) {
-          b.contentType = request.headers['Content-Type']!;
-        }
-        if (request.headers['Expires'] != null) {
-          b.expires = _i1.Timestamp.parse(
-            request.headers['Expires']!,
-            format: _i1.TimestampFormat.httpDate,
-          ).asDateTime;
-        }
-        if (request.headers['x-amz-grant-full-control'] != null) {
-          b.grantFullControl = request.headers['x-amz-grant-full-control']!;
-        }
-        if (request.headers['x-amz-grant-read'] != null) {
-          b.grantRead = request.headers['x-amz-grant-read']!;
-        }
-        if (request.headers['x-amz-grant-read-acp'] != null) {
-          b.grantReadAcp = request.headers['x-amz-grant-read-acp']!;
-        }
-        if (request.headers['x-amz-grant-write-acp'] != null) {
-          b.grantWriteAcp = request.headers['x-amz-grant-write-acp']!;
-        }
-        if (request.headers['x-amz-server-side-encryption'] != null) {
-          b.serverSideEncryption = _i8.ServerSideEncryption.values
-              .byValue(request.headers['x-amz-server-side-encryption']!);
-        }
-        if (request.headers['x-amz-storage-class'] != null) {
-          b.storageClass = _i9.StorageClass.values
-              .byValue(request.headers['x-amz-storage-class']!);
-        }
-        if (request.headers['x-amz-website-redirect-location'] != null) {
-          b.websiteRedirectLocation =
-              request.headers['x-amz-website-redirect-location']!;
-        }
-        if (request
-                .headers['x-amz-server-side-encryption-customer-algorithm'] !=
-            null) {
-          b.sseCustomerAlgorithm = request
-              .headers['x-amz-server-side-encryption-customer-algorithm']!;
-        }
-        if (request.headers['x-amz-server-side-encryption-customer-key'] !=
-            null) {
-          b.sseCustomerKey =
-              request.headers['x-amz-server-side-encryption-customer-key']!;
-        }
-        if (request.headers['x-amz-server-side-encryption-customer-key-MD5'] !=
-            null) {
-          b.sseCustomerKeyMd5 =
-              request.headers['x-amz-server-side-encryption-customer-key-MD5']!;
-        }
-        if (request.headers['x-amz-server-side-encryption-aws-kms-key-id'] !=
-            null) {
-          b.ssekmsKeyId =
-              request.headers['x-amz-server-side-encryption-aws-kms-key-id']!;
-        }
-        if (request.headers['x-amz-server-side-encryption-context'] != null) {
-          b.ssekmsEncryptionContext =
-              request.headers['x-amz-server-side-encryption-context']!;
-        }
-        if (request
-                .headers['x-amz-server-side-encryption-bucket-key-enabled'] !=
-            null) {
-          b.bucketKeyEnabled = request.headers[
-                  'x-amz-server-side-encryption-bucket-key-enabled']! ==
+  }) => CreateMultipartUploadRequest.build((b) {
+    if (request.headers['x-amz-acl'] != null) {
+      b.acl = _i3.ObjectCannedAcl.values.byValue(request.headers['x-amz-acl']!);
+    }
+    if (request.headers['Cache-Control'] != null) {
+      b.cacheControl = request.headers['Cache-Control']!;
+    }
+    if (request.headers['Content-Disposition'] != null) {
+      b.contentDisposition = request.headers['Content-Disposition']!;
+    }
+    if (request.headers['Content-Encoding'] != null) {
+      b.contentEncoding = request.headers['Content-Encoding']!;
+    }
+    if (request.headers['Content-Language'] != null) {
+      b.contentLanguage = request.headers['Content-Language']!;
+    }
+    if (request.headers['Content-Type'] != null) {
+      b.contentType = request.headers['Content-Type']!;
+    }
+    if (request.headers['Expires'] != null) {
+      b.expires = _i1.Timestamp.parse(
+        request.headers['Expires']!,
+        format: _i1.TimestampFormat.httpDate,
+      ).asDateTime;
+    }
+    if (request.headers['x-amz-grant-full-control'] != null) {
+      b.grantFullControl = request.headers['x-amz-grant-full-control']!;
+    }
+    if (request.headers['x-amz-grant-read'] != null) {
+      b.grantRead = request.headers['x-amz-grant-read']!;
+    }
+    if (request.headers['x-amz-grant-read-acp'] != null) {
+      b.grantReadAcp = request.headers['x-amz-grant-read-acp']!;
+    }
+    if (request.headers['x-amz-grant-write-acp'] != null) {
+      b.grantWriteAcp = request.headers['x-amz-grant-write-acp']!;
+    }
+    if (request.headers['x-amz-server-side-encryption'] != null) {
+      b.serverSideEncryption = _i8.ServerSideEncryption.values.byValue(
+        request.headers['x-amz-server-side-encryption']!,
+      );
+    }
+    if (request.headers['x-amz-storage-class'] != null) {
+      b.storageClass = _i9.StorageClass.values.byValue(
+        request.headers['x-amz-storage-class']!,
+      );
+    }
+    if (request.headers['x-amz-website-redirect-location'] != null) {
+      b.websiteRedirectLocation =
+          request.headers['x-amz-website-redirect-location']!;
+    }
+    if (request.headers['x-amz-server-side-encryption-customer-algorithm'] !=
+        null) {
+      b.sseCustomerAlgorithm =
+          request.headers['x-amz-server-side-encryption-customer-algorithm']!;
+    }
+    if (request.headers['x-amz-server-side-encryption-customer-key'] != null) {
+      b.sseCustomerKey =
+          request.headers['x-amz-server-side-encryption-customer-key']!;
+    }
+    if (request.headers['x-amz-server-side-encryption-customer-key-MD5'] !=
+        null) {
+      b.sseCustomerKeyMd5 =
+          request.headers['x-amz-server-side-encryption-customer-key-MD5']!;
+    }
+    if (request.headers['x-amz-server-side-encryption-aws-kms-key-id'] !=
+        null) {
+      b.ssekmsKeyId =
+          request.headers['x-amz-server-side-encryption-aws-kms-key-id']!;
+    }
+    if (request.headers['x-amz-server-side-encryption-context'] != null) {
+      b.ssekmsEncryptionContext =
+          request.headers['x-amz-server-side-encryption-context']!;
+    }
+    if (request.headers['x-amz-server-side-encryption-bucket-key-enabled'] !=
+        null) {
+      b.bucketKeyEnabled =
+          request.headers['x-amz-server-side-encryption-bucket-key-enabled']! ==
               'true';
-        }
-        if (request.headers['x-amz-request-payer'] != null) {
-          b.requestPayer = _i7.RequestPayer.values
-              .byValue(request.headers['x-amz-request-payer']!);
-        }
-        if (request.headers['x-amz-tagging'] != null) {
-          b.tagging = request.headers['x-amz-tagging']!;
-        }
-        if (request.headers['x-amz-object-lock-mode'] != null) {
-          b.objectLockMode = _i6.ObjectLockMode.values
-              .byValue(request.headers['x-amz-object-lock-mode']!);
-        }
-        if (request.headers['x-amz-object-lock-retain-until-date'] != null) {
-          b.objectLockRetainUntilDate = _i1.Timestamp.parse(
-            request.headers['x-amz-object-lock-retain-until-date']!,
-            format: _i1.TimestampFormat.dateTime,
-          ).asDateTime;
-        }
-        if (request.headers['x-amz-object-lock-legal-hold'] != null) {
-          b.objectLockLegalHoldStatus = _i5.ObjectLockLegalHoldStatus.values
-              .byValue(request.headers['x-amz-object-lock-legal-hold']!);
-        }
-        if (request.headers['x-amz-expected-bucket-owner'] != null) {
-          b.expectedBucketOwner =
-              request.headers['x-amz-expected-bucket-owner']!;
-        }
-        if (request.headers['x-amz-checksum-algorithm'] != null) {
-          b.checksumAlgorithm = _i4.ChecksumAlgorithm.values
-              .byValue(request.headers['x-amz-checksum-algorithm']!);
-        }
-        b.metadata.addEntries(request.headers.entries
-            .where((el) => el.key.startsWith('x-amz-meta-'))
-            .map((el) => MapEntry(
-                  el.key.replaceFirst(
-                    'x-amz-meta-',
-                    '',
-                  ),
-                  el.value,
-                )));
-        if (labels['bucket'] != null) {
-          b.bucket = labels['bucket']!;
-        }
-        if (labels['key'] != null) {
-          b.key = labels['key']!;
-        }
-      });
+    }
+    if (request.headers['x-amz-request-payer'] != null) {
+      b.requestPayer = _i7.RequestPayer.values.byValue(
+        request.headers['x-amz-request-payer']!,
+      );
+    }
+    if (request.headers['x-amz-tagging'] != null) {
+      b.tagging = request.headers['x-amz-tagging']!;
+    }
+    if (request.headers['x-amz-object-lock-mode'] != null) {
+      b.objectLockMode = _i6.ObjectLockMode.values.byValue(
+        request.headers['x-amz-object-lock-mode']!,
+      );
+    }
+    if (request.headers['x-amz-object-lock-retain-until-date'] != null) {
+      b.objectLockRetainUntilDate = _i1.Timestamp.parse(
+        request.headers['x-amz-object-lock-retain-until-date']!,
+        format: _i1.TimestampFormat.dateTime,
+      ).asDateTime;
+    }
+    if (request.headers['x-amz-object-lock-legal-hold'] != null) {
+      b.objectLockLegalHoldStatus = _i5.ObjectLockLegalHoldStatus.values
+          .byValue(request.headers['x-amz-object-lock-legal-hold']!);
+    }
+    if (request.headers['x-amz-expected-bucket-owner'] != null) {
+      b.expectedBucketOwner = request.headers['x-amz-expected-bucket-owner']!;
+    }
+    if (request.headers['x-amz-checksum-algorithm'] != null) {
+      b.checksumAlgorithm = _i4.ChecksumAlgorithm.values.byValue(
+        request.headers['x-amz-checksum-algorithm']!,
+      );
+    }
+    b.metadata.addEntries(request.headers.entries
+        .where((el) => el.key.startsWith('x-amz-meta-'))
+        .map(
+          (el) => MapEntry(el.key.replaceFirst('x-amz-meta-', ''), el.value),
+        ));
+    if (labels['bucket'] != null) {
+      b.bucket = labels['bucket']!;
+    }
+    if (labels['key'] != null) {
+      b.key = labels['key']!;
+    }
+  });
 
   static const List<_i1.SmithySerializer> serializers = [
-    CreateMultipartUploadRequestRestXmlSerializer()
+    CreateMultipartUploadRequestRestXmlSerializer(),
   ];
 
   @BuiltValueHook(initializeBuilder: true)
@@ -359,10 +356,7 @@ abstract class CreateMultipartUploadRequest
       case 'Key':
         return this.key;
     }
-    throw _i1.MissingLabelException(
-      this,
-      key,
-    );
+    throw _i1.MissingLabelException(this, key);
   }
 
   @override
@@ -370,160 +364,70 @@ abstract class CreateMultipartUploadRequest
       CreateMultipartUploadRequestPayload();
   @override
   List<Object?> get props => [
-        acl,
-        bucket,
-        bucketKeyEnabled,
-        cacheControl,
-        checksumAlgorithm,
-        contentDisposition,
-        contentEncoding,
-        contentLanguage,
-        contentType,
-        expectedBucketOwner,
-        expires,
-        grantFullControl,
-        grantRead,
-        grantReadAcp,
-        grantWriteAcp,
-        key,
-        metadata,
-        objectLockLegalHoldStatus,
-        objectLockMode,
-        objectLockRetainUntilDate,
-        requestPayer,
-        serverSideEncryption,
-        sseCustomerAlgorithm,
-        sseCustomerKey,
-        sseCustomerKeyMd5,
-        ssekmsEncryptionContext,
-        ssekmsKeyId,
-        storageClass,
-        tagging,
-        websiteRedirectLocation,
-      ];
+    acl,
+    bucket,
+    bucketKeyEnabled,
+    cacheControl,
+    checksumAlgorithm,
+    contentDisposition,
+    contentEncoding,
+    contentLanguage,
+    contentType,
+    expectedBucketOwner,
+    expires,
+    grantFullControl,
+    grantRead,
+    grantReadAcp,
+    grantWriteAcp,
+    key,
+    metadata,
+    objectLockLegalHoldStatus,
+    objectLockMode,
+    objectLockRetainUntilDate,
+    requestPayer,
+    serverSideEncryption,
+    sseCustomerAlgorithm,
+    sseCustomerKey,
+    sseCustomerKeyMd5,
+    ssekmsEncryptionContext,
+    ssekmsKeyId,
+    storageClass,
+    tagging,
+    websiteRedirectLocation,
+  ];
   @override
   String toString() {
     final helper = newBuiltValueToStringHelper('CreateMultipartUploadRequest');
-    helper.add(
-      'acl',
-      acl,
-    );
-    helper.add(
-      'bucket',
-      bucket,
-    );
-    helper.add(
-      'bucketKeyEnabled',
-      bucketKeyEnabled,
-    );
-    helper.add(
-      'cacheControl',
-      cacheControl,
-    );
-    helper.add(
-      'checksumAlgorithm',
-      checksumAlgorithm,
-    );
-    helper.add(
-      'contentDisposition',
-      contentDisposition,
-    );
-    helper.add(
-      'contentEncoding',
-      contentEncoding,
-    );
-    helper.add(
-      'contentLanguage',
-      contentLanguage,
-    );
-    helper.add(
-      'contentType',
-      contentType,
-    );
-    helper.add(
-      'expectedBucketOwner',
-      expectedBucketOwner,
-    );
-    helper.add(
-      'expires',
-      expires,
-    );
-    helper.add(
-      'grantFullControl',
-      grantFullControl,
-    );
-    helper.add(
-      'grantRead',
-      grantRead,
-    );
-    helper.add(
-      'grantReadAcp',
-      grantReadAcp,
-    );
-    helper.add(
-      'grantWriteAcp',
-      grantWriteAcp,
-    );
-    helper.add(
-      'key',
-      key,
-    );
-    helper.add(
-      'metadata',
-      metadata,
-    );
-    helper.add(
-      'objectLockLegalHoldStatus',
-      objectLockLegalHoldStatus,
-    );
-    helper.add(
-      'objectLockMode',
-      objectLockMode,
-    );
-    helper.add(
-      'objectLockRetainUntilDate',
-      objectLockRetainUntilDate,
-    );
-    helper.add(
-      'requestPayer',
-      requestPayer,
-    );
-    helper.add(
-      'serverSideEncryption',
-      serverSideEncryption,
-    );
-    helper.add(
-      'sseCustomerAlgorithm',
-      sseCustomerAlgorithm,
-    );
-    helper.add(
-      'sseCustomerKey',
-      '***SENSITIVE***',
-    );
-    helper.add(
-      'sseCustomerKeyMd5',
-      sseCustomerKeyMd5,
-    );
-    helper.add(
-      'ssekmsEncryptionContext',
-      '***SENSITIVE***',
-    );
-    helper.add(
-      'ssekmsKeyId',
-      '***SENSITIVE***',
-    );
-    helper.add(
-      'storageClass',
-      storageClass,
-    );
-    helper.add(
-      'tagging',
-      tagging,
-    );
-    helper.add(
-      'websiteRedirectLocation',
-      websiteRedirectLocation,
-    );
+    helper.add('acl', acl);
+    helper.add('bucket', bucket);
+    helper.add('bucketKeyEnabled', bucketKeyEnabled);
+    helper.add('cacheControl', cacheControl);
+    helper.add('checksumAlgorithm', checksumAlgorithm);
+    helper.add('contentDisposition', contentDisposition);
+    helper.add('contentEncoding', contentEncoding);
+    helper.add('contentLanguage', contentLanguage);
+    helper.add('contentType', contentType);
+    helper.add('expectedBucketOwner', expectedBucketOwner);
+    helper.add('expires', expires);
+    helper.add('grantFullControl', grantFullControl);
+    helper.add('grantRead', grantRead);
+    helper.add('grantReadAcp', grantReadAcp);
+    helper.add('grantWriteAcp', grantWriteAcp);
+    helper.add('key', key);
+    helper.add('metadata', metadata);
+    helper.add('objectLockLegalHoldStatus', objectLockLegalHoldStatus);
+    helper.add('objectLockMode', objectLockMode);
+    helper.add('objectLockRetainUntilDate', objectLockRetainUntilDate);
+    helper.add('requestPayer', requestPayer);
+    helper.add('serverSideEncryption', serverSideEncryption);
+    helper.add('sseCustomerAlgorithm', sseCustomerAlgorithm);
+    helper.add('sseCustomerKey', '***SENSITIVE***');
+    helper.add('sseCustomerKeyMd5', sseCustomerKeyMd5);
+    helper.add('ssekmsEncryptionContext', '***SENSITIVE***');
+    helper.add('ssekmsKeyId', '***SENSITIVE***');
+    helper.add('storageClass', storageClass);
+    helper.add('tagging', tagging);
+    helper.add('websiteRedirectLocation', websiteRedirectLocation);
     return helper.toString();
   }
 }
@@ -533,12 +437,14 @@ abstract class CreateMultipartUploadRequestPayload
     with
         _i2.AWSEquatable<CreateMultipartUploadRequestPayload>
     implements
-        Built<CreateMultipartUploadRequestPayload,
-            CreateMultipartUploadRequestPayloadBuilder>,
+        Built<
+          CreateMultipartUploadRequestPayload,
+          CreateMultipartUploadRequestPayloadBuilder
+        >,
         _i1.EmptyPayload {
-  factory CreateMultipartUploadRequestPayload(
-          [void Function(CreateMultipartUploadRequestPayloadBuilder) updates]) =
-      _$CreateMultipartUploadRequestPayload;
+  factory CreateMultipartUploadRequestPayload([
+    void Function(CreateMultipartUploadRequestPayloadBuilder) updates,
+  ]) = _$CreateMultipartUploadRequestPayload;
 
   const CreateMultipartUploadRequestPayload._();
 
@@ -548,31 +454,30 @@ abstract class CreateMultipartUploadRequestPayload
   List<Object?> get props => [];
   @override
   String toString() {
-    final helper =
-        newBuiltValueToStringHelper('CreateMultipartUploadRequestPayload');
+    final helper = newBuiltValueToStringHelper(
+      'CreateMultipartUploadRequestPayload',
+    );
     return helper.toString();
   }
 }
 
-class CreateMultipartUploadRequestRestXmlSerializer extends _i1
+class CreateMultipartUploadRequestRestXmlSerializer
+    extends _i1
     .StructuredSmithySerializer<CreateMultipartUploadRequestPayload> {
   const CreateMultipartUploadRequestRestXmlSerializer()
-      : super('CreateMultipartUploadRequest');
+    : super('CreateMultipartUploadRequest');
 
   @override
   Iterable<Type> get types => const [
-        CreateMultipartUploadRequest,
-        _$CreateMultipartUploadRequest,
-        CreateMultipartUploadRequestPayload,
-        _$CreateMultipartUploadRequestPayload,
-      ];
+    CreateMultipartUploadRequest,
+    _$CreateMultipartUploadRequest,
+    CreateMultipartUploadRequestPayload,
+    _$CreateMultipartUploadRequestPayload,
+  ];
   @override
   Iterable<_i1.ShapeId> get supportedProtocols => const [
-        _i1.ShapeId(
-          namespace: 'aws.protocols',
-          shape: 'restXml',
-        )
-      ];
+    _i1.ShapeId(namespace: 'aws.protocols', shape: 'restXml'),
+  ];
   @override
   CreateMultipartUploadRequestPayload deserialize(
     Serializers serializers,
@@ -592,7 +497,7 @@ class CreateMultipartUploadRequestRestXmlSerializer extends _i1
       const _i1.XmlElementName(
         'CreateMultipartUploadRequest',
         _i1.XmlNamespace('http://s3.amazonaws.com/doc/2006-03-01/'),
-      )
+      ),
     ];
     return result;
   }

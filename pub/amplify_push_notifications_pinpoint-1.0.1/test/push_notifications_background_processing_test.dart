@@ -11,9 +11,7 @@ import 'package:mockito/mockito.dart';
 import 'push_notifications_background_processing_test.mocks.dart';
 import 'test_data/fake_amplify_configuration.dart';
 
-@GenerateMocks(
-  [AmplifySecureStorage, AmplifyClass],
-)
+@GenerateMocks([AmplifySecureStorage, AmplifyClass])
 void main() {
   final testWidgetsFlutterBinding =
       TestWidgetsFlutterBinding.ensureInitialized();
@@ -29,25 +27,29 @@ void main() {
     );
   });
   group('amplifyBackgroundProcessing', () {
-    test('should fail when the config stored in secure storage is not found',
-        () {
-      final mockStorage = MockAmplifySecureStorage();
-      when(mockStorage.read(key: anyNamed('key')))
-          .thenAnswer((_) async => null);
+    test(
+      'should fail when the config stored in secure storage is not found',
+      () {
+        final mockStorage = MockAmplifySecureStorage();
+        when(mockStorage.read(key: anyNamed('key'))).thenAnswer(
+          (_) async => null,
+        );
 
-      expect(
-        () async => amplifyBackgroundProcessing(
-          amplifySecureStorage: mockStorage,
-        ),
-        throwsA(isA<PushNotificationException>()),
-      );
-    });
+        expect(
+          () async => amplifyBackgroundProcessing(
+            amplifySecureStorage: mockStorage,
+          ),
+          throwsA(isA<PushNotificationException>()),
+        );
+      },
+    );
 
     test('should configure Amplify plugins', () async {
       log.clear();
       final mockStorage = MockAmplifySecureStorage();
-      when(mockStorage.read(key: anyNamed('key')))
-          .thenAnswer((_) async => amplifyconfig);
+      when(mockStorage.read(key: anyNamed('key'))).thenAnswer(
+        (_) async => amplifyconfig,
+      );
       final mockAmplify = MockAmplifyClass();
 
       when(mockAmplify.isConfigured).thenReturn(false);
@@ -59,7 +61,7 @@ void main() {
       );
 
       expect(log, <Matcher>[
-        isMethodCall('amplifyBackgroundProcessorFinished', arguments: null)
+        isMethodCall('amplifyBackgroundProcessorFinished', arguments: null),
       ]);
     });
   });

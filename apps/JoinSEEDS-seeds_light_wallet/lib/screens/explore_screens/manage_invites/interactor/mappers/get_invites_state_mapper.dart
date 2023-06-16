@@ -8,7 +8,10 @@ import 'package:seeds/screens/explore_screens/manage_invites/interactor/viewmode
 import 'package:seeds/screens/explore_screens/manage_invites/interactor/viewmodels/manage_invites_bloc.dart';
 
 class GetInvitesStateMapper extends StateMapper {
-  ManageInvitesState mapResultToState(ManageInvitesState currentState, InvitesDto? invitesDto) {
+  ManageInvitesState mapResultToState(
+    ManageInvitesState currentState,
+    InvitesDto? invitesDto,
+  ) {
     if (invitesDto == null) {
       return currentState.copyWith(
         pageState: PageState.failure,
@@ -18,13 +21,20 @@ class GetInvitesStateMapper extends StateMapper {
       final invites = invitesDto.invites;
       final profiles = invitesDto.accounts;
 
-      final List<InvitesItemsData> invitesItemData = invites.map((InviteModel e) => matchElement(e, profiles)).toList();
+      final List<InvitesItemsData> invitesItemData =
+          invites.map((InviteModel e) => matchElement(e, profiles)).toList();
 
-      return currentState.copyWith(pageState: PageState.success, invitesItemData: invitesItemData);
+      return currentState.copyWith(
+        pageState: PageState.success,
+        invitesItemData: invitesItemData,
+      );
     }
   }
 
-  InvitesItemsData matchElement(InviteModel e, Iterable<ProfileModel> accounts) {
+  InvitesItemsData matchElement(
+    InviteModel e,
+    Iterable<ProfileModel> accounts,
+  ) {
     final matching = accounts.where((element) => element.account == e.account);
     final firstMach = matching.isEmpty ? null : matching.first;
 

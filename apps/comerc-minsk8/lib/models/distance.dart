@@ -9,27 +9,28 @@ class DistanceModel extends ChangeNotifier {
   String _value;
 
   LatLng _getCurrentPosition(List entry) {
-    return LatLng(
-      entry[0] as double,
-      entry[1] as double,
-    );
+    return LatLng(entry[0] as double, entry[1] as double);
   }
 
   void updateValue(LatLng location) async {
     final currentPosition = _getCurrentPosition(
-        appState['currentPosition'] as List ??
-            appState['ShowcaseMap.center'] as List);
+      appState['currentPosition'] as List ??
+          appState['ShowcaseMap.center'] as List,
+    );
     final distanceInMeters = await Geolocator().distanceBetween(
-        currentPosition.latitude,
-        currentPosition.longitude,
-        location.latitude,
-        location.longitude);
+      currentPosition.latitude,
+      currentPosition.longitude,
+      location.latitude,
+      location.longitude,
+    );
     _value = _formatValue(distanceInMeters);
     notifyListeners();
   }
 
   String _formatValue(double distanceInMeters) {
-    return '${(distanceInMeters / 1000).toStringAsFixed(distanceInMeters < 10000 ? 1 : 0)} км';
+    return '${(distanceInMeters / 1000).toStringAsFixed(
+      distanceInMeters < 10000 ? 1 : 0,
+    )} км';
   }
 
   void updateCurrentPosition(LatLng location) async {

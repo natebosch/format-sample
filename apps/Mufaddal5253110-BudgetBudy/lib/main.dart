@@ -15,49 +15,50 @@ void main() async {
     DeviceOrientation.portraitUp,
   ]);
 
-  runApp(
-    MyApp(),
-  );
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-        create: (context) => Transactions(),
-        builder: (context, child) {
-          return MaterialApp(
-            debugShowCheckedModeBanner: false,
-            title: 'Money Tracker',
-            theme: ThemeData(
-              primaryColor: Colors.amber,
-              accentColor: Colors.amberAccent,
-              fontFamily: 'Quicksand',
-              textTheme: ThemeData.light().textTheme.copyWith(
-                    headline1: const TextStyle(
-                      fontFamily: 'OpenSans',
-                      fontSize: 18,
-                      color: Colors.black,
-                      fontWeight: FontWeight.bold,
-                    ),
-                    button: const TextStyle(
-                        color: Colors.black, fontWeight: FontWeight.bold),
-                  ),
-              appBarTheme: AppBarTheme(
-                textTheme: ThemeData.light().textTheme.copyWith(
-                      headline1: const TextStyle(
-                        fontFamily: 'OpenSans',
-                        fontSize: 24,
-                        color: Colors.black,
-                      ),
-                    ),
+      create: (context) => Transactions(),
+      builder: (context, child) {
+        return MaterialApp(
+          debugShowCheckedModeBanner: false,
+          title: 'Money Tracker',
+          theme: ThemeData(
+            primaryColor: Colors.amber,
+            accentColor: Colors.amberAccent,
+            fontFamily: 'Quicksand',
+            textTheme: ThemeData.light().textTheme.copyWith(
+              headline1: const TextStyle(
+                fontFamily: 'OpenSans',
+                fontSize: 18,
+                color: Colors.black,
+                fontWeight: FontWeight.bold,
+              ),
+              button: const TextStyle(
+                color: Colors.black,
+                fontWeight: FontWeight.bold,
               ),
             ),
-            routes: {
-              HomeScreen.routeName: (_) => HomeScreen(),
-              NewTransaction.routeName: (_) => NewTransaction(),
-            },
-          );
-        });
+            appBarTheme: AppBarTheme(
+              textTheme: ThemeData.light().textTheme.copyWith(
+                headline1: const TextStyle(
+                  fontFamily: 'OpenSans',
+                  fontSize: 24,
+                  color: Colors.black,
+                ),
+              ),
+            ),
+          ),
+          routes: {
+            HomeScreen.routeName: (_) => HomeScreen(),
+            NewTransaction.routeName: (_) => NewTransaction(),
+          },
+        );
+      },
+    );
   }
 }

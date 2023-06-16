@@ -107,18 +107,19 @@ class WaveStepInputFormItem extends StatefulWidget {
     if (controller != null) {
       int? defaultValue = int.tryParse(controller!.text);
       assert(
-          defaultValue == null ||
-              (defaultValue >= minLimit && defaultValue <= maxLimit),
-          'The text or value in the controller is not in the limits.');
+        defaultValue == null ||
+            (defaultValue >= minLimit && defaultValue <= maxLimit),
+        'The text or value in the controller is not in the limits.',
+      );
     }
     this.themeData ??= WaveFormItemConfig();
     this.themeData = WaveThemeConfigurator.instance
         .getConfig(configId: this.themeData!.configId)
         .formItemConfig
         .merge(this.themeData);
-    this.themeData = this
-        .themeData!
-        .merge(WaveFormItemConfig(backgroundColor: backgroundColor));
+    this.themeData = this.themeData!.merge(
+      WaveFormItemConfig(backgroundColor: backgroundColor),
+    );
   }
 
   @override
@@ -152,7 +153,11 @@ class WaveStepInputFormItemState extends State<WaveStepInputFormItem> {
   void _onControllerTextChangedHandleTicker() {
     if (_oldValue != _value) {
       WaveFormUtil.notifyValueChanged(
-          widget.onChanged, context, _oldValue, _value);
+        widget.onChanged,
+        context,
+        _oldValue,
+        _value,
+      );
       setState(() {});
       _oldValue = _value;
     }
@@ -167,28 +172,35 @@ class WaveStepInputFormItemState extends State<WaveStepInputFormItem> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           ConstrainedBox(
-            constraints: BoxConstraints(
-              maxHeight: 25,
-            ),
+            constraints: BoxConstraints(maxHeight: 25),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
                 Container(
-                  padding: WaveFormUtil.titleEdgeInsets(widget.prefixIconType,
-                      widget.isRequire, widget.themeData!),
+                  padding: WaveFormUtil.titleEdgeInsets(
+                    widget.prefixIconType,
+                    widget.isRequire,
+                    widget.themeData!,
+                  ),
                   child: Row(
                     children: <Widget>[
                       WaveFormUtil.buildPrefixIcon(
-                          widget.prefixIconType,
-                          widget.isEdit,
-                          context,
-                          widget.onAddTap,
-                          widget.onRemoveTap),
+                        widget.prefixIconType,
+                        widget.isEdit,
+                        context,
+                        widget.onAddTap,
+                        widget.onRemoveTap,
+                      ),
                       WaveFormUtil.buildRequireWidget(widget.isRequire),
                       WaveFormUtil.buildTitleWidget(
-                          widget.title, widget.themeData!),
+                        widget.title,
+                        widget.themeData!,
+                      ),
                       WaveFormUtil.buildTipLabelWidget(
-                          widget.tipLabel, widget.onTip, widget.themeData!),
+                        widget.tipLabel,
+                        widget.onTip,
+                        widget.themeData!,
+                      ),
                     ],
                   ),
                 ),
@@ -202,9 +214,7 @@ class WaveStepInputFormItemState extends State<WaveStepInputFormItem> {
                         }
                         _checkReachMinLevel();
                       },
-                      child: Container(
-                        child: _getMinusIcon(),
-                      ),
+                      child: Container(child: _getMinusIcon()),
                     ),
                     _buildValueWidget(),
                     GestureDetector(
@@ -214,9 +224,7 @@ class WaveStepInputFormItemState extends State<WaveStepInputFormItem> {
                         }
                         _checkReachMaxLevel();
                       },
-                      child: Container(
-                        child: _getAddIcon(),
-                      ),
+                      child: Container(child: _getAddIcon()),
                     ),
                   ],
                 ),
@@ -227,7 +235,7 @@ class WaveStepInputFormItemState extends State<WaveStepInputFormItem> {
           // 副标题
           WaveFormUtil.buildSubTitleWidget(widget.subTitle, widget.themeData!),
 
-          WaveFormUtil.buildErrorWidget(widget.error, widget.themeData!)
+          WaveFormUtil.buildErrorWidget(widget.error, widget.themeData!),
         ],
       ),
     );
@@ -285,18 +293,15 @@ class WaveStepInputFormItemState extends State<WaveStepInputFormItem> {
           inputFormatters: [
             FilteringTextInputFormatter.digitsOnly,
             RangeLimitedTextInputFormatter(
-                minValue: widget.minLimit, maxValue: widget.maxLimit)
+              minValue: widget.minLimit,
+              maxValue: widget.maxLimit,
+            ),
           ],
-          style: TextStyle(
-            color: Color(0xFF222222),
-            fontSize: WaveFonts.f16,
-          ),
+          style: TextStyle(color: Color(0xFF222222), fontSize: WaveFonts.f16),
           decoration: InputDecoration(
             hintText: '0',
-            hintStyle: TextStyle(
-              color: Color(0xFFCCCCCC),
-              fontSize: WaveFonts.f16,
-            ),
+            hintStyle:
+                TextStyle(color: Color(0xFFCCCCCC), fontSize: WaveFonts.f16),
             border: InputBorder.none,
             contentPadding: EdgeInsets.all(0),
             isDense: true,
@@ -309,10 +314,7 @@ class WaveStepInputFormItemState extends State<WaveStepInputFormItem> {
         width: 50,
         child: Text(
           "$_value",
-          style: TextStyle(
-            color: Color(0xFF222222),
-            fontSize: WaveFonts.f16,
-          ),
+          style: TextStyle(color: Color(0xFF222222), fontSize: WaveFonts.f16),
         ),
       );
     }
@@ -337,9 +339,11 @@ class WaveStepInputFormItemState extends State<WaveStepInputFormItem> {
   set _value(int value) {
     // 如果是通过代码设置TextField的值，就将光标移动到最后
     _textEditingController.value = TextEditingValue(
-        text: value.toString(),
-        selection: TextSelection.fromPosition(
-            TextPosition(offset: value.toString().length)));
+      text: value.toString(),
+      selection: TextSelection.fromPosition(
+        TextPosition(offset: value.toString().length),
+      ),
+    );
   }
 }
 
@@ -351,11 +355,15 @@ class RangeLimitedTextInputFormatter extends TextInputFormatter {
 
   @override
   TextEditingValue formatEditUpdate(
-      TextEditingValue oldValue, TextEditingValue newValue) {
+    TextEditingValue oldValue,
+    TextEditingValue newValue,
+  ) {
     int? newNum = int.tryParse(newValue.text);
     if (newNum == null && minValue == 0) {
       return const TextEditingValue(
-          text: '', selection: TextSelection.collapsed(offset: 0));
+        text: '',
+        selection: TextSelection.collapsed(offset: 0),
+      );
     } else if (newNum != null && minValue <= newNum && newNum <= maxValue) {
       return newValue;
     } else {

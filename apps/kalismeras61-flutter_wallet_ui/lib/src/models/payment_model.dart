@@ -7,8 +7,15 @@ class PaymentModel {
   double _amount;
   int _paymentType;
 
-  PaymentModel(this._icon, this._color, this._name, this._date, this._hour,
-      this._amount, this._paymentType);
+  PaymentModel(
+    this._icon,
+    this._color,
+    this._name,
+    this._date,
+    this._hour,
+    this._amount,
+    this._paymentType,
+  );
 
   String get name => _name;
 

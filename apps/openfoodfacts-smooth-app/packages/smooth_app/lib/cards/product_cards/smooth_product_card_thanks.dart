@@ -18,9 +18,7 @@ class SmoothProductCardThanks extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           Text(AppLocalizations.of(context)!.added_product_thanks),
-          const SizedBox(
-            height: 12.0,
-          ),
+          const SizedBox(height: 12.0),
           Row(
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.center,

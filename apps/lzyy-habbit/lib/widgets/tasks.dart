@@ -113,26 +113,28 @@ class _TaskItemState extends State<_TaskItem>
         }
       },
       child: Container(
-          margin: EdgeInsets.all(padding / 2 * widthRatio),
-          decoration: BoxDecoration(
-            color: circleColor,
-            shape: BoxShape.circle,
-            border: Border.all(
-                color: borderColor,
-                width: max((itemWidth ~/ 25).toDouble(), 2.0)),
+        margin: EdgeInsets.all(padding / 2 * widthRatio),
+        decoration: BoxDecoration(
+          color: circleColor,
+          shape: BoxShape.circle,
+          border: Border.all(
+            color: borderColor,
+            width: max((itemWidth ~/ 25).toDouble(), 2.0),
           ),
-          child: Center(
-            child: () {
-              if (icon == null) {
-                return Text(
-                  text,
-                  style: TextStyle(color: textColor, fontSize: itemWidth / 2.5),
-                );
-              } else {
-                return icon;
-              }
-            }(),
-          )),
+        ),
+        child: Center(
+          child: () {
+            if (icon == null) {
+              return Text(
+                text,
+                style: TextStyle(color: textColor, fontSize: itemWidth / 2.5),
+              );
+            } else {
+              return icon;
+            }
+          }(),
+        ),
+      ),
     );
   }
 
@@ -151,59 +153,57 @@ class Tasks extends StatelessWidget {
   Widget build(BuildContext context) {
     final bloc = BlocProvider.of<HabitsBloc>(context).tasksBloc;
     return StreamBuilder<BuiltList<DailyTask>>(
-        initialData: bloc.tasks.value,
-        stream: bloc.tasks.stream,
-        builder: (context, snapshot) {
-          final tasks = snapshot.data;
-          if (tasks == null) {
-            return Container();
-          }
+      initialData: bloc.tasks.value,
+      stream: bloc.tasks.stream,
+      builder: (context, snapshot) {
+        final tasks = snapshot.data;
+        if (tasks == null) {
+          return Container();
+        }
 
-          var columnCount = threeTasksCount;
-          switch (tasks.length) {
-            case weekTasksCount:
-              columnCount = sqrt(weekTasksCount).toInt();
-              break;
-            case monthTasksCount:
-              columnCount = sqrt(monthTasksCount).toInt();
-              break;
-            case quarterTasksCount:
-              columnCount = sqrt(quarterTasksCount).toInt();
-          }
-          final screenWidth = MediaQuery.of(context).size.width;
-          final height = screenWidth;
-          final itemWidth =
-              ((height - padding * 2) - (columnCount - 1) * padding) /
-                  columnCount;
-          var extraPaddingTop = 0.0;
-          if (tasks.length == threeTasksCount) {
-            extraPaddingTop = (height - padding * 2 - itemWidth) / 2;
-          }
+        var columnCount = threeTasksCount;
+        switch (tasks.length) {
+          case weekTasksCount:
+            columnCount = sqrt(weekTasksCount).toInt();
+            break;
+          case monthTasksCount:
+            columnCount = sqrt(monthTasksCount).toInt();
+            break;
+          case quarterTasksCount:
+            columnCount = sqrt(quarterTasksCount).toInt();
+        }
+        final screenWidth = MediaQuery.of(context).size.width;
+        final height = screenWidth;
+        final itemWidth =
+            ((height - padding * 2) - (columnCount - 1) * padding) /
+                columnCount;
+        var extraPaddingTop = 0.0;
+        if (tasks.length == threeTasksCount) {
+          extraPaddingTop = (height - padding * 2 - itemWidth) / 2;
+        }
 
-          return Container(
-              height: height,
-              width: screenWidth,
-              padding: EdgeInsets.only(
-                  left: padding / 2,
-                  top: padding / 2 + extraPaddingTop,
-                  right: padding / 2,
-                  bottom: 0),
-              decoration: BoxDecoration(
-                color: Theme.of(context).backgroundColor,
-              ),
-              child: GridView.builder(
-                physics: NeverScrollableScrollPhysics(),
-                itemCount: tasks.length,
-                itemBuilder: (context, index) {
-                  return _TaskItem(
-                    itemWidth,
-                    tasks[index],
-                  );
-                },
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: columnCount,
-                ),
-              ));
-        });
+        return Container(
+          height: height,
+          width: screenWidth,
+          padding: EdgeInsets.only(
+            left: padding / 2,
+            top: padding / 2 + extraPaddingTop,
+            right: padding / 2,
+            bottom: 0,
+          ),
+          decoration: BoxDecoration(color: Theme.of(context).backgroundColor),
+          child: GridView.builder(
+            physics: NeverScrollableScrollPhysics(),
+            itemCount: tasks.length,
+            itemBuilder: (context, index) {
+              return _TaskItem(itemWidth, tasks[index]);
+            },
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: columnCount,
+            ),
+          ),
+        );
+      },
+    );
   }
 }

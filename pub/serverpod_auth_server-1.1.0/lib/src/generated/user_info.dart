@@ -32,20 +32,26 @@ class UserInfo extends _i1.TableRow {
   ) {
     return UserInfo(
       id: serializationManager.deserialize<int?>(jsonSerialization['id']),
-      userIdentifier: serializationManager
-          .deserialize<String>(jsonSerialization['userIdentifier']),
-      userName: serializationManager
-          .deserialize<String>(jsonSerialization['userName']),
-      fullName: serializationManager
-          .deserialize<String?>(jsonSerialization['fullName']),
+      userIdentifier: serializationManager.deserialize<String>(
+        jsonSerialization['userIdentifier'],
+      ),
+      userName: serializationManager.deserialize<String>(
+        jsonSerialization['userName'],
+      ),
+      fullName: serializationManager.deserialize<String?>(
+        jsonSerialization['fullName'],
+      ),
       email:
           serializationManager.deserialize<String?>(jsonSerialization['email']),
-      created: serializationManager
-          .deserialize<DateTime>(jsonSerialization['created']),
-      imageUrl: serializationManager
-          .deserialize<String?>(jsonSerialization['imageUrl']),
-      scopeNames: serializationManager
-          .deserialize<List<String>>(jsonSerialization['scopeNames']),
+      created: serializationManager.deserialize<DateTime>(
+        jsonSerialization['created'],
+      ),
+      imageUrl: serializationManager.deserialize<String?>(
+        jsonSerialization['imageUrl'],
+      ),
+      scopeNames: serializationManager.deserialize<List<String>>(
+        jsonSerialization['scopeNames'],
+      ),
       blocked:
           serializationManager.deserialize<bool>(jsonSerialization['blocked']),
     );
@@ -126,10 +132,7 @@ class UserInfo extends _i1.TableRow {
   }
 
   @override
-  void setColumn(
-    String columnName,
-    value,
-  ) {
+  void setColumn(String columnName, value) {
     switch (columnName) {
       case 'id':
         id = value;
@@ -205,10 +208,7 @@ class UserInfo extends _i1.TableRow {
     );
   }
 
-  static Future<UserInfo?> findById(
-    _i1.Session session,
-    int id,
-  ) async {
+  static Future<UserInfo?> findById(_i1.Session session, int id) async {
     return session.db.findById<UserInfo>(id);
   }
 
@@ -228,10 +228,7 @@ class UserInfo extends _i1.TableRow {
     UserInfo row, {
     _i1.Transaction? transaction,
   }) async {
-    return session.db.deleteRow(
-      row,
-      transaction: transaction,
-    );
+    return session.db.deleteRow(row, transaction: transaction);
   }
 
   static Future<bool> update(
@@ -239,10 +236,7 @@ class UserInfo extends _i1.TableRow {
     UserInfo row, {
     _i1.Transaction? transaction,
   }) async {
-    return session.db.update(
-      row,
-      transaction: transaction,
-    );
+    return session.db.update(row, transaction: transaction);
   }
 
   static Future<void> insert(
@@ -250,10 +244,7 @@ class UserInfo extends _i1.TableRow {
     UserInfo row, {
     _i1.Transaction? transaction,
   }) async {
-    return session.db.insert(
-      row,
-      transaction: transaction,
-    );
+    return session.db.insert(row, transaction: transaction);
   }
 
   static Future<int> count(
@@ -309,16 +300,16 @@ class UserInfoTable extends _i1.Table {
 
   @override
   List<_i1.Column> get columns => [
-        id,
-        userIdentifier,
-        userName,
-        fullName,
-        email,
-        created,
-        imageUrl,
-        scopeNames,
-        blocked,
-      ];
+    id,
+    userIdentifier,
+    userName,
+    fullName,
+    email,
+    created,
+    imageUrl,
+    scopeNames,
+    blocked,
+  ];
 }
 
 @Deprecated('Use UserInfoTable.t instead.')

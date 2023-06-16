@@ -11,7 +11,8 @@ part of 'accounts_actions_cubit.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods',
+);
 
 /// @nodoc
 class _$AccountsActionsStateTearOff {
@@ -30,9 +31,7 @@ class _$AccountsActionsStateTearOff {
   }
 
   AccountsActionsStateDeleteFailed deleteFailed({required StorageError error}) {
-    return AccountsActionsStateDeleteFailed(
-      error: error,
-    );
+    return AccountsActionsStateDeleteFailed(error: error);
   }
 }
 
@@ -47,16 +46,14 @@ mixin _$AccountsActionsState {
     required TResult Function() deleting,
     required TResult Function() deleteSuccess,
     required TResult Function(StorageError error) deleteFailed,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? deleting,
     TResult Function()? deleteSuccess,
     TResult Function(StorageError error)? deleteFailed,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
@@ -64,26 +61,23 @@ mixin _$AccountsActionsState {
     TResult Function()? deleteSuccess,
     TResult Function(StorageError error)? deleteFailed,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(AccountsActionsStateInitial value) initial,
     required TResult Function(AccountsActionsStateDeleting value) deleting,
     required TResult Function(AccountsActionsStateDeleteSuccess value)
-        deleteSuccess,
+    deleteSuccess,
     required TResult Function(AccountsActionsStateDeleteFailed value)
-        deleteFailed,
-  }) =>
-      throw _privateConstructorUsedError;
+    deleteFailed,
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(AccountsActionsStateInitial value)? initial,
     TResult Function(AccountsActionsStateDeleting value)? deleting,
     TResult Function(AccountsActionsStateDeleteSuccess value)? deleteSuccess,
     TResult Function(AccountsActionsStateDeleteFailed value)? deleteFailed,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(AccountsActionsStateInitial value)? initial,
@@ -91,15 +85,15 @@ mixin _$AccountsActionsState {
     TResult Function(AccountsActionsStateDeleteSuccess value)? deleteSuccess,
     TResult Function(AccountsActionsStateDeleteFailed value)? deleteFailed,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $AccountsActionsStateCopyWith<$Res> {
-  factory $AccountsActionsStateCopyWith(AccountsActionsState value,
-          $Res Function(AccountsActionsState) then) =
-      _$AccountsActionsStateCopyWithImpl<$Res>;
+  factory $AccountsActionsStateCopyWith(
+    AccountsActionsState value,
+    $Res Function(AccountsActionsState) then,
+  ) = _$AccountsActionsStateCopyWithImpl<$Res>;
 }
 
 /// @nodoc
@@ -115,18 +109,19 @@ class _$AccountsActionsStateCopyWithImpl<$Res>
 /// @nodoc
 abstract class $AccountsActionsStateInitialCopyWith<$Res> {
   factory $AccountsActionsStateInitialCopyWith(
-          AccountsActionsStateInitial value,
-          $Res Function(AccountsActionsStateInitial) then) =
-      _$AccountsActionsStateInitialCopyWithImpl<$Res>;
+    AccountsActionsStateInitial value,
+    $Res Function(AccountsActionsStateInitial) then,
+  ) = _$AccountsActionsStateInitialCopyWithImpl<$Res>;
 }
 
 /// @nodoc
 class _$AccountsActionsStateInitialCopyWithImpl<$Res>
     extends _$AccountsActionsStateCopyWithImpl<$Res>
     implements $AccountsActionsStateInitialCopyWith<$Res> {
-  _$AccountsActionsStateInitialCopyWithImpl(AccountsActionsStateInitial _value,
-      $Res Function(AccountsActionsStateInitial) _then)
-      : super(_value, (v) => _then(v as AccountsActionsStateInitial));
+  _$AccountsActionsStateInitialCopyWithImpl(
+    AccountsActionsStateInitial _value,
+    $Res Function(AccountsActionsStateInitial) _then,
+  ) : super(_value, (v) => _then(v as AccountsActionsStateInitial));
 
   @override
   AccountsActionsStateInitial get _value =>
@@ -203,9 +198,9 @@ class _$AccountsActionsStateInitial
     required TResult Function(AccountsActionsStateInitial value) initial,
     required TResult Function(AccountsActionsStateDeleting value) deleting,
     required TResult Function(AccountsActionsStateDeleteSuccess value)
-        deleteSuccess,
+    deleteSuccess,
     required TResult Function(AccountsActionsStateDeleteFailed value)
-        deleteFailed,
+    deleteFailed,
   }) {
     return initial(this);
   }
@@ -244,9 +239,9 @@ abstract class AccountsActionsStateInitial implements AccountsActionsState {
 /// @nodoc
 abstract class $AccountsActionsStateDeletingCopyWith<$Res> {
   factory $AccountsActionsStateDeletingCopyWith(
-          AccountsActionsStateDeleting value,
-          $Res Function(AccountsActionsStateDeleting) then) =
-      _$AccountsActionsStateDeletingCopyWithImpl<$Res>;
+    AccountsActionsStateDeleting value,
+    $Res Function(AccountsActionsStateDeleting) then,
+  ) = _$AccountsActionsStateDeletingCopyWithImpl<$Res>;
 }
 
 /// @nodoc
@@ -254,9 +249,9 @@ class _$AccountsActionsStateDeletingCopyWithImpl<$Res>
     extends _$AccountsActionsStateCopyWithImpl<$Res>
     implements $AccountsActionsStateDeletingCopyWith<$Res> {
   _$AccountsActionsStateDeletingCopyWithImpl(
-      AccountsActionsStateDeleting _value,
-      $Res Function(AccountsActionsStateDeleting) _then)
-      : super(_value, (v) => _then(v as AccountsActionsStateDeleting));
+    AccountsActionsStateDeleting _value,
+    $Res Function(AccountsActionsStateDeleting) _then,
+  ) : super(_value, (v) => _then(v as AccountsActionsStateDeleting));
 
   @override
   AccountsActionsStateDeleting get _value =>
@@ -333,9 +328,9 @@ class _$AccountsActionsStateDeleting
     required TResult Function(AccountsActionsStateInitial value) initial,
     required TResult Function(AccountsActionsStateDeleting value) deleting,
     required TResult Function(AccountsActionsStateDeleteSuccess value)
-        deleteSuccess,
+    deleteSuccess,
     required TResult Function(AccountsActionsStateDeleteFailed value)
-        deleteFailed,
+    deleteFailed,
   }) {
     return deleting(this);
   }
@@ -374,9 +369,9 @@ abstract class AccountsActionsStateDeleting implements AccountsActionsState {
 /// @nodoc
 abstract class $AccountsActionsStateDeleteSuccessCopyWith<$Res> {
   factory $AccountsActionsStateDeleteSuccessCopyWith(
-          AccountsActionsStateDeleteSuccess value,
-          $Res Function(AccountsActionsStateDeleteSuccess) then) =
-      _$AccountsActionsStateDeleteSuccessCopyWithImpl<$Res>;
+    AccountsActionsStateDeleteSuccess value,
+    $Res Function(AccountsActionsStateDeleteSuccess) then,
+  ) = _$AccountsActionsStateDeleteSuccessCopyWithImpl<$Res>;
 }
 
 /// @nodoc
@@ -384,9 +379,9 @@ class _$AccountsActionsStateDeleteSuccessCopyWithImpl<$Res>
     extends _$AccountsActionsStateCopyWithImpl<$Res>
     implements $AccountsActionsStateDeleteSuccessCopyWith<$Res> {
   _$AccountsActionsStateDeleteSuccessCopyWithImpl(
-      AccountsActionsStateDeleteSuccess _value,
-      $Res Function(AccountsActionsStateDeleteSuccess) _then)
-      : super(_value, (v) => _then(v as AccountsActionsStateDeleteSuccess));
+    AccountsActionsStateDeleteSuccess _value,
+    $Res Function(AccountsActionsStateDeleteSuccess) _then,
+  ) : super(_value, (v) => _then(v as AccountsActionsStateDeleteSuccess));
 
   @override
   AccountsActionsStateDeleteSuccess get _value =>
@@ -464,9 +459,9 @@ class _$AccountsActionsStateDeleteSuccess
     required TResult Function(AccountsActionsStateInitial value) initial,
     required TResult Function(AccountsActionsStateDeleting value) deleting,
     required TResult Function(AccountsActionsStateDeleteSuccess value)
-        deleteSuccess,
+    deleteSuccess,
     required TResult Function(AccountsActionsStateDeleteFailed value)
-        deleteFailed,
+    deleteFailed,
   }) {
     return deleteSuccess(this);
   }
@@ -507,9 +502,9 @@ abstract class AccountsActionsStateDeleteSuccess
 /// @nodoc
 abstract class $AccountsActionsStateDeleteFailedCopyWith<$Res> {
   factory $AccountsActionsStateDeleteFailedCopyWith(
-          AccountsActionsStateDeleteFailed value,
-          $Res Function(AccountsActionsStateDeleteFailed) then) =
-      _$AccountsActionsStateDeleteFailedCopyWithImpl<$Res>;
+    AccountsActionsStateDeleteFailed value,
+    $Res Function(AccountsActionsStateDeleteFailed) then,
+  ) = _$AccountsActionsStateDeleteFailedCopyWithImpl<$Res>;
   $Res call({StorageError error});
 
   $StorageErrorCopyWith<$Res> get error;
@@ -520,23 +515,21 @@ class _$AccountsActionsStateDeleteFailedCopyWithImpl<$Res>
     extends _$AccountsActionsStateCopyWithImpl<$Res>
     implements $AccountsActionsStateDeleteFailedCopyWith<$Res> {
   _$AccountsActionsStateDeleteFailedCopyWithImpl(
-      AccountsActionsStateDeleteFailed _value,
-      $Res Function(AccountsActionsStateDeleteFailed) _then)
-      : super(_value, (v) => _then(v as AccountsActionsStateDeleteFailed));
+    AccountsActionsStateDeleteFailed _value,
+    $Res Function(AccountsActionsStateDeleteFailed) _then,
+  ) : super(_value, (v) => _then(v as AccountsActionsStateDeleteFailed));
 
   @override
   AccountsActionsStateDeleteFailed get _value =>
       super._value as AccountsActionsStateDeleteFailed;
 
   @override
-  $Res call({
-    Object? error = freezed,
-  }) {
+  $Res call({Object? error = freezed}) {
     return _then(AccountsActionsStateDeleteFailed(
       error: error == freezed
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
-              as StorageError,
+                as StorageError,
     ));
   }
 
@@ -586,8 +579,9 @@ class _$AccountsActionsStateDeleteFailed
   @JsonKey(ignore: true)
   @override
   $AccountsActionsStateDeleteFailedCopyWith<AccountsActionsStateDeleteFailed>
-      get copyWith => _$AccountsActionsStateDeleteFailedCopyWithImpl<
-          AccountsActionsStateDeleteFailed>(this, _$identity);
+  get copyWith => _$AccountsActionsStateDeleteFailedCopyWithImpl<
+    AccountsActionsStateDeleteFailed
+  >(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -632,9 +626,9 @@ class _$AccountsActionsStateDeleteFailed
     required TResult Function(AccountsActionsStateInitial value) initial,
     required TResult Function(AccountsActionsStateDeleting value) deleting,
     required TResult Function(AccountsActionsStateDeleteSuccess value)
-        deleteSuccess,
+    deleteSuccess,
     required TResult Function(AccountsActionsStateDeleteFailed value)
-        deleteFailed,
+    deleteFailed,
   }) {
     return deleteFailed(this);
   }
@@ -668,11 +662,12 @@ class _$AccountsActionsStateDeleteFailed
 
 abstract class AccountsActionsStateDeleteFailed
     implements AccountsActionsState {
-  const factory AccountsActionsStateDeleteFailed(
-      {required StorageError error}) = _$AccountsActionsStateDeleteFailed;
+  const factory AccountsActionsStateDeleteFailed({
+    required StorageError error,
+  }) = _$AccountsActionsStateDeleteFailed;
 
   StorageError get error => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $AccountsActionsStateDeleteFailedCopyWith<AccountsActionsStateDeleteFailed>
-      get copyWith => throw _privateConstructorUsedError;
+  get copyWith => throw _privateConstructorUsedError;
 }

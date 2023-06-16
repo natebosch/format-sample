@@ -32,19 +32,19 @@ class ListKeyStream<T> extends KeyStreamIterableBase<T, List<T>>
     bool shouldGetKeys = true,
     String Function(AtKey key, AtValue value)? generateRef,
     FutureOr<void> Function(Object exception, [StackTrace? stackTrace])?
-        onError,
+    onError,
     AtClientManager? atClientManager,
   }) : super(
-          convert: convert,
-          regex: regex,
-          shouldGetKeys: shouldGetKeys,
-          sharedBy: sharedBy,
-          sharedWith: sharedWith,
-          generateRef: generateRef,
-          castTo: (values) => castTo<T>(values),
-          onError: onError,
-          atClientManager: atClientManager,
-        );
+         convert: convert,
+         regex: regex,
+         shouldGetKeys: shouldGetKeys,
+         sharedBy: sharedBy,
+         sharedWith: sharedWith,
+         generateRef: generateRef,
+         castTo: (values) => castTo<T>(values),
+         onError: onError,
+         atClientManager: atClientManager,
+       );
 }
 
 @visibleForTesting

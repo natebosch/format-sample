@@ -15,9 +15,11 @@ class LaunchesList {
     }
 
     return new LaunchesList(
-        launches: new List<LaunchList>.from(
-            json['results'].map((launch) => new LaunchList.fromJson(launch))),
-        nextOffset: offset,
-        count: json['count']);
+      launches: new List<LaunchList>.from(
+        json['results'].map((launch) => new LaunchList.fromJson(launch)),
+      ),
+      nextOffset: offset,
+      count: json['count'],
+    );
   }
 }

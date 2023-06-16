@@ -28,10 +28,7 @@ class NotificationCrashHandler implements CrashHandler {
     final notifyManager = getIt<NotificationManager>();
 
     await notifyManager.crashReportNotify(
-      CrashInfo(
-        error: error,
-        stackTrace: stackTrace,
-      ),
+      CrashInfo(error: error, stackTrace: stackTrace),
     );
   }
 }

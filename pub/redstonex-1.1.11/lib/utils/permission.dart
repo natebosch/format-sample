@@ -21,10 +21,7 @@ class XPermission {
       // 如果权限被拒绝，可以尝试再次请求权限
       onDenied?.call();
       if (deniedAutoRequest) {
-        requestPermission(
-          permission,
-          onGranted: onGranted,
-        );
+        requestPermission(permission, onGranted: onGranted);
       }
     } else if (status.isGranted) {
       // 已经授予了权限

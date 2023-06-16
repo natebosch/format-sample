@@ -23,9 +23,14 @@ class MsgpackCodec extends StoreCodec {
   }
 
   @override
-  BytesReader decoder(Uint8List bytes,
-      {dynamic Function(Map<String, dynamic>)? fromEncodable}) {
-    return MsgPackReader(bytes,
-        fromEncodable: fromEncodable, extensions: _extensions);
+  BytesReader decoder(
+    Uint8List bytes, {
+    dynamic Function(Map<String, dynamic>)? fromEncodable,
+  }) {
+    return MsgPackReader(
+      bytes,
+      fromEncodable: fromEncodable,
+      extensions: _extensions,
+    );
   }
 }

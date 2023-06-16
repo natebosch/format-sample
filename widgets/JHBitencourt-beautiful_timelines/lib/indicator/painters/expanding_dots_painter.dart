@@ -31,8 +31,11 @@ class ExpandingDotsPainter extends IndicatorPainter {
         height = activeDotHeight - expansion;
       } else if (i - 1 == current) {
         height = effect.dotHeight + expansion;
-        color =
-            Color.lerp(effect.activeDotColor, effect.dotColor, 1.0 - dotOffset);
+        color = Color.lerp(
+          effect.activeDotColor,
+          effect.dotColor,
+          1.0 - dotOffset,
+        );
       }
       final xPos = size.width / 2;
       final rRect = RRect.fromLTRBR(

@@ -130,8 +130,5 @@ abstract class IFPCTheme {
 
   IFPCTheme copyWith();
 
-  IFPCTheme lerp({
-    required IFPCTheme other,
-    required double t,
-  });
+  IFPCTheme lerp({required IFPCTheme other, required double t});
 }

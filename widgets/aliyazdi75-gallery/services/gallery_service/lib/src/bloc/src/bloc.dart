@@ -28,7 +28,8 @@ class GalleryBloc extends Bloc<GalleryEvent, GalleryState> {
   }
 
   Stream<GalleryState> _mapGetGalleryRequestedToState(
-      GetGalleryRequested event) async* {
+    GetGalleryRequested event,
+  ) async* {
     if (galleryRepository.gallery != null) {
       yield state.copyWith(
         status: GalleryStatus.success,
@@ -40,10 +41,7 @@ class GalleryBloc extends Bloc<GalleryEvent, GalleryState> {
     yield state.copyWith(status: GalleryStatus.loading);
     try {
       final gallery = await galleryRepository.getGallery(path: event.path);
-      yield state.copyWith(
-        status: GalleryStatus.success,
-        gallery: gallery,
-      );
+      yield state.copyWith(status: GalleryStatus.success, gallery: gallery);
     } on NotFoundException {
       print('kir to oon urlet');
       yield state.copyWith(status: GalleryStatus.notFound);
@@ -56,7 +54,8 @@ class GalleryBloc extends Bloc<GalleryEvent, GalleryState> {
   }
 
   Stream<GalleryState> _mapGalleryPushRequestedToState(
-      GalleryPushRequested event) async* {
+    GalleryPushRequested event,
+  ) async* {
     yield state.copyWith(status: GalleryStatus.loading);
     try {
       final gallery = await galleryRepository.getGallery(path: event.path);

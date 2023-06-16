@@ -19,7 +19,8 @@ import 'package:over_react/over_react.dart';
 part 'test_b2.over_react.g.dart';
 
 @Factory()
-UiFactory<TestB2Props> TestB2 = _$TestB2; // ignore: undefined_identifier, invalid_assignment
+UiFactory<TestB2Props> TestB2 =
+    _$TestB2; // ignore: undefined_identifier, invalid_assignment
 
 @Props()
 class _$TestB2Props extends UiProps {}

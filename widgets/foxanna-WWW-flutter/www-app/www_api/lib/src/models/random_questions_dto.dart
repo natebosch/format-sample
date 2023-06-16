@@ -10,9 +10,10 @@ class RandomQuestionsDto with _$RandomQuestionsDto {
   const factory RandomQuestionsDto({
     @JsonKey(name: 'question')
     @QuestionsListConverter()
-        List<QuestionDto>? search,
+    List<QuestionDto>? search,
   }) = _RandomQuestionsDto;
 
-  factory RandomQuestionsDto.fromJson(Map<String, dynamic> json) =>
-      _$RandomQuestionsDtoFromJson(json);
+  factory RandomQuestionsDto.fromJson(
+    Map<String, dynamic> json,
+  ) => _$RandomQuestionsDtoFromJson(json);
 }

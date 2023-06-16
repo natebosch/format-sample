@@ -24,10 +24,7 @@ import 'package:invoiceninja_flutter/utils/completers.dart';
 import 'package:invoiceninja_flutter/utils/localization.dart';
 
 class QuoteViewScreen extends StatelessWidget {
-  const QuoteViewScreen({
-    Key key,
-    this.isFilter = false,
-  }) : super(key: key);
+  const QuoteViewScreen({Key key, this.isFilter = false}) : super(key: key);
   final bool isFilter;
   static const String route = '/quote/view';
 
@@ -67,21 +64,21 @@ class QuoteViewVM extends AbstractInvoiceViewVM {
     Function(BuildContext, DocumentEntity) onViewExpense,
     Function(BuildContext, InvoiceEntity, [String]) onViewPdf,
   }) : super(
-          state: state,
-          company: company,
-          invoice: invoice,
-          client: client,
-          isSaving: isSaving,
-          isDirty: isDirty,
-          onActionSelected: onEntityAction,
-          onEditPressed: onEditPressed,
-          onPaymentsPressed: onPaymentsPressed,
-          onRefreshed: onRefreshed,
-          onUploadDocument: onUploadDocument,
-          onDeleteDocument: onDeleteDocument,
-          onViewExpense: onViewExpense,
-          onViewPdf: onViewPdf,
-        );
+         state: state,
+         company: company,
+         invoice: invoice,
+         client: client,
+         isSaving: isSaving,
+         isDirty: isDirty,
+         onActionSelected: onEntityAction,
+         onEditPressed: onEditPressed,
+         onPaymentsPressed: onPaymentsPressed,
+         onRefreshed: onRefreshed,
+         onUploadDocument: onUploadDocument,
+         onDeleteDocument: onDeleteDocument,
+         onViewExpense: onViewExpense,
+         onViewPdf: onViewPdf,
+       );
 
   factory QuoteViewVM.fromStore(Store<AppState> store) {
     final state = store.state;
@@ -92,7 +89,9 @@ class QuoteViewVM extends AbstractInvoiceViewVM {
 
     Future<Null> _handleRefresh(BuildContext context) {
       final completer = snackBarCompleter<Null>(
-          context, AppLocalization.of(context).refreshComplete);
+        context,
+        AppLocalization.of(context).refreshComplete,
+      );
       store.dispatch(LoadQuote(completer: completer, quoteId: quote.id));
       return completer.future;
     }
@@ -106,35 +105,51 @@ class QuoteViewVM extends AbstractInvoiceViewVM {
       client: client,
       onEditPressed: (BuildContext context, [int index]) {
         editEntity(
-            context: context,
-            entity: quote,
-            subIndex: index,
-            completer: snackBarCompleter<ClientEntity>(
-                context, AppLocalization.of(context).updatedQuote));
+          context: context,
+          entity: quote,
+          subIndex: index,
+          completer: snackBarCompleter<ClientEntity>(
+            context,
+            AppLocalization.of(context).updatedQuote,
+          ),
+        );
       },
       onRefreshed: (context) => _handleRefresh(context),
-      onEntityAction: (BuildContext context, EntityAction action) =>
-          handleEntitiesActions([quote], action, autoPop: true),
+      onEntityAction: (
+        BuildContext context,
+        EntityAction action,
+      ) => handleEntitiesActions([quote], action, autoPop: true),
       onUploadDocument: (BuildContext context, MultipartFile multipartFile) {
         final Completer<DocumentEntity> completer = Completer<DocumentEntity>();
         store.dispatch(SaveQuoteDocumentRequest(
-            multipartFile: multipartFile, quote: quote, completer: completer));
+          multipartFile: multipartFile,
+          quote: quote,
+          completer: completer,
+        ));
         completer.future.then((client) {
           showToast(AppLocalization.of(context).uploadedDocument);
         }).catchError((Object error) {
           showDialog<ErrorDialog>(
-              context: context,
-              builder: (BuildContext context) {
-                return ErrorDialog(error);
-              });
+            context: context,
+            builder: (BuildContext context) {
+              return ErrorDialog(error);
+            },
+          );
         });
       },
-      onDeleteDocument: (BuildContext context, DocumentEntity document,
-          String password, String idToken) {
+      onDeleteDocument: (
+        BuildContext context,
+        DocumentEntity document,
+        String password,
+        String idToken,
+      ) {
         final completer = snackBarCompleter<Null>(
-            context, AppLocalization.of(context).deletedDocument);
+          context,
+          AppLocalization.of(context).deletedDocument,
+        );
         completer.future.then<Null>(
-            (value) => store.dispatch(LoadQuote(quoteId: quote.id)));
+          (value) => store.dispatch(LoadQuote(quoteId: quote.id)),
+        );
         store.dispatch(DeleteDocumentRequest(
           completer: completer,
           documentIds: [document.id],
@@ -143,8 +158,9 @@ class QuoteViewVM extends AbstractInvoiceViewVM {
         ));
       },
       onViewPdf: (context, quote, [activityId]) {
-        store.dispatch(ShowPdfQuote(
-            context: context, quote: quote, activityId: activityId));
+        store.dispatch(
+          ShowPdfQuote(context: context, quote: quote, activityId: activityId),
+        );
       },
     );
   }

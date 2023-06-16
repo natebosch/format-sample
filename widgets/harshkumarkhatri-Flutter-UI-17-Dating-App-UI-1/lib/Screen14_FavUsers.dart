@@ -49,100 +49,102 @@ class _Screen14State extends State<Screen14> {
       body: Padding(
         padding: const EdgeInsets.only(left: 15, top: 20),
         child: Container(
-            child: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(right: 15),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    "People Near You",
-                    style: TextStyle(
-                      color: Colors.grey,
-                      fontSize: 20,
-                      fontWeight: FontWeight.w400,
-                    ),
-                  ),
-                  Text(
-                    "View More",
-                    style: TextStyle(
-                      color: Colors.grey,
-                      fontSize: 16,
-                      fontWeight: FontWeight.w300,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            SizedBox(height: 20),
-            Container(
-              height: 120,
-              child: ListView(
-                scrollDirection: Axis.horizontal,
-                children: <Widget>[
-                  peopleNearYou(),
-                  peopleNearYou(),
-                  peopleNearYou(),
-                  peopleNearYou(),
-                  peopleNearYou(),
-                  peopleNearYou(),
-                  peopleNearYou(),
-                  peopleNearYou(),
-                  peopleNearYou(),
-                  peopleNearYou(),
-                  peopleNearYou(),
-                  peopleNearYou(),
-                ],
-              ),
-            ),
-            SizedBox(height: 20),
-            Padding(
-              padding: const EdgeInsets.only(right: 15),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    "Favourite Users",
-                    style: TextStyle(
-                      color: Colors.grey,
-                      fontSize: 20,
-                      fontWeight: FontWeight.w400,
-                    ),
-                  ),
-                  Text(
-                    "View More",
-                    style: TextStyle(
-                      color: Colors.grey,
-                      fontSize: 16,
-                      fontWeight: FontWeight.w300,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Expanded(
-              child: Container(
-                  child: GridView.count(
-                primary: false,
+          child: Column(
+            children: [
+              Padding(
                 padding: const EdgeInsets.only(right: 15),
-                childAspectRatio: 0.65,
-                crossAxisSpacing: 10,
-                mainAxisSpacing: 10,
-                crossAxisCount: 2,
-                children: <Widget>[
-                  BodyWidget_Screen9(Colors.red),
-                  BodyWidget_Screen9(Colors.pink),
-                  BodyWidget_Screen9(Colors.blue),
-                  BodyWidget_Screen9(Colors.purple),
-                  BodyWidget_Screen9(Colors.orange),
-                  BodyWidget_Screen9(Colors.brown),
-                  BodyWidget_Screen9(Colors.lightGreenAccent),
-                ],
-              )),
-            ),
-          ],
-        )),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      "People Near You",
+                      style: TextStyle(
+                        color: Colors.grey,
+                        fontSize: 20,
+                        fontWeight: FontWeight.w400,
+                      ),
+                    ),
+                    Text(
+                      "View More",
+                      style: TextStyle(
+                        color: Colors.grey,
+                        fontSize: 16,
+                        fontWeight: FontWeight.w300,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(height: 20),
+              Container(
+                height: 120,
+                child: ListView(
+                  scrollDirection: Axis.horizontal,
+                  children: <Widget>[
+                    peopleNearYou(),
+                    peopleNearYou(),
+                    peopleNearYou(),
+                    peopleNearYou(),
+                    peopleNearYou(),
+                    peopleNearYou(),
+                    peopleNearYou(),
+                    peopleNearYou(),
+                    peopleNearYou(),
+                    peopleNearYou(),
+                    peopleNearYou(),
+                    peopleNearYou(),
+                  ],
+                ),
+              ),
+              SizedBox(height: 20),
+              Padding(
+                padding: const EdgeInsets.only(right: 15),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      "Favourite Users",
+                      style: TextStyle(
+                        color: Colors.grey,
+                        fontSize: 20,
+                        fontWeight: FontWeight.w400,
+                      ),
+                    ),
+                    Text(
+                      "View More",
+                      style: TextStyle(
+                        color: Colors.grey,
+                        fontSize: 16,
+                        fontWeight: FontWeight.w300,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Expanded(
+                child: Container(
+                  child: GridView.count(
+                    primary: false,
+                    padding: const EdgeInsets.only(right: 15),
+                    childAspectRatio: 0.65,
+                    crossAxisSpacing: 10,
+                    mainAxisSpacing: 10,
+                    crossAxisCount: 2,
+                    children: <Widget>[
+                      BodyWidget_Screen9(Colors.red),
+                      BodyWidget_Screen9(Colors.pink),
+                      BodyWidget_Screen9(Colors.blue),
+                      BodyWidget_Screen9(Colors.purple),
+                      BodyWidget_Screen9(Colors.orange),
+                      BodyWidget_Screen9(Colors.brown),
+                      BodyWidget_Screen9(Colors.lightGreenAccent),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }

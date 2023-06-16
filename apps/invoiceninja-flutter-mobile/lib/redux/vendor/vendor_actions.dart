@@ -24,22 +24,20 @@ class ViewVendorList implements PersistUI {
 }
 
 class ViewVendor implements PersistUI, PersistPrefs {
-  ViewVendor({
-    @required this.vendorId,
-    this.force = false,
-  });
+  ViewVendor({@required this.vendorId, this.force = false});
 
   final String vendorId;
   final bool force;
 }
 
 class EditVendor implements PersistUI, PersistPrefs {
-  EditVendor(
-      {@required this.vendor,
-      this.contact,
-      this.completer,
-      this.cancelCompleter,
-      this.force = false});
+  EditVendor({
+    @required this.vendor,
+    this.contact,
+    this.completer,
+    this.cancelCompleter,
+    this.force = false,
+  });
 
   final VendorEntity vendor;
   final VendorContactEntity contact;
@@ -272,16 +270,20 @@ class FilterVendorsByCustom4 implements PersistUI {
 }
 
 void handleVendorAction(
-    BuildContext context, List<BaseEntity> vendors, EntityAction action) {
+  BuildContext context,
+  List<BaseEntity> vendors,
+  EntityAction action,
+) {
   assert(
-      [
-            EntityAction.restore,
-            EntityAction.archive,
-            EntityAction.delete,
-            EntityAction.toggleMultiselect
-          ].contains(action) ||
-          vendors.length == 1,
-      'Cannot perform this action on more than one vendor');
+    [
+          EntityAction.restore,
+          EntityAction.archive,
+          EntityAction.delete,
+          EntityAction.toggleMultiselect,
+        ].contains(action) ||
+        vendors.length == 1,
+    'Cannot perform this action on more than one vendor',
+  );
 
   if (vendors.isEmpty) {
     return;
@@ -306,36 +308,50 @@ void handleVendorAction(
       break;
     case EntityAction.newRecurringExpense:
       createEntity(
-          context: context,
-          entity: ExpenseEntity(
-              state: state,
-              vendor: vendor,
-              entityType: EntityType.recurringExpense),
-          filterEntity: vendor);
+        context: context,
+        entity: ExpenseEntity(
+          state: state,
+          vendor: vendor,
+          entityType: EntityType.recurringExpense,
+        ),
+        filterEntity: vendor,
+      );
       break;
     case EntityAction.restore:
       final message = vendorIds.length > 1
-          ? localization.restoredVendors
-              .replaceFirst(':value', vendorIds.length.toString())
+          ? localization.restoredVendors.replaceFirst(
+              ':value',
+              vendorIds.length.toString(),
+            )
           : localization.restoredVendor;
       store.dispatch(RestoreVendorRequest(
-          snackBarCompleter<Null>(context, message), vendorIds));
+        snackBarCompleter<Null>(context, message),
+        vendorIds,
+      ));
       break;
     case EntityAction.archive:
       final message = vendorIds.length > 1
-          ? localization.archivedVendors
-              .replaceFirst(':value', vendorIds.length.toString())
+          ? localization.archivedVendors.replaceFirst(
+              ':value',
+              vendorIds.length.toString(),
+            )
           : localization.archivedVendor;
       store.dispatch(ArchiveVendorRequest(
-          snackBarCompleter<Null>(context, message), vendorIds));
+        snackBarCompleter<Null>(context, message),
+        vendorIds,
+      ));
       break;
     case EntityAction.delete:
       final message = vendorIds.length > 1
-          ? localization.deletedVendors
-              .replaceFirst(':value', vendorIds.length.toString())
+          ? localization.deletedVendors.replaceFirst(
+              ':value',
+              vendorIds.length.toString(),
+            )
           : localization.deletedVendor;
       store.dispatch(DeleteVendorRequest(
-          snackBarCompleter<Null>(context, message), vendorIds));
+        snackBarCompleter<Null>(context, message),
+        vendorIds,
+      ));
       break;
     case EntityAction.toggleMultiselect:
       if (!store.state.vendorListState.isInMultiselect()) {
@@ -355,9 +371,7 @@ void handleVendorAction(
       }
       break;
     case EntityAction.more:
-      showEntityActionsDialog(
-        entities: [vendor],
-      );
+      showEntityActionsDialog(entities: [vendor]);
       break;
   }
 }

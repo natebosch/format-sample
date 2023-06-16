@@ -31,13 +31,13 @@ class _SyncButtonState extends State<SyncButton> {
   @override
   void initState() {
     super.initState();
-    subscription = Connectivity()
-        .onConnectivityChanged
-        .listen((ConnectivityResult result) {
-      setState(() {
-        _connectivity = result;
-      });
-    });
+    subscription = Connectivity().onConnectivityChanged.listen(
+      (ConnectivityResult result) {
+        setState(() {
+          _connectivity = result;
+        });
+      },
+    );
   }
 
   @override
@@ -136,7 +136,7 @@ class BlinkingIcon extends StatefulWidget {
   final int interval;
 
   const BlinkingIcon({required this.child, this.interval = 500, Key? key})
-      : super(key: key);
+    : super(key: key);
 
   @override
   _BlinkingIconState createState() => _BlinkingIconState();
@@ -155,10 +155,7 @@ class _BlinkingIconState extends State<BlinkingIcon>
       duration: Duration(milliseconds: widget.interval),
       vsync: this,
     );
-    _animation = CurvedAnimation(
-      parent: _controller,
-      curve: Curves.linear,
-    );
+    _animation = CurvedAnimation(parent: _controller, curve: Curves.linear);
 
     var _ = _controller.repeat(reverse: true);
   }
@@ -171,10 +168,7 @@ class _BlinkingIconState extends State<BlinkingIcon>
 
   @override
   Widget build(BuildContext context) {
-    return FadeTransition(
-      opacity: _animation,
-      child: widget.child,
-    );
+    return FadeTransition(opacity: _animation, child: widget.child);
   }
 }
 

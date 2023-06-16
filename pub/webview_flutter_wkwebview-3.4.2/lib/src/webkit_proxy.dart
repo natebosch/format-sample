@@ -38,21 +38,22 @@ class WebKitProxy {
       String keyPath,
       NSObject object,
       Map<NSKeyValueChangeKey, Object?> change,
-    )? observeValue,
+    )?
+    observeValue,
     InstanceManager? instanceManager,
   }) createWebView;
 
   /// Constructs a [WKWebViewConfiguration].
-  final WKWebViewConfiguration Function({
-    InstanceManager? instanceManager,
-  }) createWebViewConfiguration;
+  final WKWebViewConfiguration Function({InstanceManager? instanceManager})
+  createWebViewConfiguration;
 
   /// Constructs a [WKScriptMessageHandler].
   final WKScriptMessageHandler Function({
     required void Function(
       WKUserContentController userContentController,
       WKScriptMessage message,
-    ) didReceiveScriptMessage,
+    )
+    didReceiveScriptMessage,
   }) createScriptMessageHandler;
 
   /// The default [WKWebsiteDataStore].
@@ -62,14 +63,15 @@ class WebKitProxy {
   final WKNavigationDelegate Function({
     void Function(WKWebView webView, String? url)? didFinishNavigation,
     void Function(WKWebView webView, String? url)?
-        didStartProvisionalNavigation,
+    didStartProvisionalNavigation,
     Future<WKNavigationActionPolicy> Function(
       WKWebView webView,
       WKNavigationAction navigationAction,
-    )? decidePolicyForNavigationAction,
+    )?
+    decidePolicyForNavigationAction,
     void Function(WKWebView webView, NSError error)? didFailNavigation,
     void Function(WKWebView webView, NSError error)?
-        didFailProvisionalNavigation,
+    didFailProvisionalNavigation,
     void Function(WKWebView webView)? webViewWebContentProcessDidTerminate,
   }) createNavigationDelegate;
 
@@ -79,14 +81,16 @@ class WebKitProxy {
       WKWebView webView,
       WKWebViewConfiguration configuration,
       WKNavigationAction navigationAction,
-    )? onCreateWebView,
+    )?
+    onCreateWebView,
     Future<WKPermissionDecision> Function(
       WKUIDelegate instance,
       WKWebView webView,
       WKSecurityOrigin origin,
       WKFrameInfo frame,
       WKMediaCaptureType type,
-    )? requestMediaCapturePermission,
+    )?
+    requestMediaCapturePermission,
     InstanceManager? instanceManager,
   }) createUIDelegate;
 }

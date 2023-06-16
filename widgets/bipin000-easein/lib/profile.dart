@@ -40,14 +40,15 @@ class _UpdateProfileState extends State<UpdateProfile> {
     _text3.dispose();
     _text4.dispose();
   }
+
   @override
   void initState() {
     super.initState();
     getPhoneNumber();
-    if(widget.user != null){
+    if (widget.user != null) {
       _text1.text = widget.user.name;
       _text2.text = widget.user.address;
-      _text4.text = widget.user.email1 ;
+      _text4.text = widget.user.email1;
     }
   }
 
@@ -63,10 +64,9 @@ class _UpdateProfileState extends State<UpdateProfile> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
-        appBar: new AppBar(
-          title: Text("Update Profile"),
-        ),
-        body: Stack(children: <Widget>[
+      appBar: new AppBar(title: Text("Update Profile")),
+      body: Stack(
+        children: <Widget>[
           Padding(
             padding: const EdgeInsets.all(10),
             child: ListView(
@@ -79,9 +79,7 @@ class _UpdateProfileState extends State<UpdateProfile> {
                       FormBuilderTextField(
                         attribute: 'name',
                         controller: _text1,
-                        decoration: const InputDecoration(
-                          labelText: 'Name',
-                        ),
+                        decoration: const InputDecoration(labelText: 'Name'),
                         onChanged: _onChanged,
                         valueTransformer: (text) {
                           return text == null ? null : num.tryParse(text);
@@ -97,9 +95,7 @@ class _UpdateProfileState extends State<UpdateProfile> {
                       FormBuilderTextField(
                         attribute: 'address',
                         controller: _text2,
-                        decoration: const InputDecoration(
-                          labelText: 'Address',
-                        ),
+                        decoration: const InputDecoration(labelText: 'Address'),
                         onChanged: _onChanged,
                         valueTransformer: (text) {
                           return text == null ? null : num.tryParse(text);
@@ -127,9 +123,7 @@ class _UpdateProfileState extends State<UpdateProfile> {
                       FormBuilderTextField(
                         attribute: 'email',
                         controller: _text4,
-                        decoration: const InputDecoration(
-                          labelText: 'Email',
-                        ),
+                        decoration: const InputDecoration(labelText: 'Email'),
                         onChanged: _onChanged,
                         valueTransformer: (text) {
                           return text == null ? null : num.tryParse(text);
@@ -158,7 +152,6 @@ class _UpdateProfileState extends State<UpdateProfile> {
                             loading = true;
                           });
                           if (_fbKey.currentState.saveAndValidate()) {
-
                             updateProfileAction();
                           } else {
                             setState(() {
@@ -173,31 +166,44 @@ class _UpdateProfileState extends State<UpdateProfile> {
               ],
             ),
           ),
-          easeinProgressIndicator(context, loading)
-        ]));
+          easeinProgressIndicator(context, loading),
+        ],
+      ),
+    );
   }
 
   updateProfileAction() async {
     try {
       var result = await updateProfile(
-          name: _text1.text, address: _text2.text, email1: _text4.text);
+        name: _text1.text,
+        address: _text2.text,
+        email1: _text4.text,
+      );
 
       if (result != null && result["status"] == true) {
-        await saveProfileToCache(name: _text1.text, address: _text2.text, email: _text4.text , phone: _text3.text, createdAt: (new DateTime.now()).toString());
+        await saveProfileToCache(
+          name: _text1.text,
+          address: _text2.text,
+          email: _text4.text,
+          phone: _text3.text,
+          createdAt: (new DateTime.now()).toString(),
+        );
         Navigator.pushReplacement(
-            context, MaterialPageRoute(builder: (context) => MyHomePage()));
+          context,
+          MaterialPageRoute(builder: (context) => MyHomePage()),
+        );
       }
     } catch (e) {
       int errorType = 4;
       if (e.toString().indexOf("Failed host lookup") != -1) {
         errorType = 1;
-      } else if (e
-              .toString()
-              .indexOf("Cannot return null for non-nullable field") !=
+      } else if (e.toString().indexOf(
+            "Cannot return null for non-nullable field",
+          ) !=
           -1) {
         errorType = 2;
       }
-      errorAlert(context, errorType,null);
+      errorAlert(context, errorType, null);
     }
 
     setState(() {

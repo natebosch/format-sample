@@ -33,8 +33,9 @@ class ShowtimesPageComponent implements OnActivate {
   @Input('event-filter')
   Event eventFilter;
 
-  ShowtimesPageViewModel get viewModel =>
-      ShowtimesPageViewModel.fromStore(_store);
+  ShowtimesPageViewModel get viewModel => ShowtimesPageViewModel.fromStore(
+    _store,
+  );
 
   KtList<Show> get shows => eventFilter == null
       ? viewModel.shows
@@ -44,10 +45,9 @@ class ShowtimesPageComponent implements OnActivate {
     storeCurrentScrollPosition();
 
     final event = eventForShowSelector(_store.state, show);
-    final url = RoutePaths.showDetails.toUrl(parameters: {
-      'eventId': event.id,
-      'showId': show.id,
-    });
+    final url = RoutePaths.showDetails.toUrl(
+      parameters: {'eventId': event.id, 'showId': show.id},
+    );
 
     _router.navigate(url);
   }

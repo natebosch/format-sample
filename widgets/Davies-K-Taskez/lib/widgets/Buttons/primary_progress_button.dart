@@ -23,20 +23,27 @@ class PrimaryProgressButton extends StatelessWidget {
       width: width ?? 130,
       height: height ?? 60,
       child: ElevatedButton(
-          onPressed: callback,
-          style: ButtonStyle(
-              backgroundColor:
-                  MaterialStateProperty.all<Color>(HexColor.fromHex("246CFE")),
-              shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                  RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(50.0),
-                      side: BorderSide(color: HexColor.fromHex("246CFE"))))),
-          child: Text(label,
-              style: textStyle ??
-                  GoogleFonts.lato(
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white))),
+        onPressed: callback,
+        style: ButtonStyle(
+          backgroundColor:
+              MaterialStateProperty.all<Color>(HexColor.fromHex("246CFE")),
+          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+            RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(50.0),
+              side: BorderSide(color: HexColor.fromHex("246CFE")),
+            ),
+          ),
+        ),
+        child: Text(
+          label,
+          style: textStyle ??
+              GoogleFonts.lato(
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+                color: Colors.white,
+              ),
+        ),
+      ),
     );
   }
 }

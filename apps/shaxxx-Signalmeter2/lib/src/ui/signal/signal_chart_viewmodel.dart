@@ -77,12 +77,14 @@ class SignalChartViewModel {
     @required this.messages,
     @required this.dbIsPrimaryLevel,
     @required this.profile,
-  })  : assert(responses != null),
-        assert(dbIsPrimaryLevel != null),
-        assert(profile != null);
+  }) : assert(responses != null),
+       assert(dbIsPrimaryLevel != null),
+       assert(profile != null);
 
   static SignalChartViewModel fromStore(
-      Store<AppState> store, Messages messages) {
+    Store<AppState> store,
+    Messages messages,
+  ) {
     return SignalChartViewModel(
       responses: store.state.signalMonitorState.responses,
       messages: messages,

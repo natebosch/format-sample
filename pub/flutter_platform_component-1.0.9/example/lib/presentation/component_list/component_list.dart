@@ -18,10 +18,7 @@ class ComponentList extends StatelessWidget {
 
     return FPCScaffold(
       backgroundColor: theme.backgroundScaffold,
-      appBar: FPCBasicAppBar(
-        context: context,
-        title: "Flutter Component",
-      ),
+      appBar: FPCBasicAppBar(context: context, title: "Flutter Component"),
       body: FPCScrollbar(
         child: FPCListView(
           children: [

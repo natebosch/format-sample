@@ -12,14 +12,21 @@ import 'package:seeds/screens/transfer/send/send_confirmation/interactor/viewmod
 part 'send_confirmation_event.dart';
 part 'send_confirmation_state.dart';
 
-class SendConfirmationBloc extends Bloc<SendConfirmationEvent, SendConfirmationState> {
-  SendConfirmationBloc(SendConfirmationArguments arguments) : super(SendConfirmationState.initial(arguments)) {
+class SendConfirmationBloc
+    extends Bloc<SendConfirmationEvent, SendConfirmationState> {
+  SendConfirmationBloc(SendConfirmationArguments arguments)
+    : super(SendConfirmationState.initial(arguments)) {
     on<OnSendTransactionButtonPressed>(_onSendTransaction);
   }
 
-  Future<void> _onSendTransaction(OnSendTransactionButtonPressed event, Emitter<SendConfirmationState> emit) async {
+  Future<void> _onSendTransaction(
+    OnSendTransactionButtonPressed event,
+    Emitter<SendConfirmationState> emit,
+  ) async {
     emit(state.copyWith(pageState: PageState.loading));
     final Result result = await SendTransactionUseCase().run(state.transaction);
-    emit(SendTransactionStateMapper().mapResultToState(state, result, event.rates));
+    emit(
+      SendTransactionStateMapper().mapResultToState(state, result, event.rates),
+    );
   }
 }

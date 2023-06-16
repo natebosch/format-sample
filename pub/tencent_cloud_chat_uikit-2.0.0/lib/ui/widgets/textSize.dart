@@ -1,19 +1,22 @@
-
 // ignore_for_file: file_names
 
 import 'package:flutter/material.dart';
 
 class TextSize {
-  static Size boundingTextSize(String text, TextStyle style,
-      {int maxLines = 2 ^ 31, double maxWidth = double.infinity}) {
+  static Size boundingTextSize(
+    String text,
+    TextStyle style, {
+    int maxLines = 2 ^ 31,
+    double maxWidth = double.infinity,
+  }) {
     if (text.isEmpty) {
       return const Size(0, 0);
     }
     final TextPainter textPainter = TextPainter(
-        textDirection: TextDirection.ltr,
-        text: TextSpan(text: text, style: style),
-        maxLines: maxLines)
-      ..layout(maxWidth: maxWidth);
+      textDirection: TextDirection.ltr,
+      text: TextSpan(text: text, style: style),
+      maxLines: maxLines,
+    )..layout(maxWidth: maxWidth);
     return textPainter.size;
   }
 }
@@ -70,15 +73,22 @@ class _ExtendTextState extends State<CustomText> {
       String overflowtext = widget.overflowtext ?? '...';
       int overflowtextLength = overflowtext.length;
       double singTextSize = textwidth / widget.text.length;
-      String newtext =
-          '${widget.text.substring(0, position - offset)}$overflowtext${widget.text.substring(position - offset, widget.text.length)}';
+      String newtext = '${widget.text.substring(
+        0,
+        position - offset,
+      )}$overflowtext${widget.text.substring(
+        position - offset,
+        widget.text.length,
+      )}';
       position += overflowtextLength;
       int number = ((textwidth - widget.width) / singTextSize).ceil();
       do {
         int a = position - offset - overflowtextLength - number;
         newtext = newtext.substring(0, a < 1 ? 1 : a) +
             newtext.substring(
-                position - offset - overflowtextLength, newtext.length);
+              position - offset - overflowtextLength,
+              newtext.length,
+            );
         position -= number;
         number =
             ((TextSize.boundingTextSize(newtext, style).width - widget.width) /

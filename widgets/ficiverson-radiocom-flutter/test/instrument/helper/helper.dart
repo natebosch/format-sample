@@ -1,6 +1,6 @@
 import 'dart:io';
 
-class Helper{
+class Helper {
   static String readFile(String path) {
     if (Directory.current.path.endsWith('/test')) {
       Directory.current = Directory.current.parent;

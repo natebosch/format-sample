@@ -4,9 +4,10 @@ class Chat {
   final String time;
   final String count;
 
-  const Chat(
-      {required this.name,
-      required this.message,
-      required this.time,
-      required this.count});
+  const Chat({
+    required this.name,
+    required this.message,
+    required this.time,
+    required this.count,
+  });
 }

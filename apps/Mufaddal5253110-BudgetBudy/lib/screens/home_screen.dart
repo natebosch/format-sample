@@ -42,27 +42,20 @@ class _HomeScreenState extends State<HomeScreen>
         ),
         actions: <Widget>[
           IconButton(
-              icon: Icon(Icons.add),
-              onPressed: () =>
-                  Navigator.of(context).pushNamed(NewTransaction.routeName)),
+            icon: Icon(Icons.add),
+            onPressed:
+                () => Navigator.of(context).pushNamed(NewTransaction.routeName),
+          ),
         ],
         bottom: new TabBar(
           unselectedLabelColor: Colors.grey,
           labelColor: Colors.black,
           indicatorColor: Theme.of(context).primaryColorDark,
           tabs: <Widget>[
-            new Tab(
-              text: "Daily",
-            ),
-            new Tab(
-              text: "Weekly",
-            ),
-            new Tab(
-              text: 'Monthly',
-            ),
-            new Tab(
-              text: 'Yearly',
-            ),
+            new Tab(text: "Daily"),
+            new Tab(text: "Weekly"),
+            new Tab(text: 'Monthly'),
+            new Tab(text: 'Yearly'),
           ],
           controller: tabController,
         ),

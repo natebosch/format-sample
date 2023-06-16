@@ -12,8 +12,9 @@ void main() {
   late MockClientState clientState;
   late MockChannel channel;
   late MockChannelState channelState;
-  const methodChannel =
-      MethodChannel('dev.fluttercommunity.plus/connectivity_status');
+  const methodChannel = MethodChannel(
+    'dev.fluttercommunity.plus/connectivity_status',
+  );
 
   setUpAll(() {
     client = MockClient();
@@ -30,13 +31,9 @@ void main() {
     when(() => channel.isMuted).thenReturn(false);
     when(() => channel.isMutedStream).thenAnswer((i) => Stream.value(false));
     when(() => channel.extraDataStream).thenAnswer(
-      (i) => Stream.value({
-        'name': 'test',
-      }),
+      (i) => Stream.value({'name': 'test'}),
     );
-    when(() => channel.extraData).thenReturn({
-      'name': 'test',
-    });
+    when(() => channel.extraData).thenReturn({'name': 'test'});
   });
 
   setUp(() {
@@ -45,10 +42,10 @@ void main() {
         try {
           await ServicesBinding.instance.defaultBinaryMessenger
               .handlePlatformMessage(
-            methodChannel.name,
-            methodChannel.codec.encodeSuccessEnvelope('wifi'),
-            (_) {},
-          );
+                methodChannel.name,
+                methodChannel.codec.encodeSuccessEnvelope('wifi'),
+                (_) {},
+              );
         } catch (e) {
           print(e);
         }
@@ -56,55 +53,48 @@ void main() {
     });
   });
 
-  testWidgets(
-    'it should show channel typing',
-    (WidgetTester tester) async {
-      await tester.pumpWidget(
-        MaterialApp(
-          home: StreamChat(
-            client: client,
-            child: StreamChannel(
-              channel: channel,
-              child: WillPopScope(
-                onWillPop: () async => false,
-                child: Scaffold(
-                  appBar: StreamGalleryHeader(
-                    attachment: MockAttachment(),
-                    message: Message(),
-                  ),
-                ),
-              ),
-            ),
-          ),
-        ),
-      );
-
-      expect(find.byType(StreamSvgIcon), findsNWidgets(2));
-    },
-  );
-
-  testGoldens('golden test for GalleryHeader', (tester) async {
-    await tester.pumpWidget(
-      MaterialApp(
-        home: StreamChat(
-          client: client,
-          child: StreamChannel(
-            channel: channel,
-            child: WillPopScope(
-              onWillPop: () async => false,
-              child: Scaffold(
-                appBar: StreamGalleryHeader(
-                  userName: 'User',
-                  sentAt: DateTime.now().toIso8601String(),
-                  message: Message(),
-                  attachment: MockAttachment(),
-                ),
+  testWidgets('it should show channel typing', (WidgetTester tester) async {
+    await tester.pumpWidget(MaterialApp(
+      home: StreamChat(
+        client: client,
+        child: StreamChannel(
+          channel: channel,
+          child: WillPopScope(
+            onWillPop: () async => false,
+            child: Scaffold(
+              appBar: StreamGalleryHeader(
+                attachment: MockAttachment(),
+                message: Message(),
               ),
             ),
           ),
         ),
       ),
-    );
+    ));
+
+    expect(find.byType(StreamSvgIcon), findsNWidgets(2));
+  });
+
+  testGoldens('golden test for GalleryHeader', (tester) async {
+    await tester.pumpWidget(MaterialApp(
+      home: StreamChat(
+        client: client,
+        child: StreamChannel(
+          channel: channel,
+          child: WillPopScope(
+            onWillPop: () async => false,
+            child: Scaffold(
+              appBar: StreamGalleryHeader(
+                userName: 'User',
+                sentAt: DateTime.now().toIso8601String(),
+                message: Message(),
+                attachment: MockAttachment(),
+              ),
+            ),
+          ),
+        ),
+      ),
+    ));
 
     await screenMatchesGolden(tester, 'gallery_header_0');
   });

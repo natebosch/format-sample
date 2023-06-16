@@ -7,9 +7,12 @@ import 'package:flutter_twitter_clone/ui/theme/theme.dart';
 import 'package:provider/provider.dart';
 
 class TweetImage extends StatelessWidget {
-  const TweetImage(
-      {Key key, this.model, this.type, this.isRetweetImage = false})
-      : super(key: key);
+  const TweetImage({
+    Key key,
+    this.model,
+    this.type,
+    this.isRetweetImage = false,
+  }) : super(key: key);
 
   final FeedModel model;
   final TweetType type;
@@ -23,13 +26,10 @@ class TweetImage extends StatelessWidget {
       child: model.imagePath == null
           ? SizedBox.shrink()
           : Padding(
-              padding: EdgeInsets.only(
-                top: 8,
-              ),
+              padding: EdgeInsets.only(top: 8),
               child: InkWell(
-                borderRadius: BorderRadius.all(
-                  Radius.circular(isRetweetImage ? 0 : 20),
-                ),
+                borderRadius:
+                    BorderRadius.all(Radius.circular(isRetweetImage ? 0 : 20)),
                 onTap: () {
                   if (type == TweetType.ParentTweet) {
                     return;
@@ -47,9 +47,8 @@ class TweetImage extends StatelessWidget {
                     width:
                         context.width * (type == TweetType.Detail ? .95 : .8) -
                             8,
-                    decoration: BoxDecoration(
-                      color: Theme.of(context).backgroundColor,
-                    ),
+                    decoration:
+                        BoxDecoration(color: Theme.of(context).backgroundColor),
                     child: AspectRatio(
                       aspectRatio: 4 / 3,
                       child:

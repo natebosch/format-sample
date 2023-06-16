@@ -8,9 +8,9 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 
 class Error extends StatelessWidget {
   @override
-  Widget build(BuildContext context){
+  Widget build(BuildContext context) {
     String errorMessage = AppLocalizations.of(context).errorLabel;
-    return  Scaffold(
+    return Scaffold(
       appBar: new AppBar(
         title: new Row(
           mainAxisAlignment: MainAxisAlignment.start,
@@ -20,10 +20,10 @@ class Error extends StatelessWidget {
               style: TextStyle(
                 color: accentColor,
                 fontSize: textFontSize,
-                fontFamily: defaultFont
+                fontFamily: defaultFont,
               ),
             ),
-          ]
+          ],
         ),
         elevation: stdElevation,
         backgroundColor: mainColor,
@@ -31,15 +31,9 @@ class Error extends StatelessWidget {
       backgroundColor: mainColor,
       body: Center(
         child: Column(
-          children: <Widget> [
-            new SizedBox(
-              height: animationSpacing
-            ),
-            new Icon(
-              Icons.warning,
-              color: accentColor,
-              size: animationSize,
-            ),
+          children: <Widget>[
+            new SizedBox(height: animationSpacing),
+            new Icon(Icons.warning, color: accentColor, size: animationSize),
             new Text(
               '$errorMessage',
               textAlign: TextAlign.center,
@@ -47,12 +41,12 @@ class Error extends StatelessWidget {
                 color: accentColor,
                 fontWeight: FontWeight.bold,
                 fontSize: textFontSize,
-                fontFamily: defaultFont
+                fontFamily: defaultFont,
               ),
-            )
-          ]
-        )
-      )
+            ),
+          ],
+        ),
+      ),
     );
   }
 }

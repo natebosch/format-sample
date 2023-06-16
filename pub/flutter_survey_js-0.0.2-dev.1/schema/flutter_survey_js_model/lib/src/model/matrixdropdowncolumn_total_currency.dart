@@ -10,7 +10,6 @@ import 'package:built_value/serializer.dart';
 part 'matrixdropdowncolumn_total_currency.g.dart';
 
 class MatrixdropdowncolumnTotalCurrency extends EnumClass {
-
   @BuiltValueEnumConst(wireName: r'AED')
   static const MatrixdropdowncolumnTotalCurrency AED = _$AED;
   @BuiltValueEnumConst(wireName: r'AFN')
@@ -368,14 +367,18 @@ class MatrixdropdowncolumnTotalCurrency extends EnumClass {
   @BuiltValueEnumConst(wireName: r'ZWL')
   static const MatrixdropdowncolumnTotalCurrency ZWL = _$ZWL;
   @BuiltValueEnumConst(wireName: r'unknown_default_open_api', fallback: true)
-  static const MatrixdropdowncolumnTotalCurrency unknownDefaultOpenApi = _$unknownDefaultOpenApi;
+  static const MatrixdropdowncolumnTotalCurrency unknownDefaultOpenApi =
+      _$unknownDefaultOpenApi;
 
-  static Serializer<MatrixdropdowncolumnTotalCurrency> get serializer => _$matrixdropdowncolumnTotalCurrencySerializer;
+  static Serializer<MatrixdropdowncolumnTotalCurrency> get serializer =>
+      _$matrixdropdowncolumnTotalCurrencySerializer;
 
-  const MatrixdropdowncolumnTotalCurrency._(String name): super(name);
+  const MatrixdropdowncolumnTotalCurrency._(String name) : super(name);
 
   static BuiltSet<MatrixdropdowncolumnTotalCurrency> get values => _$values;
-  static MatrixdropdowncolumnTotalCurrency valueOf(String name) => _$valueOf(name);
+  static MatrixdropdowncolumnTotalCurrency valueOf(String name) => _$valueOf(
+    name,
+  );
 }
 
 /// Optionally, enum_class can generate a mixin to go with your enum for use
@@ -384,5 +387,5 @@ class MatrixdropdowncolumnTotalCurrency extends EnumClass {
 /// corresponding Angular template.
 ///
 /// Trigger mixin generation by writing a line like this one next to your enum.
-abstract class MatrixdropdowncolumnTotalCurrencyMixin = Object with _$MatrixdropdowncolumnTotalCurrencyMixin;
-
+abstract class MatrixdropdowncolumnTotalCurrencyMixin = Object
+    with _$MatrixdropdowncolumnTotalCurrencyMixin;

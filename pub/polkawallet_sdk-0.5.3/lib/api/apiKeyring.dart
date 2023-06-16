@@ -20,38 +20,58 @@ class ApiKeyring {
   final ServiceKeyring? service;
 
   /// Generate a set of new mnemonic.
-  Future<AddressIconDataWithMnemonic> generateMnemonic(int ss58,
-      {CryptoType cryptoType = CryptoType.sr25519,
-      String derivePath = '',
-      String key = ''}) async {
-    final mnemonicData = await service!.generateMnemonic(ss58,
-        cryptoType: cryptoType, derivePath: derivePath, key: key);
+  Future<AddressIconDataWithMnemonic> generateMnemonic(
+    int ss58, {
+    CryptoType cryptoType = CryptoType.sr25519,
+    String derivePath = '',
+    String key = '',
+  }) async {
+    final mnemonicData = await service!.generateMnemonic(
+      ss58,
+      cryptoType: cryptoType,
+      derivePath: derivePath,
+      key: key,
+    );
     return mnemonicData;
   }
 
   /// get address and avatar from mnemonic.
-  Future<AddressIconData> addressFromMnemonic(int ss58,
-      {CryptoType cryptoType = CryptoType.sr25519,
-      String derivePath = '',
-      required String mnemonic}) async {
-    final addressInfo = await service!.addressFromMnemonic(ss58,
-        cryptoType: cryptoType, derivePath: derivePath, mnemonic: mnemonic);
+  Future<AddressIconData> addressFromMnemonic(
+    int ss58, {
+    CryptoType cryptoType = CryptoType.sr25519,
+    String derivePath = '',
+    required String mnemonic,
+  }) async {
+    final addressInfo = await service!.addressFromMnemonic(
+      ss58,
+      cryptoType: cryptoType,
+      derivePath: derivePath,
+      mnemonic: mnemonic,
+    );
     return addressInfo;
   }
 
   /// get address and avatar from rawSeed.
-  Future<AddressIconData> addressFromRawSeed(int ss58,
-      {CryptoType cryptoType = CryptoType.sr25519,
-      String derivePath = '',
-      required String rawSeed}) async {
-    final addressInfo = await service!.addressFromRawSeed(ss58,
-        cryptoType: cryptoType, derivePath: derivePath, rawSeed: rawSeed);
+  Future<AddressIconData> addressFromRawSeed(
+    int ss58, {
+    CryptoType cryptoType = CryptoType.sr25519,
+    String derivePath = '',
+    required String rawSeed,
+  }) async {
+    final addressInfo = await service!.addressFromRawSeed(
+      ss58,
+      cryptoType: cryptoType,
+      derivePath: derivePath,
+      rawSeed: rawSeed,
+    );
     return addressInfo;
   }
 
   /// get address and avatar from KeyStore.
-  Future<AddressIconData> addressFromKeyStore(int ss58,
-      {required Map keyStore}) async {
+  Future<AddressIconData> addressFromKeyStore(
+    int ss58, {
+    required Map keyStore,
+  }) async {
     final addressInfo =
         await service!.addressFromKeyStore(ss58, keyStore: keyStore);
     return AddressIconData.fromJson({
@@ -108,8 +128,12 @@ class ApiKeyring {
       final String type = keyType.toString().split('.')[1];
       final String? seed = acc[type];
       if (seed != null && seed.isNotEmpty) {
-        keyring.store
-            .encryptSeedAndSave(acc['pubKey'], acc[type], type, password);
+        keyring.store.encryptSeedAndSave(
+          acc['pubKey'],
+          acc[type],
+          type,
+          password,
+        );
         acc.remove(type);
       }
     }
@@ -228,7 +252,10 @@ class ApiKeyring {
 
   /// change password of account
   Future<KeyPairData?> changePassword(
-      Keyring keyring, String passOld, passNew) async {
+    Keyring keyring,
+    String passOld,
+    passNew,
+  ) async {
     final acc = keyring.current;
     // 1. change password of keyPair in webView
     final res = await service!.changePassword(acc.pubKey, passOld, passNew);
@@ -258,7 +285,10 @@ class ApiKeyring {
   /// Check if derive path is valid, return [null] if valid,
   /// and return error message if invalid.
   Future<String?> checkDerivePath(
-      String seed, path, CryptoType cryptoType) async {
+    String seed,
+    path,
+    CryptoType cryptoType,
+  ) async {
     String? res = await service!.checkDerivePath(seed, path, cryptoType);
     return res;
   }
@@ -266,7 +296,9 @@ class ApiKeyring {
   /// Open a new webView for a DApp,
   /// sign extrinsic or msg for the DApp.
   Future<ExtensionSignResult?> signAsExtension(
-      String password, SignAsExtensionParam param) async {
+    String password,
+    SignAsExtensionParam param,
+  ) async {
     final signature = await service!.signAsExtension(password, param.toJson());
     if (signature == null) {
       return null;
@@ -278,12 +310,16 @@ class ApiKeyring {
   }
 
   Future<VerifyResult?> signatureVerify(
-      String message, signature, address) async {
+    String message,
+    signature,
+    address,
+  ) async {
     final res = await service!.signatureVerify(message, signature, address);
     if (res == null) {
       return null;
     }
     return VerifyResult.fromJson(
-        Map<String, dynamic>.of(res as Map<String, dynamic>));
+      Map<String, dynamic>.of(res as Map<String, dynamic>),
+    );
   }
 }

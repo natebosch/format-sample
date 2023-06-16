@@ -8,7 +8,9 @@ import 'package:ondemand_overdrive/services/FirebaseUserService.dart';
 import 'package:ondemand_overdrive/services/SubscriptionService.dart';
 
 enum AuthState { NotSignedIn, SigningIn, SignedIn, Error }
+
 enum SubscriptionState { Fetching, Retrieved, Error }
+
 enum SubscriberListingsState { Initialized, Fetching, Retrieved, Error }
 
 class AccountProvider extends ChangeNotifier {
@@ -19,9 +21,7 @@ class AccountProvider extends ChangeNotifier {
   FirebaseUser get user => _user;
   set user(FirebaseUser user) {
     this._user = user;
-    this.authState = user != null
-        ? AuthState.SignedIn
-        : AuthState.NotSignedIn;
+    this.authState = user != null ? AuthState.SignedIn : AuthState.NotSignedIn;
   }
 
   AuthState _authState = AuthState.SigningIn;
@@ -42,8 +42,10 @@ class AccountProvider extends ChangeNotifier {
     }
   }
 
-  SubscriberListingsState _subscriberListingsState = SubscriberListingsState.Initialized;
-  SubscriberListingsState get subscriberListingsState => _subscriberListingsState;
+  SubscriberListingsState _subscriberListingsState =
+      SubscriberListingsState.Initialized;
+  SubscriberListingsState get subscriberListingsState =>
+      _subscriberListingsState;
   set subscriberListingsState(SubscriberListingsState state) {
     if (this._subscriberListingsState != state) {
       this._subscriberListingsState = state;
@@ -58,14 +60,16 @@ class AccountProvider extends ChangeNotifier {
   List<SubscriberListing> get subscriberListings => _subscriberListings;
 
   AccountProvider() {
-    this._firebaseUserService.getCurrentUser().then((user){
+    this._firebaseUserService.getCurrentUser().then((user) {
       this.user = user;
     });
   }
 
   Future<FirebaseUser> signIn() async {
     this.authState = AuthState.SigningIn;
-    this.user = await this._firebaseUserService.signIn()
+    this.user = await this
+        ._firebaseUserService
+        .signIn()
         .timeout(const Duration(seconds: 10), onTimeout: _handleSignInTimeout)
         .catchError(_handleSignInError);
     return user;
@@ -81,50 +85,72 @@ class AccountProvider extends ChangeNotifier {
   void getSubscriptions() {
     this.subscriptionState = SubscriptionState.Fetching;
     var user = this.user;
-    this._subscriptionService.getSubscriptions(user).then((subscriptions){
-      this._subscriptions = subscriptions;
-      this.subscriptionState = SubscriptionState.Retrieved;
-    }).timeout(const Duration(seconds: 10), onTimeout: _handleSubscriptionTimeout)
-    .catchError(_handleSubscriptionError);
+    this
+        ._subscriptionService
+        .getSubscriptions(user)
+        .then((subscriptions) {
+          this._subscriptions = subscriptions;
+          this.subscriptionState = SubscriptionState.Retrieved;
+        })
+        .timeout(
+          const Duration(seconds: 10),
+          onTimeout: _handleSubscriptionTimeout,
+        )
+        .catchError(_handleSubscriptionError);
   }
 
   void getSubscriberListings() {
-    if (this.user == null){
+    if (this.user == null) {
       return;
     }
 
     this.subscriberListingsState = SubscriberListingsState.Fetching;
     var user = this.user;
 
-    this._subscriptionService.getSubscriberListings(user).then((listings) {
-      this._subscriberListings = listings;
-      this.subscriberListingsState = SubscriberListingsState.Retrieved;
-    }).timeout(const Duration(seconds: 10), onTimeout: () => _handleSubscriberListingsError(null))
-    .catchError(_handleSubscriberListingsError);
+    this
+        ._subscriptionService
+        .getSubscriberListings(user)
+        .then((listings) {
+          this._subscriberListings = listings;
+          this.subscriberListingsState = SubscriberListingsState.Retrieved;
+        })
+        .timeout(
+          const Duration(seconds: 10),
+          onTimeout: () => _handleSubscriberListingsError(null),
+        )
+        .catchError(_handleSubscriberListingsError);
   }
 
-  Future<bool> registerSubscription(int subscriptionTypeId, String value) async {
+  Future<bool> registerSubscription(
+    int subscriptionTypeId,
+    String value,
+  ) async {
     this.subscriptionState = SubscriptionState.Fetching;
     try {
-      await this._subscriptionService.registerNewSubscription(this.user, subscriptionTypeId, value);
+      await this._subscriptionService.registerNewSubscription(
+        this.user,
+        subscriptionTypeId,
+        value,
+      );
       this.getSubscriptions();
       return true;
-    }
-    catch (_) {
+    } catch (_) {
       return false;
     }
   }
 
   Future<bool> deleteSubscription(Subscription sub) async {
     try {
-      await this._subscriptionService.deleteSubscription(this.user, sub.subscriptionId);
+      await this._subscriptionService.deleteSubscription(
+        this.user,
+        sub.subscriptionId,
+      );
       final updatedSubs = List<Subscription>.from(this._subscriptions);
       updatedSubs.removeWhere((d) => d.subscriptionId == sub.subscriptionId);
       this._subscriptions = updatedSubs;
       notifyListeners();
       return true;
-    }
-    catch (_) {
+    } catch (_) {
       return false;
     }
   }

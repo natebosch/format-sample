@@ -281,5 +281,5 @@ const names = {
   "zh_Hans": "چینی (آسان)",
   "zh_Hant": "چینی (روایتی)",
   "zun": "Zuni",
-  "zza": "Zaza"
+  "zza": "Zaza",
 };

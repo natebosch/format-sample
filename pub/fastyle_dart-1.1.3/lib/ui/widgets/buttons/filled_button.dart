@@ -21,14 +21,14 @@ class FastFilledButton extends FastButton {
     this.backgroundColor,
     this.elevation,
     this.fontSize,
-  })  : assert(
-          child == null || text == null,
-          'child and text properties cannot be initialized at the same time',
-        ),
-        assert(
-          child != null || text != null,
-          'child or text properties must be initialized',
-        );
+  }) : assert(
+         child == null || text == null,
+         'child and text properties cannot be initialized at the same time',
+       ),
+       assert(
+         child != null || text != null,
+         'child or text properties must be initialized',
+       );
 
   @override
   FastFilledButtonState createState() => FastFilledButtonState();
@@ -68,10 +68,7 @@ class FastFilledButtonState extends State<FastFilledButton>
         backgroundColor: backgroundColor,
       ),
       child: widget.child ??
-          buildButtonLabel(
-            textColor,
-            fontSize: widget.fontSize,
-          ),
+          buildButtonLabel(textColor, fontSize: widget.fontSize),
     );
   }
 }

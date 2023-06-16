@@ -17,10 +17,7 @@ import 'package:invoiceninja_flutter/ui/settings/tax_settings_vm.dart';
 import 'package:invoiceninja_flutter/utils/localization.dart';
 
 class TaxSettings extends StatefulWidget {
-  const TaxSettings({
-    Key key,
-    @required this.viewModel,
-  }) : super(key: key);
+  const TaxSettings({Key key, @required this.viewModel}) : super(key: key);
 
   final TaxSettingsVM viewModel;
 
@@ -29,8 +26,9 @@ class TaxSettings extends StatefulWidget {
 }
 
 class _TaxSettingsState extends State<TaxSettings> {
-  static final GlobalKey<FormState> _formKey =
-      GlobalKey<FormState>(debugLabel: '_taxSettings');
+  static final GlobalKey<FormState> _formKey = GlobalKey<FormState>(
+    debugLabel: '_taxSettings',
+  );
   FocusScopeNode _focusNode;
 
   @override
@@ -66,14 +64,16 @@ class _TaxSettingsState extends State<TaxSettings> {
                 NumberOfRatesSelector(
                   label: localization.invoiceTaxRates,
                   numberOfRates: company.numberOfInvoiceTaxRates,
-                  onChanged: (value) => viewModel.onCompanyChanged(company
-                      .rebuild((b) => b..numberOfInvoiceTaxRates = value)),
+                  onChanged: (value) => viewModel.onCompanyChanged(
+                    company.rebuild((b) => b..numberOfInvoiceTaxRates = value),
+                  ),
                 ),
                 NumberOfRatesSelector(
                   label: localization.itemTaxRates,
                   numberOfRates: company.numberOfItemTaxRates,
                   onChanged: (value) => viewModel.onCompanyChanged(
-                      company.rebuild((b) => b..numberOfItemTaxRates = value)),
+                    company.rebuild((b) => b..numberOfItemTaxRates = value),
+                  ),
                 ),
                 SizedBox(height: 16),
                 BoolDropdownButton(
@@ -81,7 +81,8 @@ class _TaxSettingsState extends State<TaxSettings> {
                   label: localization.inclusiveTaxes,
                   value: settings.enableInclusiveTaxes,
                   onChanged: (value) => viewModel.onSettingsChanged(
-                      settings.rebuild((b) => b..enableInclusiveTaxes = value)),
+                    settings.rebuild((b) => b..enableInclusiveTaxes = value),
+                  ),
                   helpLabel:
                       '\n${localization.exclusive}: 100 + 10% = 100 + 10\n${localization.inclusive}: 100 + 10% = 90.91 + 9.09',
                 ),
@@ -92,30 +93,39 @@ class _TaxSettingsState extends State<TaxSettings> {
               children: <Widget>[
                 if (company.enableFirstInvoiceTaxRate)
                   TaxRateDropdown(
-                    onSelected: (taxRate) =>
-                        viewModel.onSettingsChanged(settings.rebuild((b) => b
+                    onSelected: (taxRate) => viewModel.onSettingsChanged(
+                      settings.rebuild(
+                        (b) => b
                           ..defaultTaxName1 = taxRate.name
-                          ..defaultTaxRate1 = taxRate.rate)),
+                          ..defaultTaxRate1 = taxRate.rate,
+                      ),
+                    ),
                     labelText: localization.defaultTaxRate,
                     initialTaxName: settings.defaultTaxName1,
                     initialTaxRate: settings.defaultTaxRate1,
                   ),
                 if (company.enableSecondInvoiceTaxRate)
                   TaxRateDropdown(
-                    onSelected: (taxRate) =>
-                        viewModel.onSettingsChanged(settings.rebuild((b) => b
+                    onSelected: (taxRate) => viewModel.onSettingsChanged(
+                      settings.rebuild(
+                        (b) => b
                           ..defaultTaxName2 = taxRate.name
-                          ..defaultTaxRate2 = taxRate.rate)),
+                          ..defaultTaxRate2 = taxRate.rate,
+                      ),
+                    ),
                     labelText: localization.defaultTaxRate,
                     initialTaxName: settings.defaultTaxName2,
                     initialTaxRate: settings.defaultTaxRate2,
                   ),
                 if (company.enableThirdInvoiceTaxRate)
                   TaxRateDropdown(
-                    onSelected: (taxRate) =>
-                        viewModel.onSettingsChanged(settings.rebuild((b) => b
+                    onSelected: (taxRate) => viewModel.onSettingsChanged(
+                      settings.rebuild(
+                        (b) => b
                           ..defaultTaxName3 = taxRate.name
-                          ..defaultTaxRate3 = taxRate.rate)),
+                          ..defaultTaxRate3 = taxRate.rate,
+                      ),
+                    ),
                     labelText: localization.defaultTaxRate,
                     initialTaxName: settings.defaultTaxName3,
                     initialTaxRate: settings.defaultTaxRate3,
@@ -154,25 +164,14 @@ class NumberOfRatesSelector extends StatelessWidget {
     return AppDropdownButton(
       labelText: label,
       value: numberOfRates == null ? '' : '$numberOfRates',
-      onChanged: (dynamic value) =>
-          onChanged(value == null || value.isEmpty ? null : int.parse(value)),
+      onChanged: (dynamic value) => onChanged(
+            value == null || value.isEmpty ? null : int.parse(value),
+          ),
       items: [
-        DropdownMenuItem(
-          child: Text(localization.disabled),
-          value: '0',
-        ),
-        DropdownMenuItem(
-          child: Text(localization.oneTaxRate),
-          value: '1',
-        ),
-        DropdownMenuItem(
-          child: Text(localization.twoTaxRates),
-          value: '2',
-        ),
-        DropdownMenuItem(
-          child: Text(localization.threeTaxRates),
-          value: '3',
-        ),
+        DropdownMenuItem(child: Text(localization.disabled), value: '0'),
+        DropdownMenuItem(child: Text(localization.oneTaxRate), value: '1'),
+        DropdownMenuItem(child: Text(localization.twoTaxRates), value: '2'),
+        DropdownMenuItem(child: Text(localization.threeTaxRates), value: '3'),
       ],
     );
   }

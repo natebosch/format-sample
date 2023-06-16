@@ -23,10 +23,7 @@ import 'package:minsk8/import.dart';
 
 class LoginScreen extends StatelessWidget {
   Route<T> getRoute<T>() {
-    return buildRoute<T>(
-      '/login',
-      builder: (_) => this,
-    );
+    return buildRoute<T>('/login', builder: (_) => this);
   }
 
   @override
@@ -34,8 +31,9 @@ class LoginScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       body: BlocProvider(
-        create: (BuildContext context) =>
-            LoginCubit(getRepository<AuthenticationRepository>(context)),
+        create: (BuildContext context) => LoginCubit(
+          getRepository<AuthenticationRepository>(context),
+        ),
         child: LoginForm(),
       ),
     );
@@ -66,11 +64,7 @@ class LoginForm extends StatelessWidget {
                   SizedBox(
                     width: kButtonIconSize,
                     height: kButtonIconSize,
-                    child: FittedBox(
-                      child: Icon(
-                        FontAwesomeIcons.google,
-                      ),
-                    ),
+                    child: FittedBox(child: Icon(FontAwesomeIcons.google)),
                   ),
                   SizedBox(width: 8),
                   Text('Войти через Google'),

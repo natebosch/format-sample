@@ -28,10 +28,7 @@ class SignButton extends StatelessWidget {
           margin: EdgeInsets.all(1),
           constraints: BoxConstraints.expand(),
           child: Center(
-            child: Text(
-              text,
-              style: Theme.of(context).textTheme.display2,
-            ),
+            child: Text(text, style: Theme.of(context).textTheme.display2),
           ),
         ),
       ),

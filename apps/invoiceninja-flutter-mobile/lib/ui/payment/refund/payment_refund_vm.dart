@@ -87,14 +87,16 @@ class PaymentRefundVM {
       onRefundPressed:
           (BuildContext context, Completer<PaymentEntity> completer) {
         store.dispatch(
-            RefundPaymentRequest(completer: completer, payment: payment));
+          RefundPaymentRequest(completer: completer, payment: payment),
+        );
         return completer.future.then((savedPayment) {
           showToast(AppLocalization.of(context).refundedPayment);
           if (isMobile(context)) {
             store.dispatch(UpdateCurrentRoute(PaymentViewScreen.route));
             if (payment.isNew) {
-              Navigator.of(context)
-                  .pushReplacementNamed(PaymentViewScreen.route);
+              Navigator.of(context).pushReplacementNamed(
+                PaymentViewScreen.route,
+              );
             } else {
               Navigator.of(context).pop(savedPayment);
             }
@@ -103,10 +105,11 @@ class PaymentRefundVM {
           }
         }).catchError((Object error) {
           showDialog<ErrorDialog>(
-              context: context,
-              builder: (BuildContext context) {
-                return ErrorDialog(error);
-              });
+            context: context,
+            builder: (BuildContext context) {
+              return ErrorDialog(error);
+            },
+          );
         });
       },
     );

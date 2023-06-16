@@ -16,17 +16,25 @@ class SendSearchUserScreen extends StatelessWidget {
         title: Text("Send".i18n),
         actions: [
           IconButton(
-            icon: SvgPicture.asset('assets/images/wallet/app_bar/scan_qr_code_icon.svg', height: 30),
-            onPressed: () => NavigationService.of(context).navigateTo(Routes.scanQRCode),
+            icon: SvgPicture.asset(
+              'assets/images/wallet/app_bar/scan_qr_code_icon.svg',
+              height: 30,
+            ),
+            onPressed: () => NavigationService.of(context).navigateTo(
+              Routes.scanQRCode,
+            ),
           ),
-          const SizedBox(width: 10)
+          const SizedBox(width: 10),
         ],
       ),
       body: SearchUser(
         noShowUsers: [settingsStorage.accountName],
         resultCallBack: (selectedUser) {
           print('onResult: ${selectedUser.account}');
-          NavigationService.of(context).navigateTo(Routes.sendEnterData, selectedUser);
+          NavigationService.of(context).navigateTo(
+            Routes.sendEnterData,
+            selectedUser,
+          );
         },
       ),
     );

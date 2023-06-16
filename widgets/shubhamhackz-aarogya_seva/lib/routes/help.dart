@@ -16,22 +16,28 @@ class _HelpState extends State<Help> {
     Symptoms(image: Image.asset('assets/images/cough.png'), text: 'Cough'),
     Symptoms(image: Image.asset('assets/images/fever.png'), text: 'High Fever'),
     Symptoms(
-        image: Image.asset('assets/images/sore_throath.png'),
-        text: 'Sore Throath'),
+      image: Image.asset('assets/images/sore_throath.png'),
+      text: 'Sore Throath',
+    ),
   ];
 
   List<Prevention> preventions = [
     Prevention(
-        imageSource: 'assets/images/wash_hands.png',
-        text: 'Wash Your Hands Often'),
+      imageSource: 'assets/images/wash_hands.png',
+      text: 'Wash Your Hands Often',
+    ),
     Prevention(
-        imageSource: 'assets/images/wear_a_mask.png', text: 'Wear A Face Mask'),
+      imageSource: 'assets/images/wear_a_mask.png',
+      text: 'Wear A Face Mask',
+    ),
     Prevention(
-        imageSource: 'assets/images/always_cover_cough_sneeze.png',
-        text: 'Always Cover Your Cough or Sneeze'),
+      imageSource: 'assets/images/always_cover_cough_sneeze.png',
+      text: 'Always Cover Your Cough or Sneeze',
+    ),
     Prevention(
-        imageSource: 'assets/images/avoid_handshakes.png',
-        text: 'Avoid Contact With Sick People'),
+      imageSource: 'assets/images/avoid_handshakes.png',
+      text: 'Avoid Contact With Sick People',
+    ),
   ];
 
   List<HelplilneNumber> helplineNumbers = [
@@ -59,25 +65,26 @@ class _HelpState extends State<Help> {
                 child: ListView.builder(
                   padding: EdgeInsets.only(left: width * 0.05),
                   itemBuilder: (context, index) {
-                    return LayoutBuilder(builder: (context, constraints) {
-                      return ConstrainedBox(
-                        constraints: BoxConstraints(
-                            maxWidth: width * 0.4, maxHeight: width * 0.4),
-                        child: SymptomsCard(
-                          image: symptoms[index].image,
-                          text: symptoms[index].text,
-                        ),
-                      );
-                    });
+                    return LayoutBuilder(
+                      builder: (context, constraints) {
+                        return ConstrainedBox(
+                          constraints: BoxConstraints(
+                            maxWidth: width * 0.4,
+                            maxHeight: width * 0.4,
+                          ),
+                          child: SymptomsCard(
+                            image: symptoms[index].image,
+                            text: symptoms[index].text,
+                          ),
+                        );
+                      },
+                    );
                   },
                   itemCount: symptoms.length,
                   scrollDirection: Axis.horizontal,
                 ),
               ),
-              buildTitle(
-                title: 'Preventions',
-                width: width,
-              ),
+              buildTitle(title: 'Preventions', width: width),
               Container(
                 height: width * 0.52,
                 child: ListView.builder(
@@ -92,10 +99,7 @@ class _HelpState extends State<Help> {
                   scrollDirection: Axis.horizontal,
                 ),
               ),
-              buildTitle(
-                title: 'Helpline Numbers',
-                width: width,
-              ),
+              buildTitle(title: 'Helpline Numbers', width: width),
               Column(
                 children: List.generate(
                   helplineNumbers.length,
@@ -134,7 +138,7 @@ class _HelpState extends State<Help> {
               fontFamily: 'ProductSans',
               color: const Color(0xFF7777FF),
             ),
-          )
+          ),
         ],
       ),
     );
@@ -143,7 +147,9 @@ class _HelpState extends State<Help> {
   Padding buildTitle({String title, double width}) {
     return Padding(
       padding: EdgeInsets.symmetric(
-          vertical: width * 0.04, horizontal: width * 0.05),
+        vertical: width * 0.04,
+        horizontal: width * 0.05,
+      ),
       child: Text(
         title,
         textAlign: TextAlign.start,

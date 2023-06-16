@@ -10,9 +10,7 @@ import 'package:invoiceninja_flutter/data/web_client.dart';
 import 'package:invoiceninja_flutter/redux/app/app_state.dart';
 
 class StaticRepository {
-  const StaticRepository({
-    this.webClient = const WebClient(),
-  });
+  const StaticRepository({this.webClient = const WebClient()});
 
   final WebClient webClient;
 

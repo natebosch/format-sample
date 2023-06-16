@@ -44,7 +44,9 @@ class _UserPhotoState extends State<UserPhoto> {
                 buttonTap: () async {
                   File file = await StorageServices.getImage();
                   imagePath = await StorageServices.uploadPhoto(
-                      file, FirebaseAuth.instance.currentUser.uid);
+                    file,
+                    FirebaseAuth.instance.currentUser.uid,
+                  );
                   setState(() {});
                 },
               ),

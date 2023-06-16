@@ -20,26 +20,36 @@ class Splash extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new MaterialApp(
-        home: new Scaffold(
-            body: new Column(children: [
-          new Center(
+      home: new Scaffold(
+        body: new Column(
+          children: [
+            new Center(
               child: new FlutterLogo(
-                  colors: themeStore?.state?.theme?.accentColor ?? Colors.pink,
-                  size: 80.0)),
-          new Center(
-              child: new Text(appName, style: new TextStyle(fontSize: 32.0))),
-          new Center(
+                colors: themeStore?.state?.theme?.accentColor ?? Colors.pink,
+                size: 80.0,
+              ),
+            ),
+            new Center(
+              child: new Text(appName, style: new TextStyle(fontSize: 32.0)),
+            ),
+            new Center(
               child:
-                  new Text("for Gitter", style: new TextStyle(fontSize: 16.0)))
-        ], mainAxisAlignment: MainAxisAlignment.center)),
-        theme: themeStore?.state?.theme);
+                  new Text("for Gitter", style: new TextStyle(fontSize: 16.0)),
+            ),
+          ],
+          mainAxisAlignment: MainAxisAlignment.center,
+        ),
+      ),
+      theme: themeStore?.state?.theme,
+    );
   }
 }
 
 class LoadingView extends StatelessWidget {
   @override
-  Widget build(BuildContext context) =>
-      new Center(child: new CircularProgressIndicator());
+  Widget build(BuildContext context) => new Center(
+    child: new CircularProgressIndicator(),
+  );
 }
 
 class App extends StatefulWidget {
@@ -74,14 +84,15 @@ class _AppState extends State<App> {
     }
 
     return new MaterialApp(
-        theme: themeStore.state.theme,
-        title: appName,
-        routes: {
-          HomeView.path: (BuildContext context) => new HomeView(),
-          PeopleView.path: (BuildContext context) => new PeopleView(),
-          GroupView.path: (BuildContext context) => new GroupView(),
-          SettingsView.path: (BuildContext context) => new SettingsView()
-        });
+      theme: themeStore.state.theme,
+      title: appName,
+      routes: {
+        HomeView.path: (BuildContext context) => new HomeView(),
+        PeopleView.path: (BuildContext context) => new PeopleView(),
+        GroupView.path: (BuildContext context) => new GroupView(),
+        SettingsView.path: (BuildContext context) => new SettingsView(),
+      },
+    );
   }
 }
 
@@ -107,7 +118,8 @@ Future<Null> _init() async {
   int primary = prefs.getInt(ThemeState.kPrimaryColorKey);
   int accent = prefs.getInt(ThemeState.kAccentColorKey);
 
-  themeStore.dispatch(new ChangeThemeAction(
+  themeStore.dispatch(
+    new ChangeThemeAction(
       brightness: bright == true ? Brightness.dark : Brightness.light,
       primaryColor:
           primary != null && primary >= 0 && primary > Colors.primaries.length
@@ -116,5 +128,7 @@ Future<Null> _init() async {
       accentColor:
           accent != null && accent >= 0 && accent > Colors.accents.length
               ? Colors.accents[accent]
-              : null));
+              : null,
+    ),
+  );
 }

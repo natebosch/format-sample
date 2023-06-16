@@ -32,20 +32,35 @@ class _ProductItemInfoState extends State<ProductItemInfo> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
-                        Text(widget.itemUI.name.trim() ?? "", style: AppTextStyle.boldBlack16),
-                        Padding(
-                          padding: const EdgeInsets.only(top: 8.0),
-                          child: Text(widget.itemUI.description.trim() ?? "", style: AppTextStyle.grey13, maxLines: 2, overflow: TextOverflow.ellipsis),
+                        Text(
+                          widget.itemUI.name.trim() ?? "",
+                          style: AppTextStyle.boldBlack16,
                         ),
                         Padding(
-                          padding: const EdgeInsets.only(top: 16.0, bottom: 8.0),
-                          child: Text("\$${widget.itemUI.price}", style: AppTextStyle.boldBlack16),
-                        )
+                          padding: const EdgeInsets.only(top: 8.0),
+                          child: Text(
+                            widget.itemUI.description.trim() ?? "",
+                            style: AppTextStyle.grey13,
+                            maxLines: 2,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                        ),
+                        Padding(
+                          padding:
+                              const EdgeInsets.only(top: 16.0, bottom: 8.0),
+                          child: Text(
+                            "\$${widget.itemUI.price}",
+                            style: AppTextStyle.boldBlack16,
+                          ),
+                        ),
                       ],
                     ),
                   ),
                 ),
-                Center(child: Text('x${widget.quantity}', style: AppTextStyle.accent18)),
+                Center(
+                  child:
+                      Text('x${widget.quantity}', style: AppTextStyle.accent18),
+                ),
               ],
             ),
           ],

@@ -1,17 +1,12 @@
-
-
-
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:to_do/models/Lista.dart';
 
 import '../main.dart';
 
-
-class SharedPref{
-  
+class SharedPref {
   static SharedPreferences _sharedPreferences;
-  static init() async{
+  static init() async {
     if (_sharedPreferences == null) {
       _sharedPreferences = await SharedPreferences.getInstance();
     }
@@ -20,64 +15,64 @@ class SharedPref{
     print(_deviceLanguage);*/
   }
 
-  static initLocale(BuildContext context){
+  static initLocale(BuildContext context) {
     Locale myLocale = Localizations.localeOf(context);
-    _deviceLanguage="es";
+    _deviceLanguage = "es";
     print(myLocale.languageCode);
   }
 
-  static String _deviceLanguage="en";
+  static String _deviceLanguage = "en";
 
-  static List<Lista> getListas()  {
-    String datos= _sharedPreferences.getString('datos');
-    if(datos!= null){
+  static List<Lista> getListas() {
+    String datos = _sharedPreferences.getString('datos');
+    if (datos != null) {
       return listaListaFromJson(datos);
     }
     return null;
   }
 
-  static Lista getLista(int indice)  {
-    String datos= _sharedPreferences.getString('datos');
-    
-    if(datos!= null){
+  static Lista getLista(int indice) {
+    String datos = _sharedPreferences.getString('datos');
+
+    if (datos != null) {
       return listaListaFromJson(datos)[indice];
     }
     return null;
   }
 
-  static void addLista(Lista lista){
-    List<Lista> listas= getListas();
-    if(listas!=null){
+  static void addLista(Lista lista) {
+    List<Lista> listas = getListas();
+    if (listas != null) {
       listas.add(lista);
-    }else{
+    } else {
       listas = [];
       listas.add(lista);
     }
     setListas(listas);
   }
 
-  static setListas(List<Lista> lista ) {
+  static setListas(List<Lista> lista) {
     String json = listaListaToJson(lista);
-    
-    _sharedPreferences.setString('datos',  json);
+
+    _sharedPreferences.setString('datos', json);
   }
 
-  static limpiar(){
-    _sharedPreferences.setString('datos',  null);
+  static limpiar() {
+    _sharedPreferences.setString('datos', null);
   }
 
-  static isPrimeraVez(){
-    bool datos= _sharedPreferences.getBool('primeraVez');
-    if(datos==null){
+  static isPrimeraVez() {
+    bool datos = _sharedPreferences.getBool('primeraVez');
+    if (datos == null) {
       return true;
     }
     return datos;
   }
 
-  static setPrimeraVez(bool valor){
+  static setPrimeraVez(bool valor) {
     _sharedPreferences.setBool("primeraVez", valor);
   }
-  
+
   static const String prefSelectedLanguageCode = "prefSelectedLanguage";
 
   static Locale _locale(String languageCode) {
@@ -86,11 +81,13 @@ class SharedPref{
         : Locale('en', '');
   }
 
-  static getLocale(){
-    if(_deviceLanguage!="en" && _deviceLanguage!="es"){
-      _deviceLanguage="en";
+  static getLocale() {
+    if (_deviceLanguage != "en" && _deviceLanguage != "es") {
+      _deviceLanguage = "en";
     }
-    String languageCode = _sharedPreferences.getString(prefSelectedLanguageCode) ?? _deviceLanguage;
+    String languageCode =
+        _sharedPreferences.getString(prefSelectedLanguageCode) ??
+            _deviceLanguage;
     return _locale(languageCode);
   }
 
@@ -99,21 +96,24 @@ class SharedPref{
     return _locale(languageCode);
   }
 
-  static void changeLanguage(BuildContext context, String selectedLanguageCode) async {
-    var _locale =  setLocale(selectedLanguageCode);
+  static void changeLanguage(
+    BuildContext context,
+    String selectedLanguageCode,
+  ) async {
+    var _locale = setLocale(selectedLanguageCode);
     MyApp.setLocale(context, _locale);
   }
 
-  static void setColor(int color){
+  static void setColor(int color) {
     _sharedPreferences.setInt('colorTema', color);
   }
 
-  static MaterialColor getColor(){
-    int codColor= _sharedPreferences.getInt('colorTema');
-    if(codColor==null || codColor==0){
+  static MaterialColor getColor() {
+    int codColor = _sharedPreferences.getInt('colorTema');
+    if (codColor == null || codColor == 0) {
       return Colors.blue;
     }
-    Color color= Color(codColor);
+    Color color = Color(codColor);
     Map<int, Color> colorCodes = {
       50: Color.fromRGBO(color.red, color.green, color.blue, .1),
       100: Color.fromRGBO(color.red, color.green, color.blue, .2),
@@ -128,14 +128,14 @@ class SharedPref{
     };
 
     MaterialColor matColor = new MaterialColor(color.value, colorCodes);
-    
+
     return matColor;
   }
 
-  static bool esOscuro(){
-    Color color= SharedPref.getColor();
-    double darkness = 1-(0.299*color.red + 0.587*color.green + 0.114*color.green)/255;
-    return !(darkness<0.5);
+  static bool esOscuro() {
+    Color color = SharedPref.getColor();
+    double darkness = 1 -
+        (0.299 * color.red + 0.587 * color.green + 0.114 * color.green) / 255;
+    return !(darkness < 0.5);
   }
-
 }

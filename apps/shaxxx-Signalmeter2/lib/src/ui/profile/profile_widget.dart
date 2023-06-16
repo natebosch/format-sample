@@ -23,10 +23,12 @@ class ProfileWidget extends StatefulWidget {
   final IProfile profile;
   final ProfileEditViewModel viewModel;
 
-  ProfileWidget(
-      {@required this.child, @required this.profile, @required this.viewModel})
-      : assert(viewModel != null),
-        assert(child != null);
+  ProfileWidget({
+    @required this.child,
+    @required this.profile,
+    @required this.viewModel,
+  }) : assert(viewModel != null),
+       assert(child != null);
 
   static ProfileWidgetState of(BuildContext context) {
     return (context
@@ -89,51 +91,57 @@ class ProfileWidgetState extends State<ProfileWidget> {
 
   void _setTextFieldValues() {
     nameController.value = nameController.value.copyWith(text: profile.name);
-    addressController.value =
-        addressController.value.copyWith(text: profile.address);
-    usernameController.value =
-        usernameController.value.copyWith(text: profile.username);
-    passwordController.value =
-        passwordController.value.copyWith(text: profile.password);
-    transcodingPortController.value = transcodingPortController.value
-        .copyWith(text: profile.transcodingPort?.toString() ?? '');
-    streamingPortController.value = streamingPortController.value
-        .copyWith(text: profile.streamingPort?.toString() ?? '');
-    httpPortController.value = httpPortController.value
-        .copyWith(text: profile.httpPort?.toString() ?? '');
+    addressController.value = addressController.value.copyWith(
+      text: profile.address,
+    );
+    usernameController.value = usernameController.value.copyWith(
+      text: profile.username,
+    );
+    passwordController.value = passwordController.value.copyWith(
+      text: profile.password,
+    );
+    transcodingPortController.value = transcodingPortController.value.copyWith(
+      text: profile.transcodingPort?.toString() ?? '',
+    );
+    streamingPortController.value = streamingPortController.value.copyWith(
+      text: profile.streamingPort?.toString() ?? '',
+    );
+    httpPortController.value = httpPortController.value.copyWith(
+      text: profile.httpPort?.toString() ?? '',
+    );
   }
 
   Future<bool> showWarningDialog(String text) async {
     return await showDialog<bool>(
-            context: context,
-            builder: (context) {
-              return AlertDialog(
-                title: Text(
-                  MessageProvider.of(context).titleWarning,
+          context: context,
+          builder: (context) {
+            return AlertDialog(
+              title: Text(MessageProvider.of(context).titleWarning),
+              content: Text(text),
+              actions: <Widget>[
+                FlatButton(
+                  onPressed: () {
+                    Navigator.pop(context, true);
+                  },
+                  child:
+                      Text(MessageProvider.of(context).confirm.toUpperCase()),
                 ),
-                content: Text(
-                  text,
-                ),
-                actions: <Widget>[
-                  FlatButton(
-                    onPressed: () {
-                      Navigator.pop(context, true);
-                    },
-                    child: Text(
-                      MessageProvider.of(context).confirm.toUpperCase(),
-                    ),
-                  ),
-                ],
-              );
-            }) ??
+              ],
+            );
+          },
+        ) ??
         false;
   }
 
   Future<bool> _checkHttpPort() async {
     if (!(await NetworkUtils.isPortOpen(
-        profile.address, int.parse(profile.httpPort)))) {
-      var message = MessageProvider.of(context)
-          .warnHttpPortClosed(profile.address, profile.httpPort);
+      profile.address,
+      int.parse(profile.httpPort),
+    ))) {
+      var message = MessageProvider.of(context).warnHttpPortClosed(
+        profile.address,
+        profile.httpPort,
+      );
       message += '\n' + MessageProvider.of(context).warnSaveTheProfileAnyway;
       return await showWarningDialog(message);
     }
@@ -145,7 +153,9 @@ class ProfileWidgetState extends State<ProfileWidget> {
       return true;
     }
     if (!(await NetworkUtils.isPortOpen(
-        profile.address, int.parse(profile.streamingPort)))) {
+      profile.address,
+      int.parse(profile.streamingPort),
+    ))) {
       var message = MessageProvider.of(context).warnStreamingPortClosed;
       message += '\n' + MessageProvider.of(context).warnSaveTheProfileAnyway;
       return await showWarningDialog(message);
@@ -158,7 +168,9 @@ class ProfileWidgetState extends State<ProfileWidget> {
       return true;
     }
     if (!(await NetworkUtils.isPortOpen(
-        profile.address, int.parse(profile.transcodingPort)))) {
+      profile.address,
+      int.parse(profile.transcodingPort),
+    ))) {
       var message = MessageProvider.of(context).warnTranscodingPortClosed;
       message += '\n' + MessageProvider.of(context).warnSaveTheProfileAnyway;
       return await showWarningDialog(message);
@@ -206,18 +218,24 @@ class ProfileWidgetState extends State<ProfileWidget> {
     nameController.addListener(() {
       profile.name = nameController.text;
     });
-    addressController
-        .addListener(() => profile.address = addressController.text);
-    usernameController
-        .addListener(() => profile.username = usernameController.text);
-    passwordController
-        .addListener(() => profile.password = passwordController.text);
+    addressController.addListener(
+      () => profile.address = addressController.text,
+    );
+    usernameController.addListener(
+      () => profile.username = usernameController.text,
+    );
+    passwordController.addListener(
+      () => profile.password = passwordController.text,
+    );
     transcodingPortController.addListener(
-        () => profile.transcodingPort = transcodingPortController.text);
+      () => profile.transcodingPort = transcodingPortController.text,
+    );
     streamingPortController.addListener(
-        () => profile.streamingPort = streamingPortController.text);
-    httpPortController
-        .addListener(() => profile.httpPort = httpPortController.text);
+      () => profile.streamingPort = streamingPortController.text,
+    );
+    httpPortController.addListener(
+      () => profile.httpPort = httpPortController.text,
+    );
   }
 
   void _setValidators() {
@@ -317,10 +335,7 @@ class ProfileWidgetState extends State<ProfileWidget> {
       child: Form(
         key: _formKey,
         autovalidate: widget.profile != null,
-        child: _InheritedProfileWidget(
-          data: this,
-          child: widget.child,
-        ),
+        child: _InheritedProfileWidget(data: this, child: widget.child),
       ),
     );
   }

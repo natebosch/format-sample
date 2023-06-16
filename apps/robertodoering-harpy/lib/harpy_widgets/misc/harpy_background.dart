@@ -6,11 +6,7 @@ import 'package:provider/provider.dart';
 ///
 /// The [colors] default to the [HarpyTheme.backgroundColors] if omitted.
 class HarpyBackground extends StatelessWidget {
-  const HarpyBackground({
-    this.child,
-    this.colors,
-    this.borderRadius,
-  });
+  const HarpyBackground({this.child, this.colors, this.borderRadius});
 
   final Widget? child;
   final List<Color>? colors;
@@ -24,10 +20,7 @@ class HarpyBackground extends StatelessWidget {
       end: Alignment.bottomCenter,
       colors: backgroundColors.length > 1
           ? backgroundColors
-          : [
-              backgroundColors.first,
-              backgroundColors.first,
-            ],
+          : [backgroundColors.first, backgroundColors.first],
     );
   }
 

@@ -50,10 +50,7 @@ class _HomePageState extends State<HomePage> {
     _bodyParts = DB.bodyParts();
 
     setState(() {
-      dataChildren = [
-        newsListBuilder(),
-        waterTrackDataBuilder(),
-      ];
+      dataChildren = [newsListBuilder(), waterTrackDataBuilder()];
     });
   }
 
@@ -70,10 +67,7 @@ class _HomePageState extends State<HomePage> {
         } else if (snapshot.hasData && snapshot.data.statusCode == 200) {
           return NewsSwiper(snapshot.data.data);
         } else if (snapshot.data == null) {
-          return SizedBox(
-            height: 250,
-            child: LoaderDisplay(),
-          );
+          return SizedBox(height: 250, child: LoaderDisplay());
         } else {
           return Container();
         }
@@ -95,8 +89,9 @@ class _HomePageState extends State<HomePage> {
             var date =
                 (currentItem['date_time'] ?? currentItem['date']).toString();
 
-            var waterCount =
-                int.tryParse(currentItem['water_count'].toString());
+            var waterCount = int.tryParse(
+              currentItem['water_count'].toString(),
+            );
 
             if (waterCount != 0) {
               WaterChartTrack newWaterTrack = new WaterChartTrack(
@@ -115,7 +110,7 @@ class _HomePageState extends State<HomePage> {
               domainFn: (WaterChartTrack waterTrack, int i) => waterTrack.date,
               measureFn: (WaterChartTrack waterTrack, _) => waterTrack.amount,
               data: chartData,
-            )
+            ),
           ];
 
           return Column(
@@ -129,18 +124,12 @@ class _HomePageState extends State<HomePage> {
               ),
               ConstrainedBox(
                 constraints: BoxConstraints.expand(height: 350.0),
-                child: charts.TimeSeriesChart(
-                  seriesList,
-                  animate: true,
-                ),
+                child: charts.TimeSeriesChart(seriesList, animate: true),
               ),
             ],
           );
         } else if (snapshot.data == null) {
-          return SizedBox(
-            height: 250,
-            child: LoaderDisplay(),
-          );
+          return SizedBox(height: 250, child: LoaderDisplay());
         } else {
           return Container();
         }
@@ -149,8 +138,12 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  List<Widget> getSymptomListWidgets(String savedDate, List savedSymptomList,
-      List<Symptom> symptomList, List<BodyPart> bodyPartList) {
+  List<Widget> getSymptomListWidgets(
+    String savedDate,
+    List savedSymptomList,
+    List<Symptom> symptomList,
+    List<BodyPart> bodyPartList,
+  ) {
     var mappedList = savedSymptomList.map((saved) {
       var selectedSymptom =
           symptomList.where((element) => element.id == saved['symptom']).first;
@@ -161,9 +154,9 @@ class _HomePageState extends State<HomePage> {
 
       List<BodyPart> selectedBodyParts = [];
       for (var savedPart in savedBodyPartList) {
-        var selected = bodyPartList
-            .where((element) => element.id == int.tryParse(savedPart))
-            .first;
+        var selected = bodyPartList.where(
+          (element) => element.id == int.tryParse(savedPart),
+        ).first;
         selectedBodyParts.add(selected);
       }
 
@@ -179,17 +172,17 @@ class _HomePageState extends State<HomePage> {
         ? DateFormat('dd-MM-yyyy – kk:mm').format(dateTime)
         : 'No Date';
 
-    widgets.add(Text(
-      dateStr,
-      style: TextStyle(fontWeight: FontWeight.bold),
-    ));
+    widgets.add(Text(dateStr, style: TextStyle(fontWeight: FontWeight.bold)));
 
     for (var i = 0; i < mappedList.length; i++) {
       widgets.add(Text(mappedList[i]['symptom_name']));
-      widgets.add(Text('Body Parts: ' +
-          (mappedList[i]['body_part_names'] as List<String>).join(', ')));
       widgets.add(Text(
-          'Intensity: ' + (mappedList[i]['intensity'] ?? 'None').toString()));
+        'Body Parts: ' +
+            (mappedList[i]['body_part_names'] as List<String>).join(', '),
+      ));
+      widgets.add(
+        Text('Intensity: ' + (mappedList[i]['intensity'] ?? 'None').toString()),
+      );
 
       if (i + 1 != mappedList.length) {
         widgets.add(Container(
@@ -217,10 +210,7 @@ class _HomePageState extends State<HomePage> {
           ? DateFormat('dd-MM-yyyy – kk:mm').format(dateTime)
           : 'No Date';
 
-      widgets.add(Text(
-        dateStr,
-        style: TextStyle(fontWeight: FontWeight.bold),
-      ));
+      widgets.add(Text(dateStr, style: TextStyle(fontWeight: FontWeight.bold)));
 
       widgets.add(Text(
         'Tracked Food List',
@@ -276,35 +266,29 @@ class _HomePageState extends State<HomePage> {
           }
 
           return ListView(
-              padding: const EdgeInsets.all(8),
-              children: data
-                  .where((e) => jsonDecode(e)['symptoms'].length > 0)
-                  .map((e) {
-                List<Widget> widgets = getSymptomListWidgets(
+            padding: const EdgeInsets.all(8),
+            children: data
+                .where((e) => jsonDecode(e)['symptoms'].length > 0)
+                .map((e) {
+                  List<Widget> widgets = getSymptomListWidgets(
                     jsonDecode(e)['date_time'] ?? jsonDecode(e)['date'],
                     jsonDecode(e)['symptoms'] as List,
                     snapshot.data[1] as List<Symptom>,
-                    snapshot.data[2] as List<BodyPart>);
+                    snapshot.data[2] as List<BodyPart>,
+                  );
 
-                return Container(
-                  padding: EdgeInsets.all(8.0),
-                  color: Colors.grey[100],
-                  child: Column(
-                    children: widgets,
-                  ),
-                );
-              }).toList());
+                  return Container(
+                    padding: EdgeInsets.all(8.0),
+                    color: Colors.grey[100],
+                    child: Column(children: widgets),
+                  );
+                })
+                .toList(),
+          );
         } else if (snapshot.data[0] == null) {
-          return SizedBox(
-            height: 250,
-            child: LoaderDisplay(),
-          );
+          return SizedBox(height: 250, child: LoaderDisplay());
         } else {
-          return Container(
-            child: Center(
-              child: Text('List empty'),
-            ),
-          );
+          return Container(child: Center(child: Text('List empty')));
         }
       },
       future: Future.wait([_trackData, _symptoms, _bodyParts]),
@@ -318,33 +302,27 @@ class _HomePageState extends State<HomePage> {
           return ErrorDisplay();
         } else if (snapshot.hasData && snapshot.data.length > 0) {
           return ListView(
-              padding: const EdgeInsets.all(8),
-              children: (snapshot.data as List)
-                  .where((e) => jsonDecode(e)['food_tracks'].length > 0)
-                  .map((e) {
-                List<Widget> foodWidgets = getFoodListWidgets(
+            padding: const EdgeInsets.all(8),
+            children: (snapshot.data as List)
+                .where((e) => jsonDecode(e)['food_tracks'].length > 0)
+                .map((e) {
+                  List<Widget> foodWidgets = getFoodListWidgets(
                     jsonDecode(e)['date_time'] ?? jsonDecode(e)['date'],
-                    jsonDecode(e)['food_tracks'] as List);
+                    jsonDecode(e)['food_tracks'] as List,
+                  );
 
-                return Container(
-                  padding: EdgeInsets.all(8.0),
-                  color: Colors.grey[100],
-                  child: Column(
-                    children: foodWidgets,
-                  ),
-                );
-              }).toList());
+                  return Container(
+                    padding: EdgeInsets.all(8.0),
+                    color: Colors.grey[100],
+                    child: Column(children: foodWidgets),
+                  );
+                })
+                .toList(),
+          );
         } else if (snapshot.data == null) {
-          return SizedBox(
-            height: 250,
-            child: LoaderDisplay(),
-          );
+          return SizedBox(height: 250, child: LoaderDisplay());
         } else {
-          return Container(
-            child: Center(
-              child: Text('List empty'),
-            ),
-          );
+          return Container(child: Center(child: Text('List empty')));
         }
       },
       future: _trackData,
@@ -407,13 +385,17 @@ class _HomePageState extends State<HomePage> {
                     onPressed: () => setSymptomsHeight(),
                     child: Row(
                       children: [
-                        Icon(_symptomsListHeight == 0
-                            ? Icons.arrow_right
-                            : Icons.arrow_drop_down),
+                        Icon(
+                          _symptomsListHeight == 0
+                              ? Icons.arrow_right
+                              : Icons.arrow_drop_down,
+                        ),
                         Text(
                           'Symptoms',
                           style: TextStyle(
-                              fontSize: 22, fontWeight: FontWeight.bold),
+                            fontSize: 22,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                       ],
                     ),
@@ -429,23 +411,24 @@ class _HomePageState extends State<HomePage> {
                     onPressed: () => setFoodHeight(),
                     child: Row(
                       children: [
-                        Icon(_foodListHeight == 0
-                            ? Icons.arrow_right
-                            : Icons.arrow_drop_down),
+                        Icon(
+                          _foodListHeight == 0
+                              ? Icons.arrow_right
+                              : Icons.arrow_drop_down,
+                        ),
                         Text(
                           'Food',
                           style: TextStyle(
-                              fontSize: 22, fontWeight: FontWeight.bold),
+                            fontSize: 22,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                       ],
                     ),
                   ),
                   margin: EdgeInsets.all(8),
                 ),
-                SizedBox(
-                  height: _foodListHeight,
-                  child: foodDataBuilder(),
-                ),
+                SizedBox(height: _foodListHeight, child: foodDataBuilder()),
               ],
             ),
           ),

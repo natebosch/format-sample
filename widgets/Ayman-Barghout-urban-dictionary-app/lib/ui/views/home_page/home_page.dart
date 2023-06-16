@@ -17,8 +17,10 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   final PageController controller = PageController(initialPage: 1);
   int _selectedIndex;
-  static const TextStyle optionStyle =
-      TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
+  static const TextStyle optionStyle = TextStyle(
+    fontSize: 30,
+    fontWeight: FontWeight.bold,
+  );
 
   @override
   void initState() {
@@ -32,9 +34,11 @@ class _HomePageState extends State<HomePage> {
     } else if (i == 2) {
       BlocProvider.of<FavoritedTermsBloc>(context).add(LoadFavoritedTerms());
     }
-    await controller.animateToPage(i,
-        duration: const Duration(milliseconds: 500),
-        curve: Curves.fastOutSlowIn);
+    await controller.animateToPage(
+      i,
+      duration: const Duration(milliseconds: 500),
+      curve: Curves.fastOutSlowIn,
+    );
     setState(() {
       _selectedIndex = i;
     });
@@ -52,13 +56,9 @@ class _HomePageState extends State<HomePage> {
           }),
           controller: controller,
           children: <Widget>[
-            TermsView(
-              changeIndex: updateIndex,
-            ),
+            TermsView(changeIndex: updateIndex),
             const SearchView(),
-            FavoritesView(
-              changeIndex: updateIndex,
-            ),
+            FavoritesView(changeIndex: updateIndex),
           ],
         ),
       ),

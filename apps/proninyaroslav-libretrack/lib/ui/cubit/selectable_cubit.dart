@@ -27,9 +27,8 @@ class SelectableState<T> with _$SelectableState<T> {
 
   const factory SelectableState.noSelection() = SelectableStateNoSelection;
 
-  const factory SelectableState.selected(
-    Set<T> items,
-  ) = SelectableStateSelected;
+  const factory SelectableState.selected(Set<T> items) =
+      SelectableStateSelected;
 }
 
 abstract class SelectableCubit<T> extends Cubit<SelectableState<T>> {

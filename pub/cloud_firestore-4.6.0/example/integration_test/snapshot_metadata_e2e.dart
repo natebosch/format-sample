@@ -7,28 +7,27 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void runSnapshotMetadataTests() {
-  group(
-    '$SnapshotMetadata',
-    () {
-      late FirebaseFirestore /*?*/ firestore;
+  group('$SnapshotMetadata', () {
+    late FirebaseFirestore /*?*/ firestore;
 
-      setUpAll(() async {
-        firestore = FirebaseFirestore.instance;
+    setUpAll(() async {
+      firestore = FirebaseFirestore.instance;
+    });
+
+    Future<CollectionReference> initializeTest(String id) async {
+      CollectionReference collection = firestore.collection(
+        'flutter-tests/$id/query-tests',
+      );
+      QuerySnapshot snapshot = await collection.get();
+      await Future.forEach(snapshot.docs, (DocumentSnapshot documentSnapshot) {
+        return documentSnapshot.reference.delete();
       });
+      return collection;
+    }
 
-      Future<CollectionReference> initializeTest(String id) async {
-        CollectionReference collection =
-            firestore.collection('flutter-tests/$id/query-tests');
-        QuerySnapshot snapshot = await collection.get();
-        await Future.forEach(snapshot.docs,
-            (DocumentSnapshot documentSnapshot) {
-          return documentSnapshot.reference.delete();
-        });
-        return collection;
-      }
-
-      testWidgets('a snapshot returns the correct [isFromCache] value',
-          (_) async {
+    testWidgets(
+      'a snapshot returns the correct [isFromCache] value',
+      (_) async {
         CollectionReference collection =
             await initializeTest('snapshot-metadata-is-from-cache');
         QuerySnapshot qs =
@@ -38,8 +37,7 @@ void runSnapshotMetadataTests() {
         QuerySnapshot qs2 =
             await collection.get(const GetOptions(source: Source.server));
         expect(qs2.metadata.isFromCache, isFalse);
-      });
-    },
-    skip: kIsWeb,
-  );
+      },
+    );
+  }, skip: kIsWeb);
 }

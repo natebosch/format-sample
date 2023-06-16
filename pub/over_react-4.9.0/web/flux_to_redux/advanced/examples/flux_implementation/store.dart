@@ -35,11 +35,15 @@ class RandomColorStore extends flux.Store {
   String get backgroundColor => _backgroundColor;
 
   RandomColorStore(this._actions) {
-    triggerOnActionV2(_actions.changeMainBackgroundColor, _changeBackgroundColor);
+    triggerOnActionV2(
+      _actions.changeMainBackgroundColor,
+      _changeBackgroundColor,
+    );
   }
 
   _changeBackgroundColor(String _) {
-    _backgroundColor = '#' + (Random().nextDouble() * 16777215).floor().toRadixString(16);
+    _backgroundColor =
+        '#' + (Random().nextDouble() * 16777215).floor().toRadixString(16);
   }
 }
 
@@ -53,11 +57,15 @@ class MidLevelStore extends flux.Store {
   String get backgroundColor => _backgroundColor;
 
   MidLevelStore(this._actions) {
-    triggerOnActionV2(_actions.changeBlockOneBackgroundColor, _changeBackgroundColor);
+    triggerOnActionV2(
+      _actions.changeBlockOneBackgroundColor,
+      _changeBackgroundColor,
+    );
   }
 
   _changeBackgroundColor(String _) {
-    _backgroundColor = '#' + (Random().nextDouble() * 16777215).floor().toRadixString(16);
+    _backgroundColor =
+        '#' + (Random().nextDouble() * 16777215).floor().toRadixString(16);
   }
 }
 
@@ -69,11 +77,15 @@ class LowLevelStore extends flux.Store {
   String get backgroundColor => _backgroundColor;
 
   LowLevelStore(this._actions) {
-    triggerOnActionV2(_actions.changeBlockTwoBackgroundColor, _changeBackgroundColor);
+    triggerOnActionV2(
+      _actions.changeBlockTwoBackgroundColor,
+      _changeBackgroundColor,
+    );
   }
 
   _changeBackgroundColor(String _) {
-    _backgroundColor = '#' + (Random().nextDouble() * 16777215).floor().toRadixString(16);
+    _backgroundColor =
+        '#' + (Random().nextDouble() * 16777215).floor().toRadixString(16);
   }
 }
 
@@ -85,11 +97,15 @@ class AnotherColorStore extends flux.Store {
   String get backgroundColor => _backgroundColor;
 
   AnotherColorStore(this._actions) {
-    triggerOnActionV2(_actions.changeBlockThreeBackgroundColor, _changeBackgroundColor);
+    triggerOnActionV2(
+      _actions.changeBlockThreeBackgroundColor,
+      _changeBackgroundColor,
+    );
   }
 
   _changeBackgroundColor(String _) {
-    _backgroundColor = '#' + (Random().nextDouble() * 16777215).floor().toRadixString(16);
+    _backgroundColor =
+        '#' + (Random().nextDouble() * 16777215).floor().toRadixString(16);
   }
 }
 

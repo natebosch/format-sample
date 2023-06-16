@@ -20,22 +20,22 @@ void main() {
         {
           'id': '123',
           '__typename': 'Post',
-          'tags': ['olle', 'kalle']
-        }
-      ]
+          'tags': ['olle', 'kalle'],
+        },
+      ],
     };
 
     final normalizedMap = {
       'Query': {
         'posts': [
-          {'\$ref': 'Post:123'}
-        ]
+          {'\$ref': 'Post:123'},
+        ],
       },
       'Post:123': {
         'id': '123',
         '__typename': 'Post',
-        'tags': ['olle', 'kalle']
-      }
+        'tags': ['olle', 'kalle'],
+      },
     };
 
     test('Produces correct normalized object', () {
@@ -47,10 +47,7 @@ void main() {
         data: data,
       );
 
-      expect(
-        normalizedResult,
-        equals(normalizedMap),
-      );
+      expect(normalizedResult, equals(normalizedMap));
     });
 
     test('Produces correct nested data object', () {

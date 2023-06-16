@@ -20,9 +20,7 @@ abstract class HttpProtocol<InputPayload, Input, OutputPayload, Output>
   String get contentType;
 
   /// Protocol headers
-  Map<String, String> get headers => {
-        'Content-Type': contentType,
-      };
+  Map<String, String> get headers => {'Content-Type': contentType};
 
   Serializers get serializers;
 
@@ -56,12 +54,14 @@ abstract class HttpProtocol<InputPayload, Input, OutputPayload, Output>
       return payload;
     } else {
       specifiedType ??= FullType(Input, [FullType(InputPayload)]);
-      return Stream.fromFuture(() async {
-        return await wireSerializer.serialize(
-          input,
-          specifiedType: specifiedType,
-        );
-      }());
+      return Stream.fromFuture(
+        () async {
+          return await wireSerializer.serialize(
+            input,
+            specifiedType: specifiedType,
+          );
+        }(),
+      );
     }
   }
 

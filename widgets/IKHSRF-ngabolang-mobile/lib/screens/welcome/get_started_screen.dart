@@ -23,10 +23,10 @@ class GetStartedPage extends StatelessWidget {
           Container(
             width: double.infinity,
             padding: EdgeInsets.symmetric(
-                horizontal: 20.0, vertical: screenSize.height / 15),
-            decoration: BoxDecoration(
-              color: Colors.black26,
+              horizontal: 20.0,
+              vertical: screenSize.height / 15,
             ),
+            decoration: BoxDecoration(color: Colors.black26),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.center,

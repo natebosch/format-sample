@@ -31,21 +31,20 @@ class SignInScreen extends StatelessWidget {
                   ),
                   const SizedBox(height: 12),
                   InkWell(
-                      onTap: () {
-                        Navigator.of(context)
-                            .pushReplacementNamed(SignUpScreen.route);
-                      },
-                      child: Text(
-                        locale.userSignInNoAccount,
-                        style: theme.textTheme.subtitle2,
-                      ))
+                    onTap: () {
+                      Navigator.of(context).pushReplacementNamed(
+                        SignUpScreen.route,
+                      );
+                    },
+                    child: Text(
+                      locale.userSignInNoAccount,
+                      style: theme.textTheme.subtitle2,
+                    ),
+                  ),
                 ],
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.all(12.0),
-              child: SignInForm(),
-            ),
+            Padding(padding: const EdgeInsets.all(12.0), child: SignInForm()),
           ],
         ),
       ),

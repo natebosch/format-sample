@@ -10,9 +10,13 @@ class MovieMemberCard extends StatelessWidget {
   final String role;
   final String profilePic;
 
-  MovieMemberCard({Key key, this.name, this.role = '', this.profilePic = ''}) :
-      assert(name != null),
-      super(key: key);
+  MovieMemberCard({
+    Key key,
+    this.name,
+    this.role = '',
+    this.profilePic = '',
+  }) : assert(name != null),
+       super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -25,25 +29,32 @@ class MovieMemberCard extends StatelessWidget {
             clipBehavior: Clip.hardEdge,
             child: new CachedNetworkImage(
               placeholder: new Container(
-                  width: 60,
-                  height: 60,
-                  child: new Center(
-                    child:  new CircularProgressIndicator(
-                      strokeWidth: 3.0,
-                      valueColor: AlwaysStoppedAnimation<Color>(AppColors.primaryColor),
-                    ),
-                  )
+                width: 60,
+                height: 60,
+                child: new Center(
+                  child: new CircularProgressIndicator(
+                    strokeWidth: 3.0,
+                    valueColor:
+                        AlwaysStoppedAnimation<Color>(AppColors.primaryColor),
+                  ),
+                ),
               ),
               width: 60,
               height: 60,
-              imageUrl: profilePic != '' ? profilePic : 'https://soe.ukzn.ac.za/wp-content/uploads/2018/04/profile-placeholder.png',
+              imageUrl: profilePic != ''
+                  ? profilePic
+                  : 'https://soe.ukzn.ac.za/wp-content/uploads/2018/04/profile-placeholder.png',
               fit: BoxFit.cover,
             ),
           ),
           new Container(
             padding: EdgeInsets.only(top: 10.0),
             width: 90.0,
-            child: new Text(name, textAlign: TextAlign.center, style: new TextStyle(fontSize: 15.0)),
+            child: new Text(
+              name,
+              textAlign: TextAlign.center,
+              style: new TextStyle(fontSize: 15.0),
+            ),
           ),
         ],
       ),

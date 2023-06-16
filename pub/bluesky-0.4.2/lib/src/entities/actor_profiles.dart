@@ -12,10 +12,10 @@ part 'actor_profiles.g.dart';
 
 @freezed
 class ActorProfiles with _$ActorProfiles {
-  const factory ActorProfiles({
-    required List<ActorProfile> profiles,
-  }) = _ActorProfiles;
+  const factory ActorProfiles({required List<ActorProfile> profiles}) =
+      _ActorProfiles;
 
-  factory ActorProfiles.fromJson(Map<String, Object?> json) =>
-      _$ActorProfilesFromJson(json);
+  factory ActorProfiles.fromJson(
+    Map<String, Object?> json,
+  ) => _$ActorProfilesFromJson(json);
 }

@@ -27,21 +27,23 @@ class _SettingsPageState extends State<SettingsPage> {
     return Stack(
       children: <Widget>[
         Positioned(
-            bottom: 0.0,
+          bottom: 0.0,
+          height: 160.0,
+          child: SizedBox(
+            width: size.width,
             height: 160.0,
-            child: SizedBox(
-              width: size.width,
-              height: 160.0,
-              child: Container(
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                      begin: Alignment.topCenter,
-                      end: Alignment.bottomCenter,
-                      stops: [0.3, 0.7],
-                      colors: [Colors.white.withOpacity(0.0), Colors.white]),
+            child: Container(
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  stops: [0.3, 0.7],
+                  colors: [Colors.white.withOpacity(0.0), Colors.white],
                 ),
               ),
-            )),
+            ),
+          ),
+        ),
         StoreConnector<AppState, AppState>(
           converter: (store) => store.state,
           builder: (context, state) {
@@ -60,9 +62,10 @@ class _SettingsPageState extends State<SettingsPage> {
                       offsetY: 3.0,
                       blur: 3.0,
                       style: TextStyle(
-                          color: const Color(0xBEffffff),
-                          fontSize: 24.0,
-                          fontWeight: FontWeight.bold),
+                        color: const Color(0xBEffffff),
+                        fontSize: 24.0,
+                        fontWeight: FontWeight.bold,
+                      ),
                       textAlign: TextAlign.center,
                     ),
                   ),
@@ -71,7 +74,10 @@ class _SettingsPageState extends State<SettingsPage> {
                       converter: (store) {
                         return ({gender, age, dailyGoal}) {
                           var settings = store.state.settings.copyWith(
-                              gender: gender, age: age, dailyGoal: dailyGoal);
+                            gender: gender,
+                            age: age,
+                            dailyGoal: dailyGoal,
+                          );
                           store.dispatch(SaveSettingsAction(settings));
                         };
                       },
@@ -91,24 +97,26 @@ class _SettingsPageState extends State<SettingsPage> {
                             Padding(
                               padding: EdgeInsets.only(top: 16.0),
                               child: ContainerWrapper(
-                                  child: AgeSelectorView(
-                                changed: (a) {
-                                  callback(age: a);
-                                },
-                                value: state.settings.age,
-                              )),
+                                child: AgeSelectorView(
+                                  changed: (a) {
+                                    callback(age: a);
+                                  },
+                                  value: state.settings.age,
+                                ),
+                              ),
                             ),
                             Padding(
                               padding: EdgeInsets.only(top: 16.0),
                               child: ContainerWrapper(
-                                  child: DailyGoalView(
-                                age: state.settings.age,
-                                gender: state.settings.gender,
-                                changed: (dG) {
-                                  callback(dailyGoal: dG);
-                                },
-                                dailyGoal: state.settings.dailyGoal,
-                              )),
+                                child: DailyGoalView(
+                                  age: state.settings.age,
+                                  gender: state.settings.gender,
+                                  changed: (dG) {
+                                    callback(dailyGoal: dG);
+                                  },
+                                  dailyGoal: state.settings.dailyGoal,
+                                ),
+                              ),
                             ),
                           ],
                         );
@@ -119,7 +127,7 @@ class _SettingsPageState extends State<SettingsPage> {
               ),
             );
           },
-        )
+        ),
       ],
     );
   }

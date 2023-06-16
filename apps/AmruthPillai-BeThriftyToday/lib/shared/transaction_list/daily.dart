@@ -68,19 +68,13 @@ class NoTransactionsFound extends StatelessWidget {
           Text(
             S.of(context).homeDailyNoTransactionsTextTitle,
             textAlign: TextAlign.center,
-            style: TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.w500,
-            ),
+            style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
           ),
           SizedBox(height: 15),
           Text(
             S.of(context).homeDailyNoTransactionsTextSubtitle,
             textAlign: TextAlign.center,
-            style: TextStyle(
-              fontSize: 14,
-              fontWeight: FontWeight.w400,
-            ),
+            style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
           ),
         ],
       ),

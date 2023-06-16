@@ -34,47 +34,50 @@ class _ProductsScreenState extends State<ProductsScreen> {
         background: null,
         title: null,
         body: BlocProvider<ProductsBloc>(
-            create: (context) {
-              return ProductsBloc(
-                  category: widget.parameters.category)
-                ..add(ScreenLoadedEvent());
+          create: (context) {
+            return ProductsBloc(category: widget.parameters.category)
+              ..add(ScreenLoadedEvent());
+          },
+          child: BlocConsumer<ProductsBloc, ProductsState>(
+            listener: (context, state) {
+              if (state.hasError) {
+                ErrorDialog.showErrorDialog(context, state.error);
+              }
             },
-            child: BlocConsumer<ProductsBloc, ProductsState>(
-              listener: (context, state) {
-                if (state.hasError) {
-                  ErrorDialog.showErrorDialog(context, state.error);
-                }
-              },
-              builder: (context, state) {
-                return CustomScrollView(
-                  slivers: <Widget>[
-                    SizeChangingAppBar(
-                      title: state.data?.category?.name??'',
-                      filterRules: state.filterRules,
-                      sortRules: state.sortBy,
-                      isListView: state is ProductsListViewState,
-                      onFilterRulesChanged: (filter) {
-                        BlocProvider.of<ProductsBloc>(context)
-                            .add(ProductChangeFilterRulesEvent(filter));
-                      },
-                      onSortRulesChanged: (sort) {
-                        BlocProvider.of<ProductsBloc>(context)
-                            .add(ProductChangeSortRulesEvent(sort));
-                      },
-                      onViewChanged: () {
-                        BlocProvider.of<ProductsBloc>(context)
-                            .add(ProductsChangeViewEvent());
-                      },
-                    ),
-                    state is ProductsListViewState
-                        ? ProductsListView()
-                        : ProductsTileView(),
-                  ],
-                );
-              },
-            )),
+            builder: (context, state) {
+              return CustomScrollView(
+                slivers: <Widget>[
+                  SizeChangingAppBar(
+                    title: state.data?.category?.name ?? '',
+                    filterRules: state.filterRules,
+                    sortRules: state.sortBy,
+                    isListView: state is ProductsListViewState,
+                    onFilterRulesChanged: (filter) {
+                      BlocProvider.of<ProductsBloc>(context).add(
+                        ProductChangeFilterRulesEvent(filter),
+                      );
+                    },
+                    onSortRulesChanged: (sort) {
+                      BlocProvider.of<ProductsBloc>(context).add(
+                        ProductChangeSortRulesEvent(sort),
+                      );
+                    },
+                    onViewChanged: () {
+                      BlocProvider.of<ProductsBloc>(context).add(
+                        ProductsChangeViewEvent(),
+                      );
+                    },
+                  ),
+                  state is ProductsListViewState
+                      ? ProductsListView()
+                      : ProductsTileView(),
+                ],
+              );
+            },
+          ),
+        ),
         bottomMenuIndex: 1,
-      )
+      ),
     );
   }
 }

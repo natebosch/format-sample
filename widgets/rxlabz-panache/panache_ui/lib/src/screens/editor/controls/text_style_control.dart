@@ -79,19 +79,19 @@ class TextStyleControl extends StatefulWidget {
     this.useMobileLayout: false,
     this.expanded: false,
     this.maxFontSize: 112.0,
-  })  : this.color = style?.color ?? Colors.black,
-        this.backgroundColor = style?.color ?? Colors.transparent,
-        this.letterSpacing = style?.letterSpacing ?? 1.0,
-        this.lineHeight = style?.height ?? 1.0,
-        this.wordSpacing = style?.wordSpacing ?? 1.0,
-        this.fontSize = style?.fontSize ?? 12.0,
-        this.decoration = style?.decoration ?? TextDecoration.none,
-        this.decorationStyle =
-            style?.decorationStyle ?? TextDecorationStyle.solid,
-        this.decorationColor = style?.decorationColor ?? style?.color,
-        this.isBold = style?.fontWeight == FontWeight.bold,
-        this.isItalic = style?.fontStyle == FontStyle.italic,
-        super(key: key);
+  }) : this.color = style?.color ?? Colors.black,
+       this.backgroundColor = style?.color ?? Colors.transparent,
+       this.letterSpacing = style?.letterSpacing ?? 1.0,
+       this.lineHeight = style?.height ?? 1.0,
+       this.wordSpacing = style?.wordSpacing ?? 1.0,
+       this.fontSize = style?.fontSize ?? 12.0,
+       this.decoration = style?.decoration ?? TextDecoration.none,
+       this.decorationStyle =
+           style?.decorationStyle ?? TextDecorationStyle.solid,
+       this.decorationColor = style?.decorationColor ?? style?.color,
+       this.isBold = style?.fontWeight == FontWeight.bold,
+       this.isItalic = style?.fontStyle == FontStyle.italic,
+       super(key: key);
 
   @override
   TextStyleControlState createState() {
@@ -114,12 +114,7 @@ class TextStyleControlState extends State<TextStyleControl> {
 
     final controls = [
       getFieldsRow([
-        ColorSelector(
-          'Color',
-          widget.color,
-          widget.onColorChanged,
-          padding: 0,
-        ),
+        ColorSelector('Color', widget.color, widget.onColorChanged, padding: 0),
         if (!kIsWeb)
           FontSizeSelector(
             widget.fontSize,
@@ -127,20 +122,22 @@ class TextStyleControlState extends State<TextStyleControl> {
             min: 8.0,
             max: widget.maxFontSize,
             vertical: true,
-          )
+          ),
       ]),
       getFieldsRow([
         SwitcherControl(
-            direction: widget.useMobileLayout ? Axis.vertical : Axis.horizontal,
-            checked: widget.isBold,
-            checkedLabel: 'Bold',
-            onChange: widget.onWeightChanged),
+          direction: widget.useMobileLayout ? Axis.vertical : Axis.horizontal,
+          checked: widget.isBold,
+          checkedLabel: 'Bold',
+          onChange: widget.onWeightChanged,
+        ),
         SwitcherControl(
-            direction: widget.useMobileLayout ? Axis.vertical : Axis.horizontal,
-            checked: widget.isItalic,
-            checkedLabel: 'Italic',
-            onChange: widget.onFontStyleChanged),
-      ] /*, direction: Axis.vertical*/),
+          direction: widget.useMobileLayout ? Axis.vertical : Axis.horizontal,
+          checked: widget.isItalic,
+          checkedLabel: 'Italic',
+          onChange: widget.onFontStyleChanged,
+        ),
+      ] /*, direction: Axis.vertical*/ ),
       SliderPropertyControl(
         widget.lineHeight,
         widget.onLineHeightChanged,
@@ -174,28 +171,32 @@ class TextStyleControlState extends State<TextStyleControl> {
         PanacheDropdown<SelectionItem<TextDecoration>>(
           label: 'Decoration',
           selection: widget.style.decoration != null
-              ? _textDecorations
-                  .firstWhere((item) => item.value == widget.style.decoration)
+              ? _textDecorations.firstWhere(
+                  (item) => item.value == widget.style.decoration,
+                )
               : _textDecorations.first,
           collection: _textDecorations,
-          onValueChanged: (decoration) =>
-              widget.onDecorationChanged(decoration.value),
+          onValueChanged:
+              (decoration) => widget.onDecorationChanged(decoration.value),
         ),
         PanacheDropdown<SelectionItem<TextDecorationStyle>>(
           label: 'Decoration style',
           selection: widget.style.decorationStyle != null
               ? _textDecorationStyles.firstWhere(
-                  (item) => item.value == widget.style.decorationStyle)
+                  (item) => item.value == widget.style.decorationStyle,
+                )
               : _textDecorationStyles.first,
           collection: _textDecorationStyles,
-          onValueChanged: (decorationStyle) =>
-              widget.onDecorationStyleChanged(decorationStyle.value),
+          onValueChanged: (decorationStyle) => widget.onDecorationStyleChanged(
+            decorationStyle.value,
+          ),
         ),
       ]),
       ColorSelector(
-          'Decoration color',
-          widget.style.decorationColor ?? Colors.black,
-          widget.onDecorationColorChanged)
+        'Decoration color',
+        widget.style.decorationColor ?? Colors.black,
+        widget.onDecorationColorChanged,
+      ),
     ];
 
     return Container(
@@ -213,10 +214,11 @@ class TextStyleControlState extends State<TextStyleControl> {
               ),
               IconButton(
                 icon: Icon(
-                    expanded ? Icons.indeterminate_check_box : Icons.add_box),
+                  expanded ? Icons.indeterminate_check_box : Icons.add_box,
+                ),
                 onPressed: toggle,
                 color: Colors.blueGrey.shade600,
-              )
+              ),
             ],
           ),
         ]
@@ -263,49 +265,42 @@ class PanacheDropdown<D extends SelectionItem> extends StatelessWidget {
   final String label;
   final ValueChanged<D> onValueChanged;
 
-  const PanacheDropdown(
-      {Key key,
-      @required this.collection,
-      @required this.onValueChanged,
-      @required this.selection,
-      this.label: ''})
-      : super(key: key);
+  const PanacheDropdown({
+    Key key,
+    @required this.collection,
+    @required this.onValueChanged,
+    @required this.selection,
+    this.label: '',
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
     return ControlContainerBorder(
-        child: Column(
-      children: <Widget>[
-        Padding(
-          padding: const EdgeInsets.only(top: 2.0, bottom: 8.0),
-          child: Text(
-            label,
-            style: textTheme.subtitle,
+      child: Column(
+        children: <Widget>[
+          Padding(
+            padding: const EdgeInsets.only(top: 2.0, bottom: 8.0),
+            child: Text(label, style: textTheme.subtitle),
           ),
-        ),
-        DropdownButton(
-            items: buildItems(
-              style: textTheme.body2,
-            ),
+          DropdownButton(
+            items: buildItems(style: textTheme.body2),
             isDense: true,
             value: selection,
-            hint: Text(
-              label,
-              style: textTheme.body2,
-            ),
-            onChanged: onValueChanged),
-      ],
-    ));
+            hint: Text(label, style: textTheme.body2),
+            onChanged: onValueChanged,
+          ),
+        ],
+      ),
+    );
   }
 
   List<DropdownMenuItem<D>> buildItems({TextStyle style}) => collection
       .map<DropdownMenuItem<D>>((item) => toDropdownMenuItem(item, style))
       .toList(growable: false);
 
-  DropdownMenuItem<D> toDropdownMenuItem(D item, TextStyle style) =>
-      DropdownMenuItem(
-        child: Text(item.label, style: style),
-        value: item,
-      );
+  DropdownMenuItem<D> toDropdownMenuItem(
+    D item,
+    TextStyle style,
+  ) => DropdownMenuItem(child: Text(item.label, style: style), value: item);
 }

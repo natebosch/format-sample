@@ -23,15 +23,15 @@ class SecurityCard extends StatelessWidget {
 
   final bool hasNotification;
 
-  const SecurityCard(
-      {Key? key,
-      required this.icon,
-      required this.title,
-      this.description = '',
-      this.titleWidget,
-      this.onTap,
-      this.hasNotification = false})
-      : super(key: key);
+  const SecurityCard({
+    Key? key,
+    required this.icon,
+    required this.title,
+    this.description = '',
+    this.titleWidget,
+    this.onTap,
+    this.hasNotification = false,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -52,7 +52,11 @@ class SecurityCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
                   Padding(
-                    padding: const EdgeInsets.only(left: 16.0, top: 16.0, right: 8.0),
+                    padding: const EdgeInsets.only(
+                      left: 16.0,
+                      top: 16.0,
+                      right: 8.0,
+                    ),
                     child: icon,
                   ),
                 ],
@@ -67,7 +71,8 @@ class SecurityCard extends StatelessWidget {
                         children: [
                           Expanded(
                             child: Padding(
-                              padding: const EdgeInsets.symmetric(vertical: 16.0),
+                              padding:
+                                  const EdgeInsets.symmetric(vertical: 16.0),
                               child: Row(
                                 children: [
                                   Flexible(
@@ -77,7 +82,8 @@ class SecurityCard extends StatelessWidget {
                                     ),
                                   ),
                                   const SizedBox(width: 10),
-                                  if (hasNotification) const NotificationBadge()
+                                  if (hasNotification)
+                                    const NotificationBadge(),
                                 ],
                               ),
                             ),
@@ -91,8 +97,11 @@ class SecurityCard extends StatelessWidget {
                         child: Row(
                           children: [
                             Flexible(
-                              child: Text(description, style: Theme.of(context).textTheme.subtitle3),
-                            )
+                              child: Text(
+                                description,
+                                style: Theme.of(context).textTheme.subtitle3,
+                              ),
+                            ),
                           ],
                         ),
                       ),

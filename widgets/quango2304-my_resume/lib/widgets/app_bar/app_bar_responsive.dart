@@ -9,7 +9,7 @@ class AppBarResponsive extends StatelessWidget {
     'HOME': AppRoutes.home,
     'RESUME': AppRoutes.resume,
     'PROJECTS': AppRoutes.projects,
-    'CONTACT': AppRoutes.contact
+    'CONTACT': AppRoutes.contact,
   };
   @override
   Widget build(BuildContext context) {

@@ -10,19 +10,22 @@ class _$SurveyShowQuestionNumbers extends SurveyShowQuestionNumbers {
   @override
   final AnyOf anyOf;
 
-  factory _$SurveyShowQuestionNumbers(
-          [void Function(SurveyShowQuestionNumbersBuilder)? updates]) =>
-      (new SurveyShowQuestionNumbersBuilder()..update(updates))._build();
+  factory _$SurveyShowQuestionNumbers([
+    void Function(SurveyShowQuestionNumbersBuilder)? updates,
+  ]) => (new SurveyShowQuestionNumbersBuilder()..update(updates))._build();
 
   _$SurveyShowQuestionNumbers._({required this.anyOf}) : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        anyOf, r'SurveyShowQuestionNumbers', 'anyOf');
+      anyOf,
+      r'SurveyShowQuestionNumbers',
+      'anyOf',
+    );
   }
 
   @override
   SurveyShowQuestionNumbers rebuild(
-          void Function(SurveyShowQuestionNumbersBuilder) updates) =>
-      (toBuilder()..update(updates)).build();
+    void Function(SurveyShowQuestionNumbersBuilder) updates,
+  ) => (toBuilder()..update(updates)).build();
 
   @override
   SurveyShowQuestionNumbersBuilder toBuilder() =>
@@ -89,8 +92,12 @@ class SurveyShowQuestionNumbersBuilder
   _$SurveyShowQuestionNumbers _build() {
     final _$result = _$v ??
         new _$SurveyShowQuestionNumbers._(
-            anyOf: BuiltValueNullFieldError.checkNotNull(
-                anyOf, r'SurveyShowQuestionNumbers', 'anyOf'));
+          anyOf: BuiltValueNullFieldError.checkNotNull(
+            anyOf,
+            r'SurveyShowQuestionNumbers',
+            'anyOf',
+          ),
+        );
     replace(_$result);
     return _$result;
   }

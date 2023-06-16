@@ -7,8 +7,11 @@ import 'package:squadron/squadron.dart';
 import '../worker_services/test_service.dart';
 import '../worker_services/test_service_worker.dart';
 
-const concurrencySettings_222 =
-    ConcurrencySettings(minWorkers: 2, maxWorkers: 2, maxParallel: 2);
+const concurrencySettings_222 = ConcurrencySettings(
+  minWorkers: 2,
+  maxWorkers: 2,
+  maxParallel: 2,
+);
 
 void cancellationTests() {
   setUp(() {
@@ -55,8 +58,10 @@ void cancellationTests() {
         throw Exception('delayedIdentityTask() completed with value $value');
       } catch (ex) {
         expect(ex, isA<CancelledException>());
-        expect((ex as CancelledException).message,
-            equals('Immediate cancellation'));
+        expect(
+          (ex as CancelledException).message,
+          equals('Immediate cancellation'),
+        );
       }
 
       pool.stop();
@@ -74,8 +79,10 @@ void cancellationTests() {
         throw Exception('delayedIdentityTask() completed with value $value');
       } catch (ex) {
         expect(ex, isA<CancelledException>());
-        expect((ex as CancelledException).message,
-            equals('Immediate cancellation'));
+        expect(
+          (ex as CancelledException).message,
+          equals('Immediate cancellation'),
+        );
       }
 
       pool.stop();
@@ -188,8 +195,10 @@ void cancellationTests() {
 
       expect(tasks.where((t) => t.isCancelled).length, equals(2));
       expect(tasks.where((t) => t.isRunning), isEmpty);
-      expect(tasks.where((t) => t.isFinished).length,
-          equals(3 * pool.maxConcurrency - 1));
+      expect(
+        tasks.where((t) => t.isFinished).length,
+        equals(3 * pool.maxConcurrency - 1),
+      );
 
       expect(errors, equals(2));
       expect(digits.length, isPositive);
@@ -213,8 +222,11 @@ void cancellationTests() {
         final done = Completer();
         futures.add(done.future);
         final task = pool.finiteTask(100);
-        task.stream.listen((n) => digits.add(n),
-            onError: (ex) => errors.add(ex), onDone: () => done.complete());
+        task.stream.listen(
+          (n) => digits.add(n),
+          onError: (ex) => errors.add(ex),
+          onDone: () => done.complete(),
+        );
       }
       pool.cancel(null, 'Immediate cancellation');
 
@@ -222,11 +234,14 @@ void cancellationTests() {
 
       expect(digits, isEmpty);
       expect(errors.length, equals(2 * pool.maxConcurrency + 1));
-      expect(errors.whereType<CancelledException>().length,
-          equals(2 * pool.maxConcurrency + 1));
       expect(
-          errors.whereType<CancelledException>().map((e) => e.message).toSet(),
-          equals(['Immediate cancellation']));
+        errors.whereType<CancelledException>().length,
+        equals(2 * pool.maxConcurrency + 1),
+      );
+      expect(
+        errors.whereType<CancelledException>().map((e) => e.message).toSet(),
+        equals(['Immediate cancellation']),
+      );
 
       pool.stop();
     });
@@ -241,8 +256,11 @@ void cancellationTests() {
       final done = Completer();
 
       final task = pool.finiteTask(100);
-      task.stream.listen((n) => digits.add(n),
-          onError: (ex) => errors.add(ex), onDone: () => done.complete());
+      task.stream.listen(
+        (n) => digits.add(n),
+        onError: (ex) => errors.add(ex),
+        onDone: () => done.complete(),
+      );
       pool.cancel(task, 'Immediate cancellation');
 
       await done.future;
@@ -250,8 +268,10 @@ void cancellationTests() {
       expect(digits, isEmpty);
       expect(errors.length, equals(1));
       expect(errors[0], isA<CancelledException>());
-      expect((errors[0] as CancelledException).message,
-          equals('Immediate cancellation'));
+      expect(
+        (errors[0] as CancelledException).message,
+        equals('Immediate cancellation'),
+      );
 
       pool.stop();
     });
@@ -266,8 +286,11 @@ void cancellationTests() {
       final done = Completer();
 
       final task = pool.finiteTask(100);
-      task.stream.listen((n) => digits.add(n),
-          onError: (ex) => errors.add(ex), onDone: () => done.complete());
+      task.stream.listen(
+        (n) => digits.add(n),
+        onError: (ex) => errors.add(ex),
+        onDone: () => done.complete(),
+      );
       task.cancel('Immediate cancellation');
 
       await done.future;
@@ -275,8 +298,10 @@ void cancellationTests() {
       expect(digits, isEmpty);
       expect(errors.length, equals(1));
       expect(errors[0], isA<CancelledException>());
-      expect((errors[0] as CancelledException).message,
-          equals('Immediate cancellation'));
+      expect(
+        (errors[0] as CancelledException).message,
+        equals('Immediate cancellation'),
+      );
 
       pool.stop();
     });
@@ -291,13 +316,17 @@ void cancellationTests() {
       for (var i = 0; i < 2 * pool.maxConcurrency + 1; i++) {
         final completer = Completer();
         tasks.add(completer.future);
-        pool.finite(i + 1).listen((value) {
-          (results[i] ??= []).add(value);
-        }, onError: (error) {
-          (results[i] ??= []).add(error);
-        }, onDone: () {
-          completer.complete();
-        });
+        pool.finite(i + 1).listen(
+          (value) {
+            (results[i] ??= []).add(value);
+          },
+          onError: (error) {
+            (results[i] ??= []).add(error);
+          },
+          onDone: () {
+            completer.complete();
+          },
+        );
       }
 
       expect(tasks.length, equals(2 * pool.maxConcurrency + 1));
@@ -313,23 +342,24 @@ void cancellationTests() {
 
       final fullExecution =
           results.values.where((r) => r.every((e) => e is int)).length;
-      final partialExecution = results.values
-          .where((r) =>
-              r.any((e) => e is int) && r.any((e) => e is CancelledException))
-          .length;
-      final fullCancellation = results.values
-          .where((r) => r.every((e) => e is CancelledException))
-          .length;
-      final severalErrors = results.values
-          .where((r) => r.whereType<CancelledException>().length > 1)
-          .length;
+      final partialExecution = results.values.where(
+        (r) => r.any((e) => e is int) && r.any((e) => e is CancelledException),
+      ).length;
+      final fullCancellation = results.values.where(
+        (r) => r.every((e) => e is CancelledException),
+      ).length;
+      final severalErrors = results.values.where(
+        (r) => r.whereType<CancelledException>().length > 1,
+      ).length;
 
       expect(fullExecution, isPositive);
       expect(partialExecution, isPositive);
       expect(fullCancellation, isPositive);
       expect(severalErrors, isZero);
-      expect(fullExecution + partialExecution + fullCancellation,
-          equals(tasks.length));
+      expect(
+        fullExecution + partialExecution + fullCancellation,
+        equals(tasks.length),
+      );
 
       pool.stop();
     });
@@ -352,18 +382,22 @@ void cancellationTests() {
         final completer = Completer();
         futures.add(completer.future);
         status[i] = 'not started';
-        task.stream.listen((event) {
-          status[i] = 'started';
-          if (!start.isCompleted) {
-            start.complete();
-          }
-        }, onError: (e) {
-          status[i] = (status[i] == 'started') ? 'interrupted' : 'cancelled';
-          errors += 1;
-        }, onDone: () {
-          if (status[i] == 'started') status[i] = 'completed';
-          completer.complete();
-        });
+        task.stream.listen(
+          (event) {
+            status[i] = 'started';
+            if (!start.isCompleted) {
+              start.complete();
+            }
+          },
+          onError: (e) {
+            status[i] = (status[i] == 'started') ? 'interrupted' : 'cancelled';
+            errors += 1;
+          },
+          onDone: () {
+            if (status[i] == 'started') status[i] = 'completed';
+            completer.complete();
+          },
+        );
       }
 
       await started[0];
@@ -378,15 +412,19 @@ void cancellationTests() {
 
       expect(tasks.where((t) => t.isCancelled).length, equals(2));
       expect(tasks.where((t) => t.isRunning), isEmpty);
-      expect(tasks.where((t) => t.isFinished).length,
-          equals(2 * pool.maxConcurrency - 1));
+      expect(
+        tasks.where((t) => t.isFinished).length,
+        equals(2 * pool.maxConcurrency - 1),
+      );
 
       expect(errors, equals(2));
       expect(status.values.where((s) => s == 'started'), isEmpty);
       expect(status.values.where((s) => s == 'interrupted').length, equals(1));
       expect(status.values.where((s) => s == 'cancelled').length, equals(1));
-      expect(status.values.where((s) => s == 'completed').length,
-          equals(2 * pool.maxConcurrency + 1 - errors));
+      expect(
+        status.values.where((s) => s == 'completed').length,
+        equals(2 * pool.maxConcurrency + 1 - errors),
+      );
 
       pool.stop();
     });
@@ -407,20 +445,24 @@ void cancellationTests() {
         final completer = Completer();
         futures.add(completer.future);
         status[i] = 'not started';
-        task.stream.listen((event) {
-          status[i] = 'started';
-          if (i == 0) {
-            firstTaskStarted.complete();
-          }
-        }, onError: (e) {
-          status[i] = (status[i] == 'started') ? 'interrupted' : 'cancelled';
-          errors += 1;
-        }, onDone: () {
-          if (status[i] == 'started') status[i] = 'completed';
-          if (!completer.isCompleted) {
-            completer.complete();
-          }
-        });
+        task.stream.listen(
+          (event) {
+            status[i] = 'started';
+            if (i == 0) {
+              firstTaskStarted.complete();
+            }
+          },
+          onError: (e) {
+            status[i] = (status[i] == 'started') ? 'interrupted' : 'cancelled';
+            errors += 1;
+          },
+          onDone: () {
+            if (status[i] == 'started') status[i] = 'completed';
+            if (!completer.isCompleted) {
+              completer.complete();
+            }
+          },
+        );
       }
 
       await firstTaskStarted.future;
@@ -435,15 +477,19 @@ void cancellationTests() {
 
       expect(tasks.where((t) => t.isCancelled).length, equals(2));
       expect(tasks.where((t) => t.isRunning), isEmpty);
-      expect(tasks.where((t) => t.isFinished).length,
-          equals(2 * pool.maxConcurrency - 1));
+      expect(
+        tasks.where((t) => t.isFinished).length,
+        equals(2 * pool.maxConcurrency - 1),
+      );
 
       expect(errors, equals(2));
       expect(status.values.where((s) => s == 'started'), isEmpty);
       expect(status.values.where((s) => s == 'interrupted').length, equals(1));
       expect(status.values.where((s) => s == 'cancelled').length, equals(1));
-      expect(status.values.where((s) => s == 'completed').length,
-          equals(2 * pool.maxConcurrency + 1 - errors));
+      expect(
+        status.values.where((s) => s == 'completed').length,
+        equals(2 * pool.maxConcurrency + 1 - errors),
+      );
 
       pool.stop();
     });
@@ -756,8 +802,10 @@ void cancellationTests() {
     test('- gets cancelled in CompositeMode.any', () async {
       final cancellation1 = CancellationToken();
       final cancellation2 = CancellationToken();
-      final composite =
-          CompositeToken([cancellation1, cancellation2], CompositeMode.any);
+      final composite = CompositeToken([
+        cancellation1,
+        cancellation2,
+      ], CompositeMode.any);
 
       expect(composite.cancelled, isFalse);
       cancellation1.cancel();
@@ -767,8 +815,10 @@ void cancellationTests() {
     test('- gets cancelled in CompositeMode.all', () async {
       final cancellation1 = CancellationToken();
       final cancellation2 = CancellationToken();
-      final composite =
-          CompositeToken([cancellation1, cancellation2], CompositeMode.all);
+      final composite = CompositeToken([
+        cancellation1,
+        cancellation2,
+      ], CompositeMode.all);
 
       expect(composite.cancelled, isFalse);
       cancellation1.cancel();
@@ -780,9 +830,10 @@ void cancellationTests() {
     test('- gets cancelled by TimeOutToken', () async {
       final timeout = TimeOutToken(TestService.shortDelay);
       final cancellation = CancellationToken();
-      final composite =
-          CompositeToken([cancellation, timeout], CompositeMode.any)
-            ..ensureStarted();
+      final composite = CompositeToken([
+        cancellation,
+        timeout,
+      ], CompositeMode.any)..ensureStarted();
 
       expect(timeout.cancelled, isFalse);
       expect(cancellation.cancelled, isFalse);
@@ -804,8 +855,10 @@ void cancellationTests() {
     test('- notifies listeners', () async {
       final cancellation1 = CancellationToken();
       final cancellation2 = CancellationToken();
-      final composite =
-          CompositeToken([cancellation1, cancellation2], CompositeMode.all);
+      final composite = CompositeToken([
+        cancellation1,
+        cancellation2,
+      ], CompositeMode.all);
 
       bool notified = false;
       composite.addListener(() => notified = true);
@@ -840,8 +893,10 @@ void cancellationTests() {
       expect(cancellation.cancelled, isTrue);
       expect(timeout.cancelled, isTrue);
 
-      final composite =
-          CompositeToken([cancellation, timeout], CompositeMode.all);
+      final composite = CompositeToken([
+        cancellation,
+        timeout,
+      ], CompositeMode.all);
 
       expect(composite.cancelled, isTrue);
       expect(notified, isZero);
@@ -861,8 +916,10 @@ void cancellationTests() {
       final timeout1 = TimeOutToken(TestService.delay * N);
       final cancellation1 = CancellationToken();
       Timer(timeout1.duration * 0.5, cancellation1.cancel);
-      final composite1 =
-          CompositeToken([timeout1, cancellation1], CompositeMode.any);
+      final composite1 = CompositeToken([
+        timeout1,
+        cancellation1,
+      ], CompositeMode.any);
 
       expect(timeout1.started, isFalse);
 
@@ -890,8 +947,10 @@ void cancellationTests() {
 
       final timeout2 = TimeOutToken(TestService.delay * N);
       final cancellation2 = CancellationToken();
-      final composite2 =
-          CompositeToken([timeout2, cancellation2], CompositeMode.any);
+      final composite2 = CompositeToken([
+        timeout2,
+        cancellation2,
+      ], CompositeMode.any);
 
       expect(timeout2.started, isFalse);
 
@@ -928,8 +987,10 @@ void cancellationTests() {
       final timeout1 = TimeOutToken(TestService.delay * N);
       final cancellation1 = CancellationToken();
       Timer(timeout1.duration * 0.5, cancellation1.cancel);
-      final composite1 =
-          CompositeToken([timeout1, cancellation1], CompositeMode.any);
+      final composite1 = CompositeToken([
+        timeout1,
+        cancellation1,
+      ], CompositeMode.any);
 
       expect(timeout1.started, isFalse);
 
@@ -957,8 +1018,10 @@ void cancellationTests() {
 
       final timeout2 = TimeOutToken(TestService.delay * N);
       final cancellation2 = CancellationToken();
-      final composite2 =
-          CompositeToken([timeout2, cancellation2], CompositeMode.any);
+      final composite2 = CompositeToken([
+        timeout2,
+        cancellation2,
+      ], CompositeMode.any);
 
       try {
         await for (final n in worker.infinite(composite2)) {
@@ -986,8 +1049,10 @@ void cancellationTests() {
 
       final timeout1 = TimeOutToken(TestService.delay * L * 1.5);
       final cancellation1 = CancellationToken();
-      final composite1 =
-          CompositeToken([timeout1, cancellation1], CompositeMode.any);
+      final composite1 = CompositeToken([
+        timeout1,
+        cancellation1,
+      ], CompositeMode.any);
 
       int success = 0;
       int errors = 0;
@@ -1016,8 +1081,9 @@ void cancellationTests() {
       expect(success, equals(pool.maxConcurrency));
       expect(success + errors, equals(tasks.length));
 
-      final timeout2 =
-          TimeOutToken(TestService.delay * 2 * pool.maxConcurrency * L);
+      final timeout2 = TimeOutToken(
+        TestService.delay * 2 * pool.maxConcurrency * L,
+      );
       final token2 = CancellationToken();
       final composite2 = CompositeToken([timeout2, token2], CompositeMode.any);
 

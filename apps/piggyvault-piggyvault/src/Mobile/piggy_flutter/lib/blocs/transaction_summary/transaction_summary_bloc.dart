@@ -22,16 +22,16 @@ class TransactionSummaryBloc
 
   final TransactionRepository transactionRepository;
 
-  TransactionSummaryBloc(
-      {@required this.transactionRepository,
-      @required this.authBloc,
-      @required this.transactionsBloc,
-      @required this.transactionDetailBloc})
-      : assert(transactionRepository != null),
-        assert(authBloc != null),
-        assert(transactionsBloc != null),
-        assert(transactionDetailBloc != null),
-        super(TransactionSummaryEmpty()) {
+  TransactionSummaryBloc({
+    @required this.transactionRepository,
+    @required this.authBloc,
+    @required this.transactionsBloc,
+    @required this.transactionDetailBloc,
+  }) : assert(transactionRepository != null),
+       assert(authBloc != null),
+       assert(transactionsBloc != null),
+       assert(transactionDetailBloc != null),
+       super(TransactionSummaryEmpty()) {
     authBlocSubscription = authBloc.listen((state) {
       if (state is AuthAuthenticated) {
         add(RefreshTransactionSummary());
@@ -61,8 +61,12 @@ class TransactionSummaryBloc
           await transactionRepository.getTransactionSummary('month');
       yield TransactionSummaryLoaded(summary: summary);
     } catch (_, stackTrace) {
-      developer.log('$_',
-          name: 'TransactionSummaryBloc', error: _, stackTrace: stackTrace);
+      developer.log(
+        '$_',
+        name: 'TransactionSummaryBloc',
+        error: _,
+        stackTrace: stackTrace,
+      );
       yield TransactionSummaryError();
     }
   }

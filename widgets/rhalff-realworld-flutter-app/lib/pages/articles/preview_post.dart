@@ -40,12 +40,8 @@ class PreviewPost extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(12.0),
       decoration: BoxDecoration(
-        border: const Border(
-          top: BorderSide(
-            width: 1.0,
-            color: Color(0X16000000),
-          ),
-        ),
+        border:
+            const Border(top: BorderSide(width: 1.0, color: Color(0X16000000))),
         color: Colors.white,
       ),
       child: Column(
@@ -53,11 +49,7 @@ class PreviewPost extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
-              ArticleMeta(
-                avatar: avatar,
-                author: author,
-                date: date,
-              ),
+              ArticleMeta(avatar: avatar, author: author, date: date),
               BlocProvider(
                 create: (context) => favoriteBloc,
                 child: BlocBuilder<UserBloc, UserState>(
@@ -100,7 +92,7 @@ class PreviewPost extends StatelessWidget {
                 ),
               ],
             ),
-          )
+          ),
         ],
       ),
     );

@@ -26,8 +26,8 @@ class MethodChannelAcceptAll extends AcceptAllBridge {
       _name,
       ConsentTypeSerializer.serialize(consentType),
     );
-    return (result as List)
-        .map((e) => ConsentSerializer.deserialize(e))
-        .toList();
+    return (result as List).map(
+      (e) => ConsentSerializer.deserialize(e),
+    ).toList();
   }
 }

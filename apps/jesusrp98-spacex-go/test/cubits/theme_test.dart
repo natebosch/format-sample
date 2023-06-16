@@ -22,10 +22,7 @@ void main() {
 
     group('toJson/fromJson', () {
       test('work properly', () {
-        expect(
-          cubit.fromJson(cubit.toJson(cubit.state)),
-          cubit.state,
-        );
+        expect(cubit.fromJson(cubit.toJson(cubit.state)), cubit.state);
       });
     });
 
@@ -33,9 +30,7 @@ void main() {
       'can change its state',
       build: () => cubit,
       act: (cubit) => cubit.theme = ThemeState.black,
-      expect: () => [
-        ThemeState.black,
-      ],
+      expect: () => [ThemeState.black],
     );
 
     test('has default light theme', () async {

@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 class MenuItem {
@@ -6,11 +5,12 @@ class MenuItem {
   final List<SubMenuItem>? items;
   final IconData icon;
 
-  MenuItem(
-      {Key? key,
-      required this.title,
-      this.items,
-      this.icon = Icons.label_important});
+  MenuItem({
+    Key? key,
+    required this.title,
+    this.items,
+    this.icon = Icons.label_important,
+  });
 }
 
 class SubMenuItem {

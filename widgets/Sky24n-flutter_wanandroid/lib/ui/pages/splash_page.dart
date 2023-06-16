@@ -47,7 +47,9 @@ class SplashPageState extends State<SplashPage> {
 
   void _loadSplashData() {
     _splashModel = SpUtil.getObj(
-        Constant.key_splash_model, (v) => SplashModel.fromJson(v));
+      Constant.key_splash_model,
+      (v) => SplashModel.fromJson(v),
+    );
     if (_splashModel != null) {
       setState(() {});
     }
@@ -76,46 +78,50 @@ class SplashPageState extends State<SplashPage> {
   void _initBannerData() {
     for (int i = 0, length = _guideList.length; i < length; i++) {
       if (i == length - 1) {
-        _bannerList.add(new Stack(
-          children: <Widget>[
-            new Image.asset(
-              _guideList[i],
-              fit: BoxFit.fill,
-              width: double.infinity,
-              height: double.infinity,
-            ),
-            new Align(
-              alignment: Alignment.bottomCenter,
-              child: new Container(
-                margin: EdgeInsets.only(bottom: 160.0),
-                child: new InkWell(
-                  onTap: () {
-                    _goMain();
-                  },
-                  child: new CircleAvatar(
-                    radius: 48.0,
-                    backgroundColor: Colors.indigoAccent,
-                    child: new Padding(
-                      padding: EdgeInsets.all(2.0),
-                      child: new Text(
-                        '立即体验',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(color: Colors.white, fontSize: 16.0),
+        _bannerList.add(
+          new Stack(
+            children: <Widget>[
+              new Image.asset(
+                _guideList[i],
+                fit: BoxFit.fill,
+                width: double.infinity,
+                height: double.infinity,
+              ),
+              new Align(
+                alignment: Alignment.bottomCenter,
+                child: new Container(
+                  margin: EdgeInsets.only(bottom: 160.0),
+                  child: new InkWell(
+                    onTap: () {
+                      _goMain();
+                    },
+                    child: new CircleAvatar(
+                      radius: 48.0,
+                      backgroundColor: Colors.indigoAccent,
+                      child: new Padding(
+                        padding: EdgeInsets.all(2.0),
+                        child: new Text(
+                          '立即体验',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(color: Colors.white, fontSize: 16.0),
+                        ),
                       ),
                     ),
                   ),
                 ),
               ),
-            ),
-          ],
-        ));
+            ],
+          ),
+        );
       } else {
-        _bannerList.add(new Image.asset(
-          _guideList[i],
-          fit: BoxFit.fill,
-          width: double.infinity,
-          height: double.infinity,
-        ));
+        _bannerList.add(
+          new Image.asset(
+            _guideList[i],
+            fit: BoxFit.fill,
+            width: double.infinity,
+            height: double.infinity,
+          ),
+        );
       }
     }
   }
@@ -160,9 +166,7 @@ class SplashPageState extends State<SplashPage> {
 
   Widget _buildAdWidget() {
     if (_splashModel == null) {
-      return new Container(
-        height: 0.0,
-      );
+      return new Container(height: 0.0);
     }
     return new Offstage(
       offstage: !(_status == 1),
@@ -170,8 +174,11 @@ class SplashPageState extends State<SplashPage> {
         onTap: () {
           if (ObjectUtil.isEmpty(_splashModel.url)) return;
           _goMain();
-          NavigatorUtil.pushWeb(context,
-              title: _splashModel.title, url: _splashModel.url);
+          NavigatorUtil.pushWeb(
+            context,
+            title: _splashModel.title,
+            url: _splashModel.url,
+          );
         },
         child: new Container(
           alignment: Alignment.center,
@@ -193,10 +200,7 @@ class SplashPageState extends State<SplashPage> {
     return new Material(
       child: new Stack(
         children: <Widget>[
-          new Offstage(
-            offstage: !(_status == 0),
-            child: _buildSplashBg(),
-          ),
+          new Offstage(offstage: !(_status == 0), child: _buildSplashBg()),
           new Offstage(
             offstage: !(_status == 2),
             child: ObjectUtil.isEmpty(_bannerList)
@@ -209,7 +213,8 @@ class SplashPageState extends State<SplashPage> {
                       padding: EdgeInsets.only(bottom: 30.0),
                       itemColor: Colors.black26,
                     ),
-                    children: _bannerList),
+                    children: _bannerList,
+                  ),
           ),
           _buildAdWidget(),
           new Offstage(
@@ -222,20 +227,21 @@ class SplashPageState extends State<SplashPage> {
                   _goMain();
                 },
                 child: new Container(
-                    padding: EdgeInsets.all(12.0),
-                    child: new Text(
-                      IntlUtil.getString(context, Ids.jump_count,
-                          params: ['$_count']),
-                      style: new TextStyle(fontSize: 14.0, color: Colors.white),
-                    ),
-                    decoration: new BoxDecoration(
-                        color: Color(0x66000000),
-                        borderRadius: BorderRadius.all(Radius.circular(4.0)),
-                        border: new Border.all(
-                            width: 0.33, color: Colours.divider))),
+                  padding: EdgeInsets.all(12.0),
+                  child: new Text(IntlUtil.getString(
+                    context,
+                    Ids.jump_count,
+                    params: ['$_count'],
+                  ), style: new TextStyle(fontSize: 14.0, color: Colors.white)),
+                  decoration: new BoxDecoration(
+                    color: Color(0x66000000),
+                    borderRadius: BorderRadius.all(Radius.circular(4.0)),
+                    border: new Border.all(width: 0.33, color: Colours.divider),
+                  ),
+                ),
               ),
             ),
-          )
+          ),
         ],
       ),
     );

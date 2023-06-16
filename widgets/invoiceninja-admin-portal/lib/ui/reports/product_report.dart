@@ -28,16 +28,23 @@ enum ProductReportFields {
   product4,
 }
 
-var memoizedProductReport = memo6((
-  UserCompanyEntity userCompany,
-  ReportsUIState reportsUIState,
-  BuiltMap<String, ProductEntity> productMap,
-  BuiltMap<String, VendorEntity> vendorMap,
-  BuiltMap<String, UserEntity> userMap,
-  StaticState staticState,
-) =>
-    productReport(userCompany, reportsUIState, productMap, vendorMap, userMap,
-        staticState));
+var memoizedProductReport = memo6(
+  (
+    UserCompanyEntity userCompany,
+    ReportsUIState reportsUIState,
+    BuiltMap<String, ProductEntity> productMap,
+    BuiltMap<String, VendorEntity> vendorMap,
+    BuiltMap<String, UserEntity> userMap,
+    StaticState staticState,
+  ) => productReport(
+    userCompany,
+    reportsUIState,
+    productMap,
+    vendorMap,
+    userMap,
+    staticState,
+  ),
+);
 
 ReportResult productReport(
   UserCompanyEntity userCompany,
@@ -64,10 +71,12 @@ ReportResult productReport(
   ];
 
   if (productReportSettings.columns.isNotEmpty) {
-    columns = BuiltList(productReportSettings.columns
-        .map((e) => EnumUtils.fromString(ProductReportFields.values, e))
-        .where((element) => element != null)
-        .toList());
+    columns = BuiltList(
+      productReportSettings.columns
+          .map((e) => EnumUtils.fromString(ProductReportFields.values, e))
+          .where((element) => element != null)
+          .toList(),
+    );
   } else {
     columns = BuiltList(defaultColumns);
   }
@@ -143,7 +152,9 @@ ReportResult productReport(
         ));
       } else if (value.runtimeType == double || value.runtimeType == int) {
         row.add(product.getReportDouble(
-            value: value, currencyId: userCompany.company.currencyId));
+          value: value,
+          currencyId: userCompany.company.currencyId,
+        ));
       } else {
         row.add(product.getReportString(value: value));
       }
@@ -155,8 +166,14 @@ ReportResult productReport(
   }
 
   final selectedColumns = columns.map((item) => EnumUtils.parse(item)).toList();
-  data.sort((rowA, rowB) =>
-      sortReportTableRows(rowA, rowB, productReportSettings, selectedColumns));
+  data.sort(
+    (rowA, rowB) => sortReportTableRows(
+      rowA,
+      rowB,
+      productReportSettings,
+      selectedColumns,
+    ),
+  );
 
   return ReportResult(
     allColumns:

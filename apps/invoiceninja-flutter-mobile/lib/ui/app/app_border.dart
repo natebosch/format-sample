@@ -41,29 +41,20 @@ class AppBorder extends StatelessWidget {
         : convertHexStringToColor(kDefaultLightBorderColor);
 
     return Container(
-        decoration: BoxDecoration(
-          borderRadius:
-              isAllSides ? BorderRadius.circular(kBorderRadius) : null,
-          border: isAllSides
-              ? Border.all(
-                  width: borderWidth,
-                  color: color,
-                )
-              : Border(
-                  top: isTop == true
-                      ? BorderSide(
-                          width: borderWidth,
-                          color: color,
-                        )
-                      : BorderSide.none,
-                  left: isLeft == true
-                      ? BorderSide(
-                          width: borderWidth,
-                          color: color,
-                        )
-                      : BorderSide.none,
-                ),
-        ),
-        child: child);
+      decoration: BoxDecoration(
+        borderRadius: isAllSides ? BorderRadius.circular(kBorderRadius) : null,
+        border: isAllSides
+            ? Border.all(width: borderWidth, color: color)
+            : Border(
+                top: isTop == true
+                    ? BorderSide(width: borderWidth, color: color)
+                    : BorderSide.none,
+                left: isLeft == true
+                    ? BorderSide(width: borderWidth, color: color)
+                    : BorderSide.none,
+              ),
+      ),
+      child: child,
+    );
   }
 }

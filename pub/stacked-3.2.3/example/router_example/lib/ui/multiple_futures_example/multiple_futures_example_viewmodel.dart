@@ -12,9 +12,9 @@ class MultipleFuturesExampleViewModel extends MultipleFutureViewModel {
 
   @override
   Map<String, Future Function()> get futuresMap => {
-        _numberDelayFuture: getNumberAfterDelay,
-        _stringDelayFuture: getStringAfterDelay,
-      };
+    _numberDelayFuture: getNumberAfterDelay,
+    _stringDelayFuture: getStringAfterDelay,
+  };
 
   Future<int> getNumberAfterDelay() async {
     await Future.delayed(const Duration(seconds: 2));

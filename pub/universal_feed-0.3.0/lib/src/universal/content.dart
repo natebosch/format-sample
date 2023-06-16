@@ -20,7 +20,8 @@ class Content {
 
   /// Creates a new [Content] object from an [XmlElement]
   factory Content.fromXml(XmlElement node, {String defaultType = 'xml'}) {
-    final type = node.getAttribute('mode') ?? node.getAttribute('type') ?? defaultType;
+    final type =
+        node.getAttribute('mode') ?? node.getAttribute('type') ?? defaultType;
     return Content(
       value: textDecoder(type, node),
       type: type,

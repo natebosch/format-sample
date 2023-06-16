@@ -6,35 +6,29 @@ import 'package:stream_chat_flutter/stream_chat_flutter.dart';
 import 'mocks.dart';
 
 void main() {
-  testWidgets(
-    'control test',
-    (WidgetTester tester) async {
-      final client = MockClient();
-      final clientState = MockClientState();
+  testWidgets('control test', (WidgetTester tester) async {
+    final client = MockClient();
+    final clientState = MockClientState();
 
-      when(() => client.state).thenReturn(clientState);
-      when(() => clientState.currentUser).thenReturn(OwnUser(id: 'user-id'));
-      when(() => client.wsConnectionStatusStream)
-          .thenAnswer((_) => Stream.value(ConnectionStatus.connected));
+    when(() => client.state).thenReturn(clientState);
+    when(() => clientState.currentUser).thenReturn(OwnUser(id: 'user-id'));
+    when(() => client.wsConnectionStatusStream).thenAnswer(
+      (_) => Stream.value(ConnectionStatus.connected),
+    );
 
-      await tester.pumpWidget(
-        MaterialApp(
-          home: StreamChat(
-            client: client,
-            child: const Scaffold(
-              body: ChannelListHeader(),
-            ),
-          ),
-        ),
-      );
-      await tester.pumpAndSettle();
+    await tester.pumpWidget(MaterialApp(
+      home: StreamChat(
+        client: client,
+        child: const Scaffold(body: ChannelListHeader()),
+      ),
+    ));
+    await tester.pumpAndSettle();
 
-      final userAvatar = tester.widget<UserAvatar>(find.byType(UserAvatar));
-      expect(userAvatar.user, clientState.currentUser);
-      expect(find.byType(StreamNeumorphicButton), findsOneWidget);
-      expect(find.text('Stream Chat'), findsOneWidget);
-    },
-  );
+    final userAvatar = tester.widget<UserAvatar>(find.byType(UserAvatar));
+    expect(userAvatar.user, clientState.currentUser);
+    expect(find.byType(StreamNeumorphicButton), findsOneWidget);
+    expect(find.text('Stream Chat'), findsOneWidget);
+  });
 
   testWidgets(
     'it should show the InfoTile message if disconnected',
@@ -44,21 +38,18 @@ void main() {
 
       when(() => client.state).thenReturn(clientState);
       when(() => clientState.currentUser).thenReturn(OwnUser(id: 'user-id'));
-      when(() => client.wsConnectionStatusStream)
-          .thenAnswer((_) => Stream.value(ConnectionStatus.disconnected));
+      when(() => client.wsConnectionStatusStream).thenAnswer(
+        (_) => Stream.value(ConnectionStatus.disconnected),
+      );
 
-      await tester.pumpWidget(
-        MaterialApp(
-          home: StreamChat(
-            client: client,
-            child: const Scaffold(
-              body: ChannelListHeader(
-                showConnectionStateTile: true,
-              ),
-            ),
+      await tester.pumpWidget(MaterialApp(
+        home: StreamChat(
+          client: client,
+          child: const Scaffold(
+            body: ChannelListHeader(showConnectionStateTile: true),
           ),
         ),
-      );
+      ));
       await tester.pumpAndSettle();
 
       expect(find.text('Disconnected'), findsOneWidget);
@@ -73,64 +64,55 @@ void main() {
 
       when(() => client.state).thenReturn(clientState);
       when(() => clientState.currentUser).thenReturn(OwnUser(id: 'user-id'));
-      when(() => client.wsConnectionStatusStream)
-          .thenAnswer((_) => Stream.value(ConnectionStatus.connecting));
+      when(() => client.wsConnectionStatusStream).thenAnswer(
+        (_) => Stream.value(ConnectionStatus.connecting),
+      );
 
-      await tester.pumpWidget(
-        MaterialApp(
-          home: StreamChat(
-            client: client,
-            child: const Scaffold(
-              body: ChannelListHeader(
-                showConnectionStateTile: true,
-              ),
-            ),
+      await tester.pumpWidget(MaterialApp(
+        home: StreamChat(
+          client: client,
+          child: const Scaffold(
+            body: ChannelListHeader(showConnectionStateTile: true),
           ),
         ),
-      );
+      ));
       await tester.pump();
 
       expect(find.text('Reconnecting...'), findsOneWidget);
     },
   );
 
-  testWidgets(
-    'it should apply passed properties',
-    (WidgetTester tester) async {
-      final client = MockClient();
-      final clientState = MockClientState();
+  testWidgets('it should apply passed properties', (WidgetTester tester) async {
+    final client = MockClient();
+    final clientState = MockClientState();
 
-      when(() => client.state).thenReturn(clientState);
-      when(() => clientState.currentUser).thenReturn(OwnUser(id: 'user-id'));
-      when(() => client.wsConnectionStatusStream)
-          .thenAnswer((_) => Stream.value(ConnectionStatus.connecting));
+    when(() => client.state).thenReturn(clientState);
+    when(() => clientState.currentUser).thenReturn(OwnUser(id: 'user-id'));
+    when(() => client.wsConnectionStatusStream).thenAnswer(
+      (_) => Stream.value(ConnectionStatus.connecting),
+    );
 
-      await tester.pumpWidget(
-        MaterialApp(
-          home: StreamChat(
+    await tester.pumpWidget(MaterialApp(
+      home: StreamChat(
+        client: client,
+        child: Scaffold(
+          body: ChannelListHeader(
+            titleBuilder: (context, status, client) => const Text('TITLE'),
+            subtitle: const Text('SUBTITLE'),
+            leading: const Text('LEADING'),
+            actions: const [Text('ACTION')],
             client: client,
-            child: Scaffold(
-              body: ChannelListHeader(
-                titleBuilder: (context, status, client) => const Text('TITLE'),
-                subtitle: const Text('SUBTITLE'),
-                leading: const Text('LEADING'),
-                actions: const [
-                  Text('ACTION'),
-                ],
-                client: client,
-              ),
-            ),
           ),
         ),
-      );
-      await tester.pump();
+      ),
+    ));
+    await tester.pump();
 
-      expect(find.text('TITLE'), findsOneWidget);
-      expect(find.text('SUBTITLE'), findsOneWidget);
-      expect(find.text('LEADING'), findsOneWidget);
-      expect(find.text('ACTION'), findsOneWidget);
-    },
-  );
+    expect(find.text('TITLE'), findsOneWidget);
+    expect(find.text('SUBTITLE'), findsOneWidget);
+    expect(find.text('LEADING'), findsOneWidget);
+    expect(find.text('ACTION'), findsOneWidget);
+  });
 
   testWidgets(
     'it should apply prenavigationcallback',
@@ -140,25 +122,24 @@ void main() {
 
       when(() => client.state).thenReturn(clientState);
       when(() => clientState.currentUser).thenReturn(OwnUser(id: 'user-id'));
-      when(() => client.wsConnectionStatusStream)
-          .thenAnswer((_) => Stream.value(ConnectionStatus.connecting));
+      when(() => client.wsConnectionStatusStream).thenAnswer(
+        (_) => Stream.value(ConnectionStatus.connecting),
+      );
 
       var tapped = false;
 
-      await tester.pumpWidget(
-        MaterialApp(
-          home: StreamChat(
-            client: client,
-            child: Scaffold(
-              body: ChannelListHeader(
-                preNavigationCallback: () {
-                  tapped = true;
-                },
-              ),
+      await tester.pumpWidget(MaterialApp(
+        home: StreamChat(
+          client: client,
+          child: Scaffold(
+            body: ChannelListHeader(
+              preNavigationCallback: () {
+                tapped = true;
+              },
             ),
           ),
         ),
-      );
+      ));
       await tester.pump();
 
       await tester.tap(find.byType(UserAvatar));
@@ -166,40 +147,36 @@ void main() {
     },
   );
 
-  testWidgets(
-    'it should apply passed callbacks',
-    (WidgetTester tester) async {
-      final client = MockClient();
-      final clientState = MockClientState();
+  testWidgets('it should apply passed callbacks', (WidgetTester tester) async {
+    final client = MockClient();
+    final clientState = MockClientState();
 
-      when(() => client.state).thenReturn(clientState);
-      when(() => clientState.currentUser).thenReturn(OwnUser(id: 'user-id'));
-      when(() => client.wsConnectionStatusStream)
-          .thenAnswer((_) => Stream.value(ConnectionStatus.connecting));
+    when(() => client.state).thenReturn(clientState);
+    when(() => clientState.currentUser).thenReturn(OwnUser(id: 'user-id'));
+    when(() => client.wsConnectionStatusStream).thenAnswer(
+      (_) => Stream.value(ConnectionStatus.connecting),
+    );
 
-      var tapped = 0;
-      await tester.pumpWidget(
-        MaterialApp(
-          home: StreamChat(
-            client: client,
-            child: Scaffold(
-              body: ChannelListHeader(
-                onUserAvatarTap: (u) {
-                  tapped++;
-                },
-                onNewChatButtonTap: () {
-                  tapped++;
-                },
-              ),
-            ),
+    var tapped = 0;
+    await tester.pumpWidget(MaterialApp(
+      home: StreamChat(
+        client: client,
+        child: Scaffold(
+          body: ChannelListHeader(
+            onUserAvatarTap: (u) {
+              tapped++;
+            },
+            onNewChatButtonTap: () {
+              tapped++;
+            },
           ),
         ),
-      );
-      await tester.pump();
+      ),
+    ));
+    await tester.pump();
 
-      await tester.tap(find.byType(UserAvatar));
-      await tester.tap(find.byType(StreamNeumorphicButton));
-      expect(tapped, 2);
-    },
-  );
+    await tester.tap(find.byType(UserAvatar));
+    await tester.tap(find.byType(StreamNeumorphicButton));
+    expect(tapped, 2);
+  });
 }

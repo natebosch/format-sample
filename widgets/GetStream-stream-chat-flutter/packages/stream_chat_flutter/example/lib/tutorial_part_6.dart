@@ -27,28 +27,18 @@ import 'package:stream_chat_flutter/stream_chat_flutter.dart';
 /// You can perform these more granular style changes using
 /// [StreamChatTheme.copyWith].
 Future<void> main() async {
-  final client = StreamChatClient(
-    's2dxdhpxd94g',
-    logLevel: Level.INFO,
-  );
+  final client = StreamChatClient('s2dxdhpxd94g', logLevel: Level.INFO);
 
   await client.connectUser(
     User(id: 'super-band-9'),
     '''eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoic3VwZXItYmFuZC05In0.0L6lGoeLwkz0aZRUcpZKsvaXtNEDHBcezVTZ0oPq40A''',
   );
 
-  runApp(
-    MyApp(
-      client: client,
-    ),
-  );
+  runApp(MyApp(client: client));
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({
-    Key? key,
-    required this.client,
-  }) : super(key: key);
+  const MyApp({Key? key, required this.client}) : super(key: key);
 
   final StreamChatClient client;
 
@@ -59,9 +49,7 @@ class MyApp extends StatelessWidget {
     final colorTheme = defaultTheme.colorTheme;
     final customTheme = defaultTheme.merge(StreamChatThemeData(
       channelPreviewTheme: ChannelPreviewThemeData(
-        avatarTheme: AvatarThemeData(
-          borderRadius: BorderRadius.circular(8),
-        ),
+        avatarTheme: AvatarThemeData(borderRadius: BorderRadius.circular(8)),
       ),
       messageListViewTheme: const MessageListViewThemeData(
         backgroundColor: Colors.grey,
@@ -72,31 +60,25 @@ class MyApp extends StatelessWidget {
       ),
       otherMessageTheme: MessageThemeData(
         messageBackgroundColor: colorTheme.textHighEmphasis,
-        messageTextStyle: TextStyle(
-          color: colorTheme.barsBg,
-        ),
-        avatarTheme: AvatarThemeData(
-          borderRadius: BorderRadius.circular(8),
-        ),
+        messageTextStyle: TextStyle(color: colorTheme.barsBg),
+        avatarTheme: AvatarThemeData(borderRadius: BorderRadius.circular(8)),
       ),
     ));
 
     return MaterialApp(
       theme: themeData,
       builder: (context, child) => StreamChat(
-        client: client,
-        streamChatThemeData: customTheme,
-        child: child,
-      ),
+            client: client,
+            streamChatThemeData: customTheme,
+            child: child,
+          ),
       home: const ChannelListPage(),
     );
   }
 }
 
 class ChannelListPage extends StatelessWidget {
-  const ChannelListPage({
-    Key? key,
-  }) : super(key: key);
+  const ChannelListPage({Key? key}) : super(key: key);
 
   @override
   // ignore: prefer_expression_function_bodies
@@ -104,10 +86,8 @@ class ChannelListPage extends StatelessWidget {
     return Scaffold(
       body: ChannelsBloc(
         child: ChannelListView(
-          filter: Filter.in_(
-            'members',
-            [StreamChat.of(context).currentUser!.id],
-          ),
+          filter:
+              Filter.in_('members', [StreamChat.of(context).currentUser!.id]),
           sort: const [SortOption('last_message_at')],
           limit: 20,
           channelWidget: const ChannelPage(),
@@ -118,9 +98,7 @@ class ChannelListPage extends StatelessWidget {
 }
 
 class ChannelPage extends StatelessWidget {
-  const ChannelPage({
-    Key? key,
-  }) : super(key: key);
+  const ChannelPage({Key? key}) : super(key: key);
 
   @override
   // ignore: prefer_expression_function_bodies
@@ -131,9 +109,8 @@ class ChannelPage extends StatelessWidget {
         children: <Widget>[
           Expanded(
             child: MessageListView(
-              threadBuilder: (_, parentMessage) => ThreadPage(
-                parent: parentMessage,
-              ),
+              threadBuilder:
+                  (_, parentMessage) => ThreadPage(parent: parentMessage),
             ),
           ),
           const MessageInput(),
@@ -144,10 +121,7 @@ class ChannelPage extends StatelessWidget {
 }
 
 class ThreadPage extends StatelessWidget {
-  const ThreadPage({
-    Key? key,
-    this.parent,
-  }) : super(key: key);
+  const ThreadPage({Key? key, this.parent}) : super(key: key);
 
   final Message? parent;
 
@@ -155,19 +129,11 @@ class ThreadPage extends StatelessWidget {
   // ignore: prefer_expression_function_bodies
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: ThreadHeader(
-        parent: parent!,
-      ),
+      appBar: ThreadHeader(parent: parent!),
       body: Column(
         children: <Widget>[
-          Expanded(
-            child: MessageListView(
-              parentMessage: parent,
-            ),
-          ),
-          MessageInput(
-            parentMessage: parent,
-          ),
+          Expanded(child: MessageListView(parentMessage: parent)),
+          MessageInput(parentMessage: parent),
         ],
       ),
     );

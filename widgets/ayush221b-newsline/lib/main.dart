@@ -14,7 +14,10 @@ void main() async {
   runApp(NewslineApp());
 
   await AndroidAlarmManager.periodic(
-      const Duration(hours: 1), helloNotificationId, checkSendNotification);
+    const Duration(hours: 1),
+    helloNotificationId,
+    checkSendNotification,
+  );
 }
 
 void checkSendNotification() async {
@@ -23,39 +26,53 @@ void checkSendNotification() async {
   await locationService.getUserLocation();
   if (locationService.userLocation != null)
     await newsService.getArticlesFromDb(
-        toRefresh: true,
-        countryCode: locationService.userLocation.isoCountryCode);
-  else
-    await newsService.getArticlesFromDb(
       toRefresh: true,
+      countryCode: locationService.userLocation.isoCountryCode,
     );
+  else
+    await newsService.getArticlesFromDb(toRefresh: true);
 
   FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
       new FlutterLocalNotificationsPlugin();
-  var initializationSettingsAndroid =
-      new AndroidInitializationSettings('ic_launcher');
+  var initializationSettingsAndroid = new AndroidInitializationSettings(
+    'ic_launcher',
+  );
 
-  var initializationSettings =
-      new InitializationSettings(initializationSettingsAndroid, null);
-  flutterLocalNotificationsPlugin.initialize(initializationSettings,
-      onSelectNotification: (_) {});
+  var initializationSettings = new InitializationSettings(
+    initializationSettingsAndroid,
+    null,
+  );
+  flutterLocalNotificationsPlugin.initialize(
+    initializationSettings,
+    onSelectNotification: (_) {},
+  );
   NewsArticle article = newsService.articles[0];
   if (article != null) {
     var bigTextStyleInformation = BigTextStyleInformation(
-        '${article.description ?? ''}',
-        htmlFormatBigText: true,
-        contentTitle: '${article.title}',
-        htmlFormatContentTitle: true,
-        summaryText: 'Trending Now',
-        htmlFormatSummaryText: true);
+      '${article.description ?? ''}',
+      htmlFormatBigText: true,
+      contentTitle: '${article.title}',
+      htmlFormatContentTitle: true,
+      summaryText: 'Trending Now',
+      htmlFormatSummaryText: true,
+    );
     var androidPlatformChannelSpecifics = AndroidNotificationDetails(
-        'id_001', 'Newsline Daily', 'Get daily trends',
-        style: AndroidNotificationStyle.BigText,
-        styleInformation: bigTextStyleInformation);
-    var platformChannelSpecifics =
-        NotificationDetails(androidPlatformChannelSpecifics, null);
+      'id_001',
+      'Newsline Daily',
+      'Get daily trends',
+      style: AndroidNotificationStyle.BigText,
+      styleInformation: bigTextStyleInformation,
+    );
+    var platformChannelSpecifics = NotificationDetails(
+      androidPlatformChannelSpecifics,
+      null,
+    );
 
     await flutterLocalNotificationsPlugin.show(
-        0, '${article.title}', '', platformChannelSpecifics);
+      0,
+      '${article.title}',
+      '',
+      platformChannelSpecifics,
+    );
   }
 }

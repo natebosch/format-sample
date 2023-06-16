@@ -17,6 +17,6 @@ final databaseReducer = combineReducers<Database>([
   TypedReducer<Database, DatabaseCreatedAction>(_databaseReducer),
 ]);
 
-Database _databaseReducer(Database database, DatabaseCreatedAction action){
+Database _databaseReducer(Database database, DatabaseCreatedAction action) {
   return action.database;
 }

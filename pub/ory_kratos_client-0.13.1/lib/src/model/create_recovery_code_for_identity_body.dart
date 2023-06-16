@@ -14,7 +14,12 @@ part 'create_recovery_code_for_identity_body.g.dart';
 /// * [expiresIn] - Code Expires In  The recovery code will expire after that amount of time has passed. Defaults to the configuration value of `selfservice.methods.code.config.lifespan`.
 /// * [identityId] - Identity to Recover  The identity's ID you wish to recover.
 @BuiltValue()
-abstract class CreateRecoveryCodeForIdentityBody implements Built<CreateRecoveryCodeForIdentityBody, CreateRecoveryCodeForIdentityBodyBuilder> {
+abstract class CreateRecoveryCodeForIdentityBody
+    implements
+        Built<
+          CreateRecoveryCodeForIdentityBody,
+          CreateRecoveryCodeForIdentityBodyBuilder
+        > {
   /// Code Expires In  The recovery code will expire after that amount of time has passed. Defaults to the configuration value of `selfservice.methods.code.config.lifespan`.
   @BuiltValueField(wireName: r'expires_in')
   String? get expiresIn;
@@ -25,18 +30,25 @@ abstract class CreateRecoveryCodeForIdentityBody implements Built<CreateRecovery
 
   CreateRecoveryCodeForIdentityBody._();
 
-  factory CreateRecoveryCodeForIdentityBody([void updates(CreateRecoveryCodeForIdentityBodyBuilder b)]) = _$CreateRecoveryCodeForIdentityBody;
+  factory CreateRecoveryCodeForIdentityBody([
+    void updates(CreateRecoveryCodeForIdentityBodyBuilder b),
+  ]) = _$CreateRecoveryCodeForIdentityBody;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(CreateRecoveryCodeForIdentityBodyBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<CreateRecoveryCodeForIdentityBody> get serializer => _$CreateRecoveryCodeForIdentityBodySerializer();
+  static Serializer<CreateRecoveryCodeForIdentityBody> get serializer =>
+      _$CreateRecoveryCodeForIdentityBodySerializer();
 }
 
-class _$CreateRecoveryCodeForIdentityBodySerializer implements PrimitiveSerializer<CreateRecoveryCodeForIdentityBody> {
+class _$CreateRecoveryCodeForIdentityBodySerializer
+    implements PrimitiveSerializer<CreateRecoveryCodeForIdentityBody> {
   @override
-  final Iterable<Type> types = const [CreateRecoveryCodeForIdentityBody, _$CreateRecoveryCodeForIdentityBody];
+  final Iterable<Type> types = const [
+    CreateRecoveryCodeForIdentityBody,
+    _$CreateRecoveryCodeForIdentityBody,
+  ];
 
   @override
   final String wireName = r'CreateRecoveryCodeForIdentityBody';
@@ -66,7 +78,11 @@ class _$CreateRecoveryCodeForIdentityBodySerializer implements PrimitiveSerializ
     CreateRecoveryCodeForIdentityBody object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(
+      serializers,
+      object,
+      specifiedType: specifiedType,
+    ).toList();
   }
 
   void _deserializeProperties(
@@ -123,4 +139,3 @@ class _$CreateRecoveryCodeForIdentityBodySerializer implements PrimitiveSerializ
     return result.build();
   }
 }
-

@@ -17,10 +17,12 @@ const EntityAction _$cloneToCredit = const EntityAction._('cloneToCredit');
 const EntityAction _$cloneToInvoice = const EntityAction._('cloneToInvoice');
 const EntityAction _$cloneToQuote = const EntityAction._('cloneToQuote');
 const EntityAction _$cloneToExpense = const EntityAction._('cloneToExpense');
-const EntityAction _$cloneToRecurring =
-    const EntityAction._('cloneToRecurring');
-const EntityAction _$convertToInvoice =
-    const EntityAction._('convertToInvoice');
+const EntityAction _$cloneToRecurring = const EntityAction._(
+  'cloneToRecurring',
+);
+const EntityAction _$convertToInvoice = const EntityAction._(
+  'convertToInvoice',
+);
 const EntityAction _$approve = const EntityAction._('approve');
 const EntityAction _$applyCredit = const EntityAction._('applyCredit');
 const EntityAction _$applyPayment = const EntityAction._('applyPayment');
@@ -29,8 +31,9 @@ const EntityAction _$bulkDownload = const EntityAction._('bulkDownload');
 const EntityAction _$emailInvoice = const EntityAction._('emailInvoice');
 const EntityAction _$emailQuote = const EntityAction._('emailQuote');
 const EntityAction _$emailCredit = const EntityAction._('emailCredit');
-const EntityAction _$bulkEmailInvoice =
-    const EntityAction._('bulkEmailInvoice');
+const EntityAction _$bulkEmailInvoice = const EntityAction._(
+  'bulkEmailInvoice',
+);
 const EntityAction _$bulkEmailQuote = const EntityAction._('bulkEmailQuote');
 const EntityAction _$bulkEmailCredit = const EntityAction._('bulkEmailCredit');
 const EntityAction _$emailPayment = const EntityAction._('emailPayment');
@@ -38,12 +41,15 @@ const EntityAction _$markSent = const EntityAction._('markSent');
 const EntityAction _$markPaid = const EntityAction._('markPaid');
 const EntityAction _$newClient = const EntityAction._('newClient');
 const EntityAction _$newInvoice = const EntityAction._('newInvoice');
-const EntityAction _$newRecurringInvoice =
-    const EntityAction._('newRecurringInvoice');
-const EntityAction _$newRecurringExpense =
-    const EntityAction._('newRecurringExpense');
-const EntityAction _$newRecurringQuote =
-    const EntityAction._('newRecurringQuote');
+const EntityAction _$newRecurringInvoice = const EntityAction._(
+  'newRecurringInvoice',
+);
+const EntityAction _$newRecurringExpense = const EntityAction._(
+  'newRecurringExpense',
+);
+const EntityAction _$newRecurringQuote = const EntityAction._(
+  'newRecurringQuote',
+);
 const EntityAction _$newQuote = const EntityAction._('newQuote');
 const EntityAction _$newCredit = const EntityAction._('newCredit');
 const EntityAction _$newExpense = const EntityAction._('newExpense');
@@ -61,8 +67,9 @@ const EntityAction _$printPdf = const EntityAction._('printPdf');
 const EntityAction _$start = const EntityAction._('start');
 const EntityAction _$resume = const EntityAction._('resume');
 const EntityAction _$stop = const EntityAction._('stop');
-const EntityAction _$toggleMultiselect =
-    const EntityAction._('toggleMultiselect');
+const EntityAction _$toggleMultiselect = const EntityAction._(
+  'toggleMultiselect',
+);
 const EntityAction _$reverse = const EntityAction._('reverse');
 const EntityAction _$cancel = const EntityAction._('cancel');
 const EntityAction _$copy = const EntityAction._('copy');
@@ -195,67 +202,68 @@ EntityAction _$valueOf(String name) {
   }
 }
 
-final BuiltSet<EntityAction> _$values =
-    new BuiltSet<EntityAction>(const <EntityAction>[
-  _$edit,
-  _$archive,
-  _$delete,
-  _$restore,
-  _$remove,
-  _$clone,
-  _$cloneToOther,
-  _$cloneToCredit,
-  _$cloneToInvoice,
-  _$cloneToQuote,
-  _$cloneToExpense,
-  _$cloneToRecurring,
-  _$convertToInvoice,
-  _$approve,
-  _$applyCredit,
-  _$applyPayment,
-  _$download,
-  _$bulkDownload,
-  _$emailInvoice,
-  _$emailQuote,
-  _$emailCredit,
-  _$bulkEmailInvoice,
-  _$bulkEmailQuote,
-  _$bulkEmailCredit,
-  _$emailPayment,
-  _$markSent,
-  _$markPaid,
-  _$newClient,
-  _$newInvoice,
-  _$newRecurringInvoice,
-  _$newRecurringExpense,
-  _$newRecurringQuote,
-  _$newQuote,
-  _$newCredit,
-  _$newExpense,
-  _$newProject,
-  _$newTask,
-  _$newVendor,
-  _$clientPortal,
-  _$newPayment,
-  _$settings,
-  _$refundPayment,
-  _$viewPdf,
-  _$viewStatement,
-  _$more,
-  _$printPdf,
-  _$start,
-  _$resume,
-  _$stop,
-  _$toggleMultiselect,
-  _$reverse,
-  _$cancel,
-  _$copy,
-  _$invoiceTask,
-  _$invoiceExpense,
-  _$invoiceProject,
-  _$resendInvite,
-  _$disconnect,
-]);
+final BuiltSet<EntityAction> _$values = new BuiltSet<EntityAction>(
+  const <EntityAction>[
+    _$edit,
+    _$archive,
+    _$delete,
+    _$restore,
+    _$remove,
+    _$clone,
+    _$cloneToOther,
+    _$cloneToCredit,
+    _$cloneToInvoice,
+    _$cloneToQuote,
+    _$cloneToExpense,
+    _$cloneToRecurring,
+    _$convertToInvoice,
+    _$approve,
+    _$applyCredit,
+    _$applyPayment,
+    _$download,
+    _$bulkDownload,
+    _$emailInvoice,
+    _$emailQuote,
+    _$emailCredit,
+    _$bulkEmailInvoice,
+    _$bulkEmailQuote,
+    _$bulkEmailCredit,
+    _$emailPayment,
+    _$markSent,
+    _$markPaid,
+    _$newClient,
+    _$newInvoice,
+    _$newRecurringInvoice,
+    _$newRecurringExpense,
+    _$newRecurringQuote,
+    _$newQuote,
+    _$newCredit,
+    _$newExpense,
+    _$newProject,
+    _$newTask,
+    _$newVendor,
+    _$clientPortal,
+    _$newPayment,
+    _$settings,
+    _$refundPayment,
+    _$viewPdf,
+    _$viewStatement,
+    _$more,
+    _$printPdf,
+    _$start,
+    _$resume,
+    _$stop,
+    _$toggleMultiselect,
+    _$reverse,
+    _$cancel,
+    _$copy,
+    _$invoiceTask,
+    _$invoiceExpense,
+    _$invoiceProject,
+    _$resendInvite,
+    _$disconnect,
+  ],
+);
 
 Serializer<EntityAction> _$entityActionSerializer =
     new _$EntityActionSerializer();
@@ -267,14 +275,18 @@ class _$EntityActionSerializer implements PrimitiveSerializer<EntityAction> {
   final String wireName = 'EntityAction';
 
   @override
-  Object serialize(Serializers serializers, EntityAction object,
-          {FullType specifiedType = FullType.unspecified}) =>
-      object.name;
+  Object serialize(
+    Serializers serializers,
+    EntityAction object, {
+    FullType specifiedType = FullType.unspecified,
+  }) => object.name;
 
   @override
-  EntityAction deserialize(Serializers serializers, Object serialized,
-          {FullType specifiedType = FullType.unspecified}) =>
-      EntityAction.valueOf(serialized as String);
+  EntityAction deserialize(
+    Serializers serializers,
+    Object serialized, {
+    FullType specifiedType = FullType.unspecified,
+  }) => EntityAction.valueOf(serialized as String);
 }
 
 // ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new

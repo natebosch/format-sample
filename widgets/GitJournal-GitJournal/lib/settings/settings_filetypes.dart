@@ -73,9 +73,7 @@ class _NoteFileTypesSettingsState extends State<NoteFileTypesSettings> {
     _info ??= _loadInfo();
 
     // I need some text on the top to say what this does
-    var body = ListView(
-      children: _info!.map(_buildTile).toList(),
-    );
+    var body = ListView(children: _info!.map(_buildTile).toList());
 
     return Scaffold(
       appBar: AppBar(

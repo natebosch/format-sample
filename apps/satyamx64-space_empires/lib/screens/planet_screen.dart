@@ -43,9 +43,11 @@ class PlanetScreen extends StatelessWidget {
     Widget _planetImage() {
       return Expanded(
         child: Hero(
-            tag: describeEnum(_planetName),
-            child: Image.asset(
-                'assets/img/planets/${describeEnum(_planetName)}.png')),
+          tag: describeEnum(_planetName),
+          child: Image.asset(
+            'assets/img/planets/${describeEnum(_planetName)}.png',
+          ),
+        ),
       );
     }
 
@@ -60,9 +62,7 @@ class PlanetScreen extends StatelessWidget {
         ),
         tabs: List.generate(
           _displayMode.keys.length,
-          (index) => Tab(
-            text: List<String>.from(_displayMode.keys)[index],
-          ),
+          (index) => Tab(text: List<String>.from(_displayMode.keys)[index]),
         ),
       );
     }
@@ -72,8 +72,10 @@ class PlanetScreen extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(16),
           child: TabBarView(
-            children: List.generate(_displayMode.values.length,
-                (index) => List<Widget>.from(_displayMode.values)[index]),
+            children: List.generate(
+              _displayMode.values.length,
+              (index) => List<Widget>.from(_displayMode.values)[index],
+            ),
           ),
         ),
       );
@@ -81,20 +83,21 @@ class PlanetScreen extends StatelessWidget {
 
     Widget _description() {
       return Expanded(
-          child: Container(
-        alignment: Alignment.center,
-        margin: const EdgeInsets.all(16),
-        padding: const EdgeInsets.all(16),
-        child: Text(
-          Provider.of<Game>(context, listen: false)
-              .descriptionForPlanet(_planetName),
-          style: Theme.of(context)
-              .textTheme
-              .headline6!
-              .copyWith(fontWeight: FontWeight.w600),
-          textAlign: TextAlign.center,
+        child: Container(
+          alignment: Alignment.center,
+          margin: const EdgeInsets.all(16),
+          padding: const EdgeInsets.all(16),
+          child: Text(
+            Provider.of<Game>(context, listen: false).descriptionForPlanet(
+              _planetName,
+            ),
+            style: Theme.of(context).textTheme.headline6!.copyWith(
+              fontWeight: FontWeight.w600,
+            ),
+            textAlign: TextAlign.center,
+          ),
         ),
-      ));
+      );
     }
 
     return DefaultTabController(
@@ -111,11 +114,14 @@ class PlanetScreen extends StatelessWidget {
                 child: CircleAvatar(
                   backgroundColor: Colors.green,
                   child: FittedBox(
-                      child: Text(
-                    '\$',
-                    style: TextStyle(
-                        color: Palette.deepBlue, fontWeight: FontWeight.bold),
-                  )),
+                    child: Text(
+                      '\$',
+                      style: TextStyle(
+                        color: Palette.deepBlue,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
                 ),
               ),
               elevation: 6.0,
@@ -125,10 +131,9 @@ class PlanetScreen extends StatelessWidget {
                 builder: (_, player, __) {
                   return Text(
                     '${player!.money}',
-                    style: Theme.of(context)
-                        .textTheme
-                        .bodyText2!
-                        .copyWith(fontWeight: FontWeight.bold),
+                    style: Theme.of(context).textTheme.bodyText2!.copyWith(
+                      fontWeight: FontWeight.bold,
+                    ),
                   );
                 },
               ),
@@ -149,7 +154,9 @@ class PlanetScreen extends StatelessWidget {
                               _planetImage(),
                               Padding(
                                 padding: const EdgeInsets.symmetric(
-                                    horizontal: 8, vertical: 8),
+                                  horizontal: 8,
+                                  vertical: 8,
+                                ),
                                 child: _tabBar(),
                               ),
                             ],
@@ -176,19 +183,9 @@ class PlanetScreen extends StatelessWidget {
                 children: [
                   StaticStarsBackGround(),
                   if (orientation == Orientation.landscape)
-                    Row(
-                      children: [
-                        _planetImage(),
-                        _description(),
-                      ],
-                    ),
+                    Row(children: [_planetImage(), _description()]),
                   if (orientation == Orientation.portrait)
-                    Column(
-                      children: [
-                        _planetImage(),
-                        _description(),
-                      ],
-                    ),
+                    Column(children: [_planetImage(), _description()]),
                 ],
               ),
       ),

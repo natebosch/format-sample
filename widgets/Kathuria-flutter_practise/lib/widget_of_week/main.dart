@@ -8,9 +8,7 @@ class WidgetOfWeek extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Widgets',
       initialRoute: Constants.Initial_Route,
-      theme: ThemeData(
-        primarySwatch: Colors.blueGrey,
-      ),
+      theme: ThemeData(primarySwatch: Colors.blueGrey),
       routes: getRoutes(),
     );
   }
@@ -54,23 +52,25 @@ class _MyWidgetsPageState extends State<MyWidgetsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: const Text('Widgets of Week'),
+      appBar: AppBar(title: const Text('Widgets of Week')),
+      body: new Container(
+        margin: EdgeInsets.only(left: 10.0, right: 10.0, top: 10.0),
+        child: new Column(
+          children: <Widget>[
+            _searchBox(),
+            _isSearch ? _listView() : _searchListView(),
+          ],
         ),
-        body: new Container(
-          margin: EdgeInsets.only(left: 10.0, right: 10.0, top: 10.0),
-          child: new Column(
-            children: <Widget>[
-              _searchBox(),
-              _isSearch ? _listView() : _searchListView()
-            ],
-          ),
-        ));
+      ),
+    );
   }
 
   Widget _searchBox() {
     return new Container(
-      decoration: BoxDecoration(border: Border.all(width: 1.0, color: Colors.grey), borderRadius: BorderRadius.circular(15)),
+      decoration: BoxDecoration(
+        border: Border.all(width: 1.0, color: Colors.grey),
+        borderRadius: BorderRadius.circular(15),
+      ),
       child: new TextField(
         controller: _searchEdit,
         decoration: InputDecoration(
@@ -85,18 +85,22 @@ class _MyWidgetsPageState extends State<MyWidgetsPage> {
   Widget _listView() {
     return new Flexible(
       child: new ListView.builder(
-          itemCount: Constants.WIDGETS.length,
-          itemBuilder: (BuildContext context, int index) {
-            return new Card(
-              //color: Colors.cyan[50],
-              elevation: 5.0,
-              child: new Container(
-                margin: EdgeInsets.all(5.0),
-                child: _navigateRoute(context, Constants.WIDGETS[index],
-                    Constants.WIDGET_ROUTES[index]),
+        itemCount: Constants.WIDGETS.length,
+        itemBuilder: (BuildContext context, int index) {
+          return new Card(
+            //color: Colors.cyan[50],
+            elevation: 5.0,
+            child: new Container(
+              margin: EdgeInsets.all(5.0),
+              child: _navigateRoute(
+                context,
+                Constants.WIDGETS[index],
+                Constants.WIDGET_ROUTES[index],
               ),
-            );
-          }),
+            ),
+          );
+        },
+      ),
     );
   }
 
@@ -117,17 +121,22 @@ class _MyWidgetsPageState extends State<MyWidgetsPage> {
   Widget _searchAddList() {
     return new Flexible(
       child: new ListView.builder(
-          itemCount: _searchListItems.length,
-          itemBuilder: (BuildContext context, int index) {
-            return new Card(
-              color: Colors.cyan[50],
-              elevation: 5.0,
-              child: new Container(
-                margin: EdgeInsets.all(5.0),
-                child: _navigateRoute(context, _searchListItems[index], _searchListRoutes[index]),
+        itemCount: _searchListItems.length,
+        itemBuilder: (BuildContext context, int index) {
+          return new Card(
+            color: Colors.cyan[50],
+            elevation: 5.0,
+            child: new Container(
+              margin: EdgeInsets.all(5.0),
+              child: _navigateRoute(
+                context,
+                _searchListItems[index],
+                _searchListRoutes[index],
               ),
-            );
-          }),
+            ),
+          );
+        },
+      ),
     );
   }
 

@@ -13,9 +13,13 @@ void main() {
     expect(map['firstName'] == 'super', isTrue);
     expect(map['lastName'] == 'éleveur', isTrue);
     expect(
-        map['updateDate'] == WeebiDates.defaultDate.toIso8601String(), isTrue);
-    expect(map['statusUpdateDate'] == WeebiDates.defaultDate.toIso8601String(),
-        isTrue);
+      map['updateDate'] == WeebiDates.defaultDate.toIso8601String(),
+      isTrue,
+    );
+    expect(
+      map['statusUpdateDate'] == WeebiDates.defaultDate.toIso8601String(),
+      isTrue,
+    );
     expect(map['status'] == true, isTrue);
     expect(map['tel'] == 'tel', isTrue);
     expect(map['mail'] == 'mail', isTrue);

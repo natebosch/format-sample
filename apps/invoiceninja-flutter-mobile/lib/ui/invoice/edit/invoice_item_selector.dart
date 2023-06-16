@@ -61,8 +61,9 @@ class _InvoiceItemSelectorState extends State<InvoiceItemSelector>
   }
 
   void _addBlankItem(CompanyEntity company) {
-    widget.onItemsSelected(
-        [InvoiceItemEntity(quantity: company.defaultQuantity ? 1 : 0)]);
+    widget.onItemsSelected([
+      InvoiceItemEntity(quantity: company.defaultQuantity ? 1 : 0),
+    ]);
     Navigator.pop(context);
   }
 
@@ -74,25 +75,22 @@ class _InvoiceItemSelectorState extends State<InvoiceItemSelector>
 
     _selected.forEach((entity) {
       if (entity.entityType == EntityType.product) {
-        items.add(
-          convertProductToInvoiceItem(
-            company: company,
-            product: entity as ProductEntity,
-            invoice: state.invoiceUIState.editing,
-            currencyMap: state.staticState.currencyMap,
-            client: state.clientState.get(widget.clientId),
-          ),
-        );
+        items.add(convertProductToInvoiceItem(
+          company: company,
+          product: entity as ProductEntity,
+          invoice: state.invoiceUIState.editing,
+          currencyMap: state.staticState.currencyMap,
+          client: state.clientState.get(widget.clientId),
+        ));
       } else if (entity.entityType == EntityType.task) {
         final task = entity as TaskEntity;
         projectId ??= task.projectId;
         items.add(convertTaskToInvoiceItem(task: task, context: context));
       } else if (entity.entityType == EntityType.expense) {
         final expense = entity as ExpenseEntity;
-        items.add(convertExpenseToInvoiceItem(
-          expense: expense,
-          context: context,
-        ));
+        items.add(
+          convertExpenseToInvoiceItem(expense: expense, context: context),
+        );
       }
     });
 
@@ -118,10 +116,11 @@ class _InvoiceItemSelectorState extends State<InvoiceItemSelector>
 
   void _updateClientId() {
     final selected = _selected.firstWhere(
-        (entity) =>
-            entity is BelongsToClient &&
-            (((entity as BelongsToClient).clientId ?? '').isNotEmpty),
-        orElse: () => null);
+      (entity) =>
+          entity is BelongsToClient &&
+          (((entity as BelongsToClient).clientId ?? '').isNotEmpty),
+      orElse: () => null,
+    );
 
     if (selected != null) {
       _filterClientId = (selected as BelongsToClient).clientId;
@@ -141,9 +140,9 @@ class _InvoiceItemSelectorState extends State<InvoiceItemSelector>
 
     final products =
         memoizedProductList(state.productState.map).where((entityId) {
-      final entity = state.productState.map[entityId];
-      return entity.isActive && entity.matchesFilter(_filter);
-    }).toList();
+          final entity = state.productState.map[entityId];
+          return entity.isActive && entity.matchesFilter(_filter);
+        }).toList();
 
     final tasks = memoizedTaskList(
       state.taskState.map,
@@ -253,9 +252,7 @@ class _InvoiceItemSelectorState extends State<InvoiceItemSelector>
             (products.isNotEmpty ? ' (${products.length})' : ''),
       ),
     ];
-    final List<Widget> tabViews = [
-      _productList(),
-    ];
+    final List<Widget> tabViews = [_productList()];
 
     if (company.isModuleEnabled(EntityType.task)) {
       tabs.add(Tab(
@@ -276,77 +273,78 @@ class _InvoiceItemSelectorState extends State<InvoiceItemSelector>
     return ResponsivePadding(
       child: Material(
         elevation: 4.0,
-        child: Column(mainAxisSize: MainAxisSize.min, children: <Widget>[
-          Row(
-            children: <Widget>[
-              Padding(
-                padding: const EdgeInsets.only(left: 10.0, right: 10.0),
-                child: Icon(Icons.search),
-              ),
-              Expanded(
-                child: TextField(
-                  controller: _textController,
-                  onChanged: (value) {
-                    setState(() {
-                      _filter = value;
-                    });
-                  },
-                  autofocus: true,
-                  decoration: InputDecoration(
-                    border: InputBorder.none,
-                    hintText: _selected.isEmpty
-                        ? localization.filter
-                        : localization.countSelected
-                            .replaceFirst(':count', '${_selected.length}'),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: <Widget>[
+            Row(
+              children: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.only(left: 10.0, right: 10.0),
+                  child: Icon(Icons.search),
+                ),
+                Expanded(
+                  child: TextField(
+                    controller: _textController,
+                    onChanged: (value) {
+                      setState(() {
+                        _filter = value;
+                      });
+                    },
+                    autofocus: true,
+                    decoration: InputDecoration(
+                      border: InputBorder.none,
+                      hintText: _selected.isEmpty
+                          ? localization.filter
+                          : localization.countSelected.replaceFirst(
+                              ':count',
+                              '${_selected.length}',
+                            ),
+                    ),
                   ),
                 ),
-              ),
-              Row(
-                mainAxisSize: MainAxisSize.min,
-                children: <Widget>[
-                  IconButton(
-                    icon: Icon(Icons.close),
-                    onPressed: () {
-                      if (_textController.text.isNotEmpty) {
-                        setState(() {
-                          _filter = _textController.text = '';
-                        });
-                      } else {
-                        Navigator.pop(context);
-                      }
-                    },
-                  ),
-                  _selected.isNotEmpty
-                      ? IconButton(
-                          icon: Icon(Icons.check),
-                          onPressed: () => _onItemsSelected(context),
-                        )
-                      : !state.prefState.isEditorFullScreen(EntityType.invoice)
-                          ? IconButton(
-                              icon: Icon(Icons.add_circle_outline),
-                              tooltip: localization.createNew,
-                              onPressed: () => _addBlankItem(company),
-                            )
-                          : SizedBox(),
-                ],
-              )
-            ],
-          ),
-          showTabBar
-              ? AppTabBar(
-                  controller: _tabController,
-                  tabs: tabs,
-                )
-              : SizedBox(),
-          Expanded(
-            child: showTabBar
-                ? TabBarView(
-                    controller: _tabController,
-                    children: tabViews,
-                  )
-                : tabViews.first,
-          ),
-        ]),
+                Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: <Widget>[
+                    IconButton(
+                      icon: Icon(Icons.close),
+                      onPressed: () {
+                        if (_textController.text.isNotEmpty) {
+                          setState(() {
+                            _filter = _textController.text = '';
+                          });
+                        } else {
+                          Navigator.pop(context);
+                        }
+                      },
+                    ),
+                    _selected.isNotEmpty
+                        ? IconButton(
+                            icon: Icon(Icons.check),
+                            onPressed: () => _onItemsSelected(context),
+                          )
+                        : !state.prefState.isEditorFullScreen(
+                                EntityType.invoice,
+                              )
+                            ? IconButton(
+                                icon: Icon(Icons.add_circle_outline),
+                                tooltip: localization.createNew,
+                                onPressed: () => _addBlankItem(company),
+                              )
+                            : SizedBox(),
+                  ],
+                ),
+              ],
+            ),
+            showTabBar
+                ? AppTabBar(controller: _tabController, tabs: tabs)
+                : SizedBox(),
+            Expanded(
+              child: showTabBar
+                  ? TabBarView(controller: _tabController, children: tabViews)
+                  : tabViews.first,
+            ),
+          ],
+        ),
       ),
     );
   }

@@ -25,10 +25,15 @@ class XppFile {
   XppFile({this.title, this.pages, this.previewImage});
 
   /// create an empty [XppFile]
-  static XppFile empty(
-      {String? title, XppPageSize? pageSize, Color? background}) {
+  static XppFile empty({
+    String? title,
+    XppPageSize? pageSize,
+    Color? background,
+  }) {
     return XppFile(
-        title: title, pages: [XppPage.empty(background: background)]);
+      title: title,
+      pages: [XppPage.empty(background: background)],
+    );
   }
 
   /// creates an [XppFile] from a PDF document opened in a [FilePickerCross]
@@ -38,14 +43,17 @@ class XppFile {
     XppFile file = XppFile.empty(title: pdf.fileName)..pages!.clear();
     for (int i = 0; i < pageCount; i++) {
       final size = await pdfPageSize(pdf, i);
-      file.pages!.add(XppPage.empty()
-        ..pageSize = size
-        ..background = XppBackgroundPdf(
+      file.pages!.add(
+        XppPage.empty()
+          ..pageSize = size
+          ..background = XppBackgroundPdf(
             onUnavailable: ((String p) =>
                     throw ("$p is not available even though just imported"))
                 as Future<FilePickerCross> Function(String?),
             page: i,
-            filename: pdf.path));
+            filename: pdf.path,
+          ),
+      );
     }
     return file;
   }
@@ -55,39 +63,45 @@ class XppFile {
     //double percentage = 0;
     ScaffoldFeatureController snackBarController = ScaffoldMessenger.of(context)
         .showSnackBar(SnackBar(
-            duration: Duration(days: 999),
-            content: Text(S.of(context).loadingFile)));
+          duration: Duration(days: 999),
+          content: Text(S.of(context).loadingFile),
+        ));
     XppFile file;
     try {
       file = await open((percentage) => null, showMissingFileDialog);
 
       snackBarController.close();
-      Navigator.of(context).pushReplacement(MaterialPageRoute(
-          builder: (context) => CanvasPage(
-                file: file,
-              )));
+      Navigator.of(context).pushReplacement(
+        MaterialPageRoute(builder: (context) => CanvasPage(file: file)),
+      );
     } catch (e) {
       snackBarController.close();
       showDialog(
-          context: context,
-          builder: (c) => AlertDialog(
-                title: Text(S.of(context).noFileSelected),
-                content: Text(S.of(context).youDidNotSelectAnyFile),
-                actions: [
-                  TextButton(
-                      onPressed: () => Navigator.of(context).pop(),
-                      child: Text(S.of(context).close))
-                ],
-              ));
+        context: context,
+        builder: (c) => AlertDialog(
+              title: Text(S.of(context).noFileSelected),
+              content: Text(S.of(context).youDidNotSelectAnyFile),
+              actions: [
+                TextButton(
+                  onPressed: () => Navigator.of(context).pop(),
+                  child: Text(S.of(context).close),
+                ),
+              ],
+            ),
+      );
     }
   }
 
   /// showing a file picker, decoding and parsing to [XppFile]
-  static Future<XppFile> open(Function(double) percentageCallback,
-      FileNotAvailableCallback onUnavailable) async {
+  static Future<XppFile> open(
+    Function(double) percentageCallback,
+    FileNotAvailableCallback onUnavailable,
+  ) async {
     /// showing a [FilePickerCross]
     FilePickerCross rawFile = await FilePickerCross.importFromStorage(
-        type: FileTypeCross.custom, fileExtension: 'xopp');
+      type: FileTypeCross.custom,
+      fileExtension: 'xopp',
+    );
 
     /// decoding by [fromFilePickerCross]
     XppFile file =
@@ -98,9 +112,10 @@ class XppFile {
 
   /// decoding and parsing a [FilePickerCross] to [XppFile]
   static Future<XppFile> fromFilePickerCross(
-      FilePickerCross rawFile,
-      Function(double)? percentageCallback,
-      FileNotAvailableCallback onUnavailable) async {
+    FilePickerCross rawFile,
+    Function(double)? percentageCallback,
+    FileNotAvailableCallback onUnavailable,
+  ) async {
     /// for potential progress indicator and a better UX we provide feedback about
     /// the state of parsing. Huge documents may require a minute or two.
     double percentCompleted = 0;
@@ -109,7 +124,9 @@ class XppFile {
 
     /// extracting the document title
     String title = rawFile.path!.substring(
-        rawFile.path!.lastIndexOf('/') + 1, rawFile.path!.lastIndexOf('.'));
+      rawFile.path!.lastIndexOf('/') + 1,
+      rawFile.path!.lastIndexOf('.'),
+    );
 
     /// decoding file bytes from GZip to a UTF-8 [Uint8List]
     List<int> bytes = GZipDecoder().decodeBytes(rawFile.toUint8List().toList());
@@ -126,7 +143,8 @@ class XppFile {
     Uint8List previewImage;
     try {
       previewImage = base64Decode(
-          documentTree.findElements('preview').toList()[0].innerText);
+        documentTree.findElements('preview').toList()[0].innerText,
+      );
     } catch (e) {
       previewImage = kTransparentImage;
     }
@@ -137,8 +155,9 @@ class XppFile {
     pageElements.forEach((XmlElement pageElement) {
       pageIndex++;
       XppPageSize pageSize = XppPageSize(
-          width: double.parse(pageElement.getAttribute('width')!),
-          height: double.parse(pageElement.getAttribute('height')!));
+        width: double.parse(pageElement.getAttribute('width')!),
+        height: double.parse(pageElement.getAttribute('height')!),
+      );
       XppBackground? background;
       if (pageElement.findElements('background').isNotEmpty) {
         XmlElement backgroundElement =
@@ -146,35 +165,41 @@ class XppFile {
         switch (backgroundElement.getAttribute('type')) {
           case "pixmap":
             background = XppBackgroundImage(
-                filename: backgroundElement.getAttribute('filename'));
+              filename: backgroundElement.getAttribute('filename'),
+            );
             break;
           case "pdf":
             background = XppBackgroundPdf(
-                onUnavailable: onUnavailable,
-                filename: backgroundElement.getAttribute('filename'),
-                page: int.parse(backgroundElement.getAttribute('pageno')!));
+              onUnavailable: onUnavailable,
+              filename: backgroundElement.getAttribute('filename'),
+              page: int.parse(backgroundElement.getAttribute('pageno')!),
+            );
             break;
           case "solid":
             switch (backgroundElement.getAttribute('style')) {
               case 'lined':
                 background = XppBackgroundSolidLined(
-                    size: pageSize,
-                    color: parseColor(backgroundElement.getAttribute('color')));
+                  size: pageSize,
+                  color: parseColor(backgroundElement.getAttribute('color')),
+                );
                 break;
               case 'ruled':
                 background = XppBackgroundSolidRuled(
-                    size: pageSize,
-                    color: parseColor(backgroundElement.getAttribute('color')));
+                  size: pageSize,
+                  color: parseColor(backgroundElement.getAttribute('color')),
+                );
                 break;
               case 'graph':
                 background = XppBackgroundSolidGraph(
-                    size: pageSize,
-                    color: parseColor(backgroundElement.getAttribute('color')));
+                  size: pageSize,
+                  color: parseColor(backgroundElement.getAttribute('color')),
+                );
                 break;
               case 'plain':
                 background = XppBackgroundSolidPlain(
-                    size: pageSize,
-                    color: parseColor(backgroundElement.getAttribute('color')));
+                  size: pageSize,
+                  color: parseColor(backgroundElement.getAttribute('color')),
+                );
                 break;
               default:
                 background = XppBackground.none;
@@ -203,9 +228,11 @@ class XppFile {
             return;
           }
           if (node.nodeType != XmlNodeType.ELEMENT) {
-            print('Unexpected XmlNodeType. Expected XmlNodeType.ELEMENT, got ' +
-                node.nodeType.toString() +
-                '. Removing.');
+            print(
+              'Unexpected XmlNodeType. Expected XmlNodeType.ELEMENT, got ' +
+                  node.nodeType.toString() +
+                  '. Removing.',
+            );
             return;
           }
           node.setAttribute('counter', index.toString());
@@ -215,22 +242,27 @@ class XppFile {
         /// processing all images first
         layer.findElements('image').forEach((imageElement) {
           content[int.parse(imageElement.getAttribute('counter')!)] = XppImage(
-              data: base64Decode(imageElement.text.trim()),
-              topLeft: Offset(double.parse(imageElement.getAttribute('left')!),
-                  double.parse(imageElement.getAttribute('top')!)),
-              bottomRight: Offset(
-                  double.parse(imageElement.getAttribute('right')!),
-                  double.parse(imageElement.getAttribute('bottom')!)));
+            data: base64Decode(imageElement.text.trim()),
+            topLeft: Offset(
+              double.parse(imageElement.getAttribute('left')!),
+              double.parse(imageElement.getAttribute('top')!),
+            ),
+            bottomRight: Offset(
+              double.parse(imageElement.getAttribute('right')!),
+              double.parse(imageElement.getAttribute('bottom')!),
+            ),
+          );
         });
 
         /// processing all texts
         layer.findElements('text').forEach((textElement) {
           Color color = parseColor(textElement.getAttribute('color'));
           content[int.parse(textElement.getAttribute('counter')!)] = XppText(
-              color: color,
-              // note: not trimming
-              text: textElement.text.replaceAllMapped(
-                  RegExp(r'(&amp;|&lt;|&gt;)'), (Match subtext) {
+            color: color,
+            // note: not trimming
+            text: textElement.text.replaceAllMapped(
+              RegExp(r'(&amp;|&lt;|&gt;)'),
+              (Match subtext) {
                 switch (subtext.group(0)) {
                   case '&amp;':
                     return '&';
@@ -240,24 +272,33 @@ class XppFile {
                     return '>';
                 }
                 return subtext.group(0)!;
-              }),
-              size: XppPageSize.pt2mm(
-                  double.parse(textElement.getAttribute('size')!)),
-              fontFamily: textElement.getAttribute('font'),
-              offset: Offset(double.parse(textElement.getAttribute('x')!),
-                  double.parse(textElement.getAttribute('y')!)));
+              },
+            ),
+            size: XppPageSize.pt2mm(
+              double.parse(textElement.getAttribute('size')!),
+            ),
+            fontFamily: textElement.getAttribute('font'),
+            offset: Offset(
+              double.parse(textElement.getAttribute('x')!),
+              double.parse(textElement.getAttribute('y')!),
+            ),
+          );
         });
 
         /// processing all lateximages
         layer.findElements('teximage').forEach((texElement) {
           content[int.parse(texElement.getAttribute('counter')!)] = XppTexImage(
-              text: texElement.getAttribute('text')!.trim(),
-              color: parseColor(texElement.getAttribute('color')!.trim()),
-              topLeft: Offset(double.parse(texElement.getAttribute('left')!),
-                  double.parse(texElement.getAttribute('top')!)),
-              bottomRight: Offset(
-                  double.parse(texElement.getAttribute('right')!),
-                  double.parse(texElement.getAttribute('bottom')!)));
+            text: texElement.getAttribute('text')!.trim(),
+            color: parseColor(texElement.getAttribute('color')!.trim()),
+            topLeft: Offset(
+              double.parse(texElement.getAttribute('left')!),
+              double.parse(texElement.getAttribute('top')!),
+            ),
+            bottomRight: Offset(
+              double.parse(texElement.getAttribute('right')!),
+              double.parse(texElement.getAttribute('bottom')!),
+            ),
+          );
         });
 
         /// processing all strokes
@@ -276,21 +317,26 @@ class XppFile {
               tool = XppStrokeTool.HIGHLIGHTER;
               break;
             default:
-              print("Unsupported XppStrokeType: " +
-                  strokeElement.getAttribute('tool')!);
+              print(
+                "Unsupported XppStrokeType: " +
+                    strokeElement.getAttribute('tool')!,
+              );
               break;
           }
           Color color = parseColor(strokeElement.getAttribute('color'));
           List<XppStrokePoint> points = [];
-          List<String> rawWidth =
-              strokeElement.getAttribute('width')!.split(' ');
+          List<String> rawWidth = strokeElement.getAttribute('width')!.split(
+            ' ',
+          );
           List<String> rawPoints = strokeElement.text.trim().split(' ');
           for (int i = 0; i < rawPoints.length / 2; i++) {
             points.add(XppStrokePoint(
-                width: double.parse(
-                    (rawWidth.length > i) ? rawWidth[i] : rawWidth[0]),
-                x: double.parse(rawPoints[i * 2]),
-                y: double.parse(rawPoints[i * 2 + 1])));
+              width: double.parse(
+                (rawWidth.length > i) ? rawWidth[i] : rawWidth[0],
+              ),
+              x: double.parse(rawPoints[i * 2]),
+              y: double.parse(rawPoints[i * 2 + 1]),
+            ));
           }
           if (points.isEmpty) return;
           content[int.parse(strokeElement.getAttribute('counter')!)] =
@@ -298,8 +344,9 @@ class XppFile {
         });
 
         layers.add(XppLayer(
-            content:
-                List.generate(content.keys.length, (index) => content[index])));
+          content:
+              List.generate(content.keys.length, (index) => content[index]),
+        ));
         layerIndex++;
         percentCompleted = (((pageIndex - 1) / pageElements.length) +
                 (layerIndex / layerElements.length)) -
@@ -310,11 +357,15 @@ class XppFile {
         } catch (e) {}
       });
       pages.add(
-          XppPage(background: background, layers: layers, pageSize: pageSize));
+        XppPage(background: background, layers: layers, pageSize: pageSize),
+      );
     });
 
-    XppFile file =
-        XppFile(title: title, previewImage: previewImage, pages: pages);
+    XppFile file = XppFile(
+      title: title,
+      previewImage: previewImage,
+      pages: pages,
+    );
 
     /*/// starting async task to save recent files list
     SharedPreferences.getInstance().then((prefs) {
@@ -347,19 +398,22 @@ class XppFile {
   XmlDocument toXmlDocument() {
     return XmlDocument([
       XmlElement(
-          XmlName('xournal'),
-          [
-            XmlAttribute(XmlName('creator'), 'Xournal++ Mobile'),
-            XmlAttribute(XmlName('fileversion'), '4')
-          ],
-          [
-            XmlElement(XmlName('title'), const [], [
-              XmlText(
-                  'Xournal document - see http://math.mit.edu/~auroux/software/xournal/')
-            ]),
-            XmlElement(XmlName('preview'), const [],
-                [XmlText(base64Encode(previewImage!))])
-          ]..addAll(pages!.map((e) => e.toXmlElement())))
+        XmlName('xournal'),
+        [
+          XmlAttribute(XmlName('creator'), 'Xournal++ Mobile'),
+          XmlAttribute(XmlName('fileversion'), '4'),
+        ],
+        [
+          XmlElement(XmlName('title'), const [], [
+            XmlText(
+              'Xournal document - see http://math.mit.edu/~auroux/software/xournal/',
+            ),
+          ]),
+          XmlElement(XmlName('preview'), const [], [
+            XmlText(base64Encode(previewImage!)),
+          ]),
+        ]..addAll(pages!.map((e) => e.toXmlElement())),
+      ),
     ]);
   }
 
@@ -376,8 +430,12 @@ class XppFile {
   /// creating a [FilePickerCross] from the [toUint8List]
   FilePickerCross toFilePickerCross({String? filePath}) {
     Uint8List bytes = toUint8List()!;
-    return FilePickerCross(bytes,
-        type: FileTypeCross.custom, fileExtension: 'xopp', path: filePath);
+    return FilePickerCross(
+      bytes,
+      type: FileTypeCross.custom,
+      fileExtension: 'xopp',
+      path: filePath,
+    );
   }
 }
 

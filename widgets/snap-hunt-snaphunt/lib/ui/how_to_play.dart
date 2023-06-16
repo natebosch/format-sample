@@ -6,12 +6,13 @@ class HowToPlay extends StatelessWidget {
   final pages = [
     PageViewModel(
       pageColor: Colors.amber,
-      body: Text('Modes:\nSINGLEPLAYER or MULTIPLAYER', style: TextStyle(fontSize: 24, height: 1)),
+      body: Text(
+        'Modes:\nSINGLEPLAYER or MULTIPLAYER',
+        style: TextStyle(fontSize: 24, height: 1),
+      ),
       title: Text(
         'Select Game Mode',
-        style: TextStyle(
-          fontWeight: FontWeight.bold,
-        ),
+        style: TextStyle(fontWeight: FontWeight.bold),
       ),
       textStyle: TextStyle(color: Colors.white),
       mainImage: Image.asset(
@@ -23,12 +24,13 @@ class HowToPlay extends StatelessWidget {
     ),
     PageViewModel(
       pageColor: Colors.lightBlue,
-      body: Text('Set TIME LIMIT and NO. OF ITEMS\n\nMultiplayer:\n(ROOM NAME and MAX PLAYERS)', style: TextStyle(fontSize: 24, height: 1)),
+      body: Text(
+        'Set TIME LIMIT and NO. OF ITEMS\n\nMultiplayer:\n(ROOM NAME and MAX PLAYERS)',
+        style: TextStyle(fontSize: 24, height: 1),
+      ),
       title: Text(
         'Set Game Settings',
-        style: TextStyle(
-          fontWeight: FontWeight.bold,
-        ),
+        style: TextStyle(fontWeight: FontWeight.bold),
       ),
       textStyle: TextStyle(color: Colors.white),
       mainImage: Image.asset(
@@ -40,13 +42,11 @@ class HowToPlay extends StatelessWidget {
     ),
     PageViewModel(
       pageColor: Colors.deepPurple,
-      body: Text('Start the game and look for the items displayed on the screen.', style: TextStyle(fontSize: 24, height: 1)),
-      title: Text(
-        'Begin Hunt',
-        style: TextStyle(
-          fontWeight: FontWeight.bold,
-        ),
+      body: Text(
+        'Start the game and look for the items displayed on the screen.',
+        style: TextStyle(fontSize: 24, height: 1),
       ),
+      title: Text('Begin Hunt', style: TextStyle(fontWeight: FontWeight.bold)),
       textStyle: TextStyle(color: Colors.white),
       mainImage: Image.asset(
         'assets/intro_three.png',
@@ -57,13 +57,11 @@ class HowToPlay extends StatelessWidget {
     ),
     PageViewModel(
       pageColor: Colors.green,
-      body: Text('Take a snap of the object to be verified.\nEvery point is gained once item is valid.', style: TextStyle(fontSize: 26, height: 1)),
-      title: Text(
-        'Take a Snap',
-        style: TextStyle(
-          fontWeight: FontWeight.bold,
-        ),
+      body: Text(
+        'Take a snap of the object to be verified.\nEvery point is gained once item is valid.',
+        style: TextStyle(fontSize: 26, height: 1),
       ),
+      title: Text('Take a Snap', style: TextStyle(fontWeight: FontWeight.bold)),
       textStyle: TextStyle(color: Colors.white),
       mainImage: Image.asset(
         'assets/intro_four.png',
@@ -74,12 +72,13 @@ class HowToPlay extends StatelessWidget {
     ),
     PageViewModel(
       pageColor: Colors.blueAccent,
-      body: Text('First one to snap all items or with the highest score before the time limit ends wins the game.', style: TextStyle(fontSize: 26, height: 1)),
+      body: Text(
+        'First one to snap all items or with the highest score before the time limit ends wins the game.',
+        style: TextStyle(fontSize: 26, height: 1),
+      ),
       title: Text(
         'Be The Champion',
-        style: TextStyle(
-          fontWeight: FontWeight.bold,
-        ),
+        style: TextStyle(fontWeight: FontWeight.bold),
       ),
       textStyle: TextStyle(color: Colors.white),
       mainImage: Image.asset(
@@ -91,12 +90,13 @@ class HowToPlay extends StatelessWidget {
     ),
     PageViewModel(
       pageColor: Colors.red,
-      body: Text('You are now ready to begin your Scavenger Game Hunt!', style: TextStyle(fontSize: 26, height: 1)),
+      body: Text(
+        'You are now ready to begin your Scavenger Game Hunt!',
+        style: TextStyle(fontSize: 26, height: 1),
+      ),
       title: Text(
         'Let the Hunt Begin',
-        style: TextStyle(
-          fontWeight: FontWeight.bold,
-        ),
+        style: TextStyle(fontWeight: FontWeight.bold),
       ),
       textStyle: TextStyle(color: Colors.white),
       mainImage: Image.asset(
@@ -105,7 +105,7 @@ class HowToPlay extends StatelessWidget {
         width: 320,
         alignment: Alignment.center,
       ),
-    )
+    ),
   ];
 
   @override
@@ -121,10 +121,7 @@ class HowToPlay extends StatelessWidget {
         fullTransition: 175,
         showSkipButton: false,
         showNextButton: false,
-        pageButtonTextStyles: TextStyle(
-          color: Colors.white,
-          fontSize: 16.0,
-        ),
+        pageButtonTextStyles: TextStyle(color: Colors.white, fontSize: 16.0),
       ),
     );
   }

@@ -13,19 +13,22 @@ class _StoreTransactionApiTest {
   }
 
   void _checkConstructor(
-      String transactionIdentifier,
-      String revenueCatIdentifier,
-      String productIdentifier,
-      String purchaseDate) {
-    StoreTransaction transaction =
-        StoreTransaction(revenueCatIdentifier, productIdentifier, purchaseDate);
-    StoreTransaction transaction2 =
-        StoreTransaction.create(
-            transactionIdentifier,
-            revenueCatIdentifier,
-            productIdentifier,
-            purchaseDate
-        );
+    String transactionIdentifier,
+    String revenueCatIdentifier,
+    String productIdentifier,
+    String purchaseDate,
+  ) {
+    StoreTransaction transaction = StoreTransaction(
+      revenueCatIdentifier,
+      productIdentifier,
+      purchaseDate,
+    );
+    StoreTransaction transaction2 = StoreTransaction.create(
+      transactionIdentifier,
+      revenueCatIdentifier,
+      productIdentifier,
+      purchaseDate,
+    );
   }
 
   void _checkProperties(StoreTransaction transaction) {

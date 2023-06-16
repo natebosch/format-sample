@@ -10,12 +10,7 @@ class MeditationScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        leading: SizedBox.shrink(),
-        actions: [
-          DarkModeSwitcher(),
-        ],
-      ),
+      appBar: AppBar(leading: SizedBox.shrink(), actions: [DarkModeSwitcher()]),
       body: Center(
         child: TimerCountdown(
           context.read(appStateProvider.state).duration,

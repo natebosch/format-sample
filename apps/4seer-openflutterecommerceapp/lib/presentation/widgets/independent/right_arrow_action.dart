@@ -6,7 +6,7 @@ class OpenFlutterRightArrow extends StatelessWidget {
   final VoidCallback onClick;
 
   const OpenFlutterRightArrow(this.text, {Key key, this.onClick})
-      : super(key: key);
+    : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -18,10 +18,7 @@ class OpenFlutterRightArrow extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.end,
           children: <Widget>[
             Text(text),
-            Icon(
-              Icons.trending_flat,
-              color: AppColors.red,
-            )
+            Icon(Icons.trending_flat, color: AppColors.red),
           ],
         ),
       ),

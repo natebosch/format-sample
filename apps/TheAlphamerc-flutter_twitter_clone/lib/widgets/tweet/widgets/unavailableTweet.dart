@@ -16,11 +16,12 @@ class UnavailableTweet extends StatelessWidget {
       height: 40,
       padding: EdgeInsets.symmetric(horizontal: 16),
       margin: EdgeInsets.only(
-          right: 16,
-          top: 5,
-          left: type == TweetType.Tweet || type == TweetType.ParentTweet
-              ? 70
-              : 16),
+        right: 16,
+        top: 5,
+        left: type == TweetType.Tweet || type == TweetType.ParentTweet
+            ? 70
+            : 16,
+      ),
       alignment: Alignment.centerLeft,
       decoration: BoxDecoration(
         color: AppColor.extraLightGrey.withOpacity(.3),
@@ -32,9 +33,8 @@ class UnavailableTweet extends StatelessWidget {
               height: 2,
               child: LinearProgressIndicator(
                 backgroundColor: AppColor.extraLightGrey,
-                valueColor: AlwaysStoppedAnimation(
-                  AppColor.darkGrey.withOpacity(.3),
-                ),
+                valueColor:
+                    AlwaysStoppedAnimation(AppColor.darkGrey.withOpacity(.3)),
               ),
             )
           : Text('This Tweet is unavailable', style: TextStyles.userNameStyle),

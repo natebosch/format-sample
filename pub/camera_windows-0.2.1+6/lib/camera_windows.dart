@@ -19,8 +19,9 @@ class CameraWindows extends CameraPlatform {
 
   /// The method channel used to interact with the native platform.
   @visibleForTesting
-  final MethodChannel pluginChannel =
-      const MethodChannel('plugins.flutter.io/camera_windows');
+  final MethodChannel pluginChannel = const MethodChannel(
+    'plugins.flutter.io/camera_windows',
+  );
 
   /// Camera specific method channels to allow communicating with specific cameras.
   final Map<int, MethodChannel> _cameraChannels = <int, MethodChannel>{};
@@ -36,9 +37,9 @@ class CameraWindows extends CameraPlatform {
       StreamController<CameraEvent>.broadcast();
 
   /// Returns a stream of camera events for the given [cameraId].
-  Stream<CameraEvent> _cameraEvents(int cameraId) =>
-      cameraEventStreamController.stream
-          .where((CameraEvent event) => event.cameraId == cameraId);
+  Stream<CameraEvent> _cameraEvents(int cameraId) => cameraEventStreamController
+      .stream
+      .where((CameraEvent event) => event.cameraId == cameraId);
 
   @override
   Future<List<CameraDescription>> availableCameras() async {
@@ -73,10 +74,10 @@ class CameraWindows extends CameraPlatform {
       // If resolutionPreset is not specified, plugin selects the highest resolution possible.
       final Map<String, dynamic>? reply = await pluginChannel
           .invokeMapMethod<String, dynamic>('create', <String, dynamic>{
-        'cameraName': cameraDescription.name,
-        'resolutionPreset': _serializeResolutionPreset(resolutionPreset),
-        'enableAudio': enableAudio,
-      });
+            'cameraName': cameraDescription.name,
+            'resolutionPreset': _serializeResolutionPreset(resolutionPreset),
+            'enableAudio': enableAudio,
+          });
 
       if (reply == null) {
         throw CameraException('System', 'Cannot create camera');
@@ -98,7 +99,8 @@ class CameraWindows extends CameraPlatform {
     /// Creates channel for camera events.
     _cameraChannels.putIfAbsent(requestedCameraId, () {
       final MethodChannel channel = MethodChannel(
-          'plugins.flutter.io/camera_windows/camera$requestedCameraId');
+        'plugins.flutter.io/camera_windows/camera$requestedCameraId',
+      );
       channel.setMethodCallHandler(
         (MethodCall call) => handleCameraMethodCall(call, requestedCameraId),
       );
@@ -109,33 +111,27 @@ class CameraWindows extends CameraPlatform {
     try {
       reply = await pluginChannel.invokeMapMethod<String, double>(
         'initialize',
-        <String, dynamic>{
-          'cameraId': requestedCameraId,
-        },
+        <String, dynamic>{'cameraId': requestedCameraId},
       );
     } on PlatformException catch (e) {
       throw CameraException(e.code, e.message);
     }
 
-    cameraEventStreamController.add(
-      CameraInitializedEvent(
-        requestedCameraId,
-        reply!['previewWidth']!,
-        reply['previewHeight']!,
-        ExposureMode.auto,
-        false,
-        FocusMode.auto,
-        false,
-      ),
-    );
+    cameraEventStreamController.add(CameraInitializedEvent(
+      requestedCameraId,
+      reply!['previewWidth']!,
+      reply['previewHeight']!,
+      ExposureMode.auto,
+      false,
+      FocusMode.auto,
+      false,
+    ));
   }
 
   @override
   Future<void> dispose(int cameraId) async {
-    await pluginChannel.invokeMethod<void>(
-      'dispose',
-      <String, dynamic>{'cameraId': cameraId},
-    );
+    await pluginChannel
+        .invokeMethod<void>('dispose', <String, dynamic>{'cameraId': cameraId});
 
     // Destroy method channel after camera is disposed to be able to handle last messages.
     if (_cameraChannels.containsKey(cameraId)) {
@@ -210,21 +206,26 @@ class CameraWindows extends CameraPlatform {
   }
 
   @override
-  Future<void> prepareForVideoRecording() =>
-      pluginChannel.invokeMethod<void>('prepareForVideoRecording');
+  Future<void> prepareForVideoRecording() => pluginChannel.invokeMethod<void>(
+    'prepareForVideoRecording',
+  );
 
   @override
-  Future<void> startVideoRecording(int cameraId,
-      {Duration? maxVideoDuration}) async {
+  Future<void> startVideoRecording(
+    int cameraId, {
+    Duration? maxVideoDuration,
+  }) async {
     return startVideoCapturing(
-        VideoCaptureOptions(cameraId, maxDuration: maxVideoDuration));
+      VideoCaptureOptions(cameraId, maxDuration: maxVideoDuration),
+    );
   }
 
   @override
   Future<void> startVideoCapturing(VideoCaptureOptions options) async {
     if (options.streamCallback != null || options.streamOptions != null) {
       throw UnimplementedError(
-          'Streaming is not currently supported on Windows');
+        'Streaming is not currently supported on Windows',
+      );
     }
 
     await pluginChannel.invokeMethod<void>(
@@ -251,13 +252,15 @@ class CameraWindows extends CameraPlatform {
   @override
   Future<void> pauseVideoRecording(int cameraId) async {
     throw UnsupportedError(
-        'pauseVideoRecording() is not supported due to Win32 API limitations.');
+      'pauseVideoRecording() is not supported due to Win32 API limitations.',
+    );
   }
 
   @override
   Future<void> resumeVideoRecording(int cameraId) async {
     throw UnsupportedError(
-        'resumeVideoRecording() is not supported due to Win32 API limitations.');
+      'resumeVideoRecording() is not supported due to Win32 API limitations.',
+    );
   }
 
   @override
@@ -278,7 +281,8 @@ class CameraWindows extends CameraPlatform {
     assert(point == null || point.y >= 0 && point.y <= 1);
 
     throw UnsupportedError(
-        'setExposurePoint() is not supported due to Win32 API limitations.');
+      'setExposurePoint() is not supported due to Win32 API limitations.',
+    );
   }
 
   @override
@@ -320,7 +324,8 @@ class CameraWindows extends CameraPlatform {
     assert(point == null || point.y >= 0 && point.y <= 1);
 
     throw UnsupportedError(
-        'setFocusPoint() is not supported due to Win32 API limitations.');
+      'setFocusPoint() is not supported due to Win32 API limitations.',
+    );
   }
 
   @override
@@ -345,18 +350,16 @@ class CameraWindows extends CameraPlatform {
 
   @override
   Future<void> pausePreview(int cameraId) async {
-    await pluginChannel.invokeMethod<double>(
-      'pausePreview',
-      <String, dynamic>{'cameraId': cameraId},
-    );
+    await pluginChannel.invokeMethod<double>('pausePreview', <String, dynamic>{
+      'cameraId': cameraId,
+    });
   }
 
   @override
   Future<void> resumePreview(int cameraId) async {
-    await pluginChannel.invokeMethod<double>(
-      'resumePreview',
-      <String, dynamic>{'cameraId': cameraId},
-    );
+    await pluginChannel.invokeMethod<double>('resumePreview', <String, dynamic>{
+      'cameraId': cameraId,
+    });
   }
 
   @override
@@ -392,33 +395,24 @@ class CameraWindows extends CameraPlatform {
   Future<dynamic> handleCameraMethodCall(MethodCall call, int cameraId) async {
     switch (call.method) {
       case 'camera_closing':
-        cameraEventStreamController.add(
-          CameraClosingEvent(
-            cameraId,
-          ),
-        );
+        cameraEventStreamController.add(CameraClosingEvent(cameraId));
         break;
       case 'video_recorded':
         final Map<String, Object?> arguments =
             (call.arguments as Map<Object?, Object?>).cast<String, Object?>();
         final int? maxDuration = arguments['maxVideoDuration'] as int?;
         // This is called if maxVideoDuration was given on record start.
-        cameraEventStreamController.add(
-          VideoRecordedEvent(
-            cameraId,
-            XFile(arguments['path']! as String),
-            maxDuration != null ? Duration(milliseconds: maxDuration) : null,
-          ),
-        );
+        cameraEventStreamController.add(VideoRecordedEvent(
+          cameraId,
+          XFile(arguments['path']! as String),
+          maxDuration != null ? Duration(milliseconds: maxDuration) : null,
+        ));
         break;
       case 'error':
         final Map<String, Object?> arguments =
             (call.arguments as Map<Object?, Object?>).cast<String, Object?>();
         cameraEventStreamController.add(
-          CameraErrorEvent(
-            cameraId,
-            arguments['description']! as String,
-          ),
+          CameraErrorEvent(cameraId, arguments['description']! as String),
         );
         break;
       default:

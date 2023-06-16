@@ -30,7 +30,7 @@ class JpegData {
     58, 59, 52, 45, 38, 31, 39, 46,
     53, 60, 61, 54, 47, 55, 62, 63,
     63, 63, 63, 63, 63, 63, 63, 63, // extra entries for safety in decoder
-    63, 63, 63, 63, 63, 63, 63, 63
+    63, 63, 63, 63, 63, 63, 63, 63,
   ];
 
   static const dctSize = 8; // The basic DCT block is 8x8 samples
@@ -48,8 +48,10 @@ class JpegData {
   int? resetInterval;
   String? comment;
   final exif = ExifData();
-  final quantizationTables =
-      List<Int16List?>.filled(numQuantizationTables, null);
+  final quantizationTables = List<Int16List?>.filled(
+    numQuantizationTables,
+    null,
+  );
   final frames = <JpegFrame?>[];
   final huffmanTablesAC = List<List<HuffmanNode?>?>.empty(growable: true);
   final huffmanTablesDC = List<List<HuffmanNode?>?>.empty(growable: true);
@@ -160,11 +162,12 @@ class JpegData {
     for (var i = 0; i < frame!.componentsOrder.length; ++i) {
       final component = frame!.components[frame!.componentsOrder[i]]!;
       components.add(ComponentData(
-          component.hSamples,
-          frame!.maxHSamples,
-          component.vSamples,
-          frame!.maxVSamples,
-          _buildComponentData(frame, component)));
+        component.hSamples,
+        frame!.maxHSamples,
+        component.vSamples,
+        frame!.maxVSamples,
+        _buildComponentData(frame, component),
+      ));
     }
   }
 
@@ -227,7 +230,8 @@ class JpegData {
         case JpegMarker.sof14:
         case JpegMarker.sof15:
           throw ImageException(
-              'Unhandled frame type ${marker.toRadixString(16)}');
+            'Unhandled frame type ${marker.toRadixString(16)}',
+          );
 
         case JpegMarker.dht: // DHT (Define Huffman Tables)
           _readDHT(block);
@@ -257,7 +261,8 @@ class JpegData {
 
           if (marker != 0) {
             throw ImageException(
-                'Unknown JPEG marker ${marker.toRadixString(16)}');
+              'Unknown JPEG marker ${marker.toRadixString(16)}',
+            );
           }
           break;
       }
@@ -421,8 +426,12 @@ class JpegData {
       final v = x & 15;
       final qId = block.readByte();
       frame!.componentsOrder.add(componentId);
-      frame!.components[componentId] =
-          JpegComponent(h, v, quantizationTables, qId);
+      frame!.components[componentId] = JpegComponent(
+        h,
+        v,
+        quantizationTables,
+        qId,
+      );
     }
 
     frame!.prepare();
@@ -500,13 +509,22 @@ class JpegData {
     final ah = (successiveApproximation >> 4) & 15;
     final al = successiveApproximation & 15;
 
-    JpegScan(input, frame!, components, resetInterval, spectralStart,
-            spectralEnd, ah, al)
-        .decode();
+    JpegScan(
+      input,
+      frame!,
+      components,
+      resetInterval,
+      spectralStart,
+      spectralEnd,
+      ah,
+      al,
+    ).decode();
   }
 
   List<HuffmanNode?> _buildHuffmanTable(
-      Uint8List codeLengths, Uint8List values) {
+    Uint8List codeLengths,
+    Uint8List values,
+  ) {
     var k = 0;
     final code = <_JpegHuffman>[];
     var length = 16;
@@ -560,7 +578,9 @@ class JpegData {
   }
 
   List<Uint8List?> _buildComponentData(
-      JpegFrame? frame, JpegComponent component) {
+    JpegFrame? frame,
+    JpegComponent component,
+  ) {
     final blocksPerLine = component.blocksPerLine;
     final blocksPerColumn = component.blocksPerColumn;
     final samplesPerLine = blocksPerLine << 3;
@@ -576,8 +596,12 @@ class JpegData {
       }
 
       for (var blockCol = 0; blockCol < blocksPerLine; blockCol++) {
-        quantizeAndInverse(component.quantizationTable!,
-            component.blocks[blockRow][blockCol] as Int32List, r, R);
+        quantizeAndInverse(
+          component.quantizationTable!,
+          component.blocks[blockRow][blockCol] as Int32List,
+          r,
+          R,
+        );
 
         var offset = 0;
         final sample = blockCol << 3;

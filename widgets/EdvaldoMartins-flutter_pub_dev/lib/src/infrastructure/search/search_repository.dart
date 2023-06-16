@@ -7,7 +7,8 @@ class SearchRepository extends ISearchRepository {
   SearchRepository(ISearchService service) : super(service);
 
   @override
-  Future<Either<RequestFailure, List<String>>> searchPackage(
-          {required int page, required String query}) async =>
-      await service.searchPackage(page: page, query: query);
+  Future<Either<RequestFailure, List<String>>> searchPackage({
+    required int page,
+    required String query,
+  }) async => await service.searchPackage(page: page, query: query);
 }

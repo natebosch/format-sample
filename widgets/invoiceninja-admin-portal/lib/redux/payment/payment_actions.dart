@@ -24,10 +24,7 @@ class ViewPaymentList implements PersistUI {
 }
 
 class ViewPayment implements PersistUI, PersistPrefs {
-  ViewPayment({
-    @required this.paymentId,
-    this.force = false,
-  });
+  ViewPayment({@required this.paymentId, this.force = false});
 
   final String paymentId;
   final bool force;
@@ -42,8 +39,11 @@ class EditPayment implements PersistUI, PersistPrefs {
 }
 
 class ViewRefundPayment implements PersistUI, PersistPrefs {
-  ViewRefundPayment(
-      {@required this.payment, this.completer, this.force = false});
+  ViewRefundPayment({
+    @required this.payment,
+    this.completer,
+    this.force = false,
+  });
 
   final PaymentEntity payment;
   final Completer completer;
@@ -125,10 +125,7 @@ class LoadPaymentsSuccess implements StopLoading {
 }
 
 class SavePaymentRequest implements StartSaving {
-  SavePaymentRequest({
-    @required this.completer,
-    @required this.payment,
-  });
+  SavePaymentRequest({@required this.completer, @required this.payment});
 
   final Completer completer;
   final PaymentEntity payment;
@@ -153,10 +150,7 @@ class SavePaymentFailure implements StopSaving {
 }
 
 class RefundPaymentRequest implements StartSaving {
-  RefundPaymentRequest({
-    @required this.completer,
-    @required this.payment,
-  });
+  RefundPaymentRequest({@required this.completer, @required this.payment});
 
   final Completer completer;
   final PaymentEntity payment;
@@ -311,7 +305,10 @@ class UpdatePaymentTab implements PersistUI {
 }
 
 void handlePaymentAction(
-    BuildContext context, List<BaseEntity> payments, EntityAction action) {
+  BuildContext context,
+  List<BaseEntity> payments,
+  EntityAction action,
+) {
   if (payments.isEmpty) {
     return;
   }
@@ -330,53 +327,72 @@ void handlePaymentAction(
       viewEntity(entity: payment);
       WidgetsBinding.instance.addPostFrameCallback((duration) {
         editEntity(
-            context: context,
-            entity: payment.rebuild((b) => b..isApplying = true));
+          context: context,
+          entity: payment.rebuild((b) => b..isApplying = true),
+        );
       });
       break;
     case EntityAction.refundPayment:
       viewEntity(entity: payment);
       WidgetsBinding.instance.addPostFrameCallback((duration) {
         if (payment.invoicePaymentables.length == 1) {
-          payment = payment.rebuild((b) => b
-            ..invoices.add(PaymentableEntity(
+          payment = payment.rebuild(
+            (b) => b
+              ..invoices.add(PaymentableEntity(
                 invoiceId: payment.invoiceId,
-                amount: payment.completedAmount)));
+                amount: payment.completedAmount,
+              )),
+          );
         }
         store.dispatch(ViewRefundPayment(
-          payment: payment.rebuild((b) =>
-              b..sendEmail = company.settings.clientManualPaymentNotification),
+          payment: payment.rebuild(
+            (b) =>
+                b..sendEmail = company.settings.clientManualPaymentNotification,
+          ),
         ));
       });
       break;
     case EntityAction.emailPayment:
       store.dispatch(EmailPaymentRequest(
-          snackBarCompleter<Null>(context, localization.emailedPayment),
-          paymentIds));
+        snackBarCompleter<Null>(context, localization.emailedPayment),
+        paymentIds,
+      ));
       break;
     case EntityAction.restore:
       final message = paymentIds.length > 1
-          ? localization.restoredPayments
-              .replaceFirst(':value', paymentIds.length.toString())
+          ? localization.restoredPayments.replaceFirst(
+              ':value',
+              paymentIds.length.toString(),
+            )
           : localization.restoredPayment;
       store.dispatch(RestorePaymentsRequest(
-          snackBarCompleter<Null>(context, message), paymentIds));
+        snackBarCompleter<Null>(context, message),
+        paymentIds,
+      ));
       break;
     case EntityAction.archive:
       final message = paymentIds.length > 1
-          ? localization.archivedPayments
-              .replaceFirst(':value', paymentIds.length.toString())
+          ? localization.archivedPayments.replaceFirst(
+              ':value',
+              paymentIds.length.toString(),
+            )
           : localization.archivedPayment;
       store.dispatch(ArchivePaymentsRequest(
-          snackBarCompleter<Null>(context, message), paymentIds));
+        snackBarCompleter<Null>(context, message),
+        paymentIds,
+      ));
       break;
     case EntityAction.delete:
       final message = paymentIds.length > 1
-          ? localization.deletedPayments
-              .replaceFirst(':value', paymentIds.length.toString())
+          ? localization.deletedPayments.replaceFirst(
+              ':value',
+              paymentIds.length.toString(),
+            )
           : localization.deletedPayment;
       store.dispatch(DeletePaymentsRequest(
-          snackBarCompleter<Null>(context, message), paymentIds));
+        snackBarCompleter<Null>(context, message),
+        paymentIds,
+      ));
       break;
     case EntityAction.toggleMultiselect:
       if (!store.state.paymentListState.isInMultiselect()) {
@@ -396,9 +412,7 @@ void handlePaymentAction(
       }
       break;
     case EntityAction.more:
-      showEntityActionsDialog(
-        entities: [payment],
-      );
+      showEntityActionsDialog(entities: [payment]);
       break;
   }
 }

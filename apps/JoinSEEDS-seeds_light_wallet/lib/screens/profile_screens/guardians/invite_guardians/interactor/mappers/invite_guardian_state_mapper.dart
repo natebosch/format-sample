@@ -6,11 +6,17 @@ import 'package:seeds/navigation/navigation_service.dart';
 import 'package:seeds/screens/profile_screens/guardians/invite_guardians/interactor/viewmodel/invite_guardians_state.dart';
 
 class InviteGuardiansStateMapper extends StateMapper {
-  InviteGuardiansState mapResultToState(InviteGuardiansState currentState, Result result) {
+  InviteGuardiansState mapResultToState(
+    InviteGuardiansState currentState,
+    Result result,
+  ) {
     if (result.isError) {
       return currentState.copyWith(
-          pageState: PageState.failure,
-          pageCommand: ShowErrorMessage('Oops, something went wrong. Please try again later'.i18n));
+        pageState: PageState.failure,
+        pageCommand: ShowErrorMessage(
+          'Oops, something went wrong. Please try again later'.i18n,
+        ),
+      );
     } else {
       return currentState.copyWith(
         pageState: PageState.success,

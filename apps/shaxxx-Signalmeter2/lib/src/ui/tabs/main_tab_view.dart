@@ -33,10 +33,7 @@ class _MainTabViewState extends State<MainTabView>
   void initState() {
     WidgetsBinding.instance.addObserver(this);
     super.initState();
-    controller = PageController(
-      initialPage: 0,
-      keepPage: false,
-    );
+    controller = PageController(initialPage: 0, keepPage: false);
     controller.addListener(_handleTabSelection);
   }
 
@@ -160,7 +157,8 @@ class _MainTabViewState extends State<MainTabView>
       builder: (context, viewModel) {
         return ScaffoldBackground(
           appBar: TabsAppBarView.buildAppBar(
-              Theme.of(context).primaryColor.withOpacity(0.6)),
+            Theme.of(context).primaryColor.withOpacity(0.6),
+          ),
           bottomNavigationBar: viewModel.showNavigator ? TabsNavigator() : null,
           child: PageView(
             controller: controller,
@@ -171,7 +169,7 @@ class _MainTabViewState extends State<MainTabView>
               BouquetsView(),
               BouquetItemsView(),
               SignalView(),
-              MoreView()
+              MoreView(),
             ],
           ),
         );

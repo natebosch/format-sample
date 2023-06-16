@@ -39,7 +39,8 @@ void main() {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider<NutritionPlansProvider>(
-          create: (context) => NutritionPlansProvider(testAuthProvider, [], client),
+          create:
+              (context) => NutritionPlansProvider(testAuthProvider, [], client),
         ),
         ChangeNotifierProvider<BodyWeightProvider>(
           create: (context) => BodyWeightProvider(testAuthProvider, [], client),
@@ -51,48 +52,55 @@ void main() {
         supportedLocales: AppLocalizations.supportedLocales,
         navigatorKey: key,
         home: TextButton(
-          onPressed: () => key.currentState!.push(
-            MaterialPageRoute<void>(
-              settings: RouteSettings(arguments: plan),
-              builder: (_) => NutritionalPlanScreen(),
-            ),
-          ),
+          onPressed: () => key.currentState!.push(MaterialPageRoute<void>(
+            settings: RouteSettings(arguments: plan),
+            builder: (_) => NutritionalPlanScreen(),
+          )),
           child: const SizedBox(),
         ),
       ),
     );
   }
 
-  testWidgets('Test the widgets on the nutritional plan screen', (WidgetTester tester) async {
-    await tester.pumpWidget(createNutritionalPlan());
-    await tester.tap(find.byType(TextButton));
-    await tester.pumpAndSettle();
+  testWidgets(
+    'Test the widgets on the nutritional plan screen',
+    (WidgetTester tester) async {
+      await tester.pumpWidget(createNutritionalPlan());
+      await tester.tap(find.byType(TextButton));
+      await tester.pumpAndSettle();
 
-    // PLan description
-    expect(find.text('lots and lots of mass'), findsOneWidget);
+      // PLan description
+      expect(find.text('lots and lots of mass'), findsOneWidget);
 
-    // Ingredients
-    expect(find.text('100g Water'), findsOneWidget);
-    expect(find.text('75g Burger soup'), findsOneWidget);
-    expect(find.text('300g Broccoli cake'), findsOneWidget);
+      // Ingredients
+      expect(find.text('100g Water'), findsOneWidget);
+      expect(find.text('75g Burger soup'), findsOneWidget);
+      expect(find.text('300g Broccoli cake'), findsOneWidget);
 
-    expect(find.byType(Dismissible), findsNWidgets(2));
-    expect(find.byType(NutritionalDiaryChartWidget), findsNothing);
-  });
+      expect(find.byType(Dismissible), findsNWidgets(2));
+      expect(find.byType(NutritionalDiaryChartWidget), findsNothing);
+    },
+  );
 
-  testWidgets('Tests the localization of times - EN', (WidgetTester tester) async {
-    await tester.pumpWidget(createNutritionalPlan());
-    await tester.tap(find.byType(TextButton));
-    await tester.pumpAndSettle();
+  testWidgets(
+    'Tests the localization of times - EN',
+    (WidgetTester tester) async {
+      await tester.pumpWidget(createNutritionalPlan());
+      await tester.tap(find.byType(TextButton));
+      await tester.pumpAndSettle();
 
-    expect(find.text('5:00 PM'), findsOneWidget);
-  });
+      expect(find.text('5:00 PM'), findsOneWidget);
+    },
+  );
 
-  testWidgets('Tests the localization of times - DE', (WidgetTester tester) async {
-    await tester.pumpWidget(createNutritionalPlan(locale: 'de'));
-    await tester.tap(find.byType(TextButton));
-    await tester.pumpAndSettle();
+  testWidgets(
+    'Tests the localization of times - DE',
+    (WidgetTester tester) async {
+      await tester.pumpWidget(createNutritionalPlan(locale: 'de'));
+      await tester.tap(find.byType(TextButton));
+      await tester.pumpAndSettle();
 
-    expect(find.text('17:00'), findsOneWidget);
-  });
+      expect(find.text('17:00'), findsOneWidget);
+    },
+  );
 }

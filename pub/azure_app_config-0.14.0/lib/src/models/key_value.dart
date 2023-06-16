@@ -29,8 +29,9 @@ class KeyValue with _$KeyValue {
     @JsonKey(name: 'last_modified') required String lastModified,
   }) = _KeyValue;
 
-  factory KeyValue.fromJson(Map<String, Object?> json) =>
-      _$KeyValueFromJson(json);
+  factory KeyValue.fromJson(Map<String, Object?> json) => _$KeyValueFromJson(
+    json,
+  );
 
   const KeyValue._();
 

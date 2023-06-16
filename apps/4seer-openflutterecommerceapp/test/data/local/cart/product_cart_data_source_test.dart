@@ -16,7 +16,11 @@ void main() {
 
     test('test: insert and get a record in productcart table', () async {
       ProductCartEntity data = ProductCartEntity(
-          id: 1, productId: 1, productCount: 5, totalPrice: 999.99);
+        id: 1,
+        productId: 1,
+        productCount: 5,
+        totalPrice: 999.99,
+      );
       await dataSource.insert(data);
 
       ProductCartEntity insertedData = await dataSource.get(data.id);
@@ -25,16 +29,21 @@ void main() {
 
     test('test: update a record in productcart table', () async {
       ProductCartEntity data = ProductCartEntity(
-          id: 1, productId: 1, productCount: 5, totalPrice: 999.99);
+        id: 1,
+        productId: 1,
+        productCount: 5,
+        totalPrice: 999.99,
+      );
       await dataSource.insert(data);
 
       ProductCartEntity insertedData = await dataSource.get(data.id);
 
       ProductCartEntity dataToUpdate = ProductCartEntity(
-          id: insertedData.id,
-          productId: 1,
-          productCount: 5,
-          totalPrice: 899.99);
+        id: insertedData.id,
+        productId: 1,
+        productCount: 5,
+        totalPrice: 899.99,
+      );
 
       await dataSource.update(dataToUpdate);
 
@@ -44,11 +53,23 @@ void main() {
 
     test('test: delete all records in productcart table', () async {
       await dataSource.insert(ProductCartEntity(
-          id: 1, productId: 1, productCount: 5, totalPrice: 999.99));
+        id: 1,
+        productId: 1,
+        productCount: 5,
+        totalPrice: 999.99,
+      ));
       await dataSource.insert(ProductCartEntity(
-          id: 2, productId: 1, productCount: 3, totalPrice: 899.99));
+        id: 2,
+        productId: 1,
+        productCount: 3,
+        totalPrice: 899.99,
+      ));
       await dataSource.insert(ProductCartEntity(
-          id: 3, productId: 1, productCount: 1, totalPrice: 235.00));
+        id: 3,
+        productId: 1,
+        productCount: 1,
+        totalPrice: 235.00,
+      ));
 
       await dataSource.deleteAll();
 
@@ -60,7 +81,11 @@ void main() {
       await dataSource.deleteAll();
 
       await dataSource.insert(ProductCartEntity(
-          id: 1, productId: 1, productCount: 5, totalPrice: 999.99));
+        id: 1,
+        productId: 1,
+        productCount: 5,
+        totalPrice: 999.99,
+      ));
 
       await dataSource.delete(1);
 
@@ -72,11 +97,23 @@ void main() {
       await dataSource.deleteAll();
 
       await dataSource.insert(ProductCartEntity(
-          id: 1, productId: 1, productCount: 5, totalPrice: 999.99));
+        id: 1,
+        productId: 1,
+        productCount: 5,
+        totalPrice: 999.99,
+      ));
       await dataSource.insert(ProductCartEntity(
-          id: 2, productId: 1, productCount: 3, totalPrice: 899.99));
+        id: 2,
+        productId: 1,
+        productCount: 3,
+        totalPrice: 899.99,
+      ));
       await dataSource.insert(ProductCartEntity(
-          id: 3, productId: 1, productCount: 1, totalPrice: 235.00));
+        id: 3,
+        productId: 1,
+        productCount: 1,
+        totalPrice: 235.00,
+      ));
       List<ProductCartEntity> allData = await dataSource.all();
       expect(allData.length == 3, true);
     });

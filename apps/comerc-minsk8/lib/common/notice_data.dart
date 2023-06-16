@@ -35,19 +35,16 @@ class NoticeData extends SourceList<NoticeItem> {
     final nowLocal = DateTime.now().toLocal();
     for (final dataItem in dataItems) {
       final notice = NoticeModel.fromJson(dataItem);
-      final date =
-          notice.createdAt.toLocal().toIso8601String().substring(0, 10);
+      final date = notice.createdAt.toLocal().toIso8601String().substring(
+        0,
+        10,
+      );
       if (_nextDate != date) {
         _nextDate = date;
-        items.add(
-          NoticeItem(
-            // TODO: locale autodetect
-            displayDate: getDisplayDate(
-              nowLocal,
-              DateTime.parse(date).toLocal(),
-            ),
-          ),
-        );
+        items.add(NoticeItem(
+          // TODO: locale autodetect
+          displayDate: getDisplayDate(nowLocal, DateTime.parse(date).toLocal()),
+        ));
       }
       items.add(NoticeItem(notice: notice));
     }
@@ -62,9 +59,11 @@ class NoticeData extends SourceList<NoticeItem> {
 }
 
 class NoticeItem {
-  NoticeItem({this.displayDate, this.notice})
-      : assert(displayDate != null || notice != null),
-        assert(!(displayDate != null && notice != null));
+  NoticeItem({
+    this.displayDate,
+    this.notice,
+  }) : assert(displayDate != null || notice != null),
+       assert(!(displayDate != null && notice != null));
 
   String displayDate;
   NoticeModel notice;

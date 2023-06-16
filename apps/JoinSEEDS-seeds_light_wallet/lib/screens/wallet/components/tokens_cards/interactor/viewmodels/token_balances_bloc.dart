@@ -20,7 +20,9 @@ class TokenBalancesBloc extends Bloc<TokenBalancesEvent, TokenBalancesState> {
   TokenBalancesBloc() : super(TokenBalancesState.initial()) {
     eventBusSubscription = eventBus.on().listen((event) async {
       if (event is OnNewTransactionEventBus) {
-        await Future.delayed(const Duration(milliseconds: 500)); // the blockchain needs 0.5 seconds to process
+        await Future.delayed(
+          const Duration(milliseconds: 500),
+        ); // the blockchain needs 0.5 seconds to process
         add(const OnLoadTokenBalances());
       } else if (event is OnFiatCurrencyChangedEventBus) {
         add(const OnFiatCurrencyChanged());
@@ -41,9 +43,14 @@ class TokenBalancesBloc extends Bloc<TokenBalancesEvent, TokenBalancesState> {
 
       final potentialTokens = TokenModel.allTokens;
 
-      final List<Result<BalanceModel>> result = await LoadTokenBalancesUseCase().run(potentialTokens);
+      final List<Result<BalanceModel>> result =
+          await LoadTokenBalancesUseCase().run(potentialTokens);
 
-      yield await TokenBalancesStateMapper().mapResultToState(state, potentialTokens, result);
+      yield await TokenBalancesStateMapper().mapResultToState(
+        state,
+        potentialTokens,
+        result,
+      );
       settingsStorage.selectedToken = state.selectedToken.token;
     } else if (event is OnSelectedTokenChanged) {
       yield state.copyWith(selectedIndex: event.index);

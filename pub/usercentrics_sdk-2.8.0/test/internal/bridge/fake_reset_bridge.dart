@@ -6,9 +6,7 @@ class FakeResetBridge extends ResetBridge {
   MethodChannel? invokeChannelArgument;
 
   @override
-  void invoke({
-    required MethodChannel channel,
-  }) {
+  void invoke({required MethodChannel channel}) {
     invokeCount++;
     invokeChannelArgument = channel;
   }

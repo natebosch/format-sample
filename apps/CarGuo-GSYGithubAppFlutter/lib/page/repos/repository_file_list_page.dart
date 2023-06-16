@@ -25,15 +25,19 @@ class RepositoryDetailFileListPage extends StatefulWidget {
 
   final String? reposName;
 
-  RepositoryDetailFileListPage(this.userName, this.reposName, {Key? key}) : super(key: key);
+  RepositoryDetailFileListPage(this.userName, this.reposName, {Key? key})
+    : super(key: key);
 
   @override
-  RepositoryDetailFileListPageState createState() => RepositoryDetailFileListPageState();
+  RepositoryDetailFileListPageState createState() =>
+      RepositoryDetailFileListPageState();
 }
 
-class RepositoryDetailFileListPageState extends State<RepositoryDetailFileListPage>
-    with AutomaticKeepAliveClientMixin<RepositoryDetailFileListPage>, GSYListState<RepositoryDetailFileListPage> {
-
+class RepositoryDetailFileListPageState
+    extends State<RepositoryDetailFileListPage>
+    with
+        AutomaticKeepAliveClientMixin<RepositoryDetailFileListPage>,
+        GSYListState<RepositoryDetailFileListPage> {
   String path = '';
 
   String? searchText;
@@ -43,17 +47,21 @@ class RepositoryDetailFileListPageState extends State<RepositoryDetailFileListPa
 
   ///渲染文件item
   _renderEventItem(index) {
-    FileItemViewModel fileItemViewModel = FileItemViewModel.fromMap(pullLoadWidgetControl.dataList[index]);
-    IconData iconData = (fileItemViewModel.type == "file") ? GSYICons.REPOS_ITEM_FILE : GSYICons.REPOS_ITEM_DIR;
-    Widget? trailing = (fileItemViewModel.type == "file") ? null : new Icon(GSYICons.REPOS_ITEM_NEXT, size: 12.0);
+    FileItemViewModel fileItemViewModel = FileItemViewModel.fromMap(
+      pullLoadWidgetControl.dataList[index],
+    );
+    IconData iconData = (fileItemViewModel.type == "file")
+        ? GSYICons.REPOS_ITEM_FILE
+        : GSYICons.REPOS_ITEM_DIR;
+    Widget? trailing = (fileItemViewModel.type == "file")
+        ? null
+        : new Icon(GSYICons.REPOS_ITEM_NEXT, size: 12.0);
     return new GSYCardItem(
       margin: EdgeInsets.only(left: 10.0, top: 5.0, right: 10.0, bottom: 5.0),
       child: new ListTile(
-        title: new Text(fileItemViewModel.name!, style: GSYConstant.smallSubText),
-        leading: new Icon(
-          iconData,
-          size: 16.0,
-        ),
+        title:
+            new Text(fileItemViewModel.name!, style: GSYConstant.smallSubText),
+        leading: new Icon(iconData, size: 16.0),
         onTap: () {
           _resolveItemClick(fileItemViewModel);
         },
@@ -75,7 +83,10 @@ class RepositoryDetailFileListPageState extends State<RepositoryDetailFileListPa
             onPressed: () {
               _resolveHeaderClick(index);
             },
-            child: new Text(headerList[index]! + " > ", style: GSYConstant.smallText),
+            child: new Text(
+              headerList[index]! + " > ",
+              style: GSYConstant.smallText,
+            ),
           );
         },
         itemCount: headerList.length,
@@ -110,7 +121,9 @@ class RepositoryDetailFileListPageState extends State<RepositoryDetailFileListPa
   _resolveItemClick(FileItemViewModel fileItemViewModel) {
     if (fileItemViewModel.type == "dir") {
       if (isLoading) {
-        Fluttertoast.showToast(msg: GSYLocalizations.i18n(context)!.loading_text);
+        Fluttertoast.showToast(
+          msg: GSYLocalizations.i18n(context)!.loading_text,
+        );
         return;
       }
       this.setState(() {
@@ -122,9 +135,14 @@ class RepositoryDetailFileListPageState extends State<RepositoryDetailFileListPa
       });
       this.showRefreshLoading();
     } else {
-      String path = headerList.sublist(1, headerList.length).join("/") + "/" + fileItemViewModel.name!;
+      String path = headerList.sublist(1, headerList.length).join("/") +
+          "/" +
+          fileItemViewModel.name!;
       if (CommonUtils.isImageEnd(fileItemViewModel.name)) {
-        NavigatorUtils.gotoPhotoViewPage(context, fileItemViewModel.htmlUrl! + "?raw=true");
+        NavigatorUtils.gotoPhotoViewPage(
+          context,
+          fileItemViewModel.htmlUrl! + "?raw=true",
+        );
       } else {
         NavigatorUtils.gotoCodeDetailPlatform(
           context,
@@ -139,7 +157,12 @@ class RepositoryDetailFileListPageState extends State<RepositoryDetailFileListPa
   }
 
   _getDataLogic(String? searchString) async {
-    return await ReposDao.getReposFileDirDao(widget.userName, widget.reposName, path: path, branch: ReposDetailModel.of(context).currentBranch);
+    return await ReposDao.getReposFileDirDao(
+      widget.userName,
+      widget.reposName,
+      path: path,
+      branch: ReposDetailModel.of(context).currentBranch,
+    );
   }
 
   /// 返回按键逻辑

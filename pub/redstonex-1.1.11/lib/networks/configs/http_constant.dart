@@ -1,4 +1,3 @@
-
 class HttpConstant {
   static const String accessToken = 'kAccessToken';
   static const String refreshToken = 'kRefreshToken';

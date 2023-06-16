@@ -34,10 +34,7 @@ import 'package:invoiceninja_flutter/utils/files.dart';
 import 'package:invoiceninja_flutter/utils/localization.dart';
 
 class CompanyDetails extends StatefulWidget {
-  const CompanyDetails({
-    Key key,
-    @required this.viewModel,
-  }) : super(key: key);
+  const CompanyDetails({Key key, @required this.viewModel}) : super(key: key);
 
   final CompanyDetailsVM viewModel;
 
@@ -47,8 +44,9 @@ class CompanyDetails extends StatefulWidget {
 
 class _CompanyDetailsState extends State<CompanyDetails>
     with SingleTickerProviderStateMixin {
-  static final GlobalKey<FormState> _formKey =
-      GlobalKey<FormState>(debugLabel: '_companyDetails');
+  static final GlobalKey<FormState> _formKey = GlobalKey<FormState>(
+    debugLabel: '_companyDetails',
+  );
 
   final FocusScopeNode _focusNode = FocusScopeNode();
   TabController _controller;
@@ -87,9 +85,10 @@ class _CompanyDetailsState extends State<CompanyDetails>
     final settingsUIState = state.settingsUIState;
 
     _controller = TabController(
-        vsync: this,
-        length: state.settingsUIState.isFiltered ? 4 : 5,
-        initialIndex: settingsUIState.tabIndex);
+      vsync: this,
+      length: state.settingsUIState.isFiltered ? 4 : 5,
+      initialIndex: settingsUIState.tabIndex,
+    );
     _controller.addListener(_onTabChanged);
   }
 
@@ -136,7 +135,8 @@ class _CompanyDetailsState extends State<CompanyDetails>
     ];
 
     _controllers.forEach(
-        (dynamic controller) => controller.removeListener(_onSettingsChanged));
+      (dynamic controller) => controller.removeListener(_onSettingsChanged),
+    );
 
     final viewModel = widget.viewModel;
     final settings = viewModel.settings;
@@ -164,34 +164,37 @@ class _CompanyDetailsState extends State<CompanyDetails>
     _creditTermsController.text = settings.defaultCreditTerms;
 
     _controllers.forEach(
-        (dynamic controller) => controller.addListener(_onSettingsChanged));
+      (dynamic controller) => controller.addListener(_onSettingsChanged),
+    );
 
     super.didChangeDependencies();
   }
 
   void _onSettingsChanged() {
-    final settings = widget.viewModel.settings.rebuild((b) => b
-      ..name = _nameController.text.trim()
-      ..idNumber = _idNumberController.text.trim()
-      ..vatNumber = _vatNumberController.text.trim()
-      ..phone = _phoneController.text.trim()
-      ..email = _emailController.text.trim()
-      ..website = _websiteController.text.trim()
-      ..address1 = _address1Controller.text.trim()
-      ..address2 = _address2Controller.text.trim()
-      ..city = _cityController.text.trim()
-      ..state = _stateController.text.trim()
-      ..postalCode = _postalCodeController.text.trim()
-      ..customValue1 = _custom1Controller.text.trim()
-      ..customValue2 = _custom2Controller.text.trim()
-      ..customValue3 = _custom3Controller.text.trim()
-      ..customValue4 = _custom4Controller.text.trim()
-      ..defaultInvoiceFooter = _invoiceFooterController.text.trim()
-      ..defaultInvoiceTerms = _invoiceTermsController.text.trim()
-      ..defaultQuoteFooter = _quoteFooterController.text.trim()
-      ..defaultQuoteTerms = _quoteTermsController.text.trim()
-      ..defaultCreditFooter = _creditFooterController.text.trim()
-      ..defaultCreditTerms = _creditTermsController.text.trim());
+    final settings = widget.viewModel.settings.rebuild(
+      (b) => b
+        ..name = _nameController.text.trim()
+        ..idNumber = _idNumberController.text.trim()
+        ..vatNumber = _vatNumberController.text.trim()
+        ..phone = _phoneController.text.trim()
+        ..email = _emailController.text.trim()
+        ..website = _websiteController.text.trim()
+        ..address1 = _address1Controller.text.trim()
+        ..address2 = _address2Controller.text.trim()
+        ..city = _cityController.text.trim()
+        ..state = _stateController.text.trim()
+        ..postalCode = _postalCodeController.text.trim()
+        ..customValue1 = _custom1Controller.text.trim()
+        ..customValue2 = _custom2Controller.text.trim()
+        ..customValue3 = _custom3Controller.text.trim()
+        ..customValue4 = _custom4Controller.text.trim()
+        ..defaultInvoiceFooter = _invoiceFooterController.text.trim()
+        ..defaultInvoiceTerms = _invoiceTermsController.text.trim()
+        ..defaultQuoteFooter = _quoteFooterController.text.trim()
+        ..defaultQuoteTerms = _quoteTermsController.text.trim()
+        ..defaultCreditFooter = _creditFooterController.text.trim()
+        ..defaultCreditTerms = _creditTermsController.text.trim(),
+    );
     if (settings != widget.viewModel.settings) {
       _debouncer.run(() {
         widget.viewModel.onSettingsChanged(settings);
@@ -219,18 +222,10 @@ class _CompanyDetailsState extends State<CompanyDetails>
         controller: _controller,
         isScrollable: true,
         tabs: [
-          Tab(
-            text: localization.details,
-          ),
-          Tab(
-            text: localization.address,
-          ),
-          Tab(
-            text: localization.logo,
-          ),
-          Tab(
-            text: localization.defaults,
-          ),
+          Tab(text: localization.details),
+          Tab(text: localization.address),
+          Tab(text: localization.logo),
+          Tab(text: localization.defaults),
           if (!state.settingsUIState.isFiltered)
             Tab(
               text: company.documents.isEmpty
@@ -321,13 +316,12 @@ class _CompanyDetailsState extends State<CompanyDetails>
                     AppDropdownButton(
                       value: company.sizeId,
                       labelText: localization.size,
-                      items: memoizedSizeList(state.staticState.sizeMap)
-                          .map((sizeId) => DropdownMenuItem(
-                                child: Text(
-                                    state.staticState.sizeMap[sizeId].name),
-                                value: sizeId,
-                              ))
-                          .toList(),
+                      items: memoizedSizeList(state.staticState.sizeMap).map(
+                        (sizeId) => DropdownMenuItem(
+                          child: Text(state.staticState.sizeMap[sizeId].name),
+                          value: sizeId,
+                        ),
+                      ).toList(),
                       onChanged: (dynamic sizeId) => viewModel.onCompanyChanged(
                         company.rebuild((b) => b..sizeId = sizeId),
                       ),
@@ -339,11 +333,10 @@ class _CompanyDetailsState extends State<CompanyDetails>
                           memoizedIndustryList(state.staticState.industryMap),
                       labelText: localization.industry,
                       entityId: company.industryId,
-                      onSelected: (SelectableEntity industry) =>
-                          viewModel.onCompanyChanged(
-                        company
-                            .rebuild((b) => b..industryId = industry?.id ?? ''),
-                      ),
+                      onSelected: (SelectableEntity industry) => viewModel
+                          .onCompanyChanged(company.rebuild(
+                            (b) => b..industryId = industry?.id ?? '',
+                          )),
                     ),
                   ],
                 ),
@@ -396,12 +389,13 @@ class _CompanyDetailsState extends State<CompanyDetails>
                           memoizedCountryList(state.staticState.countryMap),
                       labelText: localization.country,
                       entityId: settings.countryId,
-                      onSelected: (SelectableEntity country) =>
-                          viewModel.onSettingsChanged(settings
-                              .rebuild((b) => b..countryId = country?.id)),
+                      onSelected: (SelectableEntity country) => viewModel
+                          .onSettingsChanged(
+                            settings.rebuild((b) => b..countryId = country?.id),
+                          ),
                     ),
                   ],
-                )
+                ),
               ],
             ),
           ),
@@ -422,9 +416,10 @@ class _CompanyDetailsState extends State<CompanyDetails>
                               iconData: Icons.delete,
                               onPressed: () {
                                 confirmCallback(
-                                    context: context,
-                                    callback: (_) =>
-                                        viewModel.onDeleteLogo(context));
+                                  context: context,
+                                  callback:
+                                      (_) => viewModel.onDeleteLogo(context),
+                                );
                               },
                             ),
                           ),
@@ -445,18 +440,19 @@ class _CompanyDetailsState extends State<CompanyDetails>
                               }
                             },
                           ),
-                        )
+                        ),
                       ],
                     );
                   },
                 ),
                 if ('${settings.companyLogo ?? ''}'.isNotEmpty)
                   Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 20),
-                      child: CachedImage(
-                        width: double.infinity,
-                        url: settings.companyLogo,
-                      )),
+                    padding: const EdgeInsets.symmetric(vertical: 20),
+                    child: CachedImage(
+                      width: double.infinity,
+                      url: settings.companyLogo,
+                    ),
+                  ),
               ],
             ),
           ),
@@ -466,39 +462,44 @@ class _CompanyDetailsState extends State<CompanyDetails>
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: <Widget>[
                   AppDropdownButton<String>(
-                      labelText: localization.autoBill,
-                      value: settings.autoBill,
-                      onChanged: (dynamic value) => viewModel.onSettingsChanged(
-                          settings.rebuild((b) => b..autoBill = value)),
-                      items: [
-                        CompanyGatewayEntity.TOKEN_BILLING_ALWAYS,
-                        CompanyGatewayEntity.TOKEN_BILLING_OPT_OUT,
-                        CompanyGatewayEntity.TOKEN_BILLING_OPT_IN,
-                        CompanyGatewayEntity.TOKEN_BILLING_DISABLED
-                      ]
-                          .map((value) => DropdownMenuItem(
-                                child: Text(localization.lookup(value)),
-                                value: value,
-                              ))
-                          .toList()),
+                    labelText: localization.autoBill,
+                    value: settings.autoBill,
+                    onChanged: (dynamic value) => viewModel.onSettingsChanged(
+                      settings.rebuild((b) => b..autoBill = value),
+                    ),
+                    items: [
+                      CompanyGatewayEntity.TOKEN_BILLING_ALWAYS,
+                      CompanyGatewayEntity.TOKEN_BILLING_OPT_OUT,
+                      CompanyGatewayEntity.TOKEN_BILLING_OPT_IN,
+                      CompanyGatewayEntity.TOKEN_BILLING_DISABLED,
+                    ].map(
+                      (value) => DropdownMenuItem(
+                        child: Text(localization.lookup(value)),
+                        value: value,
+                      ),
+                    ).toList(),
+                  ),
                   EntityDropdown(
                     entityType: EntityType.paymentType,
                     entityList: memoizedPaymentTypeList(
-                        state.staticState.paymentTypeMap),
+                      state.staticState.paymentTypeMap,
+                    ),
                     labelText: localization.paymentType,
                     entityId: settings.defaultPaymentTypeId,
                     onSelected: (paymentType) => viewModel.onSettingsChanged(
-                        settings.rebuild(
-                            (b) => b..defaultPaymentTypeId = paymentType?.id)),
+                      settings.rebuild(
+                        (b) => b..defaultPaymentTypeId = paymentType?.id,
+                      ),
+                    ),
                   ),
                   if (company.isModuleEnabled(EntityType.invoice))
                     AppDropdownButton<String>(
                       showBlank: true,
                       labelText: localization.invoicePaymentTerms,
                       items: memoizedDropdownPaymentTermList(
-                              state.paymentTermState.map,
-                              state.paymentTermState.list)
-                          .map((paymentTermId) {
+                        state.paymentTermState.map,
+                        state.paymentTermState.list,
+                      ).map((paymentTermId) {
                         final paymentTerm =
                             state.paymentTermState.map[paymentTermId];
                         return DropdownMenuItem<String>(
@@ -508,9 +509,12 @@ class _CompanyDetailsState extends State<CompanyDetails>
                       }).toList(),
                       value: '${settings.defaultPaymentTerms}',
                       onChanged: (dynamic numDays) {
-                        viewModel.onSettingsChanged(settings.rebuild((b) => b
-                          ..defaultPaymentTerms =
-                              numDays == null ? null : '$numDays'));
+                        viewModel.onSettingsChanged(settings.rebuild(
+                          (b) => b
+                            ..defaultPaymentTerms = numDays == null
+                                ? null
+                                : '$numDays',
+                        ));
                       },
                     ),
                   if (company.isModuleEnabled(EntityType.quote))
@@ -518,9 +522,9 @@ class _CompanyDetailsState extends State<CompanyDetails>
                       showBlank: true,
                       labelText: localization.quoteValidUntil,
                       items: memoizedDropdownPaymentTermList(
-                              state.paymentTermState.map,
-                              state.paymentTermState.list)
-                          .map((paymentTermId) {
+                        state.paymentTermState.map,
+                        state.paymentTermState.list,
+                      ).map((paymentTermId) {
                         final paymentTerm =
                             state.paymentTermState.map[paymentTermId];
                         return DropdownMenuItem<String>(
@@ -530,9 +534,12 @@ class _CompanyDetailsState extends State<CompanyDetails>
                       }).toList(),
                       value: '${settings.defaultValidUntil}',
                       onChanged: (dynamic numDays) {
-                        viewModel.onSettingsChanged(settings.rebuild((b) => b
-                          ..defaultValidUntil =
-                              numDays == null ? null : '$numDays'));
+                        viewModel.onSettingsChanged(settings.rebuild(
+                          (b) => b
+                            ..defaultValidUntil = numDays == null
+                                ? null
+                                : '$numDays',
+                        ));
                       },
                     ),
                 ],
@@ -544,60 +551,71 @@ class _CompanyDetailsState extends State<CompanyDetails>
                   child: AppButton(
                     iconData: Icons.settings,
                     label: localization.configurePaymentTerms.toUpperCase(),
-                    onPressed: () =>
-                        viewModel.onConfigurePaymentTermsPressed(context),
+                    onPressed:
+                        () => viewModel.onConfigurePaymentTermsPressed(context),
                   ),
                 ),
               if (!state.isProPlan)
-                FormCard(children: <Widget>[
-                  if (company.isModuleEnabled(EntityType.invoice))
-                    DesignPicker(
-                      label: localization.invoiceDesign,
-                      initialValue: settings.defaultInvoiceDesignId,
-                      onSelected: (value) => viewModel.onSettingsChanged(
-                          settings.rebuild(
-                              (b) => b..defaultInvoiceDesignId = value.id)),
-                    ),
-                  if (company.isModuleEnabled(EntityType.quote))
-                    DesignPicker(
-                      label: localization.quoteDesign,
-                      initialValue: settings.defaultQuoteDesignId,
-                      onSelected: (value) => viewModel.onSettingsChanged(
-                          settings.rebuild(
-                              (b) => b..defaultQuoteDesignId = value.id)),
-                    ),
-                  if (company.isModuleEnabled(EntityType.credit))
-                    DesignPicker(
-                      label: localization.creditDesign,
-                      initialValue: settings.defaultCreditDesignId,
-                      onSelected: (value) => viewModel.onSettingsChanged(
-                          settings.rebuild(
-                              (b) => b..defaultCreditDesignId = value.id)),
-                    ),
-                ]),
-              FormCard(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                FormCard(
                   children: <Widget>[
-                    if (!state.settingsUIState.isFiltered)
-                      BoolDropdownButton(
-                        value: settings.clientManualPaymentNotification,
-                        onChanged: (value) => viewModel.onSettingsChanged(
-                            settings.rebuild((b) =>
-                                b..clientManualPaymentNotification = value)),
-                        label: localization.manualPaymentEmail,
-                        helpLabel: localization.emailReceipt,
-                        iconData: Icons.email,
+                    if (company.isModuleEnabled(EntityType.invoice))
+                      DesignPicker(
+                        label: localization.invoiceDesign,
+                        initialValue: settings.defaultInvoiceDesignId,
+                        onSelected: (value) => viewModel.onSettingsChanged(
+                          settings.rebuild(
+                            (b) => b..defaultInvoiceDesignId = value.id,
+                          ),
+                        ),
                       ),
+                    if (company.isModuleEnabled(EntityType.quote))
+                      DesignPicker(
+                        label: localization.quoteDesign,
+                        initialValue: settings.defaultQuoteDesignId,
+                        onSelected: (value) => viewModel.onSettingsChanged(
+                          settings.rebuild(
+                            (b) => b..defaultQuoteDesignId = value.id,
+                          ),
+                        ),
+                      ),
+                    if (company.isModuleEnabled(EntityType.credit))
+                      DesignPicker(
+                        label: localization.creditDesign,
+                        initialValue: settings.defaultCreditDesignId,
+                        onSelected: (value) => viewModel.onSettingsChanged(
+                          settings.rebuild(
+                            (b) => b..defaultCreditDesignId = value.id,
+                          ),
+                        ),
+                      ),
+                  ],
+                ),
+              FormCard(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: <Widget>[
+                  if (!state.settingsUIState.isFiltered)
                     BoolDropdownButton(
-                      value: settings.clientOnlinePaymentNotification,
-                      onChanged: (value) => viewModel.onSettingsChanged(
-                          settings.rebuild((b) =>
-                              b..clientOnlinePaymentNotification = value)),
-                      label: localization.onlinePaymentEmail,
+                      value: settings.clientManualPaymentNotification,
+                      onChanged: (value) => viewModel.onSettingsChanged(settings
+                          .rebuild(
+                            (b) => b..clientManualPaymentNotification = value,
+                          )),
+                      label: localization.manualPaymentEmail,
                       helpLabel: localization.emailReceipt,
                       iconData: Icons.email,
                     ),
-                  ]),
+                  BoolDropdownButton(
+                    value: settings.clientOnlinePaymentNotification,
+                    onChanged: (value) => viewModel.onSettingsChanged(settings
+                        .rebuild(
+                          (b) => b..clientOnlinePaymentNotification = value,
+                        )),
+                    label: localization.onlinePaymentEmail,
+                    helpLabel: localization.emailReceipt,
+                    iconData: Icons.email,
+                  ),
+                ],
+              ),
               FormCard(
                 isLast: true,
                 children: <Widget>[
@@ -644,14 +662,14 @@ class _CompanyDetailsState extends State<CompanyDetails>
                     ),
                   ],
                 ],
-              )
+              ),
             ],
           ),
           if (!state.settingsUIState.isFiltered)
             DocumentGrid(
               documents: company.documents.toList(),
-              onUploadDocument: (path) =>
-                  viewModel.onUploadDocument(context, path),
+              onUploadDocument:
+                  (path) => viewModel.onUploadDocument(context, path),
               onDeleteDocument: (document, password, idToken) => viewModel
                   .onDeleteDocument(context, document, password, idToken),
             ),

@@ -7,7 +7,8 @@ import 'package:tailor_made/wrappers/mk_navigate.dart';
 
 @immutable
 class GalleryCoordinator extends CoordinatorBase {
-  const GalleryCoordinator(GlobalKey<NavigatorState> navigatorKey) : super(navigatorKey);
+  const GalleryCoordinator(GlobalKey<NavigatorState> navigatorKey)
+    : super(navigatorKey);
 
   void toImage(ImageModel image) {
     navigator?.push<void>(MkNavigate.fadeIn(GalleryView(image: image)));
@@ -17,7 +18,10 @@ class GalleryCoordinator extends CoordinatorBase {
     navigator?.push<void>(
       images == null
           ? MkNavigate.slideIn(GalleryPage(userId: userId))
-          : MkNavigate.slideIn(GalleryPage(userId: userId, images: images), fullscreenDialog: true),
+          : MkNavigate.slideIn(
+              GalleryPage(userId: userId, images: images),
+              fullscreenDialog: true,
+            ),
     );
   }
 }

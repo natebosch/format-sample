@@ -30,7 +30,7 @@ class ChangeTilesInBoardAction {
 
 class BlockTilesAction {
   final PlayersGame playersGame;
-  
+
   final List<int> items;
 
   BlockTilesAction({@required this.playersGame, @required this.items});
@@ -86,7 +86,11 @@ class RandomBoardAction {
 
   final int difficulty;
 
-  RandomBoardAction({@required this.playersGame, this.typeTile, this.difficulty});
+  RandomBoardAction({
+    @required this.playersGame,
+    this.typeTile,
+    this.difficulty,
+  });
 
   @override
   String toString() {
@@ -103,10 +107,12 @@ class LoadLevelInBoardAction {
 
   final int difficulty;
 
-  LoadLevelInBoardAction(
-      {@required this.playersGame, @required this.level,
-      this.typeTile = TypeTile.NORMAL,
-      this.difficulty = 1});
+  LoadLevelInBoardAction({
+    @required this.playersGame,
+    @required this.level,
+    this.typeTile = TypeTile.NORMAL,
+    this.difficulty = 1,
+  });
 
   @override
   String toString() {
@@ -119,7 +125,10 @@ class LoadClassicInBoardAction {
 
   final SizeBoardGame sizeBoardGame;
 
-  LoadClassicInBoardAction({@required this.playersGame, @required this.sizeBoardGame});
+  LoadClassicInBoardAction({
+    @required this.playersGame,
+    @required this.sizeBoardGame,
+  });
 
   @override
   String toString() {
@@ -132,7 +141,10 @@ class LoadArcadeInBoardAction {
 
   final SizeBoardGame sizeBoardGame;
 
-  LoadArcadeInBoardAction({@required this.playersGame, @required this.sizeBoardGame});
+  LoadArcadeInBoardAction({
+    @required this.playersGame,
+    @required this.sizeBoardGame,
+  });
 
   @override
   String toString() {
@@ -212,15 +224,11 @@ class LoadAssistanceAction {
 }
 
 class AssistanceItemAction {
-
   final int afterMoves;
 
   final int uses;
 
-  AssistanceItemAction({
-    @required this.afterMoves,
-    this.uses,
-  });
+  AssistanceItemAction({@required this.afterMoves, this.uses});
 
   @override
   String toString() {
@@ -261,7 +269,10 @@ class DeactivateFlickerAction {
 
   final int position;
 
-  DeactivateFlickerAction({@required this.playersGame, @required this.position});
+  DeactivateFlickerAction({
+    @required this.playersGame,
+    @required this.position,
+  });
 
   @override
   String toString() {
@@ -278,7 +289,10 @@ class AssitanceItemUsedAction {
 
   final AssistanceActionType assistanceActionType;
 
-  AssitanceItemUsedAction({@required this.playersGame, @required this.assistanceActionType});
+  AssitanceItemUsedAction({
+    @required this.playersGame,
+    @required this.assistanceActionType,
+  });
 
   @override
   String toString() {

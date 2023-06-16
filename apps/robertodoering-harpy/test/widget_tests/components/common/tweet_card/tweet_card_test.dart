@@ -21,42 +21,33 @@ void main() {
   tearDown(app.reset);
 
   group('tweet card', () {
-    testGoldens('builds minimal tweet card with top & actions row',
-        (tester) async {
-      await tester.pumpWidgetBuilder(
-        TweetCard(
-          TweetData(
-            createdAt: DateTime(2020),
-            user: harpyAppUser,
-          ),
-        ),
-        wrapper: buildAppListBase,
-        surfaceSize: Device.phone.size,
-      );
+    testGoldens(
+      'builds minimal tweet card with top & actions row',
+      (tester) async {
+        await tester.pumpWidgetBuilder(
+          TweetCard(TweetData(createdAt: DateTime(2020), user: harpyAppUser)),
+          wrapper: buildAppListBase,
+          surfaceSize: Device.phone.size,
+        );
 
-      await screenMatchesGolden(tester, 'minimal_tweet_card');
+        await screenMatchesGolden(tester, 'minimal_tweet_card');
 
-      final topRow = find.byType(TweetCardTopRow);
-      final actionsRow = find.byType(TweetCardActionsRow);
+        final topRow = find.byType(TweetCardTopRow);
+        final actionsRow = find.byType(TweetCardActionsRow);
 
-      expect(topRow, findsOneWidget);
-      expect(actionsRow, findsOneWidget);
-    });
+        expect(topRow, findsOneWidget);
+        expect(actionsRow, findsOneWidget);
+      },
+    );
 
     testGoldens('builds top row with long name', (tester) async {
-      await tester.pumpWidgetBuilder(
-        TweetCard(
-          TweetData(
-            createdAt: DateTime(2020),
-            user: harpyAppUser.copyWith(
-              name: 'Harpy with a really long name, like, really long.',
-              handle: 'harpy_app_userhandle_size_is_normally_limited',
-            ),
-          ),
+      await tester.pumpWidgetBuilder(TweetCard(TweetData(
+        createdAt: DateTime(2020),
+        user: harpyAppUser.copyWith(
+          name: 'Harpy with a really long name, like, really long.',
+          handle: 'harpy_app_userhandle_size_is_normally_limited',
         ),
-        wrapper: buildAppListBase,
-        surfaceSize: Device.phone.size,
-      );
+      )), wrapper: buildAppListBase, surfaceSize: Device.phone.size);
 
       await screenMatchesGolden(tester, 'top_row_long');
 
@@ -66,18 +57,12 @@ void main() {
     });
 
     testGoldens('builds text', (tester) async {
-      await tester.pumpWidgetBuilder(
-        TweetCard(
-          TweetData(
-            createdAt: DateTime(2020),
-            text: 'Hello World!',
-            visibleText: 'Hello World!',
-            user: harpyAppUser,
-          ),
-        ),
-        wrapper: buildAppListBase,
-        surfaceSize: Device.phone.size,
-      );
+      await tester.pumpWidgetBuilder(TweetCard(TweetData(
+        createdAt: DateTime(2020),
+        text: 'Hello World!',
+        visibleText: 'Hello World!',
+        user: harpyAppUser,
+      )), wrapper: buildAppListBase, surfaceSize: Device.phone.size);
 
       await screenMatchesGolden(tester, 'text');
 
@@ -86,53 +71,40 @@ void main() {
       expect(text, findsOneWidget);
     });
 
-    testGoldens('builds translation button when text is translatable',
-        (tester) async {
-      app<LanguagePreferences>().translateLanguage = 'de';
+    testGoldens(
+      'builds translation button when text is translatable',
+      (tester) async {
+        app<LanguagePreferences>().translateLanguage = 'de';
 
-      await tester.pumpWidgetBuilder(
-        TweetCard(
-          TweetData(
-            createdAt: DateTime(2020),
-            text: 'Hello World!',
-            visibleText: 'Hello World!',
-            lang: 'en',
-            user: harpyAppUser,
-          ),
-        ),
-        wrapper: buildAppListBase,
-        surfaceSize: Device.phone.size,
-      );
+        await tester.pumpWidgetBuilder(TweetCard(TweetData(
+          createdAt: DateTime(2020),
+          text: 'Hello World!',
+          visibleText: 'Hello World!',
+          lang: 'en',
+          user: harpyAppUser,
+        )), wrapper: buildAppListBase, surfaceSize: Device.phone.size);
 
-      await screenMatchesGolden(tester, 'text_translatable');
+        await screenMatchesGolden(tester, 'text_translatable');
 
-      final translation = find.byType(TweetCardTranslation);
-      final translationButton = find.byType(TranslationButton);
+        final translation = find.byType(TweetCardTranslation);
+        final translationButton = find.byType(TranslationButton);
 
-      expect(translation, findsOneWidget);
-      expect(translationButton, findsOneWidget);
-    });
+        expect(translation, findsOneWidget);
+        expect(translationButton, findsOneWidget);
+      },
+    );
 
     testGoldens('builds translation', (tester) async {
       app<LanguagePreferences>().translateLanguage = 'de';
 
-      await tester.pumpWidgetBuilder(
-        TweetCard(
-          TweetData(
-            createdAt: DateTime(2020),
-            text: 'Hello World!',
-            visibleText: 'Hello World!',
-            lang: 'en',
-            translation: const Translation(
-              text: 'Hallo Welt!',
-              language: 'German',
-            ),
-            user: harpyAppUser,
-          ),
-        ),
-        wrapper: buildAppListBase,
-        surfaceSize: Device.phone.size,
-      );
+      await tester.pumpWidgetBuilder(TweetCard(TweetData(
+        createdAt: DateTime(2020),
+        text: 'Hello World!',
+        visibleText: 'Hello World!',
+        lang: 'en',
+        translation: const Translation(text: 'Hallo Welt!', language: 'German'),
+        user: harpyAppUser,
+      )), wrapper: buildAppListBase, surfaceSize: Device.phone.size);
 
       await screenMatchesGolden(tester, 'translation');
 
@@ -143,42 +115,30 @@ void main() {
       expect(translationValue, findsOneWidget);
     });
 
-    testGoldens("builds no translation when translation didn't change",
-        (tester) async {
-      app<LanguagePreferences>().translateLanguage = 'de';
+    testGoldens(
+      "builds no translation when translation didn't change",
+      (tester) async {
+        app<LanguagePreferences>().translateLanguage = 'de';
 
-      await tester.pumpWidgetBuilder(
-        TweetCard(
-          TweetData(
-            createdAt: DateTime(2020),
-            text: 'Hello World!',
-            visibleText: 'Hello World!',
-            lang: 'en',
-            translation: const Translation(),
-            user: harpyAppUser,
-          ),
-        ),
-        wrapper: buildAppListBase,
-        surfaceSize: Device.phone.size,
-      );
+        await tester.pumpWidgetBuilder(TweetCard(TweetData(
+          createdAt: DateTime(2020),
+          text: 'Hello World!',
+          visibleText: 'Hello World!',
+          lang: 'en',
+          translation: const Translation(),
+          user: harpyAppUser,
+        )), wrapper: buildAppListBase, surfaceSize: Device.phone.size);
 
-      await screenMatchesGolden(tester, 'translation_empty');
-    });
+        await screenMatchesGolden(tester, 'translation_empty');
+      },
+    );
 
     testGoldens('builds media with 1 image', (tester) async {
-      await tester.pumpWidgetBuilder(
-        TweetCard(
-          TweetData(
-            createdAt: DateTime(2020),
-            user: harpyAppUser,
-            images: [
-              ImageData.fromImageUrl('test/images/yellow.png', 16 / 9),
-            ],
-          ),
-        ),
-        wrapper: buildAppListBase,
-        surfaceSize: Device.phone.size,
-      );
+      await tester.pumpWidgetBuilder(TweetCard(TweetData(
+        createdAt: DateTime(2020),
+        user: harpyAppUser,
+        images: [ImageData.fromImageUrl('test/images/yellow.png', 16 / 9)],
+      )), wrapper: buildAppListBase, surfaceSize: Device.phone.size);
 
       await screenMatchesGolden(tester, 'media_one_image');
 
@@ -193,22 +153,16 @@ void main() {
     });
 
     testGoldens('builds media with 4 images', (tester) async {
-      await tester.pumpWidgetBuilder(
-        TweetCard(
-          TweetData(
-            createdAt: DateTime(2020),
-            user: harpyAppUser,
-            images: [
-              ImageData.fromImageUrl('test/images/red.png', 16 / 9),
-              ImageData.fromImageUrl('test/images/magenta.png', 16 / 9),
-              ImageData.fromImageUrl('test/images/blue.png', 16 / 9),
-              ImageData.fromImageUrl('test/images/aqua.png', 16 / 9),
-            ],
-          ),
-        ),
-        wrapper: buildAppListBase,
-        surfaceSize: Device.phone.size,
-      );
+      await tester.pumpWidgetBuilder(TweetCard(TweetData(
+        createdAt: DateTime(2020),
+        user: harpyAppUser,
+        images: [
+          ImageData.fromImageUrl('test/images/red.png', 16 / 9),
+          ImageData.fromImageUrl('test/images/magenta.png', 16 / 9),
+          ImageData.fromImageUrl('test/images/blue.png', 16 / 9),
+          ImageData.fromImageUrl('test/images/aqua.png', 16 / 9),
+        ],
+      )), wrapper: buildAppListBase, surfaceSize: Device.phone.size);
 
       await screenMatchesGolden(tester, 'media_four_images');
 
@@ -223,23 +177,17 @@ void main() {
     });
 
     testGoldens('builds media with video', (tester) async {
-      await tester.pumpWidgetBuilder(
-        TweetCard(
-          TweetData(
-            createdAt: DateTime(2020),
-            user: harpyAppUser,
-            video: VideoData.fromMedia(
-              Media()
-                ..videoInfo = (VideoInfo()
-                  ..aspectRatio = [16, 9]
-                  ..variants = [])
-                ..mediaUrlHttps = 'test/images/red.png',
-            ),
-          ),
+      await tester.pumpWidgetBuilder(TweetCard(TweetData(
+        createdAt: DateTime(2020),
+        user: harpyAppUser,
+        video: VideoData.fromMedia(
+          Media()
+            ..videoInfo = (VideoInfo()
+              ..aspectRatio = [16, 9]
+              ..variants = [])
+            ..mediaUrlHttps = 'test/images/red.png',
         ),
-        wrapper: buildAppListBase,
-        surfaceSize: Device.phone.size,
-      );
+      )), wrapper: buildAppListBase, surfaceSize: Device.phone.size);
 
       await screenMatchesGolden(tester, 'media_video');
 
@@ -255,23 +203,17 @@ void main() {
     testGoldens('builds media with gif', (tester) async {
       app<MediaPreferences>().autoplayMedia = 2;
 
-      await tester.pumpWidgetBuilder(
-        TweetCard(
-          TweetData(
-            createdAt: DateTime(2020),
-            user: harpyAppUser,
-            gif: VideoData.fromMedia(
-              Media()
-                ..videoInfo = (VideoInfo()
-                  ..aspectRatio = [16, 9]
-                  ..variants = [])
-                ..mediaUrlHttps = 'test/images/blue.png',
-            ),
-          ),
+      await tester.pumpWidgetBuilder(TweetCard(TweetData(
+        createdAt: DateTime(2020),
+        user: harpyAppUser,
+        gif: VideoData.fromMedia(
+          Media()
+            ..videoInfo = (VideoInfo()
+              ..aspectRatio = [16, 9]
+              ..variants = [])
+            ..mediaUrlHttps = 'test/images/blue.png',
         ),
-        wrapper: buildAppListBase,
-        surfaceSize: Device.phone.size,
-      );
+      )), wrapper: buildAppListBase, surfaceSize: Device.phone.size);
 
       await screenMatchesGolden(tester, 'media_gif');
 
@@ -285,24 +227,18 @@ void main() {
     });
 
     testGoldens('builds quote', (tester) async {
-      await tester.pumpWidgetBuilder(
-        TweetCard(
-          TweetData(
-            createdAt: DateTime(2020),
-            user: harpyAppUser,
-            text: 'text',
-            visibleText: 'text',
-            quote: TweetData(
-              createdAt: DateTime(2020),
-              user: harpyAppUser,
-              text: 'quote text',
-              visibleText: 'quote text',
-            ),
-          ),
+      await tester.pumpWidgetBuilder(TweetCard(TweetData(
+        createdAt: DateTime(2020),
+        user: harpyAppUser,
+        text: 'text',
+        visibleText: 'text',
+        quote: TweetData(
+          createdAt: DateTime(2020),
+          user: harpyAppUser,
+          text: 'quote text',
+          visibleText: 'quote text',
         ),
-        wrapper: buildAppListBase,
-        surfaceSize: Device.phone.size,
-      );
+      )), wrapper: buildAppListBase, surfaceSize: Device.phone.size);
 
       await screenMatchesGolden(tester, 'quote');
 

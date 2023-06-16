@@ -31,11 +31,9 @@ class _CategoryLoadingState extends State<CategoryLoading> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Center(
-      child: SpinKitThreeBounce(
-        color: Colors.deepPurple,
-        size: 50.0,
+      body: Center(
+        child: SpinKitThreeBounce(color: Colors.deepPurple, size: 50.0),
       ),
-    ));
+    );
   }
 }

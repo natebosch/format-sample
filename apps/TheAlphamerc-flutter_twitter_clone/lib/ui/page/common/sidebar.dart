@@ -26,10 +26,8 @@ class _SidebarMenuState extends State<SidebarMenu> {
       return ConstrainedBox(
         constraints: BoxConstraints(minWidth: 200, minHeight: 100),
         child: Center(
-          child: Text(
-            'Login to continue',
-            style: TextStyles.onPrimaryTitleText,
-          ),
+          child:
+              Text('Login to continue', style: TextStyles.onPrimaryTitleText),
         ),
       ).ripple(() {
         _logOut();
@@ -58,53 +56,65 @@ class _SidebarMenuState extends State<SidebarMenu> {
             ),
             ListTile(
               onTap: () {
-                Navigator.push(context,
-                    ProfilePage.getRoute(profileId: state.userModel.userId));
+                Navigator.push(
+                  context,
+                  ProfilePage.getRoute(profileId: state.userModel.userId),
+                );
               },
               title: Row(
                 children: <Widget>[
                   UrlText(
                     text: state.userModel.displayName ?? "",
-                    style: TextStyles.onPrimaryTitleText
-                        .copyWith(color: Colors.black, fontSize: 20),
+                    style: TextStyles.onPrimaryTitleText.copyWith(
+                      color: Colors.black,
+                      fontSize: 20,
+                    ),
                   ),
-                  SizedBox(
-                    width: 3,
-                  ),
+                  SizedBox(width: 3),
                   state.userModel.isVerified ?? false
-                      ? customIcon(context,
+                      ? customIcon(
+                          context,
                           icon: AppIcon.blueTick,
                           istwitterIcon: true,
                           iconColor: AppColor.primary,
                           size: 18,
-                          paddingIcon: 3)
-                      : SizedBox(
-                          width: 0,
-                        ),
+                          paddingIcon: 3,
+                        )
+                      : SizedBox(width: 0),
                 ],
               ),
               subtitle: customText(
                 state.userModel.userName,
-                style: TextStyles.onPrimarySubTitleText
-                    .copyWith(color: Colors.black54, fontSize: 15),
+                style: TextStyles.onPrimarySubTitleText.copyWith(
+                  color: Colors.black54,
+                  fontSize: 15,
+                ),
               ),
-              trailing: customIcon(context,
-                  icon: AppIcon.arrowDown,
-                  iconColor: AppColor.primary,
-                  paddingIcon: 20),
+              trailing: customIcon(
+                context,
+                icon: AppIcon.arrowDown,
+                iconColor: AppColor.primary,
+                paddingIcon: 20,
+              ),
             ),
             Container(
               alignment: Alignment.center,
               child: Row(
                 children: <Widget>[
-                  SizedBox(
-                    width: 17,
+                  SizedBox(width: 17),
+                  _tappbleText(
+                    context,
+                    '${state.userModel.getFollower}',
+                    ' Followers',
+                    'FollowerListPage',
                   ),
-                  _tappbleText(context, '${state.userModel.getFollower}',
-                      ' Followers', 'FollowerListPage'),
                   SizedBox(width: 10),
-                  _tappbleText(context, '${state.userModel.getFollowing}',
-                      ' Following', 'FollowingListPage'),
+                  _tappbleText(
+                    context,
+                    '${state.userModel.getFollowing}',
+                    ' Following',
+                    'FollowingListPage',
+                  ),
                 ],
               ),
             ),
@@ -115,7 +125,11 @@ class _SidebarMenuState extends State<SidebarMenu> {
   }
 
   Widget _tappbleText(
-      BuildContext context, String count, String text, String navigateTo) {
+    BuildContext context,
+    String count,
+    String text,
+    String navigateTo,
+  ) {
     return InkWell(
       onTap: () {
         var authstate = context.read<AuthState>();
@@ -131,10 +145,10 @@ class _SidebarMenuState extends State<SidebarMenu> {
             break;
           default:
         }
-        Navigator.push(
-            context,
-            FollowerListPage.getRoute(
-                profile: authstate.userModel, userList: usersList));
+        Navigator.push(context, FollowerListPage.getRoute(
+          profile: authstate.userModel,
+          userList: usersList,
+        ));
       },
       child: Row(
         children: <Widget>[
@@ -151,8 +165,12 @@ class _SidebarMenuState extends State<SidebarMenu> {
     );
   }
 
-  ListTile _menuListRowButton(String title,
-      {Function onPressed, IconData icon, bool isEnable = false}) {
+  ListTile _menuListRowButton(
+    String title, {
+    Function onPressed,
+    IconData icon,
+    bool isEnable = false,
+  }) {
     return ListTile(
       onTap: () {
         if (onPressed != null) {
@@ -190,32 +208,24 @@ class _SidebarMenuState extends State<SidebarMenu> {
           Divider(height: 0),
           Row(
             children: <Widget>[
-              SizedBox(
-                width: 10,
-                height: 45,
+              SizedBox(width: 10, height: 45),
+              customIcon(
+                context,
+                icon: AppIcon.bulbOn,
+                istwitterIcon: true,
+                size: 25,
+                iconColor: TwitterColor.dodgetBlue,
               ),
-              customIcon(context,
-                  icon: AppIcon.bulbOn,
-                  istwitterIcon: true,
-                  size: 25,
-                  iconColor: TwitterColor.dodgetBlue),
               Spacer(),
               TextButton(
                 onPressed: () {
-                  Navigator.push(
-                      context,
-                      ScanScreen.getRoute(
-                          context.read<AuthState>().profileUserModel));
+                  Navigator.push(context, ScanScreen.getRoute(
+                    context.read<AuthState>().profileUserModel,
+                  ));
                 },
-                child: Image.asset(
-                  "assets/images/qr.png",
-                  height: 25,
-                ),
+                child: Image.asset("assets/images/qr.png", height: 25),
               ),
-              SizedBox(
-                width: 0,
-                height: 45,
-              ),
+              SizedBox(width: 0, height: 45),
             ],
           ),
         ],
@@ -245,16 +255,20 @@ class _SidebarMenuState extends State<SidebarMenu> {
               child: ListView(
                 physics: BouncingScrollPhysics(),
                 children: <Widget>[
-                  Container(
-                    child: _menuHeader(),
-                  ),
+                  Container(child: _menuHeader()),
                   Divider(),
-                  _menuListRowButton('Profile',
-                      icon: AppIcon.profile, isEnable: true, onPressed: () {
-                    var state = context.read<AuthState>();
-                    Navigator.push(
-                        context, ProfilePage.getRoute(profileId: state.userId));
-                  }),
+                  _menuListRowButton(
+                    'Profile',
+                    icon: AppIcon.profile,
+                    isEnable: true,
+                    onPressed: () {
+                      var state = context.read<AuthState>();
+                      Navigator.push(
+                        context,
+                        ProfilePage.getRoute(profileId: state.userId),
+                      );
+                    },
+                  ),
                   _menuListRowButton('Lists', icon: AppIcon.lists),
                   _menuListRowButton(
                     'Bookmark',
@@ -267,18 +281,25 @@ class _SidebarMenuState extends State<SidebarMenu> {
                   _menuListRowButton('Moments', icon: AppIcon.moments),
                   _menuListRowButton('Fwitter ads', icon: AppIcon.twitterAds),
                   Divider(),
-                  _menuListRowButton('Settings and privacy', isEnable: true,
-                      onPressed: () {
-                    _navigateTo('SettingsAndPrivacyPage');
-                  }),
+                  _menuListRowButton(
+                    'Settings and privacy',
+                    isEnable: true,
+                    onPressed: () {
+                      _navigateTo('SettingsAndPrivacyPage');
+                    },
+                  ),
                   _menuListRowButton('Help Center'),
                   Divider(),
-                  _menuListRowButton('Logout',
-                      icon: null, onPressed: _logOut, isEnable: true),
+                  _menuListRowButton(
+                    'Logout',
+                    icon: null,
+                    onPressed: _logOut,
+                    isEnable: true,
+                  ),
                 ],
               ),
             ),
-            _footer()
+            _footer(),
           ],
         ),
       ),

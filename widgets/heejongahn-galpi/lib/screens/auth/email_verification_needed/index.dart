@@ -14,12 +14,7 @@ class EmailVerificationNeeded extends StatefulWidget {
 
 typedef OnConfirm = void Function();
 
-enum LoginStatus {
-  idle,
-  sendingEmail,
-  sentEmail,
-  verifying,
-}
+enum LoginStatus { idle, sendingEmail, sentEmail, verifying }
 
 class _EmailVerificationNeededState extends State<EmailVerificationNeeded> {
   LoginStatus _status = LoginStatus.idle;
@@ -64,7 +59,7 @@ class _EmailVerificationNeededState extends State<EmailVerificationNeeded> {
             onPressed: () async {
               await userRepository.logout();
             },
-          )
+          ),
         ],
       ),
       body: SingleChildScrollView(
@@ -86,18 +81,11 @@ class _EmailVerificationNeededState extends State<EmailVerificationNeeded> {
                   child: Chip(
                     shape: const RoundedRectangleBorder(
                       side: BorderSide(color: Colors.black87),
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(4),
-                      ),
+                      borderRadius: BorderRadius.all(Radius.circular(4)),
                     ),
-                    avatar: Icon(
-                      Icons.person,
-                      size: 16,
-                    ),
+                    avatar: Icon(Icons.person, size: 16),
                     backgroundColor: Colors.white,
-                    label: Text(
-                      userRepository.firebaseUser.email,
-                    ),
+                    label: Text(userRepository.firebaseUser.email),
                   ),
                 ),
                 Container(
@@ -108,10 +96,9 @@ class _EmailVerificationNeededState extends State<EmailVerificationNeeded> {
                       '방금 위 주소로 인증 메일을 발송했습니다.',
                       '메일을 확인해 인증을 마친 뒤 아래 버튼을 눌러주세요.',
                     ].join('\n'),
-                    style: Theme.of(context)
-                        .textTheme
-                        .subtitle2
-                        .copyWith(height: 1.6),
+                    style: Theme.of(context).textTheme.subtitle2.copyWith(
+                      height: 1.6,
+                    ),
                   ),
                 ),
                 _buildConfirmButton(),
@@ -145,7 +132,7 @@ class _EmailVerificationNeededState extends State<EmailVerificationNeeded> {
             onPressed: _status == LoginStatus.sendingEmail ? null : _sendEmail,
             child: const Text('메일을 받지 못하셨나요?'),
           ),
-        )
+        ),
       ],
     );
   }

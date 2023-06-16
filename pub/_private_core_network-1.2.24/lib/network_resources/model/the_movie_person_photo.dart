@@ -8,9 +8,9 @@ class TheMoviePersonImage {
     id = json["id"];
     profiles = json["profiles"] == null
         ? null
-        : (json["profiles"] as List)
-            .map((e) => TheMoviePersonProfiles.fromJson(e))
-            .toList();
+        : (json["profiles"] as List).map(
+            (e) => TheMoviePersonProfiles.fromJson(e),
+          ).toList();
   }
 
   Map<String, dynamic> toJson() {
@@ -25,11 +25,10 @@ class TheMoviePersonImage {
   TheMoviePersonImage copyWith({
     int? id,
     List<TheMoviePersonProfiles>? profiles,
-  }) =>
-      TheMoviePersonImage(
-        id: id ?? this.id,
-        profiles: profiles ?? this.profiles,
-      );
+  }) => TheMoviePersonImage(
+    id: id ?? this.id,
+    profiles: profiles ?? this.profiles,
+  );
 }
 
 class TheMoviePersonProfiles {
@@ -41,14 +40,15 @@ class TheMoviePersonProfiles {
   int? voteCount;
   int? width;
 
-  TheMoviePersonProfiles(
-      {this.aspectRatio,
-      this.filePath,
-      this.height,
-      this.iso6391,
-      this.voteAverage,
-      this.voteCount,
-      this.width});
+  TheMoviePersonProfiles({
+    this.aspectRatio,
+    this.filePath,
+    this.height,
+    this.iso6391,
+    this.voteAverage,
+    this.voteCount,
+    this.width,
+  });
 
   TheMoviePersonProfiles.fromJson(Map<String, dynamic> json) {
     aspectRatio = json["aspect_ratio"];
@@ -80,14 +80,13 @@ class TheMoviePersonProfiles {
     double? voteAverage,
     int? voteCount,
     int? width,
-  }) =>
-      TheMoviePersonProfiles(
-        aspectRatio: aspectRatio ?? this.aspectRatio,
-        filePath: filePath ?? this.filePath,
-        height: height ?? this.height,
-        iso6391: iso6391 ?? this.iso6391,
-        voteAverage: voteAverage ?? this.voteAverage,
-        voteCount: voteCount ?? this.voteCount,
-        width: width ?? this.width,
-      );
+  }) => TheMoviePersonProfiles(
+    aspectRatio: aspectRatio ?? this.aspectRatio,
+    filePath: filePath ?? this.filePath,
+    height: height ?? this.height,
+    iso6391: iso6391 ?? this.iso6391,
+    voteAverage: voteAverage ?? this.voteAverage,
+    voteCount: voteCount ?? this.voteCount,
+    width: width ?? this.width,
+  );
 }

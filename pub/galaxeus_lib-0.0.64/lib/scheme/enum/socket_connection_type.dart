@@ -1,5 +1,1 @@
-enum SocketConnectionType {
-  connected,
-  reconnection,
-  disconnect,
-}
+enum SocketConnectionType { connected, reconnection, disconnect }

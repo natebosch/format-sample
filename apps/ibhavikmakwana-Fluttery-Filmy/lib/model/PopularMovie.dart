@@ -8,6 +8,14 @@ class PopularMovie {
   String overview;
   String releaseDate;
 
-  PopularMovie(this.id, this.title, this.posterPath, this.backdropPath,
-      this.originalTitle, this.voteAverage, this.overview, this.releaseDate);
+  PopularMovie(
+    this.id,
+    this.title,
+    this.posterPath,
+    this.backdropPath,
+    this.originalTitle,
+    this.voteAverage,
+    this.overview,
+    this.releaseDate,
+  );
 }

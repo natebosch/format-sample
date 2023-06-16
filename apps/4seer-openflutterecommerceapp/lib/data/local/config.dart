@@ -20,6 +20,6 @@ class OpenFlutterDatabaseConfig {
     'CREATE TABLE IF NOT EXISTS DeliveryMethod(id INTEGER PRIMARY KEY, title TEXT, price REAL)',
     'CREATE TABLE IF NOT EXISTS UserOrder(id INTEGER PRIMARY KEY, orderNumber INTEGER, trackingNumber TEXT, productCount INTEGER, promoCodeId INTEGER, discountPercent REAL, discountTitle TEXT, shippingAddressId INTEGER, orderStatus TEXT, totalAmount REAL, deliveryMethodId INTEGER, deliveryPrice REAL)',
     'CREATE TABLE IF NOT EXISTS OrderProduct(id INTEGER PRIMARY KEY, productId INTEGER, productCount INTEGER, totalPrice REAL, title TEXT, discountPercent REAL, thumb TEXT)',
-    'CREATE TABLE IF NOT EXISTS OrderProductParameter(id INTEGER PRIMARY KEY, productId INTEGER, parameterId INTEGER, parameterValueId INTEGER)'
+    'CREATE TABLE IF NOT EXISTS OrderProductParameter(id INTEGER PRIMARY KEY, productId INTEGER, parameterId INTEGER, parameterValueId INTEGER)',
   ];
 }

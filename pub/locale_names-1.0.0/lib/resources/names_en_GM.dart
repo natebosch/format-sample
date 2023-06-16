@@ -15,5 +15,5 @@ const names = {
   "mus": "Creek",
   "nqo": "NʼKo",
   "or": "Oriya",
-  "shi": "Tachelhit"
+  "shi": "Tachelhit",
 };

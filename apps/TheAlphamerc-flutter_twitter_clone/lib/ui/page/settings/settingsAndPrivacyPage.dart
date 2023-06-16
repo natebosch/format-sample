@@ -19,43 +19,38 @@ class SettingsAndPrivacyPage extends StatelessWidget {
       backgroundColor: TwitterColor.white,
       appBar: CustomAppBar(
         isBackButton: true,
-        title: customTitleText(
-          'Settings and privacy',
-        ),
+        title: customTitleText('Settings and privacy'),
       ),
       body: ListView(
         children: <Widget>[
           HeaderWidget(user.userName),
-          SettingRowWidget(
-            "Account",
-            navigateTo: 'AccountSettingsPage',
-          ),
+          SettingRowWidget("Account", navigateTo: 'AccountSettingsPage'),
           Divider(height: 0),
-          SettingRowWidget("Privacy and Policy",
-              navigateTo: 'PrivacyAndSaftyPage'),
-          SettingRowWidget("Notification", navigateTo: 'NotificationPage'),
-          SettingRowWidget("Content prefrences",
-              navigateTo: 'ContentPrefrencePage'),
-          HeaderWidget(
-            'General',
-            secondHeader: true,
+          SettingRowWidget(
+            "Privacy and Policy",
+            navigateTo: 'PrivacyAndSaftyPage',
           ),
-          SettingRowWidget("Display and Sound",
-              navigateTo: 'DisplayAndSoundPage'),
+          SettingRowWidget("Notification", navigateTo: 'NotificationPage'),
+          SettingRowWidget(
+            "Content prefrences",
+            navigateTo: 'ContentPrefrencePage',
+          ),
+          HeaderWidget('General', secondHeader: true),
+          SettingRowWidget(
+            "Display and Sound",
+            navigateTo: 'DisplayAndSoundPage',
+          ),
           SettingRowWidget("Data usage", navigateTo: 'DataUsagePage'),
           SettingRowWidget("Accessibility", navigateTo: 'AccessibilityPage'),
           SettingRowWidget("Proxy", navigateTo: "ProxyPage"),
-          SettingRowWidget(
-            "About Fwitter",
-            navigateTo: "AboutPage",
-          ),
+          SettingRowWidget("About Fwitter", navigateTo: "AboutPage"),
           SettingRowWidget(
             null,
             showDivider: false,
             vPadding: 10,
             subtitle:
                 'These settings affect all of your Fwitter accounts on this devce.',
-          )
+          ),
         ],
       ),
     );

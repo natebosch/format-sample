@@ -28,16 +28,11 @@ class AppTheme {
   static final _primaryColor = Colors.yellow[300];
   static const _accentColor = Colors.blueGrey;
 
-  static const _dividerTheme = DividerThemeData(
-    space: 0.0,
-    indent: 16.0,
-  );
+  static const _dividerTheme = DividerThemeData(space: 0.0, indent: 16.0);
 
   static TextTheme _getTextTheme(Brightness brightness) {
     final themeData = ThemeData(brightness: brightness);
-    return GoogleFonts.robotoTextTheme(
-      themeData.textTheme,
-    ).copyWith(
+    return GoogleFonts.robotoTextTheme(themeData.textTheme).copyWith(
       headline1: GoogleFonts.roboto(),
       headline2: GoogleFonts.roboto(),
       headline3: GoogleFonts.roboto(),

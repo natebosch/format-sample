@@ -37,13 +37,17 @@ class XNetwork {
     return await _connectivity.checkConnectivity();
   }
 
-  Future<bool> isWifi() async => ConnectivityResult.wifi == (await connectivityResult());
+  Future<bool> isWifi() async =>
+      ConnectivityResult.wifi == (await connectivityResult());
 
-  Future<bool> isMobile() async => ConnectivityResult.mobile == (await connectivityResult());
+  Future<bool> isMobile() async =>
+      ConnectivityResult.mobile == (await connectivityResult());
 
-  Future<bool> isEthernet() async => ConnectivityResult.ethernet == (await connectivityResult());
+  Future<bool> isEthernet() async =>
+      ConnectivityResult.ethernet == (await connectivityResult());
 
-  Future<bool> isBluetooth() async => ConnectivityResult.bluetooth == (await connectivityResult());
+  Future<bool> isBluetooth() async =>
+      ConnectivityResult.bluetooth == (await connectivityResult());
 
   StreamSubscription onConnectivityChange(
     void Function(ConnectivityResult newStatus, bool connected) onChanged, {

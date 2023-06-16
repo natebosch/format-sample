@@ -7,11 +7,13 @@ import 'package:over_react_analyzer_plugin/src/diagnostic_contributor.dart';
 import 'package:over_react_analyzer_plugin/src/util/ast_util.dart';
 import 'package:over_react_analyzer_plugin/src/util/util.dart';
 
-const _sharedBadKeyDetailsIntro = r'**PREFER** to use a value for `props.key` that is guaranteed to be unique.';
+const _sharedBadKeyDetailsIntro =
+    r'**PREFER** to use a value for `props.key` that is guaranteed to be unique.';
 const _sharedBadKeyUseInstead =
     r'Try using other information, such as a unique ID field on the object or an index, to construct the key instead.';
 
-const _hashCodeDesc = 'Avoid deriving React keys from hashCode since it is not unique.';
+const _hashCodeDesc =
+    'Avoid deriving React keys from hashCode since it is not unique.';
 // <editor-fold desc="Hash Code Documentation Details">
 const _hashCodeDetails = '''
 
@@ -25,7 +27,8 @@ $_sharedBadKeyUseInstead
 ''';
 // </editor-fold>
 
-const _toStringDesc = 'Avoid deriving React keys from toString() since it is not unique.';
+const _toStringDesc =
+    'Avoid deriving React keys from toString() since it is not unique.';
 // <editor-fold desc="toString Documentation Details">
 const _toStringDetails = '''
 
@@ -38,7 +41,8 @@ $_sharedBadKeyUseInstead
 ''';
 // </editor-fold>
 
-const _dynamicOrObjDesc = 'Avoid deriving React keys from an object typed as dynamic/Object.';
+const _dynamicOrObjDesc =
+    'Avoid deriving React keys from an object typed as dynamic/Object.';
 // <editor-fold desc="dynamicOrObj Documentation Details">
 const _dynamicOrObjDetails = '''
 
@@ -51,7 +55,8 @@ Try using more specific typing, or using other information to construct the `key
 ''';
 // </editor-fold>
 
-const _lowQualityDesc = 'Avoid deriving React keys from objects that have a high chance of colliding.';
+const _lowQualityDesc =
+    'Avoid deriving React keys from objects that have a high chance of colliding.';
 // <editor-fold desc="lowQuality Documentation Details">
 const _lowQualityDetails = '''
 
@@ -91,7 +96,8 @@ class BadKeyDiagnostic extends ComponentUsageDiagnosticContributor {
     "Keys derived from '{0}.toString()'{1} may not be unique.",
     AnalysisErrorSeverity.WARNING,
     AnalysisErrorType.STATIC_WARNING,
-    correction: "Try using more specific typing, or using other information to construct the key.",
+    correction:
+        "Try using more specific typing, or using other information to construct the key.",
   );
 
   @DocsMeta(_lowQualityDesc, details: _lowQualityDetails)
@@ -104,7 +110,12 @@ class BadKeyDiagnostic extends ComponentUsageDiagnosticContributor {
   );
 
   @override
-  List<DiagnosticCode> get codes => [hashCodeCode, toStringCode, dynamicOrObjectCode, lowQualityCode];
+  List<DiagnosticCode> get codes => [
+    hashCodeCode,
+    toStringCode,
+    dynamicOrObjectCode,
+    lowQualityCode,
+  ];
 
   @override
   computeErrorsForUsage(result, collector, usage) async {
@@ -112,7 +123,10 @@ class BadKeyDiagnostic extends ComponentUsageDiagnosticContributor {
       if (prop.name.name != 'key') continue;
 
       if (prop.rightHandSide.toSource().contains('.hashCode')) {
-        collector.addError(hashCodeCode, result.locationFor(prop.rightHandSide));
+        collector.addError(
+          hashCodeCode,
+          result.locationFor(prop.rightHandSide),
+        );
       }
 
       // Handle the top-level key expression, which is toString-ed under the hood.
@@ -148,49 +162,71 @@ class BadKeyDiagnostic extends ComponentUsageDiagnosticContributor {
         !topLevelKeyType.isDartCoreNull &&
             [
               typedProvider.iterableType(typedProvider.dynamicType),
-              typedProvider.mapType(typedProvider.dynamicType, typedProvider.dynamicType),
-            ].any((type) => result.typeSystem.isSubtypeOf(topLevelKeyType, type));
+              typedProvider.mapType(
+                typedProvider.dynamicType,
+                typedProvider.dynamicType,
+              ),
+            ].any(
+              (type) => result.typeSystem.isSubtypeOf(topLevelKeyType, type),
+            );
 
     final keyTypesToProcess = {
-      if (isIterableOrMap) ...(topLevelKeyType as InterfaceType).typeArguments else topLevelKeyType,
+      if (isIterableOrMap)
+        ...(topLevelKeyType as InterfaceType).typeArguments
+      else
+        topLevelKeyType,
     };
 
     for (final type in keyTypesToProcess) {
       // Provide context if this type was derived from a Map/Iterable type argument.
-      getTypeContextString() =>
-          type == topLevelKeyType ? '' : ' (from ${topLevelKeyType.getDisplayString(withNullability: false)})';
+      getTypeContextString() => type == topLevelKeyType
+          ? ''
+          : ' (from ${topLevelKeyType.getDisplayString(
+              withNullability: false,
+            )})';
 
-      if (type.isDartCoreInt || type.isDartCoreDouble || type.isDartCoreString || type.isDartCoreSymbol) {
+      if (type.isDartCoreInt ||
+          type.isDartCoreDouble ||
+          type.isDartCoreString ||
+          type.isDartCoreSymbol) {
         // Ignore core types that have good `Object.toString` implementations values.
       } else if (type.isDartCoreObject || type.isDynamic) {
         collector.addError(
           dynamicOrObjectCode,
           result.locationFor(expression),
-          errorMessageArgs: [type.getDisplayString(withNullability: false), getTypeContextString()],
+          errorMessageArgs: [
+            type.getDisplayString(withNullability: false),
+            getTypeContextString(),
+          ],
         );
       } else if (type.isDartCoreBool || type.isDartCoreNull) {
         collector.addError(
           lowQualityCode,
           result.locationFor(expression),
-          errorMessageArgs: [type.getDisplayString(withNullability: false), getTypeContextString()],
+          errorMessageArgs: [
+            type.getDisplayString(withNullability: false),
+            getTypeContextString(),
+          ],
         );
-      } else if (type.element != null && inheritsToStringImplFromObject(type.element!)) {
+      } else if (type.element != null &&
+          inheritsToStringImplFromObject(type.element!)) {
         collector.addError(
           toStringCode,
           result.locationFor(expression),
-          errorMessageArgs: [type.getDisplayString(withNullability: false), getTypeContextString()],
+          errorMessageArgs: [
+            type.getDisplayString(withNullability: false),
+            getTypeContextString(),
+          ],
         );
       }
     }
   }
 
   static bool inheritsToStringImplFromObject(Element element) =>
-      element
-          .tryCast<ClassElement>()
-          ?.lookUpConcreteMethod('toString', element.library!)
-          ?.thisOrAncestorOfType<ClassElement>()
-          ?.thisType
-          .isDartCoreObject ??
+      element.tryCast<ClassElement>()?.lookUpConcreteMethod(
+        'toString',
+        element.library!,
+      )?.thisOrAncestorOfType<ClassElement>()?.thisType.isDartCoreObject ??
       false;
 }
 
@@ -221,7 +257,8 @@ class ToStringedVisitor extends RecursiveAstVisitor<void> {
     final expression = node.expression;
     // Don't add `toString` calls; visitMethodInvocation will handle adding
     // the target of those.
-    if (!(expression is MethodInvocation && expression.methodName.name != 'toString')) {
+    if (!(expression is MethodInvocation &&
+        expression.methodName.name != 'toString')) {
       toStringedExpressions.add(expression);
     }
   }

@@ -9,7 +9,11 @@ abstract class Operation<T> {
   Operation(this.operationType, this.table, this.opResultId);
 
   Operation.withPayload(
-      this.operationType, this.table, this.opResultId, this.payload) {
+    this.operationType,
+    this.table,
+    this.opResultId,
+    this.payload,
+  ) {
     if (payload is DataQueryBuilder) {
       Map mapPayload = (payload as DataQueryBuilder).toJson();
       Map relationQuery = {
@@ -30,11 +34,11 @@ abstract class Operation<T> {
   }
 
   Map toJson() => {
-        "operationType": describeEnum(operationType!),
-        "table": table,
-        "payload": payload,
-        "opResultId": opResultId,
-      };
+    "operationType": describeEnum(operationType!),
+    "table": table,
+    "payload": payload,
+    "opResultId": opResultId,
+  };
 
   @override
   String toString() {
@@ -43,7 +47,8 @@ abstract class Operation<T> {
 
   Operation.fromJson(Map json) {
     operationType = OperationType.values.firstWhere(
-        (element) => describeEnum(element) == json['operationType']);
+      (element) => describeEnum(element) == json['operationType'],
+    );
     table = json['table'];
     opResultId = json['opResultId'];
     if (T == DeleteBulkPayload)
@@ -61,96 +66,132 @@ abstract class Operation<T> {
 
 class OperationCreate extends Operation<Map> {
   OperationCreate(
-      OperationType operationType, String table, String opResultId, Map payload)
-      : super.withPayload(operationType, table, opResultId, payload);
+    OperationType operationType,
+    String table,
+    String opResultId,
+    Map payload,
+  ) : super.withPayload(operationType, table, opResultId, payload);
 
   OperationCreate.fromJson(Map json) : super.fromJson(json);
 }
 
 class OperationCreateBulk extends Operation<List> {
-  OperationCreateBulk(OperationType operationType, String table,
-      String opResultId, List payload)
-      : super.withPayload(operationType, table, opResultId, payload);
+  OperationCreateBulk(
+    OperationType operationType,
+    String table,
+    String opResultId,
+    List payload,
+  ) : super.withPayload(operationType, table, opResultId, payload);
 
   OperationCreateBulk.fromJson(Map json) : super.fromJson(json);
 }
 
 class OperationUpdate extends Operation<Map> {
   OperationUpdate(
-      OperationType operationType, String table, String opResultId, Map payload)
-      : super.withPayload(operationType, table, opResultId, payload);
+    OperationType operationType,
+    String table,
+    String opResultId,
+    Map payload,
+  ) : super.withPayload(operationType, table, opResultId, payload);
 
   OperationUpdate.fromJson(Map json) : super.fromJson(json);
 }
 
 class OperationUpdateBulk extends Operation<UpdateBulkPayload> {
-  OperationUpdateBulk(OperationType operationType, String table,
-      String opResultId, UpdateBulkPayload payload)
-      : super.withPayload(operationType, table, opResultId, payload);
+  OperationUpdateBulk(
+    OperationType operationType,
+    String table,
+    String opResultId,
+    UpdateBulkPayload payload,
+  ) : super.withPayload(operationType, table, opResultId, payload);
 
   OperationUpdateBulk.fromJson(Map json) : super.fromJson(json);
 }
 
 class OperationUpsert extends Operation<Map> {
   OperationUpsert(
-      OperationType operationType, String table, String opResultId, Map payload)
-      : super.withPayload(operationType, table, opResultId, payload);
+    OperationType operationType,
+    String table,
+    String opResultId,
+    Map payload,
+  ) : super.withPayload(operationType, table, opResultId, payload);
 
   OperationUpsert.fromJson(Map json) : super.fromJson(json);
 }
 
 class OperationUpsertBulk extends Operation<List> {
-  OperationUpsertBulk(OperationType operationType, String table,
-      String opResultId, List payload)
-      : super.withPayload(operationType, table, opResultId, payload);
+  OperationUpsertBulk(
+    OperationType operationType,
+    String table,
+    String opResultId,
+    List payload,
+  ) : super.withPayload(operationType, table, opResultId, payload);
 
   OperationUpsertBulk.fromJson(Map json) : super.fromJson(json);
 }
 
 class OperationDelete extends Operation<Object> {
-  OperationDelete(OperationType operationType, String table, String opResultId,
-      Object payload)
-      : super.withPayload(operationType, table, opResultId, payload);
+  OperationDelete(
+    OperationType operationType,
+    String table,
+    String opResultId,
+    Object payload,
+  ) : super.withPayload(operationType, table, opResultId, payload);
 
   OperationDelete.fromJson(Map json) : super.fromJson(json);
 }
 
 class OperationDeleteBulk extends Operation<DeleteBulkPayload> {
-  OperationDeleteBulk(OperationType operationType, String table,
-      String opResultId, DeleteBulkPayload payload)
-      : super.withPayload(operationType, table, opResultId, payload);
+  OperationDeleteBulk(
+    OperationType operationType,
+    String table,
+    String opResultId,
+    DeleteBulkPayload payload,
+  ) : super.withPayload(operationType, table, opResultId, payload);
 
   OperationDeleteBulk.fromJson(Map json) : super.fromJson(json);
 }
 
 class OperationFind<T> extends Operation<T> {
   OperationFind(
-      OperationType operationType, String table, String opResultId, T payload)
-      : super.withPayload(operationType, table, opResultId, payload);
+    OperationType operationType,
+    String table,
+    String opResultId,
+    T payload,
+  ) : super.withPayload(operationType, table, opResultId, payload);
 
   OperationFind.fromJson(Map json) : super.fromJson(json);
 }
 
 class OperationAddRelation extends Operation<Relation> {
-  OperationAddRelation(OperationType operationType, String table,
-      String opResultId, Relation payload)
-      : super.withPayload(operationType, table, opResultId, payload);
+  OperationAddRelation(
+    OperationType operationType,
+    String table,
+    String opResultId,
+    Relation payload,
+  ) : super.withPayload(operationType, table, opResultId, payload);
 
   OperationAddRelation.fromJson(Map json) : super.fromJson(json);
 }
 
 class OperationDeleteRelation extends Operation<Relation> {
-  OperationDeleteRelation(OperationType operationType, String table,
-      String opResultId, Relation payload)
-      : super.withPayload(operationType, table, opResultId, payload);
+  OperationDeleteRelation(
+    OperationType operationType,
+    String table,
+    String opResultId,
+    Relation payload,
+  ) : super.withPayload(operationType, table, opResultId, payload);
 
   OperationDeleteRelation.fromJson(Map json) : super.fromJson(json);
 }
 
 class OperationSetRelation extends Operation<Relation> {
-  OperationSetRelation(OperationType operationType, String table,
-      String opResultId, Relation payload)
-      : super.withPayload(operationType, table, opResultId, payload);
+  OperationSetRelation(
+    OperationType operationType,
+    String table,
+    String opResultId,
+    Relation payload,
+  ) : super.withPayload(operationType, table, opResultId, payload);
 
   OperationSetRelation.fromJson(Map json) : super.fromJson(json);
 }

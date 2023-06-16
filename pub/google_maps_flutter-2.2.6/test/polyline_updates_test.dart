@@ -88,8 +88,10 @@ void main() {
 
   testWidgets('Updating a polyline', (WidgetTester tester) async {
     const Polyline p1 = Polyline(polylineId: PolylineId('polyline_1'));
-    const Polyline p2 =
-        Polyline(polylineId: PolylineId('polyline_1'), geodesic: true);
+    const Polyline p2 = Polyline(
+      polylineId: PolylineId('polyline_1'),
+      geodesic: true,
+    );
 
     await tester.pumpWidget(_mapWithPolylines(<Polyline>{p1}));
     await tester.pumpWidget(_mapWithPolylines(<Polyline>{p2}));
@@ -105,8 +107,10 @@ void main() {
 
   testWidgets('Updating a polyline', (WidgetTester tester) async {
     const Polyline p1 = Polyline(polylineId: PolylineId('polyline_1'));
-    const Polyline p2 =
-        Polyline(polylineId: PolylineId('polyline_1'), geodesic: true);
+    const Polyline p2 = Polyline(
+      polylineId: PolylineId('polyline_1'),
+      geodesic: true,
+    );
 
     await tester.pumpWidget(_mapWithPolylines(<Polyline>{p1}));
     await tester.pumpWidget(_mapWithPolylines(<Polyline>{p2}));

@@ -38,32 +38,30 @@ class MyApp extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         FocusScopeNode currentFocus = FocusScope.of(context);
-        if (!currentFocus.hasPrimaryFocus && currentFocus.focusedChild != null) {
+        if (!currentFocus.hasPrimaryFocus &&
+            currentFocus.focusedChild != null) {
           currentFocus.focusedChild.unfocus();
         }
       },
       child: MaterialApp(
         builder: (context, widget) => ResponsiveWrapper.builder(
-          BouncingScrollWrapper.builder(context, widget),
-          maxWidth: 1200,
-          minWidth: 450,
-          defaultScale: true,
-          breakpoints: [
-            ResponsiveBreakpoint.resize(480, name: MOBILE),
-            ResponsiveBreakpoint.resize(800, name: TABLET),
+              BouncingScrollWrapper.builder(context, widget),
+              maxWidth: 1200,
+              minWidth: 450,
+              defaultScale: true,
+              breakpoints: [
+                ResponsiveBreakpoint.resize(480, name: MOBILE),
+                ResponsiveBreakpoint.resize(800, name: TABLET),
 //            ResponsiveBreakpoint.resize(1000, name: DESKTOP),
 //            ResponsiveBreakpoint.autoScale(2460, name: '4K'),
-          ],
-        ),
+              ],
+            ),
         localizationsDelegates: [
           const AppLocalizationsDelegate(),
           GlobalMaterialLocalizations.delegate,
           GlobalWidgetsLocalizations.delegate,
         ],
-        supportedLocales: [
-          const Locale('en', ''),
-          const Locale('es', ''),
-        ],
+        supportedLocales: [const Locale('en', ''), const Locale('es', '')],
         debugShowCheckedModeBanner: false,
         title: 'LaCoro',
         theme: AppTheme.build(),
@@ -89,20 +87,28 @@ class MyApp extends StatelessWidget {
               destinationRoute = PastOrderDetailPage();
               break;
           }
-          return MaterialPageRoute(builder: (context) => destinationRoute, settings: settings);
+          return MaterialPageRoute(
+            builder: (context) => destinationRoute,
+            settings: settings,
+          );
         },
         initialRoute: '/',
         routes: {
           '/': (BuildContext context) => SplashPage(),
-          StoreListPage.STORE_LIST_ROUTE: (BuildContext context) => StoreListPage(),
-          SelectAddressMapPage.SELECT_ADDRESS_MAP_ROUTE: (BuildContext context) => SelectAddressMapPage(),
-          StylesTestPage.STYLE_TEST_PAGE_ROUTE: (BuildContext context) => StylesTestPage(),
-          AddressesPage.ADDRESSES_LIST_ROUTE: (BuildContext context) => AddressesPage(),
+          StoreListPage.STORE_LIST_ROUTE: (BuildContext context) =>
+              StoreListPage(),
+          SelectAddressMapPage.SELECT_ADDRESS_MAP_ROUTE:
+              (BuildContext context) => SelectAddressMapPage(),
+          StylesTestPage.STYLE_TEST_PAGE_ROUTE: (BuildContext context) =>
+              StylesTestPage(),
+          AddressesPage.ADDRESSES_LIST_ROUTE: (BuildContext context) =>
+              AddressesPage(),
           SplashPage.SPLASH_PAGE_ROUTE: (BuildContext context) => SplashPage(),
           RegisterPage.REGISTER_ROUTE: (BuildContext context) => RegisterPage(),
           PinPage.PIN_REGISTER_ROUTE: (BuildContext context) => PinPage(),
-          OrderHistoryPage.ORDER_HISTORY_ROUTE: (BuildContext context) => OrderHistoryPage(),
-          TestPage.TEST_PAGE_ROUTE: (BuildContext context) => TestPage()
+          OrderHistoryPage.ORDER_HISTORY_ROUTE: (BuildContext context) =>
+              OrderHistoryPage(),
+          TestPage.TEST_PAGE_ROUTE: (BuildContext context) => TestPage(),
         },
       ),
     );

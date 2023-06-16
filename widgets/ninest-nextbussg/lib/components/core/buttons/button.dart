@@ -27,14 +27,16 @@ class Button extends StatelessWidget {
         padding: EdgeInsets.all(10),
         decoration: BoxDecoration(
           color: fill ? color : null,
-          borderRadius: BorderRadius.circular(
-            Values.borderRadius * 0.7,
+          borderRadius: BorderRadius.circular(Values.borderRadius * 0.7),
+          border: Border.all(
+            width: fill ? 0.0 : 1.5,
+            color: color.withOpacity(0.9),
           ),
-          border: Border.all(width: fill ? 0.0 : 1.5, color: color.withOpacity(0.9)),
         ),
         child: Row(
-          mainAxisAlignment:
-              iconData == null ? MainAxisAlignment.spaceEvenly : MainAxisAlignment.spaceBetween,
+          mainAxisAlignment: iconData == null
+              ? MainAxisAlignment.spaceEvenly
+              : MainAxisAlignment.spaceBetween,
           children: <Widget>[
             if (!(iconData == null))
               Padding(
@@ -49,8 +51,8 @@ class Button extends StatelessWidget {
               text,
               textAlign: TextAlign.left,
               style: Theme.of(context).textTheme.button.copyWith(
-                    color: fill ? Colors.white70 : color,
-                  ),
+                color: fill ? Colors.white70 : color,
+              ),
             ),
           ],
         ),

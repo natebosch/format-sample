@@ -13,9 +13,10 @@ List<Page> _allPages = <Page>[
   Page(icon: Icons.stars, text: 'Editor\'s Choice', category: 'category-name'),
   Page(icon: Icons.wb_sunny, text: 'Family', category: 'category-name'),
   Page(
-      icon: Icons.directions_bus,
-      text: 'Early Access',
-      category: 'category-name'),
+    icon: Icons.directions_bus,
+    text: 'Early Access',
+    category: 'category-name',
+  ),
 ];
 
 class HomeTab extends StatefulWidget {

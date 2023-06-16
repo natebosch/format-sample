@@ -37,13 +37,11 @@ Middleware<AppState> _editArtist() {
   return (Store<AppState> store, dynamic action, NextDispatcher next) async {
     next(action);
 
-    await Navigator.of(action.context).push(
-      CupertinoPageRoute<void>(
-        builder: (BuildContext context) {
-          return ArtistSettingsScreen();
-        },
-      ),
-    );
+    await Navigator.of(action.context).push(CupertinoPageRoute<void>(
+      builder: (BuildContext context) {
+        return ArtistSettingsScreen();
+      },
+    ));
 
     /*
     if (action.completer != null && artist != null) {
@@ -57,13 +55,11 @@ Middleware<AppState> _viewArtist() {
   return (Store<AppState> store, dynamic action, NextDispatcher next) async {
     next(action);
 
-    Navigator.of(action.context).push(
-      CupertinoPageRoute<void>(
-        builder: (BuildContext context) {
-          return ArtistScreen(artist: action.artist);
-        },
-      ),
-    );
+    Navigator.of(action.context).push(CupertinoPageRoute<void>(
+      builder: (BuildContext context) {
+        return ArtistScreen(artist: action.artist);
+      },
+    ));
   };
 }
 
@@ -101,9 +97,7 @@ Middleware<AppState> _saveArtist(ArtistRepository repository) {
 
 Middleware<AppState> _saveArtistImage(ArtistRepository repository) {
   return (Store<AppState> store, dynamic action, NextDispatcher next) {
-    repository
-        .saveImage(store.state, action.path, action.type)
-        .then((artist) {
+    repository.saveImage(store.state, action.path, action.type).then((artist) {
       store.dispatch(SaveArtistSuccess(artist));
       action.completer.complete(null);
     }).catchError((Object error) {
@@ -198,18 +192,21 @@ Middleware<AppState> _followArtist(ArtistRepository repository) {
     repository
         .followArtist(store.state, artist, artistFollowing: artistFollowing)
         .then((data) {
-      store.dispatch(FollowArtistSuccess(
-          artistFollowing: data, unfollow: artistFollowing != null));
-      if (action.completer != null) {
-        action.completer.complete(null);
-      }
-    }).catchError((Object error) {
-      print(error);
-      store.dispatch(FollowArtistFailure(error));
-      if (action.completer != null) {
-        action.completer.completeError(error);
-      }
-    });
+          store.dispatch(FollowArtistSuccess(
+            artistFollowing: data,
+            unfollow: artistFollowing != null,
+          ));
+          if (action.completer != null) {
+            action.completer.complete(null);
+          }
+        })
+        .catchError((Object error) {
+          print(error);
+          store.dispatch(FollowArtistFailure(error));
+          if (action.completer != null) {
+            action.completer.completeError(error);
+          }
+        });
 
     next(action);
   };

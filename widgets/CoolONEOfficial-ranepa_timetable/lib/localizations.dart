@@ -7,8 +7,9 @@ import 'l10n/messages_all.dart';
 
 class AppLocalizations {
   static Future<AppLocalizations> load(Locale locale) {
-    final String name =
-        locale.countryCode == null ? locale.languageCode : locale.toString();
+    final String name = locale.countryCode == null
+        ? locale.languageCode
+        : locale.toString();
     final String localeName = Intl.canonicalizedLocale(name);
 
     return initializeMessages(localeName).then((bool _) {
@@ -24,19 +25,13 @@ class AppLocalizations {
   // App title
 
   String get title {
-    return Intl.message(
-      'RANEPA (Timetable)',
-      name: 'title',
-    );
+    return Intl.message('RANEPA (Timetable)', name: 'title');
   }
 
   // Error message
 
   String get errorMessage {
-    return Intl.message(
-      'Something went wrong',
-      name: 'errorMessage',
-    );
+    return Intl.message('Something went wrong', name: 'errorMessage');
   }
 
   String get sendError {
@@ -79,155 +74,95 @@ class AppLocalizations {
   }
 
   String get noLessonsFound {
-    return Intl.message(
-      'No lessons found',
-      name: 'noLessonsFound',
-    );
+    return Intl.message('No lessons found', name: 'noLessonsFound');
   }
 
   // No network connection message
 
   String get noNetworkConnection {
-    return Intl.message(
-      'No network connection',
-      name: 'noNetworkConnection',
-    );
+    return Intl.message('No network connection', name: 'noNetworkConnection');
   }
 
   // No cache message
 
   String get noCache {
-    return Intl.message(
-      'Schedule not loaded',
-      name: 'noCache',
-    );
+    return Intl.message('Schedule not loaded', name: 'noCache');
   }
 
   // Free day message
 
   String get freeDay {
-    return Intl.message(
-      'Free day',
-      name: 'freeDay',
-    );
+    return Intl.message('Free day', name: 'freeDay');
   }
 
   // Toolbar tips
 
   String get searchTip {
-    return Intl.message(
-      'Search',
-      name: 'searchTip',
-    );
+    return Intl.message('Search', name: 'searchTip');
   }
 
   String get refreshTip {
-    return Intl.message(
-      'Refresh shedule',
-      name: 'refreshTip',
-    );
+    return Intl.message('Refresh shedule', name: 'refreshTip');
   }
 
   String get alarmTip {
-    return Intl.message(
-      'Add to alarm clock',
-      name: 'alarmTip',
-    );
+    return Intl.message('Add to alarm clock', name: 'alarmTip');
   }
 
   String get calendarTip {
-    return Intl.message(
-      'Add to calendar',
-      name: 'calendarTip',
-    );
+    return Intl.message('Add to calendar', name: 'calendarTip');
   }
 
   String get searchResults {
-    return Intl.message(
-      'Web search results',
-      name: 'searchResults',
-    );
+    return Intl.message('Web search results', name: 'searchResults');
   }
 
   // Lesson types titles
 
   String get practice {
-    return Intl.message(
-      'Practice',
-      name: 'practice',
-    );
+    return Intl.message('Practice', name: 'practice');
   }
 
   String get lecture {
-    return Intl.message(
-      'Lecture',
-      name: 'lecture',
-    );
+    return Intl.message('Lecture', name: 'lecture');
   }
 
   String get credit {
-    return Intl.message(
-      'Reception of credit',
-      name: 'credit',
-    );
+    return Intl.message('Reception of credit', name: 'credit');
   }
 
   String get exam {
-    return Intl.message(
-      'Exam',
-      name: 'exam',
-    );
+    return Intl.message('Exam', name: 'exam');
   }
 
   String get examConsultation {
-    return Intl.message(
-      'Exam consultation',
-      name: 'examConsultation',
-    );
+    return Intl.message('Exam consultation', name: 'examConsultation');
   }
 
   String get receptionExamination {
-    return Intl.message(
-      'Reception examination',
-      name: 'receptionExamination',
-    );
+    return Intl.message('Reception examination', name: 'receptionExamination');
   }
 
   // Lessons titles
 
   String get groupEconomics {
-    return Intl.message(
-      'Economics',
-      name: 'groupEconomics',
-    );
+    return Intl.message('Economics', name: 'groupEconomics');
   }
 
   String get groupInformatics {
-    return Intl.message(
-      'Informatics',
-      name: 'groupInformatics',
-    );
+    return Intl.message('Informatics', name: 'groupInformatics');
   }
 
   String get loading {
-    return Intl.message(
-      'Loading',
-      name: 'loading',
-    );
+    return Intl.message('Loading', name: 'loading');
   }
 
   String get math {
-    return Intl.message(
-      'Mathematics',
-      name: 'math',
-    );
+    return Intl.message('Mathematics', name: 'math');
   }
 
   String get discMath {
-    return Intl.message(
-      'Discrete math',
-      name: 'discMath',
-    );
+    return Intl.message('Discrete math', name: 'discMath');
   }
 
   String get statMath {
@@ -238,171 +173,99 @@ class AppLocalizations {
   }
 
   String get economics {
-    return Intl.message(
-      'Economic theory',
-      name: 'economics',
-    );
+    return Intl.message('Economic theory', name: 'economics');
   }
 
   String get informationTheory {
-    return Intl.message(
-      'Information theory',
-      name: 'informationTheory',
-    );
+    return Intl.message('Information theory', name: 'informationTheory');
   }
 
   String get philosophy {
-    return Intl.message(
-      'Philosophy',
-      name: 'philosophy',
-    );
+    return Intl.message('Philosophy', name: 'philosophy');
   }
 
   String get speechCulture {
-    return Intl.message(
-      'Culture of Speech',
-      name: 'speechCulture',
-    );
+    return Intl.message('Culture of Speech', name: 'speechCulture');
   }
 
   String get physics {
-    return Intl.message(
-      'Physics',
-      name: 'physics',
-    );
+    return Intl.message('Physics', name: 'physics');
   }
 
   String get chemistry {
-    return Intl.message(
-      'Chemistry',
-      name: 'chemistry',
-    );
+    return Intl.message('Chemistry', name: 'chemistry');
   }
 
   String get literature {
-    return Intl.message(
-      'Literature',
-      name: 'literature',
-    );
+    return Intl.message('Literature', name: 'literature');
   }
 
   String get english {
-    return Intl.message(
-      'English',
-      name: 'english',
-    );
+    return Intl.message('English', name: 'english');
   }
 
   String get informatics {
-    return Intl.message(
-      'Informatics',
-      name: 'informatics',
-    );
+    return Intl.message('Informatics', name: 'informatics');
   }
 
   String get geography {
-    return Intl.message(
-      'Geography',
-      name: 'geography',
-    );
+    return Intl.message('Geography', name: 'geography');
   }
 
   String get history {
-    return Intl.message(
-      'History',
-      name: 'history',
-    );
+    return Intl.message('History', name: 'history');
   }
 
   String get lifeSafety {
-    return Intl.message(
-      'Basics of life safety',
-      name: 'lifeSafety',
-    );
+    return Intl.message('Basics of life safety', name: 'lifeSafety');
   }
 
   String get biology {
-    return Intl.message(
-      'Biology',
-      name: 'biology',
-    );
+    return Intl.message('Biology', name: 'biology');
   }
 
   String get socialStudies {
-    return Intl.message(
-      'Social Studies',
-      name: 'socialStudies',
-    );
+    return Intl.message('Social Studies', name: 'socialStudies');
   }
 
   String get physicalCulture {
-    return Intl.message(
-      'Physical Culture',
-      name: 'physicalCulture',
-    );
+    return Intl.message('Physical Culture', name: 'physicalCulture');
   }
 
   String get legalSupport {
-    return Intl.message(
-      'Legal support',
-      name: 'legalSupport',
-    );
+    return Intl.message('Legal support', name: 'legalSupport');
   }
 
   String get ethics {
-    return Intl.message(
-      'Ethics',
-      name: 'ethics',
-    );
+    return Intl.message('Ethics', name: 'ethics');
   }
 
   String get management {
-    return Intl.message(
-      'Management',
-      name: 'management',
-    );
+    return Intl.message('Management', name: 'management');
   }
 
   String get softwareDevelopment {
-    return Intl.message(
-      'Software Development',
-      name: 'softwareDevelopment',
-    );
+    return Intl.message('Software Development', name: 'softwareDevelopment');
   }
 
   String get computerArchitecture {
-    return Intl.message(
-      'Сomputer Architecture',
-      name: 'computerArchitecture',
-    );
+    return Intl.message('Сomputer Architecture', name: 'computerArchitecture');
   }
 
   String get operatingSystems {
-    return Intl.message(
-      'Operating Systems',
-      name: 'operatingSystems',
-    );
+    return Intl.message('Operating Systems', name: 'operatingSystems');
   }
 
   String get computerGraphic {
-    return Intl.message(
-      'Computer Graphic',
-      name: 'computerGraphic',
-    );
+    return Intl.message('Computer Graphic', name: 'computerGraphic');
   }
 
   String get projectDevelopment {
-    return Intl.message(
-      'Project Development',
-      name: 'projectDevelopment',
-    );
+    return Intl.message('Project Development', name: 'projectDevelopment');
   }
 
   String get databases {
-    return Intl.message(
-      'Databases',
-      name: 'databases',
-    );
+    return Intl.message('Databases', name: 'databases');
   }
 
   String get documentManagementSupport {
@@ -413,128 +276,77 @@ class AppLocalizations {
   }
 
   String get accounting {
-    return Intl.message(
-      'Accounting',
-      name: 'accounting',
-    );
+    return Intl.message('Accounting', name: 'accounting');
   }
 
   String get accountingAnalysis {
-    return Intl.message(
-      'Accounting analysis',
-      name: 'accountingAnalysis',
-    );
+    return Intl.message('Accounting analysis', name: 'accountingAnalysis');
   }
 
   String get budgetCalculations {
-    return Intl.message(
-      'Budget calculations',
-      name: 'budgetCalculations',
-    );
+    return Intl.message('Budget calculations', name: 'budgetCalculations');
   }
 
   String get taxation {
-    return Intl.message(
-      'Taxation',
-      name: 'taxation',
-    );
+    return Intl.message('Taxation', name: 'taxation');
   }
 
   String get businessPlanning {
-    return Intl.message(
-      'Business planning',
-      name: 'businessPlanning',
-    );
+    return Intl.message('Business planning', name: 'businessPlanning');
   }
 
   String get inventory {
-    return Intl.message(
-      'Inventarization',
-      name: 'inventory',
-    );
+    return Intl.message('Inventarization', name: 'inventory');
   }
 
   // Days of week
 
   String get monday {
-    return Intl.message(
-      'Mo',
-      name: 'monday',
-    );
+    return Intl.message('Mo', name: 'monday');
   }
 
   String get tuesday {
-    return Intl.message(
-      'Tu',
-      name: 'tuesday',
-    );
+    return Intl.message('Tu', name: 'tuesday');
   }
 
   String get wednesday {
-    return Intl.message(
-      'We',
-      name: 'wednesday',
-    );
+    return Intl.message('We', name: 'wednesday');
   }
 
   String get thursday {
-    return Intl.message(
-      'Th',
-      name: 'thursday',
-    );
+    return Intl.message('Th', name: 'thursday');
   }
 
   String get friday {
-    return Intl.message(
-      'Fr',
-      name: 'friday',
-    );
+    return Intl.message('Fr', name: 'friday');
   }
 
   String get saturday {
-    return Intl.message(
-      'Sa',
-      name: 'saturday',
-    );
+    return Intl.message('Sa', name: 'saturday');
   }
 
   // Drawer titles
 
   String get timetable {
-    return Intl.message(
-      'Timetable',
-      name: 'timetable',
-    );
+    return Intl.message('Timetable', name: 'timetable');
   }
 
   String get prefs {
-    return Intl.message(
-      'Preferences',
-      name: 'prefs',
-    );
+    return Intl.message('Preferences', name: 'prefs');
   }
 
   String get about {
-    return Intl.message(
-      'About',
-      name: 'about',
-    );
+    return Intl.message('About', name: 'about');
   }
 
   String get close {
-    return Intl.message(
-      'Close',
-      name: 'close',
-    );
+    return Intl.message('Close', name: 'close');
   }
 
   // Drawer preferences buttons
 
   String get themeTitle {
-    return Intl.message(
-      'Dark mode',
-      name: 'themeTitle',
-    );
+    return Intl.message('Dark mode', name: 'themeTitle');
   }
 
   String get themeDescription {
@@ -545,10 +357,7 @@ class AppLocalizations {
   }
 
   String get themeAccentTitle {
-    return Intl.message(
-      'Theme accent color',
-      name: 'themeAccentTitle',
-    );
+    return Intl.message('Theme accent color', name: 'themeAccentTitle');
   }
 
   String get themeAccentDescription {
@@ -559,10 +368,7 @@ class AppLocalizations {
   }
 
   String get groupTitle {
-    return Intl.message(
-      'Group/teacher',
-      name: 'groupTitle',
-    );
+    return Intl.message('Group/teacher', name: 'groupTitle');
   }
 
   String get groupDescription {
@@ -587,10 +393,7 @@ class AppLocalizations {
   }
 
   String get widgetTranslucentTitle {
-    return Intl.message(
-      'Widget translucency',
-      name: 'widgetTranslucentTitle',
-    );
+    return Intl.message('Widget translucency', name: 'widgetTranslucentTitle');
   }
 
   String get widgetTranslucentDescription {
@@ -601,10 +404,7 @@ class AppLocalizations {
   }
 
   String get roomLocationStyleTitle {
-    return Intl.message(
-      'Room location style',
-      name: 'roomLocationStyleTitle',
-    );
+    return Intl.message('Room location style', name: 'roomLocationStyleTitle');
   }
 
   String get roomLocationStyleDescriptionIcon {
@@ -622,24 +422,15 @@ class AppLocalizations {
   }
 
   String get roomLocationStyleIcon {
-    return Intl.message(
-      'Icon',
-      name: 'roomLocationStyleIcon',
-    );
+    return Intl.message('Icon', name: 'roomLocationStyleIcon');
   }
 
   String get roomLocationStyleText {
-    return Intl.message(
-      'Text',
-      name: 'roomLocationStyleText',
-    );
+    return Intl.message('Text', name: 'roomLocationStyleText');
   }
 
   String get siteApiTitle {
-    return Intl.message(
-      'Site API',
-      name: 'siteApiTitle',
-    );
+    return Intl.message('Site API', name: 'siteApiTitle');
   }
 
   String get siteApiDescription {
@@ -650,24 +441,15 @@ class AppLocalizations {
   }
 
   String get siteApiSite {
-    return Intl.message(
-      'Official site API',
-      name: 'siteApiSite',
-    );
+    return Intl.message('Official site API', name: 'siteApiSite');
   }
 
   String get siteApiOldApp {
-    return Intl.message(
-      'Old app API',
-      name: 'siteApiOldApp',
-    );
+    return Intl.message('Old app API', name: 'siteApiOldApp');
   }
 
   String get siteApiNewApp {
-    return Intl.message(
-      'New app API',
-      name: 'siteApiNewApp',
-    );
+    return Intl.message('New app API', name: 'siteApiNewApp');
   }
 
   String get optimizedLessonTitlesTitle {
@@ -685,56 +467,35 @@ class AppLocalizations {
   }
 
   String get dayStyleTitle {
-    return Intl.message(
-      'Date display format',
-      name: 'dayStyleTitle',
-    );
+    return Intl.message('Date display format', name: 'dayStyleTitle');
   }
 
   String get dayStyleDescription {
-    return Intl.message(
-      'Date display style',
-      name: 'dayStyleDescription',
-    );
+    return Intl.message('Date display style', name: 'dayStyleDescription');
   }
 
   String get dayStyleWeekday {
-    return Intl.message(
-      'Day of week',
-      name: 'dayStyleWeekday',
-    );
+    return Intl.message('Day of week', name: 'dayStyleWeekday');
   }
 
   String get dayStyleDate {
-    return Intl.message(
-      'Date',
-      name: 'dayStyleDate',
-    );
+    return Intl.message('Date', name: 'dayStyleDate');
   }
 
   // Themes titles
 
   String get themeDark {
-    return Intl.message(
-      'Dark',
-      name: 'themeDark',
-    );
+    return Intl.message('Dark', name: 'themeDark');
   }
 
   String get themeLight {
-    return Intl.message(
-      'Light',
-      name: 'themeLight',
-    );
+    return Intl.message('Light', name: 'themeLight');
   }
 
   // Intro strings
 
   String get introGroupTitle {
-    return Intl.message(
-      'Group or teacher',
-      name: 'introGroupTitle',
-    );
+    return Intl.message('Group or teacher', name: 'introGroupTitle');
   }
 
   String get introGroupDescription {
@@ -745,10 +506,7 @@ class AppLocalizations {
   }
 
   String get introThemeTitle {
-    return Intl.message(
-      'Color scheme',
-      name: 'introThemeTitle',
-    );
+    return Intl.message('Color scheme', name: 'introThemeTitle');
   }
 
   String get introThemeDescription {
@@ -759,10 +517,7 @@ class AppLocalizations {
   }
 
   String get introWelcomeTitle {
-    return Intl.message(
-      'Welcome',
-      name: 'introWelcomeTitle',
-    );
+    return Intl.message('Welcome', name: 'introWelcomeTitle');
   }
 
   String get introWelcomeDescription {
@@ -779,7 +534,6 @@ class AppLocalizations {
     );
   }
 
-
   String get introWelcomeSupportBy {
     return Intl.message(
       'with the support of trade Union Nizhny Novgorod RANEPA',
@@ -788,10 +542,7 @@ class AppLocalizations {
   }
 
   String get introTimetableTitle {
-    return Intl.message(
-      'Shedule example',
-      name: 'introTimetableTitle',
-    );
+    return Intl.message('Shedule example', name: 'introTimetableTitle');
   }
 
   String get introTimetableDescription {
@@ -804,24 +555,15 @@ class AppLocalizations {
   // Room location titles
 
   String get roomLocationAcademy {
-    return Intl.message(
-      'Academy',
-      name: 'roomLocationAcademy',
-    );
+    return Intl.message('Academy', name: 'roomLocationAcademy');
   }
 
   String get roomLocationStudyHostel {
-    return Intl.message(
-      'Study hostel',
-      name: 'roomLocationStudyHostel',
-    );
+    return Intl.message('Study hostel', name: 'roomLocationStudyHostel');
   }
 
   String get roomLocationHotel {
-    return Intl.message(
-      'Hotel (St. Pushkin, 8)',
-      name: 'roomLocationHotel',
-    );
+    return Intl.message('Hotel (St. Pushkin, 8)', name: 'roomLocationHotel');
   }
 }
 

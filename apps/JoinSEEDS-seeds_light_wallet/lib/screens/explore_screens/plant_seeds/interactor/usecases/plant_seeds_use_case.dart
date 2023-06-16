@@ -6,6 +6,9 @@ class PlantSeedsUseCase {
   final ProfileRepository _profileRepository = ProfileRepository();
 
   Future<Result> run({required double amount}) {
-    return _profileRepository.plantSeeds(amount: amount, accountName: settingsStorage.accountName);
+    return _profileRepository.plantSeeds(
+      amount: amount,
+      accountName: settingsStorage.accountName,
+    );
   }
 }

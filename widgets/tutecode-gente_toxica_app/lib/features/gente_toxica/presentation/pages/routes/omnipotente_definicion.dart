@@ -12,10 +12,7 @@ class OmnipotenteDefinicion extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.yellow[500],
         elevation: 0,
-        title: Text('Definición',
-          style: titleAppBar,
-          textScaleFactor: 1.0,
-        ),
+        title: Text('Definición', style: titleAppBar, textScaleFactor: 1.0),
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -27,7 +24,7 @@ class OmnipotenteDefinicion extends StatelessWidget {
                 textScaleFactor: kTextScale,
                 text: TextSpan(
                   text:
-                  'El omnipotente todo lo puede, todo lo quiere, no acepta un «no». '
+                      'El omnipotente todo lo puede, todo lo quiere, no acepta un «no». '
                       'Sin embargo, si bien está muy bien querer avanzar en la vida, '
                       'querer todo muchas veces es una posición infantil. '
                       'Y nos impide negociar, priorizar y escoger. '

@@ -16,9 +16,7 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
     return AppBar(
       centerTitle: true,
       title: Text(title),
-      actions: [
-        if (showShoppingCartButton) const ShoppingCartButton(),
-      ],
+      actions: [if (showShoppingCartButton) const ShoppingCartButton()],
     );
   }
 

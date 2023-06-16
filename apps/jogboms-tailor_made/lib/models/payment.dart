@@ -6,7 +6,9 @@ import 'package:uuid/uuid.dart';
 
 part 'payment.g.dart';
 
-abstract class PaymentModel with ModelInterface implements Built<PaymentModel, PaymentModelBuilder> {
+abstract class PaymentModel
+    with ModelInterface
+    implements Built<PaymentModel, PaymentModelBuilder> {
   factory PaymentModel([void updates(PaymentModelBuilder b)]) = _$PaymentModel;
 
   PaymentModel._();
@@ -30,9 +32,13 @@ abstract class PaymentModel with ModelInterface implements Built<PaymentModel, P
   DateTime get createdAt;
 
   @override
-  Map<String, dynamic> toMap() => serializers.serializeWith(PaymentModel.serializer, this);
+  Map<String, dynamic> toMap() => serializers.serializeWith(
+    PaymentModel.serializer,
+    this,
+  );
 
-  static PaymentModel fromJson(Map<String, dynamic> map) => serializers.deserializeWith(PaymentModel.serializer, map);
+  static PaymentModel fromJson(Map<String, dynamic> map) => serializers
+      .deserializeWith(PaymentModel.serializer, map);
 
   static Serializer<PaymentModel> get serializer => _$paymentModelSerializer;
 }

@@ -58,9 +58,11 @@ class TrackingPeriodicWorker implements Worker {
     final trackNumbers = res1.when(
       (list) => list.map((info) => info.trackNumber).toList(),
       error: (e) {
-        e.when(database: (e, stackTrace) {
-          log().e('Unable to get track list', e, stackTrace);
-        });
+        e.when(
+          database: (e, stackTrace) {
+            log().e('Unable to get track list', e, stackTrace);
+          },
+        );
         return null;
       },
     );
@@ -77,9 +79,11 @@ class TrackingPeriodicWorker implements Worker {
     final latestTrackingInfo = res2.when(
       (list) => list,
       error: (e) {
-        e.when(database: (e, stackTrace) {
-          log().e('Unable to get latest tracking info list', e, stackTrace);
-        });
+        e.when(
+          database: (e, stackTrace) {
+            log().e('Unable to get latest tracking info list', e, stackTrace);
+          },
+        );
         return null;
       },
     );
@@ -94,9 +98,9 @@ class TrackingPeriodicWorker implements Worker {
       late final Duration nextEnqueueTime;
       late final WorkResult result;
 
-      final oldestTrackNumbers = _getOldestTrackingInfo(latestTrackingInfo)
-          .map((info) => info.trackNumber)
-          .toList();
+      final oldestTrackNumbers = _getOldestTrackingInfo(latestTrackingInfo).map(
+        (info) => info.trackNumber,
+      ).toList();
 
       if (oldestTrackNumbers.isEmpty) {
         result = const WorkResult.success();
@@ -170,13 +174,11 @@ class TrackingPeriodicWorker implements Worker {
           (result) => result.when(
             (list) => list,
             error: (e) {
-              e.when(database: (e, stackTrace) {
-                log().e(
-                  'Unable to get track service list',
-                  e,
-                  stackTrace,
-                );
-              });
+              e.when(
+                database: (e, stackTrace) {
+                  log().e('Unable to get track service list', e, stackTrace);
+                },
+              );
               return null;
             },
           ),

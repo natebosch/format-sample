@@ -14,17 +14,16 @@ class SignalChartView extends StatefulWidget {
 }
 
 class _SignalChartViewState extends State<SignalChartView> {
-  var gradientColors = const [
-    Color(0xff23b6e6),
-    Color(0xff02d39a),
-  ];
+  var gradientColors = const [Color(0xff23b6e6), Color(0xff02d39a)];
 
   @override
   Widget build(BuildContext context) {
     return StoreConnector<AppState, SignalChartViewModel>(
       distinct: true,
-      converter: (store) =>
-          SignalChartViewModel.fromStore(store, MessageProvider.of(context)),
+      converter: (store) => SignalChartViewModel.fromStore(
+        store,
+        MessageProvider.of(context),
+      ),
       builder: (context, viewModel) {
         var screenSize = MediaQuery.of(context).size;
         return Center(
@@ -40,7 +39,11 @@ class _SignalChartViewState extends State<SignalChartView> {
                 ),
                 child: Padding(
                   padding: const EdgeInsets.only(
-                      right: 18.0, left: 12.0, top: 10, bottom: 12),
+                    right: 18.0,
+                    left: 12.0,
+                    top: 10,
+                    bottom: 12,
+                  ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: <Widget>[
@@ -48,16 +51,17 @@ class _SignalChartViewState extends State<SignalChartView> {
                         alignment: Alignment.center,
                         padding: EdgeInsets.only(bottom: 5),
                         child: Text(
-                            viewModel.requestTimeString() +
-                                '  ' +
-                                (screenSize.width >= 450
-                                    ? viewModel.averageTimeString()
-                                    : ''),
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.normal,
-                              fontSize: 15,
-                            )),
+                          viewModel.requestTimeString() +
+                              '  ' +
+                              (screenSize.width >= 450
+                                  ? viewModel.averageTimeString()
+                                  : ''),
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.normal,
+                            fontSize: 15,
+                          ),
+                        ),
                       ),
                       Expanded(
                         flex: 1,
@@ -83,9 +87,7 @@ class _SignalChartViewState extends State<SignalChartView> {
                             ),
                             titlesData: FlTitlesData(
                               show: true,
-                              bottomTitles: SideTitles(
-                                showTitles: false,
-                              ),
+                              bottomTitles: SideTitles(showTitles: false),
                               leftTitles: SideTitles(
                                 showTitles: true,
                                 textStyle: TextStyle(
@@ -101,16 +103,17 @@ class _SignalChartViewState extends State<SignalChartView> {
                               ),
                             ),
                             borderData: FlBorderData(
-                                show: true,
-                                border: Border.all(
-                                    color: Color(0xff37434d), width: 1)),
+                              show: true,
+                              border: Border.all(
+                                color: Color(0xff37434d),
+                                width: 1,
+                              ),
+                            ),
                             minX: 0,
                             maxX: signalChartPoints.toDouble() - 1,
                             minY: 0,
                             maxY: viewModel.useDb ? 16 : 100,
-                            lineBarsData: [
-                              _getChartData(viewModel),
-                            ],
+                            lineBarsData: [_getChartData(viewModel)],
                           ),
                           swapAnimationDuration:
                               const Duration(milliseconds: 0),
@@ -160,9 +163,7 @@ class _SignalChartViewState extends State<SignalChartView> {
       colors: gradientColors,
       barWidth: 3,
       isStrokeCapRound: true,
-      dotData: FlDotData(
-        show: false,
-      ),
+      dotData: FlDotData(show: false),
       belowBarData: BarAreaData(
         show: true,
         colors: gradientColors.map((color) => color.withOpacity(0.3)).toList(),

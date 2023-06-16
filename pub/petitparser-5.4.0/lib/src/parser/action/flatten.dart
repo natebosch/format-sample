@@ -41,8 +41,10 @@ class FlattenParser<R> extends DelegateParser<R, String> {
     } else {
       final result = delegate.parseOn(context);
       if (result.isSuccess) {
-        final output =
-            context.buffer.substring(context.position, result.position);
+        final output = context.buffer.substring(
+          context.position,
+          result.position,
+        );
         return result.success(output);
       }
       return result.failure(result.message);
@@ -50,8 +52,10 @@ class FlattenParser<R> extends DelegateParser<R, String> {
   }
 
   @override
-  int fastParseOn(String buffer, int position) =>
-      delegate.fastParseOn(buffer, position);
+  int fastParseOn(String buffer, int position) => delegate.fastParseOn(
+    buffer,
+    position,
+  );
 
   @override
   bool hasEqualProperties(FlattenParser<R> other) =>

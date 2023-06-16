@@ -11,12 +11,13 @@ class myTextField extends StatelessWidget {
   bool? isStringName = true;
   TextInputType keyboardType;
 
-  myTextField(
-      {this.controllerName,
-      this.func,
-      this.isStringName,
-      this.control,
-      required this.keyboardType});
+  myTextField({
+    this.controllerName,
+    this.func,
+    this.isStringName,
+    this.control,
+    required this.keyboardType,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +30,7 @@ class myTextField extends StatelessWidget {
         decorationColor: textColor,
       ),
       inputFormatters: <TextInputFormatter>[
-        FilteringTextInputFormatter.digitsOnly
+        FilteringTextInputFormatter.digitsOnly,
       ],
       textAlign: TextAlign.center,
       cursorColor: Colors.grey,

@@ -19,25 +19,24 @@ class EditDailyButton extends StatelessWidget {
         style: ElevatedButton.styleFrom(
           primary: AppColors.purple,
           elevation: 5.0,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(80.0),
-          ),
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(80.0)),
         ),
         onPressed: () {
           showDialog(
             barrierDismissible: false,
             context: Get.context!,
             builder: (context) => CustomDialog(
-              isDoubleAction: true,
-              title: 'editQuestionTitle'.tr,
-              content: 'editQuestion'.tr,
-              actionText: 'yes'.tr,
-              actionColor: Colors.green,
-              action: () => closePopupAndPushToRecording(),
-              action2Text: 'no'.tr,
-              action2Color: Colors.red,
-              action2: () => Get.back(),
-            ),
+                  isDoubleAction: true,
+                  title: 'editQuestionTitle'.tr,
+                  content: 'editQuestion'.tr,
+                  actionText: 'yes'.tr,
+                  actionColor: Colors.green,
+                  action: () => closePopupAndPushToRecording(),
+                  action2Text: 'no'.tr,
+                  action2Color: Colors.red,
+                  action2: () => Get.back(),
+                ),
           );
         },
         child: Row(

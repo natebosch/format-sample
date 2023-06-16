@@ -23,15 +23,18 @@ class InviteScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => InviteBloc(BlocProvider.of<RatesBloc>(context).state)..add(const LoadUserBalance()),
+      create: (context) => InviteBloc(BlocProvider.of<RatesBloc>(context).state)
+        ..add(const LoadUserBalance()),
       child: Scaffold(
         appBar: AppBar(
           title: Text('Invite'.i18n),
           actions: [
             IconButton(
-              onPressed: () => NavigationService.of(context).navigateTo(Routes.manageInvites),
+              onPressed: () => NavigationService.of(context).navigateTo(
+                Routes.manageInvites,
+              ),
               icon: const Icon(Icons.settings),
-            )
+            ),
           ],
         ),
         body: BlocConsumer<InviteBloc, InviteState>(
@@ -52,7 +55,8 @@ class InviteScreen extends StatelessWidget {
               );
             }
             if (pageCommand is ShowErrorMessage) {
-              SnackBarInfo(pageCommand.message, ScaffoldMessenger.of(context)).show();
+              SnackBarInfo(pageCommand.message, ScaffoldMessenger.of(context))
+                  .show();
             }
           },
           builder: (context, state) {
@@ -70,21 +74,30 @@ class InviteScreen extends StatelessWidget {
                       SingleChildScrollView(
                         child: Container(
                           padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                          height: MediaQuery.of(context).size.height - Scaffold.of(context).appBarMaxHeight!,
+                          height: MediaQuery.of(context).size.height -
+                              Scaffold.of(context).appBarMaxHeight!,
                           child: Column(
                             children: [
                               const SizedBox(height: 16),
-                              Text('Invite amount'.i18n, style: Theme.of(context).textTheme.headline6),
+                              Text(
+                                'Invite amount'.i18n,
+                                style: Theme.of(context).textTheme.headline6,
+                              ),
                               const SizedBox(height: 16),
                               AmountEntryWidget(
                                 tokenDataModel: TokenDataModel(0),
                                 onValueChange: (value) {
-                                  BlocProvider.of<InviteBloc>(context).add(OnAmountChange(amountChanged: value));
+                                  BlocProvider.of<InviteBloc>(context).add(
+                                    OnAmountChange(amountChanged: value),
+                                  );
                                 },
                                 autoFocus: state.isAutoFocus,
                               ),
                               const SizedBox(height: 24),
-                              AlertInputValue(state.alertMessage ?? '', isVisible: state.alertMessage != null),
+                              AlertInputValue(
+                                state.alertMessage ?? '',
+                                isVisible: state.alertMessage != null,
+                              ),
                               const SizedBox(height: 24),
                               BalanceRow(
                                 label: 'Available Balance'.i18n,
@@ -102,8 +115,9 @@ class InviteScreen extends StatelessWidget {
                           child: FlatButtonLong(
                             title: 'Create invite'.i18n,
                             enabled: state.isCreateInviteButtonEnabled,
-                            onPressed: () =>
-                                BlocProvider.of<InviteBloc>(context).add(const OnCreateInviteButtonTapped()),
+                            onPressed: () => BlocProvider.of<InviteBloc>(
+                              context,
+                            ).add(const OnCreateInviteButtonTapped()),
                           ),
                         ),
                       ),

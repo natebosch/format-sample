@@ -22,12 +22,7 @@ class _ExploreState extends State<Explore> {
     return Consumer<HomeProvider>(
       builder: (BuildContext context, HomeProvider homeProvider, Widget child) {
         return Scaffold(
-          appBar: AppBar(
-            centerTitle: true,
-            title: Text(
-              'Explore',
-            ),
-          ),
+          appBar: AppBar(centerTitle: true, title: Text('Explore')),
           body: BodyBuilder(
             apiRequestStatus: homeProvider.apiRequestStatus,
             child: _buildBodyList(homeProvider),
@@ -73,10 +68,7 @@ class _ExploreState extends State<Explore> {
           Flexible(
             child: Text(
               '${link.title}',
-              style: TextStyle(
-                fontSize: 20.0,
-                fontWeight: FontWeight.w500,
-              ),
+              style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.w500),
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
             ),
@@ -85,10 +77,7 @@ class _ExploreState extends State<Explore> {
             onTap: () {
               MyRouter.pushPage(
                 context,
-                Genre(
-                  title: '${link.title}',
-                  url: link.href,
-                ),
+                Genre(title: '${link.title}', url: link.href),
               );
             },
             child: Text(
@@ -124,24 +113,16 @@ class _ExploreState extends State<Explore> {
                   Entry entry = category.feed.entry[index];
 
                   return Padding(
-                    padding: EdgeInsets.symmetric(
-                      horizontal: 5.0,
-                      vertical: 10.0,
-                    ),
-                    child: BookCard(
-                      img: entry.link[1].href,
-                      entry: entry,
-                    ),
+                    padding:
+                        EdgeInsets.symmetric(horizontal: 5.0, vertical: 10.0),
+                    child: BookCard(img: entry.link[1].href, entry: entry),
                   );
                 },
               ),
             ),
           );
         } else {
-          return Container(
-            height: 200.0,
-            child: LoadingWidget(),
-          );
+          return Container(height: 200.0, child: LoadingWidget());
         }
       },
     );

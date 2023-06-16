@@ -12,7 +12,9 @@ class JobList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (jobs == null || jobs.isEmpty) {
-      return const SliverFillRemaining(child: EmptyResultView(message: "No jobs available"));
+      return const SliverFillRemaining(
+        child: EmptyResultView(message: "No jobs available"),
+      );
     }
 
     return SliverPadding(

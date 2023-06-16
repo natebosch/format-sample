@@ -4,14 +4,17 @@ import 'package:seeds/datasource/remote/firebase/firebase_database_guardians_rep
 
 class ResetUserAccountUseCase {
   final GuardiansRepository _guardiansRepository = GuardiansRepository();
-  final FirebaseDatabaseGuardiansRepository _firebaseDatabaseGuardiansRepository =
-      FirebaseDatabaseGuardiansRepository();
+  final FirebaseDatabaseGuardiansRepository
+  _firebaseDatabaseGuardiansRepository = FirebaseDatabaseGuardiansRepository();
 
   Future<Result> run(String userAccount) async {
-    final result = await _guardiansRepository.claimRecoveredAccount(userAccount);
+    final result =
+        await _guardiansRepository.claimRecoveredAccount(userAccount);
 
     if (result.isValue) {
-      await _firebaseDatabaseGuardiansRepository.removeGuardianRecoveryStarted(userAccount);
+      await _firebaseDatabaseGuardiansRepository.removeGuardianRecoveryStarted(
+        userAccount,
+      );
     }
 
     return result;

@@ -453,8 +453,12 @@ class SizeTransition extends AnimatedWidget {
     return ClipRect(
       child: Align(
         alignment: alignment,
-        heightFactor: axis == Axis.vertical ? math.max(sizeFactor.value, 0.0) : null,
-        widthFactor: axis == Axis.horizontal ? math.max(sizeFactor.value, 0.0) : null,
+        heightFactor: axis == Axis.vertical
+            ? math.max(sizeFactor.value, 0.0)
+            : null,
+        widthFactor: axis == Axis.horizontal
+            ? math.max(sizeFactor.value, 0.0)
+            : null,
         child: child,
       ),
     );
@@ -522,7 +526,10 @@ class FadeTransition extends SingleChildRenderObjectWidget {
   }
 
   @override
-  void updateRenderObject(BuildContext context, RenderAnimatedOpacity renderObject) {
+  void updateRenderObject(
+    BuildContext context,
+    RenderAnimatedOpacity renderObject,
+  ) {
     renderObject
       ..opacity = opacity
       ..alwaysIncludeSemantics = alwaysIncludeSemantics;
@@ -532,7 +539,11 @@ class FadeTransition extends SingleChildRenderObjectWidget {
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties.add(DiagnosticsProperty<Animation<double>>('opacity', opacity));
-    properties.add(FlagProperty('alwaysIncludeSemantics', value: alwaysIncludeSemantics, ifTrue: 'alwaysIncludeSemantics'));
+    properties.add(FlagProperty(
+      'alwaysIncludeSemantics',
+      value: alwaysIncludeSemantics,
+      ifTrue: 'alwaysIncludeSemantics',
+    ));
   }
 }
 
@@ -564,7 +575,7 @@ class SliverFadeTransition extends SingleChildRenderObjectWidget {
     this.alwaysIncludeSemantics = false,
     Widget? sliver,
   }) : assert(opacity != null),
-      super(key: key, child: sliver);
+       super(key: key, child: sliver);
 
   /// The animation that controls the opacity of the sliver child.
   ///
@@ -593,7 +604,10 @@ class SliverFadeTransition extends SingleChildRenderObjectWidget {
   }
 
   @override
-  void updateRenderObject(BuildContext context, RenderSliverAnimatedOpacity renderObject) {
+  void updateRenderObject(
+    BuildContext context,
+    RenderSliverAnimatedOpacity renderObject,
+  ) {
     renderObject
       ..opacity = opacity
       ..alwaysIncludeSemantics = alwaysIncludeSemantics;
@@ -603,7 +617,11 @@ class SliverFadeTransition extends SingleChildRenderObjectWidget {
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties.add(DiagnosticsProperty<Animation<double>>('opacity', opacity));
-    properties.add(FlagProperty('alwaysIncludeSemantics', value: alwaysIncludeSemantics, ifTrue: 'alwaysIncludeSemantics'));
+    properties.add(FlagProperty(
+      'alwaysIncludeSemantics',
+      value: alwaysIncludeSemantics,
+      ifTrue: 'alwaysIncludeSemantics',
+    ));
   }
 }
 
@@ -618,7 +636,7 @@ class RelativeRectTween extends Tween<RelativeRect> {
   ///
   /// The [begin] and [end] properties may be null; the null value
   /// is treated as [RelativeRect.fill].
-  RelativeRectTween({ RelativeRect? begin, RelativeRect? end })
+  RelativeRectTween({RelativeRect? begin, RelativeRect? end})
     : super(begin: begin, end: end);
 
   /// Returns the value this variable has at the given animation clock value.
@@ -678,10 +696,7 @@ class PositionedTransition extends AnimatedWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Positioned.fromRelativeRect(
-      rect: rect.value,
-      child: child,
-    );
+    return Positioned.fromRelativeRect(rect: rect.value, child: child);
   }
 }
 
@@ -751,7 +766,10 @@ class RelativePositionedTransition extends AnimatedWidget {
 
   @override
   Widget build(BuildContext context) {
-    final RelativeRect offsets = RelativeRect.fromSize(rect.value ?? Rect.zero, size);
+    final RelativeRect offsets = RelativeRect.fromSize(
+      rect.value ?? Rect.zero,
+      size,
+    );
     return Positioned(
       top: offsets.top,
       right: offsets.right,
@@ -868,7 +886,8 @@ class AlignTransition extends AnimatedWidget {
        super(key: key, listenable: alignment);
 
   /// The animation that controls the child's alignment.
-  Animation<AlignmentGeometry> get alignment => listenable as Animation<AlignmentGeometry>;
+  Animation<AlignmentGeometry> get alignment =>
+      listenable as Animation<AlignmentGeometry>;
 
   /// If non-null, the child's width factor, see [Align.widthFactor].
   final double? widthFactor;

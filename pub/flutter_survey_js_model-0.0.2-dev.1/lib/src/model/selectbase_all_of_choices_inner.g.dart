@@ -10,19 +10,22 @@ class _$SelectbaseAllOfChoicesInner extends SelectbaseAllOfChoicesInner {
   @override
   final AnyOf anyOf;
 
-  factory _$SelectbaseAllOfChoicesInner(
-          [void Function(SelectbaseAllOfChoicesInnerBuilder)? updates]) =>
-      (new SelectbaseAllOfChoicesInnerBuilder()..update(updates))._build();
+  factory _$SelectbaseAllOfChoicesInner([
+    void Function(SelectbaseAllOfChoicesInnerBuilder)? updates,
+  ]) => (new SelectbaseAllOfChoicesInnerBuilder()..update(updates))._build();
 
   _$SelectbaseAllOfChoicesInner._({required this.anyOf}) : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        anyOf, r'SelectbaseAllOfChoicesInner', 'anyOf');
+      anyOf,
+      r'SelectbaseAllOfChoicesInner',
+      'anyOf',
+    );
   }
 
   @override
   SelectbaseAllOfChoicesInner rebuild(
-          void Function(SelectbaseAllOfChoicesInnerBuilder) updates) =>
-      (toBuilder()..update(updates)).build();
+    void Function(SelectbaseAllOfChoicesInnerBuilder) updates,
+  ) => (toBuilder()..update(updates)).build();
 
   @override
   SelectbaseAllOfChoicesInnerBuilder toBuilder() =>
@@ -52,8 +55,10 @@ class _$SelectbaseAllOfChoicesInner extends SelectbaseAllOfChoicesInner {
 
 class SelectbaseAllOfChoicesInnerBuilder
     implements
-        Builder<SelectbaseAllOfChoicesInner,
-            SelectbaseAllOfChoicesInnerBuilder> {
+        Builder<
+          SelectbaseAllOfChoicesInner,
+          SelectbaseAllOfChoicesInnerBuilder
+        > {
   _$SelectbaseAllOfChoicesInner? _$v;
 
   AnyOf? _anyOf;
@@ -90,8 +95,12 @@ class SelectbaseAllOfChoicesInnerBuilder
   _$SelectbaseAllOfChoicesInner _build() {
     final _$result = _$v ??
         new _$SelectbaseAllOfChoicesInner._(
-            anyOf: BuiltValueNullFieldError.checkNotNull(
-                anyOf, r'SelectbaseAllOfChoicesInner', 'anyOf'));
+          anyOf: BuiltValueNullFieldError.checkNotNull(
+            anyOf,
+            r'SelectbaseAllOfChoicesInner',
+            'anyOf',
+          ),
+        );
     replace(_$result);
     return _$result;
   }

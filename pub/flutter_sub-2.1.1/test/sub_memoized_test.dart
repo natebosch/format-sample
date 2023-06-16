@@ -9,28 +9,20 @@ void main() {
       final mock = MockBuilder<MockValue>();
 
       await tester.pumpWidget(
-        SubMemoized(
-          create: () => MockValue(),
-          builder: mock,
-        ),
+        SubMemoized(create: () => MockValue(), builder: mock),
       );
 
       await tester.pumpWidget(
-        SubMemoized(
-          create: () => MockValue(),
-          builder: mock,
-        ),
+        SubMemoized(create: () => MockValue(), builder: mock),
       );
 
       expect(mock.uargs.length, 1);
 
-      await tester.pumpWidget(
-        SubMemoized(
-          create: () => MockValue(),
-          keys: const [true],
-          builder: mock,
-        ),
-      );
+      await tester.pumpWidget(SubMemoized(
+        create: () => MockValue(),
+        keys: const [true],
+        builder: mock,
+      ));
 
       expect(mock.uargs.length, 2);
     });

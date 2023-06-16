@@ -28,14 +28,13 @@ abstract class CacheAwareBuilder<T> extends Builder {
     this.allowSyntaxErrors = false,
     required this.annotationName,
     this.options,
-  })  : _generatedExtension = generatedExtension,
-        buildExtensions = validatedBuildExtensionsFrom(
-            options != null ? Map.of(options.config) : null, {
-          '.dart': [
-            generatedExtension,
-            ...additionalOutputExtensions,
-          ]
-        }) {
+  }) : _generatedExtension = generatedExtension,
+       buildExtensions = validatedBuildExtensionsFrom(
+         options != null ? Map.of(options.config) : null,
+         {
+           '.dart': [generatedExtension, ...additionalOutputExtensions],
+         },
+       ) {
     if (_generatedExtension.isEmpty || !_generatedExtension.startsWith('.')) {
       throw ArgumentError.value(
         _generatedExtension,
@@ -61,7 +60,10 @@ abstract class CacheAwareBuilder<T> extends Builder {
       allowSyntaxErrors: allowSyntaxErrors,
     );
     if (!(await hasAnyTopLevelAnnotations(
-        buildStep.inputId, buildStep, unit))) {
+      buildStep.inputId,
+      buildStep,
+      unit,
+    ))) {
       return;
     }
 
@@ -90,23 +92,22 @@ abstract class CacheAwareBuilder<T> extends Builder {
   Future<String> onGenerateContent(BuildStep buildStep, T item);
 
   Future<T?> onResolve(
-      LibraryReader library, BuildStep buildStep, int stepHash);
+    LibraryReader library,
+    BuildStep buildStep,
+    int stepHash,
+  );
 
   String validateAndFormatDartCode(BuildStep buildStep, String generated) {
     try {
       return _formatter.format(generated);
     } catch (e, stack) {
-      log.severe(
-        '''
+      log.severe('''
 An error `${e.runtimeType}` occurred while formatting the generated source for
   `${buildStep.inputId.path}`
 which was output to
   `${buildStep.allowedOutputs.first.path}`.
 This may indicate an issue in the generator, the input source code, or in the
-source formatter.''',
-        e,
-        stack,
-      );
+source formatter.''', e, stack);
       return generated;
     }
   }
@@ -124,8 +125,11 @@ source formatter.''',
   String toString() =>
       'Generating $_generatedExtension: ${this.runtimeType.toString()}';
 
-  Future<bool> hasAnyTopLevelAnnotations(AssetId input, BuildStep buildStep,
-      [CompilationUnit? unit]) async {
+  Future<bool> hasAnyTopLevelAnnotations(
+    AssetId input,
+    BuildStep buildStep, [
+    CompilationUnit? unit,
+  ]) async {
     if (!await buildStep.canRead(input)) return false;
     final parsed = unit ?? await buildStep.resolver.compilationUnitFor(input);
     final partIds = <AssetId>[];

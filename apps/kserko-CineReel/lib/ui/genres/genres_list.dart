@@ -10,20 +10,21 @@ class GenreList extends StatelessWidget {
   final ListController scrollController;
   final List<TMDBMovieBasic> movies;
 
-  const GenreList(
-      {Key key,
-      @required ListController this.scrollController,
-      @required TMDBGenre this.genre,
-      @required List<TMDBMovieBasic> this.movies})
-      : super(key: key);
+  const GenreList({
+    Key key,
+    @required ListController this.scrollController,
+    @required TMDBGenre this.genre,
+    @required List<TMDBMovieBasic> this.movies,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: buildGenreList(),
-        appBar: AppBar(
-          title: GenrePill(genre: genre,fontSize: 23.0, allowTap: false,)
-        ));
+      body: buildGenreList(),
+      appBar: AppBar(
+        title: GenrePill(genre: genre, fontSize: 23.0, allowTap: false),
+      ),
+    );
   }
 
   Widget buildGenreList() {
