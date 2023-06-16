@@ -1,0 +1,3 @@
+enum Category {
+  LATEST, TOP, MONTHLY, HOT, RANDOM, FAVORITE
+}
