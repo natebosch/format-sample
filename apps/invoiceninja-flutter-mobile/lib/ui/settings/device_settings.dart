@@ -231,8 +231,8 @@ class _DeviceSettingsState extends State<DeviceSettings>
                       title: Text(localization.showPdfPreview),
                       subtitle: Text(localization.showPdfPreviewHelp),
                       value: prefState.showPdfPreview,
-                      onChanged:
-                          (value) => viewModel.onShowPdfChanged(context, value),
+                      onChanged: (value) =>
+                          viewModel.onShowPdfChanged(context, value),
                       activeColor: Theme.of(context).colorScheme.secondary,
                       secondary: Icon(MdiIcons.filePdfBox),
                     ),
@@ -240,8 +240,8 @@ class _DeviceSettingsState extends State<DeviceSettings>
                     title: Text(localization.persistUi),
                     subtitle: Text(localization.persistUiHelp),
                     value: prefState.persistUI,
-                    onChanged:
-                        (value) => viewModel.onPersistUiChanged(context, value),
+                    onChanged: (value) =>
+                        viewModel.onPersistUiChanged(context, value),
                     activeColor: Theme.of(context).colorScheme.secondary,
                     secondary: Icon(Icons.save_alt),
                   ),
@@ -309,8 +309,8 @@ class _DeviceSettingsState extends State<DeviceSettings>
                   SwitchListTile(
                     title: Text(localization.darkMode),
                     value: prefState.enableDarkMode,
-                    onChanged:
-                        (value) => viewModel.onDarkModeChanged(context, value),
+                    onChanged: (value) =>
+                        viewModel.onDarkModeChanged(context, value),
                     secondary: Icon(
                       kIsWeb
                           ? Icons.lightbulb_outline
@@ -323,49 +323,51 @@ class _DeviceSettingsState extends State<DeviceSettings>
                     labelText: localization.statusColorTheme,
                     value: state.prefState.colorTheme,
                     items: [
-                      ...colorThemesMap.keys.map(
-                        (key) => DropdownMenuItem(
-                          child: Row(
-                            children: [
-                              SizedBox(
-                                child: Text(toTitleCase(key)),
-                                width: 120,
+                      ...colorThemesMap.keys
+                          .map(
+                            (key) => DropdownMenuItem(
+                              child: Row(
+                                children: [
+                                  SizedBox(
+                                    child: Text(toTitleCase(key)),
+                                    width: 120,
+                                  ),
+                                  Expanded(
+                                    child: Container(
+                                      color: colorThemesMap[key].colorInfo,
+                                      height: 50,
+                                    ),
+                                  ),
+                                  Expanded(
+                                    child: Container(
+                                      color: colorThemesMap[key].colorPrimary,
+                                      height: 50,
+                                    ),
+                                  ),
+                                  Expanded(
+                                    child: Container(
+                                      color: colorThemesMap[key].colorSuccess,
+                                      height: 50,
+                                    ),
+                                  ),
+                                  Expanded(
+                                    child: Container(
+                                      color: colorThemesMap[key].colorWarning,
+                                      height: 50,
+                                    ),
+                                  ),
+                                  Expanded(
+                                    child: Container(
+                                      color: colorThemesMap[key].colorDanger,
+                                      height: 50,
+                                    ),
+                                  ),
+                                ],
                               ),
-                              Expanded(
-                                child: Container(
-                                  color: colorThemesMap[key].colorInfo,
-                                  height: 50,
-                                ),
-                              ),
-                              Expanded(
-                                child: Container(
-                                  color: colorThemesMap[key].colorPrimary,
-                                  height: 50,
-                                ),
-                              ),
-                              Expanded(
-                                child: Container(
-                                  color: colorThemesMap[key].colorSuccess,
-                                  height: 50,
-                                ),
-                              ),
-                              Expanded(
-                                child: Container(
-                                  color: colorThemesMap[key].colorWarning,
-                                  height: 50,
-                                ),
-                              ),
-                              Expanded(
-                                child: Container(
-                                  color: colorThemesMap[key].colorDanger,
-                                  height: 50,
-                                ),
-                              ),
-                            ],
-                          ),
-                          value: key,
-                        ),
-                      ).toList(),
+                              value: key,
+                            ),
+                          )
+                          .toList(),
                     ],
                     onChanged: (dynamic value) => viewModel.onColorThemeChanged(
                       context,
@@ -423,27 +425,32 @@ class _DeviceSettingsState extends State<DeviceSettings>
                       ),
                     ],
                   ),
-                  ...PrefState.THEME_COLORS.map(
-                    (selector) => FormColorPicker(
-                      labelText: localization.lookup(selector),
-                      initialValue: prefState.customColors[selector],
-                      onSelected: (value) {
-                        viewModel.onCustomColorsChanged(context, prefState
-                            .customColors
-                            .rebuild((b) => b[selector] = value ?? ''));
-                      },
-                    ),
-                  ).toList(),
+                  ...PrefState.THEME_COLORS
+                      .map(
+                        (selector) => FormColorPicker(
+                          labelText: localization.lookup(selector),
+                          initialValue: prefState.customColors[selector],
+                          onSelected: (value) {
+                            viewModel.onCustomColorsChanged(
+                                context,
+                                prefState.customColors
+                                    .rebuild((b) => b[selector] = value ?? ''));
+                          },
+                        ),
+                      )
+                      .toList(),
                   SizedBox(height: 20),
                   Row(
                     children: [
                       Expanded(
                         child: OutlinedButton(
                           onPressed: () {
-                            final colors = PrefState.THEME_COLORS.map(
-                              (selector) =>
-                                  prefState.customColors[selector] ?? '',
-                            ).toList();
+                            final colors = PrefState.THEME_COLORS
+                                .map(
+                                  (selector) =>
+                                      prefState.customColors[selector] ?? '',
+                                )
+                                .toList();
                             Clipboard.setData(
                               ClipboardData(text: colors.join(',')),
                             );

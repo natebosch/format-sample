@@ -34,8 +34,8 @@ class ShowtimesPageComponent implements OnActivate {
   Event eventFilter;
 
   ShowtimesPageViewModel get viewModel => ShowtimesPageViewModel.fromStore(
-    _store,
-  );
+        _store,
+      );
 
   KtList<Show> get shows => eventFilter == null
       ? viewModel.shows

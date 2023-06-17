@@ -73,7 +73,9 @@ abstract class _$$FlawedOnMountProps extends _$FlawedOnMountProps
 class _$$FlawedOnMountProps$PlainMap extends _$$FlawedOnMountProps {
   // This initializer of `_props` to an empty map, as well as the reassignment
   // of `_props` in the constructor body is necessary to work around a DDC bug: https://github.com/dart-lang/sdk/issues/36217
-  _$$FlawedOnMountProps$PlainMap(Map backingMap) : this._props = {}, super._() {
+  _$$FlawedOnMountProps$PlainMap(Map backingMap)
+      : this._props = {},
+        super._() {
     this._props = backingMap ?? {};
   }
 
@@ -89,8 +91,8 @@ class _$$FlawedOnMountProps$JsMap extends _$$FlawedOnMountProps {
   // This initializer of `_props` to an empty map, as well as the reassignment
   // of `_props` in the constructor body is necessary to work around a DDC bug: https://github.com/dart-lang/sdk/issues/36217
   _$$FlawedOnMountProps$JsMap(JsBackedMap backingMap)
-    : this._props = JsBackedMap(),
-      super._() {
+      : this._props = JsBackedMap(),
+        super._() {
     this._props = backingMap ?? JsBackedMap();
   }
 
@@ -129,12 +131,14 @@ class _$FlawedOnMountComponent extends FlawedOnMountComponent {
   @override
   _$$FlawedOnMountProps$JsMap typedPropsFactoryJs(
     JsBackedMap backingMap,
-  ) => _$$FlawedOnMountProps$JsMap(backingMap);
+  ) =>
+      _$$FlawedOnMountProps$JsMap(backingMap);
 
   @override
   _$$FlawedOnMountProps typedPropsFactory(
     Map backingMap,
-  ) => _$$FlawedOnMountProps(backingMap);
+  ) =>
+      _$$FlawedOnMountProps(backingMap);
 
   /// Let `UiComponent` internals know that this class has been generated.
   @override

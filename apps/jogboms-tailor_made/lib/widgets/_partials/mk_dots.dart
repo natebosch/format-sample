@@ -3,7 +3,7 @@ import 'package:tailor_made/constants/mk_style.dart';
 
 class MkDots extends StatelessWidget {
   const MkDots({Key key, @required this.color, this.size = 16.0, this.shape})
-    : super(key: key);
+      : super(key: key);
 
   final double size;
   final Color color;

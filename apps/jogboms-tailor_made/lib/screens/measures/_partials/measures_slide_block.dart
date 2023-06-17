@@ -80,10 +80,10 @@ class _MeasureSlideBlockState extends State<MeasureSlideBlock> {
 
   void _onTapEditBlock() {
     Dependencies.di().measuresCoordinator.toCreateMeasures(
-      widget.title,
-      widget.measures.first.unit,
-      widget.measures,
-    );
+          widget.title,
+          widget.measures.first.unit,
+          widget.measures,
+        );
   }
 
   void _onTapDeleteBlock() async {

@@ -47,11 +47,11 @@ class ProductsListViewState extends ProductsState {
     FilterRules filterRules,
     String error,
   }) : super(
-         data: data,
-         sortBy: sortBy,
-         filterRules: filterRules,
-         error: error,
-       );
+          data: data,
+          sortBy: sortBy,
+          filterRules: filterRules,
+          error: error,
+        );
 
   ProductsTileViewState getTiles() {
     return ProductsTileViewState(
@@ -85,11 +85,11 @@ class ProductsTileViewState extends ProductsState {
     FilterRules filterRules,
     String error,
   }) : super(
-         data: data,
-         sortBy: sortBy,
-         filterRules: filterRules,
-         error: error,
-       );
+          data: data,
+          sortBy: sortBy,
+          filterRules: filterRules,
+          error: error,
+        );
 
   @override
   ProductsTileViewState copyWith({

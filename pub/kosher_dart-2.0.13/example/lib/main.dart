@@ -4,8 +4,8 @@ import 'package:intl/intl.dart';
 import 'package:kosher_dart/kosher_dart.dart';
 
 void main() => runApp(
-  MaterialApp(debugShowCheckedModeBanner: false, home: MyApp()),
-);
+      MaterialApp(debugShowCheckedModeBanner: false, home: MyApp()),
+    );
 
 class MyApp extends StatefulWidget {
   @override

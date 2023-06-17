@@ -189,17 +189,19 @@ class _MonthViewWidgetState extends State<MonthViewWidget> {
           );
         }
 
-        final Widget child = widget.builder!(context, MonthCellDetails(
-          currentVisibleDate,
-          List<Object>.unmodifiable(monthCellAppointment),
-          List<DateTime>.unmodifiable(widget.visibleDates),
-          Rect.fromLTWH(
-            widget.isRTL ? widget.width - xPosition - cellWidth : xPosition,
-            yPosition,
-            cellWidth,
-            cellHeight,
-          ),
-        ));
+        final Widget child = widget.builder!(
+            context,
+            MonthCellDetails(
+              currentVisibleDate,
+              List<Object>.unmodifiable(monthCellAppointment),
+              List<DateTime>.unmodifiable(widget.visibleDates),
+              Rect.fromLTWH(
+                widget.isRTL ? widget.width - xPosition - cellWidth : xPosition,
+                yPosition,
+                cellWidth,
+                cellHeight,
+              ),
+            ));
         children.add(RepaintBoundary(child: child));
 
         xPosition += cellWidth;
@@ -798,10 +800,12 @@ class _MonthViewRenderObject extends CustomCalendarRenderObject {
           continue;
         }
 
-        context.paintChild(child!, Offset(
-          isRTL ? size.width - xPosition - cellWidth : xPosition,
-          yPosition,
-        ));
+        context.paintChild(
+            child!,
+            Offset(
+              isRTL ? size.width - xPosition - cellWidth : xPosition,
+              yPosition,
+            ));
         child = childAfter(child);
 
         if (calendarCellNotifier.value != null &&
@@ -1098,12 +1102,14 @@ class _MonthViewRenderObject extends CustomCalendarRenderObject {
       //// for the cells after it, hence to fill the background color we have set
       //// the style s fill.
       _linePainter.style = PaintingStyle.fill;
-      canvas.drawRect(Rect.fromLTWH(
-        xPosition,
-        yPosition - viewPadding,
-        cellWidth,
-        cellHeight,
-      ), _linePainter);
+      canvas.drawRect(
+          Rect.fromLTWH(
+            xPosition,
+            yPosition - viewPadding,
+            cellWidth,
+            cellHeight,
+          ),
+          _linePainter);
 
       if (calendarCellNotifier.value != null && !isBlackoutDate) {
         _addMouseHovering(
@@ -1122,16 +1128,21 @@ class _MonthViewRenderObject extends CustomCalendarRenderObject {
         _linePainter.isAntiAlias = true;
 
         final double textHeight = _textPainter.height / 2;
-        canvas.drawCircle(Offset(
-          xPosition + cellWidth / 2,
-          yPosition + circlePadding + textHeight,
-        ), textHeight + viewPadding, _linePainter);
+        canvas.drawCircle(
+            Offset(
+              xPosition + cellWidth / 2,
+              yPosition + circlePadding + textHeight,
+            ),
+            textHeight + viewPadding,
+            _linePainter);
       }
 
-      _textPainter.paint(canvas, Offset(
-        xPosition + (cellWidth / 2 - _textPainter.width / 2),
-        yPosition + circlePadding,
-      ));
+      _textPainter.paint(
+          canvas,
+          Offset(
+            xPosition + (cellWidth / 2 - _textPainter.width / 2),
+            yPosition + circlePadding,
+          ));
 
       if (isRTL) {
         if (xPosition - 1 < 0) {
@@ -1174,16 +1185,18 @@ class _MonthViewRenderObject extends CustomCalendarRenderObject {
       _linePainter.style = PaintingStyle.stroke;
       _linePainter.strokeWidth = 2;
       _linePainter.color = calendarTheme.selectionBorderColor!.withOpacity(0.4);
-      canvas.drawRect(Rect.fromLTWH(
-        xPosition == 0 ? xPosition + linePadding : xPosition,
-        yPosition,
-        (xPosition + cellWidth).round() >= size.width
-            ? cellWidth - linePadding - 1
-            : cellWidth - 1,
-        (yPosition + cellHeight).round() >= size.height.round()
-            ? cellHeight - 1 - linePadding
-            : cellHeight - 1,
-      ), _linePainter);
+      canvas.drawRect(
+          Rect.fromLTWH(
+            xPosition == 0 ? xPosition + linePadding : xPosition,
+            yPosition,
+            (xPosition + cellWidth).round() >= size.width
+                ? cellWidth - linePadding - 1
+                : cellWidth - 1,
+            (yPosition + cellHeight).round() >= size.height.round()
+                ? cellHeight - 1 - linePadding
+                : cellHeight - 1,
+          ),
+          _linePainter);
     }
   }
 
@@ -1199,9 +1212,8 @@ class _MonthViewRenderObject extends CustomCalendarRenderObject {
     _linePainter.strokeWidth = linePadding;
     _linePainter.color = cellBorderColor ?? calendarTheme.cellBorderColor!;
     xPosition = isRTL ? 0 : weekNumberPanelWidth;
-    final double finalXPosition = isRTL
-        ? size.width - weekNumberPanelWidth
-        : size.width;
+    final double finalXPosition =
+        isRTL ? size.width - weekNumberPanelWidth : size.width;
     canvas.drawLine(
       Offset(xPosition, linePadding),
       Offset(finalXPosition, linePadding),
@@ -1235,9 +1247,8 @@ class _MonthViewRenderObject extends CustomCalendarRenderObject {
       Offset(size.width, size.height - linePadding),
       _linePainter,
     );
-    xPosition = weekNumberPanelWidth != 0 && !isRTL
-        ? weekNumberPanelWidth
-        : cellWidth;
+    xPosition =
+        weekNumberPanelWidth != 0 && !isRTL ? weekNumberPanelWidth : cellWidth;
     canvas.drawLine(
       const Offset(linePadding, 0),
       Offset(linePadding, size.height),

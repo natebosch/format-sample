@@ -43,7 +43,7 @@ class QuoteListItem extends StatelessWidget {
     final textColor = Theme.of(context).textTheme.bodyText1.color;
     final filterMatch = filter != null && filter.isNotEmpty
         ? (quote.matchesFilterValue(filter) ??
-              client.matchesFilterValue(filter))
+            client.matchesFilterValue(filter))
         : null;
 
     String subtitle = '';
@@ -70,15 +70,15 @@ class QuoteListItem extends StatelessWidget {
           return constraints.maxWidth > kTableListWidthCutoff
               ? InkWell(
                   onTap: () => selectEntity(
-                        entity: quote,
-                        context: context,
-                        forceView: !showCheckbox,
-                      ),
+                    entity: quote,
+                    context: context,
+                    forceView: !showCheckbox,
+                  ),
                   onLongPress: () => selectEntity(
-                        entity: quote,
-                        context: context,
-                        longPress: true,
-                      ),
+                    entity: quote,
+                    context: context,
+                    longPress: true,
+                  ),
                   child: Padding(
                     padding: const EdgeInsets.only(
                       left: 10,
@@ -112,7 +112,8 @@ class QuoteListItem extends StatelessWidget {
                                   onSelected: (
                                     context,
                                     action,
-                                  ) => handleEntityAction(quote, action),
+                                  ) =>
+                                      handleEntityAction(quote, action),
                                 ),
                         ),
                         SizedBox(
@@ -148,18 +149,22 @@ class QuoteListItem extends StatelessWidget {
                                 style: Theme.of(
                                   context,
                                 ).textTheme.subtitle2.copyWith(
-                                  color: textColor.withOpacity(kLighterOpacity),
-                                ),
+                                      color: textColor
+                                          .withOpacity(kLighterOpacity),
+                                    ),
                               ),
                             ],
                           ),
                         ),
                         SizedBox(width: 10),
-                        Text(formatNumber(
-                          quote.amount,
-                          context,
-                          clientId: client.id,
-                        ), style: textStyle, textAlign: TextAlign.end),
+                        Text(
+                            formatNumber(
+                              quote.amount,
+                              context,
+                              clientId: client.id,
+                            ),
+                            style: textStyle,
+                            textAlign: TextAlign.end),
                         SizedBox(width: 25),
                         EntityStatusChip(entity: quote),
                       ],
@@ -168,15 +173,15 @@ class QuoteListItem extends StatelessWidget {
                 )
               : ListTile(
                   onTap: () => selectEntity(
-                        entity: quote,
-                        context: context,
-                        forceView: !showCheckbox,
-                      ),
+                    entity: quote,
+                    context: context,
+                    forceView: !showCheckbox,
+                  ),
                   onLongPress: () => selectEntity(
-                        entity: quote,
-                        context: context,
-                        longPress: true,
-                      ),
+                    entity: quote,
+                    context: context,
+                    longPress: true,
+                  ),
                   leading: isInMultiselect
                       ? IgnorePointer(
                           ignoring: listUIState.isInMultiselect(),
@@ -202,11 +207,13 @@ class QuoteListItem extends StatelessWidget {
                           ),
                         ),
                         SizedBox(width: 4),
-                        Text(formatNumber(
-                          quote.amount,
-                          context,
-                          clientId: quote.clientId,
-                        ), style: Theme.of(context).textTheme.headline6),
+                        Text(
+                            formatNumber(
+                              quote.amount,
+                              context,
+                              clientId: quote.clientId,
+                            ),
+                            style: Theme.of(context).textTheme.headline6),
                       ],
                     ),
                   ),

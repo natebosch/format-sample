@@ -33,9 +33,11 @@ class _BlogTileState extends State<BlogTile> {
         : duration.inMinutes.toString() + " minuit ago";
     return GestureDetector(
       onTap: () {
-        Navigator.push(context, MaterialPageRoute(
-          builder: (context) => WebViewContainer(url: widget.articleUrl),
-        ));
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => WebViewContainer(url: widget.articleUrl),
+            ));
       },
       child: Container(
         decoration: BoxDecoration(borderRadius: BorderRadius.circular(12)),
@@ -60,8 +62,8 @@ class _BlogTileState extends State<BlogTile> {
                     imageUrl: widget.imageUrl,
                     fit: BoxFit.cover,
                     placeholder: (context, url) => Center(
-                          child: CircularProgressIndicator(),
-                        ),
+                      child: CircularProgressIndicator(),
+                    ),
                     // errorWidget: (context, url, error) => Icon(Icons.error),
                   ),
                   Container(

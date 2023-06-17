@@ -174,7 +174,7 @@ class SettingsView extends StatelessWidget {
   final ValueChanged<ApplicationSettings> onSettingsChanged;
 
   const SettingsView({Key key, @required this.onSettingsChanged})
-    : super(key: key);
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {

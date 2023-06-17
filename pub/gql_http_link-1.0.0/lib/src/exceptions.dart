@@ -14,9 +14,9 @@ class HttpLinkParserException extends ResponseFormatException {
     required StackTrace? originalStackTrace,
     required this.response,
   }) : super(
-         originalException: originalException,
-         originalStackTrace: originalStackTrace,
-       );
+          originalException: originalException,
+          originalStackTrace: originalStackTrace,
+        );
 }
 
 /// Exception occurring when network fails

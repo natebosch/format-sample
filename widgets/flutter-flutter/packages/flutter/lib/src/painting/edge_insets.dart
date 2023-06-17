@@ -78,13 +78,13 @@ abstract class EdgeInsetsGeometry {
 
   /// An [EdgeInsetsGeometry] with top and bottom, left and right, and start and end flipped.
   EdgeInsetsGeometry get flipped => _MixedEdgeInsets.fromLRSETB(
-    _right,
-    _left,
-    _end,
-    _start,
-    _bottom,
-    _top,
-  );
+        _right,
+        _left,
+        _end,
+        _start,
+        _bottom,
+        _top,
+      );
 
   /// Returns a new size that is bigger than the given size by the amount of
   /// inset in the horizontal and vertical directions.
@@ -359,10 +359,10 @@ class EdgeInsets extends EdgeInsetsGeometry {
   /// ```
   /// {@end-tool}
   const EdgeInsets.all(double value)
-    : left = value,
-      top = value,
-      right = value,
-      bottom = value;
+      : left = value,
+        top = value,
+        right = value,
+        bottom = value;
 
   /// Creates insets with only the given values non-zero.
   ///
@@ -392,10 +392,10 @@ class EdgeInsets extends EdgeInsetsGeometry {
   /// ```
   /// {@end-tool}
   const EdgeInsets.symmetric({double vertical = 0.0, double horizontal = 0.0})
-    : left = horizontal,
-      top = vertical,
-      right = horizontal,
-      bottom = vertical;
+      : left = horizontal,
+        top = vertical,
+        right = horizontal,
+        bottom = vertical;
 
   /// Creates insets that match the given window padding.
   ///
@@ -406,10 +406,10 @@ class EdgeInsets extends EdgeInsetsGeometry {
   EdgeInsets.fromWindowPadding(
     ui.WindowPadding padding,
     double devicePixelRatio,
-  ) : left = padding.left / devicePixelRatio,
-      top = padding.top / devicePixelRatio,
-      right = padding.right / devicePixelRatio,
-      bottom = padding.bottom / devicePixelRatio;
+  )   : left = padding.left / devicePixelRatio,
+        top = padding.top / devicePixelRatio,
+        right = padding.right / devicePixelRatio,
+        bottom = padding.bottom / devicePixelRatio;
 
   /// An [EdgeInsets] with zero offsets in each direction.
   static const EdgeInsets zero = EdgeInsets.only();
@@ -685,10 +685,10 @@ class EdgeInsetsDirectional extends EdgeInsetsGeometry {
   /// ```
   /// {@end-tool}
   const EdgeInsetsDirectional.all(double value)
-    : start = value,
-      top = value,
-      end = value,
-      bottom = value;
+      : start = value,
+        top = value,
+        end = value,
+        bottom = value;
 
   /// An [EdgeInsetsDirectional] with zero offsets in each direction.
   ///
@@ -747,11 +747,11 @@ class EdgeInsetsDirectional extends EdgeInsetsGeometry {
   /// An [EdgeInsetsDirectional] with [top] and [bottom] as well as [start] and [end] flipped.
   @override
   EdgeInsetsDirectional get flipped => EdgeInsetsDirectional.fromSTEB(
-    end,
-    bottom,
-    start,
-    top,
-  );
+        end,
+        bottom,
+        start,
+        top,
+      );
 
   @override
   EdgeInsetsGeometry subtract(EdgeInsetsGeometry other) {

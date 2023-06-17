@@ -328,8 +328,8 @@ class _SubscriptionEditState extends State<SubscriptionEdit>
                           trailing: IconButton(
                             icon: Icon(Icons.clear),
                             onPressed: () {
-                              final parts = subscription.recurringProductIds
-                                  .split(',');
+                              final parts =
+                                  subscription.recurringProductIds.split(',');
                               parts.remove(productId);
                               viewModel.onChanged(subscription.rebuild(
                                 (b) => b..recurringProductIds = parts.join(','),
@@ -356,12 +356,14 @@ class _SubscriptionEditState extends State<SubscriptionEdit>
                       );
                     },
                     showBlank: true,
-                    items: kFrequencies.entries.map(
-                      (entry) => DropdownMenuItem(
-                        value: entry.key,
-                        child: Text(localization.lookup(entry.value)),
-                      ),
-                    ).toList(),
+                    items: kFrequencies.entries
+                        .map(
+                          (entry) => DropdownMenuItem(
+                            value: entry.key,
+                            child: Text(localization.lookup(entry.value)),
+                          ),
+                        )
+                        .toList(),
                   ),
                   AppDropdownButton<String>(
                     labelText: localization.autoBill,
@@ -375,12 +377,14 @@ class _SubscriptionEditState extends State<SubscriptionEdit>
                       SettingsEntity.AUTO_BILL_OPT_OUT,
                       SettingsEntity.AUTO_BILL_OPT_IN,
                       SettingsEntity.AUTO_BILL_OFF,
-                    ].map(
-                      (value) => DropdownMenuItem(
-                        child: Text(localization.lookup(value)),
-                        value: value,
-                      ),
-                    ).toList(),
+                    ]
+                        .map(
+                          (value) => DropdownMenuItem(
+                            child: Text(localization.lookup(value)),
+                            value: value,
+                          ),
+                        )
+                        .toList(),
                   ),
                 ],
               ),

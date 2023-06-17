@@ -204,10 +204,12 @@ class Md5Hash {
       final int temp = d;
       d = c;
       c = b;
-      b = _add32(b, _rotl32(
-        _add32(_add32(a, e), _add32(_noise[i], chunk[f])),
-        _shiftAmounts[i],
-      ));
+      b = _add32(
+          b,
+          _rotl32(
+            _add32(_add32(a, e), _add32(_noise[i], chunk[f])),
+            _shiftAmounts[i],
+          ));
       a = temp;
     }
     for (; i < 32; i += 1) {
@@ -216,10 +218,12 @@ class Md5Hash {
       final int temp = d;
       d = c;
       c = b;
-      b = _add32(b, _rotl32(
-        _add32(_add32(a, e), _add32(_noise[i], chunk[f])),
-        _shiftAmounts[i],
-      ));
+      b = _add32(
+          b,
+          _rotl32(
+            _add32(_add32(a, e), _add32(_noise[i], chunk[f])),
+            _shiftAmounts[i],
+          ));
       a = temp;
     }
     for (; i < 48; i += 1) {
@@ -228,10 +232,12 @@ class Md5Hash {
       final int temp = d;
       d = c;
       c = b;
-      b = _add32(b, _rotl32(
-        _add32(_add32(a, e), _add32(_noise[i], chunk[f])),
-        _shiftAmounts[i],
-      ));
+      b = _add32(
+          b,
+          _rotl32(
+            _add32(_add32(a, e), _add32(_noise[i], chunk[f])),
+            _shiftAmounts[i],
+          ));
       a = temp;
     }
     for (; i < 64; i += 1) {
@@ -240,10 +246,12 @@ class Md5Hash {
       final int temp = d;
       d = c;
       c = b;
-      b = _add32(b, _rotl32(
-        _add32(_add32(a, e), _add32(_noise[i], chunk[f])),
-        _shiftAmounts[i],
-      ));
+      b = _add32(
+          b,
+          _rotl32(
+            _add32(_add32(a, e), _add32(_noise[i], chunk[f])),
+            _shiftAmounts[i],
+          ));
       a = temp;
     }
 

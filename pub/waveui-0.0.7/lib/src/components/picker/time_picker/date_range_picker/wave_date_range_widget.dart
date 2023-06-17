@@ -70,11 +70,11 @@ class WaveDateRangeWidget extends StatefulWidget {
 
   @override
   State<StatefulWidget> createState() => _DatePickerWidgetState(
-    this.minDateTime,
-    this.maxDateTime,
-    this.initialStartDateTime,
-    this.initialEndDateTime,
-  );
+        this.minDateTime,
+        this.maxDateTime,
+        this.initialStartDateTime,
+        this.initialEndDateTime,
+      );
 }
 
 class _DatePickerWidgetState extends State<WaveDateRangeWidget> {

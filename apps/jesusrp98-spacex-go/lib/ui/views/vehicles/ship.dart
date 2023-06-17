@@ -57,12 +57,12 @@ class ShipPage extends StatelessWidget {
               ),
             ],
             menuItemBuilder: (context) => [
-                  for (final item in Menu.ship)
-                    PopupMenuItem(
-                      value: item,
-                      child: Text(context.translate(item)),
-                    ),
-                ],
+              for (final item in Menu.ship)
+                PopupMenuItem(
+                  value: item,
+                  child: Text(context.translate(item)),
+                ),
+            ],
             onMenuItemSelected: (text) => context.openUrl(_ship.url),
           ),
           SliverSafeArea(
@@ -118,13 +118,17 @@ class ShipPage extends StatelessWidget {
       title: context.translate('spacex.vehicle.ship.specifications.title'),
       child: RowLayout(
         children: <Widget>[
-          RowItem.text(context.translate(
-            'spacex.vehicle.ship.specifications.role_primary',
-          ), _ship.primaryRole),
+          RowItem.text(
+              context.translate(
+                'spacex.vehicle.ship.specifications.role_primary',
+              ),
+              _ship.primaryRole),
           if (_ship.hasSeveralRoles)
-            RowItem.text(context.translate(
-              'spacex.vehicle.ship.specifications.role_secondary',
-            ), _ship.secondaryRole),
+            RowItem.text(
+                context.translate(
+                  'spacex.vehicle.ship.specifications.role_secondary',
+                ),
+                _ship.secondaryRole),
           RowItem.text(
             context.translate('spacex.vehicle.ship.specifications.status'),
             _ship.getStatus(context),
@@ -160,10 +164,10 @@ class ShipPage extends StatelessWidget {
                       ),
                       mission.name,
                       onTap: () => Navigator.pushNamed(
-                            context,
-                            LaunchPage.route,
-                            arguments: {'id': mission.id},
-                          ),
+                        context,
+                        LaunchPage.route,
+                        arguments: {'id': mission.id},
+                      ),
                     ),
                   ExpandChild(
                     child: RowLayout(
@@ -178,10 +182,10 @@ class ShipPage extends StatelessWidget {
                             ),
                             mission.name,
                             onTap: () => Navigator.pushNamed(
-                                  context,
-                                  LaunchPage.route,
-                                  arguments: {'id': mission.id},
-                                ),
+                              context,
+                              LaunchPage.route,
+                              arguments: {'id': mission.id},
+                            ),
                           ),
                       ],
                     ),
@@ -195,10 +199,10 @@ class ShipPage extends StatelessWidget {
                       ),
                       mission.name,
                       onTap: () => Navigator.pushNamed(
-                            context,
-                            LaunchPage.route,
-                            arguments: {'id': mission.id},
-                          ),
+                        context,
+                        LaunchPage.route,
+                        arguments: {'id': mission.id},
+                      ),
                     ),
               ],
             )

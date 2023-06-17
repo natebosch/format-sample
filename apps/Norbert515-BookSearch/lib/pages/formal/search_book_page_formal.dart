@@ -79,7 +79,8 @@ class _SearchBookStateNew extends AbstractSearchBookState<SearchBookPageNew> {
                       new FadeRoute(
                         builder: (
                           BuildContext context,
-                        ) => new BookDetailsPageFormal(items[index]),
+                        ) =>
+                            new BookDetailsPageFormal(items[index]),
                         settings: new RouteSettings(
                           name: '/book_detais_formal',
                           isInitialRoute: false,

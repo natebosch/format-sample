@@ -145,10 +145,12 @@ class _SidebarMenuState extends State<SidebarMenu> {
             break;
           default:
         }
-        Navigator.push(context, FollowerListPage.getRoute(
-          profile: authstate.userModel,
-          userList: usersList,
-        ));
+        Navigator.push(
+            context,
+            FollowerListPage.getRoute(
+              profile: authstate.userModel,
+              userList: usersList,
+            ));
       },
       child: Row(
         children: <Widget>[
@@ -219,9 +221,11 @@ class _SidebarMenuState extends State<SidebarMenu> {
               Spacer(),
               TextButton(
                 onPressed: () {
-                  Navigator.push(context, ScanScreen.getRoute(
-                    context.read<AuthState>().profileUserModel,
-                  ));
+                  Navigator.push(
+                      context,
+                      ScanScreen.getRoute(
+                        context.read<AuthState>().profileUserModel,
+                      ));
                 },
                 child: Image.asset("assets/images/qr.png", height: 25),
               ),

@@ -28,18 +28,20 @@ class _LoadingScreenState extends State<LoadingScreen> {
     var locationData = await apiData.getLocationVirusData();
     var countriesData = await apiData.getCountriesVirusData();
     var statesData = await apiData.getStatesData();
-    Navigator.pushReplacement(context, PageRouteBuilder(
-      transitionDuration: Duration(milliseconds: 500),
-      pageBuilder: (context, animation, secondaryAnimation) => HomePage(
+    Navigator.pushReplacement(
+        context,
+        PageRouteBuilder(
+          transitionDuration: Duration(milliseconds: 500),
+          pageBuilder: (context, animation, secondaryAnimation) => HomePage(
             countriesData: countriesData,
             locationVirusData: locationData,
             virusData: data,
             statesData: statesData,
           ),
-      transitionsBuilder: (context, animation, secondaryAnimation, child) {
-        return FadeScaleTransition(animation: animation, child: child);
-      },
-    ));
+          transitionsBuilder: (context, animation, secondaryAnimation, child) {
+            return FadeScaleTransition(animation: animation, child: child);
+          },
+        ));
   }
 
   final spinKit1 = SpinKitFadingCircle(

@@ -18,84 +18,79 @@ class _$Exports extends Exports {
 
   @override
   Future<
-    Response<WebApiModulesExportsInvoiceBatchExportInvoiceBatchExportResponse>
-  > _invoicebatchexportExportPost({
+          Response<
+              WebApiModulesExportsInvoiceBatchExportInvoiceBatchExportResponse>>
+      _invoicebatchexportExportPost({
     required WebApiModulesExportsInvoiceBatchExportInvoiceBatchExportRequest?
-    body,
+        body,
   }) {
     final Uri $url = Uri.parse('/invoicebatchexport/export');
     final $body = body;
     final Request $request = Request('POST', $url, client.baseUrl, body: $body);
     return client.send<
-      WebApiModulesExportsInvoiceBatchExportInvoiceBatchExportResponse,
-      WebApiModulesExportsInvoiceBatchExportInvoiceBatchExportResponse
-    >($request);
+            WebApiModulesExportsInvoiceBatchExportInvoiceBatchExportResponse,
+            WebApiModulesExportsInvoiceBatchExportInvoiceBatchExportResponse>(
+        $request);
   }
 
   @override
   Future<Response<FwStandardSqlServerFwJsonDataTable>>
-  _invoicebatchexportEmptyobjectGet() {
+      _invoicebatchexportEmptyobjectGet() {
     final Uri $url = Uri.parse('/invoicebatchexport/emptyobject');
     final Request $request = Request('GET', $url, client.baseUrl);
-    return client.send<
-      FwStandardSqlServerFwJsonDataTable,
-      FwStandardSqlServerFwJsonDataTable
-    >($request);
+    return client.send<FwStandardSqlServerFwJsonDataTable,
+        FwStandardSqlServerFwJsonDataTable>($request);
   }
 
   @override
   Future<
-    Response<WebApiModulesExportsReceiptBatchExportReceiptBatchExportResponse>
-  > _receiptbatchexportExportPost({
+          Response<
+              WebApiModulesExportsReceiptBatchExportReceiptBatchExportResponse>>
+      _receiptbatchexportExportPost({
     required WebApiModulesExportsReceiptBatchExportReceiptBatchExportRequest?
-    body,
+        body,
   }) {
     final Uri $url = Uri.parse('/receiptbatchexport/export');
     final $body = body;
     final Request $request = Request('POST', $url, client.baseUrl, body: $body);
     return client.send<
-      WebApiModulesExportsReceiptBatchExportReceiptBatchExportResponse,
-      WebApiModulesExportsReceiptBatchExportReceiptBatchExportResponse
-    >($request);
+            WebApiModulesExportsReceiptBatchExportReceiptBatchExportResponse,
+            WebApiModulesExportsReceiptBatchExportReceiptBatchExportResponse>(
+        $request);
   }
 
   @override
   Future<Response<FwStandardSqlServerFwJsonDataTable>>
-  _receiptbatchexportEmptyobjectGet() {
+      _receiptbatchexportEmptyobjectGet() {
     final Uri $url = Uri.parse('/receiptbatchexport/emptyobject');
     final Request $request = Request('GET', $url, client.baseUrl);
-    return client.send<
-      FwStandardSqlServerFwJsonDataTable,
-      FwStandardSqlServerFwJsonDataTable
-    >($request);
+    return client.send<FwStandardSqlServerFwJsonDataTable,
+        FwStandardSqlServerFwJsonDataTable>($request);
   }
 
   @override
   Future<
-    Response<
-      WebApiModulesExportsVendorInvoiceBatchExportVendorInvoiceBatchExportResponse
-    >
-  > _vendorinvoicebatchexportExportPost({
+          Response<
+              WebApiModulesExportsVendorInvoiceBatchExportVendorInvoiceBatchExportResponse>>
+      _vendorinvoicebatchexportExportPost({
     required WebApiModulesExportsVendorInvoiceBatchExportVendorInvoiceBatchExportRequest?
-    body,
+        body,
   }) {
     final Uri $url = Uri.parse('/vendorinvoicebatchexport/export');
     final $body = body;
     final Request $request = Request('POST', $url, client.baseUrl, body: $body);
     return client.send<
-      WebApiModulesExportsVendorInvoiceBatchExportVendorInvoiceBatchExportResponse,
-      WebApiModulesExportsVendorInvoiceBatchExportVendorInvoiceBatchExportResponse
-    >($request);
+            WebApiModulesExportsVendorInvoiceBatchExportVendorInvoiceBatchExportResponse,
+            WebApiModulesExportsVendorInvoiceBatchExportVendorInvoiceBatchExportResponse>(
+        $request);
   }
 
   @override
   Future<Response<FwStandardSqlServerFwJsonDataTable>>
-  _vendorinvoicebatchexportEmptyobjectGet() {
+      _vendorinvoicebatchexportEmptyobjectGet() {
     final Uri $url = Uri.parse('/vendorinvoicebatchexport/emptyobject');
     final Request $request = Request('GET', $url, client.baseUrl);
-    return client.send<
-      FwStandardSqlServerFwJsonDataTable,
-      FwStandardSqlServerFwJsonDataTable
-    >($request);
+    return client.send<FwStandardSqlServerFwJsonDataTable,
+        FwStandardSqlServerFwJsonDataTable>($request);
   }
 }

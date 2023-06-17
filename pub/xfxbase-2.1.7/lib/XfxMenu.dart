@@ -176,8 +176,8 @@ class XfxMenu extends StatelessWidget {
                             XUtils.widthMin_Layout
                         ? Icons.close
                         : (pinned_Value
-                              ? Icons.arrow_back_ios
-                              : Icons.arrow_forward_ios_rounded),
+                            ? Icons.arrow_back_ios
+                            : Icons.arrow_forward_ios_rounded),
                     icon_Color: XColors.backgroundLight,
                     width: 40,
                     height: 40,
@@ -198,9 +198,11 @@ class XfxMenu extends StatelessWidget {
                       spacing: 5,
                       runSpacing: 5,
                       alignment: WrapAlignment.start,
-                      children: menuGroups.map(
-                        (xclMenu) => xBuilder_XMenu(xclMenu),
-                      ).toList(),
+                      children: menuGroups
+                          .map(
+                            (xclMenu) => xBuilder_XMenu(xclMenu),
+                          )
+                          .toList(),
                     ),
                   ],
                 ),

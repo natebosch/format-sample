@@ -13,8 +13,8 @@ class DSMenuItem extends StatelessWidget {
     this.showBorder = false,
     this.onPressed,
     DSMessageBubbleStyle? style,
-  }) : style = style ?? DSMessageBubbleStyle(),
-       super(key: key) {
+  })  : style = style ?? DSMessageBubbleStyle(),
+        super(key: key) {
     isDefaultBubbleColors = this.style.isDefaultBubbleBackground(align);
     isLightBubbleBackground = this.style.isLightBubbleBackground(align);
   }

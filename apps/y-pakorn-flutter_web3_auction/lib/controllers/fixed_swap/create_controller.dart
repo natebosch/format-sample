@@ -202,9 +202,8 @@ class FixedSwapCreateController extends GetxController {
     final resAmount = amountController!.validate();
     final resPoolName = poolNameController.validate();
     final resRatio = ratioController.validate();
-    final resMax = isNoLimitPerWallet
-        ? true
-        : maxPerWalletController.validate();
+    final resMax =
+        isNoLimitPerWallet ? true : maxPerWalletController.validate();
     return resAmount && resPoolName && resRatio && resMax;
   }
 }

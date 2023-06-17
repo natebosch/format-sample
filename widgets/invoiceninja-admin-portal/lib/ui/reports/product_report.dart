@@ -36,7 +36,8 @@ var memoizedProductReport = memo6(
     BuiltMap<String, VendorEntity> vendorMap,
     BuiltMap<String, UserEntity> userMap,
     StaticState staticState,
-  ) => productReport(
+  ) =>
+      productReport(
     userCompany,
     reportsUIState,
     productMap,

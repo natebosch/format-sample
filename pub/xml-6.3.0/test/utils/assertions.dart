@@ -124,9 +124,8 @@ void assertSiblingInvariants(XmlNode xml) {
   for (final node in [xml, ...xml.descendants]) {
     final parent = node.parent;
     if (parent != null) {
-      final siblings = node is XmlAttribute
-          ? parent.attributes
-          : parent.children;
+      final siblings =
+          node is XmlAttribute ? parent.attributes : parent.children;
       expect(node.siblings, same(siblings));
       expect(node.siblingElements, siblings.whereType<XmlElement>());
     } else {
@@ -181,8 +180,8 @@ void assertBackwardInvariants(XmlNode xml) {
 
 void assertNameInvariants(XmlNode xml) {
   [xml, ...xml.descendants].whereType<XmlHasName>().forEach(
-    assertNamedInvariant,
-  );
+        assertNamedInvariant,
+      );
 }
 
 void assertNamedInvariant(XmlHasName named) {
@@ -397,12 +396,20 @@ void compareNode(XmlNode first, XmlNode second) {
   for (var i = 0; i < firstChildren.length; i++) {
     compareNode(firstChildren[i], secondChildren[i]);
   }
-  final firstText = first.children.whereType<XmlText>().map(
-    (node) => node.value.trim().replaceAll(_whitespaceOrLineTerminators, ' '),
-  ).join();
-  final secondText = second.children.whereType<XmlText>().map(
-    (node) => node.value.trim().replaceAll(_whitespaceOrLineTerminators, ' '),
-  ).join();
+  final firstText = first.children
+      .whereType<XmlText>()
+      .map(
+        (node) =>
+            node.value.trim().replaceAll(_whitespaceOrLineTerminators, ' '),
+      )
+      .join();
+  final secondText = second.children
+      .whereType<XmlText>()
+      .map(
+        (node) =>
+            node.value.trim().replaceAll(_whitespaceOrLineTerminators, ' '),
+      )
+      .join();
   expect(firstText, secondText);
   expect(first.attributes.length, second.attributes.length);
   for (var i = 0; i < first.attributes.length; i++) {

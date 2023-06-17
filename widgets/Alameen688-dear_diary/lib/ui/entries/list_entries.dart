@@ -55,23 +55,23 @@ class _ListEntriesState extends State<ListEntries> {
                           children: <Widget>[
                             CachedNetworkImage(
                               imageUrl: entry.imageUrl,
-                              imageBuilder:
-                                  (context, imageProvider) => EntryImage(
-                                    heroTag: heroTag,
-                                    imageProvider: imageProvider,
-                                  ),
+                              imageBuilder: (context, imageProvider) =>
+                                  EntryImage(
+                                heroTag: heroTag,
+                                imageProvider: imageProvider,
+                              ),
                               placeholder: (context, url) => EntryImage(
-                                    heroTag: heroTag,
-                                    imageProvider: AssetImage(
-                                      'images/entry_placeholder_image.jpg',
-                                    ),
-                                  ),
+                                heroTag: heroTag,
+                                imageProvider: AssetImage(
+                                  'images/entry_placeholder_image.jpg',
+                                ),
+                              ),
                               errorWidget: (context, url, error) => EntryImage(
-                                    heroTag: heroTag,
-                                    imageProvider: AssetImage(
-                                      'images/entry_placeholder_image.jpg',
-                                    ),
-                                  ),
+                                heroTag: heroTag,
+                                imageProvider: AssetImage(
+                                  'images/entry_placeholder_image.jpg',
+                                ),
+                              ),
                             ),
                             Positioned(
                               left: 0.0,
@@ -164,7 +164,7 @@ class EntryImage extends StatelessWidget {
   final ImageProvider imageProvider;
 
   const EntryImage({Key key, this.heroTag, this.imageProvider})
-    : super(key: key);
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {

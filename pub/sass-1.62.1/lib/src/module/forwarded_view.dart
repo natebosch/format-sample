@@ -52,30 +52,30 @@ class ForwardedModuleView<T extends AsyncCallable> implements Module<T> {
   }
 
   ForwardedModuleView(this._inner, this._rule)
-    : variables = _forwardedMap(
-        _inner.variables,
-        _rule.prefix,
-        _rule.shownVariables,
-        _rule.hiddenVariables,
-      ),
-      variableNodes = _forwardedMap(
-        _inner.variableNodes,
-        _rule.prefix,
-        _rule.shownVariables,
-        _rule.hiddenVariables,
-      ),
-      functions = _forwardedMap(
-        _inner.functions,
-        _rule.prefix,
-        _rule.shownMixinsAndFunctions,
-        _rule.hiddenMixinsAndFunctions,
-      ),
-      mixins = _forwardedMap(
-        _inner.mixins,
-        _rule.prefix,
-        _rule.shownMixinsAndFunctions,
-        _rule.hiddenMixinsAndFunctions,
-      );
+      : variables = _forwardedMap(
+          _inner.variables,
+          _rule.prefix,
+          _rule.shownVariables,
+          _rule.hiddenVariables,
+        ),
+        variableNodes = _forwardedMap(
+          _inner.variableNodes,
+          _rule.prefix,
+          _rule.shownVariables,
+          _rule.hiddenVariables,
+        ),
+        functions = _forwardedMap(
+          _inner.functions,
+          _rule.prefix,
+          _rule.shownMixinsAndFunctions,
+          _rule.hiddenMixinsAndFunctions,
+        ),
+        mixins = _forwardedMap(
+          _inner.mixins,
+          _rule.prefix,
+          _rule.shownMixinsAndFunctions,
+          _rule.hiddenMixinsAndFunctions,
+        );
 
   /// Wraps [map] so that it only shows members allowed by [blocklist] or
   /// [safelist], with the given [prefix], if given.

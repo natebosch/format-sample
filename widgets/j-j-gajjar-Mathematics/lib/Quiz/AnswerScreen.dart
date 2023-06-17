@@ -66,13 +66,15 @@ class AnswerScreen extends StatelessWidget {
             ),
             SizedBox(height: 30),
             MaterialButton(
-              onPressed: () => Navigator.push(context, MaterialPageRoute(
-                builder: (context) => UserAnswerScreen(
+              onPressed: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => UserAnswerScreen(
                       answers: answers,
                       qustions: qustions,
                       userAnswer: userAnswer,
                     ),
-              )),
+                  )),
               child: Text(
                 "Check Your Answer",
                 style: TextStyle(color: Colors.blueAccent),

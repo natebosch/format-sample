@@ -33,9 +33,11 @@ class KanjiListView extends StatelessWidget {
         return KanjiListTile(
           kanji: kanjis[index],
           onLongPressed: onLongPressed,
-          onTap: () => Navigator.push(context, MaterialPageRoute(
-            builder: (_) => KanjiDetailPage(kanji: kanjis[index]),
-          )),
+          onTap: () => Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (_) => KanjiDetailPage(kanji: kanjis[index]),
+              )),
         );
       },
       separatorBuilder: (_, __) => const Divider(height: 0),

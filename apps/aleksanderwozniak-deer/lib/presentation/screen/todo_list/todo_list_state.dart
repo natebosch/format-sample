@@ -20,10 +20,11 @@ abstract class TodoListState
     bool todoNameHasError = false,
     String filter = 'All',
     Task diskAccessTask = const Task.idle(),
-  }) => _$TodoListState._(
-    todos: todos ?? BuiltList(),
-    todoNameHasError: todoNameHasError,
-    filter: filter,
-    diskAccessTask: diskAccessTask,
-  );
+  }) =>
+      _$TodoListState._(
+        todos: todos ?? BuiltList(),
+        todoNameHasError: todoNameHasError,
+        filter: filter,
+        diskAccessTask: diskAccessTask,
+      );
 }

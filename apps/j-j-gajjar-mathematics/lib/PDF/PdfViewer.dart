@@ -13,7 +13,7 @@ class PdfViewer extends StatefulWidget {
   final pdfSave;
   final anchor;
   const PdfViewer({Key key, this.pdfName, this.path, this.pdfSave, this.anchor})
-    : super(key: key);
+      : super(key: key);
 
   @override
   _PdfViewerState createState() => _PdfViewerState();

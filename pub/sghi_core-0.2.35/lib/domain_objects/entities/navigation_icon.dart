@@ -16,13 +16,14 @@ class NavigationIcon with _$NavigationIcon {
   }) = _NavigationIcon;
 
   factory NavigationIcon.initial() => NavigationIcon(
-    id: UNKNOWN,
-    iconUrl: UNKNOWN,
-    iconTitle: UNKNOWN,
-    iconDescription: UNKNOWN,
-  );
+        id: UNKNOWN,
+        iconUrl: UNKNOWN,
+        iconTitle: UNKNOWN,
+        iconDescription: UNKNOWN,
+      );
 
   factory NavigationIcon.fromJson(
     Map<String, dynamic> json,
-  ) => _$NavigationIconFromJson(json);
+  ) =>
+      _$NavigationIconFromJson(json);
 }

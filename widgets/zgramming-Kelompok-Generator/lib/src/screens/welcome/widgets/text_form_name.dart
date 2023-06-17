@@ -6,8 +6,8 @@ class TextFormName extends StatelessWidget {
     Key key,
     @required GlobalKey<FormState> formKey,
     @required this.namePersonController,
-  }) : _formKey = formKey,
-       super(key: key);
+  })  : _formKey = formKey,
+        super(key: key);
 
   final GlobalKey<FormState> _formKey;
   final TextEditingController namePersonController;

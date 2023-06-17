@@ -136,7 +136,7 @@ class BlinkingIcon extends StatefulWidget {
   final int interval;
 
   const BlinkingIcon({required this.child, this.interval = 500, Key? key})
-    : super(key: key);
+      : super(key: key);
 
   @override
   _BlinkingIconState createState() => _BlinkingIconState();

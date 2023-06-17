@@ -29,17 +29,17 @@ class TourDetailsDataTile extends StatelessWidget {
       foregroundColor: foregroundColor,
       backgroundColor: backgroundColor,
       titleBuilder: (context) => Text(
-            tour.info.title ?? '',
-            style: styleConfiguration.tourTitleTextStyle,
-          ),
+        tour.info.title ?? '',
+        style: styleConfiguration.tourTitleTextStyle,
+      ),
       questionsCount: tour.questions.length,
       questionBuilder: (context, questionIndex) => TourDetailsQuestionDataTile(
-            question: tour.questions[questionIndex],
-            onTap: () => context.dispatch(UserActionQuestions.open(
-              questions: tour.questions,
-              index: questionIndex,
-            )),
-          ),
+        question: tour.questions[questionIndex],
+        onTap: () => context.dispatch(UserActionQuestions.open(
+          questions: tour.questions,
+          index: questionIndex,
+        )),
+      ),
     );
   }
 }

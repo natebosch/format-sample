@@ -12,15 +12,15 @@ class ShippingAddressModel extends ShippingAddressEntity {
     String country,
     bool isDefault,
   }) : super(
-         id: id,
-         fullName: fullName,
-         address: address,
-         city: city,
-         state: state,
-         postal: postal,
-         country: country,
-         isDefault: isDefault,
-       );
+          id: id,
+          fullName: fullName,
+          address: address,
+          city: city,
+          state: state,
+          postal: postal,
+          country: country,
+          isDefault: isDefault,
+        );
 
   ShippingAddressModel copyWith({
     int id,

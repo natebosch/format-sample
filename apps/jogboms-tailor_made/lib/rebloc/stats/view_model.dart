@@ -4,10 +4,10 @@ import 'package:tailor_made/rebloc/app_state.dart';
 
 class StatsViewModel extends Equatable {
   StatsViewModel(AppState state)
-    : model = state.stats.stats,
-      isLoading = state.stats.status == StateStatus.loading,
-      hasError = state.stats.status == StateStatus.failure,
-      error = state.stats.error;
+      : model = state.stats.stats,
+        isLoading = state.stats.status == StateStatus.loading,
+        hasError = state.stats.status == StateStatus.failure,
+        error = state.stats.error;
 
   final StatsModel model;
   final bool isLoading;

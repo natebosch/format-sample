@@ -83,15 +83,15 @@ class EmailInvoiceVM extends EmailEntityVM {
     Function loadClient,
     Function(BuildContext, EmailTemplate, String, String) onSendPressed,
   }) : super(
-         state: state,
-         isLoading: isLoading,
-         isSaving: isSaving,
-         company: company,
-         invoice: invoice,
-         client: client,
-         loadClient: loadClient,
-         onSendPressed: onSendPressed,
-       );
+          state: state,
+          isLoading: isLoading,
+          isSaving: isSaving,
+          company: company,
+          invoice: invoice,
+          client: client,
+          loadClient: loadClient,
+          onSendPressed: onSendPressed,
+        );
 
   factory EmailInvoiceVM.fromStore(
     Store<AppState> store,

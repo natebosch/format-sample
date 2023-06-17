@@ -11,7 +11,9 @@ import 'checkout.dart';
 class CheckoutBloc extends Bloc<CheckoutEvent, CheckoutState> {
   final CheckoutStartUseCase checkoutStartUseCase;
 
-  CheckoutBloc() : checkoutStartUseCase = sl(), super(CheckoutInitialState());
+  CheckoutBloc()
+      : checkoutStartUseCase = sl(),
+        super(CheckoutInitialState());
   @override
   Stream<CheckoutState> mapEventToState(CheckoutEvent event) async* {
     if (event is CheckoutStartEvent) {

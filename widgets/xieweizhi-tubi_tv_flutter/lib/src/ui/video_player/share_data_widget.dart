@@ -5,7 +5,7 @@ class ShareDataWidget extends InheritedWidget {
   final VideoPlayerValue data;
 
   ShareDataWidget({Key key, this.child, @required this.data})
-    : super(key: key, child: child);
+      : super(key: key, child: child);
 
   final Widget child;
 

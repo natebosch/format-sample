@@ -10,7 +10,7 @@ class HtmlPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Scaffold(
-    appBar: AppBar(title: Text(pageTitle)),
-    body: SingleChildScrollView(child: HtmlWidget(htmlString)),
-  );
+        appBar: AppBar(title: Text(pageTitle)),
+        body: SingleChildScrollView(child: HtmlWidget(htmlString)),
+      );
 }

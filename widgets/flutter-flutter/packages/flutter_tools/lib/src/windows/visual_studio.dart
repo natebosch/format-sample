@@ -20,12 +20,12 @@ class VisualStudio {
     required ProcessManager processManager,
     required Platform platform,
     required Logger logger,
-  }) : _platform = platform,
-       _fileSystem = fileSystem,
-       _processUtils = ProcessUtils(
-         processManager: processManager,
-         logger: logger,
-       );
+  })  : _platform = platform,
+        _fileSystem = fileSystem,
+        _processUtils = ProcessUtils(
+          processManager: processManager,
+          logger: logger,
+        );
 
   final FileSystem _fileSystem;
   final Platform _platform;
@@ -119,9 +119,8 @@ class VisualStudio {
     if (sdkLocation == null) {
       return null;
     }
-    final Directory sdkIncludeDirectory = _fileSystem
-        .directory(sdkLocation)
-        .childDirectory('Include');
+    final Directory sdkIncludeDirectory =
+        _fileSystem.directory(sdkLocation).childDirectory('Include');
     if (!sdkIncludeDirectory.existsSync()) {
       return null;
     }

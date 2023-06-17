@@ -833,7 +833,42 @@ class _$UIState extends UIState {
   @override
   int get hashCode {
     return __hashCode ??= $jf($jc(
-      $jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc(0, selectedCompanyIndex.hashCode), currentRoute.hashCode), previousRoute.hashCode), previewStack.hashCode), filterStack.hashCode), filter.hashCode), filterClearedAt.hashCode), lastActivityAt.hashCode), dashboardUIState.hashCode), productUIState.hashCode), clientUIState.hashCode), invoiceUIState.hashCode), recurringExpenseUIState.hashCode), subscriptionUIState.hashCode), taskStatusUIState.hashCode), expenseCategoryUIState.hashCode), recurringInvoiceUIState.hashCode), webhookUIState.hashCode), tokenUIState.hashCode), paymentTermUIState.hashCode), designUIState.hashCode), creditUIState.hashCode), userUIState.hashCode), taxRateUIState.hashCode), companyGatewayUIState.hashCode), groupUIState.hashCode), documentUIState.hashCode), expenseUIState.hashCode), vendorUIState.hashCode), taskUIState.hashCode), projectUIState.hashCode), paymentUIState.hashCode), quoteUIState.hashCode), settingsUIState.hashCode),
+      $jc(
+          $jc(
+              $jc(
+                  $jc(
+                      $jc(
+                          $jc(
+                              $jc(
+                                  $jc(
+                                      $jc(
+                                          $jc(
+                                              $jc(
+                                                  $jc(
+                                                      $jc(
+                                                          $jc(
+                                                              $jc(
+                                                                  $jc(
+                                                                      $jc(
+                                                                          $jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc(0, selectedCompanyIndex.hashCode), currentRoute.hashCode), previousRoute.hashCode), previewStack.hashCode), filterStack.hashCode), filter.hashCode), filterClearedAt.hashCode), lastActivityAt.hashCode), dashboardUIState.hashCode), productUIState.hashCode), clientUIState.hashCode), invoiceUIState.hashCode), recurringExpenseUIState.hashCode), subscriptionUIState.hashCode), taskStatusUIState.hashCode), expenseCategoryUIState.hashCode),
+                                                                              recurringInvoiceUIState.hashCode),
+                                                                          webhookUIState.hashCode),
+                                                                      tokenUIState.hashCode),
+                                                                  paymentTermUIState.hashCode),
+                                                              designUIState.hashCode),
+                                                          creditUIState.hashCode),
+                                                      userUIState.hashCode),
+                                                  taxRateUIState.hashCode),
+                                              companyGatewayUIState.hashCode),
+                                          groupUIState.hashCode),
+                                      documentUIState.hashCode),
+                                  expenseUIState.hashCode),
+                              vendorUIState.hashCode),
+                          taskUIState.hashCode),
+                      projectUIState.hashCode),
+                  paymentUIState.hashCode),
+              quoteUIState.hashCode),
+          settingsUIState.hashCode),
       reportsUIState.hashCode,
     ));
   }
@@ -952,7 +987,8 @@ class UIStateBuilder implements Builder<UIState, UIStateBuilder> {
       _$this._recurringExpenseUIState ??= new RecurringExpenseUIStateBuilder();
   set recurringExpenseUIState(
     RecurringExpenseUIStateBuilder recurringExpenseUIState,
-  ) => _$this._recurringExpenseUIState = recurringExpenseUIState;
+  ) =>
+      _$this._recurringExpenseUIState = recurringExpenseUIState;
 
   SubscriptionUIStateBuilder _subscriptionUIState;
   SubscriptionUIStateBuilder get subscriptionUIState =>
@@ -971,14 +1007,16 @@ class UIStateBuilder implements Builder<UIState, UIStateBuilder> {
       _$this._expenseCategoryUIState ??= new ExpenseCategoryUIStateBuilder();
   set expenseCategoryUIState(
     ExpenseCategoryUIStateBuilder expenseCategoryUIState,
-  ) => _$this._expenseCategoryUIState = expenseCategoryUIState;
+  ) =>
+      _$this._expenseCategoryUIState = expenseCategoryUIState;
 
   RecurringInvoiceUIStateBuilder _recurringInvoiceUIState;
   RecurringInvoiceUIStateBuilder get recurringInvoiceUIState =>
       _$this._recurringInvoiceUIState ??= new RecurringInvoiceUIStateBuilder();
   set recurringInvoiceUIState(
     RecurringInvoiceUIStateBuilder recurringInvoiceUIState,
-  ) => _$this._recurringInvoiceUIState = recurringInvoiceUIState;
+  ) =>
+      _$this._recurringInvoiceUIState = recurringInvoiceUIState;
 
   WebhookUIStateBuilder _webhookUIState;
   WebhookUIStateBuilder get webhookUIState =>
@@ -1027,7 +1065,8 @@ class UIStateBuilder implements Builder<UIState, UIStateBuilder> {
       _$this._companyGatewayUIState ??= new CompanyGatewayUIStateBuilder();
   set companyGatewayUIState(
     CompanyGatewayUIStateBuilder companyGatewayUIState,
-  ) => _$this._companyGatewayUIState = companyGatewayUIState;
+  ) =>
+      _$this._companyGatewayUIState = companyGatewayUIState;
 
   GroupUIStateBuilder _groupUIState;
   GroupUIStateBuilder get groupUIState =>

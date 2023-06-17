@@ -40,17 +40,20 @@ void main() {
     );
     when(client.post(any, headers: anyNamed('headers'), body: anyNamed('body')))
         .thenAnswer(
-          (_) async => http.Response(
-            '{"id": 3, "date": "2021-01-01", "weight": "80"}',
-            200,
-          ),
-        );
+      (_) async => http.Response(
+        '{"id": 3, "date": "2021-01-01", "weight": "80"}',
+        200,
+      ),
+    );
 
     return ChangeNotifierProvider<BodyWeightProvider>(
-      create: (context) => BodyWeightProvider(testAuthProvider, [
-        weightEntry1,
-        weightEntry2,
-      ], client),
+      create: (context) => BodyWeightProvider(
+          testAuthProvider,
+          [
+            weightEntry1,
+            weightEntry2,
+          ],
+          client),
       child: MaterialApp(
         locale: Locale(locale),
         localizationsDelegates: AppLocalizations.localizationsDelegates,

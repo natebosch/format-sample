@@ -46,13 +46,13 @@ abstract class TestPathProviderApi {
       } else {
         _testBinaryMessengerBinding!.defaultBinaryMessenger
             .setMockDecodedMessageHandler<Object?>(
-              channel,
-              (Object? message) async {
-                // ignore message
-                final String? output = api.getTemporaryPath();
-                return <Object?>[output];
-              },
-            );
+          channel,
+          (Object? message) async {
+            // ignore message
+            final String? output = api.getTemporaryPath();
+            return <Object?>[output];
+          },
+        );
       }
     }
     {
@@ -67,13 +67,13 @@ abstract class TestPathProviderApi {
       } else {
         _testBinaryMessengerBinding!.defaultBinaryMessenger
             .setMockDecodedMessageHandler<Object?>(
-              channel,
-              (Object? message) async {
-                // ignore message
-                final String? output = api.getApplicationSupportPath();
-                return <Object?>[output];
-              },
-            );
+          channel,
+          (Object? message) async {
+            // ignore message
+            final String? output = api.getApplicationSupportPath();
+            return <Object?>[output];
+          },
+        );
       }
     }
     {
@@ -88,13 +88,13 @@ abstract class TestPathProviderApi {
       } else {
         _testBinaryMessengerBinding!.defaultBinaryMessenger
             .setMockDecodedMessageHandler<Object?>(
-              channel,
-              (Object? message) async {
-                // ignore message
-                final String? output = api.getApplicationDocumentsPath();
-                return <Object?>[output];
-              },
-            );
+          channel,
+          (Object? message) async {
+            // ignore message
+            final String? output = api.getApplicationDocumentsPath();
+            return <Object?>[output];
+          },
+        );
       }
     }
     {
@@ -109,13 +109,13 @@ abstract class TestPathProviderApi {
       } else {
         _testBinaryMessengerBinding!.defaultBinaryMessenger
             .setMockDecodedMessageHandler<Object?>(
-              channel,
-              (Object? message) async {
-                // ignore message
-                final String? output = api.getExternalStoragePath();
-                return <Object?>[output];
-              },
-            );
+          channel,
+          (Object? message) async {
+            // ignore message
+            final String? output = api.getExternalStoragePath();
+            return <Object?>[output];
+          },
+        );
       }
     }
     {
@@ -130,13 +130,13 @@ abstract class TestPathProviderApi {
       } else {
         _testBinaryMessengerBinding!.defaultBinaryMessenger
             .setMockDecodedMessageHandler<Object?>(
-              channel,
-              (Object? message) async {
-                // ignore message
-                final List<String?> output = api.getExternalCachePaths();
-                return <Object?>[output];
-              },
-            );
+          channel,
+          (Object? message) async {
+            // ignore message
+            final List<String?> output = api.getExternalCachePaths();
+            return <Object?>[output];
+          },
+        );
       }
     }
     {
@@ -151,26 +151,26 @@ abstract class TestPathProviderApi {
       } else {
         _testBinaryMessengerBinding!.defaultBinaryMessenger
             .setMockDecodedMessageHandler<Object?>(
-              channel,
-              (Object? message) async {
-                assert(
-                  message != null,
-                  'Argument for dev.flutter.pigeon.PathProviderApi.getExternalStoragePaths was null.',
-                );
-                final List<Object?> args = (message as List<Object?>?)!;
-                final StorageDirectory? arg_directory = args[0] == null
-                    ? null
-                    : StorageDirectory.values[args[0] as int];
-                assert(
-                  arg_directory != null,
-                  'Argument for dev.flutter.pigeon.PathProviderApi.getExternalStoragePaths was null, expected non-null StorageDirectory.',
-                );
-                final List<String?> output = api.getExternalStoragePaths(
-                  arg_directory!,
-                );
-                return <Object?>[output];
-              },
+          channel,
+          (Object? message) async {
+            assert(
+              message != null,
+              'Argument for dev.flutter.pigeon.PathProviderApi.getExternalStoragePaths was null.',
             );
+            final List<Object?> args = (message as List<Object?>?)!;
+            final StorageDirectory? arg_directory = args[0] == null
+                ? null
+                : StorageDirectory.values[args[0] as int];
+            assert(
+              arg_directory != null,
+              'Argument for dev.flutter.pigeon.PathProviderApi.getExternalStoragePaths was null, expected non-null StorageDirectory.',
+            );
+            final List<String?> output = api.getExternalStoragePaths(
+              arg_directory!,
+            );
+            return <Object?>[output];
+          },
+        );
       }
     }
   }

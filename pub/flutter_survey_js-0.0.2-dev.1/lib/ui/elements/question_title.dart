@@ -7,7 +7,7 @@ class QuestionTitle extends StatelessWidget {
   final Widget? child;
 
   const QuestionTitle({Key? key, required this.q, this.child})
-    : super(key: key);
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -94,11 +94,11 @@ class QuestionTitle extends StatelessWidget {
   }
 
   TextStyle get requiredTextStyle => const TextStyle(
-    fontSize: 16.0,
-    fontFamily: 'SF-UI-Text',
-    fontWeight: FontWeight.w900,
-    color: Colors.red,
-  );
+        fontSize: 16.0,
+        fontFamily: 'SF-UI-Text',
+        fontWeight: FontWeight.w900,
+        color: Colors.red,
+      );
 }
 
 extension QuestionTitleExtension on Widget {

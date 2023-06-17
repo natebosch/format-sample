@@ -103,21 +103,19 @@ class MultiSelectListState extends State<MultiSelectList> {
     final Map<String, String> options = {};
     widget.options
         .where(
-          (option) =>
-              !selected.contains(option) ||
-              widget.allowDuplicates.contains(option),
-        )
+      (option) =>
+          !selected.contains(option) || widget.allowDuplicates.contains(option),
+    )
         .forEach((option) {
-          final columnTitle = state.company.getCustomFieldLabel(option);
-          options[option] = columnTitle.isEmpty
-              ? lookupOption(option)
-              : columnTitle;
-        });
+      final columnTitle = state.company.getCustomFieldLabel(option);
+      options[option] =
+          columnTitle.isEmpty ? lookupOption(option) : columnTitle;
+    });
     final keys = options.keys.toList();
     keys.sort(
       (a, b) => lookupOption(a).toLowerCase().compareTo(
-        lookupOption(b).toLowerCase(),
-      ),
+            lookupOption(b).toLowerCase(),
+          ),
     );
 
     final column = Container(

@@ -58,9 +58,14 @@ class InterpolationMap {
         .any((content) => content is Expression)) {
       return SourceSpanFormatException(error.message, source, error.source);
     } else {
-      return MultiSourceSpanFormatException(error.message, source, "", {
-        target: "error in interpolated output",
-      }, error.source);
+      return MultiSourceSpanFormatException(
+          error.message,
+          source,
+          "",
+          {
+            target: "error in interpolated output",
+          },
+          error.source);
     }
   }
 

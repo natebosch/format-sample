@@ -6,7 +6,7 @@ import 'package:smithy/smithy.dart' as _i1;
 
 class ButtonAction extends _i1.SmithyEnum<ButtonAction> {
   const ButtonAction._(int index, String name, String value)
-    : super(index, name, value);
+      : super(index, name, value);
 
   const ButtonAction._sdkUnknown(String value) : super.sdkUnknown(value);
 
@@ -40,8 +40,8 @@ extension ButtonActionHelpers on List<ButtonAction> {
   ///
   /// Throws a `StateError` if no matching value is found.
   ButtonAction byName(String name) => firstWhere(
-    (el) => el.name.toLowerCase() == name.toLowerCase(),
-  );
+        (el) => el.name.toLowerCase() == name.toLowerCase(),
+      );
 
   /// Returns the value of [ButtonAction] whose value matches [value].
   ButtonAction byValue(String value) => firstWhere((el) => el.value == value);

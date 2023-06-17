@@ -229,10 +229,15 @@ class _$AppUser extends AppUser {
 
   @override
   int get hashCode {
-    return $jf($jc($jc($jc(
-      $jc($jc($jc(0, uid.hashCode), firstName.hashCode), lastName.hashCode),
-      email.hashCode,
-    ), profile.hashCode), isCreated.hashCode));
+    return $jf($jc(
+        $jc(
+            $jc(
+              $jc($jc($jc(0, uid.hashCode), firstName.hashCode),
+                  lastName.hashCode),
+              email.hashCode,
+            ),
+            profile.hashCode),
+        isCreated.hashCode));
   }
 
   @override

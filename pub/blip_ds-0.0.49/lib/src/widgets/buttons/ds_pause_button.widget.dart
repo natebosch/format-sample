@@ -13,11 +13,11 @@ class DSPauseButton extends DSIconButton {
     required super.onPressed,
     super.isLoading,
   }) : super(
-         icon: SvgPicture.asset(
-           'assets/images/pause.svg',
-           package: DSUtils.packageName,
-           color: color,
-           height: 24.0,
-         ),
-       );
+          icon: SvgPicture.asset(
+            'assets/images/pause.svg',
+            package: DSUtils.packageName,
+            color: color,
+            height: 24.0,
+          ),
+        );
 }

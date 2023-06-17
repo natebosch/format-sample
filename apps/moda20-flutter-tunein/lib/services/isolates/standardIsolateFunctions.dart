@@ -168,7 +168,8 @@ class StandardIsolateFunctions {
       }
     }
     Map<String, int> playTime = Map();
-    var sortedKeys = newValue.keys.toList(growable: false)..sort(
+    var sortedKeys = newValue.keys.toList(growable: false)
+      ..sort(
         (k1, k2) => int.parse(newValue[k2]).compareTo(int.parse(newValue[k1])),
       );
     Map<String, String> sortedMap = new Map.fromIterable(
@@ -224,7 +225,8 @@ class StandardIsolateFunctions {
     List<Artist> topArtists = List();
     Map<String, int> playDuration = Map();
     if (newValue.length != 0) {
-      var sortedKeys = newValue.keys.toList(growable: false)..sort(
+      var sortedKeys = newValue.keys.toList(growable: false)
+        ..sort(
           (k1, k2) => int.parse(newValue[k2]).compareTo(
             int.parse(newValue[k1]),
           ),
@@ -292,11 +294,11 @@ class StandardIsolateFunctions {
             artistToPickFrom.albums[albumIndex].songs.length,
           );
           while (newSongMap.keys.toList().firstWhere(
-                (element) =>
-                    element.id ==
-                    artistToPickFrom.albums[albumIndex].songs[songIndex].id,
-                orElse: () => null,
-              ) !=
+                    (element) =>
+                        element.id ==
+                        artistToPickFrom.albums[albumIndex].songs[songIndex].id,
+                    orElse: () => null,
+                  ) !=
               null) {
             songIndex = MathUtils.getRandomFromRange(
               0,
@@ -337,9 +339,12 @@ class StandardIsolateFunctions {
     Map<int, Artist> allArtists,
   ) {
     List<int> topArtistsIds = topArtists.map((e) => e.id).toList();
-    List<Artist> notTopArtists = allArtists.entries.where((element) {
-      return !topArtistsIds.contains(element.key);
-    }).map((e) => e.value).toList();
+    List<Artist> notTopArtists = allArtists.entries
+        .where((element) {
+          return !topArtistsIds.contains(element.key);
+        })
+        .map((e) => e.value)
+        .toList();
     List<int> randomIndexList = List();
     for (int i = 0; i < 4; i++) {
       randomIndexList.add(
@@ -375,12 +380,10 @@ class StandardIsolateFunctions {
         // PENDING: Do more security checks here?
         final String fileID = request.uri.queryParameters["fileID"];
         try {
-          String fileUri = fileID != null
-              ? filesToServe[fileID.split(".")[0]].key
-              : null;
-          List<String> contentType = filesToServe[fileID.split(".")[0]]
-              .value
-              .split("/");
+          String fileUri =
+              fileID != null ? filesToServe[fileID.split(".")[0]].key : null;
+          List<String> contentType =
+              filesToServe[fileID.split(".")[0]].value.split("/");
           if (fileUri != null) {
             final File file = new File(fileUri);
             file.exists().then((bool found) async {

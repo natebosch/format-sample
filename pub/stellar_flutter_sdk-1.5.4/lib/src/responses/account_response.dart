@@ -32,7 +32,7 @@ class AccountResponse extends Response implements TransactionBuilderAccount {
   int numSponsoring;
   int numSponsored;
   int?
-  muxedAccountMed25519Id; // ID to be used if this account is used as MuxedAccountMed25519
+      muxedAccountMed25519Id; // ID to be used if this account is used as MuxedAccountMed25519
   int? sequenceLedger;
   String? sequenceTime;
 
@@ -72,33 +72,34 @@ class AccountResponse extends Response implements TransactionBuilderAccount {
 
   @override
   MuxedAccount get muxedAccount => MuxedAccount(
-    accountId,
-    muxedAccountMed25519Id,
-  );
+        accountId,
+        muxedAccountMed25519Id,
+      );
 
   factory AccountResponse.fromJson(
     Map<String, dynamic> json,
-  ) => AccountResponse(
-    json['account_id'],
-    convertInt(json['sequence'])!,
-    json['paging_token'],
-    convertInt(json['subentry_count'])!,
-    json['inflation_destination'],
-    json['home_domain'],
-    convertInt(json['last_modified_ledger'])!,
-    json['last_modified_time'],
-    Thresholds.fromJson(json['thresholds']),
-    Flags.fromJson(json['flags']),
-    List<Balance>.from(json['balances'].map((e) => Balance.fromJson(e))),
-    List<Signer>.from(json['signers'].map((e) => Signer.fromJson(e))),
-    AccountResponseData(json['data']),
-    AccountResponseLinks.fromJson(json['_links']),
-    json['sponsor'],
-    convertInt(json['num_sponsoring'])!,
-    convertInt(json['num_sponsored'])!,
-    convertInt(json['sequence_ledger']),
-    json['sequence_time'],
-  );
+  ) =>
+      AccountResponse(
+        json['account_id'],
+        convertInt(json['sequence'])!,
+        json['paging_token'],
+        convertInt(json['subentry_count'])!,
+        json['inflation_destination'],
+        json['home_domain'],
+        convertInt(json['last_modified_ledger'])!,
+        json['last_modified_time'],
+        Thresholds.fromJson(json['thresholds']),
+        Flags.fromJson(json['flags']),
+        List<Balance>.from(json['balances'].map((e) => Balance.fromJson(e))),
+        List<Signer>.from(json['signers'].map((e) => Signer.fromJson(e))),
+        AccountResponseData(json['data']),
+        AccountResponseLinks.fromJson(json['_links']),
+        json['sponsor'],
+        convertInt(json['num_sponsoring'])!,
+        convertInt(json['num_sponsored'])!,
+        convertInt(json['sequence_ledger']),
+        json['sequence_time'],
+      );
 }
 
 /// Represents account thresholds from the horizon account response.
@@ -110,10 +111,10 @@ class Thresholds {
   Thresholds(this.lowThreshold, this.medThreshold, this.highThreshold);
 
   factory Thresholds.fromJson(Map<String, dynamic> json) => Thresholds(
-    convertInt(json['low_threshold'])!,
-    convertInt(json['med_threshold'])!,
-    convertInt(json['high_threshold'])!,
-  );
+        convertInt(json['low_threshold'])!,
+        convertInt(json['med_threshold'])!,
+        convertInt(json['high_threshold'])!,
+      );
 }
 
 /// Represents account flags from the horizon account response.
@@ -131,11 +132,11 @@ class Flags {
   );
 
   factory Flags.fromJson(Map<String, dynamic> json) => Flags(
-    json['auth_required'],
-    json['auth_revocable'],
-    json['auth_immutable'],
-    json['auth_clawback_enabled'],
-  );
+        json['auth_required'],
+        json['auth_revocable'],
+        json['auth_immutable'],
+        json['auth_clawback_enabled'],
+      );
 }
 
 /// Represents account balance from the horizon account response.
@@ -181,21 +182,21 @@ class Balance {
   }
 
   factory Balance.fromJson(Map<String, dynamic> json) => Balance(
-    json['asset_type'],
-    json['asset_code'],
-    json['asset_issuer'],
-    json['balance'],
-    json['limit'],
-    json['buying_liabilities'],
-    json['selling_liabilities'],
-    json['is_authorized'],
-    json['is_authorized_to_maintain_liabilities'],
-    json['is_clawback_enabled'],
-    convertInt(json['last_modified_ledger']),
-    json['last_modified_time'],
-    json['sponsor'],
-    json['liquidity_pool_id'],
-  );
+        json['asset_type'],
+        json['asset_code'],
+        json['asset_issuer'],
+        json['balance'],
+        json['limit'],
+        json['buying_liabilities'],
+        json['selling_liabilities'],
+        json['is_authorized'],
+        json['is_authorized_to_maintain_liabilities'],
+        json['is_clawback_enabled'],
+        convertInt(json['last_modified_ledger']),
+        json['last_modified_time'],
+        json['sponsor'],
+        json['liquidity_pool_id'],
+      );
 }
 
 /// Represents account signers from the horizon account response.
@@ -210,11 +211,11 @@ class Signer {
   String? get accountId => key;
 
   factory Signer.fromJson(Map<String, dynamic> json) => Signer(
-    json['key'],
-    json['type'],
-    convertInt(json['weight'])!,
-    json['sponsor'],
-  );
+        json['key'],
+        json['type'],
+        convertInt(json['weight'])!,
+        json['sponsor'],
+      );
 }
 
 /// Data connected to account from the horizon account response.

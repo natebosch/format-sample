@@ -51,9 +51,11 @@ class _ModalContentsState extends State<ModalContents> {
   PokeTypes get pokeType => types[widget.index];
 
   ExpansionPanel _buildTypePokemonPanel(List<Pokemon> pokemons) {
-    final filteredPokemons = pokemons.where(
-      (pokemon) => pokemon.types.contains(pokeType.type),
-    ).toList();
+    final filteredPokemons = pokemons
+        .where(
+          (pokemon) => pokemon.types.contains(pokeType.type),
+        )
+        .toList();
 
     return ExpansionPanel(
       headerBuilder: (context, isOpen) {
@@ -72,8 +74,8 @@ class _ModalContentsState extends State<ModalContents> {
               padding: const EdgeInsets.only(left: 8.0),
               child: Text(
                 "${getEnumValue(pokeType.type)[0].toUpperCase() + getEnumValue(
-                      pokeType.type,
-                    ).substring(1)} Type " +
+                          pokeType.type,
+                        ).substring(1)} Type " +
                     "Pokemons",
               ),
             ),
@@ -132,8 +134,8 @@ class _ModalContentsState extends State<ModalContents> {
               padding: const EdgeInsets.only(left: 8.0),
               child: Text(
                 "${getEnumValue(pokeType.type)[0].toUpperCase() + getEnumValue(
-                      pokeType.type,
-                    ).substring(1)} Type " +
+                          pokeType.type,
+                        ).substring(1)} Type " +
                     "Items",
               ),
             ),
@@ -147,16 +149,17 @@ class _ModalContentsState extends State<ModalContents> {
   }
 
   Widget _buildTypePanelList(List<Pokemon> pokemons) => ExpansionPanelList(
-    animationDuration: const Duration(milliseconds: 500),
-    children: [_buildTypePokemonPanel(pokemons), _buildTypeItemsPanel()],
-    expansionCallback: (i, isOpen) => setState(() => _isOpen[i] = !isOpen),
-  );
+        animationDuration: const Duration(milliseconds: 500),
+        children: [_buildTypePokemonPanel(pokemons), _buildTypeItemsPanel()],
+        expansionCallback: (i, isOpen) => setState(() => _isOpen[i] = !isOpen),
+      );
 
   Widget _buildError() => Container(
-    padding: EdgeInsets.only(bottom: 28),
-    alignment: Alignment.center,
-    child: Icon(Icons.warning_amber_rounded, size: 60, color: Colors.black26),
-  );
+        padding: EdgeInsets.only(bottom: 28),
+        alignment: Alignment.center,
+        child:
+            Icon(Icons.warning_amber_rounded, size: 60, color: Colors.black26),
+      );
 
   @override
   Widget build(BuildContext context) {

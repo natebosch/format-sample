@@ -12,4 +12,5 @@ ProcessResponse _$ProcessResponseFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$ProcessResponseToJson(
   ProcessResponse instance,
-) => <String, dynamic>{'hash': instance.hash};
+) =>
+    <String, dynamic>{'hash': instance.hash};

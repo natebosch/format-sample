@@ -16,7 +16,8 @@ AccountsBalancesRequest _$AccountsBalancesRequestFromJson(
 
 Map<String, dynamic> _$AccountsBalancesRequestToJson(
   AccountsBalancesRequest instance,
-) => <String, dynamic>{
-  'action': instance.action,
-  'accounts': instance.accounts,
-};
+) =>
+    <String, dynamic>{
+      'action': instance.action,
+      'accounts': instance.accounts,
+    };

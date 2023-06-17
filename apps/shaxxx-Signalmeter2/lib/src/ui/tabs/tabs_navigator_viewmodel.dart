@@ -14,8 +14,8 @@ class TabsNavigatorViewModel {
     @required this.connectionStatus,
     @required this.onTap,
     @required this.currentIndex,
-  }) : assert(connectionStatus != null),
-       assert(currentIndex != null);
+  })  : assert(connectionStatus != null),
+        assert(currentIndex != null);
 
   bool get connected => connectionStatus == ConnectionStatusEnum.connected;
 

@@ -89,10 +89,11 @@ class MyHomePage extends StatelessWidget {
           showDialog(
             context: context,
             builder: (_) => AlertDialog(
-                  title: Text("${date.month.monthName} ${date.day}"),
-                  content: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: eventsOnTheDate.map(
+              title: Text("${date.month.monthName} ${date.day}"),
+              content: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: eventsOnTheDate
+                    .map(
                       (event) => Container(
                         width: double.infinity,
                         padding: const EdgeInsets.all(4),
@@ -101,9 +102,10 @@ class MyHomePage extends StatelessWidget {
                         child:
                             Text(event.eventName, style: event.eventTextStyle),
                       ),
-                    ).toList(),
-                  ),
-                ),
+                    )
+                    .toList(),
+              ),
+            ),
           );
         },
         onPageChanged: (firstDate, lastDate) {

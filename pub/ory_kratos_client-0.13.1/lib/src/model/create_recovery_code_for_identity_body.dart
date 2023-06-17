@@ -16,10 +16,8 @@ part 'create_recovery_code_for_identity_body.g.dart';
 @BuiltValue()
 abstract class CreateRecoveryCodeForIdentityBody
     implements
-        Built<
-          CreateRecoveryCodeForIdentityBody,
-          CreateRecoveryCodeForIdentityBodyBuilder
-        > {
+        Built<CreateRecoveryCodeForIdentityBody,
+            CreateRecoveryCodeForIdentityBodyBuilder> {
   /// Code Expires In  The recovery code will expire after that amount of time has passed. Defaults to the configuration value of `selfservice.methods.code.config.lifespan`.
   @BuiltValueField(wireName: r'expires_in')
   String? get expiresIn;

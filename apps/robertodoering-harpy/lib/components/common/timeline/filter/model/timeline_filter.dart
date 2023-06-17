@@ -19,7 +19,8 @@ class TimelineFilter extends Equatable {
 
   factory TimelineFilter.fromJson(
     Map<String, dynamic> json,
-  ) => _$TimelineFilterFromJson(json);
+  ) =>
+      _$TimelineFilterFromJson(json);
 
   factory TimelineFilter.fromJsonString(String jsonString) {
     try {
@@ -47,14 +48,14 @@ class TimelineFilter extends Equatable {
 
   @override
   List<Object> get props => <Object>[
-    includesImages,
-    includesGif,
-    includesVideo,
-    excludesHashtags,
-    excludesPhrases,
-    excludesReplies,
-    excludesRetweets,
-  ];
+        includesImages,
+        includesGif,
+        includesVideo,
+        excludesHashtags,
+        excludesPhrases,
+        excludesReplies,
+        excludesRetweets,
+      ];
 
   Map<String, dynamic> toJson() => _$TimelineFilterToJson(this);
 

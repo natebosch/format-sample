@@ -50,9 +50,8 @@ class ReactionBubble extends StatelessWidget {
   Widget build(BuildContext context) {
     final reactionIcons = StreamChatTheme.of(context).reactionIcons;
     final totalReactions = reactions.length;
-    final offset = totalReactions > 1
-        ? 16.0.mirrorConditionally(flipTail)
-        : 2.0;
+    final offset =
+        totalReactions > 1 ? 16.0.mirrorConditionally(flipTail) : 2.0;
     return Stack(
       alignment: Alignment.center,
       children: [
@@ -76,27 +75,32 @@ class ReactionBubble extends StatelessWidget {
               ),
               child: LayoutBuilder(
                 builder: (context, constraints) => Flex(
-                      direction: Axis.horizontal,
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        if (constraints.maxWidth < double.infinity)
-                          ...reactions.take((constraints.maxWidth) ~/ 24).map(
+                  direction: Axis.horizontal,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    if (constraints.maxWidth < double.infinity)
+                      ...reactions
+                          .take((constraints.maxWidth) ~/ 24)
+                          .map(
                             (reaction) => _buildReaction(
                               reactionIcons,
                               reaction,
                               context,
                             ),
-                          ).toList(),
-                        if (constraints.maxWidth == double.infinity)
-                          ...reactions.map(
+                          )
+                          .toList(),
+                    if (constraints.maxWidth == double.infinity)
+                      ...reactions
+                          .map(
                             (reaction) => _buildReaction(
                               reactionIcons,
                               reaction,
                               context,
                             ),
-                          ).toList(),
-                      ],
-                    ),
+                          )
+                          .toList(),
+                  ],
+                ),
               ),
             ),
           ),
@@ -262,10 +266,13 @@ class ReactionBubblePainter extends CustomPainter {
     final startAngle = flipTail ? -0.1 : 1.1;
     final sweepAngle = flipTail ? -1.2 : (numberOfReactions > 1 ? 1.2 : 0.9);
     final path = Path()
-      ..addArc(Rect.fromCircle(
-        center: const Offset(1, dy).mirrorConditionally(flipTail),
-        radius: 4,
-      ), -pi * startAngle, -pi / sweepAngle);
+      ..addArc(
+          Rect.fromCircle(
+            center: const Offset(1, dy).mirrorConditionally(flipTail),
+            radius: 4,
+          ),
+          -pi * startAngle,
+          -pi / sweepAngle);
     canvas.drawPath(path, paint);
   }
 
@@ -278,10 +285,13 @@ class ReactionBubblePainter extends CustomPainter {
     final startAngle = flipTail ? -0.0 : 1.0;
     final sweepAngle = flipTail ? -1.3 : 1.3;
     final path = Path()
-      ..addArc(Rect.fromCircle(
-        center: const Offset(1, dy).mirrorConditionally(flipTail),
-        radius: 4,
-      ), -pi * startAngle, -pi * sweepAngle);
+      ..addArc(
+          Rect.fromCircle(
+            center: const Offset(1, dy).mirrorConditionally(flipTail),
+            radius: 4,
+          ),
+          -pi * startAngle,
+          -pi * sweepAngle);
     canvas.drawPath(path, paint);
   }
 
@@ -295,10 +305,13 @@ class ReactionBubblePainter extends CustomPainter {
     final startAngle = flipTail ? -0.1 : 1.1;
     final sweepAngle = flipTail ? -1.2 : 1.2;
     final path = Path()
-      ..addArc(Rect.fromCircle(
-        center: const Offset(1, dy).mirrorConditionally(flipTail),
-        radius: 6,
-      ), -pi * startAngle, -pi / sweepAngle);
+      ..addArc(
+          Rect.fromCircle(
+            center: const Offset(1, dy).mirrorConditionally(flipTail),
+            radius: 6,
+          ),
+          -pi * startAngle,
+          -pi / sweepAngle);
     canvas.drawPath(path, paint);
   }
 

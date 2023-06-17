@@ -138,14 +138,16 @@ class _TodoListScreenState extends State<TodoListScreen> {
                   child: CustomDropdown.DropdownButton<String>(
                     isDense: true,
                     value: state.filter,
-                    items: filters.map(
-                      (f) => CustomDropdown.DropdownMenuItem<String>(
-                        child: Text(f),
-                        value: f,
-                      ),
-                    ).toList(),
-                    onChanged:
-                        (filter) => _bloc.actions.add(FilterBy(filter: filter)),
+                    items: filters
+                        .map(
+                          (f) => CustomDropdown.DropdownMenuItem<String>(
+                            child: Text(f),
+                            value: f,
+                          ),
+                        )
+                        .toList(),
+                    onChanged: (filter) =>
+                        _bloc.actions.add(FilterBy(filter: filter)),
                   ),
                 ),
               ),

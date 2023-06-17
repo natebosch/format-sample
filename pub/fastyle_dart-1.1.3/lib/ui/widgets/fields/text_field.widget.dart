@@ -79,8 +79,8 @@ class FastTextFieldState extends State<FastTextField>
       cursorColor: ThemeHelper.colors.getPrimaryColor(context),
       keyboardType: TextInputType.text,
       style: ThemeHelper.texts.getBodyTextStyle(context).copyWith(
-        fontWeight: kFastFontWeightBold,
-      ),
+            fontWeight: kFastFontWeightBold,
+          ),
       decoration: InputDecoration(hintText: widget.placeholderText),
       onChanged: debounceOnValueChangedIfNeeded(),
     );

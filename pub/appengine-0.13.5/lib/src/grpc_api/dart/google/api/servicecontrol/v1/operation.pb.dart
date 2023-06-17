@@ -157,11 +157,13 @@ class Operation extends $pb.GeneratedMessage {
   factory Operation.fromBuffer(
     $core.List<$core.int> i, [
     $pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY,
-  ]) => create()..mergeFromBuffer(i, r);
+  ]) =>
+      create()..mergeFromBuffer(i, r);
   factory Operation.fromJson(
     $core.String i, [
     $pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY,
-  ]) => create()..mergeFromJson(i, r);
+  ]) =>
+      create()..mergeFromJson(i, r);
   @$core.Deprecated(
     'Using this can add significant overhead to your binary. '
     'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '

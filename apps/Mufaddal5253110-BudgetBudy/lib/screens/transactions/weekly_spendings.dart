@@ -92,18 +92,18 @@ class _WeeklySpendingsState extends State<WeeklySpendings> {
           recentTransaction.isEmpty
               ? NoTransactions()
               : (_showChart
-                    ? weaklyChart(context, recentTransaction, recentData)
-                    : ListView.builder(
-                        shrinkWrap: true,
-                        physics: NeverScrollableScrollPhysics(),
-                        itemBuilder: (ctx, index) {
-                          return TransactionListItems(
-                            trx: recentTransaction[index],
-                            dltTrxItem: deleteFn,
-                          );
-                        },
-                        itemCount: recentTransaction.length,
-                      )),
+                  ? weaklyChart(context, recentTransaction, recentData)
+                  : ListView.builder(
+                      shrinkWrap: true,
+                      physics: NeverScrollableScrollPhysics(),
+                      itemBuilder: (ctx, index) {
+                        return TransactionListItems(
+                          trx: recentTransaction[index],
+                          dltTrxItem: deleteFn,
+                        );
+                      },
+                      itemCount: recentTransaction.length,
+                    )),
         ],
       ),
     );

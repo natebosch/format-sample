@@ -133,7 +133,8 @@ class HttpRequestBuilder implements Builder<HttpRequest, HttpRequestBuilder> {
       _$this._requestInterceptors ??= new ListBuilder<HttpRequestInterceptor>();
   set requestInterceptors(
     ListBuilder<HttpRequestInterceptor>? requestInterceptors,
-  ) => _$this._requestInterceptors = requestInterceptors;
+  ) =>
+      _$this._requestInterceptors = requestInterceptors;
 
   ListBuilder<HttpResponseInterceptor>? _responseInterceptors;
   ListBuilder<HttpResponseInterceptor> get responseInterceptors =>
@@ -141,7 +142,8 @@ class HttpRequestBuilder implements Builder<HttpRequest, HttpRequestBuilder> {
           new ListBuilder<HttpResponseInterceptor>();
   set responseInterceptors(
     ListBuilder<HttpResponseInterceptor>? responseInterceptors,
-  ) => _$this._responseInterceptors = responseInterceptors;
+  ) =>
+      _$this._responseInterceptors = responseInterceptors;
 
   HttpRequestBuilder();
 
@@ -325,15 +327,17 @@ class _$HttpRequestContext extends HttpRequestContext {
 
   factory _$HttpRequestContext([
     void Function(HttpRequestContextBuilder)? updates,
-  ]) => (new HttpRequestContextBuilder()..update(updates))._build();
+  ]) =>
+      (new HttpRequestContextBuilder()..update(updates))._build();
 
   _$HttpRequestContext._({this.awsSigningService, this.awsSigningRegion})
-    : super._();
+      : super._();
 
   @override
   HttpRequestContext rebuild(
     void Function(HttpRequestContextBuilder) updates,
-  ) => (toBuilder()..update(updates)).build();
+  ) =>
+      (toBuilder()..update(updates)).build();
 
   @override
   HttpRequestContextBuilder toBuilder() =>

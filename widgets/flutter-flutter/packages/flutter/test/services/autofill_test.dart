@@ -151,8 +151,8 @@ class FakeAutofillClient implements TextInputClient, AutofillClient {
 
   @override
   void autofill(TextEditingValue newEditingValue) => updateEditingValue(
-    newEditingValue,
-  );
+        newEditingValue,
+      );
 }
 
 class FakeAutofillScope with AutofillScopeMixin implements AutofillScope {

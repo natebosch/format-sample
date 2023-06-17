@@ -52,8 +52,8 @@ class _ListPageState extends State<ListPage> {
                   return Center(
                     child: ProductListAddButton(
                       onlyIcon: false,
-                      onPressed:
-                          () async => _add(daoProductList, userProductListType),
+                      onPressed: () async =>
+                          _add(daoProductList, userProductListType),
                       productListType: userProductListType,
                     ),
                   );
@@ -89,9 +89,11 @@ class _ListPageState extends State<ListPage> {
     if (newProductList == null) {
       return;
     }
-    await Navigator.push<Widget>(context, MaterialPageRoute<Widget>(
-      builder: (BuildContext context) => ProductListPage(newProductList),
-    ));
+    await Navigator.push<Widget>(
+        context,
+        MaterialPageRoute<Widget>(
+          builder: (BuildContext context) => ProductListPage(newProductList),
+        ));
     setState(() {});
   }
 }

@@ -10,8 +10,8 @@ class TransactionCommentsBloc
 
   TransactionCommentsBloc({
     @required this.transactionRepository,
-  }) : assert(transactionRepository != null),
-       super(TransactionCommentsLoading());
+  })  : assert(transactionRepository != null),
+        super(TransactionCommentsLoading());
 
   @override
   Stream<TransactionCommentsState> mapEventToState(

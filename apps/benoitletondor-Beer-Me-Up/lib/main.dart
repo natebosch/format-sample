@@ -40,9 +40,9 @@ class BeerMeUpApp extends StatelessWidget {
         accentColor: Colors.amber[500],
         canvasColor: const Color(0xFFF8F8F8),
         textTheme: Typography(platform: defaultTargetPlatform).black.apply(
-          bodyColor: Colors.blueGrey[900],
-          displayColor: Colors.blueGrey[900],
-        ),
+              bodyColor: Colors.blueGrey[900],
+              displayColor: Colors.blueGrey[900],
+            ),
       ),
       home: HomePage(),
       routes: <String, WidgetBuilder>{

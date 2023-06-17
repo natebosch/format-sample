@@ -39,7 +39,8 @@ void main() {
     });
 
     group('#copyWith()', () {
-      test('should return a copy of a FastListItemDescriptor object '
+      test(
+          'should return a copy of a FastListItemDescriptor object '
           'according to the given parameters', () {
         final copy = itemDescriptor2.copyWith(isDense: false);
 
@@ -87,7 +88,8 @@ void main() {
     });
 
     group('#operator ==', () {
-      test('should return true '
+      test(
+          'should return true '
           'when two FastListItemDescriptor objects are equal ', () {
         itemDescriptor = FastListItemDescriptor(
           leading: leading2,
@@ -102,7 +104,8 @@ void main() {
         expect(itemDescriptor == itemDescriptor2, equals(true));
       });
 
-      test('should return false '
+      test(
+          'should return false '
           'when two FastListItemDescriptor objects are unequal ', () {
         itemDescriptor = FastListItemDescriptor(
           leading: leading,

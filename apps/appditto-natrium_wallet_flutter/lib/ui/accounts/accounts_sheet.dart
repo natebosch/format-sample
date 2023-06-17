@@ -101,22 +101,21 @@ class _AppAccountsWidgetState extends State<AppAccountsWidget> {
   }
 
   void _registerBus() {
-    _accountModifiedSub = EventTaxiImpl.singleton().registerTo<
-      AccountModifiedEvent
-    >().listen((event) {
+    _accountModifiedSub = EventTaxiImpl.singleton()
+        .registerTo<AccountModifiedEvent>()
+        .listen((event) {
       if (event.deleted) {
         if (event.account.selected) {
           Future.delayed(Duration(milliseconds: 50), () {
             setState(() {
               widget.accounts
                   .where(
-                    (a) =>
-                        a.index ==
-                        StateContainer.of(context).selectedAccount.index,
-                  )
+                (a) =>
+                    a.index == StateContainer.of(context).selectedAccount.index,
+              )
                   .forEach((account) {
-                    account.selected = true;
-                  });
+                account.selected = true;
+              });
             });
           });
         }
@@ -294,41 +293,38 @@ class _AppAccountsWidgetState extends State<AppAccountsWidget> {
                                         .defaultNewAccountName,
                                   )
                                   .then((newAccount) {
-                                    _requestBalances(context, [newAccount]);
-                                    StateContainer.of(context)
-                                        .updateRecentlyUsedAccounts();
-                                    widget.accounts.add(newAccount);
-                                    setState(() {
-                                      _addingAccount = false;
-                                      widget.accounts.sort(
-                                        (a, b) => a.index.compareTo(b.index),
+                                _requestBalances(context, [newAccount]);
+                                StateContainer.of(context)
+                                    .updateRecentlyUsedAccounts();
+                                widget.accounts.add(newAccount);
+                                setState(() {
+                                  _addingAccount = false;
+                                  widget.accounts.sort(
+                                    (a, b) => a.index.compareTo(b.index),
+                                  );
+                                  // Scroll if list is full
+                                  if (expandedKey.currentContext != null) {
+                                    RenderBox box = expandedKey.currentContext
+                                        .findRenderObject();
+                                    if (widget.accounts.length * 72.0 >=
+                                        box.size.height) {
+                                      _scrollController.animateTo(
+                                        newAccount.index * 72.0 >
+                                                _scrollController
+                                                    .position.maxScrollExtent
+                                            ? _scrollController
+                                                    .position.maxScrollExtent +
+                                                72.0
+                                            : newAccount.index * 72.0,
+                                        curve: Curves.easeOut,
+                                        duration: const Duration(
+                                          milliseconds: 200,
+                                        ),
                                       );
-                                      // Scroll if list is full
-                                      if (expandedKey.currentContext != null) {
-                                        RenderBox box = expandedKey
-                                            .currentContext
-                                            .findRenderObject();
-                                        if (widget.accounts.length * 72.0 >=
-                                            box.size.height) {
-                                          _scrollController.animateTo(
-                                            newAccount.index * 72.0 >
-                                                    _scrollController
-                                                        .position
-                                                        .maxScrollExtent
-                                                ? _scrollController
-                                                        .position
-                                                        .maxScrollExtent +
-                                                    72.0
-                                                : newAccount.index * 72.0,
-                                            curve: Curves.easeOut,
-                                            duration: const Duration(
-                                              milliseconds: 200,
-                                            ),
-                                          );
-                                        }
-                                      }
-                                    });
-                                  });
+                                    }
+                                  }
+                                });
+                              });
                             });
                           }
                         },
@@ -426,27 +422,27 @@ class _AppAccountsWidgetState extends State<AppAccountsWidget> {
                                           account.address,
                                           StateContainer.of(context)
                                               .getNatriconNonce(
-                                                account.address,
-                                              ),
+                                            account.address,
+                                          ),
                                         ),
                                         key: Key(UIUtil.getNatriconURL(
                                           account.address,
                                           StateContainer.of(context)
                                               .getNatriconNonce(
-                                                account.address,
-                                              ),
+                                            account.address,
+                                          ),
                                         )),
                                         placeholderBuilder:
                                             (BuildContext context) => Container(
-                                              child: FlareActor(
-                                                "assets/ntr_placeholder_animation.flr",
-                                                animation: "main",
-                                                fit: BoxFit.contain,
-                                                color: StateContainer.of(
-                                                  context,
-                                                ).curTheme.primary,
-                                              ),
-                                            ),
+                                          child: FlareActor(
+                                            "assets/ntr_placeholder_animation.flr",
+                                            animation: "main",
+                                            fit: BoxFit.contain,
+                                            color: StateContainer.of(
+                                              context,
+                                            ).curTheme.primary,
+                                          ),
+                                        ),
                                       ),
                                     )
                                   : Container(
@@ -457,11 +453,11 @@ class _AppAccountsWidgetState extends State<AppAccountsWidget> {
                                               AppIcons.accountwallet,
                                               color: account.selected
                                                   ? StateContainer.of(context)
-                                                        .curTheme
-                                                        .success
+                                                      .curTheme
+                                                      .success
                                                   : StateContainer.of(context)
-                                                        .curTheme
-                                                        .primary,
+                                                      .curTheme
+                                                      .primary,
                                               size: 30,
                                             ),
                                           ),
@@ -555,8 +551,8 @@ class _AppAccountsWidgetState extends State<AppAccountsWidget> {
                                               )
                                             : account.selected
                                                 ? StateContainer.of(context)
-                                                      .wallet
-                                                      .getAccountBalanceDisplay()
+                                                    .wallet
+                                                    .getAccountBalanceDisplay()
                                                 : ""),
                                     style: TextStyle(
                                       fontSize: 16.0,
@@ -637,9 +633,9 @@ class _AppAccountsWidgetState extends State<AppAccountsWidget> {
             context,
             AppLocalization.of(context).hideAccountHeader,
             AppLocalization.of(context).removeAccountText.replaceAll(
-              "%1",
-              AppLocalization.of(context).addAccount,
-            ),
+                  "%1",
+                  AppLocalization.of(context).addAccount,
+                ),
             CaseChange.toUpperCase(AppLocalization.of(context).yes, context),
             () {
               // Remove account

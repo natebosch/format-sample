@@ -10,7 +10,7 @@ import 'package:www_redux_actions/www_redux_actions.dart';
 class LatestTournamentsMiddleware
     implements IMiddleware<ILatestTournamentsStateHolder> {
   LatestTournamentsMiddleware({required ILatestTournamentsProvider provider})
-    : _provider = provider;
+      : _provider = provider;
 
   final ILatestTournamentsProvider _provider;
 
@@ -20,20 +20,18 @@ class LatestTournamentsMiddleware
   late final _middleware = _createMiddleware();
 
   List<Middleware<ILatestTournamentsStateHolder>> _createMiddleware() => [
-    TypedMiddleware<ILatestTournamentsStateHolder, OpenLatestSystemAction>(
-      _onOpen,
-    ),
-    TypedMiddleware<ILatestTournamentsStateHolder, RefreshLatestUserAction>(
-      _onRefresh,
-    ),
-    TypedMiddleware<ILatestTournamentsStateHolder, LoadLatestUserAction>(
-      _onLoad,
-    ),
-    TypedMiddleware<
-      ILatestTournamentsStateHolder,
-      ScrolledCloseToTheEndLatestUserAction
-    >(_onScrolled),
-  ];
+        TypedMiddleware<ILatestTournamentsStateHolder, OpenLatestSystemAction>(
+          _onOpen,
+        ),
+        TypedMiddleware<ILatestTournamentsStateHolder, RefreshLatestUserAction>(
+          _onRefresh,
+        ),
+        TypedMiddleware<ILatestTournamentsStateHolder, LoadLatestUserAction>(
+          _onLoad,
+        ),
+        TypedMiddleware<ILatestTournamentsStateHolder,
+            ScrolledCloseToTheEndLatestUserAction>(_onScrolled),
+      ];
 
   void _onOpen(
     Store<ILatestTournamentsStateHolder> store,

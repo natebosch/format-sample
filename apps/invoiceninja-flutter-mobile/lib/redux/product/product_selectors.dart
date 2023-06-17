@@ -57,7 +57,8 @@ var memoizedDropdownProductList = memo3(
     BuiltMap<String, ProductEntity> productMap,
     BuiltList<String> productList,
     BuiltMap<String, UserEntity> userMap,
-  ) => dropdownProductsSelector(productMap, productList, userMap),
+  ) =>
+      dropdownProductsSelector(productMap, productList, userMap),
 );
 
 List<String> dropdownProductsSelector(
@@ -87,14 +88,16 @@ var memoizedProductList = memo1(
 );
 
 List<String> productList(BuiltMap<String, ProductEntity> productMap) {
-  final list = productMap.keys.where(
-    (productId) => productMap[productId].isActive,
-  ).toList();
+  final list = productMap.keys
+      .where(
+        (productId) => productMap[productId].isActive,
+      )
+      .toList();
 
   list.sort(
     (idA, idB) => productMap[idA].listDisplayName.compareTo(
-      productMap[idB].listDisplayName,
-    ),
+          productMap[idB].listDisplayName,
+        ),
   );
 
   return list;
@@ -107,7 +110,8 @@ var memoizedFilteredProductList = memo5(
     BuiltList<String> productList,
     ListUIState productListState,
     BuiltMap<String, UserEntity> userMap,
-  ) => filteredProductsSelector(
+  ) =>
+      filteredProductsSelector(
     selectionState,
     productMap,
     productList,
@@ -170,4 +174,5 @@ List<String> filteredProductsSelector(
 bool hasProductChanges(
   ProductEntity product,
   BuiltMap<String, ProductEntity> productMap,
-) => product.isNew ? product.isChanged : product != productMap[product.id];
+) =>
+    product.isNew ? product.isChanged : product != productMap[product.id];

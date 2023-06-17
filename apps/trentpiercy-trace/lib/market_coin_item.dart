@@ -472,8 +472,8 @@ class CoinListItem extends StatelessWidget {
       onTap: () {
         Navigator.of(context).push(
           new MaterialPageRoute(
-            builder:
-                (BuildContext context) => new CoinDetails(snapshot: snapshot),
+            builder: (BuildContext context) =>
+                new CoinDetails(snapshot: snapshot),
           ),
         );
       },
@@ -491,8 +491,8 @@ class CoinListItem extends StatelessWidget {
                   new Text(
                     snapshot["rank"].toString(),
                     style: Theme.of(context).textTheme.body2.apply(
-                      fontWeightDelta: 2,
-                    ),
+                          fontWeightDelta: 2,
+                        ),
                   ),
                   new Padding(padding: const EdgeInsets.only(right: 7.0)),
                   _getImage(),
@@ -519,8 +519,8 @@ class CoinListItem extends StatelessWidget {
                     "\$" +
                         normalizeNum(snapshot["RAW"]["USD"]["TOTALVOLUME24H"]),
                     style: Theme.of(context).textTheme.body2.apply(
-                      color: Theme.of(context).hintColor,
-                    ),
+                          color: Theme.of(context).hintColor,
+                        ),
                   ),
                 ],
               ),
@@ -546,11 +546,12 @@ class CoinListItem extends StatelessWidget {
                                 .toStringAsFixed(2) +
                             "%",
                     style: Theme.of(context).primaryTextTheme.body1.apply(
-                      color:
-                          (snapshot["RAW"]["USD"]["CHANGEPCT24HOUR"] ?? 0) >= 0
+                          color: (snapshot["RAW"]["USD"]["CHANGEPCT24HOUR"] ??
+                                      0) >=
+                                  0
                               ? Colors.green
                               : Colors.red,
-                    ),
+                        ),
                   ),
                 ],
               ),

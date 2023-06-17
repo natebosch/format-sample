@@ -267,9 +267,8 @@ class UserInDept {
     department = json['department'] != null
         ? DeptInfo.fromJson(json['department'])
         : null;
-    member = json['member'] != null
-        ? DeptMemberInfo.fromJson(json['member'])
-        : null;
+    member =
+        json['member'] != null ? DeptMemberInfo.fromJson(json['member']) : null;
   }
 
   Map<String, dynamic> toJson() {

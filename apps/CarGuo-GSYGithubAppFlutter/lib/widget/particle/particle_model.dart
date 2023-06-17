@@ -44,9 +44,11 @@ class ParticleModel {
   }
 
   double progress() {
-    return ((DateTime.now().duration() - startTime) / duration).clamp(
-      0.0,
-      1.0,
-    ).toDouble();
+    return ((DateTime.now().duration() - startTime) / duration)
+        .clamp(
+          0.0,
+          1.0,
+        )
+        .toDouble();
   }
 }

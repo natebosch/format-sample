@@ -241,13 +241,22 @@ class _$GAliasedHeroReq extends GAliasedHeroReq {
 
   @override
   int get hashCode {
-    return $jf($jc($jc($jc(
-      $jc($jc($jc(
-        $jc($jc($jc(0, vars.hashCode), operation.hashCode), requestId.hashCode),
-        updateResult.hashCode,
-      ), optimisticResponse.hashCode), updateCacheHandlerKey.hashCode),
-      updateCacheHandlerContext.hashCode,
-    ), fetchPolicy.hashCode), executeOnListen.hashCode));
+    return $jf($jc(
+        $jc(
+            $jc(
+              $jc(
+                  $jc(
+                      $jc(
+                        $jc($jc($jc(0, vars.hashCode), operation.hashCode),
+                            requestId.hashCode),
+                        updateResult.hashCode,
+                      ),
+                      optimisticResponse.hashCode),
+                  updateCacheHandlerKey.hashCode),
+              updateCacheHandlerContext.hashCode,
+            ),
+            fetchPolicy.hashCode),
+        executeOnListen.hashCode));
   }
 
   @override
@@ -284,16 +293,16 @@ class GAliasedHeroReqBuilder
   set requestId(String? requestId) => _$this._requestId = requestId;
 
   _i2.GAliasedHeroData? Function(_i2.GAliasedHeroData?, _i2.GAliasedHeroData?)?
-  _updateResult;
+      _updateResult;
   _i2.GAliasedHeroData? Function(_i2.GAliasedHeroData?, _i2.GAliasedHeroData?)?
-  get updateResult => _$this._updateResult;
+      get updateResult => _$this._updateResult;
   set updateResult(
     _i2.GAliasedHeroData? Function(
       _i2.GAliasedHeroData?,
       _i2.GAliasedHeroData?,
-    )?
-    updateResult,
-  ) => _$this._updateResult = updateResult;
+    )? updateResult,
+  ) =>
+      _$this._updateResult = updateResult;
 
   _i2.GAliasedHeroDataBuilder? _optimisticResponse;
   _i2.GAliasedHeroDataBuilder get optimisticResponse =>
@@ -311,7 +320,8 @@ class GAliasedHeroReqBuilder
       _$this._updateCacheHandlerContext;
   set updateCacheHandlerContext(
     Map<String, dynamic>? updateCacheHandlerContext,
-  ) => _$this._updateCacheHandlerContext = updateCacheHandlerContext;
+  ) =>
+      _$this._updateCacheHandlerContext = updateCacheHandlerContext;
 
   _i1.FetchPolicy? _fetchPolicy;
   _i1.FetchPolicy? get fetchPolicy => _$this._fetchPolicy;

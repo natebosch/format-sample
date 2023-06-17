@@ -12,8 +12,8 @@ class Category {
   Category({this.id, this.icon, this.name, this.type});
 
   factory Category.fromJson(Map<String, dynamic> json) => _$CategoryFromJson(
-    json,
-  );
+        json,
+      );
 
   Map<String, dynamic> toJson() => _$CategoryToJson(this);
 }

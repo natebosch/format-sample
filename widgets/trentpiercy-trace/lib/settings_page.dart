@@ -95,8 +95,8 @@ class SettingsPageState extends State<SettingsPage> {
                   child: new Text(
                     text,
                     style: Theme.of(context).textTheme.body1.apply(
-                      fontSizeFactor: 1.1,
-                    ),
+                          fontSizeFactor: 1.1,
+                        ),
                   ),
                 ),
               ),
@@ -240,8 +240,8 @@ class SettingsPageState extends State<SettingsPage> {
               title: new Text("Issues & Feature Requests"),
               leading: new Icon(Icons.bug_report),
               onTap: () => _launchUrl(
-                    "https://github.com/trentpiercy/trace/issues",
-                  ),
+                "https://github.com/trentpiercy/trace/issues",
+              ),
             ),
           ),
           new Container(
@@ -268,9 +268,9 @@ class SettingsPageState extends State<SettingsPage> {
                     TextSpan(
                       text: "@TrentPiercy",
                       style: Theme.of(context).textTheme.subhead.apply(
-                        color: Theme.of(context).buttonColor,
-                        fontWeightDelta: 2,
-                      ),
+                            color: Theme.of(context).buttonColor,
+                            fontWeightDelta: 2,
+                          ),
                     ),
                   ],
                 ),
@@ -413,8 +413,8 @@ class ImportPageState extends State<ImportPage> {
                   child: new Text(
                     "Paste",
                     style: Theme.of(context).textTheme.body2.apply(
-                      color: Theme.of(context).iconTheme.color,
-                    ),
+                          color: Theme.of(context).iconTheme.color,
+                        ),
                   ),
                 ),
                 new Padding(padding: EdgeInsets.symmetric(horizontal: 6.0)),
@@ -423,8 +423,8 @@ class ImportPageState extends State<ImportPage> {
                   child: new Text(
                     "Import",
                     style: Theme.of(context).textTheme.body2.apply(
-                      color: Theme.of(context).iconTheme.color,
-                    ),
+                          color: Theme.of(context).iconTheme.color,
+                        ),
                   ),
                   color: Colors.green,
                 ),
@@ -436,9 +436,9 @@ class ImportPageState extends State<ImportPage> {
                 controller: _importController,
                 maxLines: null,
                 style: Theme.of(context).textTheme.body1.apply(
-                  color: textColor,
-                  fontSizeFactor: 1.1,
-                ),
+                      color: textColor,
+                      fontSizeFactor: 1.1,
+                    ),
                 decoration: new InputDecoration(
                   focusedBorder: new OutlineInputBorder(
                     borderSide: new BorderSide(

@@ -7,11 +7,11 @@ class MultiplePagesDelete extends StatelessWidget {
   final double? height;
 
   const MultiplePagesDelete({Key? key, this.color, this.width, this.height})
-    : super(key: key);
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) => SvgPicture.string(
-    '''
+        '''
 <svg width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M2.87083 21.1213L4.99215 19M7.11347 16.8787L4.99215 19M4.99215 19L2.87083 16.8787M4.99215 19L7.11347 21.1213" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
 <path d="M7 2L16.5 2L21 6.5V19" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
@@ -19,10 +19,9 @@ class MultiplePagesDelete extends StatelessWidget {
 <path d="M14 5V8.4C14 8.73137 14.2686 9 14.6 9H18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>
 ''',
-    colorFilter: color != null
-        ? ColorFilter.mode(color!, BlendMode.srcIn)
-        : null,
-    width: width,
-    height: height,
-  );
+        colorFilter:
+            color != null ? ColorFilter.mode(color!, BlendMode.srcIn) : null,
+        width: width,
+        height: height,
+      );
 }

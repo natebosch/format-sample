@@ -34,11 +34,11 @@ void main() {
 
     return ChangeNotifierProvider<WorkoutPlansProvider>(
       create: (context) => WorkoutPlansProvider(
-            testAuthProvider,
-            testExercisesProvider,
-            [],
-            client,
-          ),
+        testAuthProvider,
+        testExercisesProvider,
+        [],
+        client,
+      ),
       child: MaterialApp(
         locale: Locale(locale),
         localizationsDelegates: AppLocalizations.localizationsDelegates,

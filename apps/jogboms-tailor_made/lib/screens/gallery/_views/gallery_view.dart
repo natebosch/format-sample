@@ -44,7 +44,7 @@ class GalleryView extends StatelessWidget {
 
 class _MyAppBar extends StatelessWidget implements PreferredSizeWidget {
   const _MyAppBar({Key key, this.contact, this.job, @required this.account})
-    : super(key: key);
+      : super(key: key);
 
   final ContactModel contact;
   final JobModel job;
@@ -69,9 +69,8 @@ class _MyAppBar extends StatelessWidget implements PreferredSizeWidget {
               if (contact != null)
                 IconButton(
                   icon: const Icon(Icons.person, color: Colors.white),
-                  onPressed: () => Dependencies.di()
-                      .contactsCoordinator
-                      .toContact(contact),
+                  onPressed: () =>
+                      Dependencies.di().contactsCoordinator.toContact(contact),
                 ),
               if (account.hasPremiumEnabled)
                 IconButton(

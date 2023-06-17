@@ -8,8 +8,8 @@ import './bloc.dart';
 class AccountTypesBloc extends Bloc<AccountTypesEvent, AccountTypesState> {
   AccountTypesBloc({
     @required this.accountRepository,
-  }) : assert(accountRepository != null),
-       super(AccountTypesLoading());
+  })  : assert(accountRepository != null),
+        super(AccountTypesLoading());
 
   final AccountRepository accountRepository;
 

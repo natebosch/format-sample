@@ -161,15 +161,15 @@ class AnimatedSnackBar {
 
     info.entry = OverlayEntry(
       builder: (_) => RawAnimatedSnackBar(
-            key: info.key,
-            getInitialDy: () => snackBarStrategy.computeDy(_snackBars, this),
-            duration: duration,
-            onRemoved: remove,
-            child: builder.call(context),
-            desktopSnackBarPosition: desktopSnackBarPosition,
-            mobileSnackBarPosition: mobileSnackBarPosition,
-            mobilePositionSettings: mobilePositionSettings,
-          ),
+        key: info.key,
+        getInitialDy: () => snackBarStrategy.computeDy(_snackBars, this),
+        duration: duration,
+        onRemoved: remove,
+        child: builder.call(context),
+        desktopSnackBarPosition: desktopSnackBarPosition,
+        mobileSnackBarPosition: mobileSnackBarPosition,
+        mobilePositionSettings: mobilePositionSettings,
+      ),
     );
 
     _snackBars.add(this);

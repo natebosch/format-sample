@@ -310,7 +310,7 @@ class _StorageManagerState extends State<StorageManager> {
                                         subtitle: Text(
                                           _newCookieExpiresDate != null
                                               ? _newCookieExpiresDate!
-                                                    .toIso8601String()
+                                                  .toIso8601String()
                                               : "Select a date ...",
                                         ),
                                         onTap: () async {
@@ -369,7 +369,7 @@ class _StorageManagerState extends State<StorageManager> {
                                 final expiresDate =
                                     _newCookieExpiresDate != null
                                         ? _newCookieExpiresDate!
-                                              .millisecondsSinceEpoch
+                                            .millisecondsSinceEpoch
                                         : null;
 
                                 await _cookieManager.setCookie(
@@ -465,8 +465,7 @@ class _StorageManagerState extends State<StorageManager> {
                       width: constraints.maxWidth / 3,
                       onFieldSubmitted: (newValue) async {
                         var updateItemValue = await _webViewController
-                            ?.webStorage
-                            .localStorage
+                            ?.webStorage.localStorage
                             .getItem(key: webStorageItem.key!);
                         await _webViewController?.webStorage.localStorage
                             .removeItem(key: webStorageItem.key!);
@@ -616,8 +615,7 @@ class _StorageManagerState extends State<StorageManager> {
                       width: constraints.maxWidth / 3,
                       onFieldSubmitted: (newValue) async {
                         var updateItemValue = await _webViewController
-                            ?.webStorage
-                            .sessionStorage
+                            ?.webStorage.sessionStorage
                             .getItem(key: webStorageItem.key!);
                         await _webViewController?.webStorage.sessionStorage
                             .removeItem(key: webStorageItem.key!);
@@ -939,7 +937,7 @@ class _StorageManagerState extends State<StorageManager> {
         }
 
         List<URLProtectionSpaceHttpAuthCredentials>
-        protectionSpaceHttpAuthCredentials =
+            protectionSpaceHttpAuthCredentials =
             (snapshot.data as List<URLProtectionSpaceHttpAuthCredentials>?) ??
                 <URLProtectionSpaceHttpAuthCredentials>[];
 
@@ -995,9 +993,9 @@ class _StorageManagerState extends State<StorageManager> {
                             if (protectionSpace != null) {
                               await _httpAuthCredentialDatabase
                                   .removeHttpAuthCredential(
-                                    protectionSpace: protectionSpace,
-                                    credential: httpAuthCredential,
-                                  );
+                                protectionSpace: protectionSpace,
+                                credential: httpAuthCredential,
+                              );
                             }
                             setState(() {});
                           },

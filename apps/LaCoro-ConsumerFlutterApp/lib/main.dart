@@ -45,17 +45,17 @@ class MyApp extends StatelessWidget {
       },
       child: MaterialApp(
         builder: (context, widget) => ResponsiveWrapper.builder(
-              BouncingScrollWrapper.builder(context, widget),
-              maxWidth: 1200,
-              minWidth: 450,
-              defaultScale: true,
-              breakpoints: [
-                ResponsiveBreakpoint.resize(480, name: MOBILE),
-                ResponsiveBreakpoint.resize(800, name: TABLET),
+          BouncingScrollWrapper.builder(context, widget),
+          maxWidth: 1200,
+          minWidth: 450,
+          defaultScale: true,
+          breakpoints: [
+            ResponsiveBreakpoint.resize(480, name: MOBILE),
+            ResponsiveBreakpoint.resize(800, name: TABLET),
 //            ResponsiveBreakpoint.resize(1000, name: DESKTOP),
 //            ResponsiveBreakpoint.autoScale(2460, name: '4K'),
-              ],
-            ),
+          ],
+        ),
         localizationsDelegates: [
           const AppLocalizationsDelegate(),
           GlobalMaterialLocalizations.delegate,

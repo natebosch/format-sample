@@ -16,14 +16,16 @@ import 'package:zxcvbn/zxcvbn.dart';
 
 class MasterPasswordChangeScreen extends StatelessWidget {
   const MasterPasswordChangeScreen({Key? key, required this.fileSource})
-    : super(key: key);
+      : super(key: key);
 
   static Route<void> route({
     required FileSource fileSource,
-  }) => MaterialPageRoute(
-    builder: (context) => MasterPasswordChangeScreen(fileSource: fileSource),
-    settings: const RouteSettings(name: 'masterPasswordChange'),
-  );
+  }) =>
+      MaterialPageRoute(
+        builder: (context) =>
+            MasterPasswordChangeScreen(fileSource: fileSource),
+        settings: const RouteSettings(name: 'masterPasswordChange'),
+      );
 
   final FileSource fileSource;
 
@@ -167,18 +169,18 @@ class _MasterPasswordChangeFormState extends State<MasterPasswordChangeForm>
   }
 
   VoidCallback? _submitCallback() => asyncTaskCallback((progress) async {
-    if (_formKey.currentState!.validate()) {
-      final kdbxBloc = Provider.of<KdbxBloc>(context, listen: false);
-      await kdbxBloc.saveFile(
-        widget.file,
-        updateCredentials: Credentials.composite(
-          ProtectedValue.fromString(_password.text),
-          null,
-        ),
-      );
-      final loc = AppLocalizations.of(context);
-      context.showSnackBar(loc.changeMasterPasswordSuccess);
-      Navigator.of(context).pop();
-    }
-  });
+        if (_formKey.currentState!.validate()) {
+          final kdbxBloc = Provider.of<KdbxBloc>(context, listen: false);
+          await kdbxBloc.saveFile(
+            widget.file,
+            updateCredentials: Credentials.composite(
+              ProtectedValue.fromString(_password.text),
+              null,
+            ),
+          );
+          final loc = AppLocalizations.of(context);
+          context.showSnackBar(loc.changeMasterPasswordSuccess);
+          Navigator.of(context).pop();
+        }
+      });
 }

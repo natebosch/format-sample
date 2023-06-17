@@ -276,15 +276,18 @@ void handleExpenseAction(
       );
       break;
     case EntityAction.invoiceExpense:
-      final items = expenses.where((entity) {
-        final expense = entity as ExpenseEntity;
-        return !expense.isDeleted && !expense.isInvoiced;
-      }).map(
-        (expense) => convertExpenseToInvoiceItem(
-          expense: expense,
-          context: context,
-        ),
-      ).toList();
+      final items = expenses
+          .where((entity) {
+            final expense = entity as ExpenseEntity;
+            return !expense.isDeleted && !expense.isInvoiced;
+          })
+          .map(
+            (expense) => convertExpenseToInvoiceItem(
+              expense: expense,
+              context: context,
+            ),
+          )
+          .toList();
       if (items.isNotEmpty) {
         createEntity(
           context: context,

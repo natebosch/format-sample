@@ -23,9 +23,8 @@ bool checkForCollision(Obstacle obstacle, TRex tRex) {
 
   if (obstacleBox.toRect().overlaps(tRexBox.toRect())) {
     final collisionBoxes = obstacle.collisionBoxes;
-    final tRexCollisionBoxes = tRex.ducking
-        ? tRexCollisionBoxesDucking
-        : tRexCollisionBoxesRunning;
+    final tRexCollisionBoxes =
+        tRex.ducking ? tRexCollisionBoxesDucking : tRexCollisionBoxesRunning;
 
     bool crashed = false;
 

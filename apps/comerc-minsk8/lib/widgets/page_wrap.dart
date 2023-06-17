@@ -21,13 +21,13 @@ class PageWrapper extends StatefulWidget {
     this.poolForReloadTabs,
     this.hasAppBar = false,
   }) :
-       // assert(
-       //   !dataPool.any(
-       //     (element) =>
-       //         !(element is SourceList || element is List<SourceList>),
-       //   ),
-       // ),
-       super(key: key);
+        // assert(
+        //   !dataPool.any(
+        //     (element) =>
+        //         !(element is SourceList || element is List<SourceList>),
+        //   ),
+        // ),
+        super(key: key);
 
   final int pageIndex;
   final int tabsLength;
@@ -119,40 +119,40 @@ class PageWrapperState extends State<PageWrapper>
       pinnedHeaderSliverHeightBuilder: () => pinnedHeaderHeight,
       innerScrollPositionKeyBuilder: () => Key('${widget.pageIndex}-$tabIndex'),
       headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) => [
-            if (widget.hasAppBar)
-              SliverPersistentHeader(
-                delegate: CommonSliverPersistentHeaderDelegate(
-                  builder: (
-                    BuildContext context,
-                    double shrinkOffset,
-                    bool overlapsContent,
-                  ) {
-                    return _AppBar();
-                  },
-                  height: kToolbarHeight,
-                ),
-              ),
-            PullToRefreshContainer((PullToRefreshScrollNotificationInfo info) {
-              return SliverPersistentHeader(
-                pinned: true,
-                delegate: CommonSliverPersistentHeaderDelegate(
-                  builder: (
-                    BuildContext context,
-                    double shrinkOffset,
-                    bool overlapsContent,
-                  ) {
-                    return _TabBar(
-                      info: info,
-                      shrinkOffset: shrinkOffset,
-                      // overlapsContent: overlapsContent,
-                      tabBar: tabBar,
-                    );
-                  },
-                  height: tabBarHeight,
-                ),
-              );
-            }),
-          ],
+        if (widget.hasAppBar)
+          SliverPersistentHeader(
+            delegate: CommonSliverPersistentHeaderDelegate(
+              builder: (
+                BuildContext context,
+                double shrinkOffset,
+                bool overlapsContent,
+              ) {
+                return _AppBar();
+              },
+              height: kToolbarHeight,
+            ),
+          ),
+        PullToRefreshContainer((PullToRefreshScrollNotificationInfo info) {
+          return SliverPersistentHeader(
+            pinned: true,
+            delegate: CommonSliverPersistentHeaderDelegate(
+              builder: (
+                BuildContext context,
+                double shrinkOffset,
+                bool overlapsContent,
+              ) {
+                return _TabBar(
+                  info: info,
+                  shrinkOffset: shrinkOffset,
+                  // overlapsContent: overlapsContent,
+                  tabBar: tabBar,
+                );
+              },
+              height: tabBarHeight,
+            ),
+          );
+        }),
+      ],
       body: TabBarView(
         controller: _tabController,
         children: List.generate(
@@ -207,9 +207,7 @@ class _AppBar extends StatelessWidget {
           Container(
             padding: EdgeInsets.only(top: 4),
             child: Text(
-              "${appState['ShowcaseMap.address']} — ${appState[
-                'ShowcaseMap.radius'
-              ]} км",
+              "${appState['ShowcaseMap.address']} — ${appState['ShowcaseMap.radius']} км",
               style: TextStyle(
                 fontSize: kFontSize,
                 fontWeight: FontWeight.w600,

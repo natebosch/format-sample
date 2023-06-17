@@ -151,8 +151,8 @@ extension InsertAdaptiveItemEventExtension<T> on EventController<T> {
     int? index,
     bool forceNotify = false,
     bool forceVisible = false,
-    AnimationControllerConfig
-    insertAnimationConfig = const AnimationControllerConfig(initialValue: 0),
+    AnimationControllerConfig insertAnimationConfig =
+        const AnimationControllerConfig(initialValue: 0),
     AnimationControllerConfig removeInfluencedAnimationConfig =
         const AnimationControllerConfig(),
     EventBuilder<T>? customScrollViewEventBuilder,

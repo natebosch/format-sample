@@ -162,10 +162,10 @@ class App extends StatelessWidget {
     @required this.authenticationRepository,
     @required this.databaseRepository,
     @required this.remoteConfig,
-  }) : assert(authenticationRepository != null),
-       assert(databaseRepository != null),
-       assert(remoteConfig != null),
-       super(key: key);
+  })  : assert(authenticationRepository != null),
+        assert(databaseRepository != null),
+        assert(remoteConfig != null),
+        super(key: key);
 
   final AuthenticationRepository authenticationRepository;
   final DatabaseRepository databaseRepository;
@@ -399,12 +399,16 @@ class _LifecycleManagerState extends State<_LifecycleManager>
   @override
   void initState() {
     super.initState();
-    HomeShowcase.dataPool = [...MetaKindValue.values, ...KindValue.values].map(
-      (dynamic value) => ShowcaseData(value),
-    ).toList();
-    HomeUnderway.dataPool = UnderwayValue.values.map(
-      (UnderwayValue value) => UnderwayData(value),
-    ).toList();
+    HomeShowcase.dataPool = [...MetaKindValue.values, ...KindValue.values]
+        .map(
+          (dynamic value) => ShowcaseData(value),
+        )
+        .toList();
+    HomeUnderway.dataPool = UnderwayValue.values
+        .map(
+          (UnderwayValue value) => UnderwayData(value),
+        )
+        .toList();
     HomeInterplay.dataPool = [
       ChatData(),
       // [

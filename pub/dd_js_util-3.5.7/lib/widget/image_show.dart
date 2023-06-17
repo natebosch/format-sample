@@ -5,7 +5,7 @@ class ImagePreview extends StatelessWidget {
   final int index;
 
   const ImagePreview({required this.images, this.index = 0, Key? key})
-    : super(key: key);
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -217,7 +217,7 @@ class MySwiperPlugin extends StatelessWidget {
   final StreamController<int> reBuild;
 
   const MySwiperPlugin(this.pics, this.index, this.reBuild, {Key? key})
-    : super(key: key);
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {

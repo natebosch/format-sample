@@ -39,8 +39,8 @@ class _CartPageState extends State<CartPage> {
           backgroundColor: Colors.white,
           body: new ListView.builder(
             itemCount: Cart.cartItems.length,
-            itemBuilder:
-                (_, int pos) => new CartItem(plantsList[Cart.cartItems[pos]]),
+            itemBuilder: (_, int pos) =>
+                new CartItem(plantsList[Cart.cartItems[pos]]),
           ),
           bottomNavigationBar: new Hero(
             tag: 'Buy button',

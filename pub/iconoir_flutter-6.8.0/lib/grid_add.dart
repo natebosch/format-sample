@@ -7,11 +7,11 @@ class GridAdd extends StatelessWidget {
   final double? height;
 
   const GridAdd({Key? key, this.color, this.width, this.height})
-    : super(key: key);
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) => SvgPicture.string(
-    '''
+        '''
 <svg width="24" height="24" stroke-width="1.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M13.9922 17H16.9922M19.9922 17H16.9922M16.9922 17V14M16.9922 17V20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
 <path d="M4 9.4V4.6C4 4.26863 4.26863 4 4.6 4H9.4C9.73137 4 10 4.26863 10 4.6V9.4C10 9.73137 9.73137 10 9.4 10H4.6C4.26863 10 4 9.73137 4 9.4Z" stroke="currentColor" stroke-width="1.5"/>
@@ -19,10 +19,9 @@ class GridAdd extends StatelessWidget {
 <path d="M14 9.4V4.6C14 4.26863 14.2686 4 14.6 4H19.4C19.7314 4 20 4.26863 20 4.6V9.4C20 9.73137 19.7314 10 19.4 10H14.6C14.2686 10 14 9.73137 14 9.4Z" stroke="currentColor" stroke-width="1.5"/>
 </svg>
 ''',
-    colorFilter: color != null
-        ? ColorFilter.mode(color!, BlendMode.srcIn)
-        : null,
-    width: width,
-    height: height,
-  );
+        colorFilter:
+            color != null ? ColorFilter.mode(color!, BlendMode.srcIn) : null,
+        width: width,
+        height: height,
+      );
 }

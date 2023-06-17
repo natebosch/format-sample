@@ -10,5 +10,6 @@ class SearchRepository extends ISearchRepository {
   Future<Either<RequestFailure, List<String>>> searchPackage({
     required int page,
     required String query,
-  }) async => await service.searchPackage(page: page, query: query);
+  }) async =>
+      await service.searchPackage(page: page, query: query);
 }

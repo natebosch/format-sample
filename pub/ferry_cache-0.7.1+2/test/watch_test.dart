@@ -186,13 +186,15 @@ void main() {
         await Future.delayed(Duration.zero);
         cache.writeQuery(reviewsReq, reviewsData2);
         await Future.delayed(Duration.zero);
-        cache.writeQuery(reviewsReq, GReviewsData(
-          (b) => b
-            ..reviews.addAll([
-              review.rebuild((p) => p.stars = 100),
-              review2.rebuild((p) => p.stars = 100),
-            ]),
-        ));
+        cache.writeQuery(
+            reviewsReq,
+            GReviewsData(
+              (b) => b
+                ..reviews.addAll([
+                  review.rebuild((p) => p.stars = 100),
+                  review2.rebuild((p) => p.stars = 100),
+                ]),
+            ));
 
         await Future.delayed(Duration.zero);
 

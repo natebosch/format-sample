@@ -8,7 +8,7 @@ class QuizQuestionScreen extends StatefulWidget {
   final operator;
 
   QuizQuestionScreen({Key key, this.icon = Icons.add, this.operator = "sum"})
-    : super(key: key);
+      : super(key: key);
 
   @override
   _QuizQuestionScreenState createState() => _QuizQuestionScreenState();
@@ -128,15 +128,17 @@ class _QuizQuestionScreenState extends State<QuizQuestionScreen> {
                 MaterialButton(
                   onPressed: () async {
                     if (_formKey.currentState.validate()) {
-                      Navigator.pushReplacement(context, MaterialPageRoute(
-                        builder: (context) => QuizScreen(
+                      Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => QuizScreen(
                               oprator: widget.operator,
                               numOfQuestions: _ques.text,
                               range1: _range1.text,
                               range2: _range2.text,
                               duration: time,
                             ),
-                      ));
+                          ));
                     }
                   },
                   elevation: 20,

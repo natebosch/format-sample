@@ -14,7 +14,7 @@ class I18n extends MineralPackageContract implements I18nContract {
   final String folder;
 
   I18n(this._languages, {this.folder = 'lang'})
-    : super('I18n', 'Official package');
+      : super('I18n', 'Official package');
 
   /// ## Languages allowed
   /// ```dart

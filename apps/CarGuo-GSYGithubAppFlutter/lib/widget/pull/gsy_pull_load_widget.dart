@@ -183,7 +183,7 @@ class _GSYPullLoadWidgetState extends State<GSYPullLoadWidget> {
           )
 
         /// 不需要加载
-          : new Container();
+        : new Container();
     return new Padding(
       padding: const EdgeInsets.all(20.0),
       child: new Center(child: bottomWidget),

@@ -285,32 +285,34 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget _card(BuildContext c, SharingObject f) {
     return Padding(
       padding: const EdgeInsets.only(bottom: 12),
-      child: ListButton(Row(
-        children: [
-          Icon(
-            f.icon,
-            size: 22,
-            color: Colors.grey.shade100,
-            // semanticsLabel: 'file',
-            // width: 18,
-          ),
-          const SizedBox(width: 12),
-          Expanded(
-            child: SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: Text(
-                f.name,
-                style: GoogleFonts.getFont(
-                  c.l.fontAndika,
-                  color: Colors.white,
-                  fontSize: 18,
-                ),
-                maxLines: 1,
+      child: ListButton(
+          Row(
+            children: [
+              Icon(
+                f.icon,
+                size: 22,
+                color: Colors.grey.shade100,
+                // semanticsLabel: 'file',
+                // width: 18,
               ),
-            ),
+              const SizedBox(width: 12),
+              Expanded(
+                child: SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Text(
+                    f.name,
+                    style: GoogleFonts.getFont(
+                      c.l.fontAndika,
+                      color: Colors.white,
+                      fontSize: 18,
+                    ),
+                    maxLines: 1,
+                  ),
+                ),
+              ),
+            ],
           ),
-        ],
-      ), () => _shareFile(f)),
+          () => _shareFile(f)),
     );
   }
 }

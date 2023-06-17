@@ -136,22 +136,25 @@ void main() {
 
         expect(cubit.state, currentDateTime.add(Duration(minutes: 31)));
         expect(log.length, 1);
-        expect(log[0], isMethodCall(
-          'zonedSchedule',
-          arguments: <String, Object>{
-            'id': 2,
-            'title': 'spacex.notifications.launches.title',
-            'body': 'spacex.notifications.launches.body',
-            'platformSpecifics': <String, Object>{},
-            'payload': '',
-            'uiLocalNotificationDateInterpretation': 1,
-            'timeZoneName': 'UTC',
-            'scheduledDateTime': _convertDateToISO8601String(tz.TZDateTime.from(
-              currentDateTime.add(Duration(minutes: 31)),
-              tz.UTC,
-            ).subtract(Duration(minutes: 30))),
-          },
-        ));
+        expect(
+            log[0],
+            isMethodCall(
+              'zonedSchedule',
+              arguments: <String, Object>{
+                'id': 2,
+                'title': 'spacex.notifications.launches.title',
+                'body': 'spacex.notifications.launches.body',
+                'platformSpecifics': <String, Object>{},
+                'payload': '',
+                'uiLocalNotificationDateInterpretation': 1,
+                'timeZoneName': 'UTC',
+                'scheduledDateTime':
+                    _convertDateToISO8601String(tz.TZDateTime.from(
+                  currentDateTime.add(Duration(minutes: 31)),
+                  tz.UTC,
+                ).subtract(Duration(minutes: 30))),
+              },
+            ));
       });
 
       test(
@@ -167,42 +170,46 @@ void main() {
 
           expect(cubit.state, currentDateTime.add(Duration(hours: 2)));
           expect(log.length, 2);
-          expect(log[0], isMethodCall(
-            'zonedSchedule',
-            arguments: <String, Object>{
-              'id': 1,
-              'title': 'spacex.notifications.launches.title',
-              'body': 'spacex.notifications.launches.body',
-              'platformSpecifics': <String, Object>{},
-              'payload': '',
-              'uiLocalNotificationDateInterpretation': 1,
-              'timeZoneName': 'UTC',
-              'scheduledDateTime': _convertDateToISO8601String(
-                tz.TZDateTime.from(
-                  currentDateTime.add(Duration(hours: 2)),
-                  tz.UTC,
-                ).subtract(Duration(hours: 1)),
-              ),
-            },
-          ));
-          expect(log[1], isMethodCall(
-            'zonedSchedule',
-            arguments: <String, Object>{
-              'id': 2,
-              'title': 'spacex.notifications.launches.title',
-              'body': 'spacex.notifications.launches.body',
-              'platformSpecifics': <String, Object>{},
-              'payload': '',
-              'uiLocalNotificationDateInterpretation': 1,
-              'timeZoneName': 'UTC',
-              'scheduledDateTime': _convertDateToISO8601String(
-                tz.TZDateTime.from(
-                  currentDateTime.add(Duration(hours: 2)),
-                  tz.UTC,
-                ).subtract(Duration(minutes: 30)),
-              ),
-            },
-          ));
+          expect(
+              log[0],
+              isMethodCall(
+                'zonedSchedule',
+                arguments: <String, Object>{
+                  'id': 1,
+                  'title': 'spacex.notifications.launches.title',
+                  'body': 'spacex.notifications.launches.body',
+                  'platformSpecifics': <String, Object>{},
+                  'payload': '',
+                  'uiLocalNotificationDateInterpretation': 1,
+                  'timeZoneName': 'UTC',
+                  'scheduledDateTime': _convertDateToISO8601String(
+                    tz.TZDateTime.from(
+                      currentDateTime.add(Duration(hours: 2)),
+                      tz.UTC,
+                    ).subtract(Duration(hours: 1)),
+                  ),
+                },
+              ));
+          expect(
+              log[1],
+              isMethodCall(
+                'zonedSchedule',
+                arguments: <String, Object>{
+                  'id': 2,
+                  'title': 'spacex.notifications.launches.title',
+                  'body': 'spacex.notifications.launches.body',
+                  'platformSpecifics': <String, Object>{},
+                  'payload': '',
+                  'uiLocalNotificationDateInterpretation': 1,
+                  'timeZoneName': 'UTC',
+                  'scheduledDateTime': _convertDateToISO8601String(
+                    tz.TZDateTime.from(
+                      currentDateTime.add(Duration(hours: 2)),
+                      tz.UTC,
+                    ).subtract(Duration(minutes: 30)),
+                  ),
+                },
+              ));
         },
       );
 
@@ -219,60 +226,66 @@ void main() {
 
           expect(cubit.state, currentDateTime.add(Duration(days: 5)));
           expect(log.length, 3);
-          expect(log[0], isMethodCall(
-            'zonedSchedule',
-            arguments: <String, Object>{
-              'id': 0,
-              'title': 'spacex.notifications.launches.title',
-              'body': 'spacex.notifications.launches.body',
-              'platformSpecifics': <String, Object>{},
-              'payload': '',
-              'uiLocalNotificationDateInterpretation': 1,
-              'timeZoneName': 'UTC',
-              'scheduledDateTime': _convertDateToISO8601String(
-                tz.TZDateTime.from(
-                  currentDateTime.add(Duration(days: 5)),
-                  tz.UTC,
-                ).subtract(Duration(days: 1)),
-              ),
-            },
-          ));
-          expect(log[1], isMethodCall(
-            'zonedSchedule',
-            arguments: <String, Object>{
-              'id': 1,
-              'title': 'spacex.notifications.launches.title',
-              'body': 'spacex.notifications.launches.body',
-              'platformSpecifics': <String, Object>{},
-              'payload': '',
-              'uiLocalNotificationDateInterpretation': 1,
-              'timeZoneName': 'UTC',
-              'scheduledDateTime': _convertDateToISO8601String(
-                tz.TZDateTime.from(
-                  currentDateTime.add(Duration(days: 5)),
-                  tz.UTC,
-                ).subtract(Duration(hours: 1)),
-              ),
-            },
-          ));
-          expect(log[2], isMethodCall(
-            'zonedSchedule',
-            arguments: <String, Object>{
-              'id': 2,
-              'title': 'spacex.notifications.launches.title',
-              'body': 'spacex.notifications.launches.body',
-              'platformSpecifics': <String, Object>{},
-              'payload': '',
-              'uiLocalNotificationDateInterpretation': 1,
-              'timeZoneName': 'UTC',
-              'scheduledDateTime': _convertDateToISO8601String(
-                tz.TZDateTime.from(
-                  currentDateTime.add(Duration(days: 5)),
-                  tz.UTC,
-                ).subtract(Duration(minutes: 30)),
-              ),
-            },
-          ));
+          expect(
+              log[0],
+              isMethodCall(
+                'zonedSchedule',
+                arguments: <String, Object>{
+                  'id': 0,
+                  'title': 'spacex.notifications.launches.title',
+                  'body': 'spacex.notifications.launches.body',
+                  'platformSpecifics': <String, Object>{},
+                  'payload': '',
+                  'uiLocalNotificationDateInterpretation': 1,
+                  'timeZoneName': 'UTC',
+                  'scheduledDateTime': _convertDateToISO8601String(
+                    tz.TZDateTime.from(
+                      currentDateTime.add(Duration(days: 5)),
+                      tz.UTC,
+                    ).subtract(Duration(days: 1)),
+                  ),
+                },
+              ));
+          expect(
+              log[1],
+              isMethodCall(
+                'zonedSchedule',
+                arguments: <String, Object>{
+                  'id': 1,
+                  'title': 'spacex.notifications.launches.title',
+                  'body': 'spacex.notifications.launches.body',
+                  'platformSpecifics': <String, Object>{},
+                  'payload': '',
+                  'uiLocalNotificationDateInterpretation': 1,
+                  'timeZoneName': 'UTC',
+                  'scheduledDateTime': _convertDateToISO8601String(
+                    tz.TZDateTime.from(
+                      currentDateTime.add(Duration(days: 5)),
+                      tz.UTC,
+                    ).subtract(Duration(hours: 1)),
+                  ),
+                },
+              ));
+          expect(
+              log[2],
+              isMethodCall(
+                'zonedSchedule',
+                arguments: <String, Object>{
+                  'id': 2,
+                  'title': 'spacex.notifications.launches.title',
+                  'body': 'spacex.notifications.launches.body',
+                  'platformSpecifics': <String, Object>{},
+                  'payload': '',
+                  'uiLocalNotificationDateInterpretation': 1,
+                  'timeZoneName': 'UTC',
+                  'scheduledDateTime': _convertDateToISO8601String(
+                    tz.TZDateTime.from(
+                      currentDateTime.add(Duration(days: 5)),
+                      tz.UTC,
+                    ).subtract(Duration(minutes: 30)),
+                  ),
+                },
+              ));
         },
       );
     });

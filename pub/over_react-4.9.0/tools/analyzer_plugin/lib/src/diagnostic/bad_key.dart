@@ -111,11 +111,11 @@ class BadKeyDiagnostic extends ComponentUsageDiagnosticContributor {
 
   @override
   List<DiagnosticCode> get codes => [
-    hashCodeCode,
-    toStringCode,
-    dynamicOrObjectCode,
-    lowQualityCode,
-  ];
+        hashCodeCode,
+        toStringCode,
+        dynamicOrObjectCode,
+        lowQualityCode,
+      ];
 
   @override
   computeErrorsForUsage(result, collector, usage) async {
@@ -223,10 +223,15 @@ class BadKeyDiagnostic extends ComponentUsageDiagnosticContributor {
   }
 
   static bool inheritsToStringImplFromObject(Element element) =>
-      element.tryCast<ClassElement>()?.lookUpConcreteMethod(
-        'toString',
-        element.library!,
-      )?.thisOrAncestorOfType<ClassElement>()?.thisType.isDartCoreObject ??
+      element
+          .tryCast<ClassElement>()
+          ?.lookUpConcreteMethod(
+            'toString',
+            element.library!,
+          )
+          ?.thisOrAncestorOfType<ClassElement>()
+          ?.thisType
+          .isDartCoreObject ??
       false;
 }
 

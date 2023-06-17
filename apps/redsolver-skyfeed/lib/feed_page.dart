@@ -371,9 +371,8 @@ class _FeedPageState extends State<FeedPage> {
 
     final remainingSpacing = freeSpace - (widget.maxWidth ?? 0);
 
-    double leftSpacing = widget.center
-        ? remainingSpacing / 2
-        : widget.sidePadding + 332;
+    double leftSpacing =
+        widget.center ? remainingSpacing / 2 : widget.sidePadding + 332;
 
     double rightSpacing = widget.center
         ? remainingSpacing / 2
@@ -518,12 +517,13 @@ class _FeedPageState extends State<FeedPage> {
                           },
                           itemBuilder: (
                             BuildContext context,
-                          ) => <PopupMenuEntry<String>>[
-                                const PopupMenuItem<String>(
-                                  value: 'acceptAll',
-                                  child: Text('Accept all followers'),
-                                ),
-                              ],
+                          ) =>
+                              <PopupMenuEntry<String>>[
+                            const PopupMenuItem<String>(
+                              value: 'acceptAll',
+                              child: Text('Accept all followers'),
+                            ),
+                          ],
                         ),
                   /*  RaisedButton(
                     child: Text('Accept all'),

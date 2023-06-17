@@ -8,12 +8,12 @@ class TransactionResponse {
   Data? get data => processed!.actionTraces[1].act!.data;
 
   TransactionResponse.fromJson(Map<String, dynamic> json)
-    : this(
-        transactionId: json['transaction_id'] ?? '',
-        processed: json['processed'] != null
-            ? Processed.fromJson(json['processed'])
-            : null,
-      );
+      : this(
+          transactionId: json['transaction_id'] ?? '',
+          processed: json['processed'] != null
+              ? Processed.fromJson(json['processed'])
+              : null,
+        );
 }
 
 class Processed {

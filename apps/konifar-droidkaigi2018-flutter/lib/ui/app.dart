@@ -130,10 +130,10 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
         icon: new Icon(Icons.settings),
         hasTab: false,
         body: () => new SettingsPage(
-              showPerformanceOverlay: widget.showPerformanceOverlay,
-              onShowPerformanceOverlayChanged:
-                  widget.onShowPerformanceOverlayChanged,
-            ),
+          showPerformanceOverlay: widget.showPerformanceOverlay,
+          onShowPerformanceOverlayChanged:
+              widget.onShowPerformanceOverlayChanged,
+        ),
         tickerProvider: this,
       ),
     ];

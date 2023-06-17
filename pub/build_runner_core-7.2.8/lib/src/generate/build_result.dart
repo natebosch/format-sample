@@ -29,10 +29,10 @@ class BuildResult {
     List<AssetId> outputs, {
     this.performance,
     FailureType? failureType,
-  }) : outputs = List.unmodifiable(outputs),
-       failureType = failureType == null && status == BuildStatus.failure
-           ? FailureType.general
-           : failureType;
+  })  : outputs = List.unmodifiable(outputs),
+        failureType = failureType == null && status == BuildStatus.failure
+            ? FailureType.general
+            : failureType;
   @override
   String toString() {
     if (status == BuildStatus.success) {

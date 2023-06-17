@@ -360,13 +360,19 @@ class _$WebhookUIState extends WebhookUIState {
   int __hashCode;
   @override
   int get hashCode {
-    return __hashCode ??= $jf($jc($jc($jc($jc(
-      $jc(
-        $jc($jc(0, editing.hashCode), listUIState.hashCode),
-        selectedId.hashCode,
-      ),
-      forceSelected.hashCode,
-    ), tabIndex.hashCode), saveCompleter.hashCode), cancelCompleter.hashCode));
+    return __hashCode ??= $jf($jc(
+        $jc(
+            $jc(
+                $jc(
+                  $jc(
+                    $jc($jc(0, editing.hashCode), listUIState.hashCode),
+                    selectedId.hashCode,
+                  ),
+                  forceSelected.hashCode,
+                ),
+                tabIndex.hashCode),
+            saveCompleter.hashCode),
+        cancelCompleter.hashCode));
   }
 
   @override

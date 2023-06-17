@@ -11,18 +11,20 @@ Sponsors _$SponsorsFromJson(Map json) {
     total: json['total'] as int,
     skip: json['skip'] as int,
     limit: json['limit'] as int,
-    items: (json['items'] as List)?.map(
-      (e) => e == null ? null : SponsorFields.fromJson(e as Map),
-    )?.toList(),
+    items: (json['items'] as List)
+        ?.map(
+          (e) => e == null ? null : SponsorFields.fromJson(e as Map),
+        )
+        ?.toList(),
   );
 }
 
 Map<String, dynamic> _$SponsorsToJson(Sponsors instance) => <String, dynamic>{
-  'total': instance.total,
-  'skip': instance.skip,
-  'limit': instance.limit,
-  'items': instance.items,
-};
+      'total': instance.total,
+      'skip': instance.skip,
+      'limit': instance.limit,
+      'items': instance.items,
+    };
 
 SponsorFields _$SponsorFieldsFromJson(Map json) {
   return SponsorFields(
@@ -31,10 +33,11 @@ SponsorFields _$SponsorFieldsFromJson(Map json) {
   );
 }
 
-Map<String, dynamic> _$SponsorFieldsToJson(SponsorFields instance) => <
-  String,
-  dynamic
->{'sys': instance.sys.toJson(), 'fields': instance.fields.toJson()};
+Map<String, dynamic> _$SponsorFieldsToJson(SponsorFields instance) =>
+    <String, dynamic>{
+      'sys': instance.sys.toJson(),
+      'fields': instance.fields.toJson()
+    };
 
 Sponsor _$SponsorFromJson(Map json) {
   return Sponsor(
@@ -50,11 +53,11 @@ Sponsor _$SponsorFromJson(Map json) {
 }
 
 Map<String, dynamic> _$SponsorToJson(Sponsor instance) => <String, dynamic>{
-  'nazwaFirmy': instance.name,
-  'logo': instance.logo?.toJson(),
-  'linkDoStronySponsora': instance.url,
-  'poziomSponsoringu': _$SponsorLevelEnumMap[instance.level],
-};
+      'nazwaFirmy': instance.name,
+      'logo': instance.logo?.toJson(),
+      'linkDoStronySponsora': instance.url,
+      'poziomSponsoringu': _$SponsorLevelEnumMap[instance.level],
+    };
 
 T _$enumDecode<T>(
   Map<T, dynamic> enumValues,
@@ -68,10 +71,12 @@ T _$enumDecode<T>(
     );
   }
 
-  final value = enumValues.entries.singleWhere(
-    (e) => e.value == source,
-    orElse: () => null,
-  )?.key;
+  final value = enumValues.entries
+      .singleWhere(
+        (e) => e.value == source,
+        orElse: () => null,
+      )
+      ?.key;
 
   if (value == null && unknownValue == null) {
     throw ArgumentError(

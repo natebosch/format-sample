@@ -135,12 +135,16 @@ class ExportDataContentTypeEnum {
 
   static ExportDataContentTypeEnum? fromJson(
     dynamic value,
-  ) => ExportDataContentTypeEnumTypeTransformer().decode(value);
+  ) =>
+      ExportDataContentTypeEnumTypeTransformer().decode(value);
 
   static List<ExportDataContentTypeEnum> listFromJson(List<dynamic> json) {
-    return json.map((value) {
-      return ExportDataContentTypeEnum.fromJson(value);
-    }).whereType<ExportDataContentTypeEnum>().toList();
+    return json
+        .map((value) {
+          return ExportDataContentTypeEnum.fromJson(value);
+        })
+        .whereType<ExportDataContentTypeEnum>()
+        .toList();
   }
 }
 

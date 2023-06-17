@@ -28,8 +28,8 @@ class InitiativesItem extends StatelessWidget {
       margin: const EdgeInsets.all(0.0),
       childrenPadding: const EdgeInsets.only(left: 12, right: 12),
       titleTextStyle: Theme.of(context).textTheme.display3.copyWith(
-        color: Covid19Colors.green,
-      ),
+            color: Covid19Colors.green,
+          ),
       onExpansionChanged: onExpansionChanged,
       children: <Widget>[
         Html(
@@ -39,8 +39,8 @@ class InitiativesItem extends StatelessWidget {
           defaultTextStyle: Theme.of(context).textTheme.body1,
           onLinkTap: launchURL,
           linkStyle: Theme.of(context).textTheme.body1.copyWith(
-            color: Theme.of(context).primaryColor,
-          ),
+                color: Theme.of(context).primaryColor,
+              ),
           customRender: (node, children) {
             if (node is dom.Element) {
               switch (node.localName) {

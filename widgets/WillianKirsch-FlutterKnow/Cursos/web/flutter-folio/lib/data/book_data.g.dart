@@ -22,17 +22,18 @@ _$_ScrapBookData _$_$_ScrapBookDataFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$_$_ScrapBookDataToJson(
   _$_ScrapBookData instance,
-) => <String, dynamic>{
-  'documentId': instance.documentId,
-  'key': instance.key,
-  'title': instance.title,
-  'desc': instance.desc,
-  'creationTime': instance.creationTime,
-  'lastModifiedTime': instance.lastModifiedTime,
-  'pageCount': instance.pageCount,
-  'imageUrl': instance.imageUrl,
-  'pageOrder': instance.pageOrder,
-};
+) =>
+    <String, dynamic>{
+      'documentId': instance.documentId,
+      'key': instance.key,
+      'title': instance.title,
+      'desc': instance.desc,
+      'creationTime': instance.creationTime,
+      'lastModifiedTime': instance.lastModifiedTime,
+      'pageCount': instance.pageCount,
+      'imageUrl': instance.imageUrl,
+      'pageOrder': instance.pageOrder,
+    };
 
 _$_ScrapPageData _$_$_ScrapPageDataFromJson(Map<String, dynamic> json) {
   return _$_ScrapPageData(
@@ -47,14 +48,15 @@ _$_ScrapPageData _$_$_ScrapPageDataFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$_$_ScrapPageDataToJson(
   _$_ScrapPageData instance,
-) => <String, dynamic>{
-  'documentId': instance.documentId,
-  'key': instance.key,
-  'bookId': instance.bookId,
-  'title': instance.title,
-  'desc': instance.desc,
-  'boxOrder': instance.boxOrder,
-};
+) =>
+    <String, dynamic>{
+      'documentId': instance.documentId,
+      'key': instance.key,
+      'bookId': instance.bookId,
+      'title': instance.title,
+      'desc': instance.desc,
+      'boxOrder': instance.boxOrder,
+    };
 
 _$_ScrapItem _$_$_ScrapItemFromJson(Map<String, dynamic> json) {
   return _$_ScrapItem(
@@ -73,17 +75,18 @@ _$_ScrapItem _$_$_ScrapItemFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$_$_ScrapItemToJson(
   _$_ScrapItem instance,
-) => <String, dynamic>{
-  'documentId': instance.documentId,
-  'key': instance.key,
-  'bookId': instance.bookId,
-  'data': instance.data,
-  'config': instance.config,
-  'photos': instance.photos,
-  'creationTime': instance.creationTime,
-  'aspect': instance.aspect,
-  'contentType': _$ContentTypeEnumMap[instance.contentType],
-};
+) =>
+    <String, dynamic>{
+      'documentId': instance.documentId,
+      'key': instance.key,
+      'bookId': instance.bookId,
+      'data': instance.data,
+      'config': instance.config,
+      'photos': instance.photos,
+      'creationTime': instance.creationTime,
+      'aspect': instance.aspect,
+      'contentType': _$ContentTypeEnumMap[instance.contentType],
+    };
 
 T _$enumDecode<T>(
   Map<T, dynamic> enumValues,
@@ -97,10 +100,12 @@ T _$enumDecode<T>(
     );
   }
 
-  final value = enumValues.entries.singleWhere(
-    (e) => e.value == source,
-    orElse: () => null,
-  )?.key;
+  final value = enumValues.entries
+      .singleWhere(
+        (e) => e.value == source,
+        orElse: () => null,
+      )
+      ?.key;
 
   if (value == null && unknownValue == null) {
     throw ArgumentError(
@@ -157,26 +162,27 @@ _$_PlacedScrapItem _$_$_PlacedScrapItemFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$_$_PlacedScrapItemToJson(
   _$_PlacedScrapItem instance,
-) => <String, dynamic>{
-  'documentId': instance.documentId,
-  'key': instance.key,
-  'bookId': instance.bookId,
-  'pageId': instance.pageId,
-  'scrapId': instance.scrapId,
-  'dx': instance.dx,
-  'dy': instance.dy,
-  'width': instance.width,
-  'height': instance.height,
-  'rot': instance.rot,
-  'scale': instance.scale,
-  'aspect': instance.aspect,
-  'contentType': _$ContentTypeEnumMap[instance.contentType],
-  'data': instance.data,
-  'config': instance.config,
-  'boxStyle': instance.boxStyle?.toJson(),
-  'creationTime': instance.creationTime,
-  'lastModifiedTime': instance.lastModifiedTime,
-};
+) =>
+    <String, dynamic>{
+      'documentId': instance.documentId,
+      'key': instance.key,
+      'bookId': instance.bookId,
+      'pageId': instance.pageId,
+      'scrapId': instance.scrapId,
+      'dx': instance.dx,
+      'dy': instance.dy,
+      'width': instance.width,
+      'height': instance.height,
+      'rot': instance.rot,
+      'scale': instance.scale,
+      'aspect': instance.aspect,
+      'contentType': _$ContentTypeEnumMap[instance.contentType],
+      'data': instance.data,
+      'config': instance.config,
+      'boxStyle': instance.boxStyle?.toJson(),
+      'creationTime': instance.creationTime,
+      'lastModifiedTime': instance.lastModifiedTime,
+    };
 
 _$_BoxStyle _$_$_BoxStyleFromJson(Map<String, dynamic> json) {
   return _$_BoxStyle(
@@ -189,12 +195,13 @@ _$_BoxStyle _$_$_BoxStyleFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$_$_BoxStyleToJson(
   _$_BoxStyle instance,
-) => <String, dynamic>{
-  'bgColor': _colorToJson(instance.bgColor),
-  'fgColor': _colorToJson(instance.fgColor),
-  'font': _$BoxFontsEnumMap[instance.font],
-  'align': _$TextAlignEnumMap[instance.align],
-};
+) =>
+    <String, dynamic>{
+      'bgColor': _colorToJson(instance.bgColor),
+      'fgColor': _colorToJson(instance.fgColor),
+      'font': _$BoxFontsEnumMap[instance.font],
+      'align': _$TextAlignEnumMap[instance.align],
+    };
 
 const _$BoxFontsEnumMap = {
   BoxFonts.Caveat: 'Caveat',

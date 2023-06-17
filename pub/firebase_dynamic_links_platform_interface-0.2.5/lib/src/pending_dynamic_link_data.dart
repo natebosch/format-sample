@@ -34,11 +34,11 @@ class PendingDynamicLinkData {
 
   /// Returns the current instance as a [Map].
   Map<String, dynamic> asMap() => <String, dynamic>{
-    'ios': ios?.asMap(),
-    'android': android?.asMap(),
-    'link': link.toString(),
-    'utmParameters': utmParameters,
-  };
+        'ios': ios?.asMap(),
+        'android': android?.asMap(),
+        'link': link.toString(),
+        'utmParameters': utmParameters,
+      };
 
   @override
   String toString() {

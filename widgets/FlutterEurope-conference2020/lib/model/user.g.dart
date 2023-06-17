@@ -15,7 +15,7 @@ User _$UserFromJson(Map json) {
 }
 
 Map<String, dynamic> _$UserToJson(User instance) => <String, dynamic>{
-  'favoriteTalksIds': instance.favoriteTalksIds,
-  'userId': instance.userId,
-  'ticketId': instance.ticketId,
-};
+      'favoriteTalksIds': instance.favoriteTalksIds,
+      'userId': instance.userId,
+      'ticketId': instance.ticketId,
+    };

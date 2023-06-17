@@ -202,9 +202,8 @@ class MealItemForm extends StatelessWidget {
                             _listMealItems[index].ingredientObj.name;
                         _ingredientIdController.text =
                             _listMealItems[index].ingredientObj.id.toString();
-                        _amountController.text = _listMealItems[index]
-                            .amount
-                            .toStringAsFixed(0);
+                        _amountController.text =
+                            _listMealItems[index].amount.toStringAsFixed(0);
                         _mealItem.ingredientId =
                             _listMealItems[index].ingredientId;
                         _mealItem.amount = _listMealItems[index].amount;
@@ -212,8 +211,8 @@ class MealItemForm extends StatelessWidget {
                       title: Text(_listMealItems[index].ingredientObj.name),
                       subtitle: Text(
                         '${_listMealItems[index].amount.toStringAsFixed(
-                          0,
-                        )}$unit',
+                              0,
+                            )}$unit',
                       ),
                       trailing: const Icon(Icons.copy),
                     ),
@@ -313,10 +312,10 @@ class IngredientLogForm extends StatelessWidget {
                 try {
                   Provider.of<NutritionPlansProvider>(context, listen: false)
                       .logIngredentToDiary(
-                        _mealItem,
-                        _plan.id!,
-                        DateTime.parse(_dateController.text),
-                      );
+                    _mealItem,
+                    _plan.id!,
+                    DateTime.parse(_dateController.text),
+                  );
                 } on WgerHttpException catch (error) {
                   showHttpExceptionErrorDialog(error, context);
                 } catch (error) {
@@ -342,9 +341,8 @@ class IngredientLogForm extends StatelessWidget {
                             diaryEntries[index].ingredientObj.name;
                         _ingredientIdController.text =
                             diaryEntries[index].ingredientObj.id.toString();
-                        _amountController.text = diaryEntries[index]
-                            .amount
-                            .toStringAsFixed(0);
+                        _amountController.text =
+                            diaryEntries[index].amount.toStringAsFixed(0);
                         _mealItem.ingredientId =
                             diaryEntries[index].ingredientId;
                         _mealItem.amount = diaryEntries[index].amount;

@@ -40,16 +40,14 @@ import 'package:smithy_aws/smithy_aws.dart' as _i6;
 /// *   [GetObjectAttributes](https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetObjectAttributes.html)
 ///
 /// *   [ListMultipartUploads](https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListMultipartUploads.html)
-class ListPartsOperation
-    extends _i1.PaginatedHttpOperation<
-      _i2.ListPartsRequestPayload,
-      _i2.ListPartsRequest,
-      _i3.ListPartsOutputPayload,
-      _i3.ListPartsOutput,
-      String,
-      int,
-      _i4.BuiltList<_i5.Part>
-    > {
+class ListPartsOperation extends _i1.PaginatedHttpOperation<
+    _i2.ListPartsRequestPayload,
+    _i2.ListPartsRequest,
+    _i3.ListPartsOutputPayload,
+    _i3.ListPartsOutput,
+    String,
+    int,
+    _i4.BuiltList<_i5.Part>> {
   /// Lists the parts that have been uploaded for a specific multipart upload. This operation must include the upload ID, which you obtain by sending the initiate multipart upload request (see [CreateMultipartUpload](https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateMultipartUpload.html)). This request returns a maximum of 1,000 uploaded parts. The default number of parts returned is 1,000 parts. You can restrict the number of parts returned by specifying the `max-parts` request parameter. If your multipart upload consists of more than 1,000 parts, the response returns an `IsTruncated` field with the value of true, and a `NextPartNumberMarker` element. In subsequent `ListParts` requests you can include the part-number-marker query string parameter and set its value to the `NextPartNumberMarker` field value from the previous response.
   ///
   /// If the upload was created using a checksum algorithm, you will need to have permission to the `kms:Decrypt` action for the request to succeed.
@@ -79,22 +77,17 @@ class ListPartsOperation
         const _i7.AWSCredentialsProvider.environment(),
     List<_i1.HttpRequestInterceptor> requestInterceptors = const [],
     List<_i1.HttpResponseInterceptor> responseInterceptors = const [],
-  }) : _region = region,
-       _baseUri = baseUri,
-       _s3ClientConfig = s3ClientConfig,
-       _credentialsProvider = credentialsProvider,
-       _requestInterceptors = requestInterceptors,
-       _responseInterceptors = responseInterceptors;
+  })  : _region = region,
+        _baseUri = baseUri,
+        _s3ClientConfig = s3ClientConfig,
+        _credentialsProvider = credentialsProvider,
+        _requestInterceptors = requestInterceptors,
+        _responseInterceptors = responseInterceptors;
 
   @override
   late final List<
-    _i1.HttpProtocol<
-      _i2.ListPartsRequestPayload,
-      _i2.ListPartsRequest,
-      _i3.ListPartsOutputPayload,
-      _i3.ListPartsOutput
-    >
-  > protocols = [
+      _i1.HttpProtocol<_i2.ListPartsRequestPayload, _i2.ListPartsRequest,
+          _i3.ListPartsOutputPayload, _i3.ListPartsOutput>> protocols = [
     _i6.RestXmlProtocol(
       serializers: _i8.serializers,
       builderFactories: _i8.builderFactories,
@@ -137,54 +130,57 @@ class ListPartsOperation
 
   @override
   _i1.HttpRequest buildRequest(_i2.ListPartsRequest input) => _i1.HttpRequest(
-    (b) {
-      b.method = 'GET';
-      b.path = _s3ClientConfig.usePathStyle
-          ? r'/{Bucket}/{Key+}?x-id=ListParts'
-          : r'/{Key+}?x-id=ListParts';
-      b.hostPrefix = _s3ClientConfig.usePathStyle ? null : '{Bucket}.';
-      if (input.requestPayer != null) {
-        b.headers['x-amz-request-payer'] = input.requestPayer!.value;
-      }
-      if (input.expectedBucketOwner != null) {
-        if (input.expectedBucketOwner!.isNotEmpty) {
-          b.headers['x-amz-expected-bucket-owner'] = input.expectedBucketOwner!;
-        }
-      }
-      if (input.sseCustomerAlgorithm != null) {
-        if (input.sseCustomerAlgorithm!.isNotEmpty) {
-          b.headers['x-amz-server-side-encryption-customer-algorithm'] =
-              input.sseCustomerAlgorithm!;
-        }
-      }
-      if (input.sseCustomerKey != null) {
-        if (input.sseCustomerKey!.isNotEmpty) {
-          b.headers['x-amz-server-side-encryption-customer-key'] =
-              input.sseCustomerKey!;
-        }
-      }
-      if (input.sseCustomerKeyMd5 != null) {
-        if (input.sseCustomerKeyMd5!.isNotEmpty) {
-          b.headers['x-amz-server-side-encryption-customer-key-MD5'] =
-              input.sseCustomerKeyMd5!;
-        }
-      }
-      if (input.maxParts != null) {
-        b.queryParameters.add('max-parts', input.maxParts!.toString());
-      }
-      if (input.partNumberMarker != null) {
-        b.queryParameters.add('part-number-marker', input.partNumberMarker!);
-      }
-      b.queryParameters.add('uploadId', input.uploadId);
-    },
-  );
+        (b) {
+          b.method = 'GET';
+          b.path = _s3ClientConfig.usePathStyle
+              ? r'/{Bucket}/{Key+}?x-id=ListParts'
+              : r'/{Key+}?x-id=ListParts';
+          b.hostPrefix = _s3ClientConfig.usePathStyle ? null : '{Bucket}.';
+          if (input.requestPayer != null) {
+            b.headers['x-amz-request-payer'] = input.requestPayer!.value;
+          }
+          if (input.expectedBucketOwner != null) {
+            if (input.expectedBucketOwner!.isNotEmpty) {
+              b.headers['x-amz-expected-bucket-owner'] =
+                  input.expectedBucketOwner!;
+            }
+          }
+          if (input.sseCustomerAlgorithm != null) {
+            if (input.sseCustomerAlgorithm!.isNotEmpty) {
+              b.headers['x-amz-server-side-encryption-customer-algorithm'] =
+                  input.sseCustomerAlgorithm!;
+            }
+          }
+          if (input.sseCustomerKey != null) {
+            if (input.sseCustomerKey!.isNotEmpty) {
+              b.headers['x-amz-server-side-encryption-customer-key'] =
+                  input.sseCustomerKey!;
+            }
+          }
+          if (input.sseCustomerKeyMd5 != null) {
+            if (input.sseCustomerKeyMd5!.isNotEmpty) {
+              b.headers['x-amz-server-side-encryption-customer-key-MD5'] =
+                  input.sseCustomerKeyMd5!;
+            }
+          }
+          if (input.maxParts != null) {
+            b.queryParameters.add('max-parts', input.maxParts!.toString());
+          }
+          if (input.partNumberMarker != null) {
+            b.queryParameters
+                .add('part-number-marker', input.partNumberMarker!);
+          }
+          b.queryParameters.add('uploadId', input.uploadId);
+        },
+      );
   @override
   int successCode([_i3.ListPartsOutput? output]) => 200;
   @override
   _i3.ListPartsOutput buildOutput(
     _i3.ListPartsOutputPayload payload,
     _i9.AWSBaseHttpResponse response,
-  ) => _i3.ListPartsOutput.fromResponse(payload, response);
+  ) =>
+      _i3.ListPartsOutput.fromResponse(payload, response);
   @override
   List<_i1.SmithyError> get errorTypes => const [];
   @override
@@ -202,9 +198,9 @@ class ListPartsOperation
     if (_s3ClientConfig.useAcceleration) {
       baseUri = baseUri.replace(
         host: baseUri.host.replaceFirst(RegExp('$_region\\.'), '').replaceFirst(
-          RegExp(r'^s3\.'),
-          's3-accelerate.',
-        ),
+              RegExp(r'^s3\.'),
+              's3-accelerate.',
+            ),
       );
     }
     return baseUri;
@@ -237,10 +233,11 @@ class ListPartsOperation
     _i2.ListPartsRequest input,
     String token,
     int? pageSize,
-  ) => input.rebuild((b) {
-    b.partNumberMarker = token;
-    if (pageSize != null) {
-      b.maxParts = pageSize;
-    }
-  });
+  ) =>
+      input.rebuild((b) {
+        b.partNumberMarker = token;
+        if (pageSize != null) {
+          b.maxParts = pageSize;
+        }
+      });
 }

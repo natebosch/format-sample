@@ -63,9 +63,8 @@ class SizeUtils {
     double widthContainer = size.width - middleHeight;
     double heightContainer = size.height / 2;
 
-    double screen = (widthContainer < heightContainer)
-        ? widthContainer
-        : heightContainer;
+    double screen =
+        (widthContainer < heightContainer) ? widthContainer : heightContainer;
 
     double boardSize = min(
       screen * 0.85,

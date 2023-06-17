@@ -24,35 +24,38 @@ class MockTaskDB extends _i1.Mock implements _i2.TaskDB {
     int? startDate = 0,
     int? endDate = 0,
     _i4.TaskStatus? taskStatus,
-  }) => (super.noSuchMethod(
-    Invocation.method(#getTasks, [], {
-      #startDate: startDate,
-      #endDate: endDate,
-      #taskStatus: taskStatus,
-    }),
-    returnValue: Future.value(<_i4.Tasks>[]),
-  ) as _i3.Future<List<_i4.Tasks>>);
+  }) =>
+      (super.noSuchMethod(
+        Invocation.method(#getTasks, [], {
+          #startDate: startDate,
+          #endDate: endDate,
+          #taskStatus: taskStatus,
+        }),
+        returnValue: Future.value(<_i4.Tasks>[]),
+      ) as _i3.Future<List<_i4.Tasks>>);
   @override
   _i3.Future<List<_i4.Tasks>> getTasksByProject(
     int? projectId, {
     _i4.TaskStatus? status,
-  }) => (super.noSuchMethod(
-    Invocation.method(#getTasksByProject, [projectId], {#status: status}),
-    returnValue: Future.value(<_i4.Tasks>[]),
-  ) as _i3.Future<List<_i4.Tasks>>);
+  }) =>
+      (super.noSuchMethod(
+        Invocation.method(#getTasksByProject, [projectId], {#status: status}),
+        returnValue: Future.value(<_i4.Tasks>[]),
+      ) as _i3.Future<List<_i4.Tasks>>);
   @override
   _i3.Future<List<_i4.Tasks>> getTasksByLabel(
     String? labelName, {
     _i4.TaskStatus? status,
-  }) => (super.noSuchMethod(
-    Invocation.method(#getTasksByLabel, [labelName], {#status: status}),
-    returnValue: Future.value(<_i4.Tasks>[]),
-  ) as _i3.Future<List<_i4.Tasks>>);
+  }) =>
+      (super.noSuchMethod(
+        Invocation.method(#getTasksByLabel, [labelName], {#status: status}),
+        returnValue: Future.value(<_i4.Tasks>[]),
+      ) as _i3.Future<List<_i4.Tasks>>);
   @override
   _i3.Future<dynamic> deleteTask(int? taskID) => (super.noSuchMethod(
-    Invocation.method(#deleteTask, [taskID]),
-    returnValue: Future.value(null),
-  ) as _i3.Future<dynamic>);
+        Invocation.method(#deleteTask, [taskID]),
+        returnValue: Future.value(null),
+      ) as _i3.Future<dynamic>);
   @override
   _i3.Future<dynamic> updateTaskStatus(int? taskID, _i4.TaskStatus? status) =>
       (super.noSuchMethod(

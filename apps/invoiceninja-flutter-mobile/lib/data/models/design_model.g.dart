@@ -388,7 +388,8 @@ class _$DesignListResponse extends DesignListResponse {
 
   factory _$DesignListResponse([
     void Function(DesignListResponseBuilder) updates,
-  ]) => (new DesignListResponseBuilder()..update(updates)).build();
+  ]) =>
+      (new DesignListResponseBuilder()..update(updates)).build();
 
   _$DesignListResponse._({this.data}) : super._() {
     BuiltValueNullFieldError.checkNotNull(data, 'DesignListResponse', 'data');
@@ -397,7 +398,8 @@ class _$DesignListResponse extends DesignListResponse {
   @override
   DesignListResponse rebuild(
     void Function(DesignListResponseBuilder) updates,
-  ) => (toBuilder()..update(updates)).build();
+  ) =>
+      (toBuilder()..update(updates)).build();
 
   @override
   DesignListResponseBuilder toBuilder() =>
@@ -484,7 +486,8 @@ class _$DesignItemResponse extends DesignItemResponse {
 
   factory _$DesignItemResponse([
     void Function(DesignItemResponseBuilder) updates,
-  ]) => (new DesignItemResponseBuilder()..update(updates)).build();
+  ]) =>
+      (new DesignItemResponseBuilder()..update(updates)).build();
 
   _$DesignItemResponse._({this.data}) : super._() {
     BuiltValueNullFieldError.checkNotNull(data, 'DesignItemResponse', 'data');
@@ -493,7 +496,8 @@ class _$DesignItemResponse extends DesignItemResponse {
   @override
   DesignItemResponse rebuild(
     void Function(DesignItemResponseBuilder) updates,
-  ) => (toBuilder()..update(updates)).build();
+  ) =>
+      (toBuilder()..update(updates)).build();
 
   @override
   DesignItemResponseBuilder toBuilder() =>
@@ -583,10 +587,11 @@ class _$DesignPreviewRequest extends DesignPreviewRequest {
 
   factory _$DesignPreviewRequest([
     void Function(DesignPreviewRequestBuilder) updates,
-  ]) => (new DesignPreviewRequestBuilder()..update(updates)).build();
+  ]) =>
+      (new DesignPreviewRequestBuilder()..update(updates)).build();
 
   _$DesignPreviewRequest._({this.entityType, this.entityId, this.design})
-    : super._() {
+      : super._() {
     BuiltValueNullFieldError.checkNotNull(
       entityType,
       'DesignPreviewRequest',
@@ -607,7 +612,8 @@ class _$DesignPreviewRequest extends DesignPreviewRequest {
   @override
   DesignPreviewRequest rebuild(
     void Function(DesignPreviewRequestBuilder) updates,
-  ) => (toBuilder()..update(updates)).build();
+  ) =>
+      (toBuilder()..update(updates)).build();
 
   @override
   DesignPreviewRequestBuilder toBuilder() =>
@@ -811,10 +817,29 @@ class _$DesignEntity extends DesignEntity {
   int __hashCode;
   @override
   int get hashCode {
-    return __hashCode ??= $jf($jc($jc($jc($jc(
-      $jc($jc($jc($jc($jc($jc($jc($jc(0, name.hashCode), design.hashCode), isCustom.hashCode), isFree.hashCode), isChanged.hashCode), createdAt.hashCode), updatedAt.hashCode), archivedAt.hashCode),
-      isDeleted.hashCode,
-    ), createdUserId.hashCode), assignedUserId.hashCode), id.hashCode));
+    return __hashCode ??= $jf($jc(
+        $jc(
+            $jc(
+                $jc(
+                  $jc(
+                      $jc(
+                          $jc(
+                              $jc(
+                                  $jc(
+                                      $jc(
+                                          $jc($jc(0, name.hashCode),
+                                              design.hashCode),
+                                          isCustom.hashCode),
+                                      isFree.hashCode),
+                                  isChanged.hashCode),
+                              createdAt.hashCode),
+                          updatedAt.hashCode),
+                      archivedAt.hashCode),
+                  isDeleted.hashCode,
+                ),
+                createdUserId.hashCode),
+            assignedUserId.hashCode),
+        id.hashCode));
   }
 
   @override

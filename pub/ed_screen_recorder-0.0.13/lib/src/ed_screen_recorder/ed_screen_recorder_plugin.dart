@@ -60,8 +60,8 @@ class EdScreenRecorder {
 
   Future<Map<String, dynamic>> stopRecord() async {
     var dateNow = DateTime.now().microsecondsSinceEpoch;
-    var response = await _channel
-        .invokeMethod('stopRecordScreen', {"enddate": dateNow});
+    var response =
+        await _channel.invokeMethod('stopRecordScreen', {"enddate": dateNow});
 
     var formatResponse = RecordOutput.fromJson(json.decode(response));
     if (kDebugMode) {

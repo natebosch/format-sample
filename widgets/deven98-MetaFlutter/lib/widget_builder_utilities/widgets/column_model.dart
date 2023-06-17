@@ -60,8 +60,8 @@ class ColumnModel extends ModelWidget {
       currentValue: params["crossAxisAlignment"],
     )}"
         '''    children: ${children.isNotEmpty ? children.values.map((widget) {
-              return widget.toCode();
-            }).toList() : []},'''
+            return widget.toCode();
+          }).toList() : []},'''
         "\n  )";
   }
 }

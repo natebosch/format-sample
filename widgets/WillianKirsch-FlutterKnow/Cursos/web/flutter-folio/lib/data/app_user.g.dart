@@ -19,11 +19,12 @@ _$_AppUser _$_$_AppUserFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$_$_AppUserToJson(
   _$_AppUser instance,
-) => <String, dynamic>{
-  'documentId': instance.documentId,
-  'email': instance.email,
-  'fireId': instance.fireId,
-  'firstName': instance.firstName,
-  'lastName': instance.lastName,
-  'imageUrl': instance.imageUrl,
-};
+) =>
+    <String, dynamic>{
+      'documentId': instance.documentId,
+      'email': instance.email,
+      'fireId': instance.fireId,
+      'firstName': instance.firstName,
+      'lastName': instance.lastName,
+      'imageUrl': instance.imageUrl,
+    };

@@ -44,17 +44,17 @@ abstract class RendererFactory {
   LanguageFeatureRenderer get languageFeatureRenderer;
 
   ElementTypeRenderer<FunctionTypeElementType>
-  get functionTypeElementTypeRenderer;
+      get functionTypeElementTypeRenderer;
 
   ElementTypeRenderer<ParameterizedElementType>
-  get parameterizedElementTypeRenderer;
+      get parameterizedElementTypeRenderer;
 
   ElementTypeRenderer<RecordElementType> get recordElementTypeRenderer;
 
   ElementTypeRenderer<AliasedElementType> get aliasedElementTypeRenderer;
 
   ElementTypeRenderer<AliasedUndefinedElementType>
-  get aliasedUndefinedElementTypeRenderer;
+      get aliasedUndefinedElementTypeRenderer;
 
   ElementTypeRenderer<CallableElementType> get callableElementTypeRenderer;
 
@@ -92,13 +92,13 @@ class HtmlRenderFactory extends RendererFactory {
 
   @override
   ElementTypeRenderer<FunctionTypeElementType>
-  get functionTypeElementTypeRenderer =>
-      const FunctionTypeElementTypeRendererHtml();
+      get functionTypeElementTypeRenderer =>
+          const FunctionTypeElementTypeRendererHtml();
 
   @override
   ElementTypeRenderer<ParameterizedElementType>
-  get parameterizedElementTypeRenderer =>
-      const ParameterizedElementTypeRendererHtml();
+      get parameterizedElementTypeRenderer =>
+          const ParameterizedElementTypeRendererHtml();
 
   @override
   ElementTypeRenderer<RecordElementType> get recordElementTypeRenderer =>
@@ -141,8 +141,8 @@ class HtmlRenderFactory extends RendererFactory {
 
   @override
   ElementTypeRenderer<AliasedUndefinedElementType>
-  get aliasedUndefinedElementTypeRenderer =>
-      const AliasedUndefinedElementTypeRendererHtml();
+      get aliasedUndefinedElementTypeRenderer =>
+          const AliasedUndefinedElementTypeRendererHtml();
 }
 
 class MdRenderFactory extends RendererFactory {
@@ -166,13 +166,13 @@ class MdRenderFactory extends RendererFactory {
 
   @override
   ElementTypeRenderer<FunctionTypeElementType>
-  get functionTypeElementTypeRenderer =>
-      const FunctionTypeElementTypeRendererMd();
+      get functionTypeElementTypeRenderer =>
+          const FunctionTypeElementTypeRendererMd();
 
   @override
   ElementTypeRenderer<ParameterizedElementType>
-  get parameterizedElementTypeRenderer =>
-      const ParameterizedElementTypeRendererMd();
+      get parameterizedElementTypeRenderer =>
+          const ParameterizedElementTypeRendererMd();
 
   @override
   ElementTypeRenderer<RecordElementType> get recordElementTypeRenderer =>
@@ -214,6 +214,6 @@ class MdRenderFactory extends RendererFactory {
 
   @override
   ElementTypeRenderer<AliasedUndefinedElementType>
-  get aliasedUndefinedElementTypeRenderer =>
-      const AliasedUndefinedElementTypeRendererMd();
+      get aliasedUndefinedElementTypeRenderer =>
+          const AliasedUndefinedElementTypeRendererMd();
 }

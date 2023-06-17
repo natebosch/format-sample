@@ -37,20 +37,24 @@ abstract class A with _$B {
   });
 
   test('class is not declaring redirecting unnamed constructor', () async {
-    await _expectBadSource(r'''
+    await _expectBadSource(
+        r'''
 @TypedDictionary()
 abstract class A with _$A {
 }
-  ''', 'Class must have a factory unnamed constructor which redirects to '
-        'MutableA.');
+  ''',
+        'Class must have a factory unnamed constructor which redirects to '
+            'MutableA.');
 
-    await _expectBadSource(r'''
+    await _expectBadSource(
+        r'''
 @TypedDictionary()
 abstract class A with _$A {
   factory A() = MutableB;
 }
-  ''', 'Class must have a factory unnamed constructor which redirects to '
-        'MutableA.');
+  ''',
+        'Class must have a factory unnamed constructor which redirects to '
+            'MutableA.');
   });
 
   test('class without fields', () async {
@@ -216,7 +220,8 @@ class MutableA extends _AImplBase<MutableDictionary>
     test(
       'conflicting field names from getters and constructor parameters',
       () async {
-        await _expectBadSource(r'''
+        await _expectBadSource(
+            r'''
 @TypedDocument()
 abstract class A with _$A {
   factory A(String a, String b, String c) = MutableA;
@@ -227,9 +232,10 @@ abstract class A with _$A {
   @DocumentSequence()
   int get b;
 }
-''', 'Getters annotated with @DocumentId, @DocumentSequence, or '
-            '@DocumentRevisionId are conflicting with constructor '
-            'parameters: a, b');
+''',
+            'Getters annotated with @DocumentId, @DocumentSequence, or '
+                '@DocumentRevisionId are conflicting with constructor '
+                'parameters: a, b');
       },
     );
 
@@ -253,7 +259,8 @@ abstract class A with _$A {
       });
 
       test('used in constructor and on getter', () async {
-        await _expectBadSource(r'''
+        await _expectBadSource(
+            r'''
 @TypedDocument()
 abstract class A with _$A {
   factory A(@DocumentId() String id) = MutableA;
@@ -261,8 +268,9 @@ abstract class A with _$A {
   @DocumentId()
   String get id;
 }
-''', '@DocumentId cannot both be used on a constructor parameter and a '
-            'getter, within the same class.');
+''',
+            '@DocumentId cannot both be used on a constructor parameter and a '
+                'getter, within the same class.');
       });
 
       test('used on getter with incorrect type', () async {
@@ -294,7 +302,8 @@ abstract class A with _$A {
 
     group('DocumentRevisionId', () {
       test('used on getter with incorrect type', () async {
-        await _expectBadSource(r'''
+        await _expectBadSource(
+            r'''
 @TypedDocument()
 abstract class A with _$A {
   factory A() = MutableA;
@@ -302,8 +311,9 @@ abstract class A with _$A {
   @DocumentRevisionId()
   String get sequence;
 }
-''', '@DocumentRevisionId must be used on a getter which returns a '
-            'String?.');
+''',
+            '@DocumentRevisionId must be used on a getter which returns a '
+                'String?.');
       });
     });
   });
@@ -338,9 +348,12 @@ $content''';
 
 Future<void> _expectBadSource(String source, [Object? messageMatcher]) async {
   await expectLater(
-    testBuilder(TypedDataBuilder(), {
-      _testLibId: _testLibContent(source),
-    }, reader: await PackageAssetReader.currentIsolate()),
+    testBuilder(
+        TypedDataBuilder(),
+        {
+          _testLibId: _testLibContent(source),
+        },
+        reader: await PackageAssetReader.currentIsolate()),
     throwsA(isA<InvalidGenerationSourceError>().having(
       (error) => error.message,
       'message',

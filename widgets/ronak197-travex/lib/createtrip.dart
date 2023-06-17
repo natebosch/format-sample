@@ -21,9 +21,11 @@ class _CreateTripState extends State<CreateTrip> {
             children: <Widget>[
               InkWell(
                 onTap: () {
-                  Navigator.push(context, MaterialPageRoute(
-                    builder: (context) => SearchDestination(),
-                  ));
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => SearchDestination(),
+                      ));
                 },
                 child: Card(
                   margin: EdgeInsets.only(left: 20.0, right: 20.0, top: 20.0),
@@ -140,12 +142,14 @@ class _SearchDestinationState extends State<SearchDestination> {
                   trailing: Icon(Icons.location_searching),
                   title: new Text(predictedaddr[index]),
                   onTap: () {
-                    Navigator.push(context, MaterialPageRoute(
-                      builder: (context) => (SelectPlaces(
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => (SelectPlaces(
                             placeId: predictionList[index].placeId,
                             description: predictionList[index].description,
                           )),
-                    ));
+                        ));
                   },
                 );
               },

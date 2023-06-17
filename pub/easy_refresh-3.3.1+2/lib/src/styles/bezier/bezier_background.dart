@@ -342,9 +342,8 @@ class _BezierClipper extends CustomClipper<Path> {
     } else {
       if (reverse) {
         // Left
-        final startWidth = width > actualTriggerOffset
-            ? width - actualTriggerOffset
-            : 0.0;
+        final startWidth =
+            width > actualTriggerOffset ? width - actualTriggerOffset : 0.0;
         path.moveTo(startWidth, 0);
         path.lineTo(width, 0);
         path.lineTo(width, height);

@@ -32,8 +32,8 @@ const String iosSimulatorId = 'apple_ios_simulator';
 
 class IOSSimulators extends PollingDeviceDiscovery {
   IOSSimulators({required IOSSimulatorUtils iosSimulatorUtils})
-    : _iosSimulatorUtils = iosSimulatorUtils,
-      super('iOS simulators');
+      : _iosSimulatorUtils = iosSimulatorUtils,
+        super('iOS simulators');
 
   final IOSSimulatorUtils _iosSimulatorUtils;
 
@@ -56,12 +56,12 @@ class IOSSimulatorUtils {
     required Xcode xcode,
     required Logger logger,
     required ProcessManager processManager,
-  }) : _simControl = SimControl(
-         logger: logger,
-         processManager: processManager,
-         xcode: xcode,
-       ),
-       _xcode = xcode;
+  })  : _simControl = SimControl(
+          logger: logger,
+          processManager: processManager,
+          xcode: xcode,
+        ),
+        _xcode = xcode;
 
   final SimControl _simControl;
   final Xcode _xcode;
@@ -72,24 +72,27 @@ class IOSSimulatorUtils {
     }
 
     final List<SimDevice> connected = await _simControl.getConnectedDevices();
-    return connected.map<IOSSimulator?>((SimDevice device) {
-      final String? udid = device.udid;
-      final String? name = device.name;
-      if (udid == null) {
-        globals.printTrace('Could not parse simulator udid');
-        return null;
-      }
-      if (name == null) {
-        globals.printTrace('Could not parse simulator name');
-        return null;
-      }
-      return IOSSimulator(
-        udid,
-        name: name,
-        simControl: _simControl,
-        simulatorCategory: device.category,
-      );
-    }).whereType<IOSSimulator>().toList();
+    return connected
+        .map<IOSSimulator?>((SimDevice device) {
+          final String? udid = device.udid;
+          final String? name = device.name;
+          if (udid == null) {
+            globals.printTrace('Could not parse simulator udid');
+            return null;
+          }
+          if (name == null) {
+            globals.printTrace('Could not parse simulator name');
+            return null;
+          }
+          return IOSSimulator(
+            udid,
+            name: name,
+            simControl: _simControl,
+            simulatorCategory: device.category,
+          );
+        })
+        .whereType<IOSSimulator>()
+        .toList();
   }
 }
 
@@ -99,12 +102,12 @@ class SimControl {
     required Logger logger,
     required ProcessManager processManager,
     required Xcode xcode,
-  }) : _logger = logger,
-       _xcode = xcode,
-       _processUtils = ProcessUtils(
-         processManager: processManager,
-         logger: logger,
-       );
+  })  : _logger = logger,
+        _xcode = xcode,
+        _processUtils = ProcessUtils(
+          processManager: processManager,
+          logger: logger,
+        );
 
   final Logger _logger;
   final ProcessUtils _processUtils;
@@ -338,13 +341,13 @@ class IOSSimulator extends Device {
     required this.name,
     required this.simulatorCategory,
     required SimControl simControl,
-  }) : _simControl = simControl,
-       super(
-         id,
-         category: Category.mobile,
-         platformType: PlatformType.ios,
-         ephemeral: true,
-       );
+  })  : _simControl = simControl,
+        super(
+          id,
+          category: Category.mobile,
+          platformType: PlatformType.ios,
+          ephemeral: true,
+        );
 
   @override
   final String name;
@@ -762,7 +765,7 @@ Future<Process?> launchSystemLogTool(IOSSimulator device) async {
 
 class _IOSSimulatorLogReader extends DeviceLogReader {
   _IOSSimulatorLogReader(this.device, IOSApp? app)
-    : _appName = app?.name?.replaceAll('.app', '');
+      : _appName = app?.name?.replaceAll('.app', '');
 
   final IOSSimulator device;
 
@@ -953,8 +956,8 @@ class _IOSSimulatorLogReader extends DeviceLogReader {
   );
   void _onUnifiedLoggingLine(String line) {
     // The log command predicate handles filtering, so every log eventMessage should be decoded and added.
-    final Match? eventMessageMatch = _unifiedLoggingEventMessageRegex
-        .firstMatch(line);
+    final Match? eventMessageMatch =
+        _unifiedLoggingEventMessageRegex.firstMatch(line);
     if (eventMessageMatch != null) {
       final String message = eventMessageMatch.group(1)!;
       try {

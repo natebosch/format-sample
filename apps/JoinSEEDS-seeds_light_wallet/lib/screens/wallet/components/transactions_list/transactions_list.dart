@@ -94,9 +94,8 @@ class _TransactionsListState extends State<TransactionsList>
                             OnTransactionRowTapped(state.transactions[index]),
                           );
                         },
-                        profileAccount: model.to == account
-                            ? model.from
-                            : model.to,
+                        profileAccount:
+                            model.to == account ? model.from : model.to,
                         timestamp: model.timestamp,
                         amount: model.quantity,
                         incoming: account == model.to,

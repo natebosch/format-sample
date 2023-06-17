@@ -46,23 +46,23 @@ class _SearchScreenState extends State<SearchScreen> {
   }
 
   _search(String keywords) => EasyDebounce.debounce(
-    'search',
-    const Duration(microseconds: 500), // typing on a phone isn't that fast
-    () async {
-      if (keywords.length == 0) return _resetSearch();
-      if (keywords.length < 2) return;
+        'search',
+        const Duration(microseconds: 500), // typing on a phone isn't that fast
+        () async {
+          if (keywords.length == 0) return _resetSearch();
+          if (keywords.length < 2) return;
 
-      SearchResult result =
-          await searchProvider.searchExcerpts(keywords: keywords);
+          SearchResult result =
+              await searchProvider.searchExcerpts(keywords: keywords);
 
-      setState(() {
-        _initial = false;
-        _songs = result.songs;
-        _albums = result.albums;
-        _artists = result.artists;
-      });
-    },
-  );
+          setState(() {
+            _initial = false;
+            _songs = result.songs;
+            _albums = result.albums;
+            _artists = result.artists;
+          });
+        },
+      );
 
   Widget get noResults {
     return Padding(

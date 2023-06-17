@@ -30,10 +30,10 @@ class CustomThemeColor extends StatelessWidget {
     final newColor = await showDialog<Color>(
       context: context,
       builder: (_) => ColorPickerDialog(
-            color: color,
-            allowTransparency: allowTransparency,
-            onColorChanged: onColorChanged,
-          ),
+        color: color,
+        allowTransparency: allowTransparency,
+        onColorChanged: onColorChanged,
+      ),
     );
 
     if (newColor != null) {

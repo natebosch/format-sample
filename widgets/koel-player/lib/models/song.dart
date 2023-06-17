@@ -82,8 +82,8 @@ class Song {
   bool get hasCustomImage {
     return image is CachedNetworkImageProvider &&
         !(image as CachedNetworkImageProvider).url.endsWith(
-          '/unknown-album.png',
-        );
+              '/unknown-album.png',
+            );
   }
 
   String get cacheKey => 'CACHE_$id';

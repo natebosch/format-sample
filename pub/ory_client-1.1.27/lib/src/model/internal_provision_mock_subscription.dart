@@ -18,10 +18,8 @@ part 'internal_provision_mock_subscription.g.dart';
 @BuiltValue()
 abstract class InternalProvisionMockSubscription
     implements
-        Built<
-          InternalProvisionMockSubscription,
-          InternalProvisionMockSubscriptionBuilder
-        > {
+        Built<InternalProvisionMockSubscription,
+            InternalProvisionMockSubscriptionBuilder> {
   /// Identity ID
   @BuiltValueField(wireName: r'identity_id')
   String get identityId;
@@ -171,14 +169,16 @@ class InternalProvisionMockSubscriptionIntervalEnum extends EnumClass {
       _$internalProvisionMockSubscriptionIntervalEnum_yearly;
 
   static Serializer<InternalProvisionMockSubscriptionIntervalEnum>
-  get serializer => _$internalProvisionMockSubscriptionIntervalEnumSerializer;
+      get serializer =>
+          _$internalProvisionMockSubscriptionIntervalEnumSerializer;
 
   const InternalProvisionMockSubscriptionIntervalEnum._(String name)
-    : super(name);
+      : super(name);
 
   static BuiltSet<InternalProvisionMockSubscriptionIntervalEnum> get values =>
       _$internalProvisionMockSubscriptionIntervalEnumValues;
   static InternalProvisionMockSubscriptionIntervalEnum valueOf(
     String name,
-  ) => _$internalProvisionMockSubscriptionIntervalEnumValueOf(name);
+  ) =>
+      _$internalProvisionMockSubscriptionIntervalEnumValueOf(name);
 }

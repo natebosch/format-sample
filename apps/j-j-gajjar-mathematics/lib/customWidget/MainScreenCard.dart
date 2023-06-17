@@ -9,8 +9,8 @@ class MainScreenCard extends StatelessWidget {
     this.max,
     this.maxValue = 999999,
     this.hint,
-  }) : _ques = ques,
-       super(key: key);
+  })  : _ques = ques,
+        super(key: key);
 
   final TextEditingController _ques;
   final IconData icon;

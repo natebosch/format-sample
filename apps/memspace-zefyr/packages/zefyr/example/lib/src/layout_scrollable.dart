@@ -59,8 +59,8 @@ class _ScrollableLayoutState extends State<ScrollableLayout> {
                     Theme.of(context).accentColor,
                   ),
                 ),
-                onPressed:
-                    () => showDialog(context: context, builder: _buildThanks),
+                onPressed: () =>
+                    showDialog(context: context, builder: _buildThanks),
                 child: Text(
                   'Submit',
                   style: Theme.of(context).accentTextTheme.button,

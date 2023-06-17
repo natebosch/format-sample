@@ -17,7 +17,8 @@ abstract class ComputePool {
   /// Create a new compute pool with the requested number of worker isolates
   factory ComputePool.createWith({
     int workersCount = 2,
-  }) => ComputePoolImpl.createWith(workersCount: workersCount);
+  }) =>
+      ComputePoolImpl.createWith(workersCount: workersCount);
 
   /// Shuts down the compute pool. Submitting new work will result in an
   /// error future being returned

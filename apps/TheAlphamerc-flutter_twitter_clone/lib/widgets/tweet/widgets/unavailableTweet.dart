@@ -18,9 +18,8 @@ class UnavailableTweet extends StatelessWidget {
       margin: EdgeInsets.only(
         right: 16,
         top: 5,
-        left: type == TweetType.Tweet || type == TweetType.ParentTweet
-            ? 70
-            : 16,
+        left:
+            type == TweetType.Tweet || type == TweetType.ParentTweet ? 70 : 16,
       ),
       alignment: Alignment.centerLeft,
       decoration: BoxDecoration(

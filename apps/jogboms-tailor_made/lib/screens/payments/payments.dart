@@ -10,7 +10,7 @@ import 'package:tailor_made/widgets/theme_provider.dart';
 
 class PaymentsPage extends StatelessWidget {
   const PaymentsPage({Key key, this.payments, @required this.userId})
-    : super(key: key);
+      : super(key: key);
 
   final List<PaymentModel> payments;
   final String userId;

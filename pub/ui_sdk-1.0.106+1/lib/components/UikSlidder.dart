@@ -9,7 +9,7 @@ class UikSlidder extends UikWidget {
   WidgetType _widgetType;
   UikSlidderProps _uikSlidderProps;
   UikSlidder(this._widgetType, this._uikSlidderProps)
-    : super(_widgetType, _uikSlidderProps);
+      : super(_widgetType, _uikSlidderProps);
 
   @override
   _UikSlidderState createState() => _UikSlidderState(_uikSlidderProps);

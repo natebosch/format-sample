@@ -55,8 +55,8 @@ class _InfoDrawerState extends State<InfoDrawer> {
                         SizedBox(height: 12),
                         GestureDetector(
                           onTap: () async => await launchURL(
-                                "https://twitter.com/SandwhichApp",
-                              ),
+                            "https://twitter.com/SandwhichApp",
+                          ),
                           child: Text("@SandwhichApp", style: infoLinkStyle),
                         ),
                         GestureDetector(

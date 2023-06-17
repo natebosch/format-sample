@@ -11,13 +11,14 @@ class $FloorFavoriteDatabase {
   /// Once a database is built, you should keep a reference to it and re-use it.
   static _$FavoriteDatabaseBuilder databaseBuilder(
     String name,
-  ) => _$FavoriteDatabaseBuilder(name);
+  ) =>
+      _$FavoriteDatabaseBuilder(name);
 
   /// Creates a database builder for an in memory database.
   /// Information stored in an in memory database disappears when the process is killed.
   /// Once a database is built, you should keep a reference to it and re-use it.
-  static _$FavoriteDatabaseBuilder
-  inMemoryDatabaseBuilder() => _$FavoriteDatabaseBuilder(null);
+  static _$FavoriteDatabaseBuilder inMemoryDatabaseBuilder() =>
+      _$FavoriteDatabaseBuilder(null);
 }
 
 class _$FavoriteDatabaseBuilder {
@@ -101,30 +102,30 @@ class _$FavoriteDatabase extends FavoriteDatabase {
 
 class _$FavoriteDao extends FavoriteDao {
   _$FavoriteDao(this.database, this.changeListener)
-    : _queryAdapter = QueryAdapter(database, changeListener),
-      _favoriteInsertionAdapter = InsertionAdapter(
-        database,
-        'Favorite',
-        (Favorite item) => <String, dynamic>{
-          'id': item.id,
-          'favWordsEng': item.english,
-          'favWordsTr': item.turkish,
-          'favId': item.favId,
-        },
-        changeListener,
-      ),
-      _favoriteDeletionAdapter = DeletionAdapter(
-        database,
-        'Favorite',
-        ['id'],
-        (Favorite item) => <String, dynamic>{
-          'id': item.id,
-          'favWordsEng': item.english,
-          'favWordsTr': item.turkish,
-          'favId': item.favId,
-        },
-        changeListener,
-      );
+      : _queryAdapter = QueryAdapter(database, changeListener),
+        _favoriteInsertionAdapter = InsertionAdapter(
+          database,
+          'Favorite',
+          (Favorite item) => <String, dynamic>{
+            'id': item.id,
+            'favWordsEng': item.english,
+            'favWordsTr': item.turkish,
+            'favId': item.favId,
+          },
+          changeListener,
+        ),
+        _favoriteDeletionAdapter = DeletionAdapter(
+          database,
+          'Favorite',
+          ['id'],
+          (Favorite item) => <String, dynamic>{
+            'id': item.id,
+            'favWordsEng': item.english,
+            'favWordsTr': item.turkish,
+            'favId': item.favId,
+          },
+          changeListener,
+        );
 
   final sqflite.DatabaseExecutor database;
 
@@ -202,13 +203,14 @@ class $FloorHistoryDatabase {
   /// Once a database is built, you should keep a reference to it and re-use it.
   static _$HistoryDatabaseBuilder databaseBuilder(
     String name,
-  ) => _$HistoryDatabaseBuilder(name);
+  ) =>
+      _$HistoryDatabaseBuilder(name);
 
   /// Creates a database builder for an in memory database.
   /// Information stored in an in memory database disappears when the process is killed.
   /// Once a database is built, you should keep a reference to it and re-use it.
-  static _$HistoryDatabaseBuilder
-  inMemoryDatabaseBuilder() => _$HistoryDatabaseBuilder(null);
+  static _$HistoryDatabaseBuilder inMemoryDatabaseBuilder() =>
+      _$HistoryDatabaseBuilder(null);
 }
 
 class _$HistoryDatabaseBuilder {
@@ -292,28 +294,28 @@ class _$HistoryDatabase extends HistoryDatabase {
 
 class _$HistoryDao extends HistoryDao {
   _$HistoryDao(this.database, this.changeListener)
-    : _queryAdapter = QueryAdapter(database, changeListener),
-      _historyInsertionAdapter = InsertionAdapter(
-        database,
-        'History',
-        (History item) => <String, dynamic>{
-          'id': item.id,
-          'historyWord': item.historyWord,
-          'historyId': item.historyId,
-        },
-        changeListener,
-      ),
-      _historyDeletionAdapter = DeletionAdapter(
-        database,
-        'History',
-        ['id'],
-        (History item) => <String, dynamic>{
-          'id': item.id,
-          'historyWord': item.historyWord,
-          'historyId': item.historyId,
-        },
-        changeListener,
-      );
+      : _queryAdapter = QueryAdapter(database, changeListener),
+        _historyInsertionAdapter = InsertionAdapter(
+          database,
+          'History',
+          (History item) => <String, dynamic>{
+            'id': item.id,
+            'historyWord': item.historyWord,
+            'historyId': item.historyId,
+          },
+          changeListener,
+        ),
+        _historyDeletionAdapter = DeletionAdapter(
+          database,
+          'History',
+          ['id'],
+          (History item) => <String, dynamic>{
+            'id': item.id,
+            'historyWord': item.historyWord,
+            'historyId': item.historyId,
+          },
+          changeListener,
+        );
 
   final sqflite.DatabaseExecutor database;
 

@@ -80,9 +80,11 @@ class _ProfileState extends State<Profile> {
       return buildButton(
         text: 'Edit Profile',
         onPressed: () {
-          Navigator.push(context, MaterialPageRoute(
-            builder: (context) => EditProfile(currentUserID: currentUserId),
-          ));
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => EditProfile(currentUserID: currentUserId),
+              ));
         },
       );
     else if (isFollowing) {
@@ -104,8 +106,8 @@ class _ProfileState extends State<Profile> {
         .document(currentUserId)
         .get()
         .then((doc) {
-          if (doc.exists) doc.reference.delete();
-        });
+      if (doc.exists) doc.reference.delete();
+    });
     // remove this user to current user following
     followingRef
         .document(currentUserId)
@@ -113,8 +115,8 @@ class _ProfileState extends State<Profile> {
         .document(widget.profileId)
         .get()
         .then((doc) {
-          if (doc.exists) doc.reference.delete();
-        });
+      if (doc.exists) doc.reference.delete();
+    });
     // remove activity feed to this user
     activityFeedRef
         .document(widget.profileId)
@@ -122,8 +124,8 @@ class _ProfileState extends State<Profile> {
         .document(currentUserId)
         .get()
         .then((doc) {
-          if (doc.exists) doc.reference.delete();
-        });
+      if (doc.exists) doc.reference.delete();
+    });
   }
 
   handleFollow() {
@@ -149,13 +151,13 @@ class _ProfileState extends State<Profile> {
         .collection('feedItems')
         .document(currentUserId)
         .setData({
-          'type': 'follow',
-          'ownerId': widget.profileId,
-          'username': currentUser.username,
-          'userId': currentUser.id,
-          'userProfileImg': currentUser.photoUrl,
-          'timestamp': timeStamp,
-        });
+      'type': 'follow',
+      'ownerId': widget.profileId,
+      'username': currentUser.username,
+      'userId': currentUser.id,
+      'userProfileImg': currentUser.photoUrl,
+      'timestamp': timeStamp,
+    });
   }
 
   buildProfileHeader() {

@@ -204,8 +204,8 @@ class InventoryService {
     List<ItemWithOwner> itemsToTransfer = itemStates.where((i) {
       var def = ManifestService()
           .getDefinitionFromCache<DestinyInventoryItemDefinition>(
-            i?.item?.itemHash,
-          );
+        i?.item?.itemHash,
+      );
       if (def?.equippable == false) return false;
       if (def?.nonTransferrable == true && i?.ownerId != character.characterId)
         return false;
@@ -219,8 +219,8 @@ class InventoryService {
     List<ItemWithOwner> itemsToEquip = itemsToTransfer.where((i) {
       var def = ManifestService()
           .getDefinitionFromCache<DestinyInventoryItemDefinition>(
-            i?.item?.itemHash,
-          );
+        i?.item?.itemHash,
+      );
       if (ocuppiedBuckets.contains(def?.inventory?.bucketTypeHash))
         return false;
       if (def?.inventory?.tierType == TierType.Exotic) {
@@ -269,9 +269,8 @@ class InventoryService {
     List<int> hashes = items.map((item) => item.itemHash).toList();
     Map<int, DestinyInventoryItemDefinition> defs =
         await manifest.getDefinitions<DestinyInventoryItemDefinition>(hashes);
-    DestinyCharacterComponent character = characterId != null
-        ? profile.getCharacter(characterId)
-        : null;
+    DestinyCharacterComponent character =
+        characterId != null ? profile.getCharacter(characterId) : null;
 
     List<DestinyItemComponent> itemsToEquip = items.where((item) {
       DestinyInventoryItemDefinition def = defs[item.itemHash];
@@ -291,9 +290,11 @@ class InventoryService {
       return true;
     }).toList();
 
-    List<String> idsToAvoid = (itemsToEquip + itemsToTransfer).map(
-      (item) => item.itemInstanceId,
-    ).toList();
+    List<String> idsToAvoid = (itemsToEquip + itemsToTransfer)
+        .map(
+          (item) => item.itemInstanceId,
+        )
+        .toList();
 
     for (var item in itemsToEquip) {
       String ownerId = profile.getItemOwner(item.itemInstanceId);
@@ -301,9 +302,8 @@ class InventoryService {
       if (ownerId == characterId) continue;
       if (def.nonTransferrable) continue;
 
-      ItemDestination destination = character == null
-          ? ItemDestination.Vault
-          : ItemDestination.Character;
+      ItemDestination destination =
+          character == null ? ItemDestination.Vault : ItemDestination.Character;
       _broadcaster.push(NotificationEvent(
         NotificationType.requestedTransfer,
         item: item,
@@ -341,9 +341,8 @@ class InventoryService {
       if (ownerId == characterId) continue;
       if (def.nonTransferrable) continue;
 
-      ItemDestination destination = character == null
-          ? ItemDestination.Vault
-          : ItemDestination.Character;
+      ItemDestination destination =
+          character == null ? ItemDestination.Vault : ItemDestination.Character;
       _broadcaster.push(NotificationEvent(
         NotificationType.requestedTransfer,
         item: item,
@@ -395,8 +394,8 @@ class InventoryService {
       print("${char.characterId} = ${inventory.length}");
     });
     var profileInventory = profile.getProfileInventory().where(
-      (item) => item.bucketHash == InventoryBucket.general,
-    );
+          (item) => item.bucketHash == InventoryBucket.general,
+        );
     print("vault = ${profileInventory.length}");
   }
 
@@ -457,10 +456,10 @@ class InventoryService {
           sourceCharacterId,
         );
       }
-      var destinationBucketDef = await manifest
-          .getDefinition<DestinyInventoryBucketDefinition>(
-            def.inventory.bucketTypeHash,
-          );
+      var destinationBucketDef =
+          await manifest.getDefinition<DestinyInventoryBucketDefinition>(
+        def.inventory.bucketTypeHash,
+      );
 
       if (def.inventory.isInstanceItem) {
         item.bucketHash = def.inventory.bucketTypeHash;
@@ -468,8 +467,8 @@ class InventoryService {
             .getDefinition<DestinyInventoryBucketDefinition>(item.bucketHash);
         if (destinationBucketDef.scope == BucketScope.Account) {
           profile.getCharacterInventory(sourceCharacterId).removeWhere(
-            (i) => i.itemInstanceId == item.itemInstanceId,
-          );
+                (i) => i.itemInstanceId == item.itemInstanceId,
+              );
           profile.getProfileInventory().add(item);
         }
       } else if (stackSize >= item.quantity) {
@@ -478,8 +477,8 @@ class InventoryService {
             .getDefinition<DestinyInventoryBucketDefinition>(item.bucketHash);
         if (destinationBucketDef.scope == BucketScope.Account) {
           profile.getCharacterInventory(sourceCharacterId).removeWhere(
-            (i) => i.itemHash == item.itemHash,
-          );
+                (i) => i.itemHash == item.itemHash,
+              );
           profile.getProfileInventory().add(item);
         }
       } else {
@@ -516,8 +515,8 @@ class InventoryService {
         item.bucketHash = InventoryBucket.general;
         if (sourceBucketDef.scope == BucketScope.Character) {
           profile.getCharacterInventory(sourceCharacterId).removeWhere(
-            (i) => i.itemInstanceId == item.itemInstanceId,
-          );
+                (i) => i.itemInstanceId == item.itemInstanceId,
+              );
           profile.getProfileInventory().add(item);
         }
         sourceBucketDef = await manifest
@@ -526,8 +525,8 @@ class InventoryService {
         item.bucketHash = InventoryBucket.general;
         if (sourceBucketDef.scope == BucketScope.Character) {
           profile.getCharacterInventory(sourceCharacterId).removeWhere(
-            (i) => i.itemHash == item.itemHash,
-          );
+                (i) => i.itemHash == item.itemHash,
+              );
           profile.getProfileInventory().add(item);
         }
         sourceBucketDef = await manifest
@@ -550,10 +549,10 @@ class InventoryService {
         idsToAvoid,
       );
 
-      var destinationBucketDef = await manifest
-          .getDefinition<DestinyInventoryBucketDefinition>(
-            def.inventory.bucketTypeHash,
-          );
+      var destinationBucketDef =
+          await manifest.getDefinition<DestinyInventoryBucketDefinition>(
+        def.inventory.bucketTypeHash,
+      );
       if (destinationBucketDef.scope == BucketScope.Account) {
         destinationCharacterId = profile.getCharacters().first.characterId;
       }
@@ -572,16 +571,16 @@ class InventoryService {
         item.bucketHash = def.inventory.bucketTypeHash;
         if (destinationBucketDef.scope == BucketScope.Character) {
           profile.getProfileInventory().removeWhere(
-            (i) => i.itemInstanceId == item.itemInstanceId,
-          );
+                (i) => i.itemInstanceId == item.itemInstanceId,
+              );
           profile.getCharacterInventory(destinationCharacterId).add(item);
         }
       } else if (stackSize >= item.quantity) {
         item.bucketHash = def.inventory.bucketTypeHash;
         if (destinationBucketDef.scope == BucketScope.Character) {
           profile.getProfileInventory().removeWhere(
-            (i) => i.itemHash == item.itemHash,
-          );
+                (i) => i.itemHash == item.itemHash,
+              );
           profile.getCharacterInventory(destinationCharacterId).add(item);
         }
       } else {
@@ -682,15 +681,15 @@ class InventoryService {
     result.forEach((result) {
       DestinyItemComponent newlyEquipped =
           profile.getItemsByInstanceId([result.itemInstanceId]).first;
-      DestinyItemInstanceComponent newlyEquippedInstance = profile
-          .getInstanceInfo(result.itemInstanceId);
+      DestinyItemInstanceComponent newlyEquippedInstance =
+          profile.getInstanceInfo(result.itemInstanceId);
       DestinyInventoryItemDefinition newlyEquippedDef =
           defs[newlyEquipped.itemHash];
       int bucketHash = newlyEquippedDef.inventory.bucketTypeHash;
       DestinyItemComponent previouslyEquippedItem =
           previouslyEquipped[bucketHash];
-      DestinyItemInstanceComponent previouslyEquippedInstance = profile
-          .getInstanceInfo(previouslyEquippedItem.itemInstanceId);
+      DestinyItemInstanceComponent previouslyEquippedInstance =
+          profile.getInstanceInfo(previouslyEquippedItem.itemInstanceId);
       if (![PlatformErrorCodes.Success, PlatformErrorCodes.None].contains(
         result.equipStatus,
       )) {
@@ -738,9 +737,11 @@ class InventoryService {
     } else {
       items = profile.getProfileInventory();
     }
-    items = items.where(
-      (item) => item.bucketHash == bucketDefinition.hash,
-    ).toList();
+    items = items
+        .where(
+          (item) => item.bucketHash == bucketDefinition.hash,
+        )
+        .toList();
     return items;
   }
 
@@ -818,10 +819,10 @@ class InventoryService {
     List<DestinyItemComponent> equipment = profile.getCharacterEquipment(
       characterId,
     );
-    Map<int, DestinyInventoryItemDefinition> definitions = await manifest
-        .getDefinitions<DestinyInventoryItemDefinition>(
-          equipment.map((pItem) => pItem.itemHash).toList(),
-        );
+    Map<int, DestinyInventoryItemDefinition> definitions =
+        await manifest.getDefinitions<DestinyInventoryItemDefinition>(
+      equipment.map((pItem) => pItem.itemHash).toList(),
+    );
     return equipment.firstWhere((i) {
       var d = definitions[i.itemHash];
       return d.itemType == def.itemType &&
@@ -849,10 +850,10 @@ class InventoryService {
         .toList();
 
     if (possibles.length > 0) {
-      Map<int, DestinyInventoryItemDefinition> definitions = await manifest
-          .getDefinitions<DestinyInventoryItemDefinition>(
-            possibles.map((pItem) => pItem.itemHash).toList(),
-          );
+      Map<int, DestinyInventoryItemDefinition> definitions =
+          await manifest.getDefinitions<DestinyInventoryItemDefinition>(
+        possibles.map((pItem) => pItem.itemHash).toList(),
+      );
       possibles.removeWhere((pItem) {
         var def = definitions[pItem.itemHash];
         if (def.inventory.tierType == TierType.Exotic &&
@@ -869,9 +870,10 @@ class InventoryService {
 
     if (possibles.length == 0) {
       var itemsOnVault = profile.getProfileInventory().where(
-        (i) =>
-            i.bucketHash == InventoryBucket.general && i.itemInstanceId != null,
-      );
+            (i) =>
+                i.bucketHash == InventoryBucket.general &&
+                i.itemInstanceId != null,
+          );
       for (var i in itemsOnVault) {
         var def = await manifest.getDefinition<DestinyInventoryItemDefinition>(
           i.itemHash,
@@ -909,9 +911,8 @@ class InventoryService {
   changeLockState(ItemWithOwner item, bool locked) async {
     if (!item.item.lockable) return;
     var charIds = profile.getCharacters().map((c) => c.characterId);
-    var ownerId = charIds.contains(item?.ownerId)
-        ? item?.ownerId
-        : charIds.first;
+    var ownerId =
+        charIds.contains(item?.ownerId) ? item?.ownerId : charIds.first;
     if (item.item.state.contains(ItemState.Locked) && !locked) {
       item?.item?.state = ItemState(
         item.item.state.value - ItemState.Locked.value,
@@ -922,11 +923,11 @@ class InventoryService {
       );
     }
     var profileItem = ProfileService().getAllItems().firstWhere(
-      (i) =>
-          i.itemHash == item.item.itemHash &&
-          i.itemInstanceId == item.item.itemInstanceId,
-      orElse: () => null,
-    );
+          (i) =>
+              i.itemHash == item.item.itemHash &&
+              i.itemInstanceId == item.item.itemInstanceId,
+          orElse: () => null,
+        );
     profileItem.state = item?.item?.state;
     _broadcaster.push(
       new NotificationEvent(NotificationType.itemStateUpdate, item: item.item),

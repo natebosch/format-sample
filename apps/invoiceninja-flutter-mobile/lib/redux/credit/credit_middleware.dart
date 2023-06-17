@@ -160,23 +160,22 @@ Middleware<AppState> _archiveCredit(CreditRepository repository) {
         action.creditIds.map((id) => store.state.creditState.map[id]).toList();
     repository
         .bulkAction(
-          store.state.credentials,
-          action.creditIds,
-          EntityAction.archive,
-        )
+      store.state.credentials,
+      action.creditIds,
+      EntityAction.archive,
+    )
         .then((List<InvoiceEntity> credits) {
-          store.dispatch(ArchiveCreditsSuccess(credits));
-          if (action.completer != null) {
-            action.completer.complete(null);
-          }
-        })
-        .catchError((Object error) {
-          print(error);
-          store.dispatch(ArchiveCreditsFailure(prevCredits));
-          if (action.completer != null) {
-            action.completer.completeError(error);
-          }
-        });
+      store.dispatch(ArchiveCreditsSuccess(credits));
+      if (action.completer != null) {
+        action.completer.complete(null);
+      }
+    }).catchError((Object error) {
+      print(error);
+      store.dispatch(ArchiveCreditsFailure(prevCredits));
+      if (action.completer != null) {
+        action.completer.completeError(error);
+      }
+    });
 
     next(action);
   };
@@ -190,23 +189,22 @@ Middleware<AppState> _deleteCredit(CreditRepository repository) {
 
     repository
         .bulkAction(
-          store.state.credentials,
-          action.creditIds,
-          EntityAction.delete,
-        )
+      store.state.credentials,
+      action.creditIds,
+      EntityAction.delete,
+    )
         .then((List<InvoiceEntity> credits) {
-          store.dispatch(DeleteCreditsSuccess(credits));
-          if (action.completer != null) {
-            action.completer.complete(null);
-          }
-        })
-        .catchError((Object error) {
-          print(error);
-          store.dispatch(DeleteCreditsFailure(prevCredits));
-          if (action.completer != null) {
-            action.completer.completeError(error);
-          }
-        });
+      store.dispatch(DeleteCreditsSuccess(credits));
+      if (action.completer != null) {
+        action.completer.complete(null);
+      }
+    }).catchError((Object error) {
+      print(error);
+      store.dispatch(DeleteCreditsFailure(prevCredits));
+      if (action.completer != null) {
+        action.completer.completeError(error);
+      }
+    });
 
     next(action);
   };
@@ -220,23 +218,22 @@ Middleware<AppState> _restoreCredit(CreditRepository repository) {
 
     repository
         .bulkAction(
-          store.state.credentials,
-          action.creditIds,
-          EntityAction.restore,
-        )
+      store.state.credentials,
+      action.creditIds,
+      EntityAction.restore,
+    )
         .then((List<InvoiceEntity> credits) {
-          store.dispatch(RestoreCreditsSuccess(credits));
-          if (action.completer != null) {
-            action.completer.complete(null);
-          }
-        })
-        .catchError((Object error) {
-          print(error);
-          store.dispatch(RestoreCreditsFailure(prevCredits));
-          if (action.completer != null) {
-            action.completer.completeError(error);
-          }
-        });
+      store.dispatch(RestoreCreditsSuccess(credits));
+      if (action.completer != null) {
+        action.completer.complete(null);
+      }
+    }).catchError((Object error) {
+      print(error);
+      store.dispatch(RestoreCreditsFailure(prevCredits));
+      if (action.completer != null) {
+        action.completer.completeError(error);
+      }
+    });
 
     next(action);
   };
@@ -247,23 +244,22 @@ Middleware<AppState> _markSentCredit(CreditRepository repository) {
     final action = dynamicAction as MarkSentCreditRequest;
     repository
         .bulkAction(
-          store.state.credentials,
-          action.creditIds,
-          EntityAction.markSent,
-        )
+      store.state.credentials,
+      action.creditIds,
+      EntityAction.markSent,
+    )
         .then((credits) {
-          store.dispatch(MarkSentCreditSuccess(credits));
-          if (action.completer != null) {
-            action.completer.complete(null);
-          }
-        })
-        .catchError((Object error) {
-          print(error);
-          store.dispatch(MarkSentCreditFailure(error));
-          if (action.completer != null) {
-            action.completer.completeError(error);
-          }
-        });
+      store.dispatch(MarkSentCreditSuccess(credits));
+      if (action.completer != null) {
+        action.completer.complete(null);
+      }
+    }).catchError((Object error) {
+      print(error);
+      store.dispatch(MarkSentCreditFailure(error));
+      if (action.completer != null) {
+        action.completer.completeError(error);
+      }
+    });
 
     next(action);
   };
@@ -275,25 +271,24 @@ Middleware<AppState> _emailCredit(CreditRepository repository) {
     final origCredit = store.state.creditState.map[action.creditId];
     repository
         .emailCredit(
-          store.state.credentials,
-          origCredit,
-          action.template,
-          action.subject,
-          action.body,
-        )
+      store.state.credentials,
+      origCredit,
+      action.template,
+      action.subject,
+      action.body,
+    )
         .then((void _) {
-          store.dispatch(EmailCreditSuccess());
-          if (action.completer != null) {
-            action.completer.complete(null);
-          }
-        })
-        .catchError((Object error) {
-          print(error);
-          store.dispatch(EmailCreditFailure(error));
-          if (action.completer != null) {
-            action.completer.completeError(error);
-          }
-        });
+      store.dispatch(EmailCreditSuccess());
+      if (action.completer != null) {
+        action.completer.complete(null);
+      }
+    }).catchError((Object error) {
+      print(error);
+      store.dispatch(EmailCreditFailure(error));
+      if (action.completer != null) {
+        action.completer.completeError(error);
+      }
+    });
 
     next(action);
   };
@@ -314,18 +309,17 @@ Middleware<AppState> _saveCredit(CreditRepository repository) {
     repository
         .saveData(store.state.credentials, updatedCredit, action.action)
         .then((InvoiceEntity credit) {
-          if (action.credit.isNew) {
-            store.dispatch(AddCreditSuccess(credit));
-          } else {
-            store.dispatch(SaveCreditSuccess(credit));
-          }
-          action.completer.complete(credit);
-        })
-        .catchError((Object error) {
-          print(error);
-          store.dispatch(SaveCreditFailure(error));
-          action.completer.completeError(error);
-        });
+      if (action.credit.isNew) {
+        store.dispatch(AddCreditSuccess(credit));
+      } else {
+        store.dispatch(SaveCreditSuccess(credit));
+      }
+      action.completer.complete(credit);
+    }).catchError((Object error) {
+      print(error);
+      store.dispatch(SaveCreditFailure(error));
+      action.completer.completeError(error);
+    });
 
     next(action);
   };
@@ -364,24 +358,23 @@ Middleware<AppState> _loadCredits(CreditRepository repository) {
     store.dispatch(LoadCreditsRequest());
     repository
         .loadList(
-          state.credentials,
-          state.createdAtLimit,
-          state.filterDeletedClients,
-        )
+      state.credentials,
+      state.createdAtLimit,
+      state.filterDeletedClients,
+    )
         .then((data) {
-          store.dispatch(LoadCreditsSuccess(data));
-          if (action.completer != null) {
-            action.completer.complete(null);
-          }
-          store.dispatch(LoadProjects());
-        })
-        .catchError((Object error) {
-          print(error);
-          store.dispatch(LoadCreditsFailure(error));
-          if (action.completer != null) {
-            action.completer.completeError(error);
-          }
-        });
+      store.dispatch(LoadCreditsSuccess(data));
+      if (action.completer != null) {
+        action.completer.complete(null);
+      }
+      store.dispatch(LoadProjects());
+    }).catchError((Object error) {
+      print(error);
+      store.dispatch(LoadCreditsFailure(error));
+      if (action.completer != null) {
+        action.completer.completeError(error);
+      }
+    });
 
     next(action);
   };
@@ -392,23 +385,22 @@ Middleware<AppState> _downloadCredits(CreditRepository repository) {
     final action = dynamicAction as DownloadCreditsRequest;
     repository
         .bulkAction(
-          store.state.credentials,
-          action.creditIds,
-          EntityAction.bulkDownload,
-        )
+      store.state.credentials,
+      action.creditIds,
+      EntityAction.bulkDownload,
+    )
         .then((invoices) {
-          store.dispatch(DownloadCreditsSuccess());
-          if (action.completer != null) {
-            action.completer.complete(null);
-          }
-        })
-        .catchError((Object error) {
-          print(error);
-          store.dispatch(DownloadCreditsFailure(error));
-          if (action.completer != null) {
-            action.completer.completeError(error);
-          }
-        });
+      store.dispatch(DownloadCreditsSuccess());
+      if (action.completer != null) {
+        action.completer.complete(null);
+      }
+    }).catchError((Object error) {
+      print(error);
+      store.dispatch(DownloadCreditsFailure(error));
+      if (action.completer != null) {
+        action.completer.completeError(error);
+      }
+    });
 
     next(action);
   };
@@ -420,23 +412,22 @@ Middleware<AppState> _bulkEmailCredits(CreditRepository repository) {
 
     repository
         .bulkAction(
-          store.state.credentials,
-          action.creditIds,
-          EntityAction.emailCredit,
-        )
+      store.state.credentials,
+      action.creditIds,
+      EntityAction.emailCredit,
+    )
         .then((List<InvoiceEntity> credits) {
-          store.dispatch(BulkEmailCreditsSuccess(credits));
-          if (action.completer != null) {
-            action.completer.complete(null);
-          }
-        })
-        .catchError((Object error) {
-          print(error);
-          store.dispatch(BulkEmailCreditsFailure(error));
-          if (action.completer != null) {
-            action.completer.completeError(error);
-          }
-        });
+      store.dispatch(BulkEmailCreditsSuccess(credits));
+      if (action.completer != null) {
+        action.completer.complete(null);
+      }
+    }).catchError((Object error) {
+      print(error);
+      store.dispatch(BulkEmailCreditsFailure(error));
+      if (action.completer != null) {
+        action.completer.completeError(error);
+      }
+    });
 
     next(action);
   };
@@ -448,19 +439,18 @@ Middleware<AppState> _saveDocument(CreditRepository repository) {
     if (store.state.isEnterprisePlan) {
       repository
           .uploadDocument(
-            store.state.credentials,
-            action.credit,
-            action.multipartFile,
-          )
+        store.state.credentials,
+        action.credit,
+        action.multipartFile,
+      )
           .then((credit) {
-            store.dispatch(SaveCreditSuccess(credit));
-            action.completer.complete(null);
-          })
-          .catchError((Object error) {
-            print(error);
-            store.dispatch(SaveCreditDocumentFailure(error));
-            action.completer.completeError(error);
-          });
+        store.dispatch(SaveCreditSuccess(credit));
+        action.completer.complete(null);
+      }).catchError((Object error) {
+        print(error);
+        store.dispatch(SaveCreditDocumentFailure(error));
+        action.completer.completeError(error);
+      });
     } else {
       const error = 'Uploading documents requires an enterprise plan';
       store.dispatch(SaveCreditDocumentFailure(error));

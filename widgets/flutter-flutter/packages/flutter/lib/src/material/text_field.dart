@@ -48,8 +48,8 @@ typedef InputCounterWidgetBuilder = Widget? Function(
 class _TextFieldSelectionGestureDetectorBuilder
     extends TextSelectionGestureDetectorBuilder {
   _TextFieldSelectionGestureDetectorBuilder({required _TextFieldState state})
-    : _state = state,
-      super(delegate: state);
+      : _state = state,
+        super(delegate: state);
 
   final _TextFieldState _state;
 
@@ -364,68 +364,68 @@ class TextField extends StatefulWidget {
     this.clipBehavior = Clip.hardEdge,
     this.restorationId,
     this.enableIMEPersonalizedLearning = true,
-  }) : assert(textAlign != null),
-       assert(readOnly != null),
-       assert(autofocus != null),
-       assert(obscuringCharacter != null && obscuringCharacter.length == 1),
-       assert(obscureText != null),
-       assert(autocorrect != null),
-       smartDashesType = smartDashesType ??
-           (obscureText ? SmartDashesType.disabled : SmartDashesType.enabled),
-       smartQuotesType = smartQuotesType ??
-           (obscureText ? SmartQuotesType.disabled : SmartQuotesType.enabled),
-       assert(enableSuggestions != null),
-       assert(enableInteractiveSelection != null),
-       assert(maxLengthEnforced != null),
-       assert(
-         maxLengthEnforced || maxLengthEnforcement == null,
-         'maxLengthEnforced is deprecated, use only maxLengthEnforcement',
-       ),
-       assert(scrollPadding != null),
-       assert(dragStartBehavior != null),
-       assert(selectionHeightStyle != null),
-       assert(selectionWidthStyle != null),
-       assert(maxLines == null || maxLines > 0),
-       assert(minLines == null || minLines > 0),
-       assert(
-         (maxLines == null) || (minLines == null) || (maxLines >= minLines),
-         "minLines can't be greater than maxLines",
-       ),
-       assert(expands != null),
-       assert(
-         !expands || (maxLines == null && minLines == null),
-         'minLines and maxLines must be null when expands is true.',
-       ),
-       assert(
-         !obscureText || maxLines == 1,
-         'Obscured fields cannot be multiline.',
-       ),
-       assert(
-         maxLength == null ||
-             maxLength == TextField.noMaxLength ||
-             maxLength > 0,
-       ),
-       // Assert the following instead of setting it directly to avoid surprising the user by silently changing the value they set.
-       assert(
-         !identical(textInputAction, TextInputAction.newline) ||
-             maxLines == 1 ||
-             !identical(keyboardType, TextInputType.text),
-         'Use keyboardType TextInputType.multiline when using TextInputAction.newline on a multiline TextField.',
-       ),
-       assert(clipBehavior != null),
-       assert(enableIMEPersonalizedLearning != null),
-       keyboardType = keyboardType ??
-           (maxLines == 1 ? TextInputType.text : TextInputType.multiline),
-       toolbarOptions = toolbarOptions ??
-           (obscureText
-               ? const ToolbarOptions(selectAll: true, paste: true)
-               : const ToolbarOptions(
-                   copy: true,
-                   cut: true,
-                   selectAll: true,
-                   paste: true,
-                 )),
-       super(key: key);
+  })  : assert(textAlign != null),
+        assert(readOnly != null),
+        assert(autofocus != null),
+        assert(obscuringCharacter != null && obscuringCharacter.length == 1),
+        assert(obscureText != null),
+        assert(autocorrect != null),
+        smartDashesType = smartDashesType ??
+            (obscureText ? SmartDashesType.disabled : SmartDashesType.enabled),
+        smartQuotesType = smartQuotesType ??
+            (obscureText ? SmartQuotesType.disabled : SmartQuotesType.enabled),
+        assert(enableSuggestions != null),
+        assert(enableInteractiveSelection != null),
+        assert(maxLengthEnforced != null),
+        assert(
+          maxLengthEnforced || maxLengthEnforcement == null,
+          'maxLengthEnforced is deprecated, use only maxLengthEnforcement',
+        ),
+        assert(scrollPadding != null),
+        assert(dragStartBehavior != null),
+        assert(selectionHeightStyle != null),
+        assert(selectionWidthStyle != null),
+        assert(maxLines == null || maxLines > 0),
+        assert(minLines == null || minLines > 0),
+        assert(
+          (maxLines == null) || (minLines == null) || (maxLines >= minLines),
+          "minLines can't be greater than maxLines",
+        ),
+        assert(expands != null),
+        assert(
+          !expands || (maxLines == null && minLines == null),
+          'minLines and maxLines must be null when expands is true.',
+        ),
+        assert(
+          !obscureText || maxLines == 1,
+          'Obscured fields cannot be multiline.',
+        ),
+        assert(
+          maxLength == null ||
+              maxLength == TextField.noMaxLength ||
+              maxLength > 0,
+        ),
+        // Assert the following instead of setting it directly to avoid surprising the user by silently changing the value they set.
+        assert(
+          !identical(textInputAction, TextInputAction.newline) ||
+              maxLines == 1 ||
+              !identical(keyboardType, TextInputType.text),
+          'Use keyboardType TextInputType.multiline when using TextInputAction.newline on a multiline TextField.',
+        ),
+        assert(clipBehavior != null),
+        assert(enableIMEPersonalizedLearning != null),
+        keyboardType = keyboardType ??
+            (maxLines == 1 ? TextInputType.text : TextInputType.multiline),
+        toolbarOptions = toolbarOptions ??
+            (obscureText
+                ? const ToolbarOptions(selectAll: true, paste: true)
+                : const ToolbarOptions(
+                    copy: true,
+                    cut: true,
+                    selectAll: true,
+                    paste: true,
+                  )),
+        super(key: key);
 
   /// Controls the text being edited.
   ///
@@ -864,16 +864,14 @@ class TextField extends StatefulWidget {
     properties.add(EnumProperty<SmartDashesType>(
       'smartDashesType',
       smartDashesType,
-      defaultValue: obscureText
-          ? SmartDashesType.disabled
-          : SmartDashesType.enabled,
+      defaultValue:
+          obscureText ? SmartDashesType.disabled : SmartDashesType.enabled,
     ));
     properties.add(EnumProperty<SmartQuotesType>(
       'smartQuotesType',
       smartQuotesType,
-      defaultValue: obscureText
-          ? SmartQuotesType.disabled
-          : SmartQuotesType.enabled,
+      defaultValue:
+          obscureText ? SmartQuotesType.disabled : SmartQuotesType.enabled,
     ));
     properties.add(DiagnosticsProperty<bool>(
       'enableSuggestions',
@@ -1007,7 +1005,7 @@ class _TextFieldState extends State<TextField>
   bool _showSelectionHandles = false;
 
   late _TextFieldSelectionGestureDetectorBuilder
-  _selectionGestureDetectorBuilder;
+      _selectionGestureDetectorBuilder;
 
   // API for TextSelectionGestureDetectorBuilderDelegate.
   @override
@@ -1038,13 +1036,13 @@ class _TextFieldState extends State<TextField>
       context,
     );
     final ThemeData themeData = Theme.of(context);
-    final InputDecoration effectiveDecoration = (widget.decoration ??
-            const InputDecoration())
-        .applyDefaults(themeData.inputDecorationTheme)
-        .copyWith(
-          enabled: _isEnabled,
-          hintMaxLines: widget.decoration?.hintMaxLines ?? widget.maxLines,
-        );
+    final InputDecoration effectiveDecoration =
+        (widget.decoration ?? const InputDecoration())
+            .applyDefaults(themeData.inputDecorationTheme)
+            .copyWith(
+              enabled: _isEnabled,
+              hintMaxLines: widget.decoration?.hintMaxLines ?? widget.maxLines,
+            );
 
     // No need to build anything if counter or counterText were given directly.
     if (effectiveDecoration.counter != null ||
@@ -1282,8 +1280,8 @@ class _TextFieldState extends State<TextField>
 
   @override
   void autofill(TextEditingValue newEditingValue) => _editableText!.autofill(
-    newEditingValue,
-  );
+        newEditingValue,
+      );
 
   @override
   TextInputConfiguration get textInputConfiguration {
@@ -1443,9 +1441,8 @@ class _TextFieldState extends State<TextField>
           expands: widget.expands,
           // Only show the selection highlight when the text field is focused.
           selectionColor: focusNode.hasFocus ? selectionColor : null,
-          selectionControls: widget.selectionEnabled
-              ? textSelectionControls
-              : null,
+          selectionControls:
+              widget.selectionEnabled ? textSelectionControls : null,
           onChanged: widget.onChanged,
           onSelectionChanged: _handleSelectionChanged,
           onEditingComplete: widget.onEditingComplete,
@@ -1499,14 +1496,15 @@ class _TextFieldState extends State<TextField>
         child: child,
       );
     }
-    final MouseCursor effectiveMouseCursor = MaterialStateProperty.resolveAs<
-      MouseCursor
-    >(widget.mouseCursor ?? MaterialStateMouseCursor.textable, <MaterialState>{
-      if (!_isEnabled) MaterialState.disabled,
-      if (_isHovering) MaterialState.hovered,
-      if (focusNode.hasFocus) MaterialState.focused,
-      if (_hasError) MaterialState.error,
-    });
+    final MouseCursor effectiveMouseCursor =
+        MaterialStateProperty.resolveAs<MouseCursor>(
+            widget.mouseCursor ?? MaterialStateMouseCursor.textable,
+            <MaterialState>{
+          if (!_isEnabled) MaterialState.disabled,
+          if (_isHovering) MaterialState.hovered,
+          if (focusNode.hasFocus) MaterialState.focused,
+          if (_hasError) MaterialState.error,
+        });
 
     final int? semanticsMaxValueLength;
     if (widget.maxLengthEnforced &&

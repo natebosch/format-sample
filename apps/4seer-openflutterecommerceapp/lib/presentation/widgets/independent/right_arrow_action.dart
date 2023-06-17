@@ -6,7 +6,7 @@ class OpenFlutterRightArrow extends StatelessWidget {
   final VoidCallback onClick;
 
   const OpenFlutterRightArrow(this.text, {Key key, this.onClick})
-    : super(key: key);
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {

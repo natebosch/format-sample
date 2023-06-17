@@ -54,9 +54,8 @@ class _PriorityPickerState extends State<PriorityPicker> {
                   child: Text(
                     priorityText[index],
                     style: TextStyle(
-                      color: selectedIndex == index
-                          ? Colors.white
-                          : Colors.black,
+                      color:
+                          selectedIndex == index ? Colors.white : Colors.black,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -116,9 +115,8 @@ class _ColorPickerState extends State<ColorPicker> {
               height: 50,
               child: Container(
                 child: Center(
-                  child: selectedIndex == index
-                      ? Icon(Icons.done)
-                      : Container(),
+                  child:
+                      selectedIndex == index ? Icon(Icons.done) : Container(),
                 ),
                 decoration: BoxDecoration(
                   color: colors[index],

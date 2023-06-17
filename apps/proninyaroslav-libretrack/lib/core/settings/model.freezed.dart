@@ -64,39 +64,45 @@ mixin _$ParcelsSort {
     required TResult Function(bool isDesc) alphabetically,
     required TResult Function(bool oldestFirst) activityDate,
     required TResult Function(bool oldestFirst) dateAdded,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(bool isDesc)? alphabetically,
     TResult Function(bool oldestFirst)? activityDate,
     TResult Function(bool oldestFirst)? dateAdded,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(bool isDesc)? alphabetically,
     TResult Function(bool oldestFirst)? activityDate,
     TResult Function(bool oldestFirst)? dateAdded,
     required TResult orElse(),
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(ParcelsSortAlphabetically value) alphabetically,
     required TResult Function(ParcelsSortActivityDate value) activityDate,
     required TResult Function(ParcelsSortDateAdded value) dateAdded,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(ParcelsSortAlphabetically value)? alphabetically,
     TResult Function(ParcelsSortActivityDate value)? activityDate,
     TResult Function(ParcelsSortDateAdded value)? dateAdded,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(ParcelsSortAlphabetically value)? alphabetically,
     TResult Function(ParcelsSortActivityDate value)? activityDate,
     TResult Function(ParcelsSortDateAdded value)? dateAdded,
     required TResult orElse(),
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 }
 
@@ -145,7 +151,7 @@ class _$ParcelsSortAlphabeticallyCopyWithImpl<$Res>
       isDesc: isDesc == freezed
           ? _value.isDesc
           : isDesc // ignore: cast_nullable_to_non_nullable
-                as bool,
+              as bool,
     ));
   }
 }
@@ -157,7 +163,8 @@ class _$ParcelsSortAlphabetically implements ParcelsSortAlphabetically {
 
   factory _$ParcelsSortAlphabetically.fromJson(
     Map<String, dynamic> json,
-  ) => _$$ParcelsSortAlphabeticallyFromJson(json);
+  ) =>
+      _$$ParcelsSortAlphabeticallyFromJson(json);
 
   @JsonKey(defaultValue: false)
   @override
@@ -182,10 +189,9 @@ class _$ParcelsSortAlphabetically implements ParcelsSortAlphabetically {
 
   @JsonKey(ignore: true)
   @override
-  $ParcelsSortAlphabeticallyCopyWith<ParcelsSortAlphabetically>
-  get copyWith => _$ParcelsSortAlphabeticallyCopyWithImpl<
-    ParcelsSortAlphabetically
-  >(this, _$identity);
+  $ParcelsSortAlphabeticallyCopyWith<ParcelsSortAlphabetically> get copyWith =>
+      _$ParcelsSortAlphabeticallyCopyWithImpl<ParcelsSortAlphabetically>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -257,8 +263,8 @@ class _$ParcelsSortAlphabetically implements ParcelsSortAlphabetically {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$ParcelsSortAlphabeticallyToJson(this)..['runtimeType'] =
-        'alphabetically';
+    return _$$ParcelsSortAlphabeticallyToJson(this)
+      ..['runtimeType'] = 'alphabetically';
   }
 }
 
@@ -302,7 +308,7 @@ class _$ParcelsSortActivityDateCopyWithImpl<$Res>
       oldestFirst: oldestFirst == freezed
           ? _value.oldestFirst
           : oldestFirst // ignore: cast_nullable_to_non_nullable
-                as bool,
+              as bool,
     ));
   }
 }
@@ -314,7 +320,8 @@ class _$ParcelsSortActivityDate implements ParcelsSortActivityDate {
 
   factory _$ParcelsSortActivityDate.fromJson(
     Map<String, dynamic> json,
-  ) => _$$ParcelsSortActivityDateFromJson(json);
+  ) =>
+      _$$ParcelsSortActivityDateFromJson(json);
 
   @JsonKey(defaultValue: false)
   @override
@@ -342,10 +349,9 @@ class _$ParcelsSortActivityDate implements ParcelsSortActivityDate {
 
   @JsonKey(ignore: true)
   @override
-  $ParcelsSortActivityDateCopyWith<ParcelsSortActivityDate>
-  get copyWith => _$ParcelsSortActivityDateCopyWithImpl<
-    ParcelsSortActivityDate
-  >(this, _$identity);
+  $ParcelsSortActivityDateCopyWith<ParcelsSortActivityDate> get copyWith =>
+      _$ParcelsSortActivityDateCopyWithImpl<ParcelsSortActivityDate>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -417,8 +423,8 @@ class _$ParcelsSortActivityDate implements ParcelsSortActivityDate {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$ParcelsSortActivityDateToJson(this)..['runtimeType'] =
-        'activityDate';
+    return _$$ParcelsSortActivityDateToJson(this)
+      ..['runtimeType'] = 'activityDate';
   }
 }
 
@@ -462,7 +468,7 @@ class _$ParcelsSortDateAddedCopyWithImpl<$Res>
       oldestFirst: oldestFirst == freezed
           ? _value.oldestFirst
           : oldestFirst // ignore: cast_nullable_to_non_nullable
-                as bool,
+              as bool,
     ));
   }
 }
@@ -474,7 +480,8 @@ class _$ParcelsSortDateAdded implements ParcelsSortDateAdded {
 
   factory _$ParcelsSortDateAdded.fromJson(
     Map<String, dynamic> json,
-  ) => _$$ParcelsSortDateAddedFromJson(json);
+  ) =>
+      _$$ParcelsSortDateAddedFromJson(json);
 
   @JsonKey(defaultValue: false)
   @override
@@ -502,11 +509,11 @@ class _$ParcelsSortDateAdded implements ParcelsSortDateAdded {
 
   @JsonKey(ignore: true)
   @override
-  $ParcelsSortDateAddedCopyWith<ParcelsSortDateAdded>
-  get copyWith => _$ParcelsSortDateAddedCopyWithImpl<ParcelsSortDateAdded>(
-    this,
-    _$identity,
-  );
+  $ParcelsSortDateAddedCopyWith<ParcelsSortDateAdded> get copyWith =>
+      _$ParcelsSortDateAddedCopyWithImpl<ParcelsSortDateAdded>(
+        this,
+        _$identity,
+      );
 
   @override
   @optionalTypeArgs
@@ -673,7 +680,8 @@ mixin _$ParcelsFilter {
     required TResult Function() newInfo,
     required TResult Function() error,
     required TResult Function(PostalServiceType? serviceType) postalService,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String? query)? search,
@@ -683,7 +691,8 @@ mixin _$ParcelsFilter {
     TResult Function()? newInfo,
     TResult Function()? error,
     TResult Function(PostalServiceType? serviceType)? postalService,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String? query)? search,
@@ -694,7 +703,8 @@ mixin _$ParcelsFilter {
     TResult Function()? error,
     TResult Function(PostalServiceType? serviceType)? postalService,
     required TResult orElse(),
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(ParcelsFilterSearch value) search,
@@ -704,7 +714,8 @@ mixin _$ParcelsFilter {
     required TResult Function(ParcelsFilterNewInfo value) newInfo,
     required TResult Function(ParcelsFilterError value) error,
     required TResult Function(ParcelsFilterPostalService value) postalService,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(ParcelsFilterSearch value)? search,
@@ -714,7 +725,8 @@ mixin _$ParcelsFilter {
     TResult Function(ParcelsFilterNewInfo value)? newInfo,
     TResult Function(ParcelsFilterError value)? error,
     TResult Function(ParcelsFilterPostalService value)? postalService,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(ParcelsFilterSearch value)? search,
@@ -725,7 +737,8 @@ mixin _$ParcelsFilter {
     TResult Function(ParcelsFilterError value)? error,
     TResult Function(ParcelsFilterPostalService value)? postalService,
     required TResult orElse(),
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 }
 
@@ -774,7 +787,7 @@ class _$ParcelsFilterSearchCopyWithImpl<$Res>
       query: query == freezed
           ? _value.query
           : query // ignore: cast_nullable_to_non_nullable
-                as String?,
+              as String?,
     ));
   }
 }
@@ -786,7 +799,8 @@ class _$ParcelsFilterSearch implements ParcelsFilterSearch {
 
   factory _$ParcelsFilterSearch.fromJson(
     Map<String, dynamic> json,
-  ) => _$$ParcelsFilterSearchFromJson(json);
+  ) =>
+      _$$ParcelsFilterSearchFromJson(json);
 
   @override
   final String? query;
@@ -810,11 +824,11 @@ class _$ParcelsFilterSearch implements ParcelsFilterSearch {
 
   @JsonKey(ignore: true)
   @override
-  $ParcelsFilterSearchCopyWith<ParcelsFilterSearch>
-  get copyWith => _$ParcelsFilterSearchCopyWithImpl<ParcelsFilterSearch>(
-    this,
-    _$identity,
-  );
+  $ParcelsFilterSearchCopyWith<ParcelsFilterSearch> get copyWith =>
+      _$ParcelsFilterSearchCopyWithImpl<ParcelsFilterSearch>(
+        this,
+        _$identity,
+      );
 
   @override
   @optionalTypeArgs
@@ -954,7 +968,8 @@ class _$ParcelsFilterActive implements ParcelsFilterActive {
 
   factory _$ParcelsFilterActive.fromJson(
     Map<String, dynamic> json,
-  ) => _$$ParcelsFilterActiveFromJson(json);
+  ) =>
+      _$$ParcelsFilterActiveFromJson(json);
 
   @override
   String toString() {
@@ -1102,7 +1117,8 @@ class _$ParcelsFilterArchive implements ParcelsFilterArchive {
 
   factory _$ParcelsFilterArchive.fromJson(
     Map<String, dynamic> json,
-  ) => _$$ParcelsFilterArchiveFromJson(json);
+  ) =>
+      _$$ParcelsFilterArchiveFromJson(json);
 
   @override
   String toString() {
@@ -1249,7 +1265,7 @@ class _$ParcelsFilterStatusCopyWithImpl<$Res>
       statusType: statusType == freezed
           ? _value.statusType
           : statusType // ignore: cast_nullable_to_non_nullable
-                as ShipmentStatusType?,
+              as ShipmentStatusType?,
     ));
   }
 }
@@ -1261,7 +1277,8 @@ class _$ParcelsFilterStatus implements ParcelsFilterStatus {
 
   factory _$ParcelsFilterStatus.fromJson(
     Map<String, dynamic> json,
-  ) => _$$ParcelsFilterStatusFromJson(json);
+  ) =>
+      _$$ParcelsFilterStatusFromJson(json);
 
   @override
   final ShipmentStatusType? statusType;
@@ -1288,11 +1305,11 @@ class _$ParcelsFilterStatus implements ParcelsFilterStatus {
 
   @JsonKey(ignore: true)
   @override
-  $ParcelsFilterStatusCopyWith<ParcelsFilterStatus>
-  get copyWith => _$ParcelsFilterStatusCopyWithImpl<ParcelsFilterStatus>(
-    this,
-    _$identity,
-  );
+  $ParcelsFilterStatusCopyWith<ParcelsFilterStatus> get copyWith =>
+      _$ParcelsFilterStatusCopyWithImpl<ParcelsFilterStatus>(
+        this,
+        _$identity,
+      );
 
   @override
   @optionalTypeArgs
@@ -1433,7 +1450,8 @@ class _$ParcelsFilterNewInfo implements ParcelsFilterNewInfo {
 
   factory _$ParcelsFilterNewInfo.fromJson(
     Map<String, dynamic> json,
-  ) => _$$ParcelsFilterNewInfoFromJson(json);
+  ) =>
+      _$$ParcelsFilterNewInfoFromJson(json);
 
   @override
   String toString() {
@@ -1581,7 +1599,8 @@ class _$ParcelsFilterError implements ParcelsFilterError {
 
   factory _$ParcelsFilterError.fromJson(
     Map<String, dynamic> json,
-  ) => _$$ParcelsFilterErrorFromJson(json);
+  ) =>
+      _$$ParcelsFilterErrorFromJson(json);
 
   @override
   String toString() {
@@ -1729,7 +1748,7 @@ class _$ParcelsFilterPostalServiceCopyWithImpl<$Res>
       serviceType: serviceType == freezed
           ? _value.serviceType
           : serviceType // ignore: cast_nullable_to_non_nullable
-                as PostalServiceType?,
+              as PostalServiceType?,
     ));
   }
 }
@@ -1741,7 +1760,8 @@ class _$ParcelsFilterPostalService implements ParcelsFilterPostalService {
 
   factory _$ParcelsFilterPostalService.fromJson(
     Map<String, dynamic> json,
-  ) => _$$ParcelsFilterPostalServiceFromJson(json);
+  ) =>
+      _$$ParcelsFilterPostalServiceFromJson(json);
 
   @override
   final PostalServiceType? serviceType;
@@ -1769,9 +1789,9 @@ class _$ParcelsFilterPostalService implements ParcelsFilterPostalService {
   @JsonKey(ignore: true)
   @override
   $ParcelsFilterPostalServiceCopyWith<ParcelsFilterPostalService>
-  get copyWith => _$ParcelsFilterPostalServiceCopyWithImpl<
-    ParcelsFilterPostalService
-  >(this, _$identity);
+      get copyWith =>
+          _$ParcelsFilterPostalServiceCopyWithImpl<ParcelsFilterPostalService>(
+              this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1867,8 +1887,8 @@ class _$ParcelsFilterPostalService implements ParcelsFilterPostalService {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$ParcelsFilterPostalServiceToJson(this)..['runtimeType'] =
-        'postalService';
+    return _$$ParcelsFilterPostalServiceToJson(this)
+      ..['runtimeType'] = 'postalService';
   }
 }
 
@@ -1882,7 +1902,7 @@ abstract class ParcelsFilterPostalService implements ParcelsFilter {
   PostalServiceType? get serviceType => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $ParcelsFilterPostalServiceCopyWith<ParcelsFilterPostalService>
-  get copyWith => throw _privateConstructorUsedError;
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 AppThemeType _$AppThemeTypeFromJson(Map<String, dynamic> json) {
@@ -1935,39 +1955,45 @@ mixin _$AppThemeType {
     required TResult Function() light,
     required TResult Function() dark,
     required TResult Function() system,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? light,
     TResult Function()? dark,
     TResult Function()? system,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? light,
     TResult Function()? dark,
     TResult Function()? system,
     required TResult orElse(),
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(AppThemeTypeLight value) light,
     required TResult Function(AppThemeTypeDark value) dark,
     required TResult Function(AppThemeTypeSystem value) system,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(AppThemeTypeLight value)? light,
     TResult Function(AppThemeTypeDark value)? dark,
     TResult Function(AppThemeTypeSystem value)? system,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(AppThemeTypeLight value)? light,
     TResult Function(AppThemeTypeDark value)? dark,
     TResult Function(AppThemeTypeSystem value)? system,
     required TResult orElse(),
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 }
 
@@ -2016,7 +2042,8 @@ class _$AppThemeTypeLight implements AppThemeTypeLight {
 
   factory _$AppThemeTypeLight.fromJson(
     Map<String, dynamic> json,
-  ) => _$$AppThemeTypeLightFromJson(json);
+  ) =>
+      _$$AppThemeTypeLightFromJson(json);
 
   @override
   String toString() {
@@ -2140,7 +2167,8 @@ class _$AppThemeTypeDark implements AppThemeTypeDark {
 
   factory _$AppThemeTypeDark.fromJson(
     Map<String, dynamic> json,
-  ) => _$$AppThemeTypeDarkFromJson(json);
+  ) =>
+      _$$AppThemeTypeDarkFromJson(json);
 
   @override
   String toString() {
@@ -2264,7 +2292,8 @@ class _$AppThemeTypeSystem implements AppThemeTypeSystem {
 
   factory _$AppThemeTypeSystem.fromJson(
     Map<String, dynamic> json,
-  ) => _$$AppThemeTypeSystemFromJson(json);
+  ) =>
+      _$$AppThemeTypeSystemFromJson(json);
 
   @override
   String toString() {
@@ -2403,34 +2432,40 @@ mixin _$AppLocaleType {
   TResult when<TResult extends Object?>({
     required TResult Function() system,
     required TResult Function(Locale locale) inner,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? system,
     TResult Function(Locale locale)? inner,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? system,
     TResult Function(Locale locale)? inner,
     required TResult orElse(),
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(AppLocaleTypeSystem value) system,
     required TResult Function(AppLocaleTypeInner value) inner,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(AppLocaleTypeSystem value)? system,
     TResult Function(AppLocaleTypeInner value)? inner,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(AppLocaleTypeSystem value)? system,
     TResult Function(AppLocaleTypeInner value)? inner,
     required TResult orElse(),
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 }
 
@@ -2480,7 +2515,8 @@ class _$AppLocaleTypeSystem implements AppLocaleTypeSystem {
 
   factory _$AppLocaleTypeSystem.fromJson(
     Map<String, dynamic> json,
-  ) => _$$AppLocaleTypeSystemFromJson(json);
+  ) =>
+      _$$AppLocaleTypeSystemFromJson(json);
 
   @override
   String toString() {
@@ -2599,7 +2635,7 @@ class _$AppLocaleTypeInnerCopyWithImpl<$Res>
       locale: locale == freezed
           ? _value.locale
           : locale // ignore: cast_nullable_to_non_nullable
-                as Locale,
+              as Locale,
     ));
   }
 
@@ -2618,7 +2654,8 @@ class _$AppLocaleTypeInner implements AppLocaleTypeInner {
 
   factory _$AppLocaleTypeInner.fromJson(
     Map<String, dynamic> json,
-  ) => _$$AppLocaleTypeInnerFromJson(json);
+  ) =>
+      _$$AppLocaleTypeInnerFromJson(json);
 
   @override
   final Locale locale;
@@ -2642,11 +2679,11 @@ class _$AppLocaleTypeInner implements AppLocaleTypeInner {
 
   @JsonKey(ignore: true)
   @override
-  $AppLocaleTypeInnerCopyWith<AppLocaleTypeInner>
-  get copyWith => _$AppLocaleTypeInnerCopyWithImpl<AppLocaleTypeInner>(
-    this,
-    _$identity,
-  );
+  $AppLocaleTypeInnerCopyWith<AppLocaleTypeInner> get copyWith =>
+      _$AppLocaleTypeInnerCopyWithImpl<AppLocaleTypeInner>(
+        this,
+        _$identity,
+      );
 
   @override
   @optionalTypeArgs
@@ -2786,14 +2823,16 @@ mixin _$TrackingFreqLimit {
     required TResult Function() thirtyMin,
     required TResult Function() fortyFiveMin,
     required TResult Function() oneHour,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? fifteenMin,
     TResult Function()? thirtyMin,
     TResult Function()? fortyFiveMin,
     TResult Function()? oneHour,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? fifteenMin,
@@ -2801,21 +2840,24 @@ mixin _$TrackingFreqLimit {
     TResult Function()? fortyFiveMin,
     TResult Function()? oneHour,
     required TResult orElse(),
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(TrackingFreqLimitFifteenMin value) fifteenMin,
     required TResult Function(TrackingFreqLimitThirtyMin value) thirtyMin,
     required TResult Function(TrackingFreqLimitFortyFiveMin value) fortyFiveMin,
     required TResult Function(TrackingFreqLimitOneHour value) oneHour,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(TrackingFreqLimitFifteenMin value)? fifteenMin,
     TResult Function(TrackingFreqLimitThirtyMin value)? thirtyMin,
     TResult Function(TrackingFreqLimitFortyFiveMin value)? fortyFiveMin,
     TResult Function(TrackingFreqLimitOneHour value)? oneHour,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(TrackingFreqLimitFifteenMin value)? fifteenMin,
@@ -2823,7 +2865,8 @@ mixin _$TrackingFreqLimit {
     TResult Function(TrackingFreqLimitFortyFiveMin value)? fortyFiveMin,
     TResult Function(TrackingFreqLimitOneHour value)? oneHour,
     required TResult orElse(),
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 }
 
@@ -2874,7 +2917,8 @@ class _$TrackingFreqLimitFifteenMin implements TrackingFreqLimitFifteenMin {
 
   factory _$TrackingFreqLimitFifteenMin.fromJson(
     Map<String, dynamic> json,
-  ) => _$$TrackingFreqLimitFifteenMinFromJson(json);
+  ) =>
+      _$$TrackingFreqLimitFifteenMinFromJson(json);
 
   @override
   String toString() {
@@ -2965,8 +3009,8 @@ class _$TrackingFreqLimitFifteenMin implements TrackingFreqLimitFifteenMin {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$TrackingFreqLimitFifteenMinToJson(this)..['runtimeType'] =
-        'fifteenMin';
+    return _$$TrackingFreqLimitFifteenMinToJson(this)
+      ..['runtimeType'] = 'fifteenMin';
   }
 }
 
@@ -3006,7 +3050,8 @@ class _$TrackingFreqLimitThirtyMin implements TrackingFreqLimitThirtyMin {
 
   factory _$TrackingFreqLimitThirtyMin.fromJson(
     Map<String, dynamic> json,
-  ) => _$$TrackingFreqLimitThirtyMinFromJson(json);
+  ) =>
+      _$$TrackingFreqLimitThirtyMinFromJson(json);
 
   @override
   String toString() {
@@ -3097,8 +3142,8 @@ class _$TrackingFreqLimitThirtyMin implements TrackingFreqLimitThirtyMin {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$TrackingFreqLimitThirtyMinToJson(this)..['runtimeType'] =
-        'thirtyMin';
+    return _$$TrackingFreqLimitThirtyMinToJson(this)
+      ..['runtimeType'] = 'thirtyMin';
   }
 }
 
@@ -3138,7 +3183,8 @@ class _$TrackingFreqLimitFortyFiveMin implements TrackingFreqLimitFortyFiveMin {
 
   factory _$TrackingFreqLimitFortyFiveMin.fromJson(
     Map<String, dynamic> json,
-  ) => _$$TrackingFreqLimitFortyFiveMinFromJson(json);
+  ) =>
+      _$$TrackingFreqLimitFortyFiveMinFromJson(json);
 
   @override
   String toString() {
@@ -3229,8 +3275,8 @@ class _$TrackingFreqLimitFortyFiveMin implements TrackingFreqLimitFortyFiveMin {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$TrackingFreqLimitFortyFiveMinToJson(this)..['runtimeType'] =
-        'fortyFiveMin';
+    return _$$TrackingFreqLimitFortyFiveMinToJson(this)
+      ..['runtimeType'] = 'fortyFiveMin';
   }
 }
 
@@ -3271,7 +3317,8 @@ class _$TrackingFreqLimitOneHour implements TrackingFreqLimitOneHour {
 
   factory _$TrackingFreqLimitOneHour.fromJson(
     Map<String, dynamic> json,
-  ) => _$$TrackingFreqLimitOneHourFromJson(json);
+  ) =>
+      _$$TrackingFreqLimitOneHourFromJson(json);
 
   @override
   String toString() {
@@ -3437,7 +3484,8 @@ mixin _$AutoTrackingFreq {
     required TResult Function() oneDay,
     required TResult Function() threeDays,
     required TResult Function() oneWeek,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? sixHours,
@@ -3445,7 +3493,8 @@ mixin _$AutoTrackingFreq {
     TResult Function()? oneDay,
     TResult Function()? threeDays,
     TResult Function()? oneWeek,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? sixHours,
@@ -3454,7 +3503,8 @@ mixin _$AutoTrackingFreq {
     TResult Function()? threeDays,
     TResult Function()? oneWeek,
     required TResult orElse(),
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(AutoTrackingFreqSixHours value) sixHours,
@@ -3462,7 +3512,8 @@ mixin _$AutoTrackingFreq {
     required TResult Function(AutoTrackingFreqOneDay value) oneDay,
     required TResult Function(AutoTrackingFreqThreeDays value) threeDays,
     required TResult Function(AutoTrackingFreqOneWeek value) oneWeek,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(AutoTrackingFreqSixHours value)? sixHours,
@@ -3470,7 +3521,8 @@ mixin _$AutoTrackingFreq {
     TResult Function(AutoTrackingFreqOneDay value)? oneDay,
     TResult Function(AutoTrackingFreqThreeDays value)? threeDays,
     TResult Function(AutoTrackingFreqOneWeek value)? oneWeek,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(AutoTrackingFreqSixHours value)? sixHours,
@@ -3479,7 +3531,8 @@ mixin _$AutoTrackingFreq {
     TResult Function(AutoTrackingFreqThreeDays value)? threeDays,
     TResult Function(AutoTrackingFreqOneWeek value)? oneWeek,
     required TResult orElse(),
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 }
 
@@ -3530,7 +3583,8 @@ class _$AutoTrackingFreqSixHours implements AutoTrackingFreqSixHours {
 
   factory _$AutoTrackingFreqSixHours.fromJson(
     Map<String, dynamic> json,
-  ) => _$$AutoTrackingFreqSixHoursFromJson(json);
+  ) =>
+      _$$AutoTrackingFreqSixHoursFromJson(json);
 
   @override
   String toString() {
@@ -3627,8 +3681,8 @@ class _$AutoTrackingFreqSixHours implements AutoTrackingFreqSixHours {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$AutoTrackingFreqSixHoursToJson(this)..['runtimeType'] =
-        'sixHours';
+    return _$$AutoTrackingFreqSixHoursToJson(this)
+      ..['runtimeType'] = 'sixHours';
   }
 }
 
@@ -3668,7 +3722,8 @@ class _$AutoTrackingFreqTwelveHours implements AutoTrackingFreqTwelveHours {
 
   factory _$AutoTrackingFreqTwelveHours.fromJson(
     Map<String, dynamic> json,
-  ) => _$$AutoTrackingFreqTwelveHoursFromJson(json);
+  ) =>
+      _$$AutoTrackingFreqTwelveHoursFromJson(json);
 
   @override
   String toString() {
@@ -3765,8 +3820,8 @@ class _$AutoTrackingFreqTwelveHours implements AutoTrackingFreqTwelveHours {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$AutoTrackingFreqTwelveHoursToJson(this)..['runtimeType'] =
-        'twelveHours';
+    return _$$AutoTrackingFreqTwelveHoursToJson(this)
+      ..['runtimeType'] = 'twelveHours';
   }
 }
 
@@ -3805,7 +3860,8 @@ class _$AutoTrackingFreqOneDay implements AutoTrackingFreqOneDay {
 
   factory _$AutoTrackingFreqOneDay.fromJson(
     Map<String, dynamic> json,
-  ) => _$$AutoTrackingFreqOneDayFromJson(json);
+  ) =>
+      _$$AutoTrackingFreqOneDayFromJson(json);
 
   @override
   String toString() {
@@ -3942,7 +3998,8 @@ class _$AutoTrackingFreqThreeDays implements AutoTrackingFreqThreeDays {
 
   factory _$AutoTrackingFreqThreeDays.fromJson(
     Map<String, dynamic> json,
-  ) => _$$AutoTrackingFreqThreeDaysFromJson(json);
+  ) =>
+      _$$AutoTrackingFreqThreeDaysFromJson(json);
 
   @override
   String toString() {
@@ -4039,8 +4096,8 @@ class _$AutoTrackingFreqThreeDays implements AutoTrackingFreqThreeDays {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$AutoTrackingFreqThreeDaysToJson(this)..['runtimeType'] =
-        'threeDays';
+    return _$$AutoTrackingFreqThreeDaysToJson(this)
+      ..['runtimeType'] = 'threeDays';
   }
 }
 
@@ -4079,7 +4136,8 @@ class _$AutoTrackingFreqOneWeek implements AutoTrackingFreqOneWeek {
 
   factory _$AutoTrackingFreqOneWeek.fromJson(
     Map<String, dynamic> json,
-  ) => _$$AutoTrackingFreqOneWeekFromJson(json);
+  ) =>
+      _$$AutoTrackingFreqOneWeekFromJson(json);
 
   @override
   String toString() {

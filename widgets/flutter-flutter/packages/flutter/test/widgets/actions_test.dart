@@ -30,8 +30,8 @@ class ThirdTestIntent extends SecondTestIntent {
 class TestAction extends CallbackAction<TestIntent> {
   TestAction({
     required OnInvokeCallback onInvoke,
-  }) : assert(onInvoke != null),
-       super(onInvoke: onInvoke);
+  })  : assert(onInvoke != null),
+        super(onInvoke: onInvoke);
 
   @override
   bool isEnabled(TestIntent intent) => enabled;
@@ -82,7 +82,7 @@ class TestDispatcher extends ActionDispatcher {
 
 class TestDispatcher1 extends TestDispatcher {
   const TestDispatcher1({PostInvokeCallback? postInvoke})
-    : super(postInvoke: postInvoke);
+      : super(postInvoke: postInvoke);
 }
 
 void main() {
@@ -818,12 +818,10 @@ void main() {
                 SingleActivator(LogicalKeyboardKey.enter): intent,
               },
               actions: <Type, Action<Intent>>{TestIntent: testAction},
-              onShowHoverHighlight: supplyCallbacks
-                  ? (bool value) => hovering = value
-                  : null,
-              onShowFocusHighlight: supplyCallbacks
-                  ? (bool value) => focusing = value
-                  : null,
+              onShowHoverHighlight:
+                  supplyCallbacks ? (bool value) => hovering = value : null,
+              onShowFocusHighlight:
+                  supplyCallbacks ? (bool value) => focusing = value : null,
               child: SizedBox(width: 100, height: 100, key: key),
             ),
           ),
@@ -1024,10 +1022,12 @@ void main() {
       // ignore: invalid_use_of_protected_member
       const TestIntent().debugFillProperties(builder);
 
-      final List<String> description =
-          builder.properties.where((DiagnosticsNode node) {
+      final List<String> description = builder.properties
+          .where((DiagnosticsNode node) {
             return !node.isFiltered(DiagnosticLevel.info);
-          }).map((DiagnosticsNode node) => node.toString()).toList();
+          })
+          .map((DiagnosticsNode node) => node.toString())
+          .toList();
 
       expect(description, isEmpty);
     });
@@ -1042,10 +1042,12 @@ void main() {
         child: Container(),
       ).debugFillProperties(builder);
 
-      final List<String> description =
-          builder.properties.where((DiagnosticsNode node) {
+      final List<String> description = builder.properties
+          .where((DiagnosticsNode node) {
             return !node.isFiltered(DiagnosticLevel.info);
-          }).map((DiagnosticsNode node) => node.toString()).toList();
+          })
+          .map((DiagnosticsNode node) => node.toString())
+          .toList();
 
       expect(description.length, equals(2));
       expect(
@@ -1068,10 +1070,12 @@ void main() {
         child: Container(key: const ValueKey<String>('baz')),
       ).debugFillProperties(builder);
 
-      final List<String> description =
-          builder.properties.where((DiagnosticsNode node) {
+      final List<String> description = builder.properties
+          .where((DiagnosticsNode node) {
             return !node.isFiltered(DiagnosticLevel.info);
-          }).map((DiagnosticsNode node) => node.toString()).toList();
+          })
+          .map((DiagnosticsNode node) => node.toString())
+          .toList();
 
       expect(description.length, equals(2));
       expect(
@@ -1629,9 +1633,11 @@ void main() {
       } catch (e) {
         exception = e;
       }
-      expect(exception?.toString(), contains(
-        'cannot be handled by an Action of runtime type TestContextAction.',
-      ));
+      expect(
+          exception?.toString(),
+          contains(
+            'cannot be handled by an Action of runtime type TestContextAction.',
+          ));
     });
 
     testWidgets('Make an overridable action overridable', (
@@ -1977,7 +1983,7 @@ class LogInvocationContextAction extends ContextAction<LogIntent> {
 
 class LogInvocationButDeferIsEnabledAction extends LogInvocationAction {
   LogInvocationButDeferIsEnabledAction({required String actionName})
-    : super(actionName: actionName);
+      : super(actionName: actionName);
 
   // Defer `isActionEnabled` to the overridable action.
   @override

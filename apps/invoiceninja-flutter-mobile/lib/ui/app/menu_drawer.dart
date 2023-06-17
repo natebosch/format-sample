@@ -61,8 +61,7 @@ class MenuDrawer extends StatelessWidget {
     final enableDarkMode = state.prefState.enableDarkMode;
     final localization = AppLocalization.of(context);
     final company = viewModel.selectedCompany;
-    final inactiveColor = state
-            .prefState
+    final inactiveColor = state.prefState
             .customColors[PrefState.THEME_SIDEBAR_INACTIVE_BACKGROUND_COLOR] ??
         '';
 
@@ -86,9 +85,11 @@ class MenuDrawer extends StatelessWidget {
       CompanyEntity company, {
       bool showAccentColor = true,
     }) {
-      final userCompany = state.userCompanyStates.firstWhere(
-        (userCompanyState) => userCompanyState.company.id == company.id,
-      ).userCompany;
+      final userCompany = state.userCompanyStates
+          .firstWhere(
+            (userCompanyState) => userCompanyState.company.id == company.id,
+          )
+          .userCompany;
       return Row(
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.start,
@@ -131,36 +132,38 @@ class MenuDrawer extends StatelessWidget {
       ),
       color: Theme.of(context).cardColor,
       itemBuilder: (BuildContext context) => [
-            ...viewModel.state.companies.map(
+        ...viewModel.state.companies
+            .map(
               (company) => PopupMenuItem<String>(
                 child: _companyListItem(company),
                 value: company.id,
               ),
-            ).toList(),
-            if (state.canAddCompany)
-              PopupMenuItem<String>(
-                value: 'company',
-                child: Row(
-                  children: <Widget>[
-                    SizedBox(width: 2),
-                    Icon(Icons.add_circle, size: 32),
-                    SizedBox(width: 20),
-                    Text(localization.addCompany),
-                  ],
-                ),
-              ),
-            PopupMenuItem(
-              value: 'logout',
-              child: Row(
-                children: <Widget>[
-                  SizedBox(width: 2),
-                  Icon(Icons.logout, size: 32),
-                  SizedBox(width: 20),
-                  Text(localization.logout),
-                ],
-              ),
+            )
+            .toList(),
+        if (state.canAddCompany)
+          PopupMenuItem<String>(
+            value: 'company',
+            child: Row(
+              children: <Widget>[
+                SizedBox(width: 2),
+                Icon(Icons.add_circle, size: 32),
+                SizedBox(width: 20),
+                Text(localization.addCompany),
+              ],
             ),
-          ],
+          ),
+        PopupMenuItem(
+          value: 'logout',
+          child: Row(
+            children: <Widget>[
+              SizedBox(width: 2),
+              Icon(Icons.logout, size: 32),
+              SizedBox(width: 20),
+              Text(localization.logout),
+            ],
+          ),
+        ),
+      ],
       onSelected: (String companyId) {
         if (companyId == 'logout') {
           viewModel.onLogoutTap(context);
@@ -189,16 +192,21 @@ class MenuDrawer extends StatelessWidget {
             child: AppDropdownButton<String>(
               key: ValueKey(kSelectCompanyDropdownKey),
               value: viewModel.selectedCompanyIndex,
-              selectedItemBuilder: (context) => state.companies.map(
-                (company) => _companyListItem(company, showAccentColor: false),
-              ).toList(),
+              selectedItemBuilder: (context) => state.companies
+                  .map(
+                    (company) =>
+                        _companyListItem(company, showAccentColor: false),
+                  )
+                  .toList(),
               items: [
-                ...state.companies.map(
-                  (CompanyEntity company) => DropdownMenuItem<String>(
-                    value: (state.companies.indexOf(company)).toString(),
-                    child: _companyListItem(company),
-                  ),
-                ).toList(),
+                ...state.companies
+                    .map(
+                      (CompanyEntity company) => DropdownMenuItem<String>(
+                        value: (state.companies.indexOf(company)).toString(),
+                        child: _companyListItem(company),
+                      ),
+                    )
+                    .toList(),
                 if (state.canAddCompany)
                   DropdownMenuItem<String>(
                     value: 'company',
@@ -377,8 +385,8 @@ class MenuDrawer extends StatelessWidget {
                                 icon: getEntityIcon(EntityType.dashboard),
                                 title: localization.dashboard,
                                 onTap: () => viewEntitiesByType(
-                                      entityType: EntityType.dashboard,
-                                    ),
+                                  entityType: EntityType.dashboard,
+                                ),
                                 onLongPress: () => store.dispatch(
                                   ViewDashboard(filter: ''),
                                 ),
@@ -474,16 +482,16 @@ class MenuDrawer extends StatelessWidget {
                                 icon: getEntityIcon(EntityType.reports),
                                 title: localization.reports,
                                 onTap: () => viewEntitiesByType(
-                                      entityType: EntityType.reports,
-                                    ),
+                                  entityType: EntityType.reports,
+                                ),
                               ),
                               DrawerTile(
                                 company: company,
                                 icon: getEntityIcon(EntityType.settings),
                                 title: localization.settings,
                                 onTap: () => viewEntitiesByType(
-                                      entityType: EntityType.settings,
-                                    ),
+                                  entityType: EntityType.settings,
+                                ),
                               ),
                             ],
                           ),
@@ -589,8 +597,8 @@ class _DrawerTileState extends State<DrawerTile> {
 
     Color color = Colors.transparent;
     Color textColor = Theme.of(context).textTheme.bodyText1.color.withOpacity(
-      isSelected ? 1 : .7,
-    );
+          isSelected ? 1 : .7,
+        );
 
     if (isSelected) {
       if (activeColor.isNotEmpty) {
@@ -664,9 +672,9 @@ class _DrawerTileState extends State<DrawerTile> {
             overflow: TextOverflow.clip,
             maxLines: 1,
             style: Theme.of(context).textTheme.bodyText1.copyWith(
-              fontSize: 14,
-              color: textColor,
-            ),
+                  fontSize: 14,
+                  color: textColor,
+                ),
           ),
           onTap: () {
             if (widget.entityType != null) {
@@ -731,37 +739,37 @@ class SidebarFooter extends StatelessWidget {
                   tooltip: localization.error,
                   icon: Icon(Icons.warning, color: Colors.red),
                   onPressed: () => showMessageDialog(
-                        context: context,
-                        message: localization.cronsNotEnabled,
-                        secondaryActions: [
-                          TextButton(
-                            child: Text(localization.learnMore.toUpperCase()),
-                            onPressed: () {
-                              launch(
-                                kCronsHelpUrl,
-                                forceSafariVC: false,
-                                forceWebView: false,
-                              );
-                            },
-                          ),
-                          TextButton(
-                            child: Text(localization.refreshData.toUpperCase()),
-                            onPressed: () {
-                              store.dispatch(RefreshData());
-                              Navigator.of(context).pop();
-                            },
-                          ),
-                        ],
+                    context: context,
+                    message: localization.cronsNotEnabled,
+                    secondaryActions: [
+                      TextButton(
+                        child: Text(localization.learnMore.toUpperCase()),
+                        onPressed: () {
+                          launch(
+                            kCronsHelpUrl,
+                            forceSafariVC: false,
+                            forceWebView: false,
+                          );
+                        },
                       ),
+                      TextButton(
+                        child: Text(localization.refreshData.toUpperCase()),
+                        onPressed: () {
+                          store.dispatch(RefreshData());
+                          Navigator.of(context).pop();
+                        },
+                      ),
+                    ],
+                  ),
                 )
               else if (state.credentials.token.isEmpty)
                 IconButton(
                   tooltip: localization.error,
                   icon: Icon(Icons.warning, color: Colors.red),
                   onPressed: () => showErrorDialog(
-                        context: context,
-                        clearErrorOnDismiss: true,
-                      ),
+                    context: context,
+                    clearErrorOnDismiss: true,
+                  ),
                 )
               else if (state.isSelfHosted && account.isUpdateAvailable)
                 IconButton(
@@ -782,37 +790,37 @@ class SidebarFooter extends StatelessWidget {
                   !state.prefState.hideDesktopWarning)
                 IconButton(
                   onPressed: () => showMessageDialog(
-                        context: context,
-                        message: isMobileOS()
-                            ? localization.recommendMobile
-                            : localization.recommendDesktop,
-                        onDismiss: () => store.dispatch(
-                          DismissNativeWarningPermanently(),
-                        ),
-                        secondaryActions: [
-                          TextButton(
-                            autofocus: true,
-                            onPressed: () {
-                              final platform = getNativePlatform();
-                              final url = getNativeAppUrl(platform);
-                              launch(url);
-                              Navigator.of(context).pop();
-                            },
-                            child: Text(localization.download.toUpperCase()),
-                          ),
-                          TextButton(
-                            onPressed: () => launch(kDocsPerformance),
-                            child: Text(localization.learnMore.toUpperCase()),
-                          ),
-                          TextButton(
-                            onPressed: () {
-                              Navigator.of(context).pop();
-                              store.dispatch(DismissNativeWarning());
-                            },
-                            child: Text(localization.remindMe.toUpperCase()),
-                          ),
-                        ],
+                    context: context,
+                    message: isMobileOS()
+                        ? localization.recommendMobile
+                        : localization.recommendDesktop,
+                    onDismiss: () => store.dispatch(
+                      DismissNativeWarningPermanently(),
+                    ),
+                    secondaryActions: [
+                      TextButton(
+                        autofocus: true,
+                        onPressed: () {
+                          final platform = getNativePlatform();
+                          final url = getNativeAppUrl(platform);
+                          launch(url);
+                          Navigator.of(context).pop();
+                        },
+                        child: Text(localization.download.toUpperCase()),
                       ),
+                      TextButton(
+                        onPressed: () => launch(kDocsPerformance),
+                        child: Text(localization.learnMore.toUpperCase()),
+                      ),
+                      TextButton(
+                        onPressed: () {
+                          Navigator.of(context).pop();
+                          store.dispatch(DismissNativeWarning());
+                        },
+                        child: Text(localization.remindMe.toUpperCase()),
+                      ),
+                    ],
+                  ),
                   icon:
                       Icon(Icons.notification_important, color: Colors.orange),
                 ),
@@ -895,14 +903,14 @@ class SidebarFooter extends StatelessWidget {
                 icon: Icon(Icons.warning, color: Colors.red),
                 tooltip: localization.error,
                 onPressed: () => showDialog<ErrorDialog>(
-                      context: context,
-                      builder: (BuildContext context) {
-                        return ErrorDialog(
-                          state.lastError,
-                          clearErrorOnDismiss: true,
-                        );
-                      },
-                    ),
+                  context: context,
+                  builder: (BuildContext context) {
+                    return ErrorDialog(
+                      state.lastError,
+                      clearErrorOnDismiss: true,
+                    );
+                  },
+                ),
               ),
             Spacer(),
             if (isNotMobile(context) &&
@@ -963,46 +971,46 @@ class SidebarFooterCollapsed extends StatelessWidget {
                 }
               },
               itemBuilder: (BuildContext context) => [
-                    if (isUpdateAvailable)
-                      PopupMenuItem<String>(
-                        child: ListTile(
-                          leading: Icon(
-                            Icons.warning,
-                            color: Theme.of(context).colorScheme.secondary,
-                          ),
-                          title: Text(localization.updateAvailable),
-                        ),
-                        value: localization.updateAvailable,
+                if (isUpdateAvailable)
+                  PopupMenuItem<String>(
+                    child: ListTile(
+                      leading: Icon(
+                        Icons.warning,
+                        color: Theme.of(context).colorScheme.secondary,
                       ),
-                    PopupMenuItem<String>(
-                      child: ListTile(
-                        leading: Icon(Icons.mail),
-                        title: Text(localization.contactUs),
-                      ),
-                      value: localization.contactUs,
+                      title: Text(localization.updateAvailable),
                     ),
-                    PopupMenuItem<String>(
-                      child: ListTile(
-                        leading: Icon(Icons.help_outline),
-                        title: Text(localization.documentation),
-                      ),
-                      value: localization.documentation,
-                    ),
-                    PopupMenuItem<String>(
-                      child: ListTile(
-                        leading: Icon(Icons.forum),
-                        title: Text(localization.supportForum),
-                      ),
-                      value: localization.supportForum,
-                    ),
-                    PopupMenuItem<String>(
-                      child: ListTile(
-                        leading: Icon(Icons.info_outline),
-                        title: Text(localization.about),
-                      ),
-                      value: localization.about,
-                    ),
-                  ],
+                    value: localization.updateAvailable,
+                  ),
+                PopupMenuItem<String>(
+                  child: ListTile(
+                    leading: Icon(Icons.mail),
+                    title: Text(localization.contactUs),
+                  ),
+                  value: localization.contactUs,
+                ),
+                PopupMenuItem<String>(
+                  child: ListTile(
+                    leading: Icon(Icons.help_outline),
+                    title: Text(localization.documentation),
+                  ),
+                  value: localization.documentation,
+                ),
+                PopupMenuItem<String>(
+                  child: ListTile(
+                    leading: Icon(Icons.forum),
+                    title: Text(localization.supportForum),
+                  ),
+                  value: localization.supportForum,
+                ),
+                PopupMenuItem<String>(
+                  child: ListTile(
+                    leading: Icon(Icons.info_outline),
+                    title: Text(localization.about),
+                  ),
+                  value: localization.about,
+                ),
+              ],
             )
           : IconButton(
               icon: Icon(
@@ -1066,9 +1074,11 @@ void _showAbout(BuildContext context) async {
     height: 40.0,
   );
 
-  final daysActive = DateTime.now().difference(
-    convertTimestampToDate(state.company.createdAt),
-  ).inDays;
+  final daysActive = DateTime.now()
+      .difference(
+        convertTimestampToDate(state.company.createdAt),
+      )
+      .inDays;
 
   showDialog<Null>(
     context: context,
@@ -1079,12 +1089,12 @@ void _showAbout(BuildContext context) async {
             TextButton(
               child: Text(localization.viewLicenses.toUpperCase()),
               onPressed: () => showLicensePage(
-                    context: context,
-                    applicationName: 'Invoice Ninja v5',
-                    applicationIcon: apppIcon,
-                    applicationLegalese: appLegalese,
-                    applicationVersion: state.appVersion,
-                  ),
+                context: context,
+                applicationName: 'Invoice Ninja v5',
+                applicationIcon: apppIcon,
+                applicationLegalese: appLegalese,
+                applicationVersion: state.appVersion,
+              ),
             ),
             TextButton(
               child: Text(localization.close.toUpperCase()),
@@ -1166,8 +1176,8 @@ void _showAbout(BuildContext context) async {
                                               label: 'Laravel/PHP',
                                               iconData: MdiIcons.server,
                                               onPressed: () => launch(
-                                                    kSourceCodeBackend,
-                                                  ),
+                                                kSourceCodeBackend,
+                                              ),
                                             ),
                                             Padding(
                                               padding: const EdgeInsets.only(
@@ -1179,15 +1189,15 @@ void _showAbout(BuildContext context) async {
                                               label: 'Flutter/Dart',
                                               iconData: MdiIcons.desktopClassic,
                                               onPressed: () => launch(
-                                                    kSourceCodeFrontend,
-                                                  ),
+                                                kSourceCodeFrontend,
+                                              ),
                                             ),
                                             AppButton(
                                               label: 'Storefront SDK',
                                               iconData: MdiIcons.tools,
                                               onPressed: () => launch(
-                                                    kSourceCodeFrontendSDK,
-                                                  ),
+                                                kSourceCodeFrontendSDK,
+                                              ),
                                             ),
                                           ],
                                         ),
@@ -1341,29 +1351,28 @@ class _ContactUsDialogState extends State<ContactUsDialog> {
     setState(() => _isSaving = true);
     WebClient()
         .post(
-          state.credentials.url + '/support/messages/send',
-          state.credentials.token,
-          data: json.encode({
-            'message': _message,
-            'send_logs': _includeLogs ? 'true' : '',
-            'platform': getPlatformLetter(),
-          }),
-        )
+      state.credentials.url + '/support/messages/send',
+      state.credentials.token,
+      data: json.encode({
+        'message': _message,
+        'send_logs': _includeLogs ? 'true' : '',
+        'platform': getPlatformLetter(),
+      }),
+    )
         .then((dynamic response) async {
-          setState(() => _isSaving = false);
-          await showDialog<MessageDialog>(
-            context: context,
-            builder: (BuildContext context) {
-              return MessageDialog(localization.yourMessageHasBeenReceived);
-            },
-          );
-          Navigator.pop(context);
-        })
-        .catchError((dynamic error) {
-          print('## ERROR: $error');
-          setState(() => _isSaving = false);
-          showErrorDialog(context: context, message: '$error');
-        });
+      setState(() => _isSaving = false);
+      await showDialog<MessageDialog>(
+        context: context,
+        builder: (BuildContext context) {
+          return MessageDialog(localization.yourMessageHasBeenReceived);
+        },
+      );
+      Navigator.pop(context);
+    }).catchError((dynamic error) {
+      print('## ERROR: $error');
+      setState(() => _isSaving = false);
+      showErrorDialog(context: context, message: '$error');
+    });
   }
 
   @override

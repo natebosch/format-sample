@@ -35,8 +35,7 @@ class NearVM {
     required DerivationPath currentDerivationPath,
   }) {
     final yoctoNearAllowance = NearFormatter.nearToYoctoNear(allowance);
-    final nearBlockChainService = cryptoLibrary
-        .blockchainService
+    final nearBlockChainService = cryptoLibrary.blockchainService
         .blockchainServices[BlockChains.near] as NearBlockChainService?;
     if (nearBlockChainService == null) {
       throw Exception("didn't found near blockchain service");
@@ -45,13 +44,14 @@ class NearVM {
       (element) => element.id == walletID,
     );
 
-    final fromTheAddress = ((currentWallet.blockchainsData?[BlockChains.near])
-                ?.firstWhereOrNull(
-                  (element) => element.derivationPath == currentDerivationPath,
-                ) as NearBlockChainData)
-            .accountId ??
-        (currentWallet.blockchainsData?[BlockChains.near] as NearBlockChainData)
-            .publicKey;
+    final fromTheAddress =
+        ((currentWallet.blockchainsData?[BlockChains.near])?.firstWhereOrNull(
+              (element) => element.derivationPath == currentDerivationPath,
+            ) as NearBlockChainData)
+                .accountId ??
+            (currentWallet.blockchainsData?[BlockChains.near]
+                    as NearBlockChainData)
+                .publicKey;
 
     final publicKey = currentWallet.blockchainsData?[BlockChains.near]!
         .firstWhereOrNull(
@@ -92,8 +92,7 @@ class NearVM {
     required String publicKey,
     required DerivationPath currentDerivationPath,
   }) {
-    final nearBlockChainService = cryptoLibrary
-        .blockchainService
+    final nearBlockChainService = cryptoLibrary.blockchainService
         .blockchainServices[BlockChains.near] as NearBlockChainService?;
     if (nearBlockChainService == null) {
       throw Exception("didn't found near blockchain service");
@@ -155,11 +154,12 @@ class NearVM {
   Future<dynamic> getBalanceByDerivationPath({
     required String walletId,
     required DerivationPath currentDerivationPath,
-  }) async => cryptoLibrary.getBalanceOfAddressOnSpecificBlockchain(
-    walletId: walletId,
-    blockchainType: BlockChains.near,
-    currentDerivationPath: currentDerivationPath,
-  );
+  }) async =>
+      cryptoLibrary.getBalanceOfAddressOnSpecificBlockchain(
+        walletId: walletId,
+        blockchainType: BlockChains.near,
+        currentDerivationPath: currentDerivationPath,
+      );
 
   Future<String> getWalletPublicKeyAddressByWalletId(
     String walletName,
@@ -175,9 +175,11 @@ class NearVM {
       'not founded';
 
   Future<String> getMnemonicPhraseByWalletId(String walletName) async =>
-      cryptoLibrary.walletsStream.value.firstWhere(
-        (element) => element.name == walletName,
-      ).mnemonic;
+      cryptoLibrary.walletsStream.value
+          .firstWhere(
+            (element) => element.name == walletName,
+          )
+          .mnemonic;
 
   Future<dynamic> sendNativeCoinTransferByWalletId({
     required String toAddress,

@@ -61,7 +61,7 @@ const List<TravelDestination> destinations = <TravelDestination>[
 
 class TravelDestinationItem extends StatelessWidget {
   const TravelDestinationItem({Key? key, required this.destination, this.shape})
-    : super(key: key);
+      : super(key: key);
 
   // This height will allow for all the Card's content to fit comfortably within the card.
   static const double height = 338.0;
@@ -197,8 +197,8 @@ class _SelectableTravelDestinationItemState
                       Container(
                         color: _isSelected
                             // Generally, material cards use primary with 8% opacity for the selected state.
-                              // See: https://material.io/design/interaction/states.html#anatomy
-                              ? colorScheme.primary.withOpacity(0.08)
+                            // See: https://material.io/design/interaction/states.html#anatomy
+                            ? colorScheme.primary.withOpacity(0.08)
                             : Colors.transparent,
                       ),
                       TravelDestinationContent(destination: widget.destination),
@@ -245,7 +245,7 @@ class SectionTitle extends StatelessWidget {
 
 class TravelDestinationContent extends StatelessWidget {
   const TravelDestinationContent({Key? key, required this.destination})
-    : super(key: key);
+      : super(key: key);
 
   final TravelDestination destination;
 

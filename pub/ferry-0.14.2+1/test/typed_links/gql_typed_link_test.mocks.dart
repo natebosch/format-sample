@@ -22,7 +22,7 @@ import 'package:mockito/mockito.dart' as _i1;
 
 class _FakeLink_0 extends _i1.SmartFake implements _i2.Link {
   _FakeLink_0(Object parent, Invocation parentInvocation)
-    : super(parent, parentInvocation);
+      : super(parent, parentInvocation);
 }
 
 /// A class which mocks [Link].
@@ -35,36 +35,38 @@ class MockLink extends _i1.Mock implements _i2.Link {
 
   @override
   _i2.Link concat(_i2.Link? next) => (super.noSuchMethod(
-    Invocation.method(#concat, [next]),
-    returnValue: _FakeLink_0(this, Invocation.method(#concat, [next])),
-  ) as _i2.Link);
+        Invocation.method(#concat, [next]),
+        returnValue: _FakeLink_0(this, Invocation.method(#concat, [next])),
+      ) as _i2.Link);
   @override
   _i2.Link route(_i2.LinkRouter? route) => (super.noSuchMethod(
-    Invocation.method(#route, [route]),
-    returnValue: _FakeLink_0(this, Invocation.method(#route, [route])),
-  ) as _i2.Link);
+        Invocation.method(#route, [route]),
+        returnValue: _FakeLink_0(this, Invocation.method(#route, [route])),
+      ) as _i2.Link);
   @override
   _i2.Link split(
     bool Function(_i3.Request)? test,
     _i2.Link? left, [
     _i2.Link? right = const _i2.PassthroughLink(),
-  ]) => (super.noSuchMethod(
-    Invocation.method(#split, [test, left, right]),
-    returnValue:
-        _FakeLink_0(this, Invocation.method(#split, [test, left, right])),
-  ) as _i2.Link);
+  ]) =>
+      (super.noSuchMethod(
+        Invocation.method(#split, [test, left, right]),
+        returnValue:
+            _FakeLink_0(this, Invocation.method(#split, [test, left, right])),
+      ) as _i2.Link);
   @override
   _i4.Stream<_i3.Response> request(
     _i3.Request? request, [
     _i2.NextLink? forward,
-  ]) => (super.noSuchMethod(
-    Invocation.method(#request, [request, forward]),
-    returnValue: _i4.Stream<_i3.Response>.empty(),
-  ) as _i4.Stream<_i3.Response>);
+  ]) =>
+      (super.noSuchMethod(
+        Invocation.method(#request, [request, forward]),
+        returnValue: _i4.Stream<_i3.Response>.empty(),
+      ) as _i4.Stream<_i3.Response>);
   @override
   _i4.Future<void> dispose() => (super.noSuchMethod(
-    Invocation.method(#dispose, []),
-    returnValue: _i4.Future<void>.value(),
-    returnValueForMissingStub: _i4.Future<void>.value(),
-  ) as _i4.Future<void>);
+        Invocation.method(#dispose, []),
+        returnValue: _i4.Future<void>.value(),
+        returnValueForMissingStub: _i4.Future<void>.value(),
+      ) as _i4.Future<void>);
 }

@@ -64,21 +64,21 @@ class QuoteViewVM extends AbstractInvoiceViewVM {
     Function(BuildContext, DocumentEntity) onViewExpense,
     Function(BuildContext, InvoiceEntity, [String]) onViewPdf,
   }) : super(
-         state: state,
-         company: company,
-         invoice: invoice,
-         client: client,
-         isSaving: isSaving,
-         isDirty: isDirty,
-         onActionSelected: onEntityAction,
-         onEditPressed: onEditPressed,
-         onPaymentsPressed: onPaymentsPressed,
-         onRefreshed: onRefreshed,
-         onUploadDocument: onUploadDocument,
-         onDeleteDocument: onDeleteDocument,
-         onViewExpense: onViewExpense,
-         onViewPdf: onViewPdf,
-       );
+          state: state,
+          company: company,
+          invoice: invoice,
+          client: client,
+          isSaving: isSaving,
+          isDirty: isDirty,
+          onActionSelected: onEntityAction,
+          onEditPressed: onEditPressed,
+          onPaymentsPressed: onPaymentsPressed,
+          onRefreshed: onRefreshed,
+          onUploadDocument: onUploadDocument,
+          onDeleteDocument: onDeleteDocument,
+          onViewExpense: onViewExpense,
+          onViewPdf: onViewPdf,
+        );
 
   factory QuoteViewVM.fromStore(Store<AppState> store) {
     final state = store.state;
@@ -118,7 +118,8 @@ class QuoteViewVM extends AbstractInvoiceViewVM {
       onEntityAction: (
         BuildContext context,
         EntityAction action,
-      ) => handleEntitiesActions([quote], action, autoPop: true),
+      ) =>
+          handleEntitiesActions([quote], action, autoPop: true),
       onUploadDocument: (BuildContext context, MultipartFile multipartFile) {
         final Completer<DocumentEntity> completer = Completer<DocumentEntity>();
         store.dispatch(SaveQuoteDocumentRequest(

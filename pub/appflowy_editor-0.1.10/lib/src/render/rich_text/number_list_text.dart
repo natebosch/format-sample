@@ -67,9 +67,9 @@ class _NumberListTextNodeWidgetState extends State<NumberListTextNodeWidget>
   EdgeInsets get padding => style.padding(widget.editorState, widget.textNode);
 
   TextStyle get textStyle => style.textStyle(
-    widget.editorState,
-    widget.textNode,
-  );
+        widget.editorState,
+        widget.textNode,
+      );
 
   Widget get icon => style.icon(widget.editorState, widget.textNode);
 
@@ -88,10 +88,10 @@ class _NumberListTextNodeWidgetState extends State<NumberListTextNodeWidget>
               textNode: widget.textNode,
               editorState: widget.editorState,
               lineHeight: widget.editorState.editorStyle.lineHeight,
-              placeholderTextSpanDecorator:
-                  (textSpan) => textSpan.updateTextStyle(textStyle),
-              textSpanDecorator:
-                  (textSpan) => textSpan.updateTextStyle(textStyle),
+              placeholderTextSpanDecorator: (textSpan) =>
+                  textSpan.updateTextStyle(textStyle),
+              textSpanDecorator: (textSpan) =>
+                  textSpan.updateTextStyle(textStyle),
             ),
           ),
         ],

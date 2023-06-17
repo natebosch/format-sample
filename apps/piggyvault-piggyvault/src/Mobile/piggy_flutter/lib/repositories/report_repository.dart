@@ -10,7 +10,7 @@ class ReportRepository {
   final PiggyApiClient piggyApiClient;
 
   Future<List<CategoryWiseRecentMonthsReportItem>>
-  getCategoryWiseTransactionSummaryHistory() async {
+      getCategoryWiseTransactionSummaryHistory() async {
     return await piggyApiClient.getCategoryWiseTransactionSummaryHistory();
   }
 

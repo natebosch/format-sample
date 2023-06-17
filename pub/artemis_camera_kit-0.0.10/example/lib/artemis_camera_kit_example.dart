@@ -114,13 +114,13 @@ class _MyAppState extends State<MyApp> {
                           cameraKitController
                               .processImageFromPath(imgPath)
                               .then((value) {
-                                if (value == null) {
-                                  print("NULL OCR");
-                                } else {
-                                  print(value.toJson());
-                                  // print(value.barcodeData?.barcodes.length);
-                                }
-                              });
+                            if (value == null) {
+                              print("NULL OCR");
+                            } else {
+                              print(value.toJson());
+                              // print(value.barcodeData?.barcodes.length);
+                            }
+                          });
                         }
                       });
                     },

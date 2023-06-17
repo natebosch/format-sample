@@ -29,17 +29,17 @@ class _DialogsExampleState extends State<DialogsExample> {
                 showDialog(
                   context: context,
                   builder: (_) => SkadiConfirmationDialog(
-                        positiveTextStyle: const TextStyle(color: Colors.blue),
-                        content: const Text("Confirm this action?"),
-                        onConfirm: () {
-                          infoLog("you confirm");
-                          Navigator.pop(context);
-                        },
-                        onCancel: () {
-                          infoLog("you cancel");
-                          Navigator.pop(context);
-                        },
-                      ),
+                    positiveTextStyle: const TextStyle(color: Colors.blue),
+                    content: const Text("Confirm this action?"),
+                    onConfirm: () {
+                      infoLog("you confirm");
+                      Navigator.pop(context);
+                    },
+                    onCancel: () {
+                      infoLog("you cancel");
+                      Navigator.pop(context);
+                    },
+                  ),
                 );
               },
               child: const Text("show"),
@@ -49,26 +49,26 @@ class _DialogsExampleState extends State<DialogsExample> {
                 showDialog(
                   context: context,
                   builder: (_) => SkadiConfirmationDialog.danger(
-                        positiveTextStyle: const TextStyle(color: Colors.blue),
-                        title: "Danger action",
-                        confirmText: "Delete",
-                        content: const Text("You want to delete?"),
-                        onConfirm: () async {
-                          var nav = Navigator.of(context);
-                          LoadingOverlayProvider.toggle();
-                          infoLog("you confirm");
-                          await SkadiUtils.wait(1000);
-                          bool success = Random().nextBool();
-                          LoadingOverlayProvider.toggle();
-                          if (success) {
-                            nav.pop();
-                          }
-                        },
-                        onCancel: () {
-                          infoLog("you cancel");
-                          Navigator.pop(context);
-                        },
-                      ),
+                    positiveTextStyle: const TextStyle(color: Colors.blue),
+                    title: "Danger action",
+                    confirmText: "Delete",
+                    content: const Text("You want to delete?"),
+                    onConfirm: () async {
+                      var nav = Navigator.of(context);
+                      LoadingOverlayProvider.toggle();
+                      infoLog("you confirm");
+                      await SkadiUtils.wait(1000);
+                      bool success = Random().nextBool();
+                      LoadingOverlayProvider.toggle();
+                      if (success) {
+                        nav.pop();
+                      }
+                    },
+                    onCancel: () {
+                      infoLog("you cancel");
+                      Navigator.pop(context);
+                    },
+                  ),
                 );
               },
               child: const Text("show danger"),
@@ -78,20 +78,20 @@ class _DialogsExampleState extends State<DialogsExample> {
                 showDialog(
                   context: context,
                   builder: (_) => SkadiConfirmationDialog(
-                        positiveTextStyle: const TextStyle(color: Colors.blue),
-                        content: const Text("ចុម? លេងអីតាណើបៗចឹង?"),
-                        title: "កាងម៉េស",
-                        confirmText: "អញចឹង",
-                        cancelText: "សូមទោសបង",
-                        onConfirm: () {
-                          infoLog("you confirm");
-                          Navigator.pop(context);
-                        },
-                        onCancel: () {
-                          infoLog("you cancel");
-                          Navigator.pop(context);
-                        },
-                      ),
+                    positiveTextStyle: const TextStyle(color: Colors.blue),
+                    content: const Text("ចុម? លេងអីតាណើបៗចឹង?"),
+                    title: "កាងម៉េស",
+                    confirmText: "អញចឹង",
+                    cancelText: "សូមទោសបង",
+                    onConfirm: () {
+                      infoLog("you confirm");
+                      Navigator.pop(context);
+                    },
+                    onCancel: () {
+                      infoLog("you cancel");
+                      Navigator.pop(context);
+                    },
+                  ),
                 );
               },
               child: const Text("ពុម្ពអក្សរខ្មែរ"),
@@ -107,9 +107,9 @@ class _DialogsExampleState extends State<DialogsExample> {
                 showDialog(
                   context: context,
                   builder: (context) => const SkadiSimpleDialog(
-                        title: "Simple",
-                        content: "Simple dialog content",
-                      ),
+                    title: "Simple",
+                    content: "Simple dialog content",
+                  ),
                 );
               },
               child: const Text("Show simple dialog"),
@@ -125,19 +125,19 @@ class _DialogsExampleState extends State<DialogsExample> {
                 showCupertinoModalPopup(
                   context: context,
                   builder: (context) => SkadiActionSheet<String>(
-                        title: "Your favorite animal",
-                        options: const ["Dog", "Cat"],
-                        builder: (option, index) => Text(option),
-                        onSelected: (option, index) {
-                          showDialog(
-                            context: context,
-                            builder: (context) => SkadiSimpleDialog(
-                                  title: "Your choice",
-                                  content: "You chose: $option",
-                                ),
-                          );
-                        },
-                      ),
+                    title: "Your favorite animal",
+                    options: const ["Dog", "Cat"],
+                    builder: (option, index) => Text(option),
+                    onSelected: (option, index) {
+                      showDialog(
+                        context: context,
+                        builder: (context) => SkadiSimpleDialog(
+                          title: "Your choice",
+                          content: "You chose: $option",
+                        ),
+                      );
+                    },
+                  ),
                 );
               },
               child: const Text("Show Skadi action sheet"),

@@ -100,8 +100,8 @@ class Setting {
 
   // Boilerplate
   factory Setting.fromJson(Map<String, dynamic> json) => _$SettingFromJson(
-    json,
-  );
+        json,
+      );
   Map<String, dynamic> toJson() => _$SettingToJson(this);
 
   set exercise(Exercise exercise) {

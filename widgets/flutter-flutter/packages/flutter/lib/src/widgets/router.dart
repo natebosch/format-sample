@@ -286,13 +286,13 @@ class Router<T> extends StatefulWidget {
     required this.routerDelegate,
     this.backButtonDispatcher,
     this.restorationScopeId,
-  }) : assert(
-         (routeInformationProvider == null && restorationScopeId == null) ||
-             routeInformationParser != null,
-         'A routeInformationParser must be provided when a routeInformationProvider or a restorationId is specified.',
-       ),
-       assert(routerDelegate != null),
-       super(key: key);
+  })  : assert(
+          (routeInformationProvider == null && restorationScopeId == null) ||
+              routeInformationParser != null,
+          'A routeInformationParser must be provided when a routeInformationProvider or a restorationId is specified.',
+        ),
+        assert(routerDelegate != null),
+        super(key: key);
 
   /// The route information provider for the router.
   ///
@@ -700,12 +700,15 @@ class _RouterState<T> extends State<Router<T>> with RestorationMixin {
   Future<bool> _handleBackButtonDispatcherNotification() {
     _currentRouteInformationParserTransaction = Object();
     _currentRouterDelegateTransaction = Object();
-    return widget.routerDelegate.popRoute().then<bool>(
-      _verifyRouterDelegatePopStillCurrent(
-        _currentRouterDelegateTransaction,
-        widget,
-      ),
-    ).then<bool>((bool data) {
+    return widget.routerDelegate
+        .popRoute()
+        .then<bool>(
+          _verifyRouterDelegatePopStillCurrent(
+            _currentRouterDelegateTransaction,
+            widget,
+          ),
+        )
+        .then<bool>((bool data) {
       _rebuild();
       return SynchronousFuture<bool>(data);
     });
@@ -809,12 +812,12 @@ class _RouterScope extends InheritedWidget {
     required this.routerDelegate,
     required this.routerState,
     required Widget child,
-  }) : assert(
-         routeInformationProvider == null || routeInformationParser != null,
-       ),
-       assert(routerDelegate != null),
-       assert(routerState != null),
-       super(key: key, child: child);
+  })  : assert(
+          routeInformationProvider == null || routeInformationParser != null,
+        ),
+        assert(routerDelegate != null),
+        assert(routerState != null),
+        super(key: key, child: child);
 
   final ValueListenable<RouteInformation?>? routeInformationProvider;
   final BackButtonDispatcher? backButtonDispatcher;
@@ -953,16 +956,16 @@ abstract class BackButtonDispatcher
         if (childIndex > 0) {
           childIndex -= 1;
           return children[childIndex].notifiedByParent(defaultValue).then<bool>(
-            notifyNextChild,
-          );
+                notifyNextChild,
+              );
         }
         // If none of the child handles the callback, the parent will then handle it.
         return super.invokeCallback(defaultValue);
       }
 
       return children[childIndex].notifiedByParent(defaultValue).then<bool>(
-        notifyNextChild,
-      );
+            notifyNextChild,
+          );
     }
     return super.invokeCallback(defaultValue);
   }

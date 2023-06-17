@@ -14,8 +14,8 @@ class TodoAvatar extends StatelessWidget {
     this.isLarge = false,
     this.isFinished = false,
     this.showNotification = false,
-  }) : assert(text != null),
-       super(key: key);
+  })  : assert(text != null),
+        super(key: key);
 
   @override
   Widget build(BuildContext context) {

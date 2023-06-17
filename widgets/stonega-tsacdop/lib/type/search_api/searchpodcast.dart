@@ -14,7 +14,8 @@ class SearchPodcast<P> {
   SearchPodcast({this.results, this.nextOffset, this.total, this.count});
   factory SearchPodcast.fromJson(
     Map<String, dynamic> json,
-  ) => _$SearchPodcastFromJson<P>(json);
+  ) =>
+      _$SearchPodcastFromJson<P>(json);
   Map<String, dynamic> toJson() => _$SearchPodcastToJson(this);
 }
 
@@ -61,7 +62,8 @@ class OnlinePodcast {
   });
   factory OnlinePodcast.fromJson(
     Map<String, dynamic> json,
-  ) => _$OnlinePodcastFromJson(json);
+  ) =>
+      _$OnlinePodcastFromJson(json);
   Map<String, dynamic> toJson() => _$OnlinePodcastToJson(this);
 
   @override

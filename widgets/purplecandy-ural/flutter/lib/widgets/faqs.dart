@@ -46,14 +46,14 @@ class FaqsWidget extends StatelessWidget {
           shrinkWrap: true,
           itemCount: faqs.length,
           itemBuilder: (context, index) => ExpansionTile(
-                title: Text(faqs[index].question),
-                children: <Widget>[
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text(faqs[index].answer),
-                  ),
-                ],
+            title: Text(faqs[index].question),
+            children: <Widget>[
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(faqs[index].answer),
               ),
+            ],
+          ),
         ),
       ),
     );

@@ -13,11 +13,11 @@ class CustomBoxShadow extends BoxShadow {
     this.blurStyle = BlurStyle.inner,
     double spreadRadius = 4,
   }) : super(
-         color: color,
-         offset: offset,
-         blurRadius: blurRadius,
-         spreadRadius: 4,
-       );
+          color: color,
+          offset: offset,
+          blurRadius: blurRadius,
+          spreadRadius: 4,
+        );
 
   @override
   Paint toPaint() {

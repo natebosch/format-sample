@@ -50,10 +50,9 @@ abstract class $PostThreadViewRecordCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$PostThreadViewRecordCopyWithImpl<
-  $Res,
-  $Val extends PostThreadViewRecord
-> implements $PostThreadViewRecordCopyWith<$Res> {
+class _$PostThreadViewRecordCopyWithImpl<$Res,
+        $Val extends PostThreadViewRecord>
+    implements $PostThreadViewRecordCopyWith<$Res> {
   _$PostThreadViewRecordCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -73,15 +72,15 @@ class _$PostThreadViewRecordCopyWithImpl<
         type: null == type
             ? _value.type
             : type // ignore: cast_nullable_to_non_nullable
-                  as String,
+                as String,
         post: null == post
             ? _value.post
             : post // ignore: cast_nullable_to_non_nullable
-                  as Post,
+                as Post,
         replies: freezed == replies
             ? _value.replies
             : replies // ignore: cast_nullable_to_non_nullable
-                  as List<PostThreadView>?,
+                as List<PostThreadView>?,
       ) as $Val,
     );
   }
@@ -134,15 +133,15 @@ class __$$_PostThreadViewRecordCopyWithImpl<$Res>
       type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
-                as String,
+              as String,
       post: null == post
           ? _value.post
           : post // ignore: cast_nullable_to_non_nullable
-                as Post,
+              as Post,
       replies: freezed == replies
           ? _value._replies
           : replies // ignore: cast_nullable_to_non_nullable
-                as List<PostThreadView>?,
+              as List<PostThreadView>?,
     ));
   }
 }
@@ -158,7 +157,8 @@ class _$_PostThreadViewRecord implements _PostThreadViewRecord {
 
   factory _$_PostThreadViewRecord.fromJson(
     Map<String, dynamic> json,
-  ) => _$$_PostThreadViewRecordFromJson(json);
+  ) =>
+      _$$_PostThreadViewRecordFromJson(json);
 
   @override
   @JsonKey(name: '\$type')
@@ -194,19 +194,18 @@ class _$_PostThreadViewRecord implements _PostThreadViewRecord {
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-    runtimeType,
-    type,
-    post,
-    const DeepCollectionEquality().hash(_replies),
-  );
+        runtimeType,
+        type,
+        post,
+        const DeepCollectionEquality().hash(_replies),
+      );
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_PostThreadViewRecordCopyWith<_$_PostThreadViewRecord>
-  get copyWith => __$$_PostThreadViewRecordCopyWithImpl<
-    _$_PostThreadViewRecord
-  >(this, _$identity);
+  _$$_PostThreadViewRecordCopyWith<_$_PostThreadViewRecord> get copyWith =>
+      __$$_PostThreadViewRecordCopyWithImpl<_$_PostThreadViewRecord>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {

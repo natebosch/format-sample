@@ -8,19 +8,21 @@ class GenerateAddressRequest {
 
   factory GenerateAddressRequest.fromRawJson(
     String str,
-  ) => GenerateAddressRequest.fromJson(json.decode(str));
+  ) =>
+      GenerateAddressRequest.fromJson(json.decode(str));
 
   String toRawJson() => json.encode(toJson());
 
   factory GenerateAddressRequest.fromJson(
     Map<String, dynamic> json,
-  ) => GenerateAddressRequest(
-    currencyId: json["currency_id"],
-    chains: List<String>.from(json["chains"].map((x) => x)),
-  );
+  ) =>
+      GenerateAddressRequest(
+        currencyId: json["currency_id"],
+        chains: List<String>.from(json["chains"].map((x) => x)),
+      );
 
   Map<String, dynamic> toJson() => {
-    "currency_id": currencyId,
-    "chains": List<dynamic>.from(chains.map((x) => x)),
-  };
+        "currency_id": currencyId,
+        "chains": List<dynamic>.from(chains.map((x) => x)),
+      };
 }

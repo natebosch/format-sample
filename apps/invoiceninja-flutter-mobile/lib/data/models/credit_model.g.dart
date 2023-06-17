@@ -126,7 +126,8 @@ class _$CreditListResponse extends CreditListResponse {
 
   factory _$CreditListResponse([
     void Function(CreditListResponseBuilder) updates,
-  ]) => (new CreditListResponseBuilder()..update(updates)).build();
+  ]) =>
+      (new CreditListResponseBuilder()..update(updates)).build();
 
   _$CreditListResponse._({this.data}) : super._() {
     BuiltValueNullFieldError.checkNotNull(data, 'CreditListResponse', 'data');
@@ -135,7 +136,8 @@ class _$CreditListResponse extends CreditListResponse {
   @override
   CreditListResponse rebuild(
     void Function(CreditListResponseBuilder) updates,
-  ) => (toBuilder()..update(updates)).build();
+  ) =>
+      (toBuilder()..update(updates)).build();
 
   @override
   CreditListResponseBuilder toBuilder() =>
@@ -222,7 +224,8 @@ class _$CreditItemResponse extends CreditItemResponse {
 
   factory _$CreditItemResponse([
     void Function(CreditItemResponseBuilder) updates,
-  ]) => (new CreditItemResponseBuilder()..update(updates)).build();
+  ]) =>
+      (new CreditItemResponseBuilder()..update(updates)).build();
 
   _$CreditItemResponse._({this.data}) : super._() {
     BuiltValueNullFieldError.checkNotNull(data, 'CreditItemResponse', 'data');
@@ -231,7 +234,8 @@ class _$CreditItemResponse extends CreditItemResponse {
   @override
   CreditItemResponse rebuild(
     void Function(CreditItemResponseBuilder) updates,
-  ) => (toBuilder()..update(updates)).build();
+  ) =>
+      (toBuilder()..update(updates)).build();
 
   @override
   CreditItemResponseBuilder toBuilder() =>

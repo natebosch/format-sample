@@ -86,20 +86,25 @@ class _AccountOrderDetailPageState extends NyState<AccountOrderDetailPage> {
                           ),
                         ),
                         Flexible(
-                          child: Text([
-                            [
-                              _order.shipping.firstName,
-                              _order.shipping.lastName,
-                            ].where((t) => t != null).toList().join(" "),
-                            _order.shipping.address1,
-                            _order.shipping.address2,
-                            _order.shipping.city,
-                            _order.shipping.state,
-                            _order.shipping.postcode,
-                            _order.shipping.country,
-                          ].where((t) => (t != "" && t != null)).toList().join(
-                            "\n",
-                          ), textAlign: TextAlign.right),
+                          child: Text(
+                              [
+                                [
+                                  _order.shipping.firstName,
+                                  _order.shipping.lastName,
+                                ].where((t) => t != null).toList().join(" "),
+                                _order.shipping.address1,
+                                _order.shipping.address2,
+                                _order.shipping.city,
+                                _order.shipping.state,
+                                _order.shipping.postcode,
+                                _order.shipping.country,
+                              ]
+                                  .where((t) => (t != "" && t != null))
+                                  .toList()
+                                  .join(
+                                    "\n",
+                                  ),
+                              textAlign: TextAlign.right),
                         ),
                       ],
                     ),
@@ -181,9 +186,7 @@ class _AccountOrderDetailPageState extends NyState<AccountOrderDetailPage> {
                                         textAlign: TextAlign.left,
                                       ),
                                       Text(
-                                        "x${_order.lineItems[
-                                              i
-                                            ].quantity.toString()}",
+                                        "x${_order.lineItems[i].quantity.toString()}",
                                         style: Theme.of(context)
                                             .textTheme
                                             .bodyText1,

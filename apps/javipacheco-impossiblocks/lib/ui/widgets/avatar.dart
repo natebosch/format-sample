@@ -8,7 +8,7 @@ class Avatar extends StatelessWidget {
   final int avatar;
 
   const Avatar({Key key, @required this.color, @required this.avatar})
-    : super(key: key);
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {

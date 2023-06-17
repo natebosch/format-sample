@@ -12,7 +12,7 @@ class ContactMobileView extends StatelessWidget {
   final ContactViewModel? model;
 
   const ContactMobileView({Key? key, this.uiHelpers, this.model})
-    : super(key: key);
+      : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(

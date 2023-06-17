@@ -48,7 +48,8 @@ class TMDBPerson {
 
   factory TMDBPerson.fromJson(
     Map<String, dynamic> json,
-  ) => _$TMDBPersonFromJson(json);
+  ) =>
+      _$TMDBPersonFromJson(json);
 
   Map<String, dynamic> toJson() => _$TMDBPersonToJson(this);
 

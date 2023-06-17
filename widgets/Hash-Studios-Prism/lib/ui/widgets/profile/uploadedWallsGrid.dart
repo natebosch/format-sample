@@ -35,8 +35,8 @@ class _ProfileGridState extends State<ProfileGrid>
     );
     animation = Provider.of<ThemeModeExtended>(context, listen: false)
                 .getCurrentModeStyle(
-                  SchedulerBinding.instance!.window.platformBrightness,
-                ) ==
+              SchedulerBinding.instance!.window.platformBrightness,
+            ) ==
             "Dark"
         ? TweenSequence<Color?>([
             TweenSequenceItem(
@@ -97,30 +97,44 @@ class _ProfileGridState extends State<ProfileGrid>
                   .profileWalls !=
               null
           ? Provider.of<ProfileWallProvider>(context, listen: false)
-                    .profileWalls!
-                    .isEmpty
+                  .profileWalls!
+                  .isEmpty
               ? Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     SizedBox(
                       width: MediaQuery.of(context).size.width * 0.7,
-                      child: Provider.of<ThemeModeExtended>(context).getCurrentModeStyle(MediaQuery.of(context).platformBrightness) == "Dark"
+                      child: Provider.of<ThemeModeExtended>(context).getCurrentModeStyle(
+                                  MediaQuery.of(context).platformBrightness) ==
+                              "Dark"
                           ? SvgPicture.string(postsDark
-                                .replaceAll("181818", Theme.of(context)
-                                    .primaryColor
-                                    .value
-                                    .toRadixString(16)
-                                    .toString()
-                                    .substring(2))
-                                .replaceAll("E57697", Theme.of(context)
-                                    .errorColor
-                                    .toString()
-                                    .replaceAll("Color(0xff", "")
-                                    .replaceAll(")", ""))
-                                .replaceAll("F0F0F0", Theme.of(context).accentColor.value.toRadixString(16).toString().substring(2))
-                                .replaceAll("2F2E41", Theme.of(context).accentColor.value.toRadixString(16).toString().substring(2))
-                                .replaceAll("3F3D56", Theme.of(context).accentColor.value.toRadixString(16).toString().substring(2))
-                                .replaceAll("2F2F2F", Theme.of(context).hintColor.value.toRadixString(16).toString().substring(2)))
+                              .replaceAll(
+                                  "181818",
+                                  Theme.of(context)
+                                      .primaryColor
+                                      .value
+                                      .toRadixString(16)
+                                      .toString()
+                                      .substring(2))
+                              .replaceAll(
+                                  "E57697",
+                                  Theme.of(context)
+                                      .errorColor
+                                      .toString()
+                                      .replaceAll("Color(0xff", "")
+                                      .replaceAll(")", ""))
+                              .replaceAll(
+                                  "F0F0F0",
+                                  Theme.of(context)
+                                      .accentColor
+                                      .value
+                                      .toRadixString(16)
+                                      .toString()
+                                      .substring(2))
+                              .replaceAll(
+                                  "2F2E41", Theme.of(context).accentColor.value.toRadixString(16).toString().substring(2))
+                              .replaceAll("3F3D56", Theme.of(context).accentColor.value.toRadixString(16).toString().substring(2))
+                              .replaceAll("2F2F2F", Theme.of(context).hintColor.value.toRadixString(16).toString().substring(2)))
                           : SvgPicture.string(postsLight.replaceAll("181818", Theme.of(context).primaryColor.value.toRadixString(16).toString().substring(2)).replaceAll("E57697", Theme.of(context).errorColor.toString().replaceAll("Color(0xff", "").replaceAll(")", "")).replaceAll("F0F0F0", Theme.of(context).accentColor.value.toRadixString(16).toString().substring(2)).replaceAll("2F2E41", Theme.of(context).accentColor.value.toRadixString(16).toString().substring(2)).replaceAll("3F3D56", Theme.of(context).accentColor.value.toRadixString(16).toString().substring(2)).replaceAll("2F2F2F", Theme.of(context).hintColor.value.toRadixString(16).toString().substring(2))),
                     ),
                     SizedBox(
@@ -220,9 +234,9 @@ class _ProfileGridState extends State<ProfileGrid>
                                       arguments: [
                                         index,
                                         Provider.of<ProfileWallProvider>(
-                                              context,
-                                              listen: false,
-                                            )
+                                          context,
+                                          listen: false,
+                                        )
                                             .profileWalls![index]
                                             .data()["wallpaper_thumb"],
                                       ],

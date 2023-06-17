@@ -5,7 +5,7 @@ class SharedDataWidget extends InheritedWidget {
   final TUIGroupProfileModel model;
 
   const SharedDataWidget({Key? key, required Widget child, required this.model})
-    : super(key: key, child: child);
+      : super(key: key, child: child);
 
   // Define a method to get the shared data from sub-tree
   static SharedDataWidget? of(BuildContext context) {

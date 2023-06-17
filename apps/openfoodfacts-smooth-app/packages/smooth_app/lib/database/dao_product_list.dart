@@ -148,7 +148,8 @@ class DaoProductList extends AbstractDao {
 
   static List<String> _getProductListUKWhereArgs(
     final ProductList productList,
-  ) => <String>[productList.listType, productList.parameters];
+  ) =>
+      <String>[productList.listType, productList.parameters];
 
   Future<Map<String, dynamic>?> _getRecord(
     final ProductList productList,
@@ -190,24 +191,24 @@ class DaoProductList extends AbstractDao {
 
     // listing the product lists that are not concerned
     final Set<int> toBeIgnoredLists = <int>{};
-    final List<Map<String, dynamic>> queryResultsPre = await databaseExecutor
-        .query(
-          _TABLE_PRODUCT_LIST,
-          columns: <String>[_TABLE_PRODUCT_LIST_COLUMN_ID],
-          where: '$_TABLE_PRODUCT_LIST_COLUMN_TYPE in (?, ?, ?)',
-          whereArgs: <String>[
-            ProductList.LIST_TYPE_HISTORY,
-            ProductList.LIST_TYPE_SCAN_HISTORY,
-            ProductList.LIST_TYPE_SCAN_SESSION,
-          ],
-        );
+    final List<Map<String, dynamic>> queryResultsPre =
+        await databaseExecutor.query(
+      _TABLE_PRODUCT_LIST,
+      columns: <String>[_TABLE_PRODUCT_LIST_COLUMN_ID],
+      where: '$_TABLE_PRODUCT_LIST_COLUMN_TYPE in (?, ?, ?)',
+      whereArgs: <String>[
+        ProductList.LIST_TYPE_HISTORY,
+        ProductList.LIST_TYPE_SCAN_HISTORY,
+        ProductList.LIST_TYPE_SCAN_SESSION,
+      ],
+    );
     for (final Map<String, dynamic> row in queryResultsPre) {
       final int id = row[_TABLE_PRODUCT_LIST_COLUMN_ID] as int;
       toBeIgnoredLists.add(id);
     }
 
-    final List<Map<String, dynamic>>
-    queryResults = await databaseExecutor.query(
+    final List<Map<String, dynamic>> queryResults =
+        await databaseExecutor.query(
       _TABLE_PRODUCT_LIST_ITEM,
       columns: <String>[
         _TABLE_PRODUCT_LIST_ITEM_COLUMN_ID,
@@ -317,36 +318,35 @@ class DaoProductList extends AbstractDao {
     }
   }
 
-  Future<void> put(final ProductList productList) async => localDatabase
-      .database
-      .transaction(
-        (final Transaction transaction) async => DaoProductExtra(localDatabase)
-            .bulkInsertExtra(
-              databaseExecutor: transaction,
-              productList: productList,
-              productListId: await _getId(productList, transaction),
-            ),
+  Future<void> put(final ProductList productList) async =>
+      localDatabase.database.transaction(
+        (final Transaction transaction) async =>
+            DaoProductExtra(localDatabase).bulkInsertExtra(
+          databaseExecutor: transaction,
+          productList: productList,
+          productListId: await _getId(productList, transaction),
+        ),
       );
 
   Future<int> create(final ProductList productList) async => _upsertProductList(
-    productList,
-    localDatabase.database,
-  );
+        productList,
+        localDatabase.database,
+      );
 
   Future<bool> get(final ProductList productList) async => DaoProductExtra(
-    localDatabase,
-  ).getList(productList, await _getId(productList, localDatabase.database));
+        localDatabase,
+      ).getList(productList, await _getId(productList, localDatabase.database));
 
   Future<List<Product>> getFirstProducts(
     final ProductList productList,
     final int limit,
   ) async {
-    final List<String>? barcodes = await DaoProductExtra(localDatabase)
-        .getFirstBarcodes(
-          productList,
-          await _getId(productList, localDatabase.database),
-          limit,
-        );
+    final List<String>? barcodes =
+        await DaoProductExtra(localDatabase).getFirstBarcodes(
+      productList,
+      await _getId(productList, localDatabase.database),
+      limit,
+    );
     final List<Product> result = <Product>[];
     if (barcodes == null) {
       return result;
@@ -384,9 +384,8 @@ class DaoProductList extends AbstractDao {
   }
 
   /// Clears a product list: unlinks all its items
-  Future<void> clear(final ProductList productList) async => localDatabase
-      .database
-      .transaction((final Transaction transaction) async {
+  Future<void> clear(final ProductList productList) async =>
+      localDatabase.database.transaction((final Transaction transaction) async {
         final int? id = await _getId(productList, transaction);
         await DaoProductExtra(localDatabase).clearList(
           productList,
@@ -397,19 +396,19 @@ class DaoProductList extends AbstractDao {
 
   Future<Map<int, Map<String, String>>> _getExtras({final int? listId}) async {
     final Map<int, Map<String, String>> result = <int, Map<String, String>>{};
-    final List<Map<String, dynamic>> queryResult = await localDatabase.database
-        .query(
-          _TABLE_PRODUCT_LIST_EXTRA,
-          columns: <String>[
-            _TABLE_PRODUCT_LIST_EXTRA_COLUMN_LIST_ID,
-            _TABLE_PRODUCT_LIST_EXTRA_COLUMN_KEY,
-            _TABLE_PRODUCT_LIST_EXTRA_COLUMN_VALUE,
-          ],
-          where: listId == null
-              ? null
-              : '$_TABLE_PRODUCT_LIST_EXTRA_COLUMN_LIST_ID = ?',
-          whereArgs: listId == null ? null : <dynamic>[listId],
-        );
+    final List<Map<String, dynamic>> queryResult =
+        await localDatabase.database.query(
+      _TABLE_PRODUCT_LIST_EXTRA,
+      columns: <String>[
+        _TABLE_PRODUCT_LIST_EXTRA_COLUMN_LIST_ID,
+        _TABLE_PRODUCT_LIST_EXTRA_COLUMN_KEY,
+        _TABLE_PRODUCT_LIST_EXTRA_COLUMN_VALUE,
+      ],
+      where: listId == null
+          ? null
+          : '$_TABLE_PRODUCT_LIST_EXTRA_COLUMN_LIST_ID = ?',
+      whereArgs: listId == null ? null : <dynamic>[listId],
+    );
     for (final Map<String, dynamic> row in queryResult) {
       final int productListId =
           row[_TABLE_PRODUCT_LIST_EXTRA_COLUMN_LIST_ID] as int;
@@ -436,8 +435,8 @@ class DaoProductList extends AbstractDao {
 
     final Map<int, Map<String, String>> extras = await _getExtras();
     final List<ProductList> result = <ProductList>[];
-    final List<Map<String, dynamic>>
-    queryResult = await localDatabase.database.query(
+    final List<Map<String, dynamic>> queryResult =
+        await localDatabase.database.query(
       _TABLE_PRODUCT_LIST,
       columns: <String>[
         _TABLE_PRODUCT_LIST_COLUMN_ID,
@@ -473,11 +472,14 @@ class DaoProductList extends AbstractDao {
   ) async {
     int? id = await _getId(productList, databaseExecutor);
     if (id == null) {
-      id = await databaseExecutor.insert(_TABLE_PRODUCT_LIST, <String, dynamic>{
-        _TABLE_PRODUCT_LIST_COLUMN_TYPE: productList.listType,
-        _TABLE_PRODUCT_LIST_COLUMN_PARAMETERS: productList.parameters,
-        LocalDatabase.COLUMN_TIMESTAMP: LocalDatabase.nowInMillis(),
-      }, conflictAlgorithm: ConflictAlgorithm.fail);
+      id = await databaseExecutor.insert(
+          _TABLE_PRODUCT_LIST,
+          <String, dynamic>{
+            _TABLE_PRODUCT_LIST_COLUMN_TYPE: productList.listType,
+            _TABLE_PRODUCT_LIST_COLUMN_PARAMETERS: productList.parameters,
+            LocalDatabase.COLUMN_TIMESTAMP: LocalDatabase.nowInMillis(),
+          },
+          conflictAlgorithm: ConflictAlgorithm.fail);
     } else {
       await databaseExecutor.update(
         _TABLE_PRODUCT_LIST,

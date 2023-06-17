@@ -8,7 +8,7 @@ import 'package:tailor_made/widgets/_partials/mk_app_bar.dart';
 
 class ContactsEditPage extends StatefulWidget {
   const ContactsEditPage({Key key, this.contact, @required this.userId})
-    : super(key: key);
+      : super(key: key);
 
   final ContactModel contact;
   final String userId;

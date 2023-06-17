@@ -24,9 +24,11 @@ Map<String, dynamic> trapezoid(List<double> hueVec, double saturation) {
     // out which of the basis vectors we will use
     double maxAngle = cos((pi * 2 / 3) - EPSILON);
 
-    List<int> mask = BASIS.map(
-      (vector) => vecDot(hueVec, vector) > maxAngle ? 1 : 0,
-    ).toList();
+    List<int> mask = BASIS
+        .map(
+          (vector) => vecDot(hueVec, vector) > maxAngle ? 1 : 0,
+        )
+        .toList();
 
     int count = mask.fold(0, (acc, value) => acc + value);
 

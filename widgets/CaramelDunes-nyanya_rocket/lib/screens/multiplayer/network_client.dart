@@ -104,11 +104,13 @@ class NetworkClient extends GameTicker<MultiplayerGameState> {
   ) {
     if (newGame.currentEvent != GameEvent.None &&
         newGame.eventEnd != afterCatchup.eventEnd) {
-      onGameEvent?.call(newGame.currentEvent, computeAnimationDuration(
-        newGame.currentEvent,
-        newGame.tickCount,
-        newGame.pauseUntil,
-      ));
+      onGameEvent?.call(
+          newGame.currentEvent,
+          computeAnimationDuration(
+            newGame.currentEvent,
+            newGame.tickCount,
+            newGame.pauseUntil,
+          ));
     }
   }
 

@@ -16,9 +16,9 @@ class AccountTransactionsBloc
   AccountTransactionsBloc({
     @required this.transactionRepository,
     @required this.transactionBloc,
-  }) : assert(transactionRepository != null),
-       assert(transactionBloc != null),
-       super(AccountTransactionsEmpty(null)) {
+  })  : assert(transactionRepository != null),
+        assert(transactionBloc != null),
+        super(AccountTransactionsEmpty(null)) {
     transactionBlocSubscription = transactionBloc.listen((state) {
       if (state is TransactionSaved) {
         if (this.state.filters != null) {
@@ -65,8 +65,8 @@ class AccountTransactionsBloc
               .transactions
               .where(
                 (t) => t.description.toLowerCase().contains(
-                  event.query.toLowerCase(),
-                ),
+                      event.query.toLowerCase(),
+                    ),
               )
               .toList();
           var filteredTransactionsResult = TransactionsResult(

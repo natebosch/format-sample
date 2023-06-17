@@ -40,7 +40,7 @@ class OGImage implements OGDisplayable, OGMedia {
   });
 
   factory OGImage.fromJson(Map<String, dynamic> json) => _$OGImageFromJson(
-    json,
-  );
+        json,
+      );
   Map<String, dynamic> toJson() => _$OGImageToJson(this);
 }

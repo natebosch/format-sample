@@ -24,7 +24,8 @@ class AsanaModel {
 
   factory AsanaModel.fromJson(
     Map<String, dynamic> json,
-  ) => _$AsanaModelFromJson(json);
+  ) =>
+      _$AsanaModelFromJson(json);
 
   Map<String, dynamic> toJson() => _$AsanaModelToJson(this);
 

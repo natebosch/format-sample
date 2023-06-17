@@ -40,9 +40,9 @@ abstract class LinkModel extends Model {
         .collection(LINKS_COLLECTION)
         .getDocuments()
         .catchError((error) {
-          print('$_tag error on getting documents');
-          _hasError = true;
-        });
+      print('$_tag error on getting documents');
+      _hasError = true;
+    });
     if (_hasError) return StatusCode.failed;
     List<DocumentSnapshot> documents = snapshot.documents;
     Map<String, Link> tempList = Map();
@@ -116,9 +116,9 @@ abstract class LinkModel extends Model {
     bool _hasError = false;
     Response response =
         await http.get(url, headers: {'title': 'title'}).catchError((error) {
-          print('$_tag error on downloading page');
-          _hasError = true;
-        });
+      print('$_tag error on downloading page');
+      _hasError = true;
+    });
     if (_hasError) return StatusCode.failed;
 
     final titleTag = '<meta property="og:title" content="';
@@ -172,9 +172,9 @@ abstract class LinkModel extends Model {
         .collection(LINKS_COLLECTION)
         .add(linkMap)
         .catchError((error) {
-          print('$_tag there was an error: $error');
-          _hasError = true;
-        });
+      print('$_tag there was an error: $error');
+      _hasError = true;
+    });
 
     if (_hasError) return StatusCode.failed;
     _createLinkRefForUser(documentRef, user);
@@ -199,9 +199,9 @@ abstract class LinkModel extends Model {
         .collection(LINKS_COLLECTION)
         .add(userRefMap)
         .catchError((error) {
-          print('$_tag error on creating a link ref doc for user: $error');
-          _hasError = true;
-        });
+      print('$_tag error on creating a link ref doc for user: $error');
+      _hasError = true;
+    });
     if (_hasError) return StatusCode.failed;
     return StatusCode.success;
   }
@@ -214,9 +214,9 @@ abstract class LinkModel extends Model {
         .document(link.id)
         .delete()
         .catchError((error) {
-          print('$_tag error on deleting link document');
-          _hasError = true;
-        });
+      print('$_tag error on deleting link document');
+      _hasError = true;
+    });
 
     if (_hasError) {
       _deletingLinkStatus = StatusCode.failed;
@@ -303,9 +303,9 @@ abstract class LinkModel extends Model {
         .document(id)
         .get()
         .catchError((error) {
-          print('$_tag error on getting linkg document from id');
-          _hasError = true;
-        });
+      print('$_tag error on getting linkg document from id');
+      _hasError = true;
+    });
     if (_hasError || !document.exists) return null;
     return Link.fromSnapshot(document);
   }

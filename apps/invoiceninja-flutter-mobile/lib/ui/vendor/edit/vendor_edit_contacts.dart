@@ -66,12 +66,14 @@ class _VendorEditContactsState extends State<VendorEditContacts> {
     List<Widget> contacts;
 
     if (vendor.contacts.length > 1) {
-      contacts = vendor.contacts.map(
-        (contact) => ContactListTile(
-          contact: contact,
-          onTap: () => _showContactEditor(contact, context),
-        ),
-      ).toList();
+      contacts = vendor.contacts
+          .map(
+            (contact) => ContactListTile(
+              contact: contact,
+              onTap: () => _showContactEditor(contact, context),
+            ),
+          )
+          .toList();
     } else {
       final contact = vendor.contacts[0];
       contacts = [
@@ -86,9 +88,8 @@ class _VendorEditContactsState extends State<VendorEditContacts> {
       ];
     }
 
-    final contact = vendor.contacts.contains(viewModel.contact)
-        ? viewModel.contact
-        : null;
+    final contact =
+        vendor.contacts.contains(viewModel.contact) ? viewModel.contact : null;
 
     if (contact != null && contact != selectedContact) {
       selectedContact = contact;
@@ -294,12 +295,12 @@ class VendorContactEditDetailsState extends State<VendorContactEditDetails> {
               TextButton(
                 child: Text(localization.remove.toUpperCase()),
                 onPressed: () => confirmCallback(
-                      context: context,
-                      callback: (_) {
-                        widget.viewModel.onRemoveContactPressed(widget.index);
-                        Navigator.pop(context);
-                      },
-                    ),
+                  context: context,
+                  callback: (_) {
+                    widget.viewModel.onRemoveContactPressed(widget.index);
+                    Navigator.pop(context);
+                  },
+                ),
               ),
               TextButton(
                 child: Text(localization.done.toUpperCase()),

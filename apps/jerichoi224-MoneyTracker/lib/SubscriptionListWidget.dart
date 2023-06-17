@@ -10,7 +10,7 @@ class SubscriptionListWidget extends StatefulWidget {
   final String currency;
 
   SubscriptionListWidget({Key key, this.subscriptions, this.currency})
-    : super(key: key);
+      : super(key: key);
 
   @override
   State createState() => _SubscriptionListState();
@@ -46,11 +46,11 @@ class _SubscriptionListState extends State<SubscriptionListWidget> {
       context,
       MaterialPageRoute(
         builder: (context) => EditSubscriptionWidget(
-              mode: "EDIT",
-              item: item,
-              ctx: ctx,
-              currency: widget.currency,
-            ),
+          mode: "EDIT",
+          item: item,
+          ctx: ctx,
+          currency: widget.currency,
+        ),
       ),
     );
 
@@ -84,9 +84,9 @@ class _SubscriptionListState extends State<SubscriptionListWidget> {
         }
       },
       itemBuilder: (context) => [
-            PopupMenuItem(child: Text("Edit"), value: 0),
-            PopupMenuItem(child: Text("Delete"), value: 1),
-          ],
+        PopupMenuItem(child: Text("Edit"), value: 0),
+        PopupMenuItem(child: Text("Delete"), value: 1),
+      ],
     );
   }
 
@@ -147,15 +147,15 @@ class _SubscriptionListState extends State<SubscriptionListWidget> {
       appBar: AppBar(title: Text("Subscription List")),
       body: Builder(
         builder: (context) => SingleChildScrollView(
-              child: Column(
-                children: <Widget>[
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: getSubscriptions(context),
-                  ),
-                ],
+          child: Column(
+            children: <Widget>[
+              Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: getSubscriptions(context),
               ),
-            ),
+            ],
+          ),
+        ),
       ),
     );
   }

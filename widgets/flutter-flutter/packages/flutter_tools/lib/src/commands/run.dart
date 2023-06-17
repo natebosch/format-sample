@@ -180,8 +180,8 @@ abstract class RunCommandBase extends FlutterCommand
   bool get traceStartup => boolArg('trace-startup');
   bool get cacheSkSL => boolArg('cache-sksl');
   bool get dumpSkpOnShaderCompilation => boolArg(
-    'dump-skp-on-shader-compilation',
-  );
+        'dump-skp-on-shader-compilation',
+      );
   bool get purgePersistentCache => boolArg('purge-persistent-cache');
   bool get disableServiceAuthCodes => boolArg('disable-service-auth-codes');
   bool get runningWithPrebuiltApplication =>
@@ -526,8 +526,8 @@ class RunCommand extends RunCommandBase {
 
   bool get stayResident => boolArg('resident');
   bool get awaitFirstFrameWhenTracing => boolArg(
-    'await-first-frame-when-tracing',
-  );
+        'await-first-frame-when-tracing',
+      );
 
   @override
   Future<void> validateCommand() async {

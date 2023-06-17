@@ -487,8 +487,8 @@ class Worksheet {
         final String semiColon = currentCulture.dateTimeFormat.timeSeparator;
         const String valueFormat = _SecondToken._defaultFormatLong;
         final List<String> timeValues = match.pattern.toString().split(
-          semiColon,
-        );
+              semiColon,
+            );
         final int minutesValue = Range._fromOADate(dNumber).minute;
         String updatedValue = timeValues[0];
         int updateMinutesValue = 0;
@@ -1292,12 +1292,13 @@ class Worksheet {
 
       if (!ignoreRotation && !isMerged && rotation > 0) {
         if (rotation == 255) {
-          curSize._width = _book._convertToPixels(_autoFitManager
-                  ._calculateWrappedCell(
+          curSize._width = _book._convertToPixels(
+                  _autoFitManager._calculateWrappedCell(
                     format,
                     strText,
                     defWidth.toInt(),
-                  ), 6) -
+                  ),
+                  6) -
               defWidth;
         } else if (rotation != 90 && rotation != 180) {
           curSize._width = _updateTextWidthOrHeightByRotation(
@@ -1963,9 +1964,8 @@ class Worksheet {
     _flag.add(!options.usePivotTableAndPivotChart);
     _flag.add(!options.unlockedCells);
     _advancedSheetProtection(password);
-    final int usPassword = (password.isNotEmpty)
-        ? _getPasswordHash(password)
-        : 1;
+    final int usPassword =
+        (password.isNotEmpty) ? _getPasswordHash(password) : 1;
     _isPassword = usPassword;
     _isPasswordProtected = true;
   }
@@ -2407,9 +2407,8 @@ class Worksheet {
     int colIndex,
   ) {
     for (int i = 0; i <= excelDataRows.length; i++) {
-      final ExcelDataRow dataRow = i > 0
-          ? excelDataRows[i - 1]
-          : excelDataRows[i];
+      final ExcelDataRow dataRow =
+          i > 0 ? excelDataRows[i - 1] : excelDataRows[i];
       for (int j = 0; j < dataRow.cells.length; j++) {
         final ExcelDataCell dataCell = dataRow.cells[j];
         final Range range = getRangeByIndex(rowIndex + i, colIndex + j);

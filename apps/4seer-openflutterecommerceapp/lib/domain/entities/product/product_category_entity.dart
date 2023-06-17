@@ -36,13 +36,13 @@ class ProductCategoryEntity extends Entity<int> {
 
   @override
   List<Object> get props => [
-    id,
-    title,
-    description,
-    image,
-    thumb,
-    parentId,
-    orderNumber,
-    count,
-  ];
+        id,
+        title,
+        description,
+        image,
+        thumb,
+        parentId,
+        orderNumber,
+        count,
+      ];
 }

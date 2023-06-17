@@ -12,5 +12,6 @@ class SonarrFileSystemType with _$SonarrFileSystemType, JsonSerializableMixin {
 
   factory SonarrFileSystemType.fromJson(
     Map<String, Object?> json,
-  ) => _$SonarrFileSystemTypeFromJson(json);
+  ) =>
+      _$SonarrFileSystemTypeFromJson(json);
 }

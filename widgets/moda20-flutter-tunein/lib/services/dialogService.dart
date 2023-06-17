@@ -124,8 +124,8 @@ class DialogService {
                 cancelButtonText ?? "Cancel",
                 style: TextStyle(color: Colors.white),
               ),
-              onPressed:
-                  () => Navigator.of(context, rootNavigator: true).pop(false),
+              onPressed: () =>
+                  Navigator.of(context, rootNavigator: true).pop(false),
             ),
           ],
         );
@@ -359,9 +359,12 @@ class DialogService {
             },
             child: FutureBuilder(
               future: Future.sync(
-                () => albums.where((element) => element.albumArt != null).map(
-                  (e) => e.albumArt,
-                ).toList(),
+                () => albums
+                    .where((element) => element.albumArt != null)
+                    .map(
+                      (e) => e.albumArt,
+                    )
+                    .toList(),
               ),
               builder: (context, AsyncSnapshot<List<String>> snapshot) {
                 if (!snapshot.hasData) {
@@ -616,8 +619,8 @@ class DialogService {
             if (showCancelAction)
               FlatButton(
                 child: Text("Cancel", style: TextStyle(color: MyTheme.darkRed)),
-                onPressed:
-                    () => Navigator.of(context, rootNavigator: true).pop(false),
+                onPressed: () =>
+                    Navigator.of(context, rootNavigator: true).pop(false),
               ),
           ],
         );

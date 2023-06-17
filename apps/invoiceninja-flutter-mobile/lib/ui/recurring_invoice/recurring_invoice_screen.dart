@@ -21,7 +21,7 @@ import 'recurring_invoice_screen_vm.dart';
 
 class RecurringInvoiceScreen extends StatelessWidget {
   const RecurringInvoiceScreen({Key key, @required this.viewModel})
-    : super(key: key);
+      : super(key: key);
 
   static const String route = '/recurring_invoice';
 
@@ -37,8 +37,8 @@ class RecurringInvoiceScreen extends StatelessWidget {
 
     return ListScaffold(
       entityType: EntityType.recurringInvoice,
-      onHamburgerLongPress:
-          () => store.dispatch(StartRecurringInvoiceMultiselect()),
+      onHamburgerLongPress: () =>
+          store.dispatch(StartRecurringInvoiceMultiselect()),
       appBarTitle: ListFilter(
         key: ValueKey(
           '__filter_${state.recurringInvoiceListState.filterClearedAt}__',
@@ -127,14 +127,14 @@ class RecurringInvoiceScreen extends StatelessWidget {
           CustomFieldType.invoice4,
           excludeBlank: true,
         ),
-        onSelectedCustom1:
-            (value) => store.dispatch(FilterRecurringInvoicesByCustom1(value)),
-        onSelectedCustom2:
-            (value) => store.dispatch(FilterRecurringInvoicesByCustom2(value)),
-        onSelectedCustom3:
-            (value) => store.dispatch(FilterRecurringInvoicesByCustom3(value)),
-        onSelectedCustom4:
-            (value) => store.dispatch(FilterRecurringInvoicesByCustom4(value)),
+        onSelectedCustom1: (value) =>
+            store.dispatch(FilterRecurringInvoicesByCustom1(value)),
+        onSelectedCustom2: (value) =>
+            store.dispatch(FilterRecurringInvoicesByCustom2(value)),
+        onSelectedCustom3: (value) =>
+            store.dispatch(FilterRecurringInvoicesByCustom3(value)),
+        onSelectedCustom4: (value) =>
+            store.dispatch(FilterRecurringInvoicesByCustom4(value)),
       ),
       floatingActionButton: state.prefState.isMenuFloated &&
               userCompany.canCreate(EntityType.recurringInvoice)

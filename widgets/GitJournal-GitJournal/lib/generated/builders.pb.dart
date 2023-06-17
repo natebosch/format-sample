@@ -76,11 +76,13 @@ class BlobCTimeBuilderData extends $pb.GeneratedMessage {
   factory BlobCTimeBuilderData.fromBuffer(
     $core.List<$core.int> i, [
     $pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY,
-  ]) => create()..mergeFromBuffer(i, r);
+  ]) =>
+      create()..mergeFromBuffer(i, r);
   factory BlobCTimeBuilderData.fromJson(
     $core.String i, [
     $pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY,
-  ]) => create()..mergeFromJson(i, r);
+  ]) =>
+      create()..mergeFromJson(i, r);
   @$core.Deprecated(
     'Using this can add significant overhead to your binary. '
     'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -179,11 +181,13 @@ class FileMTimeBuilderData extends $pb.GeneratedMessage {
   factory FileMTimeBuilderData.fromBuffer(
     $core.List<$core.int> i, [
     $pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY,
-  ]) => create()..mergeFromBuffer(i, r);
+  ]) =>
+      create()..mergeFromBuffer(i, r);
   factory FileMTimeBuilderData.fromJson(
     $core.String i, [
     $pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY,
-  ]) => create()..mergeFromJson(i, r);
+  ]) =>
+      create()..mergeFromJson(i, r);
   @$core.Deprecated(
     'Using this can add significant overhead to your binary. '
     'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -263,11 +267,13 @@ class TzDateTime extends $pb.GeneratedMessage {
   factory TzDateTime.fromBuffer(
     $core.List<$core.int> i, [
     $pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY,
-  ]) => create()..mergeFromBuffer(i, r);
+  ]) =>
+      create()..mergeFromBuffer(i, r);
   factory TzDateTime.fromJson(
     $core.String i, [
     $pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY,
-  ]) => create()..mergeFromJson(i, r);
+  ]) =>
+      create()..mergeFromJson(i, r);
   @$core.Deprecated(
     'Using this can add significant overhead to your binary. '
     'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -371,11 +377,13 @@ class FileMTimeInfo extends $pb.GeneratedMessage {
   factory FileMTimeInfo.fromBuffer(
     $core.List<$core.int> i, [
     $pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY,
-  ]) => create()..mergeFromBuffer(i, r);
+  ]) =>
+      create()..mergeFromBuffer(i, r);
   factory FileMTimeInfo.fromJson(
     $core.String i, [
     $pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY,
-  ]) => create()..mergeFromJson(i, r);
+  ]) =>
+      create()..mergeFromJson(i, r);
   @$core.Deprecated(
     'Using this can add significant overhead to your binary. '
     'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '

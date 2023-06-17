@@ -24,8 +24,8 @@ class ScoreCard extends StatelessWidget {
     final double opacity = themeData.brightness == Brightness.light
         ? 1
         : SmoothTheme.ADDITIONAL_OPACITY_FOR_DARK;
-    final Color backgroundColor = getBackgroundColor(cardEvaluation)
-        .withOpacity(opacity);
+    final Color backgroundColor =
+        getBackgroundColor(cardEvaluation).withOpacity(opacity);
     final Color textColor = themeData.brightness == Brightness.dark
         ? Colors.white
         : getTextColor(cardEvaluation).withOpacity(opacity);

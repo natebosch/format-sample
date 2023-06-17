@@ -156,13 +156,20 @@ Future<XRPCResponse<T>> query<T>(
   final Duration timeout = const Duration(seconds: 10),
   final To<T>? to,
   final GetClient? getClient,
-}) async => _buildResponse<T>(checkStatus(
-  await (getClient ?? http.get).call(_getUriFactory(protocol).call(
-    service ?? _defaultService,
-    '/xrpc/$methodId',
-    convertParameters(removeNullValues(parameters) ?? {}),
-  ), headers: headers).timeout(timeout),
-), to);
+}) async =>
+    _buildResponse<T>(
+        checkStatus(
+          await (getClient ?? http.get)
+              .call(
+                  _getUriFactory(protocol).call(
+                    service ?? _defaultService,
+                    '/xrpc/$methodId',
+                    convertParameters(removeNullValues(parameters) ?? {}),
+                  ),
+                  headers: headers)
+              .timeout(timeout),
+        ),
+        to);
 
 /// Performs POST communication to the ATP server.
 ///
@@ -279,17 +286,25 @@ Future<XRPCResponse<T>> procedure<T>(
   final Duration timeout = const Duration(seconds: 10),
   final To<T>? to,
   final PostClient? postClient,
-}) async => _buildResponse<T>(checkStatus(
-  await (postClient ?? http.post).call(
-    _getUriFactory(protocol).call(
-      service ?? _defaultService,
-      '/xrpc/$methodId',
-    ),
-    headers: {'Content-type': 'application/json'}..addAll(headers ?? {}),
-    body: body != null ? jsonEncode(removeNullValues(body) ?? {}) : null,
-    encoding: utf8,
-  ).timeout(timeout),
-), to);
+}) async =>
+    _buildResponse<T>(
+        checkStatus(
+          await (postClient ?? http.post)
+              .call(
+                _getUriFactory(protocol).call(
+                  service ?? _defaultService,
+                  '/xrpc/$methodId',
+                ),
+                headers: {'Content-type': 'application/json'}
+                  ..addAll(headers ?? {}),
+                body: body != null
+                    ? jsonEncode(removeNullValues(body) ?? {})
+                    : null,
+                encoding: utf8,
+              )
+              .timeout(timeout),
+        ),
+        to);
 
 /// Uploads blob.
 Future<XRPCResponse<T>> upload<T>(
@@ -301,17 +316,20 @@ Future<XRPCResponse<T>> upload<T>(
   final Duration timeout = const Duration(seconds: 10),
   final To<T>? to,
   final PostClient? postClient,
-}) async => _buildResponse(checkStatus(
-  await (postClient ?? http.post).call(
-    _getUriFactory(protocol).call(
-      service ?? _defaultService,
-      '/xrpc/${methodId.toString()}',
-    ),
-    headers:
-        {'Content-Type': lookupMimeType(file.path)!}..addAll(headers ?? {}),
-    body: file.readAsBytesSync(),
-  ),
-), to);
+}) async =>
+    _buildResponse(
+        checkStatus(
+          await (postClient ?? http.post).call(
+            _getUriFactory(protocol).call(
+              service ?? _defaultService,
+              '/xrpc/${methodId.toString()}',
+            ),
+            headers: {'Content-Type': lookupMimeType(file.path)!}
+              ..addAll(headers ?? {}),
+            body: file.readAsBytesSync(),
+          ),
+        ),
+        to);
 
 /// Subscribes endpoints associated with [methodId] in WebSocket.
 XRPCResponse<Subscription<T>> subscribe<T>(
@@ -420,38 +438,41 @@ dynamic removeNullValues(final dynamic object) {
 @visibleForTesting
 Map<String, dynamic> convertParameters(
   final Map<String, dynamic> parameters,
-) => parameters.map((key, value) {
-  if (value is List?) {
-    return MapEntry(key, value?.map((e) => e.toString()).toList());
-  } else if (value is Serializable) {
-    return MapEntry(key, value.value);
-  }
+) =>
+    parameters.map((key, value) {
+      if (value is List?) {
+        return MapEntry(key, value?.map((e) => e.toString()).toList());
+      } else if (value is Serializable) {
+        return MapEntry(key, value.value);
+      }
 
-  if (value is DateTime) {
-    return MapEntry(key, value.toUtc().toIso8601String());
-  }
+      if (value is DateTime) {
+        return MapEntry(key, value.toUtc().toIso8601String());
+      }
 
-  return MapEntry(key, value.toString());
-});
+      return MapEntry(key, value.toString());
+    });
 
 /// Returns the response object.
 XRPCResponse<T> _buildResponse<T>(
   final http.Response response,
   final To<T>? to,
-) => XRPCResponse(
-  headers: response.headers,
-  status: HttpStatus.valueOf(response.statusCode),
-  request: XRPCRequest(
-    method: HttpMethod.valueOf(response.request!.method),
-    url: response.request!.url,
-  ),
-  data: _transformData(response.body, to),
-);
+) =>
+    XRPCResponse(
+      headers: response.headers,
+      status: HttpStatus.valueOf(response.statusCode),
+      request: XRPCRequest(
+        method: HttpMethod.valueOf(response.request!.method),
+        url: response.request!.url,
+      ),
+      data: _transformData(response.body, to),
+    );
 
 /// Returns the error response.
 XRPCResponse<XRPCError> _buildErrorResponse(
   final http.Response response,
-) => _buildResponse(response, XRPCError.fromJson);
+) =>
+    _buildResponse(response, XRPCError.fromJson);
 
 /// Returns the transformed data object.
 T _transformData<T>(final String body, final To<T>? to) {

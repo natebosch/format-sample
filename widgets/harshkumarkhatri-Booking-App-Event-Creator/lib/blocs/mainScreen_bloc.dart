@@ -32,14 +32,14 @@ class MainScreenBloc {
               .document(user.email)
               .get()
               .then((value) {
-                if (value.data() != null) {
-                  mainScreenSink.add(value.data());
-                } else {
-                  mainScreenSink.addError(
-                    "No Event Found.\nStart creating your first event.",
-                  );
-                }
-              });
+            if (value.data() != null) {
+              mainScreenSink.add(value.data());
+            } else {
+              mainScreenSink.addError(
+                "No Event Found.\nStart creating your first event.",
+              );
+            }
+          });
         } catch (e) {
           // To check if the state is bad
           // If we have bad state, we will not display the snackbar

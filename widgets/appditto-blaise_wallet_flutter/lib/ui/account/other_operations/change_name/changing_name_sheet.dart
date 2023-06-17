@@ -47,10 +47,10 @@ class _ChangingNameSheetState extends State<ChangingNameSheet> {
     _authSub = EventTaxiImpl.singleton()
         .registerTo<AuthenticatedEvent>()
         .listen((event) {
-          if (event.authType == AUTH_EVENT_TYPE.CHANGE) {
-            doChange();
-          }
-        });
+      if (event.authType == AUTH_EVENT_TYPE.CHANGE) {
+        doChange();
+      }
+    });
   }
 
   void _destroyBus() {
@@ -76,31 +76,31 @@ class _ChangingNameSheetState extends State<ChangingNameSheet> {
     OverlayState overlayState = Overlay.of(context);
     _overlay = OverlayEntry(
       builder: (context) => BackdropFilter(
-            filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
-            child: Container(
+        filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
+        child: Container(
+          width: double.maxFinite,
+          height: double.maxFinite,
+          color: StateContainer.of(context).curTheme.overlay20,
+          child: Center(
+            child: //Container for the animation
+                Container(
+              margin: EdgeInsetsDirectional.only(
+                top: MediaQuery.of(context).padding.top,
+              ),
+              //Width/Height ratio for the animation is needed because BoxFit is not working as expected
               width: double.maxFinite,
-              height: double.maxFinite,
-              color: StateContainer.of(context).curTheme.overlay20,
+              height: MediaQuery.of(context).size.width,
               child: Center(
-                child: //Container for the animation
-                    Container(
-                  margin: EdgeInsetsDirectional.only(
-                    top: MediaQuery.of(context).padding.top,
-                  ),
-                  //Width/Height ratio for the animation is needed because BoxFit is not working as expected
-                  width: double.maxFinite,
-                  height: MediaQuery.of(context).size.width,
-                  child: Center(
-                    child: FlareActor(
-                      StateContainer.of(context).curTheme.animationNameChange,
-                      animation: "main",
-                      fit: BoxFit.contain,
-                    ),
-                  ),
+                child: FlareActor(
+                  StateContainer.of(context).curTheme.animationNameChange,
+                  animation: "main",
+                  fit: BoxFit.contain,
                 ),
               ),
             ),
           ),
+        ),
+      ),
     );
     overlayState.insert(_overlay);
   }

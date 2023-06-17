@@ -9,7 +9,7 @@ class ProductReviewBloc extends Bloc<ProductReviewEvent, ProductReviewState> {
   final ProductReviewRepository productReviewRepository;
 
   ProductReviewBloc(this.productReviewRepository)
-    : super(ProductReviewInitialState());
+      : super(ProductReviewInitialState());
 
   @override
   Stream<ProductReviewState> mapEventToState(ProductReviewEvent event) async* {

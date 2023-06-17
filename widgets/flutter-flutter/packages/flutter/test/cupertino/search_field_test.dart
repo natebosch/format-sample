@@ -13,11 +13,12 @@ void main() {
       const CupertinoApp(home: Center(child: CupertinoSearchTextField())),
     );
 
-    final BoxDecoration decoration = tester.widget<DecoratedBox>(find
-        .descendant(
+    final BoxDecoration decoration = tester
+        .widget<DecoratedBox>(find.descendant(
           of: find.byType(CupertinoSearchTextField),
           matching: find.byType(DecoratedBox),
-        )).decoration as BoxDecoration;
+        ))
+        .decoration as BoxDecoration;
 
     expect(decoration.borderRadius, const BorderRadius.all(Radius.circular(9)));
   });
@@ -35,11 +36,12 @@ void main() {
         ),
       );
 
-      final BoxDecoration decoration = tester.widget<DecoratedBox>(find
-          .descendant(
+      final BoxDecoration decoration = tester
+          .widget<DecoratedBox>(find.descendant(
             of: find.byType(CupertinoSearchTextField),
             matching: find.byType(DecoratedBox),
-          )).decoration as BoxDecoration;
+          ))
+          .decoration as BoxDecoration;
 
       expect(decoration.color, const Color.fromARGB(1, 1, 1, 1));
     },
@@ -58,11 +60,12 @@ void main() {
         ),
       );
 
-      final BoxDecoration decoration = tester.widget<DecoratedBox>(find
-          .descendant(
+      final BoxDecoration decoration = tester
+          .widget<DecoratedBox>(find.descendant(
             of: find.byType(CupertinoSearchTextField),
             matching: find.byType(DecoratedBox),
-          )).decoration as BoxDecoration;
+          ))
+          .decoration as BoxDecoration;
 
       expect(decoration.borderRadius, BorderRadius.zero);
     },

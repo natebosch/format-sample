@@ -333,9 +333,11 @@ class _PaymentableEditorState extends State<PaymentableEditor> {
             entityType: EntityType.invoice,
             labelText: AppLocalization.of(context).invoice,
             entityId: paymentable.invoiceId,
-            entityList: payment.paymentables.map(
-              (payment) => payment.invoiceId,
-            ).toList(),
+            entityList: payment.paymentables
+                .map(
+                  (payment) => payment.invoiceId,
+                )
+                .toList(),
             overrideSuggestedAmount: (entity) {
               final invoice = entity as InvoiceEntity;
               return formatNumber(

@@ -286,7 +286,8 @@ class _$TaxRateListResponse extends TaxRateListResponse {
 
   factory _$TaxRateListResponse([
     void Function(TaxRateListResponseBuilder) updates,
-  ]) => (new TaxRateListResponseBuilder()..update(updates)).build();
+  ]) =>
+      (new TaxRateListResponseBuilder()..update(updates)).build();
 
   _$TaxRateListResponse._({this.data}) : super._() {
     BuiltValueNullFieldError.checkNotNull(data, 'TaxRateListResponse', 'data');
@@ -295,7 +296,8 @@ class _$TaxRateListResponse extends TaxRateListResponse {
   @override
   TaxRateListResponse rebuild(
     void Function(TaxRateListResponseBuilder) updates,
-  ) => (toBuilder()..update(updates)).build();
+  ) =>
+      (toBuilder()..update(updates)).build();
 
   @override
   TaxRateListResponseBuilder toBuilder() =>
@@ -382,7 +384,8 @@ class _$TaxRateItemResponse extends TaxRateItemResponse {
 
   factory _$TaxRateItemResponse([
     void Function(TaxRateItemResponseBuilder) updates,
-  ]) => (new TaxRateItemResponseBuilder()..update(updates)).build();
+  ]) =>
+      (new TaxRateItemResponseBuilder()..update(updates)).build();
 
   _$TaxRateItemResponse._({this.data}) : super._() {
     BuiltValueNullFieldError.checkNotNull(data, 'TaxRateItemResponse', 'data');
@@ -391,7 +394,8 @@ class _$TaxRateItemResponse extends TaxRateItemResponse {
   @override
   TaxRateItemResponse rebuild(
     void Function(TaxRateItemResponseBuilder) updates,
-  ) => (toBuilder()..update(updates)).build();
+  ) =>
+      (toBuilder()..update(updates)).build();
 
   @override
   TaxRateItemResponseBuilder toBuilder() =>
@@ -554,13 +558,24 @@ class _$TaxRateEntity extends TaxRateEntity {
   int __hashCode;
   @override
   int get hashCode {
-    return __hashCode ??= $jf($jc($jc($jc($jc(
-      $jc(
-        $jc($jc($jc($jc($jc(0, name.hashCode), rate.hashCode), isChanged.hashCode), createdAt.hashCode), updatedAt.hashCode),
-        archivedAt.hashCode,
-      ),
-      isDeleted.hashCode,
-    ), createdUserId.hashCode), assignedUserId.hashCode), id.hashCode));
+    return __hashCode ??= $jf($jc(
+        $jc(
+            $jc(
+                $jc(
+                  $jc(
+                    $jc(
+                        $jc(
+                            $jc($jc($jc(0, name.hashCode), rate.hashCode),
+                                isChanged.hashCode),
+                            createdAt.hashCode),
+                        updatedAt.hashCode),
+                    archivedAt.hashCode,
+                  ),
+                  isDeleted.hashCode,
+                ),
+                createdUserId.hashCode),
+            assignedUserId.hashCode),
+        id.hashCode));
   }
 
   @override

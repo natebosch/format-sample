@@ -34,53 +34,59 @@ class DisplayAndSoundPage extends StatelessWidget {
   }
 
   void openDarkModeSettings(BuildContext context) {
-    openBottomSheet(context, 250, Column(
-      children: <Widget>[
-        SizedBox(height: 5),
-        Container(
-          width: 40,
-          height: 5,
-          decoration: BoxDecoration(
-            color: TwitterColor.paleSky50,
-            borderRadius: BorderRadius.circular(10),
-          ),
-        ),
-        Padding(
-          padding: EdgeInsets.symmetric(vertical: 10),
-          child: TitleText('Dark Mode'),
-        ),
-        Divider(height: 0),
-        _row("On"),
-        Divider(height: 0),
-        _row("Off"),
-        Divider(height: 0),
-        _row("Automatic at sunset"),
-      ],
-    ));
+    openBottomSheet(
+        context,
+        250,
+        Column(
+          children: <Widget>[
+            SizedBox(height: 5),
+            Container(
+              width: 40,
+              height: 5,
+              decoration: BoxDecoration(
+                color: TwitterColor.paleSky50,
+                borderRadius: BorderRadius.circular(10),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.symmetric(vertical: 10),
+              child: TitleText('Dark Mode'),
+            ),
+            Divider(height: 0),
+            _row("On"),
+            Divider(height: 0),
+            _row("Off"),
+            Divider(height: 0),
+            _row("Automatic at sunset"),
+          ],
+        ));
   }
 
   void openDarkModeAppearanceSettings(BuildContext context) {
-    openBottomSheet(context, 190, Column(
-      children: <Widget>[
-        SizedBox(height: 5),
-        Container(
-          width: 40,
-          height: 5,
-          decoration: BoxDecoration(
-            color: TwitterColor.paleSky50,
-            borderRadius: BorderRadius.circular(10),
-          ),
-        ),
-        Padding(
-          padding: EdgeInsets.symmetric(vertical: 10),
-          child: TitleText('Dark mode appearance'),
-        ),
-        Divider(height: 0),
-        _row("Dim"),
-        Divider(height: 0),
-        _row("Light out"),
-      ],
-    ));
+    openBottomSheet(
+        context,
+        190,
+        Column(
+          children: <Widget>[
+            SizedBox(height: 5),
+            Container(
+              width: 40,
+              height: 5,
+              decoration: BoxDecoration(
+                color: TwitterColor.paleSky50,
+                borderRadius: BorderRadius.circular(10),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.symmetric(vertical: 10),
+              child: TitleText('Dark mode appearance'),
+            ),
+            Divider(height: 0),
+            _row("Dim"),
+            Divider(height: 0),
+            _row("Light out"),
+          ],
+        ));
   }
 
   Widget _row(String text) {

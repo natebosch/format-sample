@@ -57,7 +57,7 @@ class _Divider extends StatelessWidget {
 
 class _StatTile extends StatelessWidget {
   const _StatTile({Key key, @required this.count, @required this.title})
-    : super(key: key);
+      : super(key: key);
 
   final String count;
   final String title;

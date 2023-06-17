@@ -10,10 +10,13 @@ class UserItemView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      onTap: () => Navigator.push(context, MaterialPageRoute(
-        builder: (context) => UserProfilePage(user: user, key: Key(user.id)),
-        fullscreenDialog: true,
-      )),
+      onTap: () => Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) =>
+                UserProfilePage(user: user, key: Key(user.id)),
+            fullscreenDialog: true,
+          )),
       leading: CircleAvatar(
         backgroundColor: Colors.brown,
         backgroundImage: user.imageUrl != null

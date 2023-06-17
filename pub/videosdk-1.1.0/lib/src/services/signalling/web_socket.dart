@@ -13,7 +13,7 @@ class WebSocket {
   Function()? onDisconnected;
   Function()? onClose;
   Function(dynamic request, dynamic accept, dynamic reject)?
-  onRequest; // request, accept, reject
+      onRequest; // request, accept, reject
   Function(dynamic notification)? onNotification;
 
   ProtooClient.Peer get socket => _protoo;
@@ -36,10 +36,10 @@ class WebSocket {
     _protoo.on(
       'request',
       (request, accept, reject) => this.onRequest?.call(
-        request,
-        accept,
-        reject,
-      ),
+            request,
+            accept,
+            reject,
+          ),
     );
     _protoo.on(
       'notification',

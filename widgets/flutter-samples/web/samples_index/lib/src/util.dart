@@ -5,8 +5,8 @@
 import 'dart:convert';
 
 String indent(String content, int spaces) => LineSplitter.split(content).join(
-  '\n' + ' ' * spaces,
-);
+      '\n' + ' ' * spaces,
+    );
 
 String kebabCase(String input) => _fixCase(input, '-');
 
@@ -23,16 +23,16 @@ String pascalCase(String input) {
 }
 
 String _fixCase(String input, String separator) => input.replaceAllMapped(
-  _upperCase,
-  (match) {
-    var group = match.group(0);
-    if (group == null) return input;
-    var lower = group.toLowerCase();
+      _upperCase,
+      (match) {
+        var group = match.group(0);
+        if (group == null) return input;
+        var lower = group.toLowerCase();
 
-    if (match.start > 0) {
-      lower = '$separator$lower';
-    }
+        if (match.start > 0) {
+          lower = '$separator$lower';
+        }
 
-    return lower;
-  },
-);
+        return lower;
+      },
+    );

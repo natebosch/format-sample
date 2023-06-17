@@ -24,7 +24,8 @@ class CreateRecordingJobResponse {
 
   factory CreateRecordingJobResponse.fromJson(
     Map<String, dynamic> json,
-  ) => _$CreateRecordingJobResponseFromJson(json);
+  ) =>
+      _$CreateRecordingJobResponseFromJson(json);
 
   Map<String, dynamic> toJson() => _$CreateRecordingJobResponseToJson(this);
 

@@ -122,8 +122,8 @@ Future<void> updateEpisodePosition(Episode episode, Duration position) async {
   final EpisodeActionBean episodeActionModel = app.models['episode_action'];
   EpisodeAction episodeAction = await episodeActionModel.findOneWhere(
     episodeActionModel.url.eq(episode.url).and(
-      episodeActionModel.type.eq(EpisodeActionType.PLAY.toString()),
-    ),
+          episodeActionModel.type.eq(EpisodeActionType.PLAY.toString()),
+        ),
   );
   episodeAction ??= EpisodeAction(
     actionType: EpisodeActionType.PLAY,

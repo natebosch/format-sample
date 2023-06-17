@@ -61,15 +61,15 @@ class Event {
     Iterable<int> positions, {
     DateTime? timestamp,
   }) : this._(
-         EventType.click,
-         eventName,
-         indexName,
-         userToken,
-         timestamp: timestamp,
-         queryID: queryID,
-         positions: positions,
-         objectIDs: objectIDs,
-       );
+          EventType.click,
+          eventName,
+          indexName,
+          userToken,
+          timestamp: timestamp,
+          queryID: queryID,
+          positions: positions,
+          objectIDs: objectIDs,
+        );
 
   /// Creates a click event with object IDs.
   Event.clickHits(
@@ -79,13 +79,13 @@ class Event {
     Iterable<String> objectIDs, {
     DateTime? timestamp,
   }) : this._(
-         EventType.click,
-         eventName,
-         indexName,
-         userToken,
-         objectIDs: objectIDs,
-         timestamp: timestamp,
-       );
+          EventType.click,
+          eventName,
+          indexName,
+          userToken,
+          objectIDs: objectIDs,
+          timestamp: timestamp,
+        );
 
   /// Creates a conversion event after a search with object IDs.
   Event.convertHitsAfterSearch(
@@ -96,14 +96,14 @@ class Event {
     Iterable<String> objectIDs, {
     DateTime? timestamp,
   }) : this._(
-         EventType.conversion,
-         eventName,
-         indexName,
-         userToken,
-         queryID: queryID,
-         objectIDs: objectIDs,
-         timestamp: timestamp,
-       );
+          EventType.conversion,
+          eventName,
+          indexName,
+          userToken,
+          queryID: queryID,
+          objectIDs: objectIDs,
+          timestamp: timestamp,
+        );
 
   /// Creates a conversion event with object IDs.
   Event.convertHits(
@@ -113,13 +113,13 @@ class Event {
     Iterable<String> objectIDs, {
     DateTime? timestamp,
   }) : this._(
-         EventType.conversion,
-         eventName,
-         indexName,
-         userToken,
-         objectIDs: objectIDs,
-         timestamp: timestamp,
-       );
+          EventType.conversion,
+          eventName,
+          indexName,
+          userToken,
+          objectIDs: objectIDs,
+          timestamp: timestamp,
+        );
 
   /// Creates a view event with object IDs.
   Event.viewHits(
@@ -129,13 +129,13 @@ class Event {
     Iterable<String> objectIDs, {
     DateTime? timestamp,
   }) : this._(
-         EventType.view,
-         eventName,
-         indexName,
-         userToken,
-         objectIDs: objectIDs,
-         timestamp: timestamp,
-       );
+          EventType.view,
+          eventName,
+          indexName,
+          userToken,
+          objectIDs: objectIDs,
+          timestamp: timestamp,
+        );
 
   /// Creates a click event with filter attribute and values.
   Event.clickFilters(
@@ -146,14 +146,14 @@ class Event {
     Iterable<String> values, {
     DateTime? timestamp,
   }) : this._(
-         EventType.click,
-         eventName,
-         indexName,
-         userToken,
-         attribute: attribute,
-         filterValues: values,
-         timestamp: timestamp,
-       );
+          EventType.click,
+          eventName,
+          indexName,
+          userToken,
+          attribute: attribute,
+          filterValues: values,
+          timestamp: timestamp,
+        );
 
   /// Creates a view event with filter attribute and values.
   Event.viewFilters(
@@ -164,14 +164,14 @@ class Event {
     Iterable<String> values, {
     DateTime? timestamp,
   }) : this._(
-         EventType.view,
-         eventName,
-         indexName,
-         userToken,
-         attribute: attribute,
-         filterValues: values,
-         timestamp: timestamp,
-       );
+          EventType.view,
+          eventName,
+          indexName,
+          userToken,
+          attribute: attribute,
+          filterValues: values,
+          timestamp: timestamp,
+        );
 
   /// Creates a conversion event with filter attribute and values.
   Event.convertFilters(
@@ -182,14 +182,14 @@ class Event {
     Iterable<String> values, {
     DateTime? timestamp,
   }) : this._(
-         EventType.conversion,
-         eventName,
-         indexName,
-         userToken,
-         attribute: attribute,
-         filterValues: values,
-         timestamp: timestamp,
-       );
+          EventType.conversion,
+          eventName,
+          indexName,
+          userToken,
+          attribute: attribute,
+          filterValues: values,
+          timestamp: timestamp,
+        );
 
   @override
   bool operator ==(Object other) =>

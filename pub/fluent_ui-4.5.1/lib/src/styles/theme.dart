@@ -283,9 +283,8 @@ class FluentThemeData with Diagnosticable {
     accentColor ??= Colors.blue;
     activeColor ??= Colors.white;
     inactiveColor ??= isLight ? Colors.black : Colors.white;
-    inactiveBackgroundColor ??= isLight
-        ? const Color(0xFFd6d6d6)
-        : const Color(0xFF292929);
+    inactiveBackgroundColor ??=
+        isLight ? const Color(0xFFd6d6d6) : const Color(0xFF292929);
     disabledColor ??= resources.textFillColorDisabled;
     shadowColor ??= isLight ? Colors.black : Colors.grey[130];
     scaffoldBackgroundColor ??= resources.layerFillColorDefault;

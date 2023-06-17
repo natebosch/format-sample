@@ -184,7 +184,7 @@ class AndroidServiceWorkerClient {
   ///
   ///**NOTE**: available on Android 24+.
   final Future<WebResourceResponse?> Function(WebResourceRequest request)?
-  shouldInterceptRequest;
+      shouldInterceptRequest;
 
   AndroidServiceWorkerClient({this.shouldInterceptRequest});
 }

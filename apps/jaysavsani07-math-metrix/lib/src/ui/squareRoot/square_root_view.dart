@@ -65,16 +65,14 @@ class SquareRootView extends StatelessWidget {
                                       children: <Widget>[
                                         SquareRootButton(
                                           squareRootProvider
-                                              .currentState
-                                              .firstAns,
+                                              .currentState.firstAns,
                                           BorderRadius.only(
                                             topLeft: Radius.circular(40),
                                           ),
                                         ),
                                         SquareRootButton(
                                           squareRootProvider
-                                              .currentState
-                                              .secondAns,
+                                              .currentState.secondAns,
                                           BorderRadius.only(
                                             topRight: Radius.circular(40),
                                           ),
@@ -87,16 +85,14 @@ class SquareRootView extends StatelessWidget {
                                       children: <Widget>[
                                         SquareRootButton(
                                           squareRootProvider
-                                              .currentState
-                                              .thirdAns,
+                                              .currentState.thirdAns,
                                           BorderRadius.only(
                                             bottomLeft: Radius.circular(40),
                                           ),
                                         ),
                                         SquareRootButton(
                                           squareRootProvider
-                                              .currentState
-                                              .fourthAns,
+                                              .currentState.fourthAns,
                                           BorderRadius.only(
                                             bottomRight: Radius.circular(40),
                                           ),

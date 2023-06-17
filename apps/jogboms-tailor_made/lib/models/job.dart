@@ -74,9 +74,9 @@ abstract class JobModel
 
   @override
   Map<String, dynamic> toMap() => serializers.serializeWith(
-    JobModel.serializer,
-    this,
-  );
+        JobModel.serializer,
+        this,
+      );
 
   static JobModel fromJson(Map<String, dynamic> map) {
     // TODO: investigate this

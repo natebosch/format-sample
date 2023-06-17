@@ -185,38 +185,46 @@ class _HomePageState extends State<HomePage> {
   }
 
   void _expanded() {
-    Navigator.push(context, MaterialPageRoute(
-      builder: (BuildContext context) => SettingsProvider(
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (BuildContext context) => SettingsProvider(
             settings: _settings,
             child: ExpandedLayout(),
           ),
-    ));
+        ));
   }
 
   void _readOnlyView() {
-    Navigator.push(context, MaterialPageRoute(
-      builder: (BuildContext context) => SettingsProvider(
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (BuildContext context) => SettingsProvider(
             settings: _settings,
             child: ReadOnlyView(),
           ),
-    ));
+        ));
   }
 
   void _scrollable() {
-    Navigator.push(context, MaterialPageRoute(
-      builder: (BuildContext context) => SettingsProvider(
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (BuildContext context) => SettingsProvider(
             settings: _settings,
             child: ScrollableLayout(),
           ),
-    ));
+        ));
   }
 
   void _decoratedField() {
-    Navigator.push(context, MaterialPageRoute(
-      builder: (BuildContext context) => SettingsProvider(
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (BuildContext context) => SettingsProvider(
             settings: _settings,
             child: DecoratedFieldDemo(),
           ),
-    ));
+        ));
   }
 }

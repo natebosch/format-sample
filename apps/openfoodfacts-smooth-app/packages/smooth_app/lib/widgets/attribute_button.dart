@@ -75,11 +75,11 @@ class AttributeButton extends StatelessWidget {
       leading: SvgCache(attribute.iconUrl, width: 40),
       trailing: _getIcon(importanceId, foregroundColor),
       onTap: () async => onTap(
-            context: context,
-            attributeId: attribute.id!,
-            productPreferences: productPreferences,
-            themeProvider: themeProvider,
-          ),
+        context: context,
+        attributeId: attribute.id!,
+        productPreferences: productPreferences,
+        themeProvider: themeProvider,
+      ),
     );
   }
 
@@ -94,8 +94,8 @@ class AttributeButton extends StatelessWidget {
     );
     final ColorScheme colorScheme = Theme.of(context).colorScheme;
     final AppLocalizations appLocalizations = AppLocalizations.of(context)!;
-    final String importanceId = productPreferences
-        .getImportanceIdForAttributeId(attributeId);
+    final String importanceId =
+        productPreferences.getImportanceIdForAttributeId(attributeId);
     final MaterialColor materialColor = SmoothTheme.getMaterialColor(
       themeProvider,
     );
@@ -150,9 +150,11 @@ class AttributeButton extends StatelessWidget {
             ? Icon(Icons.radio_button_checked, color: foregroundColor)
             : Icon(Icons.radio_button_unchecked, color: foregroundColor),
         title: Text(
-          productPreferences.getPreferenceImportanceFromImportanceId(
-            item,
-          )!.name!,
+          productPreferences
+              .getPreferenceImportanceFromImportanceId(
+                item,
+              )!
+              .name!,
           style: TextStyle(color: foregroundColor),
         ),
         onTap: () => Navigator.pop<String>(context, item),
@@ -162,18 +164,18 @@ class AttributeButton extends StatelessWidget {
     final String? result = await showDialog<String>(
       context: context,
       builder: (final BuildContext context) => SmoothAlertDialog(
-            body: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: children,
-            ),
-            actions: <SmoothSimpleButton>[
-              SmoothSimpleButton(
-                text: appLocalizations.cancel,
-                onPressed: () => Navigator.pop(context),
-              ),
-            ],
+        body: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: children,
+        ),
+        actions: <SmoothSimpleButton>[
+          SmoothSimpleButton(
+            text: appLocalizations.cancel,
+            onPressed: () => Navigator.pop(context),
           ),
+        ],
+      ),
     );
     if (result == null) {
       return;
@@ -203,7 +205,8 @@ class AttributeButton extends StatelessWidget {
   static Color? _getForegroundColor(
     final Color strongForegroundColor,
     final String importanceId,
-  ) => importanceId == PreferenceImportance.ID_NOT_IMPORTANT
-      ? null
-      : strongForegroundColor;
+  ) =>
+      importanceId == PreferenceImportance.ID_NOT_IMPORTANT
+          ? null
+          : strongForegroundColor;
 }

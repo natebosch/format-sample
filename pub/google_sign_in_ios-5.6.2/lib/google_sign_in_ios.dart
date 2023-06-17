@@ -58,15 +58,15 @@ class GoogleSignInIOS extends GoogleSignInPlatform {
   @override
   Future<GoogleSignInUserData?> signInSilently() {
     return channel.invokeMapMethod<String, dynamic>('signInSilently').then(
-      getUserDataFromMap,
-    );
+          getUserDataFromMap,
+        );
   }
 
   @override
   Future<GoogleSignInUserData?> signIn() {
     return channel.invokeMapMethod<String, dynamic>('signIn').then(
-      getUserDataFromMap,
-    );
+          getUserDataFromMap,
+        );
   }
 
   @override

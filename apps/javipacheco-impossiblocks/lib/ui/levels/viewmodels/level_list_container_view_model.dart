@@ -70,9 +70,8 @@ class LevelListContainerViewModel extends Equatable {
             TypeTile typeTile = level.randomBoard != null
                 ? GameUtils.getTypeTile(level.randomBoard.typeTile)
                 : TypeTile.NORMAL;
-            int difficulty = level.randomBoard != null
-                ? level.randomBoard.difficulty
-                : 1;
+            int difficulty =
+                level.randomBoard != null ? level.randomBoard.difficulty : 1;
             store.dispatch(LoadLevelInBoardAction(
               playersGame: PlayersGame.ONE,
               level: level,

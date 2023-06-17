@@ -25,11 +25,13 @@ class MetaSection extends StatelessWidget {
         _getCollectionSectionOrContainer('Creators', 'created_by', 'name'),
         _getCollectionSectionOrContainer('Networks', 'networks', 'name'),
         (data['number_of_seasons'] != null &&
-                  data['number_of_episodes'] != null)
-            ? _getMetaInfoSection('Seasons', formatSeasonsAndEpisodes(
-                data['number_of_seasons'],
-                data['number_of_episodes'],
-              ))
+                data['number_of_episodes'] != null)
+            ? _getMetaInfoSection(
+                'Seasons',
+                formatSeasonsAndEpisodes(
+                  data['number_of_seasons'],
+                  data['number_of_episodes'],
+                ))
             : Container(),
         _getSectionOrContainer(
           'Premiere',

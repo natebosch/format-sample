@@ -17,10 +17,11 @@ ItunesSearchResult<P> _$ItunesSearchResultFromJson<P>(
 
 Map<String, dynamic> _$ItunesSearchResultToJson<P>(
   ItunesSearchResult<P> instance,
-) => <String, dynamic>{
-  'results': instance.results?.map(_ConvertP<P>().toJson)?.toList(),
-  'resultCount': instance.resultCount,
-};
+) =>
+    <String, dynamic>{
+      'results': instance.results?.map(_ConvertP<P>().toJson)?.toList(),
+      'resultCount': instance.resultCount,
+    };
 
 ItunesPodcast _$ItunesPodcastFromJson(Map<String, dynamic> json) {
   return ItunesPodcast(
@@ -35,11 +36,12 @@ ItunesPodcast _$ItunesPodcastFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$ItunesPodcastToJson(
   ItunesPodcast instance,
-) => <String, dynamic>{
-  'artistName': instance.artistName,
-  'collectionName': instance.collectionName,
-  'feedUrl': instance.feedUrl,
-  'artworkUrl600': instance.artworkUrl600,
-  'releaseDate': instance.releaseDate,
-  'collectionId': instance.collectionId,
-};
+) =>
+    <String, dynamic>{
+      'artistName': instance.artistName,
+      'collectionName': instance.collectionName,
+      'feedUrl': instance.feedUrl,
+      'artworkUrl600': instance.artworkUrl600,
+      'releaseDate': instance.releaseDate,
+      'collectionId': instance.collectionId,
+    };

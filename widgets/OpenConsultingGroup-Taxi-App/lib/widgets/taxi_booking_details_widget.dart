@@ -105,16 +105,18 @@ class _TaxiBookingDetailsWidgetState extends State<TaxiBookingDetailsWidget> {
         Text("Need Seat", style: Theme.of(context).textTheme.title),
         Row(
           mainAxisSize: MainAxisSize.min,
-          children: [1, 2, 3].map(
-            (val) => GestureDetector(
-              onTap: () {
-                setState(() {
-                  noOfPersons = val;
-                });
-              },
-              child: buildContainer("$val", val == noOfPersons),
-            ),
-          ).toList(),
+          children: [1, 2, 3]
+              .map(
+                (val) => GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      noOfPersons = val;
+                    });
+                  },
+                  child: buildContainer("$val", val == noOfPersons),
+                ),
+              )
+              .toList(),
         ),
       ],
     );
@@ -182,9 +184,9 @@ class _TaxiBookingDetailsWidgetState extends State<TaxiBookingDetailsWidget> {
       child: Text(
         "$val",
         style: Theme.of(context).textTheme.headline.copyWith(
-          color: enabled ? Colors.white : Colors.black,
-          fontSize: 15.0,
-        ),
+              color: enabled ? Colors.white : Colors.black,
+              fontSize: 15.0,
+            ),
       ),
     );
   }
@@ -208,9 +210,9 @@ class _TaxiBookingDetailsWidgetState extends State<TaxiBookingDetailsWidget> {
             ? Text(
                 "$text",
                 style: Theme.of(context).textTheme.headline.copyWith(
-                  color: enabled ? Colors.white : Colors.black,
-                  fontSize: 15.0,
-                ),
+                      color: enabled ? Colors.white : Colors.black,
+                      fontSize: 15.0,
+                    ),
               )
             : Icon(
                 iconData,
@@ -231,8 +233,8 @@ class _TaxiBookingDetailsWidgetState extends State<TaxiBookingDetailsWidget> {
       child: Text(
         text ?? hint,
         style: Theme.of(context).textTheme.title.copyWith(
-          color: text == null ? Colors.black45 : Colors.black,
-        ),
+              color: text == null ? Colors.black45 : Colors.black,
+            ),
         maxLines: 1,
         overflow: TextOverflow.ellipsis,
       ),

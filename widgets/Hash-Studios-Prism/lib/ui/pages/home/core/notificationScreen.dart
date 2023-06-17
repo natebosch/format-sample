@@ -72,16 +72,18 @@ class _NotificationScreenState extends State<NotificationScreen> {
               ? ListView.builder(
                   itemCount: notifications.length,
                   itemBuilder: (BuildContext context, int index) {
-                    box.put(box.keys.toList()[index], InAppNotif(
-                      pageName: notifications[index].pageName,
-                      title: notifications[index].title,
-                      body: notifications[index].body,
-                      imageUrl: notifications[index].imageUrl,
-                      arguments: notifications[index].arguments,
-                      url: notifications[index].url,
-                      createdAt: notifications[index].createdAt,
-                      read: true,
-                    ));
+                    box.put(
+                        box.keys.toList()[index],
+                        InAppNotif(
+                          pageName: notifications[index].pageName,
+                          title: notifications[index].title,
+                          body: notifications[index].body,
+                          imageUrl: notifications[index].imageUrl,
+                          arguments: notifications[index].arguments,
+                          url: notifications[index].url,
+                          createdAt: notifications[index].createdAt,
+                          read: true,
+                        ));
                     return Dismissible(
                       onDismissed: (DismissDirection direction) {
                         setState(() {

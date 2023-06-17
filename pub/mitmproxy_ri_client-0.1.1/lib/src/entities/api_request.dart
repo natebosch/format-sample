@@ -38,5 +38,6 @@ class ApiRequest with _$ApiRequest {
 
   factory ApiRequest.fromJson(
     Map<String, dynamic> json,
-  ) => _$ApiRequestFromJson(json);
+  ) =>
+      _$ApiRequestFromJson(json);
 }

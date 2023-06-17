@@ -427,12 +427,12 @@ class FocusNode with DiagnosticableTreeMixin, ChangeNotifier {
     bool skipTraversal = false,
     bool canRequestFocus = true,
     bool descendantsAreFocusable = true,
-  }) : assert(skipTraversal != null),
-       assert(canRequestFocus != null),
-       assert(descendantsAreFocusable != null),
-       _skipTraversal = skipTraversal,
-       _canRequestFocus = canRequestFocus,
-       _descendantsAreFocusable = descendantsAreFocusable {
+  })  : assert(skipTraversal != null),
+        assert(canRequestFocus != null),
+        assert(descendantsAreFocusable != null),
+        _skipTraversal = skipTraversal,
+        _canRequestFocus = canRequestFocus,
+        _descendantsAreFocusable = descendantsAreFocusable {
     // Set it via the setter so that it does nothing on release builds.
     this.debugLabel = debugLabel;
   }
@@ -636,8 +636,8 @@ class FocusNode with DiagnosticableTreeMixin, ChangeNotifier {
   /// Returns all descendants which do not have the [skipTraversal] and do have
   /// the [canRequestFocus] flag set.
   Iterable<FocusNode> get traversalDescendants => descendants.where(
-    (FocusNode node) => !node.skipTraversal && node.canRequestFocus,
-  );
+        (FocusNode node) => !node.skipTraversal && node.canRequestFocus,
+      );
 
   /// An [Iterable] over the ancestors of this node.
   ///
@@ -1158,7 +1158,8 @@ class FocusNode with DiagnosticableTreeMixin, ChangeNotifier {
   /// Returns true if it successfully found a node and requested focus.
   bool focusInDirection(
     TraversalDirection direction,
-  ) => FocusTraversalGroup.of(context!).inDirection(this, direction);
+  ) =>
+      FocusTraversalGroup.of(context!).inDirection(this, direction);
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
@@ -1249,16 +1250,16 @@ class FocusScopeNode extends FocusNode {
     FocusOnKeyCallback? onKey,
     bool skipTraversal = false,
     bool canRequestFocus = true,
-  }) : assert(skipTraversal != null),
-       assert(canRequestFocus != null),
-       super(
-         debugLabel: debugLabel,
-         onKeyEvent: onKeyEvent,
-         onKey: onKey,
-         canRequestFocus: canRequestFocus,
-         descendantsAreFocusable: true,
-         skipTraversal: skipTraversal,
-       );
+  })  : assert(skipTraversal != null),
+        assert(canRequestFocus != null),
+        super(
+          debugLabel: debugLabel,
+          onKeyEvent: onKeyEvent,
+          onKey: onKey,
+          canRequestFocus: canRequestFocus,
+          descendantsAreFocusable: true,
+          skipTraversal: skipTraversal,
+        );
 
   @override
   FocusScopeNode get nearestScope => this;
@@ -1367,8 +1368,8 @@ class FocusScopeNode extends FocusNode {
     }
     final List<String> childList =
         _focusedChildren.reversed.map<String>((FocusNode child) {
-          return child.toStringShort();
-        }).toList();
+      return child.toStringShort();
+    }).toList();
     properties.add(IterableProperty<String>(
       'focusedChildren',
       childList,
@@ -1622,13 +1623,15 @@ class FocusManager with DiagnosticableTreeMixin, ChangeNotifier {
   /// that the value of [highlightMode] has changed.
   void addHighlightModeListener(
     ValueChanged<FocusHighlightMode> listener,
-  ) => _listeners.add(listener);
+  ) =>
+      _listeners.add(listener);
 
   /// Remove a previously registered closure from the list of closures that the
   /// [FocusManager] notifies.
   void removeHighlightModeListener(
     ValueChanged<FocusHighlightMode> listener,
-  ) => _listeners.remove(listener);
+  ) =>
+      _listeners.remove(listener);
 
   @pragma('vm:notify-debugger-on-exception')
   void _notifyHighlightModeListeners() {
@@ -1714,9 +1717,9 @@ class FocusManager with DiagnosticableTreeMixin, ChangeNotifier {
     // stop propagation, stop.
     bool handled = false;
     for (final FocusNode node in <FocusNode>[
-          _primaryFocus!,
-          ..._primaryFocus!.ancestors,
-        ]) {
+      _primaryFocus!,
+      ..._primaryFocus!.ancestors,
+    ]) {
       final List<KeyEventResult> results = <KeyEventResult>[];
       if (node.onKeyEvent != null) {
         for (final KeyEvent event in message.events) {

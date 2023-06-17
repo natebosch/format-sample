@@ -29,13 +29,11 @@ class DemoteViaExplicitWrite<Variable extends Object>
   String get shortName => 'explicitWrite';
 
   @override
-  R accept<
-    R,
-    Node extends Object,
-    Variable extends Object,
-    Type extends Object
-  >(NonPromotionReasonVisitor<R, Node, Variable, Type> visitor) => visitor
-      .visitDemoteViaExplicitWrite(this as DemoteViaExplicitWrite<Variable>);
+  R accept<R, Node extends Object, Variable extends Object,
+              Type extends Object>(
+          NonPromotionReasonVisitor<R, Node, Variable, Type> visitor) =>
+      visitor.visitDemoteViaExplicitWrite(
+          this as DemoteViaExplicitWrite<Variable>);
 
   @override
   String toString() => 'DemoteViaExplicitWrite($node)';
@@ -85,19 +83,20 @@ class ExpressionInfo<Type extends Object> {
   /// Computes a new [ExpressionInfo] based on this one, but with the roles of
   /// [ifTrue] and [ifFalse] reversed.
   ExpressionInfo<Type> invert() => new ExpressionInfo<Type>(
-    after: after,
-    ifTrue: ifFalse,
-    ifFalse: ifTrue,
-  );
+        after: after,
+        ifTrue: ifFalse,
+        ifFalse: ifTrue,
+      );
 
   ExpressionInfo<Type>? rebaseForward(
     TypeOperations<Type> typeOperations,
     FlowModel<Type> base,
-  ) => new ExpressionInfo(
-    after: base,
-    ifTrue: ifTrue.rebaseForward(typeOperations, base),
-    ifFalse: ifFalse.rebaseForward(typeOperations, base),
-  );
+  ) =>
+      new ExpressionInfo(
+        after: base,
+        ifTrue: ifTrue.rebaseForward(typeOperations, base),
+        ifFalse: ifFalse.rebaseForward(typeOperations, base),
+      );
 
   @override
   String toString() =>
@@ -110,13 +109,8 @@ class ExpressionInfo<Type extends Object> {
 /// The client should create one instance of this class for every method, field,
 /// or top level variable to be analyzed, and call the appropriate methods
 /// while visiting the code for type inference.
-abstract class FlowAnalysis<
-  Node extends Object,
-  Statement extends Node,
-  Expression extends Object,
-  Variable extends Object,
-  Type extends Object
-> {
+abstract class FlowAnalysis<Node extends Object, Statement extends Node,
+    Expression extends Object, Variable extends Object, Type extends Object> {
   factory FlowAnalysis(
     Operations<Variable, Type> operations,
     AssignedVariables<Node, Variable> assignedVariables, {
@@ -1132,13 +1126,9 @@ abstract class FlowAnalysis<
 
 /// Alternate implementation of [FlowAnalysis] that prints out inputs and output
 /// at the API boundary, for assistance in debugging.
-class FlowAnalysisDebug<
-  Node extends Object,
-  Statement extends Node,
-  Expression extends Object,
-  Variable extends Object,
-  Type extends Object
-> implements FlowAnalysis<Node, Statement, Expression, Variable, Type> {
+class FlowAnalysisDebug<Node extends Object, Statement extends Node,
+        Expression extends Object, Variable extends Object, Type extends Object>
+    implements FlowAnalysis<Node, Statement, Expression, Variable, Type> {
   static int _nextCallbackId = 0;
 
   static Expando<String> _description = new Expando<String>();
@@ -1177,10 +1167,10 @@ class FlowAnalysisDebug<
 
   @override
   bool get isReachable => _wrap(
-    'isReachable',
-    () => _wrapped.isReachable,
-    isQuery: true,
-  );
+        'isReachable',
+        () => _wrapped.isReachable,
+        isQuery: true,
+      );
 
   @override
   TypeOperations<Type> get operations => _wrapped.operations;
@@ -1373,11 +1363,12 @@ class FlowAnalysisDebug<
   EqualityInfo<Type>? equalityOperand_end(
     Expression operand,
     Type type,
-  ) => _wrap(
-    'equalityOperand_end($operand, $type)',
-    () => _wrapped.equalityOperand_end(operand, type),
-    isQuery: true,
-  );
+  ) =>
+      _wrap(
+        'equalityOperand_end($operand, $type)',
+        () => _wrapped.equalityOperand_end(operand, type),
+        isQuery: true,
+      );
 
   @override
   void equalityOperation_end(
@@ -2271,7 +2262,7 @@ class FlowModel<Type extends Object> {
   ///
   /// Keys are the unique integers assigned by
   /// [_FlowAnalysisImpl._promotionKeyStore].
-  final Map<int, VariableModel<Type> /*!*/> variableInfo;
+  final Map<int, VariableModel<Type> /*!*/ > variableInfo;
 
   /// The empty map, used to [join] variables.
   final Map<int, VariableModel<Type>> _emptyVariableMap = {};
@@ -2653,9 +2644,9 @@ class FlowModel<Type extends Object> {
   /// Returns a [FlowModel] indicating the result of creating a control flow
   /// split.  See [Reachability.split] for more information.
   FlowModel<Type> split() => new FlowModel<Type>.withInfo(
-    reachable.split(),
-    variableInfo,
-  );
+        reachable.split(),
+        variableInfo,
+      );
 
   @override
   String toString() => '($reachable, $variableInfo)';
@@ -2795,9 +2786,9 @@ class FlowModel<Type extends Object> {
   /// Returns a [FlowModel] indicating the result of removing a control flow
   /// split.  See [Reachability.unsplit] for more information.
   FlowModel<Type> unsplit() => new FlowModel<Type>.withInfo(
-    reachable.unsplit(),
-    variableInfo,
-  );
+        reachable.unsplit(),
+        variableInfo,
+      );
 
   /// Removes control flow splits until a [FlowModel] is obtained whose
   /// reachability has the given [parent].
@@ -3168,23 +3159,15 @@ abstract class NonPromotionReason {
   String get shortName;
 
   /// Implementation of the visitor pattern for non-promotion reasons.
-  R accept<
-    R,
-    Node extends Object,
-    Variable extends Object,
-    Type extends Object
-  >(NonPromotionReasonVisitor<R, Node, Variable, Type> visitor);
+  R accept<R, Node extends Object, Variable extends Object,
+          Type extends Object>(
+      NonPromotionReasonVisitor<R, Node, Variable, Type> visitor);
 }
 
 /// Implementation of the visitor pattern for non-promotion reasons.
-abstract class NonPromotionReasonVisitor<
-  R,
-  Node extends Object,
-  Variable extends Object,
-  Type extends Object
-> {
-  NonPromotionReasonVisitor._()
-    : assert(false, 'Do not extend this class');
+abstract class NonPromotionReasonVisitor<R, Node extends Object,
+    Variable extends Object, Type extends Object> {
+  NonPromotionReasonVisitor._() : assert(false, 'Do not extend this class');
 
   R visitDemoteViaExplicitWrite(DemoteViaExplicitWrite<Variable> reason);
 
@@ -3241,10 +3224,11 @@ class PropertyNotPromoted<Type extends Object> extends NonPromotionReason {
   String get shortName => 'propertyNotPromoted';
 
   @override
-  R
-  accept<R, Node extends Object, Variable extends Object, Type extends Object>(
+  R accept<R, Node extends Object, Variable extends Object,
+          Type extends Object>(
     NonPromotionReasonVisitor<R, Node, Variable, Type> visitor,
-  ) => visitor.visitPropertyNotPromoted(this as PropertyNotPromoted<Type>);
+  ) =>
+      visitor.visitPropertyNotPromoted(this as PropertyNotPromoted<Type>);
 }
 
 /// Immutable data structure modeling the reachability of the given point in the
@@ -3276,7 +3260,7 @@ class Reachability {
   final int depth;
 
   Reachability._(this.parent, this.locallyReachable, this.overallReachable)
-    : depth = parent == null ? 0 : parent.depth + 1 {
+      : depth = parent == null ? 0 : parent.depth + 1 {
     assert(
       overallReachable ==
           (locallyReachable && (parent?.overallReachable ?? true)),
@@ -3284,10 +3268,10 @@ class Reachability {
   }
 
   const Reachability._initial()
-    : parent = null,
-      locallyReachable = true,
-      overallReachable = true,
-      depth = 0;
+      : parent = null,
+        locallyReachable = true,
+        overallReachable = true,
+        depth = 0;
 
   /// Updates `this` reachability to account for the reachability of [base].
   ///
@@ -3456,10 +3440,11 @@ class ThisNotPromoted extends NonPromotionReason {
   String get shortName => 'thisNotPromoted';
 
   @override
-  R
-  accept<R, Node extends Object, Variable extends Object, Type extends Object>(
+  R accept<R, Node extends Object, Variable extends Object,
+          Type extends Object>(
     NonPromotionReasonVisitor<R, Node, Variable, Type> visitor,
-  ) => visitor.visitThisNotPromoted(this);
+  ) =>
+      visitor.visitThisNotPromoted(this);
 }
 
 /// An instance of the [VariableModel] class represents the information gathered
@@ -3525,11 +3510,11 @@ class VariableModel<Type extends Object> {
   /// Creates a [VariableModel] representing a variable that's never been seen
   /// before.
   VariableModel.fresh({this.assigned = false})
-    : promotedTypes = null,
-      tested = const [],
-      unassigned = !assigned,
-      ssaNode = new SsaNode<Type>(null),
-      nonPromotionHistory = null;
+      : promotedTypes = null,
+        tested = const [],
+        unassigned = !assigned,
+        ssaNode = new SsaNode<Type>(null),
+        nonPromotionHistory = null;
 
   /// Indicates whether the variable has been write captured.
   bool get writeCaptured => ssaNode == null;
@@ -4020,9 +4005,10 @@ class VariableModel<Type extends Object> {
   static List<Type> _addToPromotedTypes<Type extends Object>(
     List<Type>? promotedTypes,
     Type promoted,
-  ) => promotedTypes == null
-      ? [promoted]
-      : (promotedTypes.toList()..add(promoted));
+  ) =>
+      promotedTypes == null
+          ? [promoted]
+          : (promotedTypes.toList()..add(promoted));
 
   static List<Type> _addTypeToUniqueList<Type extends Object>(
     List<Type> types,
@@ -4080,10 +4066,8 @@ class VariableModel<Type extends Object> {
 }
 
 /// Operations on variables, abstracted from concrete type interfaces.
-abstract class VariableOperations<
-  Variable extends Object,
-  Type extends Object
-> {
+abstract class VariableOperations<Variable extends Object,
+    Type extends Object> {
   /// Returns the static type of the given [variable].
   Type variableType(Variable variable);
 }
@@ -4201,7 +4185,7 @@ class _EqualityCheckIsNullCheck<Type extends Object>
   final bool isReferenceOnRight;
 
   _EqualityCheckIsNullCheck(this.reference, {required this.isReferenceOnRight})
-    : super._();
+      : super._();
 }
 
 /// Result of performing equality check.  This class is used as the return value
@@ -4210,13 +4194,8 @@ abstract class _EqualityCheckResult {
   const _EqualityCheckResult._();
 }
 
-class _FlowAnalysisImpl<
-  Node extends Object,
-  Statement extends Node,
-  Expression extends Object,
-  Variable extends Object,
-  Type extends Object
->
+class _FlowAnalysisImpl<Node extends Object, Statement extends Node,
+        Expression extends Object, Variable extends Object, Type extends Object>
     implements
         FlowAnalysis<Node, Statement, Expression, Variable, Type>,
         FlowModelHelper<Type> {
@@ -4525,7 +4504,8 @@ class _FlowAnalysisImpl<
   EqualityInfo<Type> equalityOperand_end(
     Expression operand,
     Type type,
-  ) => _computeEqualityInfo(operand, type);
+  ) =>
+      _computeEqualityInfo(operand, type);
 
   @override
   void equalityOperation_end(
@@ -4697,9 +4677,12 @@ class _FlowAnalysisImpl<
   @override
   Type getMatchedValueType() {
     _PatternContext<Type> context = _stack.last as _PatternContext<Type>;
-    return _current.infoFor(
-          context._matchedValuePromotionKey,
-        ).promotedTypes?.last ??
+    return _current
+            .infoFor(
+              context._matchedValuePromotionKey,
+            )
+            .promotedTypes
+            ?.last ??
         context._matchedValueUnpromotedType;
   }
 
@@ -4865,9 +4848,11 @@ class _FlowAnalysisImpl<
 
   @override
   bool isAssigned(Variable variable) {
-    return _current.infoFor(
-      promotionKeyStore.keyForVariable(variable),
-    ).assigned;
+    return _current
+        .infoFor(
+          promotionKeyStore.keyForVariable(variable),
+        )
+        .assigned;
   }
 
   @override
@@ -4899,9 +4884,11 @@ class _FlowAnalysisImpl<
 
   @override
   bool isUnassigned(Variable variable) {
-    return _current.infoFor(
-      promotionKeyStore.keyForVariable(variable),
-    ).unassigned;
+    return _current
+        .infoFor(
+          promotionKeyStore.keyForVariable(variable),
+        )
+        .unassigned;
   }
 
   @override
@@ -5183,9 +5170,12 @@ class _FlowAnalysisImpl<
 
   @override
   Type? promotedType(Variable variable) {
-    return _current.infoFor(
-      promotionKeyStore.keyForVariable(variable),
-    ).promotedTypes?.last;
+    return _current
+        .infoFor(
+          promotionKeyStore.keyForVariable(variable),
+        )
+        .promotedTypes
+        ?.last;
   }
 
   @override
@@ -5222,16 +5212,20 @@ class _FlowAnalysisImpl<
     if (scrutineeReference != null &&
         _current.infoFor(matchedValueReference.promotionKey).ssaNode ==
             _current.infoFor(scrutineeReference.promotionKey).ssaNode) {
-      ifTrue = ifTrue.tryPromoteForTypeCheck(
-        this,
-        scrutineeReference,
-        knownType,
-      ).ifTrue;
-      ifFalse = ifFalse.tryPromoteForTypeCheck(
-        this,
-        scrutineeReference,
-        knownType,
-      ).ifFalse;
+      ifTrue = ifTrue
+          .tryPromoteForTypeCheck(
+            this,
+            scrutineeReference,
+            knownType,
+          )
+          .ifTrue;
+      ifFalse = ifFalse
+          .tryPromoteForTypeCheck(
+            this,
+            scrutineeReference,
+            knownType,
+          )
+          .ifFalse;
     }
     _current = ifTrue;
     if (matchMayFailEvenIfCorrectType ||
@@ -5273,8 +5267,7 @@ class _FlowAnalysisImpl<
 
   @override
   SsaNode<Type>? ssaNodeForTesting(Variable variable) => _current
-      .variableInfo[promotionKeyStore.keyForVariable(variable)]
-      ?.ssaNode;
+      .variableInfo[promotionKeyStore.keyForVariable(variable)]?.ssaNode;
 
   @override
   bool switchStatement_afterCase() {
@@ -5627,11 +5620,12 @@ class _FlowAnalysisImpl<
   EqualityInfo<Type> _computeEqualityInfo(
     Expression expression,
     Type type,
-  ) => new EqualityInfo<Type>._(
-    _getExpressionInfo(expression),
-    type,
-    _getExpressionReference(expression),
-  );
+  ) =>
+      new EqualityInfo<Type>._(
+        _getExpressionInfo(expression),
+        type,
+        _getExpressionReference(expression),
+      );
 
   @override
   void _dumpState() {
@@ -5904,21 +5898,23 @@ class _FlowAnalysisImpl<
     }
     _PropertyReferenceWithType<Type> propertyReference =
         new _PropertyReferenceWithType<Type>(
-          propertyName,
-          propertyMember,
-          promotionKeyStore.getProperty(targetKey, propertyName),
-          staticType,
-          isPromotable: isPromotable,
-        );
+      propertyName,
+      propertyMember,
+      promotionKeyStore.getProperty(targetKey, propertyName),
+      staticType,
+      isPromotable: isPromotable,
+    );
     if (wholeExpression != null) {
       _storeExpressionReference(wholeExpression, propertyReference);
     }
     if (!propertyReference.isPromotable) {
       return null;
     }
-    if (_current.infoFor(
-      promotionKeyStore.getRootVariableKey(targetKey),
-    ).writeCaptured) {
+    if (_current
+        .infoFor(
+          promotionKeyStore.getRootVariableKey(targetKey),
+        )
+        .writeCaptured) {
       // The variable that was used to reach this property has been write
       // captured, so the property can't be promoted.
       return null;
@@ -5966,18 +5962,21 @@ class _FlowAnalysisImpl<
       unpromotedType: unpromotedType,
     );
     if (isImplicitlyTyped && operations.isTypeParameterType(matchedType)) {
-      _current = _current.tryPromoteForTypeCheck(
-        this,
-        _variableReference(promotionKey, unpromotedType),
-        matchedType,
-      ).ifTrue;
+      _current = _current
+          .tryPromoteForTypeCheck(
+            this,
+            _variableReference(promotionKey, unpromotedType),
+            matchedType,
+          )
+          .ifTrue;
     }
   }
 
   FlowModel<Type> _join(
     FlowModel<Type>? first,
     FlowModel<Type>? second,
-  ) => FlowModel.join(operations, first, second, _current._emptyVariableMap);
+  ) =>
+      FlowModel.join(operations, first, second, _current._emptyVariableMap);
 
   /// Creates a promotion key representing a temporary variable that doesn't
   /// correspond to any variable in the user's source code.  This is used by
@@ -6002,7 +6001,8 @@ class _FlowAnalysisImpl<
   FlowModel<Type> _merge(
     FlowModel<Type> first,
     FlowModel<Type>? second,
-  ) => FlowModel.merge(operations, first, second, _current._emptyVariableMap);
+  ) =>
+      FlowModel.merge(operations, first, second, _current._emptyVariableMap);
 
   /// Computes an updated flow model representing the result of a null check
   /// performed by a pattern.  The returned flow model represents what is known
@@ -6144,22 +6144,24 @@ class _FlowAnalysisImpl<
 
   ReferenceWithType<Type> _thisOrSuperReference(
     Type staticType,
-  ) => new ReferenceWithType<Type>(
-    promotionKeyStore.thisPromotionKey,
-    staticType,
-    isPromotable: false,
-    isThisOrSuper: true,
-  );
+  ) =>
+      new ReferenceWithType<Type>(
+        promotionKeyStore.thisPromotionKey,
+        staticType,
+        isPromotable: false,
+        isThisOrSuper: true,
+      );
 
   ReferenceWithType<Type> _variableReference(
     int variableKey,
     Type unpromotedType,
-  ) => new ReferenceWithType<Type>(
-    variableKey,
-    _current.infoFor(variableKey).promotedTypes?.last ?? unpromotedType,
-    isPromotable: true,
-    isThisOrSuper: false,
-  );
+  ) =>
+      new ReferenceWithType<Type>(
+        variableKey,
+        _current.infoFor(variableKey).promotedTypes?.last ?? unpromotedType,
+        isPromotable: true,
+        isThisOrSuper: false,
+      );
 
   /// Common logic for handling writes to variables, whether they occur as part
   /// of an ordinary assignment or a pattern assignment.
@@ -6325,13 +6327,9 @@ class _LegacyExpressionInfo<Type> {
 
 /// Implementation of [FlowAnalysis] that performs legacy (pre-null-safety) type
 /// promotion.
-class _LegacyTypePromotion<
-  Node extends Object,
-  Statement extends Node,
-  Expression extends Object,
-  Variable extends Object,
-  Type extends Object
-> implements FlowAnalysis<Node, Statement, Expression, Variable, Type> {
+class _LegacyTypePromotion<Node extends Object, Statement extends Node,
+        Expression extends Object, Variable extends Object, Type extends Object>
+    implements FlowAnalysis<Node, Statement, Expression, Variable, Type> {
   /// The [Operations], used to access types, check subtyping, and query
   /// variable types.
   final Operations<Variable, Type> _operations;
@@ -6371,7 +6369,7 @@ class _LegacyTypePromotion<
   final List<Type> _switchStatementTypeStack = [];
 
   _LegacyTypePromotion(this._operations, this._assignedVariables)
-    : _promotionKeyStore = _assignedVariables.promotionKeyStore;
+      : _promotionKeyStore = _assignedVariables.promotionKeyStore;
 
   @override
   bool get isReachable => true;
@@ -6447,7 +6445,8 @@ class _LegacyTypePromotion<
     bool isFinal = false,
     bool isLate = false,
     required bool isImplicitlyTyped,
-  }) => 0;
+  }) =>
+      0;
 
   @override
   void doStatement_bodyBegin(Statement doStatement) {}
@@ -6815,7 +6814,8 @@ class _LegacyTypePromotion<
     String propertyName,
     Object? propertyMember,
     Type staticType,
-  ) => null;
+  ) =>
+      null;
 
   @override
   Type? promotedType(Variable variable) {
@@ -6829,7 +6829,8 @@ class _LegacyTypePromotion<
     required Type knownType,
     bool matchFailsIfWrongType = true,
     bool matchMayFailEvenIfCorrectType = false,
-  }) => false;
+  }) =>
+      false;
 
   @override
   Type? propertyGet(
@@ -6838,7 +6839,8 @@ class _LegacyTypePromotion<
     String propertyName,
     Object? propertyMember,
     Type staticType,
-  ) => null;
+  ) =>
+      null;
 
   @override
   void pushSubpattern(Type matchedType) {}
@@ -6873,7 +6875,8 @@ class _LegacyTypePromotion<
   PatternVariableInfo<Variable> switchStatement_endAlternatives(
     Statement? node, {
     required bool hasLabels,
-  }) => new PatternVariableInfo();
+  }) =>
+      new PatternVariableInfo();
 
   @override
   void switchStatement_expressionEnd(
@@ -6893,7 +6896,8 @@ class _LegacyTypePromotion<
     String propertyName,
     Object? propertyMember,
     Type staticType,
-  ) => null;
+  ) =>
+      null;
 
   @override
   void tryCatchStatement_bodyBegin() {}
@@ -7098,7 +7102,8 @@ class _NullInfo<Type extends Object> implements ExpressionInfo<Type> {
   ExpressionInfo<Type>? rebaseForward(
     TypeOperations<Type> typeOperations,
     FlowModel<Type> base,
-  ) => null;
+  ) =>
+      null;
 }
 
 /// [_FlowContext] representing a logical-or pattern.
@@ -7158,12 +7163,13 @@ class _PatternContext<Type extends Object> extends _FlowContext {
   /// Creates a reference to the matched value having type [matchedType].
   ReferenceWithType<Type> createReference(
     Type matchedType,
-  ) => new ReferenceWithType(
-    _matchedValuePromotionKey,
-    matchedType,
-    isPromotable: true,
-    isThisOrSuper: false,
-  );
+  ) =>
+      new ReferenceWithType(
+        _matchedValuePromotionKey,
+        matchedType,
+        isPromotable: true,
+        isThisOrSuper: false,
+      );
 }
 
 /// [ReferenceWithType] object representing a property get.
@@ -7333,7 +7339,8 @@ class _TrivialExpressionInfo<Type extends Object>
   ExpressionInfo<Type> rebaseForward(
     TypeOperations<Type> typeOperations,
     FlowModel<Type> base,
-  ) => new _TrivialExpressionInfo(base);
+  ) =>
+      new _TrivialExpressionInfo(base);
 }
 
 /// [_FlowContext] representing a try statement.

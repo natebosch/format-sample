@@ -21,10 +21,10 @@ class PageRoutes {
     if (targetAlbum != null) {
       Navigator.of(context, rootNavigator: rootRouter).push(MaterialPageRoute(
         builder: (context) => SingleAlbumPage(
-              null,
-              album: targetAlbum,
-              heightToSubstract: subtract60ForBottomBar ? 60 : 0,
-            ),
+          null,
+          album: targetAlbum,
+          heightToSubstract: subtract60ForBottomBar ? 60 : 0,
+        ),
       ));
     }
   }
@@ -40,9 +40,9 @@ class PageRoutes {
     if (targetArtist != null) {
       Navigator.of(context, rootNavigator: rootRouter).push(MaterialPageRoute(
         builder: (context) => SingleArtistPage(
-              targetArtist,
-              heightToSubstract: subtract60ForBottomBar ? 60 : 0,
-            ),
+          targetArtist,
+          heightToSubstract: subtract60ForBottomBar ? 60 : 0,
+        ),
       ));
     }
   }
@@ -56,9 +56,9 @@ class PageRoutes {
     if (song != null) {
       Navigator.of(context, rootNavigator: rootRouter).push(MaterialPageRoute(
         builder: (context) => SongTags(
-              song,
-              heightToSubtract: subtract60ForBottomBar ? 60 : 0,
-            ),
+          song,
+          heightToSubtract: subtract60ForBottomBar ? 60 : 0,
+        ),
       ));
     }
   }

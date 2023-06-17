@@ -40,13 +40,13 @@ class Promo extends Equatable {
   }
   @override
   List<Object> get props => [
-    discount,
-    title,
-    promoCode,
-    daysLeft,
-    image,
-    textColor,
-  ];
+        discount,
+        title,
+        promoCode,
+        daysLeft,
+        image,
+        textColor,
+      ];
 
   @override
   String toString() => discount.toStringAsFixed(0) + '%, ' + title;

@@ -25,9 +25,10 @@ class ThemeSeattle extends SharedTheme {
   @override
   RoundedRectangleBorder puzzleBorder(
     bool small,
-  ) => const RoundedRectangleBorder(
-    borderRadius: BorderRadius.all(Radius.circular(1)),
-  );
+  ) =>
+      const RoundedRectangleBorder(
+        borderRadius: BorderRadius.all(Radius.circular(1)),
+      );
 
   @override
   EdgeInsetsGeometry tilePadding(PuzzleProxy puzzle) =>

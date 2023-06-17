@@ -55,37 +55,37 @@ void main() {
         );
       },
       expect: () => [
-            SelectableState.selected({
-              const SelectableParcelsItem(
-                info: ParcelInfo(trackInfo: TrackNumberInfo('1')),
-                pageType: ParcelsPageType.active,
-              ),
-            }),
-            SelectableState.selected({
-              const SelectableParcelsItem(
-                info: ParcelInfo(trackInfo: TrackNumberInfo('1')),
-                pageType: ParcelsPageType.active,
-              ),
-              const SelectableParcelsItem(
-                info: ParcelInfo(trackInfo: TrackNumberInfo('2')),
-                pageType: ParcelsPageType.active,
-              ),
-            }),
-            SelectableState.selected({
-              const SelectableParcelsItem(
-                info: ParcelInfo(trackInfo: TrackNumberInfo('1')),
-                pageType: ParcelsPageType.active,
-              ),
-              const SelectableParcelsItem(
-                info: ParcelInfo(trackInfo: TrackNumberInfo('2')),
-                pageType: ParcelsPageType.active,
-              ),
-              const SelectableParcelsItem(
-                info: ParcelInfo(trackInfo: TrackNumberInfo('3')),
-                pageType: ParcelsPageType.active,
-              ),
-            }),
-          ],
+        SelectableState.selected({
+          const SelectableParcelsItem(
+            info: ParcelInfo(trackInfo: TrackNumberInfo('1')),
+            pageType: ParcelsPageType.active,
+          ),
+        }),
+        SelectableState.selected({
+          const SelectableParcelsItem(
+            info: ParcelInfo(trackInfo: TrackNumberInfo('1')),
+            pageType: ParcelsPageType.active,
+          ),
+          const SelectableParcelsItem(
+            info: ParcelInfo(trackInfo: TrackNumberInfo('2')),
+            pageType: ParcelsPageType.active,
+          ),
+        }),
+        SelectableState.selected({
+          const SelectableParcelsItem(
+            info: ParcelInfo(trackInfo: TrackNumberInfo('1')),
+            pageType: ParcelsPageType.active,
+          ),
+          const SelectableParcelsItem(
+            info: ParcelInfo(trackInfo: TrackNumberInfo('2')),
+            pageType: ParcelsPageType.active,
+          ),
+          const SelectableParcelsItem(
+            info: ParcelInfo(trackInfo: TrackNumberInfo('3')),
+            pageType: ParcelsPageType.active,
+          ),
+        }),
+      ],
     );
 
     blocTest(
@@ -108,21 +108,21 @@ void main() {
         });
       },
       expect: () => [
-            SelectableState.selected({
-              const SelectableParcelsItem(
-                info: ParcelInfo(trackInfo: TrackNumberInfo('1')),
-                pageType: ParcelsPageType.active,
-              ),
-              const SelectableParcelsItem(
-                info: ParcelInfo(trackInfo: TrackNumberInfo('2')),
-                pageType: ParcelsPageType.active,
-              ),
-              const SelectableParcelsItem(
-                info: ParcelInfo(trackInfo: TrackNumberInfo('3')),
-                pageType: ParcelsPageType.active,
-              ),
-            }),
-          ],
+        SelectableState.selected({
+          const SelectableParcelsItem(
+            info: ParcelInfo(trackInfo: TrackNumberInfo('1')),
+            pageType: ParcelsPageType.active,
+          ),
+          const SelectableParcelsItem(
+            info: ParcelInfo(trackInfo: TrackNumberInfo('2')),
+            pageType: ParcelsPageType.active,
+          ),
+          const SelectableParcelsItem(
+            info: ParcelInfo(trackInfo: TrackNumberInfo('3')),
+            pageType: ParcelsPageType.active,
+          ),
+        }),
+      ],
     );
 
     blocTest(
@@ -149,30 +149,30 @@ void main() {
         );
       },
       expect: () => [
-            SelectableState.selected({
-              const SelectableParcelsItem(
-                info: ParcelInfo(trackInfo: TrackNumberInfo('1')),
-                pageType: ParcelsPageType.active,
-              ),
-            }),
-            SelectableState.selected({
-              const SelectableParcelsItem(
-                info: ParcelInfo(trackInfo: TrackNumberInfo('1')),
-                pageType: ParcelsPageType.active,
-              ),
-              const SelectableParcelsItem(
-                info: ParcelInfo(trackInfo: TrackNumberInfo('2')),
-                pageType: ParcelsPageType.active,
-              ),
-            }),
-            const SelectableState.noSelection(),
-            SelectableState.selected({
-              const SelectableParcelsItem(
-                info: ParcelInfo(trackInfo: TrackNumberInfo('3')),
-                pageType: ParcelsPageType.archive,
-              ),
-            }),
-          ],
+        SelectableState.selected({
+          const SelectableParcelsItem(
+            info: ParcelInfo(trackInfo: TrackNumberInfo('1')),
+            pageType: ParcelsPageType.active,
+          ),
+        }),
+        SelectableState.selected({
+          const SelectableParcelsItem(
+            info: ParcelInfo(trackInfo: TrackNumberInfo('1')),
+            pageType: ParcelsPageType.active,
+          ),
+          const SelectableParcelsItem(
+            info: ParcelInfo(trackInfo: TrackNumberInfo('2')),
+            pageType: ParcelsPageType.active,
+          ),
+        }),
+        const SelectableState.noSelection(),
+        SelectableState.selected({
+          const SelectableParcelsItem(
+            info: ParcelInfo(trackInfo: TrackNumberInfo('3')),
+            pageType: ParcelsPageType.archive,
+          ),
+        }),
+      ],
     );
 
     blocTest(
@@ -197,24 +197,24 @@ void main() {
         });
       },
       expect: () => [
-            SelectableState.selected({
-              const SelectableParcelsItem(
-                info: ParcelInfo(trackInfo: TrackNumberInfo('1')),
-                pageType: ParcelsPageType.active,
-              ),
-            }),
-            const SelectableState.noSelection(),
-            SelectableState.selected({
-              const SelectableParcelsItem(
-                info: ParcelInfo(trackInfo: TrackNumberInfo('2')),
-                pageType: ParcelsPageType.archive,
-              ),
-              const SelectableParcelsItem(
-                info: ParcelInfo(trackInfo: TrackNumberInfo('3')),
-                pageType: ParcelsPageType.archive,
-              ),
-            }),
-          ],
+        SelectableState.selected({
+          const SelectableParcelsItem(
+            info: ParcelInfo(trackInfo: TrackNumberInfo('1')),
+            pageType: ParcelsPageType.active,
+          ),
+        }),
+        const SelectableState.noSelection(),
+        SelectableState.selected({
+          const SelectableParcelsItem(
+            info: ParcelInfo(trackInfo: TrackNumberInfo('2')),
+            pageType: ParcelsPageType.archive,
+          ),
+          const SelectableParcelsItem(
+            info: ParcelInfo(trackInfo: TrackNumberInfo('3')),
+            pageType: ParcelsPageType.archive,
+          ),
+        }),
+      ],
     );
 
     blocTest(
@@ -260,54 +260,54 @@ void main() {
         );
       },
       expect: () => [
-            SelectableState.selected({
-              const SelectableParcelsItem(
-                info: ParcelInfo(trackInfo: TrackNumberInfo('1')),
-                pageType: ParcelsPageType.active,
-              ),
-            }),
-            SelectableState.selected({
-              const SelectableParcelsItem(
-                info: ParcelInfo(trackInfo: TrackNumberInfo('1')),
-                pageType: ParcelsPageType.active,
-              ),
-              const SelectableParcelsItem(
-                info: ParcelInfo(trackInfo: TrackNumberInfo('2')),
-                pageType: ParcelsPageType.active,
-              ),
-            }),
-            SelectableState.selected({
-              const SelectableParcelsItem(
-                info: ParcelInfo(trackInfo: TrackNumberInfo('1')),
-                pageType: ParcelsPageType.active,
-              ),
-              const SelectableParcelsItem(
-                info: ParcelInfo(trackInfo: TrackNumberInfo('2')),
-                pageType: ParcelsPageType.active,
-              ),
-              const SelectableParcelsItem(
-                info: ParcelInfo(trackInfo: TrackNumberInfo('3')),
-                pageType: ParcelsPageType.active,
-              ),
-            }),
-            SelectableState.selected({
-              const SelectableParcelsItem(
-                info: ParcelInfo(trackInfo: TrackNumberInfo('1')),
-                pageType: ParcelsPageType.active,
-              ),
-              const SelectableParcelsItem(
-                info: ParcelInfo(trackInfo: TrackNumberInfo('3')),
-                pageType: ParcelsPageType.active,
-              ),
-            }),
-            SelectableState.selected({
-              const SelectableParcelsItem(
-                info: ParcelInfo(trackInfo: TrackNumberInfo('3')),
-                pageType: ParcelsPageType.active,
-              ),
-            }),
-            const SelectableState.noSelection(),
-          ],
+        SelectableState.selected({
+          const SelectableParcelsItem(
+            info: ParcelInfo(trackInfo: TrackNumberInfo('1')),
+            pageType: ParcelsPageType.active,
+          ),
+        }),
+        SelectableState.selected({
+          const SelectableParcelsItem(
+            info: ParcelInfo(trackInfo: TrackNumberInfo('1')),
+            pageType: ParcelsPageType.active,
+          ),
+          const SelectableParcelsItem(
+            info: ParcelInfo(trackInfo: TrackNumberInfo('2')),
+            pageType: ParcelsPageType.active,
+          ),
+        }),
+        SelectableState.selected({
+          const SelectableParcelsItem(
+            info: ParcelInfo(trackInfo: TrackNumberInfo('1')),
+            pageType: ParcelsPageType.active,
+          ),
+          const SelectableParcelsItem(
+            info: ParcelInfo(trackInfo: TrackNumberInfo('2')),
+            pageType: ParcelsPageType.active,
+          ),
+          const SelectableParcelsItem(
+            info: ParcelInfo(trackInfo: TrackNumberInfo('3')),
+            pageType: ParcelsPageType.active,
+          ),
+        }),
+        SelectableState.selected({
+          const SelectableParcelsItem(
+            info: ParcelInfo(trackInfo: TrackNumberInfo('1')),
+            pageType: ParcelsPageType.active,
+          ),
+          const SelectableParcelsItem(
+            info: ParcelInfo(trackInfo: TrackNumberInfo('3')),
+            pageType: ParcelsPageType.active,
+          ),
+        }),
+        SelectableState.selected({
+          const SelectableParcelsItem(
+            info: ParcelInfo(trackInfo: TrackNumberInfo('3')),
+            pageType: ParcelsPageType.active,
+          ),
+        }),
+        const SelectableState.noSelection(),
+      ],
     );
 
     blocTest(
@@ -335,38 +335,38 @@ void main() {
         cubit.clearSelection();
       },
       expect: () => [
-            SelectableState.selected({
-              const SelectableParcelsItem(
-                info: ParcelInfo(trackInfo: TrackNumberInfo('1')),
-                pageType: ParcelsPageType.active,
-              ),
-            }),
-            SelectableState.selected({
-              const SelectableParcelsItem(
-                info: ParcelInfo(trackInfo: TrackNumberInfo('1')),
-                pageType: ParcelsPageType.active,
-              ),
-              const SelectableParcelsItem(
-                info: ParcelInfo(trackInfo: TrackNumberInfo('2')),
-                pageType: ParcelsPageType.active,
-              ),
-            }),
-            SelectableState.selected({
-              const SelectableParcelsItem(
-                info: ParcelInfo(trackInfo: TrackNumberInfo('1')),
-                pageType: ParcelsPageType.active,
-              ),
-              const SelectableParcelsItem(
-                info: ParcelInfo(trackInfo: TrackNumberInfo('2')),
-                pageType: ParcelsPageType.active,
-              ),
-              const SelectableParcelsItem(
-                info: ParcelInfo(trackInfo: TrackNumberInfo('3')),
-                pageType: ParcelsPageType.active,
-              ),
-            }),
-            const SelectableState.noSelection(),
-          ],
+        SelectableState.selected({
+          const SelectableParcelsItem(
+            info: ParcelInfo(trackInfo: TrackNumberInfo('1')),
+            pageType: ParcelsPageType.active,
+          ),
+        }),
+        SelectableState.selected({
+          const SelectableParcelsItem(
+            info: ParcelInfo(trackInfo: TrackNumberInfo('1')),
+            pageType: ParcelsPageType.active,
+          ),
+          const SelectableParcelsItem(
+            info: ParcelInfo(trackInfo: TrackNumberInfo('2')),
+            pageType: ParcelsPageType.active,
+          ),
+        }),
+        SelectableState.selected({
+          const SelectableParcelsItem(
+            info: ParcelInfo(trackInfo: TrackNumberInfo('1')),
+            pageType: ParcelsPageType.active,
+          ),
+          const SelectableParcelsItem(
+            info: ParcelInfo(trackInfo: TrackNumberInfo('2')),
+            pageType: ParcelsPageType.active,
+          ),
+          const SelectableParcelsItem(
+            info: ParcelInfo(trackInfo: TrackNumberInfo('3')),
+            pageType: ParcelsPageType.active,
+          ),
+        }),
+        const SelectableState.noSelection(),
+      ],
     );
   });
 }

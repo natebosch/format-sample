@@ -111,12 +111,12 @@ class NestedRouterDelegate extends RouterDelegate<UrlState>
 
   @override
   Widget build(BuildContext context) => _RootRouter(
-    router: controller,
-    navigatorObservers: _navigatorObservers,
-    navigatorObserversBuilder: navigatorObservers,
-    navRestorationScopeId: navRestorationScopeId,
-    placeholder: placeholder,
-  );
+        router: controller,
+        navigatorObservers: _navigatorObservers,
+        navigatorObserversBuilder: navigatorObservers,
+        navRestorationScopeId: navRestorationScopeId,
+        placeholder: placeholder,
+      );
 
   void _handleRebuild() {
     notifyListeners();
@@ -213,11 +213,11 @@ class _DeclarativeRouterDelegate extends NestedRouterDelegate {
     NavigatorObserversBuilder navigatorObservers =
         NestedRouterDelegate.defaultNavigatorObserversBuilder,
   }) : super(
-         router,
-         navRestorationScopeId: navRestorationScopeId,
-         navigatorObservers: navigatorObservers,
-         initialDeepLink: initialDeepLink,
-       ) {
+          router,
+          navRestorationScopeId: navRestorationScopeId,
+          navigatorObservers: navigatorObservers,
+          initialDeepLink: initialDeepLink,
+        ) {
     router._managedByWidget = true;
   }
 

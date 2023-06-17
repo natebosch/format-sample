@@ -71,13 +71,13 @@ class ShipmentActivityInfo extends Equatable {
     this.countryCode_,
     required this.dateTime,
   }) : activityLocation =
-           location_ == null && postalCode_ == null && countryCode_ == null
-               ? null
-               : Address(
-                   location: location_,
-                   postalCode: postalCode_,
-                   countryCode: countryCode_,
-                 );
+            location_ == null && postalCode_ == null && countryCode_ == null
+                ? null
+                : Address(
+                    location: location_,
+                    postalCode: postalCode_,
+                    countryCode: countryCode_,
+                  );
 
   @ignore
   ShipmentActivityInfo.from({
@@ -88,21 +88,21 @@ class ShipmentActivityInfo extends Equatable {
     this.statusDescription,
     this.activityLocation,
     DateTime? dateTime,
-  }) : dateTime = dateTime ?? DateTime.fromMillisecondsSinceEpoch(0),
-       location_ = activityLocation?.location,
-       postalCode_ = activityLocation?.postalCode,
-       countryCode_ = activityLocation?.countryCode;
+  })  : dateTime = dateTime ?? DateTime.fromMillisecondsSinceEpoch(0),
+        location_ = activityLocation?.location,
+        postalCode_ = activityLocation?.postalCode,
+        countryCode_ = activityLocation?.countryCode;
 
   @override
   List<Object?> get props => [
-    id,
-    trackNumber,
-    serviceType,
-    statusType,
-    statusDescription,
-    activityLocation,
-    dateTime,
-  ];
+        id,
+        trackNumber,
+        serviceType,
+        statusType,
+        statusDescription,
+        activityLocation,
+        dateTime,
+      ];
 
   @override
   bool get stringify => true;

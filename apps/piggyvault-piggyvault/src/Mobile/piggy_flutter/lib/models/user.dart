@@ -9,12 +9,12 @@ class User {
   });
 
   User.fromJson(Map<String, dynamic> json)
-    : id = json['id'],
-      name = json['name'],
-      surname = json['surname'],
-      userName = json['userName'],
-      emailAddress = json['emailAddress'],
-      profilePictureId = json['profilePictureId'];
+      : id = json['id'],
+        name = json['name'],
+        surname = json['surname'],
+        userName = json['userName'],
+        emailAddress = json['emailAddress'],
+        profilePictureId = json['profilePictureId'];
 
   final String name, surname, userName, emailAddress, profilePictureId;
   final int id;

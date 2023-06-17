@@ -227,11 +227,8 @@ class _EndedGroupDetailsState extends State<EndedGroupDetails> {
                                           if (Platform.isIOS) {
                                             await Clipboard.setData(
                                               ClipboardData(
-                                                text: '${futureSnapshot.data[
-                                                      index
-                                                    ].data[
-                                                      'mobilenum'
-                                                    ].toString()}',
+                                                text:
+                                                    '${futureSnapshot.data[index].data['mobilenum'].toString()}',
                                               ),
                                             ).then((result) {
                                               final snackBar = SnackBar(
@@ -256,20 +253,13 @@ class _EndedGroupDetailsState extends State<EndedGroupDetails> {
                                             });
                                           } else {
                                             await launch(
-                                              'tel://${futureSnapshot.data[
-                                                    index
-                                                  ].data[
-                                                    'mobilenum'
-                                                  ].toString()}',
+                                              'tel://${futureSnapshot.data[index].data['mobilenum'].toString()}',
                                             );
                                           }
                                         } catch (e) {
                                           await Clipboard.setData(ClipboardData(
-                                            text: '${futureSnapshot.data[
-                                                  index
-                                                ].data[
-                                                  'mobilenum'
-                                                ].toString()}',
+                                            text:
+                                                '${futureSnapshot.data[index].data['mobilenum'].toString()}',
                                           )).then((result) {
                                             final snackBar = SnackBar(
                                               backgroundColor: Theme.of(context)

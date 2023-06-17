@@ -106,8 +106,8 @@ class _SignInPageState extends State<SignInPage> {
                               textInputDecoration.copyWith(labelText: 'Email'),
                           validator: (val) {
                             return RegExp(
-                                    r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+",
-                                  ).hasMatch(val)
+                              r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+",
+                            ).hasMatch(val)
                                 ? null
                                 : "Please enter a valid email";
                           },

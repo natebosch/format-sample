@@ -29,12 +29,12 @@ class WebCardField extends StatefulWidget {
     this.focusNode,
     this.autofocus = false,
     this.dangerouslyUpdateFullCardDetails = false,
-  }) : assert(constraints == null || constraints.debugAssertIsValid()),
-       constraints = (width != null || height != null)
-           ? constraints?.tighten(width: width, height: height) ??
-               BoxConstraints.tightFor(width: width, height: height)
-           : constraints,
-       super(key: key);
+  })  : assert(constraints == null || constraints.debugAssertIsValid()),
+        constraints = (width != null || height != null)
+            ? constraints?.tighten(width: width, height: height) ??
+                BoxConstraints.tightFor(width: width, height: height)
+            : constraints,
+        super(key: key);
 
   final BoxConstraints? constraints;
   final CardFocusCallback? onFocus;

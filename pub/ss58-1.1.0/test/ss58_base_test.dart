@@ -26,11 +26,13 @@ void main() {
         final String expectedErrorMessage =
             'Expected an address with prefix 2, but 5GrwvaEF5zXb26Fz9rcQpDWS57CtERHpNehXCPcNoHGKutQY has prefix 42';
 
-        expect(() => Codec(prefix).decode(address), throwsA(predicate(
-          (exception) =>
-              exception is InvalidAddressPrefixException &&
-              exception.toString() == expectedErrorMessage,
-        )));
+        expect(
+            () => Codec(prefix).decode(address),
+            throwsA(predicate(
+              (exception) =>
+                  exception is InvalidAddressPrefixException &&
+                  exception.toString() == expectedErrorMessage,
+            )));
       },
     );
   });
@@ -67,11 +69,13 @@ void main() {
 
       final String expectedErrorMessage = 'Invalid SS58 prefix: -42.';
 
-      expect(() => Codec(prefix).encode(bytes), throwsA(predicate(
-        (exception) =>
-            exception is InvalidPrefixException &&
-            exception.toString() == expectedErrorMessage,
-      )));
+      expect(
+          () => Codec(prefix).encode(bytes),
+          throwsA(predicate(
+            (exception) =>
+                exception is InvalidPrefixException &&
+                exception.toString() == expectedErrorMessage,
+          )));
     });
 
     test('Should throw when given prefix is greater than 16383', () {
@@ -83,11 +87,13 @@ void main() {
 
       final String expectedErrorMessage = 'Invalid SS58 prefix: 16384.';
 
-      expect(() => Codec(prefix).encode(bytes), throwsA(predicate(
-        (exception) =>
-            exception is InvalidPrefixException &&
-            exception.toString() == expectedErrorMessage,
-      )));
+      expect(
+          () => Codec(prefix).encode(bytes),
+          throwsA(predicate(
+            (exception) =>
+                exception is InvalidPrefixException &&
+                exception.toString() == expectedErrorMessage,
+          )));
     });
 
     test('Should return a Codec instance with defined prefix', () {

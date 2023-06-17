@@ -45,19 +45,18 @@ void loadDesign({
   webClient
       .post(url, credentials.token, data: json.encode(data), rawResponse: true)
       .then((dynamic response) {
-        if ((response as Response).statusCode >= 400) {
-          showErrorDialog(
-            context: context,
-            message:
-                '${(response as Response).statusCode}: ${(response as Response).reasonPhrase}',
-          );
-          onComplete(null);
-        } else {
-          onComplete(response);
-        }
-      })
-      .catchError((dynamic error) {
-        showErrorDialog(context: context, message: '$error');
-        onComplete(null);
-      });
+    if ((response as Response).statusCode >= 400) {
+      showErrorDialog(
+        context: context,
+        message:
+            '${(response as Response).statusCode}: ${(response as Response).reasonPhrase}',
+      );
+      onComplete(null);
+    } else {
+      onComplete(response);
+    }
+  }).catchError((dynamic error) {
+    showErrorDialog(context: context, message: '$error');
+    onComplete(null);
+  });
 }

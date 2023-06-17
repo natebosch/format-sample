@@ -7,7 +7,7 @@ class SeedsQRCodeScannerWidget extends StatelessWidget {
   final QRViewCreatedCallback? onQRViewCreated;
 
   const SeedsQRCodeScannerWidget({this.onQRViewCreated, Key? key, this.qrKey})
-    : super(key: key);
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {

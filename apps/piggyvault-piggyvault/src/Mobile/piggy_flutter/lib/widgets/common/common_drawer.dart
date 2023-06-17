@@ -20,7 +20,7 @@ class CommonDrawer extends StatelessWidget {
   final AnimationController animationController;
 
   const CommonDrawer({Key key, @required this.animationController})
-    : super(key: key);
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -33,15 +33,16 @@ class CommonDrawer extends StatelessWidget {
             title: Text("Home", style: menuTextStyle),
             leading: Icon(Icons.home, color: Colors.blue),
             onTap: (() => Navigator.of(context).push(
-              MaterialPageRoute(builder: (context) => HomeScreen()),
-            )),
+                  MaterialPageRoute(builder: (context) => HomeScreen()),
+                )),
           ),
           ListTile(
             title: Text("Accounts", style: menuTextStyle),
             leading: Icon(Icons.account_balance_wallet, color: Colors.green),
             onTap: (() => Navigator.of(context).push(MaterialPageRoute(
-              builder: (context) => HomeScreen(startpage: StartPage.Accounts),
-            ))),
+                  builder: (context) =>
+                      HomeScreen(startpage: StartPage.Accounts),
+                ))),
             trailing: BlocBuilder<AccountsBloc, AccountsState>(
               builder: (context, state) {
                 if (state is AccountsLoaded) {
@@ -60,18 +61,18 @@ class CommonDrawer extends StatelessWidget {
             leading: Icon(Icons.insert_chart, color: Colors.amber),
             onTap: () => Navigator.of(context).push(MaterialPageRoute(
               builder: (BuildContext context) => ReportsScreen(
-                    animationController: animationController,
-                  ),
+                animationController: animationController,
+              ),
             )),
           ),
           ListTile(
             title: Text("Settings", style: menuTextStyle),
             leading: Icon(Icons.settings, color: Colors.brown),
             onTap: (() => Navigator.of(context).push(MaterialPageRoute(
-              builder: (context) => SettingsScreen(
+                  builder: (context) => SettingsScreen(
                     animationController: animationController,
                   ),
-            ))),
+                ))),
           ),
           Divider(),
           ListTile(
@@ -94,10 +95,10 @@ class CommonDrawer extends StatelessWidget {
       title: Text("Categories", style: menuTextStyle),
       leading: Icon(Icons.category, color: Colors.cyan),
       onTap: (() => Navigator.of(context).push(MaterialPageRoute(
-        builder: (context) => CategoryListPage(
+            builder: (context) => CategoryListPage(
               animationController: animationController,
             ),
-      ))),
+          ))),
       trailing: BlocBuilder<CategoriesBloc, CategoriesState>(
         builder: (context, state) {
           if (state is CategoriesLoaded) {
@@ -121,7 +122,7 @@ class CommonDrawer extends StatelessWidget {
             accountEmail: Text(state.user.emailAddress),
             currentAccountPicture: CircleAvatar(
 //              backgroundImage: new AssetImage(UIData.pkImage),
-            ),
+                ),
           );
         }
 

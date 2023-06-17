@@ -20,5 +20,6 @@ class MiraiOutlinedButton with _$MiraiOutlinedButton {
 
   factory MiraiOutlinedButton.fromJson(
     Map<String, dynamic> json,
-  ) => _$MiraiOutlinedButtonFromJson(json);
+  ) =>
+      _$MiraiOutlinedButtonFromJson(json);
 }

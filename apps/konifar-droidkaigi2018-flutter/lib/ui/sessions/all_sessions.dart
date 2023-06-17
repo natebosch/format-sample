@@ -23,8 +23,8 @@ class AllSessionsPageState extends State<AllSessionsPage>
     super.initState();
 
     new RepositoryFactory().getRoomRepository().findAll().then(
-      (r) => setRooms(r.values.toList()),
-    );
+          (r) => setRooms(r.values.toList()),
+        );
   }
 
   @override

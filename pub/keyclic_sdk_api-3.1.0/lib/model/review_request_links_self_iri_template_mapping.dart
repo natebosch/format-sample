@@ -85,7 +85,7 @@ class ReviewRequestLinksSelfIriTemplateMapping {
 
   // maps a json object with a list of ReviewRequestLinksSelfIriTemplateMapping-objects as value to a dart map
   static Map<String, List<ReviewRequestLinksSelfIriTemplateMapping>>
-  mapListFromJson(Map<String, dynamic>? json) {
+      mapListFromJson(Map<String, dynamic>? json) {
     if (json == null) {
       return <String, List<ReviewRequestLinksSelfIriTemplateMapping>>{};
     }

@@ -107,9 +107,8 @@ class _Usage {
     } else if (option.isMultiple) {
       if (option.defaultsTo != null &&
           (option.defaultsTo as Iterable).isNotEmpty) {
-        var defaults = (option.defaultsTo as List)
-            .map((value) => '"$value"')
-            .join(', ');
+        var defaults =
+            (option.defaultsTo as List).map((value) => '"$value"').join(', ');
         _write(2, '(defaults to $defaults)');
       }
     } else if (option.defaultsTo != null) {
@@ -183,8 +182,8 @@ class _Usage {
     // If we are writing the last column, word wrap it to fit.
     if (column == _columnWidths.length && lineLength != null) {
       var start = _columnWidths.take(column).reduce(
-        (start, width) => start + width,
-      );
+            (start, width) => start + width,
+          );
       lines = [
         for (var line in lines)
           ...wrapTextAsLines(line, start: start, length: lineLength),

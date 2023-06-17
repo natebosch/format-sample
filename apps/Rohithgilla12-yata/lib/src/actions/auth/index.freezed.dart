@@ -131,7 +131,7 @@ abstract class $Login$CopyWith<$Res> implements $LoginCopyWith<$Res> {
 class _$Login$CopyWithImpl<$Res> extends _$LoginCopyWithImpl<$Res>
     implements $Login$CopyWith<$Res> {
   _$Login$CopyWithImpl(Login$ _value, $Res Function(Login$) _then)
-    : super(_value, (v) => _then(v as Login$));
+      : super(_value, (v) => _then(v as Login$));
 
   @override
   Login$ get _value => super._value as Login$;
@@ -163,10 +163,10 @@ class _$Login$ implements Login$ {
     @required this.password,
     @required this.result,
     this.pendingId = _kLoginPendingId,
-  }) : assert(email != null),
-       assert(password != null),
-       assert(result != null),
-       assert(pendingId != null);
+  })  : assert(email != null),
+        assert(password != null),
+        assert(result != null),
+        assert(pendingId != null);
 
   @override
   final String email;
@@ -213,9 +213,9 @@ class _$Login$ implements Login$ {
 
   @override
   $Login$CopyWith<Login$> get copyWith => _$Login$CopyWithImpl<Login$>(
-    this,
-    _$identity,
-  );
+        this,
+        _$identity,
+      );
 
   @override
   @optionalTypeArgs
@@ -339,8 +339,8 @@ class _$LoginSuccessful implements LoginSuccessful {
   const _$LoginSuccessful(
     this.user, [
     this.pendingId = _kLoginPendingId,
-  ]) : assert(user != null),
-       assert(pendingId != null);
+  ])  : assert(user != null),
+        assert(pendingId != null);
 
   @override
   final AppUser user;
@@ -373,11 +373,11 @@ class _$LoginSuccessful implements LoginSuccessful {
       const DeepCollectionEquality().hash(pendingId);
 
   @override
-  $LoginSuccessfulCopyWith<LoginSuccessful>
-  get copyWith => _$LoginSuccessfulCopyWithImpl<LoginSuccessful>(
-    this,
-    _$identity,
-  );
+  $LoginSuccessfulCopyWith<LoginSuccessful> get copyWith =>
+      _$LoginSuccessfulCopyWithImpl<LoginSuccessful>(
+        this,
+        _$identity,
+      );
 
   @override
   @optionalTypeArgs
@@ -472,7 +472,7 @@ abstract class $LoginErrorCopyWith<$Res> implements $LoginCopyWith<$Res> {
 class _$LoginErrorCopyWithImpl<$Res> extends _$LoginCopyWithImpl<$Res>
     implements $LoginErrorCopyWith<$Res> {
   _$LoginErrorCopyWithImpl(LoginError _value, $Res Function(LoginError) _then)
-    : super(_value, (v) => _then(v as LoginError));
+      : super(_value, (v) => _then(v as LoginError));
 
   @override
   LoginError get _value => super._value as LoginError;
@@ -494,8 +494,8 @@ class _$LoginError implements LoginError {
   const _$LoginError(
     this.error, [
     this.pendingId = _kLoginPendingId,
-  ]) : assert(error != null),
-       assert(pendingId != null);
+  ])  : assert(error != null),
+        assert(pendingId != null);
 
   @override
   final Object error;
@@ -528,8 +528,8 @@ class _$LoginError implements LoginError {
       const DeepCollectionEquality().hash(pendingId);
 
   @override
-  $LoginErrorCopyWith<LoginError>
-  get copyWith => _$LoginErrorCopyWithImpl<LoginError>(this, _$identity);
+  $LoginErrorCopyWith<LoginError> get copyWith =>
+      _$LoginErrorCopyWithImpl<LoginError>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -688,7 +688,7 @@ abstract class $Logout$CopyWith<$Res> {
 class _$Logout$CopyWithImpl<$Res> extends _$LogoutCopyWithImpl<$Res>
     implements $Logout$CopyWith<$Res> {
   _$Logout$CopyWithImpl(Logout$ _value, $Res Function(Logout$) _then)
-    : super(_value, (v) => _then(v as Logout$));
+      : super(_value, (v) => _then(v as Logout$));
 
   @override
   Logout$ get _value => super._value as Logout$;
@@ -925,8 +925,8 @@ class _$LogoutError implements LogoutError {
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(error);
 
   @override
-  $LogoutErrorCopyWith<LogoutError>
-  get copyWith => _$LogoutErrorCopyWithImpl<LogoutError>(this, _$identity);
+  $LogoutErrorCopyWith<LogoutError> get copyWith =>
+      _$LogoutErrorCopyWithImpl<LogoutError>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1124,7 +1124,7 @@ abstract class $SignUp$CopyWith<$Res> implements $SignUpCopyWith<$Res> {
 class _$SignUp$CopyWithImpl<$Res> extends _$SignUpCopyWithImpl<$Res>
     implements $SignUp$CopyWith<$Res> {
   _$SignUp$CopyWithImpl(SignUp$ _value, $Res Function(SignUp$) _then)
-    : super(_value, (v) => _then(v as SignUp$));
+      : super(_value, (v) => _then(v as SignUp$));
 
   @override
   SignUp$ get _value => super._value as SignUp$;
@@ -1162,12 +1162,12 @@ class _$SignUp$ implements SignUp$ {
     @required this.lastName,
     @required this.result,
     this.pendingId = _kSignUpPendingId,
-  }) : assert(email != null),
-       assert(password != null),
-       assert(firstName != null),
-       assert(lastName != null),
-       assert(result != null),
-       assert(pendingId != null);
+  })  : assert(email != null),
+        assert(password != null),
+        assert(firstName != null),
+        assert(lastName != null),
+        assert(result != null),
+        assert(pendingId != null);
 
   @override
   final String email;
@@ -1230,9 +1230,9 @@ class _$SignUp$ implements SignUp$ {
 
   @override
   $SignUp$CopyWith<SignUp$> get copyWith => _$SignUp$CopyWithImpl<SignUp$>(
-    this,
-    _$identity,
-  );
+        this,
+        _$identity,
+      );
 
   @override
   @optionalTypeArgs
@@ -1365,8 +1365,8 @@ class _$SignUpSuccessful implements SignUpSuccessful {
   const _$SignUpSuccessful(
     this.user, [
     this.pendingId = _kSignUpPendingId,
-  ]) : assert(user != null),
-       assert(pendingId != null);
+  ])  : assert(user != null),
+        assert(pendingId != null);
 
   @override
   final AppUser user;
@@ -1399,11 +1399,11 @@ class _$SignUpSuccessful implements SignUpSuccessful {
       const DeepCollectionEquality().hash(pendingId);
 
   @override
-  $SignUpSuccessfulCopyWith<SignUpSuccessful>
-  get copyWith => _$SignUpSuccessfulCopyWithImpl<SignUpSuccessful>(
-    this,
-    _$identity,
-  );
+  $SignUpSuccessfulCopyWith<SignUpSuccessful> get copyWith =>
+      _$SignUpSuccessfulCopyWithImpl<SignUpSuccessful>(
+        this,
+        _$identity,
+      );
 
   @override
   @optionalTypeArgs
@@ -1526,8 +1526,8 @@ class _$SignUpError implements SignUpError {
   const _$SignUpError(
     this.error, [
     this.pendingId = _kSignUpPendingId,
-  ]) : assert(error != null),
-       assert(pendingId != null);
+  ])  : assert(error != null),
+        assert(pendingId != null);
 
   @override
   final Object error;
@@ -1560,8 +1560,8 @@ class _$SignUpError implements SignUpError {
       const DeepCollectionEquality().hash(pendingId);
 
   @override
-  $SignUpErrorCopyWith<SignUpError>
-  get copyWith => _$SignUpErrorCopyWithImpl<SignUpError>(this, _$identity);
+  $SignUpErrorCopyWith<SignUpError> get copyWith =>
+      _$SignUpErrorCopyWithImpl<SignUpError>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1773,11 +1773,11 @@ class _$UpdateUserDetails$ implements UpdateUserDetails$ {
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(user);
 
   @override
-  $UpdateUserDetails$CopyWith<UpdateUserDetails$>
-  get copyWith => _$UpdateUserDetails$CopyWithImpl<UpdateUserDetails$>(
-    this,
-    _$identity,
-  );
+  $UpdateUserDetails$CopyWith<UpdateUserDetails$> get copyWith =>
+      _$UpdateUserDetails$CopyWithImpl<UpdateUserDetails$>(
+        this,
+        _$identity,
+      );
 
   @override
   @optionalTypeArgs
@@ -2001,11 +2001,11 @@ class _$UpdateUserDetailsError implements UpdateUserDetailsError {
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(error);
 
   @override
-  $UpdateUserDetailsErrorCopyWith<UpdateUserDetailsError>
-  get copyWith => _$UpdateUserDetailsErrorCopyWithImpl<UpdateUserDetailsError>(
-    this,
-    _$identity,
-  );
+  $UpdateUserDetailsErrorCopyWith<UpdateUserDetailsError> get copyWith =>
+      _$UpdateUserDetailsErrorCopyWithImpl<UpdateUserDetailsError>(
+        this,
+        _$identity,
+      );
 
   @override
   @optionalTypeArgs

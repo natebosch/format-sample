@@ -23,8 +23,8 @@ class AuthenticationRepository {
   AuthenticationRepository({
     FirebaseAuth firebaseAuth,
     GoogleSignIn googleSignIn,
-  }) : _firebaseAuth = firebaseAuth ?? FirebaseAuth.instance,
-       _googleSignIn = googleSignIn ?? GoogleSignIn.standard();
+  })  : _firebaseAuth = firebaseAuth ?? FirebaseAuth.instance,
+        _googleSignIn = googleSignIn ?? GoogleSignIn.standard();
 
   final FirebaseAuth _firebaseAuth;
   final GoogleSignIn _googleSignIn;

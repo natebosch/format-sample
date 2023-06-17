@@ -43,12 +43,14 @@ class ImageBuilder extends MarkdownElementBuilder {
 
     Widget? child;
     if (imageBuilder != null) {
-      child = imageBuilder!(uri, _MarkdownImageInfo(
-        title: title,
-        description: description,
-        width: width,
-        height: height,
-      ));
+      child = imageBuilder!(
+          uri,
+          _MarkdownImageInfo(
+            title: title,
+            description: description,
+            width: width,
+            height: height,
+          ));
     } else {
       child = _buildImage(uri, width, height);
     }
@@ -119,9 +121,9 @@ class _MarkdownImageInfo extends MarkdownImageInfo {
     double? width,
     double? height,
   }) : super(
-         title: title,
-         description: description,
-         width: width,
-         height: height,
-       );
+          title: title,
+          description: description,
+          width: width,
+          height: height,
+        );
 }

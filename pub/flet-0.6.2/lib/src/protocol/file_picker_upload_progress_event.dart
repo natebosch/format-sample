@@ -10,8 +10,8 @@ class FilePickerUploadProgressEvent {
   });
 
   Map<String, dynamic> toJson() => <String, dynamic>{
-    'file_name': name,
-    'progress': progress,
-    'error': error,
-  };
+        'file_name': name,
+        'progress': progress,
+        'error': error,
+      };
 }

@@ -63,10 +63,11 @@ class Routes {
         return CustomRoute<bool>(
           builder: (
             BuildContext context,
-          ) => ChangeNotifierProvider<ComposeTweetState>(
-                create: (_) => ComposeTweetState(),
-                child: ComposeTweetPage(isRetweet: isRetweet, isTweet: isTweet),
-              ),
+          ) =>
+              ChangeNotifierProvider<ComposeTweetState>(
+            create: (_) => ComposeTweetState(),
+            child: ComposeTweetPage(isRetweet: isRetweet, isTweet: isTweet),
+          ),
         );
       case "FeedPostDetail":
         var postId = pathElements[2];
@@ -86,10 +87,11 @@ class Routes {
         return CustomRoute<bool>(
           builder: (
             BuildContext context,
-          ) => ChangeNotifierProvider<ComposeTweetState>(
-                create: (_) => ComposeTweetState(),
-                child: ComposeTweetPage(isRetweet: false, isTweet: true),
-              ),
+          ) =>
+              ChangeNotifierProvider<ComposeTweetState>(
+            create: (_) => ComposeTweetState(),
+            child: ComposeTweetPage(isRetweet: false, isTweet: true),
+          ),
         );
       case "WelcomePage":
         return CustomRoute<bool>(
@@ -195,14 +197,14 @@ class Routes {
   static Route onUnknownRoute(RouteSettings settings) {
     return MaterialPageRoute(
       builder: (_) => Scaffold(
-            appBar: AppBar(
-              title: customTitleText(settings.name.split('/')[1]),
-              centerTitle: true,
-            ),
-            body: Center(
-              child: Text('${settings.name.split('/')[1]} Comming soon..'),
-            ),
-          ),
+        appBar: AppBar(
+          title: customTitleText(settings.name.split('/')[1]),
+          centerTitle: true,
+        ),
+        body: Center(
+          child: Text('${settings.name.split('/')[1]} Comming soon..'),
+        ),
+      ),
     );
   }
 }

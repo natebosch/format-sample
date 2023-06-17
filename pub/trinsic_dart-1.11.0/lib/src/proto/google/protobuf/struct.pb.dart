@@ -53,11 +53,13 @@ class Struct extends $pb.GeneratedMessage with $mixin.StructMixin {
   factory Struct.fromBuffer(
     $core.List<$core.int> i, [
     $pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY,
-  ]) => create()..mergeFromBuffer(i, r);
+  ]) =>
+      create()..mergeFromBuffer(i, r);
   factory Struct.fromJson(
     $core.String i, [
     $pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY,
-  ]) => create()..mergeFromJson(i, r);
+  ]) =>
+      create()..mergeFromJson(i, r);
   @$core.Deprecated(
     'Using this can add significant overhead to your binary. '
     'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -198,11 +200,13 @@ class Value extends $pb.GeneratedMessage with $mixin.ValueMixin {
   factory Value.fromBuffer(
     $core.List<$core.int> i, [
     $pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY,
-  ]) => create()..mergeFromBuffer(i, r);
+  ]) =>
+      create()..mergeFromBuffer(i, r);
   factory Value.fromJson(
     $core.String i, [
     $pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY,
-  ]) => create()..mergeFromJson(i, r);
+  ]) =>
+      create()..mergeFromJson(i, r);
   @$core.Deprecated(
     'Using this can add significant overhead to your binary. '
     'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -342,11 +346,13 @@ class ListValue extends $pb.GeneratedMessage with $mixin.ListValueMixin {
   factory ListValue.fromBuffer(
     $core.List<$core.int> i, [
     $pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY,
-  ]) => create()..mergeFromBuffer(i, r);
+  ]) =>
+      create()..mergeFromBuffer(i, r);
   factory ListValue.fromJson(
     $core.String i, [
     $pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY,
-  ]) => create()..mergeFromJson(i, r);
+  ]) =>
+      create()..mergeFromJson(i, r);
   @$core.Deprecated(
     'Using this can add significant overhead to your binary. '
     'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '

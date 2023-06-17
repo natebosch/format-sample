@@ -43,10 +43,10 @@ class MarkerSelectionController {
 
 class MapTab {
   MapTab({this.body, TickerProvider vsync})
-    : this.controller = new AnimationController(
-        vsync: vsync,
-        duration: Duration(milliseconds: 300),
-      ) {
+      : this.controller = new AnimationController(
+          vsync: vsync,
+          duration: Duration(milliseconds: 300),
+        ) {
     _animation = new CurvedAnimation(
       parent: controller,
       curve: Curves.fastOutSlowIn,
@@ -189,7 +189,9 @@ class _BuildingsMapState extends State<BuildingsMap>
 }
 
 class EventsMap extends StatefulWidget {
-  EventsMap({this.documents}) : eventsOnDay = [], eventsAtLocations = {} {
+  EventsMap({this.documents})
+      : eventsOnDay = [],
+        eventsAtLocations = {} {
     for (DocumentSnapshot event in documents) {
       eventsOnDay.add(event);
       GeoPoint thisLocation = event['location'];
@@ -270,39 +272,39 @@ class _EventsMapState extends State<EventsMap> {
   Widget build(BuildContext context) {
     List<CustomMarker> multipleLocationMarkers =
         widget.eventsAtLocations.keys.map((geoPoint) {
-          List<DocumentSnapshot> eventsAtLocation =
-              widget.eventsAtLocations[geoPoint];
+      List<DocumentSnapshot> eventsAtLocation =
+          widget.eventsAtLocations[geoPoint];
 
-          LatLng position = new LatLng(geoPoint.latitude, geoPoint.longitude);
+      LatLng position = new LatLng(geoPoint.latitude, geoPoint.longitude);
 
-          if (eventsAtLocation.length > 1) {
-            return new CustomMarker(
-              width: 500.0,
-              height: 55.0,
-              anchor: AnchorPos.top,
-              point: position,
-              builder: (context) {
-                return AnimatedMarkerMultipleEvents(
-                  eventsAtLocation,
-                  markerSelectionController,
-                );
-              },
+      if (eventsAtLocation.length > 1) {
+        return new CustomMarker(
+          width: 500.0,
+          height: 55.0,
+          anchor: AnchorPos.top,
+          point: position,
+          builder: (context) {
+            return AnimatedMarkerMultipleEvents(
+              eventsAtLocation,
+              markerSelectionController,
             );
-          } else {
-            return new CustomMarker(
-              width: 500.0,
-              height: 60.0,
-              anchor: AnchorPos.top,
-              point: position,
-              builder: (context) {
-                return AnimatedMarker(
-                  eventsAtLocation.first,
-                  markerSelectionController,
-                );
-              },
+          },
+        );
+      } else {
+        return new CustomMarker(
+          width: 500.0,
+          height: 60.0,
+          anchor: AnchorPos.top,
+          point: position,
+          builder: (context) {
+            return AnimatedMarker(
+              eventsAtLocation.first,
+              markerSelectionController,
             );
-          }
-        }).toList();
+          },
+        );
+      }
+    }).toList();
 
     return new FlutterMap(
       options: new MapOptions(
@@ -346,11 +348,14 @@ class MapTabEvents extends StatelessWidget {
     );
 
     return StreamBuilder(
-      stream: Firestore.instance.collection('events').where(
-        'date_start',
-        isGreaterThanOrEqualTo: todayStart,
-        isLessThanOrEqualTo: todayEnd,
-      ).snapshots(),
+      stream: Firestore.instance
+          .collection('events')
+          .where(
+            'date_start',
+            isGreaterThanOrEqualTo: todayStart,
+            isLessThanOrEqualTo: todayEnd,
+          )
+          .snapshots(),
       builder: (context, snapshot) {
         if (snapshot.hasData) {
           if (snapshot.data.documents.length > 0) {
@@ -491,8 +496,8 @@ class BuildingSearchDelegate extends SearchDelegate<DocumentSnapshot> {
   Widget buildSuggestions(BuildContext context) {
     List<DocumentSnapshot> items = buildings.where((snapshot) {
       return (snapshot['name'] as String).toUpperCase().contains(
-            query.toUpperCase(),
-          ) ||
+                query.toUpperCase(),
+              ) ||
           snapshot['code'].contains(query.toUpperCase());
     }).toList()
       ..sort((a, b) {
@@ -837,12 +842,12 @@ class _AnimatedMarkerMultipleEventsState
 
     selectionSub = widget.selectionController.markerSelectionOutputStream
         .listen((geoPoint) {
-          if (geoPoint == widget.events.first['location']) {
-            _controller.forward();
-          } else {
-            _controller.reverse();
-          }
-        });
+      if (geoPoint == widget.events.first['location']) {
+        _controller.forward();
+      } else {
+        _controller.reverse();
+      }
+    });
   }
 
   @override
@@ -852,12 +857,12 @@ class _AnimatedMarkerMultipleEventsState
     selectionSub.cancel();
     selectionSub = widget.selectionController.markerSelectionOutputStream
         .listen((geoPoint) {
-          if (geoPoint == widget.events.first['location']) {
-            _controller.forward();
-          } else {
-            _controller.reverse();
-          }
-        });
+      if (geoPoint == widget.events.first['location']) {
+        _controller.forward();
+      } else {
+        _controller.reverse();
+      }
+    });
   }
 
   @override
@@ -953,24 +958,23 @@ class _AnimatedMarkerState extends State<AnimatedMarker>
 
     if (widget.selectionController != null) {
       markerSelectionSub = widget
-          .selectionController
-          .markerSelectionOutputStream
+          .selectionController.markerSelectionOutputStream
           .listen((geoPoint) {
-            if (geoPoint == widget.event['location']) {
-              _controller.forward();
-            } else {
-              _controller.reverse();
-            }
-          });
+        if (geoPoint == widget.event['location']) {
+          _controller.forward();
+        } else {
+          _controller.reverse();
+        }
+      });
 
-      eventSelectionSub = widget.selectionController.eventSelectionOutputStream
-          .listen((title) {
-            if (title == widget.event['title']) {
-              _controller.forward();
-            } else {
-              _controller.reverse();
-            }
-          });
+      eventSelectionSub =
+          widget.selectionController.eventSelectionOutputStream.listen((title) {
+        if (title == widget.event['title']) {
+          _controller.forward();
+        } else {
+          _controller.reverse();
+        }
+      });
     }
   }
 
@@ -1006,21 +1010,21 @@ class GrowTransition extends AnimatedWidget {
     this.animation,
     @required this.event,
     @required this.selectionController,
-  }) : scaleAnimation = new Tween(begin: 1.0, end: 1.5).animate(
-         new CurvedAnimation(parent: animation, curve: Curves.ease),
-       ),
-       opacityAnimation = new Tween(begin: 0.0, end: 1.0).animate(
-         new CurvedAnimation(
-           parent: animation,
-           curve: new Interval(0.75, 1.0, curve: Curves.easeInOut),
-         ),
-       ),
-       type = EventType.fromTitle(event['type']),
-       slideAnimation = new Tween<Offset>(
-         begin: new Offset(0.0, 0.0),
-         end: new Offset(0.0, -0.7),
-       ).animate(animation),
-       super(listenable: animation);
+  })  : scaleAnimation = new Tween(begin: 1.0, end: 1.5).animate(
+          new CurvedAnimation(parent: animation, curve: Curves.ease),
+        ),
+        opacityAnimation = new Tween(begin: 0.0, end: 1.0).animate(
+          new CurvedAnimation(
+            parent: animation,
+            curve: new Interval(0.75, 1.0, curve: Curves.easeInOut),
+          ),
+        ),
+        type = EventType.fromTitle(event['type']),
+        slideAnimation = new Tween<Offset>(
+          begin: new Offset(0.0, 0.0),
+          end: new Offset(0.0, -0.7),
+        ).animate(animation),
+        super(listenable: animation);
 
   final Widget child;
   final Animation<double> animation;
@@ -1176,8 +1180,8 @@ class CustomAnchor {
   CustomAnchor(this.left, this.top);
 
   CustomAnchor._(double width, double height, AnchorPos anchor)
-    : left = _leftOffset(width, anchor),
-      top = _topOffset(width, anchor);
+      : left = _leftOffset(width, anchor),
+        top = _topOffset(width, anchor);
 
   static double _leftOffset(double width, AnchorPos anchor) {
     switch (anchor) {
@@ -1223,7 +1227,7 @@ class CustomMarker {
     AnchorPos anchor,
     CustomAnchor anchorOverride,
   }) : this._anchor =
-           anchorOverride ?? new CustomAnchor._(width, height, anchor);
+            anchorOverride ?? new CustomAnchor._(width, height, anchor);
 }
 
 class CustomMapMarkerLayer extends StatelessWidget {

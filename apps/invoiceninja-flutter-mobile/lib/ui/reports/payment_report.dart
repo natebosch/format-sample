@@ -40,7 +40,8 @@ var memoizedPaymentReport = memo6(
     BuiltMap<String, ClientEntity> clientMap,
     BuiltMap<String, UserEntity> userMap,
     StaticState staticState,
-  ) => paymentReport(
+  ) =>
+      paymentReport(
     userCompany,
     reportsUIState,
     paymentMap,

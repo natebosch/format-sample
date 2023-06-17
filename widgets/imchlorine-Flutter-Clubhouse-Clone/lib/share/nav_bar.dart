@@ -214,20 +214,20 @@ class CupertinoNavigationBar extends StatefulWidget
     this.actionsForegroundColor,
     this.transitionBetweenRoutes = true,
     this.heroTag = _defaultHeroTag,
-  }) : assert(automaticallyImplyLeading != null),
-       assert(automaticallyImplyMiddle != null),
-       assert(transitionBetweenRoutes != null),
-       assert(
-         heroTag != null,
-         'heroTag cannot be null. Use transitionBetweenRoutes = false to '
-         'disable Hero transition on this navigation bar.',
-       ),
-       assert(
-         !transitionBetweenRoutes || identical(heroTag, _defaultHeroTag),
-         'Cannot specify a heroTag override if this navigation bar does not '
-         'transition due to transitionBetweenRoutes = false.',
-       ),
-       super(key: key);
+  })  : assert(automaticallyImplyLeading != null),
+        assert(automaticallyImplyMiddle != null),
+        assert(transitionBetweenRoutes != null),
+        assert(
+          heroTag != null,
+          'heroTag cannot be null. Use transitionBetweenRoutes = false to '
+          'disable Hero transition on this navigation bar.',
+        ),
+        assert(
+          !transitionBetweenRoutes || identical(heroTag, _defaultHeroTag),
+          'Cannot specify a heroTag override if this navigation bar does not '
+          'transition due to transitionBetweenRoutes = false.',
+        ),
+        super(key: key);
 
   /// {@template flutter.cupertino.navBar.leading}
   /// Widget to place at the start of the navigation bar. Normally a back button
@@ -574,15 +574,15 @@ class CupertinoSliverNavigationBar extends StatefulWidget {
     this.actionsForegroundColor,
     this.transitionBetweenRoutes = true,
     this.heroTag = _defaultHeroTag,
-  }) : assert(automaticallyImplyLeading != null),
-       assert(automaticallyImplyTitle != null),
-       assert(
-         automaticallyImplyTitle == true || largeTitle != null,
-         'No largeTitle has been provided but automaticallyImplyTitle is also '
-         'false. Either provide a largeTitle or set automaticallyImplyTitle to '
-         'true.',
-       ),
-       super(key: key);
+  })  : assert(automaticallyImplyLeading != null),
+        assert(automaticallyImplyTitle != null),
+        assert(
+          automaticallyImplyTitle == true || largeTitle != null,
+          'No largeTitle has been provided but automaticallyImplyTitle is also '
+          'false. Either provide a largeTitle or set automaticallyImplyTitle to '
+          'true.',
+        ),
+        super(key: key);
 
   /// The navigation bar's title.
   ///
@@ -759,9 +759,9 @@ class _LargeTitleNavigationBarSliverDelegate
     @required this.heroTag,
     @required this.persistentHeight,
     @required this.alwaysShowMiddle,
-  }) : assert(persistentHeight != null),
-       assert(alwaysShowMiddle != null),
-       assert(transitionBetweenRoutes != null);
+  })  : assert(persistentHeight != null),
+        assert(alwaysShowMiddle != null),
+        assert(transitionBetweenRoutes != null);
 
   final _NavigationBarStaticComponentsKeys keys;
   final _NavigationBarStaticComponents components;
@@ -991,13 +991,13 @@ class _PersistentNavigationBar extends StatelessWidget {
 @immutable
 class _NavigationBarStaticComponentsKeys {
   _NavigationBarStaticComponentsKeys()
-    : navBarBoxKey = GlobalKey(debugLabel: 'Navigation bar render box'),
-      leadingKey = GlobalKey(debugLabel: 'Leading'),
-      backChevronKey = GlobalKey(debugLabel: 'Back chevron'),
-      backLabelKey = GlobalKey(debugLabel: 'Back label'),
-      middleKey = GlobalKey(debugLabel: 'Middle'),
-      trailingKey = GlobalKey(debugLabel: 'Trailing'),
-      largeTitleKey = GlobalKey(debugLabel: 'Large title');
+      : navBarBoxKey = GlobalKey(debugLabel: 'Navigation bar render box'),
+        leadingKey = GlobalKey(debugLabel: 'Leading'),
+        backChevronKey = GlobalKey(debugLabel: 'Back chevron'),
+        backLabelKey = GlobalKey(debugLabel: 'Back label'),
+        middleKey = GlobalKey(debugLabel: 'Middle'),
+        trailingKey = GlobalKey(debugLabel: 'Trailing'),
+        largeTitleKey = GlobalKey(debugLabel: 'Large title');
 
   final GlobalKey navBarBoxKey;
   final GlobalKey leadingKey;
@@ -1026,46 +1026,46 @@ class _NavigationBarStaticComponents {
     @required Widget userLargeTitle,
     @required EdgeInsetsDirectional padding,
     @required bool large,
-  }) : leading = createLeading(
-         leadingKey: keys.leadingKey,
-         userLeading: userLeading,
-         route: route,
-         automaticallyImplyLeading: automaticallyImplyLeading,
-         padding: padding,
-       ),
-       backChevron = createBackChevron(
-         backChevronKey: keys.backChevronKey,
-         userLeading: userLeading,
-         route: route,
-         automaticallyImplyLeading: automaticallyImplyLeading,
-       ),
-       backLabel = createBackLabel(
-         backLabelKey: keys.backLabelKey,
-         userLeading: userLeading,
-         route: route,
-         previousPageTitle: previousPageTitle,
-         automaticallyImplyLeading: automaticallyImplyLeading,
-       ),
-       middle = createMiddle(
-         middleKey: keys.middleKey,
-         userMiddle: userMiddle,
-         userLargeTitle: userLargeTitle,
-         route: route,
-         automaticallyImplyTitle: automaticallyImplyTitle,
-         large: large,
-       ),
-       trailing = createTrailing(
-         trailingKey: keys.trailingKey,
-         userTrailing: userTrailing,
-         padding: padding,
-       ),
-       largeTitle = createLargeTitle(
-         largeTitleKey: keys.largeTitleKey,
-         userLargeTitle: userLargeTitle,
-         route: route,
-         automaticImplyTitle: automaticallyImplyTitle,
-         large: large,
-       );
+  })  : leading = createLeading(
+          leadingKey: keys.leadingKey,
+          userLeading: userLeading,
+          route: route,
+          automaticallyImplyLeading: automaticallyImplyLeading,
+          padding: padding,
+        ),
+        backChevron = createBackChevron(
+          backChevronKey: keys.backChevronKey,
+          userLeading: userLeading,
+          route: route,
+          automaticallyImplyLeading: automaticallyImplyLeading,
+        ),
+        backLabel = createBackLabel(
+          backLabelKey: keys.backLabelKey,
+          userLeading: userLeading,
+          route: route,
+          previousPageTitle: previousPageTitle,
+          automaticallyImplyLeading: automaticallyImplyLeading,
+        ),
+        middle = createMiddle(
+          middleKey: keys.middleKey,
+          userMiddle: userMiddle,
+          userLargeTitle: userLargeTitle,
+          route: route,
+          automaticallyImplyTitle: automaticallyImplyTitle,
+          large: large,
+        ),
+        trailing = createTrailing(
+          trailingKey: keys.trailingKey,
+          userTrailing: userTrailing,
+          padding: padding,
+        ),
+        largeTitle = createLargeTitle(
+          largeTitleKey: keys.largeTitleKey,
+          userLargeTitle: userLargeTitle,
+          route: route,
+          automaticImplyTitle: automaticallyImplyTitle,
+          large: large,
+        );
 
   static Widget _derivedTitle({
     bool automaticallyImplyTitle,
@@ -1272,18 +1272,18 @@ class CupertinoNavigationBarBackButton extends StatelessWidget {
     this.color,
     this.previousPageTitle,
     this.onPressed,
-  }) : _backChevron = null,
-       _backLabel = null,
-       super(key: key);
+  })  : _backChevron = null,
+        _backLabel = null,
+        super(key: key);
 
   // Allow the back chevron and label to be separately created (and keyed)
   // because they animate separately during page transitions.
   const CupertinoNavigationBarBackButton._assemble(
     this._backChevron,
     this._backLabel,
-  ) : previousPageTitle = null,
-      color = null,
-      onPressed = null;
+  )   : previousPageTitle = null,
+        color = null,
+        onPressed = null;
 
   /// The [Color] of the back button.
   ///
@@ -1488,10 +1488,10 @@ class _TransitionableNavigationBar extends StatelessWidget {
     @required this.hasUserMiddle,
     @required this.largeExpanded,
     @required this.child,
-  }) : assert(componentsKeys != null),
-       assert(largeExpanded != null),
-       assert(!largeExpanded || largeTitleTextStyle != null),
-       super(key: componentsKeys.navBarBoxKey);
+  })  : assert(componentsKeys != null),
+        assert(largeExpanded != null),
+        assert(!largeExpanded || largeTitleTextStyle != null),
+        super(key: componentsKeys.navBarBoxKey);
 
   final _NavigationBarStaticComponentsKeys componentsKeys;
   final Color backgroundColor;
@@ -1568,18 +1568,18 @@ class _NavigationBarTransition extends StatelessWidget {
     @required this.animation,
     @required this.topNavBar,
     @required this.bottomNavBar,
-  }) : heightTween = Tween<double>(
-         begin: bottomNavBar.renderBox.size.height,
-         end: topNavBar.renderBox.size.height,
-       ),
-       backgroundTween = ColorTween(
-         begin: bottomNavBar.backgroundColor,
-         end: topNavBar.backgroundColor,
-       ),
-       borderTween = BorderTween(
-         begin: bottomNavBar.border,
-         end: topNavBar.border,
-       );
+  })  : heightTween = Tween<double>(
+          begin: bottomNavBar.renderBox.size.height,
+          end: topNavBar.renderBox.size.height,
+        ),
+        backgroundTween = ColorTween(
+          begin: bottomNavBar.backgroundColor,
+          end: topNavBar.backgroundColor,
+        ),
+        borderTween = BorderTween(
+          begin: bottomNavBar.border,
+          end: topNavBar.border,
+        );
 
   final Animation<double> animation;
   final _TransitionableNavigationBar topNavBar;
@@ -1676,26 +1676,26 @@ class _NavigationBarComponentsTransition {
     @required _TransitionableNavigationBar bottomNavBar,
     @required _TransitionableNavigationBar topNavBar,
     @required TextDirection directionality,
-  }) : bottomComponents = bottomNavBar.componentsKeys,
-       topComponents = topNavBar.componentsKeys,
-       bottomNavBarBox = bottomNavBar.renderBox,
-       topNavBarBox = topNavBar.renderBox,
-       bottomBackButtonTextStyle = bottomNavBar.backButtonTextStyle,
-       topBackButtonTextStyle = topNavBar.backButtonTextStyle,
-       bottomTitleTextStyle = bottomNavBar.titleTextStyle,
-       topTitleTextStyle = topNavBar.titleTextStyle,
-       bottomLargeTitleTextStyle = bottomNavBar.largeTitleTextStyle,
-       topLargeTitleTextStyle = topNavBar.largeTitleTextStyle,
-       bottomHasUserMiddle = bottomNavBar.hasUserMiddle,
-       topHasUserMiddle = topNavBar.hasUserMiddle,
-       bottomLargeExpanded = bottomNavBar.largeExpanded,
-       topLargeExpanded = topNavBar.largeExpanded,
-       transitionBox =
-           // paintBounds are based on offset zero so it's ok to expand the Rects.
-           bottomNavBar.renderBox.paintBounds.expandToInclude(
-             topNavBar.renderBox.paintBounds,
-           ),
-       forwardDirection = directionality == TextDirection.ltr ? 1.0 : -1.0;
+  })  : bottomComponents = bottomNavBar.componentsKeys,
+        topComponents = topNavBar.componentsKeys,
+        bottomNavBarBox = bottomNavBar.renderBox,
+        topNavBarBox = topNavBar.renderBox,
+        bottomBackButtonTextStyle = bottomNavBar.backButtonTextStyle,
+        topBackButtonTextStyle = topNavBar.backButtonTextStyle,
+        bottomTitleTextStyle = bottomNavBar.titleTextStyle,
+        topTitleTextStyle = topNavBar.titleTextStyle,
+        bottomLargeTitleTextStyle = bottomNavBar.largeTitleTextStyle,
+        topLargeTitleTextStyle = topNavBar.largeTitleTextStyle,
+        bottomHasUserMiddle = bottomNavBar.hasUserMiddle,
+        topHasUserMiddle = topNavBar.hasUserMiddle,
+        bottomLargeExpanded = bottomNavBar.largeExpanded,
+        topLargeExpanded = topNavBar.largeExpanded,
+        transitionBox =
+            // paintBounds are based on offset zero so it's ok to expand the Rects.
+            bottomNavBar.renderBox.paintBounds.expandToInclude(
+          topNavBar.renderBox.paintBounds,
+        ),
+        forwardDirection = directionality == TextDirection.ltr ? 1.0 : -1.0;
 
   static final Animatable<double> fadeOut = Tween<double>(begin: 1.0, end: 0.0);
   static final Animatable<double> fadeIn = Tween<double>(begin: 0.0, end: 1.0);
@@ -2107,8 +2107,7 @@ class _NavigationBarComponentsTransition {
     }
 
     final RenderAnimatedOpacity topBackLabelOpacity = topComponents
-        .backLabelKey
-        .currentContext
+        .backLabelKey.currentContext
         ?.findAncestorRenderObjectOfType<RenderAnimatedOpacity>();
 
     Animation<double> midClickOpacity;

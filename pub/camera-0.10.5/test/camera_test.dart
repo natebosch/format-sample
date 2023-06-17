@@ -15,42 +15,42 @@ import 'package:mockito/mockito.dart';
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 
 List<CameraDescription> get mockAvailableCameras => <CameraDescription>[
-  const CameraDescription(
-    name: 'camBack',
-    lensDirection: CameraLensDirection.back,
-    sensorOrientation: 90,
-  ),
-  const CameraDescription(
-    name: 'camFront',
-    lensDirection: CameraLensDirection.front,
-    sensorOrientation: 180,
-  ),
-];
+      const CameraDescription(
+        name: 'camBack',
+        lensDirection: CameraLensDirection.back,
+        sensorOrientation: 90,
+      ),
+      const CameraDescription(
+        name: 'camFront',
+        lensDirection: CameraLensDirection.front,
+        sensorOrientation: 180,
+      ),
+    ];
 
 int get mockInitializeCamera => 13;
 
-CameraInitializedEvent
-get mockOnCameraInitializedEvent => const CameraInitializedEvent(
-  13,
-  75,
-  75,
-  ExposureMode.auto,
-  true,
-  FocusMode.auto,
-  true,
-);
+CameraInitializedEvent get mockOnCameraInitializedEvent =>
+    const CameraInitializedEvent(
+      13,
+      75,
+      75,
+      ExposureMode.auto,
+      true,
+      FocusMode.auto,
+      true,
+    );
 
-DeviceOrientationChangedEvent
-get mockOnDeviceOrientationChangedEvent => const DeviceOrientationChangedEvent(
-  DeviceOrientation.portraitUp,
-);
+DeviceOrientationChangedEvent get mockOnDeviceOrientationChangedEvent =>
+    const DeviceOrientationChangedEvent(
+      DeviceOrientation.portraitUp,
+    );
 
 CameraClosingEvent get mockOnCameraClosingEvent => const CameraClosingEvent(13);
 
 CameraErrorEvent get mockOnCameraErrorEvent => const CameraErrorEvent(
-  13,
-  'closing',
-);
+      13,
+      'closing',
+    );
 
 XFile mockTakePicture = XFile('foo/bar.png');
 
@@ -159,11 +159,13 @@ void main() {
 
       verify(CameraPlatform.instance.dispose(13)).called(1);
 
-      expect(cameraController.initialize, throwsA(isA<CameraException>().having(
-        (CameraException error) => error.description,
-        'Error description',
-        'initialize was called on a disposed CameraController',
-      )));
+      expect(
+          cameraController.initialize,
+          throwsA(isA<CameraException>().having(
+            (CameraException error) => error.description,
+            'Error description',
+            'initialize was called on a disposed CameraController',
+          )));
     });
 
     test(
@@ -180,8 +182,9 @@ void main() {
 
         mockPlatformException = true;
 
-        expect(cameraController.initialize, throwsA(isA<CameraException>()
-            .having(
+        expect(
+            cameraController.initialize,
+            throwsA(isA<CameraException>().having(
               (CameraException error) => error.description,
               'foo',
               'bar',
@@ -233,17 +236,19 @@ void main() {
         ),
         ResolutionPreset.max,
       );
-      expect(cameraController.takePicture(), throwsA(isA<CameraException>()
-          .having(
-            (CameraException error) => error.code,
-            'code',
-            'Uninitialized CameraController',
-          )
-          .having(
-            (CameraException error) => error.description,
-            'description',
-            'takePicture() was called on an uninitialized CameraController.',
-          )));
+      expect(
+          cameraController.takePicture(),
+          throwsA(isA<CameraException>()
+              .having(
+                (CameraException error) => error.code,
+                'code',
+                'Uninitialized CameraController',
+              )
+              .having(
+                (CameraException error) => error.description,
+                'description',
+                'takePicture() was called on an uninitialized CameraController.',
+              )));
     });
 
     test(
@@ -262,8 +267,9 @@ void main() {
         cameraController.value = cameraController.value.copyWith(
           isTakingPicture: true,
         );
-        expect(cameraController.takePicture(), throwsA(isA<CameraException>()
-            .having(
+        expect(
+            cameraController.takePicture(),
+            throwsA(isA<CameraException>().having(
               (CameraException error) => error.description,
               'Previous capture has not returned yet.',
               'takePicture was called before the previous capture returned.',
@@ -300,8 +306,9 @@ void main() {
         await cameraController.initialize();
 
         mockPlatformException = true;
-        expect(cameraController.takePicture(), throwsA(isA<CameraException>()
-            .having(
+        expect(
+            cameraController.takePicture(),
+            throwsA(isA<CameraException>().having(
               (CameraException error) => error.description,
               'foo',
               'bar',
@@ -322,19 +329,21 @@ void main() {
           ResolutionPreset.max,
         );
 
-        expect(cameraController.startVideoRecording(), throwsA(
-          isA<CameraException>()
-              .having(
-                (CameraException error) => error.code,
-                'code',
-                'Uninitialized CameraController',
-              )
-              .having(
-                (CameraException error) => error.description,
-                'description',
-                'startVideoRecording() was called on an uninitialized CameraController.',
-              ),
-        ));
+        expect(
+            cameraController.startVideoRecording(),
+            throwsA(
+              isA<CameraException>()
+                  .having(
+                    (CameraException error) => error.code,
+                    'code',
+                    'Uninitialized CameraController',
+                  )
+                  .having(
+                    (CameraException error) => error.description,
+                    'description',
+                    'startVideoRecording() was called on an uninitialized CameraController.',
+                  ),
+            ));
       },
     );
     test(
@@ -355,13 +364,15 @@ void main() {
           isRecordingVideo: true,
         );
 
-        expect(cameraController.startVideoRecording(), throwsA(
-          isA<CameraException>().having(
-            (CameraException error) => error.description,
-            'A video recording is already started.',
-            'startVideoRecording was called when a recording is already started.',
-          ),
-        ));
+        expect(
+            cameraController.startVideoRecording(),
+            throwsA(
+              isA<CameraException>().having(
+                (CameraException error) => error.description,
+                'A video recording is already started.',
+                'startVideoRecording was called when a recording is already started.',
+              ),
+            ));
       },
     );
 
@@ -377,17 +388,19 @@ void main() {
           ResolutionPreset.max,
         );
 
-        expect(cameraController.getMaxZoomLevel, throwsA(isA<CameraException>()
-            .having(
-              (CameraException error) => error.code,
-              'code',
-              'Uninitialized CameraController',
-            )
-            .having(
-              (CameraException error) => error.description,
-              'description',
-              'getMaxZoomLevel() was called on an uninitialized CameraController.',
-            )));
+        expect(
+            cameraController.getMaxZoomLevel,
+            throwsA(isA<CameraException>()
+                .having(
+                  (CameraException error) => error.code,
+                  'code',
+                  'Uninitialized CameraController',
+                )
+                .having(
+                  (CameraException error) => error.description,
+                  'description',
+                  'getMaxZoomLevel() was called on an uninitialized CameraController.',
+                )));
       },
     );
 
@@ -404,17 +417,19 @@ void main() {
       await cameraController.initialize();
       await cameraController.dispose();
 
-      expect(cameraController.getMaxZoomLevel, throwsA(isA<CameraException>()
-          .having(
-            (CameraException error) => error.code,
-            'code',
-            'Disposed CameraController',
-          )
-          .having(
-            (CameraException error) => error.description,
-            'description',
-            'getMaxZoomLevel() was called on a disposed CameraController.',
-          )));
+      expect(
+          cameraController.getMaxZoomLevel,
+          throwsA(isA<CameraException>()
+              .having(
+                (CameraException error) => error.code,
+                'code',
+                'Disposed CameraController',
+              )
+              .having(
+                (CameraException error) => error.description,
+                'description',
+                'getMaxZoomLevel() was called on a disposed CameraController.',
+              )));
     });
 
     test(
@@ -432,16 +447,19 @@ void main() {
         await cameraController.initialize();
         when(CameraPlatform.instance.getMaxZoomLevel(mockInitializeCamera))
             .thenThrow(
-              CameraException('TEST_ERROR', 'This is a test error messge'),
-            );
+          CameraException('TEST_ERROR', 'This is a test error messge'),
+        );
 
-        expect(cameraController.getMaxZoomLevel, throwsA(isA<CameraException>()
-            .having((CameraException error) => error.code, 'code', 'TEST_ERROR')
-            .having(
-              (CameraException error) => error.description,
-              'description',
-              'This is a test error messge',
-            )));
+        expect(
+            cameraController.getMaxZoomLevel,
+            throwsA(isA<CameraException>()
+                .having(
+                    (CameraException error) => error.code, 'code', 'TEST_ERROR')
+                .having(
+                  (CameraException error) => error.description,
+                  'description',
+                  'This is a test error messge',
+                )));
       },
     );
 
@@ -475,17 +493,19 @@ void main() {
           ResolutionPreset.max,
         );
 
-        expect(cameraController.getMinZoomLevel, throwsA(isA<CameraException>()
-            .having(
-              (CameraException error) => error.code,
-              'code',
-              'Uninitialized CameraController',
-            )
-            .having(
-              (CameraException error) => error.description,
-              'description',
-              'getMinZoomLevel() was called on an uninitialized CameraController.',
-            )));
+        expect(
+            cameraController.getMinZoomLevel,
+            throwsA(isA<CameraException>()
+                .having(
+                  (CameraException error) => error.code,
+                  'code',
+                  'Uninitialized CameraController',
+                )
+                .having(
+                  (CameraException error) => error.description,
+                  'description',
+                  'getMinZoomLevel() was called on an uninitialized CameraController.',
+                )));
       },
     );
 
@@ -502,17 +522,19 @@ void main() {
       await cameraController.initialize();
       await cameraController.dispose();
 
-      expect(cameraController.getMinZoomLevel, throwsA(isA<CameraException>()
-          .having(
-            (CameraException error) => error.code,
-            'code',
-            'Disposed CameraController',
-          )
-          .having(
-            (CameraException error) => error.description,
-            'description',
-            'getMinZoomLevel() was called on a disposed CameraController.',
-          )));
+      expect(
+          cameraController.getMinZoomLevel,
+          throwsA(isA<CameraException>()
+              .having(
+                (CameraException error) => error.code,
+                'code',
+                'Disposed CameraController',
+              )
+              .having(
+                (CameraException error) => error.description,
+                'description',
+                'getMinZoomLevel() was called on a disposed CameraController.',
+              )));
     });
 
     test(
@@ -530,16 +552,19 @@ void main() {
         await cameraController.initialize();
         when(CameraPlatform.instance.getMinZoomLevel(mockInitializeCamera))
             .thenThrow(
-              CameraException('TEST_ERROR', 'This is a test error messge'),
-            );
+          CameraException('TEST_ERROR', 'This is a test error messge'),
+        );
 
-        expect(cameraController.getMinZoomLevel, throwsA(isA<CameraException>()
-            .having((CameraException error) => error.code, 'code', 'TEST_ERROR')
-            .having(
-              (CameraException error) => error.description,
-              'description',
-              'This is a test error messge',
-            )));
+        expect(
+            cameraController.getMinZoomLevel,
+            throwsA(isA<CameraException>()
+                .having(
+                    (CameraException error) => error.code, 'code', 'TEST_ERROR')
+                .having(
+                  (CameraException error) => error.description,
+                  'description',
+                  'This is a test error messge',
+                )));
       },
     );
 
@@ -571,19 +596,21 @@ void main() {
         ResolutionPreset.max,
       );
 
-      expect(() => cameraController.setZoomLevel(42.0), throwsA(
-        isA<CameraException>()
-            .having(
-              (CameraException error) => error.code,
-              'code',
-              'Uninitialized CameraController',
-            )
-            .having(
-              (CameraException error) => error.description,
-              'description',
-              'setZoomLevel() was called on an uninitialized CameraController.',
-            ),
-      ));
+      expect(
+          () => cameraController.setZoomLevel(42.0),
+          throwsA(
+            isA<CameraException>()
+                .having(
+                  (CameraException error) => error.code,
+                  'code',
+                  'Uninitialized CameraController',
+                )
+                .having(
+                  (CameraException error) => error.description,
+                  'description',
+                  'setZoomLevel() was called on an uninitialized CameraController.',
+                ),
+          ));
     });
 
     test('setZoomLevel() throws $CameraException when disposed', () async {
@@ -599,19 +626,21 @@ void main() {
       await cameraController.initialize();
       await cameraController.dispose();
 
-      expect(() => cameraController.setZoomLevel(42.0), throwsA(
-        isA<CameraException>()
-            .having(
-              (CameraException error) => error.code,
-              'code',
-              'Disposed CameraController',
-            )
-            .having(
-              (CameraException error) => error.description,
-              'description',
-              'setZoomLevel() was called on a disposed CameraController.',
-            ),
-      ));
+      expect(
+          () => cameraController.setZoomLevel(42.0),
+          throwsA(
+            isA<CameraException>()
+                .having(
+                  (CameraException error) => error.code,
+                  'code',
+                  'Disposed CameraController',
+                )
+                .having(
+                  (CameraException error) => error.description,
+                  'description',
+                  'setZoomLevel() was called on a disposed CameraController.',
+                ),
+          ));
     });
 
     test(
@@ -629,22 +658,24 @@ void main() {
         await cameraController.initialize();
         when(CameraPlatform.instance.setZoomLevel(mockInitializeCamera, 42.0))
             .thenThrow(
-              CameraException('TEST_ERROR', 'This is a test error messge'),
-            );
+          CameraException('TEST_ERROR', 'This is a test error messge'),
+        );
 
-        expect(() => cameraController.setZoomLevel(42), throwsA(
-          isA<CameraException>()
-              .having(
-                (CameraException error) => error.code,
-                'code',
-                'TEST_ERROR',
-              )
-              .having(
-                (CameraException error) => error.description,
-                'description',
-                'This is a test error messge',
-              ),
-        ));
+        expect(
+            () => cameraController.setZoomLevel(42),
+            throwsA(
+              isA<CameraException>()
+                  .having(
+                    (CameraException error) => error.code,
+                    'code',
+                    'TEST_ERROR',
+                  )
+                  .having(
+                    (CameraException error) => error.description,
+                    'description',
+                    'This is a test error messge',
+                  ),
+            ));
 
         reset(CameraPlatform.instance);
       },
@@ -864,13 +895,15 @@ void main() {
           CameraException('TEST_ERROR', 'This is a test error message'),
         );
 
-        expect(cameraController.getMinExposureOffset(), throwsA(
-          isA<CameraException>().having(
-            (CameraException error) => error.description,
-            'TEST_ERROR',
-            'This is a test error message',
-          ),
-        ));
+        expect(
+            cameraController.getMinExposureOffset(),
+            throwsA(
+              isA<CameraException>().having(
+                (CameraException error) => error.description,
+                'TEST_ERROR',
+                'This is a test error message',
+              ),
+            ));
       },
     );
 
@@ -915,13 +948,15 @@ void main() {
           CameraException('TEST_ERROR', 'This is a test error message'),
         );
 
-        expect(cameraController.getMaxExposureOffset(), throwsA(
-          isA<CameraException>().having(
-            (CameraException error) => error.description,
-            'TEST_ERROR',
-            'This is a test error message',
-          ),
-        ));
+        expect(
+            cameraController.getMaxExposureOffset(),
+            throwsA(
+              isA<CameraException>().having(
+                (CameraException error) => error.description,
+                'TEST_ERROR',
+                'This is a test error message',
+              ),
+            ));
       },
     );
 
@@ -966,13 +1001,15 @@ void main() {
           CameraException('TEST_ERROR', 'This is a test error message'),
         );
 
-        expect(cameraController.getExposureOffsetStepSize(), throwsA(
-          isA<CameraException>().having(
-            (CameraException error) => error.description,
-            'TEST_ERROR',
-            'This is a test error message',
-          ),
-        ));
+        expect(
+            cameraController.getExposureOffsetStepSize(),
+            throwsA(
+              isA<CameraException>().having(
+                (CameraException error) => error.description,
+                'TEST_ERROR',
+                'This is a test error message',
+              ),
+            ));
       },
     );
 
@@ -1301,12 +1338,13 @@ void main() {
         await cameraController.initialize();
         when(CameraPlatform.instance.pausePreview(cameraController.cameraId))
             .thenThrow(PlatformException(
-              code: 'TEST_ERROR',
-              message: 'This is a test error message',
-            ));
+          code: 'TEST_ERROR',
+          message: 'This is a test error message',
+        ));
 
-        expect(cameraController.pausePreview(), throwsA(isA<CameraException>()
-            .having(
+        expect(
+            cameraController.pausePreview(),
+            throwsA(isA<CameraException>().having(
               (CameraException error) => error.description,
               'TEST_ERROR',
               'This is a test error message',
@@ -1377,12 +1415,13 @@ void main() {
         );
         when(CameraPlatform.instance.resumePreview(cameraController.cameraId))
             .thenThrow(PlatformException(
-              code: 'TEST_ERROR',
-              message: 'This is a test error message',
-            ));
+          code: 'TEST_ERROR',
+          message: 'This is a test error message',
+        ));
 
-        expect(cameraController.resumePreview(), throwsA(isA<CameraException>()
-            .having(
+        expect(
+            cameraController.resumePreview(),
+            throwsA(isA<CameraException>().having(
               (CameraException error) => error.description,
               'TEST_ERROR',
               'This is a test error message',
@@ -1493,13 +1532,15 @@ void main() {
           message: 'This is a test error message',
         ));
 
-        expect(cameraController.unlockCaptureOrientation(), throwsA(
-          isA<CameraException>().having(
-            (CameraException error) => error.description,
-            'TEST_ERROR',
-            'This is a test error message',
-          ),
-        ));
+        expect(
+            cameraController.unlockCaptureOrientation(),
+            throwsA(
+              isA<CameraException>().having(
+                (CameraException error) => error.description,
+                'TEST_ERROR',
+                'This is a test error message',
+              ),
+            ));
       },
     );
   });
@@ -1512,11 +1553,12 @@ class MockCameraPlatform extends Mock
   Future<void> initializeCamera(
     int? cameraId, {
     ImageFormatGroup? imageFormatGroup = ImageFormatGroup.unknown,
-  }) async => super.noSuchMethod(Invocation.method(
-    #initializeCamera,
-    <Object?>[cameraId],
-    <Symbol, dynamic>{#imageFormatGroup: imageFormatGroup},
-  ));
+  }) async =>
+      super.noSuchMethod(Invocation.method(
+        #initializeCamera,
+        <Object?>[cameraId],
+        <Symbol, dynamic>{#imageFormatGroup: imageFormatGroup},
+      ));
 
   @override
   Future<void> dispose(int? cameraId) async {
@@ -1524,40 +1566,44 @@ class MockCameraPlatform extends Mock
   }
 
   @override
-  Future<List<CameraDescription>>
-  availableCameras() => Future<List<CameraDescription>>.value(
-    mockAvailableCameras,
-  );
+  Future<List<CameraDescription>> availableCameras() =>
+      Future<List<CameraDescription>>.value(
+        mockAvailableCameras,
+      );
 
   @override
   Future<int> createCamera(
     CameraDescription description,
     ResolutionPreset? resolutionPreset, {
     bool enableAudio = false,
-  }) => mockPlatformException
-      ? throw PlatformException(code: 'foo', message: 'bar')
-      : Future<int>.value(mockInitializeCamera);
+  }) =>
+      mockPlatformException
+          ? throw PlatformException(code: 'foo', message: 'bar')
+          : Future<int>.value(mockInitializeCamera);
 
   @override
   Stream<CameraInitializedEvent> onCameraInitialized(
     int cameraId,
-  ) => Stream<CameraInitializedEvent>.value(mockOnCameraInitializedEvent);
+  ) =>
+      Stream<CameraInitializedEvent>.value(mockOnCameraInitializedEvent);
 
   @override
   Stream<CameraClosingEvent> onCameraClosing(
     int cameraId,
-  ) => Stream<CameraClosingEvent>.value(mockOnCameraClosingEvent);
+  ) =>
+      Stream<CameraClosingEvent>.value(mockOnCameraClosingEvent);
 
   @override
   Stream<CameraErrorEvent> onCameraError(
     int cameraId,
-  ) => Stream<CameraErrorEvent>.value(mockOnCameraErrorEvent);
+  ) =>
+      Stream<CameraErrorEvent>.value(mockOnCameraErrorEvent);
 
   @override
-  Stream<DeviceOrientationChangedEvent>
-  onDeviceOrientationChanged() => Stream<DeviceOrientationChangedEvent>.value(
-    mockOnDeviceOrientationChangedEvent,
-  );
+  Stream<DeviceOrientationChangedEvent> onDeviceOrientationChanged() =>
+      Stream<DeviceOrientationChangedEvent>.value(
+        mockOnDeviceOrientationChangedEvent,
+      );
 
   @override
   Future<XFile> takePicture(int cameraId) => mockPlatformException
@@ -1566,14 +1612,15 @@ class MockCameraPlatform extends Mock
 
   @override
   Future<void> prepareForVideoRecording() async => super.noSuchMethod(
-    Invocation.method(#prepareForVideoRecording, null),
-  );
+        Invocation.method(#prepareForVideoRecording, null),
+      );
 
   @override
   Future<XFile> startVideoRecording(
     int cameraId, {
     Duration? maxVideoDuration,
-  }) => Future<XFile>.value(mockVideoRecordingXFile);
+  }) =>
+      Future<XFile>.value(mockVideoRecordingXFile);
 
   @override
   Future<void> startVideoCapturing(VideoCaptureOptions options) {
@@ -1587,20 +1634,21 @@ class MockCameraPlatform extends Mock
   Future<void> lockCaptureOrientation(
     int? cameraId,
     DeviceOrientation? orientation,
-  ) async => super.noSuchMethod(Invocation.method(
-    #lockCaptureOrientation,
-    <Object?>[cameraId, orientation],
-  ));
+  ) async =>
+      super.noSuchMethod(Invocation.method(
+        #lockCaptureOrientation,
+        <Object?>[cameraId, orientation],
+      ));
 
   @override
-  Future<void> unlockCaptureOrientation(int? cameraId) async => super
-      .noSuchMethod(
+  Future<void> unlockCaptureOrientation(int? cameraId) async =>
+      super.noSuchMethod(
         Invocation.method(#unlockCaptureOrientation, <Object?>[cameraId]),
       );
 
   @override
-  Future<void> pausePreview(int? cameraId) async => super
-      .noSuchMethod(Invocation.method(#pausePreview, <Object?>[cameraId]));
+  Future<void> pausePreview(int? cameraId) async =>
+      super.noSuchMethod(Invocation.method(#pausePreview, <Object?>[cameraId]));
 
   @override
   Future<void> resumePreview(int? cameraId) async => super
@@ -1608,31 +1656,31 @@ class MockCameraPlatform extends Mock
 
   @override
   Future<double> getMaxZoomLevel(int? cameraId) async => super.noSuchMethod(
-    Invocation.method(#getMaxZoomLevel, <Object?>[cameraId]),
-    returnValue: Future<double>.value(1.0),
-  ) as Future<double>;
+        Invocation.method(#getMaxZoomLevel, <Object?>[cameraId]),
+        returnValue: Future<double>.value(1.0),
+      ) as Future<double>;
 
   @override
   Future<double> getMinZoomLevel(int? cameraId) async => super.noSuchMethod(
-    Invocation.method(#getMinZoomLevel, <Object?>[cameraId]),
-    returnValue: Future<double>.value(0.0),
-  ) as Future<double>;
+        Invocation.method(#getMinZoomLevel, <Object?>[cameraId]),
+        returnValue: Future<double>.value(0.0),
+      ) as Future<double>;
 
   @override
-  Future<void> setZoomLevel(int? cameraId, double? zoom) async => super
-      .noSuchMethod(
+  Future<void> setZoomLevel(int? cameraId, double? zoom) async =>
+      super.noSuchMethod(
         Invocation.method(#setZoomLevel, <Object?>[cameraId, zoom]),
       );
 
   @override
-  Future<void> setFlashMode(int? cameraId, FlashMode? mode) async => super
-      .noSuchMethod(
+  Future<void> setFlashMode(int? cameraId, FlashMode? mode) async =>
+      super.noSuchMethod(
         Invocation.method(#setFlashMode, <Object?>[cameraId, mode]),
       );
 
   @override
-  Future<void> setExposureMode(int? cameraId, ExposureMode? mode) async => super
-      .noSuchMethod(
+  Future<void> setExposureMode(int? cameraId, ExposureMode? mode) async =>
+      super.noSuchMethod(
         Invocation.method(#setExposureMode, <Object?>[cameraId, mode]),
       );
 
@@ -1640,9 +1688,10 @@ class MockCameraPlatform extends Mock
   Future<void> setExposurePoint(
     int? cameraId,
     Point<double>? point,
-  ) async => super.noSuchMethod(
-    Invocation.method(#setExposurePoint, <Object?>[cameraId, point]),
-  );
+  ) async =>
+      super.noSuchMethod(
+        Invocation.method(#setExposurePoint, <Object?>[cameraId, point]),
+      );
 
   @override
   Future<double> getMinExposureOffset(int? cameraId) async =>
@@ -1676,11 +1725,11 @@ class MockCameraPlatform extends Mock
 class MockCameraDescription extends CameraDescription {
   /// Creates a new camera description with the given properties.
   const MockCameraDescription()
-    : super(
-        name: 'Test',
-        lensDirection: CameraLensDirection.back,
-        sensorOrientation: 0,
-      );
+      : super(
+          name: 'Test',
+          lensDirection: CameraLensDirection.back,
+          sensorOrientation: 0,
+        );
 
   @override
   CameraLensDirection get lensDirection => CameraLensDirection.back;

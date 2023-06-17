@@ -53,12 +53,12 @@ class DragonPage extends StatelessWidget {
               ),
             ],
             menuItemBuilder: (context) => [
-                  for (final item in Menu.wikipedia)
-                    PopupMenuItem(
-                      value: item,
-                      child: Text(context.translate(item)),
-                    ),
-                ],
+              for (final item in Menu.wikipedia)
+                PopupMenuItem(
+                  value: item,
+                  child: Text(context.translate(item)),
+                ),
+            ],
             onMenuItemSelected: (text) => context.openUrl(_dragon.url),
           ),
           SliverSafeArea(
@@ -85,9 +85,11 @@ class DragonPage extends StatelessWidget {
       title: context.translate('spacex.vehicle.capsule.description.title'),
       child: RowLayout(
         children: <Widget>[
-          RowItem.text(context.translate(
-            'spacex.vehicle.capsule.description.launch_maiden',
-          ), _dragon.getFullFirstFlight),
+          RowItem.text(
+              context.translate(
+                'spacex.vehicle.capsule.description.launch_maiden',
+              ),
+              _dragon.getFullFirstFlight),
           RowItem.text(
             context.translate(
               'spacex.vehicle.capsule.description.crew_capacity',
@@ -112,12 +114,16 @@ class DragonPage extends StatelessWidget {
       title: context.translate('spacex.vehicle.capsule.specifications.title'),
       child: RowLayout(
         children: <Widget>[
-          RowItem.text(context.translate(
-            'spacex.vehicle.capsule.specifications.payload_launch',
-          ), _dragon.getLaunchMass),
-          RowItem.text(context.translate(
-            'spacex.vehicle.capsule.specifications.payload_return',
-          ), _dragon.getReturnMass),
+          RowItem.text(
+              context.translate(
+                'spacex.vehicle.capsule.specifications.payload_launch',
+              ),
+              _dragon.getLaunchMass),
+          RowItem.text(
+              context.translate(
+                'spacex.vehicle.capsule.specifications.payload_return',
+              ),
+              _dragon.getReturnMass),
           RowItem.boolean(
             context.translate('spacex.vehicle.capsule.description.reusable'),
             _dragon.reusable,

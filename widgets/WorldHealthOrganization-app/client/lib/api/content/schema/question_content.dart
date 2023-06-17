@@ -12,13 +12,15 @@ class QuestionContent extends ContentBase {
 
   QuestionContent(ContentBundle bundle) : super(bundle, schemaName: 'qa') {
     try {
-      items = bundle.contentItems.map(
-        (item) => QuestionItem(
-          title: item['title_html'],
-          body: item['body_html'],
-          displayCondition: item['display_condition'],
-        ),
-      ).toList();
+      items = bundle.contentItems
+          .map(
+            (item) => QuestionItem(
+              title: item['title_html'],
+              body: item['body_html'],
+              displayCondition: item['display_condition'],
+            ),
+          )
+          .toList();
     } catch (err) {
       print('Error loading question data: $err');
       throw ContentBundleDataException();

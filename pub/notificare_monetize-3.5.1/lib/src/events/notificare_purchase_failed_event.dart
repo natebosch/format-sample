@@ -15,7 +15,8 @@ class NotificarePurchaseFailedEvent {
 
   factory NotificarePurchaseFailedEvent.fromJson(
     Map<String, dynamic> json,
-  ) => _$NotificarePurchaseFailedEventFromJson(json);
+  ) =>
+      _$NotificarePurchaseFailedEventFromJson(json);
 
   Map<String, dynamic> toJson() => _$NotificarePurchaseFailedEventToJson(this);
 }

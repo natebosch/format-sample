@@ -70,46 +70,46 @@ class _MainScreenState extends State<MainScreen> {
   Widget _getActiveView() => _widgetViews.elementAt(_activePanelIndex);
 
   Widget _buildHeader() => AppBar(
-    toolbarHeight: 80,
-    title: Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        const Caption(name: 'Currency Alarm'),
-        IconButton(
-          icon: Icon(Icons.info),
-          enableFeedback: true,
-          color: Colors.white,
-          iconSize: 28,
-          onPressed: () => _showAppInfoDialog(),
+        toolbarHeight: 80,
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            const Caption(name: 'Currency Alarm'),
+            IconButton(
+              icon: Icon(Icons.info),
+              enableFeedback: true,
+              color: Colors.white,
+              iconSize: 28,
+              onPressed: () => _showAppInfoDialog(),
+            ),
+          ],
         ),
-      ],
-    ),
-    elevation: 0.0,
-    backgroundColor: Colors.transparent,
-  );
+        elevation: 0.0,
+        backgroundColor: Colors.transparent,
+      );
 
   Widget _buildBody() => Container(
-    margin: const EdgeInsets.only(left: 10, right: 10),
-    child: ClipRRect(
-      borderRadius: BorderRadius.vertical(top: Radius.circular(25)),
-      child: Container(
-        child: Center(child: _getActiveView()),
-        color: Colors.white,
-      ),
-    ),
-  );
+        margin: const EdgeInsets.only(left: 10, right: 10),
+        child: ClipRRect(
+          borderRadius: BorderRadius.vertical(top: Radius.circular(25)),
+          child: Container(
+            child: Center(child: _getActiveView()),
+            color: Colors.white,
+          ),
+        ),
+      );
 
   _buildBottomNavbar() => BottomNavigationBar(
-    items: [dashboardNavItem, converterNavItem],
-    selectedItemColor: AppColors.Primary,
-    currentIndex: _activePanelIndex,
-    onTap: _onItemTapped,
-  );
+        items: [dashboardNavItem, converterNavItem],
+        selectedItemColor: AppColors.Primary,
+        currentIndex: _activePanelIndex,
+        onTap: _onItemTapped,
+      );
 
   _buildFooter() => ClipRRect(
-    borderRadius: BorderRadius.vertical(top: Radius.circular(10)),
-    child: _buildBottomNavbar(),
-  );
+        borderRadius: BorderRadius.vertical(top: Radius.circular(10)),
+        child: _buildBottomNavbar(),
+      );
 
   @override
   Widget build(BuildContext context) {

@@ -31,8 +31,8 @@ class TransactionListTile extends StatelessWidget {
             showModalBottomSheet(
               context: context,
               isScrollControlled: true,
-              builder:
-                  (context) => TransactionBottomSheet(transaction: transaction),
+              builder: (context) =>
+                  TransactionBottomSheet(transaction: transaction),
             );
           },
           child: Container(
@@ -88,9 +88,11 @@ class TransactionListTile extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        Text(S.of(context).categoryName(
-          transformCategoryToKey(transaction.category),
-        ), style: transactionTitleStyle),
+        Text(
+            S.of(context).categoryName(
+                  transformCategoryToKey(transaction.category),
+                ),
+            style: transactionTitleStyle),
         SizedBox(height: 2),
         Row(
           children: <Widget>[

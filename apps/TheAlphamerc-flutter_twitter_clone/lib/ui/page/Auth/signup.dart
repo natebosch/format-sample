@@ -179,20 +179,19 @@ class _SignupState extends State<Signup> {
     );
     state
         .signUp(
-          user,
-          password: _passwordController.text,
-          scaffoldKey: _scaffoldKey,
-        )
+      user,
+      password: _passwordController.text,
+      scaffoldKey: _scaffoldKey,
+    )
         .then((status) {
-          print(status);
-        })
-        .whenComplete(() {
-          loader.hideLoader();
-          if (state.authStatus == AuthStatus.LOGGED_IN) {
-            Navigator.pop(context);
-            widget.loginCallback();
-          }
-        });
+      print(status);
+    }).whenComplete(() {
+      loader.hideLoader();
+      if (state.authStatus == AuthStatus.LOGGED_IN) {
+        Navigator.pop(context);
+        widget.loginCallback();
+      }
+    });
   }
 
   @override

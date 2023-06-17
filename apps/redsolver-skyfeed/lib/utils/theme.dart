@@ -6,10 +6,10 @@ ThemeData buildThemeData(BuildContext context, String theme) {
   final textColor = dark ? Color(0xffd8d8d8) : Color(0xff272727);
 
   TextTheme newTextTheme = Theme.of(context).textTheme.apply(
-    bodyColor: textColor,
-    displayColor: textColor,
-    fontFamily: 'Roboto',
-  );
+        bodyColor: textColor,
+        displayColor: textColor,
+        fontFamily: 'Roboto',
+      );
 
   final fontFamilyFallback = <String>['Noto Color Emoji']; // TODO Set
 

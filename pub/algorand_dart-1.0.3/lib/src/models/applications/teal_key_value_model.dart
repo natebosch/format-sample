@@ -12,7 +12,8 @@ class TealKeyValue {
 
   factory TealKeyValue.fromJson(
     Map<String, dynamic> json,
-  ) => _$TealKeyValueFromJson(json);
+  ) =>
+      _$TealKeyValueFromJson(json);
 
   Map<String, dynamic> toJson() => _$TealKeyValueToJson(this);
 }

@@ -56,19 +56,19 @@ class RecurringExpenseEditVM extends AbstractExpenseEditVM {
     bool isSaving,
     ExpenseEntity origExpense,
     Function(BuildContext context, Completer<SelectableEntity> completer)
-    onAddClientPressed,
+        onAddClientPressed,
     Function(BuildContext context, Completer<SelectableEntity> completer)
-    onAddVendorPressed,
+        onAddVendorPressed,
   }) : super(
-         state: state,
-         expense: expense,
-         onChanged: onChanged,
-         onSavePressed: onSavePressed,
-         onCancelPressed: onCancelPressed,
-         origExpense: origExpense,
-         onAddClientPressed: onAddClientPressed,
-         onAddVendorPressed: onAddVendorPressed,
-       );
+          state: state,
+          expense: expense,
+          onChanged: onChanged,
+          onSavePressed: onSavePressed,
+          onCancelPressed: onCancelPressed,
+          origExpense: origExpense,
+          onAddClientPressed: onAddClientPressed,
+          onAddVendorPressed: onAddVendorPressed,
+        );
 
   factory RecurringExpenseEditVM.fromStore(Store<AppState> store) {
     final state = store.state;

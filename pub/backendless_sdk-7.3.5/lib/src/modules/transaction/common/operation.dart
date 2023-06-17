@@ -34,11 +34,11 @@ abstract class Operation<T> {
   }
 
   Map toJson() => {
-    "operationType": describeEnum(operationType!),
-    "table": table,
-    "payload": payload,
-    "opResultId": opResultId,
-  };
+        "operationType": describeEnum(operationType!),
+        "table": table,
+        "payload": payload,
+        "opResultId": opResultId,
+      };
 
   @override
   String toString() {

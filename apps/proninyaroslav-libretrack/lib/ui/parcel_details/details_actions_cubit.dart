@@ -155,8 +155,8 @@ class DetailsActionsCubit extends Cubit<DetailsActionsState> {
   Future<void> refresh(ParcelInfo info) async {
     emit(const DetailsActionsState.refreshing());
 
-    final resList = await _trackingScheduler
-        .enqueueOneshot([info.trackInfo.trackNumber]);
+    final resList =
+        await _trackingScheduler.enqueueOneshot([info.trackInfo.trackNumber]);
     resList.first.when(
       success: (trackNumber) {
         emit(const DetailsActionsState.refreshSuccess());
@@ -213,9 +213,11 @@ class DetailsActionsCubit extends Cubit<DetailsActionsState> {
   Future<void> activateTracking(ParcelInfo info) async {
     emit(const DetailsActionsState.activating());
     final res = await _trackRepo.updateTrackNumberServices(
-      info.trackServices.map(
-        (trackService) => trackService.copyWith(isActive: true),
-      ).toList(),
+      info.trackServices
+          .map(
+            (trackService) => trackService.copyWith(isActive: true),
+          )
+          .toList(),
     );
     res.when(
       (value) => emit(const DetailsActionsState.activateSuccess()),

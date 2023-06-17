@@ -216,12 +216,12 @@ abstract class CompanyGatewayEntity extends Object
   bool supportsCard(int cardType) => acceptedCreditCards & cardType > 0;
 
   CompanyGatewayEntity addCard(int cardType) => rebuild(
-    (b) => b..acceptedCreditCards = acceptedCreditCards | cardType,
-  );
+        (b) => b..acceptedCreditCards = acceptedCreditCards | cardType,
+      );
 
   CompanyGatewayEntity removeCard(int cardType) => rebuild(
-    (b) => b..acceptedCreditCards = acceptedCreditCards ^ cardType,
-  );
+        (b) => b..acceptedCreditCards = acceptedCreditCards ^ cardType,
+      );
 
   CompanyGatewayEntity updateConfig(String field, dynamic value) {
     final updatedConfig = parsedConfig;
@@ -238,7 +238,8 @@ abstract class CompanyGatewayEntity extends Object
     CompanyGatewayEntity companyGateway,
     String sortField,
     bool sortAscending,
-  ) => 0;
+  ) =>
+      0;
 
   @override
   bool matchesFilter(String filter) {

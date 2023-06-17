@@ -21,9 +21,9 @@ import 'mui_migrator.dart';
 class MuiButtonToolbarMigrator extends ComponentUsageMigrator with MuiMigrator {
   @override
   bool shouldMigrateUsage(FluentComponentUsage usage) => usesWsdFactory(
-    usage,
-    'ButtonToolbar',
-  );
+        usage,
+        'ButtonToolbar',
+      );
 
   @override
   void migrateUsage(FluentComponentUsage usage) {

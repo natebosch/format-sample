@@ -115,8 +115,8 @@ class _EditPageState extends State<EditPage> {
     String url;
     setState(() => _isdpLoading = true);
     Reference reference = _storageInstance.ref('userdps').child(
-      _authInstance.currentUser.uid,
-    );
+          _authInstance.currentUser.uid,
+        );
 
     try {
       // if already exist, it will be overwritten
@@ -208,15 +208,19 @@ class _EditPageState extends State<EditPage> {
               /// Check whether the getstorage was not true or the user hasn't
               /// agree with the consent yet
               if (GetStorage().read(kHasAgreeConsent) ||
-                  await Navigator.push(context, MaterialPageRoute(
-                    builder: (context) => const ConsentScreen(),
-                  ))) {
-                Navigator.push(context, MaterialPageRoute(
-                  builder: (context) => LiveGuide(
+                  await Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const ConsentScreen(),
+                      ))) {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => LiveGuide(
                         userCode: _userCode,
                         docs: _documentSnapshotData,
                       ),
-                ));
+                    ));
               } else {}
             },
             label: const Text('Share profile'),
@@ -262,9 +266,11 @@ class _EditPageState extends State<EditPage> {
                                 onPressed: () async {
                                   setDialogState(() => isLoading = true);
                                   try {
-                                    _storageInstance.refFromURL(
-                                      _userImageUrl,
-                                    ).delete();
+                                    _storageInstance
+                                        .refFromURL(
+                                          _userImageUrl,
+                                        )
+                                        .delete();
                                   } catch (e) {
                                     print('Unable to delete image: $e');
                                   }
@@ -379,17 +385,17 @@ class _EditPageState extends State<EditPage> {
                       GestureDetector(
                         onTap: kIsWeb
                             ? () => CustomSnack.showSnack(
-                                context,
-                                message:
-                                    'Change image only available in Android App',
-                                barAction: SnackBarAction(
-                                  textColor: Colors.blueGrey.shade200,
-                                  label: 'Get the app',
-                                  onPressed: () {
-                                    launchURL(context, kPlayStoreUrl);
-                                  },
-                                ),
-                              )
+                                  context,
+                                  message:
+                                      'Change image only available in Android App',
+                                  barAction: SnackBarAction(
+                                    textColor: Colors.blueGrey.shade200,
+                                    label: 'Get the app',
+                                    onPressed: () {
+                                      launchURL(context, kPlayStoreUrl);
+                                    },
+                                  ),
+                                )
                             : mode == Mode.edit
                                 ? () async {
                                     int response = await showDialog(
@@ -461,8 +467,7 @@ class _EditPageState extends State<EditPage> {
                                               onPressed: () async {
                                                 // ignore if nickname empty
                                                 if (_nameController
-                                                    .text
-                                                    .isEmpty) return;
+                                                    .text.isEmpty) return;
 
                                                 setDialogState(
                                                   () =>
@@ -555,8 +560,7 @@ class _EditPageState extends State<EditPage> {
                                                   Navigator.pop(
                                                     context,
                                                     _subtitleController
-                                                        .text
-                                                        .isNotEmpty,
+                                                        .text.isNotEmpty,
                                                   );
                                                 },
                                                 child: const Text('Save'),

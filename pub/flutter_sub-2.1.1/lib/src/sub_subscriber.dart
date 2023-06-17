@@ -28,9 +28,9 @@ class SubSubscriber<T> extends SubValue<StreamSubscription<T>?> {
     required Stream<T> stream,
     ValueChanged<T>? listener,
   }) : super(
-         create: () => listener != null ? stream.listen(listener) : null,
-         keys: [stream],
-         dispose: (value) => value?.cancel(),
-         builder: (context, _) => child,
-       );
+          create: () => listener != null ? stream.listen(listener) : null,
+          keys: [stream],
+          dispose: (value) => value?.cancel(),
+          builder: (context, _) => child,
+        );
 }

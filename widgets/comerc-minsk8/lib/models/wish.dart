@@ -17,13 +17,13 @@ class WishModel extends Equatable {
 
   @override
   List<Object> get props => [
-    unitId,
-    // updatedAt,
-  ];
+        unitId,
+        // updatedAt,
+      ];
 
   static WishModel fromJson(Map<String, dynamic> json) => _$WishModelFromJson(
-    json,
-  );
+        json,
+      );
 
   Map<String, dynamic> toJson() => _$WishModelToJson(this);
 }

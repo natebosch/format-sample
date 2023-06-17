@@ -70,33 +70,33 @@ void main() {
         cubit.search(null);
       },
       expect: () => [
-            ParcelsState.initial(
-              filters: ParcelsFilterBatch(),
-              search: const ParcelsFilter.search(query: 'test1'),
-            ),
-            ParcelsState.initial(
-              filters: ParcelsFilterBatch(),
-              search: const ParcelsFilter.search(query: 'test2'),
-            ),
-            ParcelsState.loaded(
-              active: [],
-              archive: [],
-              filters: ParcelsFilterBatch(),
-              search: const ParcelsFilter.search(query: 'test2'),
-            ),
-            ParcelsState.loaded(
-              active: [],
-              archive: [],
-              filters: ParcelsFilterBatch(),
-              search: const ParcelsFilter.search(query: 'test3'),
-            ),
-            ParcelsState.loaded(
-              active: [],
-              archive: [],
-              filters: ParcelsFilterBatch(),
-              search: const ParcelsFilter.search(),
-            ),
-          ],
+        ParcelsState.initial(
+          filters: ParcelsFilterBatch(),
+          search: const ParcelsFilter.search(query: 'test1'),
+        ),
+        ParcelsState.initial(
+          filters: ParcelsFilterBatch(),
+          search: const ParcelsFilter.search(query: 'test2'),
+        ),
+        ParcelsState.loaded(
+          active: [],
+          archive: [],
+          filters: ParcelsFilterBatch(),
+          search: const ParcelsFilter.search(query: 'test2'),
+        ),
+        ParcelsState.loaded(
+          active: [],
+          archive: [],
+          filters: ParcelsFilterBatch(),
+          search: const ParcelsFilter.search(query: 'test3'),
+        ),
+        ParcelsState.loaded(
+          active: [],
+          archive: [],
+          filters: ParcelsFilterBatch(),
+          search: const ParcelsFilter.search(),
+        ),
+      ],
     );
 
     blocTest(
@@ -126,23 +126,23 @@ void main() {
         ).called(1);
       },
       expect: () => [
-            ParcelsState.initial(
-              filters: ParcelsFilterBatch()
-                ..statusFilter = const ParcelsFilter.status(
-                  statusType: ShipmentStatusType.inTransit,
-                ),
+        ParcelsState.initial(
+          filters: ParcelsFilterBatch()
+            ..statusFilter = const ParcelsFilter.status(
+              statusType: ShipmentStatusType.inTransit,
             ),
-            ParcelsState.initial(
-              filters: ParcelsFilterBatch()
-                ..statusFilter = const ParcelsFilter.status(
-                  statusType: ShipmentStatusType.delivered,
-                ),
+        ),
+        ParcelsState.initial(
+          filters: ParcelsFilterBatch()
+            ..statusFilter = const ParcelsFilter.status(
+              statusType: ShipmentStatusType.delivered,
             ),
-            ParcelsState.initial(
-              filters: ParcelsFilterBatch()
-                ..statusFilter = const ParcelsFilter.status(),
-            ),
-          ],
+        ),
+        ParcelsState.initial(
+          filters: ParcelsFilterBatch()
+            ..statusFilter = const ParcelsFilter.status(),
+        ),
+      ],
     );
 
     blocTest(
@@ -162,14 +162,14 @@ void main() {
         ).called(1);
       },
       expect: () => [
-            ParcelsState.initial(
-              filters: ParcelsFilterBatch()
-                ..newInfoFilter = const ParcelsFilter.newInfo(),
-            ),
-            ParcelsState.initial(
-              filters: ParcelsFilterBatch()..newInfoFilter = null,
-            ),
-          ],
+        ParcelsState.initial(
+          filters: ParcelsFilterBatch()
+            ..newInfoFilter = const ParcelsFilter.newInfo(),
+        ),
+        ParcelsState.initial(
+          filters: ParcelsFilterBatch()..newInfoFilter = null,
+        ),
+      ],
     );
 
     blocTest(
@@ -189,14 +189,14 @@ void main() {
         ).called(1);
       },
       expect: () => [
-            ParcelsState.initial(
-              filters: ParcelsFilterBatch()
-                ..errorFilter = const ParcelsFilter.error(),
-            ),
-            ParcelsState.initial(
-              filters: ParcelsFilterBatch()..errorFilter = null,
-            ),
-          ],
+        ParcelsState.initial(
+          filters: ParcelsFilterBatch()
+            ..errorFilter = const ParcelsFilter.error(),
+        ),
+        ParcelsState.initial(
+          filters: ParcelsFilterBatch()..errorFilter = null,
+        ),
+      ],
     );
 
     blocTest(
@@ -218,17 +218,17 @@ void main() {
         ).called(1);
       },
       expect: () => [
-            ParcelsState.initial(
-              filters: ParcelsFilterBatch()
-                ..postalServiceFilter = const ParcelsFilter.postalService(
-                  serviceType: PostalServiceType.ups,
-                ),
+        ParcelsState.initial(
+          filters: ParcelsFilterBatch()
+            ..postalServiceFilter = const ParcelsFilter.postalService(
+              serviceType: PostalServiceType.ups,
             ),
-            ParcelsState.initial(
-              filters: ParcelsFilterBatch()
-                ..postalServiceFilter = const ParcelsFilter.postalService(),
-            ),
-          ],
+        ),
+        ParcelsState.initial(
+          filters: ParcelsFilterBatch()
+            ..postalServiceFilter = const ParcelsFilter.postalService(),
+        ),
+      ],
     );
 
     blocTest(
@@ -242,20 +242,20 @@ void main() {
         cubit.setAlphabeticallySort(isDesc: true);
         verify(
           () => mockPref.parcelsSort = const ParcelsSort.alphabetically(
-                isDesc: true,
-              ),
+            isDesc: true,
+          ),
         ).called(1);
       },
       expect: () => [
-            ParcelsState.initial(
-              filters: ParcelsFilterBatch(),
-              sort: const ParcelsSort.alphabetically(),
-            ),
-            ParcelsState.initial(
-              filters: ParcelsFilterBatch(),
-              sort: const ParcelsSort.alphabetically(isDesc: true),
-            ),
-          ],
+        ParcelsState.initial(
+          filters: ParcelsFilterBatch(),
+          sort: const ParcelsSort.alphabetically(),
+        ),
+        ParcelsState.initial(
+          filters: ParcelsFilterBatch(),
+          sort: const ParcelsSort.alphabetically(isDesc: true),
+        ),
+      ],
     );
 
     blocTest(
@@ -269,20 +269,20 @@ void main() {
         cubit.setActivityDateSort(oldestFirst: true);
         verify(
           () => mockPref.parcelsSort = const ParcelsSort.activityDate(
-                oldestFirst: true,
-              ),
+            oldestFirst: true,
+          ),
         ).called(1);
       },
       expect: () => [
-            ParcelsState.initial(
-              filters: ParcelsFilterBatch(),
-              sort: const ParcelsSort.activityDate(),
-            ),
-            ParcelsState.initial(
-              filters: ParcelsFilterBatch(),
-              sort: const ParcelsSort.activityDate(oldestFirst: true),
-            ),
-          ],
+        ParcelsState.initial(
+          filters: ParcelsFilterBatch(),
+          sort: const ParcelsSort.activityDate(),
+        ),
+        ParcelsState.initial(
+          filters: ParcelsFilterBatch(),
+          sort: const ParcelsSort.activityDate(oldestFirst: true),
+        ),
+      ],
     );
 
     blocTest(
@@ -296,20 +296,20 @@ void main() {
         cubit.setDateAddedSort(oldestFirst: true);
         verify(
           () => mockPref.parcelsSort = const ParcelsSort.dateAdded(
-                oldestFirst: true,
-              ),
+            oldestFirst: true,
+          ),
         ).called(1);
       },
       expect: () => [
-            ParcelsState.initial(
-              filters: ParcelsFilterBatch(),
-              sort: const ParcelsSort.dateAdded(),
-            ),
-            ParcelsState.initial(
-              filters: ParcelsFilterBatch(),
-              sort: const ParcelsSort.dateAdded(oldestFirst: true),
-            ),
-          ],
+        ParcelsState.initial(
+          filters: ParcelsFilterBatch(),
+          sort: const ParcelsSort.dateAdded(),
+        ),
+        ParcelsState.initial(
+          filters: ParcelsFilterBatch(),
+          sort: const ParcelsSort.dateAdded(oldestFirst: true),
+        ),
+      ],
     );
   });
 }

@@ -148,17 +148,15 @@ class HomeView extends StatelessWidget {
                                       if (formKey.currentState.validate()) {
                                         controller
                                             .createBullet(
-                                              controller
-                                                  .newBulletController
-                                                  .text,
-                                              controller.newDate.value,
-                                            )
+                                          controller.newBulletController.text,
+                                          controller.newDate.value,
+                                        )
                                             .then((value) {
-                                              controller.newBulletController
-                                                  .clear();
-                                              controller.newDate.value =
-                                                  DateTime.now();
-                                            });
+                                          controller.newBulletController
+                                              .clear();
+                                          controller.newDate.value =
+                                              DateTime.now();
+                                        });
                                       }
                                     },
                                   ),

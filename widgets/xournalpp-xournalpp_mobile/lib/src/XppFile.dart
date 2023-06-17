@@ -61,11 +61,11 @@ class XppFile {
   /// showing a [open] dialog and pushes a [CanvasPage] to the provided [BuildContext]'s [Navigator]
   static void openAndEdit({required BuildContext context}) async {
     //double percentage = 0;
-    ScaffoldFeatureController snackBarController = ScaffoldMessenger.of(context)
-        .showSnackBar(SnackBar(
-          duration: Duration(days: 999),
-          content: Text(S.of(context).loadingFile),
-        ));
+    ScaffoldFeatureController snackBarController =
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      duration: Duration(days: 999),
+      content: Text(S.of(context).loadingFile),
+    ));
     XppFile file;
     try {
       file = await open((percentage) => null, showMissingFileDialog);
@@ -79,15 +79,15 @@ class XppFile {
       showDialog(
         context: context,
         builder: (c) => AlertDialog(
-              title: Text(S.of(context).noFileSelected),
-              content: Text(S.of(context).youDidNotSelectAnyFile),
-              actions: [
-                TextButton(
-                  onPressed: () => Navigator.of(context).pop(),
-                  child: Text(S.of(context).close),
-                ),
-              ],
+          title: Text(S.of(context).noFileSelected),
+          content: Text(S.of(context).youDidNotSelectAnyFile),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.of(context).pop(),
+              child: Text(S.of(context).close),
             ),
+          ],
+        ),
       );
     }
   }
@@ -326,8 +326,8 @@ class XppFile {
           Color color = parseColor(strokeElement.getAttribute('color'));
           List<XppStrokePoint> points = [];
           List<String> rawWidth = strokeElement.getAttribute('width')!.split(
-            ' ',
-          );
+                ' ',
+              );
           List<String> rawPoints = strokeElement.text.trim().split(' ');
           for (int i = 0; i < rawPoints.length / 2; i++) {
             points.add(XppStrokePoint(

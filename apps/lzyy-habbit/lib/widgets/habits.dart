@@ -274,10 +274,10 @@ class Habits extends StatelessWidget {
                 final habitPage = _HabitModifier(habit);
                 final newHabit =
                     await Navigator.push<Habit>(context, MaterialPageRoute(
-                      builder: (context) {
-                        return habitPage;
-                      },
-                    ));
+                  builder: (context) {
+                    return habitPage;
+                  },
+                ));
 
                 if (newHabit != null && newHabit.title != '') {
                   bloc.addHabit(newHabit, context);
@@ -298,10 +298,10 @@ class Habits extends StatelessWidget {
                   final habitPage = _HabitModifier(habits[index]);
                   final updatedHabit =
                       await Navigator.push<Habit>(context, MaterialPageRoute(
-                        builder: (context) {
-                          return habitPage;
-                        },
-                      ));
+                    builder: (context) {
+                      return habitPage;
+                    },
+                  ));
                   if (updatedHabit != null && updatedHabit.title != '') {
                     bloc.updateHabit(updatedHabit);
                   }
@@ -317,10 +317,10 @@ class Habits extends StatelessWidget {
                   final habitPage = _HabitModifier(habit);
                   final newHabit =
                       await Navigator.push<Habit>(context, MaterialPageRoute(
-                        builder: (context) {
-                          return habitPage;
-                        },
-                      ));
+                    builder: (context) {
+                      return habitPage;
+                    },
+                  ));
 
                   if (newHabit != null && newHabit.title != '') {
                     bloc.addHabit(newHabit, context);

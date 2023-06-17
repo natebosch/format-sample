@@ -10,7 +10,7 @@ typedef CreateServiceCallback = GraphQLService Function();
 
 class DatabaseRepository {
   DatabaseRepository({CreateServiceCallback createService})
-    : _createService = createService ?? createDefaultService;
+      : _createService = createService ?? createDefaultService;
 
   GraphQLService _service;
   final CreateServiceCallback _createService;

@@ -31,11 +31,11 @@ class LocalParticipant extends Participant<LocalTrackPublication> {
     required Room room,
     required lk_models.ParticipantInfo info,
   }) : super(
-         room: room,
-         sid: info.sid,
-         identity: info.identity,
-         name: info.name,
-       ) {
+          room: room,
+          sid: info.sid,
+          identity: info.identity,
+          name: info.name,
+        ) {
     updateFromInfo(info);
   }
 
@@ -506,10 +506,10 @@ class LocalParticipant extends Participant<LocalTrackPublication> {
   }
 
   @internal
-  Iterable<lk_rtc.TrackPublishedResponse>
-  publishedTracksInfo() => trackPublications.values.map(
-    (e) => e.toPBTrackPublishedResponse(),
-  );
+  Iterable<lk_rtc.TrackPublishedResponse> publishedTracksInfo() =>
+      trackPublications.values.map(
+        (e) => e.toPBTrackPublishedResponse(),
+      );
 
   @internal
   @override

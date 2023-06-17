@@ -82,19 +82,19 @@ class _$EmailViewModelCopyWithImpl<$Res>
       emailMessage: emailMessage == freezed
           ? _value.emailMessage
           : emailMessage // ignore: cast_nullable_to_non_nullable
-                as EmailMessage,
+              as EmailMessage,
       mimeMessage: mimeMessage == freezed
           ? _value.mimeMessage
           : mimeMessage // ignore: cast_nullable_to_non_nullable
-                as MimeMessage?,
+              as MimeMessage?,
       mailbox: mailbox == freezed
           ? _value.mailbox
           : mailbox // ignore: cast_nullable_to_non_nullable
-                as Mailbox?,
+              as Mailbox?,
       kdbxEntry: kdbxEntry == freezed
           ? _value.kdbxEntry
           : kdbxEntry // ignore: cast_nullable_to_non_nullable
-                as KdbxEntry?,
+              as KdbxEntry?,
     ));
   }
 }
@@ -138,19 +138,19 @@ class __$EmailViewModelCopyWithImpl<$Res>
       emailMessage: emailMessage == freezed
           ? _value.emailMessage
           : emailMessage // ignore: cast_nullable_to_non_nullable
-                as EmailMessage,
+              as EmailMessage,
       mimeMessage: mimeMessage == freezed
           ? _value.mimeMessage
           : mimeMessage // ignore: cast_nullable_to_non_nullable
-                as MimeMessage?,
+              as MimeMessage?,
       mailbox: mailbox == freezed
           ? _value.mailbox
           : mailbox // ignore: cast_nullable_to_non_nullable
-                as Mailbox?,
+              as Mailbox?,
       kdbxEntry: kdbxEntry == freezed
           ? _value.kdbxEntry
           : kdbxEntry // ignore: cast_nullable_to_non_nullable
-                as KdbxEntry?,
+              as KdbxEntry?,
     ));
   }
 }
@@ -215,11 +215,11 @@ class _$_EmailViewModel implements _EmailViewModel {
 
   @JsonKey(ignore: true)
   @override
-  _$EmailViewModelCopyWith<_EmailViewModel>
-  get copyWith => __$EmailViewModelCopyWithImpl<_EmailViewModel>(
-    this,
-    _$identity,
-  );
+  _$EmailViewModelCopyWith<_EmailViewModel> get copyWith =>
+      __$EmailViewModelCopyWithImpl<_EmailViewModel>(
+        this,
+        _$identity,
+      );
 }
 
 abstract class _EmailViewModel implements EmailViewModel {

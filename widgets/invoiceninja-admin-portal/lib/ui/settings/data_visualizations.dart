@@ -9,7 +9,7 @@ import 'package:invoiceninja_flutter/utils/localization.dart';
 
 class DataVisualizations extends StatefulWidget {
   const DataVisualizations({Key key, @required this.viewModel})
-    : super(key: key);
+      : super(key: key);
 
   final DataVisualizationsVM viewModel;
 

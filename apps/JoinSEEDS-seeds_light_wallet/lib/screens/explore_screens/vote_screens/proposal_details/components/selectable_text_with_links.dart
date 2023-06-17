@@ -25,7 +25,7 @@ class SelectableTextWithLinks extends StatelessWidget {
   final TextStyle? style;
 
   const SelectableTextWithLinks(this.text, {Key? key, this.style})
-    : super(key: key);
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {

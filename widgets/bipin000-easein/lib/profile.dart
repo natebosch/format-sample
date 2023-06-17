@@ -198,8 +198,8 @@ class _UpdateProfileState extends State<UpdateProfile> {
       if (e.toString().indexOf("Failed host lookup") != -1) {
         errorType = 1;
       } else if (e.toString().indexOf(
-            "Cannot return null for non-nullable field",
-          ) !=
+                "Cannot return null for non-nullable field",
+              ) !=
           -1) {
         errorType = 2;
       }

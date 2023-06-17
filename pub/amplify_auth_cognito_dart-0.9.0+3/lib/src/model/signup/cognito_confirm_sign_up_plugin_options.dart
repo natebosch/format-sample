@@ -16,7 +16,8 @@ class CognitoConfirmSignUpPluginOptions extends ConfirmSignUpPluginOptions {
   /// {@macro amplify_auth_cognito_dart.cognito_confirm_sign_up_plugin_options}
   factory CognitoConfirmSignUpPluginOptions.fromJson(
     Map<String, Object?> json,
-  ) => _$CognitoConfirmSignUpPluginOptionsFromJson(json);
+  ) =>
+      _$CognitoConfirmSignUpPluginOptionsFromJson(json);
 
   /// {@template amplify_auth_cognito_dart.cognito_confirm_sign_up_plugin_options.client_metadata}
   /// A map of custom key-value pairs that you can provide as input for certain
@@ -32,6 +33,6 @@ class CognitoConfirmSignUpPluginOptions extends ConfirmSignUpPluginOptions {
 
   @override
   Map<String, Object?> toJson() => _$CognitoConfirmSignUpPluginOptionsToJson(
-    this,
-  );
+        this,
+      );
 }

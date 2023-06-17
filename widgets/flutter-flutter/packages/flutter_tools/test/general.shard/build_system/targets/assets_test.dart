@@ -35,8 +35,8 @@ void main() {
       platform: FakePlatform(),
     );
     fileSystem.file(environment.buildDir.childFile('app.dill')).createSync(
-      recursive: true,
-    );
+          recursive: true,
+        );
     fileSystem
         .file('packages/flutter_tools/lib/src/build_system/targets/assets.dart')
         .createSync(recursive: true);
@@ -75,10 +75,12 @@ flutter:
       );
       final Depfile dependencies = depfileService.parse(depfile);
 
-      expect(dependencies.inputs.firstWhere(
-        (File file) => file.path == '/bar/LICENSE',
-        orElse: () => null,
-      ), isNotNull);
+      expect(
+          dependencies.inputs.firstWhere(
+            (File file) => file.path == '/bar/LICENSE',
+            orElse: () => null,
+          ),
+          isNotNull);
     },
     overrides: <Type, Generator>{
       FileSystem: () => fileSystem,
@@ -91,23 +93,33 @@ flutter:
     () async {
       await const CopyAssets().build(environment);
 
-      expect(fileSystem.file(
-        '${environment.buildDir.path}/flutter_assets/AssetManifest.json',
-      ), exists);
-      expect(fileSystem.file(
-        '${environment.buildDir.path}/flutter_assets/FontManifest.json',
-      ), exists);
-      expect(fileSystem.file(
-        '${environment.buildDir.path}/flutter_assets/NOTICES.Z',
-      ), exists);
+      expect(
+          fileSystem.file(
+            '${environment.buildDir.path}/flutter_assets/AssetManifest.json',
+          ),
+          exists);
+      expect(
+          fileSystem.file(
+            '${environment.buildDir.path}/flutter_assets/FontManifest.json',
+          ),
+          exists);
+      expect(
+          fileSystem.file(
+            '${environment.buildDir.path}/flutter_assets/NOTICES.Z',
+          ),
+          exists);
       // See https://github.com/flutter/flutter/issues/35293
-      expect(fileSystem.file(
-        '${environment.buildDir.path}/flutter_assets/assets/foo/bar.png',
-      ), exists);
+      expect(
+          fileSystem.file(
+            '${environment.buildDir.path}/flutter_assets/assets/foo/bar.png',
+          ),
+          exists);
       // See https://github.com/flutter/flutter/issues/46163
-      expect(fileSystem.file(
-        '${environment.buildDir.path}/flutter_assets/assets/wildcard/%23bar.png',
-      ), exists);
+      expect(
+          fileSystem.file(
+            '${environment.buildDir.path}/flutter_assets/assets/wildcard/%23bar.png',
+          ),
+          exists);
     },
     overrides: <Type, Generator>{
       FileSystem: () => fileSystem,
@@ -140,18 +152,22 @@ flutter:
     },
   );
 
-  testWithoutContext('processSkSLBundle returns null if there is no path '
+  testWithoutContext(
+      'processSkSLBundle returns null if there is no path '
       'to the bundle', () {
-    expect(processSkSLBundle(
-      null,
-      targetPlatform: TargetPlatform.android,
-      fileSystem: MemoryFileSystem.test(),
-      logger: BufferLogger.test(),
-      engineVersion: null,
-    ), isNull);
+    expect(
+        processSkSLBundle(
+          null,
+          targetPlatform: TargetPlatform.android,
+          fileSystem: MemoryFileSystem.test(),
+          logger: BufferLogger.test(),
+          engineVersion: null,
+        ),
+        isNull);
   });
 
-  testWithoutContext('processSkSLBundle throws exception if bundle file is '
+  testWithoutContext(
+      'processSkSLBundle throws exception if bundle file is '
       'missing', () {
     expect(
       () => processSkSLBundle(
@@ -165,7 +181,8 @@ flutter:
     );
   });
 
-  testWithoutContext('processSkSLBundle throws exception if the bundle is not '
+  testWithoutContext(
+      'processSkSLBundle throws exception if the bundle is not '
       'valid JSON', () {
     final FileSystem fileSystem = MemoryFileSystem.test();
     final BufferLogger logger = BufferLogger.test();
@@ -184,7 +201,8 @@ flutter:
     expect(logger.errorText, contains('was not a JSON object'));
   });
 
-  testWithoutContext('processSkSLBundle throws exception if the bundle is not '
+  testWithoutContext(
+      'processSkSLBundle throws exception if the bundle is not '
       'a JSON object', () {
     final FileSystem fileSystem = MemoryFileSystem.test();
     final BufferLogger logger = BufferLogger.test();
@@ -203,12 +221,13 @@ flutter:
     expect(logger.errorText, contains('was not a JSON object'));
   });
 
-  testWithoutContext('processSkSLBundle throws an exception if the engine '
+  testWithoutContext(
+      'processSkSLBundle throws an exception if the engine '
       'revision is different', () {
     final FileSystem fileSystem = MemoryFileSystem.test();
     final BufferLogger logger = BufferLogger.test();
-    fileSystem.file('bundle.sksl').writeAsStringSync(json
-        .encode(<String, String>{'engineRevision': '1'}));
+    fileSystem.file('bundle.sksl').writeAsStringSync(
+        json.encode(<String, String>{'engineRevision': '1'}));
 
     expect(
       () => processSkSLBundle(
@@ -223,17 +242,18 @@ flutter:
     expect(logger.errorText, contains('Expected Flutter 1, but found 2'));
   });
 
-  testWithoutContext('processSkSLBundle warns if the bundle target platform is '
+  testWithoutContext(
+      'processSkSLBundle warns if the bundle target platform is '
       'different from the current target', () async {
     final FileSystem fileSystem = MemoryFileSystem.test();
     final BufferLogger logger = BufferLogger.test();
     fileSystem.file('bundle.sksl').writeAsStringSync(json.encode(
-      <String, Object>{
-        'engineRevision': '2',
-        'platform': 'fuchsia-arm64',
-        'data': <String, Object>{},
-      },
-    ));
+          <String, Object>{
+            'engineRevision': '2',
+            'platform': 'fuchsia-arm64',
+            'data': <String, Object>{},
+          },
+        ));
 
     final DevFSContent content = processSkSLBundle(
       'bundle.sksl',
@@ -256,12 +276,12 @@ flutter:
       final FileSystem fileSystem = MemoryFileSystem.test();
       final BufferLogger logger = BufferLogger.test();
       fileSystem.file('bundle.sksl').writeAsStringSync(json.encode(
-        <String, Object>{
-          'engineRevision': '2',
-          'platform': 'android',
-          'data': <String, Object>{},
-        },
-      ));
+            <String, Object>{
+              'engineRevision': '2',
+              'platform': 'android',
+              'data': <String, Object>{},
+            },
+          ));
 
       final DevFSContent content = processSkSLBundle(
         'bundle.sksl',

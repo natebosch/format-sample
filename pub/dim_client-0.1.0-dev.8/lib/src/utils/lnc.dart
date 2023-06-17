@@ -163,10 +163,10 @@ class BaseCenter {
     for (Observer item in listeners) {
       try {
         tasks.add(item.onReceiveNotification(notification).onError(
-          (error, st) => Log.error(
-            'observer error: $error, $st, $notification',
-          ),
-        ));
+              (error, st) => Log.error(
+                'observer error: $error, $st, $notification',
+              ),
+            ));
       } catch (ex, stackTrace) {
         Log.error('sync call observer error: $ex, $stackTrace, $notification');
       }

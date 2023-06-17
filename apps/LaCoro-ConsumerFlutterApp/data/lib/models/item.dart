@@ -28,9 +28,9 @@ class Item extends ParseObject with ItemEntity implements ParseCloneable {
   String get description => get<String>(keyDescription);
 
   set description(String description) => set<String>(
-    keyDescription,
-    description,
-  );
+        keyDescription,
+        description,
+      );
 
   String get picture => get<String>(keyPicture);
 

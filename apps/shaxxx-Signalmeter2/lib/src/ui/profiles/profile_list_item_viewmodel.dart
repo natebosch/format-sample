@@ -46,9 +46,9 @@ class ProfileListItemViewModel {
     this.onDelete,
     String name,
     String address,
-  }) : _name = name,
-       _address = address,
-       isClickable = _isDisconnected(connectionStatus);
+  })  : _name = name,
+        _address = address,
+        isClickable = _isDisconnected(connectionStatus);
 
   static bool _isDisconnected(ConnectionStatusEnum connectionStatus) {
     return connectionStatus == ConnectionStatusEnum.disconnected ||

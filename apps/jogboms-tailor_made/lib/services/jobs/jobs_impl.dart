@@ -13,10 +13,12 @@ class JobsImpl extends Jobs {
   @override
   Stream<List<JobModel>> fetchAll(String userId) {
     return repository.db.jobs(userId).snapshots().map(
-      (snapshot) => snapshot.documents.map(
-        (item) => JobModel.fromSnapshot(FireSnapshot(item)),
-      ).toList(),
-    );
+          (snapshot) => snapshot.documents
+              .map(
+                (item) => JobModel.fromSnapshot(FireSnapshot(item)),
+              )
+              .toList(),
+        );
   }
 
   @override
@@ -31,7 +33,7 @@ class JobsImpl extends Jobs {
     final ref = repository.db.jobs(userId).reference().document(job.id);
     ref.setData(job.toMap()).then((r) {});
     return ref.snapshots().map(
-      (doc) => JobModel.fromSnapshot(FireSnapshot(doc)),
-    );
+          (doc) => JobModel.fromSnapshot(FireSnapshot(doc)),
+        );
   }
 }

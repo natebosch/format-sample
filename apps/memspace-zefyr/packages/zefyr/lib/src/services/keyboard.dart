@@ -89,9 +89,11 @@ class KeyboardEventHandler {
 
     final bool isMacOS = keyEvent.data is RawKeyEventDataMacOs;
     if (!_nonModifierKeys.contains(key) ||
-        keysPressed.difference(
-              isMacOS ? _macOsModifierKeys : _modifierKeys,
-            ).length >
+        keysPressed
+                .difference(
+                  isMacOS ? _macOsModifierKeys : _modifierKeys,
+                )
+                .length >
             1 ||
         keysPressed.difference(_interestingKeys).isNotEmpty) {
       // If the most recently pressed key isn't a non-modifier key, or more than
@@ -100,15 +102,12 @@ class KeyboardEventHandler {
       return KeyEventResult.ignored;
     }
 
-    final bool isWordModifierPressed = isMacOS
-        ? keyEvent.isAltPressed
-        : keyEvent.isControlPressed;
-    final bool isLineModifierPressed = isMacOS
-        ? keyEvent.isMetaPressed
-        : keyEvent.isAltPressed;
-    final bool isShortcutModifierPressed = isMacOS
-        ? keyEvent.isMetaPressed
-        : keyEvent.isControlPressed;
+    final bool isWordModifierPressed =
+        isMacOS ? keyEvent.isAltPressed : keyEvent.isControlPressed;
+    final bool isLineModifierPressed =
+        isMacOS ? keyEvent.isMetaPressed : keyEvent.isAltPressed;
+    final bool isShortcutModifierPressed =
+        isMacOS ? keyEvent.isMetaPressed : keyEvent.isControlPressed;
     if (_movementKeys.contains(key)) {
       onCursorMovement(
         key,

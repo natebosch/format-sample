@@ -15,7 +15,7 @@ part 'send_confirmation_state.dart';
 class SendConfirmationBloc
     extends Bloc<SendConfirmationEvent, SendConfirmationState> {
   SendConfirmationBloc(SendConfirmationArguments arguments)
-    : super(SendConfirmationState.initial(arguments)) {
+      : super(SendConfirmationState.initial(arguments)) {
     on<OnSendTransactionButtonPressed>(_onSendTransaction);
   }
 
