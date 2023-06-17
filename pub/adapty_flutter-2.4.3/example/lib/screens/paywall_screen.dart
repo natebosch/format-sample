@@ -132,8 +132,9 @@ class _PaywallScreenState extends State<PaywallScreen> {
   }
 
   Widget _horizontalPurchaseButton(AdaptyPaywallProduct product) {
-    final discount =
-        product.discounts.length > 0 ? product.discounts.first : null;
+    final discount = product.discounts.length > 0
+        ? product.discounts.first
+        : null;
 
     return CupertinoButton.filled(
       child: Column(
@@ -163,14 +164,12 @@ class _PaywallScreenState extends State<PaywallScreen> {
       return Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: products
-            .map(
-              (e) => Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: _horizontalPurchaseButton(e),
-              ),
-            )
-            .toList(),
+        children: products.map(
+          (e) => Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: _horizontalPurchaseButton(e),
+          ),
+        ).toList(),
       );
     } else {
       return Row(

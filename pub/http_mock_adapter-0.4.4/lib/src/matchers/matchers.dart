@@ -47,12 +47,11 @@ abstract class Matchers {
     String pattern, {
     bool? multiLine,
     bool? caseSensitive,
-  }) =>
-      RegExpMatcher(
-        pattern: pattern,
-        multiLine: multiLine ?? false,
-        caseSensitive: caseSensitive ?? false,
-      );
+  }) => RegExpMatcher(
+    pattern: pattern,
+    multiLine: multiLine ?? false,
+    caseSensitive: caseSensitive ?? false,
+  );
 
   /// [regExp] matches value by utilizing [RegExp] through building it via
   /// [RegExp] typed regular expression.
@@ -63,15 +62,14 @@ abstract class Matchers {
   ///
   /// Does NOT compare file contents.
   static FormDataMatcher formData(FormData expected) => FormDataMatcher(
-        expected: expected,
-      );
+    expected: expected,
+  );
 
   /// [listParam] matches against the expected [ListParam]
   /// by comparing values and [ListFormat].
   static ListParamMatcher<T> listParam<T>(
     ListParam<T> expected,
-  ) =>
-      ListParamMatcher(expected: expected);
+  ) => ListParamMatcher(expected: expected);
 }
 
 /// [StrictMatchers] is an interface for various strict [Matcher] types.

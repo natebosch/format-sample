@@ -23,11 +23,11 @@ Future<Null> _ensureLoggedIn() async {
     analytics.logLogin();
     userDatabaseReference = databaseReference.child(user.id);
     articleDatabaseReference = databaseReference.child(user.id).child(
-          'articles',
-        );
+      'articles',
+    );
     articleSourcesDatabaseReference = databaseReference.child(user.id).child(
-          'sources',
-        );
+      'sources',
+    );
   }
   if (await auth.currentUser() == null) {
     GoogleSignInAuthentication credentials =
@@ -39,11 +39,11 @@ Future<Null> _ensureLoggedIn() async {
   } else {
     userDatabaseReference = databaseReference.child(user.id);
     articleDatabaseReference = databaseReference.child(user.id).child(
-          'articles',
-        );
+      'articles',
+    );
     articleSourcesDatabaseReference = databaseReference.child(user.id).child(
-          'sources',
-        );
+      'sources',
+    );
   }
 }
 

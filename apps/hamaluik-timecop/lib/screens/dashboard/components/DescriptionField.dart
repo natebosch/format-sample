@@ -81,8 +81,8 @@ class _DescriptionFieldState extends State<DescriptionField> {
               },
             ),
             itemBuilder: (BuildContext context, String desc) => ListTile(
-              title: Text(desc),
-            ),
+                  title: Text(desc),
+                ),
             onSuggestionSelected: (String description) {
               _controller.text = description;
               bloc.add(DescriptionChangedEvent(description));
@@ -96,18 +96,16 @@ class _DescriptionFieldState extends State<DescriptionField> {
               List<String> descriptions = timers.state.timers
                   .where((timer) => timer.description != null)
                   .where(
-                    (timer) => !(projectsBloc
-                            .getProjectByID(
-                              timer.projectID,
-                            )
-                            ?.archived ==
+                    (timer) => !(projectsBloc.getProjectByID(
+                          timer.projectID,
+                        )?.archived ==
                         true),
                   )
                   .where(
                     (timer) =>
                         timer.description.toLowerCase().contains(
-                              pattern.toLowerCase(),
-                            ) ??
+                          pattern.toLowerCase(),
+                        ) ??
                         false,
                   )
                   .map((timer) => timer.description)

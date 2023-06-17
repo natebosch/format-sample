@@ -20,9 +20,9 @@ class CurrencyRadioSection extends StatelessWidget {
   CurrencyRadioSection({this.titleText, this.value, this.onChanged});
 
   Widget _buildTitle() => Text(
-        titleText,
-        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 17.0),
-      );
+    titleText,
+    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 17.0),
+  );
 
   Widget _buildBody() => CurrencyRadioList(value: value, onChanged: onChanged);
 

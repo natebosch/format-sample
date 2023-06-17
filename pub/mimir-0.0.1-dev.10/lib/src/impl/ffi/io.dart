@@ -12,8 +12,8 @@ typedef ExternalLibrary = DynamicLibrary;
 @internal
 // ignore: public_member_api_docs
 EmbeddedMilli createWrapperImpl(ExternalLibrary dylib) => EmbeddedMilliImpl(
-      dylib,
-    );
+  dylib,
+);
 
 /// Needed by https://github.com/GregoryConrad/mimir/issues/170
 @internal

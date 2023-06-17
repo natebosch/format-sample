@@ -6,7 +6,7 @@ class SectionTitle extends StatelessWidget {
   final String description;
 
   const SectionTitle({Key key, @required this.title, this.description})
-      : super(key: key);
+    : super(key: key);
 
   @override
   Widget build(BuildContext context) {

@@ -100,11 +100,11 @@ class ReactiveRefreshIndicator extends StatefulWidget {
     this.notificationPredicate = defaultScrollNotificationPredicate,
     this.semanticsLabel,
     this.semanticsValue,
-  })  : assert(child != null),
-        assert(onRefresh != null),
-        assert(isRefreshing != null),
-        assert(notificationPredicate != null),
-        super(key: key);
+  }) : assert(child != null),
+       assert(onRefresh != null),
+       assert(isRefreshing != null),
+       assert(notificationPredicate != null),
+       super(key: key);
 
   /// The widget below this widget in the tree.
   ///
@@ -386,20 +386,20 @@ class ReactiveRefreshIndicatorState extends State<ReactiveRefreshIndicator>
     _mode = _RefreshIndicatorMode.snap;
     _positionController
         .animateTo(
-      1.0 / _kDragSizeFactorLimit,
-      duration: _kIndicatorSnapDuration,
-    )
+          1.0 / _kDragSizeFactorLimit,
+          duration: _kIndicatorSnapDuration,
+        )
         .then<void>((void value) {
-      if (mounted && _mode == _RefreshIndicatorMode.snap) {
-        assert(widget.onRefresh != null);
-        setState(() {
-          // Show the indeterminate progress indicator.
-          _mode = _RefreshIndicatorMode.refresh;
-        });
+          if (mounted && _mode == _RefreshIndicatorMode.snap) {
+            assert(widget.onRefresh != null);
+            setState(() {
+              // Show the indeterminate progress indicator.
+              _mode = _RefreshIndicatorMode.refresh;
+            });
 
-        widget.onRefresh();
-      }
-    });
+            widget.onRefresh();
+          }
+        });
   }
 
   /// Show the refresh indicator and run the refresh callback as if it had

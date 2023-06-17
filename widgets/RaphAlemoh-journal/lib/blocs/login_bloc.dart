@@ -18,8 +18,8 @@ class LoginBloc with Validators {
       StreamController<String>.broadcast();
   Sink<String> get passwordChanged => _passwordController.sink;
   Stream<String> get password => _passwordController.stream.transform(
-        validatePassword,
-      );
+    validatePassword,
+  );
 
   final StreamController<bool> _enableLoginCreateButtonController =
       StreamController<bool>.broadcast();
@@ -90,11 +90,12 @@ class LoginBloc with Validators {
       await authenticationApi
           .signInWithEmailAndPassword(email: _email, password: _password)
           .then((user) {
-        _result = 'Success';
-      }).catchError((error) {
-        print('Login error: $error');
-        _result = error;
-      });
+            _result = 'Success';
+          })
+          .catchError((error) {
+            print('Login error: $error');
+            _result = error;
+          });
       return _result;
     } else {
       return 'Email and Password are not valid';
@@ -107,18 +108,19 @@ class LoginBloc with Validators {
       await authenticationApi
           .createUserWithEmailAndPassword(email: _email, password: _password)
           .then((user) {
-        print('Created user: $user');
-        _result = 'Created user: $user';
-        authenticationApi
-            .signInWithEmailAndPassword(email: _email, password: _password)
-            .then((user) {})
-            .catchError((error) async {
-          print('Login error: $error');
-          _result = error;
-        });
-      }).catchError((error) async {
-        print('Creating user error: $error');
-      });
+            print('Created user: $user');
+            _result = 'Created user: $user';
+            authenticationApi
+                .signInWithEmailAndPassword(email: _email, password: _password)
+                .then((user) {})
+                .catchError((error) async {
+                  print('Login error: $error');
+                  _result = error;
+                });
+          })
+          .catchError((error) async {
+            print('Creating user error: $error');
+          });
       return _result;
     } else {
       return 'Error creating user';

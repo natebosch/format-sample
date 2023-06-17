@@ -18,20 +18,19 @@ class ChatResponseModel with _$ChatResponseModel {
   }) = _ChatResponseModel;
   factory ChatResponseModel.fromJson(
     Map<String, dynamic> json,
-  ) =>
-      _$ChatResponseModelFromJson(json);
+  ) => _$ChatResponseModelFromJson(json);
 
   factory ChatResponseModel.mockData() => const ChatResponseModel(
-        id: '1',
-        usage: UsageModel(),
-        choices: [
-          ChoiceModel(
-            message: MessageModel(
-              role: 'assistant',
-              content: 'Hello! How can I help you',
-            ),
-            finishReason: 'stop',
-          ),
-        ],
-      );
+    id: '1',
+    usage: UsageModel(),
+    choices: [
+      ChoiceModel(
+        message: MessageModel(
+          role: 'assistant',
+          content: 'Hello! How can I help you',
+        ),
+        finishReason: 'stop',
+      ),
+    ],
+  );
 }

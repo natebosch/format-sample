@@ -10,17 +10,17 @@ class LargePursuitItemWidget extends PursuitItemWidget {
     bool selectable = false,
     Widget trailing,
   }) : super(
-          key: key,
-          characterId: characterId,
-          item: item,
-          onTap: onTap,
-          titleFontSize: 14,
-          iconSize: 72,
-          tagIconSize: 16,
-          paddingSize: 8,
-          trailing: trailing,
-          selectable: selectable,
-        );
+         key: key,
+         characterId: characterId,
+         item: item,
+         onTap: onTap,
+         titleFontSize: 14,
+         iconSize: 72,
+         tagIconSize: 16,
+         paddingSize: 8,
+         trailing: trailing,
+         selectable: selectable,
+       );
 
   LargePursuitItemWidgetState createState() => LargePursuitItemWidgetState();
 }

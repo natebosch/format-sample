@@ -54,22 +54,22 @@ class LaunchpadDetails extends Equatable {
   String get getStatus => toBeginningOfSentenceCase(status);
 
   String get getCoordinates => '${coordinates.latitude.toStringAsPrecision(
-        5,
-      )},  ${coordinates.longitude.toStringAsPrecision(5)}';
+    5,
+  )},  ${coordinates.longitude.toStringAsPrecision(5)}';
 
   String get getSuccessfulLaunches => '$launchSuccesses/$launchAttempts';
 
   @override
   List<Object> get props => [
-        name,
-        fullName,
-        locality,
-        region,
-        latitude,
-        longitude,
-        launchAttempts,
-        launchSuccesses,
-        details,
-        id,
-      ];
+    name,
+    fullName,
+    locality,
+    region,
+    latitude,
+    longitude,
+    launchAttempts,
+    launchSuccesses,
+    details,
+    id,
+  ];
 }

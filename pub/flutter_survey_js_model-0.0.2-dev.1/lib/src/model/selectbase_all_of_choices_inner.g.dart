@@ -12,8 +12,7 @@ class _$SelectbaseAllOfChoicesInner extends SelectbaseAllOfChoicesInner {
 
   factory _$SelectbaseAllOfChoicesInner([
     void Function(SelectbaseAllOfChoicesInnerBuilder)? updates,
-  ]) =>
-      (new SelectbaseAllOfChoicesInnerBuilder()..update(updates))._build();
+  ]) => (new SelectbaseAllOfChoicesInnerBuilder()..update(updates))._build();
 
   _$SelectbaseAllOfChoicesInner._({required this.anyOf}) : super._() {
     BuiltValueNullFieldError.checkNotNull(
@@ -26,8 +25,7 @@ class _$SelectbaseAllOfChoicesInner extends SelectbaseAllOfChoicesInner {
   @override
   SelectbaseAllOfChoicesInner rebuild(
     void Function(SelectbaseAllOfChoicesInnerBuilder) updates,
-  ) =>
-      (toBuilder()..update(updates)).build();
+  ) => (toBuilder()..update(updates)).build();
 
   @override
   SelectbaseAllOfChoicesInnerBuilder toBuilder() =>
@@ -57,8 +55,10 @@ class _$SelectbaseAllOfChoicesInner extends SelectbaseAllOfChoicesInner {
 
 class SelectbaseAllOfChoicesInnerBuilder
     implements
-        Builder<SelectbaseAllOfChoicesInner,
-            SelectbaseAllOfChoicesInnerBuilder> {
+        Builder<
+          SelectbaseAllOfChoicesInner,
+          SelectbaseAllOfChoicesInnerBuilder
+        > {
   _$SelectbaseAllOfChoicesInner? _$v;
 
   AnyOf? _anyOf;

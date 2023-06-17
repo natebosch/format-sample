@@ -68,8 +68,8 @@ class StoreDetailsBloc extends Bloc<BaseEvent, BaseState> {
     return products.isEmpty
         ? 0
         : products.entries
-            .map((entry) => (entry.key.price * entry.value.toDouble()))
-            .reduce((a, b) => a + b);
+              .map((entry) => (entry.key.price * entry.value.toDouble()))
+              .reduce((a, b) => a + b);
   }
 }
 
@@ -90,5 +90,5 @@ class CartChangedSate extends BaseState {
   final Map<ItemUI, int> products;
 
   CartChangedSate({this.quantity, this.cartTotal, this.products})
-      : super([quantity, cartTotal, products]);
+    : super([quantity, cartTotal, products]);
 }

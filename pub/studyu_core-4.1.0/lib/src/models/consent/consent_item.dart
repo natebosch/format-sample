@@ -16,8 +16,7 @@ class ConsentItem {
 
   factory ConsentItem.fromJson(
     Map<String, dynamic> json,
-  ) =>
-      _$ConsentItemFromJson(json);
+  ) => _$ConsentItemFromJson(json);
   Map<String, dynamic> toJson() => _$ConsentItemToJson(this);
 
   @override

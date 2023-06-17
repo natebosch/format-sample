@@ -42,8 +42,8 @@ class ProductDialogHelper {
           countryCode: ProductQuery.getCurrentCountryCode(),
           daoProduct: DaoProduct(localDatabase),
         ).getFetchedProduct().then<void>(
-              (final FetchedProduct value) => _popSearchingDialog(value),
-            );
+          (final FetchedProduct value) => _popSearchingDialog(value),
+        );
         return _getSearchingDialog();
       },
     );
@@ -59,59 +59,59 @@ class ProductDialogHelper {
   }
 
   Widget _getSearchingDialog() => SmoothAlertDialog(
+    close: false,
+    body: ListTile(
+      leading: const CircularProgressIndicator(),
+      title: Text(
+        refresh
+            ? AppLocalizations.of(context)!.refreshing_product
+            : '${AppLocalizations.of(context)!.looking_for}: $barcode',
+      ),
+    ),
+    actions: <SmoothSimpleButton>[
+      SmoothSimpleButton(
+        text: AppLocalizations.of(context)!.stop,
+        onPressed: () => _popSearchingDialog(
+          FetchedProduct.error(FetchedProductStatus.userCancelled),
+        ),
+      ),
+    ],
+  );
+
+  void _openProductNotFoundDialog() => showDialog<Widget>(
+    context: context,
+    builder: (BuildContext context) {
+      return SmoothAlertDialog(
         close: false,
-        body: ListTile(
-          leading: const CircularProgressIndicator(),
-          title: Text(
-            refresh
-                ? AppLocalizations.of(context)!.refreshing_product
-                : '${AppLocalizations.of(context)!.looking_for}: $barcode',
-          ),
+        body: Text(
+          refresh
+              ? AppLocalizations.of(context)!.could_not_refresh
+              : '${AppLocalizations.of(context)!.no_product_found}: $barcode',
         ),
         actions: <SmoothSimpleButton>[
           SmoothSimpleButton(
-            text: AppLocalizations.of(context)!.stop,
-            onPressed: () => _popSearchingDialog(
-              FetchedProduct.error(FetchedProductStatus.userCancelled),
-            ),
+            text: AppLocalizations.of(context)!.close,
+            onPressed: () => Navigator.pop(context),
+          ),
+          SmoothSimpleButton(
+            text: AppLocalizations.of(context)!.contribute,
+            onPressed: () => Navigator.pop(
+                  context,
+                ), // TODO(monsieurtanuki): to be implemented
           ),
         ],
       );
-
-  void _openProductNotFoundDialog() => showDialog<Widget>(
-        context: context,
-        builder: (BuildContext context) {
-          return SmoothAlertDialog(
-            close: false,
-            body: Text(
-              refresh
-                  ? AppLocalizations.of(context)!.could_not_refresh
-                  : '${AppLocalizations.of(context)!.no_product_found}: $barcode',
-            ),
-            actions: <SmoothSimpleButton>[
-              SmoothSimpleButton(
-                text: AppLocalizations.of(context)!.close,
-                onPressed: () => Navigator.pop(context),
-              ),
-              SmoothSimpleButton(
-                text: AppLocalizations.of(context)!.contribute,
-                onPressed: () => Navigator.pop(
-                  context,
-                ), // TODO(monsieurtanuki): to be implemented
-              ),
-            ],
-          );
-        },
-      );
+    },
+  );
 
   static Widget getErrorMessage(final String message) => ListTile(
-        leading: const Icon(Icons.error_outline, color: Colors.red),
-        title: Text(message),
-      );
+    leading: const Icon(Icons.error_outline, color: Colors.red),
+    title: Text(message),
+  );
 
   void _openErrorMessage(final String message) => showDialog<void>(
-        context: context,
-        builder: (BuildContext context) => SmoothAlertDialog(
+    context: context,
+    builder: (BuildContext context) => SmoothAlertDialog(
           close: false,
           body: getErrorMessage(message),
           actions: <SmoothSimpleButton>[
@@ -121,7 +121,7 @@ class ProductDialogHelper {
             ),
           ],
         ),
-      );
+  );
 
   /// Opens an error dialog; to be used only if the status is not ok.
   void openError(final FetchedProduct fetchedProduct) {

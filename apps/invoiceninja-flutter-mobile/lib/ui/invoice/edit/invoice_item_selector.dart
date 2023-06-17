@@ -140,9 +140,9 @@ class _InvoiceItemSelectorState extends State<InvoiceItemSelector>
 
     final products =
         memoizedProductList(state.productState.map).where((entityId) {
-      final entity = state.productState.map[entityId];
-      return entity.isActive && entity.matchesFilter(_filter);
-    }).toList();
+          final entity = state.productState.map[entityId];
+          return entity.isActive && entity.matchesFilter(_filter);
+        }).toList();
 
     final tasks = memoizedTaskList(
       state.taskState.map,
@@ -323,8 +323,8 @@ class _InvoiceItemSelectorState extends State<InvoiceItemSelector>
                             onPressed: () => _onItemsSelected(context),
                           )
                         : !state.prefState.isEditorFullScreen(
-                            EntityType.invoice,
-                          )
+                                EntityType.invoice,
+                              )
                             ? IconButton(
                                 icon: Icon(Icons.add_circle_outline),
                                 tooltip: localization.createNew,

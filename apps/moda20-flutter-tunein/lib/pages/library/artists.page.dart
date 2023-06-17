@@ -20,9 +20,8 @@ import 'package:animations/animations.dart';
 class ArtistsPage extends StatefulWidget {
   PageController controller;
   ArtistsPage({Key key, controller})
-      : this.controller =
-            controller != null ? controller : new PageController(),
-        super(key: key);
+    : this.controller = controller != null ? controller : new PageController(),
+      super(key: key);
 
   _ArtistsPageState createState() => _ArtistsPageState();
 }
@@ -64,12 +63,14 @@ class _ArtistsPageState extends State<ArtistsPage>
               SettingService.DeserializeUISettings(snapshot.data.value);
           int itemsPerRow = int.tryParse(
                 UISettings[
-                    LIST_PAGE_SettingsIds.ARTISTS_PAGE_GRID_ROW_ITEM_COUNT],
+                  LIST_PAGE_SettingsIds.ARTISTS_PAGE_GRID_ROW_ITEM_COUNT
+                ],
               ) ??
               3;
           int animationDelay = int.tryParse(
                 UISettings[
-                    LIST_PAGE_SettingsIds.ARTISTS_PAGE_BOX_FADE_IN_DURATION],
+                  LIST_PAGE_SettingsIds.ARTISTS_PAGE_BOX_FADE_IN_DURATION
+                ],
               ) ??
               150;
           final double itemWidth = size.width / itemsPerRow;

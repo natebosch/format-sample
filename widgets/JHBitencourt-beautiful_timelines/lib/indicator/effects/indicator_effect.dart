@@ -11,15 +11,15 @@ abstract class IndicatorEffect {
     @required this.dotColor,
     @required this.paintStyle,
     @required this.activeDotColor,
-  })  : assert(radius != null),
-        assert(dotColor != null || paintStyle != null || strokeWidth != null),
-        assert(activeDotColor != null),
-        assert(dotWidth != null),
-        assert(dotHeight != null),
-        assert(spacing != null),
-        assert(
-          dotWidth >= 0 && dotHeight >= 0 && spacing >= 0 && strokeWidth >= 0,
-        );
+  }) : assert(radius != null),
+       assert(dotColor != null || paintStyle != null || strokeWidth != null),
+       assert(activeDotColor != null),
+       assert(dotWidth != null),
+       assert(dotHeight != null),
+       assert(spacing != null),
+       assert(
+         dotWidth >= 0 && dotHeight >= 0 && spacing >= 0 && strokeWidth >= 0,
+       );
 
   // Singe dot width
   final double dotWidth;

@@ -19,8 +19,7 @@ class UikHomeCardFourProps extends WidgetProps {
 
   factory UikHomeCardFourProps.fromJson(
     Map<String, dynamic> json,
-  ) =>
-      $UikHomeCardFourPropsFromJson(json);
+  ) => $UikHomeCardFourPropsFromJson(json);
 
   @override
   String toString() {

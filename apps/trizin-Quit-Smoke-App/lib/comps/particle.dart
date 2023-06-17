@@ -14,7 +14,7 @@ class ParticlePainter extends CustomPainter {
   Paint bgPaint;
 
   ParticlePainter({this.particleCount, this.particles})
-      : super(repaint: particles) {
+    : super(repaint: particles) {
     mPaint = new Paint();
     bgPaint = new Paint()..color = Color.fromARGB(120, 145, 132, 245);
   }

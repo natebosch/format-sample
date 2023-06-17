@@ -316,15 +316,12 @@ class _CompanyDetailsState extends State<CompanyDetails>
                     AppDropdownButton(
                       value: company.sizeId,
                       labelText: localization.size,
-                      items: memoizedSizeList(state.staticState.sizeMap)
-                          .map(
-                            (sizeId) => DropdownMenuItem(
-                              child:
-                                  Text(state.staticState.sizeMap[sizeId].name),
-                              value: sizeId,
-                            ),
-                          )
-                          .toList(),
+                      items: memoizedSizeList(state.staticState.sizeMap).map(
+                        (sizeId) => DropdownMenuItem(
+                          child: Text(state.staticState.sizeMap[sizeId].name),
+                          value: sizeId,
+                        ),
+                      ).toList(),
                       onChanged: (dynamic sizeId) => viewModel.onCompanyChanged(
                         company.rebuild((b) => b..sizeId = sizeId),
                       ),
@@ -336,10 +333,10 @@ class _CompanyDetailsState extends State<CompanyDetails>
                           memoizedIndustryList(state.staticState.industryMap),
                       labelText: localization.industry,
                       entityId: company.industryId,
-                      onSelected: (SelectableEntity industry) =>
-                          viewModel.onCompanyChanged(company.rebuild(
-                        (b) => b..industryId = industry?.id ?? '',
-                      )),
+                      onSelected: (SelectableEntity industry) => viewModel
+                          .onCompanyChanged(company.rebuild(
+                            (b) => b..industryId = industry?.id ?? '',
+                          )),
                     ),
                   ],
                 ),
@@ -392,10 +389,10 @@ class _CompanyDetailsState extends State<CompanyDetails>
                           memoizedCountryList(state.staticState.countryMap),
                       labelText: localization.country,
                       entityId: settings.countryId,
-                      onSelected: (SelectableEntity country) =>
-                          viewModel.onSettingsChanged(
-                        settings.rebuild((b) => b..countryId = country?.id),
-                      ),
+                      onSelected: (SelectableEntity country) => viewModel
+                          .onSettingsChanged(
+                            settings.rebuild((b) => b..countryId = country?.id),
+                          ),
                     ),
                   ],
                 ),
@@ -420,8 +417,8 @@ class _CompanyDetailsState extends State<CompanyDetails>
                               onPressed: () {
                                 confirmCallback(
                                   context: context,
-                                  callback: (_) =>
-                                      viewModel.onDeleteLogo(context),
+                                  callback:
+                                      (_) => viewModel.onDeleteLogo(context),
                                 );
                               },
                             ),
@@ -475,14 +472,12 @@ class _CompanyDetailsState extends State<CompanyDetails>
                       CompanyGatewayEntity.TOKEN_BILLING_OPT_OUT,
                       CompanyGatewayEntity.TOKEN_BILLING_OPT_IN,
                       CompanyGatewayEntity.TOKEN_BILLING_DISABLED,
-                    ]
-                        .map(
-                          (value) => DropdownMenuItem(
-                            child: Text(localization.lookup(value)),
-                            value: value,
-                          ),
-                        )
-                        .toList(),
+                    ].map(
+                      (value) => DropdownMenuItem(
+                        child: Text(localization.lookup(value)),
+                        value: value,
+                      ),
+                    ).toList(),
                   ),
                   EntityDropdown(
                     entityType: EntityType.paymentType,
@@ -516,8 +511,9 @@ class _CompanyDetailsState extends State<CompanyDetails>
                       onChanged: (dynamic numDays) {
                         viewModel.onSettingsChanged(settings.rebuild(
                           (b) => b
-                            ..defaultPaymentTerms =
-                                numDays == null ? null : '$numDays',
+                            ..defaultPaymentTerms = numDays == null
+                                ? null
+                                : '$numDays',
                         ));
                       },
                     ),
@@ -540,8 +536,9 @@ class _CompanyDetailsState extends State<CompanyDetails>
                       onChanged: (dynamic numDays) {
                         viewModel.onSettingsChanged(settings.rebuild(
                           (b) => b
-                            ..defaultValidUntil =
-                                numDays == null ? null : '$numDays',
+                            ..defaultValidUntil = numDays == null
+                                ? null
+                                : '$numDays',
                         ));
                       },
                     ),
@@ -554,8 +551,8 @@ class _CompanyDetailsState extends State<CompanyDetails>
                   child: AppButton(
                     iconData: Icons.settings,
                     label: localization.configurePaymentTerms.toUpperCase(),
-                    onPressed: () =>
-                        viewModel.onConfigurePaymentTermsPressed(context),
+                    onPressed:
+                        () => viewModel.onConfigurePaymentTermsPressed(context),
                   ),
                 ),
               if (!state.isProPlan)
@@ -599,20 +596,20 @@ class _CompanyDetailsState extends State<CompanyDetails>
                   if (!state.settingsUIState.isFiltered)
                     BoolDropdownButton(
                       value: settings.clientManualPaymentNotification,
-                      onChanged: (value) =>
-                          viewModel.onSettingsChanged(settings.rebuild(
-                        (b) => b..clientManualPaymentNotification = value,
-                      )),
+                      onChanged: (value) => viewModel.onSettingsChanged(settings
+                          .rebuild(
+                            (b) => b..clientManualPaymentNotification = value,
+                          )),
                       label: localization.manualPaymentEmail,
                       helpLabel: localization.emailReceipt,
                       iconData: Icons.email,
                     ),
                   BoolDropdownButton(
                     value: settings.clientOnlinePaymentNotification,
-                    onChanged: (value) =>
-                        viewModel.onSettingsChanged(settings.rebuild(
-                      (b) => b..clientOnlinePaymentNotification = value,
-                    )),
+                    onChanged: (value) => viewModel.onSettingsChanged(settings
+                        .rebuild(
+                          (b) => b..clientOnlinePaymentNotification = value,
+                        )),
                     label: localization.onlinePaymentEmail,
                     helpLabel: localization.emailReceipt,
                     iconData: Icons.email,
@@ -671,8 +668,8 @@ class _CompanyDetailsState extends State<CompanyDetails>
           if (!state.settingsUIState.isFiltered)
             DocumentGrid(
               documents: company.documents.toList(),
-              onUploadDocument: (path) =>
-                  viewModel.onUploadDocument(context, path),
+              onUploadDocument:
+                  (path) => viewModel.onUploadDocument(context, path),
               onDeleteDocument: (document, password, idToken) => viewModel
                   .onDeleteDocument(context, document, password, idToken),
             ),

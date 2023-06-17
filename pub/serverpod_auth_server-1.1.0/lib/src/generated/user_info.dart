@@ -300,16 +300,16 @@ class UserInfoTable extends _i1.Table {
 
   @override
   List<_i1.Column> get columns => [
-        id,
-        userIdentifier,
-        userName,
-        fullName,
-        email,
-        created,
-        imageUrl,
-        scopeNames,
-        blocked,
-      ];
+    id,
+    userIdentifier,
+    userName,
+    fullName,
+    email,
+    created,
+    imageUrl,
+    scopeNames,
+    blocked,
+  ];
 }
 
 @Deprecated('Use UserInfoTable.t instead.')

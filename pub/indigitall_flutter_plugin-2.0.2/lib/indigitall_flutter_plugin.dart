@@ -636,7 +636,7 @@ class IndigitallFlutterPlugin {
 
   ///callback to return the new push info
   static Function(Map<dynamic, dynamic>? notification)?
-      onMessageReceivedOnSuccess;
+  onMessageReceivedOnSuccess;
 
   /// Method to on message received
   ///
@@ -1245,8 +1245,8 @@ class IndigitallFlutterPlugin {
   ) async {
     if (url != null) {
       await _indigitall.invokeMethod(_ACTION_GET_HTML, url).then(
-            (value) => {if (onSuccess != null) onSuccess(value)},
-          );
+        (value) => {if (onSuccess != null) onSuccess(value)},
+      );
     }
   }
 

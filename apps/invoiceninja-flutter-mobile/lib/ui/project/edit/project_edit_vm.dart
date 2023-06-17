@@ -150,5 +150,5 @@ class ProjectEditVM {
   final bool isLoading;
   final AppState state;
   final Function(BuildContext context, Completer<SelectableEntity> completer)
-      onAddClientPressed;
+  onAddClientPressed;
 }

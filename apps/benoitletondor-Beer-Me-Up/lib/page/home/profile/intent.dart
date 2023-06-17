@@ -14,9 +14,8 @@ class ProfileIntent {
     final ValueStreamCallback<CheckIn> rateCheckInIntent,
     final ValueStreamCallback<Beer> beerDetailsIntent,
     final VoidStreamCallback hideCheckInRatingIntent,
-  })  : this.retry = retryIntent ?? VoidStreamCallback(),
-        this.rateCheckIn = rateCheckInIntent ?? ValueStreamCallback<CheckIn>(),
-        this.beerDetails = beerDetailsIntent ?? ValueStreamCallback<Beer>(),
-        this.hideCheckInRating =
-            hideCheckInRatingIntent ?? VoidStreamCallback();
+  }) : this.retry = retryIntent ?? VoidStreamCallback(),
+       this.rateCheckIn = rateCheckInIntent ?? ValueStreamCallback<CheckIn>(),
+       this.beerDetails = beerDetailsIntent ?? ValueStreamCallback<Beer>(),
+       this.hideCheckInRating = hideCheckInRatingIntent ?? VoidStreamCallback();
 }

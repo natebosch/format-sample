@@ -241,8 +241,9 @@ class _MenuLayoutDelegate extends MultiChildLayoutDelegate {
     } else if (anchorCenterX + contentSize.width / 2 > size.width) {
       menuPosition = isTop ? _MenuPosition.topRight : _MenuPosition.bottomRight;
     } else {
-      menuPosition =
-          isTop ? _MenuPosition.topCenter : _MenuPosition.bottomCenter;
+      menuPosition = isTop
+          ? _MenuPosition.topCenter
+          : _MenuPosition.bottomCenter;
     }
 
     switch (menuPosition) {

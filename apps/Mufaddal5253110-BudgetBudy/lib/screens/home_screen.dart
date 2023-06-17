@@ -43,8 +43,8 @@ class _HomeScreenState extends State<HomeScreen>
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.add),
-            onPressed: () =>
-                Navigator.of(context).pushNamed(NewTransaction.routeName),
+            onPressed:
+                () => Navigator.of(context).pushNamed(NewTransaction.routeName),
           ),
         ],
         bottom: new TabBar(

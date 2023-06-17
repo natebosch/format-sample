@@ -118,8 +118,8 @@ class _SignUpPageState extends State<SignUpPage> {
                       child: Text(
                         'Sign Up',
                         style: Theme.of(context).textTheme.bodyText1.copyWith(
-                              color: Colors.black,
-                            ),
+                          color: Colors.black,
+                        ),
                       ),
                       color: Colors.white,
                     ),
@@ -131,13 +131,13 @@ class _SignUpPageState extends State<SignUpPage> {
                 padding: const EdgeInsets.all(16.0),
                 width: MediaQuery.of(context).size.width,
                 child: RaisedButton(
-                  onPressed: () =>
-                      Navigator.pushNamed(context, AppRoutes.login),
+                  onPressed:
+                      () => Navigator.pushNamed(context, AppRoutes.login),
                   child: Text(
                     'Login?',
                     style: Theme.of(context).textTheme.bodyText1.copyWith(
-                          color: Colors.black,
-                        ),
+                      color: Colors.black,
+                    ),
                   ),
                   color: Colors.white,
                 ),

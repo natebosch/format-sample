@@ -36,18 +36,12 @@ Map<String, dynamic> getRequestParameters(String element, Request request) {
       element.substring(0, element.length - 1) == requestPath) {
     return {element: true};
   }
-  List<String> pathSegments = Uri(path: requestPath)
-      .pathSegments
-      .where(
-        (element) => element.isNotEmpty,
-      )
-      .toList();
-  List<String> elementSegments = Uri(path: element)
-      .pathSegments
-      .where(
-        (element) => element.isNotEmpty,
-      )
-      .toList();
+  List<String> pathSegments = Uri(path: requestPath).pathSegments.where(
+    (element) => element.isNotEmpty,
+  ).toList();
+  List<String> elementSegments = Uri(path: element).pathSegments.where(
+    (element) => element.isNotEmpty,
+  ).toList();
   if (pathSegments.length != elementSegments.length) {
     return {};
   }

@@ -224,13 +224,15 @@ class _AlarmState extends State<Alarm> {
                                       height: 30,
                                       onChanged: (bool value) {
                                         setState(() {
-                                          alarm.isPending =
-                                              alarm.isPending == 1 ? 0 : 1;
+                                          alarm.isPending = alarm.isPending == 1
+                                              ? 0
+                                              : 1;
                                           updateAlarm(alarm);
                                         });
                                       },
-                                      value:
-                                          alarm.isPending == 1 ? true : false,
+                                      value: alarm.isPending == 1
+                                          ? true
+                                          : false,
                                     ),
                                   ),
                                 ],

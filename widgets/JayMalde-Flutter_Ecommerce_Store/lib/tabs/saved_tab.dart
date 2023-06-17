@@ -30,19 +30,15 @@ class SavedTab extends StatelessWidget {
                   children: snapshot.data.docs.map((document) {
                     return GestureDetector(
                       onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) =>
-                                  ProductPage(productId: document.id),
-                            ));
+                        Navigator.push(context, MaterialPageRoute(
+                          builder:
+                              (context) => ProductPage(productId: document.id),
+                        ));
                       },
                       child: FutureBuilder(
-                        future: _firebaseServices.productsRef
-                            .doc(
-                              document.id,
-                            )
-                            .get(),
+                        future: _firebaseServices.productsRef.doc(
+                          document.id,
+                        ).get(),
                         builder: (context, productSnap) {
                           if (productSnap.hasError) {
                             return Container(
@@ -104,7 +100,9 @@ class SavedTab extends StatelessWidget {
                                           ),
                                         ),
                                         Text(
-                                          "Quantity - ${document.data()['quantity']}",
+                                          "Quantity - ${document.data()[
+                                            'quantity'
+                                          ]}",
                                           style: TextStyle(
                                             fontSize: 16.0,
                                             color: Colors.black,

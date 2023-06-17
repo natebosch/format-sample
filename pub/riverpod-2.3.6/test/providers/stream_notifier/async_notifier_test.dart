@@ -65,12 +65,10 @@ void main() {
 
             sub.read().state = const AsyncLoading<int>();
 
-            expect(
-                sub.read().state,
-                const AsyncLoading<int>().copyWithPrevious(
-                  const AsyncData(0),
-                  isRefresh: false,
-                ));
+            expect(sub.read().state, const AsyncLoading<int>().copyWithPrevious(
+              const AsyncData(0),
+              isRefresh: false,
+            ));
           },
         );
 
@@ -170,12 +168,10 @@ void main() {
         container.read(provider.notifier).state = const AsyncData(42);
 
         verifyNoMoreInteractions(onError);
-        verifyOnly(
-            listener,
-            listener(
-              const AsyncError<int>(42, StackTrace.empty),
-              const AsyncData<int>(42),
-            ));
+        verifyOnly(listener, listener(
+          const AsyncError<int>(42, StackTrace.empty),
+          const AsyncData<int>(42),
+        ));
       });
 
       test(
@@ -225,12 +221,10 @@ void main() {
 
           await expectLater(container.read(provider.future), throwsA(0));
 
-          verifyOnly(
-              listener,
-              listener(
-                const AsyncLoading(),
-                const AsyncError(0, StackTrace.empty),
-              ));
+          verifyOnly(listener, listener(
+            const AsyncLoading(),
+            const AsyncError(0, StackTrace.empty),
+          ));
           expect(
             container.read(provider.notifier).state,
             const AsyncError<int>(0, StackTrace.empty),
@@ -393,23 +387,19 @@ void main() {
 
             sub.read().state = newLoading;
 
-            expect(
-                sub.read().state,
-                const AsyncLoading<int>().copyWithPrevious(
-                  newState,
-                  isRefresh: false,
-                ));
+            expect(sub.read().state, const AsyncLoading<int>().copyWithPrevious(
+              newState,
+              isRefresh: false,
+            ));
 
             sub.read().state = newError;
 
-            expect(
-                sub.read().state,
-                newError.copyWithPrevious(
-                  const AsyncLoading<int>().copyWithPrevious(
-                    newState,
-                    isRefresh: false,
-                  ),
-                ));
+            expect(sub.read().state, newError.copyWithPrevious(
+              const AsyncLoading<int>().copyWithPrevious(
+                newState,
+                isRefresh: false,
+              ),
+            ));
           },
         );
 
@@ -434,12 +424,10 @@ void main() {
 
             container.read(dep.notifier).state++;
 
-            expect(
-                notifier.state,
-                const AsyncLoading<int>().copyWithPrevious(
-                  const AsyncData(0),
-                  isRefresh: false,
-                ));
+            expect(notifier.state, const AsyncLoading<int>().copyWithPrevious(
+              const AsyncData(0),
+              isRefresh: false,
+            ));
             expect(await container.read(provider.future), 1);
             expect(notifier.state, const AsyncData(1));
             verify(listener()).called(1);
@@ -530,8 +518,7 @@ void main() {
           },
         );
 
-        test(
-            'going data > loading while the future is still pending. '
+        test('going data > loading while the future is still pending. '
             'Resolves with last future result', () async {
           final container = createContainer();
           final completer = Completer<int>.sync();
@@ -881,8 +868,9 @@ void main() {
       () => StreamTestNotifier((ref) => Stream.value(0)),
     );
     final autoDispose = StreamNotifierProvider.autoDispose<
-        AutoDisposeStreamTestNotifier<int>,
-        int>(() => AutoDisposeStreamTestNotifier((ref) => Stream.value(0)));
+      AutoDisposeStreamTestNotifier<int>,
+      int
+    >(() => AutoDisposeStreamTestNotifier((ref) => Stream.value(0)));
     final container = createContainer(
       overrides: [
         provider.overrideWith(
@@ -903,12 +891,16 @@ void main() {
   });
 
   test('supports family overrideWith', () async {
-    final family =
-        StreamNotifierProvider.family<StreamTestNotifierFamily<int>, int, int>(
-            () => StreamTestNotifierFamily<int>((ref) => Stream.value(0)));
-    final autoDisposeFamily = StreamNotifierProvider.autoDispose
-        .family<AutoDisposeStreamTestNotifierFamily<int>, int, int>(() =>
-            AutoDisposeStreamTestNotifierFamily<int>((ref) => Stream.value(0)));
+    final family = StreamNotifierProvider.family<
+      StreamTestNotifierFamily<int>,
+      int,
+      int
+    >(() => StreamTestNotifierFamily<int>((ref) => Stream.value(0)));
+    final autoDisposeFamily = StreamNotifierProvider.autoDispose.family<
+      AutoDisposeStreamTestNotifierFamily<int>,
+      int,
+      int
+    >(() => AutoDisposeStreamTestNotifierFamily<int>((ref) => Stream.value(0)));
     final container = createContainer(
       overrides: [
         family.overrideWith(
@@ -924,12 +916,10 @@ void main() {
 
     // Skip the loading
     await container.listen(family(10).future, (previous, next) {}).read();
-    await container
-        .listen(
-          autoDisposeFamily(10).future,
-          (previous, next) {},
-        )
-        .read();
+    await container.listen(
+      autoDisposeFamily(10).future,
+      (previous, next) {},
+    ).read();
 
     expect(container.read(family(10)).value, 42);
     expect(container.read(autoDisposeFamily(10)).value, 84);
@@ -939,7 +929,9 @@ void main() {
     test('can watch autoDispose providers', () async {
       final dep = Provider.autoDispose((ref) => 0);
       final provider = AutoDisposeStreamNotifierProvider<
-          AutoDisposeStreamTestNotifier<int>, int>(
+        AutoDisposeStreamTestNotifier<int>,
+        int
+      >(
         () => AutoDisposeStreamTestNotifier((ref) {
           return Stream.value(ref.watch(dep));
         }),
@@ -998,8 +990,9 @@ void main() {
 
     test('autoDispose', () {
       final autoDispose = StreamNotifierProvider.autoDispose<
-          AutoDisposeStreamTestNotifier<int>,
-          int>(() => AutoDisposeStreamTestNotifier((ref) => Stream.value(0)));
+        AutoDisposeStreamTestNotifier<int>,
+        int
+      >(() => AutoDisposeStreamTestNotifier((ref) => Stream.value(0)));
 
       autoDispose.select((AsyncValue<int> value) => 0);
       autoDispose.selectAsync((int value) => 0);
@@ -1030,9 +1023,10 @@ void main() {
 
     test('family', () {
       final family = StreamNotifierProvider.family<
-          StreamTestNotifierFamily<String>,
-          String,
-          int>(() => StreamTestNotifierFamily((ref) => Stream.value('0')));
+        StreamTestNotifierFamily<String>,
+        String,
+        int
+      >(() => StreamTestNotifierFamily((ref) => Stream.value('0')));
 
       family(0).select((AsyncValue<String> value) => 0);
       family(0).selectAsync((String value) => 0);
@@ -1068,9 +1062,10 @@ void main() {
       );
 
       final autoDisposeFamily = StreamNotifierProvider.autoDispose.family<
-              AutoDisposeStreamTestNotifierFamily<String>, String, int>(
-          () =>
-              AutoDisposeStreamTestNotifierFamily((ref) => Stream.value('0')));
+        AutoDisposeStreamTestNotifierFamily<String>,
+        String,
+        int
+      >(() => AutoDisposeStreamTestNotifierFamily((ref) => Stream.value('0')));
 
       autoDisposeFamily(0).select((AsyncValue<String> value) => 0);
       autoDisposeFamily(0).selectAsync((String value) => 0);
@@ -1098,8 +1093,8 @@ void main() {
       // );
 
       canBeAssignedToProviderListenable<
-              AutoDisposeFamilyStreamNotifier<String, int>>(
-          autoDisposeFamily(0).notifier);
+        AutoDisposeFamilyStreamNotifier<String, int>
+      >(autoDisposeFamily(0).notifier);
       // canBeAssignedToAlwaysAliveListenable<
       //     AutoDisposeFamilyStreamNotifier<String, int>>(
       //   autoDisposeFamily(0).notifier,

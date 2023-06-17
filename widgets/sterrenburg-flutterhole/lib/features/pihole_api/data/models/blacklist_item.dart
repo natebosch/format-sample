@@ -31,8 +31,7 @@ abstract class BlacklistItem extends MapModel with _$BlacklistItem {
 
   factory BlacklistItem.fromJson(
     Map<String, dynamic> json,
-  ) =>
-      _$BlacklistItemFromJson(json);
+  ) => _$BlacklistItemFromJson(json);
 
   @late
   bool get isEnabled => enabled == 1;

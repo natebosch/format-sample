@@ -17,6 +17,5 @@ class AppleCriticalAlertOptions {
 
   factory AppleCriticalAlertOptions.fromJson(
     Map<String, dynamic> json,
-  ) =>
-      _$AppleCriticalAlertOptionsFromJson(json);
+  ) => _$AppleCriticalAlertOptionsFromJson(json);
 }

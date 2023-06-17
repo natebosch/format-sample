@@ -81,13 +81,9 @@ void main() {
 
       await tester.pumpWidget(homePage);
 
-      DefaultTabController tabController = find
-          .byType(
-            DefaultTabController,
-          )
-          .evaluate()
-          .single
-          .widget as DefaultTabController;
+      DefaultTabController tabController = find.byType(
+        DefaultTabController,
+      ).evaluate().single.widget as DefaultTabController;
       expect(tabController.length, 3);
 
       // Try changing the appTabs and verify it updates correctly

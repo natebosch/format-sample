@@ -60,13 +60,13 @@ class _AddCategoryState extends State<AddCategory> {
   Future saveCategory() async {
     if (_argsHaveCategory) {
       await context.read<Todo>().editCategory(
-            widget.args.category,
-            TodoCategory(id: widget.args.category.id, title: title, icon: icon),
-          );
+        widget.args.category,
+        TodoCategory(id: widget.args.category.id, title: title, icon: icon),
+      );
     } else {
       await context.read<Todo>().addCategory(
-            TodoCategory(title: title, icon: icon),
-          );
+        TodoCategory(title: title, icon: icon),
+      );
     }
     //go back
     Navigator.of(context).pop();
@@ -137,27 +137,24 @@ class _AddCategoryState extends State<AddCategory> {
                           alignment: WrapAlignment.spaceAround,
                           runSpacing: 16,
                           spacing: 16,
-                          children: icons_list.entries
-                              .map(
-                                (item) => NeumorphicRadio(
-                                  groupValue: icon,
-                                  padding: const EdgeInsets.all(16),
-                                  style: const NeumorphicRadioStyle(
-                                    boxShape: NeumorphicBoxShape.circle(),
-                                  ),
-                                  value: item.value,
-                                  child: FaIcon(
-                                    item.value,
-                                    size: 18,
-                                    color: item.value == icon
-                                        ? NeumorphicTheme.accentColor(context)
-                                        : NeumorphicTheme.defaultTextColor(
-                                            context),
-                                  ),
-                                  onChanged: iconChanget,
-                                ),
-                              )
-                              .toList(),
+                          children: icons_list.entries.map(
+                            (item) => NeumorphicRadio(
+                              groupValue: icon,
+                              padding: const EdgeInsets.all(16),
+                              style: const NeumorphicRadioStyle(
+                                boxShape: NeumorphicBoxShape.circle(),
+                              ),
+                              value: item.value,
+                              child: FaIcon(
+                                item.value,
+                                size: 18,
+                                color: item.value == icon
+                                    ? NeumorphicTheme.accentColor(context)
+                                    : NeumorphicTheme.defaultTextColor(context),
+                              ),
+                              onChanged: iconChanget,
+                            ),
+                          ).toList(),
                         ),
                       ),
                     ],

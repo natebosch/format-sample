@@ -68,11 +68,9 @@ class _IntroCardState extends State<IntroCard>
                   Container(height: 32),
                   MaterialButton(
                     child: Text(
-                      AppLocalizations.of(context)
-                          .translate(
-                            'start',
-                          )
-                          .toUpperCase(),
+                      AppLocalizations.of(context).translate(
+                        'start',
+                      ).toUpperCase(),
                       style: TextStyle(color: Colors.white, fontSize: 24),
                     ),
                     color: Colors.lightBlueAccent[700],
@@ -84,11 +82,9 @@ class _IntroCardState extends State<IntroCard>
                     ),
                     shape: StadiumBorder(),
                     onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => NearVisionPage(),
-                          ));
+                      Navigator.push(context, MaterialPageRoute(
+                        builder: (context) => NearVisionPage(),
+                      ));
                     },
                   ),
                 ],

@@ -33,12 +33,12 @@ abstract class PaymentModel
 
   @override
   Map<String, dynamic> toMap() => serializers.serializeWith(
-        PaymentModel.serializer,
-        this,
-      );
+    PaymentModel.serializer,
+    this,
+  );
 
-  static PaymentModel fromJson(Map<String, dynamic> map) =>
-      serializers.deserializeWith(PaymentModel.serializer, map);
+  static PaymentModel fromJson(Map<String, dynamic> map) => serializers
+      .deserializeWith(PaymentModel.serializer, map);
 
   static Serializer<PaymentModel> get serializer => _$paymentModelSerializer;
 }

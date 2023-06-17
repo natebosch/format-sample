@@ -85,9 +85,10 @@ abstract class $MiraiInputDecorationCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$MiraiInputDecorationCopyWithImpl<$Res,
-        $Val extends MiraiInputDecoration>
-    implements $MiraiInputDecorationCopyWith<$Res> {
+class _$MiraiInputDecorationCopyWithImpl<
+  $Res,
+  $Val extends MiraiInputDecoration
+> implements $MiraiInputDecorationCopyWith<$Res> {
   _$MiraiInputDecorationCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -123,79 +124,79 @@ class _$MiraiInputDecorationCopyWithImpl<$Res,
         labelText: freezed == labelText
             ? _value.labelText
             : labelText // ignore: cast_nullable_to_non_nullable
-                as String?,
+                  as String?,
         labelStyle: freezed == labelStyle
             ? _value.labelStyle
             : labelStyle // ignore: cast_nullable_to_non_nullable
-                as MiraiTextStyle?,
+                  as MiraiTextStyle?,
         helperText: freezed == helperText
             ? _value.helperText
             : helperText // ignore: cast_nullable_to_non_nullable
-                as String?,
+                  as String?,
         helperStyle: freezed == helperStyle
             ? _value.helperStyle
             : helperStyle // ignore: cast_nullable_to_non_nullable
-                as MiraiTextStyle?,
+                  as MiraiTextStyle?,
         hintText: freezed == hintText
             ? _value.hintText
             : hintText // ignore: cast_nullable_to_non_nullable
-                as String?,
+                  as String?,
         hintStyle: freezed == hintStyle
             ? _value.hintStyle
             : hintStyle // ignore: cast_nullable_to_non_nullable
-                as MiraiTextStyle?,
+                  as MiraiTextStyle?,
         errorText: freezed == errorText
             ? _value.errorText
             : errorText // ignore: cast_nullable_to_non_nullable
-                as String?,
+                  as String?,
         errorStyle: freezed == errorStyle
             ? _value.errorStyle
             : errorStyle // ignore: cast_nullable_to_non_nullable
-                as MiraiTextStyle?,
+                  as MiraiTextStyle?,
         prefixText: freezed == prefixText
             ? _value.prefixText
             : prefixText // ignore: cast_nullable_to_non_nullable
-                as String?,
+                  as String?,
         prefixStyle: freezed == prefixStyle
             ? _value.prefixStyle
             : prefixStyle // ignore: cast_nullable_to_non_nullable
-                as MiraiTextStyle?,
+                  as MiraiTextStyle?,
         suffixText: freezed == suffixText
             ? _value.suffixText
             : suffixText // ignore: cast_nullable_to_non_nullable
-                as String?,
+                  as String?,
         suffixStyle: freezed == suffixStyle
             ? _value.suffixStyle
             : suffixStyle // ignore: cast_nullable_to_non_nullable
-                as MiraiTextStyle?,
+                  as MiraiTextStyle?,
         fillColor: freezed == fillColor
             ? _value.fillColor
             : fillColor // ignore: cast_nullable_to_non_nullable
-                as String?,
+                  as String?,
         focusColor: freezed == focusColor
             ? _value.focusColor
             : focusColor // ignore: cast_nullable_to_non_nullable
-                as String?,
+                  as String?,
         hoverColor: freezed == hoverColor
             ? _value.hoverColor
             : hoverColor // ignore: cast_nullable_to_non_nullable
-                as String?,
+                  as String?,
         icon: freezed == icon
             ? _value.icon
             : icon // ignore: cast_nullable_to_non_nullable
-                as Map<String, dynamic>?,
+                  as Map<String, dynamic>?,
         suffixIcon: freezed == suffixIcon
             ? _value.suffixIcon
             : suffixIcon // ignore: cast_nullable_to_non_nullable
-                as Map<String, dynamic>?,
+                  as Map<String, dynamic>?,
         iconColor: freezed == iconColor
             ? _value.iconColor
             : iconColor // ignore: cast_nullable_to_non_nullable
-                as String?,
+                  as String?,
         filled: null == filled
             ? _value.filled
             : filled // ignore: cast_nullable_to_non_nullable
-                as bool,
+                  as bool,
       ) as $Val,
     );
   }
@@ -354,79 +355,79 @@ class __$$_MiraiInputDecorationCopyWithImpl<$Res>
       labelText: freezed == labelText
           ? _value.labelText
           : labelText // ignore: cast_nullable_to_non_nullable
-              as String?,
+                as String?,
       labelStyle: freezed == labelStyle
           ? _value.labelStyle
           : labelStyle // ignore: cast_nullable_to_non_nullable
-              as MiraiTextStyle?,
+                as MiraiTextStyle?,
       helperText: freezed == helperText
           ? _value.helperText
           : helperText // ignore: cast_nullable_to_non_nullable
-              as String?,
+                as String?,
       helperStyle: freezed == helperStyle
           ? _value.helperStyle
           : helperStyle // ignore: cast_nullable_to_non_nullable
-              as MiraiTextStyle?,
+                as MiraiTextStyle?,
       hintText: freezed == hintText
           ? _value.hintText
           : hintText // ignore: cast_nullable_to_non_nullable
-              as String?,
+                as String?,
       hintStyle: freezed == hintStyle
           ? _value.hintStyle
           : hintStyle // ignore: cast_nullable_to_non_nullable
-              as MiraiTextStyle?,
+                as MiraiTextStyle?,
       errorText: freezed == errorText
           ? _value.errorText
           : errorText // ignore: cast_nullable_to_non_nullable
-              as String?,
+                as String?,
       errorStyle: freezed == errorStyle
           ? _value.errorStyle
           : errorStyle // ignore: cast_nullable_to_non_nullable
-              as MiraiTextStyle?,
+                as MiraiTextStyle?,
       prefixText: freezed == prefixText
           ? _value.prefixText
           : prefixText // ignore: cast_nullable_to_non_nullable
-              as String?,
+                as String?,
       prefixStyle: freezed == prefixStyle
           ? _value.prefixStyle
           : prefixStyle // ignore: cast_nullable_to_non_nullable
-              as MiraiTextStyle?,
+                as MiraiTextStyle?,
       suffixText: freezed == suffixText
           ? _value.suffixText
           : suffixText // ignore: cast_nullable_to_non_nullable
-              as String?,
+                as String?,
       suffixStyle: freezed == suffixStyle
           ? _value.suffixStyle
           : suffixStyle // ignore: cast_nullable_to_non_nullable
-              as MiraiTextStyle?,
+                as MiraiTextStyle?,
       fillColor: freezed == fillColor
           ? _value.fillColor
           : fillColor // ignore: cast_nullable_to_non_nullable
-              as String?,
+                as String?,
       focusColor: freezed == focusColor
           ? _value.focusColor
           : focusColor // ignore: cast_nullable_to_non_nullable
-              as String?,
+                as String?,
       hoverColor: freezed == hoverColor
           ? _value.hoverColor
           : hoverColor // ignore: cast_nullable_to_non_nullable
-              as String?,
+                as String?,
       icon: freezed == icon
           ? _value._icon
           : icon // ignore: cast_nullable_to_non_nullable
-              as Map<String, dynamic>?,
+                as Map<String, dynamic>?,
       suffixIcon: freezed == suffixIcon
           ? _value._suffixIcon
           : suffixIcon // ignore: cast_nullable_to_non_nullable
-              as Map<String, dynamic>?,
+                as Map<String, dynamic>?,
       iconColor: freezed == iconColor
           ? _value.iconColor
           : iconColor // ignore: cast_nullable_to_non_nullable
-              as String?,
+                as String?,
       filled: null == filled
           ? _value.filled
           : filled // ignore: cast_nullable_to_non_nullable
-              as bool,
+                as bool,
     ));
   }
 }
@@ -454,13 +455,12 @@ class _$_MiraiInputDecoration implements _MiraiInputDecoration {
     final Map<String, dynamic>? suffixIcon,
     this.iconColor,
     this.filled = false,
-  })  : _icon = icon,
-        _suffixIcon = suffixIcon;
+  }) : _icon = icon,
+       _suffixIcon = suffixIcon;
 
   factory _$_MiraiInputDecoration.fromJson(
     Map<String, dynamic> json,
-  ) =>
-      _$$_MiraiInputDecorationFromJson(json);
+  ) => _$$_MiraiInputDecorationFromJson(json);
 
   @override
   final String? labelText;
@@ -571,34 +571,35 @@ class _$_MiraiInputDecoration implements _MiraiInputDecoration {
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hashAll([
-        runtimeType,
-        labelText,
-        labelStyle,
-        helperText,
-        helperStyle,
-        hintText,
-        hintStyle,
-        errorText,
-        errorStyle,
-        prefixText,
-        prefixStyle,
-        suffixText,
-        suffixStyle,
-        fillColor,
-        focusColor,
-        hoverColor,
-        const DeepCollectionEquality().hash(_icon),
-        const DeepCollectionEquality().hash(_suffixIcon),
-        iconColor,
-        filled,
-      ]);
+    runtimeType,
+    labelText,
+    labelStyle,
+    helperText,
+    helperStyle,
+    hintText,
+    hintStyle,
+    errorText,
+    errorStyle,
+    prefixText,
+    prefixStyle,
+    suffixText,
+    suffixStyle,
+    fillColor,
+    focusColor,
+    hoverColor,
+    const DeepCollectionEquality().hash(_icon),
+    const DeepCollectionEquality().hash(_suffixIcon),
+    iconColor,
+    filled,
+  ]);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_MiraiInputDecorationCopyWith<_$_MiraiInputDecoration> get copyWith =>
-      __$$_MiraiInputDecorationCopyWithImpl<_$_MiraiInputDecoration>(
-          this, _$identity);
+  _$$_MiraiInputDecorationCopyWith<_$_MiraiInputDecoration>
+  get copyWith => __$$_MiraiInputDecorationCopyWithImpl<
+    _$_MiraiInputDecoration
+  >(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {

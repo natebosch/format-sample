@@ -40,31 +40,27 @@ mixin _$RequestFailure {
     required TResult Function() networkError,
     required TResult Function() serverError,
     required TResult Function() emptyResult,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? networkError,
     TResult Function()? serverError,
     TResult Function()? emptyResult,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_NetworkFailure value) networkError,
     required TResult Function(_ServerError value) serverError,
     required TResult Function(_EmptyResult value) emptyResult,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_NetworkFailure value)? networkError,
     TResult Function(_ServerError value)? serverError,
     TResult Function(_EmptyResult value)? emptyResult,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
 }
 
 /// @nodoc

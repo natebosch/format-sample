@@ -30,10 +30,9 @@ class _ExpandedSectionState extends State<ExpandedSection>
       parent: expandController,
       curve: Curves.fastOutSlowIn,
     );
-    animation = Tween(begin: 0.0, end: 1.0).animate(curve)
-      ..addListener(() {
-        setState(() {});
-      });
+    animation = Tween(begin: 0.0, end: 1.0).animate(curve)..addListener(() {
+      setState(() {});
+    });
   }
 
   @override

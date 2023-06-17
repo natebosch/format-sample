@@ -184,8 +184,8 @@ class fileService {
         if (Song.year != null) 'year': Song.year.toString(),
         if (comments != null)
           'comment': comms.asMap().map(
-                (key, value) => MapEntry<String, Comment>(value.key, value),
-              ),
+            (key, value) => MapEntry<String, Comment>(value.key, value),
+          ),
         if (Song.numberInAlbum != null) 'track': Song.numberInAlbum.toString(),
         if (Song.genre != null) 'genre': Song.genre,
         if (Song.albumArt != null) 'picture': {pic.key: pic},

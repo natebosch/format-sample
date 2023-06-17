@@ -90,12 +90,12 @@ class GlowingOverscrollIndicator extends StatefulWidget {
     required this.color,
     this.notificationPredicate = defaultScrollNotificationPredicate,
     this.child,
-  })  : assert(showLeading != null),
-        assert(showTrailing != null),
-        assert(axisDirection != null),
-        assert(color != null),
-        assert(notificationPredicate != null),
-        super(key: key);
+  }) : assert(showLeading != null),
+       assert(showTrailing != null),
+       assert(axisDirection != null),
+       assert(color != null),
+       assert(notificationPredicate != null),
+       super(key: key);
 
   /// Whether to show the overscroll glow on the side with negative scroll
   /// offsets.
@@ -324,8 +324,9 @@ class _GlowingOverscrollIndicatorState extends State<GlowingOverscrollIndicator>
         child: CustomPaint(
           foregroundPainter: _GlowingOverscrollIndicatorPainter(
             leadingController: widget.showLeading ? _leadingController : null,
-            trailingController:
-                widget.showTrailing ? _trailingController : null,
+            trailingController: widget.showTrailing
+                ? _trailingController
+                : null,
             axisDirection: widget.axisDirection,
             repaint: _leadingAndTrailingListener,
           ),
@@ -347,11 +348,11 @@ class _GlowController extends ChangeNotifier {
     required TickerProvider vsync,
     required Color color,
     required Axis axis,
-  })  : assert(vsync != null),
-        assert(color != null),
-        assert(axis != null),
-        _color = color,
-        _axis = axis {
+  }) : assert(vsync != null),
+       assert(color != null),
+       assert(axis != null),
+       _color = color,
+       _axis = axis {
     _glowController = AnimationController(vsync: vsync)
       ..addStatusListener(_changePhase);
     final Animation<double> decelerator = CurvedAnimation(
@@ -437,8 +438,9 @@ class _GlowController extends ChangeNotifier {
     _pullRecedeTimer?.cancel();
     _pullRecedeTimer = null;
     velocity = velocity.clamp(_minVelocity, _maxVelocity);
-    _glowOpacityTween.begin =
-        _state == _GlowState.idle ? 0.3 : _glowOpacity.value;
+    _glowOpacityTween.begin = _state == _GlowState.idle
+        ? 0.3
+        : _glowOpacity.value;
     _glowOpacityTween.end = (velocity * _velocityGlowFactor).clamp(
       _glowOpacityTween.begin!,
       _maxOpacity,
@@ -564,8 +566,9 @@ class _GlowController extends ChangeNotifier {
 
   void paint(Canvas canvas, Size size) {
     if (_glowOpacity.value == 0.0) return;
-    final double baseGlowScale =
-        size.width > size.height ? size.height / size.width : 1.0;
+    final double baseGlowScale = size.width > size.height
+        ? size.height / size.width
+        : 1.0;
     final double radius = size.width * 3.0 / 2.0;
     final double height = math.min(
       size.height,
@@ -711,9 +714,9 @@ class StretchingOverscrollIndicator extends StatefulWidget {
     required this.axisDirection,
     this.notificationPredicate = defaultScrollNotificationPredicate,
     this.child,
-  })  : assert(axisDirection != null),
-        assert(notificationPredicate != null),
-        super(key: key);
+  }) : assert(axisDirection != null),
+       assert(notificationPredicate != null),
+       super(key: key);
 
   /// {@macro flutter.overscroll.axisDirection}
   final AxisDirection axisDirection;

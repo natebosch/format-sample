@@ -41,11 +41,9 @@ class _SpendMoneyState extends State<SpendMoneyWidget> {
     return CurrencyInfo().getCurrencyText(
       widget.stringData["currency"],
       num.parse(amount) /
-          pow(
-              10,
-              CurrencyInfo().getCurrencyDecimalPlaces(
-                widget.stringData["currency"],
-              )),
+          pow(10, CurrencyInfo().getCurrencyDecimalPlaces(
+            widget.stringData["currency"],
+          )),
     );
   }
 
@@ -75,11 +73,9 @@ class _SpendMoneyState extends State<SpendMoneyWidget> {
     } else if (s == "Spend" || s == "Save") {
       FocusScope.of(context).unfocus();
       double val = num.parse(amount) /
-          pow(
-              10,
-              CurrencyInfo().getCurrencyDecimalPlaces(
-                widget.stringData["currency"],
-              ));
+          pow(10, CurrencyInfo().getCurrencyDecimalPlaces(
+            widget.stringData["currency"],
+          ));
 
       if (val > 0) {
         String content = widget._myController.text.isEmpty

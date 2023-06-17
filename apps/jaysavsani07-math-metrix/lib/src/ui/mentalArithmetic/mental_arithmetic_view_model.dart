@@ -103,15 +103,15 @@ class MentalArithmeticProvider with ChangeNotifier {
     localTimerSubscription = Stream.periodic(Duration(seconds: 1), (x) => x)
         .take(TimeUtil.mentalArithmeticLocalTimeOut)
         .listen(
-      (time) {
-        _currentState.currentQuestion = _currentState.questionList[time];
-        notifyListeners();
-      },
-      onDone: () {
-        this._localTimeOut = true;
-        notifyListeners();
-      },
-    );
+          (time) {
+            _currentState.currentQuestion = _currentState.questionList[time];
+            notifyListeners();
+          },
+          onDone: () {
+            this._localTimeOut = true;
+            notifyListeners();
+          },
+        );
   }
 
   void startTimer() {

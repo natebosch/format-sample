@@ -57,9 +57,9 @@ mixin _$TrackingTaskState {
       List<TrackingResponseInfo> responseInfoList,
       List<TrackNumberService>? unsupportedServices,
       List<TrackNumberService>? disabledServices,
-    ) loaded,
-  }) =>
-      throw _privateConstructorUsedError;
+    )
+    loaded,
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(List<TrackingInfo> trackingInfoList)? loading,
@@ -69,9 +69,9 @@ mixin _$TrackingTaskState {
       List<TrackingResponseInfo> responseInfoList,
       List<TrackNumberService>? unsupportedServices,
       List<TrackNumberService>? disabledServices,
-    )? loaded,
-  }) =>
-      throw _privateConstructorUsedError;
+    )?
+    loaded,
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(List<TrackingInfo> trackingInfoList)? loading,
@@ -81,29 +81,26 @@ mixin _$TrackingTaskState {
       List<TrackingResponseInfo> responseInfoList,
       List<TrackNumberService>? unsupportedServices,
       List<TrackNumberService>? disabledServices,
-    )? loaded,
+    )?
+    loaded,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(TrackingTaskStateLoading value) loading,
     required TResult Function(TrackingTaskStateLoaded value) loaded,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(TrackingTaskStateLoading value)? loading,
     TResult Function(TrackingTaskStateLoaded value)? loaded,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(TrackingTaskStateLoading value)? loading,
     TResult Function(TrackingTaskStateLoaded value)? loaded,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $TrackingTaskStateCopyWith<TrackingTaskState> get copyWith =>
@@ -134,7 +131,7 @@ class _$TrackingTaskStateCopyWithImpl<$Res>
       trackingInfoList: trackingInfoList == freezed
           ? _value.trackingInfoList
           : trackingInfoList // ignore: cast_nullable_to_non_nullable
-              as List<TrackingInfo>,
+                as List<TrackingInfo>,
     ));
   }
 }
@@ -169,7 +166,7 @@ class _$TrackingTaskStateLoadingCopyWithImpl<$Res>
       trackingInfoList: trackingInfoList == freezed
           ? _value.trackingInfoList
           : trackingInfoList // ignore: cast_nullable_to_non_nullable
-              as List<TrackingInfo>,
+                as List<TrackingInfo>,
     ));
   }
 }
@@ -215,9 +212,10 @@ class _$TrackingTaskStateLoading
 
   @JsonKey(ignore: true)
   @override
-  $TrackingTaskStateLoadingCopyWith<TrackingTaskStateLoading> get copyWith =>
-      _$TrackingTaskStateLoadingCopyWithImpl<TrackingTaskStateLoading>(
-          this, _$identity);
+  $TrackingTaskStateLoadingCopyWith<TrackingTaskStateLoading>
+  get copyWith => _$TrackingTaskStateLoadingCopyWithImpl<
+    TrackingTaskStateLoading
+  >(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -229,7 +227,8 @@ class _$TrackingTaskStateLoading
       List<TrackingResponseInfo> responseInfoList,
       List<TrackNumberService>? unsupportedServices,
       List<TrackNumberService>? disabledServices,
-    ) loaded,
+    )
+    loaded,
   }) {
     return loading(trackingInfoList);
   }
@@ -244,7 +243,8 @@ class _$TrackingTaskStateLoading
       List<TrackingResponseInfo> responseInfoList,
       List<TrackNumberService>? unsupportedServices,
       List<TrackNumberService>? disabledServices,
-    )? loaded,
+    )?
+    loaded,
   }) {
     return loading?.call(trackingInfoList);
   }
@@ -259,7 +259,8 @@ class _$TrackingTaskStateLoading
       List<TrackingResponseInfo> responseInfoList,
       List<TrackNumberService>? unsupportedServices,
       List<TrackNumberService>? disabledServices,
-    )? loaded,
+    )?
+    loaded,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -354,23 +355,23 @@ class _$TrackingTaskStateLoadedCopyWithImpl<$Res>
       result: result == freezed
           ? _value.result
           : result // ignore: cast_nullable_to_non_nullable
-              as List<TrackingTaskResult>,
+                as List<TrackingTaskResult>,
       trackingInfoList: trackingInfoList == freezed
           ? _value.trackingInfoList
           : trackingInfoList // ignore: cast_nullable_to_non_nullable
-              as List<TrackingInfo>,
+                as List<TrackingInfo>,
       responseInfoList: responseInfoList == freezed
           ? _value.responseInfoList
           : responseInfoList // ignore: cast_nullable_to_non_nullable
-              as List<TrackingResponseInfo>,
+                as List<TrackingResponseInfo>,
       unsupportedServices: unsupportedServices == freezed
           ? _value.unsupportedServices
           : unsupportedServices // ignore: cast_nullable_to_non_nullable
-              as List<TrackNumberService>?,
+                as List<TrackNumberService>?,
       disabledServices: disabledServices == freezed
           ? _value.disabledServices
           : disabledServices // ignore: cast_nullable_to_non_nullable
-              as List<TrackNumberService>?,
+                as List<TrackNumberService>?,
     ));
   }
 }
@@ -461,9 +462,10 @@ class _$TrackingTaskStateLoaded
 
   @JsonKey(ignore: true)
   @override
-  $TrackingTaskStateLoadedCopyWith<TrackingTaskStateLoaded> get copyWith =>
-      _$TrackingTaskStateLoadedCopyWithImpl<TrackingTaskStateLoaded>(
-          this, _$identity);
+  $TrackingTaskStateLoadedCopyWith<TrackingTaskStateLoaded>
+  get copyWith => _$TrackingTaskStateLoadedCopyWithImpl<
+    TrackingTaskStateLoaded
+  >(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -475,7 +477,8 @@ class _$TrackingTaskStateLoaded
       List<TrackingResponseInfo> responseInfoList,
       List<TrackNumberService>? unsupportedServices,
       List<TrackNumberService>? disabledServices,
-    ) loaded,
+    )
+    loaded,
   }) {
     return loaded(
       result,
@@ -496,7 +499,8 @@ class _$TrackingTaskStateLoaded
       List<TrackingResponseInfo> responseInfoList,
       List<TrackNumberService>? unsupportedServices,
       List<TrackNumberService>? disabledServices,
-    )? loaded,
+    )?
+    loaded,
   }) {
     return loaded?.call(
       result,
@@ -517,7 +521,8 @@ class _$TrackingTaskStateLoaded
       List<TrackingResponseInfo> responseInfoList,
       List<TrackNumberService>? unsupportedServices,
       List<TrackNumberService>? disabledServices,
-    )? loaded,
+    )?
+    loaded,
     required TResult orElse(),
   }) {
     if (loaded != null) {
@@ -662,19 +667,19 @@ class _$TrackingTaskResultCopyWithImpl<$Res>
       trackService: trackService == freezed
           ? _value.trackService
           : trackService // ignore: cast_nullable_to_non_nullable
-              as TrackNumberService,
+                as TrackNumberService,
       info: info == freezed
           ? _value.info
           : info // ignore: cast_nullable_to_non_nullable
-              as ShipmentInfo,
+                as ShipmentInfo,
       activity: activity == freezed
           ? _value.activity
           : activity // ignore: cast_nullable_to_non_nullable
-              as List<ShipmentActivityInfo>,
+                as List<ShipmentActivityInfo>,
       alternateTracks: alternateTracks == freezed
           ? _value.alternateTracks
           : alternateTracks // ignore: cast_nullable_to_non_nullable
-              as List<String>?,
+                as List<String>?,
     ));
   }
 }
@@ -718,19 +723,19 @@ class __$TrackingTaskResultCopyWithImpl<$Res>
       trackService: trackService == freezed
           ? _value.trackService
           : trackService // ignore: cast_nullable_to_non_nullable
-              as TrackNumberService,
+                as TrackNumberService,
       info: info == freezed
           ? _value.info
           : info // ignore: cast_nullable_to_non_nullable
-              as ShipmentInfo,
+                as ShipmentInfo,
       activity: activity == freezed
           ? _value.activity
           : activity // ignore: cast_nullable_to_non_nullable
-              as List<ShipmentActivityInfo>,
+                as List<ShipmentActivityInfo>,
       alternateTracks: alternateTracks == freezed
           ? _value.alternateTracks
           : alternateTracks // ignore: cast_nullable_to_non_nullable
-              as List<String>?,
+                as List<String>?,
     ));
   }
 }
@@ -805,11 +810,11 @@ class _$_TrackingTaskResult
 
   @JsonKey(ignore: true)
   @override
-  _$TrackingTaskResultCopyWith<_TrackingTaskResult> get copyWith =>
-      __$TrackingTaskResultCopyWithImpl<_TrackingTaskResult>(
-        this,
-        _$identity,
-      );
+  _$TrackingTaskResultCopyWith<_TrackingTaskResult>
+  get copyWith => __$TrackingTaskResultCopyWithImpl<_TrackingTaskResult>(
+    this,
+    _$identity,
+  );
 }
 
 abstract class _TrackingTaskResult implements TrackingTaskResult {
@@ -881,7 +886,7 @@ class _$TrackingTaskParamsCopyWithImpl<$Res>
       locale: locale == freezed
           ? _value.locale
           : locale // ignore: cast_nullable_to_non_nullable
-              as Locale?,
+                as Locale?,
     ));
   }
 
@@ -929,7 +934,7 @@ class __$TrackingTaskParamsCopyWithImpl<$Res>
       locale: locale == freezed
           ? _value.locale
           : locale // ignore: cast_nullable_to_non_nullable
-              as Locale?,
+                as Locale?,
     ));
   }
 }
@@ -971,11 +976,11 @@ class _$_TrackingTaskParams
 
   @JsonKey(ignore: true)
   @override
-  _$TrackingTaskParamsCopyWith<_TrackingTaskParams> get copyWith =>
-      __$TrackingTaskParamsCopyWithImpl<_TrackingTaskParams>(
-        this,
-        _$identity,
-      );
+  _$TrackingTaskParamsCopyWith<_TrackingTaskParams>
+  get copyWith => __$TrackingTaskParamsCopyWithImpl<_TrackingTaskParams>(
+    this,
+    _$identity,
+  );
 }
 
 abstract class _TrackingTaskParams implements TrackingTaskParams {
@@ -1054,15 +1059,15 @@ class __$FailedRequestCopyWithImpl<$Res>
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as TransactionId,
+                as TransactionId,
       trackService: trackService == freezed
           ? _value.trackService
           : trackService // ignore: cast_nullable_to_non_nullable
-              as TrackNumberService,
+                as TrackNumberService,
       reason: reason == freezed
           ? _value.reason
           : reason // ignore: cast_nullable_to_non_nullable
-              as _FailedRequestReason,
+                as _FailedRequestReason,
     ));
   }
 
@@ -1114,15 +1119,15 @@ class __$FailedRequestDataCopyWithImpl<$Res>
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as TransactionId,
+                as TransactionId,
       trackService: trackService == freezed
           ? _value.trackService
           : trackService // ignore: cast_nullable_to_non_nullable
-              as TrackNumberService,
+                as TrackNumberService,
       reason: reason == freezed
           ? _value.reason
           : reason // ignore: cast_nullable_to_non_nullable
-              as _FailedRequestReason,
+                as _FailedRequestReason,
     ));
   }
 }
@@ -1184,11 +1189,11 @@ class _$_FailedRequestData
 
   @JsonKey(ignore: true)
   @override
-  _$FailedRequestDataCopyWith<_FailedRequestData> get copyWith =>
-      __$FailedRequestDataCopyWithImpl<_FailedRequestData>(
-        this,
-        _$identity,
-      );
+  _$FailedRequestDataCopyWith<_FailedRequestData>
+  get copyWith => __$FailedRequestDataCopyWithImpl<_FailedRequestData>(
+    this,
+    _$identity,
+  );
 }
 
 abstract class _FailedRequestData implements _FailedRequest {
@@ -1232,42 +1237,36 @@ mixin _$_FailedRequestReason {
   TResult when<TResult extends Object?>({
     required TResult Function() missingService,
     required TResult Function() missingAuthData,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? missingService,
     TResult Function()? missingAuthData,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? missingService,
     TResult Function()? missingAuthData,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_FailedRequestMissingService value)
-        missingService,
+    missingService,
     required TResult Function(_FailedRequestMissingAuthData value)
-        missingAuthData,
-  }) =>
-      throw _privateConstructorUsedError;
+    missingAuthData,
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_FailedRequestMissingService value)? missingService,
     TResult Function(_FailedRequestMissingAuthData value)? missingAuthData,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_FailedRequestMissingService value)? missingService,
     TResult Function(_FailedRequestMissingAuthData value)? missingAuthData,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -1372,9 +1371,9 @@ class _$_FailedRequestMissingService
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_FailedRequestMissingService value)
-        missingService,
+    missingService,
     required TResult Function(_FailedRequestMissingAuthData value)
-        missingAuthData,
+    missingAuthData,
   }) {
     return missingService(this);
   }
@@ -1492,9 +1491,9 @@ class _$_FailedRequestMissingAuthData
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_FailedRequestMissingService value)
-        missingService,
+    missingService,
     required TResult Function(_FailedRequestMissingAuthData value)
-        missingAuthData,
+    missingAuthData,
   }) {
     return missingAuthData(this);
   }

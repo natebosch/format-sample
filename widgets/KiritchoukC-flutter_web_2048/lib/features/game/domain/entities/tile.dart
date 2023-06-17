@@ -18,13 +18,13 @@ class Tile {
   });
 
   Tile.clone(Tile tile)
-      : this(
-          tile.value,
-          x: tile.x,
-          y: tile.y,
-          merged: tile.merged,
-          isNew: tile.isNew,
-        );
+    : this(
+        tile.value,
+        x: tile.x,
+        y: tile.y,
+        merged: tile.merged,
+        isNew: tile.isNew,
+      );
 
   factory Tile.fromDestination(int value, Destination destination) {
     if (destination.hasMerged) {

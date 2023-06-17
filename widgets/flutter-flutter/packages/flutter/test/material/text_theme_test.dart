@@ -59,8 +59,8 @@ void main() {
       headline6: TextStyle(color: Color(0xcafefeed)),
     );
     final TextTheme fullTheme = ThemeData.fallback().textTheme.merge(
-          partialTheme,
-        );
+      partialTheme,
+    );
     expect(fullTheme.headline6!.color, equals(partialTheme.headline6!.color));
 
     const TextTheme onlyHeadlineSmallAndTitleLarge = TextTheme(
@@ -153,16 +153,12 @@ void main() {
       themeStyles.every((TextStyle style) => style.fontFamily == fontFamily),
       true,
     );
-    expect(
-        themeStyles.every(
-          (TextStyle style) => style.decorationColor == decorationColor,
-        ),
-        true);
-    expect(
-        themeStyles.every(
-          (TextStyle style) => style.decorationStyle == decorationStyle,
-        ),
-        true);
+    expect(themeStyles.every(
+      (TextStyle style) => style.decorationColor == decorationColor,
+    ), true);
+    expect(themeStyles.every(
+      (TextStyle style) => style.decorationStyle == decorationStyle,
+    ), true);
     expect(
       themeStyles.every((TextStyle style) => style.decoration == decoration),
       true,

@@ -18,8 +18,8 @@ class ConfigSection extends StatelessWidget {
             Expanded(
               child: FPCPrimaryLabelButton(
                 title: "iOS",
-                onPressed: () =>
-                    config.changePlatform(platform: TargetPlatform.iOS),
+                onPressed:
+                    () => config.changePlatform(platform: TargetPlatform.iOS),
               ),
             ),
             SizedBox(width: size.s16),

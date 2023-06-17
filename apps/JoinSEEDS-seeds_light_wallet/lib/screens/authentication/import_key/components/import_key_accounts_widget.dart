@@ -37,51 +37,48 @@ class ImportKeyAccountsWidget extends StatelessWidget {
           case PageState.success:
             return ListView(
               shrinkWrap: true,
-              children: state.accounts
-                  .map(
-                    (ProfileModel? profile) => InkWell(
-                      borderRadius:
-                          BorderRadius.circular(defaultCardBorderRadius),
-                      onTap: () {
-                        context.read<ImportKeyBloc>().add(
-                              AccountSelected(account: profile!.account),
-                            );
-                      },
+              children: state.accounts.map(
+                (ProfileModel? profile) => InkWell(
+                  borderRadius: BorderRadius.circular(defaultCardBorderRadius),
+                  onTap: () {
+                    context.read<ImportKeyBloc>().add(
+                      AccountSelected(account: profile!.account),
+                    );
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 6),
+                    child: Ink(
+                      decoration: BoxDecoration(
+                        color: AppColors.lightGreen2,
+                        borderRadius:
+                            BorderRadius.circular(defaultCardBorderRadius),
+                      ),
                       child: Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 6),
-                        child: Ink(
-                          decoration: BoxDecoration(
-                            color: AppColors.lightGreen2,
-                            borderRadius:
-                                BorderRadius.circular(defaultCardBorderRadius),
+                        padding: const EdgeInsets.only(top: 8, bottom: 8),
+                        child: ListTile(
+                          leading: ProfileAvatar(
+                            size: 60,
+                            image: profile!.image,
+                            account: profile.account,
+                            nickname: profile.nickname,
                           ),
-                          child: Padding(
-                            padding: const EdgeInsets.only(top: 8, bottom: 8),
-                            child: ListTile(
-                              leading: ProfileAvatar(
-                                size: 60,
-                                image: profile!.image,
-                                account: profile.account,
-                                nickname: profile.nickname,
-                              ),
-                              title: Text(
-                                profile.nickname ?? '',
-                                style: Theme.of(context).textTheme.button,
-                              ),
-                              subtitle: Text(
-                                profile.account,
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .subtitle3OpacityEmphasis,
-                              ),
-                              trailing: const Icon(Icons.navigate_next),
-                            ),
+                          title: Text(
+                            profile.nickname ?? '',
+                            style: Theme.of(context).textTheme.button,
                           ),
+                          subtitle: Text(
+                            profile.account,
+                            style: Theme.of(context)
+                                .textTheme
+                                .subtitle3OpacityEmphasis,
+                          ),
+                          trailing: const Icon(Icons.navigate_next),
                         ),
                       ),
                     ),
-                  )
-                  .toList(),
+                  ),
+                ),
+              ).toList(),
             );
           default:
             return const SizedBox.shrink();

@@ -10,12 +10,12 @@ class UikProductCardBig extends UikWidget {
   WidgetType _widgetType;
   UikProductCardBigProps _uikProductCardBigProps;
   UikProductCardBig(this._widgetType, this._uikProductCardBigProps)
-      : super(_widgetType, _uikProductCardBigProps);
+    : super(_widgetType, _uikProductCardBigProps);
 
   @override
   _UikProductCardBigState createState() => _UikProductCardBigState(
-        _uikProductCardBigProps,
-      );
+    _uikProductCardBigProps,
+  );
 }
 
 class _UikProductCardBigState extends State<UikProductCardBig> {

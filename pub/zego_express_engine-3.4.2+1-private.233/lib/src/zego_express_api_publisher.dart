@@ -415,10 +415,10 @@ extension ZegoExpressEnginePublisher on ZegoExpressEngine {
   }) async {
     return await ZegoExpressImpl.instance
         .setMinVideoResolutionForTrafficControl(
-      width,
-      height,
-      channel: channel,
-    );
+          width,
+          height,
+          channel: channel,
+        );
   }
 
   /// Set the factors of concern that trigger traffic control for the specified publish channel.

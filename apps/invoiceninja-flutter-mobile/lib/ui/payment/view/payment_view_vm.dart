@@ -71,8 +71,7 @@ class PaymentViewVM {
       onEntityAction: (
         BuildContext context,
         EntityAction action,
-      ) =>
-          handleEntitiesActions([payment], action, autoPop: true),
+      ) => handleEntitiesActions([payment], action, autoPop: true),
     );
   }
 

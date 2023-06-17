@@ -134,11 +134,9 @@ final editingReducer = combineReducers<InvoiceEntity>([
         ..isChanged = true
         ..clientId = client?.id ?? ''
         ..invitations.replace(
-          (client?.emailContacts ?? <ContactEntity>[])
-              .map(
-                (contact) => InvitationEntity(contactId: contact.id),
-              )
-              .toList(),
+          (client?.emailContacts ?? <ContactEntity>[]).map(
+            (contact) => InvitationEntity(contactId: contact.id),
+          ).toList(),
         ),
     );
   }),
@@ -435,8 +433,7 @@ CreditState _updateCredit(CreditState invoiceState, dynamic action) {
 CreditState _setLoadedCredits(
   CreditState creditState,
   LoadCreditsSuccess action,
-) =>
-    creditState.loadCredits(action.credits);
+) => creditState.loadCredits(action.credits);
 
 CreditState _setLoadedCompany(
   CreditState creditState,

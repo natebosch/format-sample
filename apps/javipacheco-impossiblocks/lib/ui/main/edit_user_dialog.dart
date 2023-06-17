@@ -20,11 +20,11 @@ class EditUserDialog extends StatefulWidget {
     showDialog(
       context: context,
       builder: (BuildContext context) => EditUserDialog(
-        onChangeName: onChangeName,
-        defaultName: defaultName,
-        defaultAvatar: defaultAvatar,
-        defaultMessage: defaultMessage,
-      ),
+            onChangeName: onChangeName,
+            defaultName: defaultName,
+            defaultAvatar: defaultAvatar,
+            defaultMessage: defaultMessage,
+          ),
     );
   }
 
@@ -138,11 +138,9 @@ class _EditUserDialogState extends State<EditUserDialog> {
                       ),
                     ),
                     SizedBox(height: 24.0),
-                    Text(
-                        ImpossiblocksLocalizations.of(context).text(
-                          "enter_user_name",
-                        ),
-                        style: ResStyles.titleMainScreen),
+                    Text(ImpossiblocksLocalizations.of(context).text(
+                      "enter_user_name",
+                    ), style: ResStyles.titleMainScreen),
                     SizedBox(height: 12.0),
                     TextFormField(
                       controller: _controller,

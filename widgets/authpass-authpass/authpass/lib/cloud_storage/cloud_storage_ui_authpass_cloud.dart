@@ -38,13 +38,11 @@ class ShareFileScreen extends StatefulWidget {
   static Route<void> route({
     required AuthPassCloudProvider provider,
     required CloudStorageEntity entity,
-  }) =>
-      MaterialPageRoute(
-        settings: const RouteSettings(name: 'shareFile'),
-        builder: (context) =>
-            ShareFileScreen(provider: provider, entity: entity),
-        fullscreenDialog: true,
-      );
+  }) => MaterialPageRoute(
+    settings: const RouteSettings(name: 'shareFile'),
+    builder: (context) => ShareFileScreen(provider: provider, entity: entity),
+    fullscreenDialog: true,
+  );
 
   final AuthPassCloudProvider provider;
   final CloudStorageEntity entity;
@@ -78,9 +76,9 @@ class _ShareFileScreenState extends State<ShareFileScreen> {
           await showDialog<void>(
             context: context,
             builder: (context) => ShareCreateDialog(
-              provider: widget.provider,
-              entity: widget.entity,
-            ),
+                  provider: widget.provider,
+                  entity: widget.entity,
+                ),
           );
           _retryBuilder.currentState?.reload();
         },
@@ -89,8 +87,8 @@ class _ShareFileScreenState extends State<ShareFileScreen> {
       ),
       body: RetryFutureBuilder<List<FileTokenInfo>>(
         key: _retryBuilder,
-        produceFuture: (context) =>
-            widget.provider.listShareTokens(widget.entity),
+        produceFuture:
+            (context) => widget.provider.listShareTokens(widget.entity),
         builder: (context, data) {
           final sorted = data.sorted(
             (a, b) => a.createdAt.compareTo(b.createdAt),
@@ -229,16 +227,14 @@ class ShareTokenPresent extends StatelessWidget {
 
   final ShareTokenPresentArgs tokenInfo;
 
-  late final tokenUrl = AppConstants.authPassWebAppUri
-      .replace(
-        fragment: Uri(
-          path: AppConstants.routeOpenFile,
-          queryParameters: <String, String>{
-            AppConstants.routeOpenFileParamToken: tokenInfo.token,
-          },
-        ).toString(),
-      )
-      .toString();
+  late final tokenUrl = AppConstants.authPassWebAppUri.replace(
+    fragment: Uri(
+      path: AppConstants.routeOpenFile,
+      queryParameters: <String, String>{
+        AppConstants.routeOpenFileParamToken: tokenInfo.token,
+      },
+    ).toString(),
+  ).toString();
 
   @override
   Widget build(BuildContext context) {
@@ -351,7 +347,7 @@ class ShareTokenPresent extends StatelessWidget {
 
 class ShareCodeInputDialog extends StatefulWidget {
   const ShareCodeInputDialog({Key? key, required this.provider})
-      : super(key: key);
+    : super(key: key);
 
   final AuthPassCloudProvider provider;
 
@@ -480,19 +476,19 @@ class _ShareCodeInputDialogState extends State<ShareCodeInputDialog>
 /// Launch screen when deep linking to token.
 class AuthPassCloudLoadFileLaunch extends StatefulWidget {
   const AuthPassCloudLoadFileLaunch({Key? key, required this.token})
-      : super(key: key);
+    : super(key: key);
 
   static Route<void> route({required String token}) => MaterialPageRoute(
-        builder: (context) => AuthPassCloudLoadFileLaunch(token: token),
-        settings: RouteSettings(
-          name: Uri(
-            path: '/openFile/token',
-            queryParameters: <String, String>{
-              AppConstants.routeOpenFileParamToken: token,
-            },
-          ).toString(),
-        ),
-      );
+    builder: (context) => AuthPassCloudLoadFileLaunch(token: token),
+    settings: RouteSettings(
+      name: Uri(
+        path: '/openFile/token',
+        queryParameters: <String, String>{
+          AppConstants.routeOpenFileParamToken: token,
+        },
+      ).toString(),
+    ),
+  );
 
   final String token;
 
@@ -583,9 +579,9 @@ class _AuthPassCloudLoadFileLaunchState
                     ),
                     target: LinkTarget.blank,
                     builder: (context, followLink) => TextButton(
-                      onPressed: followLink,
-                      child: Text(loc.shareCodeOpenInstallAppButtonLabel),
-                    ),
+                          onPressed: followLink,
+                          child: Text(loc.shareCodeOpenInstallAppButtonLabel),
+                        ),
                   ),
                   const SizedBox(width: 16),
                   TextButton(

@@ -96,15 +96,15 @@ class CursorStyle {
 
   @override
   int get hashCode => hashValues(
-        color,
-        backgroundColor,
-        width,
-        height,
-        radius,
-        offset,
-        opacityAnimates,
-        paintAboveText,
-      );
+    color,
+    backgroundColor,
+    width,
+    height,
+    radius,
+    offset,
+    opacityAnimates,
+    paintAboveText,
+  );
 }
 
 /// Controls cursor of an editable widget.
@@ -116,9 +116,9 @@ class CursorController extends ChangeNotifier {
     required this.showCursor,
     required CursorStyle style,
     required TickerProvider tickerProvider,
-  })  : _style = style,
-        _cursorBlink = ValueNotifier(false),
-        _cursorColor = ValueNotifier(style.color) {
+  }) : _style = style,
+       _cursorBlink = ValueNotifier(false),
+       _cursorColor = ValueNotifier(style.color) {
     _cursorBlinkOpacityController = AnimationController(
       vsync: tickerProvider,
       duration: _fadeDuration,

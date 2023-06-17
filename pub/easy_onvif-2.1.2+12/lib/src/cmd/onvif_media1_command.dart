@@ -118,11 +118,11 @@ class OnvifGetMetadataConfigurations1MediaCommand extends OnvifHelperCommand {
     await initializeOnvif();
 
     try {
-      final metadataConfigurations =
-          await media.media1.getMetadataConfigurations(
-        configurationToken: argResults?['configuration-token'],
-        profileToken: argResults?['profile-token'],
-      );
+      final metadataConfigurations = await media.media1
+          .getMetadataConfigurations(
+            configurationToken: argResults?['configuration-token'],
+            profileToken: argResults?['profile-token'],
+          );
 
       print(metadataConfigurations);
     } on DioError catch (err) {

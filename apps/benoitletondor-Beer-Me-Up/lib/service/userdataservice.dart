@@ -96,8 +96,8 @@ class _UserDataServiceImpl implements UserDataService {
       debugPrint("Creating document reference for id ${user.uid}");
 
       final DocumentReference ref = _firestore.collection("users").document(
-            user.uid,
-          );
+        user.uid,
+      );
       await ref.setData({
         "id": user.uid,
         "mail": user.email,
@@ -133,11 +133,11 @@ class _UserDataServiceImpl implements UserDataService {
     }
 
     final checkinCollection = await query.getDocuments().timeout(
-          _DEFAULT_TIMEOUT,
-          onTimeout: () => Future.error(NetworkException(
-            "Unable to get your check-ins data. Please check your network connection.",
-          )),
-        );
+      _DEFAULT_TIMEOUT,
+      onTimeout: () => Future.error(NetworkException(
+        "Unable to get your check-ins data. Please check your network connection.",
+      )),
+    );
 
     final checkinArray = checkinCollection.documents;
     if (checkinArray.isEmpty) {
@@ -158,13 +158,15 @@ class _UserDataServiceImpl implements UserDataService {
   Future<List<BeerCheckInsData>> fetchBeerCheckInsData() async {
     _assertDBInitialized();
 
-    final beerDocsSnapshot =
-        await _userDoc.reference.collection("beers").getDocuments().timeout(
-              _DEFAULT_TIMEOUT,
-              onTimeout: () => Future.error(NetworkException(
-                "Unable to retrieve your data. Please check your network connection.",
-              )),
-            );
+    final beerDocsSnapshot = await _userDoc.reference
+        .collection("beers")
+        .getDocuments()
+        .timeout(
+          _DEFAULT_TIMEOUT,
+          onTimeout: () => Future.error(NetworkException(
+            "Unable to retrieve your data. Please check your network connection.",
+          )),
+        );
 
     return beerDocsSnapshot.documents
         .map(
@@ -193,14 +195,14 @@ class _UserDataServiceImpl implements UserDataService {
           (querySnapshot) {
             querySnapshot.documentChanges
                 .where(
-              (documentChange) =>
-                  documentChange.type == DocumentChangeType.added,
-            )
+                  (documentChange) =>
+                      documentChange.type == DocumentChangeType.added,
+                )
                 .forEach((documentChange) {
-              _controller.add(
-                _parseCheckinFromDocument(documentChange.document),
-              );
-            });
+                  _controller.add(
+                    _parseCheckinFromDocument(documentChange.document),
+                  );
+                });
           },
           onDone: _controller.close,
           onError: (e, stackTrace) {
@@ -224,15 +226,15 @@ class _UserDataServiceImpl implements UserDataService {
 
     final List<CheckIn> checkins = await fetchWeekCheckIns(date);
     final beerDocument = _userDoc.reference.collection("beers").document(
-          beer.id,
-        );
+      beer.id,
+    );
 
     final beerDoc = await beerDocument.get().timeout(
-          _DEFAULT_TIMEOUT,
-          onTimeout: () => Future.error(NetworkException(
-            "Unable to get check-ins details. Please check your network connection.",
-          )),
-        );
+      _DEFAULT_TIMEOUT,
+      onTimeout: () => Future.error(NetworkException(
+        "Unable to get check-ins details. Please check your network connection.",
+      )),
+    );
 
     bool beerAlreadyCheckedIn = beerDoc != null && beerDoc.exists;
 
@@ -244,15 +246,15 @@ class _UserDataServiceImpl implements UserDataService {
     _assertDBInitialized();
 
     final beerDocument = _userDoc.reference.collection("beers").document(
-          checkIn.beer.id,
-        );
+      checkIn.beer.id,
+    );
 
     DocumentSnapshot beerDocumentValues = await beerDocument.get().timeout(
-          const Duration(seconds: 30),
-          onTimeout: () => Future.error(NetworkException(
-            "Unable save check-in. Please check your network connection.",
-          )),
-        );
+      const Duration(seconds: 30),
+      onTimeout: () => Future.error(NetworkException(
+        "Unable save check-in. Please check your network connection.",
+      )),
+    );
 
     final numberOfCheckIns =
         beerDocumentValues != null && beerDocumentValues.exists
@@ -457,8 +459,8 @@ class _UserDataServiceImpl implements UserDataService {
     }
 
     final beerDocument = _userDoc.reference.collection("beers").document(
-          beer.id,
-        );
+      beer.id,
+    );
 
     await beerDocument.setData({"rating": rating}, merge: true);
   }
@@ -467,33 +469,33 @@ class _UserDataServiceImpl implements UserDataService {
   Stream<Tuple2<Beer, int>> listenForNewRatings() {
     final StreamController<Tuple2<Beer, int>> _controller = StreamController();
 
-    final subscription =
-        _userDoc.reference.collection("beers").snapshots().listen(
-              (querySnapshot) {
-                querySnapshot.documentChanges
-                    .where(
+    final subscription = _userDoc.reference
+        .collection("beers")
+        .snapshots()
+        .listen(
+          (querySnapshot) {
+            querySnapshot.documentChanges
+                .where(
                   (documentChange) =>
                       documentChange.type == DocumentChangeType.modified,
                 )
-                    .forEach((documentChange) {
+                .forEach((documentChange) {
                   final int rating = documentChange.document.data["rating"];
                   if (rating != null) {
-                    _controller.add(Tuple2(
-                        _parseBeerFromValue(
-                          documentChange.document.data["beer"],
-                          documentChange.document.data["beer_version"],
-                        ),
-                        rating));
+                    _controller.add(Tuple2(_parseBeerFromValue(
+                      documentChange.document.data["beer"],
+                      documentChange.document.data["beer_version"],
+                    ), rating));
                   }
                 });
-              },
-              onDone: _controller.close,
-              onError: (e, stackTrace) {
-                printException(e, stackTrace, "Error listening for checkin");
-                _controller.close();
-              },
-              cancelOnError: true,
-            );
+          },
+          onDone: _controller.close,
+          onError: (e, stackTrace) {
+            printException(e, stackTrace, "Error listening for checkin");
+            _controller.close();
+          },
+          cancelOnError: true,
+        );
 
     _controller.onCancel = () {
       subscription.cancel();

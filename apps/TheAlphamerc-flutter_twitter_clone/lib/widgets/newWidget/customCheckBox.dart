@@ -4,7 +4,7 @@ class CustomCheckBox extends StatefulWidget {
   final bool isChecked;
   final bool visibleSwitch;
   CustomCheckBox({Key key, this.isChecked, this.visibleSwitch})
-      : super(key: key);
+    : super(key: key);
 
   @override
   _CustomCheckBoxState createState() => _CustomCheckBoxState();

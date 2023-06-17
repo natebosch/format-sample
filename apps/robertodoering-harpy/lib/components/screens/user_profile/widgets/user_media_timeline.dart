@@ -13,13 +13,13 @@ class UserMediaTimeline extends StatelessWidget {
     final state = cubit.state;
 
     return ChangeNotifierProvider(
-      create: (_) =>
-          MediaTimelineModel(initialTweets: cubit.state.tweets.toList()),
+      create:
+          (_) => MediaTimelineModel(initialTweets: cubit.state.tweets.toList()),
       child: BlocListener<UserTimelineCubit, TimelineState>(
         listener: (context, state) {
           context.read<MediaTimelineModel>().updateEntries(
-                state.tweets.toList(),
-              );
+            state.tweets.toList(),
+          );
         },
         child: ScrollToStart(
           child: LoadMoreListener(

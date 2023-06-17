@@ -195,27 +195,24 @@ class ProductList {
     required final String colorTag,
     required final String iconTag,
     required final ColorDestination colorDestination,
-  }) =>
-      getTintedIcon(
-        colorScheme: colorScheme,
-        materialColor: _getReferenceMaterialColor(colorTag),
-        iconData: _ICON_DATA[iconTag] ?? _ICON_DATA[_ICON_TAG]!,
-        colorDestination: colorDestination,
-      );
+  }) => getTintedIcon(
+    colorScheme: colorScheme,
+    materialColor: _getReferenceMaterialColor(colorTag),
+    iconData: _ICON_DATA[iconTag] ?? _ICON_DATA[_ICON_TAG]!,
+    colorDestination: colorDestination,
+  );
 
   static Widget getTintedIcon({
     required final ColorScheme colorScheme,
     required final MaterialColor materialColor,
     required final IconData iconData,
     final ColorDestination? colorDestination,
-  }) =>
-      Icon(
-        iconData,
-        color: colorDestination == null
-            ? null
-            : SmoothTheme.getColor(
-                colorScheme, materialColor, colorDestination),
-      );
+  }) => Icon(
+    iconData,
+    color: colorDestination == null
+        ? null
+        : SmoothTheme.getColor(colorScheme, materialColor, colorDestination),
+  );
 
   static MaterialColor _getReferenceMaterialColor(final String colorTag) =>
       _COLORS[colorTag] ?? _COLORS[_COLOR_RED]!;
@@ -223,13 +220,12 @@ class ProductList {
   Widget getIcon(
     final ColorScheme colorScheme,
     final ColorDestination colorDestination,
-  ) =>
-      getReferenceIcon(
-        colorScheme: colorScheme,
-        colorTag: _colorTag,
-        iconTag: _iconTag,
-        colorDestination: colorDestination,
-      );
+  ) => getReferenceIcon(
+    colorScheme: colorScheme,
+    colorTag: _colorTag,
+    iconTag: _iconTag,
+    colorDestination: colorDestination,
+  );
 
   MaterialColor getMaterialColor() => _getReferenceMaterialColor(_colorTag);
 
@@ -322,9 +318,9 @@ class ProductList {
 
   /// Returns a new [ProductExtra], to be used when you add a product to a list
   ProductExtra _getNewProductExtra(final int index) => ProductExtra(
-        index,
-        PRODUCT_EXTRA_INIT_STRING_VALUE,
-      );
+    index,
+    PRODUCT_EXTRA_INIT_STRING_VALUE,
+  );
 
   ProductExtra getProductExtra(final String barcode) =>
       _productExtras[barcode]!;

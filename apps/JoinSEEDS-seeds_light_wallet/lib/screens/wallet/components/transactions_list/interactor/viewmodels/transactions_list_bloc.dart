@@ -18,8 +18,8 @@ class TransactionsListBloc
   TransactionsListBloc() : super(TransactionsListState.initial()) {
     _tickerSubscription = Stream.periodic(const Duration(seconds: 20), (x) => x)
         .listen((counter) {
-      add(OnTransactionDisplayTick(counter));
-    });
+          add(OnTransactionDisplayTick(counter));
+        });
     eventBusSubscription = eventBus.on<OnNewTransactionEventBus>().listen(
       (event) async {
         await Future.delayed(

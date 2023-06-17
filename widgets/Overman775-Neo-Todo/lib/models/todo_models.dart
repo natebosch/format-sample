@@ -35,12 +35,12 @@ class TodoCategory extends TodoModel {
   });
 
   factory TodoCategory.fromMap(Map<String, dynamic> map) => TodoCategory(
-        id: map['id'] as int,
-        title: map['title'] as String,
-        icon: map['icon'].toString().getFontAwesomeIcon,
-        completed: map['completed'] as int,
-        totalItems: map['totalItems'] as int,
-      );
+    id: map['id'] as int,
+    title: map['title'] as String,
+    icon: map['icon'].toString().getFontAwesomeIcon,
+    completed: map['completed'] as int,
+    totalItems: map['totalItems'] as int,
+  );
 
   double get percent {
     if (totalItems == 0) {
@@ -144,12 +144,12 @@ class TodoItem extends TodoModel {
   }
 
   factory TodoItem.fromMap(Map<String, dynamic> map) => TodoItem(
-        id: map['id'] as int,
-        category: map['category'] as int,
-        title: map['title'] as String,
-        description: map['description'] as String,
-        completed: map['completed'] == 1,
-      );
+    id: map['id'] as int,
+    category: map['category'] as int,
+    title: map['title'] as String,
+    description: map['description'] as String,
+    completed: map['completed'] == 1,
+  );
 
   @override
   String toString() {

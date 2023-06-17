@@ -201,11 +201,9 @@ abstract class InvoiceEntity extends Object
       invitations: client == null
           ? BuiltList<InvitationEntity>()
           : BuiltList(
-              client.emailContacts
-                  .map(
-                    (contact) => InvitationEntity(contactId: contact.id),
-                  )
-                  .toList(),
+              client.emailContacts.map(
+                (contact) => InvitationEntity(contactId: contact.id),
+              ).toList(),
             ),
       updatedAt: 0,
       archivedAt: 0,
@@ -249,39 +247,33 @@ abstract class InvoiceEntity extends Object
   }
 
   InvoiceEntity get clone => rebuild(
-        (b) => b
-          ..id = BaseEntity.nextId
-          ..isChanged = false
-          ..isDeleted = false
-          ..statusId = kInvoiceStatusDraft
-          ..balance = 0
-          ..amount = 0
-          ..paidToDate = 0
-          ..remainingCycles = -1
-          ..invoiceId = ''
-          ..projectId = ''
-          ..subscriptionId = ''
-          ..number = ''
-          ..date = convertDateTimeToSqlDate()
-          ..dueDate = ''
-          ..documents.clear()
-          ..lineItems.replace(
-            lineItems
-                .where(
-                  (lineItem) =>
-                      lineItem.typeId != InvoiceItemEntity.TYPE_UNPAID_FEE,
-                )
-                .toList(),
-          )
-          ..invitations.replace(
-            invitations
-                .map(
-                  (invitation) =>
-                      InvitationEntity(contactId: invitation.contactId),
-                )
-                .toList(),
-          ),
-      );
+    (b) => b
+      ..id = BaseEntity.nextId
+      ..isChanged = false
+      ..isDeleted = false
+      ..statusId = kInvoiceStatusDraft
+      ..balance = 0
+      ..amount = 0
+      ..paidToDate = 0
+      ..remainingCycles = -1
+      ..invoiceId = ''
+      ..projectId = ''
+      ..subscriptionId = ''
+      ..number = ''
+      ..date = convertDateTimeToSqlDate()
+      ..dueDate = ''
+      ..documents.clear()
+      ..lineItems.replace(
+        lineItems.where(
+          (lineItem) => lineItem.typeId != InvoiceItemEntity.TYPE_UNPAID_FEE,
+        ).toList(),
+      )
+      ..invitations.replace(
+        invitations.map(
+          (invitation) => InvitationEntity(contactId: invitation.contactId),
+        ).toList(),
+      ),
+  );
 
   InvoiceEntity applyClient(AppState state, ClientEntity client) {
     client ??= ClientEntity();
@@ -529,8 +521,8 @@ abstract class InvoiceEntity extends Object
   BuiltList<ActivityEntity> get activities;
 
   bool get isApproved => [kQuoteStatusApproved, kQuoteStatusConverted].contains(
-        statusId,
-      );
+    statusId,
+  );
 
   bool get hasClient => '${clientId ?? ''}'.isNotEmpty;
 
@@ -632,10 +624,12 @@ abstract class InvoiceEntity extends Object
     final InvoiceEntity invoiceB = sortAscending ? invoice : this;
     switch (sortField) {
       case InvoiceFields.number:
-        var invoiceANumber =
-            (invoiceA.number ?? '').isEmpty ? 'ZZZZZZZZZZ' : invoiceA.number;
-        var invoiceBNumber =
-            (invoiceB.number ?? '').isEmpty ? 'ZZZZZZZZZZ' : invoiceB.number;
+        var invoiceANumber = (invoiceA.number ?? '').isEmpty
+            ? 'ZZZZZZZZZZ'
+            : invoiceA.number;
+        var invoiceBNumber = (invoiceB.number ?? '').isEmpty
+            ? 'ZZZZZZZZZZ'
+            : invoiceB.number;
         invoiceANumber = recurringPrefix.isNotEmpty &&
                 //(invoiceA.recurringId ?? '').isNotEmpty &&
                 invoiceANumber.startsWith(recurringPrefix)
@@ -708,8 +702,8 @@ abstract class InvoiceEntity extends Object
         final stateB =
             EntityState.valueOf(invoiceB.entityState) ?? EntityState.active;
         response = stateA.name.toLowerCase().compareTo(
-              stateB.name.toLowerCase(),
-            );
+          stateB.name.toLowerCase(),
+        );
         break;
       case InvoiceFields.dueDate:
       case QuoteFields.validUntil:
@@ -722,45 +716,45 @@ abstract class InvoiceEntity extends Object
         final userA = userMap[invoiceA.assignedUserId] ?? UserEntity();
         final userB = userMap[invoiceB.assignedUserId] ?? UserEntity();
         response = userA.listDisplayName.toLowerCase().compareTo(
-              userB.listDisplayName.toLowerCase(),
-            );
+          userB.listDisplayName.toLowerCase(),
+        );
         break;
       case EntityFields.createdBy:
         final userA = userMap[invoiceA.createdUserId] ?? UserEntity();
         final userB = userMap[invoiceB.createdUserId] ?? UserEntity();
         response = userA.listDisplayName.toLowerCase().compareTo(
-              userB.listDisplayName.toLowerCase(),
-            );
+          userB.listDisplayName.toLowerCase(),
+        );
         break;
       case InvoiceFields.publicNotes:
         response = invoiceA.publicNotes.toLowerCase().compareTo(
-              invoiceB.publicNotes.toLowerCase(),
-            );
+          invoiceB.publicNotes.toLowerCase(),
+        );
         break;
       case InvoiceFields.privateNotes:
         response = invoiceA.privateNotes.toLowerCase().compareTo(
-              invoiceB.privateNotes.toLowerCase(),
-            );
+          invoiceB.privateNotes.toLowerCase(),
+        );
         break;
       case InvoiceFields.customValue1:
         response = invoiceA.customValue1.toLowerCase().compareTo(
-              invoiceB.customValue1.toLowerCase(),
-            );
+          invoiceB.customValue1.toLowerCase(),
+        );
         break;
       case InvoiceFields.customValue2:
         response = invoiceA.customValue2.toLowerCase().compareTo(
-              invoiceB.customValue2.toLowerCase(),
-            );
+          invoiceB.customValue2.toLowerCase(),
+        );
         break;
       case InvoiceFields.customValue3:
         response = invoiceA.customValue3.toLowerCase().compareTo(
-              invoiceB.customValue3.toLowerCase(),
-            );
+          invoiceB.customValue3.toLowerCase(),
+        );
         break;
       case InvoiceFields.customValue4:
         response = invoiceA.customValue4.toLowerCase().compareTo(
-              invoiceB.customValue4.toLowerCase(),
-            );
+          invoiceB.customValue4.toLowerCase(),
+        );
         break;
       case InvoiceFields.client:
         final clientA = clientMap[invoiceA.clientId] ?? ClientEntity();
@@ -1085,8 +1079,8 @@ abstract class InvoiceEntity extends Object
       !isPaid && !isQuote && !isRecurringInvoice && !isCancelledOrReversed;
 
   bool get isViewed => invitations.any(
-        (invitation) => invitation.viewedDate.isNotEmpty,
-      );
+    (invitation) => invitation.viewedDate.isNotEmpty,
+  );
 
   bool get isPaid => statusId == kInvoiceStatusPaid;
 

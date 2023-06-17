@@ -33,7 +33,7 @@ class HomePage extends StatefulWidget {
   final HomeRoutePath initRoute;
 
   const HomePage({Key? key, this.onLoadRoute, required this.initRoute})
-      : super(key: key);
+    : super(key: key);
 
   @override
   _HomePageState createState() => _HomePageState();

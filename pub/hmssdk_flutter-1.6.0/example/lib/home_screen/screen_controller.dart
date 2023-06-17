@@ -45,10 +45,10 @@ class _ScreenControllerState extends State<ScreenController> {
 
   void initMeeting() async {
     HMSException? ans = await context.read<MeetingStore>().join(
-          widget.user,
-          widget.meetingLink,
-          roomConfig: widget.config,
-        );
+      widget.user,
+      widget.meetingLink,
+      roomConfig: widget.config,
+    );
     if (ans != null) {
       UtilityComponents.showErrorDialog(
         context: context,
@@ -70,8 +70,8 @@ class _ScreenControllerState extends State<ScreenController> {
   Widget build(BuildContext context) {
     if ((Provider.of<MeetingStore>(context).localPeer != null &&
             Provider.of<MeetingStore>(context).localPeer!.role.name.contains(
-                  "hls-",
-                )) ||
+              "hls-",
+            )) ||
         ((widget.role?.name.contains("hls-") ?? false) &&
             widget.streamUrl != null)) {
       return HLSViewerPage(streamUrl: widget.streamUrl);

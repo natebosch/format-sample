@@ -93,12 +93,9 @@ class DBHelper {
   /// Update bookmark state in db
   Future updateBookmarkState({bool toBookmark = true, String url}) async {
     var dbClient = await db;
-    await dbClient.update(
-        'ARTICLES',
-        {
-          'isBookmarked': toBookmark.toString(),
-        },
-        where: 'url=\'$url\'');
+    await dbClient.update('ARTICLES', {
+      'isBookmarked': toBookmark.toString(),
+    }, where: 'url=\'$url\'');
   }
 
   /// Get bookmarks from db

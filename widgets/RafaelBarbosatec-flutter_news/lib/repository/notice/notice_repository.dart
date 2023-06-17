@@ -15,31 +15,25 @@ class NoticeRepositoryImpl implements NoticeRepository {
   Future<List<Notice>> loadNews(String category, int page) async {
     final Map result = await _api.get("/notice/news/$category/$page");
     if (result['op'] == false) return [];
-    return result['data']['news']
-        .map<Notice>(
-          (notice) => new Notice.fromMap(notice),
-        )
-        .toList();
+    return result['data']['news'].map<Notice>(
+      (notice) => new Notice.fromMap(notice),
+    ).toList();
   }
 
   Future<List<Notice>> loadNewsRecent() async {
     final Map result = await _api.get("/notice/news/recent");
     if (result['op'] == false) return [];
-    return result['data']
-        .map<Notice>(
-          (notice) => new Notice.fromMap(notice),
-        )
-        .toList();
+    return result['data'].map<Notice>(
+      (notice) => new Notice.fromMap(notice),
+    ).toList();
   }
 
   Future<List<Notice>> loadSearch(String query) async {
     final Map result = await _api.get("/notice/search/$query");
 
     if (result['op'] == false) return [];
-    return result['data']
-        .map<Notice>(
-          (notice) => new Notice.fromMap(notice),
-        )
-        .toList();
+    return result['data'].map<Notice>(
+      (notice) => new Notice.fromMap(notice),
+    ).toList();
   }
 }

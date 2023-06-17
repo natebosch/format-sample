@@ -62,8 +62,8 @@ class WeightEntryDialogState extends State<WeightEntryDialog> {
               : double.parse(
                   (activeEntry.weight * KG_LBS_RATIO).toStringAsFixed(1),
                 ),
-          onEntryChanged: (entry) =>
-              store.dispatch(new UpdateActiveWeightEntry(entry)),
+          onEntryChanged:
+              (entry) => store.dispatch(new UpdateActiveWeightEntry(entry)),
           onDeletePressed: () {
             store.dispatch(new RemoveEntryAction(activeEntry));
             Navigator.of(context).pop();
@@ -131,8 +131,8 @@ class WeightEntryDialogState extends State<WeightEntryDialog> {
 
   Widget _createAppBar(BuildContext context, DialogViewModel viewModel) {
     TextStyle actionStyle = Theme.of(context).textTheme.subhead.copyWith(
-          color: Colors.white,
-        );
+      color: Colors.white,
+    );
     Text title = viewModel.isEditMode
         ? const Text("Edit entry")
         : const Text("New entry");
@@ -159,15 +159,15 @@ class WeightEntryDialogState extends State<WeightEntryDialog> {
     showDialog<double>(
       context: context,
       builder: (context) => new NumberPickerDialog.decimal(
-        minValue: viewModel.unit == "kg"
-            ? MIN_KG_VALUE
-            : (MIN_KG_VALUE * KG_LBS_RATIO).toInt(),
-        maxValue: viewModel.unit == "kg"
-            ? MAX_KG_VALUE
-            : (MAX_KG_VALUE * KG_LBS_RATIO).toInt(),
-        initialDoubleValue: viewModel.weightToDisplay,
-        title: new Text("Enter your weight"),
-      ),
+            minValue: viewModel.unit == "kg"
+                ? MIN_KG_VALUE
+                : (MIN_KG_VALUE * KG_LBS_RATIO).toInt(),
+            maxValue: viewModel.unit == "kg"
+                ? MAX_KG_VALUE
+                : (MAX_KG_VALUE * KG_LBS_RATIO).toInt(),
+            initialDoubleValue: viewModel.weightToDisplay,
+            title: new Text("Enter your weight"),
+          ),
     ).then((double value) {
       if (value != null) {
         if (viewModel.unit == "lbs") {
@@ -184,14 +184,14 @@ class DateTimeItem extends StatelessWidget {
     Key key,
     DateTime dateTime,
     @required this.onChanged,
-  })  : assert(onChanged != null),
-        date = dateTime == null
-            ? new DateTime.now()
-            : new DateTime(dateTime.year, dateTime.month, dateTime.day),
-        time = dateTime == null
-            ? new DateTime.now()
-            : new TimeOfDay(hour: dateTime.hour, minute: dateTime.minute),
-        super(key: key);
+  }) : assert(onChanged != null),
+       date = dateTime == null
+           ? new DateTime.now()
+           : new DateTime(dateTime.year, dateTime.month, dateTime.day),
+       time = dateTime == null
+           ? new DateTime.now()
+           : new TimeOfDay(hour: dateTime.hour, minute: dateTime.minute),
+       super(key: key);
 
   final DateTime date;
   final TimeOfDay time;

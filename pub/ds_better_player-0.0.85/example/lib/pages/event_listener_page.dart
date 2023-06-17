@@ -69,20 +69,21 @@ class _EventListenerPageState extends State<EventListenerPage> {
               stream: _eventStreamController.stream,
               builder: (context, snapshot) {
                 return ListView(
-                  children: events
-                      .map(
-                        (event) => Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              "Event: ${event.betterPlayerEventType} "
-                              "parameters: ${(event.parameters ?? <String, dynamic>{}).toString()}",
-                            ),
-                            Divider(),
-                          ],
+                  children: events.map(
+                    (event) => Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "Event: ${event.betterPlayerEventType} "
+                          "parameters: ${(event.parameters ?? <
+                                String,
+                                dynamic
+                              >{}).toString()}",
                         ),
-                      )
-                      .toList(),
+                        Divider(),
+                      ],
+                    ),
+                  ).toList(),
                 );
               },
             ),

@@ -15,12 +15,12 @@ class AuthService {
   );
 
   Future<User> get getUser => _auth.currentUser().then(
-        (user) => User.fromFirebaseUser(user),
-      );
+    (user) => User.fromFirebaseUser(user),
+  );
 
   Stream<User> get user => _auth.onAuthStateChanged.map(
-        (user) => User.fromFirebaseUser(user),
-      );
+    (user) => User.fromFirebaseUser(user),
+  );
 
   Future<User> signInWithGoogle() async {
     try {

@@ -15,8 +15,8 @@ class CancellableCompleter<T> with Cancellable implements Completer<T> {
   CancellableCompleter(
     CancellationToken? cancellationToken, {
     OnCancelCallback? onCancel,
-  })  : _onCancelCallback = onCancel,
-        _internalCompleter = Completer<T>() {
+  }) : _onCancelCallback = onCancel,
+       _internalCompleter = Completer<T>() {
     maybeAttach(cancellationToken);
   }
 
@@ -29,8 +29,8 @@ class CancellableCompleter<T> with Cancellable implements Completer<T> {
   CancellableCompleter.sync(
     CancellationToken? cancellationToken, {
     OnCancelCallback? onCancel,
-  })  : _onCancelCallback = onCancel,
-        _internalCompleter = Completer<T>.sync() {
+  }) : _onCancelCallback = onCancel,
+       _internalCompleter = Completer<T>.sync() {
     maybeAttach(cancellationToken);
   }
 

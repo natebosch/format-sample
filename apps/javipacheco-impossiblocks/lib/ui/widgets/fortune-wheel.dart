@@ -29,9 +29,9 @@ class FortuneWheel extends StatefulWidget {
 
 class _FortuneWheelState extends State<FortuneWheel> {
   Size get size => Size(
-        MediaQuery.of(context).size.width * 0.8,
-        MediaQuery.of(context).size.width * 0.8,
-      );
+    MediaQuery.of(context).size.width * 0.8,
+    MediaQuery.of(context).size.width * 0.8,
+  );
 
   double _rotote(int index) => (index / widget.items.length) * 2 * pi;
 

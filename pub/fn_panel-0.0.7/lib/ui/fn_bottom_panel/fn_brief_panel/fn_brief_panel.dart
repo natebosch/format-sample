@@ -130,8 +130,8 @@ class _FnBriefPanelState extends State<FnBriefPanel> {
                               color: isError
                                   ? Colors.red
                                   : (_selectedIndex == index
-                                      ? Colors.white
-                                      : Colors.black),
+                                        ? Colors.white
+                                        : Colors.black),
                             ),
                           ),
                         ),

@@ -276,8 +276,9 @@ class DynamicPicker {
       final image = await ImagePicker().pickImage(
         source: ImageSource.camera,
         imageQuality: 50,
-        preferredCameraDevice:
-            preferFrontCamera ? CameraDevice.front : CameraDevice.rear,
+        preferredCameraDevice: preferFrontCamera
+            ? CameraDevice.front
+            : CameraDevice.rear,
       );
       if (image == null) {
         return null;
@@ -307,12 +308,12 @@ class DynamicPicker {
     if (path == null) return null;
     if (compressed) {
       return "$path/compressed_${url.split("/").last.split(
-            ".",
-          ).first}.${url.split(".").last}";
+        ".",
+      ).first}.${url.split(".").last}";
     } else {
       return "$path/${url.split("/").last.split(".").first}.${url.split(
-            ".",
-          ).last}";
+        ".",
+      ).last}";
     }
   }
 
@@ -376,21 +377,17 @@ class DynamicPicker {
   }
 
   static bool isTypeFileIsImage(String path) {
-    return imageExts
-        .singleWhere(
-          (element) => element == path.split(".").last,
-          orElse: () => "",
-        )
-        .isNotEmpty;
+    return imageExts.singleWhere(
+      (element) => element == path.split(".").last,
+      orElse: () => "",
+    ).isNotEmpty;
   }
 
   static bool isTypeFileIsPDF(String path) {
-    return ["pdf"]
-        .singleWhere(
-          (element) => element == path.split(".").last,
-          orElse: () => "",
-        )
-        .isNotEmpty;
+    return ["pdf"].singleWhere(
+      (element) => element == path.split(".").last,
+      orElse: () => "",
+    ).isNotEmpty;
   }
 
   static Future<bool> isFileExists(String url) async {

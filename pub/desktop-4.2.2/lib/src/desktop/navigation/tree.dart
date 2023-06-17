@@ -21,9 +21,9 @@ class TreeNode {
     this.builder,
     this.nodes,
   }) : assert(
-          (builder == null || nodes == null) &&
-              (builder != null || nodes != null),
-        );
+         (builder == null || nodes == null) &&
+             (builder != null || nodes != null),
+       );
 
   /// Creates a node.
   static TreeNode child({
@@ -124,8 +124,9 @@ class _TreeNodeTextCollapse extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final iconCollpased =
-        TreeNode.isCollapsed(context) ? Icons.expand_more : Icons.expand_less;
+    final iconCollpased = TreeNode.isCollapsed(context)
+        ? Icons.expand_more
+        : Icons.expand_less;
 
     return Row(
       crossAxisAlignment: CrossAxisAlignment.center,
@@ -387,12 +388,10 @@ class _TreeState extends State<Tree>
     if (_offset != null) {
       setState(() {
         final double delta = details.globalPosition.dx - _offset!;
-        _initialColumnWidth = math.max(
-            math.min(
-              _previoutColumnWidth + delta,
-              (_totalWidth ?? double.infinity) - 200.0,
-            ),
-            200.0);
+        _initialColumnWidth = math.max(math.min(
+          _previoutColumnWidth + delta,
+          (_totalWidth ?? double.infinity) - 200.0,
+        ), 200.0);
       });
     }
   }
@@ -466,9 +465,9 @@ class _TreeState extends State<Tree>
   }
 
   static String _indexName(List<int> index) => index.fold(
-        '',
-        (p, e) => '$p/$e',
-      );
+    '',
+    (p, e) => '$p/$e',
+  );
 
   @override
   void initState() {
@@ -617,8 +616,8 @@ class _TreeState extends State<Tree>
                               : hovered
                                   ? Theme.of(context).textTheme.textHigh
                                   : Theme.of(context)
-                                      .colorScheme
-                                      .background[20],
+                                        .colorScheme
+                                        .background[20],
                         ),
                       ),
                     ),
@@ -809,34 +808,32 @@ class _TreeColumnState extends State<_TreeColumn> {
       if (nodes[i].nodes != null) {
         final collapsed = _nodesCollapsed[name]!;
 
-        children.add(_NodeBuild(
-            name,
-            Offstage(
-              offstage: parentCollapsed,
-              child: Align(
-                alignment: Alignment.centerLeft,
-                child: Padding(
-                  padding: EdgeInsets.only(left: 16.0 * parentIndex.length),
-                  child: Button(
-                    bodyPadding: EdgeInsets.zero,
-                    theme: ButtonThemeData(
-                      color: treeTheme.color,
-                      hoverColor: treeTheme.hoverColor,
-                      highlightColor: treeTheme.highlightColor,
-                    ),
-                    padding: EdgeInsets.zero,
-                    body: _TreeNodeCollapse(
-                      collapsed,
-                      child: nodes[i].titleBuilder(context),
-                    ),
-                    onPressed: () {
-                      widget.updatePage();
-                      setState(() => _nodesCollapsed[name] = !collapsed);
-                    },
-                  ),
+        children.add(_NodeBuild(name, Offstage(
+          offstage: parentCollapsed,
+          child: Align(
+            alignment: Alignment.centerLeft,
+            child: Padding(
+              padding: EdgeInsets.only(left: 16.0 * parentIndex.length),
+              child: Button(
+                bodyPadding: EdgeInsets.zero,
+                theme: ButtonThemeData(
+                  color: treeTheme.color,
+                  hoverColor: treeTheme.hoverColor,
+                  highlightColor: treeTheme.highlightColor,
                 ),
+                padding: EdgeInsets.zero,
+                body: _TreeNodeCollapse(
+                  collapsed,
+                  child: nodes[i].titleBuilder(context),
+                ),
+                onPressed: () {
+                  widget.updatePage();
+                  setState(() => _nodesCollapsed[name] = !collapsed);
+                },
               ),
-            )));
+            ),
+          ),
+        )));
 
         children.addAll(
           _buildNodes(nodes[i].nodes!, index, parentCollapsed || collapsed),
@@ -848,28 +845,26 @@ class _TreeColumnState extends State<_TreeColumn> {
         );
         final highlightColor = treeTheme.highlightColor;
 
-        children.add(_NodeBuild(
-            name,
-            Offstage(
-              offstage: parentCollapsed,
-              child: Align(
-                alignment: Alignment.centerLeft,
-                child: Padding(
-                  padding: EdgeInsets.only(left: 16.0 * parentIndex.length),
-                  child: Button(
-                    theme: ButtonThemeData(
-                      color: highlightColor,
-                      highlightColor: treeTheme.color,
-                    ),
-                    padding: EdgeInsets.zero,
-                    bodyPadding: EdgeInsets.zero,
-                    body: nodes[i].titleBuilder(context),
-                    active: active,
-                    onPressed: () => widget.controller.index = index,
-                  ),
+        children.add(_NodeBuild(name, Offstage(
+          offstage: parentCollapsed,
+          child: Align(
+            alignment: Alignment.centerLeft,
+            child: Padding(
+              padding: EdgeInsets.only(left: 16.0 * parentIndex.length),
+              child: Button(
+                theme: ButtonThemeData(
+                  color: highlightColor,
+                  highlightColor: treeTheme.color,
                 ),
+                padding: EdgeInsets.zero,
+                bodyPadding: EdgeInsets.zero,
+                body: nodes[i].titleBuilder(context),
+                active: active,
+                onPressed: () => widget.controller.index = index,
               ),
-            )));
+            ),
+          ),
+        )));
       }
     }
 
@@ -908,8 +903,7 @@ class _ListTableRows extends MultiChildRenderObjectWidget {
   @override
   _TreeColumnRender createRenderObject(
     BuildContext context,
-  ) =>
-      _TreeColumnRender(sizeChanged: sizeChanged, hasTitle: hasTitle);
+  ) => _TreeColumnRender(sizeChanged: sizeChanged, hasTitle: hasTitle);
 
   @override
   void updateRenderObject(
@@ -961,11 +955,9 @@ class _TreeColumnRender extends RenderBox
     RenderBox? child = firstChild;
 
     while (child != null) {
-      height += child
-          .getDryLayout(
-            BoxConstraints.tightFor(width: constraints.maxWidth),
-          )
-          .height;
+      height += child.getDryLayout(
+        BoxConstraints.tightFor(width: constraints.maxWidth),
+      ).height;
 
       child = childAfter(child);
     }

@@ -123,9 +123,9 @@ class OrgSpanBuilder {
                 style: style,
                 transformer: transformer == identityTransformer
                     ? (elem, text) => reflowText(
-                          text,
-                          end: element.content.children.last == elem,
-                        )
+                        text,
+                        end: element.content.children.last == elem,
+                      )
                     : transformer,
               ),
             )
@@ -185,15 +185,9 @@ class OrgSpanBuilder {
       style ??= DefaultTextStyle.of(context).style;
       return TextSpan(
         style: style,
-        children: tokenizeTextSpan(
-                text,
-                highlight,
-                style.copyWith(
-                  backgroundColor: OrgTheme.dataOf(context).highlightColor,
-                ),
-                charWrap ? characterWrappable : (x) => x,
-                recognizer)
-            .toList(
+        children: tokenizeTextSpan(text, highlight, style.copyWith(
+          backgroundColor: OrgTheme.dataOf(context).highlightColor,
+        ), charWrap ? characterWrappable : (x) => x, recognizer).toList(
           growable: false,
         ),
       );
@@ -285,13 +279,11 @@ class _FancySpanBuilderState extends State<FancySpanBuilder>
   @override
   Widget build(BuildContext context) {
     final controller = OrgController.of(context);
-    return widget.builder(
-        context,
-        OrgSpanBuilder(
-          context,
-          recognizerHandler: registerRecognizer,
-          highlight: controller.searchQuery,
-          hideMarkup: controller.hideMarkup,
-        ));
+    return widget.builder(context, OrgSpanBuilder(
+      context,
+      recognizerHandler: registerRecognizer,
+      highlight: controller.searchQuery,
+      hideMarkup: controller.hideMarkup,
+    ));
   }
 }

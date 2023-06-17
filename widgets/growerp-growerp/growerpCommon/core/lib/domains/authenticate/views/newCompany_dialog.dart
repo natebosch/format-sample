@@ -22,7 +22,7 @@ import 'package:core/domains/domains.dart';
 class NewCompanyDialog extends StatelessWidget {
   final FormArguments formArguments;
   const NewCompanyDialog({Key? key, required this.formArguments})
-      : super(key: key);
+    : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -88,30 +88,31 @@ class _NewCompanyHeaderState extends State<NewCompanyHeader> {
                   backgroundColor: Colors.transparent,
                   body: Builder(
                     builder: (context) => GestureDetector(
-                      onTap: () {},
-                      child: Dialog(
-                        insetPadding: EdgeInsets.all(10),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                        child: Stack(
-                          clipBehavior: Clip.none,
-                          children: [
-                            Container(
-                              padding: EdgeInsets.all(20),
-                              width: 400,
-                              height: 700,
-                              child: _registerForm(widget.authenticate, state),
+                          onTap: () {},
+                          child: Dialog(
+                            insetPadding: EdgeInsets.all(10),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20),
                             ),
-                            Positioned(
-                              top: -10,
-                              right: -10,
-                              child: DialogCloseButton(),
+                            child: Stack(
+                              clipBehavior: Clip.none,
+                              children: [
+                                Container(
+                                  padding: EdgeInsets.all(20),
+                                  width: 400,
+                                  height: 700,
+                                  child:
+                                      _registerForm(widget.authenticate, state),
+                                ),
+                                Positioned(
+                                  top: -10,
+                                  right: -10,
+                                  child: DialogCloseButton(),
+                                ),
+                              ],
                             ),
-                          ],
+                          ),
                         ),
-                      ),
-                    ),
                   ),
                 ),
               );
@@ -283,15 +284,12 @@ class _NewCompanyHeaderState extends State<NewCompanyHeader> {
                           onPressed: () {
                             if (_formKey.currentState!.validate())
                               BlocProvider.of<AuthBloc>(context).add(
-                                AuthRegisterCompanyAndAdmin(
-                                    User(
-                                      companyName: _companyController.text,
-                                      firstName: _firstNameController.text,
-                                      lastName: _lastNameController.text,
-                                      email: _emailController.text,
-                                    ),
-                                    (_currencySelected.currencyId!),
-                                    _demoData),
+                                AuthRegisterCompanyAndAdmin(User(
+                                  companyName: _companyController.text,
+                                  firstName: _firstNameController.text,
+                                  lastName: _lastNameController.text,
+                                  email: _emailController.text,
+                                ), (_currencySelected.currencyId!), _demoData),
                               );
                           },
                         ),

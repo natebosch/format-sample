@@ -36,11 +36,11 @@ void main() {
         act: (cubit) async => cubit.loadData(),
         verify: (_) => verify(repository.fetchData()).called(2),
         expect: () => [
-          RequestState<List<List<Launch>>>.loading(),
-          RequestState<List<List<Launch>>>.loaded(const [
-            [Launch(id: '1')],
-          ]),
-        ],
+              RequestState<List<List<Launch>>>.loading(),
+              RequestState<List<List<Launch>>>.loaded(const [
+                [Launch(id: '1')],
+              ]),
+            ],
       );
 
       blocTest<LaunchesCubit, RequestState>(
@@ -52,11 +52,11 @@ void main() {
         act: (cubit) async => cubit.loadData(),
         verify: (_) => verify(repository.fetchData()).called(2),
         expect: () => [
-          RequestState<List<List<Launch>>>.loading(),
-          RequestState<List<List<Launch>>>.error(
-            Exception('wtf').toString(),
-          ),
-        ],
+              RequestState<List<List<Launch>>>.loading(),
+              RequestState<List<List<Launch>>>.error(
+                Exception('wtf').toString(),
+              ),
+            ],
       );
     });
 

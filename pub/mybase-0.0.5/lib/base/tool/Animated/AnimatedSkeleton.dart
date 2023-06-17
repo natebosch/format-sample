@@ -20,8 +20,8 @@ class AnimatedSkeleton extends StatelessWidget {
   Widget build(BuildContext context) {
     return AnimatedSwitcher(
       duration: duration,
-      transitionBuilder: (child, opacity) =>
-          FadeTransition(opacity: opacity, child: child),
+      transitionBuilder:
+          (child, opacity) => FadeTransition(opacity: opacity, child: child),
       child: isLoading ? skeletonWidget : body,
     );
   }

@@ -70,8 +70,9 @@ class RankingBloc {
       myRankingUserInfoState: myRankingInfoState,
     ));
 
-    _rankingUserInfosEventSubscription =
-        _observeRankingUserInfosUsecase.invoke().listen((event) async {
+    _rankingUserInfosEventSubscription = _observeRankingUserInfosUsecase
+        .invoke()
+        .listen((event) async {
 //      final updatedThumbedUpUids = Map.of(_state.value.thumbedUpUids);
 //      for (final rankingUserInfo in event.rankingUserInfos) {
 //        final hasThumbedUp = await _getHasThumbedUpUidUsecase.invoke(rankingUserInfo.uid);
@@ -86,68 +87,68 @@ class RankingBloc {
 //        }
 //      }
 
-      _state.add(_state.value.buildNew(
-        rankingUserInfos: event.rankingUserInfos,
-        hasMoreRankingInfos: event.hasMore,
-        isRankingUserInfosLoading: false,
+          _state.add(_state.value.buildNew(
+            rankingUserInfos: event.rankingUserInfos,
+            hasMoreRankingInfos: event.hasMore,
+            isRankingUserInfosLoading: false,
 //        thumbedUpUids: updatedThumbedUpUids,
-      ));
+          ));
 
-      final isSignedIn = await _isSignedInUsecase.invoke();
-      if (isSignedIn) {
-        final todaySyncedSuccessful =
-            await _syncTodayWithServerUsecase.invoke();
-        if (todaySyncedSuccessful) {
-          final today = await _getTodayUsecase.invoke();
-          if (today != DateRepository.INVALID_DATE) {
-            final List<RankingUserInfo> updateNeededRankingUserInfos = [];
+          final isSignedIn = await _isSignedInUsecase.invoke();
+          if (isSignedIn) {
+            final todaySyncedSuccessful =
+                await _syncTodayWithServerUsecase.invoke();
+            if (todaySyncedSuccessful) {
+              final today = await _getTodayUsecase.invoke();
+              if (today != DateRepository.INVALID_DATE) {
+                final List<RankingUserInfo> updateNeededRankingUserInfos = [];
 
-            event.rankingUserInfos.forEach((it) {
-              if (it.uid == myRankingInfoState.data.uid ||
-                  completionRatioUpdatedUids.containsKey(it.uid)) {
-                return;
-              }
+                event.rankingUserInfos.forEach((it) {
+                  if (it.uid == myRankingInfoState.data.uid ||
+                      completionRatioUpdatedUids.containsKey(it.uid)) {
+                    return;
+                  }
 
-              final firstLaunchDate = it.firstLaunchDateMillis != 0
-                  ? DateTime.fromMillisecondsSinceEpoch(
-                      it.firstLaunchDateMillis,
-                    )
-                  : DateRepository.INVALID_DATE;
-              if (firstLaunchDate != DateRepository.INVALID_DATE) {
-                final beforeTodayDaysCount =
-                    today.difference(firstLaunchDate).inDays;
-                final completedDaysCount = it.completedDaysCount;
-                final double completionRatio =
-                    completedDaysCount > beforeTodayDaysCount
-                        ? 1
-                        : beforeTodayDaysCount > 0
-                            ? completedDaysCount / beforeTodayDaysCount
-                            : 0;
+                  final firstLaunchDate = it.firstLaunchDateMillis != 0
+                      ? DateTime.fromMillisecondsSinceEpoch(
+                          it.firstLaunchDateMillis,
+                        )
+                      : DateRepository.INVALID_DATE;
+                  if (firstLaunchDate != DateRepository.INVALID_DATE) {
+                    final beforeTodayDaysCount =
+                        today.difference(firstLaunchDate).inDays;
+                    final completedDaysCount = it.completedDaysCount;
+                    final double completionRatio =
+                        completedDaysCount > beforeTodayDaysCount
+                            ? 1
+                            : beforeTodayDaysCount > 0
+                                ? completedDaysCount / beforeTodayDaysCount
+                                : 0;
 
-                if (it.completionRatio.toStringAsFixed(4) !=
-                    completionRatio.toStringAsFixed(4)) {
-                  final updated = it.buildNew(
-                    completionRatio: completionRatio,
+                    if (it.completionRatio.toStringAsFixed(4) !=
+                        completionRatio.toStringAsFixed(4)) {
+                      final updated = it.buildNew(
+                        completionRatio: completionRatio,
+                      );
+                      updateNeededRankingUserInfos.add(updated);
+                    }
+                  }
+                });
+
+                if (updateNeededRankingUserInfos.isNotEmpty) {
+                  completionRatioUpdatedUids.addEntries(
+                    updateNeededRankingUserInfos.map(
+                      (it) => MapEntry(it.uid, true),
+                    ),
                   );
-                  updateNeededRankingUserInfos.add(updated);
+                  _updateRankingUserInfosCompletionRatioUsecase.invoke(
+                    updateNeededRankingUserInfos,
+                  );
                 }
               }
-            });
-
-            if (updateNeededRankingUserInfos.isNotEmpty) {
-              completionRatioUpdatedUids.addEntries(
-                updateNeededRankingUserInfos.map(
-                  (it) => MapEntry(it.uid, true),
-                ),
-              );
-              _updateRankingUserInfosCompletionRatioUsecase.invoke(
-                updateNeededRankingUserInfos,
-              );
             }
           }
-        }
-      }
-    });
+        });
 
     _initRankingUserInfosCountUsecase.invoke();
   }

@@ -16,7 +16,7 @@ class SharedPreferencesApi {
   /// available for dependency injection.  If it is left null, the default
   /// BinaryMessenger will be used which routes to the host platform.
   SharedPreferencesApi({BinaryMessenger? binaryMessenger})
-      : _binaryMessenger = binaryMessenger;
+    : _binaryMessenger = binaryMessenger;
   final BinaryMessenger? _binaryMessenger;
 
   static const MessageCodec<Object?> codec = StandardMessageCodec();

@@ -36,9 +36,10 @@ class RecoverableErrorBoundaryProps = UiProps with v2.ErrorBoundaryProps;
 class RecoverableErrorBoundaryState = UiState with v2.ErrorBoundaryState;
 
 @Component2(isWrapper: true, isErrorBoundary: true)
-class RecoverableErrorBoundaryComponent<T extends RecoverableErrorBoundaryProps,
-        S extends RecoverableErrorBoundaryState>
-    extends UiStatefulComponent2<T, S> with ErrorBoundaryApi<T, S> {
+class RecoverableErrorBoundaryComponent<
+  T extends RecoverableErrorBoundaryProps,
+  S extends RecoverableErrorBoundaryState
+> extends UiStatefulComponent2<T, S> with ErrorBoundaryApi<T, S> {
   @override
   Map get defaultProps => (newProps()
     ..identicalErrorFrequencyTolerance = Duration(seconds: 5)

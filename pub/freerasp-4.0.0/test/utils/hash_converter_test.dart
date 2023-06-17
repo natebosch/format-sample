@@ -69,8 +69,8 @@ void main() {
             throwsA(isA<FormatException>()),
           );
 
-          final invalidLongerStrippedShaValue =
-              invalidLongerShaValue.replaceAll(':', '');
+          final invalidLongerStrippedShaValue = invalidLongerShaValue
+              .replaceAll(':', '');
           expect(
             () => hashConverter.fromSha256toBase64(
               invalidLongerStrippedShaValue,
@@ -84,8 +84,8 @@ void main() {
             throwsA(isA<FormatException>()),
           );
 
-          final invalidShorterStrippedShaValue =
-              invalidShorterShaValue.replaceAll(':', '');
+          final invalidShorterStrippedShaValue = invalidShorterShaValue
+              .replaceAll(':', '');
           expect(
             () => hashConverter.fromSha256toBase64(
               invalidShorterStrippedShaValue,

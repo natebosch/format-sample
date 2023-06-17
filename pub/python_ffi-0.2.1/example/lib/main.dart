@@ -24,13 +24,12 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) => MaterialApp(
-        home: const DashboardPage(),
-        routes: <String, WidgetBuilder>{
-          "/small-examples": (BuildContext context) =>
-              const SmallExamplesPage(),
-          "/type_mappings": (BuildContext context) => TypeMappingsPage(),
-          "/json_parser": (BuildContext context) => const JsonParserPage(),
-          "/liblax": (BuildContext context) => const LiblaxPage(),
-        },
-      );
+    home: const DashboardPage(),
+    routes: <String, WidgetBuilder>{
+      "/small-examples": (BuildContext context) => const SmallExamplesPage(),
+      "/type_mappings": (BuildContext context) => TypeMappingsPage(),
+      "/json_parser": (BuildContext context) => const JsonParserPage(),
+      "/liblax": (BuildContext context) => const LiblaxPage(),
+    },
+  );
 }

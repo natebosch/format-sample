@@ -180,7 +180,9 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                         ),
                         Text(
-                          '${langs[lang]["home"]["day"].toUpperCase()} ${cigaraManager.calculatePassedTime().inDays + 1}',
+                          '${langs[lang]["home"][
+                            "day"
+                          ].toUpperCase()} ${cigaraManager.calculatePassedTime().inDays + 1}',
                           style: TextStyle(
                             fontSize: getProportionateScreenWidth(26),
                             fontWeight: FontWeight.bold,
@@ -313,13 +315,15 @@ class _HomeScreenState extends State<HomeScreen> {
             )}",
             textAlign: TextAlign.center,
             style: Theme.of(context).textTheme.bodyText2.copyWith(
-                  fontSize: getProportionateScreenWidth(18),
-                ),
+              fontSize: getProportionateScreenWidth(18),
+            ),
           ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 8.0),
             child: AutoSizeText(
-              "${langs[lang]["progressDescription"][cigaraManager.upcomingEvent["id"]]}",
+              "${langs[lang]["progressDescription"][
+                cigaraManager.upcomingEvent["id"]
+              ]}",
               textAlign: TextAlign.center,
               style: Theme.of(context).textTheme.bodyText1,
               maxLines: 2,
@@ -331,7 +335,21 @@ class _HomeScreenState extends State<HomeScreen> {
               children: [
                 buildInfoCard(
                   context,
-                  "${cigaraManager.calculatePassedTime().inDays} ${langs[lang]["home"]["day"].toLowerCase()}, ${cigaraManager.calculatePassedTime().inHours % 24} ${langs[lang]["home"]["hour"].toLowerCase()}, ${cigaraManager.calculatePassedTime().inMinutes % 60} ${langs[lang]["home"]["minute"].toLowerCase()}, ${cigaraManager.calculatePassedTime().inSeconds % 60} ${langs[lang]["home"]["second"].toLowerCase()}",
+                  "${cigaraManager.calculatePassedTime().inDays} ${langs[lang][
+                    "home"
+                  ][
+                    "day"
+                  ].toLowerCase()}, ${cigaraManager.calculatePassedTime().inHours % 24} ${langs[
+                    lang
+                  ]["home"][
+                    "hour"
+                  ].toLowerCase()}, ${cigaraManager.calculatePassedTime().inMinutes % 60} ${langs[
+                    lang
+                  ]["home"][
+                    "minute"
+                  ].toLowerCase()}, ${cigaraManager.calculatePassedTime().inSeconds % 60} ${langs[
+                    lang
+                  ]["home"]["second"].toLowerCase()}",
                   "${langs[lang]["home"]["timePassed"]}",
                   Icons.timer,
                   Colors.teal,
@@ -413,7 +431,9 @@ class _HomeScreenState extends State<HomeScreen> {
       )}";
     } else if (requiredTime.inSeconds > passed.inSeconds) {
       Duration diff = requiredTime - passed;
-      return "${diff.inHours}:${diff.inMinutes % 60}:${diff.inSeconds % 60} ${langs[lang]["home"]["minafter"]}";
+      return "${diff.inHours}:${diff.inMinutes % 60}:${diff.inSeconds % 60} ${langs[
+        lang
+      ]["home"]["minafter"]}";
     }
     return "";
   }
@@ -496,9 +516,9 @@ class _HomeScreenState extends State<HomeScreen> {
                     child: AutoSizeText(
                       title,
                       style: Theme.of(context).textTheme.bodyText2.copyWith(
-                            fontSize: getProportionateScreenWidth(16),
-                            color: color,
-                          ),
+                        fontSize: getProportionateScreenWidth(16),
+                        color: color,
+                      ),
                       maxLines: 2,
                     ),
                   ),
@@ -509,9 +529,9 @@ class _HomeScreenState extends State<HomeScreen> {
               AutoSizeText(
                 text,
                 style: Theme.of(context).textTheme.bodyText2.copyWith(
-                      fontWeight: FontWeight.bold,
-                      fontSize: getProportionateScreenWidth(14),
-                    ),
+                  fontWeight: FontWeight.bold,
+                  fontSize: getProportionateScreenWidth(14),
+                ),
                 maxLines: 2,
               ),
             ],
@@ -568,10 +588,10 @@ class _HomeScreenState extends State<HomeScreen> {
               AutoSizeText(
                 text,
                 style: Theme.of(context).textTheme.headline4.copyWith(
-                      color: color,
-                      fontSize: getProportionateScreenWidth(20),
-                      fontWeight: FontWeight.w600,
-                    ),
+                  color: color,
+                  fontSize: getProportionateScreenWidth(20),
+                  fontWeight: FontWeight.w600,
+                ),
               ),
             ],
           ),

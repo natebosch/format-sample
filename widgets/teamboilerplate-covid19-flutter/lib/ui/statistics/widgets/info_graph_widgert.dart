@@ -111,9 +111,9 @@ class _InfoGraphWidgetState extends State<InfoGraphWidget> {
                 child: BarChart(dailyBarChartData(
                   countryStatisticsConfirmedList:
                       widget.countryStatisticsConfirmedList.sublist(
-                    (widget.countryStatisticsConfirmedList.length) - 7,
-                    (widget.countryStatisticsConfirmedList.length) - 0,
-                  ),
+                        (widget.countryStatisticsConfirmedList.length) - 7,
+                        (widget.countryStatisticsConfirmedList.length) - 0,
+                      ),
                   screenWidth: screenWidth,
                   screenHeight: screenHeight,
                 )),
@@ -144,9 +144,9 @@ class _InfoGraphWidgetState extends State<InfoGraphWidget> {
                   weeklyAreaGraphData(
                     countryStatisticsConfirmedList:
                         widget.countryStatisticsConfirmedList.sublist(
-                      (widget.countryStatisticsConfirmedList.length) - 15,
-                      (widget.countryStatisticsConfirmedList.length) - 0,
-                    ),
+                          (widget.countryStatisticsConfirmedList.length) - 15,
+                          (widget.countryStatisticsConfirmedList.length) - 0,
+                        ),
                     screenWidth: screenWidth,
                     screenHeight: screenHeight,
                   ),
@@ -177,14 +177,14 @@ class _InfoGraphWidgetState extends State<InfoGraphWidget> {
                 child: BarChart(dailyChangeBarChartData(
                   countryStatisticsConfirmedList:
                       widget.countryStatisticsConfirmedList.sublist(
-                    (widget.countryStatisticsConfirmedList.length) - 8,
-                    (widget.countryStatisticsConfirmedList.length) - 0,
-                  ),
+                        (widget.countryStatisticsConfirmedList.length) - 8,
+                        (widget.countryStatisticsConfirmedList.length) - 0,
+                      ),
                   countryStatisticsRecoveredList:
                       widget.countryStatisticsRecoveredList.sublist(
-                    (widget.countryStatisticsRecoveredList.length) - 8,
-                    (widget.countryStatisticsRecoveredList.length) - 0,
-                  ),
+                        (widget.countryStatisticsRecoveredList.length) - 8,
+                        (widget.countryStatisticsRecoveredList.length) - 0,
+                      ),
                   screenWidth: screenWidth,
                   screenHeight: screenHeight,
                 )),
@@ -379,7 +379,8 @@ BarChartData dailyBarChartData({
   // Creating a buffer value to display the the top-most title on the left side bar
   // for the [BarChartData]
   final leftTitleTopBuffer = countryStatisticsConfirmedList[
-              countryStatisticsConfirmedListLength - 1]
+            countryStatisticsConfirmedListLength - 1
+          ]
           .cases
           .toDouble() +
       countryStatisticsConfirmedList[countryStatisticsConfirmedListLength - 2]
@@ -435,49 +436,56 @@ BarChartData dailyBarChartData({
             case 0:
               weekDay = dailyWeekDay(
                 date: countryStatisticsConfirmedList[
-                        countryStatisticsConfirmedListLength - 7]
+                      countryStatisticsConfirmedListLength - 7
+                    ]
                     .date,
               );
               break;
             case 1:
               weekDay = dailyWeekDay(
                 date: countryStatisticsConfirmedList[
-                        countryStatisticsConfirmedListLength - 6]
+                      countryStatisticsConfirmedListLength - 6
+                    ]
                     .date,
               );
               break;
             case 2:
               weekDay = dailyWeekDay(
                 date: countryStatisticsConfirmedList[
-                        countryStatisticsConfirmedListLength - 5]
+                      countryStatisticsConfirmedListLength - 5
+                    ]
                     .date,
               );
               break;
             case 3:
               weekDay = dailyWeekDay(
                 date: countryStatisticsConfirmedList[
-                        countryStatisticsConfirmedListLength - 4]
+                      countryStatisticsConfirmedListLength - 4
+                    ]
                     .date,
               );
               break;
             case 4:
               weekDay = dailyWeekDay(
                 date: countryStatisticsConfirmedList[
-                        countryStatisticsConfirmedListLength - 3]
+                      countryStatisticsConfirmedListLength - 3
+                    ]
                     .date,
               );
               break;
             case 5:
               weekDay = dailyWeekDay(
                 date: countryStatisticsConfirmedList[
-                        countryStatisticsConfirmedListLength - 2]
+                      countryStatisticsConfirmedListLength - 2
+                    ]
                     .date,
               );
               break;
             case 6:
               weekDay = dailyWeekDay(
                 date: countryStatisticsConfirmedList[
-                        countryStatisticsConfirmedListLength - 1]
+                      countryStatisticsConfirmedListLength - 1
+                    ]
                     .date,
               );
               break;
@@ -535,43 +543,50 @@ BarChartData dailyBarChartData({
             case 0:
               return dailyMonthData(
                 date: countryStatisticsConfirmedList[
-                        countryStatisticsConfirmedListLength - 7]
+                      countryStatisticsConfirmedListLength - 7
+                    ]
                     .date,
               );
             case 1:
               return dailyMonthData(
                 date: countryStatisticsConfirmedList[
-                        countryStatisticsConfirmedListLength - 6]
+                      countryStatisticsConfirmedListLength - 6
+                    ]
                     .date,
               );
             case 2:
               return dailyMonthData(
                 date: countryStatisticsConfirmedList[
-                        countryStatisticsConfirmedListLength - 5]
+                      countryStatisticsConfirmedListLength - 5
+                    ]
                     .date,
               );
             case 3:
               return dailyMonthData(
                 date: countryStatisticsConfirmedList[
-                        countryStatisticsConfirmedListLength - 4]
+                      countryStatisticsConfirmedListLength - 4
+                    ]
                     .date,
               );
             case 4:
               return dailyMonthData(
                 date: countryStatisticsConfirmedList[
-                        countryStatisticsConfirmedListLength - 3]
+                      countryStatisticsConfirmedListLength - 3
+                    ]
                     .date,
               );
             case 5:
               return dailyMonthData(
                 date: countryStatisticsConfirmedList[
-                        countryStatisticsConfirmedListLength - 2]
+                      countryStatisticsConfirmedListLength - 2
+                    ]
                     .date,
               );
             case 6:
               return dailyMonthData(
                 date: countryStatisticsConfirmedList[
-                        countryStatisticsConfirmedListLength - 1]
+                      countryStatisticsConfirmedListLength - 1
+                    ]
                     .date,
               );
             default:
@@ -619,7 +634,8 @@ LineChartData weeklyAreaGraphData({
   // Creating a buffer value to display the the top-most title on the left side bar
   // for the [LineChartData]
   final leftTitleTopBuffer = countryStatisticsConfirmedList[
-              countryStatisticsConfirmedListLength - 1]
+            countryStatisticsConfirmedListLength - 1
+          ]
           .cases
           .toDouble() +
       countryStatisticsConfirmedList[countryStatisticsConfirmedListLength - 2]
@@ -630,14 +646,12 @@ LineChartData weeklyAreaGraphData({
   // to [flSpotData] which is used to plot the points on the graph
   countryStatisticsConfirmedList.asMap().forEach((index, item) {
     // Adding the indexes and the value to [flSpotData]
-    flSpotData.add(FlSpot(
-        index.toDouble(),
-        normalizedValue(
-          oldValue: item.cases,
-          oldMin: weeklyStatisticsMin,
-          oldMax: weeklyStatisticsMax,
-          newMin: 0,
-        )));
+    flSpotData.add(FlSpot(index.toDouble(), normalizedValue(
+      oldValue: item.cases,
+      oldMin: weeklyStatisticsMin,
+      oldMax: weeklyStatisticsMax,
+      newMin: 0,
+    )));
   });
   return LineChartData(
     gridData: const FlGridData(show: false),
@@ -745,7 +759,9 @@ LineChartData weeklyAreaGraphData({
             return LineTooltipItem(
               '${dailyMonthData(
                 date: countryStatisticsConfirmedList[flSpot.x.toInt()].date,
-              )}\n${countryStatisticsConfirmedList[flSpot.x.toInt()].cases}\nConfirmed',
+              )}\n${countryStatisticsConfirmedList[
+                flSpot.x.toInt()
+              ].cases}\nConfirmed',
               TextStyles.statisticsToopTipTextStyle.copyWith(
                 fontSize: screenHeight / 65,
               ),
@@ -893,49 +909,56 @@ BarChartData dailyChangeBarChartData({
             case 0:
               weekDay = dailyWeekDay(
                 date: countryStatisticsConfirmedList[
-                        countryStatisticsListLength - 7]
+                      countryStatisticsListLength - 7
+                    ]
                     .date,
               );
               break;
             case 1:
               weekDay = dailyWeekDay(
                 date: countryStatisticsConfirmedList[
-                        countryStatisticsListLength - 6]
+                      countryStatisticsListLength - 6
+                    ]
                     .date,
               );
               break;
             case 2:
               weekDay = dailyWeekDay(
                 date: countryStatisticsConfirmedList[
-                        countryStatisticsListLength - 5]
+                      countryStatisticsListLength - 5
+                    ]
                     .date,
               );
               break;
             case 3:
               weekDay = dailyWeekDay(
                 date: countryStatisticsConfirmedList[
-                        countryStatisticsListLength - 4]
+                      countryStatisticsListLength - 4
+                    ]
                     .date,
               );
               break;
             case 4:
               weekDay = dailyWeekDay(
                 date: countryStatisticsConfirmedList[
-                        countryStatisticsListLength - 3]
+                      countryStatisticsListLength - 3
+                    ]
                     .date,
               );
               break;
             case 5:
               weekDay = dailyWeekDay(
                 date: countryStatisticsConfirmedList[
-                        countryStatisticsListLength - 2]
+                      countryStatisticsListLength - 2
+                    ]
                     .date,
               );
               break;
             case 6:
               weekDay = dailyWeekDay(
                 date: countryStatisticsConfirmedList[
-                        countryStatisticsListLength - 1]
+                      countryStatisticsListLength - 1
+                    ]
                     .date,
               );
               break;
@@ -1003,43 +1026,50 @@ BarChartData dailyChangeBarChartData({
             case 0:
               return dailyMonthData(
                 date: countryStatisticsConfirmedList[
-                        countryStatisticsListLength - 7]
+                      countryStatisticsListLength - 7
+                    ]
                     .date,
               );
             case 1:
               return dailyMonthData(
                 date: countryStatisticsConfirmedList[
-                        countryStatisticsListLength - 6]
+                      countryStatisticsListLength - 6
+                    ]
                     .date,
               );
             case 2:
               return dailyMonthData(
                 date: countryStatisticsConfirmedList[
-                        countryStatisticsListLength - 5]
+                      countryStatisticsListLength - 5
+                    ]
                     .date,
               );
             case 3:
               return dailyMonthData(
                 date: countryStatisticsConfirmedList[
-                        countryStatisticsListLength - 4]
+                      countryStatisticsListLength - 4
+                    ]
                     .date,
               );
             case 4:
               return dailyMonthData(
                 date: countryStatisticsConfirmedList[
-                        countryStatisticsListLength - 3]
+                      countryStatisticsListLength - 3
+                    ]
                     .date,
               );
             case 5:
               return dailyMonthData(
                 date: countryStatisticsConfirmedList[
-                        countryStatisticsListLength - 2]
+                      countryStatisticsListLength - 2
+                    ]
                     .date,
               );
             case 6:
               return dailyMonthData(
                 date: countryStatisticsConfirmedList[
-                        countryStatisticsListLength - 1]
+                      countryStatisticsListLength - 1
+                    ]
                     .date,
               );
             default:

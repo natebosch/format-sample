@@ -47,8 +47,8 @@ class Queue extends StatelessWidget {
     Database db = await idbFactory.open('musicDB');
 
     ObjectStore ob = db.transaction('tracks', 'readwrite').objectStore(
-          'tracks',
-        );
+      'tracks',
+    );
     if (await ob.getObject(track["videoId"]) != null) {
       track = await ob.getObject(track['videoId']);
     }

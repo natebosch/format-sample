@@ -65,8 +65,9 @@ class _EntityListTileState extends State<EntityListTile> {
             _isHovered;
 
     final leading = ActionMenuButton(
-      iconData:
-          isHovered ? Icons.more_vert : getEntityIcon(widget.entity.entityType),
+      iconData: isHovered
+          ? Icons.more_vert
+          : getEntityIcon(widget.entity.entityType),
       iconSize: isHovered ? null : 18,
       entityActions: widget.entity.getActions(
         userCompany: state.userCompany,
@@ -96,9 +97,9 @@ class _EntityListTileState extends State<EntityListTile> {
                     : Icons.filter_list,
               ),
               onPressed: () => viewEntity(
-                entity: widget.entity,
-                addToStack: isDesktop(context) && !widget.isFilter,
-              ),
+                    entity: widget.entity,
+                    addToStack: isDesktop(context) && !widget.isFilter,
+                  ),
             ),
           );
 
@@ -114,8 +115,8 @@ class _EntityListTileState extends State<EntityListTile> {
             child: ListTile(
               contentPadding: const EdgeInsets.symmetric(horizontal: 16),
               onTap: () => inspectEntity(entity: widget.entity),
-              onLongPress: () =>
-                  inspectEntity(entity: widget.entity, longPress: true),
+              onLongPress:
+                  () => inspectEntity(entity: widget.entity, longPress: true),
               title: Text(
                 EntityPresenter().initialize(widget.entity, context).title(),
                 maxLines: 1,
@@ -171,9 +172,9 @@ class _EntitiesListTileState extends State<EntitiesListTile> {
   bool _isHovered = false;
 
   void _onTap(BuildContext context) => viewEntitiesByType(
-        entityType: widget.entityType,
-        filterEntity: widget.entity,
-      );
+    entityType: widget.entityType,
+    filterEntity: widget.entity,
+  );
 
   void _onLongPress() {
     final store = StoreProvider.of<AppState>(context);

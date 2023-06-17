@@ -203,25 +203,25 @@ class _GFMultiSelectState<T> extends State<GFMultiSelect<T>> {
   @override
   Widget build(BuildContext context) {
     Widget dropdownTile() => Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: <Widget>[
-            _selectedTitles.isEmpty
-                ? Expanded(
-                    child: Text(
-                      widget.dropdownTitleTileText,
-                      style: widget.dropdownTitleTileTextStyle,
-                    ),
-                  )
-                : Expanded(
-                    child: Text(
-                      _selectedTitles.join(',  ').toString(),
-                      style: widget.dropdownTitleTileTextStyle,
-                    ),
-                  ),
-            !showDropdown ? widget.expandedIcon : widget.collapsedIcon,
-          ],
-        );
+      crossAxisAlignment: CrossAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: <Widget>[
+        _selectedTitles.isEmpty
+            ? Expanded(
+                child: Text(
+                  widget.dropdownTitleTileText,
+                  style: widget.dropdownTitleTileTextStyle,
+                ),
+              )
+            : Expanded(
+                child: Text(
+                  _selectedTitles.join(',  ').toString(),
+                  style: widget.dropdownTitleTileTextStyle,
+                ),
+              ),
+        !showDropdown ? widget.expandedIcon : widget.collapsedIcon,
+      ],
+    );
 
     return Column(
       children: [

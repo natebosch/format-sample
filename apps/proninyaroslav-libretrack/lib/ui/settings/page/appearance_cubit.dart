@@ -65,13 +65,13 @@ class AppearanceSettingsCubit extends Cubit<AppearanceState> {
   final SystemTray _systemTray;
 
   AppearanceSettingsCubit(this._pref, this._appCubit, this._systemTray)
-      : super(AppearanceState.initial(AppearanceInfo(
-          theme: _pref.theme,
-          trackingNotify: _pref.trackingNotifications,
-          locale: _pref.locale,
-          trackingErrorNotify: _pref.trackingErrorNotifications,
-          trayIcon: _pref.trayIcon,
-        )));
+    : super(AppearanceState.initial(AppearanceInfo(
+        theme: _pref.theme,
+        trackingNotify: _pref.trackingNotifications,
+        locale: _pref.locale,
+        trackingErrorNotify: _pref.trackingErrorNotifications,
+        trayIcon: _pref.trayIcon,
+      )));
 
   void setTheme(AppThemeType theme) {
     _pref.theme = theme;

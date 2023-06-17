@@ -37,9 +37,9 @@ class CameraWindows extends CameraPlatform {
       StreamController<CameraEvent>.broadcast();
 
   /// Returns a stream of camera events for the given [cameraId].
-  Stream<CameraEvent> _cameraEvents(int cameraId) =>
-      cameraEventStreamController.stream
-          .where((CameraEvent event) => event.cameraId == cameraId);
+  Stream<CameraEvent> _cameraEvents(int cameraId) => cameraEventStreamController
+      .stream
+      .where((CameraEvent event) => event.cameraId == cameraId);
 
   @override
   Future<List<CameraDescription>> availableCameras() async {
@@ -74,10 +74,10 @@ class CameraWindows extends CameraPlatform {
       // If resolutionPreset is not specified, plugin selects the highest resolution possible.
       final Map<String, dynamic>? reply = await pluginChannel
           .invokeMapMethod<String, dynamic>('create', <String, dynamic>{
-        'cameraName': cameraDescription.name,
-        'resolutionPreset': _serializeResolutionPreset(resolutionPreset),
-        'enableAudio': enableAudio,
-      });
+            'cameraName': cameraDescription.name,
+            'resolutionPreset': _serializeResolutionPreset(resolutionPreset),
+            'enableAudio': enableAudio,
+          });
 
       if (reply == null) {
         throw CameraException('System', 'Cannot create camera');
@@ -207,8 +207,8 @@ class CameraWindows extends CameraPlatform {
 
   @override
   Future<void> prepareForVideoRecording() => pluginChannel.invokeMethod<void>(
-        'prepareForVideoRecording',
-      );
+    'prepareForVideoRecording',
+  );
 
   @override
   Future<void> startVideoRecording(

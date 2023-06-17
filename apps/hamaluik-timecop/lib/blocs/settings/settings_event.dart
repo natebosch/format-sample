@@ -33,9 +33,9 @@ class ImportDatabaseEvent extends SettingsEvent {
     this.path,
     this.timers,
     this.projects,
-  )   : assert(path != null),
-        assert(timers != null),
-        assert(projects != null);
+  ) : assert(path != null),
+      assert(timers != null),
+      assert(projects != null);
   @override
   List<Object> get props => [path, timers, projects];
 }
@@ -79,23 +79,23 @@ class SetBoolValueEvent extends SettingsEvent {
 
   @override
   List<Object> get props => [
-        exportGroupTimers,
-        exportIncludeDate,
-        exportIncludeProject,
-        exportIncludeDescription,
-        exportIncludeProjectDescription,
-        exportIncludeStartTime,
-        exportIncludeEndTime,
-        exportIncludeDurationHours,
-        exportIncludeNotes,
-        groupTimers,
-        collapseDays,
-        autocompleteDescription,
-        defaultFilterStartDateToMonday,
-        oneTimerAtATime,
-        showBadgeCounts,
-        showRunningTimersAsNotifications,
-      ];
+    exportGroupTimers,
+    exportIncludeDate,
+    exportIncludeProject,
+    exportIncludeDescription,
+    exportIncludeProjectDescription,
+    exportIncludeStartTime,
+    exportIncludeEndTime,
+    exportIncludeDurationHours,
+    exportIncludeNotes,
+    groupTimers,
+    collapseDays,
+    autocompleteDescription,
+    defaultFilterStartDateToMonday,
+    oneTimerAtATime,
+    showBadgeCounts,
+    showRunningTimersAsNotifications,
+  ];
 }
 
 class SetDefaultFilterDays extends SettingsEvent {

@@ -46,16 +46,14 @@ mixin _$AccountsActionsState {
     required TResult Function() deleting,
     required TResult Function() deleteSuccess,
     required TResult Function(StorageError error) deleteFailed,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? deleting,
     TResult Function()? deleteSuccess,
     TResult Function(StorageError error)? deleteFailed,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
@@ -63,26 +61,23 @@ mixin _$AccountsActionsState {
     TResult Function()? deleteSuccess,
     TResult Function(StorageError error)? deleteFailed,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(AccountsActionsStateInitial value) initial,
     required TResult Function(AccountsActionsStateDeleting value) deleting,
     required TResult Function(AccountsActionsStateDeleteSuccess value)
-        deleteSuccess,
+    deleteSuccess,
     required TResult Function(AccountsActionsStateDeleteFailed value)
-        deleteFailed,
-  }) =>
-      throw _privateConstructorUsedError;
+    deleteFailed,
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(AccountsActionsStateInitial value)? initial,
     TResult Function(AccountsActionsStateDeleting value)? deleting,
     TResult Function(AccountsActionsStateDeleteSuccess value)? deleteSuccess,
     TResult Function(AccountsActionsStateDeleteFailed value)? deleteFailed,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(AccountsActionsStateInitial value)? initial,
@@ -90,8 +85,7 @@ mixin _$AccountsActionsState {
     TResult Function(AccountsActionsStateDeleteSuccess value)? deleteSuccess,
     TResult Function(AccountsActionsStateDeleteFailed value)? deleteFailed,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -204,9 +198,9 @@ class _$AccountsActionsStateInitial
     required TResult Function(AccountsActionsStateInitial value) initial,
     required TResult Function(AccountsActionsStateDeleting value) deleting,
     required TResult Function(AccountsActionsStateDeleteSuccess value)
-        deleteSuccess,
+    deleteSuccess,
     required TResult Function(AccountsActionsStateDeleteFailed value)
-        deleteFailed,
+    deleteFailed,
   }) {
     return initial(this);
   }
@@ -334,9 +328,9 @@ class _$AccountsActionsStateDeleting
     required TResult Function(AccountsActionsStateInitial value) initial,
     required TResult Function(AccountsActionsStateDeleting value) deleting,
     required TResult Function(AccountsActionsStateDeleteSuccess value)
-        deleteSuccess,
+    deleteSuccess,
     required TResult Function(AccountsActionsStateDeleteFailed value)
-        deleteFailed,
+    deleteFailed,
   }) {
     return deleting(this);
   }
@@ -465,9 +459,9 @@ class _$AccountsActionsStateDeleteSuccess
     required TResult Function(AccountsActionsStateInitial value) initial,
     required TResult Function(AccountsActionsStateDeleting value) deleting,
     required TResult Function(AccountsActionsStateDeleteSuccess value)
-        deleteSuccess,
+    deleteSuccess,
     required TResult Function(AccountsActionsStateDeleteFailed value)
-        deleteFailed,
+    deleteFailed,
   }) {
     return deleteSuccess(this);
   }
@@ -535,7 +529,7 @@ class _$AccountsActionsStateDeleteFailedCopyWithImpl<$Res>
       error: error == freezed
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
-              as StorageError,
+                as StorageError,
     ));
   }
 
@@ -585,8 +579,9 @@ class _$AccountsActionsStateDeleteFailed
   @JsonKey(ignore: true)
   @override
   $AccountsActionsStateDeleteFailedCopyWith<AccountsActionsStateDeleteFailed>
-      get copyWith => _$AccountsActionsStateDeleteFailedCopyWithImpl<
-          AccountsActionsStateDeleteFailed>(this, _$identity);
+  get copyWith => _$AccountsActionsStateDeleteFailedCopyWithImpl<
+    AccountsActionsStateDeleteFailed
+  >(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -631,9 +626,9 @@ class _$AccountsActionsStateDeleteFailed
     required TResult Function(AccountsActionsStateInitial value) initial,
     required TResult Function(AccountsActionsStateDeleting value) deleting,
     required TResult Function(AccountsActionsStateDeleteSuccess value)
-        deleteSuccess,
+    deleteSuccess,
     required TResult Function(AccountsActionsStateDeleteFailed value)
-        deleteFailed,
+    deleteFailed,
   }) {
     return deleteFailed(this);
   }
@@ -674,5 +669,5 @@ abstract class AccountsActionsStateDeleteFailed
   StorageError get error => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $AccountsActionsStateDeleteFailedCopyWith<AccountsActionsStateDeleteFailed>
-      get copyWith => throw _privateConstructorUsedError;
+  get copyWith => throw _privateConstructorUsedError;
 }

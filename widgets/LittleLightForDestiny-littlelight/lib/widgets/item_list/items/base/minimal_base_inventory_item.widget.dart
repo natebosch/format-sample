@@ -22,13 +22,13 @@ class MinimalBaseInventoryItemWidget extends BaseInventoryItemWidget
     Key key,
     @required String uniqueId,
   }) : super(
-          item,
-          itemDefinition,
-          instanceInfo,
-          uniqueId: uniqueId,
-          characterId: characterId,
-          key: key,
-        );
+         item,
+         itemDefinition,
+         instanceInfo,
+         uniqueId: uniqueId,
+         characterId: characterId,
+         key: key,
+       );
 
   @override
   Widget build(BuildContext context) {
@@ -82,22 +82,18 @@ class MinimalBaseInventoryItemWidget extends BaseInventoryItemWidget
       return Container();
     }
     if ((definition?.inventory?.maxStackSize ?? 0) > 1) {
-      return infoContainer(
-          context,
-          Text(
-            "x${item.quantity}",
-            style: TextStyle(fontSize: 12, fontWeight: FontWeight.w700),
-            textAlign: TextAlign.right,
-          ));
+      return infoContainer(context, Text(
+        "x${item.quantity}",
+        style: TextStyle(fontSize: 12, fontWeight: FontWeight.w700),
+        textAlign: TextAlign.right,
+      ));
     }
     if (instanceInfo?.primaryStat?.value != null) {
-      return infoContainer(
-          context,
-          Text(
-            "${instanceInfo?.primaryStat?.value}",
-            style: TextStyle(fontSize: 12, fontWeight: FontWeight.w700),
-            textAlign: TextAlign.right,
-          ));
+      return infoContainer(context, Text(
+        "${instanceInfo?.primaryStat?.value}",
+        style: TextStyle(fontSize: 12, fontWeight: FontWeight.w700),
+        textAlign: TextAlign.right,
+      ));
     }
     return super.primaryStatWidget(context);
   }

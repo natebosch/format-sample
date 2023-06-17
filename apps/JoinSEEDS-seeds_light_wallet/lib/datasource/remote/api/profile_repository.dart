@@ -26,12 +26,9 @@ class ProfileRepository extends NetworkRepository with EosRepository {
     );
 
     return http
-        .post(
-            Uri.parse(
-              '${remoteConfigurations.activeEOSServerUrl.url}/v1/chain/get_table_rows',
-            ),
-            headers: headers,
-            body: request)
+        .post(Uri.parse(
+          '${remoteConfigurations.activeEOSServerUrl.url}/v1/chain/get_table_rows',
+        ), headers: headers, body: request)
         .then(
           (http.Response response) => mapHttpResponse<ProfileModel>(
             response,
@@ -161,12 +158,9 @@ class ProfileRepository extends NetworkRepository with EosRepository {
     );
 
     return http
-        .post(
-            Uri.parse(
-              '${remoteConfigurations.activeEOSServerUrl.url}/v1/chain/get_table_rows',
-            ),
-            headers: headers,
-            body: request)
+        .post(Uri.parse(
+          '${remoteConfigurations.activeEOSServerUrl.url}/v1/chain/get_table_rows',
+        ), headers: headers, body: request)
         .then(
           (http.Response response) => mapHttpResponse<ReferredAccounts>(
             response,
@@ -258,19 +252,17 @@ class ProfileRepository extends NetworkRepository with EosRepository {
   }) async {
     print('[eos] claimrefund from: $accountName $requestIds');
 
-    final transaction = buildFreeTransaction(
-        List.from(requestIds.map(
-          (id) => Action()
-            ..account = accountHarvest
-            ..name = actionNameClaimRefund
-            ..authorization = [
-              Authorization()
-                ..actor = accountName
-                ..permission = permissionActive,
-            ]
-            ..data = {'from': accountName, 'request_id': '$id'},
-        )),
-        accountName);
+    final transaction = buildFreeTransaction(List.from(requestIds.map(
+      (id) => Action()
+        ..account = accountHarvest
+        ..name = actionNameClaimRefund
+        ..authorization = [
+          Authorization()
+            ..actor = accountName
+            ..permission = permissionActive,
+        ]
+        ..data = {'from': accountName, 'request_id': '$id'},
+    )), accountName);
 
     return buildEosClient()
         .pushTransaction(transaction)
@@ -368,12 +360,9 @@ class ProfileRepository extends NetworkRepository with EosRepository {
         '{"json": true, "code": "trailservice","scope": "$accountName","table": "voters"}';
 
     return http
-        .post(
-            Uri.parse(
-              '${remoteConfigurations.activeEOSServerUrl.url}/v1/chain/get_table_rows',
-            ),
-            headers: headers,
-            body: request)
+        .post(Uri.parse(
+          '${remoteConfigurations.activeEOSServerUrl.url}/v1/chain/get_table_rows',
+        ), headers: headers, body: request)
         .then(
           (http.Response response) => mapHttpResponse<bool>(
             response,
@@ -410,11 +399,9 @@ class ProfileRepository extends NetworkRepository with EosRepository {
             response,
             (dynamic body) {
               final List<dynamic> allAccounts = body['rows'].toList();
-              return allAccounts
-                  .map(
-                    (i) => OrganizationModel.fromJson(i),
-                  )
-                  .toList();
+              return allAccounts.map(
+                (i) => OrganizationModel.fromJson(i),
+              ).toList();
             },
           ),
         )

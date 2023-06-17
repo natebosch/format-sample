@@ -81,9 +81,9 @@ class _TicketsPageState extends State<TicketsPage>
           child: TicketCard(stop: stop),
         ),
         builder: (context, child) => new Transform.translate(
-          offset: Offset(0.0, ticketAnimations[index].value),
-          child: child,
-        ),
+              offset: Offset(0.0, ticketAnimations[index].value),
+              child: child,
+            ),
       );
     });
   }

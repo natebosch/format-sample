@@ -304,8 +304,7 @@ class MultipletextBuilder
       _$this._useDisplayValuesInDynamicTexts;
   set useDisplayValuesInDynamicTexts(
     covariant bool? useDisplayValuesInDynamicTexts,
-  ) =>
-      _$this._useDisplayValuesInDynamicTexts = useDisplayValuesInDynamicTexts;
+  ) => _$this._useDisplayValuesInDynamicTexts = useDisplayValuesInDynamicTexts;
 
   String? _visibleIf;
   String? get visibleIf => _$this._visibleIf;
@@ -360,8 +359,7 @@ class MultipletextBuilder
       _$this._descriptionLocation;
   set descriptionLocation(
     covariant QuestionDescriptionLocation? descriptionLocation,
-  ) =>
-      _$this._descriptionLocation = descriptionLocation;
+  ) => _$this._descriptionLocation = descriptionLocation;
 
   bool? _hideNumber;
   bool? get hideNumber => _$this._hideNumber;
@@ -418,8 +416,7 @@ class MultipletextBuilder
       _$this._validators ??= new ListBuilder<QuestionAllOfValidatorsInner>();
   set validators(
     covariant ListBuilder<QuestionAllOfValidatorsInner>? validators,
-  ) =>
-      _$this._validators = validators;
+  ) => _$this._validators = validators;
 
   String? _bindings;
   String? get bindings => _$this._bindings;

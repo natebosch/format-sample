@@ -55,8 +55,8 @@ class LoginScreenState extends State<LoginScreen>
                 child: new Text('No'),
               ),
               new FlatButton(
-                onPressed: () =>
-                    Navigator.pushReplacementNamed(context, "/home"),
+                onPressed:
+                    () => Navigator.pushReplacementNamed(context, "/home"),
                 child: new Text('Yes'),
               ),
             ],
@@ -99,12 +99,9 @@ class LoginScreenState extends State<LoginScreen>
                               child: InkWell(
                                 child: subHeadingText('Forgot Password?'),
                                 onTap: () {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) =>
-                                            ResetPasswordPage(),
-                                      ));
+                                  Navigator.push(context, MaterialPageRoute(
+                                    builder: (context) => ResetPasswordPage(),
+                                  ));
                                 },
                               ),
                             ),

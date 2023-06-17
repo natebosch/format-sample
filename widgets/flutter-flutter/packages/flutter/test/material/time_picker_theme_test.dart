@@ -132,52 +132,41 @@ void main() {
     );
 
     final RenderParagraph hourText = _textRenderParagraph(tester, '7');
-    expect(
-        hourText.text.style,
-        Typography.material2014()
-            .englishLike
-            .headline2!
-            .merge(Typography.material2014().black.headline2)
-            .copyWith(color: defaultTheme.colorScheme.primary));
+    expect(hourText.text.style, Typography.material2014()
+        .englishLike
+        .headline2!
+        .merge(Typography.material2014().black.headline2)
+        .copyWith(color: defaultTheme.colorScheme.primary));
 
     final RenderParagraph minuteText = _textRenderParagraph(tester, '15');
-    expect(
-        minuteText.text.style,
-        Typography.material2014()
-            .englishLike
-            .headline2!
-            .merge(Typography.material2014().black.headline2)
-            .copyWith(color: defaultTheme.colorScheme.onSurface));
+    expect(minuteText.text.style, Typography.material2014()
+        .englishLike
+        .headline2!
+        .merge(Typography.material2014().black.headline2)
+        .copyWith(color: defaultTheme.colorScheme.onSurface));
 
     final RenderParagraph amText = _textRenderParagraph(tester, 'AM');
-    expect(
-        amText.text.style,
-        Typography.material2014()
-            .englishLike
-            .subtitle1!
-            .merge(Typography.material2014().black.subtitle1)
-            .copyWith(color: defaultTheme.colorScheme.primary));
+    expect(amText.text.style, Typography.material2014()
+        .englishLike
+        .subtitle1!
+        .merge(Typography.material2014().black.subtitle1)
+        .copyWith(color: defaultTheme.colorScheme.primary));
 
     final RenderParagraph pmText = _textRenderParagraph(tester, 'PM');
-    expect(
-        pmText.text.style,
-        Typography.material2014()
-            .englishLike
-            .subtitle1!
-            .merge(Typography.material2014().black.subtitle1)
-            .copyWith(
-                color: defaultTheme.colorScheme.onSurface.withOpacity(0.6)));
+    expect(pmText.text.style, Typography.material2014()
+        .englishLike
+        .subtitle1!
+        .merge(Typography.material2014().black.subtitle1)
+        .copyWith(color: defaultTheme.colorScheme.onSurface.withOpacity(0.6)));
 
     final RenderParagraph helperText = _textRenderParagraph(
       tester,
       'SELECT TIME',
     );
-    expect(
-        helperText.text.style,
-        Typography.material2014()
-            .englishLike
-            .overline!
-            .merge(Typography.material2014().black.overline));
+    expect(helperText.text.style, Typography.material2014()
+        .englishLike
+        .overline!
+        .merge(Typography.material2014().black.overline));
 
     final CustomPaint dialPaint = tester.widget(findDialPaint);
     final dynamic dialPainter = dialPaint.painter;
@@ -244,19 +233,15 @@ void main() {
       defaultTheme.colorScheme.surface,
     );
     final Material dayPeriodMaterial = _dayPeriodMaterial(tester);
-    expect(
-        dayPeriodMaterial.shape,
-        RoundedRectangleBorder(
-          borderRadius: const BorderRadius.all(Radius.circular(4.0)),
-          side: BorderSide(color: expectedBorderColor),
-        ));
+    expect(dayPeriodMaterial.shape, RoundedRectangleBorder(
+      borderRadius: const BorderRadius.all(Radius.circular(4.0)),
+      side: BorderSide(color: expectedBorderColor),
+    ));
 
     final Container dayPeriodDivider = _dayPeriodDivider(tester);
-    expect(
-        dayPeriodDivider.decoration,
-        BoxDecoration(
-          border: Border(left: BorderSide(color: expectedBorderColor)),
-        ));
+    expect(dayPeriodDivider.decoration, BoxDecoration(
+      border: Border(left: BorderSide(color: expectedBorderColor)),
+    ));
 
     final IconButton entryModeIconButton = _entryModeIconButton(tester);
     expect(
@@ -287,32 +272,21 @@ void main() {
         borderSide: BorderSide(color: Colors.transparent),
       ),
     );
-    expect(
-        hourDecoration.errorBorder,
-        OutlineInputBorder(
-          borderSide:
-              BorderSide(color: defaultTheme.colorScheme.error, width: 2),
-        ));
-    expect(
-        hourDecoration.focusedBorder,
-        OutlineInputBorder(
-          borderSide:
-              BorderSide(color: defaultTheme.colorScheme.primary, width: 2),
-        ));
-    expect(
-        hourDecoration.focusedErrorBorder,
-        OutlineInputBorder(
-          borderSide:
-              BorderSide(color: defaultTheme.colorScheme.error, width: 2),
-        ));
-    expect(
-        hourDecoration.hintStyle,
-        Typography.material2014()
-            .englishLike
-            .headline2!
-            .merge(defaultTheme.textTheme.headline2!.copyWith(
-              color: defaultTheme.colorScheme.onSurface.withOpacity(0.36),
-            )));
+    expect(hourDecoration.errorBorder, OutlineInputBorder(
+      borderSide: BorderSide(color: defaultTheme.colorScheme.error, width: 2),
+    ));
+    expect(hourDecoration.focusedBorder, OutlineInputBorder(
+      borderSide: BorderSide(color: defaultTheme.colorScheme.primary, width: 2),
+    ));
+    expect(hourDecoration.focusedErrorBorder, OutlineInputBorder(
+      borderSide: BorderSide(color: defaultTheme.colorScheme.error, width: 2),
+    ));
+    expect(hourDecoration.hintStyle, Typography.material2014()
+        .englishLike
+        .headline2!
+        .merge(defaultTheme.textTheme.headline2!.copyWith(
+          color: defaultTheme.colorScheme.onSurface.withOpacity(0.36),
+        )));
   });
 
   testWidgets('Time picker uses values from TimePickerThemeData', (
@@ -343,56 +317,46 @@ void main() {
     );
 
     final RenderParagraph hourText = _textRenderParagraph(tester, '7');
-    expect(
-        hourText.text.style,
-        Typography.material2014()
-            .englishLike
-            .bodyText2!
-            .merge(Typography.material2014().black.bodyText2)
-            .merge(timePickerTheme.hourMinuteTextStyle)
-            .copyWith(color: _selectedColor));
+    expect(hourText.text.style, Typography.material2014()
+        .englishLike
+        .bodyText2!
+        .merge(Typography.material2014().black.bodyText2)
+        .merge(timePickerTheme.hourMinuteTextStyle)
+        .copyWith(color: _selectedColor));
 
     final RenderParagraph minuteText = _textRenderParagraph(tester, '15');
-    expect(
-        minuteText.text.style,
-        Typography.material2014()
-            .englishLike
-            .bodyText2!
-            .merge(Typography.material2014().black.bodyText2)
-            .merge(timePickerTheme.hourMinuteTextStyle)
-            .copyWith(color: _unselectedColor));
+    expect(minuteText.text.style, Typography.material2014()
+        .englishLike
+        .bodyText2!
+        .merge(Typography.material2014().black.bodyText2)
+        .merge(timePickerTheme.hourMinuteTextStyle)
+        .copyWith(color: _unselectedColor));
 
     final RenderParagraph amText = _textRenderParagraph(tester, 'AM');
-    expect(
-        amText.text.style,
-        Typography.material2014()
-            .englishLike
-            .subtitle1!
-            .merge(Typography.material2014().black.subtitle1)
-            .merge(timePickerTheme.dayPeriodTextStyle)
-            .copyWith(color: _selectedColor));
+    expect(amText.text.style, Typography.material2014()
+        .englishLike
+        .subtitle1!
+        .merge(Typography.material2014().black.subtitle1)
+        .merge(timePickerTheme.dayPeriodTextStyle)
+        .copyWith(color: _selectedColor));
 
     final RenderParagraph pmText = _textRenderParagraph(tester, 'PM');
-    expect(
-        pmText.text.style,
-        Typography.material2014()
-            .englishLike
-            .subtitle1!
-            .merge(Typography.material2014().black.subtitle1)
-            .merge(timePickerTheme.dayPeriodTextStyle)
-            .copyWith(color: _unselectedColor));
+    expect(pmText.text.style, Typography.material2014()
+        .englishLike
+        .subtitle1!
+        .merge(Typography.material2014().black.subtitle1)
+        .merge(timePickerTheme.dayPeriodTextStyle)
+        .copyWith(color: _unselectedColor));
 
     final RenderParagraph helperText = _textRenderParagraph(
       tester,
       'SELECT TIME',
     );
-    expect(
-        helperText.text.style,
-        Typography.material2014()
-            .englishLike
-            .bodyText2!
-            .merge(Typography.material2014().black.bodyText2)
-            .merge(timePickerTheme.helpTextStyle));
+    expect(helperText.text.style, Typography.material2014()
+        .englishLike
+        .bodyText2!
+        .merge(Typography.material2014().black.bodyText2)
+        .merge(timePickerTheme.helpTextStyle));
 
     final CustomPaint dialPaint = tester.widget(findDialPaint);
     final dynamic dialPainter = dialPaint.painter;
@@ -436,11 +400,9 @@ void main() {
     expect(pmMaterial.color, _unselectedColor);
 
     final Material dayPeriodMaterial = _dayPeriodMaterial(tester);
-    expect(
-        dayPeriodMaterial.shape,
-        timePickerTheme.dayPeriodShape!.copyWith(
-          side: timePickerTheme.dayPeriodBorderSide,
-        ));
+    expect(dayPeriodMaterial.shape, timePickerTheme.dayPeriodShape!.copyWith(
+      side: timePickerTheme.dayPeriodBorderSide,
+    ));
 
     final Container dayPeriodDivider = _dayPeriodDivider(tester);
     expect(
@@ -611,12 +573,10 @@ class _TimePickerLauncher extends StatelessWidget {
 
 Material _dialogMaterial(WidgetTester tester) {
   return tester.widget<Material>(
-    find
-        .descendant(
-          of: find.byType(Dialog),
-          matching: find.byType(Material),
-        )
-        .first,
+    find.descendant(
+      of: find.byType(Dialog),
+      matching: find.byType(Material),
+    ).first,
   );
 }
 
@@ -634,14 +594,12 @@ TextField _textField(WidgetTester tester, String text) {
 
 Material _dayPeriodMaterial(WidgetTester tester) {
   return tester.widget<Material>(
-    find
-        .descendant(
-          of: find.byWidgetPredicate(
-            (Widget w) => '${w.runtimeType}' == '_DayPeriodControl',
-          ),
-          matching: find.byType(Material),
-        )
-        .first,
+    find.descendant(
+      of: find.byWidgetPredicate(
+        (Widget w) => '${w.runtimeType}' == '_DayPeriodControl',
+      ),
+      matching: find.byType(Material),
+    ).first,
   );
 }
 
@@ -658,12 +616,10 @@ Container _dayPeriodDivider(WidgetTester tester) {
 
 IconButton _entryModeIconButton(WidgetTester tester) {
   return tester.widget<IconButton>(
-    find
-        .descendant(
-          of: find.byType(Dialog),
-          matching: find.byType(IconButton),
-        )
-        .first,
+    find.descendant(
+      of: find.byType(Dialog),
+      matching: find.byType(IconButton),
+    ).first,
   );
 }
 

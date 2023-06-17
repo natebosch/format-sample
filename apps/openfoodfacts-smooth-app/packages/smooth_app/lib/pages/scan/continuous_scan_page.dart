@@ -147,12 +147,10 @@ class ContinuousScanPage extends StatelessWidget {
   Future<void> _openPersonalizedRankingPage(BuildContext context) async {
     final ContinuousScanModel model = context.read<ContinuousScanModel>();
     await model.refreshProductList();
-    await Navigator.push<Widget>(
-        context,
-        MaterialPageRoute<Widget>(
-          builder: (BuildContext context) =>
-              PersonalizedRankingPage(model.productList),
-        ));
+    await Navigator.push<Widget>(context, MaterialPageRoute<Widget>(
+      builder:
+          (BuildContext context) => PersonalizedRankingPage(model.productList),
+    ));
     await model.refresh();
   }
 

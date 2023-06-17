@@ -59,17 +59,15 @@ class CurrencyGridView extends StatelessWidget {
         childAspectRatio: 2,
         mainAxisSpacing: 40,
         shrinkWrap: true,
-        children: currencyProvider.currencies
-            .map(
-              (Currency currency) => CurrencyCircle(
-                currency: currency,
-                onPressed: () async {
-                  await UserDatabaseService(user).updateUserCurrency(currency);
-                  Navigator.pushReplacementNamed(context, HomeScreen.routeName);
-                },
-              ),
-            )
-            .toList(),
+        children: currencyProvider.currencies.map(
+          (Currency currency) => CurrencyCircle(
+            currency: currency,
+            onPressed: () async {
+              await UserDatabaseService(user).updateUserCurrency(currency);
+              Navigator.pushReplacementNamed(context, HomeScreen.routeName);
+            },
+          ),
+        ).toList(),
       );
     }
 
@@ -82,7 +80,7 @@ class CurrencyCircle extends StatelessWidget {
   final Function onPressed;
 
   const CurrencyCircle({Key key, this.currency, this.onPressed})
-      : super(key: key);
+    : super(key: key);
 
   @override
   Widget build(BuildContext context) {

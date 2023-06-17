@@ -377,8 +377,8 @@ class MatrixdropdowncolumnTotalCurrency extends EnumClass {
 
   static BuiltSet<MatrixdropdowncolumnTotalCurrency> get values => _$values;
   static MatrixdropdowncolumnTotalCurrency valueOf(String name) => _$valueOf(
-        name,
-      );
+    name,
+  );
 }
 
 /// Optionally, enum_class can generate a mixin to go with your enum for use

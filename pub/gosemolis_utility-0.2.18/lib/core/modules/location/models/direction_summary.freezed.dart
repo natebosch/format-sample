@@ -58,11 +58,11 @@ class _$DirectionsSummaryCopyWithImpl<$Res, $Val extends DirectionsSummary>
         text: freezed == text
             ? _value.text
             : text // ignore: cast_nullable_to_non_nullable
-                as String?,
+                  as String?,
         value: freezed == value
             ? _value.value
             : value // ignore: cast_nullable_to_non_nullable
-                as double?,
+                  as double?,
       ) as $Val,
     );
   }
@@ -96,11 +96,11 @@ class __$$_DirectionsSummaryCopyWithImpl<$Res>
       text: freezed == text
           ? _value.text
           : text // ignore: cast_nullable_to_non_nullable
-              as String?,
+                as String?,
       value: freezed == value
           ? _value.value
           : value // ignore: cast_nullable_to_non_nullable
-              as double?,
+                as double?,
     ));
   }
 }
@@ -112,8 +112,7 @@ class _$_DirectionsSummary implements _DirectionsSummary {
 
   factory _$_DirectionsSummary.fromJson(
     Map<String, dynamic> json,
-  ) =>
-      _$$_DirectionsSummaryFromJson(json);
+  ) => _$$_DirectionsSummaryFromJson(json);
 
   @override
   final String? text;
@@ -141,11 +140,11 @@ class _$_DirectionsSummary implements _DirectionsSummary {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_DirectionsSummaryCopyWith<_$_DirectionsSummary> get copyWith =>
-      __$$_DirectionsSummaryCopyWithImpl<_$_DirectionsSummary>(
-        this,
-        _$identity,
-      );
+  _$$_DirectionsSummaryCopyWith<_$_DirectionsSummary>
+  get copyWith => __$$_DirectionsSummaryCopyWithImpl<_$_DirectionsSummary>(
+    this,
+    _$identity,
+  );
 
   @override
   Map<String, dynamic> toJson() {

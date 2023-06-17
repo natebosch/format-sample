@@ -5,8 +5,7 @@ import 'package:seeds/datasource/remote/firebase/firebase_database_guardians_rep
 class ResetUserAccountUseCase {
   final GuardiansRepository _guardiansRepository = GuardiansRepository();
   final FirebaseDatabaseGuardiansRepository
-      _firebaseDatabaseGuardiansRepository =
-      FirebaseDatabaseGuardiansRepository();
+  _firebaseDatabaseGuardiansRepository = FirebaseDatabaseGuardiansRepository();
 
   Future<Result> run(String userAccount) async {
     final result =

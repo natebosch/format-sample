@@ -27,8 +27,8 @@ class ProfileWidget extends StatefulWidget {
     @required this.child,
     @required this.profile,
     @required this.viewModel,
-  })  : assert(viewModel != null),
-        assert(child != null);
+  }) : assert(viewModel != null),
+       assert(child != null);
 
   static ProfileWidgetState of(BuildContext context) {
     return (context

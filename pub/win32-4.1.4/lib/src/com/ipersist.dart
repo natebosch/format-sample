@@ -37,18 +37,13 @@ class IPersist extends IUnknown {
   IPersist(super.ptr);
 
   factory IPersist.from(IUnknown interface) => IPersist(
-        interface.toInterface(IID_IPersist),
-      );
+    interface.toInterface(IID_IPersist),
+  );
 
-  int getClassID(Pointer<GUID> pClassID) => ptr.ref.vtable
-          .elementAt(3)
-          .cast<
-              Pointer<
-                  NativeFunction<
-                      Int32 Function(Pointer, Pointer<GUID> pClassID)>>>()
-          .value
-          .asFunction<int Function(Pointer, Pointer<GUID> pClassID)>()(
-        ptr.ref.lpVtbl,
-        pClassID,
-      );
+  int getClassID(Pointer<GUID> pClassID) => ptr.ref.vtable.elementAt(3).cast<
+    Pointer<NativeFunction<Int32 Function(Pointer, Pointer<GUID> pClassID)>>
+  >().value.asFunction<int Function(Pointer, Pointer<GUID> pClassID)>()(
+    ptr.ref.lpVtbl,
+    pClassID,
+  );
 }

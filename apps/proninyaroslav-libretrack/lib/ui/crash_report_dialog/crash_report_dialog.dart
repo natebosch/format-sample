@@ -129,8 +129,8 @@ class _Body extends StatelessWidget {
               [error.toString(), if (stackTrace != null) stackTrace.toString()]
                   .join('\n'),
               style: Theme.of(context).textTheme.bodyText2!.copyWith(
-                    fontFamily: 'RobotoMono',
-                  ),
+                fontFamily: 'RobotoMono',
+              ),
             ),
           ],
         ),

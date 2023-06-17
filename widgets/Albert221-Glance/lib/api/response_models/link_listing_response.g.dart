@@ -727,8 +727,7 @@ class _$LinkListingResponse extends LinkListingResponse {
 
   factory _$LinkListingResponse([
     void Function(LinkListingResponseBuilder) updates,
-  ]) =>
-      (new LinkListingResponseBuilder()..update(updates)).build();
+  ]) => (new LinkListingResponseBuilder()..update(updates)).build();
 
   _$LinkListingResponse._({this.data}) : super._() {
     if (data == null) {
@@ -739,8 +738,7 @@ class _$LinkListingResponse extends LinkListingResponse {
   @override
   LinkListingResponse rebuild(
     void Function(LinkListingResponseBuilder) updates,
-  ) =>
-      (toBuilder()..update(updates)).build();
+  ) => (toBuilder()..update(updates)).build();
 
   @override
   LinkListingResponseBuilder toBuilder() =>
@@ -1149,35 +1147,10 @@ class _$LinkChildData extends LinkChildData {
 
   @override
   int get hashCode {
-    return $jf($jc(
-        $jc(
-            $jc(
-              $jc(
-                  $jc(
-                      $jc(
-                          $jc(
-                              $jc(
-                                  $jc(
-                                      $jc(
-                                          $jc(
-                                              $jc(
-                                                  $jc(
-                                                      $jc($jc(0, name.hashCode),
-                                                          title.hashCode),
-                                                      subreddit.hashCode),
-                                                  subredditId.hashCode),
-                                              permalink.hashCode),
-                                          author.hashCode),
-                                      score.hashCode),
-                                  likes.hashCode),
-                              thumbnail.hashCode),
-                          thumbnailWidth.hashCode),
-                      thumbnailHeight.hashCode),
-                  over18.hashCode),
-              preview.hashCode,
-            ),
-            media.hashCode),
-        isVideo.hashCode));
+    return $jf($jc($jc($jc(
+      $jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc(0, name.hashCode), title.hashCode), subreddit.hashCode), subredditId.hashCode), permalink.hashCode), author.hashCode), score.hashCode), likes.hashCode), thumbnail.hashCode), thumbnailWidth.hashCode), thumbnailHeight.hashCode), over18.hashCode),
+      preview.hashCode,
+    ), media.hashCode), isVideo.hashCode));
   }
 
   @override

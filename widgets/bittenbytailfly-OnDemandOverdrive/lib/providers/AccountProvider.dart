@@ -128,10 +128,10 @@ class AccountProvider extends ChangeNotifier {
     this.subscriptionState = SubscriptionState.Fetching;
     try {
       await this._subscriptionService.registerNewSubscription(
-            this.user,
-            subscriptionTypeId,
-            value,
-          );
+        this.user,
+        subscriptionTypeId,
+        value,
+      );
       this.getSubscriptions();
       return true;
     } catch (_) {
@@ -142,9 +142,9 @@ class AccountProvider extends ChangeNotifier {
   Future<bool> deleteSubscription(Subscription sub) async {
     try {
       await this._subscriptionService.deleteSubscription(
-            this.user,
-            sub.subscriptionId,
-          );
+        this.user,
+        sub.subscriptionId,
+      );
       final updatedSubs = List<Subscription>.from(this._subscriptions);
       updatedSubs.removeWhere((d) => d.subscriptionId == sub.subscriptionId);
       this._subscriptions = updatedSubs;

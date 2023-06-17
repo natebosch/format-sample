@@ -22,15 +22,15 @@ class EmbeddableObject {
     this.type, {
     required this.inline,
     Map<String, dynamic> data = const {},
-  })  : assert(
-          !data.containsKey(kTypeKey),
-          'The "$kTypeKey" key is reserved in $EmbeddableObject data and cannot be used.',
-        ),
-        assert(
-          !data.containsKey(kInlineKey),
-          'The "$kInlineKey" key is reserved in $EmbeddableObject data and cannot be used.',
-        ),
-        _data = Map.from(data);
+  }) : assert(
+         !data.containsKey(kTypeKey),
+         'The "$kTypeKey" key is reserved in $EmbeddableObject data and cannot be used.',
+       ),
+       assert(
+         !data.containsKey(kInlineKey),
+         'The "$kInlineKey" key is reserved in $EmbeddableObject data and cannot be used.',
+       ),
+       _data = Map.from(data);
 
   /// The type of this object.
   final String type;
@@ -89,7 +89,7 @@ class EmbeddableObject {
 // TODO: document model currently only supports BlockEmbeds and need to be updated to support SpanEmbeds.
 class SpanEmbed extends EmbeddableObject {
   SpanEmbed(String type, {Map<String, dynamic> data = const {}})
-      : super(type, inline: true, data: data);
+    : super(type, inline: true, data: data);
 }
 
 /// An object which occupies an entire line in a document and cannot co-exist
@@ -108,11 +108,11 @@ class SpanEmbed extends EmbeddableObject {
 class BlockEmbed extends EmbeddableObject {
   /// Creates a new block embed of specified [type] and containing [data].
   BlockEmbed(String type, {Map<String, dynamic> data = const {}})
-      : super(type, inline: false, data: data);
+    : super(type, inline: false, data: data);
 
   static final BlockEmbed horizontalRule = BlockEmbed('hr');
   static BlockEmbed image(String source) => BlockEmbed(
-        'image',
-        data: {'source': source},
-      );
+    'image',
+    data: {'source': source},
+  );
 }

@@ -17,14 +17,14 @@ class UserPage extends HookConsumerWidget {
         title: Text(id),
         actions: <Widget>[
           PopupMenuButton<UserMenuAction>(
-            itemBuilder: (BuildContext context) =>
-                <PopupMenuEntry<UserMenuAction>>[
-              for (UserMenuAction menuAction in UserMenuAction.values)
-                PopupMenuItem<UserMenuAction>(
-                  value: menuAction,
-                  child: Text(menuAction.title(context)),
-                ),
-            ],
+            itemBuilder:
+                (BuildContext context) => <PopupMenuEntry<UserMenuAction>>[
+                  for (UserMenuAction menuAction in UserMenuAction.values)
+                    PopupMenuItem<UserMenuAction>(
+                      value: menuAction,
+                      child: Text(menuAction.title(context)),
+                    ),
+                ],
             onSelected: (UserMenuAction menuAction) =>
                 menuAction.command(context, ref, id: id).execute(),
             icon: const Icon(FluentIcons.more_vertical_24_regular),

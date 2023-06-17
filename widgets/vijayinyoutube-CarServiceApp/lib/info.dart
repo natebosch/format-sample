@@ -59,11 +59,9 @@ class _RentPageState extends State<RentPage> {
                     width: 125,
                     child: GestureDetector(
                       onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => DetailsPage(),
-                            ));
+                        Navigator.push(context, MaterialPageRoute(
+                          builder: (context) => DetailsPage(),
+                        ));
                       },
                       child: Hero(
                         tag: "bmwcar",

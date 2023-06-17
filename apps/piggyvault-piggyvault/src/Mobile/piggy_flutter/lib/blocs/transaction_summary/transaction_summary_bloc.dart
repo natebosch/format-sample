@@ -27,11 +27,11 @@ class TransactionSummaryBloc
     @required this.authBloc,
     @required this.transactionsBloc,
     @required this.transactionDetailBloc,
-  })  : assert(transactionRepository != null),
-        assert(authBloc != null),
-        assert(transactionsBloc != null),
-        assert(transactionDetailBloc != null),
-        super(TransactionSummaryEmpty()) {
+  }) : assert(transactionRepository != null),
+       assert(authBloc != null),
+       assert(transactionsBloc != null),
+       assert(transactionDetailBloc != null),
+       super(TransactionSummaryEmpty()) {
     authBlocSubscription = authBloc.listen((state) {
       if (state is AuthAuthenticated) {
         add(RefreshTransactionSummary());

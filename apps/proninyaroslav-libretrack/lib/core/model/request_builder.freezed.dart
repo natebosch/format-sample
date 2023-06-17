@@ -87,23 +87,23 @@ class _$ServiceRequestCopyWithImpl<$Res>
       transactionId: transactionId == freezed
           ? _value.transactionId
           : transactionId // ignore: cast_nullable_to_non_nullable
-              as TransactionId,
+                as TransactionId,
       url: url == freezed
           ? _value.url
           : url // ignore: cast_nullable_to_non_nullable
-              as Uri,
+                as Uri,
       method: method == freezed
           ? _value.method
           : method // ignore: cast_nullable_to_non_nullable
-              as RequestMethod,
+                as RequestMethod,
       body: body == freezed
           ? _value.body
           : body // ignore: cast_nullable_to_non_nullable
-              as String?,
+                as String?,
       headers: headers == freezed
           ? _value.headers
           : headers // ignore: cast_nullable_to_non_nullable
-              as Map<String, String>,
+                as Map<String, String>,
     ));
   }
 }
@@ -149,23 +149,23 @@ class __$ServiceRequestCopyWithImpl<$Res>
       transactionId: transactionId == freezed
           ? _value.transactionId
           : transactionId // ignore: cast_nullable_to_non_nullable
-              as TransactionId,
+                as TransactionId,
       url: url == freezed
           ? _value.url
           : url // ignore: cast_nullable_to_non_nullable
-              as Uri,
+                as Uri,
       method: method == freezed
           ? _value.method
           : method // ignore: cast_nullable_to_non_nullable
-              as RequestMethod,
+                as RequestMethod,
       body: body == freezed
           ? _value.body
           : body // ignore: cast_nullable_to_non_nullable
-              as String?,
+                as String?,
       headers: headers == freezed
           ? _value.headers
           : headers // ignore: cast_nullable_to_non_nullable
-              as Map<String, String>,
+                as Map<String, String>,
     ));
   }
 }
@@ -242,11 +242,11 @@ class _$_ServiceRequest
 
   @JsonKey(ignore: true)
   @override
-  _$ServiceRequestCopyWith<_ServiceRequest> get copyWith =>
-      __$ServiceRequestCopyWithImpl<_ServiceRequest>(
-        this,
-        _$identity,
-      );
+  _$ServiceRequestCopyWith<_ServiceRequest>
+  get copyWith => __$ServiceRequestCopyWithImpl<_ServiceRequest>(
+    this,
+    _$identity,
+  );
 }
 
 abstract class _ServiceRequest implements ServiceRequest {

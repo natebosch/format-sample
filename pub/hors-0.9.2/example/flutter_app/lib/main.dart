@@ -158,8 +158,8 @@ class _BodyState extends State<Body> {
                   padding: EdgeInsets.zero,
                   itemCount: _controller!.result!.tokens.length,
                   itemBuilder: (context, i) => DateTimeTokenCard(
-                    token: _controller!.result!.tokens[i],
-                  ),
+                        token: _controller!.result!.tokens[i],
+                      ),
                 ),
             ],
           ),

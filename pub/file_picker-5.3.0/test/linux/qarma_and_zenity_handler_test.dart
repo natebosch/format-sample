@@ -154,13 +154,13 @@ void main() {
     test(
       'should generate the arguments for picking a single file with a custom file filter',
       () {
-        final cliArguments =
-            QarmaAndZenityHandler().generateCommandLineArguments(
-          'Select a file:',
-          fileFilter: '*.dart *.yml',
-          multipleFiles: false,
-          pickDirectory: false,
-        );
+        final cliArguments = QarmaAndZenityHandler()
+            .generateCommandLineArguments(
+              'Select a file:',
+              fileFilter: '*.dart *.yml',
+              multipleFiles: false,
+              pickDirectory: false,
+            );
 
         expect(
           cliArguments.join(' '),
@@ -174,13 +174,13 @@ void main() {
     test(
       'should generate the arguments for picking multiple files with a custom file filter',
       () {
-        final cliArguments =
-            QarmaAndZenityHandler().generateCommandLineArguments(
-          'Select HTML files:',
-          fileFilter: '*.html',
-          multipleFiles: true,
-          pickDirectory: false,
-        );
+        final cliArguments = QarmaAndZenityHandler()
+            .generateCommandLineArguments(
+              'Select HTML files:',
+              fileFilter: '*.html',
+              multipleFiles: true,
+              pickDirectory: false,
+            );
 
         expect(
           cliArguments.join(' '),
@@ -206,11 +206,11 @@ void main() {
     test(
       'should generate the arguments for picking a file when an initial directory is given',
       () {
-        final cliArguments =
-            QarmaAndZenityHandler().generateCommandLineArguments(
-          'Select a file:',
-          initialDirectory: '/home/user/Desktop/',
-        );
+        final cliArguments = QarmaAndZenityHandler()
+            .generateCommandLineArguments(
+              'Select a file:',
+              initialDirectory: '/home/user/Desktop/',
+            );
 
         expect(
           cliArguments.join(' '),
@@ -224,12 +224,12 @@ void main() {
     test(
       'should generate the arguments for saving a file when an initial directory is given',
       () {
-        final cliArguments =
-            QarmaAndZenityHandler().generateCommandLineArguments(
-          'Save as:',
-          initialDirectory: '/home/user/Desktop/',
-          saveFile: true,
-        );
+        final cliArguments = QarmaAndZenityHandler()
+            .generateCommandLineArguments(
+              'Save as:',
+              initialDirectory: '/home/user/Desktop/',
+              saveFile: true,
+            );
 
         expect(
           cliArguments.join(' '),
@@ -243,13 +243,13 @@ void main() {
     test(
       'should generate the arguments for saving a file when an initial directory and the filename is given',
       () {
-        final cliArguments =
-            QarmaAndZenityHandler().generateCommandLineArguments(
-          'Save as:',
-          fileName: 'output.pdf',
-          initialDirectory: '/home/user/Desktop/',
-          saveFile: true,
-        );
+        final cliArguments = QarmaAndZenityHandler()
+            .generateCommandLineArguments(
+              'Save as:',
+              fileName: 'output.pdf',
+              initialDirectory: '/home/user/Desktop/',
+              saveFile: true,
+            );
 
         expect(
           cliArguments.join(' '),

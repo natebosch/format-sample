@@ -63,12 +63,12 @@ class _DataBaseWrapperState extends State<DataBaseWrapper> {
             light: CommonData.getTheme(context, Brightness.light),
             dark: CommonData.getTheme(context, Brightness.dark),
             builder: (theme, darkTheme) => MaterialApp(
-              theme: theme,
-              darkTheme: darkTheme,
-              title: CommonData.appTitle,
-              debugShowCheckedModeBanner: false,
-              home: PlaceHolderScaffold(),
-            ),
+                  theme: theme,
+                  darkTheme: darkTheme,
+                  title: CommonData.appTitle,
+                  debugShowCheckedModeBanner: false,
+                  home: PlaceHolderScaffold(),
+                ),
           );
       },
     );

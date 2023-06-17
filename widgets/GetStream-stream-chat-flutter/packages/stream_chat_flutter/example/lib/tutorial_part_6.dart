@@ -68,10 +68,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       theme: themeData,
       builder: (context, child) => StreamChat(
-        client: client,
-        streamChatThemeData: customTheme,
-        child: child,
-      ),
+            client: client,
+            streamChatThemeData: customTheme,
+            child: child,
+          ),
       home: const ChannelListPage(),
     );
   }
@@ -109,8 +109,8 @@ class ChannelPage extends StatelessWidget {
         children: <Widget>[
           Expanded(
             child: MessageListView(
-              threadBuilder: (_, parentMessage) =>
-                  ThreadPage(parent: parentMessage),
+              threadBuilder:
+                  (_, parentMessage) => ThreadPage(parent: parentMessage),
             ),
           ),
           const MessageInput(),

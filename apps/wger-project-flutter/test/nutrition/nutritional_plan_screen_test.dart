@@ -39,8 +39,8 @@ void main() {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider<NutritionPlansProvider>(
-          create: (context) =>
-              NutritionPlansProvider(testAuthProvider, [], client),
+          create:
+              (context) => NutritionPlansProvider(testAuthProvider, [], client),
         ),
         ChangeNotifierProvider<BodyWeightProvider>(
           create: (context) => BodyWeightProvider(testAuthProvider, [], client),

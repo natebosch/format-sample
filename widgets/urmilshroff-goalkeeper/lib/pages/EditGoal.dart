@@ -138,25 +138,25 @@ class EditGoalState extends State<EditGoal> {
                   ),
                   child: Builder(
                     builder: (context) => OutlineButton(
-                      child: Text(
-                        goal.deadLine == null
-                            ? 'ADD DEADLINE'
-                            : 'EDIT DEADLINE',
-                        style: TextStyle(
-                          color: this.invertColor,
-                          fontWeight: FontWeight.w500,
+                          child: Text(
+                            goal.deadLine == null
+                                ? 'ADD DEADLINE'
+                                : 'EDIT DEADLINE',
+                            style: TextStyle(
+                              color: this.invertColor,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                          onPressed: () {
+                            this.editDeadLine(context);
+                          },
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(5.0),
+                          ),
+                          borderSide: BorderSide(color: MyColors.purple),
+                          highlightedBorderColor: MyColors.yellow,
+                          splashColor: MyColors.yellow,
                         ),
-                      ),
-                      onPressed: () {
-                        this.editDeadLine(context);
-                      },
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(5.0),
-                      ),
-                      borderSide: BorderSide(color: MyColors.purple),
-                      highlightedBorderColor: MyColors.yellow,
-                      splashColor: MyColors.yellow,
-                    ),
                   ),
                 ),
               ],

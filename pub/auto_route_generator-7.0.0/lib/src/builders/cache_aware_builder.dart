@@ -28,13 +28,13 @@ abstract class CacheAwareBuilder<T> extends Builder {
     this.allowSyntaxErrors = false,
     required this.annotationName,
     this.options,
-  })  : _generatedExtension = generatedExtension,
-        buildExtensions = validatedBuildExtensionsFrom(
-          options != null ? Map.of(options.config) : null,
-          {
-            '.dart': [generatedExtension, ...additionalOutputExtensions],
-          },
-        ) {
+  }) : _generatedExtension = generatedExtension,
+       buildExtensions = validatedBuildExtensionsFrom(
+         options != null ? Map.of(options.config) : null,
+         {
+           '.dart': [generatedExtension, ...additionalOutputExtensions],
+         },
+       ) {
     if (_generatedExtension.isEmpty || !_generatedExtension.startsWith('.')) {
       throw ArgumentError.value(
         _generatedExtension,

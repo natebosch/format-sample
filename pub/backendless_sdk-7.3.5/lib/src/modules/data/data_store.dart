@@ -92,9 +92,9 @@ class MapDrivenDataStore implements IDataStore<Map> {
 
   Future<List<String>?> create(List<Map> objects) async =>
       (await _channel.invokeMethod(
-        "Backendless.Data.of.create",
-        <String, dynamic>{'tableName': _tableName, 'objects': objects},
-      ))
+            "Backendless.Data.of.create",
+            <String, dynamic>{'tableName': _tableName, 'objects': objects},
+          ))
           .cast<String>();
 
   Future<int?> deleteRelation(
@@ -120,11 +120,10 @@ class MapDrivenDataStore implements IDataStore<Map> {
   }
 
   Future<List<Map?>?> find([DataQueryBuilder? queryBuilder]) async =>
-      (await _channel.invokeMethod(
-              "Backendless.Data.of.find", <String, dynamic>{
-        'tableName': _tableName,
-        'queryBuilder': queryBuilder
-      }))
+      (await _channel.invokeMethod("Backendless.Data.of.find", <
+            String,
+            dynamic
+          >{'tableName': _tableName, 'queryBuilder': queryBuilder}))
           .cast<Map?>();
 
   Future<Map?> findById(
@@ -183,7 +182,7 @@ class MapDrivenDataStore implements IDataStore<Map> {
   }
 
   Future<int?> getObjectCount([DataQueryBuilder? queryBuilder]) => _channel
-          .invokeMethod("Backendless.Data.of.getObjectCount", <String, dynamic>{
+      .invokeMethod("Backendless.Data.of.getObjectCount", <String, dynamic>{
         'tableName': _tableName,
         'queryBuilder': queryBuilder,
       });
@@ -191,8 +190,7 @@ class MapDrivenDataStore implements IDataStore<Map> {
   Future<List<R?>?> loadRelations<R>(
     String objectId,
     LoadRelationsQueryBuilder<R> queryBuilder,
-  ) async =>
-      (await _channel.invokeMethod(
+  ) async => (await _channel.invokeMethod(
         "Backendless.Data.of.loadRelations",
         <String, dynamic>{
           'tableName': _tableName,
@@ -200,29 +198,27 @@ class MapDrivenDataStore implements IDataStore<Map> {
           'queryBuilder': queryBuilder,
         },
       ))
-          .cast<R?>();
+      .cast<R?>();
 
   Future<int?> remove({Map? entity, String? whereClause}) {
     checkArguments({"entity": entity}, {"whereClause": whereClause});
-    return _channel.invokeMethod(
-        "Backendless.Data.of.remove", <String, dynamic>{
-      'tableName': _tableName,
-      'entity': entity,
-      'whereClause': whereClause
-    });
+    return _channel.invokeMethod("Backendless.Data.of.remove", <
+      String,
+      dynamic
+    >{'tableName': _tableName, 'entity': entity, 'whereClause': whereClause});
   }
 
-  Future<Map?> save(Map entity, {bool isUpsert = false}) =>
-      _channel.invokeMethod("Backendless.Data.of.save", <String, dynamic>{
+  Future<Map?> save(Map entity, {bool isUpsert = false}) => _channel
+      .invokeMethod("Backendless.Data.of.save", <String, dynamic>{
         'tableName': _tableName,
         'entity': entity,
         'isUpsert': isUpsert,
       });
 
   Future<Map?> deepSave(Map entity) => _channel.invokeMethod(
-        "Backendless.Data.of.deepSave",
-        <String, dynamic>{'tableName': _tableName, 'entity': entity},
-      );
+    "Backendless.Data.of.deepSave",
+    <String, dynamic>{'tableName': _tableName, 'entity': entity},
+  );
 
   Future<int?> setRelation(
     String parentObjectId,
@@ -247,13 +243,13 @@ class MapDrivenDataStore implements IDataStore<Map> {
   }
 
   Future<int?> update(String whereClause, Map changes) => _channel.invokeMethod(
-        "Backendless.Data.of.update",
-        <String, dynamic>{
-          'tableName': _tableName,
-          'whereClause': whereClause,
-          'changes': changes,
-        },
-      );
+    "Backendless.Data.of.update",
+    <String, dynamic>{
+      'tableName': _tableName,
+      'whereClause': whereClause,
+      'changes': changes,
+    },
+  );
 
   EventHandler<Map> rt() => _eventHandler;
 }
@@ -297,9 +293,9 @@ class ClassDrivenDataStore<T> implements IDataStore<T> {
     List<Map<String, dynamic>?> mapObjects =
         objects.map((object) => reflector.serialize(object)).toList();
     return (await _channel.invokeMethod(
-      "Backendless.Data.of.create",
-      <String, dynamic>{'tableName': _tableName, 'objects': mapObjects},
-    ))
+          "Backendless.Data.of.create",
+          <String, dynamic>{'tableName': _tableName, 'objects': mapObjects},
+        ))
         .cast<String>();
   }
 
@@ -327,12 +323,12 @@ class ClassDrivenDataStore<T> implements IDataStore<T> {
 
   Future<List<T?>?> find([DataQueryBuilder? queryBuilder]) async {
     List<Map>? mapObjects = (await _channel.invokeMethod(
-      "Backendless.Data.of.find",
-      <String, dynamic>{
-        'tableName': _tableName,
-        'queryBuilder': queryBuilder,
-      },
-    ))
+          "Backendless.Data.of.find",
+          <String, dynamic>{
+            'tableName': _tableName,
+            'queryBuilder': queryBuilder,
+          },
+        ))
         .cast<Map>();
 
     List<T?>? deserializedList =
@@ -403,7 +399,7 @@ class ClassDrivenDataStore<T> implements IDataStore<T> {
   }
 
   Future<int?> getObjectCount([DataQueryBuilder? queryBuilder]) => _channel
-          .invokeMethod("Backendless.Data.of.getObjectCount", <String, dynamic>{
+      .invokeMethod("Backendless.Data.of.getObjectCount", <String, dynamic>{
         'tableName': _tableName,
         'queryBuilder': queryBuilder,
       });
@@ -483,13 +479,13 @@ class ClassDrivenDataStore<T> implements IDataStore<T> {
   }
 
   Future<int?> update(String whereClause, Map changes) => _channel.invokeMethod(
-        "Backendless.Data.of.update",
-        <String, dynamic>{
-          'tableName': _tableName,
-          'whereClause': whereClause,
-          'changes': changes,
-        },
-      );
+    "Backendless.Data.of.update",
+    <String, dynamic>{
+      'tableName': _tableName,
+      'whereClause': whereClause,
+      'changes': changes,
+    },
+  );
 
   EventHandler<T> rt() => _eventHandler;
 }

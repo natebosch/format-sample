@@ -6,7 +6,7 @@ import 'package:flutter_folio/styled_widgets/styled_spacers.dart';
 
 class EmptyScrapboardView extends StatelessWidget {
   const EmptyScrapboardView({Key key, @required this.readOnly})
-      : super(key: key);
+    : super(key: key);
   final bool readOnly;
 
   @override

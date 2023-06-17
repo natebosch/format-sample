@@ -20,7 +20,7 @@ class HistoryPage extends StatefulWidget {
   final HistoryViewModel model;
 
   HistoryPage._({Key key, @required this.intent, @required this.model})
-      : super(key: key);
+    : super(key: key);
 
   factory HistoryPage({
     Key key,
@@ -42,13 +42,18 @@ class HistoryPage extends StatefulWidget {
 
   @override
   _HistoryPageState createState() => _HistoryPageState(
-        intent: intent,
-        model: model,
-      );
+    intent: intent,
+    model: model,
+  );
 }
 
-class _HistoryPageState extends ViewState<HistoryPage, HistoryViewModel,
-    HistoryIntent, HistoryState> {
+class _HistoryPageState
+    extends ViewState<
+      HistoryPage,
+      HistoryViewModel,
+      HistoryIntent,
+      HistoryState
+    > {
   static final _listSectionDateFormatter = DateFormat.yMMMMd();
   static final _listRowCheckInDateFormatter = DateFormat().add_Hm();
 

@@ -12,8 +12,7 @@ class _$SurveyShowQuestionNumbers extends SurveyShowQuestionNumbers {
 
   factory _$SurveyShowQuestionNumbers([
     void Function(SurveyShowQuestionNumbersBuilder)? updates,
-  ]) =>
-      (new SurveyShowQuestionNumbersBuilder()..update(updates))._build();
+  ]) => (new SurveyShowQuestionNumbersBuilder()..update(updates))._build();
 
   _$SurveyShowQuestionNumbers._({required this.anyOf}) : super._() {
     BuiltValueNullFieldError.checkNotNull(
@@ -26,8 +25,7 @@ class _$SurveyShowQuestionNumbers extends SurveyShowQuestionNumbers {
   @override
   SurveyShowQuestionNumbers rebuild(
     void Function(SurveyShowQuestionNumbersBuilder) updates,
-  ) =>
-      (toBuilder()..update(updates)).build();
+  ) => (toBuilder()..update(updates)).build();
 
   @override
   SurveyShowQuestionNumbersBuilder toBuilder() =>

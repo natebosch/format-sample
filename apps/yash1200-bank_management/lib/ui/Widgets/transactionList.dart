@@ -33,7 +33,9 @@ class _TransactionPageState extends State<TransactionPage> {
                     style: TextStyle(fontWeight: FontWeight.w400, fontSize: 18),
                   ),
                   subtitle: Text(
-                    'Balance: ${snapshot.data[index].data()['balance'].toString()}'
+                    'Balance: ${snapshot.data[index].data()[
+                          'balance'
+                        ].toString()}'
                     '(${snapshot.data[index].data()['type'] == 1 ? '+' : '-'}'
                     '${snapshot.data[index].data()['amount'].toString()})',
                     style: TextStyle(fontWeight: FontWeight.w300),
@@ -52,13 +54,11 @@ class _TransactionPageState extends State<TransactionPage> {
                         ),
                       ),
                       Text(
-                        DateFormat.MMMd()
-                            .format(
-                              DateTime.fromMillisecondsSinceEpoch(
-                                snapshot.data[index].data()['time'],
-                              ),
-                            )
-                            .toString(),
+                        DateFormat.MMMd().format(
+                          DateTime.fromMillisecondsSinceEpoch(
+                            snapshot.data[index].data()['time'],
+                          ),
+                        ).toString(),
                         style: TextStyle(fontWeight: FontWeight.w300),
                       ),
                     ],

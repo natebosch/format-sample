@@ -48,8 +48,8 @@ class Splash extends StatelessWidget {
 class LoadingView extends StatelessWidget {
   @override
   Widget build(BuildContext context) => new Center(
-        child: new CircularProgressIndicator(),
-      );
+    child: new CircularProgressIndicator(),
+  );
 }
 
 class App extends StatefulWidget {

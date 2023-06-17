@@ -23,9 +23,9 @@ void main() {
         InvalidPatternException('ABC');
     final MissingOutputException missingOutputException =
         MissingOutputException(<File>[
-      globals.fs.file('foo'),
-      globals.fs.file('bar'),
-    ], 'example');
+          globals.fs.file('foo'),
+          globals.fs.file('bar'),
+        ], 'example');
     final MisplacedOutputException misplacedOutputException =
         MisplacedOutputException('foo', 'example');
     final MissingDefineException missingDefineException =

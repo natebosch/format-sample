@@ -154,11 +154,9 @@ class _HomePageState extends State<HomePage> {
 
       List<BodyPart> selectedBodyParts = [];
       for (var savedPart in savedBodyPartList) {
-        var selected = bodyPartList
-            .where(
-              (element) => element.id == int.tryParse(savedPart),
-            )
-            .first;
+        var selected = bodyPartList.where(
+          (element) => element.id == int.tryParse(savedPart),
+        ).first;
         selectedBodyParts.add(selected);
       }
 
@@ -272,19 +270,20 @@ class _HomePageState extends State<HomePage> {
             children: data
                 .where((e) => jsonDecode(e)['symptoms'].length > 0)
                 .map((e) {
-              List<Widget> widgets = getSymptomListWidgets(
-                jsonDecode(e)['date_time'] ?? jsonDecode(e)['date'],
-                jsonDecode(e)['symptoms'] as List,
-                snapshot.data[1] as List<Symptom>,
-                snapshot.data[2] as List<BodyPart>,
-              );
+                  List<Widget> widgets = getSymptomListWidgets(
+                    jsonDecode(e)['date_time'] ?? jsonDecode(e)['date'],
+                    jsonDecode(e)['symptoms'] as List,
+                    snapshot.data[1] as List<Symptom>,
+                    snapshot.data[2] as List<BodyPart>,
+                  );
 
-              return Container(
-                padding: EdgeInsets.all(8.0),
-                color: Colors.grey[100],
-                child: Column(children: widgets),
-              );
-            }).toList(),
+                  return Container(
+                    padding: EdgeInsets.all(8.0),
+                    color: Colors.grey[100],
+                    child: Column(children: widgets),
+                  );
+                })
+                .toList(),
           );
         } else if (snapshot.data[0] == null) {
           return SizedBox(height: 250, child: LoaderDisplay());
@@ -307,17 +306,18 @@ class _HomePageState extends State<HomePage> {
             children: (snapshot.data as List)
                 .where((e) => jsonDecode(e)['food_tracks'].length > 0)
                 .map((e) {
-              List<Widget> foodWidgets = getFoodListWidgets(
-                jsonDecode(e)['date_time'] ?? jsonDecode(e)['date'],
-                jsonDecode(e)['food_tracks'] as List,
-              );
+                  List<Widget> foodWidgets = getFoodListWidgets(
+                    jsonDecode(e)['date_time'] ?? jsonDecode(e)['date'],
+                    jsonDecode(e)['food_tracks'] as List,
+                  );
 
-              return Container(
-                padding: EdgeInsets.all(8.0),
-                color: Colors.grey[100],
-                child: Column(children: foodWidgets),
-              );
-            }).toList(),
+                  return Container(
+                    padding: EdgeInsets.all(8.0),
+                    color: Colors.grey[100],
+                    child: Column(children: foodWidgets),
+                  );
+                })
+                .toList(),
           );
         } else if (snapshot.data == null) {
           return SizedBox(height: 250, child: LoaderDisplay());

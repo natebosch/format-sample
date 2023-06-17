@@ -14,8 +14,8 @@ class SectionCard extends StatelessWidget {
   const SectionCard({
     Key key,
     @required this.section,
-  })  : assert(section != null),
-        super(key: key);
+  }) : assert(section != null),
+       super(key: key);
 
   final Section section;
 
@@ -64,10 +64,10 @@ class SectionTitle extends StatelessWidget {
     @required this.section,
     @required this.scale,
     @required this.opacity,
-  })  : assert(section != null),
-        assert(scale != null),
-        assert(opacity != null && opacity >= 0.0 && opacity <= 1.0),
-        super(key: key);
+  }) : assert(section != null),
+       assert(scale != null),
+       assert(opacity != null && opacity >= 0.0 && opacity <= 1.0),
+       super(key: key);
 
   final Section section;
   final double scale;
@@ -119,9 +119,9 @@ class SectionDetailView extends StatelessWidget {
   SectionDetailView({
     Key key,
     @required this.detail,
-  })  : assert(detail != null && detail.imageAsset != null),
-        assert((detail.imageAsset ?? detail.title) != null),
-        super(key: key);
+  }) : assert(detail != null && detail.imageAsset != null),
+       assert((detail.imageAsset ?? detail.title) != null),
+       super(key: key);
 
   final SectionDetail detail;
 
@@ -154,36 +154,36 @@ class SectionDetailView extends StatelessWidget {
             Navigator.of(context).push(
               new PageRouteBuilder(
                 pageBuilder: (_, __, ___) => new Detail(
-                  imagetype: "google",
-                  url: detail.url,
-                ),
+                      imagetype: "google",
+                      url: detail.url,
+                    ),
               ),
             );
           } else if (imageType == 'assets/image/facebook.png') {
             Navigator.of(context).push(
               new PageRouteBuilder(
                 pageBuilder: (_, __, ___) => new Detail(
-                  imagetype: "fb",
-                  url: detail.url,
-                ),
+                      imagetype: "fb",
+                      url: detail.url,
+                    ),
               ),
             );
           } else if (imageType == 'assets/image/instagram.jpeg') {
             Navigator.of(context).push(
               new PageRouteBuilder(
                 pageBuilder: (_, __, ___) => new Detail(
-                  imagetype: "insta",
-                  url: detail.url,
-                ),
+                      imagetype: "insta",
+                      url: detail.url,
+                    ),
               ),
             );
           } else if (imageType == 'assets/image/twitter.jpg') {
             Navigator.of(context).push(
               new PageRouteBuilder(
                 pageBuilder: (_, __, ___) => new Detail(
-                  imagetype: "twitter",
-                  url: detail.url,
-                ),
+                      imagetype: "twitter",
+                      url: detail.url,
+                    ),
               ),
             );
           }

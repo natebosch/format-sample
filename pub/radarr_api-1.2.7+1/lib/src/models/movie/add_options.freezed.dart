@@ -52,9 +52,10 @@ abstract class $RadarrMovieAddOptionsCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$RadarrMovieAddOptionsCopyWithImpl<$Res,
-        $Val extends RadarrMovieAddOptions>
-    implements $RadarrMovieAddOptionsCopyWith<$Res> {
+class _$RadarrMovieAddOptionsCopyWithImpl<
+  $Res,
+  $Val extends RadarrMovieAddOptions
+> implements $RadarrMovieAddOptionsCopyWith<$Res> {
   _$RadarrMovieAddOptionsCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -76,23 +77,23 @@ class _$RadarrMovieAddOptionsCopyWithImpl<$Res,
         ignoreEpisodesWithFiles: freezed == ignoreEpisodesWithFiles
             ? _value.ignoreEpisodesWithFiles
             : ignoreEpisodesWithFiles // ignore: cast_nullable_to_non_nullable
-                as bool?,
+                  as bool?,
         ignoreEpisodesWithoutFiles: freezed == ignoreEpisodesWithoutFiles
             ? _value.ignoreEpisodesWithoutFiles
             : ignoreEpisodesWithoutFiles // ignore: cast_nullable_to_non_nullable
-                as bool?,
+                  as bool?,
         monitor: freezed == monitor
             ? _value.monitor
             : monitor // ignore: cast_nullable_to_non_nullable
-                as RadarrMonitorType?,
+                  as RadarrMonitorType?,
         searchForMovie: freezed == searchForMovie
             ? _value.searchForMovie
             : searchForMovie // ignore: cast_nullable_to_non_nullable
-                as bool?,
+                  as bool?,
         addMethod: freezed == addMethod
             ? _value.addMethod
             : addMethod // ignore: cast_nullable_to_non_nullable
-                as RadarrAddMethod?,
+                  as RadarrAddMethod?,
       ) as $Val,
     );
   }
@@ -138,23 +139,23 @@ class __$$_RadarrMovieAddOptionsCopyWithImpl<$Res>
       ignoreEpisodesWithFiles: freezed == ignoreEpisodesWithFiles
           ? _value.ignoreEpisodesWithFiles
           : ignoreEpisodesWithFiles // ignore: cast_nullable_to_non_nullable
-              as bool?,
+                as bool?,
       ignoreEpisodesWithoutFiles: freezed == ignoreEpisodesWithoutFiles
           ? _value.ignoreEpisodesWithoutFiles
           : ignoreEpisodesWithoutFiles // ignore: cast_nullable_to_non_nullable
-              as bool?,
+                as bool?,
       monitor: freezed == monitor
           ? _value.monitor
           : monitor // ignore: cast_nullable_to_non_nullable
-              as RadarrMonitorType?,
+                as RadarrMonitorType?,
       searchForMovie: freezed == searchForMovie
           ? _value.searchForMovie
           : searchForMovie // ignore: cast_nullable_to_non_nullable
-              as bool?,
+                as bool?,
       addMethod: freezed == addMethod
           ? _value.addMethod
           : addMethod // ignore: cast_nullable_to_non_nullable
-              as RadarrAddMethod?,
+                as RadarrAddMethod?,
     ));
   }
 }
@@ -172,8 +173,7 @@ class _$_RadarrMovieAddOptions implements _RadarrMovieAddOptions {
 
   factory _$_RadarrMovieAddOptions.fromJson(
     Map<String, dynamic> json,
-  ) =>
-      _$$_RadarrMovieAddOptionsFromJson(json);
+  ) => _$$_RadarrMovieAddOptionsFromJson(json);
 
   @override
   final bool? ignoreEpisodesWithFiles;
@@ -217,20 +217,21 @@ class _$_RadarrMovieAddOptions implements _RadarrMovieAddOptions {
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-        runtimeType,
-        ignoreEpisodesWithFiles,
-        ignoreEpisodesWithoutFiles,
-        monitor,
-        searchForMovie,
-        addMethod,
-      );
+    runtimeType,
+    ignoreEpisodesWithFiles,
+    ignoreEpisodesWithoutFiles,
+    monitor,
+    searchForMovie,
+    addMethod,
+  );
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_RadarrMovieAddOptionsCopyWith<_$_RadarrMovieAddOptions> get copyWith =>
-      __$$_RadarrMovieAddOptionsCopyWithImpl<_$_RadarrMovieAddOptions>(
-          this, _$identity);
+  _$$_RadarrMovieAddOptionsCopyWith<_$_RadarrMovieAddOptions>
+  get copyWith => __$$_RadarrMovieAddOptionsCopyWithImpl<
+    _$_RadarrMovieAddOptions
+  >(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {

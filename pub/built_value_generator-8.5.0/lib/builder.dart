@@ -8,5 +8,5 @@ import 'package:built_value_generator/built_value_generator.dart';
 import 'package:source_gen/source_gen.dart';
 
 Builder builtValue(BuilderOptions _) => SharedPartBuilder([
-      BuiltValueGenerator(),
-    ], 'built_value');
+  BuiltValueGenerator(),
+], 'built_value');

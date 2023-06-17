@@ -103,9 +103,9 @@ class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver {
                         child: Text(
                           "quote.",
                           style: Theme.of(context).textTheme.headline3.copyWith(
-                                color: Colors.white,
-                                fontFamily: "appbar",
-                              ),
+                            color: Colors.white,
+                            fontFamily: "appbar",
+                          ),
                         ),
                       ),
                     ],
@@ -213,7 +213,9 @@ class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver {
                         child: Icon(Icons.share, color: Colors.black),
                         onPressed: () {
                           Share.share(
-                            "${this.quote[_index]['Quote']}\n\n - ${this.quote[_index]['Author']}",
+                            "${this.quote[_index]['Quote']}\n\n - ${this.quote[
+                              _index
+                            ]['Author']}",
                           );
                         },
                       ),

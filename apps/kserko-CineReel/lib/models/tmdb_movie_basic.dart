@@ -65,8 +65,7 @@ class TMDBMovieBasic {
 
   factory TMDBMovieBasic.fromJson(
     Map<String, dynamic> json,
-  ) =>
-      _$TMDBMovieBasicFromJson(json);
+  ) => _$TMDBMovieBasicFromJson(json);
 
   Map<String, dynamic> toJson() => _$TMDBMovieBasicToJson(this);
 }

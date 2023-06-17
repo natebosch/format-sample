@@ -21,10 +21,10 @@ class Cards extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () => Navigator.pushReplacementNamed(
-        context,
-        '$back',
-        arguments: {'image': images, 'text': text},
-      ),
+            context,
+            '$back',
+            arguments: {'image': images, 'text': text},
+          ),
       child: SizedBox(
         child: Column(
           children: [

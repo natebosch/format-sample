@@ -21,7 +21,7 @@ class MarkdownToolBar extends StatelessWidget {
   final TextEditingController textController;
 
   const MarkdownToolBar({Key? key, required this.textController})
-      : super(key: key);
+    : super(key: key);
 
   @override
   Widget build(BuildContext context) {

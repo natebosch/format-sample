@@ -402,12 +402,10 @@ class _ReposHeaderItemState extends State<ReposHeaderItem> {
       RenderBox? renderBox2 = layoutTopicContainerKey.currentContext
           ?.findRenderObject() as RenderBox?;
 
-      var dy = renderBox2
-              ?.localToGlobal(
-                Offset.zero,
-                ancestor: layoutKey.currentContext!.findRenderObject(),
-              )
-              .dy ??
+      var dy = renderBox2?.localToGlobal(
+            Offset.zero,
+            ancestor: layoutKey.currentContext!.findRenderObject(),
+          ).dy ??
           0;
       var sizeTagContainer =
           layoutTopicContainerKey.currentContext?.size ?? null;
@@ -525,10 +523,12 @@ class ReposHeaderViewModel {
     this.openIssuesCount = map.issuesOpen;
     this.repositoryStar = map.starCount != null ? map.starCount.toString() : "";
     this.repositoryFork = map.forkCount != null ? map.forkCount.toString() : "";
-    this.repositoryWatch =
-        map.watcherCount != null ? map.watcherCount.toString() : "";
-    this.repositoryIssue =
-        map.issuesOpen != null ? map.issuesOpen.toString() : "";
+    this.repositoryWatch = map.watcherCount != null
+        ? map.watcherCount.toString()
+        : "";
+    this.repositoryIssue = map.issuesOpen != null
+        ? map.issuesOpen.toString()
+        : "";
     //this.repositoryIssueClose = map.closedIssuesCount != null ? map.closed_issues_count.toString() : "";
     //this.repositoryIssueAll = map.all_issues_count != null ? map.all_issues_count.toString() : "";
     this.repositorySize = (map.size! / 1024.0).toString().substring(0, 3) + "M";
@@ -536,10 +536,12 @@ class ReposHeaderViewModel {
     this.repositoryDes = map.shortDescriptionHTML;
     this.repositoryIsFork = map.isFork;
     this.license = map.license != null ? map.license : "";
-    this.repositoryParentName =
-        map.parent != null ? map.parent!.reposName : null;
-    this.repositoryParentUser =
-        map.parent != null ? map.parent!.ownerName : null;
+    this.repositoryParentName = map.parent != null
+        ? map.parent!.reposName
+        : null;
+    this.repositoryParentUser = map.parent != null
+        ? map.parent!.ownerName
+        : null;
     this.created_at = CommonUtils.getNewsTimeStr(
       DateTime.parse(map.createdAt!),
     );

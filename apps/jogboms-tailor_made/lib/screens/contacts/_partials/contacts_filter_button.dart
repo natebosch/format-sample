@@ -102,11 +102,11 @@ class _Option extends PopupMenuItem<SortType> {
     @required this.type,
     @required this.style,
   }) : super(
-          key: key,
-          enabled: enabled,
-          value: type,
-          child: Text(text, style: style),
-        );
+         key: key,
+         enabled: enabled,
+         value: type,
+         child: Text(text, style: style),
+       );
 
   final String text;
   final SortType type;

@@ -49,9 +49,7 @@ class AccountFactoryManager {
 }
 
 class AccountGeneralFactory {
-  AccountGeneralFactory()
-      : _addressFactory = null,
-        _idFactory = null;
+  AccountGeneralFactory() : _addressFactory = null, _idFactory = null;
 
   AddressFactory? _addressFactory;
   IDFactory? _idFactory;
@@ -316,8 +314,9 @@ class AccountGeneralFactory {
       return null;
     }
     String? docType = getDocumentType(info);
-    DocumentFactory? factory =
-        docType == null ? null : getDocumentFactory(docType);
+    DocumentFactory? factory = docType == null
+        ? null
+        : getDocumentFactory(docType);
     if (factory == null) {
       factory = getDocumentFactory('*'); // unknown
       assert(factory != null, 'cannot parse document: $doc');

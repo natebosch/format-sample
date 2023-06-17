@@ -48,13 +48,13 @@ class _DashboardChartState extends State<DashboardChart> {
       date = selectedDatum.first.datum.date;
       selectedDatum
           .where(
-        (charts.SeriesDatum datumPair) =>
-            datumPair.series.id == DashboardChart.PERIOD_CURRENT,
-      )
+            (charts.SeriesDatum datumPair) =>
+                datumPair.series.id == DashboardChart.PERIOD_CURRENT,
+          )
           .forEach((charts.SeriesDatum datumPair) {
-        total += datumPair.datum.amount;
-        measures[datumPair.series.displayName] = datumPair.datum.amount;
-      });
+            total += datumPair.datum.amount;
+            measures[datumPair.series.displayName] = datumPair.datum.amount;
+          });
     }
 
     setState(() {

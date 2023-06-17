@@ -30,8 +30,8 @@ class KeyValue with _$KeyValue {
   }) = _KeyValue;
 
   factory KeyValue.fromJson(Map<String, Object?> json) => _$KeyValueFromJson(
-        json,
-      );
+    json,
+  );
 
   const KeyValue._();
 

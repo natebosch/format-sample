@@ -5,28 +5,28 @@ import 'package:openflutterecommerce/presentation/widgets/independent/base_produ
 
 class BlankProductListItem extends BaseProductListItem {
   BlankProductListItem()
-      : super(
-          inactiveMessage: '',
-          bottomRoundButton: Container(
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              color: AppColors.background,
-            ),
-            height: 36,
-            width: 36,
+    : super(
+        inactiveMessage: '',
+        bottomRoundButton: Container(
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            color: AppColors.background,
           ),
-          mainContentBuilder: (context) {
-            return Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                _buildGrey(115, 21),
-                _buildGrey(38, 11),
-                _buildGrey(91, 14),
-                _buildGrey(23, 15),
-              ],
-            );
-          },
-        );
+          height: 36,
+          width: 36,
+        ),
+        mainContentBuilder: (context) {
+          return Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              _buildGrey(115, 21),
+              _buildGrey(38, 11),
+              _buildGrey(91, 14),
+              _buildGrey(23, 15),
+            ],
+          );
+        },
+      );
 
   static Widget _buildGrey(double width, double height) {
     return Padding(

@@ -181,7 +181,7 @@ class BottomPanel extends StatelessWidget {
                             builder: (
                               context,
                               AsyncSnapshot<MapEntry<PlayerState, Tune>>
-                                  snapshot,
+                              snapshot,
                             ) {
                               PlayerState newStat = snapshot.data.key;
                               return PlayPauseButtonWidget(
@@ -247,9 +247,9 @@ class BottomPanel extends StatelessWidget {
               value: _currentDuration != null &&
                       _currentDuration.inMilliseconds > 0
                   ? (song.duration != 0
-                      ? _currentDuration.inMilliseconds.toDouble() /
-                          song.duration
-                      : 0)
+                        ? _currentDuration.inMilliseconds.toDouble() /
+                            song.duration
+                        : 0)
                   : 0.0,
               valueColor: new AlwaysStoppedAnimation(Color(colors[1])),
               backgroundColor: Color(colors[0]),

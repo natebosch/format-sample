@@ -36,13 +36,13 @@ class PromoCodeEntity extends Entity<int> {
 
   @override
   List<Object> get props => [
-        id,
-        title,
-        image,
-        promoCode,
-        discountPercent,
-        belongsToUser,
-        wasUsed,
-        dateExpires,
-      ];
+    id,
+    title,
+    image,
+    promoCode,
+    discountPercent,
+    belongsToUser,
+    wasUsed,
+    dateExpires,
+  ];
 }

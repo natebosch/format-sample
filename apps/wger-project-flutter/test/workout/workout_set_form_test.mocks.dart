@@ -40,56 +40,56 @@ class MockExercisesProvider extends _i1.Mock implements _i5.ExercisesProvider {
 
   @override
   List<_i4.Exercise> get items => (super.noSuchMethod(
-        Invocation.getter(#items),
-        returnValue: <_i4.Exercise>[],
-      ) as List<_i4.Exercise>);
+    Invocation.getter(#items),
+    returnValue: <_i4.Exercise>[],
+  ) as List<_i4.Exercise>);
   @override
   _i2.AuthProvider get auth => (super.noSuchMethod(
-        Invocation.getter(#auth),
-        returnValue: _FakeAuthProvider_0(),
-      ) as _i2.AuthProvider);
+    Invocation.getter(#auth),
+    returnValue: _FakeAuthProvider_0(),
+  ) as _i2.AuthProvider);
   @override
   set auth(_i2.AuthProvider? _auth) => super.noSuchMethod(
-        Invocation.setter(#auth, _auth),
-        returnValueForMissingStub: null,
-      );
+    Invocation.setter(#auth, _auth),
+    returnValueForMissingStub: null,
+  );
   @override
   _i3.Client get client => (super.noSuchMethod(
-        Invocation.getter(#client),
-        returnValue: _FakeClient_1(),
-      ) as _i3.Client);
+    Invocation.getter(#client),
+    returnValue: _FakeClient_1(),
+  ) as _i3.Client);
   @override
   set client(_i3.Client? _client) => super.noSuchMethod(
-        Invocation.setter(#client, _client),
-        returnValueForMissingStub: null,
-      );
+    Invocation.setter(#client, _client),
+    returnValueForMissingStub: null,
+  );
   @override
   bool get hasListeners =>
       (super.noSuchMethod(Invocation.getter(#hasListeners), returnValue: false)
           as bool);
   @override
   _i4.Exercise findById(int? exerciseId) => (super.noSuchMethod(
-        Invocation.method(#findById, [exerciseId]),
-        returnValue: _FakeExercise_2(),
-      ) as _i4.Exercise);
+    Invocation.method(#findById, [exerciseId]),
+    returnValue: _FakeExercise_2(),
+  ) as _i4.Exercise);
   @override
   _i6.Future<void> fetchAndSetCategories() => (super.noSuchMethod(
-        Invocation.method(#fetchAndSetCategories, []),
-        returnValue: Future<void>.value(),
-        returnValueForMissingStub: Future<void>.value(),
-      ) as _i6.Future<void>);
+    Invocation.method(#fetchAndSetCategories, []),
+    returnValue: Future<void>.value(),
+    returnValueForMissingStub: Future<void>.value(),
+  ) as _i6.Future<void>);
   @override
   _i6.Future<void> fetchAndSetMuscles() => (super.noSuchMethod(
-        Invocation.method(#fetchAndSetMuscles, []),
-        returnValue: Future<void>.value(),
-        returnValueForMissingStub: Future<void>.value(),
-      ) as _i6.Future<void>);
+    Invocation.method(#fetchAndSetMuscles, []),
+    returnValue: Future<void>.value(),
+    returnValueForMissingStub: Future<void>.value(),
+  ) as _i6.Future<void>);
   @override
   _i6.Future<void> fetchAndSetEquipment() => (super.noSuchMethod(
-        Invocation.method(#fetchAndSetEquipment, []),
-        returnValue: Future<void>.value(),
-        returnValueForMissingStub: Future<void>.value(),
-      ) as _i6.Future<void>);
+    Invocation.method(#fetchAndSetEquipment, []),
+    returnValue: Future<void>.value(),
+    returnValueForMissingStub: Future<void>.value(),
+  ) as _i6.Future<void>);
   @override
   _i6.Future<_i4.Exercise> fetchAndSetExercise(int? exerciseId) =>
       (super.noSuchMethod(
@@ -98,38 +98,34 @@ class MockExercisesProvider extends _i1.Mock implements _i5.ExercisesProvider {
       ) as _i6.Future<_i4.Exercise>);
   @override
   _i6.Future<void> fetchAndSetExercises() => (super.noSuchMethod(
-        Invocation.method(#fetchAndSetExercises, []),
-        returnValue: Future<void>.value(),
-        returnValueForMissingStub: Future<void>.value(),
-      ) as _i6.Future<void>);
+    Invocation.method(#fetchAndSetExercises, []),
+    returnValue: Future<void>.value(),
+    returnValueForMissingStub: Future<void>.value(),
+  ) as _i6.Future<void>);
   @override
   _i6.Future<List<dynamic>> searchExercise(
     String? name, [
     String? languageCode = r'en',
-  ]) =>
-      (super.noSuchMethod(
-        Invocation.method(#searchExercise, [name, languageCode]),
-        returnValue: Future<List<dynamic>>.value(<dynamic>[]),
-      ) as _i6.Future<List<dynamic>>);
+  ]) => (super.noSuchMethod(
+    Invocation.method(#searchExercise, [name, languageCode]),
+    returnValue: Future<List<dynamic>>.value(<dynamic>[]),
+  ) as _i6.Future<List<dynamic>>);
   @override
   Uri makeUrl(
     String? path, {
     int? id,
     String? objectMethod,
     Map<String, dynamic>? query,
-  }) =>
-      (super.noSuchMethod(
-          Invocation.method(
-            #makeUrl,
-            [path],
-            {#id: id, #objectMethod: objectMethod, #query: query},
-          ),
-          returnValue: _FakeUri_3()) as Uri);
+  }) => (super.noSuchMethod(Invocation.method(
+    #makeUrl,
+    [path],
+    {#id: id, #objectMethod: objectMethod, #query: query},
+  ), returnValue: _FakeUri_3()) as Uri);
   @override
   _i6.Future<Map<String, dynamic>> fetch(Uri? uri) => (super.noSuchMethod(
-        Invocation.method(#fetch, [uri]),
-        returnValue: Future<Map<String, dynamic>>.value(<String, dynamic>{}),
-      ) as _i6.Future<Map<String, dynamic>>);
+    Invocation.method(#fetch, [uri]),
+    returnValue: Future<Map<String, dynamic>>.value(<String, dynamic>{}),
+  ) as _i6.Future<Map<String, dynamic>>);
   @override
   _i6.Future<Map<String, dynamic>> post(Map<String, dynamic>? data, Uri? uri) =>
       (super.noSuchMethod(
@@ -140,11 +136,10 @@ class MockExercisesProvider extends _i1.Mock implements _i5.ExercisesProvider {
   _i6.Future<Map<String, dynamic>> patch(
     Map<String, dynamic>? data,
     Uri? uri,
-  ) =>
-      (super.noSuchMethod(
-        Invocation.method(#patch, [data, uri]),
-        returnValue: Future<Map<String, dynamic>>.value(<String, dynamic>{}),
-      ) as _i6.Future<Map<String, dynamic>>);
+  ) => (super.noSuchMethod(
+    Invocation.method(#patch, [data, uri]),
+    returnValue: Future<Map<String, dynamic>>.value(<String, dynamic>{}),
+  ) as _i6.Future<Map<String, dynamic>>);
   @override
   _i6.Future<_i3.Response> deleteRequest(String? url, int? id) =>
       (super.noSuchMethod(
@@ -155,22 +150,22 @@ class MockExercisesProvider extends _i1.Mock implements _i5.ExercisesProvider {
   String toString() => super.toString();
   @override
   void addListener(_i7.VoidCallback? listener) => super.noSuchMethod(
-        Invocation.method(#addListener, [listener]),
-        returnValueForMissingStub: null,
-      );
+    Invocation.method(#addListener, [listener]),
+    returnValueForMissingStub: null,
+  );
   @override
   void removeListener(_i7.VoidCallback? listener) => super.noSuchMethod(
-        Invocation.method(#removeListener, [listener]),
-        returnValueForMissingStub: null,
-      );
+    Invocation.method(#removeListener, [listener]),
+    returnValueForMissingStub: null,
+  );
   @override
   void dispose() => super.noSuchMethod(
-        Invocation.method(#dispose, []),
-        returnValueForMissingStub: null,
-      );
+    Invocation.method(#dispose, []),
+    returnValueForMissingStub: null,
+  );
   @override
   void notifyListeners() => super.noSuchMethod(
-        Invocation.method(#notifyListeners, []),
-        returnValueForMissingStub: null,
-      );
+    Invocation.method(#notifyListeners, []),
+    returnValueForMissingStub: null,
+  );
 }

@@ -12,16 +12,14 @@ class _$InternalGetProjectBrandingBody extends InternalGetProjectBrandingBody {
 
   factory _$InternalGetProjectBrandingBody([
     void Function(InternalGetProjectBrandingBodyBuilder)? updates,
-  ]) =>
-      (new InternalGetProjectBrandingBodyBuilder()..update(updates))._build();
+  ]) => (new InternalGetProjectBrandingBodyBuilder()..update(updates))._build();
 
   _$InternalGetProjectBrandingBody._({this.hostname}) : super._();
 
   @override
   InternalGetProjectBrandingBody rebuild(
     void Function(InternalGetProjectBrandingBodyBuilder) updates,
-  ) =>
-      (toBuilder()..update(updates)).build();
+  ) => (toBuilder()..update(updates)).build();
 
   @override
   InternalGetProjectBrandingBodyBuilder toBuilder() =>
@@ -52,8 +50,10 @@ class _$InternalGetProjectBrandingBody extends InternalGetProjectBrandingBody {
 
 class InternalGetProjectBrandingBodyBuilder
     implements
-        Builder<InternalGetProjectBrandingBody,
-            InternalGetProjectBrandingBodyBuilder> {
+        Builder<
+          InternalGetProjectBrandingBody,
+          InternalGetProjectBrandingBodyBuilder
+        > {
   _$InternalGetProjectBrandingBody? _$v;
 
   String? _hostname;

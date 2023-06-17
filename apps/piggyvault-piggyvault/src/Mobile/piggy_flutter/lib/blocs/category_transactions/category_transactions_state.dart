@@ -32,10 +32,10 @@ class CategoryTransactionsLoaded extends CategoryTransactionsState {
 
   @override
   List<Object> get props => [
-        allCategoryTransactions,
-        filterdCategoryTransactions,
-        filters,
-      ];
+    allCategoryTransactions,
+    filterdCategoryTransactions,
+    filters,
+  ];
 }
 
 class CategoryTransactionsError extends CategoryTransactionsState {

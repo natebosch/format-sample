@@ -23,8 +23,9 @@ void runTestSuite({bool batchMode = false}) {
     final clientKey =
         faker.randomGenerator.integer(999999, min: 100000).toString();
     final description = faker.lorem.sentences(5).toString();
-    final cost =
-        faker.randomGenerator.decimal(min: 50, scale: 10).toStringAsFixed(2);
+    final cost = faker.randomGenerator
+        .decimal(min: 50, scale: 10)
+        .toStringAsFixed(2);
 
     final updatedPoNumber =
         faker.randomGenerator.integer(999999, min: 100000).toString();

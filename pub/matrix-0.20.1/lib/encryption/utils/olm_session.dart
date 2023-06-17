@@ -39,7 +39,7 @@ class OlmSession {
   });
 
   OlmSession.fromJson(Map<String, dynamic> dbEntry, this.key)
-      : identityKey = dbEntry['identity_key'] ?? '' {
+    : identityKey = dbEntry['identity_key'] ?? '' {
     session = olm.Session();
     try {
       session!.unpickle(key, dbEntry['pickle']);

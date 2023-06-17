@@ -15,7 +15,7 @@ class AboutViewResponsive extends StatelessWidget {
   final AboutViewModel? model;
 
   const AboutViewResponsive({Key? key, this.uiHelpers, this.model})
-      : super(key: key);
+    : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(

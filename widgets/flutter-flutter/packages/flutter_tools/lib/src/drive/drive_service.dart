@@ -30,11 +30,11 @@ class FlutterDriverFactory {
     @required ProcessUtils processUtils,
     @required String dartSdkPath,
     @required DevtoolsLauncher devtoolsLauncher,
-  })  : _applicationPackageFactory = applicationPackageFactory,
-        _logger = logger,
-        _processUtils = processUtils,
-        _dartSdkPath = dartSdkPath,
-        _devtoolsLauncher = devtoolsLauncher;
+  }) : _applicationPackageFactory = applicationPackageFactory,
+       _logger = logger,
+       _processUtils = processUtils,
+       _dartSdkPath = dartSdkPath,
+       _devtoolsLauncher = devtoolsLauncher;
 
   final ApplicationPackageFactory _applicationPackageFactory;
   final Logger _logger;
@@ -122,12 +122,12 @@ class FlutterDriverService extends DriverService {
     @required DevtoolsLauncher devtoolsLauncher,
     @visibleForTesting
     VMServiceConnector vmServiceConnector = connectToVmService,
-  })  : _applicationPackageFactory = applicationPackageFactory,
-        _logger = logger,
-        _processUtils = processUtils,
-        _dartSdkPath = dartSdkPath,
-        _vmServiceConnector = vmServiceConnector,
-        _devtoolsLauncher = devtoolsLauncher;
+  }) : _applicationPackageFactory = applicationPackageFactory,
+       _logger = logger,
+       _processUtils = processUtils,
+       _dartSdkPath = dartSdkPath,
+       _vmServiceConnector = vmServiceConnector,
+       _devtoolsLauncher = devtoolsLauncher;
 
   static const int _kLaunchAttempts = 3;
 
@@ -165,12 +165,12 @@ class FlutterDriverService extends DriverService {
     }
     _device = device;
     final TargetPlatform targetPlatform = await device.targetPlatform;
-    _applicationPackage =
-        await _applicationPackageFactory.getPackageForPlatform(
-      targetPlatform,
-      buildInfo: buildInfo,
-      applicationBinary: applicationBinary,
-    );
+    _applicationPackage = await _applicationPackageFactory
+        .getPackageForPlatform(
+          targetPlatform,
+          buildInfo: buildInfo,
+          applicationBinary: applicationBinary,
+        );
     int attempt = 0;
     LaunchResult result;
     bool prebuiltApplication = applicationBinary != null;

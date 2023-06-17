@@ -18,8 +18,8 @@ class TopBar extends StatelessWidget {
     required this.menuBtns,
     topBtns,
     this.onMenuTap,
-  })  : topBtns = topBtns ?? const [],
-        super(key: key);
+  }) : topBtns = topBtns ?? const [],
+       super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -37,12 +37,10 @@ class TopBar extends StatelessWidget {
           maxLines: 1,
           overflow: TextOverflow.ellipsis,
           style: const TextStyle(color: Colors.white70, fontSize: 14),
-        )
-            .div(DivStyle(
-              marginLeft: !isFullscreen && ezplayer.showBackBtn ? 0 : 17,
-              paddingBottom: 3,
-            ))
-            .expanded(),
+        ).div(DivStyle(
+          marginLeft: !isFullscreen && ezplayer.showBackBtn ? 0 : 17,
+          paddingBottom: 3,
+        )).expanded(),
         Text(
           timeFormat(DateTime.now().millisecondsSinceEpoch),
           style: const TextStyle(color: Colors.white, fontSize: 12),
@@ -55,10 +53,10 @@ class TopBar extends StatelessWidget {
                 ezplayer.showOverlay(
                   alignment: Alignment.centerRight,
                   builder: (context) => OverlaySelect(
-                    title: '菜单',
-                    width: 280,
-                    list: menuBtns,
-                  ),
+                        title: '菜单',
+                        width: 280,
+                        list: menuBtns,
+                      ),
                 );
               },
         ),

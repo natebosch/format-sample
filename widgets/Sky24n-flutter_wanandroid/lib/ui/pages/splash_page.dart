@@ -228,14 +228,11 @@ class SplashPageState extends State<SplashPage> {
                 },
                 child: new Container(
                   padding: EdgeInsets.all(12.0),
-                  child: new Text(
-                      IntlUtil.getString(
-                        context,
-                        Ids.jump_count,
-                        params: ['$_count'],
-                      ),
-                      style:
-                          new TextStyle(fontSize: 14.0, color: Colors.white)),
+                  child: new Text(IntlUtil.getString(
+                    context,
+                    Ids.jump_count,
+                    params: ['$_count'],
+                  ), style: new TextStyle(fontSize: 14.0, color: Colors.white)),
                   decoration: new BoxDecoration(
                     color: Color(0x66000000),
                     borderRadius: BorderRadius.all(Radius.circular(4.0)),

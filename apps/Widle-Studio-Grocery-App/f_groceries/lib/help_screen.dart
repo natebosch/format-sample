@@ -266,18 +266,18 @@ class Help extends State<Help_Screen> {
   void showDemoDialog<T>({BuildContext context, Widget child}) {
     showDialog<T>(context: context, builder: (BuildContext context) => child)
         .then<void>((T value) {
-      // The value passed to Navigator.pop() or null.
-      if (value != null) {
-        /*_scaffoldKey.currentState.showSnackBar(SnackBar(
+          // The value passed to Navigator.pop() or null.
+          if (value != null) {
+            /*_scaffoldKey.currentState.showSnackBar(SnackBar(
             content: Text('You selected: $value')
         ));*/
-      }
-    });
+          }
+        });
   }
 
   _verticalD() => Container(
-        margin: EdgeInsets.only(left: 10.0, right: 0.0, top: 0.0, bottom: 0.0),
-      );
+    margin: EdgeInsets.only(left: 10.0, right: 0.0, top: 0.0, bottom: 0.0),
+  );
 
   _verticalDivider() => Container(padding: EdgeInsets.all(2.0));
 
@@ -302,8 +302,8 @@ class Help extends State<Help_Screen> {
   }
 
   erticalD() => Container(
-        margin: EdgeInsets.only(left: 10.0, right: 0.0, top: 0.0, bottom: 0.0),
-      );
+    margin: EdgeInsets.only(left: 10.0, right: 0.0, top: 0.0, bottom: 0.0),
+  );
 
   bool a = true;
   String mText = "Press to hide";

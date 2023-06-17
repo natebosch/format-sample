@@ -68,8 +68,8 @@ class AddTaskScreen extends StatelessWidget {
             subtitle: StreamBuilder<int>(
               stream: createTaskBloc.dueDateSelected,
               initialData: DateTime.now().millisecondsSinceEpoch,
-              builder: (context, snapshot) =>
-                  Text(getFormattedDate(snapshot.data!)),
+              builder:
+                  (context, snapshot) => Text(getFormattedDate(snapshot.data!)),
             ),
             onTap: () {
               _selectDate(context);
@@ -82,8 +82,8 @@ class AddTaskScreen extends StatelessWidget {
               stream: createTaskBloc.prioritySelected,
               initialData: Status.PRIORITY_4,
               builder: (context, snapshot) => Text(
-                priorityText[snapshot.data!.index],
-              ),
+                    priorityText[snapshot.data!.index],
+                  ),
             ),
             onTap: () {
               _showPriorityDialog(createTaskBloc, context);

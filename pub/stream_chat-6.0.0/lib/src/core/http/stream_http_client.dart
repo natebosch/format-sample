@@ -25,8 +25,8 @@ class StreamHttpClient {
     TokenManager? tokenManager,
     ConnectionIdManager? connectionIdManager,
     Logger? logger,
-  })  : _options = options ?? const StreamHttpClientOptions(),
-        httpClient = dio ?? Dio() {
+  }) : _options = options ?? const StreamHttpClientOptions(),
+       httpClient = dio ?? Dio() {
     httpClient
       ..options.baseUrl = _options.baseUrl
       ..options.receiveTimeout = _options.receiveTimeout

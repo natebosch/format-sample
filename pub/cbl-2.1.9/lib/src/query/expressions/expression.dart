@@ -117,8 +117,7 @@ class Expression {
   /// [propertyPath].
   static PropertyExpressionInterface property(
     String propertyPath,
-  ) =>
-      PropertyExpressionImpl(propertyPath);
+  ) => PropertyExpressionImpl(propertyPath);
 
   /// Creates the `*` expression.
   static PropertyExpressionInterface all() => PropertyExpressionImpl.all();
@@ -152,31 +151,28 @@ class Expression {
   /// Creates a literal dictionary expression.
   static ExpressionInterface dictionary(
     Map<String, Object?>? value,
-  ) =>
-      Expression.value(value);
+  ) => Expression.value(value);
 
   /// Creates a literal array expression.
   static ExpressionInterface array(
     Iterable<Object?>? value,
-  ) =>
-      Expression.value(value);
+  ) => Expression.value(value);
 
   /// Creates a parameter expression with the given [name].
   static ExpressionInterface parameter(String name) => UnaryExpression(
-        r'$',
-        string(name),
-      );
+    r'$',
+    string(name),
+  );
 
   /// Creates an expression negating the given [expression].
   static ExpressionInterface negated(
     ExpressionInterface expression,
-  ) =>
-      UnaryExpression('NOT', expression);
+  ) => UnaryExpression('NOT', expression);
 
   /// Creates an expression negating the given [expression].
   static ExpressionInterface not(ExpressionInterface expression) => negated(
-        expression,
-      );
+    expression,
+  );
 }
 
 // === Impl ====================================================================
@@ -187,140 +183,127 @@ abstract class ExpressionImpl implements ExpressionInterface {
   @override
   ExpressionInterface multiply(
     ExpressionInterface expression,
-  ) =>
-      BinaryExpression('*', this, expression);
+  ) => BinaryExpression('*', this, expression);
 
   @override
   ExpressionInterface divide(
     ExpressionInterface expression,
-  ) =>
-      BinaryExpression('/', this, expression);
+  ) => BinaryExpression('/', this, expression);
 
   @override
   ExpressionInterface modulo(
     ExpressionInterface expression,
-  ) =>
-      BinaryExpression('%', this, expression);
+  ) => BinaryExpression('%', this, expression);
 
   @override
   ExpressionInterface add(ExpressionInterface expression) => BinaryExpression(
-        '+',
-        this,
-        expression,
-      );
+    '+',
+    this,
+    expression,
+  );
 
   @override
   ExpressionInterface subtract(
     ExpressionInterface expression,
-  ) =>
-      BinaryExpression('-', this, expression);
+  ) => BinaryExpression('-', this, expression);
 
   @override
   ExpressionInterface lessThan(
     ExpressionInterface expression,
-  ) =>
-      BinaryExpression('<', this, expression);
+  ) => BinaryExpression('<', this, expression);
 
   @override
   ExpressionInterface lessThanOrEqualTo(
     ExpressionInterface expression,
-  ) =>
-      BinaryExpression('<=', this, expression);
+  ) => BinaryExpression('<=', this, expression);
 
   @override
   ExpressionInterface greaterThan(
     ExpressionInterface expression,
-  ) =>
-      BinaryExpression('>', this, expression);
+  ) => BinaryExpression('>', this, expression);
 
   @override
   ExpressionInterface greaterThanOrEqualTo(
     ExpressionInterface expression,
-  ) =>
-      BinaryExpression('>=', this, expression);
+  ) => BinaryExpression('>=', this, expression);
 
   @override
   ExpressionInterface equalTo(
     ExpressionInterface expression,
-  ) =>
-      BinaryExpression('=', this, expression);
+  ) => BinaryExpression('=', this, expression);
 
   @override
   ExpressionInterface notEqualTo(
     ExpressionInterface expression,
-  ) =>
-      BinaryExpression('!=', this, expression);
+  ) => BinaryExpression('!=', this, expression);
 
   @override
   ExpressionInterface like(ExpressionInterface expression) => BinaryExpression(
-        'LIKE',
-        this,
-        expression,
-      );
+    'LIKE',
+    this,
+    expression,
+  );
 
   @override
   ExpressionInterface regex(ExpressionInterface expression) => BinaryExpression(
-        'regexp_like()',
-        this,
-        expression,
-      );
+    'regexp_like()',
+    this,
+    expression,
+  );
 
   @override
   // ignore: non_constant_identifier_names
   ExpressionInterface is_(ExpressionInterface expression) => BinaryExpression(
-        'IS',
-        this,
-        expression,
-      );
+    'IS',
+    this,
+    expression,
+  );
 
   @override
   ExpressionInterface isNot(ExpressionInterface expression) => BinaryExpression(
-        'IS NOT',
-        this,
-        expression,
-      );
+    'IS NOT',
+    this,
+    expression,
+  );
 
   @override
   ExpressionInterface isNullOrMissing() => is_(Expression.value(null)).or(
-        is_(missing),
-      );
+    is_(missing),
+  );
 
   @override
   ExpressionInterface notNullOrMissing() => Expression.not(isNullOrMissing());
 
   @override
   ExpressionInterface and(ExpressionInterface expression) => BinaryExpression(
-        'AND',
-        this,
-        expression,
-      );
+    'AND',
+    this,
+    expression,
+  );
 
   @override
   ExpressionInterface or(ExpressionInterface expression) => BinaryExpression(
-        'OR',
-        this,
-        expression,
-      );
+    'OR',
+    this,
+    expression,
+  );
 
   @override
   ExpressionInterface between(
     ExpressionInterface expression, {
     required ExpressionInterface and,
-  }) =>
-      TernaryExpression('BETWEEN', this, expression, and);
+  }) => TernaryExpression('BETWEEN', this, expression, and);
 
   @override
   // ignore: non_constant_identifier_names
   ExpressionInterface in_(
     Iterable<ExpressionInterface> expressions,
-  ) =>
-      BinaryExpression('IN', this, Expression.value(expressions));
+  ) => BinaryExpression('IN', this, Expression.value(expressions));
 
   @override
   ExpressionInterface collate(
     CollationInterface collation,
-  ) =>
-      CollateExpression(collation, this);
+  ) => CollateExpression(collation, this);
 
   Object? toJson();
 }
@@ -350,13 +333,13 @@ class ValueExpression extends ExpressionImpl {
   }
 
   static Object? _mapToJson(Map<String, Object?> map) => {
-        for (final entry in map.entries) entry.key: _valueToJson(entry.value),
-      };
+    for (final entry in map.entries) entry.key: _valueToJson(entry.value),
+  };
 
   static Object? _iterableToJson(Iterable<Object?> iterable) => [
-        '[]',
-        ...iterable.map(_valueToJson),
-      ];
+    '[]',
+    ...iterable.map(_valueToJson),
+  ];
 }
 
 class NullaryExpression extends ExpressionImpl {
@@ -370,8 +353,8 @@ class NullaryExpression extends ExpressionImpl {
 
 class UnaryExpression extends ExpressionImpl {
   UnaryExpression(String operator, ExpressionInterface operand)
-      : _operator = operator,
-        _operand = operand as ExpressionImpl;
+    : _operator = operator,
+      _operand = operand as ExpressionImpl;
 
   final String _operator;
   final ExpressionImpl _operand;
@@ -385,9 +368,9 @@ class BinaryExpression extends ExpressionImpl {
     String operator,
     ExpressionInterface left,
     ExpressionInterface? right,
-  )   : _operator = operator,
-        _left = left as ExpressionImpl,
-        _right = right as ExpressionImpl?;
+  ) : _operator = operator,
+      _left = left as ExpressionImpl,
+      _right = right as ExpressionImpl?;
 
   final String _operator;
   final ExpressionImpl _left;
@@ -395,10 +378,10 @@ class BinaryExpression extends ExpressionImpl {
 
   @override
   Object? toJson() => [
-        _operator,
-        _left.toJson(),
-        if (_right != null) _right!.toJson(),
-      ];
+    _operator,
+    _left.toJson(),
+    if (_right != null) _right!.toJson(),
+  ];
 }
 
 class TernaryExpression extends ExpressionImpl {
@@ -407,10 +390,10 @@ class TernaryExpression extends ExpressionImpl {
     ExpressionInterface operand0,
     ExpressionInterface operand1,
     ExpressionInterface operand2,
-  )   : _operator = operator,
-        _operand0 = operand0 as ExpressionImpl,
-        _operand1 = operand1 as ExpressionImpl,
-        _operand2 = operand2 as ExpressionImpl;
+  ) : _operator = operator,
+      _operand0 = operand0 as ExpressionImpl,
+      _operand1 = operand1 as ExpressionImpl,
+      _operand2 = operand2 as ExpressionImpl;
 
   final String _operator;
   final ExpressionImpl _operand0;
@@ -419,34 +402,34 @@ class TernaryExpression extends ExpressionImpl {
 
   @override
   Object? toJson() => [
-        _operator,
-        _operand0.toJson(),
-        _operand1.toJson(),
-        _operand2.toJson(),
-      ];
+    _operator,
+    _operand0.toJson(),
+    _operand1.toJson(),
+    _operand2.toJson(),
+  ];
 }
 
 class VariadicExpression extends ExpressionImpl {
   VariadicExpression(String operator, Iterable<ExpressionInterface> operands)
-      : _operator = operator,
-        _operands = operands.toList().cast();
+    : _operator = operator,
+      _operands = operands.toList().cast();
 
   final String _operator;
   final List<ExpressionImpl> _operands;
 
   @override
   Object? toJson() => [
-        _operator,
-        ..._operands.map((operand) => operand.toJson()),
-      ];
+    _operator,
+    ..._operands.map((operand) => operand.toJson()),
+  ];
 }
 
 class CollateExpression extends ExpressionImpl {
   CollateExpression(
     CollationInterface collation,
     ExpressionInterface expression,
-  )   : _collation = collation as CollationImpl,
-        _expression = expression as ExpressionImpl;
+  ) : _collation = collation as CollationImpl,
+      _expression = expression as ExpressionImpl;
 
   final CollationImpl _collation;
   final ExpressionImpl _expression;
@@ -464,10 +447,10 @@ class RangePredicateExpression extends ExpressionImpl {
     // ignore: non_constant_identifier_names
     ExpressionInterface in_,
     ExpressionInterface satisfies,
-  )   : _quantifier = quantifier,
-        _variable = variable as VariableExpressionImpl,
-        _in = in_ as ExpressionImpl,
-        _satisfies = satisfies as ExpressionImpl;
+  ) : _quantifier = quantifier,
+      _variable = variable as VariableExpressionImpl,
+      _in = in_ as ExpressionImpl,
+      _satisfies = satisfies as ExpressionImpl;
 
   final Quantifier _quantifier;
   final VariableExpressionImpl _variable;

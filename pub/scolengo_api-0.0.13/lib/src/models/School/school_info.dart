@@ -49,11 +49,9 @@ class SchoolInfo extends BaseResponse {
       illustration: json['illustration'] == null
           ? null
           : PublicAttachment.fromJson(json['illustration']),
-      attachments: json['attachments']
-          ?.map<PublicAttachment>(
-            (e) => PublicAttachment.fromJson(e),
-          )
-          .toList(),
+      attachments: json['attachments']?.map<PublicAttachment>(
+        (e) => PublicAttachment.fromJson(e),
+      ).toList(),
     );
   }
 }

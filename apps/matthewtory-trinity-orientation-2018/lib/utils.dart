@@ -45,8 +45,9 @@ String computeHowLongAgoText(DateTime timestamp) {
     bool sameDay = new DateTime(now.year, now.month, now.day) ==
         new DateTime(timestamp.year, timestamp.month, timestamp.day);
 
-    String onText =
-        sameDay ? 'Today' : 'on ${months[timestamp.month]} ${timestamp.day}';
+    String onText = sameDay
+        ? 'Today'
+        : 'on ${months[timestamp.month]} ${timestamp.day}';
     return 'At ${toTwelveHour(timestamp.hour)}:${twoDigits(
       timestamp.minute,
     )} ${amOrPm(timestamp.hour)} ${onText}';
@@ -68,8 +69,9 @@ String computeHowLongAgoTextShort(DateTime timestamp) {
     bool sameDay = new DateTime(now.year, now.month, now.day) ==
         new DateTime(timestamp.year, timestamp.month, timestamp.day);
 
-    String onText =
-        sameDay ? 'Today' : 'On ${months[timestamp.month]} ${timestamp.day}';
+    String onText = sameDay
+        ? 'Today'
+        : 'On ${months[timestamp.month]} ${timestamp.day}';
     return '${onText}';
   }
 }

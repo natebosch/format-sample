@@ -20,7 +20,7 @@ import 'expense_category_screen_vm.dart';
 
 class ExpenseCategoryScreen extends StatelessWidget {
   const ExpenseCategoryScreen({Key key, @required this.viewModel})
-      : super(key: key);
+    : super(key: key);
 
   static const String route = '/$kSettings/$kSettingsExpenseCategories';
 
@@ -35,8 +35,8 @@ class ExpenseCategoryScreen extends StatelessWidget {
 
     return ListScaffold(
       entityType: EntityType.expenseCategory,
-      onHamburgerLongPress: () =>
-          store.dispatch(StartExpenseCategoryMultiselect()),
+      onHamburgerLongPress:
+          () => store.dispatch(StartExpenseCategoryMultiselect()),
       onCancelSettingsSection: kSettingsExpenses,
       onCheckboxPressed: () {
         if (store.state.expenseCategoryListState.isInMultiselect()) {
@@ -76,14 +76,14 @@ class ExpenseCategoryScreen extends StatelessWidget {
             store.dispatch(StartExpenseCategoryMultiselect());
           }
         },
-        onSelectedCustom1: (value) =>
-            store.dispatch(FilterExpenseCategoriesByCustom1(value)),
-        onSelectedCustom2: (value) =>
-            store.dispatch(FilterExpenseCategoriesByCustom2(value)),
-        onSelectedCustom3: (value) =>
-            store.dispatch(FilterExpenseCategoriesByCustom3(value)),
-        onSelectedCustom4: (value) =>
-            store.dispatch(FilterExpenseCategoriesByCustom4(value)),
+        onSelectedCustom1:
+            (value) => store.dispatch(FilterExpenseCategoriesByCustom1(value)),
+        onSelectedCustom2:
+            (value) => store.dispatch(FilterExpenseCategoriesByCustom2(value)),
+        onSelectedCustom3:
+            (value) => store.dispatch(FilterExpenseCategoriesByCustom3(value)),
+        onSelectedCustom4:
+            (value) => store.dispatch(FilterExpenseCategoriesByCustom4(value)),
       ),
       floatingActionButton: state.prefState.isMenuFloated &&
               userCompany.canCreate(EntityType.expenseCategory)

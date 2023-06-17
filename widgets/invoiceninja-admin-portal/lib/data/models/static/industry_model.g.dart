@@ -190,8 +190,7 @@ class _$IndustryListResponse extends IndustryListResponse {
 
   factory _$IndustryListResponse([
     void Function(IndustryListResponseBuilder) updates,
-  ]) =>
-      (new IndustryListResponseBuilder()..update(updates)).build();
+  ]) => (new IndustryListResponseBuilder()..update(updates)).build();
 
   _$IndustryListResponse._({this.data}) : super._() {
     BuiltValueNullFieldError.checkNotNull(data, 'IndustryListResponse', 'data');
@@ -200,8 +199,7 @@ class _$IndustryListResponse extends IndustryListResponse {
   @override
   IndustryListResponse rebuild(
     void Function(IndustryListResponseBuilder) updates,
-  ) =>
-      (toBuilder()..update(updates)).build();
+  ) => (toBuilder()..update(updates)).build();
 
   @override
   IndustryListResponseBuilder toBuilder() =>
@@ -288,8 +286,7 @@ class _$IndustryItemResponse extends IndustryItemResponse {
 
   factory _$IndustryItemResponse([
     void Function(IndustryItemResponseBuilder) updates,
-  ]) =>
-      (new IndustryItemResponseBuilder()..update(updates)).build();
+  ]) => (new IndustryItemResponseBuilder()..update(updates)).build();
 
   _$IndustryItemResponse._({this.data}) : super._() {
     BuiltValueNullFieldError.checkNotNull(data, 'IndustryItemResponse', 'data');
@@ -298,8 +295,7 @@ class _$IndustryItemResponse extends IndustryItemResponse {
   @override
   IndustryItemResponse rebuild(
     void Function(IndustryItemResponseBuilder) updates,
-  ) =>
-      (toBuilder()..update(updates)).build();
+  ) => (toBuilder()..update(updates)).build();
 
   @override
   IndustryItemResponseBuilder toBuilder() =>

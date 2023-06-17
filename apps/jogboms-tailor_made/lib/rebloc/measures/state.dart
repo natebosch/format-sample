@@ -12,13 +12,13 @@ abstract class MeasuresState
       _$MeasuresState;
 
   factory MeasuresState.initialState() => _$MeasuresState(
-        (MeasuresStateBuilder b) => b
-          ..measures = null
-          ..grouped = null
-          ..status = StateStatus.loading
-          ..hasSkipedPremium = false
-          ..error = null,
-      );
+    (MeasuresStateBuilder b) => b
+      ..measures = null
+      ..grouped = null
+      ..status = StateStatus.loading
+      ..hasSkipedPremium = false
+      ..error = null,
+  );
 
   MeasuresState._();
 

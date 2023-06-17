@@ -30,7 +30,7 @@ class EpicMiddleware<State> extends MiddlewareClass<State> {
   bool _isSubscribed = false;
 
   EpicMiddleware(Epic<State> epic, {this.supportAsyncGenerators = true})
-      : _epic = epic;
+    : _epic = epic;
 
   @override
   void call(Store<State> store, dynamic action, NextDispatcher next) {

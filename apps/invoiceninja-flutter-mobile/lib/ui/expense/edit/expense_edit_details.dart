@@ -32,7 +32,7 @@ import 'package:invoiceninja_flutter/utils/localization.dart';
 
 class ExpenseEditDetails extends StatefulWidget {
   const ExpenseEditDetails({Key key, @required this.viewModel})
-      : super(key: key);
+    : super(key: key);
 
   final AbstractExpenseEditVM viewModel;
 
@@ -375,14 +375,12 @@ class ExpenseEditDetailsState extends State<ExpenseEditDetails> {
                     expense.rebuild((b) => b..frequencyId = value),
                   );
                 },
-                items: kFrequencies.entries
-                    .map(
-                      (entry) => DropdownMenuItem(
-                        value: entry.key,
-                        child: Text(localization.lookup(entry.value)),
-                      ),
-                    )
-                    .toList(),
+                items: kFrequencies.entries.map(
+                  (entry) => DropdownMenuItem(
+                    value: entry.key,
+                    child: Text(localization.lookup(entry.value)),
+                  ),
+                ).toList(),
               ),
               DatePicker(
                 labelText: (expense.lastSentDate ?? '').isNotEmpty
@@ -408,14 +406,12 @@ class ExpenseEditDetailsState extends State<ExpenseEditDetails> {
                     child: Text(localization.endless),
                     value: -1,
                   ),
-                  ...List<int>.generate(37, (i) => i)
-                      .map(
-                        (value) => DropdownMenuItem(
-                          child: Text('$value'),
-                          value: value,
-                        ),
-                      )
-                      .toList(),
+                  ...List<int>.generate(37, (i) => i).map(
+                    (value) => DropdownMenuItem(
+                      child: Text('$value'),
+                      value: value,
+                    ),
+                  ).toList(),
                 ],
               ),
             ],

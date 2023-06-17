@@ -32,38 +32,38 @@ class Terms extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => WillPopScope(
-        onWillPop: () {
-          Navigator.of(context).pop(false);
-          return Future.value(false);
-        },
-        child: Scaffold(
-          appBar: NavigationHeader("Terms and Conditions", context).appBar,
-          body: SafeArea(
-            child: Column(
-              children: [
-                Expanded(child: MarkdownViewer(text)),
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 15),
-                  child: Divider(
-                    height: 1,
-                    thickness: 1,
-                    color: TikiSdk.instance.activeTheme.getAccentColor,
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(
-                    top: 40,
-                    bottom: 20,
-                    left: 15,
-                    right: 15,
-                  ),
-                  child: Button.solid("I agree", () {
-                    Navigator.of(context).pop(true);
-                  }),
-                ),
-              ],
+    onWillPop: () {
+      Navigator.of(context).pop(false);
+      return Future.value(false);
+    },
+    child: Scaffold(
+      appBar: NavigationHeader("Terms and Conditions", context).appBar,
+      body: SafeArea(
+        child: Column(
+          children: [
+            Expanded(child: MarkdownViewer(text)),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 15),
+              child: Divider(
+                height: 1,
+                thickness: 1,
+                color: TikiSdk.instance.activeTheme.getAccentColor,
+              ),
             ),
-          ),
+            Padding(
+              padding: const EdgeInsets.only(
+                top: 40,
+                bottom: 20,
+                left: 15,
+                right: 15,
+              ),
+              child: Button.solid("I agree", () {
+                Navigator.of(context).pop(true);
+              }),
+            ),
+          ],
         ),
-      );
+      ),
+    ),
+  );
 }

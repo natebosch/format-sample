@@ -151,123 +151,123 @@ class _$SonarrSystemStatusCopyWithImpl<$Res, $Val extends SonarrSystemStatus>
         appName: freezed == appName
             ? _value.appName
             : appName // ignore: cast_nullable_to_non_nullable
-                as String?,
+                  as String?,
         instanceName: freezed == instanceName
             ? _value.instanceName
             : instanceName // ignore: cast_nullable_to_non_nullable
-                as String?,
+                  as String?,
         version: freezed == version
             ? _value.version
             : version // ignore: cast_nullable_to_non_nullable
-                as String?,
+                  as String?,
         buildTime: null == buildTime
             ? _value.buildTime
             : buildTime // ignore: cast_nullable_to_non_nullable
-                as DateTime,
+                  as DateTime,
         isDebug: null == isDebug
             ? _value.isDebug
             : isDebug // ignore: cast_nullable_to_non_nullable
-                as bool,
+                  as bool,
         isProduction: null == isProduction
             ? _value.isProduction
             : isProduction // ignore: cast_nullable_to_non_nullable
-                as bool,
+                  as bool,
         isAdmin: null == isAdmin
             ? _value.isAdmin
             : isAdmin // ignore: cast_nullable_to_non_nullable
-                as bool,
+                  as bool,
         isUserInteractive: null == isUserInteractive
             ? _value.isUserInteractive
             : isUserInteractive // ignore: cast_nullable_to_non_nullable
-                as bool,
+                  as bool,
         startupPath: freezed == startupPath
             ? _value.startupPath
             : startupPath // ignore: cast_nullable_to_non_nullable
-                as String?,
+                  as String?,
         appData: freezed == appData
             ? _value.appData
             : appData // ignore: cast_nullable_to_non_nullable
-                as String?,
+                  as String?,
         osName: freezed == osName
             ? _value.osName
             : osName // ignore: cast_nullable_to_non_nullable
-                as String?,
+                  as String?,
         osVersion: freezed == osVersion
             ? _value.osVersion
             : osVersion // ignore: cast_nullable_to_non_nullable
-                as String?,
+                  as String?,
         isNetCore: null == isNetCore
             ? _value.isNetCore
             : isNetCore // ignore: cast_nullable_to_non_nullable
-                as bool,
+                  as bool,
         isLinux: null == isLinux
             ? _value.isLinux
             : isLinux // ignore: cast_nullable_to_non_nullable
-                as bool,
+                  as bool,
         isOsx: null == isOsx
             ? _value.isOsx
             : isOsx // ignore: cast_nullable_to_non_nullable
-                as bool,
+                  as bool,
         isWindows: null == isWindows
             ? _value.isWindows
             : isWindows // ignore: cast_nullable_to_non_nullable
-                as bool,
+                  as bool,
         isDocker: null == isDocker
             ? _value.isDocker
             : isDocker // ignore: cast_nullable_to_non_nullable
-                as bool,
+                  as bool,
         mode: null == mode
             ? _value.mode
             : mode // ignore: cast_nullable_to_non_nullable
-                as SonarrRuntimeMode,
+                  as SonarrRuntimeMode,
         branch: freezed == branch
             ? _value.branch
             : branch // ignore: cast_nullable_to_non_nullable
-                as String?,
+                  as String?,
         authentication: null == authentication
             ? _value.authentication
             : authentication // ignore: cast_nullable_to_non_nullable
-                as SonarrAuthenticationType,
+                  as SonarrAuthenticationType,
         sqliteVersion: null == sqliteVersion
             ? _value.sqliteVersion
             : sqliteVersion // ignore: cast_nullable_to_non_nullable
-                as String,
+                  as String,
         migrationVersion: null == migrationVersion
             ? _value.migrationVersion
             : migrationVersion // ignore: cast_nullable_to_non_nullable
-                as int,
+                  as int,
         urlBase: freezed == urlBase
             ? _value.urlBase
             : urlBase // ignore: cast_nullable_to_non_nullable
-                as String?,
+                  as String?,
         runtimeVersion: null == runtimeVersion
             ? _value.runtimeVersion
             : runtimeVersion // ignore: cast_nullable_to_non_nullable
-                as String,
+                  as String,
         runtimeName: freezed == runtimeName
             ? _value.runtimeName
             : runtimeName // ignore: cast_nullable_to_non_nullable
-                as String?,
+                  as String?,
         startTime: null == startTime
             ? _value.startTime
             : startTime // ignore: cast_nullable_to_non_nullable
-                as DateTime,
+                  as DateTime,
         packageVersion: freezed == packageVersion
             ? _value.packageVersion
             : packageVersion // ignore: cast_nullable_to_non_nullable
-                as String?,
+                  as String?,
         packageAuthor: freezed == packageAuthor
             ? _value.packageAuthor
             : packageAuthor // ignore: cast_nullable_to_non_nullable
-                as String?,
+                  as String?,
         packageUpdateMechanism: null == packageUpdateMechanism
             ? _value.packageUpdateMechanism
             : packageUpdateMechanism // ignore: cast_nullable_to_non_nullable
-                as SonarrUpdateMechanism,
+                  as SonarrUpdateMechanism,
         packageUpdateMechanismMessage: freezed == packageUpdateMechanismMessage
             ? _value.packageUpdateMechanismMessage
             : packageUpdateMechanismMessage // ignore: cast_nullable_to_non_nullable
-                as String?,
+                  as String?,
       ) as $Val,
     );
   }
@@ -363,123 +363,123 @@ class __$$_SonarrSystemStatusCopyWithImpl<$Res>
       appName: freezed == appName
           ? _value.appName
           : appName // ignore: cast_nullable_to_non_nullable
-              as String?,
+                as String?,
       instanceName: freezed == instanceName
           ? _value.instanceName
           : instanceName // ignore: cast_nullable_to_non_nullable
-              as String?,
+                as String?,
       version: freezed == version
           ? _value.version
           : version // ignore: cast_nullable_to_non_nullable
-              as String?,
+                as String?,
       buildTime: null == buildTime
           ? _value.buildTime
           : buildTime // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+                as DateTime,
       isDebug: null == isDebug
           ? _value.isDebug
           : isDebug // ignore: cast_nullable_to_non_nullable
-              as bool,
+                as bool,
       isProduction: null == isProduction
           ? _value.isProduction
           : isProduction // ignore: cast_nullable_to_non_nullable
-              as bool,
+                as bool,
       isAdmin: null == isAdmin
           ? _value.isAdmin
           : isAdmin // ignore: cast_nullable_to_non_nullable
-              as bool,
+                as bool,
       isUserInteractive: null == isUserInteractive
           ? _value.isUserInteractive
           : isUserInteractive // ignore: cast_nullable_to_non_nullable
-              as bool,
+                as bool,
       startupPath: freezed == startupPath
           ? _value.startupPath
           : startupPath // ignore: cast_nullable_to_non_nullable
-              as String?,
+                as String?,
       appData: freezed == appData
           ? _value.appData
           : appData // ignore: cast_nullable_to_non_nullable
-              as String?,
+                as String?,
       osName: freezed == osName
           ? _value.osName
           : osName // ignore: cast_nullable_to_non_nullable
-              as String?,
+                as String?,
       osVersion: freezed == osVersion
           ? _value.osVersion
           : osVersion // ignore: cast_nullable_to_non_nullable
-              as String?,
+                as String?,
       isNetCore: null == isNetCore
           ? _value.isNetCore
           : isNetCore // ignore: cast_nullable_to_non_nullable
-              as bool,
+                as bool,
       isLinux: null == isLinux
           ? _value.isLinux
           : isLinux // ignore: cast_nullable_to_non_nullable
-              as bool,
+                as bool,
       isOsx: null == isOsx
           ? _value.isOsx
           : isOsx // ignore: cast_nullable_to_non_nullable
-              as bool,
+                as bool,
       isWindows: null == isWindows
           ? _value.isWindows
           : isWindows // ignore: cast_nullable_to_non_nullable
-              as bool,
+                as bool,
       isDocker: null == isDocker
           ? _value.isDocker
           : isDocker // ignore: cast_nullable_to_non_nullable
-              as bool,
+                as bool,
       mode: null == mode
           ? _value.mode
           : mode // ignore: cast_nullable_to_non_nullable
-              as SonarrRuntimeMode,
+                as SonarrRuntimeMode,
       branch: freezed == branch
           ? _value.branch
           : branch // ignore: cast_nullable_to_non_nullable
-              as String?,
+                as String?,
       authentication: null == authentication
           ? _value.authentication
           : authentication // ignore: cast_nullable_to_non_nullable
-              as SonarrAuthenticationType,
+                as SonarrAuthenticationType,
       sqliteVersion: null == sqliteVersion
           ? _value.sqliteVersion
           : sqliteVersion // ignore: cast_nullable_to_non_nullable
-              as String,
+                as String,
       migrationVersion: null == migrationVersion
           ? _value.migrationVersion
           : migrationVersion // ignore: cast_nullable_to_non_nullable
-              as int,
+                as int,
       urlBase: freezed == urlBase
           ? _value.urlBase
           : urlBase // ignore: cast_nullable_to_non_nullable
-              as String?,
+                as String?,
       runtimeVersion: null == runtimeVersion
           ? _value.runtimeVersion
           : runtimeVersion // ignore: cast_nullable_to_non_nullable
-              as String,
+                as String,
       runtimeName: freezed == runtimeName
           ? _value.runtimeName
           : runtimeName // ignore: cast_nullable_to_non_nullable
-              as String?,
+                as String?,
       startTime: null == startTime
           ? _value.startTime
           : startTime // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+                as DateTime,
       packageVersion: freezed == packageVersion
           ? _value.packageVersion
           : packageVersion // ignore: cast_nullable_to_non_nullable
-              as String?,
+                as String?,
       packageAuthor: freezed == packageAuthor
           ? _value.packageAuthor
           : packageAuthor // ignore: cast_nullable_to_non_nullable
-              as String?,
+                as String?,
       packageUpdateMechanism: null == packageUpdateMechanism
           ? _value.packageUpdateMechanism
           : packageUpdateMechanism // ignore: cast_nullable_to_non_nullable
-              as SonarrUpdateMechanism,
+                as SonarrUpdateMechanism,
       packageUpdateMechanismMessage: freezed == packageUpdateMechanismMessage
           ? _value.packageUpdateMechanismMessage
           : packageUpdateMechanismMessage // ignore: cast_nullable_to_non_nullable
-              as String?,
+                as String?,
     ));
   }
 }
@@ -522,8 +522,7 @@ class _$_SonarrSystemStatus implements _SonarrSystemStatus {
 
   factory _$_SonarrSystemStatus.fromJson(
     Map<String, dynamic> json,
-  ) =>
-      _$$_SonarrSystemStatusFromJson(json);
+  ) => _$$_SonarrSystemStatusFromJson(json);
 
   @override
   final String? appName;
@@ -654,47 +653,47 @@ class _$_SonarrSystemStatus implements _SonarrSystemStatus {
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hashAll([
-        runtimeType,
-        appName,
-        instanceName,
-        version,
-        buildTime,
-        isDebug,
-        isProduction,
-        isAdmin,
-        isUserInteractive,
-        startupPath,
-        appData,
-        osName,
-        osVersion,
-        isNetCore,
-        isLinux,
-        isOsx,
-        isWindows,
-        isDocker,
-        mode,
-        branch,
-        authentication,
-        sqliteVersion,
-        migrationVersion,
-        urlBase,
-        runtimeVersion,
-        runtimeName,
-        startTime,
-        packageVersion,
-        packageAuthor,
-        packageUpdateMechanism,
-        packageUpdateMechanismMessage,
-      ]);
+    runtimeType,
+    appName,
+    instanceName,
+    version,
+    buildTime,
+    isDebug,
+    isProduction,
+    isAdmin,
+    isUserInteractive,
+    startupPath,
+    appData,
+    osName,
+    osVersion,
+    isNetCore,
+    isLinux,
+    isOsx,
+    isWindows,
+    isDocker,
+    mode,
+    branch,
+    authentication,
+    sqliteVersion,
+    migrationVersion,
+    urlBase,
+    runtimeVersion,
+    runtimeName,
+    startTime,
+    packageVersion,
+    packageAuthor,
+    packageUpdateMechanism,
+    packageUpdateMechanismMessage,
+  ]);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_SonarrSystemStatusCopyWith<_$_SonarrSystemStatus> get copyWith =>
-      __$$_SonarrSystemStatusCopyWithImpl<_$_SonarrSystemStatus>(
-        this,
-        _$identity,
-      );
+  _$$_SonarrSystemStatusCopyWith<_$_SonarrSystemStatus>
+  get copyWith => __$$_SonarrSystemStatusCopyWithImpl<_$_SonarrSystemStatus>(
+    this,
+    _$identity,
+  );
 
   @override
   Map<String, dynamic> toJson() {

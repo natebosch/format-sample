@@ -221,8 +221,8 @@ class _BodyState extends State<_Body> {
   void initState() {
     super.initState();
     this.widget._postCreateState._postingAnimation.addListener(
-          () => this.setState(() {}),
-        );
+      () => this.setState(() {}),
+    );
   }
 
   Future pickImage() async {

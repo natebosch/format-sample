@@ -39,8 +39,9 @@ class VendorOverview extends StatelessWidget {
     final state = StoreProvider.of<AppState>(context).state;
     final statics = state.staticState;
     final fields = <String, String>{};
-    final user =
-        vendor.hasUser ? state.userState.get(vendor.assignedUserId) : null;
+    final user = vendor.hasUser
+        ? state.userState.get(vendor.assignedUserId)
+        : null;
 
     if (vendor.hasCurrency && vendor.currencyId != company.currencyId) {
       fields[VendorFields.currencyId] =
@@ -88,15 +89,12 @@ class VendorOverview extends StatelessWidget {
         EntityHeader(
           entity: vendor,
           label: localization.total,
-          value: formatNumber(
-              memoizedCalculateVendorBalance(
-                vendor.id,
-                vendor.currencyId,
-                state.expenseState.map,
-                state.expenseState.list,
-              ),
-              context,
-              currencyId: vendor.currencyId ?? company.currencyId),
+          value: formatNumber(memoizedCalculateVendorBalance(
+            vendor.id,
+            vendor.currencyId,
+            state.expenseState.map,
+            state.expenseState.list,
+          ), context, currencyId: vendor.currencyId ?? company.currencyId),
         ),
         ListDivider(),
         if ((vendor.privateNotes ?? '').isNotEmpty) ...[

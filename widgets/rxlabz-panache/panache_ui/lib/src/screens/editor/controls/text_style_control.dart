@@ -79,19 +79,19 @@ class TextStyleControl extends StatefulWidget {
     this.useMobileLayout: false,
     this.expanded: false,
     this.maxFontSize: 112.0,
-  })  : this.color = style?.color ?? Colors.black,
-        this.backgroundColor = style?.color ?? Colors.transparent,
-        this.letterSpacing = style?.letterSpacing ?? 1.0,
-        this.lineHeight = style?.height ?? 1.0,
-        this.wordSpacing = style?.wordSpacing ?? 1.0,
-        this.fontSize = style?.fontSize ?? 12.0,
-        this.decoration = style?.decoration ?? TextDecoration.none,
-        this.decorationStyle =
-            style?.decorationStyle ?? TextDecorationStyle.solid,
-        this.decorationColor = style?.decorationColor ?? style?.color,
-        this.isBold = style?.fontWeight == FontWeight.bold,
-        this.isItalic = style?.fontStyle == FontStyle.italic,
-        super(key: key);
+  }) : this.color = style?.color ?? Colors.black,
+       this.backgroundColor = style?.color ?? Colors.transparent,
+       this.letterSpacing = style?.letterSpacing ?? 1.0,
+       this.lineHeight = style?.height ?? 1.0,
+       this.wordSpacing = style?.wordSpacing ?? 1.0,
+       this.fontSize = style?.fontSize ?? 12.0,
+       this.decoration = style?.decoration ?? TextDecoration.none,
+       this.decorationStyle =
+           style?.decorationStyle ?? TextDecorationStyle.solid,
+       this.decorationColor = style?.decorationColor ?? style?.color,
+       this.isBold = style?.fontWeight == FontWeight.bold,
+       this.isItalic = style?.fontStyle == FontStyle.italic,
+       super(key: key);
 
   @override
   TextStyleControlState createState() {
@@ -137,7 +137,7 @@ class TextStyleControlState extends State<TextStyleControl> {
           checkedLabel: 'Italic',
           onChange: widget.onFontStyleChanged,
         ),
-      ] /*, direction: Axis.vertical*/),
+      ] /*, direction: Axis.vertical*/ ),
       SliderPropertyControl(
         widget.lineHeight,
         widget.onLineHeightChanged,
@@ -176,8 +176,8 @@ class TextStyleControlState extends State<TextStyleControl> {
                 )
               : _textDecorations.first,
           collection: _textDecorations,
-          onValueChanged: (decoration) =>
-              widget.onDecorationChanged(decoration.value),
+          onValueChanged:
+              (decoration) => widget.onDecorationChanged(decoration.value),
         ),
         PanacheDropdown<SelectionItem<TextDecorationStyle>>(
           label: 'Decoration style',
@@ -302,6 +302,5 @@ class PanacheDropdown<D extends SelectionItem> extends StatelessWidget {
   DropdownMenuItem<D> toDropdownMenuItem(
     D item,
     TextStyle style,
-  ) =>
-      DropdownMenuItem(child: Text(item.label, style: style), value: item);
+  ) => DropdownMenuItem(child: Text(item.label, style: style), value: item);
 }

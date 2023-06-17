@@ -16,8 +16,7 @@ var memoizedFilteredRecurringInvoiceList = memo6(
     BuiltList<String> recurringInvoiceList,
     ListUIState recurringInvoiceListState,
     BuiltMap<String, UserEntity> userMap,
-  ) =>
-      filteredRecurringInvoicesSelector(
+  ) => filteredRecurringInvoicesSelector(
     selectionState,
     recurringInvoiceMap,
     clientMap,
@@ -114,8 +113,7 @@ var memoizedRecurringInvoiceStatsForClient = memo2(
   (
     String clientId,
     BuiltMap<String, InvoiceEntity> invoiceMap,
-  ) =>
-      recurringInvoiceStatsForClient(clientId, invoiceMap),
+  ) => recurringInvoiceStatsForClient(clientId, invoiceMap),
 );
 
 EntityStats recurringInvoiceStatsForClient(
@@ -141,8 +139,7 @@ var memoizedRecurringInvoiceStatsForUser = memo2(
   (
     String userId,
     BuiltMap<String, InvoiceEntity> invoiceMap,
-  ) =>
-      recurringInvoiceStatsForUser(userId, invoiceMap),
+  ) => recurringInvoiceStatsForUser(userId, invoiceMap),
 );
 
 EntityStats recurringInvoiceStatsForUser(
@@ -168,8 +165,7 @@ var memoizedRecurringInvoiceStatsForInvoice = memo2(
   (
     String invoiceId,
     BuiltMap<String, InvoiceEntity> invoiceMap,
-  ) =>
-      recurringInvoiceStatsForInvoice(invoiceId, invoiceMap),
+  ) => recurringInvoiceStatsForInvoice(invoiceId, invoiceMap),
 );
 
 EntityStats recurringInvoiceStatsForInvoice(
@@ -195,8 +191,7 @@ var memoizedRecurringInvoiceStatsForDesign = memo2(
   (
     String designId,
     BuiltMap<String, InvoiceEntity> recurringInvoiceMap,
-  ) =>
-      recurringInvoiceStatsForDesign(designId, recurringInvoiceMap),
+  ) => recurringInvoiceStatsForDesign(designId, recurringInvoiceMap),
 );
 
 EntityStats recurringInvoiceStatsForDesign(
@@ -222,8 +217,7 @@ var memoizedRecurringInvoiceStatsForSubscription = memo2(
   (
     String subscriptionId,
     BuiltMap<String, InvoiceEntity> invoiceMap,
-  ) =>
-      recurringInvoiceStatsForSubscription(subscriptionId, invoiceMap),
+  ) => recurringInvoiceStatsForSubscription(subscriptionId, invoiceMap),
 );
 
 EntityStats recurringInvoiceStatsForSubscription(
@@ -248,7 +242,6 @@ EntityStats recurringInvoiceStatsForSubscription(
 bool hasRecurringInvoiceChanges(
   InvoiceEntity recurringInvoice,
   BuiltMap<String, InvoiceEntity> recurringInvoiceMap,
-) =>
-    recurringInvoice.isNew
-        ? recurringInvoice.isChanged
-        : recurringInvoice != recurringInvoiceMap[recurringInvoice.id];
+) => recurringInvoice.isNew
+    ? recurringInvoice.isChanged
+    : recurringInvoice != recurringInvoiceMap[recurringInvoice.id];

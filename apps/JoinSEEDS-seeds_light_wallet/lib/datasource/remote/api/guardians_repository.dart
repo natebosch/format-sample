@@ -31,9 +31,9 @@ class GuardiansRepository extends EosRepository with NetworkRepository {
       return currentPermissions;
     }
 
-    final Permission ownerPermission =
-        (currentPermissions.asValue!.value as List<Permission>)
-            .firstWhere((item) => item.permName == 'owner');
+    final Permission ownerPermission = (currentPermissions.asValue!.value
+            as List<Permission>)
+        .firstWhere((item) => item.permName == 'owner');
 
     // Check if permissions are already set?
     // ignore: unnecessary_cast
@@ -216,11 +216,9 @@ class GuardiansRepository extends EosRepository with NetworkRepository {
         .then(
           (http.Response response) => mapHttpResponse(response, (dynamic body) {
             final List<dynamic> allAccounts = body['permissions'].toList();
-            return allAccounts
-                .map(
-                  (item) => Permission.fromJson(item),
-                )
-                .toList();
+            return allAccounts.map(
+              (item) => Permission.fromJson(item),
+            ).toList();
           }),
         )
         .catchError((error) => mapHttpError(error));
@@ -340,11 +338,11 @@ class GuardiansRepository extends EosRepository with NetworkRepository {
         esr.SigningRequestCreateArguments(action: action, chainId: chainId);
 
     return esr.SigningRequestManager.create(
-      args,
-      options: esr.defaultSigningRequestEncodingOptions(
-        nodeUrl: remoteConfigurations.hyphaEndPoint,
-      ),
-    )
+          args,
+          options: esr.defaultSigningRequestEncodingOptions(
+            nodeUrl: remoteConfigurations.hyphaEndPoint,
+          ),
+        )
         .then(
           (esr.SigningRequestManager response) => ValueResult(
             response.encode(),
@@ -358,10 +356,9 @@ class GuardiansRepository extends EosRepository with NetworkRepository {
 // method to properly convert RequiredAuth to JSON - the library doesn't work
 Map<String, dynamic> _requiredAuthToJson(
   RequiredAuth instance,
-) =>
-    <String, dynamic>{
-      'threshold': instance.threshold,
-      'keys': List<dynamic>.from(instance.keys!.map((e) => e.toJson())),
-      'accounts': instance.accounts,
-      'waits': instance.waits,
-    };
+) => <String, dynamic>{
+  'threshold': instance.threshold,
+  'keys': List<dynamic>.from(instance.keys!.map((e) => e.toJson())),
+  'accounts': instance.accounts,
+  'waits': instance.waits,
+};

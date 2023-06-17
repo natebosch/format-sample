@@ -10,8 +10,8 @@ abstract class PuzzleStore {
   static const storeName = 'puzzles';
   static const Uuid _uuid = Uuid();
 
-  static Future<Map<String, String>> registry() =>
-      NamedDataStorage.active.readRegistry(storeName);
+  static Future<Map<String, String>> registry() => NamedDataStorage.active
+      .readRegistry(storeName);
 
   static Future<String?> saveNewPuzzle(NamedPuzzleData puzzleData) async {
     final Map<String, String> registry =

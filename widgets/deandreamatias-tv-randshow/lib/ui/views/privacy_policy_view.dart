@@ -36,9 +36,9 @@ class PrivacyPolicyView extends StatelessWidget {
                         MarkdownBody(
                           data: snapshot.data ?? '',
                           imageBuilder: (uri, title, alt) => OnlineImage(
-                            url: uri.toString(),
-                            name: title ?? 'No name',
-                          ),
+                                url: uri.toString(),
+                                name: title ?? 'No name',
+                              ),
                           onTapLink: (text, href, title) async {
                             try {
                               await launch(href ?? '');

@@ -85,24 +85,22 @@ class _FastDigitCalculatorFieldState extends State<FastDigitCalculatorField> {
   /// Handles tap on the calculator icon and opens the digit calculator overlay.
   Future<void> _handleOnTapCalculator(BuildContext context) async {
     if (widget.isEnabled) {
-      await Navigator.push(
-          context,
-          CupertinoPageRoute(
-            fullscreenDialog: true,
-            builder: (BuildContext context) {
-              return FastFieldOverlayContainer(
-                titleText: widget.labelText,
-                closeIcon: widget.closeIcon,
-                validIcon: widget.validIcon,
-                willValid: _onValid,
-                willClose: _onClose,
-                child: FastDigitCalculator(
-                  onValueChanged: _onValueChanged,
-                  valueText: widget.valueText,
-                ),
-              );
-            },
-          ));
+      await Navigator.push(context, CupertinoPageRoute(
+        fullscreenDialog: true,
+        builder: (BuildContext context) {
+          return FastFieldOverlayContainer(
+            titleText: widget.labelText,
+            closeIcon: widget.closeIcon,
+            validIcon: widget.validIcon,
+            willValid: _onValid,
+            willClose: _onClose,
+            child: FastDigitCalculator(
+              onValueChanged: _onValueChanged,
+              valueText: widget.valueText,
+            ),
+          );
+        },
+      ));
     }
   }
 

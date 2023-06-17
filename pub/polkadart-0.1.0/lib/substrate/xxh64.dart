@@ -194,8 +194,7 @@ class XXH64 {
                 array: array!,
                 index: index,
                 endian: endian,
-              ).toUnsigned(32))
-                  .toUnsigned(64) *
+              ).toUnsigned(32)).toUnsigned(64) *
               prime1)
           .toUnsigned(64);
       index += 4;

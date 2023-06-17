@@ -165,8 +165,8 @@ class NumberOfRatesSelector extends StatelessWidget {
       labelText: label,
       value: numberOfRates == null ? '' : '$numberOfRates',
       onChanged: (dynamic value) => onChanged(
-        value == null || value.isEmpty ? null : int.parse(value),
-      ),
+            value == null || value.isEmpty ? null : int.parse(value),
+          ),
       items: [
         DropdownMenuItem(child: Text(localization.disabled), value: '0'),
         DropdownMenuItem(child: Text(localization.oneTaxRate), value: '1'),

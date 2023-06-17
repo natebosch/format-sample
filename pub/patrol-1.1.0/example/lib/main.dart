@@ -174,9 +174,9 @@ class _ExampleHomePageState extends State<ExampleHomePage> {
             onPressed: () async => Navigator.of(context).push(
               MaterialPageRoute<void>(
                 builder: (_) => const WebViewScreen(
-                  title: 'WebView (LeanCode)',
-                  url: 'https://leancode.co',
-                ),
+                      title: 'WebView (LeanCode)',
+                      url: 'https://leancode.co',
+                    ),
               ),
             ),
             child: const Text('Open webview (LeanCode)'),
@@ -185,9 +185,9 @@ class _ExampleHomePageState extends State<ExampleHomePage> {
             onPressed: () async => Navigator.of(context).push(
               MaterialPageRoute<void>(
                 builder: (_) => const WebViewScreen(
-                  title: 'WebView (Hacker News)',
-                  url: 'https://news.ycombinator.com',
-                ),
+                      title: 'WebView (Hacker News)',
+                      url: 'https://news.ycombinator.com',
+                    ),
               ),
             ),
             child: const Text('Open webview (Hacker News)'),
@@ -196,9 +196,9 @@ class _ExampleHomePageState extends State<ExampleHomePage> {
             onPressed: () async => Navigator.of(context).push(
               MaterialPageRoute<void>(
                 builder: (_) => const WebViewScreen(
-                  title: 'WebView (StackOverflow)',
-                  url: 'https://stackoverflow.com',
-                ),
+                      title: 'WebView (StackOverflow)',
+                      url: 'https://stackoverflow.com',
+                    ),
               ),
             ),
             child: const Text('Open webview (StackOverflow)'),
@@ -207,10 +207,10 @@ class _ExampleHomePageState extends State<ExampleHomePage> {
             onPressed: () async => Navigator.of(context).push(
               MaterialPageRoute<void>(
                 builder: (_) => const WebViewScreen(
-                  title: 'WebView (login form)',
-                  url:
-                      'https://joyful-noise-staging.joyful-noise.link/users/sign_in',
-                ),
+                      title: 'WebView (login form)',
+                      url:
+                          'https://joyful-noise-staging.joyful-noise.link/users/sign_in',
+                    ),
               ),
             ),
             child: const Text('Open webview (login form)'),

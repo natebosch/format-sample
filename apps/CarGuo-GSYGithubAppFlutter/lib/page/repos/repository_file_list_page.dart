@@ -26,7 +26,7 @@ class RepositoryDetailFileListPage extends StatefulWidget {
   final String? reposName;
 
   RepositoryDetailFileListPage(this.userName, this.reposName, {Key? key})
-      : super(key: key);
+    : super(key: key);
 
   @override
   RepositoryDetailFileListPageState createState() =>

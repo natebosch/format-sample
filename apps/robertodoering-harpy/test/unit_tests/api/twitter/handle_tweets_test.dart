@@ -73,13 +73,30 @@ void main() {
           equals('4'),
         );
         expect(
-          tweets.single.replies.single.replies.single.replies.single.replies
+          tweets
+              .single
+              .replies
+              .single
+              .replies
+              .single
+              .replies
+              .single
+              .replies
               .length,
           equals(1),
         );
         expect(
-          tweets.single.replies.single.replies.single.replies.single.replies
-              .single.id,
+          tweets
+              .single
+              .replies
+              .single
+              .replies
+              .single
+              .replies
+              .single
+              .replies
+              .single
+              .id,
           equals('5'),
         );
       });

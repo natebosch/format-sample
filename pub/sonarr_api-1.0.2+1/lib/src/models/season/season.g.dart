@@ -8,21 +8,18 @@ part of 'season.dart';
 
 _$_SonarrSeason _$$_SonarrSeasonFromJson(
   Map<String, dynamic> json,
-) =>
-    _$_SonarrSeason(
-      seasonNumber: json['seasonNumber'] as int,
-      monitored: json['monitored'] as bool,
-      statistics: json['statistics'] == null
-          ? null
-          : SonarrSeasonStatistics.fromJson(
-              json['statistics'] as Map<String, dynamic>,
-            ),
-      images: (json['images'] as List<dynamic>?)
-          ?.map(
-            (e) => SonarrMediaCover.fromJson(e as Map<String, dynamic>),
-          )
-          .toList(),
-    );
+) => _$_SonarrSeason(
+  seasonNumber: json['seasonNumber'] as int,
+  monitored: json['monitored'] as bool,
+  statistics: json['statistics'] == null
+      ? null
+      : SonarrSeasonStatistics.fromJson(
+          json['statistics'] as Map<String, dynamic>,
+        ),
+  images: (json['images'] as List<dynamic>?)?.map(
+    (e) => SonarrMediaCover.fromJson(e as Map<String, dynamic>),
+  ).toList(),
+);
 
 Map<String, dynamic> _$$_SonarrSeasonToJson(_$_SonarrSeason instance) {
   final val = <String, dynamic>{

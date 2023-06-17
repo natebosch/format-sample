@@ -14,7 +14,7 @@ part 'post_tweet_cubit.freezed.dart';
 
 class PostTweetCubit extends Cubit<PostTweetState> with HarpyLogger {
   PostTweetCubit({required this.composeBloc})
-      : super(const PostTweetState.inProgress());
+    : super(const PostTweetState.inProgress());
 
   final ComposeBloc composeBloc;
 
@@ -111,17 +111,17 @@ class PostTweetCubit extends Cubit<PostTweetState> with HarpyLogger {
         )
         .then((tweet) => TweetData.fromTweet(tweet))
         .handleError((dynamic error, stackTrace) {
-      if (error is Response) {
-        final message = responseErrorMessage(error.body);
-        log.info(
-          'handling error while sending status with message $message',
-          error,
-        );
-        additionalInfo = message;
-      } else {
-        silentErrorHandler(error);
-      }
-    });
+          if (error is Response) {
+            final message = responseErrorMessage(error.body);
+            log.info(
+              'handling error while sending status with message $message',
+              error,
+            );
+            additionalInfo = message;
+          } else {
+            silentErrorHandler(error);
+          }
+        });
 
     if (sentStatus != null) {
       emit(PostTweetState.success(
@@ -180,7 +180,7 @@ extension PostTweetStateExtension on PostTweetState {
   bool get inProgress => this is _InProgress;
 
   TweetData? get tweet => maybeMap(
-        success: (value) => value.tweet,
-        orElse: () => null,
-      );
+    success: (value) => value.tweet,
+    orElse: () => null,
+  );
 }

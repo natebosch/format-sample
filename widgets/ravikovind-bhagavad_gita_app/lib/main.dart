@@ -25,12 +25,12 @@ class MyApp extends StatelessWidget {
       ),
       initial: AdaptiveThemeMode.light,
       builder: (theme, darkTheme) => MaterialApp(
-        title: 'Gita',
-        debugShowCheckedModeBanner: false,
-        theme: theme,
-        darkTheme: darkTheme,
-        home: MyHomePage(),
-      ),
+            title: 'Gita',
+            debugShowCheckedModeBanner: false,
+            theme: theme,
+            darkTheme: darkTheme,
+            home: MyHomePage(),
+          ),
     );
   }
 }

@@ -24,12 +24,9 @@ class GetInvitesUseCase {
           .map((e) => _profileRepository.getProfile(e.account!));
 
       final List<Result> accounts = await Future.wait(futures);
-      final List<ProfileModel> profiles = accounts
-          .map(
-            (e) => e.isValue ? e.asValue?.value : null,
-          )
-          .whereType<ProfileModel>()
-          .toList();
+      final List<ProfileModel> profiles = accounts.map(
+        (e) => e.isValue ? e.asValue?.value : null,
+      ).whereType<ProfileModel>().toList();
 
       return InvitesDto(profiles, invites);
     }

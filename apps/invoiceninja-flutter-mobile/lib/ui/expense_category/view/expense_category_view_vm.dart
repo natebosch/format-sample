@@ -23,7 +23,7 @@ import 'package:invoiceninja_flutter/utils/localization.dart';
 
 class ExpenseCategoryViewScreen extends StatelessWidget {
   const ExpenseCategoryViewScreen({Key key, this.isFilter = false})
-      : super(key: key);
+    : super(key: key);
 
   static const String route = '/$kSettings/$kSettingsExpenseCategoryView';
   final bool isFilter;
@@ -56,7 +56,8 @@ class ExpenseCategoryViewVM {
 
   factory ExpenseCategoryViewVM.fromStore(Store<AppState> store) {
     final state = store.state;
-    final expenseCategory = state.expenseCategoryState
+    final expenseCategory = state
+            .expenseCategoryState
             .map[state.expenseCategoryUIState.selectedId] ??
         ExpenseCategoryEntity(id: state.expenseCategoryUIState.selectedId);
 
@@ -79,14 +80,13 @@ class ExpenseCategoryViewVM {
       isLoading: state.isLoading,
       isDirty: expenseCategory.isNew,
       expenseCategory: expenseCategory,
-      onBackPressed: () =>
-          store.dispatch(UpdateCurrentRoute(ExpenseCategoryScreen.route)),
+      onBackPressed:
+          () => store.dispatch(UpdateCurrentRoute(ExpenseCategoryScreen.route)),
       onRefreshed: (context) => _handleRefresh(context),
       onEntityAction: (
         BuildContext context,
         EntityAction action,
-      ) =>
-          handleEntitiesActions([expenseCategory], action, autoPop: true),
+      ) => handleEntitiesActions([expenseCategory], action, autoPop: true),
     );
   }
 

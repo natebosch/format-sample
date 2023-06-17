@@ -270,12 +270,10 @@ void main() {
           warnIfMissed: false,
         ); // has an IgnorePointer
         expect(selectedItems, <int>[1]);
-        expect(
-            systemCalls.single,
-            isMethodCall(
-              'HapticFeedback.vibrate',
-              arguments: 'HapticFeedbackType.selectionClick',
-            ));
+        expect(systemCalls.single, isMethodCall(
+          'HapticFeedback.vibrate',
+          arguments: 'HapticFeedbackType.selectionClick',
+        ));
 
         await tester.drag(
           find.text('0'),
@@ -284,12 +282,10 @@ void main() {
         ); // has an IgnorePointer
         expect(selectedItems, <int>[1, 0]);
         expect(systemCalls, hasLength(2));
-        expect(
-            systemCalls.last,
-            isMethodCall(
-              'HapticFeedback.vibrate',
-              arguments: 'HapticFeedbackType.selectionClick',
-            ));
+        expect(systemCalls.last, isMethodCall(
+          'HapticFeedback.vibrate',
+          arguments: 'HapticFeedbackType.selectionClick',
+        ));
       },
       variant: TargetPlatformVariant.only(TargetPlatform.iOS),
     );
@@ -335,11 +331,9 @@ void main() {
         expect(systemCalls, isEmpty);
       },
       variant: TargetPlatformVariant(
-        TargetPlatform.values
-            .where(
-              (TargetPlatform platform) => platform != TargetPlatform.iOS,
-            )
-            .toSet(),
+        TargetPlatform.values.where(
+          (TargetPlatform platform) => platform != TargetPlatform.iOS,
+        ).toSet(),
       ),
     );
 

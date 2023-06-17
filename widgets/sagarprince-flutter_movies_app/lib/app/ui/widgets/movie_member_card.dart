@@ -15,8 +15,8 @@ class MovieMemberCard extends StatelessWidget {
     this.name,
     this.role = '',
     this.profilePic = '',
-  })  : assert(name != null),
-        super(key: key);
+  }) : assert(name != null),
+       super(key: key);
 
   @override
   Widget build(BuildContext context) {

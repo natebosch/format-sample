@@ -12,7 +12,7 @@ class GuardianApproveOrDenyScreen extends StatelessWidget {
   final GuardianRecoveryRequestData data;
 
   const GuardianApproveOrDenyScreen({Key? key, required this.data})
-      : super(key: key);
+    : super(key: key);
 
   @override
   Widget build(BuildContext context) {

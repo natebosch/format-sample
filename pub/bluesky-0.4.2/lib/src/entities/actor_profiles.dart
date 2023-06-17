@@ -17,6 +17,5 @@ class ActorProfiles with _$ActorProfiles {
 
   factory ActorProfiles.fromJson(
     Map<String, Object?> json,
-  ) =>
-      _$ActorProfilesFromJson(json);
+  ) => _$ActorProfilesFromJson(json);
 }

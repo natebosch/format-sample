@@ -54,10 +54,10 @@ class _DestinationInfoState extends State<DestinationInfoView>
     servicesInfoAnimation = new Tween<double>(begin: 90.0, end: 180.0).animate(
       curvedAnimation,
     )..addListener(() {
-        setState(() {
-          // the state that has changed here is the animation object’s value
-        });
+      setState(() {
+        // the state that has changed here is the animation object’s value
       });
+    });
 
     servicesInfoAnimation.addStatusListener((status) {
       if (status == AnimationStatus.completed) {
@@ -70,10 +70,10 @@ class _DestinationInfoState extends State<DestinationInfoView>
     locationsAnimation = new Tween<double>(begin: 270.0, end: 180.0).animate(
       curvedAnimation2,
     )..addListener(() {
-        setState(() {
-          // the state that has changed here is the animation object’s value
-        });
+      setState(() {
+        // the state that has changed here is the animation object’s value
       });
+    });
     locationsAnimation.addStatusListener((status) {
       debugPrint('status: $status');
       if (status == AnimationStatus.dismissed) {
@@ -186,9 +186,8 @@ class _DestinationInfoState extends State<DestinationInfoView>
         height: 120.0,
         child: new ListView(
           scrollDirection: Axis.horizontal,
-          children: destinationCard.destination.activities
-              .map(
-                (d) => (Column(
+          children: destinationCard.destination.activities.map(
+            (d) => (Column(
                   children: <Widget>[
                     new Container(
                       width: 75.0,
@@ -218,8 +217,7 @@ class _DestinationInfoState extends State<DestinationInfoView>
                   ],
                   // onTapped: () => _openEventDetails(context, d),
                 )),
-              )
-              .toList(),
+          ).toList(),
         ),
       );
     } else {

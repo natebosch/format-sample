@@ -51,8 +51,8 @@ class SingleArtistPage extends StatelessWidget {
             child: Container(
               child: new Container(
                 margin: MediaQuery.of(context).padding.add(
-                      EdgeInsets.only(right: 10, left: 10),
-                    ),
+                  EdgeInsets.only(right: 10, left: 10),
+                ),
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: <Widget>[
@@ -155,7 +155,8 @@ class SingleArtistPage extends StatelessWidget {
                                       return artistCardContextMenulist.map(
                                         (ContextMenuOptions choice) {
                                           return PopupMenuItem<
-                                              ContextMenuOptions>(
+                                            ContextMenuOptions
+                                          >(
                                             value: choice,
                                             child: Text(choice.title),
                                           );
@@ -272,14 +273,14 @@ class SingleArtistPage extends StatelessWidget {
                                 itemBuilder: (context, index) {
                                   String uniqueID =
                                       "MP${artist.coverArt ?? artist.name.split(
-                                            " ",
-                                          ).join()}";
+                                        " ",
+                                      ).join()}";
                                   return MoreOptionsCard(
                                     uniqueID: uniqueID,
                                     backgroundWidget: memoryCacheService
-                                            .isItemCached(uniqueID)
+                                              .isItemCached(uniqueID)
                                         ? Image.memory(memoryCacheService
-                                            .getCacheItem(uniqueID))
+                                              .getCacheItem(uniqueID))
                                         : null,
                                     imageUri: artist.coverArt,
                                     colors: artist.colors,
@@ -319,36 +320,36 @@ class SingleArtistPage extends StatelessWidget {
                                         musicService
                                             .addPlaylist(newPlaylsit)
                                             .then((data) {
-                                          DialogService.showFlushbar(
-                                            context,
-                                            leftIcon: Icon(
-                                              Icons.check_circle,
-                                              color: Color(bgColor[0])
-                                                  .withAlpha(255),
-                                              size: 27,
-                                            ),
-                                            showDuration: Duration(
-                                              milliseconds: 1500,
-                                            ),
-                                            color: Color(bgColor[2]),
-                                            messageText: Text(
-                                              "Playlist : ${"Most played of ${newPlaylsit.name}"} has been saved",
-                                              style: TextStyle(
-                                                fontSize: 15,
-                                                fontWeight: FontWeight.w600,
-                                                color: Color(bgColor[0]),
-                                              ),
-                                            ),
-                                            titleText: Text(
-                                              "Playlist Saved",
-                                              style: TextStyle(
-                                                fontSize: 17,
-                                                fontWeight: FontWeight.w900,
-                                                color: Color(bgColor[0]),
-                                              ),
-                                            ),
-                                          );
-                                        });
+                                              DialogService.showFlushbar(
+                                                context,
+                                                leftIcon: Icon(
+                                                  Icons.check_circle,
+                                                  color: Color(bgColor[0])
+                                                      .withAlpha(255),
+                                                  size: 27,
+                                                ),
+                                                showDuration: Duration(
+                                                  milliseconds: 1500,
+                                                ),
+                                                color: Color(bgColor[2]),
+                                                messageText: Text(
+                                                  "Playlist : ${"Most played of ${newPlaylsit.name}"} has been saved",
+                                                  style: TextStyle(
+                                                    fontSize: 15,
+                                                    fontWeight: FontWeight.w600,
+                                                    color: Color(bgColor[0]),
+                                                  ),
+                                                ),
+                                                titleText: Text(
+                                                  "Playlist Saved",
+                                                  style: TextStyle(
+                                                    fontSize: 17,
+                                                    fontWeight: FontWeight.w900,
+                                                    color: Color(bgColor[0]),
+                                                  ),
+                                                ),
+                                              );
+                                            });
                                       }
                                     },
                                   );

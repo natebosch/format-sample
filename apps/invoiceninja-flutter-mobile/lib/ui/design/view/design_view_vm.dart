@@ -82,8 +82,7 @@ class DesignViewVM {
       onEntityAction: (
         BuildContext context,
         EntityAction action,
-      ) =>
-          handleEntitiesActions([design], action, autoPop: true),
+      ) => handleEntitiesActions([design], action, autoPop: true),
     );
   }
 

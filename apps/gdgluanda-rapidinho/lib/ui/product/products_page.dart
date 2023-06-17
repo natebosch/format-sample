@@ -111,13 +111,10 @@ class _ProductsPageState extends State<ProductsPage>
                   controller: _controller,
                   constraints: constraints,
                   title: Text(
-                    MockData.productList
-                        .firstWhere(
-                          (Product product) =>
-                              product.categoryId ==
-                              widget.product.category.index,
-                        )
-                        .itemName,
+                    MockData.productList.firstWhere(
+                      (Product product) =>
+                          product.categoryId == widget.product.category.index,
+                    ).itemName,
                     style: RapidinhoTextStyle.largeText.copyWith(
                       fontWeight: FontWeight.w600,
                       color: Colors.black54,

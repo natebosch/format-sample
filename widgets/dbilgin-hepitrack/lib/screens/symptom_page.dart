@@ -151,12 +151,9 @@ class _SymptomPageState extends State<SymptomPage>
           return ErrorDisplay();
         } else if (snapshot.hasData) {
           return MultiSelectFormField(
-            dataSource: snapshot.data
-                .map(
-                  (bodyPart) =>
-                      {'value': bodyPart.id, 'display': bodyPart.name},
-                )
-                .toList(),
+            dataSource: snapshot.data.map(
+              (bodyPart) => {'value': bodyPart.id, 'display': bodyPart.name},
+            ).toList(),
             onSaved: (values) {
               if (values == null) return;
 
@@ -190,60 +187,60 @@ class _SymptomPageState extends State<SymptomPage>
     return AnimatedBuilder(
       animation: _animationController,
       builder: (context, child) => Scaffold(
-        backgroundColor: _colorTween.value,
-        appBar: AppBar(title: Text(_appBarText)),
-        body: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.all(24.0),
-            child: Form(
-              key: formKey,
-              child: Column(
-                children: [
-                  symptomDropdown(),
-                  if (_symptomTrackItem.symptom != null &&
-                      _selectedSymptom != null &&
-                      _selectedSymptom.defaultBodyPart == null)
-                    Container(
-                      margin: EdgeInsets.only(top: 32),
-                      child: bodyPartsDropdown(),
-                    ),
-                  if (_selectedSymptom != null)
-                    Container(
-                      margin: EdgeInsets.only(top: 32),
-                      child: Column(
-                        children: [
-                          Align(
-                            alignment: Alignment.centerLeft,
-                            child: Text('Symptom Intensity'),
+            backgroundColor: _colorTween.value,
+            appBar: AppBar(title: Text(_appBarText)),
+            body: SingleChildScrollView(
+              child: Padding(
+                padding: const EdgeInsets.all(24.0),
+                child: Form(
+                  key: formKey,
+                  child: Column(
+                    children: [
+                      symptomDropdown(),
+                      if (_symptomTrackItem.symptom != null &&
+                          _selectedSymptom != null &&
+                          _selectedSymptom.defaultBodyPart == null)
+                        Container(
+                          margin: EdgeInsets.only(top: 32),
+                          child: bodyPartsDropdown(),
+                        ),
+                      if (_selectedSymptom != null)
+                        Container(
+                          margin: EdgeInsets.only(top: 32),
+                          child: Column(
+                            children: [
+                              Align(
+                                alignment: Alignment.centerLeft,
+                                child: Text('Symptom Intensity'),
+                              ),
+                              Container(
+                                margin: EdgeInsets.only(top: 16),
+                                child: SliderWidget(
+                                  value: _selectedIntensity,
+                                  onChanged: (double value) => setState(() {
+                                    _animationController.animateTo(value / 10);
+                                    _symptomTrackItem.intensity = value.round();
+                                    _selectedIntensity = value;
+                                  }),
+                                  fullWidth: true,
+                                  min: 0,
+                                  max: 10,
+                                ),
+                              ),
+                            ],
                           ),
-                          Container(
-                            margin: EdgeInsets.only(top: 16),
-                            child: SliderWidget(
-                              value: _selectedIntensity,
-                              onChanged: (double value) => setState(() {
-                                _animationController.animateTo(value / 10);
-                                _symptomTrackItem.intensity = value.round();
-                                _selectedIntensity = value;
-                              }),
-                              fullWidth: true,
-                              min: 0,
-                              max: 10,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                ],
+                        ),
+                    ],
+                  ),
+                ),
               ),
             ),
+            floatingActionButton: FloatingActionButton(
+              tooltip: 'Save',
+              child: Icon(Icons.save),
+              onPressed: () => _saveForm(),
+            ),
           ),
-        ),
-        floatingActionButton: FloatingActionButton(
-          tooltip: 'Save',
-          child: Icon(Icons.save),
-          onPressed: () => _saveForm(),
-        ),
-      ),
     );
   }
 }

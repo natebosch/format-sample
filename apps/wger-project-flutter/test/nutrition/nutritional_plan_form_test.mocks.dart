@@ -50,58 +50,58 @@ class MockNutritionPlansProvider extends _i1.Mock
 
   @override
   List<_i4.NutritionalPlan> get items => (super.noSuchMethod(
-        Invocation.getter(#items),
-        returnValue: <_i4.NutritionalPlan>[],
-      ) as List<_i4.NutritionalPlan>);
+    Invocation.getter(#items),
+    returnValue: <_i4.NutritionalPlan>[],
+  ) as List<_i4.NutritionalPlan>);
   @override
   _i2.AuthProvider get auth => (super.noSuchMethod(
-        Invocation.getter(#auth),
-        returnValue: _FakeAuthProvider_0(),
-      ) as _i2.AuthProvider);
+    Invocation.getter(#auth),
+    returnValue: _FakeAuthProvider_0(),
+  ) as _i2.AuthProvider);
   @override
   set auth(_i2.AuthProvider? _auth) => super.noSuchMethod(
-        Invocation.setter(#auth, _auth),
-        returnValueForMissingStub: null,
-      );
+    Invocation.setter(#auth, _auth),
+    returnValueForMissingStub: null,
+  );
   @override
   _i3.Client get client => (super.noSuchMethod(
-        Invocation.getter(#client),
-        returnValue: _FakeClient_1(),
-      ) as _i3.Client);
+    Invocation.getter(#client),
+    returnValue: _FakeClient_1(),
+  ) as _i3.Client);
   @override
   set client(_i3.Client? _client) => super.noSuchMethod(
-        Invocation.setter(#client, _client),
-        returnValueForMissingStub: null,
-      );
+    Invocation.setter(#client, _client),
+    returnValueForMissingStub: null,
+  );
   @override
   bool get hasListeners =>
       (super.noSuchMethod(Invocation.getter(#hasListeners), returnValue: false)
           as bool);
   @override
   void clear() => super.noSuchMethod(
-        Invocation.method(#clear, []),
-        returnValueForMissingStub: null,
-      );
+    Invocation.method(#clear, []),
+    returnValueForMissingStub: null,
+  );
   @override
   _i4.NutritionalPlan findById(int? id) => (super.noSuchMethod(
-        Invocation.method(#findById, [id]),
-        returnValue: _FakeNutritionalPlan_2(),
-      ) as _i4.NutritionalPlan);
+    Invocation.method(#findById, [id]),
+    returnValue: _FakeNutritionalPlan_2(),
+  ) as _i4.NutritionalPlan);
   @override
   _i5.Meal? findMealById(int? id) =>
       (super.noSuchMethod(Invocation.method(#findMealById, [id])) as _i5.Meal?);
   @override
   _i9.Future<void> fetchAndSetAllPlansSparse() => (super.noSuchMethod(
-        Invocation.method(#fetchAndSetAllPlansSparse, []),
-        returnValue: Future<void>.value(),
-        returnValueForMissingStub: Future<void>.value(),
-      ) as _i9.Future<void>);
+    Invocation.method(#fetchAndSetAllPlansSparse, []),
+    returnValue: Future<void>.value(),
+    returnValueForMissingStub: Future<void>.value(),
+  ) as _i9.Future<void>);
   @override
   _i9.Future<void> fetchAndSetAllPlansFull() => (super.noSuchMethod(
-        Invocation.method(#fetchAndSetAllPlansFull, []),
-        returnValue: Future<void>.value(),
-        returnValueForMissingStub: Future<void>.value(),
-      ) as _i9.Future<void>);
+    Invocation.method(#fetchAndSetAllPlansFull, []),
+    returnValue: Future<void>.value(),
+    returnValueForMissingStub: Future<void>.value(),
+  ) as _i9.Future<void>);
   @override
   _i9.Future<_i4.NutritionalPlan> fetchAndSetPlanSparse(int? planId) =>
       (super.noSuchMethod(
@@ -125,16 +125,16 @@ class MockNutritionPlansProvider extends _i1.Mock
       ) as _i9.Future<_i4.NutritionalPlan>);
   @override
   _i9.Future<void> editPlan(_i4.NutritionalPlan? plan) => (super.noSuchMethod(
-        Invocation.method(#editPlan, [plan]),
-        returnValue: Future<void>.value(),
-        returnValueForMissingStub: Future<void>.value(),
-      ) as _i9.Future<void>);
+    Invocation.method(#editPlan, [plan]),
+    returnValue: Future<void>.value(),
+    returnValueForMissingStub: Future<void>.value(),
+  ) as _i9.Future<void>);
   @override
   _i9.Future<void> deletePlan(int? id) => (super.noSuchMethod(
-        Invocation.method(#deletePlan, [id]),
-        returnValue: Future<void>.value(),
-        returnValueForMissingStub: Future<void>.value(),
-      ) as _i9.Future<void>);
+    Invocation.method(#deletePlan, [id]),
+    returnValue: Future<void>.value(),
+    returnValueForMissingStub: Future<void>.value(),
+  ) as _i9.Future<void>);
   @override
   _i9.Future<_i5.Meal> addMeal(_i5.Meal? meal, int? planId) =>
       (super.noSuchMethod(
@@ -143,24 +143,23 @@ class MockNutritionPlansProvider extends _i1.Mock
       ) as _i9.Future<_i5.Meal>);
   @override
   _i9.Future<_i5.Meal> editMeal(_i5.Meal? meal) => (super.noSuchMethod(
-        Invocation.method(#editMeal, [meal]),
-        returnValue: Future<_i5.Meal>.value(_FakeMeal_3()),
-      ) as _i9.Future<_i5.Meal>);
+    Invocation.method(#editMeal, [meal]),
+    returnValue: Future<_i5.Meal>.value(_FakeMeal_3()),
+  ) as _i9.Future<_i5.Meal>);
   @override
   _i9.Future<void> deleteMeal(_i5.Meal? meal) => (super.noSuchMethod(
-        Invocation.method(#deleteMeal, [meal]),
-        returnValue: Future<void>.value(),
-        returnValueForMissingStub: Future<void>.value(),
-      ) as _i9.Future<void>);
+    Invocation.method(#deleteMeal, [meal]),
+    returnValue: Future<void>.value(),
+    returnValueForMissingStub: Future<void>.value(),
+  ) as _i9.Future<void>);
   @override
   _i9.Future<_i6.MealItem> addMealItem(
     _i6.MealItem? mealItem,
     _i5.Meal? meal,
-  ) =>
-      (super.noSuchMethod(
-        Invocation.method(#addMealItem, [mealItem, meal]),
-        returnValue: Future<_i6.MealItem>.value(_FakeMealItem_4()),
-      ) as _i9.Future<_i6.MealItem>);
+  ) => (super.noSuchMethod(
+    Invocation.method(#addMealItem, [mealItem, meal]),
+    returnValue: Future<_i6.MealItem>.value(_FakeMealItem_4()),
+  ) as _i9.Future<_i6.MealItem>);
   @override
   _i9.Future<void> deleteMealItem(_i6.MealItem? mealItem) =>
       (super.noSuchMethod(
@@ -176,42 +175,40 @@ class MockNutritionPlansProvider extends _i1.Mock
       ) as _i9.Future<_i7.Ingredient>);
   @override
   _i9.Future<void> fetchIngredientsFromCache() => (super.noSuchMethod(
-        Invocation.method(#fetchIngredientsFromCache, []),
-        returnValue: Future<void>.value(),
-        returnValueForMissingStub: Future<void>.value(),
-      ) as _i9.Future<void>);
+    Invocation.method(#fetchIngredientsFromCache, []),
+    returnValue: Future<void>.value(),
+    returnValueForMissingStub: Future<void>.value(),
+  ) as _i9.Future<void>);
   @override
   _i9.Future<List<dynamic>> searchIngredient(
     String? name, [
     String? languageCode = r'en',
-  ]) =>
-      (super.noSuchMethod(
-        Invocation.method(#searchIngredient, [name, languageCode]),
-        returnValue: Future<List<dynamic>>.value(<dynamic>[]),
-      ) as _i9.Future<List<dynamic>>);
+  ]) => (super.noSuchMethod(
+    Invocation.method(#searchIngredient, [name, languageCode]),
+    returnValue: Future<List<dynamic>>.value(<dynamic>[]),
+  ) as _i9.Future<List<dynamic>>);
   @override
   _i9.Future<void> logMealToDiary(_i5.Meal? meal) => (super.noSuchMethod(
-        Invocation.method(#logMealToDiary, [meal]),
-        returnValue: Future<void>.value(),
-        returnValueForMissingStub: Future<void>.value(),
-      ) as _i9.Future<void>);
+    Invocation.method(#logMealToDiary, [meal]),
+    returnValue: Future<void>.value(),
+    returnValueForMissingStub: Future<void>.value(),
+  ) as _i9.Future<void>);
   @override
   _i9.Future<void> logIngredentToDiary(
     _i6.MealItem? mealItem,
     int? planId, [
     DateTime? dateTime,
-  ]) =>
-      (super.noSuchMethod(
-        Invocation.method(#logIngredentToDiary, [mealItem, planId, dateTime]),
-        returnValue: Future<void>.value(),
-        returnValueForMissingStub: Future<void>.value(),
-      ) as _i9.Future<void>);
+  ]) => (super.noSuchMethod(
+    Invocation.method(#logIngredentToDiary, [mealItem, planId, dateTime]),
+    returnValue: Future<void>.value(),
+    returnValueForMissingStub: Future<void>.value(),
+  ) as _i9.Future<void>);
   @override
   _i9.Future<void> deleteLog(int? logId, int? planId) => (super.noSuchMethod(
-        Invocation.method(#deleteLog, [logId, planId]),
-        returnValue: Future<void>.value(),
-        returnValueForMissingStub: Future<void>.value(),
-      ) as _i9.Future<void>);
+    Invocation.method(#deleteLog, [logId, planId]),
+    returnValue: Future<void>.value(),
+    returnValueForMissingStub: Future<void>.value(),
+  ) as _i9.Future<void>);
   @override
   _i9.Future<void> fetchAndSetLogs(_i4.NutritionalPlan? plan) =>
       (super.noSuchMethod(
@@ -225,19 +222,16 @@ class MockNutritionPlansProvider extends _i1.Mock
     int? id,
     String? objectMethod,
     Map<String, dynamic>? query,
-  }) =>
-      (super.noSuchMethod(
-          Invocation.method(
-            #makeUrl,
-            [path],
-            {#id: id, #objectMethod: objectMethod, #query: query},
-          ),
-          returnValue: _FakeUri_6()) as Uri);
+  }) => (super.noSuchMethod(Invocation.method(
+    #makeUrl,
+    [path],
+    {#id: id, #objectMethod: objectMethod, #query: query},
+  ), returnValue: _FakeUri_6()) as Uri);
   @override
   _i9.Future<Map<String, dynamic>> fetch(Uri? uri) => (super.noSuchMethod(
-        Invocation.method(#fetch, [uri]),
-        returnValue: Future<Map<String, dynamic>>.value(<String, dynamic>{}),
-      ) as _i9.Future<Map<String, dynamic>>);
+    Invocation.method(#fetch, [uri]),
+    returnValue: Future<Map<String, dynamic>>.value(<String, dynamic>{}),
+  ) as _i9.Future<Map<String, dynamic>>);
   @override
   _i9.Future<Map<String, dynamic>> post(Map<String, dynamic>? data, Uri? uri) =>
       (super.noSuchMethod(
@@ -248,11 +242,10 @@ class MockNutritionPlansProvider extends _i1.Mock
   _i9.Future<Map<String, dynamic>> patch(
     Map<String, dynamic>? data,
     Uri? uri,
-  ) =>
-      (super.noSuchMethod(
-        Invocation.method(#patch, [data, uri]),
-        returnValue: Future<Map<String, dynamic>>.value(<String, dynamic>{}),
-      ) as _i9.Future<Map<String, dynamic>>);
+  ) => (super.noSuchMethod(
+    Invocation.method(#patch, [data, uri]),
+    returnValue: Future<Map<String, dynamic>>.value(<String, dynamic>{}),
+  ) as _i9.Future<Map<String, dynamic>>);
   @override
   _i9.Future<_i3.Response> deleteRequest(String? url, int? id) =>
       (super.noSuchMethod(
@@ -263,22 +256,22 @@ class MockNutritionPlansProvider extends _i1.Mock
   String toString() => super.toString();
   @override
   void addListener(_i10.VoidCallback? listener) => super.noSuchMethod(
-        Invocation.method(#addListener, [listener]),
-        returnValueForMissingStub: null,
-      );
+    Invocation.method(#addListener, [listener]),
+    returnValueForMissingStub: null,
+  );
   @override
   void removeListener(_i10.VoidCallback? listener) => super.noSuchMethod(
-        Invocation.method(#removeListener, [listener]),
-        returnValueForMissingStub: null,
-      );
+    Invocation.method(#removeListener, [listener]),
+    returnValueForMissingStub: null,
+  );
   @override
   void dispose() => super.noSuchMethod(
-        Invocation.method(#dispose, []),
-        returnValueForMissingStub: null,
-      );
+    Invocation.method(#dispose, []),
+    returnValueForMissingStub: null,
+  );
   @override
   void notifyListeners() => super.noSuchMethod(
-        Invocation.method(#notifyListeners, []),
-        returnValueForMissingStub: null,
-      );
+    Invocation.method(#notifyListeners, []),
+    returnValueForMissingStub: null,
+  );
 }

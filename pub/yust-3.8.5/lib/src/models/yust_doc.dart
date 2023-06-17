@@ -78,13 +78,13 @@ abstract class YustDoc {
     String? modifiedBy,
     String? userId,
     String? envId,
-  })  : _id = id,
-        _createdAt = createdAt,
-        _createdBy = createdBy,
-        _modifiedAt = modifiedAt,
-        _modifiedBy = modifiedBy,
-        _userId = userId,
-        _envId = envId;
+  }) : _id = id,
+       _createdAt = createdAt,
+       _createdBy = createdBy,
+       _modifiedAt = modifiedAt,
+       _modifiedBy = modifiedBy,
+       _userId = userId,
+       _envId = envId;
 
   YustDoc.fromJson(Map<String, dynamic> json) : _id = '';
 

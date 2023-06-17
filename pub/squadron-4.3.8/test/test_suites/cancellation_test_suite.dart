@@ -342,22 +342,15 @@ void cancellationTests() {
 
       final fullExecution =
           results.values.where((r) => r.every((e) => e is int)).length;
-      final partialExecution = results.values
-          .where(
-            (r) =>
-                r.any((e) => e is int) && r.any((e) => e is CancelledException),
-          )
-          .length;
-      final fullCancellation = results.values
-          .where(
-            (r) => r.every((e) => e is CancelledException),
-          )
-          .length;
-      final severalErrors = results.values
-          .where(
-            (r) => r.whereType<CancelledException>().length > 1,
-          )
-          .length;
+      final partialExecution = results.values.where(
+        (r) => r.any((e) => e is int) && r.any((e) => e is CancelledException),
+      ).length;
+      final fullCancellation = results.values.where(
+        (r) => r.every((e) => e is CancelledException),
+      ).length;
+      final severalErrors = results.values.where(
+        (r) => r.whereType<CancelledException>().length > 1,
+      ).length;
 
       expect(fullExecution, isPositive);
       expect(partialExecution, isPositive);
@@ -840,8 +833,7 @@ void cancellationTests() {
       final composite = CompositeToken([
         cancellation,
         timeout,
-      ], CompositeMode.any)
-        ..ensureStarted();
+      ], CompositeMode.any)..ensureStarted();
 
       expect(timeout.cancelled, isFalse);
       expect(cancellation.cancelled, isFalse);

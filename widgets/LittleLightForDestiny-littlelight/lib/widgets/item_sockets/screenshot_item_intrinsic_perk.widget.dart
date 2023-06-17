@@ -20,12 +20,12 @@ class ScreenShotItemIntrinsicPerkWidget extends BaseItemSocketsWidget {
     ItemSocketController controller,
     this.pixelSize = 1,
   }) : super(
-          key: key,
-          item: item,
-          definition: definition,
-          category: category,
-          controller: controller,
-        );
+         key: key,
+         item: item,
+         definition: definition,
+         category: category,
+         controller: controller,
+       );
 
   @override
   State<StatefulWidget> createState() {
@@ -36,8 +36,8 @@ class ScreenShotItemIntrinsicPerkWidget extends BaseItemSocketsWidget {
 const _sectionId = "screenshot_intrinsic_perks";
 
 class ScreenShotItemIntrinsicPerkWidgetState<
-        T extends ScreenShotItemIntrinsicPerkWidget>
-    extends BaseItemSocketsWidgetState<T> {
+  T extends ScreenShotItemIntrinsicPerkWidget
+> extends BaseItemSocketsWidgetState<T> {
   @override
   String get sectionId => _sectionId;
 

@@ -356,8 +356,7 @@ ExpenseCategoryState _setLoadedExpenseCategory(
 ExpenseCategoryState _setLoadedExpenseCategories(
   ExpenseCategoryState expenseCategoryState,
   LoadExpenseCategoriesSuccess action,
-) =>
-    expenseCategoryState.loadExpenseCategories(action.expenseCategories);
+) => expenseCategoryState.loadExpenseCategories(action.expenseCategories);
 
 ExpenseCategoryState _setLoadedCompany(
   ExpenseCategoryState expenseCategoryState,

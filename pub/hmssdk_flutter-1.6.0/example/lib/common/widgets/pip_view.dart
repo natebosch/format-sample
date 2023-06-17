@@ -24,13 +24,13 @@ class _PipViewState extends State<PipView> {
                   value: data[0],
                   child: Selector<PeerTrackNode, Tuple2<HMSVideoTrack?, bool>>(
                     selector: (_, peerTrackNode) => Tuple2(
-                      peerTrackNode.track,
-                      peerTrackNode.track?.isMute ?? true,
-                    ),
+                          peerTrackNode.track,
+                          peerTrackNode.track?.isMute ?? true,
+                        ),
                     builder: (_, peerTrackToDisplay, __) {
                       return (peerTrackToDisplay.item1 == null ||
-                              peerTrackToDisplay.item2 ||
-                              peerTrackToDisplay.item1?.isDegraded == true)
+                                peerTrackToDisplay.item2 ||
+                                peerTrackToDisplay.item1?.isDegraded == true)
                           ? Semantics(
                               label: "fl_video_off",
                               child: AudioLevelAvatar(),
@@ -42,7 +42,7 @@ class _PipViewState extends State<PipView> {
                                 ),
                                 track: peerTrackToDisplay.item1!,
                                 scaleType: (peerTrackToDisplay.item1!.source !=
-                                        "REGULAR")
+                                          "REGULAR")
                                     ? ScaleType.SCALE_ASPECT_FIT
                                     : ScaleType.SCALE_ASPECT_FILL,
                                 setMirror: false,

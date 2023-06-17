@@ -257,8 +257,8 @@ class CoinDetailsState extends State<CoinDetails>
                             ? normalizeNumNoCommas(generalStats["PRICE"])
                             : "0"),
                     style: Theme.of(context).textTheme.body2.apply(
-                          fontSizeFactor: 2.2,
-                        ),
+                      fontSizeFactor: 2.2,
+                    ),
                   ),
                   new Row(
                     mainAxisAlignment: MainAxisAlignment.end,
@@ -270,8 +270,8 @@ class CoinDetailsState extends State<CoinDetails>
                           new Text(
                             "Market Cap",
                             style: Theme.of(context).textTheme.caption.apply(
-                                  color: Theme.of(context).hintColor,
-                                ),
+                              color: Theme.of(context).hintColor,
+                            ),
                           ),
                           new Padding(
                             padding: const EdgeInsets.symmetric(vertical: 2.0),
@@ -279,8 +279,8 @@ class CoinDetailsState extends State<CoinDetails>
                           new Text(
                             "24h Volume",
                             style: Theme.of(context).textTheme.caption.apply(
-                                  color: Theme.of(context).hintColor,
-                                ),
+                              color: Theme.of(context).hintColor,
+                            ),
                           ),
                         ],
                       ),
@@ -295,9 +295,9 @@ class CoinDetailsState extends State<CoinDetails>
                                 ? "\$" + normalizeNum(generalStats["MKTCAP"])
                                 : "0",
                             style: Theme.of(context).textTheme.body2.apply(
-                                  fontSizeFactor: 1.1,
-                                  fontWeightDelta: 2,
-                                ),
+                              fontSizeFactor: 1.1,
+                              fontWeightDelta: 2,
+                            ),
                           ),
                           new Text(
                             generalStats != null
@@ -305,10 +305,10 @@ class CoinDetailsState extends State<CoinDetails>
                                     normalizeNum(generalStats["TOTALVOLUME24H"])
                                 : "0",
                             style: Theme.of(context).textTheme.body2.apply(
-                                  fontSizeFactor: 1.1,
-                                  fontWeightDelta: 2,
-                                  color: Theme.of(context).hintColor,
-                                ),
+                              fontSizeFactor: 1.1,
+                              fontWeightDelta: 2,
+                              color: Theme.of(context).hintColor,
+                            ),
                           ),
                         ],
                       ),
@@ -339,9 +339,8 @@ class CoinDetailsState extends State<CoinDetails>
                                         style: Theme.of(
                                           context,
                                         ).textTheme.body1.apply(
-                                              color:
-                                                  Theme.of(context).hintColor,
-                                            ),
+                                          color: Theme.of(context).hintColor,
+                                        ),
                                       ),
                                       new Padding(
                                         padding:
@@ -383,9 +382,8 @@ class CoinDetailsState extends State<CoinDetails>
                                         style: Theme.of(
                                           context,
                                         ).textTheme.body1.apply(
-                                              color:
-                                                  Theme.of(context).hintColor,
-                                            ),
+                                          color: Theme.of(context).hintColor,
+                                        ),
                                       ),
                                       new Padding(
                                         padding:
@@ -500,47 +498,47 @@ class CoinDetailsState extends State<CoinDetails>
                         color: Theme.of(context).buttonColor,
                       ),
                       itemBuilder: (BuildContext context) => [
-                        new PopupMenuItem(
-                          child: new Text("1h"),
-                          value: ["minute", "60", "1h", "1"],
-                        ),
-                        new PopupMenuItem(
-                          child: new Text("6h"),
-                          value: ["minute", "360", "6h", "1"],
-                        ),
-                        new PopupMenuItem(
-                          child: new Text("12h"),
-                          value: ["minute", "720", "12h", "1"],
-                        ),
-                        new PopupMenuItem(
-                          child: new Text("24h"),
-                          value: ["minute", "720", "24h", "2"],
-                        ),
-                        new PopupMenuItem(
-                          child: new Text("3D"),
-                          value: ["hour", "72", "3D", "1"],
-                        ),
-                        new PopupMenuItem(
-                          child: new Text("7D"),
-                          value: ["hour", "168", "7D", "1"],
-                        ),
-                        new PopupMenuItem(
-                          child: new Text("1M"),
-                          value: ["hour", "720", "1M", "1"],
-                        ),
-                        new PopupMenuItem(
-                          child: new Text("3M"),
-                          value: ["day", "90", "3M", "1"],
-                        ),
-                        new PopupMenuItem(
-                          child: new Text("6M"),
-                          value: ["day", "180", "6M", "1"],
-                        ),
-                        new PopupMenuItem(
-                          child: new Text("1Y"),
-                          value: ["day", "365", "1Y", "1"],
-                        ),
-                      ],
+                            new PopupMenuItem(
+                              child: new Text("1h"),
+                              value: ["minute", "60", "1h", "1"],
+                            ),
+                            new PopupMenuItem(
+                              child: new Text("6h"),
+                              value: ["minute", "360", "6h", "1"],
+                            ),
+                            new PopupMenuItem(
+                              child: new Text("12h"),
+                              value: ["minute", "720", "12h", "1"],
+                            ),
+                            new PopupMenuItem(
+                              child: new Text("24h"),
+                              value: ["minute", "720", "24h", "2"],
+                            ),
+                            new PopupMenuItem(
+                              child: new Text("3D"),
+                              value: ["hour", "72", "3D", "1"],
+                            ),
+                            new PopupMenuItem(
+                              child: new Text("7D"),
+                              value: ["hour", "168", "7D", "1"],
+                            ),
+                            new PopupMenuItem(
+                              child: new Text("1M"),
+                              value: ["hour", "720", "1M", "1"],
+                            ),
+                            new PopupMenuItem(
+                              child: new Text("3M"),
+                              value: ["day", "90", "3M", "1"],
+                            ),
+                            new PopupMenuItem(
+                              child: new Text("6M"),
+                              value: ["day", "180", "6M", "1"],
+                            ),
+                            new PopupMenuItem(
+                              child: new Text("1Y"),
+                              value: ["day", "365", "1Y", "1"],
+                            ),
+                          ],
                       onSelected: (result) {
                         changeHistory(
                           result[0],
@@ -616,8 +614,8 @@ class CoinDetailsState extends State<CoinDetails>
         exchangeData = [];
       });
     } else {
-      exchangeData =
-          new JsonDecoder().convert(response.body)["Data"]["Exchanges"];
+      exchangeData = new JsonDecoder().convert(response.body)["Data"]
+          ["Exchanges"];
       _sortExchangeData();
     }
   }
@@ -793,9 +791,8 @@ class CoinDetailsState extends State<CoinDetails>
                                         style: Theme.of(
                                           context,
                                         ).textTheme.body2.apply(
-                                              color:
-                                                  Theme.of(context).hintColor,
-                                            ),
+                                          color: Theme.of(context).hintColor,
+                                        ),
                                       ),
                                       new InkWell(
                                         onTap: () {
@@ -851,13 +848,13 @@ class CoinDetailsState extends State<CoinDetails>
                           (
                             BuildContext context,
                             int index,
-                          ) =>
-                              new ExchangeListItem(
+                          ) => new ExchangeListItem(
                             exchangeData[index],
                             columnProps,
                           ),
-                          childCount:
-                              exchangeData == null ? 0 : exchangeData.length,
+                          childCount: exchangeData == null
+                              ? 0
+                              : exchangeData.length,
                         ),
                       ),
                     ],
@@ -953,8 +950,8 @@ class CoinDetailsState extends State<CoinDetails>
                           new Text(
                             "\$" + numCommaParse(value.toStringAsFixed(2)),
                             style: Theme.of(context).textTheme.body2.apply(
-                                  fontSizeFactor: 2.2,
-                                ),
+                              fontSizeFactor: 2.2,
+                            ),
                           ),
                         ],
                       ),
@@ -963,8 +960,8 @@ class CoinDetailsState extends State<CoinDetails>
                             " " +
                             symbol,
                         style: Theme.of(context).textTheme.body2.apply(
-                              fontSizeFactor: 1.2,
-                            ),
+                          fontSizeFactor: 1.2,
+                        ),
                       ),
                     ],
                   ),
@@ -988,8 +985,8 @@ class CoinDetailsState extends State<CoinDetails>
                       new Text(
                         "\$" + numCommaParse(cost.toStringAsFixed(2)),
                         style: Theme.of(context).primaryTextTheme.body2.apply(
-                              fontSizeFactor: 1.5,
-                            ),
+                          fontSizeFactor: 1.5,
+                        ),
                       ),
                     ],
                   ),

@@ -78,10 +78,12 @@ class _DoubleTapIconState extends State<DoubleTapIcon>
       onDoubleTap: _onDoubleTap,
       rippleColor: Colors.white,
       wrapper: (parentWidget, curveRadius) {
-        final forwardRadius =
-            !widget.isForward ? Radius.zero : Radius.circular(curveRadius);
-        final backwardRadius =
-            widget.isForward ? Radius.zero : Radius.circular(curveRadius);
+        final forwardRadius = !widget.isForward
+            ? Radius.zero
+            : Radius.circular(curveRadius);
+        final backwardRadius = widget.isForward
+            ? Radius.zero
+            : Radius.circular(curveRadius);
         return ClipRRect(
           borderRadius: BorderRadius.only(
             bottomLeft: forwardRadius,

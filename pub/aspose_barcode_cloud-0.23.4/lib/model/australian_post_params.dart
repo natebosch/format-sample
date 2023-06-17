@@ -22,9 +22,9 @@ class AustralianPostParams {
       'AustralianPostParams[encodingTable=$encodingTable, shortBarHeight=$shortBarHeight, ]';
 
   Map<String, dynamic> toJson() => {
-        'EncodingTable': encodingTable,
-        'ShortBarHeight': shortBarHeight,
-      };
+    'EncodingTable': encodingTable,
+    'ShortBarHeight': shortBarHeight,
+  };
 
   static List<AustralianPostParams> listFromJson(List<dynamic> json) =>
       json.map((value) => new AustralianPostParams.fromJson(value)).toList();

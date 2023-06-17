@@ -56,14 +56,14 @@ class CompanyInfo extends Equatable {
   }
 
   String getFounderDate(BuildContext context) => context.translate(
-        'spacex.company.founded',
-        parameters: {'founded': founded.toString(), 'founder': founder},
-      );
+    'spacex.company.founded',
+    parameters: {'founded': founded.toString(), 'founder': founder},
+  );
 
   String get getValuation => NumberFormat.currency(
-        symbol: '\$',
-        decimalDigits: 0,
-      ).format(valuation);
+    symbol: '\$',
+    decimalDigits: 0,
+  ).format(valuation);
 
   String get getLocation => '$city, $state';
 
@@ -71,18 +71,18 @@ class CompanyInfo extends Equatable {
 
   @override
   List<Object> get props => [
-        city,
-        state,
-        fullName,
-        name,
-        founder,
-        founded,
-        employees,
-        ceo,
-        cto,
-        coo,
-        valuation,
-        details,
-        id,
-      ];
+    city,
+    state,
+    fullName,
+    name,
+    founder,
+    founded,
+    employees,
+    ceo,
+    cto,
+    coo,
+    valuation,
+    details,
+    id,
+  ];
 }

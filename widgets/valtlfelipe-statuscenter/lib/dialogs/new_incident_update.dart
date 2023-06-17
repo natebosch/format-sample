@@ -29,15 +29,13 @@ class _NewIncidentUpdateDialogState extends State<NewIncidentUpdateDialog> {
   @override
   void initState() {
     _isSaving = false;
-    _data.components = widget.incident.components
-        .map(
-          (Component c) => AffectedComponent(
-            code: c.id,
-            name: c.name,
-            newStatus: c.status,
-          ),
-        )
-        .toList();
+    _data.components = widget.incident.components.map(
+      (Component c) => AffectedComponent(
+        code: c.id,
+        name: c.name,
+        newStatus: c.status,
+      ),
+    ).toList();
     super.initState();
   }
 

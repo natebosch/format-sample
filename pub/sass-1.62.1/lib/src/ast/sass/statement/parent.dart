@@ -31,13 +31,13 @@ abstract class ParentStatement<T extends List<Statement>?>
   final bool hasDeclarations;
 
   ParentStatement(this.children)
-      : hasDeclarations = children?.any(
-              (child) =>
-                  child is VariableDeclaration ||
-                  child is FunctionRule ||
-                  child is MixinRule ||
-                  (child is ImportRule &&
-                      child.imports.any((import) => import is DynamicImport)),
-            ) ??
-            false;
+    : hasDeclarations = children?.any(
+            (child) =>
+                child is VariableDeclaration ||
+                child is FunctionRule ||
+                child is MixinRule ||
+                (child is ImportRule &&
+                    child.imports.any((import) => import is DynamicImport)),
+          ) ??
+          false;
 }

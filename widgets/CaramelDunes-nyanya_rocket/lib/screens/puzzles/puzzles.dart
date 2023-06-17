@@ -11,7 +11,7 @@ class Puzzles extends StatelessWidget {
   final TabKind initialTab;
 
   const Puzzles({Key? key, this.initialTab = TabKind.Original})
-      : super(key: key);
+    : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -27,8 +27,9 @@ class Puzzles extends StatelessWidget {
           bottom: TabBar(
             tabs: [
               Tab(
-                icon:
-                    displayIcons ? FaIcon(FontAwesomeIcons.puzzlePiece) : null,
+                icon: displayIcons
+                    ? FaIcon(FontAwesomeIcons.puzzlePiece)
+                    : null,
                 text: NyaNyaLocalizations.of(context).originalTab,
               ),
               Tab(

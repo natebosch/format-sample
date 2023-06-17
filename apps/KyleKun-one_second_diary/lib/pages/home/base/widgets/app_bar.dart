@@ -6,8 +6,8 @@ import '../../../../routes/app_pages.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   CustomAppBar({Key? key})
-      : preferredSize = const Size.fromHeight(60.0),
-        super(key: key);
+    : preferredSize = const Size.fromHeight(60.0),
+      super(key: key);
 
   @override
   final Size preferredSize;

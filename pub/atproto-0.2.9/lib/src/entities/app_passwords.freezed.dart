@@ -57,7 +57,7 @@ class _$AppPasswordsCopyWithImpl<$Res, $Val extends AppPasswords>
         passwords: null == passwords
             ? _value.passwords
             : passwords // ignore: cast_nullable_to_non_nullable
-                as List<SealedAppPassword>,
+                  as List<SealedAppPassword>,
       ) as $Val,
     );
   }
@@ -91,7 +91,7 @@ class __$$_AppPasswordsCopyWithImpl<$Res>
       passwords: null == passwords
           ? _value._passwords
           : passwords // ignore: cast_nullable_to_non_nullable
-              as List<SealedAppPassword>,
+                as List<SealedAppPassword>,
     ));
   }
 }
@@ -100,12 +100,11 @@ class __$$_AppPasswordsCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_AppPasswords implements _AppPasswords {
   const _$_AppPasswords({required final List<SealedAppPassword> passwords})
-      : _passwords = passwords;
+    : _passwords = passwords;
 
   factory _$_AppPasswords.fromJson(
     Map<String, dynamic> json,
-  ) =>
-      _$$_AppPasswordsFromJson(json);
+  ) => _$$_AppPasswordsFromJson(json);
 
   final List<SealedAppPassword> _passwords;
   @override
@@ -134,18 +133,18 @@ class _$_AppPasswords implements _AppPasswords {
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-        runtimeType,
-        const DeepCollectionEquality().hash(_passwords),
-      );
+    runtimeType,
+    const DeepCollectionEquality().hash(_passwords),
+  );
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_AppPasswordsCopyWith<_$_AppPasswords> get copyWith =>
-      __$$_AppPasswordsCopyWithImpl<_$_AppPasswords>(
-        this,
-        _$identity,
-      );
+  _$$_AppPasswordsCopyWith<_$_AppPasswords>
+  get copyWith => __$$_AppPasswordsCopyWithImpl<_$_AppPasswords>(
+    this,
+    _$identity,
+  );
 
   @override
   Map<String, dynamic> toJson() {

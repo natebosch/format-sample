@@ -43,25 +43,25 @@ class _RestApiHackerNewsExampleState extends State<RestApiHackerNewsExample> {
                       child: ListView.builder(
                         itemCount: this._articleIds.length,
                         itemBuilder: (ctx, i) => FutureBuilder(
-                          future: this._getArticleById(this._articleIds[i]),
-                          builder: (
-                            BuildContext context,
-                            AsyncSnapshot<String> snapshot,
-                          ) {
-                            if (!snapshot.hasData) {
-                              return Container(
-                                margin: const EdgeInsets.all(4),
-                                alignment: Alignment.center,
-                                child: const CircularProgressIndicator(),
-                              );
-                            }
-                            final hnArticle = MyHackerNewsArticle.fromJson(
-                              json.decode(snapshot.data!)
-                                  as Map<String, dynamic>,
-                            );
-                            return this._articleListTile(hnArticle);
-                          },
-                        ),
+                              future: this._getArticleById(this._articleIds[i]),
+                              builder: (
+                                BuildContext context,
+                                AsyncSnapshot<String> snapshot,
+                              ) {
+                                if (!snapshot.hasData) {
+                                  return Container(
+                                    margin: const EdgeInsets.all(4),
+                                    alignment: Alignment.center,
+                                    child: const CircularProgressIndicator(),
+                                  );
+                                }
+                                final hnArticle = MyHackerNewsArticle.fromJson(
+                                  json.decode(snapshot.data!)
+                                      as Map<String, dynamic>,
+                                );
+                                return this._articleListTile(hnArticle);
+                              },
+                            ),
                       ),
                     ),
             ),
@@ -115,10 +115,11 @@ class _RestApiHackerNewsExampleState extends State<RestApiHackerNewsExample> {
           if (await url_launcher.canLaunch(article.url!)) {
             Navigator.of(context).push(MaterialPageRoute(
               builder: (ctx) => WebviewScaffold(
-                initialChild: const Center(child: CircularProgressIndicator()),
-                url: article.url!,
-                appBar: AppBar(title: Text(article.title!)),
-              ),
+                    initialChild:
+                        const Center(child: CircularProgressIndicator()),
+                    url: article.url!,
+                    appBar: AppBar(title: Text(article.title!)),
+                  ),
             ));
           }
         },

@@ -8,15 +8,14 @@ part of 'validation_failure.dart';
 
 _$_SonarrIndexerValidationFailure _$$_SonarrIndexerValidationFailureFromJson(
   Map<String, dynamic> json,
-) =>
-    _$_SonarrIndexerValidationFailure(
-      isWarning: json['isWarning'] as bool,
-      detailedDescription: json['detailedDescription'] as String?,
-      infoLink: json['infoLink'] as String?,
-      propertyName: json['propertyName'] as String?,
-      errorMessage: json['errorMessage'] as String?,
-      severity: json['severity'] as String?,
-    );
+) => _$_SonarrIndexerValidationFailure(
+  isWarning: json['isWarning'] as bool,
+  detailedDescription: json['detailedDescription'] as String?,
+  infoLink: json['infoLink'] as String?,
+  propertyName: json['propertyName'] as String?,
+  errorMessage: json['errorMessage'] as String?,
+  severity: json['severity'] as String?,
+);
 
 Map<String, dynamic> _$$_SonarrIndexerValidationFailureToJson(
   _$_SonarrIndexerValidationFailure instance,

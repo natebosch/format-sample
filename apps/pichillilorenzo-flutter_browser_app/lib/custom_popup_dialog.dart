@@ -11,9 +11,9 @@ class CustomPopupDialogPageRoute<T> extends MaterialTransparentPageRoute<T> {
     Duration? transitionDuration,
     Color? overlayColor,
     RouteSettings? settings,
-  })  : this.overlayColor = overlayColor ?? Colors.black.withOpacity(0.5),
-        customTransitionDuration = transitionDuration,
-        super(builder: builder, settings: settings);
+  }) : this.overlayColor = overlayColor ?? Colors.black.withOpacity(0.5),
+       customTransitionDuration = transitionDuration,
+       super(builder: builder, settings: settings);
 
   @override
   Duration get transitionDuration => customTransitionDuration != null

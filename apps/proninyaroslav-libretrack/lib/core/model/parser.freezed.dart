@@ -50,56 +50,53 @@ mixin _$ParseResult {
       ShipmentInfo info,
       List<ShipmentActivityInfo> activity,
       List<String>? alternateTracks,
-    ) $default, {
+    )
+    $default, {
     required TResult Function() noInfo,
     required TResult Function(ParseError error) error,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
     TResult Function(
       ShipmentInfo info,
       List<ShipmentActivityInfo> activity,
       List<String>? alternateTracks,
-    )? $default, {
+    )?
+    $default, {
     TResult Function()? noInfo,
     TResult Function(ParseError error)? error,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
     TResult Function(
       ShipmentInfo info,
       List<ShipmentActivityInfo> activity,
       List<String>? alternateTracks,
-    )? $default, {
+    )?
+    $default, {
     TResult Function()? noInfo,
     TResult Function(ParseError error)? error,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
     TResult Function(ParseResultData value) $default, {
     required TResult Function(ParseResultNoInfo value) noInfo,
     required TResult Function(ParseResultError value) error,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>(
     TResult Function(ParseResultData value)? $default, {
     TResult Function(ParseResultNoInfo value)? noInfo,
     TResult Function(ParseResultError value)? error,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>(
     TResult Function(ParseResultData value)? $default, {
     TResult Function(ParseResultNoInfo value)? noInfo,
     TResult Function(ParseResultError value)? error,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -154,15 +151,15 @@ class _$ParseResultDataCopyWithImpl<$Res>
       info: info == freezed
           ? _value.info
           : info // ignore: cast_nullable_to_non_nullable
-              as ShipmentInfo,
+                as ShipmentInfo,
       activity: activity == freezed
           ? _value.activity
           : activity // ignore: cast_nullable_to_non_nullable
-              as List<ShipmentActivityInfo>,
+                as List<ShipmentActivityInfo>,
       alternateTracks: alternateTracks == freezed
           ? _value.alternateTracks
           : alternateTracks // ignore: cast_nullable_to_non_nullable
-              as List<String>?,
+                as List<String>?,
     ));
   }
 }
@@ -227,11 +224,11 @@ class _$ParseResultData
 
   @JsonKey(ignore: true)
   @override
-  $ParseResultDataCopyWith<ParseResultData> get copyWith =>
-      _$ParseResultDataCopyWithImpl<ParseResultData>(
-        this,
-        _$identity,
-      );
+  $ParseResultDataCopyWith<ParseResultData>
+  get copyWith => _$ParseResultDataCopyWithImpl<ParseResultData>(
+    this,
+    _$identity,
+  );
 
   @override
   @optionalTypeArgs
@@ -240,7 +237,8 @@ class _$ParseResultData
       ShipmentInfo info,
       List<ShipmentActivityInfo> activity,
       List<String>? alternateTracks,
-    ) $default, {
+    )
+    $default, {
     required TResult Function() noInfo,
     required TResult Function(ParseError error) error,
   }) {
@@ -254,7 +252,8 @@ class _$ParseResultData
       ShipmentInfo info,
       List<ShipmentActivityInfo> activity,
       List<String>? alternateTracks,
-    )? $default, {
+    )?
+    $default, {
     TResult Function()? noInfo,
     TResult Function(ParseError error)? error,
   }) {
@@ -268,7 +267,8 @@ class _$ParseResultData
       ShipmentInfo info,
       List<ShipmentActivityInfo> activity,
       List<String>? alternateTracks,
-    )? $default, {
+    )?
+    $default, {
     TResult Function()? noInfo,
     TResult Function(ParseError error)? error,
     required TResult orElse(),
@@ -383,7 +383,8 @@ class _$ParseResultNoInfo
       ShipmentInfo info,
       List<ShipmentActivityInfo> activity,
       List<String>? alternateTracks,
-    ) $default, {
+    )
+    $default, {
     required TResult Function() noInfo,
     required TResult Function(ParseError error) error,
   }) {
@@ -397,7 +398,8 @@ class _$ParseResultNoInfo
       ShipmentInfo info,
       List<ShipmentActivityInfo> activity,
       List<String>? alternateTracks,
-    )? $default, {
+    )?
+    $default, {
     TResult Function()? noInfo,
     TResult Function(ParseError error)? error,
   }) {
@@ -411,7 +413,8 @@ class _$ParseResultNoInfo
       ShipmentInfo info,
       List<ShipmentActivityInfo> activity,
       List<String>? alternateTracks,
-    )? $default, {
+    )?
+    $default, {
     TResult Function()? noInfo,
     TResult Function(ParseError error)? error,
     required TResult orElse(),
@@ -490,7 +493,7 @@ class _$ParseResultErrorCopyWithImpl<$Res>
       error == freezed
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
-              as ParseError,
+                as ParseError,
     ));
   }
 
@@ -539,11 +542,11 @@ class _$ParseResultError
 
   @JsonKey(ignore: true)
   @override
-  $ParseResultErrorCopyWith<ParseResultError> get copyWith =>
-      _$ParseResultErrorCopyWithImpl<ParseResultError>(
-        this,
-        _$identity,
-      );
+  $ParseResultErrorCopyWith<ParseResultError>
+  get copyWith => _$ParseResultErrorCopyWithImpl<ParseResultError>(
+    this,
+    _$identity,
+  );
 
   @override
   @optionalTypeArgs
@@ -552,7 +555,8 @@ class _$ParseResultError
       ShipmentInfo info,
       List<ShipmentActivityInfo> activity,
       List<String>? alternateTracks,
-    ) $default, {
+    )
+    $default, {
     required TResult Function() noInfo,
     required TResult Function(ParseError error) error,
   }) {
@@ -566,7 +570,8 @@ class _$ParseResultError
       ShipmentInfo info,
       List<ShipmentActivityInfo> activity,
       List<String>? alternateTracks,
-    )? $default, {
+    )?
+    $default, {
     TResult Function()? noInfo,
     TResult Function(ParseError error)? error,
   }) {
@@ -580,7 +585,8 @@ class _$ParseResultError
       ShipmentInfo info,
       List<ShipmentActivityInfo> activity,
       List<String>? alternateTracks,
-    )? $default, {
+    )?
+    $default, {
     TResult Function()? noInfo,
     TResult Function(ParseError error)? error,
     required TResult orElse(),
@@ -677,8 +683,7 @@ mixin _$ParseError {
     required TResult Function(String? code, String? message) auth,
     required TResult Function(String? code, String? message) badRequest,
     required TResult Function() invalidTrackNumber,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String message)? format,
@@ -687,8 +692,7 @@ mixin _$ParseError {
     TResult Function(String? code, String? message)? auth,
     TResult Function(String? code, String? message)? badRequest,
     TResult Function()? invalidTrackNumber,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String message)? format,
@@ -698,20 +702,18 @@ mixin _$ParseError {
     TResult Function(String? code, String? message)? badRequest,
     TResult Function()? invalidTrackNumber,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(ParseErrorFormat value) format,
     required TResult Function(ParseErrorServiceTemporary value)
-        serviceTemporary,
+    serviceTemporary,
     required TResult Function(ParseErrorServiceHard value) serviceHard,
     required TResult Function(ParseErrorAuth value) auth,
     required TResult Function(ParseErrorBadRequest value) badRequest,
     required TResult Function(ParseErrorInvalidTrackNumber value)
-        invalidTrackNumber,
-  }) =>
-      throw _privateConstructorUsedError;
+    invalidTrackNumber,
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(ParseErrorFormat value)? format,
@@ -720,8 +722,7 @@ mixin _$ParseError {
     TResult Function(ParseErrorAuth value)? auth,
     TResult Function(ParseErrorBadRequest value)? badRequest,
     TResult Function(ParseErrorInvalidTrackNumber value)? invalidTrackNumber,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(ParseErrorFormat value)? format,
@@ -731,8 +732,7 @@ mixin _$ParseError {
     TResult Function(ParseErrorBadRequest value)? badRequest,
     TResult Function(ParseErrorInvalidTrackNumber value)? invalidTrackNumber,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -779,7 +779,7 @@ class _$ParseErrorFormatCopyWithImpl<$Res>
       message == freezed
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
-              as String,
+                as String,
     ));
   }
 }
@@ -821,11 +821,11 @@ class _$ParseErrorFormat
 
   @JsonKey(ignore: true)
   @override
-  $ParseErrorFormatCopyWith<ParseErrorFormat> get copyWith =>
-      _$ParseErrorFormatCopyWithImpl<ParseErrorFormat>(
-        this,
-        _$identity,
-      );
+  $ParseErrorFormatCopyWith<ParseErrorFormat>
+  get copyWith => _$ParseErrorFormatCopyWithImpl<ParseErrorFormat>(
+    this,
+    _$identity,
+  );
 
   @override
   @optionalTypeArgs
@@ -875,12 +875,12 @@ class _$ParseErrorFormat
   TResult map<TResult extends Object?>({
     required TResult Function(ParseErrorFormat value) format,
     required TResult Function(ParseErrorServiceTemporary value)
-        serviceTemporary,
+    serviceTemporary,
     required TResult Function(ParseErrorServiceHard value) serviceHard,
     required TResult Function(ParseErrorAuth value) auth,
     required TResult Function(ParseErrorBadRequest value) badRequest,
     required TResult Function(ParseErrorInvalidTrackNumber value)
-        invalidTrackNumber,
+    invalidTrackNumber,
   }) {
     return format(this);
   }
@@ -953,11 +953,11 @@ class _$ParseErrorServiceTemporaryCopyWithImpl<$Res>
       code: code == freezed
           ? _value.code
           : code // ignore: cast_nullable_to_non_nullable
-              as String?,
+                as String?,
       message: message == freezed
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
-              as String?,
+                as String?,
     ));
   }
 }
@@ -1007,9 +1007,9 @@ class _$ParseErrorServiceTemporary
   @JsonKey(ignore: true)
   @override
   $ParseErrorServiceTemporaryCopyWith<ParseErrorServiceTemporary>
-      get copyWith =>
-          _$ParseErrorServiceTemporaryCopyWithImpl<ParseErrorServiceTemporary>(
-              this, _$identity);
+  get copyWith => _$ParseErrorServiceTemporaryCopyWithImpl<
+    ParseErrorServiceTemporary
+  >(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1059,12 +1059,12 @@ class _$ParseErrorServiceTemporary
   TResult map<TResult extends Object?>({
     required TResult Function(ParseErrorFormat value) format,
     required TResult Function(ParseErrorServiceTemporary value)
-        serviceTemporary,
+    serviceTemporary,
     required TResult Function(ParseErrorServiceHard value) serviceHard,
     required TResult Function(ParseErrorAuth value) auth,
     required TResult Function(ParseErrorBadRequest value) badRequest,
     required TResult Function(ParseErrorInvalidTrackNumber value)
-        invalidTrackNumber,
+    invalidTrackNumber,
   }) {
     return serviceTemporary(this);
   }
@@ -1108,7 +1108,7 @@ abstract class ParseErrorServiceTemporary implements ParseError {
   String? get message => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $ParseErrorServiceTemporaryCopyWith<ParseErrorServiceTemporary>
-      get copyWith => throw _privateConstructorUsedError;
+  get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -1138,11 +1138,11 @@ class _$ParseErrorServiceHardCopyWithImpl<$Res>
       code: code == freezed
           ? _value.code
           : code // ignore: cast_nullable_to_non_nullable
-              as String?,
+                as String?,
       message: message == freezed
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
-              as String?,
+                as String?,
     ));
   }
 }
@@ -1191,11 +1191,11 @@ class _$ParseErrorServiceHard
 
   @JsonKey(ignore: true)
   @override
-  $ParseErrorServiceHardCopyWith<ParseErrorServiceHard> get copyWith =>
-      _$ParseErrorServiceHardCopyWithImpl<ParseErrorServiceHard>(
-        this,
-        _$identity,
-      );
+  $ParseErrorServiceHardCopyWith<ParseErrorServiceHard>
+  get copyWith => _$ParseErrorServiceHardCopyWithImpl<ParseErrorServiceHard>(
+    this,
+    _$identity,
+  );
 
   @override
   @optionalTypeArgs
@@ -1245,12 +1245,12 @@ class _$ParseErrorServiceHard
   TResult map<TResult extends Object?>({
     required TResult Function(ParseErrorFormat value) format,
     required TResult Function(ParseErrorServiceTemporary value)
-        serviceTemporary,
+    serviceTemporary,
     required TResult Function(ParseErrorServiceHard value) serviceHard,
     required TResult Function(ParseErrorAuth value) auth,
     required TResult Function(ParseErrorBadRequest value) badRequest,
     required TResult Function(ParseErrorInvalidTrackNumber value)
-        invalidTrackNumber,
+    invalidTrackNumber,
   }) {
     return serviceHard(this);
   }
@@ -1323,11 +1323,11 @@ class _$ParseErrorAuthCopyWithImpl<$Res> extends _$ParseErrorCopyWithImpl<$Res>
       code: code == freezed
           ? _value.code
           : code // ignore: cast_nullable_to_non_nullable
-              as String?,
+                as String?,
       message: message == freezed
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
-              as String?,
+                as String?,
     ));
   }
 }
@@ -1374,11 +1374,11 @@ class _$ParseErrorAuth with DiagnosticableTreeMixin implements ParseErrorAuth {
 
   @JsonKey(ignore: true)
   @override
-  $ParseErrorAuthCopyWith<ParseErrorAuth> get copyWith =>
-      _$ParseErrorAuthCopyWithImpl<ParseErrorAuth>(
-        this,
-        _$identity,
-      );
+  $ParseErrorAuthCopyWith<ParseErrorAuth>
+  get copyWith => _$ParseErrorAuthCopyWithImpl<ParseErrorAuth>(
+    this,
+    _$identity,
+  );
 
   @override
   @optionalTypeArgs
@@ -1428,12 +1428,12 @@ class _$ParseErrorAuth with DiagnosticableTreeMixin implements ParseErrorAuth {
   TResult map<TResult extends Object?>({
     required TResult Function(ParseErrorFormat value) format,
     required TResult Function(ParseErrorServiceTemporary value)
-        serviceTemporary,
+    serviceTemporary,
     required TResult Function(ParseErrorServiceHard value) serviceHard,
     required TResult Function(ParseErrorAuth value) auth,
     required TResult Function(ParseErrorBadRequest value) badRequest,
     required TResult Function(ParseErrorInvalidTrackNumber value)
-        invalidTrackNumber,
+    invalidTrackNumber,
   }) {
     return auth(this);
   }
@@ -1507,11 +1507,11 @@ class _$ParseErrorBadRequestCopyWithImpl<$Res>
       code: code == freezed
           ? _value.code
           : code // ignore: cast_nullable_to_non_nullable
-              as String?,
+                as String?,
       message: message == freezed
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
-              as String?,
+                as String?,
     ));
   }
 }
@@ -1560,11 +1560,11 @@ class _$ParseErrorBadRequest
 
   @JsonKey(ignore: true)
   @override
-  $ParseErrorBadRequestCopyWith<ParseErrorBadRequest> get copyWith =>
-      _$ParseErrorBadRequestCopyWithImpl<ParseErrorBadRequest>(
-        this,
-        _$identity,
-      );
+  $ParseErrorBadRequestCopyWith<ParseErrorBadRequest>
+  get copyWith => _$ParseErrorBadRequestCopyWithImpl<ParseErrorBadRequest>(
+    this,
+    _$identity,
+  );
 
   @override
   @optionalTypeArgs
@@ -1614,12 +1614,12 @@ class _$ParseErrorBadRequest
   TResult map<TResult extends Object?>({
     required TResult Function(ParseErrorFormat value) format,
     required TResult Function(ParseErrorServiceTemporary value)
-        serviceTemporary,
+    serviceTemporary,
     required TResult Function(ParseErrorServiceHard value) serviceHard,
     required TResult Function(ParseErrorAuth value) auth,
     required TResult Function(ParseErrorBadRequest value) badRequest,
     required TResult Function(ParseErrorInvalidTrackNumber value)
-        invalidTrackNumber,
+    invalidTrackNumber,
   }) {
     return badRequest(this);
   }
@@ -1763,12 +1763,12 @@ class _$ParseErrorInvalidTrackNumber
   TResult map<TResult extends Object?>({
     required TResult Function(ParseErrorFormat value) format,
     required TResult Function(ParseErrorServiceTemporary value)
-        serviceTemporary,
+    serviceTemporary,
     required TResult Function(ParseErrorServiceHard value) serviceHard,
     required TResult Function(ParseErrorAuth value) auth,
     required TResult Function(ParseErrorBadRequest value) badRequest,
     required TResult Function(ParseErrorInvalidTrackNumber value)
-        invalidTrackNumber,
+    invalidTrackNumber,
   }) {
     return invalidTrackNumber(this);
   }

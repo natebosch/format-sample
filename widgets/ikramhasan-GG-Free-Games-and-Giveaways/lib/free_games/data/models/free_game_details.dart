@@ -31,8 +31,7 @@ class FreeGameDetails with _$FreeGameDetails {
 
   factory FreeGameDetails.fromJson(
     Map<String, dynamic> json,
-  ) =>
-      _$FreeGameDetailsFromJson(json);
+  ) => _$FreeGameDetailsFromJson(json);
 }
 
 @freezed
@@ -46,17 +45,16 @@ class MinimumSystemRequirements with _$MinimumSystemRequirements {
   }) = _MinimumSystemRequirements;
 
   factory MinimumSystemRequirements.empty() => const _MinimumSystemRequirements(
-        os: 'N/A',
-        graphics: 'N/A',
-        memory: 'N/A',
-        processor: 'N/A',
-        storage: 'N/A',
-      );
+    os: 'N/A',
+    graphics: 'N/A',
+    memory: 'N/A',
+    processor: 'N/A',
+    storage: 'N/A',
+  );
 
   factory MinimumSystemRequirements.fromJson(
     Map<String, dynamic> json,
-  ) =>
-      _$MinimumSystemRequirementsFromJson(json);
+  ) => _$MinimumSystemRequirementsFromJson(json);
 }
 
 @freezed
@@ -70,12 +68,11 @@ class Screenshot with _$Screenshot {
   }) = _Screenshot;
 
   factory Screenshot.empty() => const _Screenshot(
-        id: 0,
-        image: 'https://via.placeholder.com/500x225?text=No+Image+Found',
-      );
+    id: 0,
+    image: 'https://via.placeholder.com/500x225?text=No+Image+Found',
+  );
 
   factory Screenshot.fromJson(
     Map<String, dynamic> json,
-  ) =>
-      _$ScreenshotFromJson(json);
+  ) => _$ScreenshotFromJson(json);
 }

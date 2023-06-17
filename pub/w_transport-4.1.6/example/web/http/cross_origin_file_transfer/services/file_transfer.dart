@@ -37,10 +37,10 @@ class FileTransfer {
   bool _canceled;
 
   FileTransfer(this.name)
-      : id = 'fileTransfer${_transferNum++}',
-        _canceled = false,
-        _doneCompleter = Completer<Null>(),
-        _percentComplete = 0.0;
+    : id = 'fileTransfer${_transferNum++}',
+      _canceled = false,
+      _doneCompleter = Completer<Null>(),
+      _percentComplete = 0.0;
 
   /// Unique file transfer identifier.
   final String id;
@@ -89,8 +89,8 @@ class Upload extends FileTransfer {
 
     // Send the request.
     _request.post().then((_) => _doneCompleter.complete()).catchError(
-          (error, sT) => _doneCompleter.completeError(error, sT),
-        );
+      (error, sT) => _doneCompleter.completeError(error, sT),
+    );
   }
 
   /// Start a new file upload. This will begin the upload to the server immediately.

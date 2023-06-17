@@ -608,11 +608,9 @@ class AccountService {
     );
     if (response.statusCode == 200) {
       List<AlertResponseItem> alerts;
-      alerts = (json.decode(response.body) as List)
-          .map(
-            (i) => AlertResponseItem.fromJson(i),
-          )
-          .toList();
+      alerts = (json.decode(response.body) as List).map(
+        (i) => AlertResponseItem.fromJson(i),
+      ).toList();
       if (alerts.length > 0) {
         if (alerts[0].active) {
           return alerts[0];

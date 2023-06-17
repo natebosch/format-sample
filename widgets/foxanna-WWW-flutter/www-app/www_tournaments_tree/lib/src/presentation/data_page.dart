@@ -9,7 +9,7 @@ import 'package:www_widgets/www_widgets.dart';
 
 class TournamentsTreeDataPage extends StatelessWidget {
   const TournamentsTreeDataPage({Key? key, required this.tournamentsTree})
-      : super(key: key);
+    : super(key: key);
 
   final List<dynamic> tournamentsTree;
 

@@ -192,20 +192,21 @@ Middleware<AppState> _followArtist(ArtistRepository repository) {
     repository
         .followArtist(store.state, artist, artistFollowing: artistFollowing)
         .then((data) {
-      store.dispatch(FollowArtistSuccess(
-        artistFollowing: data,
-        unfollow: artistFollowing != null,
-      ));
-      if (action.completer != null) {
-        action.completer.complete(null);
-      }
-    }).catchError((Object error) {
-      print(error);
-      store.dispatch(FollowArtistFailure(error));
-      if (action.completer != null) {
-        action.completer.completeError(error);
-      }
-    });
+          store.dispatch(FollowArtistSuccess(
+            artistFollowing: data,
+            unfollow: artistFollowing != null,
+          ));
+          if (action.completer != null) {
+            action.completer.complete(null);
+          }
+        })
+        .catchError((Object error) {
+          print(error);
+          store.dispatch(FollowArtistFailure(error));
+          if (action.completer != null) {
+            action.completer.completeError(error);
+          }
+        });
 
     next(action);
   };

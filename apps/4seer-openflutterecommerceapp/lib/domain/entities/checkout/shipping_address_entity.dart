@@ -37,15 +37,15 @@ class ShippingAddressEntity extends Entity<int> {
 
   @override
   List<Object> get props => [
-        id,
-        fullName,
-        address,
-        city,
-        state,
-        postal,
-        country,
-        isDefault,
-      ];
+    id,
+    fullName,
+    address,
+    city,
+    state,
+    postal,
+    country,
+    isDefault,
+  ];
 
   @override
   String toString() =>

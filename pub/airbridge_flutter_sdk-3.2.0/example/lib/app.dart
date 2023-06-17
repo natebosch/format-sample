@@ -131,21 +131,19 @@ Future<void> init() async {
 
   Log.info('init');
 
-  Storage.set(
-      'user',
-      User(
-        id: 'test',
-        email: 'test@ab180.co',
-        phone: '000-0000-0000',
-        alias: {'alias_key1': 'value1', 'alias_key2': 'value2'},
-        attributes: {
-          'attributes_key2': 3,
-          'attributes_key5': 2200000000,
-          'attributes_key4': 10.4,
-          'attributes_key3': true,
-          'attributes_key1': 'value1',
-        },
-      ));
+  Storage.set('user', User(
+    id: 'test',
+    email: 'test@ab180.co',
+    phone: '000-0000-0000',
+    alias: {'alias_key1': 'value1', 'alias_key2': 'value2'},
+    attributes: {
+      'attributes_key2': 3,
+      'attributes_key5': 2200000000,
+      'attributes_key4': 10.4,
+      'attributes_key3': true,
+      'attributes_key1': 'value1',
+    },
+  ));
 
   Storage.set('deviceUUID', await Airbridge.state.deviceUUID);
 }

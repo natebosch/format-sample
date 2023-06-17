@@ -375,12 +375,9 @@ class X509Certificate {
       oidValue = oid.toValue();
     }
     if (oidValue != null) {
-      var block = block1
-          ?.atIndex(X509BlockPosition.extensions)
-          ?.findOid(
-            oidValue: oidValue,
-          )
-          ?.parent;
+      var block = block1?.atIndex(X509BlockPosition.extensions)?.findOid(
+        oidValue: oidValue,
+      )?.parent;
       if (block != null) {
         if (oidValue == OID.basicConstraints.toValue()) {
           return BasicConstraintExtension(block: block);

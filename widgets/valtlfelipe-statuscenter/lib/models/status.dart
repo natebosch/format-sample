@@ -25,12 +25,9 @@ class Status {
       scheduledMaintenancesCount:
           (json['scheduled_maintenances'] as List).length,
       components: json['components'] != null
-          ? (json['components'] as List)
-              .where((c) => c['group'] == false)
-              .map(
-                (c) => new Component.fromJson(c),
-              )
-              .toList()
+          ? (json['components'] as List).where((c) => c['group'] == false).map(
+              (c) => new Component.fromJson(c),
+            ).toList()
           : null,
     );
   }

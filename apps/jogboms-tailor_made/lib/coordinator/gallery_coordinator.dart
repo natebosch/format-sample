@@ -8,7 +8,7 @@ import 'package:tailor_made/wrappers/mk_navigate.dart';
 @immutable
 class GalleryCoordinator extends CoordinatorBase {
   const GalleryCoordinator(GlobalKey<NavigatorState> navigatorKey)
-      : super(navigatorKey);
+    : super(navigatorKey);
 
   void toImage(ImageModel image) {
     navigator?.push<void>(MkNavigate.fadeIn(GalleryView(image: image)));

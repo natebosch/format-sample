@@ -70,8 +70,8 @@ class _StateNowPlaying extends State<NowPlaying>
       vsync: this,
       duration: Duration(milliseconds: 500),
     )..addListener(() {
-        setState(() {});
-      });
+      setState(() {});
+    });
     _animateIcon = Tween<double>(begin: 0.0, end: 1.0).animate(
       _animationController,
     );
@@ -246,67 +246,67 @@ class _StateNowPlaying extends State<NowPlaying>
                 top: 10.0,
               ),
               itemBuilder: (context, i) => new Column(
-                children: <Widget>[
-                  new ListTile(
-                    leading: new CircleAvatar(
-                      child: getImage(widget.songs[i]) != null
-                          ? new Image.file(
-                              getImage(widget.songs[i]),
-                              height: 120.0,
-                              fit: BoxFit.cover,
-                            )
-                          : new Text(
-                              widget.songs[i].title[0].toUpperCase(),
-                            ),
-                    ),
-                    title: new Text(
-                      widget.songs[i].title,
-                      maxLines: 1,
-                      style: new TextStyle(fontSize: 16.0),
-                    ),
-                    subtitle: Row(
-                      children: <Widget>[
-                        new Text(
-                          widget.songs[i].artist,
+                    children: <Widget>[
+                      new ListTile(
+                        leading: new CircleAvatar(
+                          child: getImage(widget.songs[i]) != null
+                              ? new Image.file(
+                                  getImage(widget.songs[i]),
+                                  height: 120.0,
+                                  fit: BoxFit.cover,
+                                )
+                              : new Text(
+                                  widget.songs[i].title[0].toUpperCase(),
+                                ),
+                        ),
+                        title: new Text(
+                          widget.songs[i].title,
                           maxLines: 1,
-                          style: new TextStyle(
-                            fontSize: 12.0,
-                            color: Colors.black54,
-                          ),
+                          style: new TextStyle(fontSize: 16.0),
                         ),
-                        Padding(
-                          padding: EdgeInsets.only(left: 5.0, right: 5.0),
-                          child: Text("-"),
+                        subtitle: Row(
+                          children: <Widget>[
+                            new Text(
+                              widget.songs[i].artist,
+                              maxLines: 1,
+                              style: new TextStyle(
+                                fontSize: 12.0,
+                                color: Colors.black54,
+                              ),
+                            ),
+                            Padding(
+                              padding: EdgeInsets.only(left: 5.0, right: 5.0),
+                              child: Text("-"),
+                            ),
+                            Text(
+                              new Duration(
+                                milliseconds: widget.songs[i].duration,
+                              ).toString().split('.').first.substring(3, 7),
+                              style: new TextStyle(
+                                fontSize: 11.0,
+                                color: Colors.black54,
+                              ),
+                            ),
+                          ],
                         ),
-                        Text(
-                          new Duration(
-                            milliseconds: widget.songs[i].duration,
-                          ).toString().split('.').first.substring(3, 7),
-                          style: new TextStyle(
-                            fontSize: 11.0,
-                            color: Colors.black54,
-                          ),
-                        ),
-                      ],
-                    ),
-                    trailing:
-                        widget.songs[i].id == MyQueue.songs[MyQueue.index].id
+                        trailing: widget.songs[i].id ==
+                                MyQueue.songs[MyQueue.index].id
                             ? new Icon(
                                 Icons.play_circle_filled,
                                 color: Colors.blueGrey[700],
                               )
                             : null,
-                    onTap: () {
-                      setState(() {
-                        MyQueue.index = i;
-                        player.stop();
-                        updatePage(MyQueue.index);
-                        Navigator.pop(context);
-                      });
-                    },
+                        onTap: () {
+                          setState(() {
+                            MyQueue.index = i;
+                            player.stop();
+                            updatePage(MyQueue.index);
+                            Navigator.pop(context);
+                          });
+                        },
+                      ),
+                    ],
                   ),
-                ],
-              ),
             ),
           ),
         );

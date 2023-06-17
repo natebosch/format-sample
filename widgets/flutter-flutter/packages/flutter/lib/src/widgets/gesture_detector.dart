@@ -102,8 +102,8 @@ class GestureRecognizerFactoryWithHandlers<T extends GestureRecognizer>
   const GestureRecognizerFactoryWithHandlers(
     this._constructor,
     this._initializer,
-  )   : assert(_constructor != null),
-        assert(_initializer != null);
+  ) : assert(_constructor != null),
+      assert(_initializer != null);
 
   final GestureRecognizerFactoryConstructor<T> _constructor;
 
@@ -242,44 +242,44 @@ class GestureDetector extends StatelessWidget {
     this.behavior,
     this.excludeFromSemantics = false,
     this.dragStartBehavior = DragStartBehavior.start,
-  })  : assert(excludeFromSemantics != null),
-        assert(dragStartBehavior != null),
-        assert(
-          () {
-            final bool haveVerticalDrag = onVerticalDragStart != null ||
-                onVerticalDragUpdate != null ||
-                onVerticalDragEnd != null;
-            final bool haveHorizontalDrag = onHorizontalDragStart != null ||
-                onHorizontalDragUpdate != null ||
-                onHorizontalDragEnd != null;
-            final bool havePan =
-                onPanStart != null || onPanUpdate != null || onPanEnd != null;
-            final bool haveScale = onScaleStart != null ||
-                onScaleUpdate != null ||
-                onScaleEnd != null;
-            if (havePan || haveScale) {
-              if (havePan && haveScale) {
-                throw FlutterError.fromParts(<DiagnosticsNode>[
-                  ErrorSummary('Incorrect GestureDetector arguments.'),
-                  ErrorDescription(
-                    'Having both a pan gesture recognizer and a scale gesture recognizer is redundant; scale is a superset of pan.',
-                  ),
-                  ErrorHint('Just use the scale gesture recognizer.'),
-                ]);
-              }
-              final String recognizer = havePan ? 'pan' : 'scale';
-              if (haveVerticalDrag && haveHorizontalDrag) {
-                throw FlutterError(
-                  'Incorrect GestureDetector arguments.\n'
-                  'Simultaneously having a vertical drag gesture recognizer, a horizontal drag gesture recognizer, and a $recognizer gesture recognizer '
-                  'will result in the $recognizer gesture recognizer being ignored, since the other two will catch all drags.',
-                );
-              }
-            }
-            return true;
-          }(),
-        ),
-        super(key: key);
+  }) : assert(excludeFromSemantics != null),
+       assert(dragStartBehavior != null),
+       assert(
+         () {
+           final bool haveVerticalDrag = onVerticalDragStart != null ||
+               onVerticalDragUpdate != null ||
+               onVerticalDragEnd != null;
+           final bool haveHorizontalDrag = onHorizontalDragStart != null ||
+               onHorizontalDragUpdate != null ||
+               onHorizontalDragEnd != null;
+           final bool havePan =
+               onPanStart != null || onPanUpdate != null || onPanEnd != null;
+           final bool haveScale = onScaleStart != null ||
+               onScaleUpdate != null ||
+               onScaleEnd != null;
+           if (havePan || haveScale) {
+             if (havePan && haveScale) {
+               throw FlutterError.fromParts(<DiagnosticsNode>[
+                 ErrorSummary('Incorrect GestureDetector arguments.'),
+                 ErrorDescription(
+                   'Having both a pan gesture recognizer and a scale gesture recognizer is redundant; scale is a superset of pan.',
+                 ),
+                 ErrorHint('Just use the scale gesture recognizer.'),
+               ]);
+             }
+             final String recognizer = havePan ? 'pan' : 'scale';
+             if (haveVerticalDrag && haveHorizontalDrag) {
+               throw FlutterError(
+                 'Incorrect GestureDetector arguments.\n'
+                 'Simultaneously having a vertical drag gesture recognizer, a horizontal drag gesture recognizer, and a $recognizer gesture recognizer '
+                 'will result in the $recognizer gesture recognizer being ignored, since the other two will catch all drags.',
+               );
+             }
+           }
+           return true;
+         }(),
+       ),
+       super(key: key);
 
   /// The widget below this widget in the tree.
   ///
@@ -986,35 +986,35 @@ class GestureDetector extends StatelessWidget {
         onTertiaryTapCancel != null) {
       gestures[TapGestureRecognizer] =
           GestureRecognizerFactoryWithHandlers<TapGestureRecognizer>(
-        () => TapGestureRecognizer(debugOwner: this),
-        (TapGestureRecognizer instance) {
-          instance
-            ..onTapDown = onTapDown
-            ..onTapUp = onTapUp
-            ..onTap = onTap
-            ..onTapCancel = onTapCancel
-            ..onSecondaryTap = onSecondaryTap
-            ..onSecondaryTapDown = onSecondaryTapDown
-            ..onSecondaryTapUp = onSecondaryTapUp
-            ..onSecondaryTapCancel = onSecondaryTapCancel
-            ..onTertiaryTapDown = onTertiaryTapDown
-            ..onTertiaryTapUp = onTertiaryTapUp
-            ..onTertiaryTapCancel = onTertiaryTapCancel;
-        },
-      );
+            () => TapGestureRecognizer(debugOwner: this),
+            (TapGestureRecognizer instance) {
+              instance
+                ..onTapDown = onTapDown
+                ..onTapUp = onTapUp
+                ..onTap = onTap
+                ..onTapCancel = onTapCancel
+                ..onSecondaryTap = onSecondaryTap
+                ..onSecondaryTapDown = onSecondaryTapDown
+                ..onSecondaryTapUp = onSecondaryTapUp
+                ..onSecondaryTapCancel = onSecondaryTapCancel
+                ..onTertiaryTapDown = onTertiaryTapDown
+                ..onTertiaryTapUp = onTertiaryTapUp
+                ..onTertiaryTapCancel = onTertiaryTapCancel;
+            },
+          );
     }
 
     if (onDoubleTap != null) {
       gestures[DoubleTapGestureRecognizer] =
           GestureRecognizerFactoryWithHandlers<DoubleTapGestureRecognizer>(
-        () => DoubleTapGestureRecognizer(debugOwner: this),
-        (DoubleTapGestureRecognizer instance) {
-          instance
-            ..onDoubleTapDown = onDoubleTapDown
-            ..onDoubleTap = onDoubleTap
-            ..onDoubleTapCancel = onDoubleTapCancel;
-        },
-      );
+            () => DoubleTapGestureRecognizer(debugOwner: this),
+            (DoubleTapGestureRecognizer instance) {
+              instance
+                ..onDoubleTapDown = onDoubleTapDown
+                ..onDoubleTap = onDoubleTap
+                ..onDoubleTapCancel = onDoubleTapCancel;
+            },
+          );
     }
 
     if (onLongPressDown != null ||
@@ -1040,32 +1040,33 @@ class GestureDetector extends StatelessWidget {
         onTertiaryLongPressEnd != null) {
       gestures[LongPressGestureRecognizer] =
           GestureRecognizerFactoryWithHandlers<LongPressGestureRecognizer>(
-        () => LongPressGestureRecognizer(debugOwner: this),
-        (LongPressGestureRecognizer instance) {
-          instance
-            ..onLongPressDown = onLongPressDown
-            ..onLongPressCancel = onLongPressCancel
-            ..onLongPress = onLongPress
-            ..onLongPressStart = onLongPressStart
-            ..onLongPressMoveUpdate = onLongPressMoveUpdate
-            ..onLongPressUp = onLongPressUp
-            ..onLongPressEnd = onLongPressEnd
-            ..onSecondaryLongPressDown = onSecondaryLongPressDown
-            ..onSecondaryLongPressCancel = onSecondaryLongPressCancel
-            ..onSecondaryLongPress = onSecondaryLongPress
-            ..onSecondaryLongPressStart = onSecondaryLongPressStart
-            ..onSecondaryLongPressMoveUpdate = onSecondaryLongPressMoveUpdate
-            ..onSecondaryLongPressUp = onSecondaryLongPressUp
-            ..onSecondaryLongPressEnd = onSecondaryLongPressEnd
-            ..onTertiaryLongPressDown = onTertiaryLongPressDown
-            ..onTertiaryLongPressCancel = onTertiaryLongPressCancel
-            ..onTertiaryLongPress = onTertiaryLongPress
-            ..onTertiaryLongPressStart = onTertiaryLongPressStart
-            ..onTertiaryLongPressMoveUpdate = onTertiaryLongPressMoveUpdate
-            ..onTertiaryLongPressUp = onTertiaryLongPressUp
-            ..onTertiaryLongPressEnd = onTertiaryLongPressEnd;
-        },
-      );
+            () => LongPressGestureRecognizer(debugOwner: this),
+            (LongPressGestureRecognizer instance) {
+              instance
+                ..onLongPressDown = onLongPressDown
+                ..onLongPressCancel = onLongPressCancel
+                ..onLongPress = onLongPress
+                ..onLongPressStart = onLongPressStart
+                ..onLongPressMoveUpdate = onLongPressMoveUpdate
+                ..onLongPressUp = onLongPressUp
+                ..onLongPressEnd = onLongPressEnd
+                ..onSecondaryLongPressDown = onSecondaryLongPressDown
+                ..onSecondaryLongPressCancel = onSecondaryLongPressCancel
+                ..onSecondaryLongPress = onSecondaryLongPress
+                ..onSecondaryLongPressStart = onSecondaryLongPressStart
+                ..onSecondaryLongPressMoveUpdate =
+                    onSecondaryLongPressMoveUpdate
+                ..onSecondaryLongPressUp = onSecondaryLongPressUp
+                ..onSecondaryLongPressEnd = onSecondaryLongPressEnd
+                ..onTertiaryLongPressDown = onTertiaryLongPressDown
+                ..onTertiaryLongPressCancel = onTertiaryLongPressCancel
+                ..onTertiaryLongPress = onTertiaryLongPress
+                ..onTertiaryLongPressStart = onTertiaryLongPressStart
+                ..onTertiaryLongPressMoveUpdate = onTertiaryLongPressMoveUpdate
+                ..onTertiaryLongPressUp = onTertiaryLongPressUp
+                ..onTertiaryLongPressEnd = onTertiaryLongPressEnd;
+            },
+          );
     }
 
     if (onVerticalDragDown != null ||
@@ -1075,17 +1076,17 @@ class GestureDetector extends StatelessWidget {
         onVerticalDragCancel != null) {
       gestures[VerticalDragGestureRecognizer] =
           GestureRecognizerFactoryWithHandlers<VerticalDragGestureRecognizer>(
-        () => VerticalDragGestureRecognizer(debugOwner: this),
-        (VerticalDragGestureRecognizer instance) {
-          instance
-            ..onDown = onVerticalDragDown
-            ..onStart = onVerticalDragStart
-            ..onUpdate = onVerticalDragUpdate
-            ..onEnd = onVerticalDragEnd
-            ..onCancel = onVerticalDragCancel
-            ..dragStartBehavior = dragStartBehavior;
-        },
-      );
+            () => VerticalDragGestureRecognizer(debugOwner: this),
+            (VerticalDragGestureRecognizer instance) {
+              instance
+                ..onDown = onVerticalDragDown
+                ..onStart = onVerticalDragStart
+                ..onUpdate = onVerticalDragUpdate
+                ..onEnd = onVerticalDragEnd
+                ..onCancel = onVerticalDragCancel
+                ..dragStartBehavior = dragStartBehavior;
+            },
+          );
     }
 
     if (onHorizontalDragDown != null ||
@@ -1095,17 +1096,17 @@ class GestureDetector extends StatelessWidget {
         onHorizontalDragCancel != null) {
       gestures[HorizontalDragGestureRecognizer] =
           GestureRecognizerFactoryWithHandlers<HorizontalDragGestureRecognizer>(
-        () => HorizontalDragGestureRecognizer(debugOwner: this),
-        (HorizontalDragGestureRecognizer instance) {
-          instance
-            ..onDown = onHorizontalDragDown
-            ..onStart = onHorizontalDragStart
-            ..onUpdate = onHorizontalDragUpdate
-            ..onEnd = onHorizontalDragEnd
-            ..onCancel = onHorizontalDragCancel
-            ..dragStartBehavior = dragStartBehavior;
-        },
-      );
+            () => HorizontalDragGestureRecognizer(debugOwner: this),
+            (HorizontalDragGestureRecognizer instance) {
+              instance
+                ..onDown = onHorizontalDragDown
+                ..onStart = onHorizontalDragStart
+                ..onUpdate = onHorizontalDragUpdate
+                ..onEnd = onHorizontalDragEnd
+                ..onCancel = onHorizontalDragCancel
+                ..dragStartBehavior = dragStartBehavior;
+            },
+          );
     }
 
     if (onPanDown != null ||
@@ -1115,31 +1116,31 @@ class GestureDetector extends StatelessWidget {
         onPanCancel != null) {
       gestures[PanGestureRecognizer] =
           GestureRecognizerFactoryWithHandlers<PanGestureRecognizer>(
-        () => PanGestureRecognizer(debugOwner: this),
-        (PanGestureRecognizer instance) {
-          instance
-            ..onDown = onPanDown
-            ..onStart = onPanStart
-            ..onUpdate = onPanUpdate
-            ..onEnd = onPanEnd
-            ..onCancel = onPanCancel
-            ..dragStartBehavior = dragStartBehavior;
-        },
-      );
+            () => PanGestureRecognizer(debugOwner: this),
+            (PanGestureRecognizer instance) {
+              instance
+                ..onDown = onPanDown
+                ..onStart = onPanStart
+                ..onUpdate = onPanUpdate
+                ..onEnd = onPanEnd
+                ..onCancel = onPanCancel
+                ..dragStartBehavior = dragStartBehavior;
+            },
+          );
     }
 
     if (onScaleStart != null || onScaleUpdate != null || onScaleEnd != null) {
       gestures[ScaleGestureRecognizer] =
           GestureRecognizerFactoryWithHandlers<ScaleGestureRecognizer>(
-        () => ScaleGestureRecognizer(debugOwner: this),
-        (ScaleGestureRecognizer instance) {
-          instance
-            ..onStart = onScaleStart
-            ..onUpdate = onScaleUpdate
-            ..onEnd = onScaleEnd
-            ..dragStartBehavior = dragStartBehavior;
-        },
-      );
+            () => ScaleGestureRecognizer(debugOwner: this),
+            (ScaleGestureRecognizer instance) {
+              instance
+                ..onStart = onScaleStart
+                ..onUpdate = onScaleUpdate
+                ..onEnd = onScaleEnd
+                ..dragStartBehavior = dragStartBehavior;
+            },
+          );
     }
 
     if (onForcePressStart != null ||
@@ -1148,15 +1149,15 @@ class GestureDetector extends StatelessWidget {
         onForcePressEnd != null) {
       gestures[ForcePressGestureRecognizer] =
           GestureRecognizerFactoryWithHandlers<ForcePressGestureRecognizer>(
-        () => ForcePressGestureRecognizer(debugOwner: this),
-        (ForcePressGestureRecognizer instance) {
-          instance
-            ..onStart = onForcePressStart
-            ..onPeak = onForcePressPeak
-            ..onUpdate = onForcePressUpdate
-            ..onEnd = onForcePressEnd;
-        },
-      );
+            () => ForcePressGestureRecognizer(debugOwner: this),
+            (ForcePressGestureRecognizer instance) {
+              instance
+                ..onStart = onForcePressStart
+                ..onPeak = onForcePressPeak
+                ..onUpdate = onForcePressUpdate
+                ..onEnd = onForcePressEnd;
+            },
+          );
     }
 
     return RawGestureDetector(
@@ -1229,9 +1230,9 @@ class RawGestureDetector extends StatefulWidget {
     this.behavior,
     this.excludeFromSemantics = false,
     this.semantics,
-  })  : assert(gestures != null),
-        assert(excludeFromSemantics != null),
-        super(key: key);
+  }) : assert(gestures != null),
+       assert(excludeFromSemantics != null),
+       super(key: key);
 
   /// The widget below this widget in the tree.
   ///
@@ -1448,7 +1449,9 @@ class RawGestureDetectorState extends State<RawGestureDetector> {
           oldRecognizers[type] ?? gestures[type]!.constructor();
       assert(
         _recognizers![type].runtimeType == type,
-        'GestureRecognizerFactory of type $type created a GestureRecognizer of type ${_recognizers![type].runtimeType}. The GestureRecognizerFactory must be specialized with the type of the class that it returns from its constructor method.',
+        'GestureRecognizerFactory of type $type created a GestureRecognizer of type ${_recognizers![
+          type
+        ].runtimeType}. The GestureRecognizerFactory must be specialized with the type of the class that it returns from its constructor method.',
       );
       gestures[type]!.initializer(_recognizers![type]!);
     }
@@ -1500,11 +1503,9 @@ class RawGestureDetectorState extends State<RawGestureDetector> {
     if (_recognizers == null) {
       properties.add(DiagnosticsNode.message('DISPOSED'));
     } else {
-      final List<String> gestures = _recognizers!.values
-          .map<String>(
-            (GestureRecognizer recognizer) => recognizer.debugDescription,
-          )
-          .toList();
+      final List<String> gestures = _recognizers!.values.map<String>(
+        (GestureRecognizer recognizer) => recognizer.debugDescription,
+      ).toList();
       properties.add(
         IterableProperty<String>('gestures', gestures, ifEmpty: '<none>'),
       );
@@ -1542,8 +1543,8 @@ class _GestureSemantics extends SingleChildRenderObjectWidget {
     Widget? child,
     required this.behavior,
     required this.assignSemantics,
-  })  : assert(assignSemantics != null),
-        super(key: key, child: child);
+  }) : assert(assignSemantics != null),
+       super(key: key, child: child);
 
   final HitTestBehavior behavior;
   final _AssignSemantics assignSemantics;

@@ -13,8 +13,9 @@ const Duration _kCategoryDisplayDuration = Duration(milliseconds: 250);
 
 /// A callback used to find information about the category node at the given
 /// `categoryPath`.
-typedef CategoryPathSelector<T extends Comparable<T>>
-    = Future<SmoothCategory<T>?> Function(Iterable<T> categoryPath);
+typedef CategoryPathSelector<
+  T extends Comparable<T>
+> = Future<SmoothCategory<T>?> Function(Iterable<T> categoryPath);
 
 /// A callback used to notify that the visible path in the [SmoothCategoryPicker]
 /// has changed to the given path.
@@ -55,9 +56,9 @@ class SmoothCategoryPicker<T extends Comparable<T>> extends StatefulWidget {
     required this.onPathChanged,
     this.onAddCategory,
     Key? key,
-  })  : assert(currentPath.isNotEmpty),
-        currentCategories = currentCategories ?? <T>{},
-        super(key: key);
+  }) : assert(currentPath.isNotEmpty),
+       currentCategories = currentCategories ?? <T>{},
+       super(key: key);
 
   /// The current set of selected categories.
   ///
@@ -111,8 +112,8 @@ class _SmoothCategoryPickerState<T extends Comparable<T>>
                 Text(
                   // TODO(gspencergoog): Internationalize this.
                   'No Category Found for ${widget.currentPath.map<String>(
-                        (T item) => item.toString(),
-                      ).join(' > ')}',
+                    (T item) => item.toString(),
+                  ).join(' > ')}',
                 ),
                 TextButton(
                   child: const Text('BACK'),
@@ -144,8 +145,8 @@ class _SmoothCategoryPickerState<T extends Comparable<T>>
                 child: SmoothCategoryDisplay<T>(
                   categories: widget.currentCategories,
                   onDeleted: (T item) {
-                    widget.onCategoriesChanged(
-                        widget.currentCategories.difference(<T>{item}));
+                    widget.onCategoriesChanged(widget.currentCategories
+                        .difference(<T>{item}));
                   },
                 ),
               ),
@@ -223,11 +224,9 @@ abstract class SmoothCategory<T extends Comparable<T>> {
 
   /// Returns the child node with the value given.
   Future<SmoothCategory<T>?> getChild(T childValue) async {
-    final List<SmoothCategory<T>> results = await getChildren()
-        .where(
-          (SmoothCategory<T> child) => child.value == childValue,
-        )
-        .toList();
+    final List<SmoothCategory<T>> results = await getChildren().where(
+      (SmoothCategory<T> child) => child.value == childValue,
+    ).toList();
     if (results.isEmpty) {
       return null;
     }
@@ -235,11 +234,9 @@ abstract class SmoothCategory<T extends Comparable<T>> {
   }
 
   Future<SmoothCategory<T>?> findInDescendants(T value) async {
-    final List<SmoothCategory<T>> results = await getDescendants()
-        .where(
-          (SmoothCategory<T> child) => child.value == value,
-        )
-        .toList();
+    final List<SmoothCategory<T>> results = await getDescendants().where(
+      (SmoothCategory<T> child) => child.value == value,
+    ).toList();
     if (results.isEmpty) {
       return null;
     }
@@ -477,7 +474,7 @@ class _CategoryItem<T extends SmoothCategory<dynamic>> extends StatelessWidget {
 /// when they are.
 class SmoothCategoryDisplay<T extends Object> extends StatefulWidget {
   SmoothCategoryDisplay({Set<T>? categories, this.onDeleted})
-      : categories = categories ?? <T>{};
+    : categories = categories ?? <T>{};
 
   /// The set of categories to display.
   ///

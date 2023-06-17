@@ -21,24 +21,24 @@ class ChatMessage {
   });
 
   factory ChatMessage.fromJson(Map<dynamic, dynamic> json) => ChatMessage(
-        key: json["key"],
-        senderId: json["sender_id"],
-        message: json["message"],
-        seen: json["seen"],
-        createdAt: json["created_at"],
-        timeStamp: json['timeStamp'],
-        senderName: json["senderName"],
-        receiverId: json["receiverId"],
-      );
+    key: json["key"],
+    senderId: json["sender_id"],
+    message: json["message"],
+    seen: json["seen"],
+    createdAt: json["created_at"],
+    timeStamp: json['timeStamp'],
+    senderName: json["senderName"],
+    receiverId: json["receiverId"],
+  );
 
   Map<String, dynamic> toJson() => {
-        "key": key,
-        "sender_id": senderId,
-        "message": message,
-        "receiverId": receiverId,
-        "seen": seen,
-        "created_at": createdAt,
-        "senderName": senderName,
-        "timeStamp": timeStamp,
-      };
+    "key": key,
+    "sender_id": senderId,
+    "message": message,
+    "receiverId": receiverId,
+    "seen": seen,
+    "created_at": createdAt,
+    "senderName": senderName,
+    "timeStamp": timeStamp,
+  };
 }

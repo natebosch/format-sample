@@ -302,32 +302,27 @@ class _AllDayAppointmentLayoutState extends State<AllDayAppointmentLayout> {
 
       RRect rect;
       if (widget.isRTL) {
-        rect = RRect.fromRectAndRadius(
-            Rect.fromLTRB(
-              ((widget.visibleDates.length - appointmentView.endIndex) *
-                      cellWidth) +
-                  cellEndPadding,
-              kAllDayAppointmentHeight * appointmentView.position,
-              (widget.visibleDates.length - appointmentView.startIndex) *
-                  cellWidth,
-              (kAllDayAppointmentHeight * appointmentView.position) +
-                  kAllDayAppointmentHeight -
-                  1,
-            ),
-            const Radius.circular(cornerRadius));
+        rect = RRect.fromRectAndRadius(Rect.fromLTRB(
+          ((widget.visibleDates.length - appointmentView.endIndex) *
+                  cellWidth) +
+              cellEndPadding,
+          kAllDayAppointmentHeight * appointmentView.position,
+          (widget.visibleDates.length - appointmentView.startIndex) * cellWidth,
+          (kAllDayAppointmentHeight * appointmentView.position) +
+              kAllDayAppointmentHeight -
+              1,
+        ), const Radius.circular(cornerRadius));
       } else {
-        rect = RRect.fromRectAndRadius(
-            Rect.fromLTRB(
-              widget.timeLabelWidth + (appointmentView.startIndex * cellWidth),
-              kAllDayAppointmentHeight * appointmentView.position,
-              (appointmentView.endIndex * cellWidth) +
-                  widget.timeLabelWidth -
-                  cellEndPadding,
-              (kAllDayAppointmentHeight * appointmentView.position) +
-                  kAllDayAppointmentHeight -
-                  1,
-            ),
-            const Radius.circular(cornerRadius));
+        rect = RRect.fromRectAndRadius(Rect.fromLTRB(
+          widget.timeLabelWidth + (appointmentView.startIndex * cellWidth),
+          kAllDayAppointmentHeight * appointmentView.position,
+          (appointmentView.endIndex * cellWidth) +
+              widget.timeLabelWidth -
+              cellEndPadding,
+          (kAllDayAppointmentHeight * appointmentView.position) +
+              kAllDayAppointmentHeight -
+              1,
+        ), const Radius.circular(cornerRadius));
       }
 
       for (int j = appointmentView.startIndex;
@@ -368,14 +363,12 @@ class _AllDayAppointmentLayoutState extends State<AllDayAppointmentLayout> {
     if (_appointmentCollection.isNotEmpty) {
       /// Calculate the maximum appointment position of all the appointment
       /// views in the widget.
-      maxPosition = _appointmentCollection
-          .reduce(
-            (AppointmentView currentAppView, AppointmentView nextAppView) =>
-                currentAppView.maxPositions > nextAppView.maxPositions
-                    ? currentAppView
-                    : nextAppView,
-          )
-          .maxPositions;
+      maxPosition = _appointmentCollection.reduce(
+        (AppointmentView currentAppView, AppointmentView nextAppView) =>
+            currentAppView.maxPositions > nextAppView.maxPositions
+                ? currentAppView
+                : nextAppView,
+      ).maxPositions;
     }
 
     if (maxPosition == -1) {
@@ -393,14 +386,12 @@ class _AllDayAppointmentLayoutState extends State<AllDayAppointmentLayout> {
         int count = 0;
         if (appointmentViews.isNotEmpty) {
           /// Calculate the current index appointments max position.
-          maxPosition = appointmentViews
-              .reduce(
-                (AppointmentView currentAppView, AppointmentView nextAppView) =>
-                    currentAppView.maxPositions > nextAppView.maxPositions
-                        ? currentAppView
-                        : nextAppView,
-              )
-              .maxPositions;
+          maxPosition = appointmentViews.reduce(
+            (AppointmentView currentAppView, AppointmentView nextAppView) =>
+                currentAppView.maxPositions > nextAppView.maxPositions
+                    ? currentAppView
+                    : nextAppView,
+          ).maxPositions;
         }
         if (maxPosition <= position) {
           continue;
@@ -1024,14 +1015,12 @@ class _AllDayAppointmentRenderObject extends CustomCalendarRenderObject {
       );
       _rectPainter.color = calendar.timeSlotViewSettings.allDayPanelColor ??
           calendarTheme.allDayPanelColor!;
-      context.canvas.drawRect(
-          Rect.fromLTRB(
-            isRTL ? size.width - timeLabelWidth : 0,
-            viewHeaderHeight,
-            isRTL ? size.width : timeLabelWidth,
-            size.height,
-          ),
-          _rectPainter);
+      context.canvas.drawRect(Rect.fromLTRB(
+        isRTL ? size.width - timeLabelWidth : 0,
+        viewHeaderHeight,
+        isRTL ? size.width : timeLabelWidth,
+        size.height,
+      ), _rectPainter);
     }
     _rectPainter.color = calendar.timeSlotViewSettings.allDayPanelColor ??
         calendarTheme.allDayPanelColor!;
@@ -1045,14 +1034,12 @@ class _AllDayAppointmentRenderObject extends CustomCalendarRenderObject {
     const double textPadding = 3;
     _maxPosition = 0;
     if (appointmentCollection.isNotEmpty) {
-      _maxPosition = appointmentCollection
-          .reduce(
-            (AppointmentView currentAppView, AppointmentView nextAppView) =>
-                currentAppView.maxPositions > nextAppView.maxPositions
-                    ? currentAppView
-                    : nextAppView,
-          )
-          .maxPositions;
+      _maxPosition = appointmentCollection.reduce(
+        (AppointmentView currentAppView, AppointmentView nextAppView) =>
+            currentAppView.maxPositions > nextAppView.maxPositions
+                ? currentAppView
+                : nextAppView,
+      ).maxPositions;
     }
 
     if (_maxPosition == -1) {
@@ -1200,27 +1187,21 @@ class _AllDayAppointmentRenderObject extends CustomCalendarRenderObject {
       _textPainter,
       rect,
     );
-    canvas.drawRRect(
-        RRect.fromRectAndRadius(
-            Rect.fromLTRB(
-              isRTL ? rect.left : rect.right - forwardIconSize,
-              rect.top,
-              isRTL ? rect.left + forwardIconSize : rect.right,
-              rect.bottom,
-            ),
-            rect.brRadius),
-        _rectPainter);
+    canvas.drawRRect(RRect.fromRectAndRadius(Rect.fromLTRB(
+      isRTL ? rect.left : rect.right - forwardIconSize,
+      rect.top,
+      isRTL ? rect.left + forwardIconSize : rect.right,
+      rect.bottom,
+    ), rect.brRadius), _rectPainter);
     double iconPadding = (forwardIconSize - _textPainter.width) / 2;
     if (iconPadding < 0) {
       iconPadding = 0;
     }
 
-    _textPainter.paint(
-        canvas,
-        Offset(
-          (isRTL ? rect.left : rect.right - forwardIconSize) + iconPadding,
-          yPosition,
-        ));
+    _textPainter.paint(canvas, Offset(
+      (isRTL ? rect.left : rect.right - forwardIconSize) + iconPadding,
+      yPosition,
+    ));
   }
 
   void _drawAllDayAppointmentView(
@@ -1366,27 +1347,21 @@ class _AllDayAppointmentRenderObject extends CustomCalendarRenderObject {
       _textPainter,
       rect,
     );
-    canvas.drawRRect(
-        RRect.fromRectAndRadius(
-            Rect.fromLTRB(
-              isRTL ? rect.right - backwardIconSize : rect.left,
-              rect.top,
-              isRTL ? rect.right : rect.left + iconTextSize,
-              rect.bottom,
-            ),
-            rect.brRadius),
-        _rectPainter);
+    canvas.drawRRect(RRect.fromRectAndRadius(Rect.fromLTRB(
+      isRTL ? rect.right - backwardIconSize : rect.left,
+      rect.top,
+      isRTL ? rect.right : rect.left + iconTextSize,
+      rect.bottom,
+    ), rect.brRadius), _rectPainter);
     double iconPadding = (backwardIconSize - _textPainter.width) / 2;
     if (iconPadding < 0) {
       iconPadding = 0;
     }
 
-    _textPainter.paint(
-        canvas,
-        Offset(
-          (isRTL ? rect.right - backwardIconSize : rect.left) + iconPadding,
-          yPosition,
-        ));
+    _textPainter.paint(canvas, Offset(
+      (isRTL ? rect.right - backwardIconSize : rect.left) + iconPadding,
+      yPosition,
+    ));
   }
 
   void _addExpanderText(Canvas canvas, int position, double textPadding) {
@@ -1404,17 +1379,14 @@ class _AllDayAppointmentRenderObject extends CustomCalendarRenderObject {
         maxWidth: _cellWidth - textPadding >= 0 ? _cellWidth - textPadding : 0,
       );
 
-      _textPainter.paint(
-          canvas,
-          Offset(
-            isRTL
-                ? ((visibleDates.length - index) * _cellWidth) -
-                    _textPainter.width -
-                    textPadding
-                : timeLabelWidth + (index * _cellWidth) + textPadding,
-            endYPosition +
-                ((kAllDayAppointmentHeight - _textPainter.height) / 2),
-          ));
+      _textPainter.paint(canvas, Offset(
+        isRTL
+            ? ((visibleDates.length - index) * _cellWidth) -
+                _textPainter.width -
+                textPadding
+            : timeLabelWidth + (index * _cellWidth) + textPadding,
+        endYPosition + ((kAllDayAppointmentHeight - _textPainter.height) / 2),
+      ));
     }
   }
 
@@ -1439,17 +1411,15 @@ class _AllDayAppointmentRenderObject extends CustomCalendarRenderObject {
     _expanderTextPainter.textScaleFactor = textScaleFactor;
     _expanderTextPainter.text = icon;
     _expanderTextPainter.layout(maxWidth: timeLabelWidth);
-    _expanderTextPainter.paint(
-        canvas,
-        Offset(
-          isRTL
-              ? (size.width - timeLabelWidth) +
-                  ((timeLabelWidth - _expanderTextPainter.width) / 2)
-              : (timeLabelWidth - _expanderTextPainter.width) / 2,
-          allDayPainterHeight -
-              kAllDayAppointmentHeight +
-              (kAllDayAppointmentHeight - _expanderTextPainter.height) / 2,
-        ));
+    _expanderTextPainter.paint(canvas, Offset(
+      isRTL
+          ? (size.width - timeLabelWidth) +
+              ((timeLabelWidth - _expanderTextPainter.width) / 2)
+          : (timeLabelWidth - _expanderTextPainter.width) / 2,
+      allDayPainterHeight -
+          kAllDayAppointmentHeight +
+          (kAllDayAppointmentHeight - _expanderTextPainter.height) / 2,
+    ));
   }
 
   void _addMouseHoveringForAllDayPanel(Canvas canvas, Size size) {
@@ -1606,34 +1576,28 @@ class _AllDayAppointmentRenderObject extends CustomCalendarRenderObject {
     _textPainter.text = icon;
     _textPainter.layout(maxWidth: rect.width >= 0 ? rect.width : 0);
 
-    canvas.drawRRect(
-        RRect.fromRectAndRadius(
-            Rect.fromLTRB(
-              isRTL
-                  ? rect.left + forwardSpanIconSize
-                  : rect.right - recurrenceIconSize - forwardSpanIconSize,
-              rect.top,
-              isRTL
-                  ? rect.left + recurrenceIconSize + forwardSpanIconSize
-                  : rect.right - forwardSpanIconSize,
-              rect.bottom,
-            ),
-            rect.brRadius),
-        _rectPainter);
+    canvas.drawRRect(RRect.fromRectAndRadius(Rect.fromLTRB(
+      isRTL
+          ? rect.left + forwardSpanIconSize
+          : rect.right - recurrenceIconSize - forwardSpanIconSize,
+      rect.top,
+      isRTL
+          ? rect.left + recurrenceIconSize + forwardSpanIconSize
+          : rect.right - forwardSpanIconSize,
+      rect.bottom,
+    ), rect.brRadius), _rectPainter);
     double iconPadding = (recurrenceIconSize - _textPainter.width) / 2;
     if (iconPadding < 0) {
       iconPadding = 0;
     }
 
-    _textPainter.paint(
-        canvas,
-        Offset(
-          (isRTL
-                  ? rect.left + forwardSpanIconSize
-                  : rect.right - recurrenceIconSize - forwardSpanIconSize) +
-              iconPadding,
-          rect.top + (rect.height - _textPainter.height) / 2,
-        ));
+    _textPainter.paint(canvas, Offset(
+      (isRTL
+              ? rect.left + forwardSpanIconSize
+              : rect.right - recurrenceIconSize - forwardSpanIconSize) +
+          iconPadding,
+      rect.top + (rect.height - _textPainter.height) / 2,
+    ));
   }
 
   @override

@@ -13,13 +13,14 @@ class MenuRoute<T> extends PageRouteBuilder<T> {
     this.curve,
     this.popCurve,
   }) : super(
-          pageBuilder: (context, animation, secondaryAnimation) => child,
-          transitionDuration: duration ?? const Duration(milliseconds: 320),
-          opaque: false,
-          barrierColor:
-              barrier != false ? barrierColor ?? const Color(0x80000000) : null,
-          barrierDismissible: true,
-        );
+         pageBuilder: (context, animation, secondaryAnimation) => child,
+         transitionDuration: duration ?? const Duration(milliseconds: 320),
+         opaque: false,
+         barrierColor: barrier != false
+             ? barrierColor ?? const Color(0x80000000)
+             : null,
+         barrierDismissible: true,
+       );
 
   @override
   Widget buildTransitions(

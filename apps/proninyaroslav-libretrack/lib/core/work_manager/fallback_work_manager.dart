@@ -43,10 +43,10 @@ class FallbackWorkManager implements WorkManager {
     required ConstraintsManager constraintsManager,
     required WorkersProvider workersProvider,
     required DateTimeProvider dateTimeProvider,
-  })  : _repo = repo,
-        _constraintsManager = constraintsManager,
-        _workersProvider = workersProvider,
-        _dateTimeProvider = dateTimeProvider;
+  }) : _repo = repo,
+       _constraintsManager = constraintsManager,
+       _workersProvider = workersProvider,
+       _dateTimeProvider = dateTimeProvider;
 
   @override
   Future<void> init() async {}

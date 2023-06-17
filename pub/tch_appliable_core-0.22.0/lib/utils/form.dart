@@ -7,5 +7,4 @@ void clearFocus(BuildContext context) => FocusScope.of(context).unfocus();
 void requestFocus(
   BuildContext context,
   FocusNode focus,
-) =>
-    FocusScope.of(context).requestFocus(focus);
+) => FocusScope.of(context).requestFocus(focus);

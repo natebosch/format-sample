@@ -119,72 +119,72 @@ class _SparckChartTrackballRendererState
         onPointerUp: (PointerUpEvent event) => _hide(),
         child: GestureDetector(
           onVerticalDragStart: (widget.trackball != null &&
-                  widget.trackball!.activationMode !=
-                      SparkChartActivationMode.doubleTap)
+                    widget.trackball!.activationMode !=
+                        SparkChartActivationMode.doubleTap)
               ? (DragStartDetails details) => _updateDragValue(
-                    context,
-                    details.globalPosition,
-                  )
+                  context,
+                  details.globalPosition,
+                )
               : null,
           onVerticalDragUpdate: (widget.trackball != null &&
-                  widget.trackball!.activationMode !=
-                      SparkChartActivationMode.doubleTap)
+                    widget.trackball!.activationMode !=
+                        SparkChartActivationMode.doubleTap)
               ? (DragUpdateDetails details) => _updateDragValue(
-                    context,
-                    details.globalPosition,
-                  )
+                  context,
+                  details.globalPosition,
+                )
               : null,
           onHorizontalDragStart: (widget.trackball != null &&
-                  widget.trackball!.activationMode !=
-                      SparkChartActivationMode.doubleTap)
+                    widget.trackball!.activationMode !=
+                        SparkChartActivationMode.doubleTap)
               ? (DragStartDetails details) => _updateDragValue(
-                    context,
-                    details.globalPosition,
-                  )
+                  context,
+                  details.globalPosition,
+                )
               : null,
           onHorizontalDragUpdate: (widget.trackball != null &&
-                  widget.trackball!.activationMode !=
-                      SparkChartActivationMode.doubleTap)
+                    widget.trackball!.activationMode !=
+                        SparkChartActivationMode.doubleTap)
               ? (DragUpdateDetails details) => _updateDragValue(
-                    context,
-                    details.globalPosition,
-                  )
+                  context,
+                  details.globalPosition,
+                )
               : null,
           onTapDown: (widget.trackball != null &&
-                  widget.trackball!.activationMode ==
-                      SparkChartActivationMode.tap)
+                    widget.trackball!.activationMode ==
+                        SparkChartActivationMode.tap)
               ? (TapDownDetails details) => _enableAndUpdateTrackball(
-                    context,
-                    details.globalPosition,
-                  )
+                  context,
+                  details.globalPosition,
+                )
               : null,
           onLongPressStart: (widget.trackball != null &&
-                  widget.trackball!.activationMode ==
-                      SparkChartActivationMode.longPress)
+                    widget.trackball!.activationMode ==
+                        SparkChartActivationMode.longPress)
               ? (LongPressStartDetails details) => _enableAndUpdateTrackball(
-                    context,
-                    details.globalPosition,
-                  )
+                  context,
+                  details.globalPosition,
+                )
               : null,
           onLongPressMoveUpdate: (widget.trackball != null &&
-                  widget.trackball!.activationMode ==
-                      SparkChartActivationMode.longPress)
+                    widget.trackball!.activationMode ==
+                        SparkChartActivationMode.longPress)
               ? (LongPressMoveUpdateDetails details) => _updateDragValue(
-                    context,
-                    details.globalPosition,
-                  )
+                  context,
+                  details.globalPosition,
+                )
               : null,
           onDoubleTapDown: (widget.trackball != null &&
-                  widget.trackball!.activationMode ==
-                      SparkChartActivationMode.doubleTap)
+                    widget.trackball!.activationMode ==
+                        SparkChartActivationMode.doubleTap)
               ? (TapDownDetails details) => _enableAndUpdateTrackball(
-                    context,
-                    details.globalPosition,
-                  )
+                  context,
+                  details.globalPosition,
+                )
               : null,
           onDoubleTap: (widget.trackball != null &&
-                  widget.trackball!.activationMode ==
-                      SparkChartActivationMode.doubleTap)
+                    widget.trackball!.activationMode ==
+                        SparkChartActivationMode.doubleTap)
               ? () => _updateDragValue(context, _globalPosition!)
               : null,
           child: _addTrackballPainter(),
@@ -425,8 +425,8 @@ class TrackballPainter extends CustomPainter {
         xPosition = xPosition < 0
             ? 0
             : (tooltipRight > totalWidth
-                ? totalWidth - labelRect.width
-                : xPosition);
+                  ? totalWidth - labelRect.width
+                  : xPosition);
       }
 
       labelRect = Rect.fromLTWH(

@@ -19,8 +19,8 @@ class PBKDF2 {
     this.desiredKeyLength = 64,
     this.digestAlgorithm,
   }) : _derivator = new PBKDF2KeyDerivator(
-          new HMac(digestAlgorithm, blockLength),
-        );
+         new HMac(digestAlgorithm, blockLength),
+       );
 
   Uint8List process({
     required Uint8List data,

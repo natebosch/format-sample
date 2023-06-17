@@ -19,13 +19,13 @@ class AppState extends Equatable {
 
   @override
   List<Object?> get props => [
-        pageState,
-        pageCommand,
-        index,
-        hasNotification,
-        showGuardianRecoveryAlert,
-        showGuardianApproveOrDenyScreen,
-      ];
+    pageState,
+    pageCommand,
+    index,
+    hasNotification,
+    showGuardianRecoveryAlert,
+    showGuardianApproveOrDenyScreen,
+  ];
 
   AppState copyWith({
     PageState? pageState,

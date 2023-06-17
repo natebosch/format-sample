@@ -374,22 +374,22 @@ class ValueBar {
                 gaugeContainer,
                 topLeft: Radius.circular(borderRadius!),
                 bottomLeft: (linearGauge.getGaugeOrientation ==
-                        GaugeOrientation.horizontal)
+                          GaugeOrientation.horizontal)
                     ? Radius.circular(borderRadius!)
                     : Radius.zero,
                 topRight: (linearGauge.getGaugeOrientation ==
-                        GaugeOrientation.horizontal)
+                          GaugeOrientation.horizontal)
                     ? Radius.zero
                     : Radius.circular(borderRadius!),
               )
             : rectangularBox = RRect.fromRectAndCorners(
                 gaugeContainer,
                 topRight: (linearGauge.getGaugeOrientation ==
-                        GaugeOrientation.horizontal)
+                          GaugeOrientation.horizontal)
                     ? Radius.circular(borderRadius!)
                     : Radius.zero,
                 bottomLeft: (linearGauge.getGaugeOrientation ==
-                        GaugeOrientation.horizontal)
+                          GaugeOrientation.horizontal)
                     ? Radius.zero
                     : Radius.circular(borderRadius!),
                 bottomRight: Radius.circular(borderRadius!),
@@ -400,11 +400,11 @@ class ValueBar {
             ? rectangularBox = RRect.fromRectAndCorners(
                 gaugeContainer,
                 topRight: (linearGauge.getGaugeOrientation ==
-                        GaugeOrientation.horizontal)
+                          GaugeOrientation.horizontal)
                     ? Radius.circular(borderRadius!)
                     : Radius.zero,
                 bottomLeft: (linearGauge.getGaugeOrientation ==
-                        GaugeOrientation.horizontal)
+                          GaugeOrientation.horizontal)
                     ? Radius.zero
                     : Radius.circular(borderRadius!),
                 bottomRight: Radius.circular(borderRadius!),
@@ -413,11 +413,11 @@ class ValueBar {
                 gaugeContainer,
                 topLeft: Radius.circular(borderRadius!),
                 bottomLeft: (linearGauge.getGaugeOrientation ==
-                        GaugeOrientation.horizontal)
+                          GaugeOrientation.horizontal)
                     ? Radius.circular(borderRadius!)
                     : Radius.zero,
                 topRight: (linearGauge.getGaugeOrientation ==
-                        GaugeOrientation.horizontal)
+                          GaugeOrientation.horizontal)
                     ? Radius.zero
                     : Radius.circular(borderRadius!),
               );

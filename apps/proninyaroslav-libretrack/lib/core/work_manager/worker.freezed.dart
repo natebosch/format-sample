@@ -36,40 +36,34 @@ mixin _$WorkResult {
   TResult when<TResult extends Object?>({
     required TResult Function() success,
     required TResult Function() failure,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? success,
     TResult Function()? failure,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? success,
     TResult Function()? failure,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(WorkResultSuccess value) success,
     required TResult Function(WorkResultFailure value) failure,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(WorkResultSuccess value)? success,
     TResult Function(WorkResultFailure value)? failure,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(WorkResultSuccess value)? success,
     TResult Function(WorkResultFailure value)? failure,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -382,15 +376,15 @@ class _$WorkParamsCopyWithImpl<$Res> implements $WorkParamsCopyWith<$Res> {
       constraints: constraints == freezed
           ? _value.constraints
           : constraints // ignore: cast_nullable_to_non_nullable
-              as WorkConstraints?,
+                as WorkConstraints?,
       inputData: inputData == freezed
           ? _value.inputData
           : inputData // ignore: cast_nullable_to_non_nullable
-              as WorkData?,
+                as WorkData?,
       existingWorkPolicy: existingWorkPolicy == freezed
           ? _value.existingWorkPolicy
           : existingWorkPolicy // ignore: cast_nullable_to_non_nullable
-              as ExistingWorkPolicy,
+                as ExistingWorkPolicy,
     ));
   }
 
@@ -444,15 +438,15 @@ class __$WorkParamsCopyWithImpl<$Res> extends _$WorkParamsCopyWithImpl<$Res>
       constraints: constraints == freezed
           ? _value.constraints
           : constraints // ignore: cast_nullable_to_non_nullable
-              as WorkConstraints?,
+                as WorkConstraints?,
       inputData: inputData == freezed
           ? _value.inputData
           : inputData // ignore: cast_nullable_to_non_nullable
-              as WorkData?,
+                as WorkData?,
       existingWorkPolicy: existingWorkPolicy == freezed
           ? _value.existingWorkPolicy
           : existingWorkPolicy // ignore: cast_nullable_to_non_nullable
-              as ExistingWorkPolicy,
+                as ExistingWorkPolicy,
     ));
   }
 }
@@ -519,8 +513,8 @@ class _$_WorkParams with DiagnosticableTreeMixin implements _WorkParams {
 
   @JsonKey(ignore: true)
   @override
-  _$WorkParamsCopyWith<_WorkParams> get copyWith =>
-      __$WorkParamsCopyWithImpl<_WorkParams>(this, _$identity);
+  _$WorkParamsCopyWith<_WorkParams>
+  get copyWith => __$WorkParamsCopyWithImpl<_WorkParams>(this, _$identity);
 }
 
 abstract class _WorkParams implements WorkParams {
@@ -588,7 +582,7 @@ class _$WorkConstraintsCopyWithImpl<$Res>
       networkType: networkType == freezed
           ? _value.networkType
           : networkType // ignore: cast_nullable_to_non_nullable
-              as NetworkType?,
+                as NetworkType?,
     ));
   }
 }
@@ -622,7 +616,7 @@ class __$WorkConstraintsCopyWithImpl<$Res>
       networkType: networkType == freezed
           ? _value.networkType
           : networkType // ignore: cast_nullable_to_non_nullable
-              as NetworkType?,
+                as NetworkType?,
     ));
   }
 }
@@ -667,11 +661,11 @@ class _$_WorkConstraints
 
   @JsonKey(ignore: true)
   @override
-  _$WorkConstraintsCopyWith<_WorkConstraints> get copyWith =>
-      __$WorkConstraintsCopyWithImpl<_WorkConstraints>(
-        this,
-        _$identity,
-      );
+  _$WorkConstraintsCopyWith<_WorkConstraints>
+  get copyWith => __$WorkConstraintsCopyWithImpl<_WorkConstraints>(
+    this,
+    _$identity,
+  );
 }
 
 abstract class _WorkConstraints implements WorkConstraints {

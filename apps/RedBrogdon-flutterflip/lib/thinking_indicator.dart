@@ -62,7 +62,7 @@ class _AnimatedCircles extends StatefulWidget {
   final double height;
 
   const _AnimatedCircles({required this.color, required this.height, Key? key})
-      : super(key: key);
+    : super(key: key);
 
   @override
   _AnimatedCirclesState createState() => _AnimatedCirclesState();
@@ -80,11 +80,11 @@ class _AnimatedCirclesState extends State<_AnimatedCircles>
       duration: const Duration(milliseconds: 500),
       vsync: this,
     )..addStatusListener((status) {
-        // This bit ensures that the animation reverses course rather than
-        // stopping.
-        if (status == AnimationStatus.completed) _thinkingController.reverse();
-        if (status == AnimationStatus.dismissed) _thinkingController.forward();
-      });
+      // This bit ensures that the animation reverses course rather than
+      // stopping.
+      if (status == AnimationStatus.completed) _thinkingController.reverse();
+      if (status == AnimationStatus.dismissed) _thinkingController.forward();
+    });
     _thinkingAnimation = Tween(begin: 0.0, end: widget.height).animate(
       CurvedAnimation(parent: _thinkingController, curve: Curves.easeOut),
     );

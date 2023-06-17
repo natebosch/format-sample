@@ -8,6 +8,6 @@ final GetIt locator = GetIt.instance;
 
 @injectableInit
 void setupLocator() => $initGetIt(
-      locator,
-      environment: kIsWeb ? 'web' : 'mobile',
-    );
+  locator,
+  environment: kIsWeb ? 'web' : 'mobile',
+);

@@ -23,13 +23,11 @@ class MemberModelCacheItemAdapter extends TypeAdapter<MemberModelCacheItem> {
     reader.readByte();
     fields.add(reader.readInt());
 
-    return MemberModelCacheItem(
-        MemberModel(
-          account: fields[0] as String,
-          nickname: fields[1] as String,
-          image: fields[2] as String,
-        ),
-        fields[3] as int);
+    return MemberModelCacheItem(MemberModel(
+      account: fields[0] as String,
+      nickname: fields[1] as String,
+      image: fields[2] as String,
+    ), fields[3] as int);
   }
 
   @override

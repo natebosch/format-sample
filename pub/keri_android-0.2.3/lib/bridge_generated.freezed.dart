@@ -28,8 +28,7 @@ mixin _$DigestType {
     required TResult Function() sha2512,
     required TResult Function(Uint8List field0) blake2B256,
     required TResult Function(Uint8List field0) blake2S256,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? blake3256,
@@ -41,8 +40,7 @@ mixin _$DigestType {
     TResult? Function()? sha2512,
     TResult? Function(Uint8List field0)? blake2B256,
     TResult? Function(Uint8List field0)? blake2S256,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? blake3256,
@@ -55,8 +53,7 @@ mixin _$DigestType {
     TResult Function(Uint8List field0)? blake2B256,
     TResult Function(Uint8List field0)? blake2S256,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(DigestType_Blake3_256 value) blake3256,
@@ -68,8 +65,7 @@ mixin _$DigestType {
     required TResult Function(DigestType_SHA2_512 value) sha2512,
     required TResult Function(DigestType_Blake2B256 value) blake2B256,
     required TResult Function(DigestType_Blake2S256 value) blake2S256,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(DigestType_Blake3_256 value)? blake3256,
@@ -81,8 +77,7 @@ mixin _$DigestType {
     TResult? Function(DigestType_SHA2_512 value)? sha2512,
     TResult? Function(DigestType_Blake2B256 value)? blake2B256,
     TResult? Function(DigestType_Blake2S256 value)? blake2S256,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(DigestType_Blake3_256 value)? blake3256,
@@ -95,8 +90,7 @@ mixin _$DigestType {
     TResult Function(DigestType_Blake2B256 value)? blake2B256,
     TResult Function(DigestType_Blake2S256 value)? blake2S256,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -1166,7 +1160,7 @@ class __$$DigestType_Blake2B256CopyWithImpl<$Res>
       null == field0
           ? _value.field0
           : field0 // ignore: cast_nullable_to_non_nullable
-              as Uint8List,
+                as Uint8List,
     ));
   }
 }
@@ -1194,16 +1188,17 @@ class _$DigestType_Blake2B256 implements DigestType_Blake2B256 {
 
   @override
   int get hashCode => Object.hash(
-        runtimeType,
-        const DeepCollectionEquality().hash(field0),
-      );
+    runtimeType,
+    const DeepCollectionEquality().hash(field0),
+  );
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$DigestType_Blake2B256CopyWith<_$DigestType_Blake2B256> get copyWith =>
-      __$$DigestType_Blake2B256CopyWithImpl<_$DigestType_Blake2B256>(
-          this, _$identity);
+  _$$DigestType_Blake2B256CopyWith<_$DigestType_Blake2B256>
+  get copyWith => __$$DigestType_Blake2B256CopyWithImpl<
+    _$DigestType_Blake2B256
+  >(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1346,7 +1341,7 @@ class __$$DigestType_Blake2S256CopyWithImpl<$Res>
       null == field0
           ? _value.field0
           : field0 // ignore: cast_nullable_to_non_nullable
-              as Uint8List,
+                as Uint8List,
     ));
   }
 }
@@ -1374,16 +1369,17 @@ class _$DigestType_Blake2S256 implements DigestType_Blake2S256 {
 
   @override
   int get hashCode => Object.hash(
-        runtimeType,
-        const DeepCollectionEquality().hash(field0),
-      );
+    runtimeType,
+    const DeepCollectionEquality().hash(field0),
+  );
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$DigestType_Blake2S256CopyWith<_$DigestType_Blake2S256> get copyWith =>
-      __$$DigestType_Blake2S256CopyWithImpl<_$DigestType_Blake2S256>(
-          this, _$identity);
+  _$$DigestType_Blake2S256CopyWith<_$DigestType_Blake2S256>
+  get copyWith => __$$DigestType_Blake2S256CopyWithImpl<
+    _$DigestType_Blake2S256
+  >(this, _$identity);
 
   @override
   @optionalTypeArgs

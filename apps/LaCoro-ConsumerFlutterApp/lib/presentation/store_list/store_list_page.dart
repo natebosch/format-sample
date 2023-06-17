@@ -26,8 +26,8 @@ class StoreListPage extends StatefulWidget {
 
   @override
   _StoreListPageState createState() => _StoreListPageState(
-        (Injector.getInjector().get()),
-      );
+    (Injector.getInjector().get()),
+  );
 }
 
 class _StoreListPageState extends State<StoreListPage> {
@@ -167,9 +167,9 @@ class _StoreListPageState extends State<StoreListPage> {
                                 focusNode: _focusNode,
                                 controller: _textFieldController,
                                 onEditingComplete: () => setState(
-                                  () => _searchQuery =
-                                      _textFieldController.text.trim(),
-                                ),
+                                      () => _searchQuery =
+                                          _textFieldController.text.trim(),
+                                    ),
                                 decoration: InputDecoration(
                                   filled: true,
                                   //fillColor: Colors.red,
@@ -179,7 +179,8 @@ class _StoreListPageState extends State<StoreListPage> {
                                     size: 24,
                                   ),
                                   suffixIcon: _textFieldController
-                                          .text.isNotEmpty
+                                            .text
+                                            .isNotEmpty
                                       ? IconButton(
                                           icon: Icon(
                                             Icons.cancel,

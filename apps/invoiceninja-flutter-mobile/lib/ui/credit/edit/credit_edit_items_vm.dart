@@ -62,17 +62,17 @@ class CreditEditItemsVM extends EntityEditItemsVM {
     Function(InvoiceItemEntity, int) onChangedInvoiceItem,
     Function(int, int) onMovedInvoiceItem,
   }) : super(
-          state: state,
-          company: company,
-          invoice: invoice,
-          addLineItem: addLineItem,
-          deleteLineItem: deleteLineItem,
-          invoiceItemIndex: invoiceItemIndex,
-          onRemoveInvoiceItemPressed: onRemoveInvoiceItemPressed,
-          clearSelectedInvoiceItem: onDoneInvoiceItemPressed,
-          onChangedInvoiceItem: onChangedInvoiceItem,
-          onMovedInvoiceItem: onMovedInvoiceItem,
-        );
+         state: state,
+         company: company,
+         invoice: invoice,
+         addLineItem: addLineItem,
+         deleteLineItem: deleteLineItem,
+         invoiceItemIndex: invoiceItemIndex,
+         onRemoveInvoiceItemPressed: onRemoveInvoiceItemPressed,
+         clearSelectedInvoiceItem: onDoneInvoiceItemPressed,
+         onChangedInvoiceItem: onChangedInvoiceItem,
+         onMovedInvoiceItem: onMovedInvoiceItem,
+       );
 
   factory CreditEditItemsVM.fromStore(Store<AppState> store, bool isTasks) {
     return CreditEditItemsVM(

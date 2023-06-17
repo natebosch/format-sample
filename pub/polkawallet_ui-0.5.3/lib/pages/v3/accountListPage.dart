@@ -16,7 +16,7 @@ class AccountListPageParams {
 
 class AccountListPage extends StatelessWidget {
   const AccountListPage(this.plugin, this.keyring, {Key? key})
-      : super(key: key);
+    : super(key: key);
 
   static const String route = '/profile/contacts/list';
   final PolkawalletPlugin plugin;

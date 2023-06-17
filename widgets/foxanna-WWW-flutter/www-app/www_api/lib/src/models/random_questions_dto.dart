@@ -15,6 +15,5 @@ class RandomQuestionsDto with _$RandomQuestionsDto {
 
   factory RandomQuestionsDto.fromJson(
     Map<String, dynamic> json,
-  ) =>
-      _$RandomQuestionsDtoFromJson(json);
+  ) => _$RandomQuestionsDtoFromJson(json);
 }

@@ -53,13 +53,11 @@ void main() {
 
     test('key generator test', () {
       final keyGen = ElGamalKeyGenerator()
-        ..init(ParametersWithRandom(
-            ElGamalKeyGeneratorParameters(
-              DHKeySize.l2048n224.lSize,
-              DHKeySize.l2048n224.nSize,
-              64,
-            ),
-            Helper.secureRandom()));
+        ..init(ParametersWithRandom(ElGamalKeyGeneratorParameters(
+          DHKeySize.l2048n224.lSize,
+          DHKeySize.l2048n224.nSize,
+          64,
+        ), Helper.secureRandom()));
       final keyPair = keyGen.generateKeyPair();
 
       final engine = ElGamalEngine();
@@ -73,11 +71,9 @@ void main() {
         reason: "2048 outputBlockSize on encryption failed.",
       );
 
-      final message = faker.randomGenerator
-          .string(
-            (keyPair.publicKey as ElGamalPublicKey).prime.byteLength,
-          )
-          .stringToBytes();
+      final message = faker.randomGenerator.string(
+        (keyPair.publicKey as ElGamalPublicKey).prime.byteLength,
+      ).stringToBytes();
       final plainText = message;
       final cipherText = Uint8List(engine.outputBlockSize);
       engine.processBlock(plainText, 0, plainText.length, cipherText, 0);
@@ -149,13 +145,11 @@ void main() {
       test('key generator test', () {
         final signer = DSASigner(Digest('SHA-256'));
         final keyGen = DSAKeyGenerator()
-          ..init(ParametersWithRandom(
-              DSAKeyGeneratorParameters(
-                DHKeySize.l2048n224.lSize,
-                DHKeySize.l2048n224.nSize,
-                64,
-              ),
-              Helper.secureRandom()));
+          ..init(ParametersWithRandom(DSAKeyGeneratorParameters(
+            DHKeySize.l2048n224.lSize,
+            DHKeySize.l2048n224.nSize,
+            64,
+          ), Helper.secureRandom()));
         final keyPair = keyGen.generateKeyPair();
 
         signer.init(

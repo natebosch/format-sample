@@ -38,8 +38,7 @@ class CommitsComparison {
 
   factory CommitsComparison.fromJson(
     Map<String, dynamic> json,
-  ) =>
-      _$CommitsComparisonFromJson(json);
+  ) => _$CommitsComparisonFromJson(json);
 
   Map<String, dynamic> toJson() => _$CommitsComparisonToJson(this);
 }

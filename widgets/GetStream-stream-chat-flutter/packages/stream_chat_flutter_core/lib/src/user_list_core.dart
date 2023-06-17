@@ -149,60 +149,59 @@ class UserListCoreState extends State<UserListCore>
       widget.sort?.any((e) => e.field == 'name' && e.direction == 1) ?? false;
 
   Stream<List<ListItem>> _buildUserStream() => _usersBloc!.usersStream.map(
-        (users) {
-          if (widget.groupAlphabetically) {
-            var temp = users;
-            if (!_isListAlreadySorted) {
-              temp = users
-                ..sort((curr, next) => curr.name.compareTo(next.name));
-            }
-            final groupedUsers = <String, List<User>>{};
-            for (final e in temp) {
-              final alphabet = e.name[0].toUpperCase();
-              groupedUsers[alphabet] = [...groupedUsers[alphabet] ?? [], e];
-            }
-            final items = <ListItem>[];
-            for (final key in groupedUsers.keys) {
-              items
-                ..add(ListHeaderItem(key))
-                ..addAll(groupedUsers[key]!.map((e) => ListUserItem(e)));
-            }
-            return items;
-          }
-          return users.map((e) => ListUserItem(e)).toList();
-        },
-      );
+    (users) {
+      if (widget.groupAlphabetically) {
+        var temp = users;
+        if (!_isListAlreadySorted) {
+          temp = users..sort((curr, next) => curr.name.compareTo(next.name));
+        }
+        final groupedUsers = <String, List<User>>{};
+        for (final e in temp) {
+          final alphabet = e.name[0].toUpperCase();
+          groupedUsers[alphabet] = [...groupedUsers[alphabet] ?? [], e];
+        }
+        final items = <ListItem>[];
+        for (final key in groupedUsers.keys) {
+          items
+            ..add(ListHeaderItem(key))
+            ..addAll(groupedUsers[key]!.map((e) => ListUserItem(e)));
+        }
+        return items;
+      }
+      return users.map((e) => ListUserItem(e)).toList();
+    },
+  );
 
   BetterStreamBuilder<List<ListItem>> _buildListView() => BetterStreamBuilder(
-        stream: _buildUserStream(),
-        errorBuilder: widget.errorBuilder,
-        noDataBuilder: widget.loadingBuilder,
-        builder: (context, items) {
-          if (items.isEmpty) {
-            return widget.emptyBuilder(context);
-          }
-          return widget.listBuilder(context, items);
-        },
-      );
+    stream: _buildUserStream(),
+    errorBuilder: widget.errorBuilder,
+    noDataBuilder: widget.loadingBuilder,
+    builder: (context, items) {
+      if (items.isEmpty) {
+        return widget.emptyBuilder(context);
+      }
+      return widget.listBuilder(context, items);
+    },
+  );
 
   /// Fetches initial users and updates the widget
   Future<void> loadData() => _usersBloc!.queryUsers(
-        filter: widget.filter,
-        sort: widget.sort,
-        presence: widget.presence,
-        pagination: PaginationParams(limit: widget.limit),
-      );
+    filter: widget.filter,
+    sort: widget.sort,
+    presence: widget.presence,
+    pagination: PaginationParams(limit: widget.limit),
+  );
 
   /// Fetches more users with updated pagination and updates the widget
   Future<void> paginateData() => _usersBloc!.queryUsers(
-        filter: widget.filter,
-        sort: widget.sort,
-        presence: widget.presence,
-        pagination: PaginationParams(
-          limit: widget.limit,
-          offset: _usersBloc!.users?.length ?? 0,
-        ),
-      );
+    filter: widget.filter,
+    sort: widget.sort,
+    presence: widget.presence,
+    pagination: PaginationParams(
+      limit: widget.limit,
+      offset: _usersBloc!.users?.length ?? 0,
+    ),
+  );
 
   @override
   void didUpdateWidget(UserListCore oldWidget) {

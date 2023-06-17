@@ -35,10 +35,10 @@ class MobilePodcastService extends PodcastService {
     @required Repository repository,
     @required SettingsService settingsService,
   }) : super(
-          api: api,
-          repository: repository,
-          settingsService: settingsService,
-        );
+         api: api,
+         repository: repository,
+         settingsService: settingsService,
+       );
 
   @override
   Future<psearch.SearchResult> search({
@@ -144,7 +144,9 @@ class MobilePodcastService extends PodcastService {
         if (loadedPodcast.episodes.length > 1) {
           if (loadedPodcast.episodes[0].publicationDate.millisecondsSinceEpoch <
               loadedPodcast
-                  .episodes[1].publicationDate.millisecondsSinceEpoch) {
+                  .episodes[1]
+                  .publicationDate
+                  .millisecondsSinceEpoch) {
             loadedPodcast.episodes.sort(
               (e1, e2) => e2.publicationDate.compareTo(e1.publicationDate),
             );
@@ -437,7 +439,7 @@ class _PodcastCache {
   final Queue<_CacheItem> _queue;
 
   _PodcastCache({@required this.maxItems, @required this.expiration})
-      : _queue = Queue<_CacheItem>();
+    : _queue = Queue<_CacheItem>();
 
   psearch.Podcast item(String key) {
     var hit = _queue.firstWhere(

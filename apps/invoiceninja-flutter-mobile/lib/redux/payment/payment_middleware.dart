@@ -132,29 +132,28 @@ Middleware<AppState> _viewPaymentList() {
 Middleware<AppState> _archivePayment(PaymentRepository repository) {
   return (Store<AppState> store, dynamic dynamicAction, NextDispatcher next) {
     final action = dynamicAction as ArchivePaymentsRequest;
-    final prevPayments = action.paymentIds
-        .map(
-          (id) => store.state.paymentState.map[id],
-        )
-        .toList();
+    final prevPayments = action.paymentIds.map(
+      (id) => store.state.paymentState.map[id],
+    ).toList();
     repository
         .bulkAction(
-      store.state.credentials,
-      action.paymentIds,
-      EntityAction.archive,
-    )
+          store.state.credentials,
+          action.paymentIds,
+          EntityAction.archive,
+        )
         .then((List<PaymentEntity> payments) {
-      store.dispatch(ArchivePaymentsSuccess(payments));
-      if (action.completer != null) {
-        action.completer.complete(null);
-      }
-    }).catchError((Object error) {
-      print(error);
-      store.dispatch(ArchivePaymentsFailure(prevPayments));
-      if (action.completer != null) {
-        action.completer.completeError(error);
-      }
-    });
+          store.dispatch(ArchivePaymentsSuccess(payments));
+          if (action.completer != null) {
+            action.completer.complete(null);
+          }
+        })
+        .catchError((Object error) {
+          print(error);
+          store.dispatch(ArchivePaymentsFailure(prevPayments));
+          if (action.completer != null) {
+            action.completer.completeError(error);
+          }
+        });
 
     next(action);
   };
@@ -163,30 +162,29 @@ Middleware<AppState> _archivePayment(PaymentRepository repository) {
 Middleware<AppState> _deletePayment(PaymentRepository repository) {
   return (Store<AppState> store, dynamic dynamicAction, NextDispatcher next) {
     final action = dynamicAction as DeletePaymentsRequest;
-    final prevPayments = action.paymentIds
-        .map(
-          (id) => store.state.paymentState.map[id],
-        )
-        .toList();
+    final prevPayments = action.paymentIds.map(
+      (id) => store.state.paymentState.map[id],
+    ).toList();
     repository
         .bulkAction(
-      store.state.credentials,
-      action.paymentIds,
-      EntityAction.delete,
-    )
+          store.state.credentials,
+          action.paymentIds,
+          EntityAction.delete,
+        )
         .then((List<PaymentEntity> payments) {
-      store.dispatch(DeletePaymentsSuccess(payments));
-      store.dispatch(RefreshData());
-      if (action.completer != null) {
-        action.completer.complete(null);
-      }
-    }).catchError((Object error) {
-      print(error);
-      store.dispatch(DeletePaymentsFailure(prevPayments));
-      if (action.completer != null) {
-        action.completer.completeError(error);
-      }
-    });
+          store.dispatch(DeletePaymentsSuccess(payments));
+          store.dispatch(RefreshData());
+          if (action.completer != null) {
+            action.completer.complete(null);
+          }
+        })
+        .catchError((Object error) {
+          print(error);
+          store.dispatch(DeletePaymentsFailure(prevPayments));
+          if (action.completer != null) {
+            action.completer.completeError(error);
+          }
+        });
 
     next(action);
   };
@@ -195,30 +193,29 @@ Middleware<AppState> _deletePayment(PaymentRepository repository) {
 Middleware<AppState> _restorePayment(PaymentRepository repository) {
   return (Store<AppState> store, dynamic dynamicAction, NextDispatcher next) {
     final action = dynamicAction as RestorePaymentsRequest;
-    final prevPayments = action.paymentIds
-        .map(
-          (id) => store.state.paymentState.map[id],
-        )
-        .toList();
+    final prevPayments = action.paymentIds.map(
+      (id) => store.state.paymentState.map[id],
+    ).toList();
     repository
         .bulkAction(
-      store.state.credentials,
-      action.paymentIds,
-      EntityAction.restore,
-    )
+          store.state.credentials,
+          action.paymentIds,
+          EntityAction.restore,
+        )
         .then((List<PaymentEntity> payments) {
-      store.dispatch(RestorePaymentsSuccess(payments));
-      store.dispatch(RefreshData());
-      if (action.completer != null) {
-        action.completer.complete(null);
-      }
-    }).catchError((Object error) {
-      print(error);
-      store.dispatch(RestorePaymentsFailure(prevPayments));
-      if (action.completer != null) {
-        action.completer.completeError(error);
-      }
-    });
+          store.dispatch(RestorePaymentsSuccess(payments));
+          store.dispatch(RefreshData());
+          if (action.completer != null) {
+            action.completer.complete(null);
+          }
+        })
+        .catchError((Object error) {
+          print(error);
+          store.dispatch(RestorePaymentsFailure(prevPayments));
+          if (action.completer != null) {
+            action.completer.completeError(error);
+          }
+        });
 
     next(action);
   };
@@ -232,18 +229,19 @@ Middleware<AppState> _savePayment(PaymentRepository repository) {
     repository
         .saveData(store.state.credentials, action.payment, sendEmail: sendEmail)
         .then((PaymentEntity payment) {
-      if (action.payment.isNew) {
-        store.dispatch(AddPaymentSuccess(payment));
-      } else {
-        store.dispatch(SavePaymentSuccess(payment));
-      }
-      store.dispatch(RefreshData());
-      action.completer.complete(payment);
-    }).catchError((Object error) {
-      print(error);
-      store.dispatch(SavePaymentFailure(error));
-      action.completer.completeError(error);
-    });
+          if (action.payment.isNew) {
+            store.dispatch(AddPaymentSuccess(payment));
+          } else {
+            store.dispatch(SavePaymentSuccess(payment));
+          }
+          store.dispatch(RefreshData());
+          action.completer.complete(payment);
+        })
+        .catchError((Object error) {
+          print(error);
+          store.dispatch(SavePaymentFailure(error));
+          action.completer.completeError(error);
+        });
 
     next(action);
   };
@@ -275,18 +273,19 @@ Middleware<AppState> _emailPayment(PaymentRepository repository) {
     final action = dynamicAction as EmailPaymentRequest;
     repository
         .bulkAction(
-      store.state.credentials,
-      action.paymentIds,
-      EntityAction.emailPayment,
-    )
+          store.state.credentials,
+          action.paymentIds,
+          EntityAction.emailPayment,
+        )
         .then((List<PaymentEntity> payments) {
-      store.dispatch(EmailPaymentSuccess());
-      action.completer.complete(null);
-    }).catchError((Object error) {
-      print(error);
-      store.dispatch(SavePaymentFailure(error));
-      action.completer.completeError(error);
-    });
+          store.dispatch(EmailPaymentSuccess());
+          action.completer.complete(null);
+        })
+        .catchError((Object error) {
+          print(error);
+          store.dispatch(SavePaymentFailure(error));
+          action.completer.completeError(error);
+        });
 
     next(action);
   };
@@ -325,24 +324,25 @@ Middleware<AppState> _loadPayments(PaymentRepository repository) {
     store.dispatch(LoadPaymentsRequest());
     repository
         .loadList(
-      state.credentials,
-      state.createdAtLimit,
-      state.filterDeletedClients,
-    )
+          state.credentials,
+          state.createdAtLimit,
+          state.filterDeletedClients,
+        )
         .then((data) {
-      store.dispatch(LoadPaymentsSuccess(data));
+          store.dispatch(LoadPaymentsSuccess(data));
 
-      if (action.completer != null) {
-        action.completer.complete(null);
-      }
-      store.dispatch(LoadRecurringInvoices());
-    }).catchError((Object error) {
-      print(error);
-      store.dispatch(LoadPaymentsFailure(error));
-      if (action.completer != null) {
-        action.completer.completeError(error);
-      }
-    });
+          if (action.completer != null) {
+            action.completer.complete(null);
+          }
+          store.dispatch(LoadRecurringInvoices());
+        })
+        .catchError((Object error) {
+          print(error);
+          store.dispatch(LoadPaymentsFailure(error));
+          if (action.completer != null) {
+            action.completer.completeError(error);
+          }
+        });
 
     next(action);
   };

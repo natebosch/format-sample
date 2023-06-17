@@ -89,7 +89,9 @@ class _ScreenState extends State<Screen> {
             Hero(
               tag: "ball",
               child: Image.asset(
-                "images/${ballers[Provider.of<BallsApi>(context, listen: false).i].name}.png",
+                "images/${ballers[
+                  Provider.of<BallsApi>(context, listen: false).i
+                ].name}.png",
                 width: 50.0,
               ),
             ),

@@ -48,14 +48,12 @@ class _BottomBarViewState extends State<BottomBarView>
                 color: PiggyAppTheme.white,
                 elevation: 16.0,
                 clipper: TabClipper(
-                  radius: Tween<double>(begin: 0.0, end: 1.0)
-                          .animate(
-                            CurvedAnimation(
-                              parent: animationController,
-                              curve: Curves.fastOutSlowIn,
-                            ),
-                          )
-                          .value *
+                  radius: Tween<double>(begin: 0.0, end: 1.0).animate(
+                        CurvedAnimation(
+                          parent: animationController,
+                          curve: Curves.fastOutSlowIn,
+                        ),
+                      ).value *
                       38.0,
                 ),
                 child: Column(
@@ -208,7 +206,7 @@ class _BottomBarViewState extends State<BottomBarView>
 
 class TabIcons extends StatefulWidget {
   const TabIcons({Key key, this.tabIconData, this.removeAllSelect})
-      : super(key: key);
+    : super(key: key);
 
   final TabIconData tabIconData;
   final Function removeAllSelect;
@@ -223,14 +221,14 @@ class _TabIconsState extends State<TabIcons> with TickerProviderStateMixin {
       vsync: this,
       duration: const Duration(milliseconds: 400),
     )..addStatusListener((AnimationStatus status) {
-        if (status == AnimationStatus.completed) {
-          if (!mounted) {
-            return;
-          }
-          widget.removeAllSelect();
-          widget.tabIconData.animationController.reverse();
+      if (status == AnimationStatus.completed) {
+        if (!mounted) {
+          return;
         }
-      });
+        widget.removeAllSelect();
+        widget.tabIconData.animationController.reverse();
+      }
+    });
     super.initState();
   }
 

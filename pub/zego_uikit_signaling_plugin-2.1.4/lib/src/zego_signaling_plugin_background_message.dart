@@ -5,7 +5,7 @@ class ZegoSignalingPluginBackgroundMessageAPIImpl
   /// only for Android
   @override
   Future<ZegoSignalingPluginSetBackgroundMessageHandlerResult>
-      setBackgroundMessageHandler(
+  setBackgroundMessageHandler(
     ZegoSignalingPluginZPNsBackgroundMessageHandler handler,
   ) async {
     ZegoSignalingLoggerService.logInfo(
@@ -39,7 +39,7 @@ class ZegoSignalingPluginBackgroundMessageEventImpl
     implements ZegoSignalingPluginBackgroundMessageEvent {
   @override
   Stream<ZegoSignalingPluginThroughMessageReceivedEvent>
-      getBackgroundThroughMessageReceivedEventStream() {
+  getBackgroundThroughMessageReceivedEventStream() {
     return ZegoSignalingPluginCore()
         .eventCenter
         .throughMessageReceivedEvent

@@ -15,8 +15,12 @@ class PseudoItemTypeFilterWidget
       _PseudoItemTypeFilterWidgetState();
 }
 
-class _PseudoItemTypeFilterWidgetState extends BaseSearchFilterWidgetState<
-    PseudoItemTypeFilterWidget, PseudoItemTypeFilter, PseudoItemType> {
+class _PseudoItemTypeFilterWidgetState
+    extends BaseSearchFilterWidgetState<
+      PseudoItemTypeFilterWidget,
+      PseudoItemTypeFilter,
+      PseudoItemType
+    > {
   @override
   Widget build(BuildContext context) {
     double paddingBottom = MediaQuery.of(context).padding.bottom;

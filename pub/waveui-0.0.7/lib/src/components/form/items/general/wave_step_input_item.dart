@@ -118,8 +118,8 @@ class WaveStepInputFormItem extends StatefulWidget {
         .formItemConfig
         .merge(this.themeData);
     this.themeData = this.themeData!.merge(
-          WaveFormItemConfig(backgroundColor: backgroundColor),
-        );
+      WaveFormItemConfig(backgroundColor: backgroundColor),
+    );
   }
 
   @override

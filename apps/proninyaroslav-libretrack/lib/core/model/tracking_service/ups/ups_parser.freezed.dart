@@ -43,45 +43,39 @@ mixin _$_DeliveryDetail {
     required TResult Function(_DateTime dateTime) delivery,
     required TResult Function(_DateTime dateTime) estimatedDelivery,
     required TResult Function(_DateTime dateTime) scheduledDelivery,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(_DateTime dateTime)? delivery,
     TResult Function(_DateTime dateTime)? estimatedDelivery,
     TResult Function(_DateTime dateTime)? scheduledDelivery,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(_DateTime dateTime)? delivery,
     TResult Function(_DateTime dateTime)? estimatedDelivery,
     TResult Function(_DateTime dateTime)? scheduledDelivery,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_DeliveryDetailDelivery value) delivery,
     required TResult Function(_DetailEstimatedDelivery value) estimatedDelivery,
     required TResult Function(_DetailScheduledDelivery value) scheduledDelivery,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_DeliveryDetailDelivery value)? delivery,
     TResult Function(_DetailEstimatedDelivery value)? estimatedDelivery,
     TResult Function(_DetailScheduledDelivery value)? scheduledDelivery,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_DeliveryDetailDelivery value)? delivery,
     TResult Function(_DetailEstimatedDelivery value)? estimatedDelivery,
     TResult Function(_DetailScheduledDelivery value)? scheduledDelivery,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   _$DeliveryDetailCopyWith<_DeliveryDetail> get copyWith =>
@@ -112,7 +106,7 @@ class __$DeliveryDetailCopyWithImpl<$Res>
       dateTime: dateTime == freezed
           ? _value.dateTime
           : dateTime // ignore: cast_nullable_to_non_nullable
-              as _DateTime,
+                as _DateTime,
     ));
   }
 }
@@ -146,7 +140,7 @@ class __$DeliveryDetailDeliveryCopyWithImpl<$Res>
       dateTime == freezed
           ? _value.dateTime
           : dateTime // ignore: cast_nullable_to_non_nullable
-              as _DateTime,
+                as _DateTime,
     ));
   }
 }
@@ -191,9 +185,10 @@ class _$_DeliveryDetailDelivery
 
   @JsonKey(ignore: true)
   @override
-  _$DeliveryDetailDeliveryCopyWith<_DeliveryDetailDelivery> get copyWith =>
-      __$DeliveryDetailDeliveryCopyWithImpl<_DeliveryDetailDelivery>(
-          this, _$identity);
+  _$DeliveryDetailDeliveryCopyWith<_DeliveryDetailDelivery>
+  get copyWith => __$DeliveryDetailDeliveryCopyWithImpl<
+    _DeliveryDetailDelivery
+  >(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -306,7 +301,7 @@ class __$DetailEstimatedDeliveryCopyWithImpl<$Res>
       dateTime == freezed
           ? _value.dateTime
           : dateTime // ignore: cast_nullable_to_non_nullable
-              as _DateTime,
+                as _DateTime,
     ));
   }
 }
@@ -351,9 +346,10 @@ class _$_DetailEstimatedDelivery
 
   @JsonKey(ignore: true)
   @override
-  _$DetailEstimatedDeliveryCopyWith<_DetailEstimatedDelivery> get copyWith =>
-      __$DetailEstimatedDeliveryCopyWithImpl<_DetailEstimatedDelivery>(
-          this, _$identity);
+  _$DetailEstimatedDeliveryCopyWith<_DetailEstimatedDelivery>
+  get copyWith => __$DetailEstimatedDeliveryCopyWithImpl<
+    _DetailEstimatedDelivery
+  >(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -466,7 +462,7 @@ class __$DetailScheduledDeliveryCopyWithImpl<$Res>
       dateTime == freezed
           ? _value.dateTime
           : dateTime // ignore: cast_nullable_to_non_nullable
-              as _DateTime,
+                as _DateTime,
     ));
   }
 }
@@ -511,9 +507,10 @@ class _$_DetailScheduledDelivery
 
   @JsonKey(ignore: true)
   @override
-  _$DetailScheduledDeliveryCopyWith<_DetailScheduledDelivery> get copyWith =>
-      __$DetailScheduledDeliveryCopyWithImpl<_DetailScheduledDelivery>(
-          this, _$identity);
+  _$DetailScheduledDeliveryCopyWith<_DetailScheduledDelivery>
+  get copyWith => __$DetailScheduledDeliveryCopyWithImpl<
+    _DetailScheduledDelivery
+  >(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -620,40 +617,34 @@ mixin _$_ShipmentAddress {
   TResult when<TResult extends Object?>({
     required TResult Function(Address address) shipper,
     required TResult Function(Address address) shipTo,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(Address address)? shipper,
     TResult Function(Address address)? shipTo,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Address address)? shipper,
     TResult Function(Address address)? shipTo,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_ShipmentAddressShipper value) shipper,
     required TResult Function(_ShipmentAddressShipTo value) shipTo,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_ShipmentAddressShipper value)? shipper,
     TResult Function(_ShipmentAddressShipTo value)? shipTo,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_ShipmentAddressShipper value)? shipper,
     TResult Function(_ShipmentAddressShipTo value)? shipTo,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   _$ShipmentAddressCopyWith<_ShipmentAddress> get copyWith =>
@@ -686,7 +677,7 @@ class __$ShipmentAddressCopyWithImpl<$Res>
       address: address == freezed
           ? _value.address
           : address // ignore: cast_nullable_to_non_nullable
-              as Address,
+                as Address,
     ));
   }
 
@@ -730,7 +721,7 @@ class __$ShipmentAddressShipperCopyWithImpl<$Res>
       address == freezed
           ? _value.address
           : address // ignore: cast_nullable_to_non_nullable
-              as Address,
+                as Address,
     ));
   }
 }
@@ -772,9 +763,10 @@ class _$_ShipmentAddressShipper
 
   @JsonKey(ignore: true)
   @override
-  _$ShipmentAddressShipperCopyWith<_ShipmentAddressShipper> get copyWith =>
-      __$ShipmentAddressShipperCopyWithImpl<_ShipmentAddressShipper>(
-          this, _$identity);
+  _$ShipmentAddressShipperCopyWith<_ShipmentAddressShipper>
+  get copyWith => __$ShipmentAddressShipperCopyWithImpl<
+    _ShipmentAddressShipper
+  >(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -883,7 +875,7 @@ class __$ShipmentAddressShipToCopyWithImpl<$Res>
       address == freezed
           ? _value.address
           : address // ignore: cast_nullable_to_non_nullable
-              as Address,
+                as Address,
     ));
   }
 }
@@ -925,11 +917,11 @@ class _$_ShipmentAddressShipTo
 
   @JsonKey(ignore: true)
   @override
-  _$ShipmentAddressShipToCopyWith<_ShipmentAddressShipTo> get copyWith =>
-      __$ShipmentAddressShipToCopyWithImpl<_ShipmentAddressShipTo>(
-        this,
-        _$identity,
-      );
+  _$ShipmentAddressShipToCopyWith<_ShipmentAddressShipTo>
+  get copyWith => __$ShipmentAddressShipToCopyWithImpl<_ShipmentAddressShipTo>(
+    this,
+    _$identity,
+  );
 
   @override
   @optionalTypeArgs

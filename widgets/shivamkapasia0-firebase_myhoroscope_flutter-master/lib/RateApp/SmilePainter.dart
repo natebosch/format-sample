@@ -301,23 +301,19 @@ class SmilePainter extends CustomPainter {
         );
       }
 
-      canvas.drawOval(
-          Rect.fromLTRB(
-            leftEyeX - (eyeRadius + eyeRadiusbythree),
-            eyeY - (eyeRadius + eyeRadiusbythree),
-            leftTweenX,
-            leftTweenY,
-          ),
-          whitePaint);
+      canvas.drawOval(Rect.fromLTRB(
+        leftEyeX - (eyeRadius + eyeRadiusbythree),
+        eyeY - (eyeRadius + eyeRadiusbythree),
+        leftTweenX,
+        leftTweenY,
+      ), whitePaint);
 
-      canvas.drawOval(
-          Rect.fromLTRB(
-            rightTweenX,
-            eyeY,
-            rightEyeX + (eyeRadius + eyeRadiusbythree),
-            eyeY - (eyeRadius + eyeRadiusbythree),
-          ),
-          whitePaint);
+      canvas.drawOval(Rect.fromLTRB(
+        rightTweenX,
+        eyeY,
+        rightEyeX + (eyeRadius + eyeRadiusbythree),
+        eyeY - (eyeRadius + eyeRadiusbythree),
+      ), whitePaint);
     }
 
     //---------------------------------------------------------------

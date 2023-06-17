@@ -98,11 +98,9 @@ class TrackingPeriodicWorker implements Worker {
       late final Duration nextEnqueueTime;
       late final WorkResult result;
 
-      final oldestTrackNumbers = _getOldestTrackingInfo(latestTrackingInfo)
-          .map(
-            (info) => info.trackNumber,
-          )
-          .toList();
+      final oldestTrackNumbers = _getOldestTrackingInfo(latestTrackingInfo).map(
+        (info) => info.trackNumber,
+      ).toList();
 
       if (oldestTrackNumbers.isEmpty) {
         result = const WorkResult.success();

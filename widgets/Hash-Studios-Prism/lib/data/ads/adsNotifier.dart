@@ -64,8 +64,8 @@ class AdsNotifier extends ChangeNotifier {
       return;
     }
     rewardedAd!.fullScreenContentCallback = FullScreenContentCallback(
-      onAdShowedFullScreenContent: (RewardedAd ad) =>
-          logger.d('ad onAdShowedFullScreenContent.'),
+      onAdShowedFullScreenContent:
+          (RewardedAd ad) => logger.d('ad onAdShowedFullScreenContent.'),
       onAdDismissedFullScreenContent: (RewardedAd ad) {
         logger.d('$ad onAdDismissedFullScreenContent.');
         ad.dispose();

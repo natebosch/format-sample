@@ -53,9 +53,9 @@ class SlideAnimationState extends State<SlideAnimation>
     return AnimatedBuilder(
       animation: _controller,
       builder: (_, child) => Transform.translate(
-        offset: _animation.value,
-        child: child,
-      ),
+            offset: _animation.value,
+            child: child,
+          ),
       child: widget.child,
     );
   }

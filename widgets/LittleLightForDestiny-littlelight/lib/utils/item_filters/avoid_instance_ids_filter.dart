@@ -5,7 +5,7 @@ import 'base_item_filter.dart';
 
 class AvoidInstanceIdsFilter extends BaseItemFilter<Set<String>> {
   AvoidInstanceIdsFilter({Set<String> selected, enabled: true})
-      : super(Set(), selected ?? Set(), enabled: enabled);
+    : super(Set(), selected ?? Set(), enabled: enabled);
 
   bool filterItem(
     ItemWithOwner item, {

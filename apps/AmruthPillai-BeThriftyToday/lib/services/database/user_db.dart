@@ -11,12 +11,12 @@ class UserDatabaseService {
   }
 
   Future<User> fetchUserDocument() => _userDocument.get().then(
-        (user) => User.fromJson(user.data),
-      );
+    (user) => User.fromJson(user.data),
+  );
 
   Stream<User> get userDocument => _userDocument.snapshots().map(
-        (user) => User.fromJson(user.data),
-      );
+    (user) => User.fromJson(user.data),
+  );
 
   Future<bool> get checkIfUserExists async {
     try {

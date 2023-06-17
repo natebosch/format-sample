@@ -51,8 +51,8 @@ class Button extends StatelessWidget {
               text,
               textAlign: TextAlign.left,
               style: Theme.of(context).textTheme.button.copyWith(
-                    color: fill ? Colors.white70 : color,
-                  ),
+                color: fill ? Colors.white70 : color,
+              ),
             ),
           ],
         ),

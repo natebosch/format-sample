@@ -104,10 +104,10 @@ const UnspentTransaction$json = const {
 };
 
 /// Descriptor for `UnspentTransaction`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List unspentTransactionDescriptor =
-    $convert.base64Decode(
-  'ChJVbnNwZW50VHJhbnNhY3Rpb24SNwoJb3V0X3BvaW50GAEgASgLMhouVFcuQml0Y29pbi5Qcm90by5PdXRQb2ludFIIb3V0UG9pbnQSFgoGc2NyaXB0GAIgASgMUgZzY3JpcHQSFgoGYW1vdW50GAMgASgDUgZhbW91bnQ=',
-);
+final $typed_data.Uint8List unspentTransactionDescriptor = $convert
+    .base64Decode(
+      'ChJVbnNwZW50VHJhbnNhY3Rpb24SNwoJb3V0X3BvaW50GAEgASgLMhouVFcuQml0Y29pbi5Qcm90by5PdXRQb2ludFIIb3V0UG9pbnQSFgoGc2NyaXB0GAIgASgMUgZzY3JpcHQSFgoGYW1vdW50GAMgASgDUgZhbW91bnQ=',
+    );
 @$core.Deprecated('Use signingInputDescriptor instead')
 const SigningInput$json = const {
   '1': 'SigningInput',

@@ -50,12 +50,9 @@ class _TripsListState extends State<TripsList>
     final currentuser = Provider.of<FirebaseUser>(context);
     return Scaffold(
       body: StreamBuilder(
-        stream: Firestore.instance
-            .collection('userdetails')
-            .document(
-              currentuser.uid,
-            )
-            .snapshots(),
+        stream: Firestore.instance.collection('userdetails').document(
+          currentuser.uid,
+        ).snapshots(),
         builder: (_, usersnapshot) {
           if (usersnapshot.connectionState == ConnectionState.waiting) {
             Center(child: CircularProgressIndicator());
@@ -84,37 +81,37 @@ class _TripsListState extends State<TripsList>
             child: StreamBuilder(
               stream: widget._dest == true && widget._notPrivate == true
                   ? Firestore.instance
-                      .collection('group')
-                      .where('end', isGreaterThan: Timestamp.now())
-                      .where(
-                        'destination',
-                        isEqualTo: widget._selectedDestination,
-                      )
-                      .where('privacy', isEqualTo: false.toString())
-                      .orderBy('end', descending: true)
-                      .snapshots()
+                        .collection('group')
+                        .where('end', isGreaterThan: Timestamp.now())
+                        .where(
+                          'destination',
+                          isEqualTo: widget._selectedDestination,
+                        )
+                        .where('privacy', isEqualTo: false.toString())
+                        .orderBy('end', descending: true)
+                        .snapshots()
                   : widget._dest == true
                       ? Firestore.instance
-                          .collection('group')
-                          .where('end', isGreaterThan: Timestamp.now())
-                          .where(
-                            'destination',
-                            isEqualTo: widget._selectedDestination,
-                          )
-                          .orderBy('end', descending: true)
-                          .snapshots()
+                            .collection('group')
+                            .where('end', isGreaterThan: Timestamp.now())
+                            .where(
+                              'destination',
+                              isEqualTo: widget._selectedDestination,
+                            )
+                            .orderBy('end', descending: true)
+                            .snapshots()
                       : widget._notPrivate == true
                           ? Firestore.instance
-                              .collection('group')
-                              .where('end', isGreaterThan: Timestamp.now())
-                              .where('privacy', isEqualTo: false.toString())
-                              .orderBy('end', descending: true)
-                              .snapshots()
+                                .collection('group')
+                                .where('end', isGreaterThan: Timestamp.now())
+                                .where('privacy', isEqualTo: false.toString())
+                                .orderBy('end', descending: true)
+                                .snapshots()
                           : Firestore.instance
-                              .collection('group')
-                              .where('end', isGreaterThan: Timestamp.now())
-                              .orderBy('end', descending: true)
-                              .snapshots(),
+                                .collection('group')
+                                .where('end', isGreaterThan: Timestamp.now())
+                                .orderBy('end', descending: true)
+                                .snapshots(),
               builder: (_, snapshot) {
                 if (snapshot.connectionState == ConnectionState.waiting) {
                   Center(child: CircularProgressIndicator());
@@ -151,10 +148,8 @@ class _TripsListState extends State<TripsList>
                         elevation: 0.0,
                         child: InkWell(
                           onTap: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => GroupDetails(
+                            Navigator.push(context, MaterialPageRoute(
+                              builder: (context) => GroupDetails(
                                     destination,
                                     docId,
                                     privacy,
@@ -163,7 +158,7 @@ class _TripsListState extends State<TripsList>
                                     numberOfMembers,
                                     data,
                                   ),
-                                ));
+                            ));
                           },
                           child: Card(
                             shape: flag
@@ -212,16 +207,18 @@ class _TripsListState extends State<TripsList>
                                               top: 20,
                                             ),
                                             child: snapshot
-                                                                .data
-                                                                .documents[index]
-                                                                .data[
-                                                            'destination'] ==
+                                                            .data
+                                                            .documents[index]
+                                                            .data[
+                                                          'destination'
+                                                        ] ==
                                                         'New Delhi Railway Station' ||
                                                     snapshot
-                                                                .data
-                                                                .documents[index]
-                                                                .data[
-                                                            'destination'] ==
+                                                            .data
+                                                            .documents[index]
+                                                            .data[
+                                                          'destination'
+                                                        ] ==
                                                         'Hazrat Nizamuddin Railway Station'
                                                 ? Icon(
                                                     Icons.train,
@@ -229,9 +226,12 @@ class _TripsListState extends State<TripsList>
                                                         .accentColor,
                                                     size: 30,
                                                   )
-                                                : snapshot.data.documents[index]
-                                                                .data[
-                                                            'destination'] ==
+                                                : snapshot
+                                                            .data
+                                                            .documents[index]
+                                                            .data[
+                                                          'destination'
+                                                        ] ==
                                                         'Indira Gandhi International Airport'
                                                     ? Icon(
                                                         Icons
@@ -256,7 +256,9 @@ class _TripsListState extends State<TripsList>
                                               top: 10.0,
                                             ),
                                             child: Text(
-                                              '${snapshot.data.documents[index].data['destination']}',
+                                              '${snapshot.data.documents[
+                                                    index
+                                                  ].data['destination']}',
                                               style: TextStyle(
                                                 fontSize: 16,
                                                 fontWeight: FontWeight.bold,
@@ -265,7 +267,9 @@ class _TripsListState extends State<TripsList>
                                             ),
                                           ),
                                         ),
-                                        snapshot.data.documents[index]
+                                        snapshot
+                                                    .data
+                                                    .documents[index]
                                                     .data['privacy'] ==
                                                 'true'
                                             ? Flexible(
@@ -309,7 +313,9 @@ class _TripsListState extends State<TripsList>
                                             'Start : ${DateFormat(
                                               'dd.MM.yyyy - kk:mm a',
                                             ).format(
-                                              snapshot.data.documents[index]
+                                              snapshot
+                                                  .data
+                                                  .documents[index]
                                                   .data['start']
                                                   .toDate(),
                                             )}',
@@ -328,7 +334,9 @@ class _TripsListState extends State<TripsList>
                                             'End : ${DateFormat(
                                               'dd.MM.yyyy - kk:mm a',
                                             ).format(
-                                              snapshot.data.documents[index]
+                                              snapshot
+                                                  .data
+                                                  .documents[index]
                                                   .data['end']
                                                   .toDate(),
                                             )}',
@@ -348,7 +356,15 @@ class _TripsListState extends State<TripsList>
                                             Column(
                                               children: <Widget>[
                                                 Text(
-                                                  'Number of members in group: ${snapshot.data.documents[index].data['numberOfMembers'].toString()}/${snapshot.data.documents[index].data['maxpoolers'].toString()}',
+                                                  'Number of members in group: ${snapshot.data.documents[
+                                                        index
+                                                      ].data[
+                                                        'numberOfMembers'
+                                                      ].toString()}/${snapshot.data.documents[
+                                                        index
+                                                      ].data[
+                                                        'maxpoolers'
+                                                      ].toString()}',
                                                 ),
                                               ],
                                             ),
@@ -393,11 +409,9 @@ class _TripsListState extends State<TripsList>
                       padding: const EdgeInsets.fromLTRB(0, 20, 0, 80),
                       child: FloatingActionButton.extended(
                         onPressed: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => GroupPage(),
-                              ));
+                          Navigator.push(context, MaterialPageRoute(
+                            builder: (context) => GroupPage(),
+                          ));
                         },
                         icon: Icon(Icons.group),
                         label: Text('Group'),

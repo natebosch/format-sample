@@ -31,6 +31,5 @@ class RadarrMovieFile with _$RadarrMovieFile, JsonSerializableMixin {
 
   factory RadarrMovieFile.fromJson(
     Map<String, Object?> json,
-  ) =>
-      _$RadarrMovieFileFromJson(json);
+  ) => _$RadarrMovieFileFromJson(json);
 }

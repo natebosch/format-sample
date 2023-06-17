@@ -30,10 +30,8 @@ class MethodChannelSaveDecisions extends SaveDecisionsBridge {
           decisions.map((e) => UserDecisionSerializer.serialize(e)).toList(),
       'consentType': ConsentTypeSerializer.serialize(consentType),
     });
-    return (result as List)
-        .map(
-          (e) => ConsentSerializer.deserialize(e),
-        )
-        .toList();
+    return (result as List).map(
+      (e) => ConsentSerializer.deserialize(e),
+    ).toList();
   }
 }

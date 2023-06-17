@@ -12,8 +12,8 @@ class RecommendedTrait implements Trait<RecommendedTrait> {
   const RecommendedTrait({this.reason});
 
   factory RecommendedTrait.fromJson(Object? json) => _$RecommendedTraitFromJson(
-        (json as Map).cast<String, Object?>(),
-      );
+    (json as Map).cast<String, Object?>(),
+  );
 
   static const id = ShapeId.core('recommended');
 
